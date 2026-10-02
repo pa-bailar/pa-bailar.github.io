@@ -49,6 +49,16 @@ function summaryHtml(group: AgendaGroup): string {
     </button>`;
 }
 
+/** Whether the period at `position` shows its events, or starts as a summary row. */
+export function isPeriodOpen(groups: AgendaGroup[], position: number): boolean {
+  const group = groups[position];
+  if (!group) return false;
+  const total = groups.reduce((sum, item) => sum + item.events.length, 0);
+  // Nothing in the near periods (e.g. a quiet month): the first period opens instead.
+  const anyNear = groups.some((item) => OPEN_PERIODS.has(item.key));
+  return total <= SHORT_LIST || shownWhole.has(group.key) || OPEN_PERIODS.has(group.key) || (!anyNear && position === 0);
+}
+
 function groupBodyHtml(group: AgendaGroup, open: boolean): string {
   if (!open) return summaryHtml(group);
   if (shownWhole.has(group.key) || group.events.length <= PERIOD_LIMIT) return eventCardGridHtml(group.events);
@@ -78,12 +88,9 @@ export function renderUpcomingView(
           <p>Las academias publican casi a diario: vuelve en unos días.</p>
         </div>`;
   } else {
-    const short = upcoming.length <= SHORT_LIST;
-    // Nothing in the near periods (e.g. a quiet month): the first period opens instead.
-    const anyNear = groups.some((group) => OPEN_PERIODS.has(group.key));
     container.innerHTML = groups
       .map((group, position) => {
-        const open = short || shownWhole.has(group.key) || OPEN_PERIODS.has(group.key) || (!anyNear && position === 0);
+        const open = isPeriodOpen(groups, position);
         return `
         <section class="agenda-group" id="${sectionId(group.key)}" data-period="${escapeHtml(group.key)}">
           <header class="agenda-group__header">

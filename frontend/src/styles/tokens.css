@@ -147,6 +147,19 @@
   /* ---------- Layer 3: elevation ---------- */
   --shadow-menu: 0 8px 24px light-dark(rgb(42 15 20 / 0.18), rgb(0 0 0 / 0.45)); /* dropdown menus */
 
+  /* ---------- Layer 3: over photos ---------- */
+  /* Marks over any image (▶ and stacked squares on thumbnails, as on Instagram): white with a shadow,
+     the same in both themes, so they read on light and dark flyers alike. */
+  --on-image: #fff;
+  --shadow-on-image: drop-shadow(0 1px 2px rgb(0 0 0 / 0.7));
+
+  /* ---------- Layer 3: small parts ---------- */
+  --tab-underline: 3px; /* the selected tab's line: Próximos / Calendario, Flyers / Videos */
+  --icon-sm: 16px; /* marks over thumbnails */
+  --icon-lg: 24px; /* the floating calendar / list button */
+  --handle-width: 40px; /* sheets' grab handle */
+  --handle-height: 4px;
+
   /* ---------- Layer 3: motion ---------- */
   --duration: 150ms; /* hovers, small state changes */
   --duration-bar: 250ms; /* the jump bar hiding/showing */

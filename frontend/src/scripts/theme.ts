@@ -46,7 +46,7 @@ function saveMode(mode: Mode) {
   }
 }
 
-export function timeOfDayTheme(now = new Date()): Theme {
+function timeOfDayTheme(now = new Date()): Theme {
   const hour = now.getHours();
   return hour >= DAY_START_HOUR && hour < NIGHT_START_HOUR ? "light" : "dark";
 }

@@ -46,7 +46,7 @@
 .tabs__tab {
   padding: var(--space-2) 0;
   border: 0;
-  border-bottom: 3px solid transparent;
+  border-bottom: var(--tab-underline) solid transparent;
   background: none;
   font-weight: var(--weight-bold);
   color: var(--text-muted);

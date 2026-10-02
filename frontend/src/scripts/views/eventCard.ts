@@ -44,7 +44,7 @@ function flyerHtml(media: EventMedia, flyer: string): string {
     </div>`;
 }
 
-export function eventCardHtml(event: DanceEvent): string {
+function eventCardHtml(event: DanceEvent): string {
   const media = mainMedia(event);
   const flyer = flyerUrl(media);
   const ratio = flyer ? frameRatio(media) : null;

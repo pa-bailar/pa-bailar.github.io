@@ -13,7 +13,7 @@
   min-height: var(--control-height);
   padding: 0;
   border: 0;
-  border-bottom: 3px solid transparent;
+  border-bottom: var(--tab-underline) solid transparent;
   background: none;
   font-size: var(--text-sm);
   font-weight: var(--weight-bold);
@@ -63,14 +63,14 @@
 /* ▶ / stacked squares in the corner, white with a shadow so they read on any image (as on Instagram). */
 .post-thumb__badge {
   position: absolute;
-  top: 4px;
-  right: 4px;
+  top: var(--space-1);
+  right: var(--space-1);
   display: flex;
-  color: #fff;
-  filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.7));
+  color: var(--on-image);
+  filter: var(--shadow-on-image);
 }
 
 .post-thumb__badge .icon {
-  width: 16px;
-  height: 16px;
+  width: var(--icon-sm);
+  height: var(--icon-sm);
 }

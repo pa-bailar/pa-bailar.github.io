@@ -108,7 +108,7 @@ export interface AgendaGroup {
  * Input must be sorted by date.
  */
 /** Months after the current one that get a group each; later events are grouped by year. */
-export const MONTH_HORIZON = 6;
+const MONTH_HORIZON = 6;
 
 /** Months from the current one to `date`'s ("2026-10-07" → "2027-01-10": 3). */
 function monthsAhead(today: string, date: string): number {
