@@ -157,6 +157,7 @@ flowchart LR
 | `/` (`index.html`) | `pages/index.astro` | The app: header, toolbar, jump bar, both views, dialog, filter sheet. Every event is embedded as JSON (`<script type="application/json" id="events-data">`), and the browser renders the cards and calendar from it. The preview image is the next event's flyer |
 | `/evento/<id>/` | `pages/evento/[id].astro` | One page per event: what a shared link opens. Rendered at build time with the same markup as the dialog. Includes Open Graph tags (the flyer as the link preview) and schema.org `Event` data for search engines |
 | `/og/<id>.jpg` | `pages/og/[id].jpg.ts` | Each event's link-preview image: its flyer as a 600 px JPEG. WebP isn't shown by every app, and WhatsApp skips images over about 300 KB |
+| `/thumbs/<flyer>.webp` | `pages/thumbs/[name].webp.ts` | A 160 px square thumbnail of every flyer, for the row of an event's posts in its detail. A few KB each instead of the 100–200 KB flyer, so they show at once on a phone |
 | `/calendario.ics` | `pages/calendario.ics.ts` | A subscribable calendar feed (iCalendar, RFC 5545) with every event. Rebuilt with the site, so subscribed calendars refresh on their own |
 | `/sitemap-index.xml` | `@astrojs/sitemap` | Home and every event page, for search engines (the 404 page is excluded) |
 | `/404.html` | `pages/404.astro` | "Esta página no existe…", with a link home |
@@ -168,6 +169,7 @@ flowchart TD
     D --> EVT["evento/[id].astro → /evento/&lt;id&gt;/"]
     D --> OG["og/[id].jpg.ts → /og/&lt;id&gt;.jpg"]
     D --> ICS["calendario.ics.ts → /calendario.ics"]
+    D --> TH["thumbs/[name].webp.ts → /thumbs/&lt;flyer&gt;.webp"]
     IDX --> SM["sitemap-index.xml"]
     EVT --> SM
     PUB["data/ (public folder)"] --> FLY["/flyers/*.webp"]

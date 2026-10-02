@@ -15,7 +15,7 @@ import {
   typeLabel,
 } from "../lib/format";
 import { ICONS } from "../lib/icons";
-import { flyerUrl, googleCalendarUrl, mapsUrl, whatsappShareUrl } from "../lib/links";
+import { flyerUrl, googleCalendarUrl, mapsUrl, thumbUrl, whatsappShareUrl } from "../lib/links";
 
 function toConfirm(text = "Por confirmar"): string {
   return `<span class="to-confirm">${text}</span>`;
@@ -76,12 +76,12 @@ const POST_BADGES: Partial<Record<EventMedia["media_type"], string>> = {
 
 /** `index` is the post's place in the event; `position` and `count`, its place within its kind. */
 function postThumbHtml(media: EventMedia, index: number, position: number, count: number, selected: boolean): string {
-  const flyer = flyerUrl(media);
+  const thumb = thumbUrl(media);
   const badge = POST_BADGES[media.media_type];
   return `
     <button class="post-thumb" type="button" data-media-index="${index}" aria-pressed="${selected}"
       aria-label="${mediaLabel(media.media_type)} ${position + 1} de ${count}">
-      ${flyer ? `<img src="${escapeHtml(flyer)}" alt="" loading="lazy" decoding="async" />` : ""}
+      ${thumb ? `<img src="${escapeHtml(thumb)}" alt="" width="160" height="160" />` : ""}
       ${badge ? `<span class="post-thumb__badge" aria-hidden="true">${badge}</span>` : ""}
     </button>`;
 }

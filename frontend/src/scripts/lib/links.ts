@@ -12,6 +12,16 @@ export function flyerUrl(media: EventMedia): string | null {
   return media.flyer ? `${BASE_URL}${media.flyer}` : null;
 }
 
+/** "flyers/123-0.webp" → "123-0": the name of its small thumbnail, made by pages/thumbs/[name].webp.ts. */
+export function thumbName(flyer: string): string {
+  return flyer.replace(/^.*\//, "").replace(/\.webp$/, "");
+}
+
+/** The flyer's small square thumbnail (160 px), for the row of an event's posts. */
+export function thumbUrl(media: EventMedia): string | null {
+  return media.flyer ? `${BASE_URL}thumbs/${thumbName(media.flyer)}.webp` : null;
+}
+
 /** The main post: the one shown on the card and shared by default. */
 export function mainMedia(event: DanceEvent): EventMedia {
   return event.media[0];
