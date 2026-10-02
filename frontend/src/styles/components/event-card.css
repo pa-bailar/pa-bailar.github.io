@@ -6,46 +6,40 @@
   margin-top: var(--space-7);
 }
 
-/* Period header: a thick rule, the period's name and how many events it has, like a section of a
-   record sleeve's track list. It marks clearly where one period ends and the next begins. */
+/* Period header: a band in reversed colors (the page's ink as background), so it reads as a divider
+   between periods and never as part of the posts around it, on phones and wide screens alike. */
 .agenda-group__header {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   gap: var(--space-3);
   margin-bottom: var(--space-4);
-  padding-top: var(--space-3);
-  border-top: 3px solid var(--text);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-sm);
+  background: var(--text);
+  color: var(--bg);
 }
 
 .agenda-group__heading {
   font-family: var(--font-serif);
   font-style: italic;
   font-weight: 500;
-  font-size: var(--text-2xl);
-  line-height: 1.15;
+  font-size: var(--text-xl);
+  line-height: 1.2;
 }
 
 .agenda-group__count {
   flex: none;
   font-size: var(--text-sm);
   font-weight: var(--weight-bold);
-  color: var(--text-muted);
 }
 
-/* Wide screens: the period header sits in a column on the left, next to its cards. */
-@media (min-width: 960px) {
-  .agenda-group {
-    display: grid;
-    grid-template-columns: var(--day-column-width) minmax(0, 1fr);
-    gap: var(--space-5);
-    align-items: start;
-  }
-
+/* Phones: the band runs edge to edge, like the posts. */
+@media (max-width: 719px) {
   .agenda-group__header {
-    flex-direction: column;
-    gap: var(--space-1);
-    margin-bottom: 0;
+    margin-right: calc(var(--space-4) * -1);
+    margin-left: calc(var(--space-4) * -1);
+    border-radius: 0;
   }
 }
 

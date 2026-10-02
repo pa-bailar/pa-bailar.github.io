@@ -92,7 +92,7 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves. The pa
 
 ## Upcoming list
 
-- **Period headers:** a thick rule, the period's name (Bodoni italic) and its number of events ("5 eventos"), with generous space above, so each period clearly starts. On wide screens the header sits in a column left of its cards.
+- **Period headers:** a band in reversed colors (the page's ink as background: wine with cream text in light, cream with wine text in dark) with the period's name (Bodoni italic) and its number of events ("5 eventos"). It reads as a divider between periods, never as part of a post. Edge to edge on phones; above its cards on wide screens too.
 - **Grouped by period, not by day** (`groupByPeriod` in `scripts/state.ts`). Days with one or two events share rows instead of each leaving a mostly empty row. The buckets don't overlap, follow the usual calendar "date range" grouping, and split out the weekend because that's when most socials happen:
 
   | Group | Range |
