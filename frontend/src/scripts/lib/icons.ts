@@ -28,5 +28,6 @@ export const ICONS = {
   bookmark: icon(`<path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4.5L5 21V4a1 1 0 0 1 1-1z"/>`, false),
   bookmarkFilled: icon(`<path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4.5L5 21V4a1 1 0 0 1 1-1z"/>`),
   search: icon(`<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>`, false),
+  share: icon(`<path d="M12 3v12M8 7l4-4 4 4"/><path d="M6 11v9h12v-9"/>`, false), // iOS's Compartir
   pin: icon(`<path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>`, false),
 } as const;

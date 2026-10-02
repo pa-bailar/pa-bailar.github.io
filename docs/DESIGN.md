@@ -122,6 +122,20 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves. The pa
 - **"Info"** sits after the view tabs and looks like one, but it's a link to the footer (`#info`), never selected and outside the tab list for screen readers.
 - **The footer is "Sobre Pa' Bailar"**: a heading in Bodoni italic, a one-line description, the disclaimer, the calendar subscription, the sources and "Hecho por @jzamora5" (GitHub).
 
+## Installing it like an app
+
+- **What makes it installable:** the manifest (`pages/manifest.webmanifest.ts`: name, wine colors, icons) and a
+  service worker (`pages/sw.js.ts`). Icons are a record with a marigold label on the logo's tomato red,
+  made at build time (`pages/icons/[name].png.ts`), with a smaller "maskable" one for phones that cut
+  icons into circles or squircles.
+- **Offline:** the installed app opens without a connection with the events from the last visit (pages
+  network first, flyers and the build's files cached).
+- **The offer** (`InstallOffer.astro`, `scripts/views/installPrompt.ts`): a banner under the header from the
+  second visit on ("Pa' Bailar en tu celular" · Instalar · ×; × hides it for 30 days) and a link in the
+  footer. On Android and desktop Chrome/Edge, "Instalar" opens the browser's install dialog; iPhone and
+  iPad have none, so it opens a sheet with the steps (Safari → Compartir → Agregar a inicio). Nothing shows
+  once installed, or where the browser can't install.
+
 ## Saving and searching
 
 - **Saving ("Guardar")** is a bookmark, like Instagram's: at the end of each card's last line (price and rhythms;

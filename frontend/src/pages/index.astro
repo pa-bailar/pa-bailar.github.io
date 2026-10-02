@@ -7,6 +7,7 @@ import SiteHeader from "../components/SiteHeader.astro";
 import ViewToolbar from "../components/ViewToolbar.astro";
 import JumpBar from "../components/JumpBar.astro";
 import FilterSheet from "../components/FilterSheet.astro";
+import InstallOffer from "../components/InstallOffer.astro";
 import PostViewer from "../components/PostViewer.astro";
 import PostsSheet from "../components/PostsSheet.astro";
 import ViewSwitch from "../components/ViewSwitch.astro";
@@ -36,6 +37,7 @@ const previewImage = nextEvent ? previewImagePath(nextEvent) : null;
   image={previewImage}
 >
   <SiteHeader updatedLabel={updatedLabel} />
+  <InstallOffer />
   <ViewToolbar />
   <JumpBar />
 

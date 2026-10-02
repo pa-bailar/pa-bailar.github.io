@@ -159,6 +159,9 @@ flowchart LR
 | `/og/<id>.jpg` | `pages/og/[id].jpg.ts` | Each event's link-preview image: its flyer as a 600 px JPEG. WebP isn't shown by every app, and WhatsApp skips images over about 300 KB |
 | `/thumbs/<flyer>.webp` | `pages/thumbs/[name].webp.ts` | A 160 px square thumbnail of every flyer, for the sheet with an event's posts (opened from the "▦ 16" badge on the flyer). A few KB each instead of the 100–200 KB flyer, so they show at once on a phone |
 | `/calendario.ics` | `pages/calendario.ics.ts` | A subscribable calendar feed (iCalendar, RFC 5545) with every event. Rebuilt with the site, so subscribed calendars refresh on their own |
+| `/manifest.webmanifest` | `pages/manifest.webmanifest.ts` | What lets a phone install the site like an app: name, colors, icons, full screen |
+| `/icons/<name>.png` | `pages/icons/[name].png.ts` | The app icons (192, 512, maskable 512, Apple touch icon), made from SVG at build time |
+| `/sw.js` | `pages/sw.js.ts` | The service worker: makes it installable and opens it offline with the last events (pages network first; flyers and build files cached). A new version per build |
 | `/sitemap-index.xml` | `@astrojs/sitemap` | Home and every event page, for search engines (the 404 page is excluded) |
 | `/404.html` | `pages/404.astro` | "Esta página no existe…", with a link home |
 | `/flyers/*.webp` | `data/flyers/` (public folder) | The flyers, copied as they are |
@@ -311,7 +314,13 @@ stateDiagram-v2
   blurred copy of itself.
 - **Lazy loading:** every card image uses `loading="lazy"` and `decoding="async"`.
 
-### 5.5 Themes
+### 5.5 Installing, saving and searching
+
+- **Install:** `views/installPrompt.ts` offers it (a banner from the second visit, a footer link): Chrome/Edge's own dialog, or the steps on iPhone. It also registers the service worker (built site only).
+- **Saved events** live in this browser (`lib/saved.ts`, localStorage); "Guardados" filters the list and the calendar to them.
+- **Search** (`lib/search.ts`) runs on the events already in the page, accent-insensitive, every word anywhere in the event.
+
+### 5.6 Themes
 
 - **Two themes:** "Fania de día" (light) and "Noche Fania" (dark).
 - **Three modes:** auto, light and dark. **Auto** follows the visitor's clock: light from 6:00 to 17:59,

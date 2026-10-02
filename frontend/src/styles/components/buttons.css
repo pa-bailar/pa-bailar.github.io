@@ -80,3 +80,15 @@
 .search-input::placeholder {
   color: var(--text-muted);
 }
+
+/* A button that reads like a link, inside a sentence ("Instala Pa' Bailar en tu celular"). */
+.link-button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text);
+  font: inherit;
+  font-weight: var(--weight-bold);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}

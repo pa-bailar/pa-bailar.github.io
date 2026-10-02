@@ -20,6 +20,7 @@ import "../styles/components/event-card.css";
 import "../styles/components/calendar.css";
 import "../styles/components/event-dialog.css";
 import "../styles/components/site-footer.css";
+import "../styles/components/install.css";
 
 import { BASE_URL } from "../scripts/lib/links";
 import { DAY_START_HOUR, NIGHT_START_HOUR, THEME_COLORS, THEME_STORAGE_KEY } from "../scripts/themeConfig";
@@ -67,6 +68,10 @@ const favicon =
     <meta name="twitter:card" content={imageUrl ? "summary_large_image" : "summary"} />
     <meta name="theme-color" content={THEME_COLORS.light} />
     <link rel="icon" href={favicon} />
+    <!-- Installing it like an app (pages/manifest.webmanifest.ts, scripts/views/installPrompt.ts) -->
+    <link rel="manifest" href={`${BASE_URL}manifest.webmanifest`} />
+    <link rel="apple-touch-icon" href={`${BASE_URL}icons/apple-touch-icon.png`} />
+    <meta name="apple-mobile-web-app-title" content="Pa' Bailar" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
