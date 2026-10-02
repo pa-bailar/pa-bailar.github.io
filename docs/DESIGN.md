@@ -152,6 +152,11 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves. The pa
   visitor is: iPhone (Compartir → Agregar a inicio), Android (menú ⋮ → Instalar aplicación), or inside
   Instagram, WhatsApp or Facebook, which can't install (open it in the browser first). Nothing once
   installed.
+- **Knowing it's installed:** opened as the app; or this browser saw it installed (on Android the app shares the
+  browser's storage, so opening the app once is enough); or Chrome on Android says so (`getInstalledRelatedApps`,
+  the manifest lists the app as related to itself). Chrome offering to install again means it was uninstalled,
+  and the offer comes back. iPhone keeps the home-screen app apart from Safari and can't be asked: there,
+  only × hides the banner.
 
 ## Saving and searching
 

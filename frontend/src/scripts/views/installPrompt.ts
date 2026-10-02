@@ -7,12 +7,18 @@
 //     (open it in the browser first).
 //   - The offer: a banner under the header on phones (× hides it for DISMISS_DAYS days) and a link in the
 //     footer. Nothing once installed, or on a computer whose browser can't install.
+//   - Installed, as far as the page can tell: opened as the app; or this browser saw it installed (the
+//     app on Android shares the browser's storage, so opening it once is remembered); or Chrome on Android
+//     says so (getInstalledRelatedApps, with the manifest's related_applications). Chrome offering to
+//     install again (beforeinstallprompt) means it was uninstalled. iPhone keeps the home-screen app's
+//     storage apart from Safari and has no way to ask, so there only "×" hides the banner.
 
 import { byId } from "../lib/dom";
 import { ICONS } from "../lib/icons";
 import { initPanelSheet, openPanelSheet } from "../lib/sheet";
 
 const DISMISS_KEY = "install-dismissed-at";
+const INSTALLED_KEY = "installed";
 const DISMISS_DAYS = 30;
 
 /** Chrome's install event (not in TypeScript's DOM types yet). */
@@ -24,12 +30,39 @@ interface BeforeInstallPromptEvent extends Event {
 type Place = "iphone" | "android" | "in-app" | "computer";
 
 let installEvent: BeforeInstallPromptEvent | null = null;
+let installedHere = false; // Chrome on Android says the app is installed
 
-function isInstalled(): boolean {
+/** Running as the installed app (not in a browser tab). */
+function isApp(): boolean {
   return (
     matchMedia("(display-mode: standalone)").matches ||
     (navigator as Navigator & { standalone?: boolean }).standalone === true
   );
+}
+
+function isInstalled(): boolean {
+  return isApp() || installedHere || stored(INSTALLED_KEY) === "1";
+}
+
+function remember(key: string, value: string | null) {
+  try {
+    if (value === null) localStorage.removeItem(key);
+    else localStorage.setItem(key, value);
+  } catch {
+    // Storage unavailable: the page just can't remember it.
+  }
+}
+
+/** Ask Chrome on Android whether the app is installed (other browsers can't tell). */
+async function checkInstalled() {
+  const getRelated = (navigator as Navigator & { getInstalledRelatedApps?: () => Promise<unknown[]> })
+    .getInstalledRelatedApps;
+  if (!getRelated) return;
+  try {
+    installedHere = (await getRelated.call(navigator)).length > 0;
+  } catch {
+    // Not allowed here: keep what's known.
+  }
 }
 
 function place(): Place {
@@ -107,30 +140,34 @@ async function install() {
 }
 
 export function initInstallPrompt() {
-  if (isInstalled()) return;
+  if (isApp()) {
+    remember(INSTALLED_KEY, "1"); // the browser on the same phone (Android) will know
+    return;
+  }
   window.addEventListener("beforeinstallprompt", (event) => {
     event.preventDefault(); // our own offer instead of the browser's mini bar
     installEvent = event as BeforeInstallPromptEvent;
+    // Chrome only offers this when the app isn't installed: if it was, it's been uninstalled.
+    remember(INSTALLED_KEY, null);
+    installedHere = false;
     render();
   });
   window.addEventListener("appinstalled", () => {
     installEvent = null;
+    remember(INSTALLED_KEY, "1");
     render();
   });
   document.addEventListener("click", (domEvent) => {
     const target = domEvent.target as HTMLElement;
     if (target.closest("[data-install]")) void install().then(render);
     else if (target.closest("[data-install-dismiss]")) {
-      try {
-        localStorage.setItem(DISMISS_KEY, String(Date.now()));
-      } catch {
-        // Storage unavailable: it comes back next visit.
-      }
+      remember(DISMISS_KEY, String(Date.now()));
       render();
     }
   });
   initPanelSheet(byId<HTMLDialogElement>("install-sheet"));
   render();
+  void checkInstalled().then(render);
 }
 
 /** The service worker: offline copies and installability (pages/sw.js.ts). Only in the built site. */
