@@ -10,17 +10,18 @@ describe("contact links", () => {
     });
   });
 
-  it("a number marked WhatsApp opens a chat, with Colombia's code", () => {
+  it("a number opens a WhatsApp chat, with Colombia's code", () => {
+    expect(contactLink("350-537-2687")).toEqual({
+      kind: "whatsapp",
+      href: "https://wa.me/573505372687",
+      label: "350-537-2687",
+    });
     expect(contactLink("WhatsApp 320 2332984")).toEqual({
       kind: "whatsapp",
       href: "https://wa.me/573202332984",
       label: "320 2332984",
     });
-  });
-
-  it("any other number is a call, never WhatsApp", () => {
-    expect(contactLink("350-537-2687")).toEqual({ kind: "phone", href: "tel:+573505372687", label: "350-537-2687" });
-    expect(contactLink("601 7559780")?.href).toBe("tel:+576017559780"); // landline
+    expect(contactLink("+57 316 495 2960")?.href).toBe("https://wa.me/573164952960");
   });
 
   it("an incomplete number isn't a link", () => {

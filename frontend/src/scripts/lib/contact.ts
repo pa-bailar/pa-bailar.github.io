@@ -1,12 +1,11 @@
 // The organizer's contact as a link (the backend keeps only values it can link: normalize_contact):
 //   - "@academia"            → its Instagram profile
-//   - "WhatsApp 320 233 2984" → a WhatsApp chat (wa.me), only when the flyer or caption marked it WhatsApp
-//   - another phone number    → a call (tel:), never WhatsApp: not every number has it
+//   - a phone number          → a WhatsApp chat (wa.me): that's how people reach an academy here, nobody calls
 //   - "academia.com/eventos" → the website
 // Colombian numbers get the country code (57); a number that isn't a full Colombian or international one
 // stays plain text, rather than a link that wouldn't work.
 
-export type ContactKind = "instagram" | "whatsapp" | "phone" | "web";
+export type ContactKind = "instagram" | "whatsapp" | "web";
 
 export interface ContactLink {
   kind: ContactKind;
@@ -14,7 +13,7 @@ export interface ContactLink {
   label: string; // what's shown: the handle, the number, the address
 }
 
-const WHATSAPP = /\b(whats\s*app|wpp|wsp)\b/i;
+const WHATSAPP = /\b(whats\s*app|wpp|wsp)\b/i; // the backend may mark a number "WhatsApp …"
 const HANDLE = /^@([A-Za-z0-9._]+)$/;
 const WEBSITE = /^(https?:\/\/)?[\w-]+(\.[\w-]+)+(\/\S*)?$/i;
 
@@ -37,7 +36,5 @@ export function contactLink(contact: string): ContactLink | null {
   const number = internationalNumber(text);
   if (!number) return null;
   const label = text.replace(WHATSAPP, "").replace(/^[\s:.-]+/, "").trim();
-  return WHATSAPP.test(text)
-    ? { kind: "whatsapp", href: `https://wa.me/${number}`, label }
-    : { kind: "phone", href: `tel:+${number}`, label };
+  return { kind: "whatsapp", href: `https://wa.me/${number}`, label };
 }
