@@ -137,9 +137,12 @@ function mediaHtml(event: DanceEvent, media: EventMedia): string {
   const flyer = flyerUrl(media);
   if (!flyer) return "";
   const isVideo = media.media_type === "VIDEO";
+  // Its real size (read at build time) reserves its space before it loads: switching posts never
+  // collapses the image to nothing and shifts everything below it.
+  const size = media.width && media.height ? ` width="${media.width}" height="${media.height}"` : "";
   return `
     <a class="event-dialog__media" href="${escapeHtml(media.permalink)}" target="_blank" rel="noopener">
-      <img src="${escapeHtml(flyer)}" alt="${isVideo ? "Video" : "Flyer"} de ${escapeHtml(event.title)}" />
+      <img src="${escapeHtml(flyer)}"${size} alt="${isVideo ? "Video" : "Flyer"} de ${escapeHtml(event.title)}" />
       ${isVideo ? `<span class="event-dialog__play">${ICONS.instagram}Ver video en Instagram</span>` : ""}
     </a>`;
 }
@@ -204,8 +207,8 @@ export function handlePostClick(
 ): boolean {
   const tab = target.closest<HTMLElement>("[data-post-kind]");
   if (tab) {
-    if (tab.getAttribute("aria-pressed") !== "true") render(Number(tab.dataset.firstPost ?? 0), false);
-    container.querySelector<HTMLElement>(`[data-post-kind="${tab.dataset.postKind}"]`)?.focus();
+    if (tab.getAttribute("aria-pressed") !== "true") keepingScroll(container, () => render(Number(tab.dataset.firstPost ?? 0), false));
+    container.querySelector<HTMLElement>(`[data-post-kind="${tab.dataset.postKind}"]`)?.focus({ preventScroll: true });
     return true;
   }
   const thumb = target.closest<HTMLElement>("[data-media-index]");
@@ -214,9 +217,23 @@ export function handlePostClick(
   const pressed = container.querySelector<HTMLElement>('[data-media-index][aria-pressed="true"]');
   const selected = Number((thumb ?? pressed)?.dataset.mediaIndex ?? 0);
   const showAll = Boolean(expand) || Boolean(container.querySelector(".post-thumbs.is-all"));
-  render(selected, showAll);
+  keepingScroll(container, () => render(selected, showAll));
   const thumbs = [...container.querySelectorAll<HTMLElement>(".post-thumb")];
   const focus = expand ? thumbs[VISIBLE_POSTS - 1] : thumbs.find((item) => item.dataset.mediaIndex === String(selected));
-  focus?.focus();
+  focus?.focus({ preventScroll: true });
   return true;
+}
+
+/**
+ * Re-render without moving: the viewer's slide (phones) and its details column (wide screens) scroll on
+ * their own, and replacing their content would send them back to the top. Their positions are put back
+ * right after the new content is in.
+ */
+function keepingScroll(container: HTMLElement, render: () => void) {
+  const scrollers = () => [container, container.querySelector<HTMLElement>(".event-dialog__info")];
+  const positions = scrollers().map((element) => element?.scrollTop ?? 0);
+  render();
+  scrollers().forEach((element, index) => {
+    if (element) element.scrollTop = positions[index] ?? 0;
+  });
 }
