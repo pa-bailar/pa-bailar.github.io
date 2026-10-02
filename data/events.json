@@ -62,6 +62,122 @@
     ]
   },
   {
+    "title": "Hagámoslo Real - Semana de Clases",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "heels",
+      "urbano",
+      "otro"
+    ],
+    "organizer": "Bureo Dance Studio",
+    "venue": "Bureo Dance Studio",
+    "address": "Sedes 109, 127 y Cajicá",
+    "area": null,
+    "date": "2026-09-07",
+    "weekday": "lunes",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Clase suelta Sede 109",
+        "amount_cop": 35000,
+        "condition": null
+      },
+      {
+        "label": "Clase suelta Sedes 127 y Cajicá",
+        "amount_cop": 50000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Lu",
+      "Alejo Rivera",
+      "Alma",
+      "Víctor",
+      "Jujo",
+      "Diego",
+      "Maju",
+      "Vale",
+      "Ithan",
+      "Douglas"
+    ],
+    "activities": [
+      "clase de sexy style",
+      "clase de coreo",
+      "clase de heels",
+      "clase de reggaetón",
+      "videoclass"
+    ],
+    "contact": "@bureodancestudio",
+    "confidence": "high",
+    "doubts": [
+      "Discrepancia en precios de clase suelta entre imágenes de sedes individuales ($35.000 vs $50.000)"
+    ],
+    "id": "hagamoslo-real-semana-de-clases-7-sep",
+    "account": "bureodancestudio",
+    "media": [
+      {
+        "post_id": "18094649012398996",
+        "permalink": "https://www.instagram.com/p/Dc4zTdpnL9_/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-09-05T01:39:30+0000",
+        "flyer": "flyers/18094649012398996-0.webp",
+        "caption": "Hagámoslo REAL. 🔥  sai_______ \n\nDel 7 al 11 de septiembre, nos vemos en las tres sedes: 109, 127 y Cajicá.\n\nHeels, Sexy Style, Coreo y Reggaetón para bailar, sudar y disfrutar cada clase. 🖤\n\nClase suelta: $35.000\nO entra con tu paquete.\n\nDesliza, busca tu sede y reserva tu clase en la app.\n\nNos vemos en el estudio. ✨"
+      }
+    ]
+  },
+  {
+    "title": "Workshop con Lil Andrew - Clase de Coreografía",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "urbano"
+    ],
+    "organizer": "Bureo Dance Studio",
+    "venue": "Bureo Dance Studio",
+    "address": null,
+    "area": "Sede 109",
+    "date": "2026-09-09",
+    "weekday": "miércoles",
+    "start_time": "20:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Público",
+        "amount_cop": 35000,
+        "condition": null
+      },
+      {
+        "label": "Members Bureo",
+        "amount_cop": 30000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Lil Andrew"
+    ],
+    "activities": [
+      "clase de coreografía",
+      "workshop"
+    ],
+    "contact": "@bureodancestudio",
+    "confidence": "high",
+    "doubts": [],
+    "id": "workshop-con-lil-andrew-clase-de-coreografia-9-sep",
+    "account": "bureodancestudio",
+    "media": [
+      {
+        "post_id": "18475359718114255",
+        "permalink": "https://www.instagram.com/p/DdAxDa8CaOW/",
+        "media_type": "IMAGE",
+        "published": "2026-09-08T03:55:13+0000",
+        "flyer": "flyers/18475359718114255-0.webp",
+        "caption": "🔥 WORKSHOP CON LIL ANDREW 🔥 lilandrewoficial \n\nUna clase para bailar, aprender y disfrutar el proceso. 🖤\n\nEste miércoles 9 de septiembre nos vemos en Bureo Dance Studio para una clase de coreografía con Lil Andrew, bailarín de Don Omar.\n\n📍 Sede 109\n🕗 8:00 PM\n💰 Público: $35.000\n✨ Members Bureo: $30.000\n\nCupos limitados. Reserva el tuyo y nos vemos en el salón. 🫶🏻"
+      }
+    ]
+  },
+  {
     "title": "Ritmos Cruzados",
     "event_type": "workshop",
     "is_recurring": false,
@@ -113,6 +229,250 @@
     ]
   },
   {
+    "title": "Social Crossover y Talleres",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "bachata",
+      "zouk"
+    ],
+    "organizer": "Show Stars Academia de Baile",
+    "venue": "Show Stars Academia de Baile",
+    "address": "Av. Calle 24 #75-25",
+    "area": null,
+    "date": "2026-09-12",
+    "weekday": "sábado",
+    "start_time": "19:00",
+    "end_time": "01:00",
+    "prices": [
+      {
+        "label": "Individual",
+        "amount_cop": 30000,
+        "condition": null
+      },
+      {
+        "label": "Pareja",
+        "amount_cop": 50000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Angel y Melany"
+    ],
+    "activities": [
+      "bachata tradicional",
+      "bachazouk",
+      "social crossover"
+    ],
+    "contact": "SOCIAL",
+    "confidence": "high",
+    "doubts": [],
+    "id": "social-crossover-y-talleres-12-sep",
+    "account": "showstarscol",
+    "media": [
+      {
+        "post_id": "18013505918746903",
+        "permalink": "https://www.instagram.com/reel/DdCb-uRxXxE/",
+        "media_type": "VIDEO",
+        "published": "2026-09-08T19:38:14+0000",
+        "flyer": "flyers/18013505918746903-0.webp",
+        "caption": "🔥🕺💃 ¡ESTE 12 DE SEPTIEMBRE TENEMOS PLAN! 💃🕺🔥\n\nPrepárate para vivir una noche llena de bachata, aprendizaje, baile y mucha conexión. ✨\n\nDe 7:00 PM a 8:00 PM tendremos Bachata Tradicional, donde trabajaremos la cultura y esencia de este hermoso ritmo. ❤️\n\nDe 8:00 PM a 9:00 PM, seguiremos con Bachazouk, trabajando técnica, soft following y un estilo diferente para seguir evolucionando en tu baile. 🔥\n\nY para terminar… 😎🔥\n\n🕘 9:00 PM a 1:00 AM — SOCIAL CROSSOVER\nUna noche para disfrutar, practicar, conocer personas y bailar sin parar. 💃🕺✨\n\n📍 Av. Calle 24 #75-25\n⭐ Show Stars Academia de Baile\n¿Quieres asistir y recibir toda la información? 👇\n\n📩 Escríbenos la palabra “SOCIAL” por mensaje directo y te enviamos todos los detalles. 🔥\n\n¡Nos vemos en la pista! ⭐✨\n\n#ShowStars #SocialCrossover #Bachata #BachataTradicional \n\n⭐ No importa tu nivel, solo trae tus ganas de bailar. ¡Nos vemos en el SOCIAL! 🔥🕺💃"
+      }
+    ]
+  },
+  {
+    "title": "Salsa y Chontaduro - Taller intensivo de salsa caleña",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa caleña"
+    ],
+    "organizer": "Distrito Social",
+    "venue": null,
+    "address": null,
+    "area": null,
+    "date": "2026-09-13",
+    "weekday": "domingo",
+    "start_time": "13:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Jenssy Gonzáles",
+      "Felipe Romero"
+    ],
+    "activities": [
+      "taller intensivo de salsa caleña"
+    ],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [
+      "sin precio"
+    ],
+    "id": "salsa-y-chontaduro-taller-intensivo-de-salsa-13-sep",
+    "account": "distritosocialbog",
+    "media": [
+      {
+        "post_id": "18409856125080489",
+        "permalink": "https://www.instagram.com/p/Dc6W0owRIod/",
+        "media_type": "IMAGE",
+        "published": "2026-09-05T16:09:09+0000",
+        "flyer": "flyers/18409856125080489-0.webp",
+        "caption": "Septiembre ✨\n\nTe dejamos nuestra programación de eventos del mes de Septiembre dónde tendrás mucho baile, aprendizaje y gozadera 🥳🥳🥳\n\n🔸 Domingo 13: Iniciamos a la 1PM con un Intensivo de Salsa Caleña dictada por Jenssy Gonzáles y Felipe Romero\n\n🔸Domingo 13: Seguimos ese mismo día a las 3:30 PM con un Intensivo de Jack & Jill Bachata dictado por Angel y Melanny \n\n🔸 Sábado 19: Iniciamos a las 7 PM con nuestra clasificatoria de Bachatamania Master League dónde pondrán a prueba todas sus habilidades \n\n🔸Sábado 19: Seguimos este día desde las 8:30 PM con clase de Bachata y social 100% Bachatero\n\n🔸Domingo 20: Como nunca es suficiente Bachata nos vamos a partir de las 4 PM a una clase Intensiva de Bachata Dominicana dictada por Adriana Tibaduiza\n\n🔸Sábado 26: El último sábado del mes es para bailar y nos vamos con SBK (Salsa, Bachata, Kizomba) desde las 7 PM con doble clase y un social increíble \n\n🔸 Miércoles 30: Cerramos el mes con la culminación de l segundo corte de nuestro aniversario que será el mes de Noviembre 🤩🤩🤩\n\nNo dejes que te lo cuenten reserva en nuestras Webs:\n\ndistrito-social-academy.com/eventos\nappdanza.com"
+      }
+    ]
+  },
+  {
+    "title": "Intensivo Jack & Jill - Taller enfocado en la improvisación en bachata",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "bachata"
+    ],
+    "organizer": "Distrito Social",
+    "venue": "Distrito Social",
+    "address": null,
+    "area": null,
+    "date": "2026-09-13",
+    "weekday": "domingo",
+    "start_time": "15:30",
+    "end_time": "18:00",
+    "prices": [],
+    "artists": [
+      "Angel",
+      "Melanny"
+    ],
+    "activities": [
+      "taller intensivo de jack & jill bachata"
+    ],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [
+      "sin precio"
+    ],
+    "id": "intensivo-jack-jill-taller-enfocado-en-la-13-sep",
+    "account": "distritosocialbog",
+    "media": [
+      {
+        "post_id": "18409856125080489",
+        "permalink": "https://www.instagram.com/p/Dc6W0owRIod/",
+        "media_type": "IMAGE",
+        "published": "2026-09-05T16:09:09+0000",
+        "flyer": "flyers/18409856125080489-0.webp",
+        "caption": "Septiembre ✨\n\nTe dejamos nuestra programación de eventos del mes de Septiembre dónde tendrás mucho baile, aprendizaje y gozadera 🥳🥳🥳\n\n🔸 Domingo 13: Iniciamos a la 1PM con un Intensivo de Salsa Caleña dictada por Jenssy Gonzáles y Felipe Romero\n\n🔸Domingo 13: Seguimos ese mismo día a las 3:30 PM con un Intensivo de Jack & Jill Bachata dictado por Angel y Melanny \n\n🔸 Sábado 19: Iniciamos a las 7 PM con nuestra clasificatoria de Bachatamania Master League dónde pondrán a prueba todas sus habilidades \n\n🔸Sábado 19: Seguimos este día desde las 8:30 PM con clase de Bachata y social 100% Bachatero\n\n🔸Domingo 20: Como nunca es suficiente Bachata nos vamos a partir de las 4 PM a una clase Intensiva de Bachata Dominicana dictada por Adriana Tibaduiza\n\n🔸Sábado 26: El último sábado del mes es para bailar y nos vamos con SBK (Salsa, Bachata, Kizomba) desde las 7 PM con doble clase y un social increíble \n\n🔸 Miércoles 30: Cerramos el mes con la culminación de l segundo corte de nuestro aniversario que será el mes de Noviembre 🤩🤩🤩\n\nNo dejes que te lo cuenten reserva en nuestras Webs:\n\ndistrito-social-academy.com/eventos\nappdanza.com"
+      },
+      {
+        "post_id": "18101050046369055",
+        "permalink": "https://www.instagram.com/reel/DdB-rJXR9MV/",
+        "media_type": "VIDEO",
+        "published": "2026-09-08T15:14:33+0000",
+        "flyer": "flyers/18101050046369055-0.webp",
+        "caption": "Angel y Melanny ✨\n\nDirectamente desde la ciudad de Medellín llegan estos increíbles bailarines a enseñarnos y darnos una clase magistral de Jack and Jill dónde potenciarán sus habilidades al máximo 🔥\n\n🗓️ 13 de Septiembre\n🕗 3:30 PM a 6 PM\n📍 Distrito Social\n\nNo dejes que te lo cuenten, adquiere tus boletas en nuestra web:\n\nappdanza.com"
+      }
+    ]
+  },
+  {
+    "title": "Workshop Kirsten Dodgen - Etapa Bogotá",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "Bureo Dance Studio",
+    "venue": "Coliseo El Otoño",
+    "address": null,
+    "area": null,
+    "date": "2026-09-14",
+    "weekday": "lunes",
+    "start_time": "10:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Precio",
+        "amount_cop": 250000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Kirsten Dodgen"
+    ],
+    "activities": [
+      "clase de danza",
+      "entrenamiento de danza"
+    ],
+    "contact": "350-537-2687",
+    "confidence": "high",
+    "doubts": [
+      "No se especifica explícitamente el estilo de danza en el texto (Kirsten Dodgen es reconocida en danza urbana/hip-hop)"
+    ],
+    "id": "workshop-kirsten-dodgen-etapa-bogota-14-sep",
+    "account": "bureodancestudio",
+    "media": [
+      {
+        "post_id": "17939885055096850",
+        "permalink": "https://www.instagram.com/p/DdFeUdvnKUu/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-09-09T23:46:16+0000",
+        "flyer": "flyers/17939885055096850-0.webp",
+        "caption": "🔥 BOGOTÁ, ES MOMENTO DE ENTRENAR DIFERENTE 🔥\n\nLlega KIRSTEN DODGEN kirstendodgen a Bureo para una experiencia que no te vas a querer perder. Una oportunidad para aprender, conectar y llevar tu danza a otro nivel. 🖤\n\nEn alianza con Z Dance Cup zdancecup seguimos creando espacios para que nuestra comunidad entrene con grandes artistas y viva experiencias que inspiran.\n\n📍 Coliseo El Otoño — Bogotá\n🗓 Lunes 14 de septiembre\n🕙 10:00 a.m inicio (recomendamos llegar 20 minutos antes)\n💰 $250.000\n\n⚠️ CUPOS LIMITADOS.\n\n¿Estás listo para vivir esta experiencia? 🔥\n\nInformación al DM o WhatsApp 350-537-2687"
+      }
+    ]
+  },
+  {
+    "title": "Workshop Like a Pro - Tini Dancers",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "urbano"
+    ],
+    "organizer": "Bureo Dance Studio",
+    "venue": "Bureo Dance Studio - Sede 109",
+    "address": null,
+    "area": null,
+    "date": "2026-09-17",
+    "weekday": "jueves",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "1 clase",
+        "amount_cop": 50000,
+        "condition": null
+      },
+      {
+        "label": "Las 3 clases",
+        "amount_cop": 100000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "angellmfranco",
+      "valutoranzo",
+      "jusslombardi"
+    ],
+    "activities": [
+      "stage performance",
+      "coreografía",
+      "reggaetón"
+    ],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [
+      "hora de inicio no especificada"
+    ],
+    "id": "workshop-like-a-pro-tini-dancers-17-sep",
+    "account": "bureodancestudio",
+    "media": [
+      {
+        "post_id": "18207044776366939",
+        "permalink": "https://www.instagram.com/reel/Dc1-cpWi-p_/",
+        "media_type": "VIDEO",
+        "published": "2026-09-03T23:31:38+0000",
+        "flyer": "flyers/18207044776366939-0.webp",
+        "caption": "🔥 WORKSHOP LIKE A PRO 🔥\n\n3 clases. 3 estilos. Una experiencia de escenario. \n\nEste 17 de septiembre nos vemos en BUREO, sede 109, para bailar, aprender y vivir el escenario como se debe.\n\nCon angellmfranco , valutoranzo y jusslombardi , prepárate para una tarde de movimiento, energía y mucha actitud. 🕺🏻\n\n✨ Stage Performance\n✨ Coreografía\n✨ Reggaetón\n\n1 clase: $50K\nLas 3 clases: $100K\n\n📍 Sede 109\n📅 17 de septiembre\n⚡ Cupos limitados\n\n¿Vas a vivir la experiencia completa o te quedas con una sola? \n\nReserva tu cupo por WhatsApp."
+      }
+    ]
+  },
+  {
     "title": "Gran Taller Bachata Tradicional",
     "event_type": "workshop",
     "is_recurring": false,
@@ -149,6 +509,327 @@
         "published": "2026-09-17T02:49:49+0000",
         "flyer": "flyers/18382502500227795.webp",
         "caption": "🇩🇴 BACHATA DOMINICANA 🇩🇴\n\nESTE SÁBADO 19 Llega una bomba de taller a nuestra Escuela del Mambo. Una tarde llega de locura, sabor, cadera y estudio 🤓\n\nNo te pierdas esta oportunidad espectacular con la maestra tibaduiza__ que nos trae herramientas, conocimiento y mucha alegría después de estar viajando por República Dominicana y el mundo, formándose, estudiando y explorando este maravilloso ritmo. Los esperamos ✍️💜\n\nHora: 6:00 PM\nDuración: 90 minutos \nNivel: acto para todo el público (Multinivel)\n\nNo te lo pierdas 📒\n\n#bachata #dominicana #aprendeabailar #escueladebaile #madelena"
+      }
+    ]
+  },
+  {
+    "title": "Bachatamanía Master League - Clasificatoria de Jack & Jill Bachata",
+    "event_type": "competition",
+    "is_recurring": false,
+    "styles": [
+      "bachata"
+    ],
+    "organizer": "Bachatamanía",
+    "venue": null,
+    "address": null,
+    "area": null,
+    "date": "2026-09-19",
+    "weekday": "sábado",
+    "start_time": "19:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Bachatamanía"
+    ],
+    "activities": [
+      "clasificatoria de jack & jill bachata"
+    ],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [
+      "sin precio"
+    ],
+    "id": "bachatamania-master-league-clasificatoria-de-jack-19-sep",
+    "account": "distritosocialbog",
+    "media": [
+      {
+        "post_id": "18409856125080489",
+        "permalink": "https://www.instagram.com/p/Dc6W0owRIod/",
+        "media_type": "IMAGE",
+        "published": "2026-09-05T16:09:09+0000",
+        "flyer": "flyers/18409856125080489-0.webp",
+        "caption": "Septiembre ✨\n\nTe dejamos nuestra programación de eventos del mes de Septiembre dónde tendrás mucho baile, aprendizaje y gozadera 🥳🥳🥳\n\n🔸 Domingo 13: Iniciamos a la 1PM con un Intensivo de Salsa Caleña dictada por Jenssy Gonzáles y Felipe Romero\n\n🔸Domingo 13: Seguimos ese mismo día a las 3:30 PM con un Intensivo de Jack & Jill Bachata dictado por Angel y Melanny \n\n🔸 Sábado 19: Iniciamos a las 7 PM con nuestra clasificatoria de Bachatamania Master League dónde pondrán a prueba todas sus habilidades \n\n🔸Sábado 19: Seguimos este día desde las 8:30 PM con clase de Bachata y social 100% Bachatero\n\n🔸Domingo 20: Como nunca es suficiente Bachata nos vamos a partir de las 4 PM a una clase Intensiva de Bachata Dominicana dictada por Adriana Tibaduiza\n\n🔸Sábado 26: El último sábado del mes es para bailar y nos vamos con SBK (Salsa, Bachata, Kizomba) desde las 7 PM con doble clase y un social increíble \n\n🔸 Miércoles 30: Cerramos el mes con la culminación de l segundo corte de nuestro aniversario que será el mes de Noviembre 🤩🤩🤩\n\nNo dejes que te lo cuenten reserva en nuestras Webs:\n\ndistrito-social-academy.com/eventos\nappdanza.com"
+      }
+    ]
+  },
+  {
+    "title": "Bachatamanía - Clase y social 100% bachata",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "bachata"
+    ],
+    "organizer": "Bachatamanía",
+    "venue": null,
+    "address": null,
+    "area": null,
+    "date": "2026-09-19",
+    "weekday": "sábado",
+    "start_time": "20:30",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Bachatamanía"
+    ],
+    "activities": [
+      "clase de bachata",
+      "social 100% bachata"
+    ],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [
+      "sin precio"
+    ],
+    "id": "bachatamania-clase-y-social-100-bachata-19-sep",
+    "account": "distritosocialbog",
+    "media": [
+      {
+        "post_id": "18409856125080489",
+        "permalink": "https://www.instagram.com/p/Dc6W0owRIod/",
+        "media_type": "IMAGE",
+        "published": "2026-09-05T16:09:09+0000",
+        "flyer": "flyers/18409856125080489-0.webp",
+        "caption": "Septiembre ✨\n\nTe dejamos nuestra programación de eventos del mes de Septiembre dónde tendrás mucho baile, aprendizaje y gozadera 🥳🥳🥳\n\n🔸 Domingo 13: Iniciamos a la 1PM con un Intensivo de Salsa Caleña dictada por Jenssy Gonzáles y Felipe Romero\n\n🔸Domingo 13: Seguimos ese mismo día a las 3:30 PM con un Intensivo de Jack & Jill Bachata dictado por Angel y Melanny \n\n🔸 Sábado 19: Iniciamos a las 7 PM con nuestra clasificatoria de Bachatamania Master League dónde pondrán a prueba todas sus habilidades \n\n🔸Sábado 19: Seguimos este día desde las 8:30 PM con clase de Bachata y social 100% Bachatero\n\n🔸Domingo 20: Como nunca es suficiente Bachata nos vamos a partir de las 4 PM a una clase Intensiva de Bachata Dominicana dictada por Adriana Tibaduiza\n\n🔸Sábado 26: El último sábado del mes es para bailar y nos vamos con SBK (Salsa, Bachata, Kizomba) desde las 7 PM con doble clase y un social increíble \n\n🔸 Miércoles 30: Cerramos el mes con la culminación de l segundo corte de nuestro aniversario que será el mes de Noviembre 🤩🤩🤩\n\nNo dejes que te lo cuenten reserva en nuestras Webs:\n\ndistrito-social-academy.com/eventos\nappdanza.com"
+      }
+    ]
+  },
+  {
+    "title": "Social de amor y amistad 100% Bachata",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "bachata"
+    ],
+    "organizer": "Bachatamaniá Bogotá",
+    "venue": "Distrito Social",
+    "address": "CRA 29 N68-18",
+    "area": null,
+    "date": "2026-09-19",
+    "weekday": "sábado",
+    "start_time": "20:30",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Christian",
+      "Natalia"
+    ],
+    "activities": [
+      "clase con talleristas",
+      "social de amor y amistad"
+    ],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [
+      "falta hora de inicio y precio"
+    ],
+    "id": "social-de-amor-y-amistad-100-bachata-19-sep",
+    "account": "bachatamania_bogota",
+    "media": [
+      {
+        "post_id": "18041124329684768",
+        "permalink": "https://www.instagram.com/reel/DdXkh1wgmVu/",
+        "media_type": "VIDEO",
+        "published": "2026-09-17T00:34:21+0000",
+        "flyer": "flyers/18041124329684768-0.webp",
+        "caption": "Christian y Natalia✨\n\nEste sábado 19 de Septiembre tendremos social de amor y amistad 100% Bachata❤️‍🔥❤️‍🔥\n\nClase con estos increíbles talleristas pre social🔥 \n\nNo te lo pierdas! \nAppdanza.com"
+      },
+      {
+        "post_id": "17896312032393668",
+        "permalink": "https://www.instagram.com/reel/DdZ4gMbgmsf/",
+        "media_type": "VIDEO",
+        "published": "2026-09-17T22:00:50+0000",
+        "flyer": "flyers/17896312032393668-0.webp",
+        "caption": "Christian y Natalia 🔥\n\nNuestros Talleristas de este 19 de Septiembre están listos para su clase 🥳🥳🥳\n\nUna clase de mucha conexión, estilo y técnica nos espera para calentar motores antes de nuestro increíble social bachatero ✨\n\n🗓️ Sábado 19 de Septiembre \n🕗 8:30 PM\n📍 Distrito Social - CRA 29 N68-18\n\nAsí que todos listos, no te lo puedes perder"
+      }
+    ]
+  },
+  {
+    "title": "Estilo Carrandales - Intensivo de bachata tradicional",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "bachata dominicana"
+    ],
+    "organizer": "Distrito Social",
+    "venue": null,
+    "address": null,
+    "area": null,
+    "date": "2026-09-20",
+    "weekday": "domingo",
+    "start_time": "16:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Adriana Tibaduiza"
+    ],
+    "activities": [
+      "clase intensiva de bachata tradicional"
+    ],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [
+      "sin precio"
+    ],
+    "id": "estilo-carrandales-intensivo-de-bachata-20-sep",
+    "account": "distritosocialbog",
+    "media": [
+      {
+        "post_id": "18409856125080489",
+        "permalink": "https://www.instagram.com/p/Dc6W0owRIod/",
+        "media_type": "IMAGE",
+        "published": "2026-09-05T16:09:09+0000",
+        "flyer": "flyers/18409856125080489-0.webp",
+        "caption": "Septiembre ✨\n\nTe dejamos nuestra programación de eventos del mes de Septiembre dónde tendrás mucho baile, aprendizaje y gozadera 🥳🥳🥳\n\n🔸 Domingo 13: Iniciamos a la 1PM con un Intensivo de Salsa Caleña dictada por Jenssy Gonzáles y Felipe Romero\n\n🔸Domingo 13: Seguimos ese mismo día a las 3:30 PM con un Intensivo de Jack & Jill Bachata dictado por Angel y Melanny \n\n🔸 Sábado 19: Iniciamos a las 7 PM con nuestra clasificatoria de Bachatamania Master League dónde pondrán a prueba todas sus habilidades \n\n🔸Sábado 19: Seguimos este día desde las 8:30 PM con clase de Bachata y social 100% Bachatero\n\n🔸Domingo 20: Como nunca es suficiente Bachata nos vamos a partir de las 4 PM a una clase Intensiva de Bachata Dominicana dictada por Adriana Tibaduiza\n\n🔸Sábado 26: El último sábado del mes es para bailar y nos vamos con SBK (Salsa, Bachata, Kizomba) desde las 7 PM con doble clase y un social increíble \n\n🔸 Miércoles 30: Cerramos el mes con la culminación de l segundo corte de nuestro aniversario que será el mes de Noviembre 🤩🤩🤩\n\nNo dejes que te lo cuenten reserva en nuestras Webs:\n\ndistrito-social-academy.com/eventos\nappdanza.com"
+      }
+    ]
+  },
+  {
+    "title": "Social Salsa y Bachata Workshop - Sede 127",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "bachata"
+    ],
+    "organizer": "Bureo",
+    "venue": "Bureo Sede 127",
+    "address": null,
+    "area": "Sede 127",
+    "date": "2026-09-22",
+    "weekday": "martes",
+    "start_time": "17:00",
+    "end_time": "19:00",
+    "prices": [
+      {
+        "label": "1 persona",
+        "amount_cop": 70000,
+        "condition": null
+      },
+      {
+        "label": "Pareja",
+        "amount_cop": 80000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Bryan Jerez"
+    ],
+    "activities": [
+      "workshop de salsa y bachata"
+    ],
+    "contact": "@bureodancestudio",
+    "confidence": "high",
+    "doubts": [],
+    "id": "social-salsa-y-bachata-workshop-sede-127-22-sep",
+    "account": "bureodancestudio",
+    "media": [
+      {
+        "post_id": "18124895125860558",
+        "permalink": "https://www.instagram.com/p/DdbzZpcHMRt/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-09-18T15:53:46+0000",
+        "flyer": "flyers/18124895125860558-0.webp",
+        "caption": "❤️‍🔥 CELEBREMOS AMOR Y AMISTAD BAILANDO\n\nLlega SOCIAL · Salsa y Bachata, un workshop para conectar, disfrutar y bailar con Bryan Jerez. 🕺🏻\n\nUna experiencia para todos los niveles, porque no importa con quién vengas… lo importante es venir a bailar. ❤️\n\n📅 MARTES 22\n🕔 5:00 – 7:00 PM\n📍 Sede 127\n\n📅 MIÉRCOLES 23\n🕔 5:00 – 7:00 PM\n📍 Sede Cajicá\n\n📅 JUEVES 24\n🕔 5:00 – 7:00 PM\n📍 Sede 109\n\nVALOR:\n✨ $70.000 · 1 persona\n❤️ $80.000 · Pareja\n\n¿Eres Member Bureo? Puedes usar tu paquete activo para reservar tu clase.\n\nVen solo, con tu pareja o con tus amigos.\nConecta. Baila. Celebra.\n\n📲 Reserva tu cupo por WhatsApp."
+      }
+    ]
+  },
+  {
+    "title": "Social Salsa y Bachata Workshop - Sede Cajicá",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "bachata"
+    ],
+    "organizer": "Bureo",
+    "venue": "Bureo Sede Cajicá",
+    "address": null,
+    "area": "Cajicá",
+    "date": "2026-09-23",
+    "weekday": "miércoles",
+    "start_time": "17:00",
+    "end_time": "19:00",
+    "prices": [
+      {
+        "label": "1 persona",
+        "amount_cop": 70000,
+        "condition": null
+      },
+      {
+        "label": "Pareja",
+        "amount_cop": 80000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Bryan Jerez"
+    ],
+    "activities": [
+      "workshop de salsa y bachata"
+    ],
+    "contact": "@bureodancestudio",
+    "confidence": "high",
+    "doubts": [],
+    "id": "social-salsa-y-bachata-workshop-sede-cajica-23-sep",
+    "account": "bureodancestudio",
+    "media": [
+      {
+        "post_id": "18124895125860558",
+        "permalink": "https://www.instagram.com/p/DdbzZpcHMRt/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-09-18T15:53:46+0000",
+        "flyer": "flyers/18124895125860558-0.webp",
+        "caption": "❤️‍🔥 CELEBREMOS AMOR Y AMISTAD BAILANDO\n\nLlega SOCIAL · Salsa y Bachata, un workshop para conectar, disfrutar y bailar con Bryan Jerez. 🕺🏻\n\nUna experiencia para todos los niveles, porque no importa con quién vengas… lo importante es venir a bailar. ❤️\n\n📅 MARTES 22\n🕔 5:00 – 7:00 PM\n📍 Sede 127\n\n📅 MIÉRCOLES 23\n🕔 5:00 – 7:00 PM\n📍 Sede Cajicá\n\n📅 JUEVES 24\n🕔 5:00 – 7:00 PM\n📍 Sede 109\n\nVALOR:\n✨ $70.000 · 1 persona\n❤️ $80.000 · Pareja\n\n¿Eres Member Bureo? Puedes usar tu paquete activo para reservar tu clase.\n\nVen solo, con tu pareja o con tus amigos.\nConecta. Baila. Celebra.\n\n📲 Reserva tu cupo por WhatsApp."
+      }
+    ]
+  },
+  {
+    "title": "Social Salsa y Bachata Workshop - Sede 109",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "bachata"
+    ],
+    "organizer": "Bureo",
+    "venue": "Bureo Sede 109",
+    "address": null,
+    "area": "Sede 109",
+    "date": "2026-09-24",
+    "weekday": "jueves",
+    "start_time": "17:00",
+    "end_time": "19:00",
+    "prices": [
+      {
+        "label": "1 persona",
+        "amount_cop": 70000,
+        "condition": null
+      },
+      {
+        "label": "Pareja",
+        "amount_cop": 80000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Bryan Jerez"
+    ],
+    "activities": [
+      "workshop de salsa y bachata"
+    ],
+    "contact": "@bureodancestudio",
+    "confidence": "high",
+    "doubts": [],
+    "id": "social-salsa-y-bachata-workshop-sede-109-24-sep",
+    "account": "bureodancestudio",
+    "media": [
+      {
+        "post_id": "18124895125860558",
+        "permalink": "https://www.instagram.com/p/DdbzZpcHMRt/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-09-18T15:53:46+0000",
+        "flyer": "flyers/18124895125860558-0.webp",
+        "caption": "❤️‍🔥 CELEBREMOS AMOR Y AMISTAD BAILANDO\n\nLlega SOCIAL · Salsa y Bachata, un workshop para conectar, disfrutar y bailar con Bryan Jerez. 🕺🏻\n\nUna experiencia para todos los niveles, porque no importa con quién vengas… lo importante es venir a bailar. ❤️\n\n📅 MARTES 22\n🕔 5:00 – 7:00 PM\n📍 Sede 127\n\n📅 MIÉRCOLES 23\n🕔 5:00 – 7:00 PM\n📍 Sede Cajicá\n\n📅 JUEVES 24\n🕔 5:00 – 7:00 PM\n📍 Sede 109\n\nVALOR:\n✨ $70.000 · 1 persona\n❤️ $80.000 · Pareja\n\n¿Eres Member Bureo? Puedes usar tu paquete activo para reservar tu clase.\n\nVen solo, con tu pareja o con tus amigos.\nConecta. Baila. Celebra.\n\n📲 Reserva tu cupo por WhatsApp."
       }
     ]
   },
@@ -249,6 +930,119 @@
         "published": "2026-09-23T23:25:46+0000",
         "flyer": "flyers/18382266040226570.webp",
         "caption": "🇯🇲 DANCEHALL 🇯🇲\n\nY llega nuestro gran taller de Dancehall, un ritmo urbano jamaiquino lleno de mucho Flow,movimiento, sensaciones y conocimiento acargo del súper maestro dh_rubencho . Te esperamos este sábado 26 a las 6:00 pm 🗓✍️🔥\n\nDuración: 90 minutos\n\nNivel: MULTINIVEL (apto para todo el público y las edades)\n\n#dancehall #aprendeabailar #madelena #academiadebaile #baile"
+      }
+    ]
+  },
+  {
+    "title": "Social SBK - Social de salsa, bachata y kizomba",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "bachata",
+      "kizomba"
+    ],
+    "organizer": "Distrito Social",
+    "venue": null,
+    "address": null,
+    "area": null,
+    "date": "2026-09-26",
+    "weekday": "sábado",
+    "start_time": "19:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Distrito Social"
+    ],
+    "activities": [
+      "doble clase",
+      "social sbk"
+    ],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [
+      "sin precio"
+    ],
+    "id": "social-sbk-social-de-salsa-bachata-y-kizomba-26-sep",
+    "account": "distritosocialbog",
+    "media": [
+      {
+        "post_id": "18409856125080489",
+        "permalink": "https://www.instagram.com/p/Dc6W0owRIod/",
+        "media_type": "IMAGE",
+        "published": "2026-09-05T16:09:09+0000",
+        "flyer": "flyers/18409856125080489-0.webp",
+        "caption": "Septiembre ✨\n\nTe dejamos nuestra programación de eventos del mes de Septiembre dónde tendrás mucho baile, aprendizaje y gozadera 🥳🥳🥳\n\n🔸 Domingo 13: Iniciamos a la 1PM con un Intensivo de Salsa Caleña dictada por Jenssy Gonzáles y Felipe Romero\n\n🔸Domingo 13: Seguimos ese mismo día a las 3:30 PM con un Intensivo de Jack & Jill Bachata dictado por Angel y Melanny \n\n🔸 Sábado 19: Iniciamos a las 7 PM con nuestra clasificatoria de Bachatamania Master League dónde pondrán a prueba todas sus habilidades \n\n🔸Sábado 19: Seguimos este día desde las 8:30 PM con clase de Bachata y social 100% Bachatero\n\n🔸Domingo 20: Como nunca es suficiente Bachata nos vamos a partir de las 4 PM a una clase Intensiva de Bachata Dominicana dictada por Adriana Tibaduiza\n\n🔸Sábado 26: El último sábado del mes es para bailar y nos vamos con SBK (Salsa, Bachata, Kizomba) desde las 7 PM con doble clase y un social increíble \n\n🔸 Miércoles 30: Cerramos el mes con la culminación de l segundo corte de nuestro aniversario que será el mes de Noviembre 🤩🤩🤩\n\nNo dejes que te lo cuenten reserva en nuestras Webs:\n\ndistrito-social-academy.com/eventos\nappdanza.com"
+      }
+    ]
+  },
+  {
+    "title": "Aniversario Show Stars",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "urbano"
+    ],
+    "organizer": "Show Stars",
+    "venue": "Show Stars",
+    "address": null,
+    "area": "Modelia",
+    "date": "2026-09-26",
+    "weekday": "sábado",
+    "start_time": "23:30",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Pareja",
+        "amount_cop": 20000,
+        "condition": null
+      },
+      {
+        "label": "Individual",
+        "amount_cop": 15000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Laurin López"
+    ],
+    "activities": [
+      "juegos",
+      "clásicos del reggaetón",
+      "fiesta crossover",
+      "regalos"
+    ],
+    "contact": "3118344120",
+    "confidence": "high",
+    "doubts": [
+      "No se especifica el lugar o la dirección del evento"
+    ],
+    "id": "aniversario-show-stars-26-sep",
+    "account": "showstarscol",
+    "media": [
+      {
+        "post_id": "18107639209923462",
+        "permalink": "https://www.instagram.com/p/Ddjlj4xEWqV/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-09-21T16:26:45+0000",
+        "flyer": "flyers/18107639209923462-1.webp",
+        "caption": "🥳 HOY ES EL ÚLTIMO DÍA DE LA PROMO\n\n✨ ¡Hoy es el último día para aprovechar nuestra Promo de Aniversario! ✨\n\nCelebra con nosotros estos años de baile, momentos, aprendizajes y una comunidad que sigue creciendo. 🖤💛\n🔥 20% de descuento en nuestros planes de 16 clases, 24 clases e ilimitado.\n\n⏰ Solo hasta HOY, 21 de septiembre.\nY esto apenas comienza… 👀🔥\nEste sábado 26 de septiembre a las 7:00 PM nos vamos a encontrar para celebrar nuestro aniversario como se debe. \n\n🥳💃🕺\n🎮 Juegos\n🔥 Clásicos del reggaetón\n💃 Fiesta crossover\n🎁 Muchos regalos\n✨ Y muchas sorpresas\n\nNo te quedes por fuera. ❤️\n\n📲 Reserva tu cupo: 311 834 4120\n\nHoy aprovechas la promo.\n\nEl sábado celebramos juntos. 🥂✨\n\n#ShowStars #AniversarioShowStars #AcademiaDeBaile #Bogotá #Modelia Salsa Bachata"
+      },
+      {
+        "post_id": "18066587792777378",
+        "permalink": "https://www.instagram.com/p/Ddm6q22N86u/",
+        "media_type": "IMAGE",
+        "published": "2026-09-22T23:30:34+0000",
+        "flyer": "flyers/18066587792777378-0.webp",
+        "caption": "¡EL ANIVERSARIO DE SHOW STARS SE SIGUE CELEBRANDO! ⭐🔥\n\nEste sábado 26 de septiembre nos vamos a dejar llevar por TODOS LOS CLÁSICOS DEL REGGAETÓN 🎶🔥\n\n🎧 DJ invitada: Laurin López\n📅 Sábado 26 de septiembre\n⏰ 11:30 PM\n📍 Show Stars\n\nUna noche para bailar, cantar y disfrutar esos clásicos que marcaron una generación. 🕺🏻💃🏻\n\n¿Vas a acompañarnos en esta celebración? 👀🔥\n\n👇 Escribe “ANIVERSARIO” en los comentarios o por DM y te contamos cómo reservar tu cupo.\n\n¡Nos vemos en la pista! ⭐\n\n#ShowStars #ShowStarsAniversario #AniversarioShowStars #Reggaeton #ReggaetonClásico"
+      },
+      {
+        "post_id": "18124482976842926",
+        "permalink": "https://www.instagram.com/reel/Dde1Xr1N2Xm/",
+        "media_type": "VIDEO",
+        "published": "2026-09-19T20:14:35+0000",
+        "flyer": "flyers/18124482976842926-0.webp",
+        "caption": "🎉 ¡SHOW STARS ESTÁ DE ANIVERSARIO! 🎉\n\nY queremos celebrarlo contigo 🖤✨\n\nEste sábado 26 de septiembre prepárate para una noche llena de juegos, clásicos del reggaetón, crossover, regalos y mucha diversión. 🔥\n\n🥳 Ven con tu pareja, con tus amigos o ven solo… pero ven a celebrar con nosotros.\n\n📅 Sábado 26 de septiembre\n⏰ 7:00 p. m.\n💰 Pareja: $20.000\n💰 Individual: $15.000\n📲 Reserva tu cupo: 311 834 4120\n\nY ayúdanos a celebrar como se debe ❤️\n\n👉 Comparte esta publicación en tus historias y etiqueta a esa persona con la que quieres vivir esta noche.\n\n💬 Escríbenos “YO VOY” por WhatsApp y te reservamos tu cupo. 🔥\n\n¿Quién se apunta? 👀👇\n\n#ShowStars #AniversarioShowStars #ShowStarsBogota #Reggaeton #reggaetonbogota"
       }
     ]
   },
@@ -449,6 +1243,168 @@
     ]
   },
   {
+    "title": "Primer Aniversario LuDance - Fiesta Crossover",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "bachata",
+      "otro"
+    ],
+    "organizer": "LuDance Estudio",
+    "venue": "LuDance Estudio",
+    "address": "Calle 3 #25-09",
+    "area": "Santa Isabel",
+    "date": "2026-10-10",
+    "weekday": "sábado",
+    "start_time": "20:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Preventa",
+        "amount_cop": 25000,
+        "condition": "hasta el 3 de octubre"
+      },
+      {
+        "label": "Cover",
+        "amount_cop": 30000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Karen Malagón",
+      "Valentina Acosta",
+      "Ricardo LuDance"
+    ],
+    "activities": [
+      "puesta en escena Amore",
+      "fiesta crossover",
+      "celebración de aniversario"
+    ],
+    "contact": "3018847358",
+    "confidence": "high",
+    "doubts": [],
+    "id": "primer-aniversario-ludance-fiesta-crossover-10-oct",
+    "account": "ludancestudios",
+    "media": [
+      {
+        "post_id": "18154168786450664",
+        "permalink": "https://www.instagram.com/p/Dc9U9WYhVGP/",
+        "media_type": "IMAGE",
+        "published": "2026-09-06T19:50:35+0000",
+        "flyer": "flyers/18154168786450664-0.webp",
+        "caption": "🌹¡CELEBRAMOS NUESTRO PRIMER  ANIVERSARIO! 🌹\n\n AMORE ❤️‍🔥\n¿Cómo se arranca para siempre un amor del corazón? 🎶\n\nCoreógrafa salsa : karenmalagon.dance\nCoreógrafa bachata: valentina.acostaa_\n\nDirige: ricardoludance\nFotografia: wpenuelac\n\nEn esta puesta en escena, Nuestras chicas dan vida a esos sentimientos y emociones que nunca dejan de bailar en nuestros corazones, ya que hay amores que nunca terminan, solo se transforman.\n\nEste 10 de octubre queremos celebrar contigo nuestro primer año de LuDance. \n\nPrepárate para una noche especial llena de baile, música, energía y mucho amor por la danza. 💃🕺\n\n📅 10 DE OCTUBRE\n🕗 8:00 PM\n\n🎟️ COVER: $30.000\n🔥 PREVENTA hasta el 3 de octubre: $25.000\n\n📍 LuDance Estudio\nCalle 3 #25-09, Santa Isabel\n📲 301 884 7358\n\nVen a celebrar con nosotros este capítulo tan especial. 🥂🌹\n\nLuDance — donde la danza se convierte en historia."
+      }
+    ]
+  },
+  {
+    "title": "Taller de Salsa Estilo Caleño",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa caleña"
+    ],
+    "organizer": "Dance in Motion",
+    "venue": "Dance in Motion Estudio de Baile",
+    "address": "Calle 134 # 9 - 68",
+    "area": null,
+    "date": "2026-10-17",
+    "weekday": "sábado",
+    "start_time": "14:30",
+    "end_time": "16:30",
+    "prices": [
+      {
+        "label": "Por persona",
+        "amount_cop": 40000,
+        "condition": null
+      },
+      {
+        "label": "Por pareja",
+        "amount_cop": 70000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Daniel Tello"
+    ],
+    "activities": [
+      "ejercicios de técnica",
+      "secuencia de pasos libres",
+      "secuencia en pareja"
+    ],
+    "contact": "320 2332984",
+    "confidence": "high",
+    "doubts": [],
+    "id": "taller-de-salsa-estilo-caleno-17-oct",
+    "account": "danceinmotionclub",
+    "media": [
+      {
+        "post_id": "17902083543361973",
+        "permalink": "https://www.instagram.com/p/Dd-AgpkNX3t/",
+        "media_type": "IMAGE",
+        "published": "2026-10-01T22:42:44+0000",
+        "flyer": "flyers/17902083543361973-0.webp",
+        "caption": null
+      }
+    ]
+  },
+  {
+    "title": "Bachatamania Social",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "bachata"
+    ],
+    "organizer": "Bachatamania",
+    "venue": "Distrito Social",
+    "address": "Cra 29 #68-18",
+    "area": null,
+    "date": "2026-10-17",
+    "weekday": "sábado",
+    "start_time": "20:30",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Preventa",
+        "amount_cop": 30000,
+        "condition": null
+      },
+      {
+        "label": "Puerta",
+        "amount_cop": 35000,
+        "condition": null
+      },
+      {
+        "label": "Competidor",
+        "amount_cop": 30000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Adriana Tibaduiza",
+      "DJ Laurin"
+    ],
+    "activities": [
+      "clase bachata tradicional",
+      "social 100% bachata"
+    ],
+    "contact": "appdanza.com",
+    "confidence": "high",
+    "doubts": [],
+    "id": "bachatamania-social-17-oct",
+    "account": "bachatamania_bogota",
+    "media": [
+      {
+        "post_id": "18411223324085711",
+        "permalink": "https://www.instagram.com/p/DdzBduzAN8d/",
+        "media_type": "IMAGE",
+        "published": "2026-09-27T16:19:15+0000",
+        "flyer": "flyers/18411223324085711-0.webp",
+        "caption": "Bachatamania Octubre ✨\n\nNo te pierdas este increíble social 100% Bachata dónde vas a bailar hasta que el cuerpo aguante 🤩\n\nLos mejores profes y artistas invitados para que bailes y disfrutes con todos ellos 🥳🥳🥳\n\n🗓️ 17 de Octubre\n🕗 8:30 PM Clase con Adriana Tibaduiza\n🕗 9:30 PM Social 100% Bachata\n🎶 DJ Laurin \n📍 Distrito Social \n\nNo te lo puedes perder, reserva tu boleta en nuestra web\n\nappdanza.com"
+      }
+    ]
+  },
+  {
     "title": "Ritmos Cruzados",
     "event_type": "workshop",
     "is_recurring": false,
@@ -644,6 +1600,416 @@
     ]
   },
   {
+    "title": "Distrito Social Aniversario",
+    "event_type": "festival",
+    "is_recurring": false,
+    "styles": [
+      "bachata",
+      "tango"
+    ],
+    "organizer": "Distrito Social",
+    "venue": "Distrito Social",
+    "address": "CRA 29 68 - 18",
+    "area": null,
+    "date": "2026-10-31",
+    "weekday": "sábado",
+    "start_time": "20:00",
+    "end_time": "02:00",
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 50000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Ricardo y Laura"
+    ],
+    "activities": [
+      "aprender",
+      "compartir"
+    ],
+    "contact": "distrito-social-academy.com/eventos",
+    "confidence": "high",
+    "doubts": [
+      "evento de tres días (31 de octubre al 2 de noviembre)",
+      "no especifica dirección ni precios detallados en el post"
+    ],
+    "id": "distrito-social-aniversario-31-oct",
+    "account": "distritosocialbog",
+    "media": [
+      {
+        "post_id": "18018174977930391",
+        "permalink": "https://www.instagram.com/p/Dc1R20lEchZ/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-09-03T16:49:31+0000",
+        "flyer": "flyers/18018174977930391-0.webp",
+        "caption": "Ricardo y Laura ✨\n\nLos reyes del BachaTango dicen presente en nuestro aniversario 🥳🥳🥳🥳 prepárate para compartir y aprender mucho de esta pareja y de todos los artistas invitados\n\n¿Ya tienes tu boleta? No dejes que te lo cuenten\n\nReserva en nuestras Webs:\ndistrito-social-academy.com/eventos\nappdanza.com"
+      },
+      {
+        "post_id": "18127890811762567",
+        "permalink": "https://www.instagram.com/p/Dc_hyzQkRy_/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-09-07T16:21:11+0000",
+        "flyer": "flyers/18127890811762567-0.webp",
+        "caption": "Esteban y Valery ✨\n\nLos nuevos profes de nuestra academia obvio también dicen presente en nuestro aniversario 🥳🥳🥳🥳\n\nHan trabajado arduamente este 2026 para formarse como profes y bailarines de Bachata y nos mostrarán el resultado de su trabajo en nuestro aniversario 🔥\n\n¿Ya tienes tu boleta? No dejes que te lo cuenten\n\nReservas:\ndistrito-social-academy.com/eventos"
+      },
+      {
+        "post_id": "17939085588098200",
+        "permalink": "https://www.instagram.com/p/DdEeskQlg4V/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-09-09T14:30:01+0000",
+        "flyer": "flyers/17939085588098200-0.webp",
+        "caption": "Juanita Quintero ✨\n\nLa reina del eje cafetero dice presente en nuestro aniversario 🥳🥳🥳 con su increíble clase de Bachata Ladies nos viene a poner a disfrutar al máximo \n\n🗓️ 31 Oct, 1 y 2 Nov\n📍 Distrito Social \n\n¿Ya tienes tu boleta? No dejes que te lo cuenten\n\nReservas en:\ndistrito-social-academy.com/eventos"
+      },
+      {
+        "post_id": "18091073186556725",
+        "permalink": "https://www.instagram.com/p/DdJk419kfie/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-09-11T14:00:05+0000",
+        "flyer": "flyers/18091073186556725-0.webp",
+        "caption": "Duane y Aleja ✨\n\nÚltimos profes confirmados para nuestro aniversario 🤩🤩🤩 nuestros Directores y reyes de la Bachata Sensual en Bogotá no podían faltar en este evento que estará increíble 🥳🥳🥳\n\n🗓️ 31 Oct, 1 y 2 Nov\n📍 Distrito Social\n\n¿Ya tienes tu boleta? No dejes que te lo cuenten \n\nReservas en:\ndistrito-social-academy.com/eventos"
+      },
+      {
+        "post_id": "18438785839135774",
+        "permalink": "https://www.instagram.com/p/DdPlZN9xoMV/",
+        "media_type": "IMAGE",
+        "published": "2026-09-14T14:30:05+0000",
+        "flyer": "flyers/18438785839135774-0.webp",
+        "caption": "Distrito Social 🔥\n\nLes presentamos el cartel Oficial de nuestro Festival de Aniversario 2026 ✨\n\nTraemos para ustedes 17 horas de Talleres especializados y 12 horas de social SBK para que tengan el combo completo 🥳🥳🥳\n\nSalsa - Bachata - Kizomba - Urbano\n\nLos mejores profes en cada uno de sus géneros y estilos 😍\n\n🗓️ 31 Oct, 1 y 2 Nov\n📍 Distrito Social - CRA 29 68 - 18. Bogotá \n\nActualmente estamos en segundo corte, así que aprovecha de reservar 😊\n\nUn evento creado para los bailadores ✨\n\nNo dejes que te lo cuenten, reserva en nuestra web:\n\ndistrito-social-academy.com/eventos"
+      },
+      {
+        "post_id": "18101899421631677",
+        "permalink": "https://www.instagram.com/p/DdZC9wlxNGr/",
+        "media_type": "IMAGE",
+        "published": "2026-09-17T15:00:11+0000",
+        "flyer": "flyers/18101899421631677-0.webp",
+        "caption": "Social Halloween 👻\n\nEl Aniversario de Distrito Social comienza bailando hasta que los muertos se levanten. 💀🔥\n\nEste 31 de octubre abrimos nuestro fin de semana de aniversario con una noche de Salsa, Bachata y Kizomba, disfraces y mucho baile. 🎃🕸️\n\n🏆 Concurso de disfraces — Cover $50K\n🎧 DJ Laurin\n🕗 8:00 PM — 2:00 AM\n🎟️ Incluido en Full Pass y Pase Social\n\nY ojo… 👀\n\nEsta es apenas la primera noche.\n\n🔥 31 OCT · 01 NOV · 02 NOV\n\nTres días celebrando el aniversario de Distrito Social.\n\n📍 Distrito Social — Cra. 29 N68-18, Bogotá\n\nLa fiesta pa'l bailador. 💃🕺\n\nReserva tu boleta en nuestra web:\n\ndistrito-social-academy.com/eventos"
+      },
+      {
+        "post_id": "18021267338925064",
+        "permalink": "https://www.instagram.com/p/DdwtU46JlFG/",
+        "media_type": "IMAGE",
+        "published": "2026-09-26T18:44:47+0000",
+        "flyer": "flyers/18021267338925064-0.webp",
+        "caption": "4 días ✨\n\nEn 4 días finalizamos las inscripciones a precio de segundo corte 🤯🤯🤯\n\nNo olvides reservar tu boleta a nuestro festival dónde vas a aprender con los mejores, diferentes géneros y tendrás sobre todo mucho social 🤩\n\n17 horas de Talleres\n12 horas de Social\n\n🗓️ 31 Oct, 1 y 2 Nov\n📍 Distrito Social\n\nNo dejes que te lo cuenten, reserva tu boleta en nuestras Webs:\n\ndistrito-social-academy.com/eventos\nappdanza.com"
+      },
+      {
+        "post_id": "17910069849519332",
+        "permalink": "https://www.instagram.com/p/Dd1vOXnJacQ/",
+        "media_type": "IMAGE",
+        "published": "2026-09-28T22:00:05+0000",
+        "flyer": "flyers/17910069849519332-0.webp",
+        "caption": "2 días 🤯\n\nEstamos a 2 días de cerrar nuestro segundo corte de pago, no dejes pasar la oportunidad de ser parte de nuestro Festival de Distrito Social 🥳🥳🥳\n\n17 horas de talleres\n12 horas de social\n\n🗓️ 31 Oct, 1 y 2 Nov\n📍 Distrito Social\n\nNo te lo puedes perder, reserva en nuestras Webs:\n\ndistrito-social-academy.com/eventos\nappdanza.com"
+      },
+      {
+        "post_id": "18153059854477991",
+        "permalink": "https://www.instagram.com/p/Dd6iiQxxr_T/",
+        "media_type": "IMAGE",
+        "published": "2026-09-30T14:22:54+0000",
+        "flyer": "flyers/18153059854477991-0.webp",
+        "caption": "Último día 🤯\n\nNo te quedes sin adquirir tu boleta para nuestro festival 🥳🥳🥳🥳\n\n17 horas de talleres\n12 horas de social\n\n🗓️ 31 Oct, 1 y 2 Nov\n📍 Distrito Social\n\nNo dejes que te lo cuenten, reserva tus boletas en nuestras Webs:\n\ndistrito-social-academy.com/eventos\nappdanza.com"
+      },
+      {
+        "post_id": "18133094761730072",
+        "permalink": "https://www.instagram.com/reel/DdjYRcMBpPx/",
+        "media_type": "VIDEO",
+        "published": "2026-09-21T14:30:14+0000",
+        "flyer": "flyers/18133094761730072-0.webp",
+        "caption": "Juanita Quintero ✨\n\nEstamos terminando de alistar todo para nuestro Festival 🥳🥳\n\n🔸 17 horas de Talleres\n🔸 12 horas de Social\n🔸 Salsa - Bachata - Kizomba - Urbano\n\nTraemos lo mejor para todos ustedes, los mejores profes, los mejores artistas, los mejores DJ y la mejor energía para pasarla bueno\n\n🗓️ 31 Oct, 1 y 2 Nov\n📍 Distrito Social - CRA 29 N68-18\n\nNo te quedes sin tu boleta, reserva ahora en:\n\ndistrito-social-academy.com/eventos"
+      },
+      {
+        "post_id": "17925664512421185",
+        "permalink": "https://www.instagram.com/reel/Ddl9Dceh7GT/",
+        "media_type": "VIDEO",
+        "published": "2026-09-22T14:30:07+0000",
+        "flyer": "flyers/17925664512421185-0.webp",
+        "caption": "Ricardo y Laura ✨\n\nUna de las parejas más TOP de Bogotá viene con su mejor estilo, movimientos, pedagogía y baile para acompañarnos en nuestro aniversario 🤩🤩🤩\n\n🗓️ 31 Oct, 1 y 2 Nov\n📍 Distrito Social\n\nNo te lo puedes perder, reserva ahora en nuestra web:\n\ndistrito-social-academy.com/eventos"
+      },
+      {
+        "post_id": "18150552889543035",
+        "permalink": "https://www.instagram.com/reel/Ddoi9bTR5PO/",
+        "media_type": "VIDEO",
+        "published": "2026-09-23T15:13:51+0000",
+        "flyer": "flyers/18150552889543035-0.webp",
+        "caption": "Esteban y Valery ✨\n\nEstamos listos para este evento que estará Increíble 🥳🥳🥳🥳\n\n26 artistas invitados\n17 horas de talleres\n12 horas de social\n\n🗓️ 31 Oct, 1 y 2 Nov\n📍 Distrito Social\n\nNo te olvides de adquirir tu boleta 🎟️\n\ndistrito-social-academy.com/eventos"
+      },
+      {
+        "post_id": "18334628131261291",
+        "permalink": "https://www.instagram.com/reel/Ddzawbytb5W/",
+        "media_type": "VIDEO",
+        "published": "2026-09-27T20:00:08+0000",
+        "flyer": "flyers/18334628131261291-0.webp",
+        "caption": "Jhonatan y Laura ✨\n\nEstamos terminando de alistar todos los detalles para nuestro aniversario en Distrito Social 🥳🥳🥳\n\n17 horas de Talleres\n12 horas de Social\nFiesta de Disfraces \n\nNo te lo puedes perder, ven a aprender, a bailar y a celebrar con todos nosotros 🤩\n\n🗓️ 31 Oct, 1 y 2 Nov\n📍 Distrito Social\n\nReserva en nuestras web:\n\ndistrito-social-academy.com/eventos\nappdanza.com"
+      },
+      {
+        "post_id": "18136397614653925",
+        "permalink": "https://www.instagram.com/reel/Dd1uUJKp9_z/",
+        "media_type": "VIDEO",
+        "published": "2026-09-28T17:32:31+0000",
+        "flyer": "flyers/18136397614653925-0.webp",
+        "caption": "Jenssy ✨\n\nSeguimos afinando detalles para nuestro Festival de Aniversario 🥳🥳🥳 \n\nNo puedes perderte de este evento donde reunimos a los mejores profesores de diferentes géneros y estilos 🤩🤩🤩\n\n17 horas de Talleres\n12 horas de Social\n\n🗓️ 31 Oct, 1 y 2 Nov\n📍 Distrito Social \n\nNo te lo puedes perder, reserva en nuestras Webs:\n\ndistrito-social-academy.com/eventos\nappdanza.com"
+      },
+      {
+        "post_id": "18475727074116887",
+        "permalink": "https://www.instagram.com/reel/Dd37MkXN4tk/",
+        "media_type": "VIDEO",
+        "published": "2026-09-29T14:00:05+0000",
+        "flyer": "flyers/18475727074116887-0.webp",
+        "caption": "Andony Barón ✨\n\nSeguimos alistando motores para nuestro gran festival que trae muchas clases y a los mejores profesores de diferentes géneros y ritmos 🥳🥳🥳\n\n17 horas de talleres\n12 horas de social \n\n🗓️ 31 Oct, 1 y 2 Nov\n📍 Distrito Social\n\nNo dejes que te lo cuenten, reserva en nuestras Webs:\n\ndistrito-social-academy.com/eventos\nappdanza.com"
+      },
+      {
+        "post_id": "18095793410543849",
+        "permalink": "https://www.instagram.com/reel/Dd4djLxNDGk/",
+        "media_type": "VIDEO",
+        "published": "2026-09-29T19:00:06+0000",
+        "flyer": "flyers/18095793410543849-0.webp",
+        "caption": "Frank de la Torre ✨\n\nSeguimos alistando motores para nuestro festival que trae a los mejores profes de diferentes ritmos y géneros para que aprendas y disfrutes al máximo 🥳🥳\n\n17 horas de talleres\n12 horas de social\n\n🗓️ 31 Oct, 1 y 2 Nov\n📍 Distrito Social\n\nNo dejes que te lo cuenten, reserva en nuestras Webs:\n\ndistrito-social-academy.com/eventos\nappdanza.com"
+      }
+    ]
+  },
+  {
+    "title": "Entre Ritmos y Latidos — The Musical",
+    "event_type": "show",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Ritmos Academia de Baile",
+    "venue": "Teatro Libre Chapinero",
+    "address": null,
+    "area": "Chapinero",
+    "date": "2026-11-01",
+    "weekday": "domingo",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "obra de teatro musical",
+      "show de salsa"
+    ],
+    "contact": "@ritmosacademiadebaile",
+    "confidence": "high",
+    "doubts": [
+      "no se especifica hora ni precios de las boletas"
+    ],
+    "id": "entre-ritmos-y-latidos-the-musical-1-nov",
+    "account": "ritmosacademiadebaile",
+    "media": [
+      {
+        "post_id": "18199884541372721",
+        "permalink": "https://www.instagram.com/p/Dc9vgbzts-c/",
+        "media_type": "IMAGE",
+        "published": "2026-09-07T01:34:46+0000",
+        "flyer": "flyers/18199884541372721-0.webp",
+        "caption": "🎭 ENTRE RITMOS Y LATIDOS — THE MUSICAL ❤️‍🔥\n\nEn un barrio donde cada persona carga su propia historia, sus sueños, problemas y luchas, una academia de salsa se convierte en el lugar donde sus vidas comienzan a cambiar.\n\nEntre la calle, la familia, las dificultades y las segundas oportunidades, descubrirán que bailar puede ser mucho más que aprender unos pasos: puede devolver la confianza, unir personas y transformar vidas.\n\nUna historia llena de salsa, música, baile, humor y emociones, inspirada en esas realidades que vivimos todos los días.\n\nPorque hay ritmos que se bailan…\ny otros que te cambian la vida. ❤️\n\n📅 1 de noviembre de 2026\n📍 Teatro Libre Chapinero — Bogotá\n\n🔥 Muy pronto conocerás sus historias.\n\n#EntreRitmosYLatidos #TheMusical #TeatroMusical #Salsa #Bogotá TeatroBogotá RitmosAcademiaDeBaile"
+      },
+      {
+        "post_id": "18069630428738274",
+        "permalink": "https://www.instagram.com/p/DdP-4xctgJ4/",
+        "media_type": "IMAGE",
+        "published": "2026-09-14T01:54:59+0000",
+        "flyer": "flyers/18069630428738274-0.webp",
+        "caption": "ENTRE RITMOS Y LATIDOS \n  THE MUSICAL \n  01/11/2026\n\nUn lugar, múltiples historias, una sola pasión. 🎶🥁🎭\n\n¿Qué sucede cuando diferentes vidas coinciden en una misma pista de baile?\n\nPronto conocerás a los personajes y los secretos que laten en el escenario. \n\n#salsa #musical #ritmos"
+      }
+    ]
+  },
+  {
+    "title": "Distrito Social Aniversario - Juanita Quintero",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "bachata"
+    ],
+    "organizer": "Distrito Social",
+    "venue": "Distrito Social",
+    "address": "CRA 29 N68-18",
+    "area": null,
+    "date": "2026-11-01",
+    "weekday": "domingo",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Juanita Quintero"
+    ],
+    "activities": [
+      "clase de Bachata Ladies"
+    ],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [
+      "falta hora de inicio",
+      "falta precio"
+    ],
+    "id": "distrito-social-aniversario-juanita-quintero-1-nov",
+    "account": "distritosocialbog",
+    "media": [
+      {
+        "post_id": "17939085588098200",
+        "permalink": "https://www.instagram.com/p/DdEeskQlg4V/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-09-09T14:30:01+0000",
+        "flyer": "flyers/17939085588098200-0.webp",
+        "caption": "Juanita Quintero ✨\n\nLa reina del eje cafetero dice presente en nuestro aniversario 🥳🥳🥳 con su increíble clase de Bachata Ladies nos viene a poner a disfrutar al máximo \n\n🗓️ 31 Oct, 1 y 2 Nov\n📍 Distrito Social \n\n¿Ya tienes tu boleta? No dejes que te lo cuenten\n\nReservas en:\ndistrito-social-academy.com/eventos"
+      },
+      {
+        "post_id": "18021267338925064",
+        "permalink": "https://www.instagram.com/p/DdwtU46JlFG/",
+        "media_type": "IMAGE",
+        "published": "2026-09-26T18:44:47+0000",
+        "flyer": "flyers/18021267338925064-0.webp",
+        "caption": "4 días ✨\n\nEn 4 días finalizamos las inscripciones a precio de segundo corte 🤯🤯🤯\n\nNo olvides reservar tu boleta a nuestro festival dónde vas a aprender con los mejores, diferentes géneros y tendrás sobre todo mucho social 🤩\n\n17 horas de Talleres\n12 horas de Social\n\n🗓️ 31 Oct, 1 y 2 Nov\n📍 Distrito Social\n\nNo dejes que te lo cuenten, reserva tu boleta en nuestras Webs:\n\ndistrito-social-academy.com/eventos\nappdanza.com"
+      },
+      {
+        "post_id": "18153059854477991",
+        "permalink": "https://www.instagram.com/p/Dd6iiQxxr_T/",
+        "media_type": "IMAGE",
+        "published": "2026-09-30T14:22:54+0000",
+        "flyer": "flyers/18153059854477991-0.webp",
+        "caption": "Último día 🤯\n\nNo te quedes sin adquirir tu boleta para nuestro festival 🥳🥳🥳🥳\n\n17 horas de talleres\n12 horas de social\n\n🗓️ 31 Oct, 1 y 2 Nov\n📍 Distrito Social\n\nNo dejes que te lo cuenten, reserva tus boletas en nuestras Webs:\n\ndistrito-social-academy.com/eventos\nappdanza.com"
+      },
+      {
+        "post_id": "18133094761730072",
+        "permalink": "https://www.instagram.com/reel/DdjYRcMBpPx/",
+        "media_type": "VIDEO",
+        "published": "2026-09-21T14:30:14+0000",
+        "flyer": "flyers/18133094761730072-0.webp",
+        "caption": "Juanita Quintero ✨\n\nEstamos terminando de alistar todo para nuestro Festival 🥳🥳\n\n🔸 17 horas de Talleres\n🔸 12 horas de Social\n🔸 Salsa - Bachata - Kizomba - Urbano\n\nTraemos lo mejor para todos ustedes, los mejores profes, los mejores artistas, los mejores DJ y la mejor energía para pasarla bueno\n\n🗓️ 31 Oct, 1 y 2 Nov\n📍 Distrito Social - CRA 29 N68-18\n\nNo te quedes sin tu boleta, reserva ahora en:\n\ndistrito-social-academy.com/eventos"
+      },
+      {
+        "post_id": "17925664512421185",
+        "permalink": "https://www.instagram.com/reel/Ddl9Dceh7GT/",
+        "media_type": "VIDEO",
+        "published": "2026-09-22T14:30:07+0000",
+        "flyer": "flyers/17925664512421185-0.webp",
+        "caption": "Ricardo y Laura ✨\n\nUna de las parejas más TOP de Bogotá viene con su mejor estilo, movimientos, pedagogía y baile para acompañarnos en nuestro aniversario 🤩🤩🤩\n\n🗓️ 31 Oct, 1 y 2 Nov\n📍 Distrito Social\n\nNo te lo puedes perder, reserva ahora en nuestra web:\n\ndistrito-social-academy.com/eventos"
+      },
+      {
+        "post_id": "18150552889543035",
+        "permalink": "https://www.instagram.com/reel/Ddoi9bTR5PO/",
+        "media_type": "VIDEO",
+        "published": "2026-09-23T15:13:51+0000",
+        "flyer": "flyers/18150552889543035-0.webp",
+        "caption": "Esteban y Valery ✨\n\nEstamos listos para este evento que estará Increíble 🥳🥳🥳🥳\n\n26 artistas invitados\n17 horas de talleres\n12 horas de social\n\n🗓️ 31 Oct, 1 y 2 Nov\n📍 Distrito Social\n\nNo te olvides de adquirir tu boleta 🎟️\n\ndistrito-social-academy.com/eventos"
+      },
+      {
+        "post_id": "18475727074116887",
+        "permalink": "https://www.instagram.com/reel/Dd37MkXN4tk/",
+        "media_type": "VIDEO",
+        "published": "2026-09-29T14:00:05+0000",
+        "flyer": "flyers/18475727074116887-0.webp",
+        "caption": "Andony Barón ✨\n\nSeguimos alistando motores para nuestro gran festival que trae muchas clases y a los mejores profesores de diferentes géneros y ritmos 🥳🥳🥳\n\n17 horas de talleres\n12 horas de social \n\n🗓️ 31 Oct, 1 y 2 Nov\n📍 Distrito Social\n\nNo dejes que te lo cuenten, reserva en nuestras Webs:\n\ndistrito-social-academy.com/eventos\nappdanza.com"
+      },
+      {
+        "post_id": "18095793410543849",
+        "permalink": "https://www.instagram.com/reel/Dd4djLxNDGk/",
+        "media_type": "VIDEO",
+        "published": "2026-09-29T19:00:06+0000",
+        "flyer": "flyers/18095793410543849-0.webp",
+        "caption": "Frank de la Torre ✨\n\nSeguimos alistando motores para nuestro festival que trae a los mejores profes de diferentes ritmos y géneros para que aprendas y disfrutes al máximo 🥳🥳\n\n17 horas de talleres\n12 horas de social\n\n🗓️ 31 Oct, 1 y 2 Nov\n📍 Distrito Social\n\nNo dejes que te lo cuenten, reserva en nuestras Webs:\n\ndistrito-social-academy.com/eventos\nappdanza.com"
+      }
+    ]
+  },
+  {
+    "title": "Distrito Social Aniversario - Juanita Quintero",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "bachata"
+    ],
+    "organizer": "Distrito Social",
+    "venue": "Distrito Social",
+    "address": "CRA 29 N68-18",
+    "area": null,
+    "date": "2026-11-02",
+    "weekday": "lunes",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Juanita Quintero"
+    ],
+    "activities": [
+      "clase de Bachata Ladies"
+    ],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [
+      "falta hora de inicio",
+      "falta precio"
+    ],
+    "id": "distrito-social-aniversario-juanita-quintero-2-nov",
+    "account": "distritosocialbog",
+    "media": [
+      {
+        "post_id": "17939085588098200",
+        "permalink": "https://www.instagram.com/p/DdEeskQlg4V/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-09-09T14:30:01+0000",
+        "flyer": "flyers/17939085588098200-0.webp",
+        "caption": "Juanita Quintero ✨\n\nLa reina del eje cafetero dice presente en nuestro aniversario 🥳🥳🥳 con su increíble clase de Bachata Ladies nos viene a poner a disfrutar al máximo \n\n🗓️ 31 Oct, 1 y 2 Nov\n📍 Distrito Social \n\n¿Ya tienes tu boleta? No dejes que te lo cuenten\n\nReservas en:\ndistrito-social-academy.com/eventos"
+      },
+      {
+        "post_id": "18021267338925064",
+        "permalink": "https://www.instagram.com/p/DdwtU46JlFG/",
+        "media_type": "IMAGE",
+        "published": "2026-09-26T18:44:47+0000",
+        "flyer": "flyers/18021267338925064-0.webp",
+        "caption": "4 días ✨\n\nEn 4 días finalizamos las inscripciones a precio de segundo corte 🤯🤯🤯\n\nNo olvides reservar tu boleta a nuestro festival dónde vas a aprender con los mejores, diferentes géneros y tendrás sobre todo mucho social 🤩\n\n17 horas de Talleres\n12 horas de Social\n\n🗓️ 31 Oct, 1 y 2 Nov\n📍 Distrito Social\n\nNo dejes que te lo cuenten, reserva tu boleta en nuestras Webs:\n\ndistrito-social-academy.com/eventos\nappdanza.com"
+      },
+      {
+        "post_id": "18153059854477991",
+        "permalink": "https://www.instagram.com/p/Dd6iiQxxr_T/",
+        "media_type": "IMAGE",
+        "published": "2026-09-30T14:22:54+0000",
+        "flyer": "flyers/18153059854477991-0.webp",
+        "caption": "Último día 🤯\n\nNo te quedes sin adquirir tu boleta para nuestro festival 🥳🥳🥳🥳\n\n17 horas de talleres\n12 horas de social\n\n🗓️ 31 Oct, 1 y 2 Nov\n📍 Distrito Social\n\nNo dejes que te lo cuenten, reserva tus boletas en nuestras Webs:\n\ndistrito-social-academy.com/eventos\nappdanza.com"
+      },
+      {
+        "post_id": "18133094761730072",
+        "permalink": "https://www.instagram.com/reel/DdjYRcMBpPx/",
+        "media_type": "VIDEO",
+        "published": "2026-09-21T14:30:14+0000",
+        "flyer": "flyers/18133094761730072-0.webp",
+        "caption": "Juanita Quintero ✨\n\nEstamos terminando de alistar todo para nuestro Festival 🥳🥳\n\n🔸 17 horas de Talleres\n🔸 12 horas de Social\n🔸 Salsa - Bachata - Kizomba - Urbano\n\nTraemos lo mejor para todos ustedes, los mejores profes, los mejores artistas, los mejores DJ y la mejor energía para pasarla bueno\n\n🗓️ 31 Oct, 1 y 2 Nov\n📍 Distrito Social - CRA 29 N68-18\n\nNo te quedes sin tu boleta, reserva ahora en:\n\ndistrito-social-academy.com/eventos"
+      },
+      {
+        "post_id": "17925664512421185",
+        "permalink": "https://www.instagram.com/reel/Ddl9Dceh7GT/",
+        "media_type": "VIDEO",
+        "published": "2026-09-22T14:30:07+0000",
+        "flyer": "flyers/17925664512421185-0.webp",
+        "caption": "Ricardo y Laura ✨\n\nUna de las parejas más TOP de Bogotá viene con su mejor estilo, movimientos, pedagogía y baile para acompañarnos en nuestro aniversario 🤩🤩🤩\n\n🗓️ 31 Oct, 1 y 2 Nov\n📍 Distrito Social\n\nNo te lo puedes perder, reserva ahora en nuestra web:\n\ndistrito-social-academy.com/eventos"
+      },
+      {
+        "post_id": "18150552889543035",
+        "permalink": "https://www.instagram.com/reel/Ddoi9bTR5PO/",
+        "media_type": "VIDEO",
+        "published": "2026-09-23T15:13:51+0000",
+        "flyer": "flyers/18150552889543035-0.webp",
+        "caption": "Esteban y Valery ✨\n\nEstamos listos para este evento que estará Increíble 🥳🥳🥳🥳\n\n26 artistas invitados\n17 horas de talleres\n12 horas de social\n\n🗓️ 31 Oct, 1 y 2 Nov\n📍 Distrito Social\n\nNo te olvides de adquirir tu boleta 🎟️\n\ndistrito-social-academy.com/eventos"
+      },
+      {
+        "post_id": "18475727074116887",
+        "permalink": "https://www.instagram.com/reel/Dd37MkXN4tk/",
+        "media_type": "VIDEO",
+        "published": "2026-09-29T14:00:05+0000",
+        "flyer": "flyers/18475727074116887-0.webp",
+        "caption": "Andony Barón ✨\n\nSeguimos alistando motores para nuestro gran festival que trae muchas clases y a los mejores profesores de diferentes géneros y ritmos 🥳🥳🥳\n\n17 horas de talleres\n12 horas de social \n\n🗓️ 31 Oct, 1 y 2 Nov\n📍 Distrito Social\n\nNo dejes que te lo cuenten, reserva en nuestras Webs:\n\ndistrito-social-academy.com/eventos\nappdanza.com"
+      },
+      {
+        "post_id": "18095793410543849",
+        "permalink": "https://www.instagram.com/reel/Dd4djLxNDGk/",
+        "media_type": "VIDEO",
+        "published": "2026-09-29T19:00:06+0000",
+        "flyer": "flyers/18095793410543849-0.webp",
+        "caption": "Frank de la Torre ✨\n\nSeguimos alistando motores para nuestro festival que trae a los mejores profes de diferentes ritmos y géneros para que aprendas y disfrutes al máximo 🥳🥳\n\n17 horas de talleres\n12 horas de social\n\n🗓️ 31 Oct, 1 y 2 Nov\n📍 Distrito Social\n\nNo dejes que te lo cuenten, reserva en nuestras Webs:\n\ndistrito-social-academy.com/eventos\nappdanza.com"
+      }
+    ]
+  },
+  {
     "title": "Elysium Madyum Gran Aniversario 2026",
     "event_type": "social",
     "is_recurring": false,
@@ -684,6 +2050,115 @@
         "published": "2026-09-15T23:44:00+0000",
         "flyer": "flyers/18104347286615308.webp",
         "caption": "⚜️ ELYSYUM MADYUM ⚜️\n\n05 de DICIEMBRE, una noche sin precedentes. Llega después de 5 años nuestro gran ANIVERSARIO MADYUM. Luego de múltiples experiencias, crecimiento, aprendizajes, adversidades, construcción de personas, procesos y evolución, nos reuniremos en una noche llena de celebración, baile, disfrute, manifestación y gran muestra de estos años de arduo trabajo. \n\nNos vemos pronto 🎤\n\n#aniversario #clausura #salsa #bachata #escueladebaile"
+      }
+    ]
+  },
+  {
+    "title": "Ecos en Movimiento - Clausura Mover-sé 2026",
+    "event_type": "show",
+    "is_recurring": false,
+    "styles": [
+      "tango"
+    ],
+    "organizer": "Mover-sé",
+    "venue": "Academia de Baile Alma de Tango",
+    "address": null,
+    "area": null,
+    "date": "2026-12-13",
+    "weekday": "domingo",
+    "start_time": "16:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "clausura",
+      "show"
+    ],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [
+      "sin precio",
+      "sin dirección exacta"
+    ],
+    "id": "ecos-en-movimiento-clausura-mover-se-2026-13-dic",
+    "account": "mover__se",
+    "media": [
+      {
+        "post_id": "18095873720432478",
+        "permalink": "https://www.instagram.com/p/DdsFdkxNFCQ/",
+        "media_type": "IMAGE",
+        "published": "2026-09-24T23:41:51+0000",
+        "flyer": "flyers/18095873720432478-0.webp",
+        "caption": "🫧ECOS EN MOVIMIENTO 🫧\nDonde cada cuerpo deja una huella 🫆 \n.\n.\n.\nClausura Mover-sé 2026 💜\n\nacademiaalmadetangoe 📍\n\n💌Pronto más información💌"
+      }
+    ]
+  },
+  {
+    "title": "Reyes de la Salsa 2027",
+    "event_type": "competition",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "bachata"
+    ],
+    "organizer": "Reyes de la Salsa",
+    "venue": null,
+    "address": null,
+    "area": "Bogotá",
+    "date": "2027-03-19",
+    "weekday": "viernes",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Art Dance Studio México"
+    ],
+    "activities": [
+      "competencia internacional",
+      "shows espectaculares",
+      "talleres",
+      "sociales"
+    ],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [
+      "sin lugar específico",
+      "sin precios"
+    ],
+    "id": "reyes-de-la-salsa-2027-19-mar",
+    "account": "reyesdelasalsa.col",
+    "media": [
+      {
+        "post_id": "18185806897365695",
+        "permalink": "https://www.instagram.com/p/DdeDTJiB1YX/",
+        "media_type": "IMAGE",
+        "published": "2026-09-19T12:51:20+0000",
+        "flyer": "flyers/18185806897365695-0.webp",
+        "caption": "🌎🔥 ¡La salsa no tiene fronteras!\n\nAcademias, bailarines y amantes del baile de diferentes países se preparan para vivir una experiencia inolvidable en REYES DE LA SALSA 2027. 👑💃🕺\n\n✨ Competencia internacional\n🎭 Shows espectaculares\n🎓 Talleres con grandes artistas\n🎉 Sociales y mucha salsa\n🌍 Talento de diferentes países\n\n📍 Bogotá, Colombia\n🗓️ 19 al 21 de marzo de 2027\n\n¡Representa a tu academia y a tu país en una celebración hecha para los verdaderos reyes de la pista! 👑🔥\n\n📩 Escríbenos por mensaje directo y sé parte de esta gran experiencia.\n\n¡Te esperamos! No dejes que te lo cuenten.\n\nreyesdelasalsa.col\n\n#ReyesDeLaSalsa2027 #CompetenciaInternacional #Salsa #Bachata #Bogotá Colombia AcademiasDeBaile Bailarines SalsaMundial"
+      },
+      {
+        "post_id": "17910685500495782",
+        "permalink": "https://www.instagram.com/p/DdmcmQkMZOa/",
+        "media_type": "IMAGE",
+        "published": "2026-09-22T19:06:17+0000",
+        "flyer": "flyers/17910685500495782-0.webp",
+        "caption": "🔥 ¡Bogotá se prepara para vivir una experiencia inolvidable! 🔥\n\nDel 19 al 21 de marzo de 2027, llega Reyes de la Salsa, un encuentro lleno de talento, pasión, competencia y muchas sorpresas para todos los participantes. 👑💃🕺\n\nMuy pronto abriremos nuestras inscripciones.\n¡Prepárate para ser parte de esta gran experiencia!\n\nSíguenos en Instagram: reyesdelasalsa.col"
+      },
+      {
+        "post_id": "17939961648366902",
+        "permalink": "https://www.instagram.com/reel/DdeHFzwxyOC/",
+        "media_type": "VIDEO",
+        "published": "2026-09-19T13:25:04+0000",
+        "flyer": "flyers/17939961648366902-0.webp",
+        "caption": "🇲🇽🔥 ¡MÉXICO LLEGA A REYES DE LA SALSA 2027! 🔥🇨🇴\n\nLe damos una cálida bienvenida a Art Dance Studio México, agrupación que nos acompañará en nuestra competencia internacional Reyes de la Salsa, del 19 al 21 de marzo de 2027 en Bogotá, Colombia.\n\nSerá un verdadero honor recibirlos y compartir su talento, experiencia y conocimientos sobre la quebradita fusionada con la salsa, enriqueciendo nuestro evento con la fuerza y el sabor de la cultura mexicana.\n\n¡Gracias por aceptar nuestra invitación! Para nosotros es un orgullo tenerlos en Colombia y vivir juntos esta gran celebración internacional de la danza.\n\n🇲🇽 México y Colombia unidos por el baile 🇨🇴\n✨ ¡Bienvenidos, Art Dance Studio México! ✨"
+      },
+      {
+        "post_id": "18218496433344823",
+        "permalink": "https://www.instagram.com/reel/Ddlmk57xDYb/",
+        "media_type": "VIDEO",
+        "published": "2026-09-22T11:14:28+0000",
+        "flyer": "flyers/18218496433344823-0.webp",
+        "caption": "🔥 ¡Bogotá se prepara para vivir la pasión de la salsa! 🔥\n\nDel 19 al 21 de marzo de 2027, llega Reyes de la Salsa – Competencia Internacional, un encuentro que reunirá bailarines y agrupaciones de diferentes países en una misma pista. 🌎💃🕺\n\nTres días de talento, cultura y mucha salsa en Bogotá, Colombia. 🇨🇴\nPaíses invitados próximamente.\n\n👑 ¿Estás listo para convertirte en un Rey de la Salsa? 👑"
       }
     ]
   }
