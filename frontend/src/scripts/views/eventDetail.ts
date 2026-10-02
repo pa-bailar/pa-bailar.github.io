@@ -25,14 +25,16 @@ import { openPostsSheet } from "./postsSheet";
 const CONTACT_ICONS: Record<ContactKind, string> = {
   instagram: ICONS.instagram,
   whatsapp: ICONS.whatsapp,
+  phone: "",
   web: "",
 };
 
-/** The contact as a link when it can be one (lib/contact.ts): Instagram, a WhatsApp chat, a website. */
+/** The contact as a link when it can be one (lib/contact.ts): Instagram, a WhatsApp chat, a call, a website. */
 function contactHtml(contact: string): string {
   const link = contactLink(contact);
   if (!link) return escapeHtml(contact);
-  return `<a class="inline-link contact-link" href="${escapeHtml(link.href)}" target="_blank" rel="noopener" data-track="contacto-${link.kind}">${CONTACT_ICONS[link.kind]}${escapeHtml(link.label)}</a>`;
+  const external = link.kind === "phone" ? "" : ` target="_blank" rel="noopener"`;
+  return `<a class="inline-link contact-link" href="${escapeHtml(link.href)}"${external} data-track="contacto-${link.kind}">${CONTACT_ICONS[link.kind]}${escapeHtml(link.label)}</a>`;
 }
 
 function toConfirm(text = "Por confirmar"): string {
