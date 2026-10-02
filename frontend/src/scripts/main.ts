@@ -19,6 +19,7 @@ import { initEventDialog, openEventDialog } from "./views/eventDialog";
 import { rankedStyles, renderFilters } from "./views/filters";
 import { captureListPosition, initJumpBar, renderJumpBar, restoreListPosition } from "./views/jumpBar";
 import { renderUpcomingView } from "./views/upcomingView";
+import { initViewSwitch, renderViewSwitch } from "./views/viewSwitch";
 
 const state = createInitialState();
 let events: DanceEvent[] = [];
@@ -61,6 +62,7 @@ function render({ keepPlace = false } = {}) {
   document.querySelectorAll<HTMLElement>("[data-view]").forEach((tab) => {
     tab.setAttribute("aria-selected", String(tab.dataset.view === state.view));
   });
+  renderViewSwitch(state.view);
 
   const { shown, groups } =
     state.view === "upcoming"
@@ -138,6 +140,10 @@ export function start() {
   initThemeToggle();
   initEventDialog((id) => events.find((event) => event.id === id));
   initJumpBar();
+  initViewSwitch((view) => {
+    state.view = view;
+    render();
+  });
   initClickTracking();
   document.addEventListener("click", handleClick);
   render();

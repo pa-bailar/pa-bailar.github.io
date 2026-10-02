@@ -1,0 +1,42 @@
+/* Phones: the floating "Calendario" / "Próximos" button (components/ViewSwitch.astro). A printed label
+   in the action color (like "Ver en Instagram"), ringed with the page color so it stands out even
+   over a flyer of the same colors. */
+
+.view-switch {
+  position: fixed;
+  bottom: calc(var(--space-4) + env(safe-area-inset-bottom));
+  left: 50%;
+  z-index: var(--z-sticky);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--control-height);
+  padding: 0 var(--space-4);
+  transform: translateX(-50%);
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: var(--action);
+  color: var(--on-action);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  box-shadow: 0 0 0 2px var(--bg), var(--shadow-menu);
+  white-space: nowrap;
+}
+
+.view-switch:empty {
+  display: none; /* until the script labels it */
+}
+
+/* Wide screens: the toolbar with the tabs stays on screen (toolbar.css), so no floating button. */
+@media (min-width: 720px) and (min-height: 600px) {
+  .view-switch {
+    display: none;
+  }
+}
+
+/* Room under the footer, so the button never covers its last line. */
+@media (max-width: 719px), (max-height: 599px) {
+  .site-footer {
+    padding-bottom: calc(var(--control-height) + var(--space-4) * 2 + env(safe-area-inset-bottom));
+  }
+}
