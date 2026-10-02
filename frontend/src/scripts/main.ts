@@ -33,6 +33,7 @@ import { initPostsSheet } from "./views/postsSheet";
 import { initViewSwitch, renderViewSwitch } from "./views/viewSwitch";
 import { initSaveButtons, renderSavedToggles } from "./views/saveButton";
 import { initInstallPrompt, registerServiceWorker } from "./views/installPrompt";
+import { prepareWeekendShare, shareWeekend } from "./views/shareWeekend";
 import { isSaved, keepOnly } from "./lib/saved";
 
 const state = createInitialState();
@@ -95,6 +96,7 @@ function render({ keepPlace = false } = {}) {
   renderSavedToggles(events.filter((event) => event.date >= today && isSaved(event.id)).length, state.savedOnly);
   if (anchor) restoreListPosition(anchor);
   announce(shown);
+  prepareWeekendShare();
 
   if (focused) scope.querySelector<HTMLElement>(focused)?.focus();
 }
@@ -162,11 +164,15 @@ function focusAccountFilter() {
 /** One delegated listener for every data-* control rendered by the views. */
 function handleClick(domEvent: MouseEvent) {
   const control = (domEvent.target as HTMLElement).closest<HTMLElement>(
-    "[data-view],[data-type],[data-style],[data-account],[data-clear-filters],[data-day],[data-event],[data-month-step],[data-today],[data-show-period],[data-saved-only],[data-close-search]",
+    "[data-view],[data-type],[data-style],[data-account],[data-clear-filters],[data-day],[data-event],[data-month-step],[data-today],[data-show-period],[data-saved-only],[data-close-search],[data-share-weekend]",
   );
   if (!control) return;
   const { view, type, style, account, day, event: eventId, monthStep, showPeriod } = control.dataset;
 
+  if ("shareWeekend" in control.dataset) {
+    void shareWeekend();
+    return;
+  }
   if ("savedOnly" in control.dataset) {
     state.savedOnly = !state.savedOnly;
     render();

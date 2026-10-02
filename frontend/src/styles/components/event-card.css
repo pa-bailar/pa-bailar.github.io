@@ -47,6 +47,11 @@
   content: " ›";
 }
 
+/* "Compartir el finde" (views/shareWeekend.ts), under the weekend's heading. */
+.share-weekend {
+  margin-bottom: var(--space-4);
+}
+
 /* "Ver 7 más" under a busy period's first events. */
 .period-more {
   display: flex;

@@ -122,6 +122,21 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves. The pa
 - **"Info"** sits after the view tabs and looks like one, but it's a link to the footer (`#info`), never selected and outside the tab list for screen readers.
 - **The footer is "Sobre Pa' Bailar"**: a heading in Bodoni italic, a one-line description, the disclaimer, the calendar subscription, the sources and "Hecho por @jzamora5" (GitHub).
 
+## Sharing the weekend
+
+- **"Compartir el finde"** (WhatsApp green, `.share-weekend`) sits under the weekend's heading ("Este fin
+  de semana", or "Hoy" once the weekend has started), only when the weekend has events.
+- **What it shares** (`scripts/views/shareWeekend.ts`): on phones, the weekend image itself with a line of
+  text and the link, through the phone's share sheet; elsewhere, WhatsApp with the text and the link to
+  `/finde/`, whose preview is the same image. The image is fetched ahead of time, because phones only
+  allow sharing right at the tap.
+- **The image** (`/finde.jpg`, `src/weekendImage.ts`): a 1080×1350 portrait in the light theme's colors
+  and fonts. Stripes, "Pa' Bailar", "Este finde en Bogotá" in Bodoni italic, the dates ("Viernes 2 al
+  domingo 4 de octubre"), up to five events (flyer square, day and time in tomato, title, academy and
+  venue), "+ N eventos más", and the site's address. With no weekend events it lists what's next ("Lo que
+  viene en Bogotá"). Rebuilt with every deploy.
+- **`/finde/`** is what a shared link opens: the image and "Ver todos los eventos".
+
 ## Installing it like an app
 
 - **What makes it installable:** the manifest (`pages/manifest.webmanifest.ts`: name, wine colors, icons) and a
