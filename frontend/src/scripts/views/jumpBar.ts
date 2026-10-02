@@ -182,6 +182,15 @@ export function restoreListPosition(anchor: ListAnchor) {
   requestAnimationFrame(() => requestAnimationFrame(() => (jumping = false)));
 }
 
+/** Back to the exact scroll position a view was left at; `anchor`: the list's period there. */
+export function returnToScroll(scrollY: number, anchor: ListAnchor | null = null) {
+  jumping = true; // a scroll on purpose: don't hide the bar for it
+  byId("jump-bar").classList.remove("is-hidden");
+  window.scrollTo({ top: scrollY, behavior: "auto" });
+  if (anchor) setActive(anchor.key);
+  requestAnimationFrame(() => requestAnimationFrame(() => (jumping = false)));
+}
+
 function jumpTo(key: string) {
   const section = document.getElementById(sectionId(key));
   if (!section) return;

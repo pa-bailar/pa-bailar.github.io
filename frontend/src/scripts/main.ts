@@ -17,8 +17,16 @@ import { initThemeToggle } from "./theme";
 import { renderCalendarView } from "./views/calendarView";
 import { initEventDialog, openEventDialog } from "./views/eventDialog";
 import { rankedStyles, renderFilters } from "./views/filters";
-import { captureListPosition, initJumpBar, renderJumpBar, restoreListPosition } from "./views/jumpBar";
+import {
+  captureListPosition,
+  initJumpBar,
+  type ListAnchor,
+  renderJumpBar,
+  restoreListPosition,
+  returnToScroll,
+} from "./views/jumpBar";
 import { renderUpcomingView } from "./views/upcomingView";
+import { initViewSwitch, renderViewSwitch } from "./views/viewSwitch";
 
 const state = createInitialState();
 let events: DanceEvent[] = [];
@@ -61,6 +69,7 @@ function render({ keepPlace = false } = {}) {
   document.querySelectorAll<HTMLElement>("[data-view]").forEach((tab) => {
     tab.setAttribute("aria-selected", String(tab.dataset.view === state.view));
   });
+  renderViewSwitch(state.view);
 
   const { shown, groups } =
     state.view === "upcoming"
@@ -78,6 +87,37 @@ function render({ keepPlace = false } = {}) {
   announce(shown);
 
   if (focused) scope.querySelector<HTMLElement>(focused)?.focus();
+}
+
+/** Where each view was left: coming back to it lands there, like switching tabs in Instagram. */
+let leftList: { scrollY: number; filters: string; anchor: ListAnchor | null } | null = null;
+let leftCalendar: number | null = null;
+
+const filtersKey = () => JSON.stringify([state.typeFilter, state.styleFilter, state.accountFilter]);
+
+/** The tabs and the floating button. Each view keeps its place. */
+function showView(view: View) {
+  if (view === state.view) return;
+  if (state.view === "upcoming") {
+    leftList = { scrollY: window.scrollY, filters: filtersKey(), anchor: captureListPosition() };
+  } else leftCalendar = window.scrollY;
+  state.view = view;
+  render();
+  if (view === "upcoming") {
+    if (!leftList) return;
+    // Same filters: the very same spot. Filters changed in the calendar: the same period, as any filter change.
+    if (leftList.filters === filtersKey()) returnToScroll(leftList.scrollY, leftList.anchor);
+    else if (leftList.anchor) restoreListPosition(leftList.anchor);
+    return;
+  }
+  if (leftCalendar !== null) {
+    returnToScroll(leftCalendar);
+    return;
+  }
+  // The first time, if the page was scrolled past the tabs: back up to them, so the calendar is seen whole.
+  const toolbar = document.querySelector<HTMLElement>(".toolbar");
+  const top = toolbar?.getBoundingClientRect().top ?? 0;
+  if (top < 0) window.scrollTo({ top: top + window.scrollY, behavior: "auto" });
 }
 
 /** After filtering by academy from a card far down the list, move to the filter notice (and its "show all" button). */
@@ -102,8 +142,11 @@ function handleClick(domEvent: MouseEvent) {
     openEventDialog(event, visibleEvents(events, state));
     return;
   }
-  if (view) state.view = view as View;
-  else if (type) state.typeFilter = type as EventType | "all";
+  if (view) {
+    showView(view as View);
+    return;
+  }
+  if (type) state.typeFilter = type as EventType | "all";
   // A pressed chip tapped again clears it; options in the bar's rhythm menu just select.
   else if (style) {
     const isToggle = control.matches(".chip") && control.getAttribute("aria-pressed") === "true";
@@ -138,6 +181,7 @@ export function start() {
   initThemeToggle();
   initEventDialog((id) => events.find((event) => event.id === id));
   initJumpBar();
+  initViewSwitch(showView);
   initClickTracking();
   document.addEventListener("click", handleClick);
   render();
