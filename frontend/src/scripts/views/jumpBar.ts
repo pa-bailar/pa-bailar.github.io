@@ -182,6 +182,15 @@ export function restoreListPosition(anchor: ListAnchor) {
   requestAnimationFrame(() => requestAnimationFrame(() => (jumping = false)));
 }
 
+/** Back to the exact scroll position the list was left at (its content unchanged since). */
+export function returnToListPosition(scrollY: number, anchor: ListAnchor | null) {
+  jumping = true; // a scroll on purpose: don't hide the bar for it
+  byId("jump-bar").classList.remove("is-hidden");
+  window.scrollTo({ top: scrollY, behavior: "auto" });
+  if (anchor) setActive(anchor.key);
+  requestAnimationFrame(() => requestAnimationFrame(() => (jumping = false)));
+}
+
 function jumpTo(key: string) {
   const section = document.getElementById(sectionId(key));
   if (!section) return;

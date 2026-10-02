@@ -133,6 +133,7 @@
   --stripe-height: 5px;
   --period-rule-height: 3px; /* the tri-color lines around period headings */
   --control-height: 40px; /* buttons, icon buttons, theme toggle */
+  --fab-size: 52px; /* phones: the floating calendar / list button */
   --chip-height: 32px;
   --jump-bar-height: 56px; /* phones: sticky bar with filters and period chips */
   --sticker-size: 60px;

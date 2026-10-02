@@ -17,7 +17,14 @@ import { initThemeToggle } from "./theme";
 import { renderCalendarView } from "./views/calendarView";
 import { initEventDialog, openEventDialog } from "./views/eventDialog";
 import { rankedStyles, renderFilters } from "./views/filters";
-import { captureListPosition, initJumpBar, renderJumpBar, restoreListPosition } from "./views/jumpBar";
+import {
+  captureListPosition,
+  initJumpBar,
+  type ListAnchor,
+  renderJumpBar,
+  restoreListPosition,
+  returnToListPosition,
+} from "./views/jumpBar";
 import { renderUpcomingView } from "./views/upcomingView";
 import { initViewSwitch, renderViewSwitch } from "./views/viewSwitch";
 
@@ -82,6 +89,31 @@ function render({ keepPlace = false } = {}) {
   if (focused) scope.querySelector<HTMLElement>(focused)?.focus();
 }
 
+/** Where the list was left for the calendar: coming back lands there, like switching tabs in Instagram. */
+let leftList: { scrollY: number; filters: string; anchor: ListAnchor | null } | null = null;
+
+const filtersKey = () => JSON.stringify([state.typeFilter, state.styleFilter, state.accountFilter]);
+
+/** The tabs and the floating button. The list keeps its place; the calendar starts at its top. */
+function showView(view: View) {
+  if (view === state.view) return;
+  if (state.view === "upcoming") {
+    leftList = { scrollY: window.scrollY, filters: filtersKey(), anchor: captureListPosition() };
+  }
+  state.view = view;
+  render();
+  if (view === "upcoming" && leftList) {
+    // Same filters: the very same spot. Filters changed in the calendar: the same period, as any filter change.
+    if (leftList.filters === filtersKey()) returnToListPosition(leftList.scrollY, leftList.anchor);
+    else if (leftList.anchor) restoreListPosition(leftList.anchor);
+    return;
+  }
+  // Scrolled past the tabs: back up to them, so the calendar is seen from its top.
+  const toolbar = document.querySelector<HTMLElement>(".toolbar");
+  const top = toolbar?.getBoundingClientRect().top ?? 0;
+  if (top < 0) window.scrollTo({ top: top + window.scrollY, behavior: "auto" });
+}
+
 /** After filtering by academy from a card far down the list, move to the filter notice (and its "show all" button). */
 function focusAccountFilter() {
   byId("account-filter").querySelector<HTMLElement>("button")?.focus();
@@ -104,8 +136,11 @@ function handleClick(domEvent: MouseEvent) {
     openEventDialog(event, visibleEvents(events, state));
     return;
   }
-  if (view) state.view = view as View;
-  else if (type) state.typeFilter = type as EventType | "all";
+  if (view) {
+    showView(view as View);
+    return;
+  }
+  if (type) state.typeFilter = type as EventType | "all";
   // A pressed chip tapped again clears it; options in the bar's rhythm menu just select.
   else if (style) {
     const isToggle = control.matches(".chip") && control.getAttribute("aria-pressed") === "true";
@@ -140,10 +175,7 @@ export function start() {
   initThemeToggle();
   initEventDialog((id) => events.find((event) => event.id === id));
   initJumpBar();
-  initViewSwitch((view) => {
-    state.view = view;
-    render();
-  });
+  initViewSwitch(showView);
   initClickTracking();
   document.addEventListener("click", handleClick);
   render();
