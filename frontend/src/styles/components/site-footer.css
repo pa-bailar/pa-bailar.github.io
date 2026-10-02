@@ -35,6 +35,19 @@
   font-weight: var(--weight-bold);
 }
 
+.site-footer__title {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: var(--weight-serif);
+  font-size: var(--text-xl);
+  color: var(--text);
+}
+
+.site-footer__author a {
+  font-weight: var(--weight-bold);
+  color: var(--text);
+}
+
 .site-footer__sources summary {
   cursor: pointer;
 }

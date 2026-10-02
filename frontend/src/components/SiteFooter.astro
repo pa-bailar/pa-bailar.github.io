@@ -14,9 +14,15 @@ const webcalUrl = feedUrl.href.replace(/^https?:/, "webcal:");
 const googleUrl = `https://calendar.google.com/calendar/r?cid=${encodeURIComponent(webcalUrl)}`;
 ---
 
-<footer class="site-footer">
+<!-- "Sobre Pa' Bailar": the "Info" link next to the view tabs comes here (#info). -->
+<footer class="site-footer" id="info">
   <div class="container">
     <Stripes />
+    <h2 class="site-footer__title">Sobre Pa' Bailar</h2>
+    <p>
+      Los sociales y talleres de baile de Bogotá en un solo lugar, tomados de las publicaciones de las
+      academias en Instagram.
+    </p>
     <p>
       La información se extrae automáticamente de publicaciones públicas de Instagram y puede tener errores:
       confirma siempre en la publicación original. Los flyers pertenecen a cada academia.
@@ -35,5 +41,9 @@ const googleUrl = `https://calendar.google.com/calendar/r?cid=${encodeURICompone
         {accounts.map((account) => <a href={`https://www.instagram.com/${account}/`} target="_blank" rel="noopener">@{account}</a>)}
       </p>
     </details>
+    <p class="site-footer__author">
+      <Fragment set:html={ICONS.github} /> Hecho por{" "}
+      <a href="https://github.com/jzamora5" target="_blank" rel="noopener" data-track="github">@jzamora5</a>
+    </p>
   </div>
 </footer>
