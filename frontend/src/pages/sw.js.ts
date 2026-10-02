@@ -1,0 +1,75 @@
+// The service worker (/sw.js): phones only offer to install a site that has one, and it lets the
+// installed app open without a connection, with the events from the last visit.
+//   - Pages: network first, so the events are always the latest when online; the last copy when offline.
+//   - The build's own files (/_astro/, names change with their content): cache first.
+//   - Flyers and thumbnails (a name never gets another image): cache first, the most recent IMAGE_LIMIT.
+//   - Anything from other sites (fonts, Instagram, statistics) and everything else: straight to the network.
+// Each build gets its own version: the new worker takes over at once and drops the old pages and files.
+
+import type { APIRoute } from "astro";
+
+const VERSION = new Date().toISOString(); // this build
+const IMAGE_LIMIT = 300;
+
+const worker = `
+const VERSION = ${JSON.stringify(VERSION)};
+const PAGES = "pages-" + VERSION;
+const BUILD_FILES = "build-" + VERSION;
+const IMAGES = "images";
+const IMAGE_LIMIT = ${IMAGE_LIMIT};
+
+self.addEventListener("install", (event) => {
+  event.waitUntil(caches.open(PAGES).then((cache) => cache.add("/")));
+  self.skipWaiting();
+});
+
+self.addEventListener("activate", (event) => {
+  event.waitUntil(
+    (async () => {
+      for (const name of await caches.keys()) {
+        if (name !== PAGES && name !== BUILD_FILES && name !== IMAGES) await caches.delete(name);
+      }
+      await self.clients.claim();
+    })(),
+  );
+});
+
+self.addEventListener("fetch", (event) => {
+  const request = event.request;
+  if (request.method !== "GET") return;
+  const url = new URL(request.url);
+  if (url.origin !== self.location.origin) return;
+  if (request.mode === "navigate") event.respondWith(networkFirst(request));
+  else if (url.pathname.startsWith("/_astro/")) event.respondWith(cacheFirst(request, BUILD_FILES));
+  else if (/^\\/(flyers|thumbs)\\//.test(url.pathname)) event.respondWith(cacheFirst(request, IMAGES, IMAGE_LIMIT));
+});
+
+async function networkFirst(request) {
+  const cache = await caches.open(PAGES);
+  try {
+    const response = await fetch(request);
+    if (response.ok) await cache.put(request, response.clone());
+    return response;
+  } catch {
+    return (await cache.match(request)) || (await cache.match("/")) || Response.error();
+  }
+}
+
+async function cacheFirst(request, name, limit) {
+  const cache = await caches.open(name);
+  const cached = await cache.match(request);
+  if (cached) return cached;
+  const response = await fetch(request);
+  if (response.ok) {
+    await cache.put(request, response.clone());
+    if (limit) {
+      const keys = await cache.keys();
+      for (const key of keys.slice(0, Math.max(keys.length - limit, 0))) await cache.delete(key);
+    }
+  }
+  return response;
+}
+`;
+
+export const GET: APIRoute = () =>
+  new Response(worker, { headers: { "Content-Type": "text/javascript; charset=utf-8" } });

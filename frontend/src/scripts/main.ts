@@ -32,6 +32,7 @@ import { initPostViewer } from "./views/postViewer";
 import { initPostsSheet } from "./views/postsSheet";
 import { initViewSwitch, renderViewSwitch } from "./views/viewSwitch";
 import { initSaveButtons, renderSavedToggles } from "./views/saveButton";
+import { initInstallPrompt, registerServiceWorker } from "./views/installPrompt";
 import { isSaved, keepOnly } from "./lib/saved";
 
 const state = createInitialState();
@@ -243,6 +244,8 @@ export function start() {
   initEventDialog((id) => events.find((event) => event.id === id));
   initPostsSheet();
   initPostViewer();
+  initInstallPrompt();
+  registerServiceWorker();
   initJumpBar({
     reveal: (key) => {
       if (showWholePeriod(key)) render();

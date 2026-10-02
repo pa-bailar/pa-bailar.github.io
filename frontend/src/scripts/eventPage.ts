@@ -10,6 +10,7 @@ import { eventDetailHtml, handleDetailClick } from "./views/eventDetail";
 import { initPostViewer } from "./views/postViewer";
 import { initPostsSheet } from "./views/postsSheet";
 import { initSaveButtons } from "./views/saveButton";
+import { initInstallPrompt, registerServiceWorker } from "./views/installPrompt";
 
 export function initEventPage() {
   initThemeToggle();
@@ -17,6 +18,8 @@ export function initEventPage() {
   initPostsSheet();
   initPostViewer();
   initSaveButtons();
+  initInstallPrompt();
+  registerServiceWorker();
   const event: DanceEvent = JSON.parse(byId("event-data").textContent || "null");
   const container = byId("event-detail");
   const render = (selected: number) => {

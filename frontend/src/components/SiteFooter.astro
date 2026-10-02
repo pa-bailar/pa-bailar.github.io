@@ -40,6 +40,10 @@ const googleUrl = `https://calendar.google.com/calendar/r?cid=${encodeURICompone
         {accounts.map((account) => <a href={`https://www.instagram.com/${account}/`} target="_blank" rel="noopener">@{account}</a>)}
       </p>
     </details>
+    <p class="site-footer__install" data-install-offer hidden>
+      <button class="link-button" type="button" data-install data-track="instalar">Instala Pa' Bailar en tu celular</button>
+      y ábrelo como una app.
+    </p>
     <p class="site-footer__author">
       <Fragment set:html={ICONS.github} /> Hecho por{" "}
       <a href="https://github.com/jzamora5" target="_blank" rel="noopener" data-track="github">@jzamora5</a>
