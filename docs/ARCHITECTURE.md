@@ -343,11 +343,12 @@ stateDiagram-v2
 |---|---|---|---|
 | **GitHub Pages** | Hosting | | The site is down |
 | **GoatCounter** (`jzamora9.goatcounter.com`) | Visit statistics, without cookies or personal data, so no consent banner is needed | Page views. Each event opened in the viewer, as a view of its page. Clicks on elements with `data-track` (Instagram, WhatsApp, calendar, "Cómo llegar", calendar subscriptions). Local testing isn't counted | Nothing breaks: the script is optional and wrapped in `try` (`lib/analytics.ts`) |
+| **Instagram embed** (`instagram.com/embed.js`) | Showing a post inside the site when a visitor taps a flyer (videos play, carousels swipe) | Loaded only on that tap, never with the page: the post's link; Instagram's player then runs as Meta's code (and cookies) inside its frame | Our copy of the flyer stays, with "Abrir en Instagram" |
 | **Google Fonts** | Shrikhand, Bodoni Moda (italic) and Instrument Sans | The font request | System fonts are used |
 | **Instagram, WhatsApp, Google Calendar, Google Maps** | Links the visitor chooses to open | Only what's in the link | |
 
-The site never calls Instagram: flyers are copies served from this repository. The site has no other
-dependency at run time.
+Flyers are copies served from this repository, so the site never needs Instagram to show events. The
+only Instagram content it loads is a post's player, and only when a visitor taps a flyer to watch it.
 
 ---
 
@@ -385,8 +386,10 @@ frontend/
       types.ts            DanceEvent, EventMedia, Meta, AppState (mirror of the backend's models)
       theme.ts, themeConfig.ts   theme modes
       views/              upcomingView, calendarView, eventCard, eventDetail, eventDialog,
-                          filters, jumpBar, viewSwitch (HTML strings + their behavior)
-      lib/                dates, holidays, format, links, analytics, dom, icons, sheet
+                          filters, jumpBar, viewSwitch, postsSheet, postViewer
+                          (HTML strings + their behavior)
+      lib/                dates, holidays, format, links, analytics, dom, icons, sheet,
+                          instagramEmbed
     styles/               tokens.css (design tokens), base.css, components/*.css
 ```
 
@@ -403,7 +406,9 @@ frontend/
 | `views/jumpBar.ts` | Phones: the sticky bar, its menus, keeping your place, hiding on scroll |
 | `views/viewSwitch.ts` | Phones: the floating calendar / list button |
 | `lib/links.ts` | Every URL built from an event: flyer, page, preview, Calendar, Maps, WhatsApp |
-| `lib/sheet.ts` | Bottom sheets that drag to dismiss |
+| `lib/sheet.ts` | Bottom sheets that drag to dismiss; panel sheets with their own back-button step |
+| `lib/instagramEmbed.ts` | Instagram's player for a post, its script loaded on demand |
+| `views/postsSheet.ts`, `views/postViewer.ts` | An event's posts (Flyers / Videos); a post watched inside the site |
 | `lib/analytics.ts` | GoatCounter events |
 | `lib/dates.ts`, `lib/holidays.ts`, `lib/format.ts` | Dates in Bogotá, Colombian holidays, Spanish formatting |
 

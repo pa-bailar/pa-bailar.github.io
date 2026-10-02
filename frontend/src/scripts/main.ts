@@ -26,6 +26,7 @@ import {
   returnToScroll,
 } from "./views/jumpBar";
 import { renderUpcomingView } from "./views/upcomingView";
+import { initPostViewer } from "./views/postViewer";
 import { initPostsSheet } from "./views/postsSheet";
 import { initViewSwitch, renderViewSwitch } from "./views/viewSwitch";
 
@@ -182,6 +183,7 @@ export function start() {
   initThemeToggle();
   initEventDialog((id) => events.find((event) => event.id === id));
   initPostsSheet();
+  initPostViewer();
   initJumpBar();
   initViewSwitch(showView);
   initClickTracking();

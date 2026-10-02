@@ -1,0 +1,18 @@
+---
+// "Watch here": a post shown inside the site with Instagram's own player, opened by tapping a flyer in an
+// event's detail (scripts/views/postViewer.ts). "Abrir en Instagram ↗" stays in its bar. Used by the home
+// page (over the event viewer) and by each event's own page.
+---
+
+<dialog class="sheet sheet-panel post-viewer" id="post-viewer" aria-labelledby="post-viewer-title">
+  <span class="sheet-handle" aria-hidden="true"></span>
+  <div class="sheet-panel__head">
+    <h2 class="post-viewer__title" id="post-viewer-title"></h2>
+    <div class="post-viewer__actions">
+      <a class="btn post-viewer__open" id="post-viewer-open" href="https://www.instagram.com/" target="_blank"
+        rel="noopener" data-track="instagram-desde-visor">Abrir en Instagram ↗</a>
+      <button class="icon-btn" type="button" data-close-sheet aria-label="Cerrar">×</button>
+    </div>
+  </div>
+  <div class="post-viewer__body" id="post-viewer-body"></div>
+</dialog>

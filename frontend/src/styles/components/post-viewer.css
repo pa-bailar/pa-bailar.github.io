@@ -1,0 +1,70 @@
+/* "Watch here": a post with Instagram's player (components/PostViewer.astro, scripts/views/postViewer.ts),
+   in a panel sheet (sheet.css). Our copy of the flyer shows until the player is ready, then the player
+   takes its place. */
+
+.post-viewer {
+  max-height: 92dvh; /* a video or a carousel with its caption is tall */
+}
+
+.post-viewer__title {
+  min-width: 0;
+  overflow: hidden;
+  font-size: var(--text-base);
+  font-weight: var(--weight-bold);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.post-viewer__actions {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.post-viewer__open {
+  padding-inline: var(--space-3);
+}
+
+.post-viewer__body {
+  position: relative;
+}
+
+.post-viewer__placeholder img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 60dvh;
+  object-fit: contain;
+  background: var(--surface-sunken);
+}
+
+.post-viewer__status {
+  margin-top: var(--space-3);
+  font-size: var(--text-sm);
+  text-align: center;
+  color: var(--text-muted);
+}
+
+/* The player builds itself in place (it needs the width) but stays invisible until it has loaded. */
+.post-viewer__embed {
+  position: absolute;
+  inset: 0 0 auto;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.post-viewer__body.is-ready .post-viewer__placeholder {
+  display: none;
+}
+
+.post-viewer__body.is-ready .post-viewer__embed {
+  position: static;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Instagram's script sets the player's margins inline; centered in the sheet instead. */
+.post-viewer__embed .instagram-media {
+  margin: 0 auto !important;
+}
