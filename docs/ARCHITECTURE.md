@@ -366,6 +366,7 @@ stateDiagram-v2
 | **Instagram embed** (`instagram.com/embed.js`) | Showing a post inside the site when a visitor taps a flyer (videos play, carousels swipe) | Loaded only on that tap, never with the page: the post's link; Instagram's player then runs as Meta's code (and cookies) inside its frame | Our copy of the flyer stays, with "Abrir en Instagram" |
 | **Google Fonts** | Shrikhand, Bodoni Moda (italic) and Instrument Sans | The font request | System fonts are used |
 | **Instagram, WhatsApp, Google Calendar, Google Maps** | Links the visitor chooses to open | Only what's in the link | |
+| **Google Forms** (the author's account) | Reports and ideas: "¿Algo está mal? Repórtalo" in each event's detail (the event filled in, `lib/links.ts`, `feedbackUrl`) and "Escríbenos" in the footer. No account needed; answers go to a Google Sheet and an email | What the visitor writes, and the event it's about | Nothing on the site: it's a link |
 
 Flyers are copies served from this repository, so the site never needs Instagram to show events. The
 only Instagram content it loads is a post's player, and only when a visitor taps a flyer to watch it.

@@ -1,4 +1,4 @@
-// URLs built from an event: flyer image, its own page, Google Calendar, Google Maps and WhatsApp share.
+// URLs built from an event: flyer image, its own page, Google Calendar, Google Maps, and the report form.
 
 import type { DanceEvent, EventMedia } from "../types";
 import { addDays } from "./dates";
@@ -6,6 +6,10 @@ import { addDays } from "./dates";
 export const BASE_URL = import.meta.env.BASE_URL.replace(/\/?$/, "/");
 const SITE_URL = new URL(BASE_URL, import.meta.env.SITE).href; // "https://pa-bailar.github.io/"
 const DEFAULT_DURATION_HOURS = 4; // socials often run past midnight
+// Reports and ideas go to a Google Form (owned by the site's author): no account needed, answers land in a
+// Google Sheet. From an event's detail, its "Evento" question comes filled in (a pre-filled link's entry).
+const FEEDBACK_FORM = "https://docs.google.com/forms/d/e/1FAIpQLScMjLlDsXBdgqNGjs3MIBhuMKQhG7xZpdAyzlA5lHxH7OiXtw/viewform";
+const FEEDBACK_EVENT_FIELD = "entry.1000168347";
 
 export function flyerUrl(media: EventMedia): string | null {
   return media.flyer ? `${BASE_URL}${media.flyer}` : null;
@@ -19,6 +23,13 @@ export function thumbName(flyer: string): string {
 /** The flyer's small square thumbnail (160 px), for the row of an event's posts. */
 export function thumbUrl(media: EventMedia): string | null {
   return media.flyer ? `${BASE_URL}thumbs/${thumbName(media.flyer)}.webp` : null;
+}
+
+/** The report form; for an event, with it filled in: "Título (2026-10-03) · <id>", the id to find it. */
+export function feedbackUrl(event?: DanceEvent): string {
+  if (!event) return FEEDBACK_FORM;
+  const params = new URLSearchParams({ usp: "pp_url", [FEEDBACK_EVENT_FIELD]: `${event.title} (${event.date}) · ${event.id}` });
+  return `${FEEDBACK_FORM}?${params}`;
 }
 
 /** The main post: the one shown on the card and shared by default. */

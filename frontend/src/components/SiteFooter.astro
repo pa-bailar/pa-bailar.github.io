@@ -1,7 +1,7 @@
 ---
 import Stripes from "./Stripes.astro";
 import { ICONS } from "../scripts/lib/icons";
-import { BASE_URL } from "../scripts/lib/links";
+import { BASE_URL, feedbackUrl } from "../scripts/lib/links";
 
 interface Props {
   accounts: string[];
@@ -46,6 +46,10 @@ const releaseUrl = version ? `https://github.com/pa-bailar/pa-bailar.github.io/r
     <p class="site-footer__install" data-install-offer hidden>
       <button class="link-button" type="button" data-install data-track="instalar">Instala Pa' Bailar en tu celular</button>{" "}
       y ábrelo como una app.
+    </p>
+    <p>
+      ¿Un dato está mal o tienes una idea para la app?{" "}
+      <a class="inline-link" href={feedbackUrl()} target="_blank" rel="noopener" data-track="comentarios">Escríbenos</a>
     </p>
     <div class="site-footer__bottom">
       <p class="site-footer__author">

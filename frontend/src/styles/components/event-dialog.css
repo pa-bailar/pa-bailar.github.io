@@ -282,6 +282,12 @@
   margin-top: var(--space-1);
 }
 
+/* "¿Algo está mal? Repórtalo": small, last, out of the way of the actions. */
+.event-dialog__report {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
 .event-dialog__caption summary {
   cursor: pointer;
   font-size: var(--text-sm);

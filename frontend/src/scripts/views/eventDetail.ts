@@ -17,7 +17,7 @@ import {
 } from "../lib/format";
 import { contactLink, type ContactKind } from "../lib/contact";
 import { ICONS } from "../lib/icons";
-import { flyerUrl, googleCalendarUrl, mapsUrl } from "../lib/links";
+import { feedbackUrl, flyerUrl, googleCalendarUrl, mapsUrl } from "../lib/links";
 import { openPostViewer } from "./postViewer";
 import { saveButtonHtml } from "./saveButton";
 import { openPostsSheet } from "./postsSheet";
@@ -155,6 +155,7 @@ export function eventDetailHtml(
         <a class="btn" href="${escapeHtml(googleCalendarUrl(event))}" target="_blank" rel="noopener" data-track="calendario">${ICONS.calendar}Agregar al calendario</a>
       </div>
       ${media.caption ? `<details class="event-dialog__caption"><summary>Texto de la publicación</summary><p>${escapeHtml(media.caption)}</p></details>` : ""}
+      <p class="event-dialog__report"><a class="inline-link" href="${escapeHtml(feedbackUrl(event))}" target="_blank" rel="noopener" data-track="reportar-error">¿Algo está mal? Repórtalo</a></p>
     </div>`;
 }
 
