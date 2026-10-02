@@ -36,3 +36,47 @@
   font-size: var(--text-xl);
   line-height: 1;
 }
+
+/* The bookmark that saves an event (scripts/views/saveButton.ts): on cards (above their stretched click
+   area) and in the detail. Filled in the accent color when saved. */
+.save-button {
+  position: relative;
+  z-index: var(--z-raised);
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: var(--control-height);
+  height: var(--control-height);
+  margin: calc(var(--space-2) * -1) calc(var(--space-2) * -1) calc(var(--space-2) * -1) 0; /* big target, no extra room */
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text);
+}
+
+.save-button .icon {
+  width: var(--icon-lg);
+  height: var(--icon-lg);
+}
+
+.save-button[aria-pressed="true"] {
+  color: var(--accent);
+}
+
+/* Search fields (the phone bar's and the toolbar's): 16px text, so phones don't zoom in on focus. */
+.search-input {
+  min-width: 0;
+  min-height: var(--chip-height);
+  padding: 0 var(--space-3);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: var(--text-base);
+}
+
+.search-input::placeholder {
+  color: var(--text-muted);
+}

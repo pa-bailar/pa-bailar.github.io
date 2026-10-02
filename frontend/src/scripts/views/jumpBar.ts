@@ -33,6 +33,7 @@ export interface JumpBarContent {
   styleFilter: string;
   eventCount: number; // events in view before the rhythm filter, for "Todos los ritmos"
   showPeriods: boolean; // the upcoming list (the calendar has no periods)
+  searching: boolean; // a search is on: the bar is the search field
 }
 
 /** The period on screen: its name on the period button, and marked in the menu. */
@@ -105,6 +106,7 @@ function menuItemHtml(data: string, label: string, count: number, state = ""): s
 export function renderJumpBar(content: JumpBarContent) {
   groups = content.groups;
   byId("jump-bar").hidden = false;
+  if (content.searching) byId("jump-bar").classList.add("is-searching");
 
   const filters = byId("jump-filters");
   const count = content.activeFilters;
@@ -241,9 +243,18 @@ function initHideOnScroll() {
   bar.addEventListener("focusin", () => bar.classList.remove("is-hidden"));
 }
 
+/** 🔍 turns the bar into the search field; × (data-close-search, main.ts) clears it and turns it back. */
+export function closeBarSearch() {
+  byId("jump-bar").classList.remove("is-searching");
+}
+
 /** `reveal` runs before jumping to a period from the menu, so a summarized period opens first. */
 export function initJumpBar({ reveal }: { reveal: (key: string) => void }) {
   revealPeriod = reveal;
+  byId("jump-search-open").addEventListener("click", () => {
+    byId("jump-bar").classList.add("is-searching");
+    byId("jump-search").focus();
+  });
   byId("jump-filters").addEventListener("click", () => openPanelSheet(byId<HTMLDialogElement>("filter-sheet")));
   // Each menu opens right under its button and always inside the screen: aligned to the button's left
   // edge (or right edge, for a button on the right half), never wider or taller than the space left.

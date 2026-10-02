@@ -60,6 +60,8 @@ export interface AppState {
   typeFilter: EventType | "all";
   styleFilter: string;
   accountFilter: string | null; // Instagram username, chosen by tapping it on a card
+  query: string; // search text ("" = no search)
+  savedOnly: boolean; // only the events the visitor saved ("Guardados")
   month: Date; // first day of the month shown in the calendar
   selectedDay: string; // YYYY-MM-DD
 }

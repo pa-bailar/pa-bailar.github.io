@@ -253,6 +253,12 @@
   padding-top: var(--space-2);
 }
 
+/* The bookmark at the end of the last line, like Instagram's at the end of a post's actions (the date
+   sticker takes the card's top-right corner). */
+.event-card__foot .save-button {
+  margin-left: auto;
+}
+
 .event-card__price {
   font-size: var(--text-sm);
   font-weight: var(--weight-bold);

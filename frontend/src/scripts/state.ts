@@ -3,6 +3,8 @@
 import type { AppState, DanceEvent } from "./types";
 import { addDays, currentMonth, endOfWeek, todayIso, toIsoDate } from "./lib/dates";
 import { capitalize, formatMonthName } from "./lib/format";
+import { isSaved } from "./lib/saved";
+import { matchesQuery } from "./lib/search";
 
 export function createInitialState(): AppState {
   return {
@@ -10,6 +12,8 @@ export function createInitialState(): AppState {
     typeFilter: "all",
     styleFilter: "all",
     accountFilter: null,
+    query: "",
+    savedOnly: false,
     month: currentMonth(),
     selectedDay: todayIso(),
   };
@@ -26,21 +30,25 @@ export function matchesFilters(event: DanceEvent, state: AppState): boolean {
   const typeOk = state.typeFilter === "all" || event.event_type === state.typeFilter;
   const styleOk = state.styleFilter === "all" || event.styles.some((style) => styleMatches(style, state.styleFilter));
   const accountOk = !state.accountFilter || event.account === state.accountFilter;
-  return typeOk && styleOk && accountOk;
+  const savedOk = !state.savedOnly || isSaved(event.id);
+  return typeOk && styleOk && accountOk && savedOk && matchesQuery(event, state.query);
 }
 
 export function activeFilterCount(state: AppState): number {
   return [state.typeFilter !== "all", state.styleFilter !== "all", state.accountFilter !== null].filter(Boolean).length;
 }
 
+/** Anything narrowing the list: the filters, a search, or "Guardados". */
 export function hasActiveFilters(state: AppState): boolean {
-  return activeFilterCount(state) > 0;
+  return activeFilterCount(state) > 0 || state.query.trim() !== "" || state.savedOnly;
 }
 
 export function clearFilters(state: AppState) {
   state.typeFilter = "all";
   state.styleFilter = "all";
   state.accountFilter = null;
+  state.query = "";
+  state.savedOnly = false;
 }
 
 function monthPrefix(month: Date): string {

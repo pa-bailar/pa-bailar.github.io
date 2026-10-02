@@ -14,6 +14,7 @@ import {
   typeLabel,
 } from "../lib/format";
 import { eventPath, flyerUrl, mainMedia } from "../lib/links";
+import { saveButtonHtml } from "./saveButton";
 
 const MAX_STYLES_ON_CARD = 3;
 
@@ -79,6 +80,7 @@ function eventCardHtml(event: DanceEvent): string {
         <div class="event-card__foot">
           ${price ? `<span class="event-card__price${isFree(event) ? " event-card__price--free" : ""}">${escapeHtml(price)}</span>` : ""}
           ${styles ? `<span class="style-list">${escapeHtml(styles)}</span>` : ""}
+          ${saveButtonHtml(event)}
         </div>
       </div>
     </article>`;

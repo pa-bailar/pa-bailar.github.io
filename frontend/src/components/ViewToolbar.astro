@@ -1,4 +1,5 @@
 ---
+import { ICONS } from "../scripts/lib/icons";
 // Bar with the view tabs and the filter chips (chips are rendered by scripts/views/filters.ts).
 // Sticky on wide screens only (see toolbar.css).
 ---
@@ -16,6 +17,13 @@
       </div>
       <!-- Not a view: a link to the footer ("Sobre Pa' Bailar"), styled like the tabs beside it. -->
       <a class="tabs__tab tabs__link" href="#info">Info</a>
+      <div class="toolbar__tools">
+        <button class="chip toolbar__saved" type="button" data-saved-only aria-pressed="false" aria-label="Guardados">
+          <Fragment set:html={ICONS.bookmark} />Guardados <span class="toolbar__saved-count" data-saved-count hidden></span>
+        </button>
+        <input class="search-input toolbar__search" type="search" data-search placeholder="Buscar evento, academia, ritmo…"
+          aria-label="Buscar eventos" autocomplete="off" />
+      </div>
     </div>
     <div class="chip-row" id="type-filters" data-filter-row="type" role="group" aria-label="Filtrar por tipo"></div>
     <div class="chip-row" id="style-filters" data-filter-row="style" role="group" aria-label="Filtrar por ritmo"></div>

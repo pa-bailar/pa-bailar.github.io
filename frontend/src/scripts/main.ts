@@ -20,6 +20,7 @@ import { initEventDialog, openEventDialog } from "./views/eventDialog";
 import { rankedStyles, renderFilters } from "./views/filters";
 import {
   captureListPosition,
+  closeBarSearch,
   initJumpBar,
   type ListAnchor,
   renderJumpBar,
@@ -30,6 +31,8 @@ import { renderUpcomingView, showWholePeriod } from "./views/upcomingView";
 import { initPostViewer } from "./views/postViewer";
 import { initPostsSheet } from "./views/postsSheet";
 import { initViewSwitch, renderViewSwitch } from "./views/viewSwitch";
+import { initSaveButtons, renderSavedToggles } from "./views/saveButton";
+import { isSaved, keepOnly } from "./lib/saved";
 
 const state = createInitialState();
 let events: DanceEvent[] = [];
@@ -85,7 +88,10 @@ function render({ keepPlace = false } = {}) {
     styleFilter: state.styleFilter,
     eventCount: eventsInView(events, state).length,
     showPeriods: state.view === "upcoming",
+    searching: state.query !== "",
   });
+  const today = todayIso();
+  renderSavedToggles(events.filter((event) => event.date >= today && isSaved(event.id)).length, state.savedOnly);
   if (anchor) restoreListPosition(anchor);
   announce(shown);
 
@@ -123,6 +129,30 @@ function showView(view: View) {
   if (top < 0) window.scrollTo({ top: top + window.scrollY, behavior: "auto" });
 }
 
+/** Search, "Guardados" or a view change made the list start over: back up to the tabs if the page is past them. */
+function backToTop() {
+  const toolbar = document.querySelector<HTMLElement>(".toolbar");
+  const top = toolbar?.getBoundingClientRect().top ?? 0;
+  if (top < 0) window.scrollTo({ top: top + window.scrollY, behavior: "auto" });
+}
+
+let searchTimer = 0;
+
+/** Typing in a search field (the bar's or the toolbar's): both show the same text; results after a pause. */
+function handleSearchInput(domEvent: Event) {
+  const input = domEvent.target as HTMLInputElement;
+  if (!input.matches("[data-search]")) return;
+  state.query = input.value;
+  document.querySelectorAll<HTMLInputElement>("[data-search]").forEach((field) => {
+    if (field !== input) field.value = input.value;
+  });
+  clearTimeout(searchTimer);
+  searchTimer = window.setTimeout(() => {
+    render();
+    backToTop();
+  }, 150);
+}
+
 /** After filtering by academy from a card far down the list, move to the filter notice (and its "show all" button). */
 function focusAccountFilter() {
   byId("account-filter").querySelector<HTMLElement>("button")?.focus();
@@ -131,11 +161,24 @@ function focusAccountFilter() {
 /** One delegated listener for every data-* control rendered by the views. */
 function handleClick(domEvent: MouseEvent) {
   const control = (domEvent.target as HTMLElement).closest<HTMLElement>(
-    "[data-view],[data-type],[data-style],[data-account],[data-clear-filters],[data-day],[data-event],[data-month-step],[data-today],[data-show-period]",
+    "[data-view],[data-type],[data-style],[data-account],[data-clear-filters],[data-day],[data-event],[data-month-step],[data-today],[data-show-period],[data-saved-only],[data-close-search]",
   );
   if (!control) return;
   const { view, type, style, account, day, event: eventId, monthStep, showPeriod } = control.dataset;
 
+  if ("savedOnly" in control.dataset) {
+    state.savedOnly = !state.savedOnly;
+    render();
+    backToTop();
+    return;
+  }
+  if ("closeSearch" in control.dataset) {
+    state.query = "";
+    document.querySelectorAll<HTMLInputElement>("[data-search]").forEach((field) => (field.value = ""));
+    closeBarSearch();
+    render();
+    return;
+  }
   if (showPeriod) {
     // "Ver los 23 eventos" / "Ver 7 más": the period opens whole; focus moves to its first new event.
     const section = control.closest<HTMLElement>(".agenda-group");
@@ -167,7 +210,11 @@ function handleClick(domEvent: MouseEvent) {
   }
   else if (account !== undefined) {
     state.accountFilter = account || null; // "" = show every academy again
-  } else if ("clearFilters" in control.dataset) clearFilters(state);
+  } else if ("clearFilters" in control.dataset) {
+    clearFilters(state);
+    document.querySelectorAll<HTMLInputElement>("[data-search]").forEach((field) => (field.value = ""));
+    closeBarSearch();
+  }
   else if (day) state.selectedDay = day;
   else if (monthStep) {
     state.month = addMonths(state.month, Number(monthStep));
@@ -191,6 +238,7 @@ function handleClick(domEvent: MouseEvent) {
 
 export function start() {
   events = JSON.parse(byId("events-data").textContent || "[]");
+  keepOnly(new Set(events.map((event) => event.id))); // saved events no longer in the data are forgotten
   initThemeToggle();
   initEventDialog((id) => events.find((event) => event.id === id));
   initPostsSheet();
@@ -203,5 +251,8 @@ export function start() {
   initViewSwitch(showView);
   initClickTracking();
   document.addEventListener("click", handleClick);
+  document.addEventListener("input", handleSearchInput);
+  // Saving or unsaving changes the "Guardados" count, and the list when only saved events are shown.
+  initSaveButtons(() => render({ keepPlace: true }));
   render();
 }

@@ -9,12 +9,14 @@ import { initThemeToggle } from "./theme";
 import { eventDetailHtml, handleDetailClick } from "./views/eventDetail";
 import { initPostViewer } from "./views/postViewer";
 import { initPostsSheet } from "./views/postsSheet";
+import { initSaveButtons } from "./views/saveButton";
 
 export function initEventPage() {
   initThemeToggle();
   initClickTracking();
   initPostsSheet();
   initPostViewer();
+  initSaveButtons();
   const event: DanceEvent = JSON.parse(byId("event-data").textContent || "null");
   const container = byId("event-detail");
   const render = (selected: number) => {

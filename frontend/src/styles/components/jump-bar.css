@@ -1,5 +1,5 @@
 /* Phones: slim bar stuck to the top (components/JumpBar.astro, scripts/views/jumpBar.ts):
-   [⚙ 2] [Finde ▾] [Ritmo ▾]. Hides while scrolling down, comes back on scroll up. */
+   [🔍] [🔖 3] [⚙ 2] [Finde ▾] [Ritmo ▾]. Hides while scrolling down, comes back on scroll up. */
 
 .jump-bar {
   position: sticky;
@@ -30,6 +30,43 @@
   align-items: center;
   gap: var(--space-1);
   white-space: nowrap;
+}
+
+/* 🔍, 🔖 and ⚙: square buttons of a fixed size; a number on the corner (like a notification badge)
+   never changes their size. */
+.jump-bar__icon {
+  position: relative;
+  flex: none;
+  justify-content: center;
+  width: var(--control-height);
+  padding: 0;
+  color: var(--text);
+}
+
+.jump-bar__icon[aria-pressed="true"] {
+  background: var(--chip-active-bg);
+  border-color: var(--chip-active-bg);
+  color: var(--chip-active-text);
+}
+
+/* Searching: the whole bar is the search field and its ×. */
+.jump-bar__search {
+  display: none;
+  flex: 1;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+.jump-bar__search .search-input {
+  flex: 1;
+}
+
+.jump-bar.is-searching .jump-bar__inner > :not(.jump-bar__search) {
+  display: none;
+}
+
+.jump-bar.is-searching .jump-bar__search {
+  display: flex;
 }
 
 /* ⚙ with the number of active filters on its corner (like a notification badge), so the button keeps
