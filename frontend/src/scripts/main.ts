@@ -1,6 +1,7 @@
 // Entry point: load the events embedded in the page, wire up interactions and render.
 
 import type { DanceEvent, EventType, View } from "./types";
+import type { AgendaGroup } from "./state";
 import { initClickTracking } from "./lib/analytics";
 import { byId } from "./lib/dom";
 import { eventCountLabel } from "./lib/format";
@@ -32,8 +33,10 @@ import { initPostViewer } from "./views/postViewer";
 import { initPostsSheet } from "./views/postsSheet";
 import { initViewSwitch, renderViewSwitch } from "./views/viewSwitch";
 import { initSaveButtons, renderSavedToggles } from "./views/saveButton";
-import { initInstallPrompt, registerServiceWorker } from "./views/installPrompt";
-import { prepareWeekendShare, shareWeekend } from "./views/shareWeekend";
+import { initInstallPrompt, offerAfterSaving, registerServiceWorker } from "./views/installPrompt";
+import { initSharing, plansEventUrl, setShareSources, type ShareSource } from "./views/sharing";
+import { dateRangeLabel, PERIOD_SHARE_TITLES, periodShareText, plansShareText } from "./lib/shareText";
+import { capitalize, typeLabel } from "./lib/format";
 import { isSaved, keepOnly } from "./lib/saved";
 
 const state = createInitialState();
@@ -95,7 +98,7 @@ function render({ keepPlace = false } = {}) {
   renderSavedCount();
   if (anchor) restoreListPosition(anchor);
   announce(shown);
-  prepareWeekendShare();
+  setShareSources(shareSources(groups));
 
   if (focused) scope.querySelector<HTMLElement>(focused)?.focus();
 }
@@ -131,10 +134,57 @@ function showView(view: View) {
   if (top < 0) window.scrollTo({ top: top + window.scrollY, behavior: "auto" });
 }
 
+/** The saved events still to come, in date order. */
+function upcomingSaved(): DanceEvent[] {
+  const today = todayIso();
+  return events.filter((event) => event.date >= today && isSaved(event.id));
+}
+
 /** "Guardados 3": how many upcoming events are saved, on the toggles. */
 function renderSavedCount() {
-  const today = todayIso();
-  renderSavedToggles(events.filter((event) => event.date >= today && isSaved(event.id)).length, state.savedOnly);
+  renderSavedToggles(upcomingSaved().length, state.savedOnly);
+}
+
+/** What narrows the list, for a shared image's subtitle: "Salsa", "Talleres", "@academia", «búsqueda». */
+function filtersLabel(): string {
+  return [
+    state.typeFilter !== "all" ? typeLabel(state.typeFilter) : "",
+    state.styleFilter !== "all" ? capitalize(state.styleFilter) : "",
+    state.accountFilter ? `@${state.accountFilter}` : "",
+    state.query.trim() ? `«${state.query.trim()}»` : "",
+  ]
+    .filter(Boolean)
+    .join(" · ");
+}
+
+/** What each share button of the list shares: the near periods as on screen, and Guardados' plans. */
+function shareSources(groups: AgendaGroup[]): Map<string, ShareSource> {
+  const sources = new Map<string, ShareSource>();
+  const filters = filtersLabel();
+  for (const group of groups) {
+    const title = PERIOD_SHARE_TITLES[group.key];
+    const first = group.events[0];
+    const last = group.events.at(-1);
+    if (!title || !first || !last) continue;
+    sources.set(`periodo-${group.key}`, {
+      title,
+      subtitle: [dateRangeLabel(first.date, last.date), filters].filter(Boolean).join(" · "),
+      text: periodShareText(filters ? `${title} · ${filters}` : title, group.events),
+      events: group.events,
+    });
+  }
+  const plans = upcomingSaved();
+  const [firstPlan] = plans;
+  const lastPlan = plans.at(-1);
+  if (state.savedOnly && firstPlan && lastPlan) {
+    sources.set("planes", {
+      title: "Mis planes para bailar",
+      subtitle: dateRangeLabel(firstPlan.date, lastPlan.date),
+      text: plansShareText(plans, plansEventUrl),
+      events: plans,
+    });
+  }
+  return sources;
 }
 
 /** Search, "Guardados" or a view change made the list start over: back up to the tabs if the page is past them. */
@@ -169,15 +219,11 @@ function focusAccountFilter() {
 /** One delegated listener for every data-* control rendered by the views. */
 function handleClick(domEvent: MouseEvent) {
   const control = (domEvent.target as HTMLElement).closest<HTMLElement>(
-    "[data-view],[data-type],[data-style],[data-account],[data-clear-filters],[data-day],[data-event],[data-month-step],[data-today],[data-show-period],[data-saved-only],[data-close-search],[data-share-weekend]",
+    "[data-view],[data-type],[data-style],[data-account],[data-clear-filters],[data-day],[data-event],[data-month-step],[data-today],[data-show-period],[data-saved-only],[data-close-search]",
   );
   if (!control) return;
   const { view, type, style, account, day, event: eventId, monthStep, showPeriod } = control.dataset;
 
-  if ("shareWeekend" in control.dataset) {
-    void shareWeekend();
-    return;
-  }
   if ("savedOnly" in control.dataset) {
     state.savedOnly = !state.savedOnly;
     render();
@@ -255,6 +301,7 @@ export function start() {
   initEventDialog((id) => events.find((event) => event.id === id));
   initPostsSheet();
   initPostViewer();
+  initSharing((id) => events.find((event) => event.id === id));
   initInstallPrompt();
   registerServiceWorker();
   initJumpBar({
@@ -269,6 +316,7 @@ export function start() {
   // Saving changes the "Guardados" count. The list itself only changes while it shows just the saved events:
   // then it's redrawn right where the visitor was (never jumping, e.g. to a period's heading).
   initSaveButtons(() => {
+    offerAfterSaving(upcomingSaved().length);
     if (!state.savedOnly) return renderSavedCount();
     const scrollY = window.scrollY;
     render();

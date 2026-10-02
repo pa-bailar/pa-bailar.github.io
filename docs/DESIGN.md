@@ -122,20 +122,27 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves. The pa
 - **"Info"** sits after the view tabs and looks like one, but it's a link to the footer (`#info`), never selected and outside the tab list for screen readers.
 - **The footer is "Sobre Pa' Bailar"**: a heading in Bodoni italic, a one-line description, the disclaimer, the calendar subscription, the sources and "Hecho por @jzamora5" (GitHub).
 
-## Sharing the weekend
+## Sharing
 
-- **"Compartir el finde"** (WhatsApp green, `.share-weekend`) sits under the weekend's heading ("Este fin
-  de semana", or "Hoy" once the weekend has started), only when the weekend has events.
-- **What it shares** (`scripts/views/shareWeekend.ts`): on phones, the weekend image itself with a line of
-  text and the link, through the phone's share sheet; elsewhere, WhatsApp with the text and the link to
-  `/finde/`, whose preview is the same image. The image is fetched ahead of time, because phones only
-  allow sharing right at the tap.
-- **The image** (`/finde.jpg`, `src/weekendImage.ts`): a 1080×1350 portrait in the light theme's colors
-  and fonts. Stripes, "Pa' Bailar", "Este finde en Bogotá" in Bodoni italic, the dates ("Viernes 2 al
-  domingo 4 de octubre"), up to five events (flyer square, day and time in tomato, title, academy and
-  venue), "+ N eventos más", and the site's address. With no weekend events it lists what's next ("Lo que
-  viene en Bogotá"). Rebuilt with every deploy.
-- **`/finde/`** is what a shared link opens: the image and "Ver todos los eventos".
+Everything goes through the phone's own share menu (`lib/share.ts`, Web Share): the visitor picks
+WhatsApp, a group, Instagram, Telegram or "copy", as in any app. Where there's no menu (most computers),
+WhatsApp opens with the text. What can be shared (`scripts/views/sharing.ts`):
+- **An event:** "Compartir" in its detail (WhatsApp green): its title, date, place and price, and its
+  page's link, whose preview shows the flyer.
+- **A near period:** a share icon at the end of "Hoy", "Esta semana", "Este fin de semana" and "Próxima
+  semana" (`.share-icon`): an image of its events and a list for WhatsApp, as filtered on screen (a
+  rhythm, a type, an academy or a search goes in the subtitle).
+- **My plans:** in Guardados, "Tus 3 eventos guardados · Compartir mis planes" (`.plans-bar`): an image
+  and a list where each event carries its own link.
+- **The image** (`lib/shareCard.ts`) is drawn in the browser at share time, so it always matches the day,
+  the filters and the saved events: a 1080×1350 portrait (what WhatsApp and Instagram show whole) in the
+  light theme's colors and the page's fonts. Stripes, "Pa' Bailar", the title in Bodoni italic ("Este
+  finde en Bogotá", "Mis planes para bailar"), the dates, up to five events (flyer thumbnail, day and time
+  in tomato, title, academy and venue), "+ N eventos más" and the site's address. It's drawn as soon as
+  its button comes into view, because phones only allow sharing right at the tap; if it isn't ready, the
+  text goes alone.
+- **The texts** (`lib/shareText.ts`) are written for WhatsApp: the title in *bold*, one line per event
+  ("• Sáb 3 · 6:00 p. m. — *Salsa Freestyle* (@madyumdance)"). Shared links carry `utm_source=compartido`.
 
 ## Installing it like an app
 
@@ -152,6 +159,9 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves. The pa
   visitor is: iPhone (Compartir → Agregar a inicio), Android (menú ⋮ → Instalar aplicación), or inside
   Instagram, WhatsApp or Facebook, which can't install (open it in the browser first). Nothing once
   installed.
+- **A reminder:** whoever dismissed the banner gets one small reminder, once, when they save their second
+  event ("Tus guardados a un toque: instala Pa' Bailar", `.install-nudge`, above the floating button, gone after
+  10 seconds). Offering again at a moment the app clearly helps, instead of nagging, is Google's advice.
 - **Knowing it's installed:** opened as the app; or this browser saw it installed (on Android the app shares the
   browser's storage, so opening the app once is enough); or Chrome on Android says so (`getInstalledRelatedApps`,
   the manifest lists the app as related to itself). Chrome offering to install again means it was uninstalled,
