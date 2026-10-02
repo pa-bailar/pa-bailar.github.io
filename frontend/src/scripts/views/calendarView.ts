@@ -3,7 +3,8 @@
 import type { AppState, DanceEvent } from "../types";
 import { byId, escapeHtml } from "../lib/dom";
 import { daysInMonth, mondayOffset, todayIso, toIsoDate } from "../lib/dates";
-import { formatDayHeading, formatLongDate, formatMonthTitle } from "../lib/format";
+import { isHoliday } from "../lib/holidays";
+import { eventCountLabel, formatDayHeading, formatLongDate, formatMonthTitle } from "../lib/format";
 import { groupByDay, hasActiveFilters, matchesFilters } from "../state";
 import { eventCardGridHtml } from "./eventCard";
 
@@ -16,6 +17,7 @@ function dayCellHtml(iso: string, dayNumber: number, dayEvents: DanceEvent[], st
     iso < today && "is-past",
     iso === today && "is-today",
     iso === state.selectedDay && "is-selected",
+    isHoliday(iso) && "is-holiday",
   ].filter(Boolean);
   const pills = dayEvents
     .slice(0, MAX_PILLS_PER_DAY)
@@ -24,7 +26,8 @@ function dayCellHtml(iso: string, dayNumber: number, dayEvents: DanceEvent[], st
   const more = dayEvents.length > MAX_PILLS_PER_DAY ? `<span class="cal-more">+${dayEvents.length - MAX_PILLS_PER_DAY}</span>` : "";
   const dots = dayEvents.map((event) => `<i class="cal-dot t-${escapeHtml(event.event_type)}"></i>`).join("");
   const count = dayEvents.length;
-  const label = `${formatLongDate(iso)}${count ? `, ${count} evento${count > 1 ? "s" : ""}` : ""}`;
+  const holiday = isHoliday(iso) ? ", festivo" : "";
+  const label = `${formatLongDate(iso)}${holiday}${count ? `, ${eventCountLabel(count)}` : ""}`;
 
   return `
     <button class="cal-day ${modifiers.join(" ")}" data-day="${iso}" aria-label="${label}" aria-pressed="${iso === state.selectedDay}">

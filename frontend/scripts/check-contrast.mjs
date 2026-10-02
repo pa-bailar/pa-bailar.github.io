@@ -76,6 +76,7 @@ const PAIRS = [
   ["Date sticker text", "sticker-text", "sticker-bg", "text"],
   ["Today number in calendar", "today-text", "today-bg", "text"],
   ["Calendar day number", "text", "surface", "text"],
+  ["Calendar day number on a holiday", "text", "holiday-bg", "text"],
   ["Past calendar day number (muted; past cells have no fill)", "text-muted", "bg", "text"],
   ...TYPES.map((t) => [`Type tag / calendar pill text on ${t}`, "on-type", `type-${t}`, "text"]),
   // Non-text (WCAG 1.4.11): boundaries and indicators people need to see.

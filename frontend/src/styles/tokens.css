@@ -85,6 +85,7 @@
   --sticker-text: light-dark(var(--cream-50), var(--wine-900));
   --today-bg: light-dark(var(--marigold-600), var(--marigold-400));
   --today-text: var(--wine-900);
+  --holiday-bg: light-dark(#f2d3bf, #4d2026); /* calendar: Colombian public holidays, a tint of the tomato */
 
   /* Event types (background of tags, pills and dots; text on them is --on-type) */
   --type-social: light-dark(var(--marigold-600), var(--tomato-350));
