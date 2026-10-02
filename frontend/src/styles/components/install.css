@@ -18,6 +18,13 @@
   display: none;
 }
 
+/* Wide screens: computers rarely install sites; the footer's link is enough there. */
+@media (min-width: 720px) {
+  .install-banner {
+    display: none;
+  }
+}
+
 .install-banner__icon {
   flex: none;
   border-radius: var(--radius-md);

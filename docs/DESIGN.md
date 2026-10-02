@@ -145,11 +145,13 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves. The pa
   icons into circles or squircles.
 - **Offline:** the installed app opens without a connection with the events from the last visit (pages
   network first, flyers and the build's files cached).
-- **The offer** (`InstallOffer.astro`, `scripts/views/installPrompt.ts`): a banner under the header from the
-  second visit on ("Pa' Bailar en tu celular" · Instalar · ×; × hides it for 30 days) and a link in the
-  footer. On Android and desktop Chrome/Edge, "Instalar" opens the browser's install dialog; iPhone and
-  iPad have none, so it opens a sheet with the steps (Safari → Compartir → Agregar a inicio). Nothing shows
-  once installed, or where the browser can't install.
+- **The offer** (`InstallOffer.astro`, `scripts/views/installPrompt.ts`), on every phone from the first
+  visit: a banner under the header ("Pa' Bailar en tu celular" · Instalar · ×; × hides it for 30 days) and
+  a link in the footer (also on computers whose browser can install). "Instalar" opens the browser's own
+  install dialog when it has announced one (Chrome, Edge); otherwise a sheet with the steps for where the
+  visitor is: iPhone (Compartir → Agregar a inicio), Android (menú ⋮ → Instalar aplicación), or inside
+  Instagram, WhatsApp or Facebook, which can't install (open it in the browser first). Nothing once
+  installed.
 
 ## Saving and searching
 

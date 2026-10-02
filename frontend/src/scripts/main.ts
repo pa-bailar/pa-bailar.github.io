@@ -92,8 +92,7 @@ function render({ keepPlace = false } = {}) {
     showPeriods: state.view === "upcoming",
     searching: state.query !== "",
   });
-  const today = todayIso();
-  renderSavedToggles(events.filter((event) => event.date >= today && isSaved(event.id)).length, state.savedOnly);
+  renderSavedCount();
   if (anchor) restoreListPosition(anchor);
   announce(shown);
   prepareWeekendShare();
@@ -130,6 +129,12 @@ function showView(view: View) {
   const toolbar = document.querySelector<HTMLElement>(".toolbar");
   const top = toolbar?.getBoundingClientRect().top ?? 0;
   if (top < 0) window.scrollTo({ top: top + window.scrollY, behavior: "auto" });
+}
+
+/** "Guardados 3": how many upcoming events are saved, on the toggles. */
+function renderSavedCount() {
+  const today = todayIso();
+  renderSavedToggles(events.filter((event) => event.date >= today && isSaved(event.id)).length, state.savedOnly);
 }
 
 /** Search, "Guardados" or a view change made the list start over: back up to the tabs if the page is past them. */
@@ -261,7 +266,13 @@ export function start() {
   initClickTracking();
   document.addEventListener("click", handleClick);
   document.addEventListener("input", handleSearchInput);
-  // Saving or unsaving changes the "Guardados" count, and the list when only saved events are shown.
-  initSaveButtons(() => render({ keepPlace: true }));
+  // Saving changes the "Guardados" count. The list itself only changes while it shows just the saved events:
+  // then it's redrawn right where the visitor was (never jumping, e.g. to a period's heading).
+  initSaveButtons(() => {
+    if (!state.savedOnly) return renderSavedCount();
+    const scrollY = window.scrollY;
+    render();
+    returnToScroll(scrollY);
+  });
   render();
 }
