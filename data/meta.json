@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-02T09:41:11-05:00",
+  "generated_at": "2026-10-02T10:44:23-05:00",
   "stats": {
     "accounts": 5,
     "posts_analyzed": 0,
@@ -9,61 +9,59 @@
     "events_merged": 0,
     "events_discarded": 0,
     "provisional": 0,
-    "upgraded": 1,
+    "upgraded": 0,
+    "reanalyzed": 0,
     "pending": 0,
-    "errors": 0,
+    "errors": 5,
     "events_expired": 0,
     "processed_forgotten": 0,
     "flyers_removed": 0,
-    "gemini_requests": {
-      "gemini-3.8-flash": 3,
-      "gemini-3.5-flash": 1
-    },
+    "gemini_requests": {},
     "by_account": {
       "zafradance": {
         "posts_analyzed": 0,
         "events_new": 0,
         "events_merged": 0,
         "pending": 0,
-        "errors": 0,
+        "errors": 1,
         "backfill": false,
-        "fetch_failed": false
+        "fetch_failed": true
       },
       "bembeacademiadebaile": {
         "posts_analyzed": 0,
         "events_new": 0,
         "events_merged": 0,
         "pending": 0,
-        "errors": 0,
+        "errors": 1,
         "backfill": false,
-        "fetch_failed": false
+        "fetch_failed": true
       },
       "esferalatinaoficial": {
         "posts_analyzed": 0,
         "events_new": 0,
         "events_merged": 0,
         "pending": 0,
-        "errors": 0,
+        "errors": 1,
         "backfill": false,
-        "fetch_failed": false
+        "fetch_failed": true
       },
       "madyumdance": {
         "posts_analyzed": 0,
         "events_new": 0,
         "events_merged": 0,
         "pending": 0,
-        "errors": 0,
+        "errors": 1,
         "backfill": false,
-        "fetch_failed": false
+        "fetch_failed": true
       },
       "academiadebailepasolatino": {
         "posts_analyzed": 0,
         "events_new": 0,
         "events_merged": 0,
         "pending": 0,
-        "errors": 0,
+        "errors": 1,
         "backfill": false,
-        "fetch_failed": false
+        "fetch_failed": true
       }
     }
   }
