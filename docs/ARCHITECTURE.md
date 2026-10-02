@@ -190,12 +190,17 @@ code renders an event's detail in the browser (the dialog) and at build time (th
 
 | Workflow | Trigger | Steps | Permissions |
 |---|---|---|---|
-| `ci` | Every pull request (including data PRs); manual | `npm ci`. Then `npm run check`, which is the data contract (`check-data.mjs`), `astro check` (strict TypeScript) and color contrast (`check-contrast.mjs`). Then `npm test` (Vitest), then `npm run build` | `contents: read` |
-| `deploy` | Push to `main` (every merged PR); manual; the backend's sweep on days without changes (with `checked_at`) | **build** job: `npm ci`, `npm run build` (with `PUBLIC_CHECKED_AT`), upload the Pages artifact. **deploy** job: publish to GitHub Pages (environment `github-pages`) | Build: `contents: read` only (it runs npm's install scripts). Deploy: `pages: write`, `id-token: write` |
+| `ci` | Every pull request (including data PRs, and title edits); manual | The PR title (Conventional Commits, `release.mjs check`). `npm ci`. Then `npm run check`, which is the data contract (`check-data.mjs`), `astro check` (strict TypeScript) and color contrast (`check-contrast.mjs`). Then `npm test` (Vitest), then `npm run build` | `contents: read` |
+| `deploy` | Push to `main` (every merged PR); manual; the backend's sweep on days without changes (with `checked_at`) | **version** job: the version from the commits since the last tag (`release.mjs plan`); if they change the site, tag it and publish its GitHub Release. **build** job: `npm ci`, `npm run build` (with `PUBLIC_CHECKED_AT` and `PUBLIC_VERSION`), upload the Pages artifact. **deploy** job: publish to GitHub Pages (environment `github-pages`) | Version: `contents: write` (it runs no npm package). Build: `contents: read` only (it runs npm's install scripts). Deploy: `pages: write`, `id-token: write` |
 
 - **One deploy at a time:** `concurrency: pages` without cancelling, so two merges in a row publish one
   after the other.
 - **Node:** version 24 (`.nvmrc`), with an npm cache keyed on `frontend/package-lock.json`.
+- **Versions:** squash merges make each PR one commit on `main`, titled like the PR. `feat` → minor,
+  `fix`/`perf`/`refactor`/`copy`/`style`/`revert` → patch, `!` or `BREAKING CHANGE:` → major; `docs`, `chore`
+  (data), `ci`, `test`, `build` → no version. The release notes group the PRs (features, fixes, other
+  changes); the footer shows the version, linked to its release. The first tag, `v1.0.0`, marks where
+  numbering started.
 
 ### 4.2 Protection of `main`
 
