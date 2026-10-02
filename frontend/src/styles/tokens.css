@@ -33,6 +33,7 @@
   --cocoa-500: #6e4a44;
   --cocoa-300: #c9afa3;
   --cocoa-200: #b7978c;
+  --tomato-700: #b02a17; /* period headings in light: deeper, calmer next to the page */
   --tomato-600: #c8321c;
   --tomato-400: #e2452b;
   --tomato-350: #e8553b; /* type tags: light enough for wine text (≥4.5:1) */
@@ -40,6 +41,7 @@
   --orange-400: #f08a24;
   --marigold-600: #e9b021;
   --marigold-400: #f2c12e;
+  --gold-400: #e8b54a; /* period headings in dark: marigold without the glare */
   --rose-300: #e9b8a0;
   --palm-600: #1f7a4a;
   --white: #ffffff;
@@ -75,7 +77,9 @@
   --stripe-1: light-dark(var(--tomato-600), var(--tomato-400));
   --stripe-2: light-dark(var(--orange-600), var(--orange-400));
   --stripe-3: light-dark(var(--marigold-600), var(--marigold-400));
-  --period-shadow: light-dark(var(--wine-900), var(--tomato-400)); /* offset shadow of the period lettering */
+  /* Period headings (Sanabria lettering): calmer than the logo's colors, with a soft offset shadow. */
+  --period-title: light-dark(var(--tomato-700), var(--gold-400));
+  --period-shadow: light-dark(var(--cream-300), var(--wine-950));
   --sticker-bg: light-dark(var(--tomato-600), var(--marigold-400));
   --sticker-text: light-dark(var(--cream-50), var(--wine-900));
   --today-bg: light-dark(var(--marigold-600), var(--marigold-400));
@@ -124,6 +128,7 @@
   --radius-round: 50%; /* only the date sticker and calendar day numbers */
   --border-width: 1.5px;
   --stripe-height: 5px;
+  --period-rule-height: 3px; /* the tri-color lines around period headings */
   --control-height: 40px; /* buttons, icon buttons, theme toggle */
   --chip-height: 32px;
   --jump-bar-height: 56px; /* phones: sticky bar with filters and period chips */

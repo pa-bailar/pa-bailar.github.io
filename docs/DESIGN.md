@@ -92,7 +92,7 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves. The pa
 
 ## Upcoming list
 
-- **Period headers** (Izzy Sanabria's Fania lettering): the title in the logo's display face and color (Shrikhand, `--logo`) with a 2px offset shadow (`--period-shadow`: wine in light, tomato in dark) and the event count ("5 eventos"), with generous space above. Page colors only, so it never reads as a post. The title stays at 24px or more: in light it relies on WCAG's large-text 3:1 (4.00:1).
+- **Period headers** (Izzy Sanabria's Fania lettering): the title in the display face (Shrikhand) in `--period-title` (deeper tomato in light, soft gold in dark: calmer than the logo, no glare) with a 2px offset shadow (`--period-shadow`: sand in light, deep wine in dark), between two thin lines made of the three Fania colors side by side and the event count ("5 eventos"), with generous space above. Page colors only, so it never reads as a post. Title contrast 4.93:1 (light) and 9.47:1 (dark): it passes even the normal-text 4.5:1.
 - **Grouped by period, not by day** (`groupByPeriod` in `scripts/state.ts`). Days with one or two events share rows instead of each leaving a mostly empty row. The buckets don't overlap, follow the usual calendar "date range" grouping, and split out the weekend because that's when most socials happen:
 
   | Group | Range |

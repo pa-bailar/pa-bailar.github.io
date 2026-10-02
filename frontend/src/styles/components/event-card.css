@@ -6,24 +6,35 @@
   margin-top: var(--space-7);
 }
 
-/* Period header, in the lettering of Izzy Sanabria's Fania covers: the title in the logo's display face
-   and color with an offset shadow, and the event count. Page colors throughout, so it never reads as
-   part of a post (or the other theme); the space above it opens the period. */
+/* Period header, in the lettering of Izzy Sanabria's Fania covers: the title in the display face with a
+   soft offset shadow and the event count, between two lines made of the three Fania colors side by side
+   (tomato, orange, marigold: one line, three segments, no gradient). Page colors only, so it never
+   reads as part of a post (or as the other theme). */
 .agenda-group__header {
+  --rule: linear-gradient(
+    to right,
+    var(--stripe-1) 0 33.34%,
+    var(--stripe-2) 33.34% 66.67%,
+    var(--stripe-3) 66.67%
+  );
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-between;
   gap: var(--space-2) var(--space-3);
   margin-bottom: var(--space-5);
+  padding: var(--space-3) 0;
+  background:
+    var(--rule) top / 100% var(--period-rule-height) no-repeat,
+    var(--rule) bottom / 100% var(--period-rule-height) no-repeat;
 }
 
 .agenda-group__heading {
   font-family: var(--font-display);
   font-weight: var(--weight-regular);
-  font-size: var(--text-2xl); /* 26px: keep it at 24px or more, it relies on WCAG's large-text 3:1 (4.00:1 in light) */
+  font-size: var(--text-2xl); /* 26px, large text: 4.93:1 in light, 9.47:1 in dark */
   line-height: 1.15;
-  color: var(--logo);
+  color: var(--period-title);
   text-shadow: 2px 2px 0 var(--period-shadow);
 }
 
