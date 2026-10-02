@@ -13,7 +13,7 @@
   overflow: hidden;
   font-family: var(--font-serif);
   font-style: italic;
-  font-weight: 500;
+  font-weight: var(--weight-serif);
   font-size: var(--text-xl);
   white-space: nowrap; /* "Septiembre de 2026" on one line, even at 320px */
   text-overflow: ellipsis;

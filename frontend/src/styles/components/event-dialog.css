@@ -24,7 +24,7 @@
 
 /* Motion is the bottom sheet's (sheet.css). Wide screens, where it's a centered window, use a short
    rise and fade instead of sliding the whole height. */
-@media (min-width: 760px) {
+@media (min-width: 720px) {
   .event-dialog[open] {
     animation-name: viewer-in;
   }
@@ -124,7 +124,7 @@
   }
 }
 
-@media (max-width: 759px) {
+@media (max-width: 719px) {
   /* Phones: nearly full screen, attached to the bottom, with a handle to pull it down. */
   .event-dialog {
     width: 100%;
@@ -239,7 +239,7 @@
   margin-top: var(--space-1);
   font-family: var(--font-serif);
   font-style: italic;
-  font-weight: 500;
+  font-weight: var(--weight-serif);
   font-size: var(--text-lg);
   color: var(--text-italic);
 }
@@ -327,7 +327,7 @@
   font-size: var(--text-sm);
 }
 
-@media (min-width: 760px) {
+@media (min-width: 720px) {
   .event-dialog__layout {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   }

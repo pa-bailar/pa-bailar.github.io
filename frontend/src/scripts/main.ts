@@ -3,6 +3,7 @@
 import type { DanceEvent, EventType, View } from "./types";
 import { initClickTracking } from "./lib/analytics";
 import { byId } from "./lib/dom";
+import { eventCountLabel } from "./lib/format";
 import { addMonths, currentMonth, todayIso } from "./lib/dates";
 import {
   activeFilterCount,
@@ -32,10 +33,9 @@ function focusSelector(element: Element | null): string | null {
 }
 
 function announce(count: number) {
-  const noun = count === 1 ? "evento" : "eventos";
-  byId("results-status").textContent =
-    state.view === "upcoming" ? `${count} ${noun} próximos` : `${count} ${noun} este día`;
-  byId("filter-sheet-results").textContent = count ? `Ver ${count} ${noun}` : "Ver resultados";
+  const label = eventCountLabel(count);
+  byId("results-status").textContent = state.view === "upcoming" ? `${label} próximos` : `${label} este día`;
+  byId("filter-sheet-results").textContent = count ? `Ver ${label}` : "Ver resultados";
 }
 
 /** Containers whose controls are re-rendered: focus goes back to the same control in the same one. */

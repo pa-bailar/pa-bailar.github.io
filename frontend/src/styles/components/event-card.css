@@ -162,7 +162,7 @@
 /* The academy: filters the list by it. Above the stretched title button, so it gets its own taps. */
 .event-card__account {
   position: relative;
-  z-index: 1;
+  z-index: var(--z-raised);
   padding: var(--space-1) 0;
   border: 0;
   background: none;

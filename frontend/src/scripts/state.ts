@@ -73,6 +73,11 @@ export function defaultDayForMonth(events: DanceEvent[], month: Date): string {
   return firstEvent ? firstEvent.date : toIsoDate(month);
 }
 
+/** The DOM id of a period's section in the upcoming list ("periodo-fin-de-semana"). */
+export function sectionId(periodKey: string): string {
+  return `periodo-${periodKey}`;
+}
+
 export interface AgendaGroup {
   key: string; // stable, for the section's id: "hoy", "fin-de-semana", "2026-11"…
   label: string; // heading: "Este fin de semana"

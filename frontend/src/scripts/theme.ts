@@ -4,21 +4,22 @@
 //   light → always light
 //   dark  → always dark
 // The toggle cycles auto → light → dark → auto; the choice is remembered (auto is the default).
-// BaseLayout.astro has an inline copy of resolveTheme() that applies the theme before first paint;
-// keep both in sync (DAY_START_HOUR, NIGHT_START_HOUR, THEME_COLORS).
+// BaseLayout.astro applies the same rules before first paint (an inline script); both read their
+// settings from themeConfig.ts.
 
 import { byId } from "./lib/dom";
+import {
+  DAY_START_HOUR,
+  NIGHT_START_HOUR,
+  THEME_COLORS,
+  THEME_STORAGE_KEY as STORAGE_KEY,
+  type Theme,
+} from "./themeConfig";
 
 type Mode = "auto" | "light" | "dark";
-type Theme = "light" | "dark";
 
-const STORAGE_KEY = "theme";
 const MODES: Mode[] = ["auto", "light", "dark"];
-const DAY_START_HOUR = 6;
-const NIGHT_START_HOUR = 18;
 const RECHECK_MS = 60_000;
-/** Browser UI color (address bar on phones) per theme: the page background token. */
-const THEME_COLORS: Record<Theme, string> = { light: "#ECDDC6", dark: "#2A0F14" };
 const MODE_LABELS: Record<Mode, string> = { auto: "Auto", light: "Día", dark: "Noche" };
 const THEME_NAMES: Record<Theme, string> = { light: "día", dark: "noche" };
 

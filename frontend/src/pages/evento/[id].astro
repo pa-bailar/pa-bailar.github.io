@@ -10,7 +10,7 @@ import { accounts, events } from "../../data";
 import { todayIso } from "../../scripts/lib/dates";
 import type { DanceEvent } from "../../scripts/types";
 import { formatLongDate, formatTime, placeLabel } from "../../scripts/lib/format";
-import { eventPageUrl, eventTimes, flyerUrl, mainMedia, previewImagePath } from "../../scripts/lib/links";
+import { BASE_URL, eventPageUrl, eventTimes, flyerUrl, mainMedia, previewImagePath } from "../../scripts/lib/links";
 import { eventDetailHtml } from "../../scripts/views/eventDetail";
 
 export function getStaticPaths() {
@@ -22,7 +22,7 @@ interface Props {
 }
 
 const { event } = Astro.props;
-const home = import.meta.env.BASE_URL;
+const home = BASE_URL;
 const today = todayIso();
 const isPast = event.date < today;
 

@@ -8,8 +8,8 @@
 // Two compact dropdowns instead of a row of chips: nothing scrolls sideways or gets cut off.
 // Like Instagram's header, the bar hides while scrolling down and comes back on any scroll up.
 
-import type { AgendaGroup } from "../state";
-import { byId, escapeHtml } from "../lib/dom";
+import { type AgendaGroup, sectionId } from "../state";
+import { byId, prefersReducedMotion, escapeHtml } from "../lib/dom";
 import { capitalize } from "../lib/format";
 import type { StyleCount } from "./filters";
 import { ICONS } from "../lib/icons";
@@ -19,16 +19,12 @@ const SCROLL_THRESHOLD = 8; // px of movement before reacting, so small jitters 
 const BAND_TOP = 64; // px: just below the bar (--jump-bar-height + a little)
 const ALWAYS_SHOWN_ABOVE = 200; // px from the top of the page where the bar never hides
 
-const prefersReducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 let observer: IntersectionObserver | null = null;
 let jumping = false; // a jump scrolls on purpose: don't hide the bar or move the highlight meanwhile
 let groups: AgendaGroup[] = [];
 let currentKey: string | null = null; // the period on screen (scroll-spy)
 const MENU_MARGIN = 8; // px menus keep from the screen edges
 
-export function sectionId(group: AgendaGroup): string {
-  return `periodo-${group.key}`;
-}
 
 export interface JumpBarContent {
   groups: AgendaGroup[]; // periods of the upcoming list (none in the calendar)
@@ -60,14 +56,14 @@ function atPageBottom(): boolean {
  */
 function highlightAtEdges() {
   if (jumping || !groups.length) return;
-  const first = document.getElementById(sectionId(groups[0]));
+  const first = document.getElementById(sectionId(groups[0].key));
   if (first && first.getBoundingClientRect().top > BAND_TOP) {
     setActive(groups[0].key);
     return;
   }
   if (!atPageBottom()) return;
   const onScreen = groups.filter((group) => {
-    const section = document.getElementById(sectionId(group));
+    const section = document.getElementById(sectionId(group.key));
     return section && section.getBoundingClientRect().top < window.innerHeight;
   });
   if (onScreen.length) setActive(onScreen[onScreen.length - 1].key);
@@ -92,7 +88,7 @@ function watchSections() {
     // A band just below the bar: the section crossing it is the one being read.
     { rootMargin: `-${BAND_TOP}px 0px -65% 0px` },
   );
-  groups.forEach((group) => observer!.observe(byId(sectionId(group))));
+  groups.forEach((group) => observer!.observe(byId(sectionId(group.key))));
 }
 
 /** One option of a bar menu: label on the left, its number of events on the right. `state` marks the
@@ -174,7 +170,7 @@ export function restoreListPosition(anchor: ListAnchor) {
   const index = anchor.order.indexOf(anchor.key);
   const candidates = [anchor.key, ...anchor.order.slice(index + 1), ...anchor.order.slice(0, index).reverse()];
   const key = candidates.find((candidate) => present.has(candidate));
-  const target = key ? document.getElementById(`periodo-${key}`) : byId("view-upcoming");
+  const target = key ? document.getElementById(sectionId(key)) : byId("view-upcoming");
   if (!target) return;
   jumping = true; // a scroll on purpose: don't hide the bar for it
   byId("jump-bar").classList.remove("is-hidden");
@@ -185,7 +181,7 @@ export function restoreListPosition(anchor: ListAnchor) {
 }
 
 function jumpTo(key: string) {
-  const section = document.getElementById(`periodo-${key}`);
+  const section = document.getElementById(sectionId(key));
   if (!section) return;
   jumping = true;
   section.scrollIntoView({ behavior: prefersReducedMotion() ? "auto" : "smooth", block: "start" });

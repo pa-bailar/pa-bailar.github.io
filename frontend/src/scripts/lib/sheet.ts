@@ -7,6 +7,7 @@
 //   - every way of closing (×, Escape, back, drag) slides it away instead of making it vanish.
 // The motion itself is CSS (styles/components/sheet.css): .sheet, .is-dragging, .is-closing, --drag.
 
+import { prefersReducedMotion } from "./dom";
 const CLOSE_DISTANCE = 110; // px: minimum drag that closes on release…
 const CLOSE_FRACTION = 0.22; // …or this share of the screen height, whichever is larger
 const FLICK_DOWN = 0.5; // px/ms (500 px/s): a flick down this fast closes, however short
@@ -20,7 +21,6 @@ const BACKDROP_FADE = 0.8; // backdrop opacity lost at full drag progress
 const RUBBER_BAND = 60; // px: most it moves when dragged up past the top
 const DIRECTION_SLOP = 10; // px moved before deciding between a drag and a scroll/swipe
 
-const prefersReducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const closing = new WeakSet<HTMLDialogElement>();
 
 /**

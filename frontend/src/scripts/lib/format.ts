@@ -46,6 +46,11 @@ export function stylesLabel(styles: string[], max = styles.length): string {
   return styles.slice(0, max).join(" · ");
 }
 
+/** "1 evento" / "5 eventos" */
+export function eventCountLabel(count: number): string {
+  return `${count} ${count === 1 ? "evento" : "eventos"}`;
+}
+
 /** "1 publicación" / "2 publicaciones" */
 export function postCountLabel(count: number): string {
   return `${count} ${count === 1 ? "publicación" : "publicaciones"}`;

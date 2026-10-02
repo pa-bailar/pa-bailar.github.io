@@ -1,8 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Stripes from "../components/Stripes.astro";
+import { BASE_URL } from "../scripts/lib/links";
 
-const home = import.meta.env.BASE_URL;
+const home = BASE_URL;
 ---
 
 <BaseLayout title="Página no encontrada · Pa' Bailar" description="Esta página no existe." noindex>
