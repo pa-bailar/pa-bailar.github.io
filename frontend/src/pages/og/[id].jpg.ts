@@ -6,10 +6,9 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import type { APIRoute, GetStaticPaths } from "astro";
 import sharp from "sharp";
-import { events } from "../../data";
+import { DATA_DIR, events } from "../../data";
 import { mainMedia } from "../../scripts/lib/links";
 
-const DATA_DIR = path.resolve(process.cwd(), "../data"); // the site's public folder (astro.config.mjs)
 const PREVIEW_WIDTH = 600;
 
 export const getStaticPaths: GetStaticPaths = () =>

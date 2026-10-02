@@ -18,6 +18,8 @@ export interface EventMedia {
   published: string;
   flyer: string | null; // path relative to the site root, e.g. "flyers/123-0.webp"
   caption: string | null;
+  width?: number; // the flyer's size in pixels, added at build time (src/data.ts)
+  height?: number;
 }
 
 export interface DanceEvent {
