@@ -1,21 +1,23 @@
-// Event detail: the flyer of the selected post (thumbnails of every post when there are several), all
-// details, prices and actions. Pure HTML strings, so the same markup is used by the dialog (in the browser) and by
-// each event's own page (pages/evento/[id].astro, at build time).
+// Event detail: the flyer of the selected post, then when and what (so swiping between events that share
+// a flyer still shows which is which), all details, prices and actions. Pure HTML strings, so the same
+// markup is used by the dialog (in the browser) and by each event's own page (pages/evento/[id].astro,
+// at build time).
 
 import type { DanceEvent, EventMedia } from "../types";
 import { escapeHtml } from "../lib/dom";
 import {
+  cardWhenLabel,
   formatLongDate,
   formatMoney,
   formatTime,
-  mediaLabel,
   placeLabel,
-  postCountLabel,
+  stickerDate,
   stylesLabel,
   typeLabel,
 } from "../lib/format";
 import { ICONS } from "../lib/icons";
-import { flyerUrl, googleCalendarUrl, mapsUrl, thumbUrl, whatsappShareUrl } from "../lib/links";
+import { flyerUrl, googleCalendarUrl, mapsUrl, whatsappShareUrl } from "../lib/links";
+import { openPostsSheet } from "./postsSheet";
 
 function toConfirm(text = "Por confirmar"): string {
   return `<span class="to-confirm">${text}</span>`;
@@ -54,111 +56,50 @@ function pricesHtml(event: DanceEvent): string {
   return `<h3 class="event-dialog__subheading">Precios</h3><ul class="price-list">${items}</ul>`;
 }
 
-/** Thumbnails in the row under the flyer; with more posts, the last place becomes "+N". */
-const VISIBLE_POSTS = 5;
-
-/** Posts are split into flyers (photos and carousels) and videos, each kind under its own small tab. */
-type PostKind = "flyers" | "videos";
-
-const POST_KINDS: { kind: PostKind; label: string }[] = [
-  { kind: "flyers", label: "Flyers" },
-  { kind: "videos", label: "Videos" },
-];
-
-function postKind(media: EventMedia): PostKind {
-  return media.media_type === "VIDEO" ? "videos" : "flyers";
-}
-
-const POST_BADGES: Partial<Record<EventMedia["media_type"], string>> = {
-  VIDEO: ICONS.play,
-  CAROUSEL_ALBUM: ICONS.carousel,
-};
-
-/** `index` is the post's place in the event; `position` and `count`, its place within its kind. */
-function postThumbHtml(media: EventMedia, index: number, position: number, count: number, selected: boolean): string {
-  const thumb = thumbUrl(media);
-  const badge = POST_BADGES[media.media_type];
+/**
+ * "▦ 16" over the flyer when several posts announce the event: opens them all in a sheet (postsSheet.ts),
+ * like Airbnb's photo count. The gallery takes no room in the detail itself.
+ */
+function postsBadgeHtml(event: DanceEvent, selected: number): string {
+  const count = event.media.length;
+  if (count < 2) return "";
   return `
-    <button class="post-thumb" type="button" data-media-index="${index}" aria-pressed="${selected}"
-      aria-label="${mediaLabel(media.media_type)} ${position + 1} de ${count}">
-      ${thumb ? `<img src="${escapeHtml(thumb)}" alt="" width="160" height="160" />` : ""}
-      ${badge ? `<span class="post-thumb__badge" aria-hidden="true">${badge}</span>` : ""}
-    </button>`;
+    <button class="posts-badge" type="button" data-open-posts data-selected="${selected}"
+      aria-label="Ver las ${count} publicaciones de este evento">${ICONS.gallery}<span>${count}</span></button>`;
 }
 
 /**
- * Every post announcing the event (a flyer, then videos, reminders…), as square thumbnails under the
- * flyer, marked like Instagram's grid: ▶ for a video, stacked squares for a carousel.
- *   - Flyers and videos are separated by two small tabs ("Flyers 9", "Videos 7"); the tab shown is the
- *     selected post's kind. With only one kind there are no tabs, just "N publicaciones sobre este evento".
- *   - Each kind shows one row; with more than VISIBLE_POSTS the last place is "+N", which shows them all
- *     (like WhatsApp's media grid).
- *   - Nothing scrolls sideways: the viewer itself swipes sideways between events.
- * Hidden when there's only one post.
+ * The flyer, with the date sticker (as on the cards, so two events sharing a flyer still look different)
+ * and the posts badge over it. The flyer itself opens the post on Instagram.
  */
-function postsHtml(event: DanceEvent, selected: number, showAll: boolean): string {
-  if (event.media.length < 2) return "";
-  const kind = postKind(event.media[selected] ?? event.media[0]);
-  const groups = POST_KINDS.map((group) => ({
-    ...group,
-    indexes: event.media.flatMap((media, index) => (postKind(media) === group.kind ? [index] : [])),
-  })).filter((group) => group.indexes.length > 0);
-  const current = groups.find((group) => group.kind === kind) ?? groups[0]!;
-  const items = current.indexes;
-  const collapsed = items.length > VISIBLE_POSTS && !showAll && items.indexOf(selected) < VISIBLE_POSTS - 1;
-  const shown = collapsed ? items.slice(0, VISIBLE_POSTS - 1) : items;
-  const thumbs = shown
-    .map((index, position) => postThumbHtml(event.media[index]!, index, position, items.length, index === selected))
-    .join("");
-  const more = collapsed
-    ? `<button class="post-thumbs__more" type="button" data-show-all-posts
-        aria-label="Ver los ${items.length} ${current.label.toLowerCase()}">+${items.length - shown.length}</button>`
-    : "";
-  const header =
-    groups.length > 1
-      ? `<div class="post-tabs" role="group" aria-label="Publicaciones de este evento">${groups
-          .map(
-            (group) => `
-              <button class="post-tabs__tab" type="button" data-post-kind="${group.kind}"
-                data-first-post="${group.indexes[0]}" aria-pressed="${group.kind === current.kind}">
-                ${group.label} <span class="post-tabs__count">${group.indexes.length}</span>
-              </button>`,
-          )
-          .join("")}</div>`
-      : `<p class="post-thumbs__label">${postCountLabel(items.length)} sobre este evento</p>`;
-  return `
-    <div class="post-thumbs${collapsed ? "" : " is-all"}">
-      ${header}
-      <div class="post-thumbs__grid" role="group" aria-label="${groups.length > 1 ? current.label : "Publicaciones de este evento"}">${thumbs}${more}</div>
-    </div>`;
-}
-
-function mediaHtml(event: DanceEvent, media: EventMedia): string {
+function mediaHtml(event: DanceEvent, media: EventMedia, selected: number): string {
   const flyer = flyerUrl(media);
   if (!flyer) return "";
   const isVideo = media.media_type === "VIDEO";
   // Its real size (read at build time) reserves its space before it loads: switching posts never
   // collapses the image to nothing and shifts everything below it.
   const size = media.width && media.height ? ` width="${media.width}" height="${media.height}"` : "";
+  const sticker = stickerDate(event.date);
   return `
-    <a class="event-dialog__media" href="${escapeHtml(media.permalink)}" target="_blank" rel="noopener">
-      <img src="${escapeHtml(flyer)}"${size} alt="${isVideo ? "Video" : "Flyer"} de ${escapeHtml(event.title)}" />
-      ${isVideo ? `<span class="event-dialog__play">${ICONS.instagram}Ver video en Instagram</span>` : ""}
-    </a>`;
+    <div class="event-dialog__frame">
+      <a class="event-dialog__media" href="${escapeHtml(media.permalink)}" target="_blank" rel="noopener">
+        <img src="${escapeHtml(flyer)}"${size} alt="${isVideo ? "Video" : "Flyer"} de ${escapeHtml(event.title)}" />
+        ${isVideo ? `<span class="event-dialog__play">${ICONS.instagram}Ver video en Instagram</span>` : ""}
+      </a>
+      <span class="date-sticker" aria-hidden="true"><b>${sticker.day}</b><small>${sticker.month}</small></span>
+      ${postsBadgeHtml(event, selected)}
+    </div>`;
 }
 
 /**
- * The detail's inner HTML. `selected` is the post shown; `showAllPosts` expands the thumbnails' "+N".
- * The title is an h1 on the event page and an h2 in the viewer, where each slide has its own `titleId`.
+ * The detail's inner HTML. `selected` is the post shown. The title is an h1 on the event page and an h2
+ * in the viewer, where each slide has its own `titleId`. Right under the flyer: when ("Domingo · 8:00
+ * p. m.") and the title, so they're on screen without scrolling.
  */
 export function eventDetailHtml(
   event: DanceEvent,
   selected: number,
-  {
-    headingLevel,
-    titleId = "event-title",
-    showAllPosts = false,
-  }: { headingLevel: 1 | 2; titleId?: string; showAllPosts?: boolean },
+  { headingLevel, titleId = "event-title" }: { headingLevel: 1 | 2; titleId?: string },
 ): string {
   const media = event.media[selected] ?? event.media[0];
   const permalink = escapeHtml(media.permalink);
@@ -174,13 +115,13 @@ export function eventDetailHtml(
 
   return `
     <div class="event-dialog__visual">
-      ${mediaHtml(event, media)}
-      ${postsHtml(event, selected, showAllPosts)}
+      ${mediaHtml(event, media, selected)}
     </div>
     <div class="event-dialog__info">
-      <div class="stripes" aria-hidden="true"><i></i><i></i><i></i></div>
-      <span class="tag-type t-${escapeHtml(event.event_type)}">${typeLabel(event.event_type)}</span>
+      <p class="event-dialog__when">${escapeHtml(cardWhenLabel(event))}</p>
       <${heading} class="event-dialog__title" id="${titleId}">${escapeHtml(event.title)}</${heading}>
+      <span class="tag-type t-${escapeHtml(event.event_type)}">${typeLabel(event.event_type)}</span>
+      <div class="stripes" aria-hidden="true"><i></i><i></i><i></i></div>
       <dl class="detail-list">${rows}</dl>
       ${pricesHtml(event)}
       ${styles ? `<p class="style-list">${escapeHtml(styles)}</p>` : ""}
@@ -195,32 +136,21 @@ export function eventDetailHtml(
 }
 
 /**
- * Clicks on the posts: a thumbnail shows that post (its image, "Ver en Instagram" link and caption), a
- * tab (Flyers / Videos) shows the first post of its kind, "+N" shows every post of the kind. Re-renders
- * the detail and keeps the focus where the visitor was (the first new thumbnail after "+N"). False when
- * the click wasn't on them.
+ * The posts badge: opens every post in the sheet; choosing one re-renders the detail with it (its image,
+ * "Ver en Instagram" link and caption), without moving. False when the click wasn't on the badge.
  */
 export function handlePostClick(
   container: HTMLElement,
   target: HTMLElement,
-  render: (selected: number, showAllPosts: boolean) => void,
+  event: DanceEvent,
+  render: (selected: number) => void,
 ): boolean {
-  const tab = target.closest<HTMLElement>("[data-post-kind]");
-  if (tab) {
-    if (tab.getAttribute("aria-pressed") !== "true") keepingScroll(container, () => render(Number(tab.dataset.firstPost ?? 0), false));
-    container.querySelector<HTMLElement>(`[data-post-kind="${tab.dataset.postKind}"]`)?.focus({ preventScroll: true });
-    return true;
-  }
-  const thumb = target.closest<HTMLElement>("[data-media-index]");
-  const expand = target.closest<HTMLElement>("[data-show-all-posts]");
-  if (!thumb && !expand) return false;
-  const pressed = container.querySelector<HTMLElement>('[data-media-index][aria-pressed="true"]');
-  const selected = Number((thumb ?? pressed)?.dataset.mediaIndex ?? 0);
-  const showAll = Boolean(expand) || Boolean(container.querySelector(".post-thumbs.is-all"));
-  keepingScroll(container, () => render(selected, showAll));
-  const thumbs = [...container.querySelectorAll<HTMLElement>(".post-thumb")];
-  const focus = expand ? thumbs[VISIBLE_POSTS - 1] : thumbs.find((item) => item.dataset.mediaIndex === String(selected));
-  focus?.focus({ preventScroll: true });
+  const badge = target.closest<HTMLElement>("[data-open-posts]");
+  if (!badge) return false;
+  openPostsSheet(event, Number(badge.dataset.selected ?? 0), (index) => {
+    keepingScroll(container, () => render(index));
+    container.querySelector<HTMLElement>("[data-open-posts]")?.focus({ preventScroll: true });
+  });
   return true;
 }
 

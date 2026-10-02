@@ -129,15 +129,11 @@ export function initEventDialog(find: (id: string) => DanceEvent | undefined) {
     if (slide) {
       const position = Number(slide.dataset.slide);
       const event = list[position];
-      const rerender = (selected: number, showAllPosts: boolean) => {
+      const rerender = (selected: number) => {
         if (!event) return;
-        slide.innerHTML = eventDetailHtml(event, selected, {
-          headingLevel: 2,
-          titleId: `event-title-${position}`,
-          showAllPosts,
-        });
+        slide.innerHTML = eventDetailHtml(event, selected, { headingLevel: 2, titleId: `event-title-${position}` });
       };
-      if (handlePostClick(slide, target, rerender)) return;
+      if (event && handlePostClick(slide, target, event, rerender)) return;
     }
     const stepButton = target.closest<HTMLElement>("[data-step]");
     if (stepButton) step(Number(stepButton.dataset.step));

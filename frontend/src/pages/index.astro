@@ -7,6 +7,7 @@ import SiteHeader from "../components/SiteHeader.astro";
 import ViewToolbar from "../components/ViewToolbar.astro";
 import JumpBar from "../components/JumpBar.astro";
 import FilterSheet from "../components/FilterSheet.astro";
+import PostsSheet from "../components/PostsSheet.astro";
 import ViewSwitch from "../components/ViewSwitch.astro";
 import { accounts, events, meta } from "../data";
 import { todayIso } from "../scripts/lib/dates";
@@ -44,6 +45,7 @@ const previewImage = nextEvent ? previewImagePath(nextEvent) : null;
 
   <SiteFooter accounts={accounts} />
   <EventDialog />
+  <PostsSheet />
   <FilterSheet />
   <ViewSwitch />
 

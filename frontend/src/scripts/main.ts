@@ -26,6 +26,7 @@ import {
   returnToScroll,
 } from "./views/jumpBar";
 import { renderUpcomingView } from "./views/upcomingView";
+import { initPostsSheet } from "./views/postsSheet";
 import { initViewSwitch, renderViewSwitch } from "./views/viewSwitch";
 
 const state = createInitialState();
@@ -180,6 +181,7 @@ export function start() {
   events = JSON.parse(byId("events-data").textContent || "[]");
   initThemeToggle();
   initEventDialog((id) => events.find((event) => event.id === id));
+  initPostsSheet();
   initJumpBar();
   initViewSwitch(showView);
   initClickTracking();
