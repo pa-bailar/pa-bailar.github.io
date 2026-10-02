@@ -65,6 +65,7 @@ const PAIRS = [
   ["Muted text on page (updated date, footer, inactive tabs and chips)", "text-muted", "bg", "text"],
   ["Muted text on cards (meta, styles, labels, caption)", "text-muted", "surface", "text"],
   ["Muted text on image well (no-flyer placeholder, large)", "text-muted", "surface-sunken", "large"],
+  ["Muted text on image well (\"16 publicaciones sobre este evento\")", "text-muted", "surface-sunken", "text"],
   ["Italic accent on page (tagline)", "text-italic", "bg", "text"],
   ["Italic accent on dialog (subheading)", "text-italic", "surface", "text"],
   ["Logo on page (large)", "logo", "bg", "large"],

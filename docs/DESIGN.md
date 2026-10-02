@@ -142,7 +142,8 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves. The pa
 
 An event can be announced by several Instagram posts (a flyer, then a video, a reminder). It's still **one** card:
 - **Card:** shows the main post's flyer (images come before videos). A `.media-count` label ("2 publicaciones") sits in the flyer's top-right corner.
-- **Dialog:** `.media-tabs` above the flyer, labeled by post type (Flyer / Carrusel / Video), with the same underline style as the main view tabs. Switching tabs changes the image, the "Ver en Instagram" link and the caption.
+- **Dialog and event page:** `.post-thumbs`, square thumbnails of every post under the flyer, like Instagram's grid: crops, with ▶ on videos and stacked squares on carousels, white with a shadow. They sit in one row of five under a label ("16 publicaciones sobre este evento"); with more posts, the fifth place is "+N" (like WhatsApp's media grid) and shows them all, wrapping. The selected post has an accent ring. Tapping a thumbnail changes the image, the "Ver en Instagram" link and the caption.
+- **Never a sideways scroll inside the viewer:** the viewer already swipes sideways between events, so nothing inside a slide may scroll sideways (`.viewer-slide { overflow-x: hidden }`; the thumbnails wrap instead). Tabs were replaced for this reason: 16 of them overflowed and made the slide scroll.
 - **Videos:** the dialog shows the video's preview frame with a "Ver video en Instagram" label (`.event-dialog__play`). Videos play on Instagram, never embedded.
 
 ## Event detail: dialog and page
