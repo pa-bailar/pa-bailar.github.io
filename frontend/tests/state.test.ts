@@ -29,6 +29,33 @@ describe("groupByPeriod (today: Wednesday 2026-10-07)", () => {
   });
 });
 
+describe("groupByPeriod: far events by year", () => {
+  const on = (date: string) => event({ id: date, date });
+  const keysAndLabels = (dates: string[], today: string) =>
+    groupByPeriod(dates.map(on), today).map((group) => [group.key, group.label]);
+
+  it("past the six-month horizon, events are grouped by year", () => {
+    expect(keysAndLabels(["2026-11-05", "2027-04-20", "2027-06-01", "2028-02-10"], "2026-10-07")).toEqual([
+      ["2026-11", "Noviembre"],
+      ["2027-04", "Abril de 2027"], // 6 months ahead: still a month
+      ["anio-2027", "Más adelante en 2027"], // 8 months ahead: the rest of 2027
+      ["anio-2028", "En 2028"],
+    ]);
+  });
+
+  it("in December, next January still gets its own month", () => {
+    expect(keysAndLabels(["2027-01-15", "2027-03-01", "2027-07-01"], "2026-12-10")).toEqual([
+      ["2027-01", "Enero de 2027"],
+      ["2027-03", "Marzo de 2027"],
+      ["anio-2027", "Más adelante en 2027"],
+    ]);
+  });
+
+  it("a year with no month of its own listed is just \"En <año>\"", () => {
+    expect(keysAndLabels(["2027-05-10"], "2026-10-07")).toEqual([["anio-2027", "En 2027"]]);
+  });
+});
+
 describe("styles", () => {
   it("a family filter matches its variants", () => {
     expect(styleMatches("salsa caleña", "salsa")).toBe(true);

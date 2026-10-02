@@ -125,6 +125,7 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves. The pa
 People look for "tonight, this weekend, next week" (the date buckets Eventbrite's quick filters use), so
 the list stays short there and summarizes what's further away (`scripts/views/upcomingView.ts`):
 - **Near periods in full:** Hoy, Esta semana, Este fin de semana and Próxima semana show their flyers.
+- **Far events by year:** months get their own group for the next six months (relative to today, so in December next January is still its own month); beyond that, one group per year: "En 2027", or "Más adelante en 2027" when months of 2027 are already listed.
 - **Later periods summarized:** "Más adelante en <mes>" and each later month start as one row with their
   first five flyers as small squares and "Ver los 23 eventos ›" (`.period-summary`); tapping it shows
   them in full. Choosing that period in the bar's menu opens it too.

@@ -96,11 +96,26 @@ export interface AgendaGroup {
  *   "Este fin de semana"     Friday … Sunday of this week (Friday night counts as weekend)
  *   "Próxima semana"         next Monday … Sunday
  *   "Más adelante en <mes>"  the rest of the current month
- *   "<Mes>" / "<Mes> de <año>"  one group per later month (year shown when it's not this year)
+ *   "<Mes>" / "<Mes> de <año>"  one group per month for the next MONTH_HORIZON months (year shown when
+ *                            it's not this year)
+ *   "En <año>" / "Más adelante en <año>"  beyond that, one group per year ("Más adelante" when months of
+ *                            that year already have their own groups)
  *
+ * The far end goes by year, not by month: past the horizon only festivals and congresses are announced,
+ * a handful a year. The horizon is relative to today, so in December next January still gets its own
+ * group instead of being lumped into next year.
  * Weeks run Monday to Sunday, as in Colombian calendars. "Mañana" is shown on each card.
  * Input must be sorted by date.
  */
+/** Months after the current one that get a group each; later events are grouped by year. */
+export const MONTH_HORIZON = 6;
+
+/** Months from the current one to `date`'s ("2026-10-07" → "2027-01-10": 3). */
+function monthsAhead(today: string, date: string): number {
+  const months = (iso: string) => Number(iso.slice(0, 4)) * 12 + Number(iso.slice(5, 7));
+  return months(date) - months(today);
+}
+
 export function groupByPeriod(events: DanceEvent[], today = todayIso()): AgendaGroup[] {
   const thisWeekEnd = endOfWeek(today);
   const weekendStart = addDays(thisWeekEnd, -2); // Friday
@@ -117,6 +132,14 @@ export function groupByPeriod(events: DanceEvent[], today = todayIso()): AgendaG
   return [...groups.values()];
 
   function periodOf(date: string): [string, string, string] {
+    if (monthsAhead(today, date) > MONTH_HORIZON) {
+      const year = date.slice(0, 4);
+      // Months of that year already listed (e.g. January to April): this group is the rest of it.
+      const afterItsMonths = [...groups.keys()].some((key) => key.startsWith(`${year}-`));
+      return afterItsMonths
+        ? [`anio-${year}`, `Más adelante en ${year}`, `Resto de ${year}`]
+        : [`anio-${year}`, `En ${year}`, year];
+    }
     if (date === today) return ["hoy", "Hoy", "Hoy"];
     if (date < weekendStart) return ["esta-semana", "Esta semana", "Esta semana"];
     if (date <= thisWeekEnd) return ["fin-de-semana", "Este fin de semana", "Finde"];
