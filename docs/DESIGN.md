@@ -85,6 +85,8 @@ Sizes: `--text-2xs` 11 · `xs` 12 · `sm` 13 · `md` 15 (body) · `lg` 17 · `xl
   - `--radius-round`: **only** the date sticker and calendar day numbers
 - `--border-width` 1.5px everywhere.
 - Controls: `--control-height` 40px (buttons, toggle), `--chip-height` 32px, `--sticker-size` 60px.
+- Small parts: `--tab-underline` 3px (the selected tab's line), `--icon-sm` 16px (marks over thumbnails), `--icon-lg` 24px (the floating button), `--handle-width` × `--handle-height` 40×4px (every sheet's grab handle, `.sheet-handle`), `--fab-size` 44px.
+- Over photos: `--on-image` (white) with `--shadow-on-image`, the same in both themes, for marks that sit on any flyer (▶, stacked squares).
 
 ## Signature motifs
 

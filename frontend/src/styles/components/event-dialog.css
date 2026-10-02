@@ -51,8 +51,8 @@
   padding: var(--space-3) var(--space-4) var(--space-2);
 }
 
-/* Grab handle: says "pull me down". Phones only (see the media query below). */
-.viewer-bar__handle {
+/* Grab handle (the shared .sheet-handle): says "pull me down". Phones only (see the media query below). */
+.sheet-handle.viewer-bar__handle {
   display: none;
 }
 
@@ -139,15 +139,12 @@
     padding-top: var(--space-5);
   }
 
-  .viewer-bar__handle {
+  .sheet-handle.viewer-bar__handle {
     position: absolute;
     top: var(--space-2);
     left: 50%;
     display: block;
-    width: 40px;
-    height: 4px;
-    border-radius: 2px;
-    background: var(--border);
+    margin: 0;
     transform: translateX(-50%);
   }
 }

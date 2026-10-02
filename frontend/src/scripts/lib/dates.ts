@@ -29,7 +29,7 @@ export function addDays(iso: string, days: number): string {
   return toIsoDate(new Date(parseIsoDate(iso).getTime() + days * DAY_MS));
 }
 
-export function startOfMonth(date: Date): Date {
+function startOfMonth(date: Date): Date {
   return new Date(date.getFullYear(), date.getMonth(), 1);
 }
 
