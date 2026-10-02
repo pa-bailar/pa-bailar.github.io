@@ -1,0 +1,108 @@
+<!doctype html>
+<!--
+  The site's link preview (src/assets/og-site.jpg): what WhatsApp, Instagram and Facebook show when the home
+  page is shared. 1200×630, the header's look: the three stripes, "Pa' Bailar", the tagline, and the record
+  of the app icon. Drawn here with the site's fonts (a canvas in a browser), because the build has none.
+  To change it: serve this folder (e.g. `npx http-server scripts`), open og-site.html, check it, click
+  "Descargar" and replace src/assets/og-site.jpg. Or take a headless screenshot of og-site.html?bare at
+  1200×630 (chrome --headless --window-size=1200,630 --screenshot) and convert it to JPEG.
+-->
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Pa' Bailar · link preview</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Bodoni+Moda:ital,opsz,wght@1,6..96,500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body { margin: 24px; font-family: system-ui; background: #ddd; }
+      canvas { display: block; max-width: 100%; height: auto; box-shadow: 0 2px 12px rgb(0 0 0 / 0.2); }
+      button { margin-top: 12px; font-size: 16px; }
+      /* og-site.html?bare: only the image, for a headless browser's screenshot. */
+      .bare body { margin: 0; }
+      .bare canvas { box-shadow: none; }
+      .bare button { display: none; }
+    </style>
+  </head>
+  <body>
+    <canvas id="og" width="1200" height="630"></canvas>
+    <button id="download" type="button">Descargar og-site.jpg</button>
+    <script>
+      // The light theme's palette (styles/tokens.css).
+      const C = {
+        paper: "#ECDDC6", // --cream-150
+        ink: "#2A0F14", // --wine-900
+        logo: "#C8321C", // --tomato-600
+        record: "#1E0A0E", // --wine-950
+        label: "#F2C12E", // --marigold-400
+        hole: "#2A0F14", // --wine-900, like the favicon and the app icon
+        stripes: ["#C8321C", "#E8791C", "#E9B021"], // --stripe-1..3
+      };
+      const W = 1200;
+      const H = 630;
+      const PAD = 80;
+
+      function stripes(ctx, top, width) {
+        C.stripes.forEach((color, i) => {
+          ctx.fillStyle = color;
+          ctx.fillRect(PAD, top + i * 22, width, 14);
+        });
+      }
+
+      function record(ctx, cx, cy, r) {
+        ctx.fillStyle = C.record;
+        ctx.beginPath();
+        ctx.arc(cx, cy, r, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.strokeStyle = "rgba(255,255,255,0.08)";
+        ctx.lineWidth = 3;
+        for (const k of [0.92, 0.82, 0.72, 0.62]) {
+          ctx.beginPath();
+          ctx.arc(cx, cy, r * k, 0, Math.PI * 2);
+          ctx.stroke();
+        }
+        ctx.fillStyle = C.label;
+        ctx.beginPath();
+        ctx.arc(cx, cy, r * 0.42, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = C.hole;
+        ctx.beginPath();
+        ctx.arc(cx, cy, r * 0.1, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      async function draw() {
+        await Promise.all(
+          ["150px Shrikhand", "italic 500 52px 'Bodoni Moda'"].map((font) => document.fonts.load(font)),
+        );
+        const ctx = document.getElementById("og").getContext("2d");
+        ctx.fillStyle = C.paper;
+        ctx.fillRect(0, 0, W, H);
+
+        // The record, half off the right edge, like a sleeve sliding out.
+        record(ctx, W - 40, H / 2, 250);
+
+        // The text block, centered on the height.
+        stripes(ctx, 110, 640);
+        ctx.textBaseline = "alphabetic";
+        ctx.fillStyle = C.logo;
+        ctx.font = "150px Shrikhand";
+        ctx.fillText("Pa' Bailar", PAD - 6, 360);
+        ctx.fillStyle = C.ink;
+        ctx.font = "italic 500 52px 'Bodoni Moda'";
+        ctx.fillText("Sociales y Talleres de Baile", PAD, 450);
+        ctx.fillText("en Bogotá", PAD, 512);
+      }
+
+      document.getElementById("download").addEventListener("click", () => {
+        const link = document.createElement("a");
+        link.download = "og-site.jpg";
+        link.href = document.getElementById("og").toDataURL("image/jpeg", 0.9);
+        link.click();
+      });
+      if (location.search.includes("bare")) document.documentElement.classList.add("bare");
+      window.ready = draw();
+    </script>
+  </body>
+</html>

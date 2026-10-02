@@ -3,6 +3,7 @@ interface ImportMetaEnv {
   readonly PUBLIC_CHECKED_AT?: string;
   /** Build time only: absolute path of the data folder (astro.config.mjs). */
   readonly DATA_DIR: string;
+  readonly ASSETS_DIR: string;
 }
 
 interface ImportMeta {
