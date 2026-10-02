@@ -6,6 +6,53 @@
   margin-top: var(--space-7);
 }
 
+/* A later period, summarized until opened (upcomingView.ts): its first flyers as small squares and
+   "Ver los 23 eventos". The whole row is the button. */
+.period-summary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: 100%;
+  padding: var(--space-3);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--text);
+  text-align: left;
+}
+
+.period-summary__flyers {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--space-2);
+  max-width: 440px; /* wide screens: small squares, not a row of posters */
+}
+
+.period-summary__flyers img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  background: var(--surface-sunken);
+}
+
+.period-summary__label {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+}
+
+.period-summary__label::after {
+  content: " ›";
+}
+
+/* "Ver 7 más" under a busy period's first events. */
+.period-more {
+  display: flex;
+  margin: var(--space-5) auto 0;
+}
+
 /* Period header, in the lettering of Izzy Sanabria's Fania covers: the title in the display face with a
    soft offset shadow and the event count, between two lines made of the three Fania colors side by side
    (tomato, orange, marigold: one line, three segments, no gradient). Page colors only, so it never

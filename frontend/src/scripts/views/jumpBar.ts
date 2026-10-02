@@ -191,7 +191,11 @@ export function returnToScroll(scrollY: number, anchor: ListAnchor | null = null
   requestAnimationFrame(() => requestAnimationFrame(() => (jumping = false)));
 }
 
+/** Before jumping to a period: lets main.ts open it if it's summarized (upcomingView.ts). */
+let revealPeriod: (key: string) => void = () => {};
+
 function jumpTo(key: string) {
+  revealPeriod(key);
   const section = document.getElementById(sectionId(key));
   if (!section) return;
   jumping = true;
@@ -237,7 +241,9 @@ function initHideOnScroll() {
   bar.addEventListener("focusin", () => bar.classList.remove("is-hidden"));
 }
 
-export function initJumpBar() {
+/** `reveal` runs before jumping to a period from the menu, so a summarized period opens first. */
+export function initJumpBar({ reveal }: { reveal: (key: string) => void }) {
+  revealPeriod = reveal;
   byId("jump-filters").addEventListener("click", () => openPanelSheet(byId<HTMLDialogElement>("filter-sheet")));
   // Each menu opens right under its button and always inside the screen: aligned to the button's left
   // edge (or right edge, for a button on the right half), never wider or taller than the space left.

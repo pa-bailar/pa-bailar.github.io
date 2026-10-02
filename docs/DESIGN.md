@@ -120,6 +120,20 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves. The pa
 - **"Info"** sits after the view tabs and looks like one, but it's a link to the footer (`#info`), never selected and outside the tab list for screen readers.
 - **The footer is "Sobre Pa' Bailar"**: a heading in Bodoni italic, a one-line description, the disclaimer, the calendar subscription, the sources and "Hecho por @jzamora5" (GitHub).
 
+## Long lists
+
+People look for "tonight, this weekend, next week" (the date buckets Eventbrite's quick filters use), so
+the list stays short there and summarizes what's further away (`scripts/views/upcomingView.ts`):
+- **Near periods in full:** Hoy, Esta semana, Este fin de semana and Próxima semana show their flyers.
+- **Later periods summarized:** "Más adelante en <mes>" and each later month start as one row with their
+  first five flyers as small squares and "Ver los 23 eventos ›" (`.period-summary`); tapping it shows
+  them in full. Choosing that period in the bar's menu opens it too.
+- **Busy periods capped:** an open period shows six events, then "Ver 7 más" (`.period-more`).
+- **Short lists whole:** with 12 events or fewer (for example once filtered) nothing is summarized. With
+  nothing in the near periods, the first period opens.
+- What the visitor opens stays open while filtering or switching views, and focus moves to the first
+  newly shown event.
+
 ## Phones: feed, jump bar, view switch and filter sheet
 
 - **Feed like Instagram:** under 720px each event is a full-width post, the flyer edge to edge at full size and the details right below, separated by space instead of boxed cards. Nothing is shrunk into thumbnails.
