@@ -55,10 +55,11 @@ function atPageBottom(): boolean {
  * current; at the very bottom, the last period on screen (it can't scroll up to the band).
  */
 function highlightAtEdges() {
-  if (jumping || !groups.length) return;
-  const first = document.getElementById(sectionId(groups[0].key));
+  const firstGroup = groups[0];
+  if (jumping || !firstGroup) return;
+  const first = document.getElementById(sectionId(firstGroup.key));
   if (first && first.getBoundingClientRect().top > BAND_TOP) {
-    setActive(groups[0].key);
+    setActive(firstGroup.key);
     return;
   }
   if (!atPageBottom()) return;
@@ -66,7 +67,8 @@ function highlightAtEdges() {
     const section = document.getElementById(sectionId(group.key));
     return section && section.getBoundingClientRect().top < window.innerHeight;
   });
-  if (onScreen.length) setActive(onScreen[onScreen.length - 1].key);
+  const last = onScreen.at(-1);
+  if (last) setActive(last.key);
 }
 
 /** Scroll-spy: the period whose section is at the top of the screen is the current one. */
@@ -134,7 +136,7 @@ export function renderJumpBar(content: JumpBarContent) {
     ),
   ].join("");
 
-  if (groups.length) setActive(groups[0].key);
+  if (groups[0]) setActive(groups[0].key);
   watchSections();
 }
 

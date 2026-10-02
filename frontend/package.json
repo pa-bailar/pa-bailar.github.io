@@ -8,7 +8,8 @@
     "preview": "astro preview",
     "check": "npm run check:data && astro check && npm run check:contrast",
     "check:data": "node scripts/check-data.mjs",
-    "check:contrast": "node scripts/check-contrast.mjs"
+    "check:contrast": "node scripts/check-contrast.mjs",
+    "test": "vitest run"
   },
   "dependencies": {
     "astro": "^7.3.5"
@@ -18,7 +19,8 @@
     "@astrojs/sitemap": "^3.7.4",
     "@types/node": "^24.19.1",
     "sharp": "^0.35.5",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "vitest": "^5.0.3"
   },
   "engines": {
     "node": ">=24"

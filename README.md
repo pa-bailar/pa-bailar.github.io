@@ -20,6 +20,7 @@ Requires Node.js 24 (`.nvmrc`). From `frontend/`:
 npm ci          # first time
 npm run dev     # local preview at http://localhost:4321
 npm run check   # data format + type check + color contrast (WCAG AA)
+npm test        # unit tests (Vitest)
 npm run build   # static site in frontend/dist/
 ```
 

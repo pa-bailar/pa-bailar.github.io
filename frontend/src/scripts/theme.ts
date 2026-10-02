@@ -23,6 +23,11 @@ const RECHECK_MS = 60_000;
 const MODE_LABELS: Record<Mode, string> = { auto: "Auto", light: "Día", dark: "Noche" };
 const THEME_NAMES: Record<Theme, string> = { light: "día", dark: "noche" };
 
+/** auto → light → dark → auto */
+function nextMode(mode: Mode): Mode {
+  return MODES[(MODES.indexOf(mode) + 1) % MODES.length] ?? "auto";
+}
+
 function savedMode(): Mode {
   try {
     const value = localStorage.getItem(STORAGE_KEY);
@@ -57,7 +62,7 @@ function apply(mode: Mode, button: HTMLButtonElement) {
   root.dataset.themeMode = mode;
   document.querySelector<HTMLMetaElement>('meta[name="theme-color"]')?.setAttribute("content", THEME_COLORS[theme]);
 
-  const next = MODES[(MODES.indexOf(mode) + 1) % MODES.length];
+  const next = nextMode(mode);
   button.querySelector(".theme-label")!.textContent = MODE_LABELS[mode];
   const current = mode === "auto" ? `automático (ahora ${THEME_NAMES[theme]})` : THEME_NAMES[theme];
   button.setAttribute("aria-label", `Tema: ${current}. Cambiar a ${MODE_LABELS[next].toLowerCase()}`);
@@ -69,7 +74,7 @@ export function initThemeToggle() {
   apply(mode, button);
 
   button.addEventListener("click", () => {
-    mode = MODES[(MODES.indexOf(mode) + 1) % MODES.length];
+    mode = nextMode(mode);
     saveMode(mode);
     apply(mode, button);
   });

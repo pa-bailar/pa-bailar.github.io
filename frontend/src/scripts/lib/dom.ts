@@ -15,5 +15,5 @@ const HTML_ESCAPES: Record<string, string> = { "&": "&amp;", "<": "&lt;", ">": "
 
 /** Escape text before putting it inside an HTML template string. */
 export function escapeHtml(text: string | null | undefined): string {
-  return (text ?? "").replace(/[&<>"']/g, (char) => HTML_ESCAPES[char]);
+  return (text ?? "").replace(/[&<>"']/g, (char) => HTML_ESCAPES[char] ?? char);
 }

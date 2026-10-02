@@ -79,7 +79,7 @@ export function eventDetailHtml(
   selected: number,
   { headingLevel, titleId = "event-title" }: { headingLevel: 1 | 2; titleId?: string },
 ): string {
-  const media = event.media[selected];
+  const media = event.media[selected] ?? event.media[0];
   const permalink = escapeHtml(media.permalink);
   const rows = detailRows(event)
     .map(([term, value]) => `<dt>${term}</dt><dd>${value}</dd>`)

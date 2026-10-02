@@ -66,8 +66,9 @@
   --focus: light-dark(var(--tomato-600), var(--marigold-400));
 
   /* Controls */
-  --action: light-dark(var(--tomato-600), var(--marigold-400)); /* primary button */
-  --on-action: light-dark(var(--cream-50), var(--wine-900));
+  --action: light-dark(var(--orange-600), var(--marigold-400)); /* primary button: Fania orange / marigold */
+  --on-action: var(--wine-900); /* dark text: cream on orange would only reach 2.8:1 */
+  --action-border: light-dark(var(--wine-900), var(--marigold-400)); /* light: orange alone fades into the card */
   --chip-active-bg: light-dark(var(--wine-900), var(--marigold-400));
   --chip-active-text: light-dark(var(--cream-100), var(--wine-900));
   --whatsapp: var(--palm-600);

@@ -48,6 +48,7 @@ function scrollToSlide(position: number, smooth: boolean) {
 function setCurrent(position: number, { updateUrl }: { updateUrl: boolean }) {
   index = position;
   const event = list[position];
+  if (!event) return;
   byId("viewer-count").textContent = `${position + 1} de ${list.length}`;
   dialog().querySelector<HTMLButtonElement>('[data-step="-1"]')!.disabled = position === 0;
   dialog().querySelector<HTMLButtonElement>('[data-step="1"]')!.disabled = position === list.length - 1;
@@ -68,13 +69,9 @@ function step(delta: number) {
 /** After a swipe settles, the slide closest to the center is the current one. */
 function onTrackScroll() {
   const center = track().scrollLeft + track().clientWidth / 2;
-  let closest = index;
-  slides().forEach((slide, i) => {
-    const distance = Math.abs(slide.offsetLeft + slide.clientWidth / 2 - center);
-    const best = Math.abs(slides()[closest].offsetLeft + slides()[closest].clientWidth / 2 - center);
-    if (distance < best) closest = i;
-  });
-  if (closest !== index) {
+  const distances = slides().map((slide) => Math.abs(slide.offsetLeft + slide.clientWidth / 2 - center));
+  const closest = distances.indexOf(Math.min(...distances));
+  if (closest >= 0 && closest !== index) {
     setCurrent(closest, { updateUrl: true });
     markHintSeen();
   }
@@ -131,8 +128,10 @@ export function initEventDialog(find: (id: string) => DanceEvent | undefined) {
     const slide = target.closest<HTMLElement>("[data-slide]");
     if (slide) {
       const position = Number(slide.dataset.slide);
+      const event = list[position];
       const rerender = (selected: number) => {
-        slide.innerHTML = eventDetailHtml(list[position], selected, {
+        if (!event) return;
+        slide.innerHTML = eventDetailHtml(event, selected, {
           headingLevel: 2,
           titleId: `event-title-${position}`,
         });

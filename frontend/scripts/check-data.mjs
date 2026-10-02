@@ -11,6 +11,12 @@ const read = (file) => JSON.parse(readFileSync(new URL(file, dataDir), "utf8"));
 const EVENT_TYPES = ["social", "workshop", "concert", "festival", "competition", "show", "other"];
 const MEDIA_TYPES = ["IMAGE", "CAROUSEL_ALBUM", "VIDEO"];
 const CONFIDENCE = ["high", "medium", "low"];
+// The backend's style list (pa_bailar/models.py Style). A new style needs a change here too.
+const STYLES = [
+  "salsa", "salsa cubana", "salsa en línea", "salsa caleña", "bachata", "bachata sensual",
+  "bachata dominicana", "merengue", "cha cha chá", "son", "kizomba", "zouk", "champeta", "urbano",
+  "afro", "dancehall", "heels", "tango", "swing", "otro",
+];
 const DATE = /^\d{4}-\d{2}-\d{2}$/;
 const TIME = /^([01]\d|2[0-3]):[0-5]\d$/;
 const ID = /^[a-z0-9]+(-[a-z0-9]+)*$/;
@@ -37,6 +43,7 @@ for (const [index, event] of (Array.isArray(events) ? events : []).entries()) {
   check(EVENT_TYPES.includes(event.event_type), at, `unknown event_type ${event.event_type}`);
   check(event.is_recurring === false, at, "recurring events are never stored");
   check(isStringList(event.styles), at, "styles must be a list of strings");
+  for (const style of event.styles ?? []) check(STYLES.includes(style), at, `unknown style "${style}"`);
   for (const field of ["organizer", "venue", "address", "area", "weekday", "contact"]) {
     check(isNullableString(event[field]), at, `${field} must be a string or null`);
   }
@@ -47,6 +54,7 @@ for (const [index, event] of (Array.isArray(events) ? events : []).entries()) {
   check(Array.isArray(event.prices), at, "prices must be a list");
   for (const price of event.prices ?? []) {
     check(isString(price.label) && Number.isInteger(price.amount_cop) && price.amount_cop >= 0, at, "bad price");
+    check(isNullableString(price.condition), at, "price condition must be a string or null");
   }
   check(isStringList(event.artists) && isStringList(event.activities) && isStringList(event.doubts), at, "bad lists");
   check(CONFIDENCE.includes(event.confidence), at, `bad confidence ${event.confidence}`);
@@ -55,8 +63,16 @@ for (const [index, event] of (Array.isArray(events) ? events : []).entries()) {
   for (const media of event.media ?? []) {
     check(isString(media.post_id) && isString(media.permalink), at, "media needs post_id and permalink");
     check(MEDIA_TYPES.includes(media.media_type), at, `bad media_type ${media.media_type}`);
+    check(isString(media.published) && !Number.isNaN(Date.parse(media.published)), at, "bad published time");
+    check(isNullableString(media.caption), at, "caption must be a string or null");
     if (media.flyer) check(existsSync(new URL(media.flyer, dataDir)), at, `flyer file missing: ${media.flyer}`);
   }
+}
+
+// Sorted by date, then start time: the site groups and picks days assuming this order.
+const order = (event) => `${event.date ?? ""} ${event.start_time ?? ""}`;
+for (let index = 1; index < (Array.isArray(events) ? events.length : 0); index++) {
+  check(order(events[index - 1]) <= order(events[index]), `events[${index}] ${events[index].id}`, "events.json isn't sorted by date and time");
 }
 
 if (problems.length) {

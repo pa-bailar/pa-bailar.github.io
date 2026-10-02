@@ -3,7 +3,7 @@
 const DAY_MS = 24 * 60 * 60 * 1000;
 
 export function parseIsoDate(iso: string): Date {
-  const [year, month, day] = iso.split("-").map(Number);
+  const [year = 1970, month = 1, day = 1] = iso.split("-").map(Number);
   return new Date(year, month - 1, day);
 }
 

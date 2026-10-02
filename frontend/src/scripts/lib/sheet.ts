@@ -65,8 +65,9 @@ export function initSheet(sheet: HTMLDialogElement, canStartDrag: (target: HTMLE
   let samples: { y: number; time: number }[] = [];
 
   const velocity = () => {
-    const recent = samples.filter((sample) => samples[samples.length - 1].time - sample.time <= VELOCITY_WINDOW);
-    const [first, last] = [recent[0], recent[recent.length - 1]];
+    const latest = samples.at(-1);
+    const recent = latest ? samples.filter((sample) => latest.time - sample.time <= VELOCITY_WINDOW) : [];
+    const [first, last] = [recent[0], recent.at(-1)];
     return first && last && last.time > first.time ? (last.y - first.y) / (last.time - first.time) : 0;
   };
 
@@ -80,9 +81,11 @@ export function initSheet(sheet: HTMLDialogElement, canStartDrag: (target: HTMLE
     "touchstart",
     (touch) => {
       // Not while it's already leaving, and only where dragging makes sense.
+      const point = touch.touches[0];
+      if (!point) return;
       dragging = !closing.has(sheet) && canStartDrag(touch.target as HTMLElement) ? null : false;
-      startX = touch.touches[0].clientX;
-      startY = touch.touches[0].clientY;
+      startX = point.clientX;
+      startY = point.clientY;
       offset = 0;
       samples = [{ y: startY, time: touch.timeStamp }];
     },
@@ -93,9 +96,9 @@ export function initSheet(sheet: HTMLDialogElement, canStartDrag: (target: HTMLE
   sheet.addEventListener(
     "touchmove",
     (touch) => {
-      if (dragging === false) return;
-      const x = touch.touches[0].clientX;
-      const y = touch.touches[0].clientY;
+      const point = touch.touches[0];
+      if (dragging === false || !point) return;
+      const [x, y] = [point.clientX, point.clientY];
       if (dragging === null) {
         const [dx, dy] = [x - startX, y - startY];
         if (Math.abs(dx) < DIRECTION_SLOP && Math.abs(dy) < DIRECTION_SLOP) return;

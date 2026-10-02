@@ -86,7 +86,7 @@ const PAIRS = [
   ["Active tab underline on page", "accent", "bg", "ui"],
   ["Selected calendar day border on cell", "accent", "surface", "ui"],
   ["Selected chip fill on page", "chip-active-bg", "bg", "ui"],
-  ["Primary button fill on dialog", "action", "surface", "ui"],
+  ["Primary button outline on dialog", "action-border", "surface", "ui"],
   ["Calendar dot outline on day cell (fill color is decorative)", "border", "surface", "ui"],
 ];
 
