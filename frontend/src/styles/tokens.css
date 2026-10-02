@@ -75,6 +75,7 @@
   --stripe-1: light-dark(var(--tomato-600), var(--tomato-400));
   --stripe-2: light-dark(var(--orange-600), var(--orange-400));
   --stripe-3: light-dark(var(--marigold-600), var(--marigold-400));
+  --period-shadow: light-dark(var(--wine-900), var(--tomato-400)); /* offset shadow of the period lettering */
   --sticker-bg: light-dark(var(--tomato-600), var(--marigold-400));
   --sticker-text: light-dark(var(--cream-50), var(--wine-900));
   --today-bg: light-dark(var(--marigold-600), var(--marigold-400));
