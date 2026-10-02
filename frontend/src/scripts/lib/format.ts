@@ -2,6 +2,7 @@
 
 import type { DanceEvent, EventType, MediaType } from "../types";
 import { addDays, daysBetween, parseIsoDate, todayIso } from "./dates";
+import { isHoliday } from "./holidays";
 
 const LOCALE = "es-CO";
 
@@ -73,9 +74,9 @@ export function formatLongDate(iso: string): string {
   return capitalize(longDay.format(parseIsoDate(iso)));
 }
 
-/** "Hoy · Jueves, 1 de octubre", "Mañana · …" or just the long date. */
+/** "Hoy · Jueves, 1 de octubre", "Mañana · …" or just the long date; "· Festivo" on public holidays. */
 export function formatDayHeading(iso: string): string {
-  const label = formatLongDate(iso);
+  const label = formatLongDate(iso) + (isHoliday(iso) ? " · Festivo" : "");
   if (iso === todayIso()) return `Hoy · ${label}`;
   if (iso === addDays(todayIso(), 1)) return `Mañana · ${label}`;
   return label;

@@ -62,6 +62,29 @@
   border-color: transparent;
 }
 
+/* Colombian public holidays (lib/holidays.ts): a warm tint, so people can tell an event falls on a
+   long weekend. Also said in words: the day's label and heading include "festivo". */
+.cal-day.is-holiday {
+  background: var(--holiday-bg);
+}
+
+.calendar__legend {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+.calendar__swatch {
+  width: 14px;
+  height: 14px;
+  border: var(--border-width) solid var(--divider);
+  border-radius: var(--radius-sm);
+  background: var(--holiday-bg);
+}
+
 .cal-day.is-past {
   background: none; /* past days recede without fading text below WCAG contrast */
 }
