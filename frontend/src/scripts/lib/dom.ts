@@ -6,9 +6,14 @@ export function byId<T extends HTMLElement = HTMLElement>(id: string): T {
   return element as T;
 }
 
+/** True when the visitor asked for less motion: animations and smooth scrolling are skipped. */
+export function prefersReducedMotion(): boolean {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
 const HTML_ESCAPES: Record<string, string> = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" };
 
 /** Escape text before putting it inside an HTML template string. */
 export function escapeHtml(text: string | null | undefined): string {
-  return (text ?? "").replace(/[&<>"']/g, (char) => HTML_ESCAPES[char]);
+  return (text ?? "").replace(/[&<>"']/g, (char) => HTML_ESCAPES[char] ?? char);
 }

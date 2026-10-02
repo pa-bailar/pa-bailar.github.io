@@ -3,7 +3,8 @@
 import type { DanceEvent, EventType, View } from "./types";
 import { initClickTracking } from "./lib/analytics";
 import { byId } from "./lib/dom";
-import { addMonths, startOfMonth, todayIso } from "./lib/dates";
+import { eventCountLabel } from "./lib/format";
+import { addMonths, currentMonth, todayIso } from "./lib/dates";
 import {
   activeFilterCount,
   clearFilters,
@@ -32,10 +33,9 @@ function focusSelector(element: Element | null): string | null {
 }
 
 function announce(count: number) {
-  const noun = count === 1 ? "evento" : "eventos";
-  byId("results-status").textContent =
-    state.view === "upcoming" ? `${count} ${noun} próximos` : `${count} ${noun} este día`;
-  byId("filter-sheet-results").textContent = count ? `Ver ${count} ${noun}` : "Ver resultados";
+  const label = eventCountLabel(count);
+  byId("results-status").textContent = state.view === "upcoming" ? `${label} próximos` : `${label} este día`;
+  byId("filter-sheet-results").textContent = count ? `Ver ${label}` : "Ver resultados";
 }
 
 /** Containers whose controls are re-rendered: focus goes back to the same control in the same one. */
@@ -94,14 +94,21 @@ function handleClick(domEvent: MouseEvent) {
   const { view, type, style, account, day, event: eventId, monthStep } = control.dataset;
 
   if (eventId) {
+    // The card's title is a link: let the browser handle new-tab clicks; a plain click opens the viewer.
+    if (domEvent.button !== 0 || domEvent.metaKey || domEvent.ctrlKey || domEvent.shiftKey || domEvent.altKey) return;
     const event = events.find((item) => item.id === eventId);
-    if (event) openEventDialog(event, visibleEvents(events, state));
+    if (!event) return;
+    domEvent.preventDefault();
+    openEventDialog(event, visibleEvents(events, state));
     return;
   }
   if (view) state.view = view as View;
   else if (type) state.typeFilter = type as EventType | "all";
-  // A pressed chip tapped again clears it; menu options (no aria-pressed) just select.
-  else if (style) state.styleFilter = control.getAttribute("aria-pressed") === "true" ? "all" : style;
+  // A pressed chip tapped again clears it; options in the bar's rhythm menu just select.
+  else if (style) {
+    const isToggle = control.matches(".chip") && control.getAttribute("aria-pressed") === "true";
+    state.styleFilter = isToggle ? "all" : style;
+  }
   else if (account !== undefined) {
     state.accountFilter = account || null; // "" = show every academy again
   } else if ("clearFilters" in control.dataset) clearFilters(state);
@@ -110,7 +117,7 @@ function handleClick(domEvent: MouseEvent) {
     state.month = addMonths(state.month, Number(monthStep));
     state.selectedDay = defaultDayForMonth(events, state.month);
   } else if ("today" in control.dataset) {
-    state.month = startOfMonth(new Date());
+    state.month = currentMonth();
     state.selectedDay = todayIso();
   }
   // Filters keep the period being read in place. (Tapping an academy on a card instead moves to its notice.)

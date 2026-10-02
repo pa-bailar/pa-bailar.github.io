@@ -29,6 +29,9 @@ frontend/src/styles/
    ├─ event-card.css
    ├─ calendar.css
    ├─ event-dialog.css
+   ├─ sheet.css          ← bottom sheets: rise, drag to dismiss (with scripts/lib/sheet.ts)
+   ├─ jump-bar.css       ← phones: the sticky filter bar and its dropdown menus
+   ├─ filter-sheet.css
    └─ site-footer.css
 ```
 
@@ -49,14 +52,14 @@ Themes switch through CSS `color-scheme`: `light dark` (follow the device) when 
 | `--bg` | cream-150 (aged offset paper) | wine-900 | Page background |
 | `--surface` | cream-75 | wine-800 | Cards, dialog, buttons |
 | `--surface-sunken` | cream-250 | wine-950 | Image wells, callouts |
-| `--border` | wine-900 | wine-600 | Outlines of cards, chips, buttons |
+| `--border` | wine-900 | wine-400 | Outlines of cards, chips, buttons |
 | `--divider` | cream-300 | wine-600 | Lines between sections and rows |
 | `--text` | wine-900 | cream-100 | Body text |
 | `--text-muted` | cocoa-500 | cocoa-300 | Metadata, captions |
 | `--text-italic` | wine-500 | rose-300 | Bodoni italic accents |
 | `--logo` | tomato-600 | marigold-400 | The wordmark |
 | `--accent` | tomato-600 | orange-400 | Event time, active tab, selected day |
-| `--action` / `--on-action` | tomato / cream | marigold / wine | The single primary button |
+| `--action` / `--on-action` / `--action-border` | orange / wine / wine | marigold / wine / marigold | The single primary button ("Ver en Instagram") |
 | `--chip-active-*` | wine / cream | marigold / wine | Selected filter chip |
 | `--stripe-1..3` | tomato, orange, marigold | brighter tomato, orange, marigold | 70s stripes |
 | `--sticker-*` | tomato / cream | marigold / wine | Round date sticker |
@@ -84,7 +87,7 @@ Sizes: `--text-2xs` 11 · `xs` 12 · `sm` 13 · `md` 15 (body) · `lg` 17 · `xl
 
 ## Signature motifs
 
-- **70s stripes** (`<Stripes />`): three bands (tomato, orange, marigold). Used in the header, the event dialog and the footer. Don't use them anywhere else; they lose meaning if repeated.
+- **70s stripes** (`<Stripes />`): three bands (tomato, orange, marigold). Used in the page headers (home, event page, 404), the event detail and the footer; the period headings use the same three colors as one thin line. Don't use them anywhere else; they lose meaning if repeated.
 - **Date sticker:** a round "record label" with the day and month, overlapping the bottom-right of each flyer.
 - **Italic headings:** group, day and month headings in Bodoni italic, like a handwritten setlist.
 
@@ -105,8 +108,7 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves. The pa
   | *Mes* / *Mes de año* | one group per later month (year shown outside the current year) |
 
   Weeks run Monday to Sunday.
-- **Each card says when:** "Hoy / Mañana · 8:00 p. m.", the weekday within a week ("Domingo · 6:00 p. m."), or weekday and date further away ("Martes 20 de oct"). The sticker keeps the date number.
-- **Wide screens (960px+):** the group heading sits in a left column.
+- **Each card says when:** "Hoy / Mañana · 8:00 p. m.", the weekday within a week ("Domingo · 6:00 p. m."), or weekday and date further away ("Martes 20 oct."). The sticker keeps the date number.
 - **The academy on each card** is a button: it filters the list to that academy and shows "Solo eventos de @academia · Ver todas las academias" under the chips. It sits above the card's stretched click area.
 - **Free events** show their price as a green "Gratis" label (WhatsApp green pair, already checked for contrast).
 - **Empty results** always offer a way out: "Quitar filtros" when filters are active.
@@ -114,7 +116,7 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves. The pa
 
 ## Phones: feed, jump bar and filter sheet
 
-- **Feed like Instagram:** under 720px each event is a full-width post, the flyer edge to edge at full size and the details right below, separated by a line instead of boxed cards. Nothing is shrunk into thumbnails.
+- **Feed like Instagram:** under 720px each event is a full-width post, the flyer edge to edge at full size and the details right below, separated by space instead of boxed cards. Nothing is shrunk into thumbnails.
 - **Jump bar** (`JumpBar.astro`, `scripts/views/jumpBar.ts`): one slim row (`--jump-bar-height`, 56px) stuck to the top, modeled on the filter bars of Google Maps and Airbnb: **[⚙ 2] [Finde ▾] [Salsa ▾]**. Two compact dropdowns instead of a row of chips, so nothing scrolls sideways or gets cut off.
   - **⚙** opens the filter sheet; the badge counts active filters.
   - **Period dropdown:** names the period on screen (scroll-spy); its menu lists each period with its number of events, and picking one jumps there. Always shown in the list (disabled, "Fechas", when nothing matches); hidden in Calendario.
@@ -126,7 +128,7 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves. The pa
   - **Where it shows:** wherever the full toolbar isn't sticky (phones, short windows), in both views.
 - **Filter sheet** (`FilterSheet.astro`):
   - **Opening:** "Filtros" opens the type and style chips in a sheet that slides up from the bottom, so the list stays where it was. Chips wrap, so every option is visible.
-  - **Results:** "Ver N eventos" closes it. The bar's button shows how many filters are active ("Filtros · 2").
+  - **Results:** "Ver N eventos" closes it. The bar's ⚙ button shows how many filters are active, as a badge on its corner.
   - **Phones only:** the toolbar's chip rows are hidden, so filters are only in the sheet; no rows scroll sideways cutting chips.
   - **Dismissing:** drag it down like the viewer (see Bottom sheets).
   - **One renderer:** the same chips render into the toolbar and the sheet (`[data-filter-row]`).

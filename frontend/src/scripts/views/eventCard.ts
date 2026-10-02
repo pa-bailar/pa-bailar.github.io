@@ -1,6 +1,6 @@
 // Event card used in the upcoming list and the calendar's day list.
-// The title is the button; its ::after stretches over the whole card, so the card is one big
-// click target without putting headings and paragraphs inside a <button> (invalid HTML).
+// The title is a link to the event's page (open in a new tab, share, crawl); a plain click opens the
+// viewer instead (main.ts). Its ::after stretches over the whole card, so the card is one big target.
 
 import type { DanceEvent } from "../types";
 import { escapeHtml } from "../lib/dom";
@@ -13,7 +13,7 @@ import {
   stylesLabel,
   typeLabel,
 } from "../lib/format";
-import { flyerUrl, mainMedia } from "../lib/links";
+import { eventPath, flyerUrl, mainMedia } from "../lib/links";
 
 const MAX_STYLES_ON_CARD = 3;
 
@@ -45,7 +45,7 @@ export function eventCardHtml(event: DanceEvent): string {
       <div class="event-card__body">
         <p class="event-card__time">${escapeHtml(when)}</p>
         <h3 class="event-card__title">
-          <button class="event-card__hit" data-event="${escapeHtml(event.id)}">${escapeHtml(event.title)}</button>
+          <a class="event-card__hit" href="${escapeHtml(eventPath(event))}" data-event="${escapeHtml(event.id)}">${escapeHtml(event.title)}</a>
         </h3>
         <p class="event-card__meta">
           <button class="event-card__account" data-account="${escapeHtml(event.account)}" aria-label="Ver solo eventos de @${escapeHtml(event.account)}">@${escapeHtml(event.account)}</button>

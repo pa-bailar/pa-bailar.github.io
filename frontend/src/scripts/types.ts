@@ -41,7 +41,14 @@ export interface DanceEvent {
   confidence: "high" | "medium" | "low";
   doubts: string[];
   account: string;
-  media: EventMedia[]; // main post first (images before videos); always at least one
+  media: [EventMedia, ...EventMedia[]]; // main post first (images before videos); always at least one
+}
+
+/** data/meta.json */
+export interface Meta {
+  schema_version: number;
+  generated_at: string; // ISO time of the last sweep that changed data (Bogotá)
+  stats?: unknown;
 }
 
 export type View = "upcoming" | "calendar";

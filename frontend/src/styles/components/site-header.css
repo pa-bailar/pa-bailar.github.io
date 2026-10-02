@@ -28,7 +28,7 @@
   margin-top: var(--space-2);
   font-family: var(--font-serif);
   font-style: italic;
-  font-weight: 500;
+  font-weight: var(--weight-serif);
   font-size: var(--text-lg);
   color: var(--text-italic);
 }

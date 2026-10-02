@@ -66,8 +66,9 @@
   --focus: light-dark(var(--tomato-600), var(--marigold-400));
 
   /* Controls */
-  --action: light-dark(var(--tomato-600), var(--marigold-400)); /* primary button */
-  --on-action: light-dark(var(--cream-50), var(--wine-900));
+  --action: light-dark(var(--orange-600), var(--marigold-400)); /* primary button: Fania orange / marigold */
+  --on-action: var(--wine-900); /* dark text: cream on orange would only reach 2.8:1 */
+  --action-border: light-dark(var(--wine-900), var(--marigold-400)); /* light: orange alone fades into the card */
   --chip-active-bg: light-dark(var(--wine-900), var(--marigold-400));
   --chip-active-text: light-dark(var(--cream-100), var(--wine-900));
   --whatsapp: var(--palm-600);
@@ -111,6 +112,7 @@
   --text-logo: clamp(2.75rem, 11vw, 4.5rem);
 
   --weight-regular: 400;
+  --weight-serif: 500; /* Bodoni Moda italic (the only weight loaded) */
   --weight-bold: 600;
 
   /* ---------- Layer 3: spacing (4px base) ---------- */
@@ -136,8 +138,20 @@
   --day-column-width: 200px; /* day heading column on wide screens */
   --content-width: 1120px;
 
+  /* ---------- Layer 3: layers (z-index) ---------- */
+  --z-raised: 1; /* above a sibling's stretched click area */
+  --z-sticky: 10; /* the sticky toolbar and jump bar */
+
+  /* ---------- Layer 3: elevation ---------- */
+  --shadow-menu: 0 8px 24px light-dark(rgb(42 15 20 / 0.18), rgb(0 0 0 / 0.45)); /* dropdown menus */
+
   /* ---------- Layer 3: motion ---------- */
-  --duration: 150ms;
+  --duration: 150ms; /* hovers, small state changes */
+  --duration-bar: 250ms; /* the jump bar hiding/showing */
+
+  /* Breakpoints (media queries can't read custom properties, so they're written as numbers):
+     720px  phones vs. wider: the feed, the jump bar and the filter sheet, the viewer as a sheet
+     960px  wide: more card columns */
 }
 
 :root[data-theme="light"] {

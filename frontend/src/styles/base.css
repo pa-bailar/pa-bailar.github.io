@@ -7,6 +7,8 @@
 }
 
 html {
+  /* Keyboard focus and jumps never land under the sticky jump bar (WCAG 2.4.11, focus not obscured). */
+  scroll-padding-top: calc(var(--jump-bar-height) + var(--space-3));
   -webkit-text-size-adjust: 100%;
 }
 
@@ -70,7 +72,7 @@ img {
   margin-bottom: var(--space-3);
   font-family: var(--font-serif);
   font-style: italic;
-  font-weight: 500;
+  font-weight: var(--weight-serif);
   font-size: var(--text-2xl);
 }
 

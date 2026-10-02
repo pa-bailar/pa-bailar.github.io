@@ -18,16 +18,21 @@ import "../styles/components/calendar.css";
 import "../styles/components/event-dialog.css";
 import "../styles/components/site-footer.css";
 
+import { BASE_URL } from "../scripts/lib/links";
+import { DAY_START_HOUR, NIGHT_START_HOUR, THEME_COLORS, THEME_STORAGE_KEY } from "../scripts/themeConfig";
+
 interface Props {
   title: string;
   description: string;
   /** Path of an image under the site's public folder (e.g. a flyer) for link previews. */
   image?: string | null;
+  /** Pages that shouldn't be indexed (the 404): no canonical URL, robots noindex. */
+  noindex?: boolean;
 }
 
-const { title, description, image } = Astro.props;
+const { title, description, image, noindex = false } = Astro.props;
 const pageUrl = new URL(Astro.url.pathname, Astro.site);
-const imageUrl = image ? new URL(`${import.meta.env.BASE_URL.replace(/\/?$/, "/")}${image}`, Astro.site) : null;
+const imageUrl = image ? new URL(`${BASE_URL}${image}`, Astro.site) : null;
 
 // Record-label favicon in the brand colors (wine + marigold).
 const favicon =
@@ -46,7 +51,8 @@ const favicon =
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={pageUrl} />
+    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={pageUrl} />}
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <!-- Link previews (WhatsApp, Instagram, Facebook) -->
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="es_CO" />
@@ -56,7 +62,7 @@ const favicon =
     <meta property="og:url" content={pageUrl} />
     {imageUrl && <meta property="og:image" content={imageUrl} />}
     <meta name="twitter:card" content={imageUrl ? "summary_large_image" : "summary"} />
-    <meta name="theme-color" content="#ECDDC6" />
+    <meta name="theme-color" content={THEME_COLORS.light} />
     <link rel="icon" href={favicon} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -64,23 +70,24 @@ const favicon =
       href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Bodoni+Moda:ital,opsz,wght@1,6..96,500&family=Instrument+Sans:wght@400;600&display=swap"
       rel="stylesheet"
     />
-    <!-- Apply the theme before first paint so the page never flashes the wrong one.
-         Mirrors resolveTheme() in scripts/theme.ts: saved mode, else light 6:00–17:59 / dark otherwise. -->
-    <script is:inline>
-      (function () {
-        var mode = "auto";
-        try {
-          var saved = localStorage.getItem("theme");
-          if (saved === "light" || saved === "dark") mode = saved;
-        } catch (e) {}
-        var hour = new Date().getHours();
-        var theme = mode === "auto" ? (hour >= 6 && hour < 18 ? "light" : "dark") : mode;
-        var root = document.documentElement;
-        root.dataset.theme = theme;
-        root.dataset.themeMode = mode;
-        var meta = document.querySelector('meta[name="theme-color"]');
-        if (meta) meta.setAttribute("content", theme === "dark" ? "#2A0F14" : "#ECDDC6");
-      })();
+    <!-- Apply the theme before first paint so the page never flashes the wrong one. Same rules as
+         resolveTheme() in scripts/theme.ts (saved mode, else by the hour), same settings (themeConfig.ts). -->
+    <script
+      is:inline
+      define:vars={{ storageKey: THEME_STORAGE_KEY, dayStart: DAY_START_HOUR, nightStart: NIGHT_START_HOUR, colors: THEME_COLORS }}
+    >
+      var mode = "auto";
+      try {
+        var saved = localStorage.getItem(storageKey);
+        if (saved === "light" || saved === "dark") mode = saved;
+      } catch (e) {}
+      var hour = new Date().getHours();
+      var theme = mode === "auto" ? (hour >= dayStart && hour < nightStart ? "light" : "dark") : mode;
+      var root = document.documentElement;
+      root.dataset.theme = theme;
+      root.dataset.themeMode = mode;
+      var meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute("content", colors[theme]);
     </script>
     <slot name="head" />
     <!-- Visit statistics without cookies (scripts/lib/analytics.ts). -->

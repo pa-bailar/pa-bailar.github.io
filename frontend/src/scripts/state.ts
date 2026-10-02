@@ -1,7 +1,7 @@
 // UI state and the event filtering that depends on it.
 
 import type { AppState, DanceEvent } from "./types";
-import { addDays, endOfWeek, startOfMonth, todayIso, toIsoDate } from "./lib/dates";
+import { addDays, currentMonth, endOfWeek, todayIso, toIsoDate } from "./lib/dates";
 import { capitalize, formatMonthName } from "./lib/format";
 
 export function createInitialState(): AppState {
@@ -10,7 +10,7 @@ export function createInitialState(): AppState {
     typeFilter: "all",
     styleFilter: "all",
     accountFilter: null,
-    month: startOfMonth(new Date()),
+    month: currentMonth(),
     selectedDay: todayIso(),
   };
 }
@@ -71,6 +71,11 @@ export function defaultDayForMonth(events: DanceEvent[], month: Date): string {
   if (today.startsWith(prefix)) return today;
   const firstEvent = events.find((event) => event.date.startsWith(prefix));
   return firstEvent ? firstEvent.date : toIsoDate(month);
+}
+
+/** The DOM id of a period's section in the upcoming list ("periodo-fin-de-semana"). */
+export function sectionId(periodKey: string): string {
+  return `periodo-${periodKey}`;
 }
 
 export interface AgendaGroup {

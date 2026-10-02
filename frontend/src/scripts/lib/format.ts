@@ -46,6 +46,11 @@ export function stylesLabel(styles: string[], max = styles.length): string {
   return styles.slice(0, max).join(" · ");
 }
 
+/** "1 evento" / "5 eventos" */
+export function eventCountLabel(count: number): string {
+  return `${count} ${count === 1 ? "evento" : "eventos"}`;
+}
+
 /** "1 publicación" / "2 publicaciones" */
 export function postCountLabel(count: number): string {
   return `${count} ${count === 1 ? "publicación" : "publicaciones"}`;
@@ -58,7 +63,7 @@ export function formatMoney(amountCop: number): string {
 /** "21:00" -> "9:00 p. m." */
 export function formatTime(time: string | null): string {
   if (!time) return "";
-  const [hours, minutes] = time.split(":").map(Number);
+  const [hours = 0, minutes = 0] = time.split(":").map(Number);
   const suffix = hours >= 12 ? "p. m." : "a. m.";
   return `${((hours + 11) % 12) + 1}:${String(minutes).padStart(2, "0")} ${suffix}`;
 }

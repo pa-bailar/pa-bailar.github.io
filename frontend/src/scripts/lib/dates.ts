@@ -3,7 +3,7 @@
 const DAY_MS = 24 * 60 * 60 * 1000;
 
 export function parseIsoDate(iso: string): Date {
-  const [year, month, day] = iso.split("-").map(Number);
+  const [year = 1970, month = 1, day = 1] = iso.split("-").map(Number);
   return new Date(year, month - 1, day);
 }
 
@@ -13,8 +13,16 @@ export function toIsoDate(date: Date): string {
   return `${date.getFullYear()}-${month}-${day}`;
 }
 
+const bogotaDate = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Bogota" }); // "YYYY-MM-DD"
+
+/** Today in Bogotá, whatever the visitor's (or the build machine's) timezone: events are Bogotá dates. */
 export function todayIso(): string {
-  return toIsoDate(new Date());
+  return bogotaDate.format(new Date());
+}
+
+/** The first day of the current month in Bogotá. */
+export function currentMonth(): Date {
+  return startOfMonth(parseIsoDate(todayIso()));
 }
 
 export function addDays(iso: string, days: number): string {

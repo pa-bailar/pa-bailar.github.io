@@ -3,10 +3,10 @@
 
 import type { AppState, DanceEvent } from "../types";
 import { escapeHtml } from "../lib/dom";
-import { eventsInView, groupByPeriod, hasActiveFilters, matchesFilters } from "../state";
+import { eventCountLabel } from "../lib/format";
+import { eventsInView, groupByPeriod, hasActiveFilters, matchesFilters, sectionId } from "../state";
 import { eventCardGridHtml } from "./eventCard";
 import type { AgendaGroup } from "../state";
-import { sectionId } from "./jumpBar";
 
 /** Renders the list; returns how many events it shows and their periods (for the jump bar). */
 export function renderUpcomingView(
@@ -31,10 +31,10 @@ export function renderUpcomingView(
     container.innerHTML = groups
       .map(
         (group) => `
-        <section class="agenda-group" id="${sectionId(group)}" data-period="${escapeHtml(group.key)}">
+        <section class="agenda-group" id="${sectionId(group.key)}" data-period="${escapeHtml(group.key)}">
           <header class="agenda-group__header">
             <h2 class="agenda-group__heading" tabindex="-1">${escapeHtml(group.label)}</h2>
-            <span class="agenda-group__count">${group.events.length} ${group.events.length === 1 ? "evento" : "eventos"}</span>
+            <span class="agenda-group__count">${eventCountLabel(group.events.length)}</span>
           </header>
           ${eventCardGridHtml(group.events)}
         </section>`,

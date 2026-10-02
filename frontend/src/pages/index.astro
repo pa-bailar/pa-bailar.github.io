@@ -7,12 +7,10 @@ import SiteHeader from "../components/SiteHeader.astro";
 import ViewToolbar from "../components/ViewToolbar.astro";
 import JumpBar from "../components/JumpBar.astro";
 import FilterSheet from "../components/FilterSheet.astro";
-import events from "../../../data/events.json";
-import meta from "../../../data/meta.json";
-import type { DanceEvent } from "../scripts/types";
+import { accounts, events, meta } from "../data";
+import { todayIso } from "../scripts/lib/dates";
 import { previewImagePath } from "../scripts/lib/links";
 
-const accounts = [...new Set(events.map((event) => event.account))].sort();
 // Escape "<" so a caption can never end the inline JSON script block early.
 const eventsJson = JSON.stringify(events).replace(/</g, "\\u003c");
 // When the data was last checked: the daily sweep passes PUBLIC_CHECKED_AT to the build; otherwise
@@ -24,8 +22,8 @@ const updatedLabel = new Date(checkedAt).toLocaleDateString("es-CO", {
   timeZone: "America/Bogota",
 });
 // Link previews show the flyer of the next upcoming event.
-const today = new Date().toLocaleDateString("en-CA", { timeZone: "America/Bogota" }); // YYYY-MM-DD
-const nextEvent = (events as DanceEvent[]).find((event) => event.date >= today && previewImagePath(event));
+const today = todayIso();
+const nextEvent = events.find((event) => event.date >= today && previewImagePath(event));
 const previewImage = nextEvent ? previewImagePath(nextEvent) : null;
 ---
 

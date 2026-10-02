@@ -29,7 +29,7 @@
 .filter-sheet__title {
   font-family: var(--font-serif);
   font-style: italic;
-  font-weight: 500;
+  font-weight: var(--weight-serif);
   font-size: var(--text-2xl);
 }
 
