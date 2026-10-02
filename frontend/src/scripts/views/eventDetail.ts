@@ -57,17 +57,30 @@ function pricesHtml(event: DanceEvent): string {
 /** Thumbnails in the row under the flyer; with more posts, the last place becomes "+N". */
 const VISIBLE_POSTS = 5;
 
+/** Posts are split into flyers (photos and carousels) and videos, each kind under its own small tab. */
+type PostKind = "flyers" | "videos";
+
+const POST_KINDS: { kind: PostKind; label: string }[] = [
+  { kind: "flyers", label: "Flyers" },
+  { kind: "videos", label: "Videos" },
+];
+
+function postKind(media: EventMedia): PostKind {
+  return media.media_type === "VIDEO" ? "videos" : "flyers";
+}
+
 const POST_BADGES: Partial<Record<EventMedia["media_type"], string>> = {
   VIDEO: ICONS.play,
   CAROUSEL_ALBUM: ICONS.carousel,
 };
 
-function postThumbHtml(media: EventMedia, index: number, total: number, selected: boolean): string {
+/** `index` is the post's place in the event; `position` and `count`, its place within its kind. */
+function postThumbHtml(media: EventMedia, index: number, position: number, count: number, selected: boolean): string {
   const flyer = flyerUrl(media);
   const badge = POST_BADGES[media.media_type];
   return `
     <button class="post-thumb" type="button" data-media-index="${index}" aria-pressed="${selected}"
-      aria-label="Publicación ${index + 1} de ${total} (${mediaLabel(media.media_type).toLowerCase()})">
+      aria-label="${mediaLabel(media.media_type)} ${position + 1} de ${count}">
       ${flyer ? `<img src="${escapeHtml(flyer)}" alt="" loading="lazy" decoding="async" />` : ""}
       ${badge ? `<span class="post-thumb__badge" aria-hidden="true">${badge}</span>` : ""}
     </button>`;
@@ -75,26 +88,48 @@ function postThumbHtml(media: EventMedia, index: number, total: number, selected
 
 /**
  * Every post announcing the event (a flyer, then videos, reminders…), as square thumbnails under the
- * flyer, marked like Instagram's grid: ▶ for a video, stacked squares for a carousel. One row; with more
- * than VISIBLE_POSTS the last place is "+N", which shows them all (like WhatsApp's media grid). It never
- * scrolls sideways: the viewer itself swipes sideways between events. Hidden when there's only one post.
+ * flyer, marked like Instagram's grid: ▶ for a video, stacked squares for a carousel.
+ *   - Flyers and videos are separated by two small tabs ("Flyers 9", "Videos 7"); the tab shown is the
+ *     selected post's kind. With only one kind there are no tabs, just "N publicaciones sobre este evento".
+ *   - Each kind shows one row; with more than VISIBLE_POSTS the last place is "+N", which shows them all
+ *     (like WhatsApp's media grid).
+ *   - Nothing scrolls sideways: the viewer itself swipes sideways between events.
+ * Hidden when there's only one post.
  */
 function postsHtml(event: DanceEvent, selected: number, showAll: boolean): string {
-  const total = event.media.length;
-  if (total < 2) return "";
-  const collapsed = total > VISIBLE_POSTS && !showAll && selected < VISIBLE_POSTS - 1;
-  const shown = collapsed ? VISIBLE_POSTS - 1 : total;
-  const thumbs = event.media
-    .slice(0, shown)
-    .map((media, index) => postThumbHtml(media, index, total, index === selected))
+  if (event.media.length < 2) return "";
+  const kind = postKind(event.media[selected] ?? event.media[0]);
+  const groups = POST_KINDS.map((group) => ({
+    ...group,
+    indexes: event.media.flatMap((media, index) => (postKind(media) === group.kind ? [index] : [])),
+  })).filter((group) => group.indexes.length > 0);
+  const current = groups.find((group) => group.kind === kind) ?? groups[0]!;
+  const items = current.indexes;
+  const collapsed = items.length > VISIBLE_POSTS && !showAll && items.indexOf(selected) < VISIBLE_POSTS - 1;
+  const shown = collapsed ? items.slice(0, VISIBLE_POSTS - 1) : items;
+  const thumbs = shown
+    .map((index, position) => postThumbHtml(event.media[index]!, index, position, items.length, index === selected))
     .join("");
   const more = collapsed
-    ? `<button class="post-thumbs__more" type="button" data-show-all-posts aria-label="Ver las ${total} publicaciones">+${total - shown}</button>`
+    ? `<button class="post-thumbs__more" type="button" data-show-all-posts
+        aria-label="Ver los ${items.length} ${current.label.toLowerCase()}">+${items.length - shown.length}</button>`
     : "";
+  const header =
+    groups.length > 1
+      ? `<div class="post-tabs" role="group" aria-label="Publicaciones de este evento">${groups
+          .map(
+            (group) => `
+              <button class="post-tabs__tab" type="button" data-post-kind="${group.kind}"
+                data-first-post="${group.indexes[0]}" aria-pressed="${group.kind === current.kind}">
+                ${group.label} <span class="post-tabs__count">${group.indexes.length}</span>
+              </button>`,
+          )
+          .join("")}</div>`
+      : `<p class="post-thumbs__label">${postCountLabel(items.length)} sobre este evento</p>`;
   return `
     <div class="post-thumbs${collapsed ? "" : " is-all"}">
-      <p class="post-thumbs__label">${postCountLabel(total)} sobre este evento</p>
-      <div class="post-thumbs__grid" role="group" aria-label="Publicaciones de este evento">${thumbs}${more}</div>
+      ${header}
+      <div class="post-thumbs__grid" role="group" aria-label="${groups.length > 1 ? current.label : "Publicaciones de este evento"}">${thumbs}${more}</div>
     </div>`;
 }
 
@@ -157,15 +192,22 @@ export function eventDetailHtml(
 }
 
 /**
- * Clicks on the post thumbnails: show another post (its image, "Ver en Instagram" link and caption), or
- * expand "+N". Re-renders the detail and keeps the focus on the thumbnail (the first new one after "+N").
- * False when the click wasn't on them.
+ * Clicks on the posts: a thumbnail shows that post (its image, "Ver en Instagram" link and caption), a
+ * tab (Flyers / Videos) shows the first post of its kind, "+N" shows every post of the kind. Re-renders
+ * the detail and keeps the focus where the visitor was (the first new thumbnail after "+N"). False when
+ * the click wasn't on them.
  */
 export function handlePostClick(
   container: HTMLElement,
   target: HTMLElement,
   render: (selected: number, showAllPosts: boolean) => void,
 ): boolean {
+  const tab = target.closest<HTMLElement>("[data-post-kind]");
+  if (tab) {
+    if (tab.getAttribute("aria-pressed") !== "true") render(Number(tab.dataset.firstPost ?? 0), false);
+    container.querySelector<HTMLElement>(`[data-post-kind="${tab.dataset.postKind}"]`)?.focus();
+    return true;
+  }
   const thumb = target.closest<HTMLElement>("[data-media-index]");
   const expand = target.closest<HTMLElement>("[data-show-all-posts]");
   if (!thumb && !expand) return false;
@@ -173,7 +215,8 @@ export function handlePostClick(
   const selected = Number((thumb ?? pressed)?.dataset.mediaIndex ?? 0);
   const showAll = Boolean(expand) || Boolean(container.querySelector(".post-thumbs.is-all"));
   render(selected, showAll);
-  const focusIndex = expand ? VISIBLE_POSTS - 1 : selected;
-  container.querySelector<HTMLElement>(`[data-media-index="${focusIndex}"]`)?.focus();
+  const thumbs = [...container.querySelectorAll<HTMLElement>(".post-thumb")];
+  const focus = expand ? thumbs[VISIBLE_POSTS - 1] : thumbs.find((item) => item.dataset.mediaIndex === String(selected));
+  focus?.focus();
   return true;
 }
