@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-02T10:44:23-05:00",
+  "generated_at": "2026-10-02T10:59:53-05:00",
   "stats": {
     "accounts": 5,
     "posts_analyzed": 0,
@@ -12,7 +12,7 @@
     "upgraded": 0,
     "reanalyzed": 0,
     "pending": 0,
-    "errors": 5,
+    "errors": 0,
     "events_expired": 0,
     "processed_forgotten": 0,
     "flyers_removed": 0,
@@ -23,45 +23,45 @@
         "events_new": 0,
         "events_merged": 0,
         "pending": 0,
-        "errors": 1,
+        "errors": 0,
         "backfill": false,
-        "fetch_failed": true
+        "fetch_failed": false
       },
       "bembeacademiadebaile": {
         "posts_analyzed": 0,
         "events_new": 0,
         "events_merged": 0,
         "pending": 0,
-        "errors": 1,
+        "errors": 0,
         "backfill": false,
-        "fetch_failed": true
+        "fetch_failed": false
       },
       "esferalatinaoficial": {
         "posts_analyzed": 0,
         "events_new": 0,
         "events_merged": 0,
         "pending": 0,
-        "errors": 1,
+        "errors": 0,
         "backfill": false,
-        "fetch_failed": true
+        "fetch_failed": false
       },
       "madyumdance": {
         "posts_analyzed": 0,
         "events_new": 0,
         "events_merged": 0,
         "pending": 0,
-        "errors": 1,
+        "errors": 0,
         "backfill": false,
-        "fetch_failed": true
+        "fetch_failed": false
       },
       "academiadebailepasolatino": {
         "posts_analyzed": 0,
         "events_new": 0,
         "events_merged": 0,
         "pending": 0,
-        "errors": 1,
+        "errors": 0,
         "backfill": false,
-        "fetch_failed": true
+        "fetch_failed": false
       }
     }
   }
