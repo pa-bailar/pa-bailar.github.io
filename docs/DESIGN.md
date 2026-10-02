@@ -129,7 +129,7 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves. The pa
   - **Where it shows:** wherever the full toolbar isn't sticky (phones, short windows), in both views.
 - **View switch** (`ViewSwitch.astro`, `scripts/views/viewSwitch.ts`): the tabs scroll away on phones, so an icon button (`--fab-size`, 44px) floats at the bottom right. It offers the other view: a calendar icon in the list, a list icon in the calendar (named for screen readers).
   - **Look:** the action color (`--action` / `--on-action`), ringed with the page color and a shadow, so it stands out even over a flyer of the same colors.
-  - **Each view keeps its place, like Instagram's tabs:** going to the calendar starts it at its top (back up to the tabs if the page was past them); coming back to the list lands exactly where it was left. If a filter changed meanwhile, the list comes back at the same period instead, as with any filter change. The tabs behave the same.
+  - **Each view keeps its place, like Instagram's tabs:** coming back to a view lands exactly where it was left. The calendar's first visit starts at its top (back up to the tabs if the page was past them). If a filter changed meanwhile, the list comes back at the same period instead, as with any filter change. The tabs behave the same.
   - **Room:** the footer gets extra bottom padding so the button never covers its last line. Hidden wherever the toolbar is sticky.
 - **Filter sheet** (`FilterSheet.astro`):
   - **Opening:** "Filtros" opens the type and style chips in a sheet that slides up from the bottom, so the list stays where it was. Chips wrap, so every option is visible.

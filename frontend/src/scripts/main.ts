@@ -23,7 +23,7 @@ import {
   type ListAnchor,
   renderJumpBar,
   restoreListPosition,
-  returnToListPosition,
+  returnToScroll,
 } from "./views/jumpBar";
 import { renderUpcomingView } from "./views/upcomingView";
 import { initViewSwitch, renderViewSwitch } from "./views/viewSwitch";
@@ -89,26 +89,32 @@ function render({ keepPlace = false } = {}) {
   if (focused) scope.querySelector<HTMLElement>(focused)?.focus();
 }
 
-/** Where the list was left for the calendar: coming back lands there, like switching tabs in Instagram. */
+/** Where each view was left: coming back to it lands there, like switching tabs in Instagram. */
 let leftList: { scrollY: number; filters: string; anchor: ListAnchor | null } | null = null;
+let leftCalendar: number | null = null;
 
 const filtersKey = () => JSON.stringify([state.typeFilter, state.styleFilter, state.accountFilter]);
 
-/** The tabs and the floating button. The list keeps its place; the calendar starts at its top. */
+/** The tabs and the floating button. Each view keeps its place. */
 function showView(view: View) {
   if (view === state.view) return;
   if (state.view === "upcoming") {
     leftList = { scrollY: window.scrollY, filters: filtersKey(), anchor: captureListPosition() };
-  }
+  } else leftCalendar = window.scrollY;
   state.view = view;
   render();
-  if (view === "upcoming" && leftList) {
+  if (view === "upcoming") {
+    if (!leftList) return;
     // Same filters: the very same spot. Filters changed in the calendar: the same period, as any filter change.
-    if (leftList.filters === filtersKey()) returnToListPosition(leftList.scrollY, leftList.anchor);
+    if (leftList.filters === filtersKey()) returnToScroll(leftList.scrollY, leftList.anchor);
     else if (leftList.anchor) restoreListPosition(leftList.anchor);
     return;
   }
-  // Scrolled past the tabs: back up to them, so the calendar is seen from its top.
+  if (leftCalendar !== null) {
+    returnToScroll(leftCalendar);
+    return;
+  }
+  // The first time, if the page was scrolled past the tabs: back up to them, so the calendar is seen whole.
   const toolbar = document.querySelector<HTMLElement>(".toolbar");
   const top = toolbar?.getBoundingClientRect().top ?? 0;
   if (top < 0) window.scrollTo({ top: top + window.scrollY, behavior: "auto" });
