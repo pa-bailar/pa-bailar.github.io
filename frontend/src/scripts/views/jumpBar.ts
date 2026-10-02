@@ -23,6 +23,8 @@ const prefersReducedMotion = () => window.matchMedia("(prefers-reduced-motion: r
 let observer: IntersectionObserver | null = null;
 let jumping = false; // a jump scrolls on purpose: don't hide the bar or move the highlight meanwhile
 let groups: AgendaGroup[] = [];
+let currentKey: string | null = null; // the period on screen (scroll-spy)
+const MENU_MARGIN = 8; // px menus keep from the screen edges
 
 export function sectionId(group: AgendaGroup): string {
   return `periodo-${group.key}`;
@@ -34,12 +36,14 @@ export interface JumpBarContent {
   styles: StyleCount[]; // rhythm options, most frequent first
   styleFilter: string;
   eventCount: number; // events in view before the rhythm filter, for "Todos los ritmos"
+  showPeriods: boolean; // the upcoming list (the calendar has no periods)
 }
 
 /** The period on screen: its name on the period button, and marked in the menu. */
 function setActive(key: string) {
   const group = groups.find((item) => item.key === key);
   if (!group) return;
+  currentKey = key;
   byId("jump-period-label").textContent = group.shortLabel;
   byId("jump-period-menu")
     .querySelectorAll<HTMLElement>("[data-jump]")
@@ -108,8 +112,12 @@ export function renderJumpBar(content: JumpBarContent) {
   filters.innerHTML = `${ICONS.sliders}${count ? `<span class="jump-bar__badge">${count}</span>` : ""}`;
   filters.setAttribute("aria-label", count ? `Filtros, ${count} activos` : "Filtros");
 
-  // Shown whenever the list has periods (not in the calendar), even just one: it says where you are.
-  byId("jump-period").hidden = groups.length === 0;
+  // Always there in the upcoming list (disabled when nothing matches), so the bar never changes shape;
+  // the calendar has no periods.
+  const period = byId<HTMLButtonElement>("jump-period");
+  period.hidden = !content.showPeriods;
+  period.disabled = groups.length === 0;
+  if (!groups.length) byId("jump-period-label").textContent = "Fechas";
   byId("jump-period-menu").innerHTML = groups
     .map((group) => menuItemHtml(`data-jump="${escapeHtml(group.key)}"`, group.label, group.events.length, false))
     .join("");
@@ -126,6 +134,48 @@ export function renderJumpBar(content: JumpBarContent) {
 
   if (groups.length) setActive(groups[0].key);
   watchSections();
+}
+
+/** Height of what's stuck to the top of the screen (the bar on phones, the toolbar on wide screens). */
+function stickyOffset(): number {
+  const bar = byId("jump-bar");
+  if (!bar.hidden && getComputedStyle(bar).display !== "none") return bar.offsetHeight;
+  const toolbar = document.querySelector<HTMLElement>(".toolbar");
+  return toolbar && getComputedStyle(toolbar).position === "sticky" ? toolbar.offsetHeight : 0;
+}
+
+export interface ListAnchor {
+  key: string; // the period that was on screen
+  order: string[]; // the periods then, in order: to find the nearest one if it's gone
+}
+
+/**
+ * Before the list is redrawn for a filter change: the period being read, if the visitor is inside the
+ * list (above it, the page is left where it is).
+ */
+export function captureListPosition(): ListAnchor | null {
+  const list = byId("view-upcoming");
+  if (list.hidden || !currentKey || list.getBoundingClientRect().top > stickyOffset()) return null;
+  return { key: currentKey, order: groups.map((group) => group.key) };
+}
+
+/**
+ * After the redraw: put that period's heading back right under the bar. If the filter removed it, the
+ * next period (or else the previous one); with no results, the top of the list.
+ */
+export function restoreListPosition(anchor: ListAnchor) {
+  const present = new Set(groups.map((group) => group.key));
+  const index = anchor.order.indexOf(anchor.key);
+  const candidates = [anchor.key, ...anchor.order.slice(index + 1), ...anchor.order.slice(0, index).reverse()];
+  const key = candidates.find((candidate) => present.has(candidate));
+  const target = key ? document.getElementById(`periodo-${key}`) : byId("view-upcoming");
+  if (!target) return;
+  jumping = true; // a scroll on purpose: don't hide the bar for it
+  byId("jump-bar").classList.remove("is-hidden");
+  const top = target.getBoundingClientRect().top + window.scrollY - stickyOffset() - MENU_MARGIN;
+  window.scrollTo({ top: Math.max(top, 0), behavior: "auto" });
+  if (key) setActive(key);
+  requestAnimationFrame(() => requestAnimationFrame(() => (jumping = false)));
 }
 
 function jumpTo(key: string) {
@@ -182,19 +232,30 @@ function initHideOnScroll() {
 
 export function initJumpBar() {
   byId("jump-filters").addEventListener("click", () => byId<HTMLDialogElement>("filter-sheet").showModal());
-  // Each menu opens right under its button, wherever the bar is on the screen, kept inside the screen.
-  for (const [menuId, buttonId] of [
+  // Each menu opens right under its button and always inside the screen: aligned to the button's left
+  // edge (or right edge, for a button on the right half), never wider or taller than the space left.
+  // Placed before it opens (nothing to measure yet), so CSS caps the size and the menu scrolls if needed.
+  const menus = [
     ["jump-period-menu", "jump-period"],
     ["jump-style-menu", "jump-style"],
-  ]) {
+  ] as const;
+  for (const [menuId, buttonId] of menus) {
     const menu = byId(menuId);
     menu.addEventListener("beforetoggle", (toggle) => {
       if ((toggle as ToggleEvent).newState !== "open") return;
       const button = byId(buttonId).getBoundingClientRect();
-      menu.style.top = `${button.bottom + 4}px`;
-      menu.style.left = `${Math.max(8, Math.min(button.left, window.innerWidth - menu.offsetWidth - 8))}px`;
+      const top = button.bottom + 4;
+      const onRight = button.left + button.width / 2 > window.innerWidth / 2;
+      menu.style.top = `${top}px`;
+      menu.style.maxHeight = `${Math.max(window.innerHeight - top - MENU_MARGIN, 120)}px`;
+      menu.style.left = onRight ? "auto" : `${Math.max(button.left, MENU_MARGIN)}px`;
+      menu.style.right = onRight ? `${Math.max(window.innerWidth - button.right, MENU_MARGIN)}px` : "auto";
     });
   }
+  // A rotated phone or resized window would leave an open menu in the wrong place: close it.
+  window.addEventListener("resize", () =>
+    menus.forEach(([menuId]) => byId(menuId).matches(":popover-open") && byId(menuId).hidePopover()),
+  );
   byId("jump-period-menu").addEventListener("click", (domEvent) => {
     const item = (domEvent.target as HTMLElement).closest<HTMLElement>("[data-jump]");
     if (!item) return;

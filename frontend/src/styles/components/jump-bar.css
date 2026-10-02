@@ -32,30 +32,44 @@
   white-space: nowrap;
 }
 
-/* ⚙ with the number of active filters. */
+/* ⚙ with the number of active filters on its corner (like a notification badge), so the button keeps
+   its size whatever is selected. */
 .jump-bar__filters {
   position: relative;
   flex: none;
   justify-content: center;
-  min-width: var(--control-height);
+  width: var(--control-height);
+  padding: 0;
   color: var(--text);
 }
 
 .jump-bar__badge {
-  min-width: 1.4em;
-  padding: 0 var(--space-1);
-  border-radius: var(--radius-round);
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 9px;
   background: var(--chip-active-bg);
   color: var(--chip-active-text);
   font-size: var(--text-2xs);
-  line-height: 1.4;
+  line-height: 18px;
   text-align: center;
 }
 
-/* Dropdown buttons: period and rhythm. They share the row; long labels are cut with an ellipsis. */
+/* Dropdown buttons: period and rhythm split the rest of the row equally, so the bar keeps its shape
+   whatever is selected; long labels are cut with an ellipsis. */
 .jump-bar__menu-button {
+  flex: 1 1 0;
+  justify-content: space-between;
   min-width: 0;
+  max-width: 220px; /* wide but short windows: don't stretch across the screen */
   color: var(--text);
+}
+
+.jump-bar__menu-button:disabled {
+  opacity: 0.5;
 }
 
 .jump-bar__menu-button[hidden] {
@@ -79,8 +93,10 @@
 .bar-menu {
   position: fixed;
   inset: auto;
-  min-width: 220px;
-  max-height: 60vh;
+  width: max-content;
+  min-width: min(220px, calc(100vw - 16px));
+  max-width: calc(100vw - 16px); /* never wider than the screen (with 8px margins) */
+  max-height: 60vh; /* jumpBar.ts lowers it to the space left below the button */
   margin: 0;
   padding: var(--space-2) 0;
   overflow-y: auto;
@@ -108,6 +124,11 @@
 .bar-menu__item[aria-checked="true"] {
   font-weight: var(--weight-bold);
   background: var(--surface-sunken);
+}
+
+.bar-menu__item > span:first-child {
+  min-width: 0;
+  overflow-wrap: anywhere; /* a long name wraps instead of widening the menu */
 }
 
 .bar-menu__count {

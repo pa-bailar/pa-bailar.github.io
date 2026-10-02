@@ -16,7 +16,7 @@ import { initThemeToggle } from "./theme";
 import { renderCalendarView } from "./views/calendarView";
 import { initEventDialog, openEventDialog } from "./views/eventDialog";
 import { rankedStyles, renderFilters } from "./views/filters";
-import { initJumpBar, renderJumpBar } from "./views/jumpBar";
+import { captureListPosition, initJumpBar, renderJumpBar, restoreListPosition } from "./views/jumpBar";
 import { renderUpcomingView } from "./views/upcomingView";
 
 const state = createInitialState();
@@ -46,10 +46,12 @@ function focusScope(previous: Element | null): ParentNode {
   return document.querySelector("#filter-sheet[open]") ?? previous?.closest(FOCUS_SCOPES) ?? document;
 }
 
-function render() {
+/** `keepPlace`: a filter changed; keep the period being read under the bar (see restoreListPosition). */
+function render({ keepPlace = false } = {}) {
   // Re-rendering replaces chips and calendar days; remember which one had focus, and where.
   const focused = focusSelector(document.activeElement);
   const scope = focusScope(document.activeElement);
+  const anchor = keepPlace && state.view === "upcoming" ? captureListPosition() : null;
 
   renderFilters(events, state);
   const upcoming = byId("view-upcoming");
@@ -70,7 +72,9 @@ function render() {
     styles: rankedStyles(eventsInView(events, state)),
     styleFilter: state.styleFilter,
     eventCount: eventsInView(events, state).length,
+    showPeriods: state.view === "upcoming",
   });
+  if (anchor) restoreListPosition(anchor);
   announce(shown);
 
   if (focused) scope.querySelector<HTMLElement>(focused)?.focus();
@@ -109,7 +113,8 @@ function handleClick(domEvent: MouseEvent) {
     state.month = startOfMonth(new Date());
     state.selectedDay = todayIso();
   }
-  render();
+  // Filters keep the period being read in place. (Tapping an academy on a card instead moves to its notice.)
+  render({ keepPlace: Boolean(type || style || "clearFilters" in control.dataset) });
 
   // The control clicked was re-rendered away: put focus somewhere useful.
   if (account) focusAccountFilter();

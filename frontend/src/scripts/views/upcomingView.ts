@@ -32,7 +32,10 @@ export function renderUpcomingView(
       .map(
         (group) => `
         <section class="agenda-group" id="${sectionId(group)}" data-period="${escapeHtml(group.key)}">
-          <h2 class="agenda-group__heading" tabindex="-1">${escapeHtml(group.label)}</h2>
+          <header class="agenda-group__header">
+            <h2 class="agenda-group__heading" tabindex="-1">${escapeHtml(group.label)}</h2>
+            <span class="agenda-group__count">${group.events.length} ${group.events.length === 1 ? "evento" : "eventos"}</span>
+          </header>
           ${eventCardGridHtml(group.events)}
         </section>`,
       )
