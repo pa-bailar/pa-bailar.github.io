@@ -10,7 +10,12 @@ describe("contact links", () => {
     });
   });
 
-  it("a number opens a WhatsApp chat, with Colombia's code", () => {
+  it("a landline is a call: it has no WhatsApp", () => {
+    expect(contactLink("601 7559780")).toEqual({ kind: "phone", href: "tel:+576017559780", label: "601 7559780" });
+    expect(contactLink("+57 604 4441234")?.href).toBe("tel:+576044441234");
+  });
+
+  it("a mobile number opens a WhatsApp chat, with Colombia's code", () => {
     expect(contactLink("350-537-2687")).toEqual({
       kind: "whatsapp",
       href: "https://wa.me/573505372687",
