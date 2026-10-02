@@ -1,0 +1,425 @@
+# Pa' Bailar: architecture (site)
+
+How the site at <https://pa-bailar.github.io> gets its data, how it's built and published, and how it
+works in the visitor's browser. This repository (`pa-bailar/pa-bailar.github.io`, public) holds the
+site and the published data.
+
+The collector that produces the data (Instagram → Gemini) is a separate, private repository
+(`pa-bailar/backend`). Its `docs/ARCHITECTURE.md` covers the whole system's infrastructure in depth:
+external services, the sweep, quotas, monitoring.
+
+Related documents in this repository:
+- [`DATA.md`](DATA.md): the data contract, every field of `events.json`.
+- [`DESIGN.md`](DESIGN.md): the design system, every visual rule.
+
+Last reviewed: 2 October 2026.
+
+Contents:
+
+1. [The site in one picture](#1-the-site-in-one-picture)
+2. [How data reaches the site](#2-how-data-reaches-the-site)
+3. [The build: from data/ to static files](#3-the-build-from-data-to-static-files)
+4. [Publishing: workflows and protection](#4-publishing-workflows-and-protection)
+5. [In the browser](#5-in-the-browser)
+6. [Dates, time zones and holidays](#6-dates-time-zones-and-holidays)
+7. [Third-party services](#7-third-party-services)
+8. [Quality checks](#8-quality-checks)
+9. [Code map](#9-code-map)
+10. [Working on the site](#10-working-on-the-site)
+
+---
+
+## 1. The site in one picture
+
+The site is **fully static**: HTML, CSS, a little JavaScript and images. It's built by Astro, served by
+GitHub Pages, and has no server, database or API of its own. All of its data is in `data/`, which the
+backend updates through pull requests.
+
+```mermaid
+flowchart LR
+    subgraph Backend["pa-bailar/backend (private)"]
+        SW["daily sweep<br/>Instagram → Gemini"]
+    end
+
+    subgraph Repo["pa-bailar/pa-bailar.github.io (this repository)"]
+        PR["data PR<br/>(pa-bailar-bot, label data)"]
+        CI["ci: data contract, types,<br/>contrast, tests, build"]
+        MAIN[("main<br/>data/ + frontend/")]
+        DEP["deploy: astro build →<br/>GitHub Pages"]
+    end
+
+    PAGES["GitHub Pages<br/>pa-bailar.github.io"]
+    VIS(("Visitors"))
+    GC["GoatCounter<br/>(visit statistics)"]
+    GF["Google Fonts"]
+
+    SW -- "twice a day, when events changed" --> PR
+    PR --> CI -- "pass: auto-merge (squash)" --> MAIN
+    MAIN -- "push to main" --> DEP --> PAGES --> VIS
+    SW -. "no changes: start deploy<br/>with the check time" .-> DEP
+    VIS -. "page views, clicks" .-> GC
+    VIS -. "fonts" .-> GF
+```
+
+| Folder | What | Who writes it |
+|---|---|---|
+| `data/` | `events.json`, `meta.json`, `flyers/*.webp`. Also the site's public folder: flyers are served as-is | The backend, only through data PRs |
+| `frontend/` | The Astro site: pages, components, scripts, styles, tests | People, through PRs |
+| `docs/` | Architecture (this file), data contract, design system | People |
+| `.github/workflows/` | `ci` and `deploy` | People |
+
+---
+
+## 2. How data reaches the site
+
+The backend's sweep runs twice a day (5:23 AM and 12:47 PM, Bogotá time). It works on a checkout of this
+repository and writes `data/` exactly as described in [`DATA.md`](DATA.md).
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant B as Backend sweep (GitHub Actions)
+    participant R as This repository
+    participant CI as ci workflow
+    participant D as deploy workflow
+    participant P as GitHub Pages
+
+    B->>R: check out main (anonymous: the repository is public)
+    B->>B: write data/events.json, data/meta.json, data/flyers/
+    alt events.json or flyers changed
+        B->>R: push branch data/sweep-<day>-<run> (as pa-bailar-bot)
+        B->>R: open PR "chore(data): daily sweep <day>", label data, enable auto-merge
+        R->>CI: pull_request
+        CI->>CI: check-data, astro check, contrast, tests, build
+        CI-->>R: ci passed
+        R->>R: squash merge (ruleset: ci required), delete branch
+        R->>D: push to main
+        D->>P: build and publish
+    else nothing changed
+        B->>D: workflow_dispatch with checked_at = time of the check
+        D->>P: build and publish ("Actualizado el …" stays current)
+    end
+```
+
+Notes:
+- **Only real changes open a PR.** `meta.json` is rewritten on every run, but only events or flyers
+  count as a change. Days without news don't fill the history with commits.
+- **The bot's PRs are checked like anyone's.** The backend uses a GitHub App (pa-bailar-bot), not the
+  default workflow token, so its PR triggers this repository's `ci`. A PR from the default token
+  wouldn't trigger workflows.
+- **A data PR can't break the site.** `check-data.mjs` checks every field against the contract, and the
+  build must succeed before the PR can merge. If the backend ever writes something the site doesn't
+  understand, the data PR stays open and the backend's run reports it.
+- **"Actualizado el …"** in the header shows when the data was last **checked**, not when it last
+  changed:
+  - on days without changes, the backend starts the deploy with `checked_at`, which reaches the build as
+    `PUBLIC_CHECKED_AT`;
+  - otherwise, the build uses `meta.json`'s `generated_at`.
+- **Old events leave on their own:** the backend deletes events dated more than 60 days ago, together
+  with their flyers. Past events still in the data aren't shown in "Próximos", but their pages and the
+  calendar keep them.
+
+---
+
+## 3. The build: from data/ to static files
+
+`npm run build` (Astro 7). `astro.config.mjs` sets:
+- the site's URL (`https://pa-bailar.github.io`);
+- **`publicDir: "../data"`**, so the data folder is served at the site's root: `flyers/123-0.webp`
+  becomes `https://pa-bailar.github.io/flyers/123-0.webp`;
+- the `@astrojs/sitemap` integration;
+- `import.meta.env.DATA_DIR`, the data folder's absolute path, so the build finds the flyers wherever
+  it's started from.
+
+### 3.1 Reading the data: `src/data.ts`
+
+```mermaid
+flowchart LR
+    EJ["data/events.json"] --> DT["src/data.ts"]
+    MJ["data/meta.json"] --> DT
+    FL["data/flyers/*.webp"] -- "sharp: width × height" --> DT
+    DT --> EV["events: DanceEvent[]<br/>(each flyer with its size)"]
+    DT --> ME["meta: Meta"]
+    DT --> AC["accounts: academies with events"]
+```
+
+- **Typed once:** the JSON is cast to the types in `src/scripts/types.ts`, which mirror the backend's
+  models. CI checked the files against the contract first.
+- **Flyer sizes:** each flyer's pixel size is read at build time and added to its media item. Cards then
+  show each flyer at its own shape without the page jumping while images load (section 5.4).
+- **Build time only:** `data.ts` uses Node (`sharp`, the file system). The browser never imports it; it
+  gets the data inside the page.
+
+### 3.2 What the build generates
+
+| Output | Source | What it is |
+|---|---|---|
+| `/` (`index.html`) | `pages/index.astro` | The app: header, toolbar, jump bar, both views, dialog, filter sheet. Every event is embedded as JSON (`<script type="application/json" id="events-data">`), and the browser renders the cards and calendar from it. The preview image is the next event's flyer |
+| `/evento/<id>/` | `pages/evento/[id].astro` | One page per event: what a shared link opens. Rendered at build time with the same markup as the dialog. Includes Open Graph tags (the flyer as the link preview) and schema.org `Event` data for search engines |
+| `/og/<id>.jpg` | `pages/og/[id].jpg.ts` | Each event's link-preview image: its flyer as a 600 px JPEG. WebP isn't shown by every app, and WhatsApp skips images over about 300 KB |
+| `/calendario.ics` | `pages/calendario.ics.ts` | A subscribable calendar feed (iCalendar, RFC 5545) with every event. Rebuilt with the site, so subscribed calendars refresh on their own |
+| `/sitemap-index.xml` | `@astrojs/sitemap` | Home and every event page, for search engines (the 404 page is excluded) |
+| `/404.html` | `pages/404.astro` | "Esta página no existe…", with a link home |
+| `/flyers/*.webp` | `data/flyers/` (public folder) | The flyers, copied as they are |
+
+```mermaid
+flowchart TD
+    D["src/data.ts<br/>(events + flyer sizes)"] --> IDX["index.astro → /"]
+    D --> EVT["evento/[id].astro → /evento/&lt;id&gt;/"]
+    D --> OG["og/[id].jpg.ts → /og/&lt;id&gt;.jpg"]
+    D --> ICS["calendario.ics.ts → /calendario.ics"]
+    IDX --> SM["sitemap-index.xml"]
+    EVT --> SM
+    PUB["data/ (public folder)"] --> FLY["/flyers/*.webp"]
+```
+
+**Shared code between build and browser:** the views in `src/scripts/` produce HTML strings, so the same
+code renders an event's detail in the browser (the dialog) and at build time (the event page).
+
+---
+
+## 4. Publishing: workflows and protection
+
+### 4.1 Workflows
+
+| Workflow | Trigger | Steps | Permissions |
+|---|---|---|---|
+| `ci` | Every pull request (including data PRs); manual | `npm ci`. Then `npm run check`, which is the data contract (`check-data.mjs`), `astro check` (strict TypeScript) and color contrast (`check-contrast.mjs`). Then `npm test` (Vitest), then `npm run build` | `contents: read` |
+| `deploy` | Push to `main` (every merged PR); manual; the backend's sweep on days without changes (with `checked_at`) | **build** job: `npm ci`, `npm run build` (with `PUBLIC_CHECKED_AT`), upload the Pages artifact. **deploy** job: publish to GitHub Pages (environment `github-pages`) | Build: `contents: read` only (it runs npm's install scripts). Deploy: `pages: write`, `id-token: write` |
+
+- **One deploy at a time:** `concurrency: pages` without cancelling, so two merges in a row publish one
+  after the other.
+- **Node:** version 24 (`.nvmrc`), with an npm cache keyed on `frontend/package-lock.json`.
+
+### 4.2 Protection of `main`
+
+The `protect-main` ruleset is active with **no bypass**, for anyone including administrators and the bot:
+- changes only arrive through pull requests;
+- merges are squash only;
+- the `ci` check must pass;
+- force pushes and deleting `main` are blocked.
+
+The repository allows auto-merge and deletes merged branches. Data PRs (label `data`) enable auto-merge
+when opened, so they merge on their own once `ci` passes.
+
+### 4.3 GitHub Pages
+
+- **Source:** "GitHub Actions" (`build_type: workflow`): Pages serves whatever the `deploy` workflow
+  uploads, not a branch.
+- **URL:** the repository's name (`pa-bailar.github.io`) makes it the organization's root site:
+  `https://pa-bailar.github.io/`.
+
+---
+
+## 5. In the browser
+
+### 5.1 Start-up
+
+```mermaid
+sequenceDiagram
+    participant H as index.html
+    participant I as Inline script (head)
+    participant M as main.ts start()
+    participant V as Views
+
+    H->>I: before first paint
+    I->>I: theme: saved mode, else light 6:00–17:59 / dark otherwise
+    H->>M: module script after parsing
+    M->>M: events = JSON from #events-data
+    M->>M: theme toggle, event dialog, jump bar, view switch, click tracking
+    M->>V: render(): filters, Próximos or Calendario, jump bar, view switch
+```
+
+- **No data request:** the events arrive inside the HTML, so the first render needs no network.
+  The flyers load lazily as they come into view.
+- **One delegated click listener** in `main.ts` handles every control marked with a `data-*` attribute:
+  view, type, style, academy, clear filters, day, month, today, event.
+
+### 5.2 State and rendering
+
+```mermaid
+flowchart TD
+    ST["AppState (state.ts)<br/>view · typeFilter · styleFilter ·<br/>accountFilter · month · selectedDay"]
+    CLICK["Click on a data-* control<br/>(main.ts handleClick)"] --> ST
+    ST --> R["render()"]
+    R --> F["filters.ts<br/>type and style chips<br/>(toolbar and filter sheet)"]
+    R --> U["upcomingView.ts<br/>Próximos: events grouped by period"]
+    R --> C["calendarView.ts<br/>Calendario: month grid + the day's events"]
+    R --> J["jumpBar.ts<br/>phones: ⚙ · period ▾ · rhythm ▾"]
+    R --> VS["viewSwitch.ts<br/>phones: floating calendar / list button"]
+    U --> CARD["eventCard.ts"]
+    C --> CARD
+    CARD -- "tap" --> DLG["eventDialog.ts<br/>viewer: swipe between events"]
+    DLG --> DET["eventDetail.ts"]
+```
+
+- **The state is a plain object** (`state.ts`), and every change re-renders the visible parts. There's
+  no framework: the views return HTML strings, inserted with `innerHTML` after escaping every value from
+  the data (`lib/dom.ts`, `escapeHtml`).
+- **Filtering:**
+  - **Type:** social, workshop…
+  - **Style:** filtering by a family ("salsa") also matches its variants ("salsa caleña").
+  - **Academy:** set by tapping an academy's name on a card.
+
+  Only values present in the current view are offered, so a chip never leads to an empty list.
+- **"Próximos"** groups upcoming events by period: today, this week, this weekend, next week, the rest
+  of the month, then one group per month (`groupByPeriod`). On phones, cards read like an Instagram feed.
+- **"Calendario"** shows a month grid. Dots mark days with events, Colombian holidays are tinted, and
+  the selected day's events are listed below.
+- **Keeping your place:**
+  - when a filter changes while you're reading the list, the period you were in stays under the bar;
+  - each view remembers its scroll position, so switching to the calendar and back returns you to the
+    same spot.
+
+### 5.3 The event viewer and URLs
+
+```mermaid
+stateDiagram-v2
+    [*] --> List
+    List --> Viewer: tap a card / pushState /evento/<id>/
+    Viewer --> Viewer: swipe, ‹ ›, arrow keys / replaceState /evento/<other id>/
+    Viewer --> List: ×, Escape, drag down, or back
+    List --> EventPage: open the link in a new tab, or a shared link
+    EventPage --> [*]
+```
+
+- **The viewer is a `<dialog>`** with one slide per event on screen, in list order. Swiping uses CSS
+  scroll snapping. On phones it's a bottom sheet you can drag down to close (`lib/sheet.ts`).
+- **The address bar follows the event:**
+  - opening pushes the event's own URL to the history, so the phone's back button closes the viewer;
+  - swiping replaces it, so back still closes instead of stepping through events;
+  - every event's URL is a real page (`/evento/<id>/`), so copying the address shares the event.
+- **The event page** (`eventPage.ts`) is already rendered at build time. Its script only adds the theme
+  toggle, the tabs between an event's posts, and click tracking.
+- **The actions** are plain links built in `lib/links.ts`:
+  - "Ver en Instagram" opens the post;
+  - "Compartir por WhatsApp" opens a `wa.me` link with the event's text and page URL (`utm_source=whatsapp`);
+  - "Agregar al calendario" opens Google Calendar's template URL;
+  - "Cómo llegar" opens Google Maps' search URL.
+
+### 5.4 Flyers
+
+- **Never cropped:** on phones each flyer shows at its own shape, from 4:5 (portrait) to 1.91:1
+  (landscape), like Instagram's feed. The size comes from the build (section 3.1), so nothing jumps
+  while images load.
+- **Taller flyers, and every card on wide screens,** get a 4:5 frame, with the flyer fitted whole over a
+  blurred copy of itself.
+- **Lazy loading:** every card image uses `loading="lazy"` and `decoding="async"`.
+
+### 5.5 Themes
+
+- **Two themes:** "Fania de día" (light) and "Noche Fania" (dark).
+- **Three modes:** auto, light and dark. **Auto** follows the visitor's clock: light from 6:00 to 17:59,
+  dark the rest of the day, switching on its own while the page is open.
+- **Remembered** in `localStorage`. An inline script in `BaseLayout.astro` applies it before the first
+  paint, so the page never flashes the wrong theme.
+- **Colors** are CSS tokens with `light-dark()` (`styles/tokens.css`); [`DESIGN.md`](DESIGN.md) has
+  them all.
+
+---
+
+## 6. Dates, time zones and holidays
+
+- **Dates are Bogotá dates:** event dates are plain `YYYY-MM-DD` strings in Bogotá's local time.
+  "Today" is always Bogotá's, whatever the visitor's or the build machine's time zone (`lib/dates.ts`,
+  `todayIso`, with `Intl` and `America/Bogota`). Bogotá is UTC−5 all year.
+- **Times** are shown in 12-hour format ("8:00 p. m.") and stored as `HH:MM` 24-hour. Calendar links and
+  the ICS feed use the `America/Bogota` time zone.
+- **Colombian holidays** (`lib/holidays.ts`) are calculated, not downloaded:
+  - fixed dates;
+  - holidays moved to the following Monday (Ley Emiliani);
+  - holidays relative to Easter (Meeus' algorithm).
+
+  The tests check them against the official 2026 and 2027 lists. In the calendar, holidays get a tint,
+  and their label and heading say "Festivo".
+
+---
+
+## 7. Third-party services
+
+| Service | What for | Data sent | If it's down |
+|---|---|---|---|
+| **GitHub Pages** | Hosting | | The site is down |
+| **GoatCounter** (`jzamora9.goatcounter.com`) | Visit statistics, without cookies or personal data, so no consent banner is needed | Page views. Each event opened in the viewer, as a view of its page. Clicks on elements with `data-track` (Instagram, WhatsApp, calendar, "Cómo llegar", calendar subscriptions). Local testing isn't counted | Nothing breaks: the script is optional and wrapped in `try` (`lib/analytics.ts`) |
+| **Google Fonts** | Shrikhand, Bodoni Moda (italic) and Instrument Sans | The font request | System fonts are used |
+| **Instagram, WhatsApp, Google Calendar, Google Maps** | Links the visitor chooses to open | Only what's in the link | |
+
+The site never calls Instagram: flyers are copies served from this repository. The site has no other
+dependency at run time.
+
+---
+
+## 8. Quality checks
+
+| Check | What it verifies | Where |
+|---|---|---|
+| Data contract | Every field of `events.json` and `meta.json`: types, allowed values (event types, styles, confidence), date and time formats, unique ids, flyer files existing, sorting | `frontend/scripts/check-data.mjs` |
+| Types | `astro check`: strict TypeScript, including `noUncheckedIndexedAccess` | `tsconfig.json` |
+| Color contrast | Every color pair the site uses, in both themes, against WCAG 2.2 AA. It reads the tokens from `tokens.css`, so it can't drift from the design system | `frontend/scripts/check-contrast.mjs` |
+| Unit tests | Dates and Bogotá's "today", formatting, filtering and period grouping, holidays | `frontend/tests/*.test.ts` (Vitest) |
+| Build | Every page, image and feed is generated | `npm run build` |
+
+All five run in `ci` on every pull request, and the ruleset requires `ci` before merging.
+
+---
+
+## 9. Code map
+
+```
+frontend/
+  astro.config.mjs        site URL, public folder (../data), sitemap, DATA_DIR
+  scripts/                check-data.mjs, check-contrast.mjs (run by npm run check)
+  tests/                  Vitest tests
+  src/
+    data.ts               the data, typed, with flyer sizes (build time only)
+    layouts/BaseLayout.astro   <head>: meta, previews, fonts, theme before paint, GoatCounter
+    pages/                index, evento/[id], og/[id].jpg, calendario.ics, 404
+    components/           Astro components: header, toolbar, jump bar, calendar, dialog,
+                          filter sheet, view switch, footer, stripes, theme toggle
+    scripts/
+      main.ts             entry point of the home page: state, clicks, render
+      eventPage.ts        entry point of an event's page
+      state.ts            AppState, filtering, period grouping
+      types.ts            DanceEvent, EventMedia, Meta, AppState (mirror of the backend's models)
+      theme.ts, themeConfig.ts   theme modes
+      views/              upcomingView, calendarView, eventCard, eventDetail, eventDialog,
+                          filters, jumpBar, viewSwitch (HTML strings + their behavior)
+      lib/                dates, holidays, format, links, analytics, dom, icons, sheet
+    styles/               tokens.css (design tokens), base.css, components/*.css
+```
+
+| Module | Responsibility |
+|---|---|
+| `data.ts` | Reads `data/`, adds flyer sizes, lists the academies |
+| `state.ts` | The UI state; which events each view shows; grouping by period |
+| `views/upcomingView.ts` | "Próximos" |
+| `views/calendarView.ts` | "Calendario", with holidays |
+| `views/eventCard.ts` | A card: flyer at its shape, date sticker, details |
+| `views/eventDetail.ts` | An event's full detail (dialog and page): the flyer of each post, details, prices, actions |
+| `views/eventDialog.ts` | The viewer: slides, swiping, URL history, closing |
+| `views/filters.ts` | Type and style chips, the academy notice |
+| `views/jumpBar.ts` | Phones: the sticky bar, its menus, keeping your place, hiding on scroll |
+| `views/viewSwitch.ts` | Phones: the floating calendar / list button |
+| `lib/links.ts` | Every URL built from an event: flyer, page, preview, Calendar, Maps, WhatsApp |
+| `lib/sheet.ts` | Bottom sheets that drag to dismiss |
+| `lib/analytics.ts` | GoatCounter events |
+| `lib/dates.ts`, `lib/holidays.ts`, `lib/format.ts` | Dates in Bogotá, Colombian holidays, Spanish formatting |
+
+---
+
+## 10. Working on the site
+
+From `frontend/` (Node 24):
+
+```bash
+npm ci
+npm run dev       # http://localhost:4321, with the current data/
+npm run check     # data contract, types, contrast
+npm test
+npm run build     # frontend/dist/
+```
+
+Changes go on a branch, through a pull request with a Conventional Commits title, and merge when `ci`
+passes. The README has the details. A visual change follows [`DESIGN.md`](DESIGN.md). A change to the
+data's shape starts in the backend (`models.py`), then [`DATA.md`](DATA.md), `types.ts` and
+`check-data.mjs` here, behind a new `schema_version`.

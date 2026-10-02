@@ -6,11 +6,14 @@ from the Instagram accounts of the city's dance academies, on one page with a ca
 ```
 frontend/   Astro site (static), deployed to GitHub Pages
 data/       events.json + flyers/, updated by a daily pull request from the backend
-docs/       design system (DESIGN.md) and data contract (DATA.md)
+docs/       architecture (ARCHITECTURE.md), design system (DESIGN.md) and data contract (DATA.md)
 ```
 
 The data comes from a separate, private backend (Instagram → Gemini) that opens a pull request here
 every day with the new events. This repository only builds and publishes the site.
+
+**How the site gets its data, is built, published and works in the browser, with diagrams:
+[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).**
 
 ## Develop
 
