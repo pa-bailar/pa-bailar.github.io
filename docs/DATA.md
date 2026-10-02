@@ -35,7 +35,7 @@ repositories (backend first, behind the new version).
 | `confidence` | `high` · `medium` · `low` | Gemini's own estimate |
 | `doubts` | string[] | Missing or assumed details, in Spanish |
 | `account` | string | Instagram username of the organizer |
-| `media` | `EventMedia[]` | Every post announcing the event. Main post first (images before videos, then oldest). At least one. |
+| `media` | `EventMedia[]` | Every post announcing the event. Main post first: flyers (images and carousels) before videos, newest first within each, so the latest flyer is the cover. At least one. |
 
 ### EventMedia
 
