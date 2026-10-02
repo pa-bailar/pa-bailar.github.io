@@ -69,6 +69,7 @@ function render() {
     activeFilters: activeFilterCount(state),
     styles: rankedStyles(eventsInView(events, state)),
     styleFilter: state.styleFilter,
+    eventCount: eventsInView(events, state).length,
   });
   announce(shown);
 
@@ -95,7 +96,8 @@ function handleClick(domEvent: MouseEvent) {
   }
   if (view) state.view = view as View;
   else if (type) state.typeFilter = type as EventType | "all";
-  else if (style) state.styleFilter = style === state.styleFilter ? "all" : style; // tap again to clear
+  // A pressed chip tapped again clears it; menu options (no aria-pressed) just select.
+  else if (style) state.styleFilter = control.getAttribute("aria-pressed") === "true" ? "all" : style;
   else if (account !== undefined) {
     state.accountFilter = account || null; // "" = show every academy again
   } else if ("clearFilters" in control.dataset) clearFilters(state);

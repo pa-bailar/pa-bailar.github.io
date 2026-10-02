@@ -114,11 +114,12 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves. The pa
 ## Phones: feed, jump bar and filter sheet
 
 - **Feed like Instagram:** under 720px each event is a full-width post, the flyer edge to edge at full size and the details right below, separated by a line instead of boxed cards. Nothing is shrunk into thumbnails.
-- **Jump bar** (`JumpBar.astro`, `scripts/views/jumpBar.ts`): one slim row (`--jump-bar-height`, 56px) stuck to the top, modeled on the filter bars of Google Maps and Airbnb: **[⚙ 2] [Finde ▾] | Salsa · Bachata · …**
+- **Jump bar** (`JumpBar.astro`, `scripts/views/jumpBar.ts`): one slim row (`--jump-bar-height`, 56px) stuck to the top, modeled on the filter bars of Google Maps and Airbnb: **[⚙ 2] [Finde ▾] [Salsa ▾]**. Two compact dropdowns instead of a row of chips, so nothing scrolls sideways or gets cut off.
   - **⚙** opens the filter sheet; the badge counts active filters.
-  - **Period button** ("Finde ▾"): names the period on screen (scroll-spy) and opens a menu (popover, anchored under it) listing each period with its number of events; picking one jumps there. Hidden with fewer than two periods (and in Calendario).
-  - **Rhythm chips:** most frequent first (a family counts its variants). One tap filters, another tap clears. They fade out at the edge instead of being sliced, and come to rest aligned.
-  - **Hides like Instagram's header:** it hides while scrolling down and returns on any scroll up. It never hides near the top of the page, while it holds focus, or during a jump; scrolling closes the period menu.
+  - **Period dropdown:** names the period on screen (scroll-spy); its menu lists each period with its number of events, and picking one jumps there. Shown whenever the list has periods, even one (hidden in Calendario).
+  - **Rhythm dropdown:** reads "Ritmo", or the selected rhythm in the selected-chip style; its menu lists "Todos los ritmos" and each rhythm with its number of events, most frequent first.
+  - **Menus** are popovers anchored under their button (kept inside the screen); options are radio items with the label and count centered vertically. Scrolling closes them.
+  - **Hides like Instagram's header:** it hides while scrolling down and returns on any scroll up. It never hides near the top of the page, while it holds focus, or during a jump.
   - **Where it shows:** wherever the full toolbar isn't sticky (phones, short windows), in both views.
 - **Filter sheet** (`FilterSheet.astro`):
   - **Opening:** "Filtros" opens the type and style chips in a sheet that slides up from the bottom, so the list stays where it was. Chips wrap, so every option is visible.
