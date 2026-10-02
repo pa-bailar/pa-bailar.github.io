@@ -297,6 +297,7 @@ stateDiagram-v2
   - opening pushes the event's own URL to the history, so the phone's back button closes the viewer;
   - swiping replaces it, so back still closes instead of stepping through events;
   - every event's URL is a real page (`/evento/<id>/`), so copying the address shares the event.
+- **A shared link opens the app:** the event's page forwards a browser to the home page with `?evento=<id>`, which opens that event in the viewer with the list behind it (`main.ts`, `openSharedEvent`). Link previews and search engines read the event's page itself (they don't run scripts).
 - **The event page** (`eventPage.ts`) is already rendered at build time. Its script only adds the theme
   toggle, the sheet with an event's posts, and click tracking.
 - **The actions** are plain links built in `lib/links.ts`:

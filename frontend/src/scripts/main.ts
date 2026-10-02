@@ -294,6 +294,22 @@ function handleClick(domEvent: MouseEvent) {
   }
 }
 
+/**
+ * A shared link (/evento/<id>/, which forwards here as ?evento=<id>): the app opens with that event in the
+ * viewer, the list behind it. The address goes back to the home page first, so "back" closes the viewer
+ * onto the list instead of leaving the site. Past events open alone (they're not in the list).
+ */
+function openSharedEvent() {
+  const params = new URLSearchParams(location.search);
+  const id = params.get("evento");
+  if (!id) return;
+  params.delete("evento");
+  const rest = params.toString(); // e.g. utm_source=compartido, kept for the statistics
+  history.replaceState(null, "", `${location.pathname}${rest ? `?${rest}` : ""}${location.hash}`);
+  const event = events.find((item) => item.id === id);
+  if (event) openEventDialog(event, visibleEvents(events, state));
+}
+
 export function start() {
   events = JSON.parse(byId("events-data").textContent || "[]");
   keepOnly(new Set(events.map((event) => event.id))); // saved events no longer in the data are forgotten
@@ -323,4 +339,5 @@ export function start() {
     returnToScroll(scrollY);
   });
   render();
+  openSharedEvent();
 }
