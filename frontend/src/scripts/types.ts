@@ -43,7 +43,7 @@ export interface DanceEvent {
   confidence: "high" | "medium" | "low";
   doubts: string[];
   account: string;
-  media: [EventMedia, ...EventMedia[]]; // main post first (images before videos); always at least one
+  media: [EventMedia, ...EventMedia[]]; // main post first (the latest flyer; videos after flyers); always at least one
 }
 
 /** data/meta.json */
