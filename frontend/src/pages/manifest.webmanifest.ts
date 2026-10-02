@@ -3,6 +3,10 @@
 
 import type { APIRoute } from "astro";
 import { BASE_URL } from "../scripts/lib/links";
+
+// The manifest's own address: declaring the app as related to itself lets the site, opened in Chrome on
+// Android, ask whether it's already installed (navigator.getInstalledRelatedApps, views/installPrompt.ts).
+const MANIFEST_URL = new URL(`${BASE_URL}manifest.webmanifest`, import.meta.env.SITE).href;
 import { THEME_COLORS } from "../scripts/themeConfig";
 
 export const GET: APIRoute = () =>
@@ -17,6 +21,8 @@ export const GET: APIRoute = () =>
       display: "standalone",
       background_color: THEME_COLORS.dark, // the splash screen while it opens: wine, like the icon
       theme_color: THEME_COLORS.dark,
+      related_applications: [{ platform: "webapp", url: MANIFEST_URL }],
+      prefer_related_applications: false,
       icons: [
         { src: `${BASE_URL}icons/192.png`, sizes: "192x192", type: "image/png" },
         { src: `${BASE_URL}icons/512.png`, sizes: "512x512", type: "image/png" },
