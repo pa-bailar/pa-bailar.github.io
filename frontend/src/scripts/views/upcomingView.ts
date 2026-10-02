@@ -10,6 +10,9 @@
 
 import type { AppState, DanceEvent } from "../types";
 import { escapeHtml } from "../lib/dom";
+import { ICONS } from "../lib/icons";
+import { todayIso } from "../lib/dates";
+import { weekendOf } from "../lib/weekend";
 import { eventCountLabel } from "../lib/format";
 import { mainMedia, thumbUrl } from "../lib/links";
 import { eventsInView, groupByPeriod, hasActiveFilters, matchesFilters, sectionId } from "../state";
@@ -68,6 +71,21 @@ function groupBodyHtml(group: AgendaGroup, open: boolean): string {
     <button class="btn period-more" type="button" data-show-period="${escapeHtml(group.key)}">Ver ${rest} más</button>`;
 }
 
+/**
+ * The period that carries "Compartir el finde": "Este fin de semana", or "Hoy" once the weekend has
+ * started (its events are today's and the rest of the weekend's). Null when the weekend has no events.
+ */
+function weekendGroupKey(groups: AgendaGroup[], today = todayIso()): string | null {
+  const weekendStarted = weekendOf(today).start === today;
+  const keys = weekendStarted ? ["hoy", "fin-de-semana"] : ["fin-de-semana"];
+  return groups.find((group) => keys.includes(group.key))?.key ?? null;
+}
+
+const shareWeekendHtml = `
+  <button class="btn btn--whatsapp share-weekend" type="button" data-share-weekend data-track="compartir-finde">
+    ${ICONS.whatsapp}Compartir el finde
+  </button>`;
+
 /** Renders the list; returns how many events it shows and their periods (for the jump bar). */
 export function renderUpcomingView(
   container: HTMLElement,
@@ -99,6 +117,7 @@ export function renderUpcomingView(
           <p>Las academias publican casi a diario: vuelve en unos días.</p>
         </div>`;
   } else {
+    const shareKey = weekendGroupKey(groups);
     container.innerHTML = groups
       .map((group, position) => {
         const open = isPeriodOpen(groups, position);
@@ -108,6 +127,7 @@ export function renderUpcomingView(
             <h2 class="agenda-group__heading" tabindex="-1">${escapeHtml(group.label)}</h2>
             <span class="agenda-group__count">${eventCountLabel(group.events.length)}</span>
           </header>
+          ${group.key === shareKey ? shareWeekendHtml : ""}
           ${groupBodyHtml(group, open)}
         </section>`;
       })
