@@ -2,7 +2,7 @@
 // The title is a link to the event's page (open in a new tab, share, crawl); a plain click opens the
 // viewer instead (main.ts). Its ::after stretches over the whole card, so the card is one big target.
 
-import type { DanceEvent } from "../types";
+import type { DanceEvent, EventMedia } from "../types";
 import { escapeHtml } from "../lib/dom";
 import {
   cardWhenLabel,
@@ -21,12 +21,37 @@ function isFree(event: DanceEvent): boolean {
   return event.prices.length > 0 && event.prices.every((price) => price.amount_cop === 0);
 }
 
+// Flyers keep their shape, like Instagram's feed: anything from 4:5 (portrait) to 1.91:1 (landscape) is
+// shown whole at its own shape on phones. Taller ones (stories) get a 4:5 frame, and on wider screens every
+// card has the 4:5 frame so rows line up; then the flyer is fitted whole over a blurred copy of itself.
+const TALLEST = 4 / 5;
+const WIDEST = 1.91;
+
+/** The flyer's frame shape (width / height) on phones, or null when its size isn't known. */
+function frameRatio(media: EventMedia): number | null {
+  if (!media.width || !media.height) return null;
+  return Math.min(Math.max(media.width / media.height, TALLEST), WIDEST);
+}
+
+function flyerHtml(media: EventMedia, flyer: string): string {
+  const src = escapeHtml(flyer);
+  // Exactly 4:5 fills every frame: no blurred copy needed.
+  const fillsFrame = media.width && media.height && Math.abs(media.width / media.height - TALLEST) < 0.01;
+  return `
+    <div class="event-card__frame">
+      ${fillsFrame ? "" : `<img class="event-card__backdrop" src="${src}" alt="" loading="lazy" decoding="async" />`}
+      <img class="event-card__flyer" src="${src}" alt="" loading="lazy" decoding="async" />
+    </div>`;
+}
+
 export function eventCardHtml(event: DanceEvent): string {
-  const flyer = flyerUrl(mainMedia(event));
+  const media = mainMedia(event);
+  const flyer = flyerUrl(media);
+  const ratio = flyer ? frameRatio(media) : null;
   const postCount =
     event.media.length > 1 ? `<span class="media-count">${postCountLabel(event.media.length)}</span>` : "";
   const image = flyer
-    ? `<img src="${escapeHtml(flyer)}" alt="" loading="lazy" decoding="async" />`
+    ? flyerHtml(media, flyer)
     : `<div class="no-flyer" aria-hidden="true">Pa'</div>`;
   const sticker = stickerDate(event.date);
   const when = cardWhenLabel(event);
@@ -36,7 +61,7 @@ export function eventCardHtml(event: DanceEvent): string {
 
   return `
     <article class="event-card">
-      <div class="event-card__media">
+      <div class="event-card__media"${ratio ? ` style="--flyer-ratio: ${ratio.toFixed(4)}"` : ""}>
         ${image}
         <span class="tag-type t-${escapeHtml(event.event_type)}">${typeLabel(event.event_type)}</span>
         ${postCount}

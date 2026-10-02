@@ -82,13 +82,32 @@
   border-bottom: var(--border-width) solid var(--border);
 }
 
-.event-card__media img {
+/* The flyer's frame clips the blurred copy (the date sticker hangs below the frame, so not the media box). */
+.event-card__frame {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.event-card__frame img {
   position: absolute;
   inset: 0;
   display: block;
   width: 100%;
   height: 100%;
+}
+
+/* The whole flyer, never cropped (eventCard.ts). */
+.event-card__flyer {
+  object-fit: contain;
+}
+
+/* Fills the frame around a flyer of another shape with its own colors, like Instagram stories do. */
+.event-card__backdrop {
   object-fit: cover;
+  filter: blur(24px) saturate(1.2);
+  transform: scale(1.2); /* the blur's soft edges fall outside the frame */
+  opacity: 0.85;
 }
 
 .event-card__media .tag-type {
@@ -252,7 +271,9 @@
     transform: none;
   }
 
+  /* Each flyer at its own shape (4:5 to 1.91:1), set by eventCard.ts; 4:5 when unknown. */
   .event-card__media {
+    aspect-ratio: var(--flyer-ratio, 4 / 5);
     border-bottom: 0;
   }
 
