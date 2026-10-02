@@ -1,15 +1,17 @@
 // Phones only (CSS hides it where the toolbar is sticky): one slim row stuck to the top of the screen,
 // like the filter bars of Google Maps or Airbnb, and the only way to the filters there (the toolbar's
 // chip rows are hidden on phones, toolbar.css):
-//   [⚙ 2]  [Finde ▾]  |  Salsa · Bachata · Salsa caleña …
+//   [⚙ 2]  [Finde ▾]  [Salsa ▾]
 //   - ⚙ opens the filter sheet; the number is how many filters are active.
-//   - "Finde ▾" names the period on screen (scroll-spy) and opens a menu to jump to another one.
-//   - Rhythm chips, most frequent first: one tap filters, another tap clears.
+//   - The period dropdown names the period on screen (scroll-spy); its menu jumps to another one.
+//   - The rhythm dropdown filters by rhythm; its menu lists them with their counts, most frequent first.
+// Two compact dropdowns instead of a row of chips: nothing scrolls sideways or gets cut off.
 // Like Instagram's header, the bar hides while scrolling down and comes back on any scroll up.
 
 import type { AgendaGroup } from "../state";
 import { byId, escapeHtml } from "../lib/dom";
 import { capitalize } from "../lib/format";
+import type { StyleCount } from "./filters";
 import { ICONS } from "../lib/icons";
 import { dismissSheet, initSheet } from "../lib/sheet";
 
@@ -29,8 +31,9 @@ export function sectionId(group: AgendaGroup): string {
 export interface JumpBarContent {
   groups: AgendaGroup[]; // periods of the upcoming list (none in the calendar)
   activeFilters: number;
-  styles: string[]; // rhythm chips, most frequent first
+  styles: StyleCount[]; // rhythm options, most frequent first
   styleFilter: string;
+  eventCount: number; // events in view before the rhythm filter, for "Todos los ritmos"
 }
 
 /** The period on screen: its name on the period button, and marked in the menu. */
@@ -40,7 +43,7 @@ function setActive(key: string) {
   byId("jump-period-label").textContent = group.shortLabel;
   byId("jump-period-menu")
     .querySelectorAll<HTMLElement>("[data-jump]")
-    .forEach((item) => item.toggleAttribute("aria-current", item.dataset.jump === key));
+    .forEach((item) => item.setAttribute("aria-checked", String(item.dataset.jump === key)));
 }
 
 function atPageBottom(): boolean {
@@ -88,6 +91,14 @@ function watchSections() {
   groups.forEach((group) => observer!.observe(byId(sectionId(group))));
 }
 
+/** One option of a bar menu: label on the left, its number of events on the right. */
+function menuItemHtml(data: string, label: string, count: number, checked: boolean): string {
+  return `
+    <button class="bar-menu__item" type="button" role="menuitemradio" aria-checked="${checked}" ${data}>
+      <span>${escapeHtml(label)}</span><span class="bar-menu__count">${count}</span>
+    </button>`;
+}
+
 export function renderJumpBar(content: JumpBarContent) {
   groups = content.groups;
   byId("jump-bar").hidden = false;
@@ -97,23 +108,21 @@ export function renderJumpBar(content: JumpBarContent) {
   filters.innerHTML = `${ICONS.sliders}${count ? `<span class="jump-bar__badge">${count}</span>` : ""}`;
   filters.setAttribute("aria-label", count ? `Filtros, ${count} activos` : "Filtros");
 
-  // The period menu only makes sense with two or more periods.
-  byId("jump-period").hidden = groups.length < 2;
+  // Shown whenever the list has periods (not in the calendar), even just one: it says where you are.
+  byId("jump-period").hidden = groups.length === 0;
   byId("jump-period-menu").innerHTML = groups
-    .map(
-      (group) => `
-        <button class="period-menu__item" type="button" data-jump="${escapeHtml(group.key)}">
-          <span>${escapeHtml(group.label)}</span><span class="period-menu__count">${group.events.length}</span>
-        </button>`,
-    )
+    .map((group) => menuItemHtml(`data-jump="${escapeHtml(group.key)}"`, group.label, group.events.length, false))
     .join("");
 
-  byId("jump-styles").innerHTML = content.styles
-    .map((style) => {
-      const active = style === content.styleFilter;
-      return `<button class="chip" type="button" data-style="${escapeHtml(style)}" aria-pressed="${active}">${escapeHtml(capitalize(style))}</button>`;
-    })
-    .join("");
+  const style = content.styleFilter;
+  byId("jump-style-label").textContent = style === "all" ? "Ritmo" : capitalize(style);
+  byId("jump-style").classList.toggle("is-active", style !== "all");
+  byId("jump-style-menu").innerHTML = [
+    menuItemHtml('data-style="all"', "Todos los ritmos", content.eventCount, style === "all"),
+    ...content.styles.map((option) =>
+      menuItemHtml(`data-style="${escapeHtml(option.style)}"`, capitalize(option.style), option.count, option.style === style),
+    ),
+  ].join("");
 
   if (groups.length) setActive(groups[0].key);
   watchSections();
@@ -146,7 +155,7 @@ function initFilterSheet() {
 /** Hide while scrolling down, show on any scroll up (and near the top, and when it holds focus). */
 function initHideOnScroll() {
   const bar = byId("jump-bar");
-  const menu = byId("jump-period-menu");
+  const menus = [byId("jump-period-menu"), byId("jump-style-menu")];
   let lastY = window.scrollY;
   let ticking = false;
   const update = () => {
@@ -155,7 +164,7 @@ function initHideOnScroll() {
     const delta = y - lastY;
     if (Math.abs(delta) < SCROLL_THRESHOLD) return;
     highlightAtEdges();
-    if (!jumping && menu.matches(":popover-open")) menu.hidePopover(); // the menu belongs to the bar
+    if (!jumping) menus.filter((menu) => menu.matches(":popover-open")).forEach((menu) => menu.hidePopover());
     const hide = delta > 0 && y > ALWAYS_SHOWN_ABOVE && !jumping && !bar.contains(document.activeElement);
     bar.classList.toggle("is-hidden", hide);
     lastY = y;
@@ -173,19 +182,28 @@ function initHideOnScroll() {
 
 export function initJumpBar() {
   byId("jump-filters").addEventListener("click", () => byId<HTMLDialogElement>("filter-sheet").showModal());
-  const menu = byId("jump-period-menu");
-  // Open the menu right under its button, wherever the bar is on the screen.
-  menu.addEventListener("beforetoggle", (toggle) => {
-    if ((toggle as ToggleEvent).newState !== "open") return;
-    const button = byId("jump-period").getBoundingClientRect();
-    menu.style.top = `${button.bottom + 4}px`;
-    menu.style.left = `${button.left}px`;
-  });
-  menu.addEventListener("click", (domEvent) => {
+  // Each menu opens right under its button, wherever the bar is on the screen, kept inside the screen.
+  for (const [menuId, buttonId] of [
+    ["jump-period-menu", "jump-period"],
+    ["jump-style-menu", "jump-style"],
+  ]) {
+    const menu = byId(menuId);
+    menu.addEventListener("beforetoggle", (toggle) => {
+      if ((toggle as ToggleEvent).newState !== "open") return;
+      const button = byId(buttonId).getBoundingClientRect();
+      menu.style.top = `${button.bottom + 4}px`;
+      menu.style.left = `${Math.max(8, Math.min(button.left, window.innerWidth - menu.offsetWidth - 8))}px`;
+    });
+  }
+  byId("jump-period-menu").addEventListener("click", (domEvent) => {
     const item = (domEvent.target as HTMLElement).closest<HTMLElement>("[data-jump]");
     if (!item) return;
     byId("jump-period-menu").hidePopover();
     jumpTo(item.dataset.jump!);
+  });
+  // Choosing a rhythm: main.ts applies it (data-style); the menu just closes.
+  byId("jump-style-menu").addEventListener("click", (domEvent) => {
+    if ((domEvent.target as HTMLElement).closest("[data-style]")) byId("jump-style-menu").hidePopover();
   });
   initHideOnScroll();
   initFilterSheet();

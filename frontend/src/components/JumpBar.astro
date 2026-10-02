@@ -1,16 +1,20 @@
 ---
-// Phones only: slim bar stuck to the top with the filters button, the period menu and the rhythm chips
-// (scripts/views/jumpBar.ts fills it).
+// Phones only: slim bar stuck to the top with the filters button and two dropdowns, period and rhythm
+// (scripts/views/jumpBar.ts fills them). Nothing scrolls sideways, so nothing gets cut off.
 ---
 
 <nav class="jump-bar" id="jump-bar" aria-label="Filtros rápidos" hidden>
   <div class="container jump-bar__inner">
     <button class="chip jump-bar__filters" id="jump-filters" type="button" aria-label="Filtros"></button>
-    <button class="chip jump-bar__period" id="jump-period" type="button" popovertarget="jump-period-menu"
+    <button class="chip jump-bar__menu-button" id="jump-period" type="button" popovertarget="jump-period-menu"
       aria-label="Ir a otro periodo">
-      <span id="jump-period-label"></span><span aria-hidden="true">▾</span>
+      <span class="jump-bar__label" id="jump-period-label"></span><span aria-hidden="true">▾</span>
     </button>
-    <div class="jump-bar__styles" id="jump-styles" role="group" aria-label="Filtrar por ritmo"></div>
+    <button class="chip jump-bar__menu-button" id="jump-style" type="button" popovertarget="jump-style-menu"
+      aria-label="Filtrar por ritmo">
+      <span class="jump-bar__label" id="jump-style-label">Ritmo</span><span aria-hidden="true">▾</span>
+    </button>
   </div>
-  <div class="period-menu" id="jump-period-menu" popover></div>
+  <div class="bar-menu" id="jump-period-menu" popover></div>
+  <div class="bar-menu" id="jump-style-menu" popover></div>
 </nav>

@@ -25,13 +25,19 @@ function styleOptions(events: DanceEvent[]): string[] {
   return [...present].sort((a, b) => a.localeCompare(b, "es"));
 }
 
-/** Rhythm options for quick chips: most frequent first ("salsa" counts its variants too). */
-export function rankedStyles(events: DanceEvent[]): string[] {
-  const counts = new Map<string, number>();
-  for (const style of styleOptions(events)) {
-    counts.set(style, events.filter((event) => event.styles.some((item) => styleMatches(item, style))).length);
-  }
-  return [...counts].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "es")).map(([style]) => style);
+export interface StyleCount {
+  style: string;
+  count: number;
+}
+
+/** Rhythm options with how many events have them, most frequent first ("salsa" counts its variants). */
+export function rankedStyles(events: DanceEvent[]): StyleCount[] {
+  return styleOptions(events)
+    .map((style) => ({
+      style,
+      count: events.filter((event) => event.styles.some((item) => styleMatches(item, style))).length,
+    }))
+    .sort((a, b) => b.count - a.count || a.style.localeCompare(b.style, "es"));
 }
 
 export function renderFilters(events: DanceEvent[], state: AppState) {
