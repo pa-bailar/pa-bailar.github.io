@@ -17,7 +17,7 @@
 
 .btn--primary {
   background: var(--action);
-  border-color: var(--action-border);
+  border-color: var(--action);
   color: var(--on-action);
 }
 

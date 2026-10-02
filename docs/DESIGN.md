@@ -59,7 +59,7 @@ Themes switch through CSS `color-scheme`: `light dark` (follow the device) when 
 | `--text-italic` | wine-500 | rose-300 | Bodoni italic accents |
 | `--logo` | tomato-600 | marigold-400 | The wordmark |
 | `--accent` | tomato-600 | orange-400 | Event time, active tab, selected day |
-| `--action` / `--on-action` / `--action-border` | orange / wine / wine | marigold / wine / marigold | The single primary button ("Ver en Instagram") |
+| `--action` / `--on-action` | deep orange / white | marigold / wine | The single primary button ("Ver en Instagram"), shaped like the WhatsApp one |
 | `--chip-active-*` | wine / cream | marigold / wine | Selected filter chip |
 | `--stripe-1..3` | tomato, orange, marigold | brighter tomato, orange, marigold | 70s stripes |
 | `--sticker-*` | tomato / cream | marigold / wine | Round date sticker |
