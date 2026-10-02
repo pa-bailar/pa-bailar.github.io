@@ -18,6 +18,11 @@
   flex-direction: column;
 }
 
+/* The viewer takes the focus when it opens (eventDialog.ts); the dialog itself needs no outline. */
+.event-dialog:focus {
+  outline: none;
+}
+
 .event-dialog::backdrop {
   background: var(--backdrop);
 }

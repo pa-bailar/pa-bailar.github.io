@@ -237,6 +237,8 @@ An event can be announced by several Instagram posts (a flyer, then a video, a r
 - **The viewer swipes between events** (`EventDialog.astro`, `scripts/views/eventDialog.ts`):
   - **What's in it:** one full-width slide per event on screen, in list order (or the selected calendar day's). Swipe sideways (or ‹ ›, or the arrow keys) to change event; scroll up and down to read.
   - **No peeking neighbors:** like Instagram posts, each event fills the width.
+  - **The counter follows the finger:** "3 de 9" changes as soon as the next event passes the middle, not when the swipe stops.
+  - **Opening it** focuses the viewer itself, not its first button (no outlined ‹ when it opens from a shared link); a shared link opens it once the page has settled, and it stays on the same event when the screen changes size.
   - **Signaling the swipe:** the "3 de 9" counter with ‹ › (dots fail past ~10 items), a seam between events while swiping, and a one-time nudge. The nudge plays after opening: about a fifth of the next event shows, holds, and slides back. It stops at the first touch and isn't repeated after the first swipe.
 - **Panel sheets** (filters, an event's posts, a post) share one base: `.sheet-panel` (`sheet.css`, attached to the bottom on phones, a centered window on wide screens) and `initPanelSheet` / `openPanelSheet` (`lib/sheet.ts`: ×, backdrop, drag down, Escape). Each gets its own history entry, so the phone's back button closes only the sheet on top: a post, then the event viewer, then the list.
 - **Bottom sheets** (the viewer on phones and the panel sheets; `lib/sheet.ts`, `sheet.css`) behave like native ones, with values from Material/iOS sheets:

@@ -44,14 +44,19 @@ function scrollToSlide(position: number, smooth: boolean) {
   track().scrollTo({ left, behavior: smooth && !prefersReducedMotion() ? "smooth" : "auto" });
 }
 
+/** The counter ("4 de 18") and the arrows. Updated during a swipe, as soon as the next event passes the middle. */
+function showPosition(position: number) {
+  byId("viewer-count").textContent = `${position + 1} de ${list.length}`;
+  dialog().querySelector<HTMLButtonElement>('[data-step="-1"]')!.disabled = position === 0;
+  dialog().querySelector<HTMLButtonElement>('[data-step="1"]')!.disabled = position === list.length - 1;
+}
+
 /** Make `position` the current event: counter, arrows, URL, and only its slide reachable by keyboard. */
 function setCurrent(position: number, { updateUrl }: { updateUrl: boolean }) {
   index = position;
   const event = list[position];
   if (!event) return;
-  byId("viewer-count").textContent = `${position + 1} de ${list.length}`;
-  dialog().querySelector<HTMLButtonElement>('[data-step="-1"]')!.disabled = position === 0;
-  dialog().querySelector<HTMLButtonElement>('[data-step="1"]')!.disabled = position === list.length - 1;
+  showPosition(position);
   dialog().setAttribute("aria-labelledby", `event-title-${position}`);
   slides().forEach((slide, i) => (slide.inert = i !== position));
   if (updateUrl) history.replaceState({ eventId: event.id } satisfies HistoryState, "", eventPath(event));
@@ -66,11 +71,16 @@ function step(delta: number) {
   markHintSeen();
 }
 
-/** After a swipe settles, the slide closest to the center is the current one. */
-function onTrackScroll() {
+/** The slide closest to the center of the viewer. */
+function closestSlide(): number {
   const center = track().scrollLeft + track().clientWidth / 2;
   const distances = slides().map((slide) => Math.abs(slide.offsetLeft + slide.clientWidth / 2 - center));
-  const closest = distances.indexOf(Math.min(...distances));
+  return distances.indexOf(Math.min(...distances));
+}
+
+/** After a swipe settles, the slide closest to the center is the current one. */
+function onTrackScroll() {
+  const closest = closestSlide();
   if (closest >= 0 && closest !== index) {
     setCurrent(closest, { updateUrl: true });
     markHintSeen();
@@ -112,6 +122,9 @@ export function openEventDialog(event: DanceEvent, events: DanceEvent[], { pushH
   const position = list.findIndex((item) => item.id === event.id);
   track().innerHTML = list.map(slideHtml).join("");
   if (!dialog().open) dialog().showModal();
+  // The viewer itself takes the focus, not its first button: opening it (for example from a shared link,
+  // before any tap) would otherwise show "‹" outlined as if selected. The arrow keys work from here.
+  dialog().focus({ preventScroll: true });
   scrollToSlide(position, false);
   setCurrent(position, { updateUrl: false });
   if (pushHistory) history.pushState({ eventId: event.id } satisfies HistoryState, "", eventPath(event));
@@ -146,15 +159,28 @@ export function initEventDialog(find: (id: string) => DanceEvent | undefined) {
     else if (key.key === "ArrowLeft") step(-1);
   });
 
+  // While swiping, the counter follows at once (a frame at a time); the rest waits for the swipe to settle.
   let settleTimer = 0;
+  let frame = 0;
   track().addEventListener(
     "scroll",
     () => {
+      if (!frame)
+        frame = requestAnimationFrame(() => {
+          frame = 0;
+          const closest = closestSlide();
+          if (closest >= 0) showPosition(closest);
+        });
       clearTimeout(settleTimer);
       settleTimer = window.setTimeout(onTrackScroll, SETTLE_DELAY);
     },
     { passive: true },
   );
+
+  // A rotation, or the phone's address bar showing or hiding, changes the width: stay on the same event.
+  window.addEventListener("resize", () => {
+    if (element.open) scrollToSlide(index, false);
+  });
 
   // Closed by ×, backdrop, Escape or pull-down: leave the event's URL the way the back button would.
   element.addEventListener("close", () => {
