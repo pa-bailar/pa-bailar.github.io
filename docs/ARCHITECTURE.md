@@ -154,9 +154,10 @@ flowchart LR
 
 | Output | Source | What it is |
 |---|---|---|
-| `/` (`index.html`) | `pages/index.astro` | The app: header, toolbar, jump bar, both views, dialog, filter sheet. Every event is embedded as JSON (`<script type="application/json" id="events-data">`), and the browser renders the cards and calendar from it. The preview image is the next event's flyer |
+| `/` (`index.html`) | `pages/index.astro` | The app: header, toolbar, jump bar, both views, dialog, filter sheet. Every event is embedded as JSON (`<script type="application/json" id="events-data">`), and the browser renders the cards and calendar from it. The preview image is the brand's own (`/og/sitio.jpg`), not an event's flyer |
 | `/evento/<id>/` | `pages/evento/[id].astro` | One page per event: what a shared link opens. Rendered at build time with the same markup as the dialog. Includes Open Graph tags (the flyer as the link preview) and schema.org `Event` data for search engines |
 | `/og/<id>.jpg` | `pages/og/[id].jpg.ts` | Each event's link-preview image: its flyer as a 600 px JPEG. WebP isn't shown by every app, and WhatsApp skips images over about 300 KB |
+| `/og/sitio.jpg` | `pages/og/sitio.jpg.ts` | The home page's link preview (1200×630): stripes, "Pa' Bailar", the tagline and the record. Drawn once with the site's fonts by `scripts/og-site.html` and stored as `src/assets/og-site.jpg` |
 | `/thumbs/<flyer>.webp` | `pages/thumbs/[name].webp.ts` | A 160 px square thumbnail of every flyer, for the sheet with an event's posts (opened from the "▦ 16" badge on the flyer). A few KB each instead of the 100–200 KB flyer, so they show at once on a phone |
 | `/calendario.ics` | `pages/calendario.ics.ts` | A subscribable calendar feed (iCalendar, RFC 5545) with every event. Rebuilt with the site, so subscribed calendars refresh on their own |
 | `/manifest.webmanifest` | `pages/manifest.webmanifest.ts` | What lets a phone install the site like an app: name, colors, icons, full screen |
@@ -390,7 +391,7 @@ frontend/
   src/
     data.ts               the data, typed, with flyer sizes (build time only)
     layouts/BaseLayout.astro   <head>: meta, previews, fonts, theme before paint, GoatCounter
-    pages/                index, evento/[id], og/[id].jpg, calendario.ics, 404
+    pages/                index, evento/[id], og/[id].jpg, og/sitio.jpg, calendario.ics, 404
     components/           Astro components: header, toolbar, jump bar, calendar, dialog,
                           filter sheet, view switch, footer, stripes, theme toggle
     scripts/

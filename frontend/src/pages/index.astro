@@ -12,8 +12,6 @@ import PostViewer from "../components/PostViewer.astro";
 import PostsSheet from "../components/PostsSheet.astro";
 import ViewSwitch from "../components/ViewSwitch.astro";
 import { accounts, events, meta } from "../data";
-import { todayIso } from "../scripts/lib/dates";
-import { previewImagePath } from "../scripts/lib/links";
 
 // Escape "<" so a caption can never end the inline JSON script block early.
 const eventsJson = JSON.stringify(events).replace(/</g, "\\u003c");
@@ -25,16 +23,12 @@ const updatedLabel = new Date(checkedAt).toLocaleDateString("es-CO", {
   month: "long",
   timeZone: "America/Bogota",
 });
-// Link previews show the flyer of the next upcoming event.
-const today = todayIso();
-const nextEvent = events.find((event) => event.date >= today && previewImagePath(event));
-const previewImage = nextEvent ? previewImagePath(nextEvent) : null;
 ---
 
 <BaseLayout
   title="Pa' Bailar · Bogotá"
   description="Sociales y talleres de baile en Bogotá: salsa, bachata, mambo y más, en un solo lugar."
-  image={previewImage}
+  image="og/sitio.jpg"
 >
   <SiteHeader updatedLabel={updatedLabel} />
   <InstallOffer />
