@@ -26,9 +26,21 @@
 
 /* ---------- tabs ---------- */
 
+.tabs-row {
+  display: flex;
+  gap: var(--space-5);
+}
+
 .tabs {
   display: flex;
   gap: var(--space-5);
+}
+
+/* "Info": a link to the footer, beside the view tabs and looking like one (never selected). */
+.tabs__link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
 }
 
 .tabs__tab {

@@ -115,6 +115,11 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves. The pa
 - **Empty results** always offer a way out: "Quitar filtros" when filters are active.
 - **Dance styles** are one line of text joined by a middle dot glued to the previous word with a no-break space (`stylesLabel`), never separate elements with CSS separators. The dot stays centered between words, and a wrapped line never starts with a dot.
 
+## Info and footer
+
+- **"Info"** sits after the view tabs and looks like one, but it's a link to the footer (`#info`), never selected and outside the tab list for screen readers.
+- **The footer is "Sobre Pa' Bailar"**: a heading in Bodoni italic, a one-line description, the disclaimer, the calendar subscription, the sources and "Hecho por @jzamora5" (GitHub).
+
 ## Phones: feed, jump bar, view switch and filter sheet
 
 - **Feed like Instagram:** under 720px each event is a full-width post, the flyer edge to edge at full size and the details right below, separated by space instead of boxed cards. Nothing is shrunk into thumbnails.

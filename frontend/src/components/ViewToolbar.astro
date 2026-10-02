@@ -5,13 +5,17 @@
 
 <div class="toolbar">
   <div class="container toolbar__inner">
-    <div class="tabs" role="tablist" aria-label="Vista">
-      <button class="tabs__tab" id="tab-upcoming" role="tab" aria-selected="true" aria-controls="view-upcoming" data-view="upcoming">
-        Próximos
-      </button>
-      <button class="tabs__tab" id="tab-calendar" role="tab" aria-selected="false" aria-controls="view-calendar" data-view="calendar">
-        Calendario
-      </button>
+    <div class="tabs-row">
+      <div class="tabs" role="tablist" aria-label="Vista">
+        <button class="tabs__tab" id="tab-upcoming" role="tab" aria-selected="true" aria-controls="view-upcoming" data-view="upcoming">
+          Próximos
+        </button>
+        <button class="tabs__tab" id="tab-calendar" role="tab" aria-selected="false" aria-controls="view-calendar" data-view="calendar">
+          Calendario
+        </button>
+      </div>
+      <!-- Not a view: a link to the footer ("Sobre Pa' Bailar"), styled like the tabs beside it. -->
+      <a class="tabs__tab tabs__link" href="#info">Info</a>
     </div>
     <div class="chip-row" id="type-filters" data-filter-row="type" role="group" aria-label="Filtrar por tipo"></div>
     <div class="chip-row" id="style-filters" data-filter-row="style" role="group" aria-label="Filtrar por ritmo"></div>
