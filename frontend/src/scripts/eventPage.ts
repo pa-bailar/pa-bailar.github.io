@@ -10,6 +10,7 @@ import { eventDetailHtml, handleDetailClick } from "./views/eventDetail";
 import { initPostViewer } from "./views/postViewer";
 import { initPostsSheet } from "./views/postsSheet";
 import { initSaveButtons } from "./views/saveButton";
+import { initSharing } from "./views/sharing";
 import { initInstallPrompt, registerServiceWorker } from "./views/installPrompt";
 
 export function initEventPage() {
@@ -18,6 +19,7 @@ export function initEventPage() {
   initPostsSheet();
   initPostViewer();
   initSaveButtons();
+  initSharing((id) => (id === event.id ? event : undefined));
   initInstallPrompt();
   registerServiceWorker();
   const event: DanceEvent = JSON.parse(byId("event-data").textContent || "null");

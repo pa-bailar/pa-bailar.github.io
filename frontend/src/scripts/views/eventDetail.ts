@@ -16,7 +16,7 @@ import {
   typeLabel,
 } from "../lib/format";
 import { ICONS } from "../lib/icons";
-import { flyerUrl, googleCalendarUrl, mapsUrl, whatsappShareUrl } from "../lib/links";
+import { flyerUrl, googleCalendarUrl, mapsUrl } from "../lib/links";
 import { openPostViewer } from "./postViewer";
 import { saveButtonHtml } from "./saveButton";
 import { openPostsSheet } from "./postsSheet";
@@ -135,7 +135,7 @@ export function eventDetailHtml(
       ${lowConfidence}
       <div class="event-dialog__actions">
         <a class="btn btn--primary" href="${permalink}" target="_blank" rel="noopener" data-track="instagram">${ICONS.instagram}Ver en Instagram ↗</a>
-        <a class="btn btn--whatsapp" href="${escapeHtml(whatsappShareUrl(event))}" target="_blank" rel="noopener" data-track="whatsapp">${ICONS.whatsapp}Compartir por WhatsApp</a>
+        <button class="btn btn--whatsapp" type="button" data-share-event="${escapeHtml(event.id)}" data-track="compartir-evento">${ICONS.share}Compartir</button>
         <a class="btn" href="${escapeHtml(googleCalendarUrl(event))}" target="_blank" rel="noopener" data-track="calendario">${ICONS.calendar}Agregar al calendario</a>
       </div>
       ${media.caption ? `<details class="event-dialog__caption"><summary>Texto de la publicación</summary><p>${escapeHtml(media.caption)}</p></details>` : ""}

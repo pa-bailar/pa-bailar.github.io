@@ -19,6 +19,8 @@ import { initPanelSheet, openPanelSheet } from "../lib/sheet";
 
 const DISMISS_KEY = "install-dismissed-at";
 const INSTALLED_KEY = "installed";
+const NUDGED_KEY = "install-nudged";
+const NUDGE_SECONDS = 10;
 const DISMISS_DAYS = 30;
 
 /** Chrome's install event (not in TypeScript's DOM types yet). */
@@ -160,6 +162,7 @@ export function initInstallPrompt() {
   document.addEventListener("click", (domEvent) => {
     const target = domEvent.target as HTMLElement;
     if (target.closest("[data-install]")) void install().then(render);
+    else if (target.closest("[data-nudge-close]")) byId("install-nudge").hidden = true;
     else if (target.closest("[data-install-dismiss]")) {
       remember(DISMISS_KEY, String(Date.now()));
       render();
@@ -168,6 +171,20 @@ export function initInstallPrompt() {
   initPanelSheet(byId<HTMLDialogElement>("install-sheet"));
   render();
   void checkInstalled().then(render);
+}
+
+/**
+ * After a save: whoever dismissed the banner gets one reminder, once, when they have two saved events
+ * (a moment the app clearly helps; Google's advice is to offer again then, not to nag). It goes after
+ * NUDGE_SECONDS.
+ */
+export function offerAfterSaving(savedCount: number) {
+  const canOffer = !isInstalled() && (installEvent !== null || place() !== "computer");
+  if (!canOffer || savedCount < 2 || !dismissedRecently() || stored(NUDGED_KEY)) return;
+  remember(NUDGED_KEY, String(Date.now()));
+  const nudge = byId("install-nudge");
+  nudge.hidden = false;
+  window.setTimeout(() => (nudge.hidden = true), NUDGE_SECONDS * 1000);
 }
 
 /** The service worker: offline copies and installability (pages/sw.js.ts). Only in the built site. */

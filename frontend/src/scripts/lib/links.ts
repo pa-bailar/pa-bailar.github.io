@@ -2,7 +2,6 @@
 
 import type { DanceEvent, EventMedia } from "../types";
 import { addDays } from "./dates";
-import { formatLongDate, formatTime, placeLabel, priceSummary } from "./format";
 
 export const BASE_URL = import.meta.env.BASE_URL.replace(/\/?$/, "/");
 const SITE_URL = new URL(BASE_URL, import.meta.env.SITE).href; // "https://pa-bailar.github.io/"
@@ -93,16 +92,3 @@ export function mapsUrl(event: DanceEvent): string | null {
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(locationText(event))}`;
 }
 
-/** Ready-to-send message for the WhatsApp groups. It links to the event's page, whose preview shows the flyer. */
-export function whatsappShareUrl(event: DanceEvent): string {
-  const time = event.start_time ? ` · ${formatTime(event.start_time)}` : "";
-  const lines = [
-    `*${event.title}*`,
-    `${formatLongDate(event.date)}${time}`,
-    placeLabel(event),
-    priceSummary(event),
-    // Tagged so visits from these messages count as coming from WhatsApp (its app hides the referrer).
-    `${eventPageUrl(event)}?utm_source=whatsapp`,
-  ];
-  return `https://wa.me/?text=${encodeURIComponent(lines.filter(Boolean).join("\n"))}`;
-}

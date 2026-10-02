@@ -47,9 +47,42 @@
   content: " ›";
 }
 
-/* "Compartir el finde" (views/shareWeekend.ts), under the weekend's heading. */
-.share-weekend {
-  margin-bottom: var(--space-4);
+/* The share icon at the end of a near period's heading (views/sharing.ts). */
+.share-icon {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: var(--control-height);
+  height: var(--control-height);
+  margin: calc(var(--space-2) * -1) calc(var(--space-2) * -1) calc(var(--space-2) * -1) 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text);
+}
+
+.share-icon .icon {
+  width: var(--icon-lg);
+  height: var(--icon-lg);
+}
+
+/* Guardados: "Tus 3 eventos guardados · Compartir mis planes" over the list. */
+.plans-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+  padding: var(--space-3) var(--space-4);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+}
+
+.plans-bar__count {
+  font-weight: var(--weight-bold);
 }
 
 /* "Ver 7 más" under a busy period's first events. */

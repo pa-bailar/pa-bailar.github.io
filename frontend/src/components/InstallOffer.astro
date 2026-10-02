@@ -11,6 +11,13 @@ import { BASE_URL } from "../scripts/lib/links";
   <button class="icon-btn" type="button" data-install-dismiss aria-label="Ahora no">×</button>
 </aside>
 
+<!-- A one-time reminder after a second saved event, for whoever dismissed the banner. -->
+<div class="install-nudge" id="install-nudge" role="status" hidden>
+  <span>Tus guardados a un toque: instala Pa' Bailar.</span>
+  <button class="link-button" type="button" data-install data-track="instalar">Instalar</button>
+  <button class="icon-btn" type="button" data-nudge-close aria-label="Cerrar">×</button>
+</div>
+
 <dialog class="sheet sheet-panel install-sheet" id="install-sheet" aria-labelledby="install-sheet-title">
   <span class="sheet-handle" aria-hidden="true"></span>
   <div class="sheet-panel__head">
