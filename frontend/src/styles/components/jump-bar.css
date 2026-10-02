@@ -121,7 +121,8 @@
   text-align: left;
 }
 
-.bar-menu__item[aria-checked="true"] {
+.bar-menu__item[aria-pressed="true"],
+.bar-menu__item[aria-current] {
   font-weight: var(--weight-bold);
   background: var(--surface-sunken);
 }

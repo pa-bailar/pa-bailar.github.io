@@ -2,7 +2,7 @@
 // Subscribed calendars refresh on their own schedule (Google: every 12–24 h).
 
 import type { APIRoute } from "astro";
-import events from "../../../data/events.json";
+import { events } from "../data";
 import type { DanceEvent } from "../scripts/types";
 import { formatTime, priceSummary } from "../scripts/lib/format";
 import { eventPageUrl, eventTimes, locationText } from "../scripts/lib/links";
@@ -81,7 +81,7 @@ export const GET: APIRoute = () => {
     "TZNAME:-05",
     "END:STANDARD",
     "END:VTIMEZONE",
-    ...(events as DanceEvent[]).flatMap((event) => eventLines(event, stamp)),
+    ...events.flatMap((event) => eventLines(event, stamp)),
     "END:VCALENDAR",
   ];
   return new Response(lines.map(fold).join("\r\n") + "\r\n", {

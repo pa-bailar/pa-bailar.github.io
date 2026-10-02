@@ -13,10 +13,9 @@ on:
         description: "When the data was last checked (ISO time); defaults to meta.json's generated_at"
         required: false
 
+# Least privilege: the build (which runs npm install scripts) only reads; only the deploy job can publish.
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
   group: pages
@@ -45,6 +44,9 @@ jobs:
 
   deploy:
     needs: build
+    permissions:
+      pages: write
+      id-token: write
     runs-on: ubuntu-latest
     timeout-minutes: 10
     environment:

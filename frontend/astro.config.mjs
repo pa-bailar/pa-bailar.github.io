@@ -1,3 +1,4 @@
+import sitemap from "@astrojs/sitemap";
 import { defineConfig } from "astro/config";
 
 // Published on GitHub Pages at https://pa-bailar.github.io (repo pa-bailar/pa-bailar.github.io, served at the root).
@@ -5,4 +6,6 @@ import { defineConfig } from "astro/config";
 export default defineConfig({
   site: "https://pa-bailar.github.io",
   publicDir: "../data",
+  // sitemap-index.xml: the home page and every event page, so search engines find the events.
+  integrations: [sitemap({ filter: (page) => !page.includes("/404") })],
 });

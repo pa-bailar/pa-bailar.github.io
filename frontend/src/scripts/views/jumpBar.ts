@@ -47,7 +47,7 @@ function setActive(key: string) {
   byId("jump-period-label").textContent = group.shortLabel;
   byId("jump-period-menu")
     .querySelectorAll<HTMLElement>("[data-jump]")
-    .forEach((item) => item.setAttribute("aria-checked", String(item.dataset.jump === key)));
+    .forEach((item) => item.toggleAttribute("aria-current", item.dataset.jump === key));
 }
 
 function atPageBottom(): boolean {
@@ -95,10 +95,11 @@ function watchSections() {
   groups.forEach((group) => observer!.observe(byId(sectionId(group))));
 }
 
-/** One option of a bar menu: label on the left, its number of events on the right. */
-function menuItemHtml(data: string, label: string, count: number, checked: boolean): string {
+/** One option of a bar menu: label on the left, its number of events on the right. `state` marks the
+ * selected rhythm (aria-pressed) or the period on screen (aria-current). */
+function menuItemHtml(data: string, label: string, count: number, state = ""): string {
   return `
-    <button class="bar-menu__item" type="button" role="menuitemradio" aria-checked="${checked}" ${data}>
+    <button class="bar-menu__item" type="button" ${state} ${data}>
       <span>${escapeHtml(label)}</span><span class="bar-menu__count">${count}</span>
     </button>`;
 }
@@ -119,16 +120,21 @@ export function renderJumpBar(content: JumpBarContent) {
   period.disabled = groups.length === 0;
   if (!groups.length) byId("jump-period-label").textContent = "Fechas";
   byId("jump-period-menu").innerHTML = groups
-    .map((group) => menuItemHtml(`data-jump="${escapeHtml(group.key)}"`, group.label, group.events.length, false))
+    .map((group) => menuItemHtml(`data-jump="${escapeHtml(group.key)}"`, group.label, group.events.length))
     .join("");
 
   const style = content.styleFilter;
   byId("jump-style-label").textContent = style === "all" ? "Ritmo" : capitalize(style);
   byId("jump-style").classList.toggle("is-active", style !== "all");
   byId("jump-style-menu").innerHTML = [
-    menuItemHtml('data-style="all"', "Todos los ritmos", content.eventCount, style === "all"),
+    menuItemHtml('data-style="all"', "Todos los ritmos", content.eventCount, `aria-pressed="${style === "all"}"`),
     ...content.styles.map((option) =>
-      menuItemHtml(`data-style="${escapeHtml(option.style)}"`, capitalize(option.style), option.count, option.style === style),
+      menuItemHtml(
+        `data-style="${escapeHtml(option.style)}"`,
+        capitalize(option.style),
+        option.count,
+        `aria-pressed="${option.style === style}"`,
+      ),
     ),
   ].join("");
 

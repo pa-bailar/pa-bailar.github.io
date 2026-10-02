@@ -1,7 +1,7 @@
 // UI state and the event filtering that depends on it.
 
 import type { AppState, DanceEvent } from "./types";
-import { addDays, endOfWeek, startOfMonth, todayIso, toIsoDate } from "./lib/dates";
+import { addDays, currentMonth, endOfWeek, todayIso, toIsoDate } from "./lib/dates";
 import { capitalize, formatMonthName } from "./lib/format";
 
 export function createInitialState(): AppState {
@@ -10,7 +10,7 @@ export function createInitialState(): AppState {
     typeFilter: "all",
     styleFilter: "all",
     accountFilter: null,
-    month: startOfMonth(new Date()),
+    month: currentMonth(),
     selectedDay: todayIso(),
   };
 }

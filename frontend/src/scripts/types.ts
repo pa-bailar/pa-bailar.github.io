@@ -44,6 +44,13 @@ export interface DanceEvent {
   media: EventMedia[]; // main post first (images before videos); always at least one
 }
 
+/** data/meta.json */
+export interface Meta {
+  schema_version: number;
+  generated_at: string; // ISO time of the last sweep that changed data (Bogotá)
+  stats?: unknown;
+}
+
 export type View = "upcoming" | "calendar";
 
 export interface AppState {
