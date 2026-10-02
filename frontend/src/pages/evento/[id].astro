@@ -80,6 +80,17 @@ const json = (value: unknown) => JSON.stringify(value).replace(/</g, "\\u003c");
 
 <BaseLayout title={`${event.title} · Pa' Bailar`} description={description} image={previewImagePath(event)}>
   <script slot="head" type="application/ld+json" set:html={json(structuredData)} />
+  <!-- A shared link lands in the app, with this event open in the viewer (main.ts, openSharedEvent), so the
+       visitor sees it the way they'd see it from the list and can swipe to the others. This page stays
+       for link previews and search engines (they read it, they don't run it) and for browsers without
+       scripts. Replacing it in the history means "back" never comes here to bounce again. -->
+  <script slot="head" is:inline define:vars={{ id: event.id, home }}>
+    if (!/bot|crawl|spider|slurp|facebookexternalhit|preview/i.test(navigator.userAgent)) {
+      var params = new URLSearchParams(location.search);
+      params.set("evento", id);
+      location.replace(home + "?" + params.toString());
+    }
+  </script>
 
   <header class="container event-page__header">
     <div class="site-header__top">
