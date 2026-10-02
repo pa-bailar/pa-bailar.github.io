@@ -1,0 +1,110 @@
+// The posts announcing an event, in a sheet (components/PostsSheet.astro), opened from the "▦ 16" badge
+// on the detail's flyer: like Airbnb's "show all photos", the gallery takes no room in the detail itself,
+// so the date and title stay in view under the flyer.
+//   - Flyers (photos and carousels) and Videos tabs, when the event has both.
+//   - Square thumbnails (160 px files made at build time), marked like Instagram's grid: ▶ for a video,
+//     stacked squares for a carousel. They wrap; nothing scrolls sideways.
+//   - Choosing one shows it in the detail (image, "Ver en Instagram" link and caption) and closes the sheet.
+
+import type { DanceEvent, EventMedia } from "../types";
+import { byId, escapeHtml } from "../lib/dom";
+import { mediaLabel } from "../lib/format";
+import { ICONS } from "../lib/icons";
+import { thumbUrl } from "../lib/links";
+import { dismissSheet, initSheet } from "../lib/sheet";
+
+type PostKind = "flyers" | "videos";
+
+const POST_KINDS: { kind: PostKind; label: string }[] = [
+  { kind: "flyers", label: "Flyers" },
+  { kind: "videos", label: "Videos" },
+];
+
+const POST_BADGES: Partial<Record<EventMedia["media_type"], string>> = {
+  VIDEO: ICONS.play,
+  CAROUSEL_ALBUM: ICONS.carousel,
+};
+
+function postKind(media: EventMedia): PostKind {
+  return media.media_type === "VIDEO" ? "videos" : "flyers";
+}
+
+let current: { event: DanceEvent; selected: number; kind: PostKind; onSelect: (index: number) => void } | null = null;
+
+const sheet = () => byId<HTMLDialogElement>("posts-sheet");
+
+/** `position` and `count`: the post's place within its kind, for its name ("Video 3 de 7"). */
+function thumbHtml(media: EventMedia, index: number, position: number, count: number, selected: boolean): string {
+  const thumb = thumbUrl(media);
+  const badge = POST_BADGES[media.media_type];
+  return `
+    <button class="post-thumb" type="button" data-post-index="${index}" aria-pressed="${selected}"
+      aria-label="${mediaLabel(media.media_type)} ${position + 1} de ${count}">
+      ${thumb ? `<img src="${escapeHtml(thumb)}" alt="" width="160" height="160" />` : ""}
+      ${badge ? `<span class="post-thumb__badge" aria-hidden="true">${badge}</span>` : ""}
+    </button>`;
+}
+
+function render() {
+  if (!current) return;
+  const { event, selected, kind } = current;
+  const groups = POST_KINDS.map((group) => ({
+    ...group,
+    indexes: event.media.flatMap((media, index) => (postKind(media) === group.kind ? [index] : [])),
+  })).filter((group) => group.indexes.length > 0);
+  const shown = groups.find((group) => group.kind === kind) ?? groups[0];
+  if (!shown) return;
+  const tabs =
+    groups.length > 1
+      ? `<div class="post-tabs" role="group" aria-label="Tipo de publicación">${groups
+          .map(
+            (group) => `
+              <button class="post-tabs__tab" type="button" data-post-kind="${group.kind}" aria-pressed="${group.kind === shown.kind}">
+                ${group.label} <span class="post-tabs__count">${group.indexes.length}</span>
+              </button>`,
+          )
+          .join("")}</div>`
+      : "";
+  const thumbs = shown.indexes
+    .map((index, position) => thumbHtml(event.media[index]!, index, position, shown.indexes.length, index === selected))
+    .join("");
+  byId("posts-sheet-body").innerHTML = `
+    ${tabs}
+    <div class="posts-sheet__grid" role="group" aria-label="${shown.label}">${thumbs}</div>`;
+}
+
+/** Open the sheet on `event`'s posts, on the tab of the post shown (`selected`). */
+export function openPostsSheet(event: DanceEvent, selected: number, onSelect: (index: number) => void) {
+  const media = event.media[selected] ?? event.media[0];
+  current = { event, selected, kind: postKind(media), onSelect };
+  render();
+  byId("posts-sheet-title").textContent = `${event.media.length} publicaciones`;
+  sheet().showModal();
+  sheet().scrollTop = 0;
+  sheet().querySelector<HTMLElement>('[data-post-index][aria-pressed="true"]')?.focus({ preventScroll: true });
+}
+
+export function initPostsSheet() {
+  const element = sheet();
+  element.addEventListener("click", (domEvent) => {
+    const target = domEvent.target as HTMLElement;
+    const tab = target.closest<HTMLElement>("[data-post-kind]");
+    const thumb = target.closest<HTMLElement>("[data-post-index]");
+    if (tab && current) {
+      current.kind = tab.dataset.postKind as PostKind;
+      render();
+      element.querySelector<HTMLElement>(`[data-post-kind="${current.kind}"]`)?.focus();
+    } else if (thumb && current) {
+      current.onSelect(Number(thumb.dataset.postIndex));
+      dismissSheet(element);
+    } else if (target === element || target.closest("[data-close-sheet]")) {
+      dismissSheet(element);
+    }
+  });
+  // Drag it down to dismiss, from the top or whenever its content is scrolled to the top.
+  initSheet(element, (target) => Boolean(target.closest(".posts-sheet__head")) || element.scrollTop <= 0);
+  // The phone's back button closes the viewer underneath (eventDialog.ts): don't leave this sheet open.
+  window.addEventListener("popstate", () => {
+    if (element.open) element.close();
+  });
+}

@@ -165,6 +165,15 @@
   background: var(--surface-sunken);
 }
 
+/* The flyer and what sits over it (date sticker, posts badge). */
+.event-dialog__frame {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+}
+
 .event-dialog__media {
   position: relative;
   display: block;
@@ -197,99 +206,39 @@
   gap: var(--space-2);
 }
 
-/* ---------- the posts announcing the event: thumbnails under the flyer ----------
-   Like Instagram's grid (square crops, ▶ on videos, stacked squares on carousels) and WhatsApp's media
-   grid ("+N" for the rest). One row of five; it wraps when expanded and never scrolls sideways. */
+/* ---------- over the flyer: date sticker and the posts badge ---------- */
 
-.post-thumbs {
-  padding: var(--space-3) var(--space-4) var(--space-4);
-  border-top: var(--border-width) solid var(--divider);
+/* The date sticker (event-card.css) sits inside the flyer here, not hanging below it. */
+.event-dialog__frame .date-sticker {
+  bottom: var(--space-3);
 }
 
-.post-thumbs__label {
-  margin-bottom: var(--space-2);
-  font-size: var(--text-xs);
-  font-weight: var(--weight-bold);
-  color: var(--text-muted);
-}
-
-/* Flyers / Videos: two small tabs with the main view tabs' underline, at the label's size. */
-.post-tabs {
-  display: flex;
-  gap: var(--space-4);
-  margin-bottom: var(--space-2);
-}
-
-.post-tabs__tab {
-  min-height: 32px;
-  padding: 0;
-  border: 0;
-  border-bottom: 2px solid transparent;
-  background: none;
-  font-size: var(--text-xs);
-  font-weight: var(--weight-bold);
-  color: var(--text-muted);
-}
-
-.post-tabs__tab[aria-pressed="true"] {
-  color: var(--text);
-  border-bottom-color: var(--accent);
-}
-
-.post-tabs__count {
-  font-weight: var(--weight-regular);
-  font-variant-numeric: tabular-nums;
-}
-
-.post-thumbs__grid {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: var(--space-2);
-}
-
-.post-thumb,
-.post-thumbs__more {
-  position: relative;
-  aspect-ratio: 1;
-  padding: 0;
-  overflow: hidden;
-  border: var(--border-width) solid var(--divider);
+/* "▦ 16": every post announcing the event, in a sheet (posts-sheet.css). A printed label over the
+   flyer, in its top-right corner, like a photo count. */
+.posts-badge {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: var(--control-height);
+  padding: 0 var(--space-3);
+  border: var(--border-width) solid var(--border);
   border-radius: var(--radius-sm);
   background: var(--surface);
-}
-
-.post-thumb img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* The post on screen: a ring in the accent color, with a gap so it reads on any flyer. */
-.post-thumb[aria-pressed="true"] {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 2px var(--accent);
-}
-
-/* ▶ / stacked squares in the corner, white with a shadow so they read on any image (as on Instagram). */
-.post-thumb__badge {
-  position: absolute;
-  top: 4px;
-  right: 4px;
-  display: flex;
-  color: #fff;
-  filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.7));
-}
-
-.post-thumb__badge .icon {
-  width: 16px;
-  height: 16px;
-}
-
-.post-thumbs__more {
-  font-size: var(--text-lg);
-  font-weight: var(--weight-bold);
   color: var(--text);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  font-variant-numeric: tabular-nums;
+  box-shadow: var(--shadow-menu);
+}
+
+/* When and what, first: under the flyer and above everything else, so they show without scrolling. */
+.event-dialog__when {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  color: var(--accent);
 }
 
 .event-dialog__info {

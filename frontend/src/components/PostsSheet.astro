@@ -1,0 +1,14 @@
+---
+// Every post announcing an event (flyers and videos), in a sheet opened from the "▦ 16" badge on the
+// detail's flyer, like Airbnb's "show all photos". Filled by scripts/views/postsSheet.ts. Used by the
+// home page (over the event viewer) and by each event's own page.
+---
+
+<dialog class="sheet posts-sheet" id="posts-sheet" aria-labelledby="posts-sheet-title">
+  <span class="sheet-handle" aria-hidden="true"></span>
+  <div class="posts-sheet__head">
+    <h2 class="posts-sheet__title" id="posts-sheet-title">Publicaciones</h2>
+    <button class="icon-btn" type="button" data-close-sheet aria-label="Cerrar">×</button>
+  </div>
+  <div id="posts-sheet-body"></div>
+</dialog>

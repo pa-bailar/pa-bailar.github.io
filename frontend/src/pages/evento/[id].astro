@@ -3,6 +3,7 @@
 // Facebook) shows the event's flyer, and search engines get the event as schema.org data.
 // Same detail markup as the home page's dialog (scripts/views/eventDetail.ts).
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import PostsSheet from "../../components/PostsSheet.astro";
 import SiteFooter from "../../components/SiteFooter.astro";
 import Stripes from "../../components/Stripes.astro";
 import ThemeToggle from "../../components/ThemeToggle.astro";
@@ -93,6 +94,7 @@ const json = (value: unknown) => JSON.stringify(value).replace(/</g, "\\u003c");
   </main>
 
   <SiteFooter accounts={accounts} />
+  <PostsSheet />
 
   <script type="application/json" id="event-data" set:html={json(event)} />
   <script>

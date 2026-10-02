@@ -89,7 +89,7 @@ Sizes: `--text-2xs` 11 · `xs` 12 · `sm` 13 · `md` 15 (body) · `lg` 17 · `xl
 ## Signature motifs
 
 - **70s stripes** (`<Stripes />`): three bands (tomato, orange, marigold). Used in the page headers (home, event page, 404), the event detail and the footer; the period headings use the same three colors as one thin line. Don't use them anywhere else; they lose meaning if repeated.
-- **Date sticker:** a round "record label" with the day and month, overlapping the bottom-right of each flyer.
+- **Date sticker:** a round "record label" with the day and month, overlapping the bottom-right of each flyer: hanging below it on cards, inside its corner in the event detail. Two events sharing one flyer (a festival's Sunday and Monday) are told apart by it while swiping.
 - **Italic headings:** group, day and month headings in Bodoni italic, like a handwritten setlist.
 
 The light theme's creams are the paper of 1970s salsa flyers and sleeves. The page uses the slightly darker, aged tone (`#ECDDC6`) rather than near-white, so it isn't glaring. Cards sit one step lighter so they still lift off the page.
@@ -142,13 +142,14 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves. The pa
 
 An event can be announced by several Instagram posts (a flyer, then a video, a reminder). It's still **one** card:
 - **Card:** shows the main post's flyer (images come before videos). A `.media-count` label ("2 publicaciones") sits in the flyer's top-right corner.
-- **Dialog and event page:** `.post-thumbs`, square thumbnails of every post under the flyer, like Instagram's grid: crops, with ▶ on videos and stacked squares on carousels, white with a shadow. Flyers (photos and carousels) and videos are separated by two small tabs, "Flyers 9" and "Videos 7" (`.post-tabs`, the main tabs' underline at the label's size); the tab shown is the selected post's kind, and choosing a tab shows its first post. With only one kind there are no tabs, just a label ("3 publicaciones sobre este evento"). Each kind sits in one row of five; with more posts, the fifth place is "+N" (like WhatsApp's media grid) and shows them all, wrapping. The selected post has an accent ring. Tapping a thumbnail changes the image, the "Ver en Instagram" link and the caption.
-- **Never a sideways scroll inside the viewer:** the viewer already swipes sideways between events, so nothing inside a slide may scroll sideways (`.viewer-slide { overflow-x: hidden }`; the thumbnails wrap instead). Tabs were replaced for this reason: 16 of them overflowed and made the slide scroll.
+- **Dialog and event page:** a `.posts-badge` ("▦ 16") in the flyer's top-right corner opens every post in a sheet (`PostsSheet.astro`, `scripts/views/postsSheet.ts`), like Airbnb's photo count: the gallery takes no room in the detail, so the date and title stay in view under the flyer. The sheet rises from the bottom on phones and is a centered window on wide screens. It has two tabs, Flyers (photos and carousels) and Videos, when the event has both, and square thumbnails like Instagram's grid (▶ on videos, stacked squares on carousels, white with a shadow) that wrap. Thumbnails are 160 px files made at build time (`pages/thumbs/[name].webp.ts`), a few KB each. Choosing one shows it in the detail (image, "Ver en Instagram" link, caption) and closes the sheet; the detail keeps its scroll position.
+- **Never a sideways scroll inside the viewer:** the viewer already swipes sideways between events, so nothing inside a slide may scroll sideways (`.viewer-slide { overflow-x: hidden }`).
 - **Videos:** the dialog shows the video's preview frame with a "Ver video en Instagram" label (`.event-dialog__play`). Videos play on Instagram, never embedded.
 
 ## Event detail: dialog and page
 
 - **Same markup in both** (`scripts/views/eventDetail.ts`): the home page's dialog and each event's own page (`pages/evento/[id].astro`, one static page per event).
+- **When and what first:** right under the flyer, the date line (`.event-dialog__when`, the cards' "Domingo · 8:00 p. m." in the accent color) and the title, then the type tag, the stripes and the details. On a phone (390×700) both are on screen without scrolling.
 - **The viewer swipes between events** (`EventDialog.astro`, `scripts/views/eventDialog.ts`):
   - **What's in it:** one full-width slide per event on screen, in list order (or the selected calendar day's). Swipe sideways (or ‹ ›, or the arrow keys) to change event; scroll up and down to read.
   - **No peeking neighbors:** like Instagram posts, each event fills the width.
