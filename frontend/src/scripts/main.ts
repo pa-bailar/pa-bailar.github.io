@@ -11,6 +11,7 @@ import {
   createInitialState,
   defaultDayForMonth,
   eventsInView,
+  sectionId,
   visibleEvents,
 } from "./state";
 import { initThemeToggle } from "./theme";
@@ -25,7 +26,7 @@ import {
   restoreListPosition,
   returnToScroll,
 } from "./views/jumpBar";
-import { renderUpcomingView } from "./views/upcomingView";
+import { renderUpcomingView, showWholePeriod } from "./views/upcomingView";
 import { initPostViewer } from "./views/postViewer";
 import { initPostsSheet } from "./views/postsSheet";
 import { initViewSwitch, renderViewSwitch } from "./views/viewSwitch";
@@ -130,10 +131,20 @@ function focusAccountFilter() {
 /** One delegated listener for every data-* control rendered by the views. */
 function handleClick(domEvent: MouseEvent) {
   const control = (domEvent.target as HTMLElement).closest<HTMLElement>(
-    "[data-view],[data-type],[data-style],[data-account],[data-clear-filters],[data-day],[data-event],[data-month-step],[data-today]",
+    "[data-view],[data-type],[data-style],[data-account],[data-clear-filters],[data-day],[data-event],[data-month-step],[data-today],[data-show-period]",
   );
   if (!control) return;
-  const { view, type, style, account, day, event: eventId, monthStep } = control.dataset;
+  const { view, type, style, account, day, event: eventId, monthStep, showPeriod } = control.dataset;
+
+  if (showPeriod) {
+    // "Ver los 23 eventos" / "Ver 7 más": the period opens whole; focus moves to its first new event.
+    const section = control.closest<HTMLElement>(".agenda-group");
+    const before = section?.querySelectorAll(".event-card").length ?? 0;
+    if (showWholePeriod(showPeriod)) render();
+    const cards = document.getElementById(sectionId(showPeriod))?.querySelectorAll<HTMLElement>(".event-card__hit");
+    cards?.[before]?.focus({ preventScroll: true });
+    return;
+  }
 
   if (eventId) {
     // The card's title is a link: let the browser handle new-tab clicks; a plain click opens the viewer.
@@ -184,7 +195,11 @@ export function start() {
   initEventDialog((id) => events.find((event) => event.id === id));
   initPostsSheet();
   initPostViewer();
-  initJumpBar();
+  initJumpBar({
+    reveal: (key) => {
+      if (showWholePeriod(key)) render();
+    },
+  });
   initViewSwitch(showView);
   initClickTracking();
   document.addEventListener("click", handleClick);

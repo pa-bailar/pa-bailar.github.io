@@ -266,6 +266,8 @@ flowchart TD
   Only values present in the current view are offered, so a chip never leads to an empty list.
 - **"Próximos"** groups upcoming events by period: today, this week, this weekend, next week, the rest
   of the month, then one group per month (`groupByPeriod`). On phones, cards read like an Instagram feed.
+  Long lists stay short where it matters: the near periods show their flyers in full (six, then "Ver N más"),
+  and later periods start as a summary row ("Ver los 23 eventos"); `DESIGN.md`, "Long lists".
 - **"Calendario"** shows a month grid. Dots mark days with events, Colombian holidays are tinted, and
   the selected day's events are listed below.
 - **Keeping your place:**
