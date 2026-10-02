@@ -307,7 +307,12 @@ function openSharedEvent() {
   const rest = params.toString(); // e.g. utm_source=compartido, kept for the statistics
   history.replaceState(null, "", `${location.pathname}${rest ? `?${rest}` : ""}${location.hash}`);
   const event = events.find((item) => item.id === id);
-  if (event) openEventDialog(event, visibleEvents(events, state));
+  if (!event) return;
+  // Once the page has settled (fonts in, layout measured): opened earlier, the viewer could size itself
+  // to a page that was still changing.
+  void document.fonts.ready.then(() =>
+    requestAnimationFrame(() => requestAnimationFrame(() => openEventDialog(event, visibleEvents(events, state)))),
+  );
 }
 
 export function start() {
