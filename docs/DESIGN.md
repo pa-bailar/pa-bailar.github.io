@@ -92,6 +92,7 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves. The pa
 
 ## Upcoming list
 
+- **Period headers:** a thick rule, the period's name (Bodoni italic) and its number of events ("5 eventos"), with generous space above, so each period clearly starts. On wide screens the header sits in a column left of its cards.
 - **Grouped by period, not by day** (`groupByPeriod` in `scripts/state.ts`). Days with one or two events share rows instead of each leaving a mostly empty row. The buckets don't overlap, follow the usual calendar "date range" grouping, and split out the weekend because that's when most socials happen:
 
   | Group | Range |
@@ -116,9 +117,11 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves. The pa
 - **Feed like Instagram:** under 720px each event is a full-width post, the flyer edge to edge at full size and the details right below, separated by a line instead of boxed cards. Nothing is shrunk into thumbnails.
 - **Jump bar** (`JumpBar.astro`, `scripts/views/jumpBar.ts`): one slim row (`--jump-bar-height`, 56px) stuck to the top, modeled on the filter bars of Google Maps and Airbnb: **[⚙ 2] [Finde ▾] [Salsa ▾]**. Two compact dropdowns instead of a row of chips, so nothing scrolls sideways or gets cut off.
   - **⚙** opens the filter sheet; the badge counts active filters.
-  - **Period dropdown:** names the period on screen (scroll-spy); its menu lists each period with its number of events, and picking one jumps there. Shown whenever the list has periods, even one (hidden in Calendario).
+  - **Period dropdown:** names the period on screen (scroll-spy); its menu lists each period with its number of events, and picking one jumps there. Always shown in the list (disabled, "Fechas", when nothing matches); hidden in Calendario.
   - **Rhythm dropdown:** reads "Ritmo", or the selected rhythm in the selected-chip style; its menu lists "Todos los ritmos" and each rhythm with its number of events, most frequent first.
-  - **Menus** are popovers anchored under their button (kept inside the screen); options are radio items with the label and count centered vertically. Scrolling closes them.
+  - **Fixed shape:** ⚙ has a fixed size with its badge on the corner, and the two dropdowns split the rest equally (max 220px each), cutting long names with "…". The bar never changes size as filters change.
+  - **Menus** are popovers under their button: aligned to its left edge (right edge for a button on the right half), never wider than the screen or taller than the space below; long names wrap. Options are radio items, label and count centered vertically. Scrolling or resizing closes them.
+  - **Keeping your place:** when a filter changes while you're inside the list, the period you were reading stays right under the bar; if the filter removed it, the next period (else the previous one) takes its place.
   - **Hides like Instagram's header:** it hides while scrolling down and returns on any scroll up. It never hides near the top of the page, while it holds focus, or during a jump.
   - **Where it shows:** wherever the full toolbar isn't sticky (phones, short windows), in both views.
 - **Filter sheet** (`FilterSheet.astro`):
