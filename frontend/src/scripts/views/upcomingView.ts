@@ -78,7 +78,18 @@ export function renderUpcomingView(
   const groups = groupByPeriod(upcoming);
 
   if (!upcoming.length) {
-    container.innerHTML = hasActiveFilters(state)
+    container.innerHTML = state.savedOnly && !state.query
+      ? `<div class="empty-state">
+          <p>Aún no tienes eventos guardados.</p>
+          <p>Toca el marcador de un evento para guardarlo aquí.</p>
+          <button class="btn" data-saved-only>Ver todos los eventos</button>
+        </div>`
+      : state.query
+        ? `<div class="empty-state">
+          <p>Ningún evento próximo coincide con «${escapeHtml(state.query.trim())}».</p>
+          <button class="btn" data-clear-filters>Quitar la búsqueda y los filtros</button>
+        </div>`
+      : hasActiveFilters(state)
       ? `<div class="empty-state">
           <p>No hay eventos próximos con estos filtros.</p>
           <button class="btn" data-clear-filters>Quitar filtros</button>

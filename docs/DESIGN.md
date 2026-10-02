@@ -122,6 +122,21 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves. The pa
 - **"Info"** sits after the view tabs and looks like one, but it's a link to the footer (`#info`), never selected and outside the tab list for screen readers.
 - **The footer is "Sobre Pa' Bailar"**: a heading in Bodoni italic, a one-line description, the disclaimer, the calendar subscription, the sources and "Hecho por @jzamora5" (GitHub).
 
+## Saving and searching
+
+- **Saving ("Guardar")** is a bookmark, like Instagram's: at the end of each card's last line (price and rhythms;
+  the date sticker takes the top-right corner) and in the detail, next to the date (`.save-button`, `scripts/views/saveButton.ts`). Filled in the accent color
+  when saved. Saved events live in this browser (`lib/saved.ts`, localStorage): no account, nothing
+  sent anywhere. Events no longer in the data are forgotten.
+- **"Guardados"** shows only saved events, in the list and the calendar: 🔖 in the phone bar (with the
+  number of upcoming saved events on its corner) and a "Guardados" chip in the toolbar on wide screens.
+  With none saved it says how to save one.
+- **Search** (`lib/search.ts`) runs on the events already in the page: accent- and case-insensitive,
+  every word must appear somewhere in the event (title, academy, organizer, venue, area, artists,
+  rhythms, activities, type). On phones 🔍 turns the whole bar into the field (× closes it and clears the
+  search); on wide screens the field sits at the end of the tabs' row. Results show after a short pause
+  in typing, from the top of the list. Text is 16px so phones don't zoom in.
+
 ## Long lists
 
 People look for "tonight, this weekend, next week" (the date buckets Eventbrite's quick filters use), so
@@ -140,7 +155,7 @@ the list stays short there and summarizes what's further away (`scripts/views/up
 ## Phones: feed, jump bar, view switch and filter sheet
 
 - **Feed like Instagram:** under 720px each event is a full-width post, the flyer edge to edge at full size and the details right below, separated by space instead of boxed cards. Nothing is shrunk into thumbnails.
-- **Jump bar** (`JumpBar.astro`, `scripts/views/jumpBar.ts`): one slim row (`--jump-bar-height`, 56px) stuck to the top, modeled on the filter bars of Google Maps and Airbnb: **[⚙ 2] [Finde ▾] [Salsa ▾]**. Two compact dropdowns instead of a row of chips, so nothing scrolls sideways or gets cut off.
+- **Jump bar** (`JumpBar.astro`, `scripts/views/jumpBar.ts`): one slim row (`--jump-bar-height`, 56px) stuck to the top, modeled on the filter bars of Google Maps and Airbnb: **[🔍] [🔖 3] [⚙ 2] [Finde ▾] [Salsa ▾]** (search and "Guardados": see "Saving and searching"). Two compact dropdowns instead of a row of chips, so nothing scrolls sideways or gets cut off.
   - **⚙** opens the filter sheet; the badge counts active filters.
   - **Period dropdown:** names the period on screen (scroll-spy); its menu lists each period with its number of events, and picking one jumps there. Always shown in the list (disabled, "Fechas", when nothing matches); hidden in Calendario.
   - **Rhythm dropdown:** reads "Ritmo", or the selected rhythm in the selected-chip style; its menu lists "Todos los ritmos" and each rhythm with its number of events, most frequent first.

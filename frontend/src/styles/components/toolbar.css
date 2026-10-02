@@ -28,12 +28,38 @@
 
 .tabs-row {
   display: flex;
+  align-items: center;
   gap: var(--space-5);
 }
 
 .tabs {
   display: flex;
   gap: var(--space-5);
+}
+
+/* Wide screens: "Guardados" and the search field at the end of the tabs' row. Phones have them in the
+   jump bar. */
+.toolbar__tools {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-left: auto;
+}
+
+.toolbar__saved {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.toolbar__search {
+  width: min(320px, 40vw);
+}
+
+@media (max-width: 719px) {
+  .toolbar__tools {
+    display: none;
+  }
 }
 
 /* "Info": a link to the footer, beside the view tabs and looking like one (never selected). */

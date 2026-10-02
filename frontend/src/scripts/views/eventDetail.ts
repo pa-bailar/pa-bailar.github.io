@@ -18,6 +18,7 @@ import {
 import { ICONS } from "../lib/icons";
 import { flyerUrl, googleCalendarUrl, mapsUrl, whatsappShareUrl } from "../lib/links";
 import { openPostViewer } from "./postViewer";
+import { saveButtonHtml } from "./saveButton";
 import { openPostsSheet } from "./postsSheet";
 
 function toConfirm(text = "Por confirmar"): string {
@@ -121,7 +122,10 @@ export function eventDetailHtml(
       ${mediaHtml(event, media, selected)}
     </div>
     <div class="event-dialog__info">
-      <p class="event-dialog__when">${escapeHtml(cardWhenLabel(event))}</p>
+      <div class="event-dialog__top">
+        <p class="event-dialog__when">${escapeHtml(cardWhenLabel(event))}</p>
+        ${saveButtonHtml(event)}
+      </div>
       <${heading} class="event-dialog__title" id="${titleId}">${escapeHtml(event.title)}</${heading}>
       <span class="tag-type t-${escapeHtml(event.event_type)}">${typeLabel(event.event_type)}</span>
       <div class="stripes" aria-hidden="true"><i></i><i></i><i></i></div>

@@ -231,6 +231,13 @@
   box-shadow: var(--shadow-menu);
 }
 
+.event-dialog__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
 /* When and what, first: under the flyer and above everything else, so they show without scrolling. */
 .event-dialog__when {
   font-size: var(--text-sm);
