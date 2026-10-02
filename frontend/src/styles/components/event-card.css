@@ -18,10 +18,9 @@
     var(--stripe-3) 66.67%
   );
   display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
+  align-items: last baseline; /* a two-line title keeps the count level with its last line */
   justify-content: space-between;
-  gap: var(--space-2) var(--space-3);
+  gap: var(--space-3);
   margin-bottom: var(--space-5);
   padding: var(--space-3) 0;
   background:
@@ -29,7 +28,10 @@
     var(--rule) bottom / 100% var(--period-rule-height) no-repeat;
 }
 
+/* The title takes the width it needs (wrapping if long); the count always stays on the right. */
 .agenda-group__heading {
+  flex: 1;
+  min-width: 0;
   font-family: var(--font-display);
   font-weight: var(--weight-regular);
   font-size: var(--text-2xl); /* 26px, large text: 4.93:1 in light, 9.47:1 in dark */
