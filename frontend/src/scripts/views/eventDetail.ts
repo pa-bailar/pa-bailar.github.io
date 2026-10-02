@@ -15,11 +15,27 @@ import {
   stylesLabel,
   typeLabel,
 } from "../lib/format";
+import { contactLink, type ContactKind } from "../lib/contact";
 import { ICONS } from "../lib/icons";
 import { flyerUrl, googleCalendarUrl, mapsUrl } from "../lib/links";
 import { openPostViewer } from "./postViewer";
 import { saveButtonHtml } from "./saveButton";
 import { openPostsSheet } from "./postsSheet";
+
+const CONTACT_ICONS: Record<ContactKind, string> = {
+  instagram: ICONS.instagram,
+  whatsapp: ICONS.whatsapp,
+  phone: "",
+  web: "",
+};
+
+/** The contact as a link when it can be one (lib/contact.ts): Instagram, a WhatsApp chat, a call, a website. */
+function contactHtml(contact: string): string {
+  const link = contactLink(contact);
+  if (!link) return escapeHtml(contact);
+  const external = link.kind === "phone" ? "" : ` target="_blank" rel="noopener"`;
+  return `<a class="inline-link contact-link" href="${escapeHtml(link.href)}"${external} data-track="contacto-${link.kind}">${CONTACT_ICONS[link.kind]}${escapeHtml(link.label)}</a>`;
+}
 
 function toConfirm(text = "Por confirmar"): string {
   return `<span class="to-confirm">${text}</span>`;
@@ -43,7 +59,7 @@ function detailRows(event: DanceEvent): [string, string][] {
   if (!event.prices.length) rows.push(["Precio", toConfirm()]);
   if (event.artists.length) rows.push(["Con", escapeHtml(event.artists.join(", "))]);
   if (event.activities.length) rows.push(["Incluye", escapeHtml(event.activities.join(" · "))]);
-  if (event.contact) rows.push(["Contacto", escapeHtml(event.contact)]);
+  if (event.contact) rows.push(["Contacto", contactHtml(event.contact)]);
   return rows;
 }
 
