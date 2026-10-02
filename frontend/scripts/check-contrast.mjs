@@ -61,7 +61,7 @@ const PAIRS = [
   ["Body text on page", "text", "bg", "text"],
   ["Body text on cards / dialog", "text", "surface", "text"],
   ["Body text on callout", "text", "surface-sunken", "text"],
-  ["Period header band (page color on ink)", "bg", "text", "text"],
+  ["Period heading (26px display, large)", "logo", "bg", "large"],
   ["Muted text on page (updated date, footer, inactive tabs and chips)", "text-muted", "bg", "text"],
   ["Muted text on cards (meta, styles, labels, caption)", "text-muted", "surface", "text"],
   ["Muted text on image well (no-flyer placeholder, large)", "text-muted", "surface-sunken", "large"],

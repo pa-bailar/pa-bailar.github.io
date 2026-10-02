@@ -92,7 +92,7 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves. The pa
 
 ## Upcoming list
 
-- **Period headers:** a band in reversed colors (the page's ink as background: wine with cream text in light, cream with wine text in dark) with the period's name (Bodoni italic) and its number of events ("5 eventos"). It reads as a divider between periods, never as part of a post. Edge to edge on phones; above its cards on wide screens too.
+- **Period headers** (Izzy Sanabria's Fania lettering): the title in the logo's display face and color (Shrikhand, `--logo`) with a 2px offset shadow (`--period-shadow`: wine in light, tomato in dark) and the event count ("5 eventos"), with generous space above. Page colors only, so it never reads as a post. The title stays at 24px or more: in light it relies on WCAG's large-text 3:1 (4.00:1).
 - **Grouped by period, not by day** (`groupByPeriod` in `scripts/state.ts`). Days with one or two events share rows instead of each leaving a mostly empty row. The buckets don't overlap, follow the usual calendar "date range" grouping, and split out the weekend because that's when most socials happen:
 
   | Group | Range |
