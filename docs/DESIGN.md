@@ -160,7 +160,7 @@ WhatsApp opens with the text. What can be shared (`scripts/views/sharing.ts`):
   Instagram, WhatsApp or Facebook, which can't install (open it in the browser first). Nothing once
   installed.
 - **A reminder:** whoever dismissed the banner gets one small reminder, once, when they save their second
-  event ("Tus guardados a un toque: instala Pa' Bailar", `.install-nudge`, above the floating button, gone after
+  event ("Tus guardados a un toque: instala Pa' Bailar", `.install-nudge`, at the bottom to the left of the floating button, gone after
   10 seconds). Offering again at a moment the app clearly helps, instead of nagging, is Google's advice.
 - **Knowing it's installed:** opened as the app; or this browser saw it installed (on Android the app shares the
   browser's storage, so opening the app once is enough); or Chrome on Android says so (`getInstalledRelatedApps`,
