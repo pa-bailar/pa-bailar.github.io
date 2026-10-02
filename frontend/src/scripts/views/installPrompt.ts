@@ -1,15 +1,17 @@
 // Installing the site on a phone, like an app (no app store): the manifest (pages/manifest.webmanifest.ts)
-// and the service worker (pages/sw.js.ts) make it installable; this offers it.
-//   - Android and desktop Chrome/Edge announce it (beforeinstallprompt): "Instalar" opens the browser's own
-//     install dialog.
-//   - iPhone and iPad don't: "Instalar" opens a sheet with the steps (Compartir → Agregar a inicio).
-//   - The offer: a banner under the header from the second visit on, until "×" (then not for
-//     DISMISS_DAYS days), and a link in the footer while installing is possible. Nothing once installed.
+// and the service worker (pages/sw.js.ts) make it installable; this offers it, on every phone, from the
+// first visit:
+//   - Chrome/Edge that announce it (beforeinstallprompt): "Instalar" opens the browser's own dialog.
+//   - Otherwise a sheet with the steps for where the visitor is: iPhone (Compartir → Agregar a inicio),
+//     Android (menu ⋮ → Instalar aplicación), or inside Instagram/WhatsApp/Facebook, which can't install
+//     (open it in the browser first).
+//   - The offer: a banner under the header on phones (× hides it for DISMISS_DAYS days) and a link in the
+//     footer. Nothing once installed, or on a computer whose browser can't install.
 
 import { byId } from "../lib/dom";
-import { openPanelSheet, initPanelSheet } from "../lib/sheet";
+import { ICONS } from "../lib/icons";
+import { initPanelSheet, openPanelSheet } from "../lib/sheet";
 
-const VISITS_KEY = "visits";
 const DISMISS_KEY = "install-dismissed-at";
 const DISMISS_DAYS = 30;
 
@@ -19,16 +21,53 @@ interface BeforeInstallPromptEvent extends Event {
   userChoice: Promise<{ outcome: "accepted" | "dismissed" }>;
 }
 
+type Place = "iphone" | "android" | "in-app" | "computer";
+
 let installEvent: BeforeInstallPromptEvent | null = null;
 
 function isInstalled(): boolean {
-  return matchMedia("(display-mode: standalone)").matches || (navigator as Navigator & { standalone?: boolean }).standalone === true;
+  return (
+    matchMedia("(display-mode: standalone)").matches ||
+    (navigator as Navigator & { standalone?: boolean }).standalone === true
+  );
 }
 
-/** iPhone or iPad (iPadOS reports itself as a Mac with a touch screen). */
-function isAppleMobile(): boolean {
-  return /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+function place(): Place {
+  const agent = navigator.userAgent;
+  // Apps' own browsers (a link opened from Instagram, WhatsApp, Facebook) can't install pages.
+  if (/Instagram|FBAN|FBAV|WhatsApp/i.test(agent)) return "in-app";
+  // iPadOS reports itself as a Mac with a touch screen.
+  if (/iPhone|iPad|iPod/.test(agent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)) return "iphone";
+  if (/Android/i.test(agent)) return "android";
+  return "computer";
 }
+
+const STEPS: Record<Exclude<Place, "computer">, { title: string; steps: string[] }> = {
+  iphone: {
+    title: "Instalar en tu iPhone",
+    steps: [
+      `Toca <b>Compartir</b> <span class="install-sheet__share">${ICONS.share}</span>: abajo en Safari, arriba a la derecha en Chrome.`,
+      "Elige <b>Agregar a inicio</b>.",
+      "Toca <b>Agregar</b>.",
+    ],
+  },
+  android: {
+    title: "Instalar en tu celular",
+    steps: [
+      "Toca el menú <b>⋮</b> del navegador (arriba a la derecha).",
+      "Elige <b>Instalar aplicación</b> o <b>Agregar a la pantalla principal</b>.",
+      "Confirma con <b>Instalar</b>.",
+    ],
+  },
+  "in-app": {
+    title: "Ábrelo en tu navegador",
+    steps: [
+      "Estás viendo la página dentro de otra app, que no puede instalarla.",
+      "Toca el menú <b>⋯</b> o <b>⋮</b> (arriba) y elige <b>Abrir en el navegador</b> (Chrome o Safari).",
+      "Ahí toca <b>Instalar</b> en Pa' Bailar.",
+    ],
+  },
+};
 
 function stored(key: string): string | null {
   try {
@@ -38,74 +77,60 @@ function stored(key: string): string | null {
   }
 }
 
-function store(key: string, value: string) {
-  try {
-    localStorage.setItem(key, value);
-  } catch {
-    // Storage unavailable: the banner just comes back next visit.
-  }
-}
-
-/** Counted once per visit (a tab session), not per page. */
-function visitCount(): number {
-  let visits = Number(stored(VISITS_KEY) ?? 0);
-  try {
-    if (!sessionStorage.getItem(VISITS_KEY)) {
-      sessionStorage.setItem(VISITS_KEY, "1");
-      store(VISITS_KEY, String(++visits));
-    }
-  } catch {
-    // Storage unavailable: treat it as a first visit.
-  }
-  return visits;
-}
-
 function dismissedRecently(): boolean {
   const at = Number(stored(DISMISS_KEY) ?? 0);
   return Date.now() - at < DISMISS_DAYS * 24 * 60 * 60 * 1000;
 }
 
-function render(visits: number) {
-  const canInstall = !isInstalled() && (installEvent !== null || isAppleMobile());
-  document.querySelectorAll<HTMLElement>("[data-install-offer]").forEach((offer) => (offer.hidden = !canInstall));
+function render() {
+  const canOffer = !isInstalled() && (installEvent !== null || place() !== "computer");
+  document.querySelectorAll<HTMLElement>("[data-install-offer]").forEach((offer) => (offer.hidden = !canOffer));
   const banner = document.getElementById("install-banner");
-  if (banner) banner.hidden = !canInstall || visits < 2 || dismissedRecently();
+  if (banner) banner.hidden = !canOffer || dismissedRecently();
+}
+
+function openSteps() {
+  const where = place();
+  if (where === "computer") return;
+  const { title, steps } = STEPS[where];
+  byId("install-sheet-title").textContent = title;
+  byId("install-steps").innerHTML = steps.map((step) => `<li>${step}</li>`).join("");
+  openPanelSheet(byId<HTMLDialogElement>("install-sheet"));
 }
 
 async function install() {
-  if (installEvent) {
-    const event = installEvent;
-    await event.prompt();
-    await event.userChoice;
-    installEvent = null; // used once: Chrome sends a new one if it can offer again
-  } else if (isAppleMobile()) {
-    openPanelSheet(byId<HTMLDialogElement>("install-sheet"));
-  }
+  if (!installEvent) return openSteps();
+  const event = installEvent;
+  installEvent = null; // used once: Chrome sends a new one if it can offer again
+  await event.prompt();
+  await event.userChoice;
 }
 
 export function initInstallPrompt() {
   if (isInstalled()) return;
-  const visits = visitCount();
   window.addEventListener("beforeinstallprompt", (event) => {
     event.preventDefault(); // our own offer instead of the browser's mini bar
     installEvent = event as BeforeInstallPromptEvent;
-    render(visits);
+    render();
   });
   window.addEventListener("appinstalled", () => {
     installEvent = null;
-    render(visits);
+    render();
   });
   document.addEventListener("click", (domEvent) => {
     const target = domEvent.target as HTMLElement;
-    if (target.closest("[data-install]")) void install().then(() => render(visits));
+    if (target.closest("[data-install]")) void install().then(render);
     else if (target.closest("[data-install-dismiss]")) {
-      store(DISMISS_KEY, String(Date.now()));
-      render(visits);
+      try {
+        localStorage.setItem(DISMISS_KEY, String(Date.now()));
+      } catch {
+        // Storage unavailable: it comes back next visit.
+      }
+      render();
     }
   });
-  const sheet = document.getElementById("install-sheet");
-  if (sheet instanceof HTMLDialogElement) initPanelSheet(sheet);
-  render(visits);
+  initPanelSheet(byId<HTMLDialogElement>("install-sheet"));
+  render();
 }
 
 /** The service worker: offline copies and installability (pages/sw.js.ts). Only in the built site. */
