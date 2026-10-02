@@ -133,3 +133,38 @@ export function initSheet(sheet: HTMLDialogElement, canStartDrag: (target: HTMLE
     dismissSheet(sheet);
   });
 }
+
+interface SheetHistoryState {
+  sheet?: string; // the id of the panel sheet this history entry belongs to
+}
+
+/**
+ * Open a panel sheet with its own history entry (same URL), like the event viewer's: the phone's back
+ * button closes this sheet only, and the next back what was under it (the viewer, then the list).
+ */
+export function openPanelSheet(sheet: HTMLDialogElement) {
+  sheet.showModal();
+  history.pushState({ ...(history.state ?? {}), sheet: sheet.id } satisfies SheetHistoryState, "");
+}
+
+/**
+ * A panel sheet (the filters, an event's posts, a post), opened with openPanelSheet: × (`[data-close-sheet]`)
+ * and a tap on the backdrop close it; it drags down to dismiss from its head (`.sheet-panel__head`) or
+ * whenever its content is scrolled to the top; back closes it. `onClick` gets every other click inside.
+ */
+export function initPanelSheet(sheet: HTMLDialogElement, onClick?: (target: HTMLElement) => void) {
+  sheet.addEventListener("click", (domEvent) => {
+    const target = domEvent.target as HTMLElement;
+    if (target === sheet || target.closest("[data-close-sheet]")) dismissSheet(sheet);
+    else onClick?.(target);
+  });
+  initSheet(sheet, (target) => Boolean(target.closest(".sheet-panel__head")) || sheet.scrollTop <= 0);
+  // Closed by ×, backdrop, Escape or a drag: leave its history entry the way back would.
+  sheet.addEventListener("close", () => {
+    if ((history.state as SheetHistoryState | null)?.sheet === sheet.id) history.back();
+  });
+  // Back: the entry under this sheet's is now current, so the sheet goes.
+  window.addEventListener("popstate", (domEvent) => {
+    if (sheet.open && (domEvent.state as SheetHistoryState | null)?.sheet !== sheet.id) dismissSheet(sheet);
+  });
+}

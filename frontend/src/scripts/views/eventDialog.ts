@@ -12,7 +12,7 @@ import { byId, prefersReducedMotion } from "../lib/dom";
 import { trackPageview } from "../lib/analytics";
 import { eventPath } from "../lib/links";
 import { dismissSheet, initSheet } from "../lib/sheet";
-import { eventDetailHtml, handlePostClick } from "./eventDetail";
+import { eventDetailHtml, handleDetailClick } from "./eventDetail";
 
 const HINT_KEY = "swipe-hint-seen";
 const SETTLE_DELAY = 120; // ms without scrolling that count as "the swipe ended"
@@ -133,7 +133,7 @@ export function initEventDialog(find: (id: string) => DanceEvent | undefined) {
         if (!event) return;
         slide.innerHTML = eventDetailHtml(event, selected, { headingLevel: 2, titleId: `event-title-${position}` });
       };
-      if (event && handlePostClick(slide, target, event, rerender)) return;
+      if (event && handleDetailClick(slide, domEvent, event, rerender)) return;
     }
     const stepButton = target.closest<HTMLElement>("[data-step]");
     if (stepButton) step(Number(stepButton.dataset.step));
@@ -167,6 +167,8 @@ export function initEventDialog(find: (id: string) => DanceEvent | undefined) {
     const event = eventId ? findEvent(eventId) : undefined;
     // Safari's edge swipe already animates going back: close at once instead of animating twice.
     const browserAnimated = (domEvent as PopStateEvent & { hasUAVisualTransition?: boolean }).hasUAVisualTransition;
+    // Back from a sheet over the viewer (posts, a post) lands on this same event: the viewer stays as it is.
+    if (event && element.open && list[index]?.id === event.id) return;
     if (event) openEventDialog(event, list.length ? list : [event], { pushHistory: false });
     else if (element.open) dismissSheet(element, { instant: Boolean(browserAnimated) });
   });

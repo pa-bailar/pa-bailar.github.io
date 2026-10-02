@@ -13,7 +13,7 @@ import { byId, prefersReducedMotion, escapeHtml } from "../lib/dom";
 import { capitalize } from "../lib/format";
 import type { StyleCount } from "./filters";
 import { ICONS } from "../lib/icons";
-import { dismissSheet, initSheet } from "../lib/sheet";
+import { initPanelSheet, openPanelSheet } from "../lib/sheet";
 
 const SCROLL_THRESHOLD = 8; // px of movement before reacting, so small jitters don't toggle the bar
 const BAND_TOP = 64; // px: just below the bar (--jump-bar-height + a little)
@@ -203,16 +203,10 @@ function jumpTo(key: string) {
   else setTimeout(done, 800);
 }
 
-/** ⚙: the filter sheet slides up from the bottom; the list stays where it was behind it. */
+/** ⚙: the filter sheet slides up from the bottom; the list stays where it was behind it. "Ver N eventos"
+ * closes it like ×; the chips inside are handled by main.ts. */
 function initFilterSheet() {
-  const sheet = byId<HTMLDialogElement>("filter-sheet");
-  sheet.addEventListener("click", (domEvent) => {
-    const target = domEvent.target as HTMLElement;
-    // "Ver N eventos", × or a tap on the backdrop (the dialog element itself) closes it.
-    if (target === sheet || target.closest("[data-close-sheet]")) dismissSheet(sheet);
-  });
-  // Drag it down to dismiss, from the top or whenever its content is scrolled to the top.
-  initSheet(sheet, (target) => Boolean(target.closest(".filter-sheet__head")) || sheet.scrollTop <= 0);
+  initPanelSheet(byId<HTMLDialogElement>("filter-sheet"));
 }
 
 /** Hide while scrolling down, show on any scroll up (and near the top, and when it holds focus). */
@@ -244,7 +238,7 @@ function initHideOnScroll() {
 }
 
 export function initJumpBar() {
-  byId("jump-filters").addEventListener("click", () => byId<HTMLDialogElement>("filter-sheet").showModal());
+  byId("jump-filters").addEventListener("click", () => openPanelSheet(byId<HTMLDialogElement>("filter-sheet")));
   // Each menu opens right under its button and always inside the screen: aligned to the button's left
   // edge (or right edge, for a button on the right half), never wider or taller than the space left.
   // Placed before it opens (nothing to measure yet), so CSS caps the size and the menu scrolls if needed.

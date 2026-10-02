@@ -17,6 +17,7 @@ import {
 } from "../lib/format";
 import { ICONS } from "../lib/icons";
 import { flyerUrl, googleCalendarUrl, mapsUrl, whatsappShareUrl } from "../lib/links";
+import { openPostViewer } from "./postViewer";
 import { openPostsSheet } from "./postsSheet";
 
 function toConfirm(text = "Por confirmar"): string {
@@ -70,7 +71,8 @@ function postsBadgeHtml(event: DanceEvent, selected: number): string {
 
 /**
  * The flyer, with the date sticker (as on the cards, so two events sharing a flyer still look different)
- * and the posts badge over it. The flyer itself opens the post on Instagram.
+ * and the posts badge over it. Tapping the flyer shows the post here, with Instagram's player
+ * (postViewer.ts); it's still a link to the post, for a new tab or a page without scripts.
  */
 function mediaHtml(event: DanceEvent, media: EventMedia, selected: number): string {
   const flyer = flyerUrl(media);
@@ -82,9 +84,10 @@ function mediaHtml(event: DanceEvent, media: EventMedia, selected: number): stri
   const sticker = stickerDate(event.date);
   return `
     <div class="event-dialog__frame">
-      <a class="event-dialog__media" href="${escapeHtml(media.permalink)}" target="_blank" rel="noopener">
+      <a class="event-dialog__media" href="${escapeHtml(media.permalink)}" target="_blank" rel="noopener"
+        data-view-post="${selected}" data-track="ver-publicacion" aria-label="Ver la publicación">
         <img src="${escapeHtml(flyer)}"${size} alt="${isVideo ? "Video" : "Flyer"} de ${escapeHtml(event.title)}" />
-        ${isVideo ? `<span class="event-dialog__play">${ICONS.instagram}Ver video en Instagram</span>` : ""}
+        ${isVideo ? `<span class="event-dialog__play">${ICONS.play}Ver video</span>` : ""}
       </a>
       <span class="date-sticker" aria-hidden="true"><b>${sticker.day}</b><small>${sticker.month}</small></span>
       ${postsBadgeHtml(event, selected)}
@@ -127,7 +130,7 @@ export function eventDetailHtml(
       ${styles ? `<p class="style-list">${escapeHtml(styles)}</p>` : ""}
       ${lowConfidence}
       <div class="event-dialog__actions">
-        <a class="btn btn--primary" href="${permalink}" target="_blank" rel="noopener" data-track="instagram">${ICONS.instagram}Ver en Instagram</a>
+        <a class="btn btn--primary" href="${permalink}" target="_blank" rel="noopener" data-track="instagram">${ICONS.instagram}Ver en Instagram ↗</a>
         <a class="btn btn--whatsapp" href="${escapeHtml(whatsappShareUrl(event))}" target="_blank" rel="noopener" data-track="whatsapp">${ICONS.whatsapp}Compartir por WhatsApp</a>
         <a class="btn" href="${escapeHtml(googleCalendarUrl(event))}" target="_blank" rel="noopener" data-track="calendario">${ICONS.calendar}Agregar al calendario</a>
       </div>
@@ -136,15 +139,27 @@ export function eventDetailHtml(
 }
 
 /**
- * The posts badge: opens every post in the sheet; choosing one re-renders the detail with it (its image,
- * "Ver en Instagram" link and caption), without moving. False when the click wasn't on the badge.
+ * Clicks in the detail that open a sheet, false for any other:
+ *   - the flyer: watch the post here (postViewer.ts). A new-tab click follows the link to Instagram;
+ *   - the posts badge: every post in a sheet; choosing one re-renders the detail with it (its image,
+ *     "Ver en Instagram" link and caption), without moving.
  */
-export function handlePostClick(
+export function handleDetailClick(
   container: HTMLElement,
-  target: HTMLElement,
+  domEvent: MouseEvent,
   event: DanceEvent,
   render: (selected: number) => void,
 ): boolean {
+  const target = domEvent.target as HTMLElement;
+  const flyer = target.closest<HTMLElement>("[data-view-post]");
+  if (flyer) {
+    const media = event.media[Number(flyer.dataset.viewPost)];
+    const newTab = domEvent.button !== 0 || domEvent.metaKey || domEvent.ctrlKey || domEvent.shiftKey || domEvent.altKey;
+    if (!media || newTab) return false;
+    domEvent.preventDefault();
+    openPostViewer(event, media);
+    return true;
+  }
   const badge = target.closest<HTMLElement>("[data-open-posts]");
   if (!badge) return false;
   openPostsSheet(event, Number(badge.dataset.selected ?? 0), (index) => {

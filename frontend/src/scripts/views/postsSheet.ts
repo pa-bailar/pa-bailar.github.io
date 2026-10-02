@@ -11,7 +11,7 @@ import { byId, escapeHtml } from "../lib/dom";
 import { mediaLabel } from "../lib/format";
 import { ICONS } from "../lib/icons";
 import { thumbUrl } from "../lib/links";
-import { dismissSheet, initSheet } from "../lib/sheet";
+import { dismissSheet, initPanelSheet, openPanelSheet } from "../lib/sheet";
 
 type PostKind = "flyers" | "videos";
 
@@ -79,15 +79,14 @@ export function openPostsSheet(event: DanceEvent, selected: number, onSelect: (i
   current = { event, selected, kind: postKind(media), onSelect };
   render();
   byId("posts-sheet-title").textContent = `${event.media.length} publicaciones`;
-  sheet().showModal();
+  openPanelSheet(sheet());
   sheet().scrollTop = 0;
   sheet().querySelector<HTMLElement>('[data-post-index][aria-pressed="true"]')?.focus({ preventScroll: true });
 }
 
 export function initPostsSheet() {
   const element = sheet();
-  element.addEventListener("click", (domEvent) => {
-    const target = domEvent.target as HTMLElement;
+  initPanelSheet(element, (target) => {
     const tab = target.closest<HTMLElement>("[data-post-kind]");
     const thumb = target.closest<HTMLElement>("[data-post-index]");
     if (tab && current) {
@@ -97,14 +96,6 @@ export function initPostsSheet() {
     } else if (thumb && current) {
       current.onSelect(Number(thumb.dataset.postIndex));
       dismissSheet(element);
-    } else if (target === element || target.closest("[data-close-sheet]")) {
-      dismissSheet(element);
     }
-  });
-  // Drag it down to dismiss, from the top or whenever its content is scrolled to the top.
-  initSheet(element, (target) => Boolean(target.closest(".posts-sheet__head")) || element.scrollTop <= 0);
-  // The phone's back button closes the viewer underneath (eventDialog.ts): don't leave this sheet open.
-  window.addEventListener("popstate", () => {
-    if (element.open) element.close();
   });
 }

@@ -1,48 +1,5 @@
-/* Every post announcing an event (components/PostsSheet.astro, scripts/views/postsSheet.ts): a sheet that
-   rises from the bottom on phones and a centered window on wide screens. Motion and drag-to-dismiss are
-   shared with the other sheets (sheet.css, lib/sheet.ts). */
-
-.posts-sheet {
-  width: 100%;
-  max-width: 100%;
-  max-height: 85dvh;
-  margin: auto 0 0; /* at the bottom of the screen */
-  padding: var(--space-2) var(--space-4) calc(var(--space-4) + env(safe-area-inset-bottom));
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  border: var(--border-width) solid var(--border);
-  border-bottom: 0;
-  border-radius: var(--radius-md) var(--radius-md) 0 0;
-  background: var(--surface);
-  color: var(--text);
-}
-
-.posts-sheet::backdrop {
-  background: var(--backdrop);
-}
-
-@media (min-width: 720px) {
-  .posts-sheet {
-    width: min(560px, calc(100% - var(--space-5)));
-    margin: auto;
-    border-bottom: var(--border-width) solid var(--border);
-    border-radius: var(--radius-md);
-  }
-}
-
-.posts-sheet__head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: var(--space-2);
-}
-
-.posts-sheet__title {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: var(--weight-serif);
-  font-size: var(--text-2xl);
-}
+/* Every post announcing an event (components/PostsSheet.astro, scripts/views/postsSheet.ts). Its layout,
+   motion and drag-to-dismiss are the shared panel sheet's (sheet.css, lib/sheet.ts). */
 
 /* Flyers / Videos: two small tabs with the main view tabs' underline. */
 .post-tabs {
