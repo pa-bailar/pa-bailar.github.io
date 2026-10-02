@@ -35,10 +35,3 @@
     display: none;
   }
 }
-
-/* Room under the footer, so the button never covers its last line. */
-@media (max-width: 719px), (max-height: 599px) {
-  .site-footer {
-    padding-bottom: calc(var(--fab-size) + var(--space-4) * 2 + env(safe-area-inset-bottom));
-  }
-}

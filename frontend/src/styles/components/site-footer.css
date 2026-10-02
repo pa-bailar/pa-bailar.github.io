@@ -6,6 +6,14 @@
   color: var(--text-muted);
 }
 
+/* Phones: room under the footer, so the floating calendar button (view-switch.css) never covers its last
+   line (the version, bottom right). Here, after the rule above, so it wins. */
+@media (max-width: 719px), (max-height: 599px) {
+  .site-footer {
+    padding-bottom: calc(var(--fab-size) + var(--space-4) * 2 + env(safe-area-inset-bottom));
+  }
+}
+
 .site-footer .container {
   display: grid;
   gap: var(--space-4);
@@ -41,6 +49,21 @@
   font-weight: var(--weight-serif);
   font-size: var(--text-xl);
   color: var(--text);
+}
+
+/* "Hecho por" on the left, the version on the right (wrapping under it on very narrow screens). */
+.site-footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-4);
+}
+
+.site-footer__version {
+  padding: var(--space-1) 0; /* taller tap target */
+  font-size: var(--text-xs);
+  color: var(--text-muted);
 }
 
 .site-footer__author a {
