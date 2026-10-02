@@ -37,6 +37,7 @@
   --tomato-600: #c8321c;
   --tomato-400: #e2452b;
   --tomato-350: #e8553b; /* type tags: light enough for wine text (≥4.5:1) */
+  --orange-800: #b85410; /* deep enough for white text (4.87:1): the light primary button */
   --orange-600: #e8791c;
   --orange-400: #f08a24;
   --marigold-600: #e9b021;
@@ -66,9 +67,8 @@
   --focus: light-dark(var(--tomato-600), var(--marigold-400));
 
   /* Controls */
-  --action: light-dark(var(--orange-600), var(--marigold-400)); /* primary button: Fania orange / marigold */
-  --on-action: var(--wine-900); /* dark text: cream on orange would only reach 2.8:1 */
-  --action-border: light-dark(var(--wine-900), var(--marigold-400)); /* light: orange alone fades into the card */
+  --action: light-dark(var(--orange-800), var(--marigold-400)); /* primary button: deep orange / marigold */
+  --on-action: light-dark(var(--white), var(--wine-900)); /* white like the WhatsApp button; wine on marigold */
   --chip-active-bg: light-dark(var(--wine-900), var(--marigold-400));
   --chip-active-text: light-dark(var(--cream-100), var(--wine-900));
   --whatsapp: var(--palm-600);
