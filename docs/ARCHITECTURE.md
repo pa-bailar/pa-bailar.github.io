@@ -290,7 +290,7 @@ stateDiagram-v2
   - swiping replaces it, so back still closes instead of stepping through events;
   - every event's URL is a real page (`/evento/<id>/`), so copying the address shares the event.
 - **The event page** (`eventPage.ts`) is already rendered at build time. Its script only adds the theme
-  toggle, the tabs between an event's posts, and click tracking.
+  toggle, the thumbnails of an event's posts, and click tracking.
 - **The actions** are plain links built in `lib/links.ts`:
   - "Ver en Instagram" opens the post;
   - "Compartir por WhatsApp" opens a `wa.me` link with the event's text and page URL (`utm_source=whatsapp`);

@@ -1,10 +1,19 @@
-// Event detail: the flyer of each post announcing the event (tabs when there are several), all details,
-// prices and actions. Pure HTML strings, so the same markup is used by the dialog (in the browser) and by
+// Event detail: the flyer of the selected post (thumbnails of every post when there are several), all
+// details, prices and actions. Pure HTML strings, so the same markup is used by the dialog (in the browser) and by
 // each event's own page (pages/evento/[id].astro, at build time).
 
 import type { DanceEvent, EventMedia } from "../types";
 import { escapeHtml } from "../lib/dom";
-import { formatLongDate, formatMoney, formatTime, mediaLabel, placeLabel, stylesLabel, typeLabel } from "../lib/format";
+import {
+  formatLongDate,
+  formatMoney,
+  formatTime,
+  mediaLabel,
+  placeLabel,
+  postCountLabel,
+  stylesLabel,
+  typeLabel,
+} from "../lib/format";
 import { ICONS } from "../lib/icons";
 import { flyerUrl, googleCalendarUrl, mapsUrl, whatsappShareUrl } from "../lib/links";
 
@@ -45,18 +54,48 @@ function pricesHtml(event: DanceEvent): string {
   return `<h3 class="event-dialog__subheading">Precios</h3><ul class="price-list">${items}</ul>`;
 }
 
-/** Tabs to switch between the posts that announce this event. Hidden when there's only one. */
-function mediaTabsHtml(event: DanceEvent, selected: number): string {
-  if (event.media.length < 2) return "";
-  const tabs = event.media
-    .map(
-      (media, index) => `
-        <button class="media-tabs__tab" role="tab" data-media-index="${index}" aria-selected="${index === selected}">
-          ${mediaLabel(media.media_type)}
-        </button>`,
-    )
+/** Thumbnails in the row under the flyer; with more posts, the last place becomes "+N". */
+const VISIBLE_POSTS = 5;
+
+const POST_BADGES: Partial<Record<EventMedia["media_type"], string>> = {
+  VIDEO: ICONS.play,
+  CAROUSEL_ALBUM: ICONS.carousel,
+};
+
+function postThumbHtml(media: EventMedia, index: number, total: number, selected: boolean): string {
+  const flyer = flyerUrl(media);
+  const badge = POST_BADGES[media.media_type];
+  return `
+    <button class="post-thumb" type="button" data-media-index="${index}" aria-pressed="${selected}"
+      aria-label="Publicación ${index + 1} de ${total} (${mediaLabel(media.media_type).toLowerCase()})">
+      ${flyer ? `<img src="${escapeHtml(flyer)}" alt="" loading="lazy" decoding="async" />` : ""}
+      ${badge ? `<span class="post-thumb__badge" aria-hidden="true">${badge}</span>` : ""}
+    </button>`;
+}
+
+/**
+ * Every post announcing the event (a flyer, then videos, reminders…), as square thumbnails under the
+ * flyer, marked like Instagram's grid: ▶ for a video, stacked squares for a carousel. One row; with more
+ * than VISIBLE_POSTS the last place is "+N", which shows them all (like WhatsApp's media grid). It never
+ * scrolls sideways: the viewer itself swipes sideways between events. Hidden when there's only one post.
+ */
+function postsHtml(event: DanceEvent, selected: number, showAll: boolean): string {
+  const total = event.media.length;
+  if (total < 2) return "";
+  const collapsed = total > VISIBLE_POSTS && !showAll && selected < VISIBLE_POSTS - 1;
+  const shown = collapsed ? VISIBLE_POSTS - 1 : total;
+  const thumbs = event.media
+    .slice(0, shown)
+    .map((media, index) => postThumbHtml(media, index, total, index === selected))
     .join("");
-  return `<div class="media-tabs" role="tablist" aria-label="Publicaciones de este evento">${tabs}</div>`;
+  const more = collapsed
+    ? `<button class="post-thumbs__more" type="button" data-show-all-posts aria-label="Ver las ${total} publicaciones">+${total - shown}</button>`
+    : "";
+  return `
+    <div class="post-thumbs${collapsed ? "" : " is-all"}">
+      <p class="post-thumbs__label">${postCountLabel(total)} sobre este evento</p>
+      <div class="post-thumbs__grid" role="group" aria-label="Publicaciones de este evento">${thumbs}${more}</div>
+    </div>`;
 }
 
 function mediaHtml(event: DanceEvent, media: EventMedia): string {
@@ -71,13 +110,17 @@ function mediaHtml(event: DanceEvent, media: EventMedia): string {
 }
 
 /**
- * The detail's inner HTML. `selected` is the post shown. The title is an h1 on the event page and an h2
- * in the viewer, where each slide has its own `titleId`.
+ * The detail's inner HTML. `selected` is the post shown; `showAllPosts` expands the thumbnails' "+N".
+ * The title is an h1 on the event page and an h2 in the viewer, where each slide has its own `titleId`.
  */
 export function eventDetailHtml(
   event: DanceEvent,
   selected: number,
-  { headingLevel, titleId = "event-title" }: { headingLevel: 1 | 2; titleId?: string },
+  {
+    headingLevel,
+    titleId = "event-title",
+    showAllPosts = false,
+  }: { headingLevel: 1 | 2; titleId?: string; showAllPosts?: boolean },
 ): string {
   const media = event.media[selected] ?? event.media[0];
   const permalink = escapeHtml(media.permalink);
@@ -93,8 +136,8 @@ export function eventDetailHtml(
 
   return `
     <div class="event-dialog__visual">
-      ${mediaTabsHtml(event, selected)}
       ${mediaHtml(event, media)}
+      ${postsHtml(event, selected, showAllPosts)}
     </div>
     <div class="event-dialog__info">
       <div class="stripes" aria-hidden="true"><i></i><i></i><i></i></div>
@@ -113,16 +156,24 @@ export function eventDetailHtml(
     </div>`;
 }
 
-/** Media tabs: re-render the detail with another post selected and keep focus on the chosen tab. */
-export function handleMediaTabClick(
+/**
+ * Clicks on the post thumbnails: show another post (its image, "Ver en Instagram" link and caption), or
+ * expand "+N". Re-renders the detail and keeps the focus on the thumbnail (the first new one after "+N").
+ * False when the click wasn't on them.
+ */
+export function handlePostClick(
   container: HTMLElement,
   target: HTMLElement,
-  renderSelected: (selected: number) => void,
+  render: (selected: number, showAllPosts: boolean) => void,
 ): boolean {
-  const tab = target.closest<HTMLElement>("[data-media-index]");
-  if (!tab) return false;
-  const index = tab.dataset.mediaIndex!;
-  renderSelected(Number(index));
-  container.querySelector<HTMLElement>(`[data-media-index="${index}"]`)?.focus();
+  const thumb = target.closest<HTMLElement>("[data-media-index]");
+  const expand = target.closest<HTMLElement>("[data-show-all-posts]");
+  if (!thumb && !expand) return false;
+  const pressed = container.querySelector<HTMLElement>('[data-media-index][aria-pressed="true"]');
+  const selected = Number((thumb ?? pressed)?.dataset.mediaIndex ?? 0);
+  const showAll = Boolean(expand) || Boolean(container.querySelector(".post-thumbs.is-all"));
+  render(selected, showAll);
+  const focusIndex = expand ? VISIBLE_POSTS - 1 : selected;
+  container.querySelector<HTMLElement>(`[data-media-index="${focusIndex}"]`)?.focus();
   return true;
 }

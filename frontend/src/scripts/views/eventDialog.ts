@@ -12,7 +12,7 @@ import { byId, prefersReducedMotion } from "../lib/dom";
 import { trackPageview } from "../lib/analytics";
 import { eventPath } from "../lib/links";
 import { dismissSheet, initSheet } from "../lib/sheet";
-import { eventDetailHtml, handleMediaTabClick } from "./eventDetail";
+import { eventDetailHtml, handlePostClick } from "./eventDetail";
 
 const HINT_KEY = "swipe-hint-seen";
 const SETTLE_DELAY = 120; // ms without scrolling that count as "the swipe ended"
@@ -129,14 +129,15 @@ export function initEventDialog(find: (id: string) => DanceEvent | undefined) {
     if (slide) {
       const position = Number(slide.dataset.slide);
       const event = list[position];
-      const rerender = (selected: number) => {
+      const rerender = (selected: number, showAllPosts: boolean) => {
         if (!event) return;
         slide.innerHTML = eventDetailHtml(event, selected, {
           headingLevel: 2,
           titleId: `event-title-${position}`,
+          showAllPosts,
         });
       };
-      if (handleMediaTabClick(slide, target, rerender)) return;
+      if (handlePostClick(slide, target, rerender)) return;
     }
     const stepButton = target.closest<HTMLElement>("[data-step]");
     if (stepButton) step(Number(stepButton.dataset.step));
