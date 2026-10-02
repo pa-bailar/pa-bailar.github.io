@@ -326,6 +326,12 @@
   white-space: nowrap;
 }
 
+/* The contact as a link (Instagram, WhatsApp, a call, a website): no extra space before it, it's the value. */
+.contact-link {
+  margin-left: 0;
+  overflow-wrap: anywhere;
+}
+
 /* A detail the post doesn't give. */
 .to-confirm {
   font-style: italic;

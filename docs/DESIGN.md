@@ -251,6 +251,7 @@ An event can be announced by several Instagram posts (a flyer, then a video, a r
 - **Shared links open the app.** An event's link (`/evento/<id>/`) forwards a browser to the home page with that event already in the viewer (`main.ts`, `openSharedEvent`): the visitor sees it as from the list, can swipe to the others, and "back" closes it onto the list instead of leaving the site. The page itself stays for link previews (WhatsApp, Instagram: its flyer as a small JPEG made at build time, `pages/og/[id].jpg.ts`), for search engines (schema.org `Event` data) and for browsers without scripts.
 - **Missing details say "Por confirmar"** in their own row (hora, lugar, precio), in muted italics. Gemini's free-text doubts are not shown; a low-confidence extraction gets one note asking to confirm in the post.
 - **"Cómo llegar"** after the venue opens Google Maps (only when there's a venue or address).
+- **The contact is a link** (`lib/contact.ts`): an @username opens its Instagram; a number the flyer or caption marked WhatsApp opens a chat (`wa.me/57…`, with the WhatsApp icon); any other number is a call (`tel:`), never WhatsApp; a website opens it. A number that isn't a full Colombian or international one stays plain text.
 - **Icons** (`scripts/lib/icons.ts`): Instagram and WhatsApp marks (Simple Icons, CC0) and drawn calendar and pin icons, inline SVG in the text color, hidden from screen readers.
 
 ## Component rules
