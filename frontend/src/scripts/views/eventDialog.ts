@@ -13,6 +13,7 @@ import { trackPageview } from "../lib/analytics";
 import { eventPath } from "../lib/links";
 import { dismissSheet, initSheet } from "../lib/sheet";
 import { pauseClips, watchClips } from "./clips";
+import { stopInlinePlayers } from "./inlinePlayer";
 import { eventDetailHtml, handleDetailClick } from "./eventDetail";
 
 const HINT_KEY = "swipe-hint-seen";
@@ -188,6 +189,7 @@ export function initEventDialog(find: (id: string) => DanceEvent | undefined) {
   // Closed by ×, backdrop, Escape or pull-down: leave the event's URL the way the back button would.
   element.addEventListener("close", () => {
     pauseClips(element);
+    stopInlinePlayers(element);
     if ((history.state as HistoryState | null)?.eventId) history.back();
   });
 

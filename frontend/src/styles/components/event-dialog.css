@@ -397,6 +397,42 @@
   }
 }
 
+/* ---------- a video playing in place of its image (views/inlinePlayer.ts) ---------- */
+
+.inline-player {
+  width: 100%;
+  background: var(--surface-sunken);
+}
+
+/* Instagram's player sets its own minimum width and margins: fit it to the frame instead. */
+.inline-player iframe {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* While it loads, the image stays: the player is laid out (Instagram measures it) but not seen. */
+.event-dialog__frame.is-loading .inline-player {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* The sticker would cover the player's controls. */
+.event-dialog__frame.is-playing .date-sticker {
+  display: none;
+}
+
+@media (min-width: 720px) {
+  .viewer-slide .event-dialog__visual:has(.is-playing) {
+    overflow-y: auto;
+  }
+}
+
 /* ---------- the event's own page (pages/evento/[id].astro): same detail, outside a dialog ---------- */
 
 .event-page__header {

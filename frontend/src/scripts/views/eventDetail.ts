@@ -18,7 +18,8 @@ import {
 import { contactLink, type ContactKind } from "../lib/contact";
 import { ICONS } from "../lib/icons";
 import { feedbackUrl, flyerUrl, mapsUrl, previewUrl } from "../lib/links";
-import { mediaLabel } from "../lib/mediaLabel";
+import { isVideoCover, mediaLabel } from "../lib/mediaLabel";
+import { playInline } from "./inlinePlayer";
 import { openPostViewer } from "./postViewer";
 import { saveButtonHtml } from "./saveButton";
 import { openPostsSheet } from "./postsSheet";
@@ -186,7 +187,10 @@ export function handleDetailClick(
     const newTab = domEvent.button !== 0 || domEvent.metaKey || domEvent.ctrlKey || domEvent.shiftKey || domEvent.altKey;
     if (!media || newTab) return false;
     domEvent.preventDefault();
-    openPostViewer(event, media);
+    // A video plays right here, in the image's place (inlinePlayer.ts); photos and carousels open the post sheet.
+    const frame = flyer.closest<HTMLElement>(".event-dialog__frame");
+    if (isVideoCover(media) && frame) playInline(frame, media.permalink);
+    else openPostViewer(event, media);
     return true;
   }
   const badge = target.closest<HTMLElement>("[data-open-posts]");
