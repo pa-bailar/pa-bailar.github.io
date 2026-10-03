@@ -1,5 +1,7 @@
 // Date helpers. Event dates are plain "YYYY-MM-DD" strings in Bogotá local time.
 
+import type { DanceEvent } from "../types";
+
 const DAY_MS = 24 * 60 * 60 * 1000;
 
 export function parseIsoDate(iso: string): Date {
@@ -58,4 +60,28 @@ export function daysBetween(fromIso: string, toIso: string): number {
 /** Column of the month's first day in a Monday-first week (0 = Monday). */
 export function mondayOffset(month: Date): number {
   return (month.getDay() + 6) % 7;
+}
+
+// ---------- events over several days (end_date, docs/DATA.md) ----------
+
+/** The event's last day: its end_date over several days, else its date. It's upcoming until then. */
+export function lastDay(event: Pick<DanceEvent, "date" | "end_date">): string {
+  return event.end_date ?? event.date;
+}
+
+/** Whether the event lasts several consecutive days (a congress, a festival weekend). */
+export function isMultiDay(event: Pick<DanceEvent, "date" | "end_date">): boolean {
+  return Boolean(event.end_date) && lastDay(event) > event.date;
+}
+
+/** Every day of the event, first to last ("2026-11-13", "2026-11-14", "2026-11-15"). */
+export function daysOf(event: Pick<DanceEvent, "date" | "end_date">): string[] {
+  const days: string[] = [];
+  for (let day = event.date; day <= lastDay(event) && days.length < 31; day = addDays(day, 1)) days.push(day);
+  return days;
+}
+
+/** The day the list shows the event under: its date, or today while it goes on (a congress since Friday is "Hoy"). */
+export function shownDay(event: Pick<DanceEvent, "date" | "end_date">, today = todayIso()): string {
+  return event.date < today && lastDay(event) >= today ? today : event.date;
 }

@@ -56,7 +56,7 @@ function eventCardHtml(event: DanceEvent): string {
   const image = flyer
     ? flyerHtml(media, flyer)
     : `<div class="no-flyer" aria-hidden="true">Pa'</div>`;
-  const sticker = stickerDate(event.date);
+  const sticker = stickerDate(event);
   const when = cardWhenLabel(event);
   const place = placeLabel(event);
   const price = priceSummary(event);
@@ -69,7 +69,7 @@ function eventCardHtml(event: DanceEvent): string {
         <span class="tag-type t-${escapeHtml(event.event_type)}">${typeLabel(event.event_type)}</span>
         ${postCount}
         ${isVideoCover(media) ? `<span class="play-mark" aria-hidden="true">${ICONS.play}</span>` : ""}
-        <span class="date-sticker" aria-hidden="true"><b>${sticker.day}</b><small>${sticker.month}</small></span>
+        <span class="date-sticker${sticker.range ? " date-sticker--range" : ""}" aria-hidden="true"><b>${sticker.day}</b><small>${sticker.month}</small></span>
       </div>
       <div class="event-card__body">
         <p class="event-card__time">${escapeHtml(when)}</p>

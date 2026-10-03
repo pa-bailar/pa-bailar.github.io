@@ -110,7 +110,7 @@ function drawRow(context: CanvasRenderingContext2D, event: DanceEvent, thumb: HT
   context.textBaseline = "top";
   context.fillStyle = PALETTE.logo;
   context.font = FONTS.day;
-  context.fillText([shortDayLabel(event.date), time].filter(Boolean).join(" · "), left, top + 8);
+  context.fillText([shortDayLabel(event), time].filter(Boolean).join(" · "), left, top + 8);
   context.fillStyle = PALETTE.ink;
   context.font = FONTS.event;
   const titleLines = wrap(context, event.title, width, 2);

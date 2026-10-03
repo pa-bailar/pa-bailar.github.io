@@ -35,6 +35,8 @@ const isStringList = (value) => Array.isArray(value) && value.every((item) => ty
 // A real day: Date.parse takes "2026-02-30" as March 2.
 const isDate = (value) =>
   DATE.test(value ?? "") && new Date(`${value}T00:00:00Z`).toISOString().slice(0, 10) === value;
+const daysFrom = (start, end) => Math.round((Date.parse(`${end}T00:00:00Z`) - Date.parse(`${start}T00:00:00Z`)) / 86_400_000);
+const MAX_EVENT_DAYS = 7; // the backend's config.MAX_EVENT_DAYS
 
 const meta = read("meta.json");
 check(meta.schema_version === 1, "meta.json", `schema_version ${meta.schema_version}, expected 1`);
@@ -62,6 +64,11 @@ for (const [index, event] of (Array.isArray(events) ? events : []).entries()) {
     check(isNullableString(event[field]), at, `${field} must be a string or null`);
   }
   check(isDate(event.date), at, `bad date ${event.date}`);
+  // Over several consecutive days: the last one, after `date` and at most MAX_EVENT_DAYS in all.
+  if (event.end_date != null) {
+    const days = isDate(event.end_date) && isDate(event.date) ? daysFrom(event.date, event.end_date) + 1 : NaN;
+    check(days > 1 && days <= MAX_EVENT_DAYS, at, `bad end_date ${event.end_date}: after date, ${MAX_EVENT_DAYS} days at most`);
+  }
   for (const field of ["start_time", "end_time"]) {
     check(event[field] === null || TIME.test(event[field]), at, `bad ${field} ${event[field]}`);
   }

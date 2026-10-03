@@ -5,7 +5,7 @@ import type { AgendaGroup } from "./state";
 import { initClickTracking } from "./lib/analytics";
 import { byId } from "./lib/dom";
 import { eventCountLabel } from "./lib/format";
-import { addMonths, currentMonth, todayIso } from "./lib/dates";
+import { addMonths, currentMonth, lastDay, shownDay, todayIso } from "./lib/dates";
 import {
   activeFilterCount,
   clearFilters,
@@ -36,8 +36,8 @@ import { initViewSwitch, renderViewSwitch } from "./views/viewSwitch";
 import { initSaveButtons, renderSavedToggles } from "./views/saveButton";
 import { initInstallPrompt, offerAfterSaving, registerServiceWorker } from "./views/installPrompt";
 import { initSharing, plansEventUrl, setShareSources, type ShareSource } from "./views/sharing";
-import { dateRangeLabel, PERIOD_SHARE_TITLES, periodShareText, plansShareText } from "./lib/shareText";
-import { capitalize, typeLabel } from "./lib/format";
+import { PERIOD_SHARE_TITLES, periodShareText, plansShareText } from "./lib/shareText";
+import { capitalize, dateRangeLabel, typeLabel } from "./lib/format";
 import { isSaved, keepOnly } from "./lib/saved";
 
 const state = createInitialState();
@@ -167,7 +167,7 @@ function applyScreen(screen: Screen) {
 /** The saved events still to come, in date order. */
 function upcomingSaved(): DanceEvent[] {
   const today = todayIso();
-  return events.filter((event) => event.date >= today && isSaved(event.id));
+  return events.filter((event) => lastDay(event) >= today && isSaved(event.id));
 }
 
 /** "Guardados 3": how many upcoming events are saved, on the toggles. */
@@ -193,23 +193,24 @@ function shareSources(groups: AgendaGroup[]): Map<string, ShareSource> {
   const filters = filtersLabel();
   for (const group of groups) {
     const title = PERIOD_SHARE_TITLES[group.key];
-    const first = group.events[0];
-    const last = group.events.at(-1);
+    const days = group.events.map((event) => shownDay(event)); // as listed: an event under way is today's
+    const first = days[0];
+    const last = days.at(-1);
     if (!title || !first || !last) continue;
     sources.set(`periodo-${group.key}`, {
       title,
-      subtitle: [dateRangeLabel(first.date, last.date), filters].filter(Boolean).join(" · "),
+      subtitle: [dateRangeLabel(first, last), filters].filter(Boolean).join(" · "),
       text: periodShareText(filters ? `${title} · ${filters}` : title, group.events),
       events: group.events,
     });
   }
   const plans = upcomingSaved();
   const [firstPlan] = plans;
-  const lastPlan = plans.at(-1);
-  if (state.savedOnly && firstPlan && lastPlan) {
+  const lastPlanDay = plans.map(lastDay).sort().at(-1); // the plans' last day: an event over several days may end last
+  if (state.savedOnly && firstPlan && lastPlanDay) {
     sources.set("planes", {
       title: "Mis planes para bailar",
-      subtitle: dateRangeLabel(firstPlan.date, lastPlan.date),
+      subtitle: dateRangeLabel(shownDay(firstPlan), lastPlanDay),
       text: plansShareText(plans, plansEventUrl),
       events: plans,
     });

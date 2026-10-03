@@ -7,7 +7,7 @@ import type { DanceEvent, EventMedia } from "../types";
 import { escapeHtml } from "../lib/dom";
 import {
   cardWhenLabel,
-  formatLongDate,
+  eventDaysLabel,
   formatMoney,
   formatTime,
   placeLabel,
@@ -46,7 +46,7 @@ function toConfirm(text = "Por confirmar"): string {
 /** [term, HTML value] rows. Missing details say "Por confirmar" right where they belong. */
 function detailRows(event: DanceEvent): [string, string][] {
   const time = [formatTime(event.start_time), formatTime(event.end_time)].filter(Boolean).join(" – ");
-  const when = `${escapeHtml(formatLongDate(event.date))} · ${time ? escapeHtml(time) : toConfirm("hora por confirmar")}`;
+  const when = `${escapeHtml(eventDaysLabel(event))} · ${time ? escapeHtml(time) : toConfirm("hora por confirmar")}`;
   const place = placeLabel(event);
   const maps = mapsUrl(event);
   const directions = maps
@@ -100,7 +100,7 @@ function mediaHtml(event: DanceEvent, media: EventMedia, selected: number): stri
   // Its real size (read at build time) reserves its space before it loads: switching posts never
   // collapses the image to nothing and shifts everything below it.
   const size = media.width && media.height ? ` width="${media.width}" height="${media.height}"` : "";
-  const sticker = stickerDate(event.date);
+  const sticker = stickerDate(event);
   const clip = previewUrl(media);
   // A video with a clip plays it here, silent and looping (views/clips.ts); tapping opens it with sound.
   const picture = clip
@@ -116,7 +116,7 @@ function mediaHtml(event: DanceEvent, media: EventMedia, selected: number): stri
         ${picture}
         ${label ? `<span class="event-dialog__play">${ICONS[label.icon]}${label.text}</span>` : ""}
       </a>
-      <span class="date-sticker" aria-hidden="true"><b>${sticker.day}</b><small>${sticker.month}</small></span>
+      <span class="date-sticker${sticker.range ? " date-sticker--range" : ""}" aria-hidden="true"><b>${sticker.day}</b><small>${sticker.month}</small></span>
       ${postsBadgeHtml(event, selected)}
     </div>`;
 }

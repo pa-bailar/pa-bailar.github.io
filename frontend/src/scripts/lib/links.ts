@@ -1,7 +1,7 @@
 // URLs built from an event: flyer image, its own page, Google Maps, the report form, and calendar times.
 
 import type { DanceEvent, EventMedia } from "../types";
-import { addDays } from "./dates";
+import { addDays, isMultiDay, lastDay } from "./dates";
 
 export const BASE_URL = import.meta.env.BASE_URL.replace(/\/?$/, "/");
 const SITE_URL = new URL(BASE_URL, import.meta.env.SITE).href; // "https://pa-bailar.github.io/"
@@ -65,11 +65,13 @@ export interface EventTimes {
 
 /**
  * Start and end for calendars. Without a start time it's an all-day event; without an end time it
- * lasts DEFAULT_DURATION_HOURS; an end before the start means it finishes after midnight.
+ * lasts DEFAULT_DURATION_HOURS; an end before the start means it finishes after midnight. An event over
+ * several days is all day from its first day to its last (the end is exclusive: the day after the last).
  */
 export function eventTimes(event: DanceEvent): EventTimes {
   const day = event.date.replaceAll("-", "");
   const nextDay = addDays(event.date, 1).replaceAll("-", "");
+  if (isMultiDay(event)) return { start: day, end: addDays(lastDay(event), 1).replaceAll("-", ""), allDay: true };
   if (!event.start_time) return { start: day, end: nextDay, allDay: true };
 
   const startHour = Number(event.start_time.slice(0, 2));

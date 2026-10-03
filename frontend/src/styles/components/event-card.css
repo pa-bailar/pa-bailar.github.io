@@ -361,6 +361,11 @@
   letter-spacing: 0.08em;
 }
 
+/* An event over several days in one month: its days ("13–15"), smaller to fit the circle. */
+.date-sticker--range b {
+  font-size: var(--text-sm);
+}
+
 
 /* ---------- phones: an Instagram-like feed ----------
    One event per row, flyer edge to edge at full size, details right below; posts separated by a line

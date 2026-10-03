@@ -10,9 +10,9 @@ import SiteFooter from "../../components/SiteFooter.astro";
 import Stripes from "../../components/Stripes.astro";
 import ThemeToggle from "../../components/ThemeToggle.astro";
 import { accounts, events } from "../../data";
-import { todayIso } from "../../scripts/lib/dates";
+import { isMultiDay, lastDay, todayIso } from "../../scripts/lib/dates";
 import type { DanceEvent } from "../../scripts/types";
-import { formatLongDate, formatTime, placeLabel } from "../../scripts/lib/format";
+import { eventDaysLabel, formatTime, placeLabel } from "../../scripts/lib/format";
 import { BASE_URL, eventPageUrl, eventTimes, flyerUrl, mainMedia, previewImagePath } from "../../scripts/lib/links";
 import { eventDetailHtml } from "../../scripts/views/eventDetail";
 
@@ -27,10 +27,10 @@ interface Props {
 const { event } = Astro.props;
 const home = BASE_URL;
 const today = todayIso();
-const isPast = event.date < today;
+const isPast = lastDay(event) < today; // over several days: once its last day has passed
 
 const time = formatTime(event.start_time);
-const description = [`${formatLongDate(event.date)}${time ? ` · ${time}` : ""}`, placeLabel(event), `@${event.account}`]
+const description = [`${eventDaysLabel(event)}${time ? ` · ${time}` : ""}`, placeLabel(event), `@${event.account}`]
   .filter(Boolean)
   .join(" · ");
 
@@ -46,7 +46,8 @@ const structuredData = {
   "@type": "Event",
   name: event.title,
   startDate: isoDateTime(start),
-  ...(allDay ? {} : { endDate: isoDateTime(end) }),
+  // Over several days: the last day (schema.org's endDate is inclusive, unlike the calendar's exclusive end).
+  ...(isMultiDay(event) ? { endDate: lastDay(event) } : allDay ? {} : { endDate: isoDateTime(end) }),
   eventStatus: "https://schema.org/EventScheduled",
   eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
   url: eventPageUrl(event),
