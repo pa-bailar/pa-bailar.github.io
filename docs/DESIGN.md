@@ -32,8 +32,11 @@ frontend/src/styles/
    ├─ sheet.css          ← bottom sheets: rise, drag to dismiss (with scripts/lib/sheet.ts)
    ├─ jump-bar.css       ← phones: the sticky filter bar and its dropdown menus
    ├─ view-switch.css    ← phones: the floating calendar / list button
+   ├─ posts-sheet.css    ← every post announcing an event
+   ├─ post-viewer.css    ← a post with Instagram's player
    ├─ filter-sheet.css
-   └─ site-footer.css
+   ├─ site-footer.css
+   └─ install.css        ← installing the site: the banner and the iPhone steps
 ```
 
 ## Tokens
