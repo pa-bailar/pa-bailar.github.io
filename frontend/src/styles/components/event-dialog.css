@@ -182,7 +182,8 @@
   flex: 1;
 }
 
-.event-dialog__media img {
+.event-dialog__media img,
+.event-dialog__media video {
   display: block;
   width: 100%;
   height: auto; /* its width/height attributes give the shape, so its space is kept before it loads */
@@ -190,7 +191,7 @@
   object-fit: contain;
 }
 
-/* Label over a video's preview frame: the video itself plays on Instagram. */
+/* Label over a video: its clip plays here without sound (views/clips.ts); with sound, in the post viewer. */
 .event-dialog__play {
   position: absolute;
   left: 50%;
@@ -385,7 +386,8 @@
     grid-template-rows: 100%;
   }
 
-  .viewer-slide .event-dialog__media img {
+  .viewer-slide .event-dialog__media img,
+  .viewer-slide .event-dialog__media video {
     height: 100%;
     max-height: none;
   }
@@ -430,7 +432,8 @@
   background: var(--surface);
 }
 
-.event-page .event-dialog__media img {
+.event-page .event-dialog__media img,
+.event-page .event-dialog__media video {
   max-height: 80vh;
 }
 

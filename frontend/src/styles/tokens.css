@@ -75,8 +75,8 @@
   --on-action: light-dark(var(--white), var(--wine-900)); /* white like the WhatsApp button; wine on marigold */
   --chip-active-bg: light-dark(var(--wine-900), var(--marigold-400));
   --chip-active-text: light-dark(var(--cream-100), var(--wine-900));
-  --whatsapp: var(--palm-600);
-  --on-whatsapp: var(--white);
+  --free: var(--palm-600); /* the "Gratis" price tag */
+  --on-free: var(--white);
 
   /* Brand motifs */
   --stripe-1: light-dark(var(--tomato-600), var(--tomato-400));

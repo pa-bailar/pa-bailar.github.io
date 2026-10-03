@@ -17,6 +17,8 @@ export interface EventMedia {
   media_type: MediaType;
   published: string;
   flyer: string | null; // path relative to the site root, e.g. "flyers/123-0.webp"
+  preview?: string | null; // videos: a short silent clip, e.g. "previews/123-0.mp4" (docs/DATA.md)
+  slides?: number | null; // carousels: how many slides
   caption: string | null;
   width?: number; // the flyer's size in pixels, added at build time (src/data.ts)
   height?: number;

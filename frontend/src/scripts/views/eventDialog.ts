@@ -12,6 +12,7 @@ import { byId, prefersReducedMotion } from "../lib/dom";
 import { trackPageview } from "../lib/analytics";
 import { eventPath } from "../lib/links";
 import { dismissSheet, initSheet } from "../lib/sheet";
+import { pauseClips, watchClips } from "./clips";
 import { eventDetailHtml, handleDetailClick } from "./eventDetail";
 
 const HINT_KEY = "swipe-hint-seen";
@@ -121,6 +122,7 @@ export function openEventDialog(event: DanceEvent, events: DanceEvent[], { pushH
   list = events.some((item) => item.id === event.id) ? events : [event];
   const position = list.findIndex((item) => item.id === event.id);
   track().innerHTML = list.map(slideHtml).join("");
+  watchClips(track());
   if (!dialog().open) dialog().showModal();
   // The viewer itself takes the focus, not its first button: opening it (for example from a shared link,
   // before any tap) would otherwise show "‹" outlined as if selected. The arrow keys work from here.
@@ -145,6 +147,7 @@ export function initEventDialog(find: (id: string) => DanceEvent | undefined) {
       const rerender = (selected: number) => {
         if (!event) return;
         slide.innerHTML = eventDetailHtml(event, selected, { headingLevel: 2, titleId: `event-title-${position}` });
+        watchClips(slide);
       };
       if (event && handleDetailClick(slide, domEvent, event, rerender)) return;
     }
@@ -184,6 +187,7 @@ export function initEventDialog(find: (id: string) => DanceEvent | undefined) {
 
   // Closed by ×, backdrop, Escape or pull-down: leave the event's URL the way the back button would.
   element.addEventListener("close", () => {
+    pauseClips(element);
     if ((history.state as HistoryState | null)?.eventId) history.back();
   });
 

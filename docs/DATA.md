@@ -47,6 +47,8 @@ repositories (backend first, behind the new version).
 | `published` | string | Instagram timestamp, e.g. `2026-09-30T12:00:00+0000` |
 | `flyer` | string \| null | Path relative to `data/`, e.g. `flyers/<post id>-<slide>.webp`. Shared by events announced on the same image. |
 | `caption` | string \| null | Post text |
+| `preview` | string \| null (optional) | When the flyer is a video's frame (a reel, or a carousel's video slide): a short silent clip of it, path relative to `data/`, e.g. `previews/<post id>-<slide>.mp4` (6 s, 480 px, H.264). Absent or null otherwise, and for videos Instagram gives no file for |
+| `slides` | integer \| null (optional) | Carousels: how many slides. Absent or null for a single photo or video, and in data written before it existed |
 
 ### Dance styles
 

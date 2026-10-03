@@ -17,7 +17,8 @@ import {
 } from "../lib/format";
 import { contactLink, type ContactKind } from "../lib/contact";
 import { ICONS } from "../lib/icons";
-import { feedbackUrl, flyerUrl, mapsUrl } from "../lib/links";
+import { feedbackUrl, flyerUrl, mapsUrl, previewUrl } from "../lib/links";
+import { mediaLabel } from "../lib/mediaLabel";
 import { openPostViewer } from "./postViewer";
 import { saveButtonHtml } from "./saveButton";
 import { openPostsSheet } from "./postsSheet";
@@ -99,12 +100,20 @@ function mediaHtml(event: DanceEvent, media: EventMedia, selected: number): stri
   // collapses the image to nothing and shifts everything below it.
   const size = media.width && media.height ? ` width="${media.width}" height="${media.height}"` : "";
   const sticker = stickerDate(event.date);
+  const clip = previewUrl(media);
+  // A video with a clip plays it here, silent and looping (views/clips.ts); tapping opens it with sound.
+  const picture = clip
+    ? `<video class="event-dialog__clip" src="${escapeHtml(clip)}" poster="${escapeHtml(flyer)}"${size}
+        muted loop playsinline preload="none" data-clip aria-label="Video de ${escapeHtml(event.title)}"></video>`
+    : `<img src="${escapeHtml(flyer)}"${size} alt="${isVideo ? "Video" : "Flyer"} de ${escapeHtml(event.title)}" />`;
+  // What tapping shows beyond this image (lib/mediaLabel.ts): the video with sound, or the carousel's slides.
+  const label = mediaLabel(media);
   return `
     <div class="event-dialog__frame">
       <a class="event-dialog__media" href="${escapeHtml(media.permalink)}" target="_blank" rel="noopener"
         data-view-post="${selected}" data-track="ver-publicacion" aria-label="Ver la publicación">
-        <img src="${escapeHtml(flyer)}"${size} alt="${isVideo ? "Video" : "Flyer"} de ${escapeHtml(event.title)}" />
-        ${isVideo ? `<span class="event-dialog__play">${ICONS.play}Ver video</span>` : ""}
+        ${picture}
+        ${label ? `<span class="event-dialog__play">${ICONS[label.icon]}${label.text}</span>` : ""}
       </a>
       <span class="date-sticker" aria-hidden="true"><b>${sticker.day}</b><small>${sticker.month}</small></span>
       ${postsBadgeHtml(event, selected)}
@@ -151,7 +160,7 @@ export function eventDetailHtml(
       ${lowConfidence}
       <div class="event-dialog__actions">
         <a class="btn btn--primary" href="${permalink}" target="_blank" rel="noopener" data-track="instagram">${ICONS.instagram}Ver en Instagram ↗</a>
-        <button class="btn btn--whatsapp" type="button" data-share-event="${escapeHtml(event.id)}" data-track="compartir-evento">${ICONS.share}Compartir</button>
+        <button class="btn" type="button" data-share-event="${escapeHtml(event.id)}" data-track="compartir-evento">${ICONS.share}Compartir</button>
       </div>
       ${media.caption ? `<details class="event-dialog__caption"><summary>Texto de la publicación</summary><p>${escapeHtml(media.caption)}</p></details>` : ""}
       <p class="event-dialog__report"><a class="inline-link" href="${escapeHtml(feedbackUrl(event))}" target="_blank" rel="noopener" data-track="reportar-error">¿Algo está mal? Repórtalo</a></p>

@@ -21,12 +21,6 @@
   color: var(--on-action);
 }
 
-.btn--whatsapp {
-  background: var(--whatsapp);
-  border-color: var(--whatsapp);
-  color: var(--on-whatsapp);
-}
-
 .icon-btn {
   width: var(--control-height);
   height: var(--control-height);

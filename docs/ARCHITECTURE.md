@@ -425,10 +425,12 @@ frontend/
 | `views/filters.ts` | Type and style chips, the academy notice |
 | `views/jumpBar.ts` | Phones: the sticky bar, its menus, keeping your place, hiding on scroll |
 | `views/viewSwitch.ts` | Phones: the floating calendar / list button |
-| `lib/links.ts` | Every URL built from an event: flyer, page, preview, Calendar, Maps, WhatsApp |
+| `lib/links.ts` | Every URL built from an event: flyer, clip, page, link preview, Maps, the report form |
+| `lib/mediaLabel.ts` | What the label over a post's image says (Ver con sonido, Ver video, Ver las N), and which cards get a ▶ |
 | `lib/sheet.ts` | Bottom sheets that drag to dismiss; panel sheets with their own back-button step |
 | `lib/instagramEmbed.ts` | Instagram's player for a post, its script loaded on demand |
 | `views/postsSheet.ts`, `views/postViewer.ts` | An event's posts (Flyers / Videos); a post watched inside the site |
+| `views/clips.ts` | Videos' clips in the detail: the one on screen plays, silent and looping |
 | `lib/analytics.ts` | GoatCounter events |
 | `lib/dates.ts`, `lib/holidays.ts`, `lib/format.ts` | Dates in Bogotá, Colombian holidays, Spanish formatting |
 
