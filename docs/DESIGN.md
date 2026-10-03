@@ -5,7 +5,7 @@ Two themes, one system:
 | Theme | Name | Mood | Source |
 |---|---|---|---|
 | Light | **Fania de día** | A 1970s salsa flyer: cream offset paper, tomato red and marigold ink | New York salsa graphics (Izzy Sanabria, Fania Records), 1968–88 |
-| Dark | **Noche Fania** | A dance floor at night: wine-dark, candlelit cream, gold accents | Spanish *bachata sensual* events (Korke & Judith era), 2010s–2020s |
+| Dark | **Noche Fania** | A dance floor at night: record black (a warm near-black), candlelit cream, gold accents | Spanish *bachata sensual* events (Korke & Judith era), 2010s–2020s |
 
 The **structure** (type, motifs, components) comes from Fania. The **mood** of the dark theme comes from bachata sensual. Both themes share every component; only the color values change.
 
@@ -50,11 +50,11 @@ Themes switch through CSS `color-scheme`: `light dark` (follow the device) when 
 
 | Token | Fania de día | Noche Fania | Use |
 |---|---|---|---|
-| `--bg` | cream-150 (aged offset paper) | wine-900 | Page background |
-| `--surface` | cream-75 | wine-800 | Cards, dialog, buttons |
-| `--surface-sunken` | cream-250 | wine-950 | Image wells, callouts |
-| `--border` | wine-900 | wine-400 | Outlines of cards, chips, buttons |
-| `--divider` | cream-300 | wine-600 | Lines between sections and rows |
+| `--bg` | cream-150 (aged offset paper) | vinyl-900 (the record: warm near-black) | Page background |
+| `--surface` | cream-75 | vinyl-800 | Cards, dialog, buttons |
+| `--surface-sunken` | cream-250 | vinyl-950 | Image wells, callouts |
+| `--border` | wine-900 | vinyl-400 | Outlines of cards, chips, buttons |
+| `--divider` | cream-300 | vinyl-600 | Lines between sections and rows |
 | `--text` | wine-900 | cream-100 | Body text |
 | `--text-muted` | cocoa-500 | cocoa-300 | Metadata, captions |
 | `--text-italic` | wine-500 | rose-300 | Bodoni italic accents |
@@ -98,7 +98,7 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves. The pa
 
 ## Upcoming list
 
-- **Period headers** (Izzy Sanabria's Fania lettering): the title in the display face (Shrikhand) in `--period-title` (deeper tomato in light, soft gold in dark: calmer than the logo, no glare) with a 2px offset shadow (`--period-shadow`: sand in light, deep wine in dark), between two thin lines made of the three Fania colors side by side and the event count ("5 eventos"), with generous space above. Page colors only, so it never reads as a post. Title contrast 4.93:1 (light) and 9.47:1 (dark): it passes even the normal-text 4.5:1.
+- **Period headers** (Izzy Sanabria's Fania lettering): the title in the display face (Shrikhand) in `--period-title` (deeper tomato in light, soft gold in dark: calmer than the logo, no glare) with a 2px offset shadow (`--period-shadow`: sand in light, the deepest black in dark), between two thin lines made of the three Fania colors side by side and the event count ("5 eventos"), with generous space above. Page colors only, so it never reads as a post. Title contrast 4.93:1 (light) and 9.47:1 (dark): it passes even the normal-text 4.5:1.
 - **Grouped by period, not by day** (`groupByPeriod` in `scripts/state.ts`). Days with one or two events share rows instead of each leaving a mostly empty row. The buckets don't overlap, follow the usual calendar "date range" grouping, and split out the weekend because that's when most socials happen:
 
   | Group | Range |
