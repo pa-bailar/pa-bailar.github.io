@@ -2786,6 +2786,52 @@
     ]
   },
   {
+    "title": "Level Up Bachata Fusion Congress",
+    "event_type": "congress",
+    "is_recurring": false,
+    "styles": [
+      "bachata sensual",
+      "bachata dominicana"
+    ],
+    "organizer": "LuDance",
+    "venue": null,
+    "address": null,
+    "area": "Bogotá",
+    "date": "2026-11-13",
+    "weekday": "viernes",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "clases",
+      "workshops",
+      "sociales",
+      "shows",
+      "competencias"
+    ],
+    "contact": "@levelupbfc",
+    "confidence": "high",
+    "doubts": [
+      "sin lugar exacto",
+      "sin precios"
+    ],
+    "id": "level-up-bachata-fusion-congress-13-nov",
+    "account": "levelupbfc",
+    "media": [
+      {
+        "post_id": "public-Dc_Jsv6R6Wu",
+        "permalink": "https://www.instagram.com/p/Dc_Jsv6R6Wu/",
+        "media_type": "IMAGE",
+        "published": "2026-10-03T19:47:03+0000",
+        "flyer": "flyers/public-Dc_Jsv6R6Wu-0.webp",
+        "caption": "BACHATEROS, prepárense para vivir una experiencia donde la Bachata no tiene fronteras. ❤️‍🔥\n\nEn noviembre llega un congreso creado para celebrar todos los lenguajes de la Bachata: sus raíces, su esencia, su evolución y las nuevas formas de interpretarla.\n\nUn espacio donde la Bachata Tradicional, Dominicana, Sensual, Moderna, Urbana y sus diferentes fusiones encuentran un mismo escenario para conectarse, complementarse y, sobre todo, disfrutarse. 🌎🔥\n\nPorque creemos que la diversidad hace más grande nuestra danza y que cada estilo tiene una historia, una identidad y algo único que aportar.\n\n🎶 Un mismo ritmo.\n🌎 Diferentes lenguajes.\n❤️ Una misma pasión.\n\nPrepárate para disfrutar de artistas nacionales e internacionales, clases, workshops, sociales, shows, competencias y una experiencia pensada para todos los que sienten la Bachata de diferentes maneras.\n\nAquí no venimos a elegir un solo lenguaje… venimos a celebrarlos todos.\n\n✨ BACHATA FUSIÓN CONGRESS ✨\nDonde todos los lenguajes de la Bachata encuentran su espacio.\n\nMuy pronto revelaremos artistas, fechas, ubicación, programación y muchas más sorpresas.\n\nLa Bachata se transforma. La Bachata se fusiona. La Bachata nos une. ❤️‍🔥",
+        "preview": null,
+        "slides": null
+      }
+    ]
+  },
+  {
     "title": "Elysium Madyum Gran Aniversario 2026",
     "event_type": "social",
     "is_recurring": false,
