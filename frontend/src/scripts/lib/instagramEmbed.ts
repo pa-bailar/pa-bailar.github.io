@@ -51,8 +51,13 @@ function canonicalLink(permalink: string): string {
  * account that disabled embedding shows Instagram's own notice inside the player, which can't be read
  * from here; the sheet's "Abrir en Instagram" covers it.)
  */
-export async function renderInstagramPost(holder: HTMLElement, permalink: string): Promise<boolean> {
-  holder.innerHTML = `<blockquote class="instagram-media" data-instgrm-permalink="${escapeHtml(canonicalLink(permalink))}" data-instgrm-version="14" data-instgrm-captioned></blockquote>`;
+export async function renderInstagramPost(
+  holder: HTMLElement,
+  permalink: string,
+  { captioned = true } = {},
+): Promise<boolean> {
+  const caption = captioned ? " data-instgrm-captioned" : "";
+  holder.innerHTML = `<blockquote class="instagram-media" data-instgrm-permalink="${escapeHtml(canonicalLink(permalink))}" data-instgrm-version="14"${caption}></blockquote>`;
   try {
     await loadScript();
   } catch {

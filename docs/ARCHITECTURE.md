@@ -431,6 +431,7 @@ frontend/
 | `lib/sheet.ts` | Bottom sheets that drag to dismiss; panel sheets with their own back-button step |
 | `lib/instagramEmbed.ts` | Instagram's player for a post, its script loaded on demand |
 | `views/postsSheet.ts`, `views/postViewer.ts` | An event's posts (Flyers / Videos); a post watched inside the site |
+| `views/inlinePlayer.ts` | A video tapped in the detail plays in the image's place (Instagram's player), removed when off screen |
 | `views/clips.ts` | Videos' clips in the detail: the one on screen plays, silent and looping |
 | `lib/analytics.ts` | GoatCounter events |
 | `lib/dates.ts`, `lib/holidays.ts`, `lib/format.ts` | Dates in Bogotá, Colombian holidays, Spanish formatting |
