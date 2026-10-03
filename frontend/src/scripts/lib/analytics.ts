@@ -2,7 +2,7 @@
 // no consent banner is needed. Page loads are counted by its script (layouts/BaseLayout.astro); this
 // adds what a static page can't see on its own:
 //   - each event opened (or swiped to) in the viewer, as a visit to that event's page;
-//   - clicks on the actions marked with data-track="<name>" (Instagram, WhatsApp, calendar…).
+//   - clicks on the actions marked with data-track="<name>" (Instagram, WhatsApp, sharing…).
 // GoatCounter ignores localhost, so local testing isn't counted. If its script is blocked, nothing breaks.
 
 interface GoatCounter {

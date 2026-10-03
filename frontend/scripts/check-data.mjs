@@ -20,17 +20,30 @@ const STYLES = [
 const DATE = /^\d{4}-\d{2}-\d{2}$/;
 const TIME = /^([01]\d|2[0-3]):[0-5]\d$/;
 const ID = /^[a-z0-9]+(-[a-z0-9]+)*$/;
+const ACCOUNT = /^[A-Za-z0-9._]{1,30}$/; // an Instagram username
+// Used as links and file paths, so only these shapes: a post's link, and files named by post id (a post read
+// from its public page has a "public-" id) and slide, inside their folders.
+const PERMALINK = /^https:\/\/www\.instagram\.com\/(p|reel|reels|tv)\/[A-Za-z0-9_-]+\/$/;
+const FLYER = /^flyers\/[A-Za-z0-9_-]+\.webp$/; // <post id>-<slide>.webp, or <post id>.webp before slides
+const PREVIEW = /^previews\/[A-Za-z0-9_-]+-\d+\.mp4$/; // <post id>-<slide>.mp4
 
 const problems = [];
 const check = (ok, where, message) => ok || problems.push(`${where}: ${message}`);
 const isString = (value) => typeof value === "string" && value.length > 0;
 const isNullableString = (value) => value === null || typeof value === "string";
 const isStringList = (value) => Array.isArray(value) && value.every((item) => typeof item === "string");
+// A real day: Date.parse takes "2026-02-30" as March 2.
+const isDate = (value) =>
+  DATE.test(value ?? "") && new Date(`${value}T00:00:00Z`).toISOString().slice(0, 10) === value;
 
 const meta = read("meta.json");
 check(meta.schema_version === 1, "meta.json", `schema_version ${meta.schema_version}, expected 1`);
 check(isString(meta.generated_at) && !Number.isNaN(Date.parse(meta.generated_at)), "meta.json", "bad generated_at");
-check(meta.accounts === undefined || isStringList(meta.accounts), "meta.json", "accounts must be a list of usernames");
+check(
+  meta.accounts === undefined || (isStringList(meta.accounts) && meta.accounts.every((account) => ACCOUNT.test(account))),
+  "meta.json",
+  "accounts must be a list of usernames",
+);
 
 const events = read("events.json");
 check(Array.isArray(events), "events.json", "must be an array");
@@ -48,7 +61,7 @@ for (const [index, event] of (Array.isArray(events) ? events : []).entries()) {
   for (const field of ["organizer", "venue", "address", "area", "weekday", "contact"]) {
     check(isNullableString(event[field]), at, `${field} must be a string or null`);
   }
-  check(DATE.test(event.date ?? "") && !Number.isNaN(Date.parse(event.date)), at, `bad date ${event.date}`);
+  check(isDate(event.date), at, `bad date ${event.date}`);
   for (const field of ["start_time", "end_time"]) {
     check(event[field] === null || TIME.test(event[field]), at, `bad ${field} ${event[field]}`);
   }
@@ -59,15 +72,22 @@ for (const [index, event] of (Array.isArray(events) ? events : []).entries()) {
   }
   check(isStringList(event.artists) && isStringList(event.activities) && isStringList(event.doubts), at, "bad lists");
   check(CONFIDENCE.includes(event.confidence), at, `bad confidence ${event.confidence}`);
-  check(isString(event.account), at, "missing account");
+  check(isString(event.account) && ACCOUNT.test(event.account), at, `bad account ${event.account}`);
   check(Array.isArray(event.media) && event.media.length > 0, at, "needs at least one post in media");
   for (const media of event.media ?? []) {
     check(isString(media.post_id) && isString(media.permalink), at, "media needs post_id and permalink");
+    check(PERMALINK.test(media.permalink ?? ""), at, `bad permalink ${media.permalink}`);
     check(MEDIA_TYPES.includes(media.media_type), at, `bad media_type ${media.media_type}`);
     check(isString(media.published) && !Number.isNaN(Date.parse(media.published)), at, "bad published time");
     check(isNullableString(media.caption), at, "caption must be a string or null");
-    if (media.flyer) check(existsSync(new URL(media.flyer, dataDir)), at, `flyer file missing: ${media.flyer}`);
-    if (media.preview) check(existsSync(new URL(media.preview, dataDir)), at, `clip file missing: ${media.preview}`);
+    if (media.flyer != null) {
+      check(FLYER.test(media.flyer), at, `bad flyer path ${media.flyer}`);
+      check(existsSync(new URL(media.flyer, dataDir)), at, `flyer file missing: ${media.flyer}`);
+    }
+    if (media.preview != null) {
+      check(PREVIEW.test(media.preview), at, `bad clip path ${media.preview}`);
+      check(existsSync(new URL(media.preview, dataDir)), at, `clip file missing: ${media.preview}`);
+    }
     check(media.slides == null || (Number.isInteger(media.slides) && media.slides > 0), at, "slides must be a count");
   }
 }

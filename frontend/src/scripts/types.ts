@@ -1,4 +1,4 @@
-// Shape of data/events.json. Mirrors the backend's Pydantic models (StoredEvent in backend/pabailar/models.py).
+// Shape of data/events.json. Mirrors the backend's Pydantic models (StoredEvent in the backend's pa_bailar/models.py).
 
 export type EventType =
   | "social"

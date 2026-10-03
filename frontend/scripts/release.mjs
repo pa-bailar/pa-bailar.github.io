@@ -2,7 +2,7 @@
 // Conventional Commits (PRs are squash-merged, so each is one commit on main, titled like the PR):
 //   - "feat(share): …"             → a new minor version (1.2.0 → 1.3.0)
 //   - "fix(viewer): …", perf, refactor, copy, style, revert → a patch (1.2.0 → 1.2.1)
-//   - docs, chore (the daily data PRs), ci, test, build → no new version: visitors see nothing new
+//   - docs, chore (the data PRs), ci, test, build → no new version: visitors see nothing new
 //   - "feat!: …" or "BREAKING CHANGE" in the body → a new major version (1.2.0 → 2.0.0)
 // The deploy workflow tags each version (v1.3.0) and publishes a GitHub Release with the changes it brings;
 // the footer shows the version, linked to that release. CI checks every PR title, so none is missed.

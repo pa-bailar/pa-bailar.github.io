@@ -12,7 +12,7 @@ Related documents in this repository:
 - [`DATA.md`](DATA.md): the data contract, every field of `events.json`.
 - [`DESIGN.md`](DESIGN.md): the design system, every visual rule.
 
-Last reviewed: 2 October 2026.
+Last reviewed: 3 October 2026.
 
 Contents:
 
@@ -38,7 +38,7 @@ backend updates through pull requests.
 ```mermaid
 flowchart LR
     subgraph Backend["pa-bailar/backend (private)"]
-        SW["daily sweep<br/>Instagram → Gemini"]
+        SW["sweep, twice a day<br/>Instagram → Gemini"]
     end
 
     subgraph Repo["pa-bailar/pa-bailar.github.io (this repository)"]
@@ -63,7 +63,7 @@ flowchart LR
 
 | Folder | What | Who writes it |
 |---|---|---|
-| `data/` | `events.json`, `meta.json`, `flyers/*.webp`. Also the site's public folder: flyers are served as-is | The backend, only through data PRs |
+| `data/` | `events.json`, `meta.json`, `flyers/*.webp`, `previews/*.mp4` (videos' clips). Also the site's public folder: flyers and clips are served as-is | The backend, only through data PRs |
 | `frontend/` | The Astro site: pages, components, scripts, styles, tests | People, through PRs |
 | `docs/` | Architecture (this file), data contract, design system | People |
 | `.github/workflows/` | `ci` and `deploy` | People |
@@ -72,8 +72,9 @@ flowchart LR
 
 ## 2. How data reaches the site
 
-The backend's sweep runs twice a day (5:23 AM and 12:47 PM, Bogotá time). It works on a checkout of this
-repository and writes `data/` exactly as described in [`DATA.md`](DATA.md).
+The backend's sweep runs twice a day, at 9 AM and 9 PM Bogotá time (cron-job.org starts its workflow), and
+reads each account about once a day. It works on a checkout of this repository and writes `data/` exactly
+as described in [`DATA.md`](DATA.md).
 
 ```mermaid
 sequenceDiagram
@@ -85,7 +86,7 @@ sequenceDiagram
     participant P as GitHub Pages
 
     B->>R: check out main (anonymous: the repository is public)
-    B->>B: write data/events.json, data/meta.json, data/flyers/
+    B->>B: write data/events.json, data/meta.json, data/flyers/, data/previews/
     alt events.json or flyers changed
         B->>R: push branch data/sweep-<day>-<run> (as pa-bailar-bot)
         B->>R: open PR "chore(data): daily sweep <day>", label data, enable auto-merge
@@ -155,7 +156,7 @@ flowchart LR
 | Output | Source | What it is |
 |---|---|---|
 | `/` (`index.html`) | `pages/index.astro` | The app: header, toolbar, jump bar, both views, dialog, filter sheet. Every event is embedded as JSON (`<script type="application/json" id="events-data">`), and the browser renders the cards and calendar from it. The preview image is the brand's own (`/og/sitio.jpg`), not an event's flyer |
-| `/evento/<id>/` | `pages/evento/[id].astro` | One page per event: what a shared link opens. Rendered at build time with the same markup as the dialog. Includes Open Graph tags (the flyer as the link preview) and schema.org `Event` data for search engines |
+| `/evento/<id>/` | `pages/evento/[id].astro` | One page per event: where a shared link points. A browser is forwarded to the home page with the event open (section 5.3). Rendered at build time with the same markup as the dialog. Includes Open Graph tags (the flyer as the link preview) and schema.org `Event` data for search engines |
 | `/og/<id>.jpg` | `pages/og/[id].jpg.ts` | Each event's link-preview image: its flyer as a 600 px JPEG. WebP isn't shown by every app, and WhatsApp skips images over about 300 KB |
 | `/og/sitio.jpg` | `pages/og/sitio.jpg.ts` | The home page's link preview (1200×630): stripes, "Pa' Bailar", the tagline and the record. Drawn once with the site's fonts by `scripts/og-site.html` and stored as `src/assets/og-site.jpg` |
 | `/thumbs/<flyer>.webp` | `pages/thumbs/[name].webp.ts` | A 160 px square thumbnail of every flyer, for the sheet with an event's posts (opened from the "▦ 16" badge on the flyer). A few KB each instead of the 100–200 KB flyer, so they show at once on a phone |
@@ -166,6 +167,7 @@ flowchart LR
 | `/sitemap-index.xml` | `@astrojs/sitemap` | Home and every event page, for search engines (the 404 page is excluded) |
 | `/404.html` | `pages/404.astro` | "Esta página no existe…", with a link home |
 | `/flyers/*.webp` | `data/flyers/` (public folder) | The flyers, copied as they are |
+| `/previews/*.mp4` | `data/previews/` (public folder) | Videos' clips (6 silent seconds), copied as they are |
 
 ```mermaid
 flowchart TD
@@ -176,7 +178,7 @@ flowchart TD
     D --> TH["thumbs/[name].webp.ts → /thumbs/&lt;flyer&gt;.webp"]
     IDX --> SM["sitemap-index.xml"]
     EVT --> SM
-    PUB["data/ (public folder)"] --> FLY["/flyers/*.webp"]
+    PUB["data/ (public folder)"] --> FLY["/flyers/*.webp, /previews/*.mp4"]
 ```
 
 **Shared code between build and browser:** the views in `src/scripts/` produce HTML strings, so the same
@@ -293,8 +295,8 @@ stateDiagram-v2
     List --> Viewer: tap a card / pushState /evento/<id>/
     Viewer --> Viewer: swipe, ‹ ›, arrow keys / replaceState /evento/<other id>/
     Viewer --> List: ×, Escape, drag down, or back
-    List --> EventPage: open the link in a new tab, or a shared link
-    EventPage --> [*]
+    [*] --> EventPage: a shared link, or a link opened in a new tab
+    EventPage --> Viewer: forwards to /?evento=<id>, the list behind
 ```
 
 - **The viewer is a `<dialog>`** with one slide per event on screen, in list order. Swiping uses CSS
@@ -304,8 +306,8 @@ stateDiagram-v2
   - swiping replaces it, so back still closes instead of stepping through events;
   - every event's URL is a real page (`/evento/<id>/`), so copying the address shares the event.
 - **A shared link opens the app:** the event's page forwards a browser to the home page with `?evento=<id>`, which opens that event in the viewer with the list behind it (`main.ts`, `openSharedEvent`). Link previews and search engines read the event's page itself (they don't run scripts).
-- **The event page** (`eventPage.ts`) is already rendered at build time. Its script only adds the theme
-  toggle, the sheet with an event's posts, and click tracking.
+- **The event page** (`eventPage.ts`) is already rendered at build time; a browser leaves it for the app
+  at once. Its script only adds the theme toggle, the sheet with an event's posts, and click tracking.
 - **The actions** are plain links built in `lib/links.ts`:
   - "Ver en Instagram" opens the post;
   - "Compartir" opens the phone's share menu with the event's text and page URL (`views/sharing.ts`);
@@ -344,8 +346,10 @@ stateDiagram-v2
 - **Dates are Bogotá dates:** event dates are plain `YYYY-MM-DD` strings in Bogotá's local time.
   "Today" is always Bogotá's, whatever the visitor's or the build machine's time zone (`lib/dates.ts`,
   `todayIso`, with `Intl` and `America/Bogota`). Bogotá is UTC−5 all year.
-- **Times** are shown in 12-hour format ("8:00 p. m.") and stored as `HH:MM` 24-hour. Calendar links and
-  the ICS feed use the `America/Bogota` time zone.
+- **Times** are shown in 12-hour format ("8:00 p. m.") and stored as `HH:MM` 24-hour. The ICS feed uses
+  the `America/Bogota` time zone.
+- **Adding days** (`addDays`) moves the calendar date, not 24-hour steps, so "Mañana" and "Próxima
+  semana" stay right for a visitor whose time zone has daylight saving time.
 - **Colombian holidays** (`lib/holidays.ts`) are calculated, not downloaded:
   - fixed dates;
   - holidays moved to the following Monday (Ley Emiliani);
@@ -361,10 +365,10 @@ stateDiagram-v2
 | Service | What for | Data sent | If it's down |
 |---|---|---|---|
 | **GitHub Pages** | Hosting | | The site is down |
-| **GoatCounter** (`jzamora9.goatcounter.com`) | Visit statistics, without cookies or personal data, so no consent banner is needed | Page views. Each event opened in the viewer, as a view of its page. Clicks on elements with `data-track` (Instagram, WhatsApp, calendar, "Cómo llegar", sharing, saving, installing, reports). Local testing isn't counted | Nothing breaks: the script is optional and wrapped in `try` (`lib/analytics.ts`) |
-| **Instagram embed** (`instagram.com/embed.js`) | Showing a post inside the site when a visitor taps a flyer (videos play, carousels swipe) | Loaded only on that tap, never with the page: the post's link; Instagram's player then runs as Meta's code (and cookies) inside its frame | Our copy of the flyer stays, with "Abrir en Instagram" |
+| **GoatCounter** (`jzamora9.goatcounter.com`) | Visit statistics, without cookies or personal data, so no consent banner is needed | Page views. Each event opened in the viewer, as a view of its page. Clicks on elements with `data-track` (Instagram, the contact links, "Cómo llegar", sharing, saving, installing, reports). Local testing isn't counted | Nothing breaks: the script is optional and wrapped in `try` (`lib/analytics.ts`) |
+| **Instagram embed** (`instagram.com/embed.js`) | Showing a post inside the site when a visitor taps a flyer (videos play, carousels swipe) | Loaded only on that tap, never with the page: the post's link; Instagram's player then runs as Meta's code (and cookies) inside its frame | Our copy of the flyer stays, with "Abrir en Instagram" (also when a post's link can't be read) |
 | **Google Fonts** | Shrikhand, Bodoni Moda (italic) and Instrument Sans | The font request | System fonts are used |
-| **Instagram, WhatsApp, Google Calendar, Google Maps** | Links the visitor chooses to open | Only what's in the link | |
+| **Instagram, WhatsApp, Google Maps** | Links the visitor chooses to open | Only what's in the link | |
 | **Google Forms** (the author's account) | Reports and ideas: "¿Algo está mal? Repórtalo" in each event's detail (the event filled in, `lib/links.ts`, `feedbackUrl`) and "Escríbenos" in the footer. No account needed; answers go to a Google Sheet and an email | What the visitor writes, and the event it's about | Nothing on the site: it's a link |
 
 Flyers are copies served from this repository, so the site never needs Instagram to show events. The
@@ -376,7 +380,7 @@ only Instagram content it loads is a post's player, and only when a visitor taps
 
 | Check | What it verifies | Where |
 |---|---|---|
-| Data contract | Every field of `events.json` and `meta.json`: types, allowed values (event types, styles, confidence), date and time formats, unique ids, flyer files existing, sorting | `frontend/scripts/check-data.mjs` |
+| Data contract | Every field of `events.json` and `meta.json`: types, allowed values (event types, styles, confidence), real dates and time formats, unique ids, usernames, post links (`instagram.com/<p, reel, reels or tv>/<code>/`), flyer and clip paths (inside `flyers/` and `previews/`) and their files existing, sorting | `frontend/scripts/check-data.mjs` |
 | Types | `astro check`: strict TypeScript, including `noUncheckedIndexedAccess` | `tsconfig.json` |
 | Color contrast | Every color pair the site uses, in both themes, against WCAG 2.2 AA. It reads the tokens from `tokens.css`, so it can't drift from the design system | `frontend/scripts/check-contrast.mjs` |
 | Unit tests | Dates and Bogotá's "today", formatting, filtering and period grouping, holidays | `frontend/tests/*.test.ts` (Vitest) |
@@ -391,25 +395,37 @@ All five run in `ci` on every pull request, and the ruleset requires `ci` before
 ```
 frontend/
   astro.config.mjs        site URL, public folder (../data), sitemap, DATA_DIR
-  scripts/                check-data.mjs, check-contrast.mjs (run by npm run check)
-  tests/                  Vitest tests
+  vitest.config.ts        unit tests, with Astro's settings
+  scripts/                check-data.mjs, check-contrast.mjs (run by npm run check); release.mjs (versions);
+                          og-site.html (draws the home page's link preview)
+  tests/                  Vitest tests, factories.ts (test events)
   src/
     data.ts               the data, typed, with flyer sizes (build time only)
-    layouts/BaseLayout.astro   <head>: meta, previews, fonts, theme before paint, GoatCounter
-    pages/                index, evento/[id], og/[id].jpg, og/sitio.jpg, calendario.ics, 404
-    components/           Astro components: header, toolbar, jump bar, calendar, dialog,
-                          filter sheet, view switch, footer, stripes, theme toggle
+    env.d.ts              the build's variables: PUBLIC_CHECKED_AT, PUBLIC_VERSION
+    assets/og-site.jpg    the home page's link preview, drawn by scripts/og-site.html
+    layouts/BaseLayout.astro   <head>: meta, previews, fonts, theme before paint, GoatCounter, the CSS
+    pages/
+      index.astro         the app
+      evento/[id].astro   an event's page (forwards browsers to the app)
+      og/[id].jpg.ts, og/sitio.jpg.ts   link previews
+      thumbs/[name].webp.ts   flyer thumbnails
+      icons/[name].png.ts, manifest.webmanifest.ts, sw.js.ts   installing (icons, manifest, service worker)
+      calendario.ics.ts   the calendar feed (no longer linked)
+      404.astro
+    components/           SiteHeader, ThemeToggle, Stripes, ViewToolbar, ViewSwitch, JumpBar, FilterSheet,
+                          CalendarView, EventDialog, PostsSheet, PostViewer, InstallOffer, SiteFooter
     scripts/
       main.ts             entry point of the home page: state, clicks, render
       eventPage.ts        entry point of an event's page
       state.ts            AppState, filtering, period grouping
+      screenHistory.ts    the phone's back between the app's screens
       types.ts            DanceEvent, EventMedia, Meta, AppState (mirror of the backend's models)
       theme.ts, themeConfig.ts   theme modes
-      views/              upcomingView, calendarView, eventCard, eventDetail, eventDialog,
-                          filters, jumpBar, viewSwitch, postsSheet, postViewer
-                          (HTML strings + their behavior)
-      lib/                dates, holidays, format, links, analytics, dom, icons, sheet,
-                          instagramEmbed
+      views/              upcomingView, calendarView, eventCard, eventDetail, eventDialog, filters,
+                          jumpBar, viewSwitch, postsSheet, postViewer, inlinePlayer, clips, saveButton,
+                          sharing, installPrompt (HTML strings + their behavior)
+      lib/                dates, holidays, format, links, contact, mediaLabel, search, saved, share,
+                          shareText, shareCard, analytics, dom, icons, sheet, instagramEmbed
     styles/               tokens.css (design tokens), base.css, components/*.css
 ```
 
@@ -433,7 +449,13 @@ frontend/
 | `views/postsSheet.ts`, `views/postViewer.ts` | An event's posts (Flyers / Videos); a post watched inside the site |
 | `views/inlinePlayer.ts` | A video tapped in the detail plays in the image's place (Instagram's player), removed when off screen |
 | `views/clips.ts` | Videos' clips in the detail: the one on screen plays, silent and looping |
+| `lib/contact.ts` | The organizer's contact as a link: Instagram, WhatsApp, phone or website |
+| `lib/search.ts` | Search over the events in the page |
+| `lib/saved.ts`, `views/saveButton.ts` | Saved events ("Guardados"): the ids in this browser; the bookmarks and toggles |
+| `lib/share.ts`, `lib/shareText.ts`, `lib/shareCard.ts`, `views/sharing.ts` | Sharing through the phone's menu: the text, the image of a list, what each share button sends |
+| `views/installPrompt.ts` | Installing the site like an app; registers the service worker |
 | `lib/analytics.ts` | GoatCounter events |
+| `lib/dom.ts`, `lib/icons.ts` | DOM helpers and `escapeHtml`; inline SVG icons |
 | `lib/dates.ts`, `lib/holidays.ts`, `lib/format.ts` | Dates in Bogotá, Colombian holidays, Spanish formatting |
 
 ---

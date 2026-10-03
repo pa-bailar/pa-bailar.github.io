@@ -47,9 +47,9 @@ function canonicalLink(permalink: string): string {
 
 /**
  * Shows the post in `holder` with Instagram's player. Resolves true once the player has loaded, false if
- * it couldn't: the script was blocked, the visitor is offline, or it took longer than TIMEOUT_MS. (An
- * account that disabled embedding shows Instagram's own notice inside the player, which can't be read
- * from here; the sheet's "Abrir en Instagram" covers it.)
+ * it couldn't: the link isn't a URL, the script was blocked, the visitor is offline, or it took longer
+ * than TIMEOUT_MS. (An account that disabled embedding shows Instagram's own notice inside the player,
+ * which can't be read from here; the sheet's "Abrir en Instagram" covers it.)
  */
 export async function renderInstagramPost(
   holder: HTMLElement,
@@ -57,8 +57,8 @@ export async function renderInstagramPost(
   { captioned = true } = {},
 ): Promise<boolean> {
   const caption = captioned ? " data-instgrm-captioned" : "";
-  holder.innerHTML = `<blockquote class="instagram-media" data-instgrm-permalink="${escapeHtml(canonicalLink(permalink))}" data-instgrm-version="14"${caption}></blockquote>`;
   try {
+    holder.innerHTML = `<blockquote class="instagram-media" data-instgrm-permalink="${escapeHtml(canonicalLink(permalink))}" data-instgrm-version="14"${caption}></blockquote>`;
     await loadScript();
   } catch {
     return false;
