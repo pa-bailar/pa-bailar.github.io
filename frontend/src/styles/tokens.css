@@ -19,10 +19,14 @@
   /* ---------- Layer 1: palette ---------- */
   --wine-950: #1e0a0e;
   --wine-900: #2a0f14;
-  --wine-800: #3a1a1f;
-  --wine-600: #5a2a30;
   --wine-500: #6e2a33;
-  --wine-400: #8e6363; /* dark-theme outlines: ≥3:1 on the page and on cards */
+  /* Noche Fania's surfaces: the record itself, a warm near-black, so the night reads calm and the gold,
+     orange and tomato accents carry the color (the wine was too strong as a whole page). */
+  --vinyl-950: #0f0b0b;
+  --vinyl-900: #161112;
+  --vinyl-800: #231c1c;
+  --vinyl-600: #3a2f2e;
+  --vinyl-400: #7d6b69; /* dark-theme outlines: ≥3:1 on the page and on cards */
   --cream-50: #fff8ec;
   --cream-75: #f7eddc; /* cards: one step under the near-white */
   --cream-100: #f3e6d3;
@@ -49,14 +53,14 @@
 
   /* ---------- Layer 2: semantic colors (light, dark) ---------- */
   /* Surfaces */
-  --bg: light-dark(var(--cream-150), var(--wine-900));
-  --surface: light-dark(var(--cream-75), var(--wine-800));
-  --surface-sunken: light-dark(var(--cream-250), var(--wine-950));
-  --backdrop: light-dark(rgb(42 15 20 / 0.6), rgb(16 5 8 / 0.75));
+  --bg: light-dark(var(--cream-150), var(--vinyl-900));
+  --surface: light-dark(var(--cream-75), var(--vinyl-800));
+  --surface-sunken: light-dark(var(--cream-250), var(--vinyl-950));
+  --backdrop: light-dark(rgb(42 15 20 / 0.6), rgb(8 6 6 / 0.75));
 
   /* Lines */
-  --border: light-dark(var(--wine-900), var(--wine-400));
-  --divider: light-dark(var(--cream-300), var(--wine-600));
+  --border: light-dark(var(--wine-900), var(--vinyl-400));
+  --divider: light-dark(var(--cream-300), var(--vinyl-600));
 
   /* Text */
   --text: light-dark(var(--wine-900), var(--cream-100));
@@ -80,12 +84,12 @@
   --stripe-3: light-dark(var(--marigold-600), var(--marigold-400));
   /* Period headings (Sanabria lettering): calmer than the logo's colors, with a soft offset shadow. */
   --period-title: light-dark(var(--tomato-700), var(--gold-400));
-  --period-shadow: light-dark(var(--cream-300), var(--wine-950));
+  --period-shadow: light-dark(var(--cream-300), var(--vinyl-950));
   --sticker-bg: light-dark(var(--tomato-600), var(--marigold-400));
   --sticker-text: light-dark(var(--cream-50), var(--wine-900));
   --today-bg: light-dark(var(--marigold-600), var(--marigold-400));
   --today-text: var(--wine-900);
-  --holiday-bg: light-dark(#f2d3bf, #4d2026); /* calendar: Colombian public holidays, a tint of the tomato */
+  --holiday-bg: light-dark(#f2d3bf, #3f1e1b); /* calendar: Colombian public holidays, a tint of the tomato */
 
   /* Event types (background of tags, pills and dots; text on them is --on-type) */
   --type-social: light-dark(var(--marigold-600), var(--tomato-350));
