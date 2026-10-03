@@ -1566,49 +1566,6 @@
     ]
   },
   {
-    "title": "Semillero de Creación de Personajes",
-    "event_type": "workshop",
-    "is_recurring": false,
-    "styles": [
-      "otro"
-    ],
-    "organizer": "@espacio.64",
-    "venue": "Espacio 64",
-    "address": "Cra 13 64-40",
-    "area": "Chapinero",
-    "date": "2026-10-10",
-    "weekday": "sábado",
-    "start_time": "10:30",
-    "end_time": "13:00",
-    "prices": [],
-    "artists": [
-      "Heitor Corrêa"
-    ],
-    "activities": [
-      "taller",
-      "dibujo",
-      "pintura",
-      "creación compartida"
-    ],
-    "contact": "@espacio.64",
-    "confidence": "high",
-    "doubts": [
-      "sin precio"
-    ],
-    "id": "semillero-de-creacion-de-personajes-10-oct",
-    "account": "espacio.64",
-    "media": [
-      {
-        "post_id": "18086183840306500",
-        "permalink": "https://www.instagram.com/p/Dd5JAAxjhg5/",
-        "media_type": "CAROUSEL_ALBUM",
-        "published": "2026-09-30T01:20:29+0000",
-        "flyer": "flyers/18086183840306500-0.webp",
-        "caption": "🌱🪺Semillero de creación de personajes con heitorcorreaart \n\nAcompáñanos en este taller a darle vida a personajes a través del dibujo, la pintura y la creación compartida. \n\n¿Cuándo? \nSábados 10, 17 y 24 de octubre \nDe 10:30 a.m. - 1:00 p.m. \n\n¿Dónde? \nEn Espacio 64, Cra 13 64-40\nChapinero, Bogotá\n\n¡Trae tus materiales! 🎨📒✏️\n\nEscríbeme para reservar tu cupo 💌"
-      }
-    ]
-  },
-  {
     "title": "Primer Aniversario LuDance - Fiesta Crossover",
     "event_type": "social",
     "is_recurring": false,
