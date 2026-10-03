@@ -1,7 +1,7 @@
 // UI state and the event filtering that depends on it.
 
 import type { AppState, DanceEvent } from "./types";
-import { addDays, currentMonth, endOfWeek, todayIso, toIsoDate } from "./lib/dates";
+import { addDays, currentMonth, daysOf, endOfWeek, lastDay, shownDay, todayIso, toIsoDate } from "./lib/dates";
 import { capitalize, formatMonthName } from "./lib/format";
 import { isSaved } from "./lib/saved";
 import { matchesQuery } from "./lib/search";
@@ -55,21 +55,29 @@ function monthPrefix(month: Date): string {
   return toIsoDate(month).slice(0, 7); // "YYYY-MM"
 }
 
-/** Events the current view can show before filtering: upcoming ones, or the displayed month's. */
+/** Whether the event has a day in the month ("YYYY-MM"): an event over several days may start the month before. */
+function inMonth(event: DanceEvent, prefix: string): boolean {
+  return event.date.slice(0, 7) <= prefix && lastDay(event).slice(0, 7) >= prefix;
+}
+
+/** Events the current view can show before filtering: upcoming ones (until their last day), or the displayed
+ * month's (any of their days in it). */
 export function eventsInView(events: DanceEvent[], state: AppState): DanceEvent[] {
   if (state.view === "upcoming") {
     const today = todayIso();
-    return events.filter((event) => event.date >= today);
+    return events.filter((event) => lastDay(event) >= today);
   }
   const prefix = monthPrefix(state.month);
-  return events.filter((event) => event.date.startsWith(prefix));
+  return events.filter((event) => inMonth(event, prefix));
 }
 
 /** The events on screen, in display order: the upcoming list, or the selected calendar day. Swiping in
  * the event viewer follows this order. */
 export function visibleEvents(events: DanceEvent[], state: AppState): DanceEvent[] {
   const shown = eventsInView(events, state).filter((event) => matchesFilters(event, state));
-  return state.view === "upcoming" ? shown : shown.filter((event) => event.date === state.selectedDay);
+  return state.view === "upcoming"
+    ? shown
+    : shown.filter((event) => event.date <= state.selectedDay && state.selectedDay <= lastDay(event));
 }
 
 /** Day to select after moving to another month: today in the current month, else its first event day. */
@@ -77,8 +85,8 @@ export function defaultDayForMonth(events: DanceEvent[], month: Date): string {
   const prefix = monthPrefix(month);
   const today = todayIso();
   if (today.startsWith(prefix)) return today;
-  const firstEvent = events.find((event) => event.date.startsWith(prefix));
-  return firstEvent ? firstEvent.date : toIsoDate(month);
+  const firstDay = events.flatMap(daysOf).filter((day) => day.startsWith(prefix)).sort()[0];
+  return firstDay ?? toIsoDate(month);
 }
 
 /** The DOM id of a period's section in the upcoming list ("periodo-fin-de-semana"). */
@@ -113,6 +121,7 @@ export interface AgendaGroup {
  * a handful a year. The horizon is relative to today, so in December next January still gets its own
  * group instead of being lumped into next year.
  * Weeks run Monday to Sunday, as in Colombian calendars. "Mañana" is shown on each card.
+ * An event over several days that has already started is listed under "Hoy" while it goes on (shownDay).
  * Input must be sorted by date.
  */
 /** Months after the current one that get a group each; later events are grouped by year. */
@@ -132,7 +141,7 @@ export function groupByPeriod(events: DanceEvent[], today = todayIso()): AgendaG
 
   const groups = new Map<string, AgendaGroup>();
   for (const event of events) {
-    const [key, label, shortLabel] = periodOf(event.date);
+    const [key, label, shortLabel] = periodOf(shownDay(event, today));
     const group = groups.get(key) ?? { key, label, shortLabel, events: [] };
     group.events.push(event);
     groups.set(key, group);
@@ -159,11 +168,12 @@ export function groupByPeriod(events: DanceEvent[], today = todayIso()): AgendaG
   }
 }
 
-/** Events grouped by date, keeping the input order (events.json is already sorted). */
+/** Events grouped by date, keeping the input order (events.json is already sorted). An event over several
+ * days is in each of its days. */
 export function groupByDay(events: DanceEvent[]): Map<string, DanceEvent[]> {
   const groups = new Map<string, DanceEvent[]>();
   for (const event of events) {
-    groups.set(event.date, [...(groups.get(event.date) ?? []), event]);
+    for (const day of daysOf(event)) groups.set(day, [...(groups.get(day) ?? []), event]);
   }
   return groups;
 }

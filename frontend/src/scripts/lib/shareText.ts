@@ -3,34 +3,36 @@
 // of it goes. Pure functions, so they're tested (tests/shareText.test.ts).
 
 import type { DanceEvent } from "../types";
-import { parseIsoDate } from "./dates";
-import { capitalize, eventCountLabel, formatLongDate, formatTime, placeLabel, priceSummary } from "./format";
+import { isMultiDay, lastDay, parseIsoDate } from "./dates";
+import {
+  capitalize,
+  eventCountLabel,
+  eventDaysLabel,
+  formatTime,
+  placeLabel,
+  priceSummary,
+  shortRangeLabel,
+} from "./format";
 
 const LOCALE = "es-CO";
 
 const part = (iso: string, options: Intl.DateTimeFormatOptions) =>
   new Intl.DateTimeFormat(LOCALE, options).format(parseIsoDate(iso));
 
-/** "viernes 2 de octubre" (Intl puts a comma after the weekday; this doesn't). */
-function dayName(iso: string, withMonth: boolean): string {
-  const day = `${part(iso, { weekday: "long" })} ${part(iso, { day: "numeric" })}`;
-  return withMonth ? `${day} de ${part(iso, { month: "long" })}` : day;
+/** "Sáb 3", or "Vie 13 – dom 15" for an event over several days. */
+function shortDays(event: DanceEvent): string {
+  if (isMultiDay(event)) return shortRangeLabel(event.date, lastDay(event), false);
+  return capitalize(part(event.date, { weekday: "short", day: "numeric" }).replace(".", ""));
 }
 
-/** "Viernes 2 al domingo 4 de octubre", "Viernes 30 de octubre al domingo 1 de noviembre", or one day. */
-export function dateRangeLabel(start: string, end: string): string {
-  const sameMonth = start.slice(0, 7) === end.slice(0, 7);
-  return capitalize(start === end ? dayName(end, true) : `${dayName(start, !sameMonth)} al ${dayName(end, true)}`);
-}
-
-/** "SÁB 3": the day on a share card's row. */
-export function shortDayLabel(iso: string): string {
-  return part(iso, { weekday: "short", day: "numeric" }).replace(".", "").toUpperCase();
+/** "SÁB 3" or "VIE 13 – DOM 15": the day on a share card's row. */
+export function shortDayLabel(event: DanceEvent): string {
+  return shortDays(event).toUpperCase();
 }
 
 /** "Sáb 3 · 6:00 p. m.": a line's start in a shared list. */
 function listDay(event: DanceEvent): string {
-  const day = capitalize(part(event.date, { weekday: "short", day: "numeric" }).replace(".", ""));
+  const day = shortDays(event);
   const time = formatTime(event.start_time);
   return time ? `${day} · ${time}` : day;
 }
@@ -54,7 +56,7 @@ export function plansShareText(events: DanceEvent[], eventUrl: (event: DanceEven
 /** One event: title, when, where and price (the link goes alongside, with the flyer as preview). */
 export function eventShareText(event: DanceEvent): string {
   const time = event.start_time ? ` · ${formatTime(event.start_time)}` : "";
-  return [`*${event.title}*`, `${formatLongDate(event.date)}${time}`, placeLabel(event), priceSummary(event)]
+  return [`*${event.title}*`, `${eventDaysLabel(event)}${time}`, placeLabel(event), priceSummary(event)]
     .filter(Boolean)
     .join("\n");
 }

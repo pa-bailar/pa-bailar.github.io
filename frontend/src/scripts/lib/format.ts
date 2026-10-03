@@ -1,7 +1,7 @@
 // Spanish (Colombia) display formatting.
 
 import type { DanceEvent, EventType, MediaType } from "../types";
-import { addDays, daysBetween, parseIsoDate, todayIso } from "./dates";
+import { addDays, daysBetween, isMultiDay, lastDay, parseIsoDate, todayIso } from "./dates";
 import { isHoliday } from "./holidays";
 
 const LOCALE = "es-CO";
@@ -85,13 +85,75 @@ export function formatDayHeading(iso: string): string {
 
 const weekdayName = new Intl.DateTimeFormat(LOCALE, { weekday: "long" });
 const dayAndMonth = new Intl.DateTimeFormat(LOCALE, { weekday: "long", day: "numeric", month: "short" });
+const shortWeekday = new Intl.DateTimeFormat(LOCALE, { weekday: "short" });
+
+/** "domingo 15" */
+function weekdayAndDay(iso: string): string {
+  const date = parseIsoDate(iso);
+  return `${weekdayName.format(date)} ${date.getDate()}`;
+}
+
+/** "nov" (Intl writes "nov."). */
+function shortMonthName(iso: string): string {
+  return shortMonth.format(parseIsoDate(iso)).replace(".", "");
+}
+
+/**
+ * The days of an event over several days, short: "Vie 13 – dom 15 nov", or across months "Sáb 31 oct – lun
+ * 2 nov". `withMonth` false leaves the month out when both days are in the same one ("Vie 13 – dom 15").
+ */
+export function shortRangeLabel(start: string, end: string, withMonth = true): string {
+  const sameMonth = start.slice(0, 7) === end.slice(0, 7);
+  const day = (iso: string, month: boolean) => {
+    const date = parseIsoDate(iso);
+    return `${shortWeekday.format(date).replace(".", "")} ${date.getDate()}${month ? ` ${shortMonthName(iso)}` : ""}`;
+  };
+  return capitalize(`${day(start, !sameMonth)} – ${day(end, withMonth || !sameMonth)}`);
+}
+
+/** "viernes 2 de octubre" (Intl puts a comma after the weekday; this doesn't). */
+function dayName(iso: string, withMonth: boolean): string {
+  const date = parseIsoDate(iso);
+  return `${weekdayAndDay(iso)}${withMonth ? ` de ${monthOnly.format(date)}` : ""}`;
+}
+
+/** "Viernes 2 al domingo 4 de octubre", "Viernes 30 de octubre al domingo 1 de noviembre", or one day. */
+export function dateRangeLabel(start: string, end: string): string {
+  const sameMonth = start.slice(0, 7) === end.slice(0, 7);
+  return capitalize(start === end ? dayName(end, true) : `${dayName(start, !sameMonth)} al ${dayName(end, true)}`);
+}
+
+/** An event's day in full: "Sábado, 3 de octubre", or its days: "Viernes 13 al domingo 15 de noviembre". */
+export function eventDaysLabel(event: DanceEvent): string {
+  return isMultiDay(event) ? dateRangeLabel(event.date, lastDay(event)) : formatLongDate(event.date);
+}
+
+/**
+ * An event over several days on its card, by where today falls: "Vie 13 – dom 15 nov" (further away),
+ * "Viernes 13 – domingo 15" (this week), "Mañana · hasta el domingo 15", "Hoy · hasta el domingo 15", then
+ * while it goes on "En curso · hasta el domingo 15", "En curso · termina mañana", "En curso · último día".
+ */
+function multiDayWhenLabel(event: DanceEvent, today: string): string {
+  const end = lastDay(event);
+  const untilEnd = `hasta el ${weekdayAndDay(end)}`;
+  const days = daysBetween(today, event.date);
+  if (today > end) return shortRangeLabel(event.date, end);
+  if (today === end) return "En curso · último día";
+  if (days === 0) return `Hoy · ${untilEnd}`;
+  if (days < 0) return today === addDays(end, -1) ? "En curso · termina mañana" : `En curso · ${untilEnd}`;
+  if (days === 1) return `Mañana · ${untilEnd}`;
+  if (days < 7) return capitalize(`${weekdayAndDay(event.date)} – ${weekdayAndDay(end)}`);
+  return shortRangeLabel(event.date, end);
+}
 
 /**
  * When an event happens, as shown on its card: "Hoy · 8:00 p. m.", "Mañana · 6:00 p. m.",
- * "Sábado · 8:00 p. m." within a week, "Martes 20 oct. · 7:00 p. m." further away.
+ * "Sábado · 8:00 p. m." within a week, "Martes 20 oct. · 7:00 p. m." further away. An event over several
+ * days shows its days instead (multiDayWhenLabel).
  */
-export function cardWhenLabel(event: DanceEvent): string {
-  const days = daysBetween(todayIso(), event.date);
+export function cardWhenLabel(event: DanceEvent, today = todayIso()): string {
+  if (isMultiDay(event)) return multiDayWhenLabel(event, today);
+  const days = daysBetween(today, event.date);
   const date = parseIsoDate(event.date);
   let day: string;
   if (days === 0) day = "Hoy";
@@ -115,12 +177,18 @@ export function formatMonthTitle(month: Date): string {
   return capitalize(monthYear.format(month));
 }
 
-/** Parts for the round date sticker: { day: "03", month: "OCT" } */
-export function stickerDate(iso: string): { day: string; month: string } {
-  const date = parseIsoDate(iso);
+/**
+ * Parts for the round date sticker: { day: "03", month: "OCT" }. An event over several days in one month
+ * shows its days ("13–15", `range`); across months, its first day (the card's text gives the range).
+ */
+export function stickerDate(event: Pick<DanceEvent, "date" | "end_date">): { day: string; month: string; range: boolean } {
+  const day = (iso: string) => String(parseIsoDate(iso).getDate()).padStart(2, "0");
+  const end = lastDay(event);
+  const range = isMultiDay(event) && end.slice(0, 7) === event.date.slice(0, 7);
   return {
-    day: String(date.getDate()).padStart(2, "0"),
-    month: shortMonth.format(date).replace(".", "").toUpperCase(),
+    day: range ? `${day(event.date)}–${day(end)}` : day(event.date),
+    month: shortMonthName(event.date).toUpperCase(),
+    range,
   };
 }
 

@@ -1,5 +1,14 @@
 import { describe, expect, it } from "vitest";
-import { groupByPeriod, styleMatches } from "../src/scripts/state";
+import { addDays, daysOf, isMultiDay, lastDay, shownDay, todayIso } from "../src/scripts/lib/dates";
+import {
+  createInitialState,
+  defaultDayForMonth,
+  eventsInView,
+  groupByDay,
+  groupByPeriod,
+  styleMatches,
+  visibleEvents,
+} from "../src/scripts/state";
 import { rankedStyles } from "../src/scripts/views/filters";
 import { event } from "./factories";
 
@@ -75,5 +84,49 @@ describe("styles", () => {
       ["salsa caleña", 1],
       ["salsa en línea", 1],
     ]);
+  });
+});
+
+describe("events over several days", () => {
+  // Level Up: Friday 13 to Sunday 15 November 2026.
+  const congress = event({ id: "level-up", date: "2026-11-13", end_date: "2026-11-15", event_type: "congress" });
+  const social = event({ id: "social", date: "2026-11-14" });
+
+  it("while it goes on, it's listed under Hoy, first", () => {
+    for (const today of ["2026-11-13", "2026-11-14", "2026-11-15"]) {
+      const groups = groupByPeriod([congress, social], today);
+      expect(groups[0]?.key).toBe("hoy");
+      expect(groups[0]?.events[0]?.id).toBe("level-up");
+    }
+    expect(groupByPeriod([congress], "2026-11-12").map((group) => group.key)).toEqual(["fin-de-semana"]); // the day before: Friday
+  });
+
+  it("the calendar shows it on each of its days, across months too", () => {
+    const festival = event({ id: "aniversario", date: "2026-10-31", end_date: "2026-11-02" });
+    const byDay = groupByDay([festival, congress, social]);
+    expect([...byDay.keys()]).toEqual(["2026-10-31", "2026-11-01", "2026-11-02", "2026-11-13", "2026-11-14", "2026-11-15"]);
+    expect(byDay.get("2026-11-14")?.map((e) => e.id)).toEqual(["level-up", "social"]);
+
+    const calendar = (month: Date, selectedDay: string) => ({ ...createInitialState(), view: "calendar" as const, month, selectedDay });
+    const all = [festival, congress, social];
+    expect(eventsInView(all, calendar(new Date(2026, 9, 1), "2026-10-31")).map((e) => e.id)).toEqual(["aniversario"]);
+    expect(visibleEvents(all, calendar(new Date(2026, 10, 1), "2026-11-02")).map((e) => e.id)).toEqual(["aniversario"]);
+    expect(visibleEvents(all, calendar(new Date(2026, 10, 1), "2026-11-15")).map((e) => e.id)).toEqual(["level-up"]);
+    expect(defaultDayForMonth([festival], new Date(2026, 10, 1))).toBe("2026-11-01");
+  });
+
+  it("it's upcoming until its last day", () => {
+    const today = todayIso();
+    const started = event({ id: "started", date: addDays(today, -2), end_date: today });
+    const ended = event({ id: "ended", date: addDays(today, -3), end_date: addDays(today, -1) });
+    const upcoming = { ...createInitialState(), view: "upcoming" as const };
+    expect(eventsInView([ended, started], upcoming).map((e) => e.id)).toEqual(["started"]);
+  });
+
+  it("data without end_date is a one-day event", () => {
+    const old = event({ date: "2026-10-24" });
+    expect([isMultiDay(old), lastDay(old), daysOf(old)]).toEqual([false, "2026-10-24", ["2026-10-24"]]);
+    expect(shownDay(congress, "2026-11-14")).toBe("2026-11-14");
+    expect(shownDay(congress, "2026-11-10")).toBe("2026-11-13");
   });
 });

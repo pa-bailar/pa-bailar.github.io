@@ -42,7 +42,8 @@ export interface DanceEvent {
   venue: string | null;
   address: string | null;
   area: string | null;
-  date: string; // YYYY-MM-DD
+  date: string; // YYYY-MM-DD; over several days, the first one
+  end_date?: string | null; // the last day of an event over several consecutive days (docs/DATA.md); absent in older data
   weekday: string | null;
   start_time: string | null; // HH:MM, 24-hour
   end_time: string | null;

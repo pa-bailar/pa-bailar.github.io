@@ -94,7 +94,7 @@ Sizes: `--text-2xs` 11 · `xs` 12 · `sm` 13 · `md` 15 (body) · `lg` 17 · `xl
 ## Signature motifs
 
 - **70s stripes** (`<Stripes />`): three bands (tomato, orange, marigold). Used in the page headers (home, event page, 404), the event detail and the footer; the period headings use the same three colors as one thin line. Don't use them anywhere else; they lose meaning if repeated.
-- **Date sticker:** a round "record label" with the day and month, overlapping the bottom-right of each flyer: hanging below it on cards, inside its corner in the event detail. Two events sharing one flyer (a festival's Sunday and Monday) are told apart by it while swiping.
+- **Date sticker:** a round "record label" with the day and month, overlapping the bottom-right of each flyer: hanging below it on cards, inside its corner in the event detail. Two events sharing one flyer (a monthly schedule) are told apart by it while swiping. An event over several days within one month shows its days, "13–15 / NOV", a size smaller (`--text-sm`, `.date-sticker--range`) to fit the 60 px circle; across months it keeps the first day ("31 / OCT"), and the card's line gives the range.
 - **Italic headings:** group, day and month headings in Bodoni italic, like a handwritten setlist.
 
 The light theme's creams are the paper of 1970s salsa flyers and sleeves. The page uses the slightly darker, aged tone (`#ECDDC6`) rather than near-white, so it isn't glaring. Cards sit one step lighter so they still lift off the page.
@@ -106,7 +106,7 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves. The pa
 
   | Group | Range |
   |---|---|
-  | Hoy | today, always first: what most visitors come for |
+  | Hoy | today, always first: what most visitors come for. An event over several days that has started is here every day it goes on |
   | Esta semana | tomorrow … Thursday of this week (only Monday–Wednesday) |
   | Este fin de semana | Friday … Sunday of this week (Friday night counts as weekend) |
   | Próxima semana | next Monday … Sunday |
@@ -115,6 +115,18 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves. The pa
 
   Weeks run Monday to Sunday.
 - **Each card says when:** "Hoy / Mañana · 8:00 p. m.", the weekday within a week ("Domingo · 6:00 p. m."), or weekday and date further away ("Martes 20 oct."). The sticker keeps the date number.
+- **An event over several days says its days** instead (`cardWhenLabel`), by where today falls (Level Up, Friday 13 to Sunday 15 November):
+
+  | When | Card |
+  |---|---|
+  | further away | Vie 13 – dom 15 nov (across months: Sáb 31 oct – lun 2 nov) |
+  | this week | Viernes 13 – domingo 15 |
+  | the day before | Mañana · hasta el domingo 15 |
+  | its first day | Hoy · hasta el domingo 15 |
+  | while it goes on | En curso · hasta el domingo 15; the day before the last, En curso · termina mañana |
+  | its last day | En curso · último día |
+
+  The detail's "Cuándo" reads "Viernes 13 al domingo 15 de noviembre · hora por confirmar", and shared lists "Vie 13 – dom 15".
 - **The academy on each card** is a button: it filters the list to that academy and shows "Solo eventos de @academia · Ver todas las academias" under the chips. It sits above the card's stretched click area.
 - **Free events** show their price as a green "Gratis" label (`--free` / `--on-free`, checked for contrast).
 - **Empty results** always offer a way out: "Quitar filtros" when filters are active.
