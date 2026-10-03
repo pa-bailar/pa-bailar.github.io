@@ -308,8 +308,7 @@ stateDiagram-v2
   toggle, the sheet with an event's posts, and click tracking.
 - **The actions** are plain links built in `lib/links.ts`:
   - "Ver en Instagram" opens the post;
-  - "Compartir por WhatsApp" opens a `wa.me` link with the event's text and page URL (`utm_source=whatsapp`);
-  - "Agregar al calendario" opens Google Calendar's template URL;
+  - "Compartir" opens the phone's share menu with the event's text and page URL (`views/sharing.ts`);
   - "Cómo llegar" opens Google Maps' search URL.
 
 ### 5.4 Flyers

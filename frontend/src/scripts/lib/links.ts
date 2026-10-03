@@ -1,4 +1,4 @@
-// URLs built from an event: flyer image, its own page, Google Calendar, Google Maps, and the report form.
+// URLs built from an event: flyer image, its own page, Google Maps, the report form, and calendar times.
 
 import type { DanceEvent, EventMedia } from "../types";
 import { addDays } from "./dates";
@@ -79,22 +79,9 @@ export function eventTimes(event: DanceEvent): EventTimes {
   };
 }
 
-/** Text for the location field of calendars and maps. */
+/** Text for the location field of the calendar feed and maps. */
 export function locationText(event: DanceEvent): string {
   return [event.venue, event.address, event.area, "Bogotá"].filter(Boolean).join(", ");
-}
-
-export function googleCalendarUrl(event: DanceEvent): string {
-  const { start, end } = eventTimes(event);
-  const params = new URLSearchParams({
-    action: "TEMPLATE",
-    text: event.title,
-    dates: `${start}/${end}`,
-    ctz: "America/Bogota",
-    details: [eventPageUrl(event), ...event.media.map((media) => media.permalink)].join("\n"),
-    location: locationText(event),
-  });
-  return `https://calendar.google.com/calendar/render?${params}`;
 }
 
 /** Google Maps search for the venue, or null when the post gives no venue or address. */
