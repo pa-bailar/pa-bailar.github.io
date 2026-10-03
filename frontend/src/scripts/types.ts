@@ -1,6 +1,14 @@
 // Shape of data/events.json. Mirrors the backend's Pydantic models (StoredEvent in backend/pabailar/models.py).
 
-export type EventType = "social" | "workshop" | "concert" | "festival" | "competition" | "show" | "other";
+export type EventType =
+  | "social"
+  | "workshop"
+  | "concert"
+  | "festival"
+  | "congress"
+  | "competition"
+  | "show"
+  | "other";
 
 export interface Price {
   label: string;

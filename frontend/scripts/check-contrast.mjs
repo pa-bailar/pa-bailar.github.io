@@ -56,7 +56,7 @@ const MINIMUM = { text: 4.5, large: 3, ui: 3 };
 // ---------- the pairs the components actually use ----------
 // [what, foreground token, background token, kind]
 // Not listed on purpose: --divider (decorative separators) and the stripes (brand motif).
-const TYPES = ["social", "workshop", "concert", "festival", "competition", "show", "other"];
+const TYPES = ["social", "workshop", "concert", "festival", "congress", "competition", "show", "other"];
 const PAIRS = [
   ["Body text on page", "text", "bg", "text"],
   ["Body text on cards / dialog", "text", "surface", "text"],

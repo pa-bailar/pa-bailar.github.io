@@ -8,7 +8,7 @@ import { existsSync, readFileSync } from "node:fs";
 const dataDir = new URL("../../data/", import.meta.url);
 const read = (file) => JSON.parse(readFileSync(new URL(file, dataDir), "utf8"));
 
-const EVENT_TYPES = ["social", "workshop", "concert", "festival", "competition", "show", "other"];
+const EVENT_TYPES = ["social", "workshop", "concert", "festival", "congress", "competition", "show", "other"];
 const MEDIA_TYPES = ["IMAGE", "CAROUSEL_ALBUM", "VIDEO"];
 const CONFIDENCE = ["high", "medium", "low"];
 // The backend's style list (pa_bailar/models.py Style). A new style needs a change here too.
