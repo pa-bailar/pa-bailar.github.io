@@ -15,7 +15,7 @@ import { PERIOD_SHARE_TITLES } from "../lib/shareText";
 import { eventCountLabel } from "../lib/format";
 import { mainMedia, thumbUrl } from "../lib/links";
 import { eventsInView, groupByPeriod, hasActiveFilters, matchesFilters, sectionId } from "../state";
-import { eventCardGridHtml } from "./eventCard";
+import { applyFlyerRatios, eventCardGridHtml } from "./eventCard";
 import type { AgendaGroup } from "../state";
 
 /** Shown in full from the start: what most visitors come for. Later periods start summarized. */
@@ -141,6 +141,7 @@ export function renderUpcomingView(
         </section>`;
       })
       .join("");
+    applyFlyerRatios(container);
   }
   return { shown: upcoming.length, groups };
 }

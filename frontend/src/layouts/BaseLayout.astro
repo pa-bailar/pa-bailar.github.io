@@ -1,5 +1,6 @@
 ---
 // HTML shell shared by every page: meta tags, fonts, design system styles and the theme pre-paint script.
+// Astro adds the Content Security Policy's <meta> (astro.config.mjs); scripts/csp-meta.mjs moves it to the top.
 //
 // Styles are imported one by one (not chained with CSS @import) so the dev server reloads each file
 // when it changes. Order matters: tokens → base → components.
@@ -22,6 +23,9 @@ import "../styles/components/event-dialog.css";
 import "../styles/components/site-footer.css";
 import "../styles/components/install.css";
 
+// GoatCounter's count.js, served from this site (so the CSP allows no other script host): vendor/.
+import goatcounterScript from "../vendor/goatcounter-count.js?url";
+import { allowInlineScript, jsValue } from "../csp";
 import { BASE_URL } from "../scripts/lib/links";
 import { DAY_START_HOUR, NIGHT_START_HOUR, THEME_COLORS, THEME_STORAGE_KEY } from "../scripts/themeConfig";
 
@@ -46,6 +50,28 @@ const favicon =
       "<circle cx='32' cy='32' r='30' fill='#2A0F14'/><circle cx='32' cy='32' r='14' fill='#F2C12E'/>" +
       "<circle cx='32' cy='32' r='3' fill='#2A0F14'/></svg>",
   );
+
+// Apply the theme before first paint so the page never flashes the wrong one. Same rules as resolveTheme() in
+// scripts/theme.ts (saved mode, else by the hour), same settings (themeConfig.ts). Inline, allowed by its hash.
+const themeScript = allowInlineScript(
+  Astro,
+  `(function () {
+  var storageKey = ${jsValue(THEME_STORAGE_KEY)}, dayStart = ${DAY_START_HOUR}, nightStart = ${NIGHT_START_HOUR};
+  var colors = ${jsValue(THEME_COLORS)};
+  var mode = "auto";
+  try {
+    var saved = localStorage.getItem(storageKey);
+    if (saved === "light" || saved === "dark") mode = saved;
+  } catch (e) {}
+  var hour = new Date().getHours();
+  var theme = mode === "auto" ? (hour >= dayStart && hour < nightStart ? "light" : "dark") : mode;
+  var root = document.documentElement;
+  root.dataset.theme = theme;
+  root.dataset.themeMode = mode;
+  var meta = document.querySelector('meta[name="theme-color"]');
+  if (meta) meta.setAttribute("content", colors[theme]);
+})();`,
+);
 ---
 
 <!doctype html>
@@ -78,28 +104,11 @@ const favicon =
       href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Bodoni+Moda:ital,opsz,wght@1,6..96,500&family=Instrument+Sans:wght@400;600&display=swap"
       rel="stylesheet"
     />
-    <!-- Apply the theme before first paint so the page never flashes the wrong one. Same rules as
-         resolveTheme() in scripts/theme.ts (saved mode, else by the hour), same settings (themeConfig.ts). -->
-    <script
-      is:inline
-      define:vars={{ storageKey: THEME_STORAGE_KEY, dayStart: DAY_START_HOUR, nightStart: NIGHT_START_HOUR, colors: THEME_COLORS }}
-    >
-      var mode = "auto";
-      try {
-        var saved = localStorage.getItem(storageKey);
-        if (saved === "light" || saved === "dark") mode = saved;
-      } catch (e) {}
-      var hour = new Date().getHours();
-      var theme = mode === "auto" ? (hour >= dayStart && hour < nightStart ? "light" : "dark") : mode;
-      var root = document.documentElement;
-      root.dataset.theme = theme;
-      root.dataset.themeMode = mode;
-      var meta = document.querySelector('meta[name="theme-color"]');
-      if (meta) meta.setAttribute("content", colors[theme]);
-    </script>
+    <!-- The theme before first paint (themeScript, above). -->
+    <script is:inline set:html={themeScript} />
     <slot name="head" />
-    <!-- Visit statistics without cookies (scripts/lib/analytics.ts). -->
-    <script is:inline data-goatcounter="https://jzamora9.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+    <!-- Visit statistics without cookies (scripts/lib/analytics.ts), with our copy of GoatCounter's script. -->
+    <script is:inline data-goatcounter="https://jzamora9.goatcounter.com/count" async src={goatcounterScript}></script>
   </head>
   <body>
     <slot />
