@@ -5,6 +5,7 @@
 .t-workshop { --type: var(--type-workshop); }
 .t-concert { --type: var(--type-concert); }
 .t-festival { --type: var(--type-festival); }
+.t-congress { --type: var(--type-congress); }
 .t-competition { --type: var(--type-competition); }
 .t-show { --type: var(--type-show); }
 .t-other { --type: var(--type-other); }

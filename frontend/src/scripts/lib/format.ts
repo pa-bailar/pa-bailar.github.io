@@ -11,6 +11,7 @@ const TYPE_LABELS: Record<EventType, string> = {
   workshop: "Taller",
   concert: "Concierto",
   festival: "Festival",
+  congress: "Congreso",
   competition: "Competencia",
   show: "Show",
   other: "Otro",

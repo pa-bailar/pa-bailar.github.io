@@ -96,6 +96,7 @@
   --type-workshop: light-dark(var(--orange-600), var(--marigold-400));
   --type-concert: light-dark(var(--tomato-350), var(--orange-400));
   --type-festival: var(--rose-300);
+  --type-congress: var(--rose-300); /* a festival's family: multi-day, with workshops and socials */
   --type-competition: light-dark(var(--cream-300), var(--cream-200));
   --type-show: var(--rose-300);
   --type-other: light-dark(var(--cream-300), var(--cocoa-200));

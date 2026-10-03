@@ -22,7 +22,7 @@ repositories (backend first, behind the new version).
 |---|---|---|
 | `id` | string | Readable title + day + month, e.g. `social-de-halloween-24-oct` (`-2`, `-3`… if taken). It's the event's URL (`/evento/<id>/`), so it's set once and never changes: not when more posts are merged in, nor when a re-extraction rewords the title (`backend/pabailar/ids.py`). |
 | `title` | string | As written on the flyer |
-| `event_type` | `social` · `workshop` · `concert` · `festival` · `competition` · `show` · `other` | `social` includes parties; `workshop` includes one-time special classes |
+| `event_type` | `social` · `workshop` · `concert` · `festival` · `congress` · `competition` · `show` · `other` | `social` includes parties; `workshop` includes one-time special classes; `congress` is a multi-day dance congress or encuentro (workshops, socials, shows, often a full pass), `festival` a festival of music or dance in general |
 | `is_recurring` | boolean | Always `false` in stored data (recurring events are discarded) |
 | `styles` | Style[] | From the fixed list below; de-duplicated |
 | `organizer`, `venue`, `address`, `area` | string \| null | |
