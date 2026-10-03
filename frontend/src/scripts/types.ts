@@ -50,6 +50,7 @@ export interface DanceEvent {
 export interface Meta {
   schema_version: number;
   generated_at: string; // ISO time of the last sweep that changed data (Bogotá)
+  accounts?: string[]; // every account the sweep reads (docs/DATA.md); missing in data written before it existed
   stats?: unknown;
 }
 
