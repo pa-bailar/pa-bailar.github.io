@@ -28,7 +28,8 @@ import {
   restoreListPosition,
   returnToScroll,
 } from "./views/jumpBar";
-import { renderUpcomingView, showWholePeriod } from "./views/upcomingView";
+import { renderUpcomingView, setWholePeriods, showWholePeriod, wholePeriods } from "./views/upcomingView";
+import { goTo, initScreenHistory, leave, sameScreen, type Screen } from "./screenHistory";
 import { initPostViewer } from "./views/postViewer";
 import { initPostsSheet } from "./views/postsSheet";
 import { initViewSwitch, renderViewSwitch } from "./views/viewSwitch";
@@ -134,6 +135,35 @@ function showView(view: View) {
   if (top < 0) window.scrollTo({ top: top + window.scrollY, behavior: "auto" });
 }
 
+/** The tabs and the floating button: the calendar is a move of its own ("back" returns to the list). */
+function navigateView(view: View) {
+  if (view === state.view) return;
+  if (view === "calendar") goTo("view", () => showView(view));
+  else leave("view", () => showView(view));
+}
+
+const currentScreen = (): Omit<Screen, "kind"> => ({
+  view: state.view,
+  account: state.accountFilter,
+  savedOnly: state.savedOnly,
+  periods: wholePeriods(),
+  scrollY: window.scrollY,
+});
+
+/** Back (or forward) to `screen`: its view, academy, saved events and opened periods, where it was scrolled. */
+function applyScreen(screen: Screen) {
+  if (sameScreen(screen, currentScreen())) return; // e.g. back from an event or a sheet: the screen stays
+  state.accountFilter = screen.account;
+  state.savedOnly = screen.savedOnly;
+  setWholePeriods(screen.periods);
+  if (screen.view !== state.view) {
+    showView(screen.view); // it puts each view back where it was
+    return;
+  }
+  render();
+  returnToScroll(screen.scrollY);
+}
+
 /** The saved events still to come, in date order. */
 function upcomingSaved(): DanceEvent[] {
   const today = todayIso();
@@ -225,9 +255,13 @@ function handleClick(domEvent: MouseEvent) {
   const { view, type, style, account, day, event: eventId, monthStep, showPeriod } = control.dataset;
 
   if ("savedOnly" in control.dataset) {
-    state.savedOnly = !state.savedOnly;
-    render();
-    backToTop();
+    const showSaved = () => {
+      state.savedOnly = !state.savedOnly;
+      render();
+      backToTop();
+    };
+    if (state.savedOnly) leave("saved", showSaved);
+    else goTo("saved", showSaved);
     return;
   }
   if ("closeSearch" in control.dataset) {
@@ -241,7 +275,9 @@ function handleClick(domEvent: MouseEvent) {
     // "Ver los 23 eventos" / "Ver 7 más": the period opens whole; focus moves to its first new event.
     const section = control.closest<HTMLElement>(".agenda-group");
     const before = section?.querySelectorAll(".event-card").length ?? 0;
-    if (showWholePeriod(showPeriod)) render();
+    goTo("period", () => {
+      if (showWholePeriod(showPeriod)) render();
+    });
     const cards = document.getElementById(sectionId(showPeriod))?.querySelectorAll<HTMLElement>(".event-card__hit");
     cards?.[before]?.focus({ preventScroll: true });
     return;
@@ -257,7 +293,23 @@ function handleClick(domEvent: MouseEvent) {
     return;
   }
   if (view) {
-    showView(view as View);
+    navigateView(view as View);
+    return;
+  }
+  if (account !== undefined) {
+    // An academy's events (its @ on a card), or all of them again ("" from the notice's button).
+    if (account) {
+      goTo("account", () => {
+        state.accountFilter = account;
+        render();
+        focusAccountFilter();
+      });
+    } else {
+      leave("account", () => {
+        state.accountFilter = null;
+        render();
+      });
+    }
     return;
   }
   if (type) state.typeFilter = type as EventType | "all";
@@ -266,9 +318,7 @@ function handleClick(domEvent: MouseEvent) {
     const isToggle = control.matches(".chip") && control.getAttribute("aria-pressed") === "true";
     state.styleFilter = isToggle ? "all" : style;
   }
-  else if (account !== undefined) {
-    state.accountFilter = account || null; // "" = show every academy again
-  } else if ("clearFilters" in control.dataset) {
+  else if ("clearFilters" in control.dataset) {
     clearFilters(state);
     document.querySelectorAll<HTMLInputElement>("[data-search]").forEach((field) => (field.value = ""));
     closeBarSearch();
@@ -285,8 +335,7 @@ function handleClick(domEvent: MouseEvent) {
   render({ keepPlace: Boolean(type || style || "clearFilters" in control.dataset) });
 
   // The control clicked was re-rendered away: put focus somewhere useful.
-  if (account) focusAccountFilter();
-  else if ("clearFilters" in control.dataset) {
+  if ("clearFilters" in control.dataset) {
     // The first type chip that can be seen (in the open sheet, or the toolbar), else the bar's ⚙.
     const chips = [...document.querySelectorAll<HTMLElement>('[data-filter-row="type"] button')];
     const visible = chips.find((chip) => chip.closest("#filter-sheet[open]") || chip.offsetParent !== null);
@@ -330,7 +379,7 @@ export function start() {
       if (showWholePeriod(key)) render();
     },
   });
-  initViewSwitch(showView);
+  initViewSwitch(navigateView);
   initClickTracking();
   document.addEventListener("click", handleClick);
   document.addEventListener("input", handleSearchInput);
@@ -345,4 +394,5 @@ export function start() {
   });
   render();
   openSharedEvent();
+  initScreenHistory({ current: currentScreen, apply: applyScreen });
 }

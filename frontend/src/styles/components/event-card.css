@@ -220,7 +220,6 @@
 .play-mark .icon {
   width: var(--icon-lg);
   height: var(--icon-lg);
-  margin-left: 3px; /* the triangle's visual center */
 }
 
 /* "2 publicaciones": the event was announced by several posts (flyer, video...). */
