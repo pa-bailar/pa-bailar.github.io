@@ -6,7 +6,7 @@ import { daysInMonth, mondayOffset, todayIso, toIsoDate } from "../lib/dates";
 import { isHoliday } from "../lib/holidays";
 import { eventCountLabel, formatDayHeading, formatLongDate, formatMonthTitle } from "../lib/format";
 import { groupByDay, hasActiveFilters, matchesFilters } from "../state";
-import { eventCardGridHtml } from "./eventCard";
+import { applyFlyerRatios, eventCardGridHtml } from "./eventCard";
 
 const WEEKDAY_INITIALS = ["L", "M", "M", "J", "V", "S", "D"];
 const MAX_PILLS_PER_DAY = 3;
@@ -64,5 +64,6 @@ export function renderCalendarView(events: DanceEvent[], state: AppState): numbe
   byId("cal-selected-day").innerHTML = `
     <h2 class="day-heading">${escapeHtml(formatDayHeading(state.selectedDay))}</h2>
     ${selectedEvents.length ? eventCardGridHtml(selectedEvents) : emptyDayHtml(state)}`;
+  applyFlyerRatios(byId("cal-selected-day"));
   return selectedEvents.length;
 }

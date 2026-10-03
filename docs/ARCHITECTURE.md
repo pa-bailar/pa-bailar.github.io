@@ -130,7 +130,8 @@ Notes:
   becomes `https://pa-bailar.github.io/flyers/123-0.webp`;
 - the `@astrojs/sitemap` integration;
 - `import.meta.env.DATA_DIR`, the data folder's absolute path, so the build finds the flyers wherever
-  it's started from.
+  it's started from;
+- the Content Security Policy (`security.csp`, section 3.3) and the `csp-meta` integration that checks it.
 
 ### 3.1 Reading the data: `src/data.ts`
 
@@ -183,6 +184,40 @@ flowchart TD
 
 **Shared code between build and browser:** the views in `src/scripts/` produce HTML strings, so the same
 code renders an event's detail in the browser (the dialog) and at build time (the event page).
+
+### 3.3 The Content Security Policy
+
+GitHub Pages can't send headers, so the policy is a `<meta http-equiv="content-security-policy">` in every
+page. It tells the browser what the page may load and run; anything else (a script or style slipped into an
+event's text, a link to another site's script) is blocked.
+
+| Directive | Allows | For |
+|---|---|---|
+| `default-src` | `'self'` | Anything not listed below: only the site's own files |
+| `script-src` | `'self'`, `https://www.instagram.com`, hashes | The build's bundles, our copy of GoatCounter's `count.js`, Instagram's `embed.js`; the inline scripts by their hash |
+| `style-src` | `'self'`, `https://fonts.googleapis.com`, hashes | The CSS files, Google Fonts' stylesheet, the styles Astro inlines (by hash) |
+| `style-src-attr` | `'unsafe-hashes'` + one hash | No `style=""` attributes, except the fixed one `embed.js` gives Instagram's player |
+| `img-src` | `'self'`, `data:`, `https://jzamora9.goatcounter.com` | Flyers, thumbnails, icons; the favicon (a `data:` SVG); GoatCounter's fallback image |
+| `media-src` | `'self'` | The videos' clips (`previews/`) |
+| `font-src` | `https://fonts.gstatic.com` | Google Fonts |
+| `connect-src` | `'self'`, `https://jzamora9.goatcounter.com` | GoatCounter's counts (`sendBeacon`) |
+| `frame-src` | `https://www.instagram.com` | Instagram's player |
+| `worker-src`, `manifest-src` | `'self'` | `sw.js`, `manifest.webmanifest` |
+| `object-src`, `base-uri`, `form-action` | `'none'` | No plugins, no `<base>`, no forms |
+
+- **Where it's set:** `astro.config.mjs` (`security.csp`). Astro adds the hashes of the scripts and styles it
+  inlines. Ours are two inline scripts, the theme before first paint (`BaseLayout.astro`) and the event pages'
+  forward to the app (`evento/[id].astro`), written as strings and added with `allowInlineScript()`
+  (`src/csp.ts`), which puts their hash in the page's policy.
+- **Checked at every build** (`scripts/csp-meta.mjs`): Astro writes the `<meta>` at the end of `<head>`, where
+  it wouldn't cover what comes before it; the integration moves it right after `<meta charset>`. It also fails
+  the build if a page has an inline script or `<style>` the policy doesn't allow, or any `style=""` attribute.
+  So a new inline script needs `allowInlineScript()`, and a style that depends on data is set from a script
+  (`element.style`, which the policy allows), like the cards' flyer shape (`applyFlyerRatios`, `eventCard.ts`).
+- **What a `<meta>` can't do:** `frame-ancestors` (who may frame the site), reports and other headers aren't
+  possible on GitHub Pages.
+- **`npm run dev` doesn't apply it** (Vite's dev server injects scripts). To try it: `npm run build` and
+  `npm run preview`, then look for "Content Security Policy" errors in the console.
 
 ---
 
@@ -335,7 +370,7 @@ stateDiagram-v2
 - **Three modes:** auto, light and dark. **Auto** follows the visitor's clock: light from 6:00 to 17:59,
   dark the rest of the day, switching on its own while the page is open.
 - **Remembered** in `localStorage`. An inline script in `BaseLayout.astro` applies it before the first
-  paint, so the page never flashes the wrong theme.
+  paint, so the page never flashes the wrong theme (allowed by its hash, section 3.3).
 - **Colors** are CSS tokens with `light-dark()` (`styles/tokens.css`); [`DESIGN.md`](DESIGN.md) has
   them all.
 
@@ -365,7 +400,7 @@ stateDiagram-v2
 | Service | What for | Data sent | If it's down |
 |---|---|---|---|
 | **GitHub Pages** | Hosting | | The site is down |
-| **GoatCounter** (`jzamora9.goatcounter.com`) | Visit statistics, without cookies or personal data, so no consent banner is needed | Page views. Each event opened in the viewer, as a view of its page. Clicks on elements with `data-track` (Instagram, the contact links, "Cómo llegar", sharing, saving, installing, reports). Local testing isn't counted | Nothing breaks: the script is optional and wrapped in `try` (`lib/analytics.ts`) |
+| **GoatCounter** (`jzamora9.goatcounter.com`) | Visit statistics, without cookies or personal data, so no consent banner is needed | Page views. Each event opened in the viewer, as a view of its page. Clicks on elements with `data-track` (Instagram, the contact links, "Cómo llegar", sharing, saving, installing, reports). Local testing isn't counted. Its script (`count.js`) is a copy served from the site (`src/vendor/goatcounter-count.js`, ISC license), not loaded from `gc.zgo.at`: the policy (section 3.3) then allows no other script host, and GoatCounter keeps its `/count` endpoint compatible, so the copy needs no updates | Nothing breaks: the script is optional and wrapped in `try` (`lib/analytics.ts`) |
 | **Instagram embed** (`instagram.com/embed.js`) | Showing a post inside the site when a visitor taps a flyer (videos play, carousels swipe) | Loaded only on that tap, never with the page: the post's link; Instagram's player then runs as Meta's code (and cookies) inside its frame | Our copy of the flyer stays, with "Abrir en Instagram" (also when a post's link can't be read) |
 | **Google Fonts** | Shrikhand, Bodoni Moda (italic) and Instrument Sans | The font request | System fonts are used |
 | **Instagram, WhatsApp, Google Maps** | Links the visitor chooses to open | Only what's in the link | |
@@ -383,8 +418,8 @@ only Instagram content it loads is a post's player, and only when a visitor taps
 | Data contract | Every field of `events.json` and `meta.json`: types, allowed values (event types, styles, confidence), real dates and time formats, unique ids, usernames, post links (`instagram.com/<p, reel, reels or tv>/<code>/`), flyer and clip paths (inside `flyers/` and `previews/`) and their files existing, sorting | `frontend/scripts/check-data.mjs` |
 | Types | `astro check`: strict TypeScript, including `noUncheckedIndexedAccess` | `tsconfig.json` |
 | Color contrast | Every color pair the site uses, in both themes, against WCAG 2.2 AA. It reads the tokens from `tokens.css`, so it can't drift from the design system | `frontend/scripts/check-contrast.mjs` |
-| Unit tests | Dates and Bogotá's "today", formatting, filtering and period grouping, holidays | `frontend/tests/*.test.ts` (Vitest) |
-| Build | Every page, image and feed is generated | `npm run build` |
+| Unit tests | Dates and Bogotá's "today", formatting, filtering and period grouping, holidays, the policy check | `frontend/tests/*.test.ts` (Vitest) |
+| Build | Every page, image and feed is generated; every page's Content Security Policy allows its inline scripts and styles, and no page has a `style=""` attribute (section 3.3) | `npm run build`, `frontend/scripts/csp-meta.mjs` |
 
 All five run in `ci` on every pull request, and the ruleset requires `ci` before merging.
 
@@ -394,13 +429,16 @@ All five run in `ci` on every pull request, and the ruleset requires `ci` before
 
 ```
 frontend/
-  astro.config.mjs        site URL, public folder (../data), sitemap, DATA_DIR
+  astro.config.mjs        site URL, public folder (../data), sitemap, DATA_DIR, Content Security Policy
   vitest.config.ts        unit tests, with Astro's settings
   scripts/                check-data.mjs, check-contrast.mjs (run by npm run check); release.mjs (versions);
-                          og-site.html (draws the home page's link preview)
+                          og-site.html (draws the home page's link preview); csp-meta.mjs (the policy, after
+                          the build)
   tests/                  Vitest tests, factories.ts (test events)
   src/
     data.ts               the data, typed, with flyer sizes (build time only)
+    csp.ts                allowInlineScript(): an inline script, allowed by its hash (build time only)
+    vendor/goatcounter-count.js   GoatCounter's script, served from the site
     env.d.ts              the build's variables: PUBLIC_CHECKED_AT, PUBLIC_VERSION
     assets/og-site.jpg    the home page's link preview, drawn by scripts/og-site.html
     layouts/BaseLayout.astro   <head>: meta, previews, fonts, theme before paint, GoatCounter, the CSS
@@ -470,6 +508,7 @@ npm run dev       # http://localhost:4321, with the current data/
 npm run check     # data contract, types, contrast
 npm test
 npm run build     # frontend/dist/
+npm run preview   # the build, as published (with its Content Security Policy)
 ```
 
 Changes go on a branch, through a pull request with a Conventional Commits title, and merge when `ci`

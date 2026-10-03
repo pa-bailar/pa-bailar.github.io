@@ -64,7 +64,7 @@ function eventCardHtml(event: DanceEvent): string {
 
   return `
     <article class="event-card">
-      <div class="event-card__media"${ratio ? ` style="--flyer-ratio: ${ratio.toFixed(4)}"` : ""}>
+      <div class="event-card__media"${ratio ? ` data-flyer-ratio="${ratio.toFixed(4)}"` : ""}>
         ${image}
         <span class="tag-type t-${escapeHtml(event.event_type)}">${typeLabel(event.event_type)}</span>
         ${postCount}
@@ -91,4 +91,14 @@ function eventCardHtml(event: DanceEvent): string {
 
 export function eventCardGridHtml(events: DanceEvent[]): string {
   return `<div class="card-grid">${events.map(eventCardHtml).join("")}</div>`;
+}
+
+/**
+ * Gives the cards under `root` their flyer's shape (data-flyer-ratio → --flyer-ratio), once they're in the page.
+ * Set from here, not as a style="" in the HTML: the Content Security Policy blocks style attributes.
+ */
+export function applyFlyerRatios(root: ParentNode) {
+  root.querySelectorAll<HTMLElement>("[data-flyer-ratio]").forEach((media) => {
+    media.style.setProperty("--flyer-ratio", media.dataset.flyerRatio!);
+  });
 }
