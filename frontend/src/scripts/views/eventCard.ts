@@ -3,6 +3,8 @@
 // viewer instead (main.ts). Its ::after stretches over the whole card, so the card is one big target.
 
 import type { DanceEvent, EventMedia } from "../types";
+import { isVideoCover } from "../lib/mediaLabel";
+import { ICONS } from "../lib/icons";
 import { escapeHtml } from "../lib/dom";
 import {
   cardWhenLabel,
@@ -66,6 +68,7 @@ function eventCardHtml(event: DanceEvent): string {
         ${image}
         <span class="tag-type t-${escapeHtml(event.event_type)}">${typeLabel(event.event_type)}</span>
         ${postCount}
+        ${isVideoCover(media) ? `<span class="play-mark" aria-hidden="true">${ICONS.play}</span>` : ""}
         <span class="date-sticker" aria-hidden="true"><b>${sticker.day}</b><small>${sticker.month}</small></span>
       </div>
       <div class="event-card__body">

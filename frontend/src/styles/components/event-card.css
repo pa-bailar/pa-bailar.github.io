@@ -201,6 +201,28 @@
   left: var(--space-3);
 }
 
+/* The event's image is a video: a play mark in the middle, like any video thumbnail (the detail plays it). */
+.play-mark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 50%;
+  background: rgb(0 0 0 / 0.55);
+  color: var(--on-image);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.play-mark .icon {
+  width: var(--icon-lg);
+  height: var(--icon-lg);
+  margin-left: 3px; /* the triangle's visual center */
+}
+
 /* "2 publicaciones": the event was announced by several posts (flyer, video...). */
 .media-count {
   position: absolute;
@@ -305,8 +327,8 @@
 .event-card__price--free {
   padding: 0 var(--space-2);
   border-radius: var(--radius-sm);
-  background: var(--whatsapp); /* same green and text pair as the WhatsApp button: checked for contrast */
-  color: var(--on-whatsapp);
+  background: var(--free); /* checked for contrast (check-contrast.mjs) */
+  color: var(--on-free);
 }
 
 /* ---------- date sticker (record label) ---------- */

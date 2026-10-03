@@ -72,7 +72,7 @@ const PAIRS = [
   ["Logo on page, 404 (large)", "logo", "bg", "large"],
   ["Accent text on cards (event time, 13px bold)", "accent", "surface", "text"],
   ["Primary button text", "on-action", "action", "text"],
-  ["WhatsApp button text", "on-whatsapp", "whatsapp", "text"],
+  ["\"Gratis\" price tag", "on-free", "free", "text"],
   ["Selected chip text", "chip-active-text", "chip-active-bg", "text"],
   ["Date sticker text", "sticker-text", "sticker-bg", "text"],
   ["Today number in calendar", "today-text", "today-bg", "text"],

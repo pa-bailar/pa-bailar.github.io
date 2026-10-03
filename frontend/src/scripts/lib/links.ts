@@ -25,6 +25,11 @@ export function thumbUrl(media: EventMedia): string | null {
   return media.flyer ? `${BASE_URL}thumbs/${thumbName(media.flyer)}.webp` : null;
 }
 
+/** A video's short silent clip (the backend's previews/), played in the detail; null without one. */
+export function previewUrl(media: EventMedia): string | null {
+  return media.preview ? `${BASE_URL}${media.preview}` : null;
+}
+
 /** The report form; for an event, with it filled in: "Título (2026-10-03) · <id>", the id to find it. */
 export function feedbackUrl(event?: DanceEvent): string {
   if (!event) return FEEDBACK_FORM;

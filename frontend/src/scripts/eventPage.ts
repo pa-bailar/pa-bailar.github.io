@@ -7,6 +7,7 @@ import { initClickTracking } from "./lib/analytics";
 import { byId } from "./lib/dom";
 import { initThemeToggle } from "./theme";
 import { eventDetailHtml, handleDetailClick } from "./views/eventDetail";
+import { watchClips } from "./views/clips";
 import { initPostViewer } from "./views/postViewer";
 import { initPostsSheet } from "./views/postsSheet";
 import { initSaveButtons } from "./views/saveButton";
@@ -26,6 +27,8 @@ export function initEventPage() {
   const container = byId("event-detail");
   const render = (selected: number) => {
     container.innerHTML = eventDetailHtml(event, selected, { headingLevel: 1 });
+    watchClips(container);
   };
+  watchClips(container); // the page arrives rendered (pages/evento/[id].astro)
   container.addEventListener("click", (domEvent) => handleDetailClick(container, domEvent, event, render));
 }

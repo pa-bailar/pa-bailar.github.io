@@ -67,6 +67,8 @@ for (const [index, event] of (Array.isArray(events) ? events : []).entries()) {
     check(isString(media.published) && !Number.isNaN(Date.parse(media.published)), at, "bad published time");
     check(isNullableString(media.caption), at, "caption must be a string or null");
     if (media.flyer) check(existsSync(new URL(media.flyer, dataDir)), at, `flyer file missing: ${media.flyer}`);
+    if (media.preview) check(existsSync(new URL(media.preview, dataDir)), at, `clip file missing: ${media.preview}`);
+    check(media.slides == null || (Number.isInteger(media.slides) && media.slides > 0), at, "slides must be a count");
   }
 }
 
