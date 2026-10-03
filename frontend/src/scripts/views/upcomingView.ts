@@ -37,6 +37,14 @@ export function showWholePeriod(key: string): boolean {
   return true;
 }
 
+/** The periods shown whole, and setting them back (going back in history: screenHistory.ts). */
+export const wholePeriods = (): string[] => [...shownWhole];
+
+export function setWholePeriods(keys: string[]) {
+  shownWhole.clear();
+  keys.forEach((key) => shownWhole.add(key));
+}
+
 /** "Ver los 23 eventos": a summarized period, its first flyers as small squares. */
 function summaryHtml(group: AgendaGroup): string {
   const thumbs = [...new Set(group.events.map((event) => thumbUrl(mainMedia(event))).filter(Boolean))]

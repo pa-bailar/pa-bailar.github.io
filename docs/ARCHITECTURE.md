@@ -422,6 +422,7 @@ frontend/
 | `views/eventCard.ts` | A card: flyer at its shape, date sticker, details |
 | `views/eventDetail.ts` | An event's full detail (dialog and page): the flyer of each post, details, prices, actions |
 | `views/eventDialog.ts` | The viewer: slides, swiping, URL history, closing |
+| `screenHistory.ts` | History entries for the app's screens (academy, period, calendar, saved): the phone's back steps through them |
 | `views/filters.ts` | Type and style chips, the academy notice |
 | `views/jumpBar.ts` | Phones: the sticky bar, its menus, keeping your place, hiding on scroll |
 | `views/viewSwitch.ts` | Phones: the floating calendar / list button |
