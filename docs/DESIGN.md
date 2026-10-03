@@ -47,7 +47,7 @@ frontend/src/styles/
 2. **Semantic colors:** what a color is *for* (`--bg`, `--surface`, `--text-muted`, `--accent`, `--action`…). Each is `light-dark(<Fania de día>, <Noche Fania>)`. **Components only use these.**
 3. **Scales:** type sizes, spacing, radii, control sizes, motion.
 
-Themes switch through CSS `color-scheme`: `light dark` (follow the device) when no theme is set, or forced by `html[data-theme="light" | "dark"]`. `scripts/theme.ts` sets `data-theme` (the theme in use) and `data-theme-mode` (auto/light/dark, which picks the toggle's icon). An inline copy of its logic in `BaseLayout.astro` applies the theme before first paint (no flash) and sets the `theme-color` meta for the phone's address bar.
+Themes switch through CSS `color-scheme`: `light dark` (follow the device) when no theme is set, or forced by `html[data-theme="light" | "dark"]`. `scripts/theme.ts` sets `data-theme` (the theme in use) and `data-theme-mode` (auto/light/dark, which picks the toggle's icon). An inline copy of its logic in `BaseLayout.astro` applies the theme before first paint (no flash) and sets the `theme-color` meta for the phone's address bar; the Content Security Policy allows it by its hash (`ARCHITECTURE.md`, section 3.3).
 
 ### Semantic colors
 
@@ -269,6 +269,7 @@ An event can be announced by several Instagram posts (a flyer, then a video, a r
 - **One primary button per view** (`.btn--primary`). Everything else is the outlined `.btn`, including "Compartir" (it opens the phone's share menu, not only WhatsApp, so it no longer wears WhatsApp's green).
 - **Event-type color** is applied with a `.t-<type>` class, which exposes `--type` for that element (tags, pills, dots).
 - **No emoji in the UI.** Use text or inline SVG icons.
+- **No `style=""` attributes** in markup: the Content Security Policy blocks them and the build fails on them. Use a class, or set a value that depends on the data from a script (`element.style.setProperty`), like a card's `--flyer-ratio`.
 - **Flyers are never cropped**, in cards or the dialog (`object-fit: contain`). Like Instagram's feed, phones show each flyer at its own shape, from 4:5 (portrait) to 1.91:1 (landscape). The size comes from the file at build time (`src/data.ts`), so the page never jumps as images load. Taller flyers (stories) get a 4:5 frame, and so does every card on wider screens, so rows line up. The space around a flyer of another shape is filled with a blurred copy of itself.
 - **Accessibility:**
   - Every interactive element is a real `<button>` or `<a>`.

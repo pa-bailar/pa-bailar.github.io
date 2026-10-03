@@ -25,7 +25,8 @@ npm ci          # first time
 npm run dev     # local preview at http://localhost:4321
 npm run check   # data format + type check + color contrast (WCAG AA)
 npm test        # unit tests (Vitest)
-npm run build   # static site in frontend/dist/
+npm run build   # static site in frontend/dist/ (fails if a page breaks its Content Security Policy)
+npm run preview # the build at http://localhost:4321, with the policy (dev mode doesn't apply it)
 ```
 
 Besides the home page, the build makes one page per event (`/evento/<id>/`: shared links point there,
