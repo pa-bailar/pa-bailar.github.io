@@ -44,12 +44,13 @@ const releaseUrl = version ? `https://github.com/pa-bailar/pa-bailar.github.io/r
       </p>
     </details>
     <p class="site-footer__install" data-install-offer hidden>
+      <Fragment set:html={ICONS.phone} />
       <button class="link-button" type="button" data-install data-track="instalar">Instala Pa' Bailar en tu celular</button>{" "}
       y ábrelo como una app.
     </p>
-    <p>
-      ¿Un dato está mal o tienes una idea para la app?{" "}
-      <a class="inline-link" href={feedbackUrl()} target="_blank" rel="noopener" data-track="comentarios">Escríbenos</a>
+    <p class="site-footer__feedback">
+      <Fragment set:html={ICONS.message} /> ¿Un dato está mal o tienes una idea para la app?{" "}
+      <a href={feedbackUrl()} target="_blank" rel="noopener" data-track="comentarios">Escríbenos</a>
     </p>
     <div class="site-footer__bottom">
       <p class="site-footer__author">

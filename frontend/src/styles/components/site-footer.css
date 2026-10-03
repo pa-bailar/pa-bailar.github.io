@@ -66,7 +66,8 @@
   color: var(--text-muted);
 }
 
-.site-footer__author a {
+.site-footer__author a,
+.site-footer__feedback a {
   font-weight: var(--weight-bold);
   color: var(--text);
 }
