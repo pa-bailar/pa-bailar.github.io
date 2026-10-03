@@ -77,6 +77,7 @@
     "address": "Sedes 109, 127 y Cajicá",
     "area": null,
     "date": "2026-09-07",
+    "end_date": "2026-09-11",
     "weekday": "lunes",
     "start_time": null,
     "end_time": null,
@@ -2247,9 +2248,10 @@
     "address": "CRA 29 68 - 18",
     "area": null,
     "date": "2026-10-31",
+    "end_date": "2026-11-02",
     "weekday": "sábado",
     "start_time": "20:00",
-    "end_time": "02:00",
+    "end_time": null,
     "prices": [
       {
         "label": "Cover",
@@ -2497,152 +2499,6 @@
     ]
   },
   {
-    "title": "Distrito Social Aniversario - Juanita Quintero",
-    "event_type": "social",
-    "is_recurring": false,
-    "styles": [
-      "bachata"
-    ],
-    "organizer": "Distrito Social",
-    "venue": "Distrito Social",
-    "address": "CRA 29 N68-18",
-    "area": null,
-    "date": "2026-11-01",
-    "weekday": "domingo",
-    "start_time": null,
-    "end_time": null,
-    "prices": [],
-    "artists": [
-      "Juanita Quintero"
-    ],
-    "activities": [
-      "clase de Bachata Ladies"
-    ],
-    "contact": null,
-    "confidence": "high",
-    "doubts": [
-      "falta hora de inicio",
-      "falta precio"
-    ],
-    "id": "distrito-social-aniversario-juanita-quintero-1-nov",
-    "account": "distritosocialbog",
-    "media": [
-      {
-        "post_id": "17939085588098200",
-        "permalink": "https://www.instagram.com/p/DdEeskQlg4V/",
-        "media_type": "CAROUSEL_ALBUM",
-        "published": "2026-09-09T14:30:01+0000",
-        "flyer": "flyers/17939085588098200-0.webp",
-        "caption": "Juanita Quintero ✨\n\nLa reina del eje cafetero dice presente en nuestro aniversario 🥳🥳🥳 con su increíble clase de Bachata Ladies nos viene a poner a disfrutar al máximo \n\n🗓️ 31 Oct, 1 y 2 Nov\n📍 Distrito Social \n\n¿Ya tienes tu boleta? No dejes que te lo cuenten\n\nReservas en:\ndistrito-social-academy.com/eventos",
-        "preview": null,
-        "slides": null
-      },
-      {
-        "post_id": "18150552889543035",
-        "permalink": "https://www.instagram.com/reel/Ddoi9bTR5PO/",
-        "media_type": "VIDEO",
-        "published": "2026-09-23T15:13:51+0000",
-        "flyer": "flyers/18150552889543035-0.webp",
-        "caption": "Esteban y Valery ✨\n\nEstamos listos para este evento que estará Increíble 🥳🥳🥳🥳\n\n26 artistas invitados\n17 horas de talleres\n12 horas de social\n\n🗓️ 31 Oct, 1 y 2 Nov\n📍 Distrito Social\n\nNo te olvides de adquirir tu boleta 🎟️\n\ndistrito-social-academy.com/eventos",
-        "preview": "previews/18150552889543035-0.mp4",
-        "slides": null
-      },
-      {
-        "post_id": "17925664512421185",
-        "permalink": "https://www.instagram.com/reel/Ddl9Dceh7GT/",
-        "media_type": "VIDEO",
-        "published": "2026-09-22T14:30:07+0000",
-        "flyer": "flyers/17925664512421185-0.webp",
-        "caption": "Ricardo y Laura ✨\n\nUna de las parejas más TOP de Bogotá viene con su mejor estilo, movimientos, pedagogía y baile para acompañarnos en nuestro aniversario 🤩🤩🤩\n\n🗓️ 31 Oct, 1 y 2 Nov\n📍 Distrito Social\n\nNo te lo puedes perder, reserva ahora en nuestra web:\n\ndistrito-social-academy.com/eventos",
-        "preview": null,
-        "slides": null
-      },
-      {
-        "post_id": "18133094761730072",
-        "permalink": "https://www.instagram.com/reel/DdjYRcMBpPx/",
-        "media_type": "VIDEO",
-        "published": "2026-09-21T14:30:14+0000",
-        "flyer": "flyers/18133094761730072-0.webp",
-        "caption": "Juanita Quintero ✨\n\nEstamos terminando de alistar todo para nuestro Festival 🥳🥳\n\n🔸 17 horas de Talleres\n🔸 12 horas de Social\n🔸 Salsa - Bachata - Kizomba - Urbano\n\nTraemos lo mejor para todos ustedes, los mejores profes, los mejores artistas, los mejores DJ y la mejor energía para pasarla bueno\n\n🗓️ 31 Oct, 1 y 2 Nov\n📍 Distrito Social - CRA 29 N68-18\n\nNo te quedes sin tu boleta, reserva ahora en:\n\ndistrito-social-academy.com/eventos",
-        "preview": null,
-        "slides": null
-      }
-    ]
-  },
-  {
-    "title": "Distrito Social Aniversario - Juanita Quintero",
-    "event_type": "social",
-    "is_recurring": false,
-    "styles": [
-      "bachata"
-    ],
-    "organizer": "Distrito Social",
-    "venue": "Distrito Social",
-    "address": "CRA 29 N68-18",
-    "area": null,
-    "date": "2026-11-02",
-    "weekday": "lunes",
-    "start_time": null,
-    "end_time": null,
-    "prices": [],
-    "artists": [
-      "Juanita Quintero"
-    ],
-    "activities": [
-      "clase de Bachata Ladies"
-    ],
-    "contact": null,
-    "confidence": "high",
-    "doubts": [
-      "falta hora de inicio",
-      "falta precio"
-    ],
-    "id": "distrito-social-aniversario-juanita-quintero-2-nov",
-    "account": "distritosocialbog",
-    "media": [
-      {
-        "post_id": "17939085588098200",
-        "permalink": "https://www.instagram.com/p/DdEeskQlg4V/",
-        "media_type": "CAROUSEL_ALBUM",
-        "published": "2026-09-09T14:30:01+0000",
-        "flyer": "flyers/17939085588098200-0.webp",
-        "caption": "Juanita Quintero ✨\n\nLa reina del eje cafetero dice presente en nuestro aniversario 🥳🥳🥳 con su increíble clase de Bachata Ladies nos viene a poner a disfrutar al máximo \n\n🗓️ 31 Oct, 1 y 2 Nov\n📍 Distrito Social \n\n¿Ya tienes tu boleta? No dejes que te lo cuenten\n\nReservas en:\ndistrito-social-academy.com/eventos",
-        "preview": null,
-        "slides": null
-      },
-      {
-        "post_id": "18150552889543035",
-        "permalink": "https://www.instagram.com/reel/Ddoi9bTR5PO/",
-        "media_type": "VIDEO",
-        "published": "2026-09-23T15:13:51+0000",
-        "flyer": "flyers/18150552889543035-0.webp",
-        "caption": "Esteban y Valery ✨\n\nEstamos listos para este evento que estará Increíble 🥳🥳🥳🥳\n\n26 artistas invitados\n17 horas de talleres\n12 horas de social\n\n🗓️ 31 Oct, 1 y 2 Nov\n📍 Distrito Social\n\nNo te olvides de adquirir tu boleta 🎟️\n\ndistrito-social-academy.com/eventos",
-        "preview": "previews/18150552889543035-0.mp4",
-        "slides": null
-      },
-      {
-        "post_id": "17925664512421185",
-        "permalink": "https://www.instagram.com/reel/Ddl9Dceh7GT/",
-        "media_type": "VIDEO",
-        "published": "2026-09-22T14:30:07+0000",
-        "flyer": "flyers/17925664512421185-0.webp",
-        "caption": "Ricardo y Laura ✨\n\nUna de las parejas más TOP de Bogotá viene con su mejor estilo, movimientos, pedagogía y baile para acompañarnos en nuestro aniversario 🤩🤩🤩\n\n🗓️ 31 Oct, 1 y 2 Nov\n📍 Distrito Social\n\nNo te lo puedes perder, reserva ahora en nuestra web:\n\ndistrito-social-academy.com/eventos",
-        "preview": null,
-        "slides": null
-      },
-      {
-        "post_id": "18133094761730072",
-        "permalink": "https://www.instagram.com/reel/DdjYRcMBpPx/",
-        "media_type": "VIDEO",
-        "published": "2026-09-21T14:30:14+0000",
-        "flyer": "flyers/18133094761730072-0.webp",
-        "caption": "Juanita Quintero ✨\n\nEstamos terminando de alistar todo para nuestro Festival 🥳🥳\n\n🔸 17 horas de Talleres\n🔸 12 horas de Social\n🔸 Salsa - Bachata - Kizomba - Urbano\n\nTraemos lo mejor para todos ustedes, los mejores profes, los mejores artistas, los mejores DJ y la mejor energía para pasarla bueno\n\n🗓️ 31 Oct, 1 y 2 Nov\n📍 Distrito Social - CRA 29 N68-18\n\nNo te quedes sin tu boleta, reserva ahora en:\n\ndistrito-social-academy.com/eventos",
-        "preview": null,
-        "slides": null
-      }
-    ]
-  },
-  {
     "title": "Concierto",
     "event_type": "concert",
     "is_recurring": false,
@@ -2798,6 +2654,7 @@
     "address": null,
     "area": "Bogotá",
     "date": "2026-11-13",
+    "end_date": "2026-11-15",
     "weekday": "viernes",
     "start_time": null,
     "end_time": null,
@@ -2932,6 +2789,7 @@
     "address": null,
     "area": "Bogotá",
     "date": "2027-03-19",
+    "end_date": "2027-03-21",
     "weekday": "viernes",
     "start_time": null,
     "end_time": null,
