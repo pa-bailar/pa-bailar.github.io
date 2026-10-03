@@ -1,4 +1,4 @@
-// Subscribable calendar feed (/calendario.ics, iCalendar RFC 5545), rebuilt with the site every day.
+// Subscribable calendar feed (/calendario.ics, iCalendar RFC 5545), rebuilt with every deploy.
 // Subscribed calendars refresh on their own schedule (Google: every 12–24 h).
 
 import type { APIRoute } from "astro";

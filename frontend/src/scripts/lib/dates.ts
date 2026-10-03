@@ -25,8 +25,10 @@ export function currentMonth(): Date {
   return startOfMonth(parseIsoDate(todayIso()));
 }
 
+/** Calendar days, not 24-hour steps: a day across a DST change (the visitor's timezone) is 23 or 25 hours. */
 export function addDays(iso: string, days: number): string {
-  return toIsoDate(new Date(parseIsoDate(iso).getTime() + days * DAY_MS));
+  const date = parseIsoDate(iso);
+  return toIsoDate(new Date(date.getFullYear(), date.getMonth(), date.getDate() + days));
 }
 
 function startOfMonth(date: Date): Date {
