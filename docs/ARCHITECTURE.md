@@ -277,11 +277,14 @@ flowchart TD
   Only values present in the current view are offered, so a chip never leads to an empty list.
 - **"Próximos"** groups upcoming events by period: today, this week, this weekend, next week, the rest
   of the month, then one group per month for the next six months, and one per year beyond that
-  (`groupByPeriod`). On phones, cards read like an Instagram feed.
+  (`groupByPeriod`). On phones, cards read like an Instagram feed. An event over several days (`end_date`)
+  is upcoming until its last day, and once it has started it's listed under "Hoy" every day it goes on
+  (`shownDay` in `lib/dates.ts`).
   Long lists stay short where it matters: the near periods show their flyers in full (six, then "Ver N más"),
   and later periods start as a summary row ("Ver los 23 eventos"); `DESIGN.md`, "Long lists".
 - **"Calendario"** shows a month grid. Dots mark days with events, Colombian holidays are tinted, and
-  the selected day's events are listed below.
+  the selected day's events are listed below. An event over several days is on each of its days
+  (`groupByDay`), across months too: a festival from 31 October to 2 November shows in both months.
 - **Keeping your place:**
   - when a filter changes while you're reading the list, the period you were in stays under the bar;
   - each view remembers its scroll position, so switching to the calendar and back returns you to the
@@ -348,6 +351,11 @@ stateDiagram-v2
   `todayIso`, with `Intl` and `America/Bogota`). Bogotá is UTC−5 all year.
 - **Times** are shown in 12-hour format ("8:00 p. m.") and stored as `HH:MM` 24-hour. The ICS feed uses
   the `America/Bogota` time zone.
+- **Events over several days** (`end_date`, `docs/DATA.md`): `lib/dates.ts` has `lastDay`, `isMultiDay`,
+  `daysOf` and `shownDay`. They're past only after their last day (the event page's "Este evento ya
+  pasó"). Calendars (`eventTimes`, the ICS feed) get them as all-day events from the first day to the day
+  after the last, as the format's end is exclusive (13–15 November: `DTSTART;VALUE=DATE:20261113`,
+  `DTEND;VALUE=DATE:20261116`); schema.org's `endDate` is the last day.
 - **Adding days** (`addDays`) moves the calendar date, not 24-hour steps, so "Mañana" and "Próxima
   semana" stay right for a visitor whose time zone has daylight saving time.
 - **Colombian holidays** (`lib/holidays.ts`) are calculated, not downloaded:
@@ -380,7 +388,7 @@ only Instagram content it loads is a post's player, and only when a visitor taps
 
 | Check | What it verifies | Where |
 |---|---|---|
-| Data contract | Every field of `events.json` and `meta.json`: types, allowed values (event types, styles, confidence), real dates and time formats, unique ids, usernames, post links (`instagram.com/<p, reel, reels or tv>/<code>/`), flyer and clip paths (inside `flyers/` and `previews/`) and their files existing, sorting | `frontend/scripts/check-data.mjs` |
+| Data contract | Every field of `events.json` and `meta.json`: types, allowed values (event types, styles, confidence), real dates and time formats, `end_date` after `date` and within 7 days, unique ids, usernames, post links (`instagram.com/<p, reel, reels or tv>/<code>/`), flyer and clip paths (inside `flyers/` and `previews/`) and their files existing, sorting | `frontend/scripts/check-data.mjs` |
 | Types | `astro check`: strict TypeScript, including `noUncheckedIndexedAccess` | `tsconfig.json` |
 | Color contrast | Every color pair the site uses, in both themes, against WCAG 2.2 AA. It reads the tokens from `tokens.css`, so it can't drift from the design system | `frontend/scripts/check-contrast.mjs` |
 | Unit tests | Dates and Bogotá's "today", formatting, filtering and period grouping, holidays | `frontend/tests/*.test.ts` (Vitest) |
