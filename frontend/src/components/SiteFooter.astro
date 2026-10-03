@@ -1,17 +1,13 @@
 ---
 import Stripes from "./Stripes.astro";
 import { ICONS } from "../scripts/lib/icons";
-import { BASE_URL, feedbackUrl } from "../scripts/lib/links";
+import { feedbackUrl } from "../scripts/lib/links";
 
 interface Props {
   accounts: string[];
 }
 
 const { accounts } = Astro.props;
-// Subscribe links for the daily calendar feed (pages/calendario.ics.ts).
-const feedUrl = new URL(`${BASE_URL}calendario.ics`, Astro.site);
-const webcalUrl = feedUrl.href.replace(/^https?:/, "webcal:");
-const googleUrl = `https://calendar.google.com/calendar/r?cid=${encodeURIComponent(webcalUrl)}`;
 // The version, set by the deploy workflow (scripts/release.mjs), linked to what changed in it. Local builds have none.
 const version = import.meta.env.PUBLIC_VERSION;
 const releaseUrl = version ? `https://github.com/pa-bailar/pa-bailar.github.io/releases/tag/v${version}` : null;
@@ -29,14 +25,6 @@ const releaseUrl = version ? `https://github.com/pa-bailar/pa-bailar.github.io/r
       Los datos se leen automáticamente desde Instagram, así que pueden tener errores: confírmalos siempre en
       la publicación original. Los flyers son de cada academia de baile u organizador.
     </p>
-    <div class="site-footer__subscribe">
-      <p><Fragment set:html={ICONS.calendar} /> Suscríbete y los eventos nuevos aparecen solos en tu calendario:</p>
-      <p class="site-footer__links">
-        <a href={googleUrl} target="_blank" rel="noopener" data-track="suscripcion-google">Google Calendar</a>
-        <a href={webcalUrl} data-track="suscripcion-ical">iPhone y otros calendarios</a>
-      </p>
-      <p class="site-footer__note">Tu calendario lo actualiza una o dos veces al día.</p>
-    </div>
     <details class="site-footer__sources">
       <summary><Fragment set:html={ICONS.instagram} /> Fuentes: {accounts.length} cuentas de Instagram</summary>
       <p class="site-footer__links">

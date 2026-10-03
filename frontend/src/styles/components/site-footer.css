@@ -1,4 +1,4 @@
-/* Site footer: disclaimer, calendar subscription and source accounts. */
+/* Site footer: disclaimer, source accounts, install, feedback, author and version. */
 
 .site-footer {
   padding-bottom: var(--space-6);
@@ -21,15 +21,6 @@
 
 .site-footer .icon {
   vertical-align: -0.2em;
-}
-
-.site-footer__subscribe {
-  display: grid;
-  gap: var(--space-1);
-}
-
-.site-footer__note {
-  font-size: var(--text-xs);
 }
 
 .site-footer__links {
