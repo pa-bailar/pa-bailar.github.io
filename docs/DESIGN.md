@@ -120,7 +120,7 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves. The pa
 ## Info and footer
 
 - **"Info"** sits after the view tabs and looks like one, but it's a link to the footer (`#info`), never selected and outside the tab list for screen readers.
-- **The footer is "Sobre Pa' Bailar"**: a heading in Bodoni italic, a one-line description, the disclaimer, the sources, installing the app, "Escríbenos" (the report form), and at the bottom "Hecho por @jzamora5" (GitHub) with the version on the right. Each line has its icon.
+- **The footer is "Sobre Pa' Bailar"**: a heading in Bodoni italic, a one-line description, the disclaimer, the sources (every Instagram account the sweep reads, from `meta.json`), installing the app, "Escríbenos" (the report form), and at the bottom "Hecho por @jzamora5" (GitHub) with the version on the right. Each line has its icon.
 
 ## Sharing
 

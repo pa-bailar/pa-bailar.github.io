@@ -29,5 +29,6 @@ export const events: DanceEvent[] = await Promise.all(
 );
 export const meta = rawMeta as Meta;
 
-/** The academies that have events, for the footer's source list. */
-export const accounts = [...new Set(events.map((event) => event.account))].sort();
+/** Every account the sweep reads, for the footer's source list, with or without upcoming events. Data
+ * written before meta.json listed them falls back to the accounts that have events. */
+export const accounts = [...new Set([...(meta.accounts ?? []), ...events.map((event) => event.account)])].sort();

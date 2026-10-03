@@ -12,7 +12,7 @@ repositories (backend first, behind the new version).
 | File | Written by | Read by | Content |
 |---|---|---|---|
 | `data/events.json` | backend | frontend (build) | Array of events, sorted by date and start time |
-| `data/meta.json` | backend | frontend (build) | `schema_version`, `generated_at` (Bogotá time) and stats of the last sweep that changed data. Only committed with a real change; the site's "Actualizado el" uses the daily check time passed by the deploy, falling back to `generated_at`. |
+| `data/meta.json` | backend | frontend (build) | `schema_version`, `generated_at` (Bogotá time), `accounts` (every Instagram account the sweep reads, sorted; the footer's sources, including those without upcoming events; optional for older data) and stats of the last sweep that changed data. Only committed with a real change; the site's "Actualizado el" uses the daily check time passed by the deploy, falling back to `generated_at`. |
 | `data/flyers/*.webp` | backend | frontend (static files) | Flyer copies, max 1080×1350, WebP q80 |
 
 

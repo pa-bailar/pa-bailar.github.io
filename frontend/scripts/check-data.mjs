@@ -30,6 +30,7 @@ const isStringList = (value) => Array.isArray(value) && value.every((item) => ty
 const meta = read("meta.json");
 check(meta.schema_version === 1, "meta.json", `schema_version ${meta.schema_version}, expected 1`);
 check(isString(meta.generated_at) && !Number.isNaN(Date.parse(meta.generated_at)), "meta.json", "bad generated_at");
+check(meta.accounts === undefined || isStringList(meta.accounts), "meta.json", "accounts must be a list of usernames");
 
 const events = read("events.json");
 check(Array.isArray(events), "events.json", "must be an array");
