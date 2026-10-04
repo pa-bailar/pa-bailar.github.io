@@ -156,8 +156,8 @@ flowchart LR
 
 | Output | Source | What it is |
 |---|---|---|
-| `/` (`index.html`) | `pages/index.astro` | The app: header, toolbar, jump bar, both views, dialog, filter sheet. Every event is embedded as JSON (`<script type="application/json" id="events-data">`), and the browser renders the cards and calendar from it. The preview image is the brand's own (`/og/sitio.jpg`), not an event's flyer |
-| `/evento/<id>/` | `pages/evento/[id].astro` | One page per event: where a shared link points. A browser is forwarded to the home page with the event open (section 5.3). Rendered at build time with the same markup as the dialog. Includes the link preview's tags (section 3.4) and schema.org `Event` data for search engines |
+| `/` (`index.html`) | `pages/index.astro` | The app: header, toolbar, jump bar, both views, details drawer, filter sheet. Every event is embedded as JSON (`<script type="application/json" id="events-data">`), and the browser renders the cards and calendar from it. The preview image is the brand's own (`/og/sitio.jpg`), not an event's flyer |
+| `/evento/<id>/` | `pages/evento/[id].astro` | One page per event: where a shared link points. A browser is forwarded to the home page with the event open over the list, unless it's past (section 5.3). Rendered at build time: the flyer, then the same details as the drawer. Includes the link preview's tags (section 3.4) and schema.org `Event` data for search engines |
 | `/og/<id>.jpg` | `pages/og/[id].jpg.ts` | Each event's link-preview image: 1200×630, the flyer with the date, title, place and price (section 3.4) |
 | `/og/sitio.jpg` | `pages/og/sitio.jpg.ts` | The home page's link preview (1200×630): stripes, "Pa' Bailar", the tagline and the record. Drawn once with the site's fonts by `scripts/og-site.html` and stored as `src/assets/og-site.jpg` |
 | `/thumbs/<flyer>.webp` | `pages/thumbs/[name].webp.ts` | A 160 px square thumbnail of every flyer, for the sheet with an event's posts (opened from the "▦ 16" badge on the flyer). A few KB each instead of the 100–200 KB flyer, so they show at once on a phone |
@@ -183,7 +183,7 @@ flowchart TD
 ```
 
 **Shared code between build and browser:** the views in `src/scripts/` produce HTML strings, so the same
-code renders an event's detail in the browser (the dialog) and at build time (the event page).
+code renders an event's detail in the browser (the details drawer) and at build time (the event page).
 
 ### 3.3 The Content Security Policy
 
@@ -322,52 +322,58 @@ sequenceDiagram
     I->>I: theme: dark if saved, else light
     H->>M: module script after parsing
     M->>M: events = JSON from #events-data
-    M->>M: theme toggle, event dialog, jump bar, view switch, click tracking
+    M->>M: theme toggle, details drawer, clips' sound, jump bar, view switch, click tracking
     M->>V: render(): filters, Próximos or Calendario, jump bar, view switch
 ```
 
 - **No data request:** the events arrive inside the HTML, so the first render needs no network.
   The flyers load lazily as they come into view.
 - **One delegated click listener** in `main.ts` handles every control marked with a `data-*` attribute:
-  view, type, style, date, academy, clear filters, day, month, today, event.
+  view, a filter chip (`data-filter` + `data-value`), academy, clear filters, clear search, ⚙, day, month, today,
+  event, a card's posts.
 
 ### 5.2 State and rendering
 
 ```mermaid
 flowchart TD
-    ST["AppState (state.ts)<br/>view · typeFilter · styles · dates ·<br/>accountFilter · query · savedOnly · month · selectedDay"]
+    ST["AppState (state.ts)<br/>view · types · styles · dates ·<br/>accountFilter · query · savedOnly · month · selectedDay"]
     CLICK["Click on a data-* control<br/>(main.ts handleClick)"] --> ST
     ST --> R["render()"]
-    R --> F["filters.ts<br/>date, type and style chips<br/>(toolbar and filter sheet)"]
+    R --> F["filters.ts<br/>filterModel → the bar's chips and line,<br/>the filter sheet, the toolbar's rows"]
     R --> U["upcomingView.ts<br/>Próximos: events grouped by period"]
     R --> C["calendarView.ts<br/>Calendario: month grid + the day's events"]
-    R --> J["jumpBar.ts<br/>phones: ⚙ · dates ▾ · rhythm ▾"]
+    R --> J["jumpBar.ts<br/>phones: the sticky bar, search, keeping your place"]
     R --> VS["viewSwitch.ts<br/>phones: floating calendar / list button"]
     U --> CARD["eventCard.ts"]
     C --> CARD
-    CARD -- "tap" --> DLG["eventDialog.ts<br/>viewer: swipe between events"]
+    CARD -- "tap" --> DLG["eventDrawer.ts<br/>details drawer over the list"]
     DLG --> DET["eventDetail.ts"]
 ```
 
 - **The state is a plain object** (`state.ts`), and every change re-renders the visible parts. There's
   no framework: the views return HTML strings, inserted with `innerHTML` after escaping every value from
   the data (`lib/dom.ts`, `escapeHtml`).
-- **Filtering** (`matchesFilters`): an event must pass every group (AND), and within the rhythms and the dates
-  any choice will do (OR):
+- **Filtering** (`matchesFilters`): an event must pass every group (AND), and within the dates, the types and the
+  rhythms any choice will do (OR):
   - **Dates** (`dates`, several): periods of the list ("hoy", "fin-de-semana", "2026-11"…) plus "manana"
     (`TOMORROW`). An event matches when any of its days from today falls in a chosen period (`matchesDates`), so an
     event over several days counts in each period it runs through. The list then shows it on its first such day
     (`listedDay`), and `groupByPeriod` gives "Mañana" a group of its own when it's chosen. Upcoming list only: the
     calendar ignores them.
-  - **Type** (`typeFilter`, one): social, workshop…
+  - **Types** (`types`, several): social, workshop…
   - **Rhythms** (`styles`, several): filtering by a family ("salsa") also matches its variants ("salsa caleña").
   - **Academy:** set by tapping an academy's name on a card.
   - **Search** and **Guardados**.
 
-  The options (`filterOptions` in `views/filters.ts`, `dateOptions` in `state.ts`) are counted against the other
-  groups (`matchesFilters(event, state, except)`): an option that would add nothing isn't offered, so a choice never
-  leads to an empty list; chosen ones stay so they can be unchosen. Filters live only in memory: not in the URL or
-  storage, as before (`DESIGN.md`, "Filters").
+  The options (`filterModel` in `views/filters.ts`, pure and tested; `dateOptions` in `state.ts`) exist by the events in
+  view before any filter, in a stable order, so chips never move; each is counted against the other groups
+  (`matchesFilters(event, state, except)`), and one with nothing to show is `dimmed` (unless chosen), not hidden. The
+  model also gives the bar's chips (`quickDates`, `quickStyles`: Salsa, Bachata, Urbano, Tango, fixed), every choice
+  in use (`applied`) and those without a chip of their own (`extra`, removable chips after ⚙), ⚙'s badge (`active`,
+  `activeFilterCount`: every choice; dates only in the list) and the count shown (`shown`). `summaryLine` writes the
+  line under the bar ("12 eventos · Finde, Salsa"; in the calendar "5 eventos en octubre · Salsa"). `clearFilters`
+  ("Limpiar") clears dates, rhythms, types and the academy, not the search nor Guardados. Filters live only in memory:
+  not in the URL or storage, as before (`DESIGN.md`, "Filters").
 - **"Próximos"** groups upcoming events by period: today, this week, this weekend, next week, the rest
   of the month, then one group per month for the next six months, and one per year beyond that
   (`groupByPeriod`). On phones, cards read like an Instagram feed. An event over several days (`end_date`)
@@ -379,65 +385,84 @@ flowchart TD
   the selected day's events are listed below. An event over several days is on each of its days
   (`groupByDay`), across months too: a festival from 31 October to 2 November shows in both months.
 - **Keeping your place:**
-  - when a filter changes while you're reading the list, the period you were in stays under the bar;
+  - when a filter changes while you're reading the list, the period you were in (the lowest one crossing a band
+    under the bar, measured just before: `captureListPosition`) stays under the bar;
   - each view remembers its scroll position, so switching to the calendar and back returns you to the
     same spot.
 
-### 5.3 The event viewer and URLs
+### 5.3 The details drawer and URLs
 
 ```mermaid
 stateDiagram-v2
     [*] --> List
-    List --> Viewer: tap a card, "Detalles" or its line / pushState /evento/<id>/
-    Viewer --> Viewer: swipe, ‹ ›, arrow keys (or another card, side panel) / replaceState /evento/<other id>/
-    Viewer --> List: ×, Escape, drag down, or back
+    List --> Drawer: tap a card (its photo flyer too), "Detalles" or its line / pushState /evento/<id>/
+    Drawer --> Drawer: another card (side panel) / replaceState /evento/<other id>/
+    Drawer --> List: ×, the scrim, Escape, drag down, or back (all through history.back)
     [*] --> EventPage: a shared link, or a link opened in a new tab
-    EventPage --> Viewer: forwards to /?evento=<id>, the list behind
+    EventPage --> Drawer: forwards to /?evento=<id>: the list at its card, the drawer over it
+    EventPage --> EventPage: a past event (Bogotá's date) or ?pagina: it stays
 ```
 
-- **The viewer is a `<dialog>`** with one slide per event on screen, in list order. Swiping uses CSS
-  scroll snapping. Each slide carries its own bar (‹ "3 de 9" › ×) and the detail laid out as a sheet
-  (`eventSheetHtml`: thumbnail, title, quick actions, then the details). Two modes, chosen when it opens and
-  switched if the window crosses 900px while open (`eventDialog.ts`, `showDialog` / `swapMode`):
+- **The drawer is one `<dialog>`** (`EventDrawer.astro`, `views/eventDrawer.ts`) with one event's details in it
+  (`eventDrawerHtml`: the head with when, the title, the type, the account and ×; then the quick actions and the
+  details). No flyer: the card is right there. Two modes, chosen when it opens and switched if the window crosses
+  900px while open (`show` / `swapMode`):
 
   ```mermaid
   stateDiagram-v2
-      state "Sheet (phones, under 900px; modal)" as Sheet {
+      state "Drawer (phones, under 900px; modal)" as Sheet {
           [*] --> Medium
-          Medium --> Full: pull or scroll up, tap the handle, mouse drag
-          Full --> Medium: pull or scroll down, tap the handle
+          Medium --> Full: pull up, scroll the content, wheel, the handle, keyboard focus below the fold
+          Full --> Medium: pull down from the bar or the content's top, wheel up at the top, the handle
       }
       state "Side panel (900px and wider; not modal)" as Panel
       [*] --> Sheet: showModal()
       [*] --> Panel: show(), html.has-viewer-panel
-      Sheet --> [*]: ×, Escape, back, drag down from Medium
+      Sheet --> [*]: ×, scrim, Escape, back, drag down from Medium
       Panel --> [*]: ×, Escape, back
   ```
 
-  - **Sheet:** each slide scrolls vertically, the flyer first (sticky) and the sheet after it, at least as tall as the
-    screen. Scrolled to the top it's the half sheet ("medium": the flyer gets `--viewer-peek`, the sheet the other
-    58%); scrolled by the flyer's height it's the full sheet. So touch uses the browser's own scrolling, with CSS
-    scroll snapping (`proximity`) at the two heights; a mouse or pen dragging the bar follows the pointer (pointer
-    events) and `settle` (`views/viewerSheet.ts`, tested) picks the height or closes. Dragging down from the half
-    sheet closes it (`lib/sheet.ts`). The height is the current slide's scroll (`detentAt`), kept on the dialog
-    (`data-detent`) and given to the neighbors, so swiping keeps it. The full sheet pauses the clip it covers.
+  - **Drawer:** the dialog covers the screen (`overflow: clip`, so focusing inside never scrolls it) with its own
+    scrim (`--scrim`, its opacity following the drawer: 32% at half height, 55% at full) and the panel, moved by
+    `--drawer-y` (its offset below full height). Its geometry and gestures are pure functions in
+    `views/drawerSheet.ts` (tested): `offsetFor` (half height: the lower 55%; full: 12px from the top), `scrimAt`,
+    `settle` (a flick of 0.5 px/ms goes its way; else past max(110px, 22% of the screen) below half height closes,
+    else the nearer height; from full, a pull down lands at half), `exitDuration` (160–280ms) and `cardScrollDelta`
+    (how far the list moves so the tapped card stays in view: only when it would be mostly hidden, then its flyer
+    goes under the bar). Touch: at half height every vertical drag moves the drawer (`touch-action: none`); at full
+    the content scrolls natively and the drawer follows the finger from its bar, or from the content's top pulling
+    down. A mouse or pen drags the bar (pointer capture once it's a drag, so the handle's tap still works). Rise
+    320ms, settle 300ms, CSS transitions; no motion with reduced motion.
+  - **Modal:** `showModal()` makes the list inert and `html:has(dialog:modal)` stops it scrolling. The dialog has
+    `autofocus`, so opening focuses the dialog itself, not its handle (which is still below the screen: focusing it
+    scrolled the list); then the title takes the focus. Closing gives it back to what opened it.
   - **Side panel:** fixed on the right (`--panel-width`), opened with `show()` so the page stays usable; the page
     leaves room for it (`.has-viewer-panel`), the open event's card is outlined (`highlightCurrentCard`, also after
     each render), and Escape is handled by the page (a non-modal dialog doesn't get it). A card tapped while it's
     open shows its event there and replaces the URL.
-  - **Focus:** opening focuses the dialog; closing gives the focus back to what opened it (the card or its
-    "Detalles").
-- **Only three slides have content:** the current event and its two neighbors (`views/viewerWindow.ts`). The
-  others are empty slides of the same width, filled as a swipe gets near them; closing the viewer empties them
-  all. Rendering every slide loaded every flyer of the list at once, which made iPhones close the page
-  (section 5.7).
-- **The address bar follows the event:**
-  - opening pushes the event's own URL to the history, so the phone's back button closes the viewer;
-  - swiping replaces it, so back still closes instead of stepping through events;
-  - every event's URL is a real page (`/evento/<id>/`), so copying the address shares the event.
-- **A shared link opens the app:** the event's page forwards a browser to the home page with `?evento=<id>`, which opens that event in the viewer with the list behind it (`main.ts`, `openSharedEvent`). Link previews and search engines read the event's page itself (they don't run scripts).
-- **The event page** (`eventPage.ts`) is already rendered at build time; a browser leaves it for the app
-  at once. Its script only adds the theme toggle, the sheet with an event's posts, and click tracking.
+- **Every close goes through the history:** ×, the scrim, Escape and a drag call `history.back()`, and the
+  `popstate` slides it away from where the finger left it (`requestClose` → `leave`); the back button does the same.
+  Safari's edge swipe (`hasUAVisualTransition`) closes it at once. Back from a sheet over the drawer (posts, a post)
+  lands on the same event, and the drawer stays.
+- **One event, nothing kept:** only the open event's details are rendered, with no image; closing empties the
+  drawer (section 5.7).
+- **The address bar follows the event:** opening pushes the event's own URL (`/evento/<id>/`), so the phone's back
+  button closes it; every event's URL is a real page, so copying the address shares the event.
+- **A shared link opens the app:** the event's page forwards a browser to `/?evento=<id>` (its inline script, unless
+  the event is past in Bogotá's date, or `?pagina` is set). `openSharedEvent` (`main.ts`) takes the parameter off the
+  address (keeping the others, like `utm_source`), finds the event's card (`sharedEventEntry`, `upcomingView.ts`:
+  its period opened whole first if it's summarized or past "Ver N más"), waits for the fonts and a laid-out frame,
+  then opens the drawer with the list scrolled to the card (`shared`: its flyer loads at once) and counts
+  `detalles-enlace`. An event not in the list goes back to its page with `?pagina=1`. Link previews and search
+  engines read the event's page itself (they don't run scripts).
+- **The event page** (`eventPage.ts`) is already rendered at build time (the flyer, then the drawer's details); a
+  browser leaves it for the app at once. Its script adds the theme toggle, the clips, the posts sheet and media
+  viewer, and click tracking.
+- **The media:** "Ver el video con sonido" and "Ver las 4 imágenes" open the post in the media viewer
+  (`postViewer.ts`, Instagram's player); "Ver las 3 publicaciones" and a card's "▦ 3" open the posts sheet
+  (`postsSheet.ts`), whose chosen post opens in the media viewer in its place (`openPanelSheet(…, { replacing })`
+  takes over the sheet's history entry). On the event page, the flyer still plays a video in place
+  (`inlinePlayer.ts`).
 - **The actions** are plain links built in `lib/links.ts`:
   - "Ver en Instagram" opens the post;
   - "Compartir" opens the phone's share menu with the event's text and page URL (`views/sharing.ts`);
@@ -450,7 +475,9 @@ stateDiagram-v2
   while images load.
 - **Taller flyers, and every card on wide screens,** get a 4:5 frame, with the flyer fitted whole over a
   blurred copy of itself.
-- **Lazy loading:** every card image uses `loading="lazy"` and `decoding="async"`.
+- **Lazy loading:** every card image uses `loading="lazy"` and `decoding="async"` (a shared link's card loads at once).
+- **Videos' clips in the feed:** a card whose image is a video with a clip shows a `<video data-clip>` with the flyer as
+  its poster, played silent by `views/clips.ts` (section 5.7); a tap there toggles its sound (`initClipSound`).
 
 ### 5.5 Installing, saving and searching
 
@@ -472,8 +499,8 @@ stateDiagram-v2
   The rule and colors live in `scripts/themeConfig.ts`, shared by both; `tests/theme.test.ts` runs the inline
   script against the same cases.
 - **Colors** are CSS tokens with `light-dark()` (`styles/tokens.css`); [`DESIGN.md`](DESIGN.md) has
-  them all. The dark theme adds its lighting (`--stage-light`, `--grain`, painted by `base.css`) and re-sets the
-  colors inside the calendar (a `[data-theme=dark] .calendar` block); `check-contrast.mjs` checks all three.
+  them all. The dark theme adds its lighting (`--stage-light`, `--grain`, painted by `base.css`); the calendar uses
+  the same colors. `check-contrast.mjs` checks every pair in both themes.
 
 ### 5.7 iPhone (Safari)
 
@@ -481,20 +508,19 @@ Every browser on an iPhone is Safari's engine (WebKit), with its own limits:
 - **Memory.** iOS closes a tab that uses too much memory ("A problem repeatedly occurred on…", the page
   reloads), with no error the page can catch. Decoded images are the big cost: a 1080×1350 flyer is about
   6 MB once decoded, whatever its file size. So:
-  - the viewer renders only the current event and its neighbors (section 5.3). Before, opening any event
-    rendered a slide per event in the list: 35 flyers (about 190 MB decoded) and every clip, loaded at once,
-    and kept after closing. Measured in WebKit with an iPhone profile: opening an event took the page from
-    100 MB to 235 MB, and four open/close rounds to 573 MB; now 118 MB and 215 MB;
-  - the one-time swipe nudge animates only those rendered slides;
-  - the viewer's sheet adds only a 160 px thumbnail per rendered slide (`/thumbs/`, a few KB); the flyer above the
-    sheet is the slide's own image, not a second copy. A step with ‹ › that fills slides on its way trims back to
-    three once it settles;
-  - videos' clips (`views/clips.ts`): `preload="none"`, muted, `playsinline`, one playing at a time; a clip that
-    leaves the page is released (unwatched, its `src` removed and reloaded), so its decoder and buffers go;
-  - Instagram's player (an iframe) is removed when its slide goes off screen, when the viewer closes and when
-    the post sheet closes.
-- **One bad event can't break the viewer:** a slide that fails to render shows a link to the event's page
-  instead (`eventDialog.ts`).
+  - the details drawer renders one event's text and no image at all: the flyer is the card's, already on screen
+    (section 5.3). Closing it empties it. (An earlier viewer rendered a slide per event of the list, 35 flyers and
+    every clip at once: about 190 MB decoded, which made iPhones close the page; then the current event and its
+    neighbors, with their flyers again over the list.)
+  - videos' clips (`views/clips.ts`), in the feed and on an event's page: `preload="none"`, muted, `playsinline`,
+    one playing at a time (≤ 1 clip decoding); a clip that leaves the screen pauses, goes silent and unloads (its
+    `src` set aside and the video reloaded empty, put back when it's seen again); a clip whose card is redrawn away is
+    released. Something over the list holds them (`holdClips`): the full drawer covers them, and the media viewer
+    plays the post with sound;
+  - Instagram's player (an iframe) is removed when the media viewer closes, and on an event's page when the video
+    playing in place goes off screen.
+- **One bad event can't break the drawer:** if its details fail to render, it shows a link to the event's page
+  instead (`eventDrawer.ts`).
 - **Installing** has no browser dialog: the page is added from the share menu. Where that menu is depends on
   the browser and the version, so `lib/installPlace.ts` reads the user agent:
   - Safari 26 (iOS 26 reports itself as iOS 18.6, so Safari's own `Version/26` tells): ⋯ at the bottom right →
@@ -543,8 +569,8 @@ Every browser on an iPhone is Safari's engine (WebKit), with its own limits:
 | Service | What for | Data sent | If it's down |
 |---|---|---|---|
 | **GitHub Pages** | Hosting | | The site is down |
-| **GoatCounter** (`jzamora9.goatcounter.com`) | Visit statistics, without cookies or personal data, so no consent banner is needed | Page views. Each event opened in the viewer, as a view of its page. Where details were opened from, as events: `detalles-tarjeta` (the card), `detalles-boton` (its "Detalles"), `detalles-linea` (the line under it), `detalles-enlace` (a shared link; `detailsEventName`). Clicks on elements with `data-track` (Instagram, the contact links, "Cómo llegar", sharing, including `compartir-tarjeta` from a card's row, saving, installing, reports). Local testing isn't counted. Its script (`count.js`) is a copy served from the site (`src/vendor/goatcounter-count.js`, ISC license), not loaded from `gc.zgo.at`: the policy (section 3.3) then allows no other script host, and GoatCounter keeps its `/count` endpoint compatible, so the copy needs no updates | Nothing breaks: the script is optional and wrapped in `try` (`lib/analytics.ts`) |
-| **Instagram embed** (`instagram.com/embed.js`) | Showing a post inside the site when a visitor taps a flyer (videos play, carousels swipe) | Loaded only on that tap, never with the page: the post's link; Instagram's player then runs as Meta's code (and cookies) inside its frame | Our copy of the flyer stays, with "Abrir en Instagram" (also when a post's link can't be read) |
+| **GoatCounter** (`jzamora9.goatcounter.com`) | Visit statistics, without cookies or personal data, so no consent banner is needed | Page views. Each event opened in the details drawer, as a view of its page. Where details were opened from, as events: `detalles-tarjeta` (the card), `detalles-boton` (its "Detalles"), `detalles-linea` (the line under it), `detalles-enlace` (a shared link; `detailsEventName`). Clicks on elements with `data-track` (Instagram, the contact links, "Cómo llegar", sharing, including `compartir-tarjeta` from a card's row, saving, installing, reports). Local testing isn't counted. Its script (`count.js`) is a copy served from the site (`src/vendor/goatcounter-count.js`, ISC license), not loaded from `gc.zgo.at`: the policy (section 3.3) then allows no other script host, and GoatCounter keeps its `/count` endpoint compatible, so the copy needs no updates | Nothing breaks: the script is optional and wrapped in `try` (`lib/analytics.ts`) |
+| **Instagram embed** (`instagram.com/embed.js`) | Showing a post inside the site (the media viewer: "Ver el video con sonido", a post chosen among the event's posts, an event page's flyer; videos play, carousels swipe) | Loaded only on that tap, never with the page: the post's link; Instagram's player then runs as Meta's code (and cookies) inside its frame | Our copy of the flyer stays, with "Abrir en Instagram" (also when a post's link can't be read) |
 | **Google Fonts** | Shrikhand, Bodoni Moda (italic) and Instrument Sans | The font request | System fonts are used |
 | **Instagram, WhatsApp, Google Maps** | Links the visitor chooses to open | Only what's in the link | |
 | **Google Forms** (the author's account) | Reports and ideas: "¿Algo está mal? Repórtalo" in each event's detail (the event filled in, `lib/links.ts`, `feedbackUrl`) and "Escríbenos" in the footer. No account needed; answers go to a Google Sheet and an email | What the visitor writes, and the event it's about | Nothing on the site: it's a link |
@@ -561,7 +587,7 @@ only Instagram content it loads is a post's player, and only when a visitor taps
 | Data contract | Every field of `events.json` and `meta.json`: types, allowed values (event types, styles, confidence), real dates and time formats, `end_date` after `date` and within 7 days, unique ids, usernames, post links (`instagram.com/<p, reel, reels or tv>/<code>/`), flyer and clip paths (inside `flyers/` and `previews/`) and their files existing, sorting | `frontend/scripts/check-data.mjs` |
 | Types | `astro check`: strict TypeScript, including `noUncheckedIndexedAccess` | `tsconfig.json` |
 | Color contrast | Every color pair the site uses, in both themes, against WCAG 2.2 AA. It reads the tokens from `tokens.css`, so it can't drift from the design system | `frontend/scripts/check-contrast.mjs` |
-| Unit tests | Dates and Bogotá's "today", formatting, filtering (rhythms and dates, "Mañana", the options and their counts) and period grouping, holidays, the policy check, where the visitor can install from and its steps, which viewer slides are rendered, the viewer sheet's two heights (`detentAt`, `settle`), what the details add (a card's line, the sheet's order and price line), the analytics names for opened details, things shown once (`onceFlag`, with and without storage), link previews (their text, the image's version, one image drawn with and one without a flyer), the theme (the saved value, old ones, and the script before first paint) | `frontend/tests/*.test.ts` (Vitest) |
+| Unit tests | Dates and Bogotá's "today", formatting, filtering (rhythms and dates, "Mañana", the options and their counts) and period grouping, holidays, the policy check, where the visitor can install from and its steps, the filter chips (`filterModel`: the bar's chips, dimmed vs hidden options, multiple types, removable chips, the badge, the line, the calendar's line; "Limpiar"'s scope; empty results), the drawer (`drawerSheet.ts`: its heights, scrim, where a drag ends and the ways it closes, keeping the tapped card in view), a shared link's entry (`sharedEventEntry`: the period to open, or the page for a past event), what the details add (a card's line, the drawer's order, no image, its media links and price line), the analytics names for opened details, things shown once (`onceFlag`, with and without storage), link previews (their text, the image's version, one image drawn with and one without a flyer), the theme (the saved value, old ones, and the script before first paint) | `frontend/tests/*.test.ts` (Vitest) |
 | Build | Every page, image and feed is generated; every page's Content Security Policy allows its inline scripts and styles, and no page has a `style=""` attribute (section 3.3); every event's link preview has its tags and a 1200×630 JPEG under 280 KB (section 3.4) | `npm run build`, `frontend/scripts/csp-meta.mjs`, `frontend/scripts/og-check.mjs` |
 
 All five run in `ci` on every pull request, and the ruleset requires `ci` before merging.
@@ -597,7 +623,7 @@ frontend/
       calendario.ics.ts   the calendar feed (no longer linked)
       404.astro
     components/           SiteHeader, ThemeToggle, Stripes, ViewToolbar, ViewSwitch, JumpBar, FilterSheet,
-                          CalendarView, EventDialog, PostsSheet, PostViewer, InstallOffer, SiteFooter
+                          CalendarView, EventDrawer, PostsSheet, PostViewer, InstallOffer, SiteFooter
     scripts/
       main.ts             entry point of the home page: state, clicks, render
       eventPage.ts        entry point of an event's page
@@ -605,9 +631,9 @@ frontend/
       screenHistory.ts    the phone's back between the app's screens
       types.ts            DanceEvent, EventMedia, Meta, AppState (mirror of the backend's models)
       theme.ts, themeConfig.ts   the Claro / Oscuro switch, its rule and colors
-      views/              upcomingView, calendarView, eventCard, eventDetail, eventDialog, filters,
-                          jumpBar, viewSwitch, postsSheet, postViewer, inlinePlayer, clips, saveButton,
-                          sharing, installPrompt, viewerWindow, viewerSheet, detailsHint (HTML strings + their
+      views/              upcomingView, calendarView, eventCard, eventDetail, eventDrawer, drawerSheet,
+                          filters, jumpBar, viewSwitch, postsSheet, postViewer, inlinePlayer, clips, saveButton,
+                          sharing, installPrompt, detailsHint (HTML strings + their
                           behavior)
       lib/                dates, holidays, format, links, linkPreview, contact, mediaLabel, search, saved,
                           share, shareText, shareCard, analytics, dom, icons, sheet, instagramEmbed, installPlace,
@@ -618,25 +644,25 @@ frontend/
 | Module | Responsibility |
 |---|---|
 | `data.ts` | Reads `data/`, adds flyer sizes, lists the academies |
-| `state.ts` | The UI state; filtering (AND across groups, OR within rhythms and dates); grouping by period; the date options |
-| `views/upcomingView.ts` | "Próximos" |
+| `state.ts` | The UI state; filtering (AND across groups, OR within dates, types and rhythms); ⚙'s count; "Limpiar"; grouping by period; the date options |
+| `views/upcomingView.ts` | "Próximos"; where a shared link's event is (`sharedEventEntry`) |
 | `views/calendarView.ts` | "Calendario", with holidays |
-| `views/eventCard.ts` | A card: flyer at its shape, date sticker, the action row (Detalles, Compartir, Guardar), details, the line naming what the details add |
+| `views/eventCard.ts` | A card: flyer at its shape (or a video's clip, with its sound button), date sticker, the posts' badge, the action row (Detalles, Compartir, Guardar), details, the line naming what the details add |
 | `views/detailsHint.ts`, `lib/onceFlag.ts` | The first visit's pulse on the first card's "Detalles"; things shown once per browser |
-| `views/eventDetail.ts` | An event's full detail (dialog and page): the flyer of each post, details, prices, actions |
-| `views/eventDialog.ts`, `views/viewerWindow.ts`, `views/viewerSheet.ts` | The viewer: slides (only the current event and its neighbors rendered), swiping, the half / full sheet on phones and the side panel on wide screens, URL history, closing |
+| `views/eventDetail.ts` | An event's details (the drawer's, and the event page's with the flyer on top): head, quick actions, details, prices, media links; their clicks |
+| `views/eventDrawer.ts`, `views/drawerSheet.ts` | The details: a drawer over the list on phones (half / full height, drag, scrim, keeping the card in view) and a side panel on wide screens; URL history, closing; the geometry and gestures' pure part |
 | `screenHistory.ts` | History entries for the app's screens (academy, period, calendar, saved): the phone's back steps through them |
-| `views/filters.ts` | Date, type and style chips, the academy notice; the rhythm and date options with their counts; the dropdowns' labels |
-| `views/jumpBar.ts` | Phones: the sticky bar, its checklist menus (dates, rhythms), keeping your place, hiding on scroll |
+| `views/filters.ts` | The filters' model (`filterModel`: options, counts, dimmed, the bar's chips, what's applied, the badge, the line) and drawing it: the phone bar's chips and line, the filter sheet, the toolbar's rows and status; empty results |
+| `views/jumpBar.ts` | Phones: the sticky bar (search, the filter sheet), keeping your place, hiding on scroll, scrolling on purpose |
 | `views/viewSwitch.ts` | Phones: the floating calendar / list button |
 | `lib/links.ts` | Every URL built from an event: flyer, clip, page, link preview, Maps, the report form |
 | `lib/linkPreview.ts`, `linkPreviewImage.ts` | A shared link's preview: its title, description, the image's text and version; the image itself (build time) |
 | `lib/mediaLabel.ts` | What the label over a post's image says (Ver con sonido, Ver video, Ver las N), and which cards get a ▶ |
 | `lib/sheet.ts` | Bottom sheets that drag to dismiss; panel sheets with their own back-button step |
 | `lib/instagramEmbed.ts` | Instagram's player for a post, its script loaded on demand |
-| `views/postsSheet.ts`, `views/postViewer.ts` | An event's posts (Flyers / Videos); a post watched inside the site |
+| `views/postsSheet.ts`, `views/postViewer.ts` | An event's posts (Flyers / Videos); a post watched inside the site (the media viewer) |
 | `views/inlinePlayer.ts` | A video tapped in the detail plays in the image's place (Instagram's player), removed when off screen |
-| `views/clips.ts` | Videos' clips in the detail: the one on screen plays, silent and looping, one at a time; released when they leave the page |
+| `views/clips.ts` | Videos' clips in the feed and on an event's page: the one on screen plays, silent and looping, one at a time; a tap toggles a card's sound; held under the full drawer and the media viewer; unloaded off screen, released when they leave the page |
 | `lib/contact.ts` | The organizer's contact as a link: Instagram, WhatsApp, phone or website |
 | `lib/search.ts` | Search over the events in the page |
 | `lib/saved.ts`, `views/saveButton.ts` | Saved events ("Guardados"): the ids in this browser; the bookmarks and toggles |

@@ -30,7 +30,7 @@ npm run preview # the build at http://localhost:4321, with the policy (dev mode 
 ```
 
 Besides the home page, the build makes one page per event (`/evento/<id>/`: shared links point there,
-and it forwards browsers to the home page with the event open), a link-preview image per event
+and it forwards browsers to the home page with the event's details open over the list, unless it already passed), a link-preview image per event
 (`/og/<id>.jpg`, 1200×630: the flyer with the date, title, place and price, drawn with the fonts in
 `frontend/src/assets/fonts/og/`) and a calendar feed (`/calendario.ics`, no longer linked; kept for existing
 subscriptions). The build fails if an event's preview is missing or weighs over 280 KB.
@@ -66,9 +66,9 @@ follow the format, so no change goes uncounted.
 ## Visit statistics
 
 [GoatCounter](https://jzamora9.goatcounter.com) (free, no cookies, no consent banner needed): page
-visits, each event opened in the viewer, where its details were opened from (`detalles-tarjeta`, `detalles-boton`,
+visits, each event whose details were opened, where its details were opened from (`detalles-tarjeta`, `detalles-boton`,
 `detalles-linea`, `detalles-enlace`), and clicks on Instagram, the contact links (WhatsApp…),
-"Cómo llegar", sharing, saving, installing and reports (`data-track`, `frontend/src/scripts/lib/analytics.ts`). Shared
+"Cómo llegar", the media (`ver-video`, `ver-publicaciones`…), sharing, saving, installing and reports (`data-track`, `frontend/src/scripts/lib/analytics.ts`). Shared
 links carry `utm_source=compartido`. Local testing (localhost) isn't counted.
 
 ## Contributing
