@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-04T12:11:15-05:00",
+  "generated_at": "2026-10-04T12:14:38-05:00",
   "accounts": [
     "_olorumcongress",
     "academia_cowork",
@@ -16,7 +16,6 @@
     "bogotadanceclub",
     "bogotadanceclub.academy",
     "bureodancestudio",
-    "casineafest",
     "cordillerafestival",
     "danceinmotionclub",
     "danzaenlaciudad",
@@ -74,13 +73,14 @@
     "rate_limited": false,
     "out_of_time": false,
     "gemini_requests": {
-      "gemini-3.8-flash": 3
+      "gemini-3.8-flash": 3,
+      "gemini-3.5-flash": 1
     },
     "models_unavailable": [],
     "due_accounts": [],
     "instagram_usage": 0,
     "by_account": {
-      "casineafest": {
+      "mover__se": {
         "posts_analyzed": 1,
         "events_new": 1,
         "events_merged": 0,
