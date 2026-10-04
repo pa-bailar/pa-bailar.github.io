@@ -1,5 +1,6 @@
 // Sharing, through the phone's own menu (lib/share.ts):
-//   - an event ("Compartir" in its detail): its details, and its page's link with the flyer as preview;
+//   - an event ("Compartir" on its card or in its details): its details, and its page's link, whose preview is its
+//     link-preview image (/og/<id>.jpg, pages/og/[id].jpg.ts);
 //   - a near period of the list (the share icon on "Hoy", "Esta semana", "Este finde", "Próxima semana"):
 //     an image of its events (lib/shareCard.ts) and a list for WhatsApp, as filtered on screen;
 //   - the visitor's plans ("Compartir mis planes" in Guardados): an image and the list, each with its link.

@@ -36,7 +36,7 @@ const COLOR = {
   onFree: "#ffffff", // --on-free
   stripes: ["#c8321c", "#e8791c", "#e9b021"], // --stripe-1..3
   record: "#1e0a0e", // wine-950, the record of the home page's preview and the app icon
-  label: "#f2c12e", // marigold-400
+  label: "#f2c12e", // the app icon's marigold (tokens.css: --marigold-200 is it at 45%)
 };
 
 const FONT_DIR = path.join(import.meta.env.ASSETS_DIR, "fonts", "og");

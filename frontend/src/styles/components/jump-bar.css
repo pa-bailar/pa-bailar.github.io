@@ -47,6 +47,13 @@
   color: var(--text);
 }
 
+/* 44 px to the finger on a 40 px button, like the chips (filters.css): the bar is 56 px, so it fits. */
+.jump-bar__icon::after {
+  content: "";
+  position: absolute;
+  inset: calc((var(--control-height) - var(--touch-target)) / 2 - var(--border-width)) calc(var(--border-width) * -1);
+}
+
 .jump-bar__icon[aria-pressed="true"] {
   background: var(--chip-active-bg);
   border-color: var(--chip-active-bg);

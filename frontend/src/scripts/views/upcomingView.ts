@@ -1,5 +1,6 @@
 // "Próximos": upcoming events grouped by period (today, this week, the weekend, next week, by month).
-// On phones it reads like an Instagram feed (event-card.css); the jump bar (jumpBar.ts) moves between periods.
+// On phones it reads like an Instagram feed (event-card.css); the jump bar (jumpBar.ts) filters it and keeps the
+// period being read in place.
 //
 // A long list stays short where it matters (people think in "tonight, this weekend, next week"):
 //   - the near periods (OPEN_PERIODS) show their flyers in full; later ones start as a summary row, with
@@ -30,7 +31,7 @@ const PERIOD_LIMIT = 6;
 /** Small flyers in a summarized period's row. */
 const PREVIEW_FLYERS = 5;
 
-/** Periods the visitor asked to see whole ("Ver los 23 eventos", "Ver 7 más", or the period menu). */
+/** Periods the visitor asked to see whole ("Ver los 23 eventos", "Ver 7 más", or a shared link's event). */
 const shownWhole = new Set<string>();
 
 /** Show a period whole. False if it already was (nothing to redraw). */

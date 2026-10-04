@@ -32,7 +32,8 @@ export default defineConfig({
   markdown: { syntaxHighlight: false },
   // Content Security Policy (docs/ARCHITECTURE.md): GitHub Pages can't send headers, so Astro writes it as a
   // <meta> in every page, with the hashes of the scripts and styles it inlines (and ours: src/csp.ts). Only what
-  // the site uses is allowed; anything else (an injected script, a style attribute) is blocked.
+  // the site uses is allowed; anything else (an injected script, a style attribute, an inline on…= handler) is
+  // blocked. A <meta> policy can't set frame-ancestors (nor report-uri or sandbox): that needs a header.
   security: {
     csp: {
       directives: [
@@ -44,7 +45,7 @@ export default defineConfig({
         "img-src 'self' data: https://jzamora9.goatcounter.com",
         "media-src 'self'", // the videos' short clips (previews/)
         "font-src https://fonts.gstatic.com",
-        // events.json and the like; GoatCounter's counts (sendBeacon).
+        // Our own origin (nothing fetched today: the events are in the page); GoatCounter's counts (sendBeacon).
         "connect-src 'self' https://jzamora9.goatcounter.com",
         "frame-src https://www.instagram.com", // Instagram's player (lib/instagramEmbed.ts)
         "worker-src 'self'", // sw.js
@@ -54,7 +55,7 @@ export default defineConfig({
       scriptDirective: { resources: ["'self'", "https://www.instagram.com"] },
       // No style attributes but one: the style embed.js gives Instagram's player when it creates it (a fixed
       // string in their script, allowed by its hash). If Instagram changes it, the player still works (it's
-      // restyled from the player and event-dialog.css) and the console shows the blocked attribute.
+      // restyled from the player and event-detail.css) and the console shows the blocked attribute.
       styleDirective: {
         resources: ["'self'", "https://fonts.googleapis.com", { resource: "'unsafe-hashes'", kind: "attribute" }],
         hashes: [{ hash: "sha256-l6khRnjaVBZm7Z9S5+A/4ZrRnU7hBbTAGeVNTXpAbwU=", kind: "attribute" }],

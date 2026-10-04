@@ -37,6 +37,13 @@ describe("securePage", () => {
     expect(securePage(page(meta(hash(THEME)), body)).problems).toEqual([]);
   });
 
+  it("fails inline event handlers, not data attributes or text that look like them", () => {
+    expect(securePage(page(meta(hash(THEME)), `<img src="a.png" onerror="alert(1)">`)).problems).toEqual([
+      expect.stringContaining('inline onerror="" handler'),
+    ]);
+    expect(securePage(page(meta(hash(THEME)), `<button data-on="x">online = yes</button>`)).problems).toEqual([]);
+  });
+
   it("fails style attributes and pages without a policy", () => {
     expect(securePage(page(meta(hash(THEME)), `<div style="color: red"></div>`)).problems).toHaveLength(1);
     expect(securePage(page("")).problems).toEqual(["no Content-Security-Policy <meta>"]);

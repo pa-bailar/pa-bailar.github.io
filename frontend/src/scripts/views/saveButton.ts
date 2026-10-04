@@ -14,7 +14,7 @@ function buttonInner(saved: boolean, labeled: boolean): string {
 
 /**
  * The bookmark for `event`. At build time (the event page) nothing is saved yet: syncSaveButtons fixes it.
- * `labeled`: a button with its word under the icon ("Guardar" / "Guardado"), for the viewer's quick actions.
+ * `labeled`: a button with its word under the icon ("Guardar" / "Guardado"), for the details' quick actions.
  */
 export function saveButtonHtml(event: DanceEvent, { labeled = false, className = "save-button" } = {}): string {
   const saved = isSaved(event.id);
@@ -24,7 +24,7 @@ export function saveButtonHtml(event: DanceEvent, { labeled = false, className =
 }
 
 /** Every bookmark of the event `id` (or of every event) shows whether it's saved. */
-export function syncSaveButtons(id?: string) {
+function syncSaveButtons(id?: string) {
   const selector = id ? `[data-save="${CSS.escape(id)}"]` : "[data-save]";
   document.querySelectorAll<HTMLElement>(selector).forEach((button) => {
     const saved = isSaved(button.dataset.save!);

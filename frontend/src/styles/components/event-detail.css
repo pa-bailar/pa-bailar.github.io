@@ -21,7 +21,7 @@
 }
 
 /* The title takes the focus when the drawer opens (it's where reading starts): no ring for that. */
-.event-dialog__title:focus {
+.event-detail__title:focus {
   outline: none;
 }
 
@@ -80,13 +80,13 @@
 
 /* ---------- the flyer and the rest of the detail's parts ---------- */
 
-.event-dialog__layout {
+.event-detail__layout {
   position: relative;
   display: grid;
   grid-template-columns: 1fr;
 }
 
-.event-dialog__visual {
+.event-detail__visual {
   display: flex;
   flex-direction: column;
   min-width: 0;
@@ -94,7 +94,7 @@
 }
 
 /* The flyer and what sits over it (date sticker, posts badge). */
-.event-dialog__frame {
+.event-detail__frame {
   position: relative;
   display: flex;
   flex: 1;
@@ -102,14 +102,14 @@
   min-height: 0;
 }
 
-.event-dialog__media {
+.event-detail__media {
   position: relative;
   display: block;
   flex: 1;
 }
 
-.event-dialog__media img,
-.event-dialog__media video {
+.event-detail__media img,
+.event-detail__media video {
   display: block;
   width: 100%;
   height: auto; /* its width/height attributes give the shape, so its space is kept before it loads */
@@ -118,7 +118,7 @@
 }
 
 /* Label over a video: its clip plays here without sound (views/clips.ts); with sound, in the post viewer. */
-.event-dialog__play {
+.event-detail__play {
   position: absolute;
   left: 50%;
   bottom: var(--space-4);
@@ -159,29 +159,29 @@
 }
 
 /* When and what, first: under the flyer and above everything else, so they show without scrolling. */
-.event-dialog__when {
+.event-detail__when {
   font-size: var(--text-sm);
   font-weight: var(--weight-bold);
   color: var(--accent);
 }
 
-.event-dialog__info {
+.event-detail__info {
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
   padding: var(--space-5);
 }
 
-.event-dialog__info .tag-type {
+.event-detail__info .tag-type {
   align-self: flex-start;
 }
 
-.event-dialog__title {
+.event-detail__title {
   font-family: var(--font-display);
   font-size: var(--text-2xl);
 }
 
-.event-dialog__subheading {
+.event-detail__subheading {
   margin-top: var(--space-1);
   font-family: var(--font-serif);
   font-style: italic;
@@ -190,7 +190,7 @@
   color: var(--text-italic);
 }
 
-.event-dialog__actions {
+.event-detail__actions {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
@@ -198,22 +198,22 @@
 }
 
 /* "¿Algo está mal? Repórtalo": small, last, out of the way of the actions. */
-.event-dialog__report {
+.event-detail__report {
   font-size: var(--text-xs);
   color: var(--text-muted);
 }
 
-.event-dialog__report .inline-link {
+.event-detail__report .inline-link {
   margin-left: 0;
 }
 
-.event-dialog__caption summary {
+.event-detail__caption summary {
   cursor: pointer;
   font-size: var(--text-sm);
   color: var(--text-muted);
 }
 
-.event-dialog__caption p {
+.event-detail__caption p {
   margin-top: var(--space-2);
   white-space: pre-line;
   font-size: var(--text-sm);
@@ -291,11 +291,11 @@
 
 /* The event's own page: flyer and details side by side on wide screens. */
 @media (min-width: 720px) {
-  .event-dialog__layout {
+  .event-detail__layout {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   }
 
-  .event-dialog__layout .event-dialog__info {
+  .event-detail__layout .event-detail__info {
     padding: var(--space-6);
   }
 }
@@ -317,7 +317,7 @@
 }
 
 /* While it loads, the image stays: the player is laid out (Instagram measures it) but not seen. */
-.event-dialog__frame.is-loading .inline-player {
+.event-detail__frame.is-loading .inline-player {
   position: absolute;
   inset: 0;
   overflow: hidden;
@@ -326,7 +326,7 @@
 }
 
 /* The sticker would cover the player's controls. */
-.event-dialog__frame.is-playing .date-sticker {
+.event-detail__frame.is-playing .date-sticker {
   display: none;
 }
 
@@ -365,7 +365,7 @@
   background: var(--surface);
 }
 
-.event-page .event-dialog__media img,
-.event-page .event-dialog__media video {
+.event-page .event-detail__media img,
+.event-page .event-detail__media video {
   max-height: 80vh;
 }

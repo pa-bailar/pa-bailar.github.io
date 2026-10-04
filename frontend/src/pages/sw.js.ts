@@ -2,11 +2,14 @@
 // installed app open without a connection, with the events from the last visit.
 //   - Pages: network first, so the events are always the latest when online; the last copy when offline.
 //   - The build's own files (/_astro/, names change with their content): cache first.
-//   - Flyers and thumbnails (a name never gets another image): cache first, the most recent IMAGE_LIMIT.
+//   - Flyers and thumbnails: cache first, the most recent IMAGE_LIMIT. A flyer made again keeps its name, so the
+//     cache's name carries the images' version (src/images.ts: a hash of the flyers and the thumbnails' settings):
+//     when any changes, the new worker starts a new image cache and drops the old one.
 //   - Anything from other sites (fonts, Instagram, statistics) and everything else: straight to the network.
 // Each build gets its own version: the new worker takes over at once and drops the old pages and files.
 
 import type { APIRoute } from "astro";
+import { IMAGES_VERSION } from "../images";
 
 const VERSION = new Date().toISOString(); // this build
 const IMAGE_LIMIT = 300;
@@ -15,7 +18,7 @@ const worker = `
 const VERSION = ${JSON.stringify(VERSION)};
 const PAGES = "pages-" + VERSION;
 const BUILD_FILES = "build-" + VERSION;
-const IMAGES = "images";
+const IMAGES = "images-" + ${JSON.stringify(IMAGES_VERSION)};
 const IMAGE_LIMIT = ${IMAGE_LIMIT};
 
 self.addEventListener("install", (event) => {

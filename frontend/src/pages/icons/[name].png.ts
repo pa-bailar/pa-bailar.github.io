@@ -7,7 +7,7 @@ import sharp from "sharp";
 
 const WINE = "#2A0F14"; // --wine-900
 const RECORD = "#1E0A0E"; // --wine-950
-const MARIGOLD = "#F2C12E"; // --marigold-400
+const MARIGOLD = "#F2C12E"; // the app icon's marigold (tokens.css: --marigold-200 is it at 45%)
 const TOMATO = "#C8321C"; // --tomato-600
 
 /**

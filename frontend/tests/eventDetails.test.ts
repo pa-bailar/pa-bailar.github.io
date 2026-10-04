@@ -23,7 +23,7 @@ describe("the details drawer", () => {
   it("starts with when, the title, the type and the account, ×, then the quick actions and the details", () => {
     const drawer = html({ title: "Social de salsa", start_time: "20:00", venue: "La Topa", account: "latopa" });
     const order = [
-      "event-dialog__when",
+      "event-detail__when",
       'id="drawer-title"',
       "tag-type",
       "@latopa",

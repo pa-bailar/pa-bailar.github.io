@@ -7,16 +7,12 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import type { APIRoute, GetStaticPaths } from "astro";
 import sharp from "sharp";
-import { DATA_DIR, events } from "../../data";
+import { DATA_DIR } from "../../data";
+import { THUMB_QUALITY, THUMB_SIZE, flyerPaths } from "../../images";
 import { thumbName } from "../../scripts/lib/links";
 
-const THUMB_SIZE = 160; // px, square: sharp on 2× and 3× screens at the ~60 px it's shown
-const THUMB_QUALITY = 70;
-
-export const getStaticPaths: GetStaticPaths = () => {
-  const flyers = new Set(events.flatMap((event) => event.media.flatMap((media) => (media.flyer ? [media.flyer] : []))));
-  return [...flyers].map((flyer) => ({ params: { name: thumbName(flyer) }, props: { flyer } }));
-};
+export const getStaticPaths: GetStaticPaths = () =>
+  flyerPaths().map((flyer) => ({ params: { name: thumbName(flyer) }, props: { flyer } }));
 
 export const GET: APIRoute = async ({ props }) => {
   const source = await readFile(path.join(DATA_DIR, props.flyer as string));
