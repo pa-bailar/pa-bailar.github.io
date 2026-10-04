@@ -31,5 +31,9 @@ export const ICONS = {
   bookmarkFilled: icon(`<path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4.5L5 21V4a1 1 0 0 1 1-1z"/>`),
   search: icon(`<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>`, false),
   share: icon(`<path d="M12 3v12M8 7l4-4 4 4"/><path d="M6 11v9h12v-9"/>`, false), // iOS's Compartir
+  more: icon(`<circle cx="6" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="18" cy="12" r="1.6"/>`), // Safari's ⋯ (Más)
+  addSquare: icon(`<rect x="4" y="4" width="16" height="16" rx="3.5"/><path d="M12 8.5v7M8.5 12h7"/>`, false), // Agregar a inicio
+  link: icon(`<path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1.5 1.5"/><path d="M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1.5-1.5"/>`, false),
+  arrowDown: icon(`<path d="M12 4v15M6 13l6 6 6-6"/>`, false),
   pin: icon(`<path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>`, false),
 } as const;

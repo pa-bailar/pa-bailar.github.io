@@ -106,7 +106,7 @@ function mediaHtml(event: DanceEvent, media: EventMedia, selected: number): stri
   const picture = clip
     ? `<video class="event-dialog__clip" src="${escapeHtml(clip)}" poster="${escapeHtml(flyer)}"${size}
         muted loop playsinline preload="none" data-clip aria-label="Video de ${escapeHtml(event.title)}"></video>`
-    : `<img src="${escapeHtml(flyer)}"${size} alt="${isVideo ? "Video" : "Flyer"} de ${escapeHtml(event.title)}" />`;
+    : `<img src="${escapeHtml(flyer)}"${size} decoding="async" alt="${isVideo ? "Video" : "Flyer"} de ${escapeHtml(event.title)}" />`;
   // What tapping shows beyond this image (lib/mediaLabel.ts): the video with sound, or the carousel's slides.
   const label = mediaLabel(media);
   return `

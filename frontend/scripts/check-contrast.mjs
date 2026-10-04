@@ -90,6 +90,8 @@ const PAIRS = [
   ["Selected chip fill on page", "chip-active-bg", "bg", "ui"],
   ["Primary button fill on dialog", "action", "surface", "ui"],
   ["Calendar dot outline on day cell (fill color is decorative)", "border", "surface", "ui"],
+  ["Install steps: a browser button's outline (.install-key) on its fill", "border", "surface-sunken", "ui"],
+  ["Install steps: the arrow toward the browser's button", "accent", "surface", "ui"],
 ];
 
 // ---------- run ----------
