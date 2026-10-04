@@ -8,7 +8,8 @@
 //     the image comes back with "Ábrelo en Instagram" (the link under it).
 //   - It stops when it isn't seen anymore (scrolled out of sight): the player is removed and the image comes back,
 //     so no sound plays from a video off screen.
-// Photos and carousels open in the media viewer instead (postViewer.ts).
+// Photos and carousels open in the media viewer instead (postViewer.ts). A story's flyer never gets here: it's a plain
+// image, not a link (lib/mediaLabel.ts isStory; isVideoCover is false for it).
 
 import { renderInstagramPost } from "../lib/instagramEmbed";
 import { releaseClips, watchClips } from "./clips";

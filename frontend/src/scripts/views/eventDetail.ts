@@ -18,7 +18,7 @@ import {
 import { contactLink, type ContactKind } from "../lib/contact";
 import { ICONS } from "../lib/icons";
 import { feedbackUrl, flyerUrl, mapsUrl, previewUrl } from "../lib/links";
-import { isVideoCover, mediaLabel } from "../lib/mediaLabel";
+import { isStory, isVideoCover, mediaLabel, storySource } from "../lib/mediaLabel";
 import { playInline } from "./inlinePlayer";
 import { openPostViewer } from "./postViewer";
 import { saveButtonHtml } from "./saveButton";
@@ -106,7 +106,8 @@ function postsBadgeHtml(event: DanceEvent, selected: number): string {
 /**
  * The flyer, with the date sticker (as on the cards, so two events sharing a flyer still look different)
  * and the posts badge over it. Tapping the flyer shows the post here, with Instagram's player
- * (postViewer.ts); it's still a link to the post, for a new tab or a page without scripts.
+ * (postViewer.ts); it's still a link to the post, for a new tab or a page without scripts. A story's flyer is a plain
+ * image, labeled "Historia": there's nothing more to see (its link is the account's profile, under the details).
  */
 function mediaHtml(event: DanceEvent, media: EventMedia, selected: number): string {
   const flyer = flyerUrl(media);
@@ -122,15 +123,22 @@ function mediaHtml(event: DanceEvent, media: EventMedia, selected: number): stri
     ? `<video class="event-detail__clip" src="${escapeHtml(clip)}" poster="${escapeHtml(flyer)}"${size}
         muted loop playsinline preload="none" data-clip aria-label="Video de ${escapeHtml(event.title)}"></video>`
     : `<img src="${escapeHtml(flyer)}"${size} decoding="async" alt="${isVideo ? "Video" : "Flyer"} de ${escapeHtml(event.title)}" />`;
-  // What tapping shows beyond this image (lib/mediaLabel.ts): the video with sound, or the carousel's slides.
+  // What tapping shows beyond this image (lib/mediaLabel.ts): the video with sound, or the carousel's slides; on a
+  // story, where it came from.
   const label = mediaLabel(media);
-  return `
-    <div class="event-detail__frame">
-      <a class="event-detail__media" href="${escapeHtml(media.permalink)}" target="_blank" rel="noopener"
+  const labelHtml = label
+    ? `<span class="event-detail__play${isStory(media) ? " event-detail__play--story" : ""}">${ICONS[label.icon]}${label.text}</span>`
+    : "";
+  const shown = isStory(media)
+    ? `<div class="event-detail__media">${picture}${labelHtml}</div>`
+    : `<a class="event-detail__media" href="${escapeHtml(media.permalink)}" target="_blank" rel="noopener"
         data-view-post="${selected}" data-track="ver-publicacion" aria-label="Ver la publicación">
         ${picture}
-        ${label ? `<span class="event-detail__play">${ICONS[label.icon]}${label.text}</span>` : ""}
-      </a>
+        ${labelHtml}
+      </a>`;
+  return `
+    <div class="event-detail__frame">
+      ${shown}
       <span class="date-sticker${sticker.range ? " date-sticker--range" : ""}" aria-hidden="true"><b>${sticker.day}</b><small>${sticker.month}</small></span>
       ${postsBadgeHtml(event, selected)}
     </div>`;
@@ -165,8 +173,8 @@ function mediaLinksHtml(event: DanceEvent, selected: number): string {
 /**
  * Everything after the head, in the order people look for it: Cómo llegar · Compartir · Guardar; the stripes;
  * when, where, the price (one line) and who organizes, then the rest; the prices; the rhythms; the media; "Ver en
- * Instagram"; the post's text; "¿Algo está mal? Repórtalo". At the drawer's half height, when, where and the
- * price are on screen.
+ * Instagram" (a story: where it came from, and "Ver perfil en Instagram"); the post's text; "¿Algo está mal?
+ * Repórtalo". At the drawer's half height, when, where and the price are on screen.
  */
 function bodyHtml(event: DanceEvent, selected: number): string {
   const media = event.media[selected] ?? event.media[0];
@@ -175,9 +183,10 @@ function bodyHtml(event: DanceEvent, selected: number): string {
     .map(([term, value]) => `<dt>${term}</dt><dd>${value}</dd>`)
     .join("");
   const styles = stylesLabel(event.styles);
+  const story = isStory(media);
   const lowConfidence =
     event.confidence === "low"
-      ? `<p class="callout">Algunos datos se leyeron del flyer con poca seguridad: confírmalos en la publicación.</p>`
+      ? `<p class="callout">Algunos datos se leyeron del flyer con poca seguridad: confírmalos ${story ? "con la cuenta" : "en la publicación"}.</p>`
       : "";
   return `
     <div class="quick-actions">
@@ -191,8 +200,13 @@ function bodyHtml(event: DanceEvent, selected: number): string {
     ${styles ? `<p class="style-list">${escapeHtml(styles)}</p>` : ""}
     ${lowConfidence}
     ${mediaLinksHtml(event, selected)}
+    ${story ? `<p class="event-detail__source">${ICONS.story}<span>${escapeHtml(storySource(event, media))}</span></p>` : ""}
     <div class="event-detail__actions">
-      <a class="btn btn--primary" href="${escapeHtml(media.permalink)}" target="_blank" rel="noopener" data-track="instagram">${ICONS.instagram}Ver en Instagram ↗</a>
+      ${
+        story
+          ? `<a class="btn btn--primary" href="${escapeHtml(media.permalink)}" target="_blank" rel="noopener" data-track="instagram-perfil">${ICONS.instagram}Ver perfil en Instagram ↗</a>`
+          : `<a class="btn btn--primary" href="${escapeHtml(media.permalink)}" target="_blank" rel="noopener" data-track="instagram">${ICONS.instagram}Ver en Instagram ↗</a>`
+      }
     </div>
     ${media.caption ? `<details class="event-detail__caption"><summary>Texto de la publicación</summary><p>${escapeHtml(media.caption)}</p></details>` : ""}
     <p class="event-detail__report"><a class="inline-link" href="${escapeHtml(feedbackUrl(event))}" target="_blank" rel="noopener" data-track="reportar-error">¿Algo está mal? Repórtalo</a></p>`;
@@ -252,7 +266,7 @@ export function handleMediaLinkClick(domEvent: MouseEvent, event: DanceEvent): b
 /**
  * Clicks on an event's page that open something, false for any other:
  *   - the flyer: watch the post here (a video in place, inlinePlayer.ts; else the media viewer, postViewer.ts).
- *     A new-tab click follows the link to Instagram;
+ *     A new-tab click follows the link to Instagram. A story's flyer is a plain image, not a link: nothing happens;
  *   - the posts badge: every post in a sheet; choosing one shows it on the page (its image, "Ver en Instagram"
  *     link and caption);
  *   - the media links, as in the drawer.

@@ -38,20 +38,35 @@ repositories (backend first, behind the new version).
 | `confidence` | `high` · `medium` · `low` | Gemini's own estimate |
 | `doubts` | string[] | Missing or assumed details, in Spanish |
 | `account` | string | Instagram username of the organizer: letters, digits, `.` and `_`, up to 30 |
-| `media` | `EventMedia[]` | Every post announcing the event. Main post first: flyers (images and carousels) before videos, newest first within each, so the latest flyer is the cover. At least one. |
+| `media` | `EventMedia[]` | Every post (or story) announcing the event. Main post first: flyers (images and carousels) before videos, newest first within each, so the latest flyer is the cover; stories last, so a post's flyer is the cover once there is one. The site keeps this order. At least one; it can be a single story. |
 
 ### EventMedia
 
 | Field | Type | Notes |
 |---|---|---|
-| `post_id` | string | Instagram media id, or `public-<code>` for a post read from its public page |
-| `permalink` | string | Link to the post: `https://www.instagram.com/<p, reel, reels or tv>/<code>/` |
-| `media_type` | `IMAGE` · `CAROUSEL_ALBUM` · `VIDEO` | |
+| `post_id` | string | Instagram media id, or `public-<code>` for a post read from its public page, or `story-<hash>` for a story (letters, digits, `_` and `-` after `story-`) |
+| `permalink` | string | Link to the post: `https://www.instagram.com/<p, reel, reels or tv>/<code>/`. A story: the account's profile, `https://www.instagram.com/<account>/` (a story's own link dies after 24 hours); `<account>` is a username, not one of Instagram's paths (`p`, `reel`, `reels`, `tv`, `stories`, `explore`, `accounts`, `direct`) |
+| `media_type` | `IMAGE` · `CAROUSEL_ALBUM` · `VIDEO` · `STORY` | `STORY`: a screenshot of an Instagram story, added by hand (see [Stories](#stories)) |
 | `published` | string | Instagram timestamp, e.g. `2026-09-30T12:00:00+0000` |
 | `flyer` | string \| null | Path relative to `data/`, `flyers/<post id>-<slide>.webp`, or `flyers/<post id>.webp` for flyers saved before slides were in the name. Shared by events announced on the same image. |
 | `caption` | string \| null | Post text |
 | `preview` | string \| null (optional) | When the flyer is a video's frame (a reel, or a carousel's video slide): a short silent clip of it, path relative to `data/`, `previews/<post id>-<slide>.mp4` (6 s, 480 px, H.264). Absent or null otherwise, and for videos Instagram gives no file for |
 | `slides` | integer \| null (optional) | Carousels: how many slides. Absent or null for a single photo or video, and in data written before it existed |
+
+### Stories
+
+An event can come from an Instagram story: the owner shares a screenshot of it with the admin page, and the
+backend reads it. Most such events never get a post, so a story can be an event's only media. Its `EventMedia`:
+
+- `media_type`: `"STORY"`; `post_id`: `story-<hash>` (of the image).
+- `permalink`: the account's profile, `https://www.instagram.com/<account>/`, never the story's own link.
+- `flyer`: the story cropped to its content, `flyers/story-<hash>-<slide>.webp`; never the full screenshot.
+- `caption`: null (the owner's notes aren't published). `published`: when the screenshot was taken.
+- Everything else as for `IMAGE`.
+
+On the site a story's flyer is a plain image labeled "Historia" (no Instagram player: there's no post to show),
+with "De una historia de @cuenta · las historias duran 24 horas" and "Ver perfil en Instagram ↗" opening the
+profile. `check-data.mjs` accepts a `STORY` only with a profile link, and a post only with a post link.
 
 ### Dance styles
 

@@ -71,7 +71,7 @@ follow the format, so no change goes uncounted.
 [GoatCounter](https://jzamora9.goatcounter.com) (free, no cookies, no consent banner needed): page
 visits, each event whose details were opened, where its details were opened from (`detalles-tarjeta`, `detalles-boton`,
 `detalles-enlace`; `detalles-linea` is retired), and clicks as events named `click-<name>` (`data-track="<name>"`,
-`frontend/src/scripts/lib/analytics.ts`): Instagram, the contact links (WhatsApp…), "Cómo llegar", the media
+`frontend/src/scripts/lib/analytics.ts`): Instagram (`click-instagram`; a story's profile link, `click-instagram-perfil`), the contact links (WhatsApp…), "Cómo llegar", the media
 (`click-ver-video`, `click-ver-carrusel`, `click-ver-publicaciones`, `click-ver-publicacion`), sharing, saving,
 installing and reports. Shared
 links carry `utm_source=compartido`. Local testing (localhost) isn't counted.

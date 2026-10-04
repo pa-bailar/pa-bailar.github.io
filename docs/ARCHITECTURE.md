@@ -482,8 +482,13 @@ stateDiagram-v2
   (`postsSheet.ts`), whose chosen post opens in the media viewer in its place (`openPanelSheet(…, { replacing })`
   takes over the sheet's history entry). On the event page, the flyer still plays a video in place
   (`inlinePlayer.ts`).
+- **A story** (`media_type` `STORY`, [`DATA.md`](DATA.md#stories); `isStory` in `lib/mediaLabel.ts`) has no post
+  behind it: its flyer is a plain image on the event page (not a link, labeled "Historia"), the media viewer shows
+  only the flyer and never loads Instagram's player, and the inline player never gets it. The details say "De una
+  historia de @cuenta · las historias duran 24 horas" over "Ver perfil en Instagram ↗", which opens the account's
+  profile (its `permalink`).
 - **The actions** are plain links built in `lib/links.ts`:
-  - "Ver en Instagram" opens the post;
+  - "Ver en Instagram" opens the post (a story's "Ver perfil en Instagram", the profile);
   - "Compartir" opens the phone's share menu with the event's text and page URL (`views/sharing.ts`);
   - "Cómo llegar" opens Google Maps' search URL.
 
@@ -604,11 +609,11 @@ only Instagram content it loads is a post's player, and only when a visitor taps
 
 | Check | What it verifies | Where |
 |---|---|---|
-| Data contract | Every field of `events.json` and `meta.json`: types, allowed values (event types, styles, confidence), real dates and time formats, `end_date` after `date` and within 7 days, unique ids, usernames, post links (`instagram.com/<p, reel, reels or tv>/<code>/`), flyer and clip paths (inside `flyers/` and `previews/`) and their files existing, sorting | `frontend/scripts/check-data.mjs` |
+| Data contract | Every field of `events.json` and `meta.json`: types, allowed values (event types, styles, confidence), real dates and time formats, `end_date` after `date` and within 7 days, unique ids, usernames, post links (`instagram.com/<p, reel, reels or tv>/<code>/`; a story: the account's profile, `instagram.com/<account>/`, and a `story-<hash>` id), flyer and clip paths (inside `flyers/` and `previews/`) and their files existing, sorting | `frontend/scripts/check-data.mjs` |
 | Types | `astro check`: strict TypeScript, including `noUncheckedIndexedAccess` | `tsconfig.json` |
 | Color contrast | Every color pair the site uses, in both themes, against WCAG 2.2 AA. It reads the tokens from `tokens.css`, so it can't drift from the design system | `frontend/scripts/check-contrast.mjs` |
 | CSS custom properties | Every `var(--name)` in the stylesheets, components and scripts has a definition; the few set from scripts (`style.setProperty`: the drawer's position, a flyer's shape, a sheet's drag) are listed, and each must still be set by one | `frontend/scripts/check-css-vars.mjs` |
-| Unit tests | Dates and Bogotá's "today", formatting, filtering (rhythms and dates, "Mañana", the options and their counts) and period grouping, holidays, the policy check, where the visitor can install from and its steps, the filter chips (`filterModel`: the bar's chips, dimmed vs hidden options, multiple types, removable chips, the badge, the line, the calendar's line; "Limpiar"'s scope; empty results), the drawer (`drawerSheet.ts`: its heights, scrim, where a drag ends and the ways it closes, keeping the tapped card in view), a shared link's entry (`sharedEventEntry`: the period to open, or the page for a past event), the details (the drawer's order, no image, its media links and price line), the history between screens and overlays (`screenHistory.ts` with the sheets, on a fake history: an academy left from inside the Filtros sheet or next to the side panel, and the address after closing), the details' history (`drawerHistory.ts`: push or replace, closing through back, back and forward, a shared link's entries) and the drawer's numbers against the CSS (`--drawer-top-gap`, the 900px breakpoint) and the sheets, the images' version for the service worker, the build's files written into it, inline handlers in the policy check, the CSS custom properties check, the calendar feed's description and the report link for an event over several days, the analytics names for opened details, things shown once (`onceFlag`, with and without storage), link previews (their text, the image's version, one image drawn with and one without a flyer), the theme (the saved value, old ones, and the script before first paint) | `frontend/tests/*.test.ts` (Vitest) |
+| Unit tests | Dates and Bogotá's "today", formatting, filtering (rhythms and dates, "Mañana", the options and their counts) and period grouping, holidays, the policy check, where the visitor can install from and its steps, the filter chips (`filterModel`: the bar's chips, dimmed vs hidden options, multiple types, removable chips, the badge, the line, the calendar's line; "Limpiar"'s scope; empty results), the drawer (`drawerSheet.ts`: its heights, scrim, where a drag ends and the ways it closes, keeping the tapped card in view), a shared link's entry (`sharedEventEntry`: the period to open, or the page for a past event), the details (the drawer's order, no image, its media links and price line), the history between screens and overlays (`screenHistory.ts` with the sheets, on a fake history: an academy left from inside the Filtros sheet or next to the side panel, and the address after closing), the details' history (`drawerHistory.ts`: push or replace, closing through back, back and forward, a shared link's entries) and the drawer's numbers against the CSS (`--drawer-top-gap`, the 900px breakpoint) and the sheets, the images' version for the service worker, the build's files written into it, inline handlers in the policy check, the CSS custom properties check, the calendar feed's description and the report link for an event over several days, the analytics names for opened details, stories (the data check: a profile link only for a `STORY`; the "Historia" label, the line and "Ver perfil en Instagram", an event with only a story, a post's media before a story's), things shown once (`onceFlag`, with and without storage), link previews (their text, the image's version, one image drawn with and one without a flyer), the theme (the saved value, old ones, and the script before first paint) | `frontend/tests/*.test.ts` (Vitest) |
 | Build | Every page, image and feed is generated; every page's Content Security Policy allows its inline scripts and styles, and no page has a `style=""` attribute or an inline `on…=""` handler (section 3.3); every event's link preview has its tags and a 1200×630 JPEG under 280 KB (section 3.4) | `npm run build`, `frontend/scripts/csp-meta.mjs`, `frontend/scripts/og-check.mjs`, `frontend/scripts/sw-precache.mjs` (fails if `sw.js` has no list to fill in) |
 
 All six run in `ci` on every pull request, and the ruleset requires `ci` before merging.
@@ -626,7 +631,7 @@ frontend/
                           og-site.html (draws the home page's link preview); csp-meta.mjs (the policy, after
                           the build); og-check.mjs (the events' link previews, after the build); sw-precache.mjs (the build's
                           files, written into sw.js)
-  tests/                  Vitest tests, factories.ts (test events), fakeHistory.ts (history and popstate in Node)
+  tests/                  Vitest tests, factories.ts (test events, a story-only one), checkData.test.ts (the data contract), fakeHistory.ts (history and popstate in Node)
   src/
     data.ts               the data, typed, with flyer sizes (build time only)
     csp.ts                allowInlineScript(): an inline script, allowed by its hash (build time only)
@@ -684,7 +689,7 @@ frontend/
 | `views/viewSwitch.ts` | Phones: the floating calendar / list button |
 | `lib/links.ts` | Every URL built from an event: flyer, clip, page, link preview, Maps, the report form |
 | `lib/linkPreview.ts`, `linkPreviewImage.ts` | A shared link's preview: its title, description, the image's text and version; the image itself (build time) |
-| `lib/mediaLabel.ts` | What the label over a post's image says (Ver con sonido, Ver video, Ver las N), and which cards get a ▶ |
+| `lib/mediaLabel.ts` | What the label over a post's image says (Ver con sonido, Ver video, Ver las N, Historia), and which cards get a ▶; stories (`isStory`, `storySource`: "De una historia de @cuenta…") |
 | `lib/sheet.ts`, `lib/sheetMotion.ts` | Bottom sheets that drag to dismiss; panel sheets with their own back-button step; the release and exit numbers they share with the drawer |
 | `lib/instagramEmbed.ts` | Instagram's player for a post, its script loaded on demand |
 | `views/postsSheet.ts`, `views/postViewer.ts` | An event's posts (Flyers / Videos); a post watched inside the site (the media viewer) |

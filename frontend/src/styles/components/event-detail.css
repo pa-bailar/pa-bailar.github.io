@@ -135,6 +135,27 @@
   gap: var(--space-2);
 }
 
+/* A story's flyer isn't a link (nothing more to see): "Historia" only says where it came from, so it's a caption on
+   the image in its top-left corner (where a story shows its account), like a card's "Sin sonido", not the
+   action-colored button the others are. */
+.event-detail__play--story {
+  left: var(--space-3);
+  top: var(--space-3);
+  bottom: auto;
+  transform: none;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-3) var(--space-1) var(--space-2);
+  border-radius: var(--control-height);
+  background: var(--on-image-bg);
+  color: var(--on-image);
+  font-size: var(--text-xs);
+}
+
+.event-detail__play--story .icon {
+  width: var(--icon-sm);
+  height: var(--icon-sm);
+}
+
 /* ---------- over the flyer: date sticker and the posts badge ---------- */
 
 /* "▦ 16": every post announcing the event, in a sheet (posts-sheet.css). A printed label over the
@@ -195,6 +216,20 @@
   flex-wrap: wrap;
   gap: var(--space-2);
   margin-top: var(--space-1);
+}
+
+/* A story's "De una historia de @academia · las historias duran 24 horas", right over its "Ver perfil en Instagram". */
+.event-detail__source {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  margin-top: var(--space-1);
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.event-detail__source .icon {
+  margin-top: 0.1em;
 }
 
 /* "¿Algo está mal? Repórtalo": small, last, out of the way of the actions. */
