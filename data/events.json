@@ -2438,100 +2438,6 @@
     ]
   },
   {
-    "title": "EDC Colombia 2026",
-    "event_type": "festival",
-    "is_recurring": false,
-    "styles": [
-      "urbano"
-    ],
-    "organizer": "Paramo Presenta",
-    "venue": null,
-    "address": null,
-    "area": null,
-    "date": "2026-10-10",
-    "end_date": "2026-10-11",
-    "weekday": "sábado",
-    "start_time": null,
-    "end_time": null,
-    "prices": [],
-    "artists": [
-      "Richie Hawtin"
-    ],
-    "activities": [
-      "festival de música"
-    ],
-    "contact": null,
-    "confidence": "high",
-    "doubts": [
-      "sin precios especificados",
-      "sin lugar exacto especificado"
-    ],
-    "id": "edc-colombia-2026-10-oct",
-    "account": "paramopresenta",
-    "media": [
-      {
-        "post_id": "18112959014147092",
-        "permalink": "https://www.instagram.com/p/DeCOVsFjOuH/",
-        "media_type": "CAROUSEL_ALBUM",
-        "published": "2026-10-03T14:00:02+0000",
-        "flyer": "flyers/18112959014147092-3.webp",
-        "caption": "Ya nos imaginamos entre las luces de edc_colombia, con axelboman sonando y nosotrxs sin parar de bailar 🎡✨\n\n🎫 Entradas a través de ticketmastercol",
-        "preview": "previews/18112959014147092-3.mp4",
-        "slides": 4
-      },
-      {
-        "post_id": "18340434637283324",
-        "permalink": "https://www.instagram.com/p/Dd_7pPnFZk3/",
-        "media_type": "CAROUSEL_ALBUM",
-        "published": "2026-10-02T16:38:28+0000",
-        "flyer": "flyers/18340434637283324-3.webp",
-        "caption": "Que suene borisbrejcha y que la noche nos encuentre bailando juntxs ⚡️\n\n Nos vemos el 10 y 11 de octubre en edc_colombia.\n\n🎫 Entradas a través de ticketmastercol",
-        "preview": "previews/18340434637283324-3.mp4",
-        "slides": 4
-      },
-      {
-        "post_id": "18229008445325573",
-        "permalink": "https://www.instagram.com/p/Dd9N_91le7g/",
-        "media_type": "CAROUSEL_ALBUM",
-        "published": "2026-10-01T15:21:08+0000",
-        "flyer": "flyers/18229008445325573-3.webp",
-        "caption": "La pista nos espera y richiehawtin también ✨\n\nEste 10 y 11 de octubre nos vemos en edc_colombia 🎆\n\n🎫 Entradas a través de ticketmasterco",
-        "preview": "previews/18229008445325573-3.mp4",
-        "slides": 4
-      },
-      {
-        "post_id": "18129474601691373",
-        "permalink": "https://www.instagram.com/reel/DeC1t1vsEuE/",
-        "media_type": "VIDEO",
-        "published": "2026-10-03T19:48:00+0000",
-        "flyer": "flyers/18129474601691373-0.webp",
-        "caption": "Solo falta una semana para vivir nuestro primer edc_colombia juntxs 🥹🎡 \n\n10 y 11 de octubre · Medellín\n\n🎟️ Entradas en ticketmastercol",
-        "preview": "previews/18129474601691373-0.mp4",
-        "slides": null
-      },
-      {
-        "post_id": "18008371112779507",
-        "permalink": "https://www.instagram.com/reel/DeAaT-EM-fh/",
-        "media_type": "VIDEO",
-        "published": "2026-10-02T21:09:01+0000",
-        "flyer": "flyers/18008371112779507-0.webp",
-        "caption": "Llegar de día y seguir bailando cuando anochezca edc_colombia ✨ \n\nYa queremos que sea el 10 y 11 de octubre 🎡\n\n🎟️ Entradas en ticketmastercol",
-        "preview": "previews/18008371112779507-0.mp4",
-        "slides": null
-      },
-      {
-        "post_id": "18104973755343991",
-        "permalink": "https://www.instagram.com/reel/Dd-QUUFBtYp/",
-        "media_type": "VIDEO",
-        "published": "2026-10-02T01:00:04+0000",
-        "flyer": "flyers/18104973755343991-0.webp",
-        "caption": "Ya casi nos vemos bajo el cielo eléctrico de edc_colombia 🌈\n\n🎫 Entradas a través de ticketmasterco",
-        "preview": "previews/18104973755343991-0.mp4",
-        "slides": null
-      }
-    ]
-  },
-  {
     "title": "Primer Aniversario LuDance - Fiesta Crossover",
     "event_type": "social",
     "is_recurring": false,
@@ -2976,47 +2882,6 @@
         "caption": "Octubre trae nuevas formas de moverse, sentir y crear. ✨\r\n\r\nEn La Casona de la Danza, el cuerpo es la puerta de entrada a experiencias que invitan a explorar el movimiento, despertar la imaginación y encontrarse con otras personas a través de la danza. 💫\r\n\r\nEste mes, déjese sorprender por una programación pensada para experimentar, aprender y disfrutar el movimiento desde diferentes perspectivas. Talleres, encuentros y experiencias donde cada paso puede convertirse en una nueva manera de expresarse. 🌿\r\n\r\nHaga una pausa, escuche su cuerpo y anímese a descubrir todo lo que puede pasar cuando el movimiento toma el espacio. 💃🕺\r\n\r\n📍 Deslice y explore la programación de octubre.\r\n\r\n#CasonaDeLaDanza #BogotáMiCiudadMiCasa",
         "preview": null,
         "slides": 19
-      }
-    ]
-  },
-  {
-    "title": "Los Fabulosos Cadillacs en concierto",
-    "event_type": "concert",
-    "is_recurring": false,
-    "styles": [],
-    "organizer": "Paramo Presenta",
-    "venue": "Vive Claro Music Hall",
-    "address": null,
-    "area": null,
-    "date": "2026-10-17",
-    "end_date": null,
-    "weekday": "viernes",
-    "start_time": null,
-    "end_time": null,
-    "prices": [],
-    "artists": [
-      "Los Fabulosos Cadillacs"
-    ],
-    "activities": [
-      "concierto"
-    ],
-    "contact": null,
-    "confidence": "high",
-    "doubts": [
-      "sin hora de inicio"
-    ],
-    "id": "los-fabulosos-cadillacs-en-concierto-17-oct",
-    "account": "paramopresenta",
-    "media": [
-      {
-        "post_id": "18109846736175024",
-        "permalink": "https://www.instagram.com/p/DeCffUvlep2/",
-        "media_type": "CAROUSEL_ALBUM",
-        "published": "2026-10-03T16:30:03+0000",
-        "flyer": "flyers/18109846736175024-0.webp",
-        "caption": "Más de 40 años acompañándonos con sus canciones y en dos semanas volvemos a cantar con ellos lfcoficial ❤️ \n\n17 de octubre · Vive Claro Music Hall, Bogotá\n\n🎫 Entradas disponibles a través de ticketmastercol.",
-        "preview": null,
-        "slides": 8
       }
     ]
   },
@@ -4037,53 +3902,6 @@
         "caption": "10 EDICIONES. UNA HISTORIA QUE SE SIGUE BAILANDO.\n\nDiez ediciones construyendo un espacio para encontrarnos alrededor del casino, la música y las expresiones de la cultura cubana. Diez ediciones conectando bailarines, maestros, academias y comunidades de diferentes lugares en una misma pista.\n\nY para celebrar esta DÉCIMA EDICIÓN, Casinea reúne una programación de talleristas que representa la diversidad, trayectoria y evolución de nuestra comunidad.\n\nArtistas, bailarines, maestros y coreógrafos que llegan desde diferentes escenas para compartir sus conocimientos, sus estilos y sus maneras de entender el baile.\n\nDesde el casino y la rueda, hasta el son, mambo, chachachá, timba, reparto, estilo masculino y femenino, musicalidad, interpretación y trabajo corporal, cada taller será una oportunidad para aprender de quienes han hecho de la danza parte de su camino.\n\nCasinea 2026 no es solo una nueva edición. Es la celebración de diez ediciones de encuentros, aprendizaje, competencia, música y comunidad.\n\n🔥 10.ª EDICIÓN DEL FESTIVAL INTERNACIONAL CASINEA\n\n📅 13 al 16 de noviembre de 2026\n\n📍 Bogotá, Colombia\n\nUna década bailando juntos.\n\nY esto apenas sigue comenzando.\n\n#FestivalCasinea #Casinea2026 #DécimaEdición #SalsaCasino #CulturaCubana",
         "preview": null,
         "slides": null
-      }
-    ]
-  },
-  {
-    "title": "Silvana Estrada - Vendrán Suaves Lluvias",
-    "event_type": "concert",
-    "is_recurring": false,
-    "styles": [],
-    "organizer": "Páramo Presenta",
-    "venue": "Vive Claro Music Hall",
-    "address": null,
-    "area": null,
-    "date": "2026-11-22",
-    "end_date": null,
-    "weekday": "domingo",
-    "start_time": null,
-    "end_time": null,
-    "prices": [
-      {
-        "label": "Boletas desde",
-        "amount_cop": 149000,
-        "condition": "+ Servicio"
-      }
-    ],
-    "artists": [
-      "Silvana Estrada"
-    ],
-    "activities": [
-      "concierto"
-    ],
-    "contact": null,
-    "confidence": "high",
-    "doubts": [
-      "sin hora de inicio"
-    ],
-    "id": "silvana-estrada-vendran-suaves-lluvias-22-nov",
-    "account": "paramopresenta",
-    "media": [
-      {
-        "post_id": "18641702410013685",
-        "permalink": "https://www.instagram.com/p/Dd_wf1dldZV/",
-        "media_type": "CAROUSEL_ALBUM",
-        "published": "2026-10-02T15:01:03+0000",
-        "flyer": "flyers/18641702410013685-1.webp",
-        "caption": "Qué alegría volver a verte, silvanaestradab 🤍 Bogotá tiene ahora dos citas con Vendrán Suaves Lluvias 🌧️\n\n20 de noviembre • Agotada\n22 de noviembre • Entradas disponibles \n\nVive Claro Music Hall\n\n🎫 Encuéntralas en  ticketmastercol",
-        "preview": null,
-        "slides": 3
       }
     ]
   },
