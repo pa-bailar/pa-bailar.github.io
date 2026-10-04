@@ -18,7 +18,8 @@ import {
 } from "./state";
 import { initThemeToggle } from "./theme";
 import { renderCalendarView } from "./views/calendarView";
-import { initEventDialog, openEventDialog } from "./views/eventDialog";
+import { highlightCurrentCard, initEventDialog, openEventDialog } from "./views/eventDialog";
+import { armDetailsHint, markDetailsHintSeen } from "./views/detailsHint";
 import { filterOptions, renderFilters } from "./views/filters";
 import {
   captureListPosition,
@@ -104,6 +105,8 @@ function render({ keepPlace = false } = {}) {
   if (anchor) restoreListPosition(anchor);
   announce(shown);
   setShareSources(shareSources(groups));
+  highlightCurrentCard(); // the side panel's event, outlined again among the new cards
+  armDetailsHint();
 
   if (focused) scope.querySelector<HTMLElement>(focused)?.focus();
 }
@@ -295,7 +298,10 @@ function handleClick(domEvent: MouseEvent) {
     const event = events.find((item) => item.id === eventId);
     if (!event) return;
     domEvent.preventDefault();
-    openEventDialog(event, visibleEvents(events, state));
+    // Counted by where it was opened: the card itself, its "Detalles", or the line under it.
+    const source = control.dataset.source === "boton" || control.dataset.source === "linea" ? control.dataset.source : "tarjeta";
+    markDetailsHintSeen();
+    openEventDialog(event, visibleEvents(events, state), { source });
     return;
   }
   if (view) {
@@ -365,7 +371,7 @@ function openSharedEvent() {
   // Once the page has settled (fonts in, layout measured): opened earlier, the viewer could size itself
   // to a page that was still changing.
   void document.fonts.ready.then(() =>
-    requestAnimationFrame(() => requestAnimationFrame(() => openEventDialog(event, visibleEvents(events, state)))),
+    requestAnimationFrame(() => requestAnimationFrame(() => openEventDialog(event, visibleEvents(events, state), { source: "enlace" }))),
   );
 }
 

@@ -67,6 +67,7 @@ Themes switch through CSS `color-scheme`: `light` at `:root`, `dark` only under 
 | `--chip-active-*` | wine / cream | marigold / wine | Selected filter chip, checked box in the bar's menus |
 | `--stripe-1..3` | tomato, orange, marigold | brighter tomato, orange, marigold | 70s stripes |
 | `--sticker-*` | tomato / cream | marigold / wine | Round date sticker |
+| `--pulse` | tomato, translucent | orange, translucent | The ring of the first visit's pulse on "Detalles" (decorative) |
 | `--type-*` / `--on-type` | per event type | per event type | Type tag, calendar pills and dots |
 
 ### Typography
@@ -88,14 +89,15 @@ Sizes: `--text-2xs` 11 · `xs` 12 · `sm` 13 · `md` 15 (body) · `lg` 17 · `xl
   - `--radius-round`: **only** the date sticker and calendar day numbers
 - `--border-width` 1.5px everywhere.
 - Controls: `--control-height` 40px (buttons, toggle), `--chip-height` 32px, `--sticker-size` 60px.
-- Touch: `--touch-target` 44px (rows of the bar's menus, chips in the filter sheet on touch screens), `--checkbox-size` 18px (the menus' boxes).
-- Small parts: `--tab-underline` 3px (the selected tab's line), `--icon-sm` 16px (marks over thumbnails), `--icon-lg` 24px (the floating button), `--handle-width` × `--handle-height` 40×4px (every sheet's grab handle, `.sheet-handle`), `--fab-size` 44px.
+- Touch: `--touch-target` 44px (rows of the bar's menus, chips in the filter sheet on touch screens, the cards' action row), `--checkbox-size` 18px (the menus' boxes).
+- The viewer: `--viewer-peek` 42dvh (phones: the flyer's area above the half sheet), `--panel-width` 420px (wide screens: the side panel), `--thumb-width` × `--thumb-height` 56×70px (the sheet's thumbnail), `--border-width-thin` 1px (the cards' "Detalles").
+- Small parts: `--tab-underline` 3px (the selected tab's line), `--icon-sm` 16px (marks over thumbnails), `--icon-md` 20px (the cards' "Detalles"), `--icon-lg` 24px (the floating button), `--handle-width` × `--handle-height` 40×4px (every sheet's grab handle, `.sheet-handle`), `--fab-size` 44px.
 - Over photos: `--on-image` (white) with `--shadow-on-image`, the same in both themes, for marks that sit on any flyer (▶, stacked squares).
 
 ## Signature motifs
 
 - **70s stripes** (`<Stripes />`): three bands (tomato, orange, marigold). Used in the page headers (home, event page, 404), the event detail and the footer; the period headings use the same three colors as one thin line. Don't use them anywhere else; they lose meaning if repeated.
-- **Date sticker:** a round "record label" with the day and month, overlapping the bottom-right of each flyer: hanging below it on cards, inside its corner in the event detail. Two events sharing one flyer (a monthly schedule) are told apart by it while swiping. An event over several days within one month shows its days, "13–15 / NOV", a size smaller (`--text-sm`, `.date-sticker--range`) to fit the 60 px circle; across months it keeps the first day ("31 / OCT"), and the card's line gives the range.
+- **Date sticker:** a round "record label" with the day and month, inside the bottom-right corner of each flyer, on cards and in the event detail. Two events sharing one flyer (a monthly schedule) are told apart by it while swiping. An event over several days within one month shows its days, "13–15 / NOV", a size smaller (`--text-sm`, `.date-sticker--range`) to fit the 60 px circle; across months it keeps the first day ("31 / OCT"), and the card's line gives the range.
 - **Italic headings:** group, day and month headings in Bodoni italic, like a handwritten setlist.
 
 The light theme's creams are the paper of 1970s salsa flyers and sleeves. The page uses the slightly darker, aged tone (`#ECDDC6`) rather than near-white, so it isn't glaring. Cards sit one step lighter so they still lift off the page.
@@ -240,8 +242,9 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
 
 ## Saving and searching
 
-- **Saving ("Guardar")** is a bookmark, like Instagram's: at the end of each card's last line (price and rhythms;
-  the date sticker takes the top-right corner) and in the detail, next to the date (`.save-button`, `scripts/views/saveButton.ts`). Filled in the accent color
+- **Saving ("Guardar")** is a bookmark, like Instagram's: at the right end of each card's action row (see "Opening
+  an event"), among the viewer's quick actions (with its word: "Guardar" / "Guardado") and next to the date on an
+  event's page (`.save-button`, `scripts/views/saveButton.ts`). Filled in the accent color
   when saved. Saved events live in this browser (`lib/saved.ts`, localStorage): no account, nothing
   sent anywhere. Events no longer in the data are forgotten.
 - **"Guardados"** shows only saved events, in the list and the calendar: 🔖 in the phone bar (with the
@@ -339,18 +342,64 @@ An event can be announced by several Instagram posts (a flyer, then a video, a r
 - **Video events are marked in the list:** a ▶ in a dark circle in the middle of the card's image (`.play-mark`), like any video thumbnail, so it's clear before opening it.
 - **"Ver en Instagram ↗"** in the actions is the explicit way to the app; the ↗ says it leaves the site.
 
+## Opening an event
+
+On phones each event is a flyer with text under it, and nothing said it opens; the bookmark and the underlined
+@academia looked tappable but did other things. And a tap showed the same flyer again, full screen, with the new
+information below the fold, so it could feel like nothing happened. So:
+
+- **An action row under each card's flyer, like Instagram's** (`.event-card__actions`, `views/eventCard.ts`):
+  **ⓘ Detalles** on the left (an icon and the word, outlined thin: `--border-width-thin`, 1px, in `--border`; a quiet
+  label, not a second primary button), **Compartir** (the share icon: the event's link through the phone's menu) and
+  **Guardar** (the bookmark) on the right. Each is a 44px target (`--touch-target`) above the card's stretched link,
+  and the gaps between them still open the card.
+- **A quiet line at the card's foot** (`.event-card__more`), like "Ver los 12 comentarios", naming what the details
+  add for this event (`detailsTeaser`): "Ver horario, precios y cómo llegar", only with what it has ("Ver horario y
+  precios", "Ver cómo llegar"), else "Ver todos los detalles". `--text-muted`.
+- **The whole card still opens the details.** Card, "Detalles" and the line open the same viewer.
+- **The date sticker sits inside the flyer's bottom-right corner** on cards too (it used to hang below it, where
+  Guardar now is). The title no longer keeps room for it.
+- **First visit:** the first card's "Detalles" pulses gently once (a ring in `--pulse` and a slight swell, 1.6s) when
+  its row is fully on screen (`views/detailsHint.ts`), never again in this browser (`details-hint-seen` in
+  localStorage, `lib/onceFlag.ts`), and not at all once the visitor has opened any details. No hint bubble over the
+  list. Nothing moves with reduced motion.
+
+**The viewer as a sheet** (phones and tablets, under 900px):
+
+- **It opens at half height:** the sheet covers the lower 58% of the screen and the event's flyer stays above it
+  (`--viewer-peek`, 42% of the screen, or the flyer's own height when it's shorter), like a post under Instagram's
+  comments. What's new is on screen at once.
+- **The sheet:** its bar (handle, ‹ "3 de 9" ›, ×); a small thumbnail of the flyer (`--thumb-width` ×
+  `--thumb-height`, 56×70) with when and the title and the type tag; three quick actions as equal buttons with the
+  icon over the word: **Cómo llegar** (only with a place) · **Compartir** · **Guardar** ("Guardado", in the accent
+  color, once saved); the stripes; then **Cuándo, Lugar, Precio** (one line: "Desde $ 25.000 · 3 opciones", "Gratis"
+  or "Por confirmar") and **Organiza**, then the rest (Con, Incluye, Contacto), the prices when there's more than
+  one, the rhythms; at the end "Ver en Instagram ↗", the post's text and "¿Algo está mal? Repórtalo".
+- **Expanding:** pulling the sheet up, or just scrolling it, slides it over the flyer to the whole screen; scroll
+  snapping settles it at one of the two heights, and further down it scrolls freely. Pulling it down returns to half
+  height, and once more closes it. The handle is a button: a tap switches between the two heights ("Ver todo el
+  detalle" / "Ver menos"). A mouse can drag the bar too.
+- **Swiping keeps the height:** the next event opens at the height the sheet had.
+- **The flyer above the sheet** is the detail's own: a video's clip plays there (and stops while the full sheet
+  covers it), "Ver con sonido" / "Ver las 4" sit in its top-left corner, the posts badge in its top-right corner, and
+  a video tapped plays in place, whole, with the sheet waiting below it.
+
+**The viewer as a side panel** (900px and wider): a panel on the right (`--panel-width`, 420px), not modal, so the
+list stays usable next to it: the page leaves room for it, another card opens its event in the panel (the address
+changes without adding to the history), and the open event's card is outlined in the accent color. Details first,
+then the flyer, then "Ver en Instagram". × and Escape close it; it slides in from the right.
+
 ## Event detail: dialog and page
 
-- **Same markup in both** (`scripts/views/eventDetail.ts`): the home page's dialog and each event's own page (`pages/evento/[id].astro`, one static page per event).
-- **When and what first:** right under the flyer, the date line (`.event-dialog__when`, the cards' "Domingo · 8:00 p. m." in the accent color) and the title, then the type tag, the stripes and the details. On a phone (390×700) both are on screen without scrolling.
+- **Same parts in both** (`scripts/views/eventDetail.ts`): each event's own page (`pages/evento/[id].astro`, one static page per event, `eventDetailHtml`) shows the flyer, then the date line (`.event-dialog__when`, the cards' "Domingo · 8:00 p. m." in the accent color), the title, the type tag, the stripes and the details. The home page's viewer lays the same parts out as a sheet (`eventSheetHtml`, "Opening an event" below).
 - **The viewer swipes between events** (`EventDialog.astro`, `scripts/views/eventDialog.ts`):
   - **What's in it:** one full-width slide per event on screen, in list order (or the selected calendar day's). Swipe sideways (or ‹ ›, or the arrow keys) to change event; scroll up and down to read.
   - **No peeking neighbors:** like Instagram posts, each event fills the width.
-  - **The counter follows the finger:** "3 de 9" changes as soon as the next event passes the middle, not when the swipe stops.
+  - **Each slide has its bar:** "3 de 9" with ‹ › and ×, at the top of its sheet, so the counter moves with the event while swiping.
   - **Opening it** focuses the viewer itself, not its first button (no outlined ‹ when it opens from a shared link); a shared link opens it once the page has settled, and it stays on the same event when the screen changes size.
   - **Signaling the swipe:** the "3 de 9" counter with ‹ › (dots fail past ~10 items), a seam between events while swiping, and a one-time nudge. The nudge plays after opening: about a fifth of the next event shows, holds, and slides back. It stops at the first touch and isn't repeated after the first swipe.
 - **Panel sheets** (filters, an event's posts, a post) share one base: `.sheet-panel` (`sheet.css`, attached to the bottom on phones, a centered window on wide screens) and `initPanelSheet` / `openPanelSheet` (`lib/sheet.ts`: ×, backdrop, drag down, Escape). Each gets its own history entry, so the phone's back button closes only the sheet on top: a post, then the event viewer, then the list.
-- **Bottom sheets** (the viewer on phones and the panel sheets; `lib/sheet.ts`, `sheet.css`) behave like native ones, with values from Material/iOS sheets:
+- **Bottom sheets** (the viewer on phones and the panel sheets; `lib/sheet.ts`, `sheet.css`) behave like native ones, with values from Material/iOS sheets (the viewer drags down to close from its half height):
   - **Opening:** they rise in 320ms (Material's emphasized-decelerate curve) while the backdrop fades in.
   - **Dragging:** dragging down follows the finger 1:1, shrinks the sheet slightly and fades the backdrop. Dragging up past the top rubber-bands.
   - **Release:** a flick down (>0.5 px/ms) closes, as does a drag past max(110px, 22% of the screen) unless flicked back up. Otherwise it springs back (300ms).

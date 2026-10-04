@@ -7,16 +7,20 @@ import { escapeHtml } from "../lib/dom";
 import { ICONS } from "../lib/icons";
 import { isSaved, toggleSaved } from "../lib/saved";
 
-function buttonInner(saved: boolean): string {
-  return saved ? ICONS.bookmarkFilled : ICONS.bookmark;
+function buttonInner(saved: boolean, labeled: boolean): string {
+  const icon = saved ? ICONS.bookmarkFilled : ICONS.bookmark;
+  return labeled ? `${icon}<span>${saved ? "Guardado" : "Guardar"}</span>` : icon;
 }
 
-/** The bookmark for `event`. At build time (the event page) nothing is saved yet: syncSaveButtons fixes it. */
-export function saveButtonHtml(event: DanceEvent): string {
+/**
+ * The bookmark for `event`. At build time (the event page) nothing is saved yet: syncSaveButtons fixes it.
+ * `labeled`: a button with its word under the icon ("Guardar" / "Guardado"), for the viewer's quick actions.
+ */
+export function saveButtonHtml(event: DanceEvent, { labeled = false, className = "save-button" } = {}): string {
   const saved = isSaved(event.id);
   return `
-    <button class="save-button" type="button" data-save="${escapeHtml(event.id)}" aria-pressed="${saved}"
-      aria-label="Guardar: ${escapeHtml(event.title)}" data-track="guardar">${buttonInner(saved)}</button>`;
+    <button class="${className}" type="button" data-save="${escapeHtml(event.id)}" aria-pressed="${saved}"
+      aria-label="Guardar: ${escapeHtml(event.title)}" data-track="guardar"${labeled ? " data-save-labeled" : ""}>${buttonInner(saved, labeled)}</button>`;
 }
 
 /** Every bookmark of the event `id` (or of every event) shows whether it's saved. */
@@ -25,7 +29,7 @@ export function syncSaveButtons(id?: string) {
   document.querySelectorAll<HTMLElement>(selector).forEach((button) => {
     const saved = isSaved(button.dataset.save!);
     button.setAttribute("aria-pressed", String(saved));
-    button.innerHTML = buttonInner(saved);
+    button.innerHTML = buttonInner(saved, button.dataset.saveLabeled !== undefined);
   });
 }
 

@@ -1,17 +1,10 @@
 ---
-// Event viewer: one slide per event on screen, swiped sideways (scripts/views/eventDialog.ts).
-// The bar shows where you are ("3 de 9") with arrows; on phones, the handle can be pulled down to close.
+// Event viewer: one slide per event on screen, swiped sideways (scripts/views/eventDialog.ts). On phones each
+// slide is the event's flyer with a sheet over the lower part of the screen (half height, pulled up to the
+// whole screen); on wide screens, a side panel next to the list. Each slide brings its own bar ("‹ 3 de 9 › ×"),
+// at the top of the sheet.
 ---
 
 <dialog class="sheet event-dialog" id="event-dialog" aria-labelledby="event-title-0" tabindex="-1">
-  <div class="viewer-bar">
-    <span class="sheet-handle viewer-bar__handle" aria-hidden="true"></span>
-    <div class="viewer-bar__nav">
-      <button class="icon-btn" type="button" data-step="-1" aria-label="Evento anterior">‹</button>
-      <span class="viewer-bar__count" id="viewer-count"></span>
-      <button class="icon-btn" type="button" data-step="1" aria-label="Evento siguiente">›</button>
-    </div>
-    <button class="icon-btn" type="button" data-close-dialog aria-label="Cerrar">×</button>
-  </div>
   <div class="viewer-track" id="viewer-track"></div>
 </dialog>

@@ -75,6 +75,7 @@
   --chip-active-bg: light-dark(var(--wine-900), var(--marigold-400));
   --chip-active-text: light-dark(var(--cream-100), var(--wine-900));
   --free: var(--palm-600); /* the "Gratis" price tag */
+  --pulse: light-dark(rgb(200 50 28 / 0.45), rgb(240 138 36 / 0.5)); /* the accent's ring: "Detalles" on a first visit */
   --on-free: var(--white);
 
   /* Brand motifs */
@@ -143,12 +144,18 @@
   --checkbox-size: 18px; /* the boxes of the bar's menus */
   --jump-bar-height: 56px; /* phones: sticky bar with filters and period chips */
   --sticker-size: 60px;
+  --border-width-thin: 1px; /* a quiet outline: the cards' "Detalles" */
+  --viewer-peek: 42dvh; /* phones: the flyer's area above the viewer's half sheet (the sheet: the other 58%) */
+  --panel-width: 420px; /* wide screens: the event viewer as a side panel */
+  --thumb-width: 56px; /* the flyer's thumbnail at the top of the viewer's sheet (4:5) */
+  --thumb-height: 70px;
   --day-column-width: 200px; /* day heading column on wide screens */
   --content-width: 1120px;
 
   /* ---------- Layer 3: layers (z-index) ---------- */
   --z-raised: 1; /* above a sibling's stretched click area */
   --z-sticky: 10; /* the sticky toolbar and jump bar */
+  --z-panel: 20; /* wide screens: the event viewer as a side panel, over the sticky bars */
 
   /* ---------- Layer 3: elevation ---------- */
   --shadow-menu: 0 8px 24px light-dark(rgb(42 15 20 / 0.18), rgb(0 0 0 / 0.45)); /* dropdown menus */
@@ -162,6 +169,7 @@
   /* ---------- Layer 3: small parts ---------- */
   --tab-underline: 3px; /* the selected tab's line: Próximos / Calendario, Flyers / Videos */
   --icon-sm: 16px; /* marks over thumbnails */
+  --icon-md: 20px; /* the cards' "Detalles" */
   --icon-lg: 24px; /* the floating calendar / list button */
   --handle-width: 40px; /* sheets' grab handle */
   --handle-height: 4px;
@@ -171,7 +179,8 @@
   --duration-bar: 250ms; /* the jump bar hiding/showing */
 
   /* Breakpoints (media queries can't read custom properties, so they're written as numbers):
-     720px  phones vs. wider: the feed, the jump bar and the filter sheet, the viewer as a sheet
+     720px  phones vs. wider: the feed, the jump bar and the filter sheet
+     900px  the event viewer: a half-height sheet below it, a side panel from it
      960px  wide: more card columns */
 }
 

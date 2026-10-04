@@ -35,5 +35,6 @@ export const ICONS = {
   addSquare: icon(`<rect x="4" y="4" width="16" height="16" rx="3.5"/><path d="M12 8.5v7M8.5 12h7"/>`, false), // Agregar a inicio
   link: icon(`<path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1.5 1.5"/><path d="M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1.5-1.5"/>`, false),
   arrowDown: icon(`<path d="M12 4v15M6 13l6 6 6-6"/>`, false),
+  info: icon(`<circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.5h.01"/>`, false), // an event's "Detalles"
   pin: icon(`<path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>`, false),
 } as const;
