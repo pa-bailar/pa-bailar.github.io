@@ -12,7 +12,7 @@ Related documents in this repository:
 - [`DATA.md`](DATA.md): the data contract, every field of `events.json`.
 - [`DESIGN.md`](DESIGN.md): the design system, every visual rule.
 
-Last reviewed: 3 October 2026.
+Last reviewed: 4 October 2026.
 
 Contents:
 
@@ -281,19 +281,19 @@ sequenceDiagram
 - **No data request:** the events arrive inside the HTML, so the first render needs no network.
   The flyers load lazily as they come into view.
 - **One delegated click listener** in `main.ts` handles every control marked with a `data-*` attribute:
-  view, type, style, academy, clear filters, day, month, today, event.
+  view, type, style, date, academy, clear filters, day, month, today, event.
 
 ### 5.2 State and rendering
 
 ```mermaid
 flowchart TD
-    ST["AppState (state.ts)<br/>view · typeFilter · styleFilter ·<br/>accountFilter · month · selectedDay"]
+    ST["AppState (state.ts)<br/>view · typeFilter · styles · dates ·<br/>accountFilter · query · savedOnly · month · selectedDay"]
     CLICK["Click on a data-* control<br/>(main.ts handleClick)"] --> ST
     ST --> R["render()"]
-    R --> F["filters.ts<br/>type and style chips<br/>(toolbar and filter sheet)"]
+    R --> F["filters.ts<br/>date, type and style chips<br/>(toolbar and filter sheet)"]
     R --> U["upcomingView.ts<br/>Próximos: events grouped by period"]
     R --> C["calendarView.ts<br/>Calendario: month grid + the day's events"]
-    R --> J["jumpBar.ts<br/>phones: ⚙ · period ▾ · rhythm ▾"]
+    R --> J["jumpBar.ts<br/>phones: ⚙ · dates ▾ · rhythm ▾"]
     R --> VS["viewSwitch.ts<br/>phones: floating calendar / list button"]
     U --> CARD["eventCard.ts"]
     C --> CARD
@@ -304,12 +304,22 @@ flowchart TD
 - **The state is a plain object** (`state.ts`), and every change re-renders the visible parts. There's
   no framework: the views return HTML strings, inserted with `innerHTML` after escaping every value from
   the data (`lib/dom.ts`, `escapeHtml`).
-- **Filtering:**
-  - **Type:** social, workshop…
-  - **Style:** filtering by a family ("salsa") also matches its variants ("salsa caleña").
+- **Filtering** (`matchesFilters`): an event must pass every group (AND), and within the rhythms and the dates
+  any choice will do (OR):
+  - **Dates** (`dates`, several): periods of the list ("hoy", "fin-de-semana", "2026-11"…) plus "manana"
+    (`TOMORROW`). An event matches when any of its days from today falls in a chosen period (`matchesDates`), so an
+    event over several days counts in each period it runs through. The list then shows it on its first such day
+    (`listedDay`), and `groupByPeriod` gives "Mañana" a group of its own when it's chosen. Upcoming list only: the
+    calendar ignores them.
+  - **Type** (`typeFilter`, one): social, workshop…
+  - **Rhythms** (`styles`, several): filtering by a family ("salsa") also matches its variants ("salsa caleña").
   - **Academy:** set by tapping an academy's name on a card.
+  - **Search** and **Guardados**.
 
-  Only values present in the current view are offered, so a chip never leads to an empty list.
+  The options (`filterOptions` in `views/filters.ts`, `dateOptions` in `state.ts`) are counted against the other
+  groups (`matchesFilters(event, state, except)`): an option that would add nothing isn't offered, so a choice never
+  leads to an empty list; chosen ones stay so they can be unchosen. Filters live only in memory: not in the URL or
+  storage, as before (`DESIGN.md`, "Filters").
 - **"Próximos"** groups upcoming events by period: today, this week, this weekend, next week, the rest
   of the month, then one group per month for the next six months, and one per year beyond that
   (`groupByPeriod`). On phones, cards read like an Instagram feed. An event over several days (`end_date`)
@@ -426,7 +436,7 @@ only Instagram content it loads is a post's player, and only when a visitor taps
 | Data contract | Every field of `events.json` and `meta.json`: types, allowed values (event types, styles, confidence), real dates and time formats, `end_date` after `date` and within 7 days, unique ids, usernames, post links (`instagram.com/<p, reel, reels or tv>/<code>/`), flyer and clip paths (inside `flyers/` and `previews/`) and their files existing, sorting | `frontend/scripts/check-data.mjs` |
 | Types | `astro check`: strict TypeScript, including `noUncheckedIndexedAccess` | `tsconfig.json` |
 | Color contrast | Every color pair the site uses, in both themes, against WCAG 2.2 AA. It reads the tokens from `tokens.css`, so it can't drift from the design system | `frontend/scripts/check-contrast.mjs` |
-| Unit tests | Dates and Bogotá's "today", formatting, filtering and period grouping, holidays, the policy check | `frontend/tests/*.test.ts` (Vitest) |
+| Unit tests | Dates and Bogotá's "today", formatting, filtering (rhythms and dates, "Mañana", the options and their counts) and period grouping, holidays, the policy check | `frontend/tests/*.test.ts` (Vitest) |
 | Build | Every page, image and feed is generated; every page's Content Security Policy allows its inline scripts and styles, and no page has a `style=""` attribute (section 3.3) | `npm run build`, `frontend/scripts/csp-meta.mjs` |
 
 All five run in `ci` on every pull request, and the ruleset requires `ci` before merging.
@@ -478,15 +488,15 @@ frontend/
 | Module | Responsibility |
 |---|---|
 | `data.ts` | Reads `data/`, adds flyer sizes, lists the academies |
-| `state.ts` | The UI state; which events each view shows; grouping by period |
+| `state.ts` | The UI state; filtering (AND across groups, OR within rhythms and dates); grouping by period; the date options |
 | `views/upcomingView.ts` | "Próximos" |
 | `views/calendarView.ts` | "Calendario", with holidays |
 | `views/eventCard.ts` | A card: flyer at its shape, date sticker, details |
 | `views/eventDetail.ts` | An event's full detail (dialog and page): the flyer of each post, details, prices, actions |
 | `views/eventDialog.ts` | The viewer: slides, swiping, URL history, closing |
 | `screenHistory.ts` | History entries for the app's screens (academy, period, calendar, saved): the phone's back steps through them |
-| `views/filters.ts` | Type and style chips, the academy notice |
-| `views/jumpBar.ts` | Phones: the sticky bar, its menus, keeping your place, hiding on scroll |
+| `views/filters.ts` | Date, type and style chips, the academy notice; the rhythm and date options with their counts; the dropdowns' labels |
+| `views/jumpBar.ts` | Phones: the sticky bar, its checklist menus (dates, rhythms), keeping your place, hiding on scroll |
 | `views/viewSwitch.ts` | Phones: the floating calendar / list button |
 | `lib/links.ts` | Every URL built from an event: flyer, clip, page, link preview, Maps, the report form |
 | `lib/mediaLabel.ts` | What the label over a post's image says (Ver con sonido, Ver video, Ver las N), and which cards get a ▶ |

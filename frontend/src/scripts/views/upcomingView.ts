@@ -5,7 +5,8 @@
 //   - the near periods (OPEN_PERIODS) show their flyers in full; later ones start as a summary row, with
 //     their first flyers as small squares and "Ver los 23 eventos";
 //   - a busy open period shows PERIOD_LIMIT events, then "Ver 7 más";
-//   - a short list (SHORT_LIST events or fewer, e.g. once filtered) is always shown whole.
+//   - a short list (SHORT_LIST events or fewer, e.g. once filtered) is always shown whole;
+//   - periods chosen in the date filter are shown whole: the visitor asked for them.
 // What the visitor opens stays open while they filter or switch views.
 
 import type { AppState, DanceEvent } from "../types";
@@ -14,6 +15,7 @@ import { ICONS } from "../lib/icons";
 import { PERIOD_SHARE_TITLES } from "../lib/shareText";
 import { eventCountLabel } from "../lib/format";
 import { mainMedia, thumbUrl } from "../lib/links";
+import { todayIso } from "../lib/dates";
 import { eventsInView, groupByPeriod, hasActiveFilters, matchesFilters, sectionId } from "../state";
 import { applyFlyerRatios, eventCardGridHtml } from "./eventCard";
 import type { AgendaGroup } from "../state";
@@ -69,7 +71,9 @@ export function isPeriodOpen(groups: AgendaGroup[], position: number): boolean {
   return total <= SHORT_LIST || shownWhole.has(group.key) || OPEN_PERIODS.has(group.key) || (!anyNear && position === 0);
 }
 
-function groupBodyHtml(group: AgendaGroup, open: boolean): string {
+/** `whole`: every event, without "Ver N más" (a period chosen in the date filter). */
+function groupBodyHtml(group: AgendaGroup, open: boolean, whole: boolean): string {
+  if (whole) return eventCardGridHtml(group.events);
   if (!open) return summaryHtml(group);
   if (shownWhole.has(group.key) || group.events.length <= PERIOD_LIMIT) return eventCardGridHtml(group.events);
   const rest = group.events.length - PERIOD_LIMIT;
@@ -103,7 +107,8 @@ export function renderUpcomingView(
   state: AppState,
 ): { shown: number; groups: AgendaGroup[] } {
   const upcoming = eventsInView(events, state).filter((event) => matchesFilters(event, state));
-  const groups = groupByPeriod(upcoming);
+  const groups = groupByPeriod(upcoming, todayIso(), state.dates);
+  const datesChosen = state.dates.length > 0;
 
   if (!upcoming.length) {
     container.innerHTML = state.savedOnly && !state.query
@@ -119,7 +124,7 @@ export function renderUpcomingView(
         </div>`
       : hasActiveFilters(state)
       ? `<div class="empty-state">
-          <p>No hay eventos próximos con estos filtros.</p>
+          <p>${datesChosen ? "No hay eventos en esas fechas con estos filtros." : "No hay eventos próximos con estos filtros."}</p>
           <button class="btn" data-clear-filters>Quitar filtros</button>
         </div>`
       : `<div class="empty-state">
@@ -137,7 +142,7 @@ export function renderUpcomingView(
             <span class="agenda-group__count">${eventCountLabel(group.events.length)}</span>
             ${PERIOD_SHARE_TITLES[group.key] ? shareIconHtml(group) : ""}
           </header>
-          ${groupBodyHtml(group, open)}
+          ${groupBodyHtml(group, open, datesChosen)}
         </section>`;
       })
       .join("");

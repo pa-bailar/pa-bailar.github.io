@@ -101,6 +101,7 @@
 /* Phones: the filter chips live in the filter sheet (opened from the jump bar), not in rows that
    scroll sideways and cut chips at the edge. Wider screens show them here. */
 @media (max-width: 719px) {
+  .toolbar [data-filter-row="date"],
   .toolbar [data-filter-row="type"],
   .toolbar [data-filter-row="style"] {
     display: none;
@@ -117,6 +118,10 @@
 }
 
 .chip-row::-webkit-scrollbar {
+  display: none;
+}
+
+.chip-row[hidden] {
   display: none;
 }
 
@@ -145,11 +150,37 @@
   color: var(--chip-active-text);
 }
 
+/* Rhythms and dates take several choices: a chosen one also gets a check, so it reads as a checklist. */
+.chip--check {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.chip--check[aria-pressed="true"]::before {
+  content: "";
+  flex: none;
+  width: 9px;
+  height: 5px;
+  margin-top: -3px;
+  border-bottom: 2px solid currentColor;
+  border-left: 2px solid currentColor;
+  transform: rotate(-45deg);
+}
+
 @media (min-width: 720px) {
   .toolbar__inner {
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
     column-gap: var(--space-5);
+  }
+
+  /* A long row (the dates, with their months) wraps instead of cutting a chip at the edge. */
+  .toolbar .chip-row {
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
   }
 }
