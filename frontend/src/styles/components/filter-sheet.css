@@ -7,6 +7,17 @@
   color: var(--text-muted);
 }
 
+.filter-sheet__label[hidden] {
+  display: none;
+}
+
+/* Finger-sized chips in the sheet (--touch-target), where there's room for them. */
+@media (pointer: coarse) {
+  .filter-sheet .chip {
+    min-height: var(--touch-target);
+  }
+}
+
 /* All the options in view: chips wrap here instead of scrolling sideways. */
 .filter-sheet .chip-row {
   flex-wrap: wrap;

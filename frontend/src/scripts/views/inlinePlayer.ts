@@ -10,7 +10,7 @@
 // Photos and carousels still open in the post sheet (postViewer.ts).
 
 import { renderInstagramPost } from "../lib/instagramEmbed";
-import { watchClips } from "./clips";
+import { releaseClips, watchClips } from "./clips";
 
 const GONE = 0.25; // share still on screen under which a player is removed
 
@@ -51,6 +51,7 @@ export function playInline(frame: HTMLElement, permalink: string) {
     if (frame.dataset.inlineSaved === undefined) return; // removed meanwhile (swiped away, closed)
     frame.classList.remove("is-loading");
     if (shown) {
+      releaseClips(media); // its clip's decoder and buffers go with it
       media.remove(); // the player takes the image's place
       frame.classList.add("is-playing");
     } else {

@@ -2,20 +2,25 @@
 // and the service worker (pages/sw.js.ts) make it installable; this offers it, on every phone, from the
 // first visit:
 //   - Chrome/Edge that announce it (beforeinstallprompt): "Instalar" opens the browser's own dialog.
-//   - Otherwise a sheet with the steps for where the visitor is: iPhone (Compartir → Agregar a inicio),
-//     Android (menu ⋮ → Instalar aplicación), or inside Instagram/WhatsApp/Facebook, which can't install
-//     (open it in the browser first).
+//   - Otherwise a sheet with the steps for where the visitor is (lib/installPlace.ts): iPhone, by browser
+//     and iOS version (Safari 26: ⋯ → Compartir → Agregar a inicio; earlier: Compartir → Agregar a inicio),
+//     with an arrow toward the browser's button; Android (menu ⋮ → Instalar aplicación); inside Instagram,
+//     Facebook, TikTok…, which can't install (open it in the browser, or copy the link to paste it there).
+//     The sheet stays open while the visitor taps the browser's buttons, so the steps are in view.
+//   - On iPhone the page can't see the result: "Ya la agregué" hides the offer for good, and closing the
+//     steps rests the banner like × does (the footer's link stays).
 //   - The offer: a banner under the header on phones (× hides it for DISMISS_DAYS days) and a link in the
 //     footer. Nothing once installed, or on a computer whose browser can't install.
 //   - Installed, as far as the page can tell: opened as the app; or this browser saw it installed (the
 //     app on Android shares the browser's storage, so opening it once is remembered); or Chrome on Android
 //     says so (getInstalledRelatedApps, with the manifest's related_applications). Chrome offering to
 //     install again (beforeinstallprompt) means it was uninstalled. iPhone keeps the home-screen app's
-//     storage apart from Safari and has no way to ask, so there only "×" hides the banner.
+//     storage apart from Safari and has no way to ask, so there "×", the steps or "Ya la agregué" hide it.
 
 import { byId } from "../lib/dom";
-import { ICONS } from "../lib/icons";
-import { initPanelSheet, openPanelSheet } from "../lib/sheet";
+import { installGuide, installPlace } from "../lib/installPlace";
+import { BASE_URL } from "../lib/links";
+import { dismissSheet, initPanelSheet, openPanelSheet } from "../lib/sheet";
 
 const DISMISS_KEY = "install-dismissed-at";
 const INSTALLED_KEY = "installed";
@@ -28,8 +33,6 @@ interface BeforeInstallPromptEvent extends Event {
   prompt(): Promise<void>;
   userChoice: Promise<{ outcome: "accepted" | "dismissed" }>;
 }
-
-type Place = "iphone" | "android" | "in-app" | "computer";
 
 let installEvent: BeforeInstallPromptEvent | null = null;
 let installedHere = false; // Chrome on Android says the app is installed
@@ -67,42 +70,10 @@ async function checkInstalled() {
   }
 }
 
-function place(): Place {
-  const agent = navigator.userAgent;
-  // Apps' own browsers (a link opened from Instagram, WhatsApp, Facebook) can't install pages.
-  if (/Instagram|FBAN|FBAV|WhatsApp/i.test(agent)) return "in-app";
-  // iPadOS reports itself as a Mac with a touch screen.
-  if (/iPhone|iPad|iPod/.test(agent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)) return "iphone";
-  if (/Android/i.test(agent)) return "android";
-  return "computer";
-}
+const NOTE = "Pa' Bailar queda en tu pantalla de inicio y se abre como una app.";
 
-const STEPS: Record<Exclude<Place, "computer">, { title: string; steps: string[] }> = {
-  iphone: {
-    title: "Instalar en tu iPhone",
-    steps: [
-      `Toca <b>Compartir</b> <span class="install-sheet__share">${ICONS.share}</span>: abajo en Safari, arriba a la derecha en Chrome.`,
-      "Elige <b>Agregar a inicio</b>.",
-      "Toca <b>Agregar</b>.",
-    ],
-  },
-  android: {
-    title: "Instalar en tu celular",
-    steps: [
-      "Toca el menú <b>⋮</b> del navegador (arriba a la derecha).",
-      "Elige <b>Instalar aplicación</b> o <b>Agregar a la pantalla principal</b>.",
-      "Confirma con <b>Instalar</b>.",
-    ],
-  },
-  "in-app": {
-    title: "Ábrelo en tu navegador",
-    steps: [
-      "Estás viendo la página dentro de otra app, que no puede instalarla.",
-      "Toca el menú <b>⋯</b> o <b>⋮</b> (arriba) y elige <b>Abrir en el navegador</b> (Chrome o Safari).",
-      "Ahí toca <b>Instalar</b> en Pa' Bailar.",
-    ],
-  },
-};
+const place = () => installPlace(navigator.userAgent, navigator);
+const guide = () => installGuide(place());
 
 function stored(key: string): string | null {
   try {
@@ -117,20 +88,56 @@ function dismissedRecently(): boolean {
   return Date.now() - at < DISMISS_DAYS * 24 * 60 * 60 * 1000;
 }
 
+const canOffer = () => !isInstalled() && (installEvent !== null || guide() !== null);
+
 function render() {
-  const canOffer = !isInstalled() && (installEvent !== null || place() !== "computer");
-  document.querySelectorAll<HTMLElement>("[data-install-offer]").forEach((offer) => (offer.hidden = !canOffer));
+  const offer = canOffer();
+  document.querySelectorAll<HTMLElement>("[data-install-offer]").forEach((element) => (element.hidden = !offer));
   const banner = document.getElementById("install-banner");
-  if (banner) banner.hidden = !canOffer || dismissedRecently();
+  if (banner) banner.hidden = !offer || dismissedRecently();
 }
 
 function openSteps() {
-  const where = place();
-  if (where === "computer") return;
-  const { title, steps } = STEPS[where];
-  byId("install-sheet-title").textContent = title;
-  byId("install-steps").innerHTML = steps.map((step) => `<li>${step}</li>`).join("");
+  const steps = guide();
+  if (!steps) return;
+  byId("install-sheet-title").textContent = steps.title;
+  byId("install-steps").innerHTML = steps.steps.map((step) => `<li>${step}</li>`).join("");
+  const pointer = byId("install-pointer");
+  pointer.hidden = !steps.pointer;
+  pointer.dataset.at = steps.pointer ?? "";
+  byId("install-copy").hidden = !steps.copyLink;
+  byId("install-done").hidden = place().kind !== "ios" || steps.copyLink; // only where it can be added here
+  byId("install-status").textContent = "";
+  byId("install-note").textContent = steps.note ?? NOTE;
   openPanelSheet(byId<HTMLDialogElement>("install-sheet"));
+}
+
+/** The home page's address, for pasting it in the browser (apps' own browsers can't install). */
+async function copyLink() {
+  const url = new URL(BASE_URL, location.origin).href;
+  let copied = false;
+  try {
+    await navigator.clipboard.writeText(url);
+    copied = true;
+  } catch {
+    // No clipboard API here (or not allowed): the old way, through a selected field.
+    const field = document.createElement("textarea");
+    field.value = url;
+    field.setAttribute("readonly", "");
+    field.className = "visually-hidden";
+    document.body.append(field);
+    field.select();
+    field.setSelectionRange(0, url.length);
+    try {
+      copied = document.execCommand("copy");
+    } catch {
+      copied = false;
+    }
+    field.remove();
+  }
+  byId("install-status").textContent = copied
+    ? "Enlace copiado. Ábrelo en tu navegador y pégalo en la barra de direcciones."
+    : `Copia este enlace: ${url}`;
 }
 
 async function install() {
@@ -162,13 +169,25 @@ export function initInstallPrompt() {
   document.addEventListener("click", (domEvent) => {
     const target = domEvent.target as HTMLElement;
     if (target.closest("[data-install]")) void install().then(render);
+    else if (target.closest("[data-install-copy]")) void copyLink();
+    else if (target.closest("[data-install-done]")) {
+      remember(INSTALLED_KEY, "1"); // iPhone can't tell: the visitor says so
+      dismissSheet(byId<HTMLDialogElement>("install-sheet"));
+      render();
+    }
     else if (target.closest("[data-nudge-close]")) byId("install-nudge").hidden = true;
     else if (target.closest("[data-install-dismiss]")) {
       remember(DISMISS_KEY, String(Date.now()));
       render();
     }
   });
-  initPanelSheet(byId<HTMLDialogElement>("install-sheet"));
+  const sheet = byId<HTMLDialogElement>("install-sheet");
+  initPanelSheet(sheet);
+  // Having seen the steps counts as an answer: the banner rests like after ×, and the footer's link stays.
+  sheet.addEventListener("close", () => {
+    remember(DISMISS_KEY, String(Date.now()));
+    render();
+  });
   render();
   void checkInstalled().then(render);
 }
@@ -179,8 +198,7 @@ export function initInstallPrompt() {
  * NUDGE_SECONDS.
  */
 export function offerAfterSaving(savedCount: number) {
-  const canOffer = !isInstalled() && (installEvent !== null || place() !== "computer");
-  if (!canOffer || savedCount < 2 || !dismissedRecently() || stored(NUDGED_KEY)) return;
+  if (!canOffer() || savedCount < 2 || !dismissedRecently() || stored(NUDGED_KEY)) return;
   remember(NUDGED_KEY, String(Date.now()));
   const nudge = byId("install-nudge");
   nudge.hidden = false;

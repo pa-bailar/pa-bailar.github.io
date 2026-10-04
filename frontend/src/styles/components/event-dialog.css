@@ -106,13 +106,15 @@
   background: var(--surface);
 }
 
-/* One-time nudge, after the viewer has opened: every slide shifts so about a fifth of the next (or
-   previous) event shows, holds, and slides back: "you can swipe". Any touch cancels it. */
-.viewer-track.is-hinting-next .viewer-slide {
+/* One-time nudge, after the viewer has opened: the slides shift so about a fifth of the next (or
+   previous) event shows, holds, and slides back: "you can swipe". Any touch cancels it. Only the rendered
+   slides move (the current event and its neighbors, eventDialog.ts): the empty ones are off screen, and
+   animating dozens of slides at once costs a phone memory for nothing. */
+.viewer-track.is-hinting-next .viewer-slide[data-rendered] {
   animation: viewer-hint-next 1100ms cubic-bezier(0.2, 0, 0, 1) 600ms;
 }
 
-.viewer-track.is-hinting-previous .viewer-slide {
+.viewer-track.is-hinting-previous .viewer-slide[data-rendered] {
   animation: viewer-hint-previous 1100ms cubic-bezier(0.2, 0, 0, 1) 600ms;
 }
 

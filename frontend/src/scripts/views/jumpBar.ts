@@ -3,15 +3,18 @@
 // chip rows are hidden on phones, toolbar.css):
 //   [⚙ 2]  [Finde ▾]  [Salsa ▾]
 //   - ⚙ opens the filter sheet; the number is how many filters are active.
-//   - The period dropdown names the period on screen (scroll-spy); its menu jumps to another one.
+//   - The date dropdown filters by period ("Hoy", "Mañana", "Este fin de semana", a month…). With none
+//     chosen it names the period on screen (scroll-spy); with some, what's chosen ("Hoy + finde").
 //   - The rhythm dropdown filters by rhythm; its menu lists them with their counts, most frequent first.
+//   Both menus are checklists: several choices at once (an event matches any of them), and the menu stays
+//   open while choosing ("Listo", a tap outside or Escape close it).
 // Two compact dropdowns instead of a row of chips: nothing scrolls sideways or gets cut off.
 // Like Instagram's header, the bar hides while scrolling down and comes back on any scroll up.
 
 import { type AgendaGroup, sectionId } from "../state";
-import { byId, prefersReducedMotion, escapeHtml } from "../lib/dom";
-import { capitalize } from "../lib/format";
-import type { StyleCount } from "./filters";
+import { byId, escapeHtml } from "../lib/dom";
+import { capitalize, eventCountLabel } from "../lib/format";
+import { type FilterOptions, datesButtonLabel, stylesButtonLabel } from "./filters";
 import { ICONS } from "../lib/icons";
 import { initPanelSheet, openPanelSheet } from "../lib/sheet";
 
@@ -23,28 +26,25 @@ let observer: IntersectionObserver | null = null;
 let jumping = false; // a jump scrolls on purpose: don't hide the bar or move the highlight meanwhile
 let groups: AgendaGroup[] = [];
 let currentKey: string | null = null; // the period on screen (scroll-spy)
+let datesChosen = false; // the date button names the chosen periods, not the one on screen
 const MENU_MARGIN = 8; // px menus keep from the screen edges
-
 
 export interface JumpBarContent {
   groups: AgendaGroup[]; // periods of the upcoming list (none in the calendar)
   activeFilters: number;
-  styles: StyleCount[]; // rhythm options, most frequent first
-  styleFilter: string;
-  eventCount: number; // events in view before the rhythm filter, for "Todos los ritmos"
+  options: FilterOptions; // rhythms and dates, with their counts
+  styles: string[]; // rhythms chosen
+  dates: string[]; // periods chosen
   showPeriods: boolean; // the upcoming list (the calendar has no periods)
   searching: boolean; // a search is on: the bar is the search field
 }
 
-/** The period on screen: its name on the period button, and marked in the menu. */
+/** The period on screen: its name on the date button while no date is chosen. */
 function setActive(key: string) {
   const group = groups.find((item) => item.key === key);
   if (!group) return;
   currentKey = key;
-  byId("jump-period-label").textContent = group.shortLabel;
-  byId("jump-period-menu")
-    .querySelectorAll<HTMLElement>("[data-jump]")
-    .forEach((item) => item.toggleAttribute("aria-current", item.dataset.jump === key));
+  if (!datesChosen) byId("jump-period-label").textContent = group.shortLabel;
 }
 
 function atPageBottom(): boolean {
@@ -94,13 +94,23 @@ function watchSections() {
   groups.forEach((group) => observer!.observe(byId(sectionId(group.key))));
 }
 
-/** One option of a bar menu: label on the left, its number of events on the right. `state` marks the
- * selected rhythm (aria-pressed) or the period on screen (aria-current). */
-function menuItemHtml(data: string, label: string, count: number, state = ""): string {
+/** One option of a bar menu, a checkbox: its box, the label, and its number of events on the right. */
+function menuItemHtml(data: string, label: string, count: number, checked: boolean): string {
   return `
-    <button class="bar-menu__item" type="button" ${state} ${data}>
-      <span>${escapeHtml(label)}</span><span class="bar-menu__count">${count}</span>
+    <button class="bar-menu__item" type="button" role="checkbox" aria-checked="${checked}" ${data}
+      aria-label="${escapeHtml(`${label}, ${eventCountLabel(count)}`)}">
+      <span class="bar-menu__check" aria-hidden="true"></span><span class="bar-menu__label">${escapeHtml(label)}</span><span class="bar-menu__count">${count}</span>
     </button>`;
+}
+
+/** "Listo" at the bottom of a menu: choosing several keeps it open, this closes it. */
+function doneHtml(menuId: string): string {
+  return `<div class="bar-menu__footer"><button class="btn bar-menu__done" type="button" popovertarget="${menuId}" popovertargetaction="hide">Listo</button></div>`;
+}
+
+/** "Salsa y Bachata", "Hoy, Mañana y Este fin de semana": what's chosen, for screen readers. */
+function spokenList(labels: string[]): string {
+  return labels.length > 1 ? `${labels.slice(0, -1).join(", ")} y ${labels.at(-1)}` : (labels[0] ?? "");
 }
 
 export function renderJumpBar(content: JumpBarContent) {
@@ -113,30 +123,39 @@ export function renderJumpBar(content: JumpBarContent) {
   filters.innerHTML = `${ICONS.sliders}${count ? `<span class="jump-bar__badge">${count}</span>` : ""}`;
   filters.setAttribute("aria-label", count ? `Filtros, ${count} activos` : "Filtros");
 
-  // Always there in the upcoming list (disabled when nothing matches), so the bar never changes shape;
-  // the calendar has no periods.
+  // Always there in the upcoming list (disabled when there's nothing to choose), so the bar never changes
+  // shape; the calendar has no periods.
+  const { options, dates, styles } = content;
+  datesChosen = dates.length > 0;
   const period = byId<HTMLButtonElement>("jump-period");
   period.hidden = !content.showPeriods;
-  period.disabled = groups.length === 0;
-  if (!groups.length) byId("jump-period-label").textContent = "Fechas";
-  byId("jump-period-menu").innerHTML = groups
-    .map((group) => menuItemHtml(`data-jump="${escapeHtml(group.key)}"`, group.label, group.events.length))
-    .join("");
-
-  const style = content.styleFilter;
-  byId("jump-style-label").textContent = style === "all" ? "Ritmo" : capitalize(style);
-  byId("jump-style").classList.toggle("is-active", style !== "all");
-  byId("jump-style-menu").innerHTML = [
-    menuItemHtml('data-style="all"', "Todos los ritmos", content.eventCount, `aria-pressed="${style === "all"}"`),
-    ...content.styles.map((option) =>
-      menuItemHtml(
-        `data-style="${escapeHtml(option.style)}"`,
-        capitalize(option.style),
-        option.count,
-        `aria-pressed="${option.style === style}"`,
+  period.disabled = !options.dates.length;
+  period.classList.toggle("is-active", datesChosen);
+  const periodLabel = byId("jump-period-label");
+  if (datesChosen || !groups.length) periodLabel.textContent = datesButtonLabel(options.dates, dates);
+  // "Hoy + próx. semana" cut short says less than "2 fechas".
+  if (periodLabel.scrollWidth > periodLabel.clientWidth) periodLabel.textContent = datesButtonLabel(options.dates, dates, true);
+  const chosenDates = options.dates.filter((option) => dates.includes(option.key)).map((option) => option.label);
+  period.setAttribute("aria-label", datesChosen ? `Fechas: ${spokenList(chosenDates)}` : "Filtrar por fecha");
+  byId("jump-period-menu").innerHTML =
+    [
+      menuItemHtml('data-date="all"', "Todas las fechas", options.dateTotal, !datesChosen),
+      ...options.dates.map((option) =>
+        menuItemHtml(`data-date="${escapeHtml(option.key)}"`, option.label, option.count, dates.includes(option.key)),
       ),
-    ),
-  ].join("");
+    ].join("") + doneHtml("jump-period-menu");
+
+  const style = byId("jump-style");
+  byId("jump-style-label").textContent = stylesButtonLabel(styles);
+  style.classList.toggle("is-active", styles.length > 0);
+  style.setAttribute("aria-label", styles.length ? `Ritmos: ${spokenList(styles.map(capitalize))}` : "Filtrar por ritmo");
+  byId("jump-style-menu").innerHTML =
+    [
+      menuItemHtml('data-style="all"', "Todos los ritmos", options.styleTotal, !styles.length),
+      ...options.styles.map((option) =>
+        menuItemHtml(`data-style="${escapeHtml(option.style)}"`, capitalize(option.style), option.count, styles.includes(option.style)),
+      ),
+    ].join("") + doneHtml("jump-style-menu");
 
   if (groups[0]) setActive(groups[0].key);
   watchSections();
@@ -193,22 +212,6 @@ export function returnToScroll(scrollY: number, anchor: ListAnchor | null = null
   requestAnimationFrame(() => requestAnimationFrame(() => (jumping = false)));
 }
 
-/** Before jumping to a period: lets main.ts open it if it's summarized (upcomingView.ts). */
-let revealPeriod: (key: string) => void = () => {};
-
-function jumpTo(key: string) {
-  revealPeriod(key);
-  const section = document.getElementById(sectionId(key));
-  if (!section) return;
-  jumping = true;
-  section.scrollIntoView({ behavior: prefersReducedMotion() ? "auto" : "smooth", block: "start" });
-  section.querySelector<HTMLElement>("h2")?.focus({ preventScroll: true }); // screen readers follow the jump
-  setActive(key);
-  const done = () => (jumping = false);
-  if ("onscrollend" in window) window.addEventListener("scrollend", done, { once: true });
-  else setTimeout(done, 800);
-}
-
 /** ⚙: the filter sheet slides up from the bottom; the list stays where it was behind it. "Ver N eventos"
  * closes it like ×; the chips inside are handled by main.ts. */
 function initFilterSheet() {
@@ -248,9 +251,7 @@ export function closeBarSearch() {
   byId("jump-bar").classList.remove("is-searching");
 }
 
-/** `reveal` runs before jumping to a period from the menu, so a summarized period opens first. */
-export function initJumpBar({ reveal }: { reveal: (key: string) => void }) {
-  revealPeriod = reveal;
+export function initJumpBar() {
   byId("jump-search-open").addEventListener("click", () => {
     byId("jump-bar").classList.add("is-searching");
     byId("jump-search").focus();
@@ -272,24 +273,19 @@ export function initJumpBar({ reveal }: { reveal: (key: string) => void }) {
       const onRight = button.left + button.width / 2 > window.innerWidth / 2;
       menu.style.top = `${top}px`;
       menu.style.maxHeight = `${Math.max(window.innerHeight - top - MENU_MARGIN, 120)}px`;
-      menu.style.left = onRight ? "auto" : `${Math.max(button.left, MENU_MARGIN)}px`;
-      menu.style.right = onRight ? `${Math.max(window.innerWidth - button.right, MENU_MARGIN)}px` : "auto";
+      const left = Math.max(button.left, MENU_MARGIN);
+      const right = Math.max(window.innerWidth - button.right, MENU_MARGIN);
+      menu.style.left = onRight ? "auto" : `${left}px`;
+      menu.style.right = onRight ? `${right}px` : "auto";
+      // Never past the far edge either: what's left from the aligned edge (long names wrap).
+      menu.style.maxWidth = `${window.innerWidth - (onRight ? right : left) - MENU_MARGIN}px`;
     });
   }
   // A rotated phone or resized window would leave an open menu in the wrong place: close it.
   window.addEventListener("resize", () =>
     menus.forEach(([menuId]) => byId(menuId).matches(":popover-open") && byId(menuId).hidePopover()),
   );
-  byId("jump-period-menu").addEventListener("click", (domEvent) => {
-    const item = (domEvent.target as HTMLElement).closest<HTMLElement>("[data-jump]");
-    if (!item) return;
-    byId("jump-period-menu").hidePopover();
-    jumpTo(item.dataset.jump!);
-  });
-  // Choosing a rhythm: main.ts applies it (data-style); the menu just closes.
-  byId("jump-style-menu").addEventListener("click", (domEvent) => {
-    if ((domEvent.target as HTMLElement).closest("[data-style]")) byId("jump-style-menu").hidePopover();
-  });
+  // Choosing a date or a rhythm: main.ts applies it (data-date, data-style); the menu stays open, for more.
   initHideOnScroll();
   initFilterSheet();
 }
