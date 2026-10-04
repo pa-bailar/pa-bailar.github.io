@@ -468,7 +468,7 @@ then the flyer, then "Ver en Instagram". × and Escape close it; it slides in fr
 
 ## Adding something new
 
-1. Need a new color, size or spacing? Add a token in `tokens.css` (semantic colors need both a light and a dark value).
+1. Need a new color, size or spacing? Add a token in `tokens.css` (semantic colors need both a light and a dark value, and a Contraluz value in the dark `.calendar` block if the calendar or its cards use them).
 2. Create `styles/components/<block>.css` and import it in `layouts/BaseLayout.astro`, after the other components. Don't chain CSS with `@import`: the dev server doesn't reload imported files.
 3. Static markup goes in an Astro component (`src/components/<Block>.astro`); markup rendered from data goes in a view (`src/scripts/views/<block>.ts`).
 4. Check both themes and a phone width (375px), and run `npm run check`, before opening the PR.
