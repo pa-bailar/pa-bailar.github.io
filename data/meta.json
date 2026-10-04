@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-03T14:47:12-05:00",
+  "generated_at": "2026-10-03T21:14:07-05:00",
   "accounts": [
     "_olorumcongress",
     "academia_cowork",
@@ -56,13 +56,13 @@
     "zafradance"
   ],
   "stats": {
-    "accounts": 0,
-    "posts_analyzed": 1,
-    "posts_triaged_out": 0,
-    "events_new": 1,
-    "events_merged": 0,
+    "accounts": 20,
+    "posts_analyzed": 95,
+    "posts_triaged_out": 45,
+    "events_new": 24,
+    "events_merged": 16,
     "events_discarded": 0,
-    "provisional": 1,
+    "provisional": 50,
     "upgraded": 0,
     "reanalyzed": 0,
     "pending": 0,
@@ -73,21 +73,232 @@
     "rate_limited": false,
     "out_of_time": false,
     "gemini_requests": {
-      "gemini-3.5-flash-lite": 1
+      "gemini-3.5-flash-lite": 145
     },
     "models_unavailable": [],
-    "due_accounts": [],
-    "instagram_usage": 0,
+    "due_accounts": [
+      "herencialatinad.c",
+      "ebi_dancecompany",
+      "festivalsalsaalparque",
+      "salsabravadancehallpicante",
+      "reyesdelasalsa.col",
+      "bachatamania_bogota",
+      "_olorumcongress",
+      "bailalo_improsocial",
+      "bachatasocialcongresss",
+      "bailarito",
+      "iledanza",
+      "germanbaila",
+      "cordillerafestival",
+      "latrinidaddelasalsa",
+      "danzaenlaciudad",
+      "salsaculto",
+      "paramopresenta",
+      "latinproductioncolombia",
+      "elparche.se",
+      "bogotadanceclub"
+    ],
+    "instagram_usage": 61,
     "by_account": {
-      "levelupbfc": {
-        "posts_analyzed": 1,
-        "events_new": 1,
+      "herencialatinad.c": {
+        "posts_analyzed": 0,
+        "events_new": 0,
         "events_merged": 0,
         "pending": 0,
         "errors": 0,
         "backfill": false,
         "fetch_failed": false,
-        "latest_post": null
+        "latest_post": "2026-09-21"
+      },
+      "ebi_dancecompany": {
+        "posts_analyzed": 0,
+        "events_new": 0,
+        "events_merged": 0,
+        "pending": 0,
+        "errors": 0,
+        "backfill": false,
+        "fetch_failed": false,
+        "latest_post": "2026-09-14"
+      },
+      "festivalsalsaalparque": {
+        "posts_analyzed": 0,
+        "events_new": 0,
+        "events_merged": 0,
+        "pending": 0,
+        "errors": 0,
+        "backfill": false,
+        "fetch_failed": false,
+        "latest_post": "2025-10-06"
+      },
+      "salsabravadancehallpicante": {
+        "posts_analyzed": 0,
+        "events_new": 0,
+        "events_merged": 0,
+        "pending": 0,
+        "errors": 0,
+        "backfill": false,
+        "fetch_failed": false,
+        "latest_post": "2026-02-21"
+      },
+      "reyesdelasalsa.col": {
+        "posts_analyzed": 0,
+        "events_new": 0,
+        "events_merged": 0,
+        "pending": 0,
+        "errors": 0,
+        "backfill": false,
+        "fetch_failed": false,
+        "latest_post": "2026-09-22"
+      },
+      "bachatamania_bogota": {
+        "posts_analyzed": 0,
+        "events_new": 0,
+        "events_merged": 0,
+        "pending": 0,
+        "errors": 0,
+        "backfill": false,
+        "fetch_failed": false,
+        "latest_post": "2026-09-27"
+      },
+      "_olorumcongress": {
+        "posts_analyzed": 0,
+        "events_new": 0,
+        "events_merged": 0,
+        "pending": 0,
+        "errors": 0,
+        "backfill": false,
+        "fetch_failed": false,
+        "latest_post": "2026-04-22"
+      },
+      "bailalo_improsocial": {
+        "posts_analyzed": 0,
+        "events_new": 0,
+        "events_merged": 0,
+        "pending": 0,
+        "errors": 0,
+        "backfill": false,
+        "fetch_failed": false,
+        "latest_post": "2026-03-31"
+      },
+      "bachatasocialcongresss": {
+        "posts_analyzed": 1,
+        "events_new": 0,
+        "events_merged": 0,
+        "pending": 0,
+        "errors": 0,
+        "backfill": false,
+        "fetch_failed": false,
+        "latest_post": "2026-10-04"
+      },
+      "bailarito": {
+        "posts_analyzed": 0,
+        "events_new": 0,
+        "events_merged": 0,
+        "pending": 0,
+        "errors": 0,
+        "backfill": false,
+        "fetch_failed": false,
+        "latest_post": "2026-07-31"
+      },
+      "iledanza": {
+        "posts_analyzed": 1,
+        "events_new": 0,
+        "events_merged": 0,
+        "pending": 0,
+        "errors": 0,
+        "backfill": true,
+        "fetch_failed": false,
+        "latest_post": "2026-09-07"
+      },
+      "germanbaila": {
+        "posts_analyzed": 3,
+        "events_new": 1,
+        "events_merged": 2,
+        "pending": 0,
+        "errors": 0,
+        "backfill": true,
+        "fetch_failed": false,
+        "latest_post": "2026-10-01"
+      },
+      "cordillerafestival": {
+        "posts_analyzed": 30,
+        "events_new": 0,
+        "events_merged": 0,
+        "pending": 0,
+        "errors": 0,
+        "backfill": true,
+        "fetch_failed": false,
+        "latest_post": "2026-09-24"
+      },
+      "latrinidaddelasalsa": {
+        "posts_analyzed": 1,
+        "events_new": 1,
+        "events_merged": 0,
+        "pending": 0,
+        "errors": 0,
+        "backfill": true,
+        "fetch_failed": false,
+        "latest_post": "2026-09-15"
+      },
+      "danzaenlaciudad": {
+        "posts_analyzed": 8,
+        "events_new": 10,
+        "events_merged": 2,
+        "pending": 0,
+        "errors": 0,
+        "backfill": true,
+        "fetch_failed": false,
+        "latest_post": "2026-10-01"
+      },
+      "salsaculto": {
+        "posts_analyzed": 3,
+        "events_new": 1,
+        "events_merged": 2,
+        "pending": 0,
+        "errors": 0,
+        "backfill": true,
+        "fetch_failed": false,
+        "latest_post": "2026-10-01"
+      },
+      "paramopresenta": {
+        "posts_analyzed": 30,
+        "events_new": 3,
+        "events_merged": 5,
+        "pending": 0,
+        "errors": 0,
+        "backfill": true,
+        "fetch_failed": false,
+        "latest_post": "2026-10-03"
+      },
+      "latinproductioncolombia": {
+        "posts_analyzed": 2,
+        "events_new": 1,
+        "events_merged": 0,
+        "pending": 0,
+        "errors": 0,
+        "backfill": true,
+        "fetch_failed": false,
+        "latest_post": "2026-09-26"
+      },
+      "elparche.se": {
+        "posts_analyzed": 2,
+        "events_new": 2,
+        "events_merged": 0,
+        "pending": 0,
+        "errors": 0,
+        "backfill": true,
+        "fetch_failed": false,
+        "latest_post": "2026-09-30"
+      },
+      "bogotadanceclub": {
+        "posts_analyzed": 14,
+        "events_new": 5,
+        "events_merged": 5,
+        "pending": 0,
+        "errors": 0,
+        "backfill": true,
+        "fetch_failed": false,
+        "latest_post": "2026-10-03"
       }
     }
   }
