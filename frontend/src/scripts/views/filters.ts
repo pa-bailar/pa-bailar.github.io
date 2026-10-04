@@ -12,8 +12,8 @@
 // move while choosing; a chosen one can always be removed. The logic (`filterModel`) is pure and tested.
 
 import type { AppState, DanceEvent, EventType } from "../types";
-import { byId, escapeHtml } from "../lib/dom";
-import { capitalize, eventCountLabel, formatMonthName, typeLabel } from "../lib/format";
+import { byId, escapeHtml, prefersReducedMotion } from "../lib/dom";
+import { OTHER_STYLE, eventCountLabel, formatMonthName, styleLabel, typeLabel } from "../lib/format";
 import { todayIso, toIsoDate } from "../lib/dates";
 import { ICONS } from "../lib/icons";
 import {
@@ -31,8 +31,6 @@ import {
 export const QUICK_DATES = ["hoy", TOMORROW, "fin-de-semana", "proxima-semana"];
 /** The rhythm chips in the bar: always these four, in this order (the owner's choice), dimmed when there's none. */
 export const QUICK_STYLES = ["salsa", "bachata", "urbano", "tango"];
-/** The catch-all rhythm: "Otros ritmos", last. */
-const OTHER_STYLE = "otro";
 
 export interface FilterOption {
   group: FilterGroup;
@@ -63,8 +61,6 @@ export interface FilterModel {
   active: number; // ⚙'s badge: every choice
   shown: number; // events the view shows with every filter on (the list, or the calendar's month)
 }
-
-const styleLabel = (style: string) => (style === OTHER_STYLE ? "Otros ritmos" : capitalize(style));
 
 const option = (
   group: FilterGroup,
@@ -233,7 +229,23 @@ function sheetButtonHtml(active: number): string {
     }</button>`;
 }
 
-/** The phone bar's row of chips. It keeps where it was scrolled to. */
+const FADE = 32; // px: the row fades out at its right edge (jump-bar.css, --space-6)
+const choiceKey = (item: AppliedFilter) => `${item.group}:${item.value}`;
+let barChoices = new Set<string>(); // the choices the row showed last time
+
+/** Scrolls the row just enough for `chip` to be seen whole (the fade at the right edge doesn't count). */
+function revealChip(row: HTMLElement, chip: HTMLElement) {
+  const box = chip.getBoundingClientRect();
+  const view = row.getBoundingClientRect();
+  if (!view.width) return; // wide screens: the row isn't shown
+  const delta = box.left < view.left ? box.left - view.left - FADE / 4 : Math.max(box.right - (view.right - FADE), 0);
+  if (delta) row.scrollTo({ left: row.scrollLeft + delta, behavior: prefersReducedMotion() ? "auto" : "smooth" });
+}
+
+/**
+ * The phone bar's row of chips. It keeps where it was scrolled to, unless a new choice would be out of sight
+ * (chosen in the sheet, or a chip further along): then the row scrolls to the first one.
+ */
 function renderBarChips(model: FilterModel, state: AppState) {
   const row = byId("jump-chips");
   const scrolled = row.scrollLeft;
@@ -246,6 +258,14 @@ function renderBarChips(model: FilterModel, state: AppState) {
     ...model.quickStyles.map((item) => chipHtml(item, { short: true })),
   ].join("");
   row.scrollLeft = scrolled;
+  const fresh = new Set(model.applied.map(choiceKey).filter((key) => !barChoices.has(key)));
+  barChoices = new Set(model.applied.map(choiceKey));
+  if (!fresh.size) return;
+  const chosen = [...row.querySelectorAll<HTMLElement>('[aria-pressed="true"], .is-chosen')].find((chip) => {
+    const key = chip.dataset.account !== undefined ? `account:${state.accountFilter}` : `${chip.dataset.filter}:${chip.dataset.value}`;
+    return fresh.has(key);
+  });
+  if (chosen) revealChip(row, chosen);
 }
 
 /** Under the bar, only while filtering: "12 eventos · Finde, Salsa" and "× Limpiar". */

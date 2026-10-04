@@ -48,7 +48,7 @@ import { initSaveButtons, renderSavedToggles } from "./views/saveButton";
 import { initInstallPrompt, offerAfterSaving, registerServiceWorker } from "./views/installPrompt";
 import { initSharing, plansEventUrl, setShareSources, type ShareSource } from "./views/sharing";
 import { PERIOD_SHARE_TITLES, periodShareText, plansShareText } from "./lib/shareText";
-import { capitalize, dateRangeLabel, typeLabel } from "./lib/format";
+import { dateRangeLabel, styleLabel, typeLabel } from "./lib/format";
 import { isSaved, keepOnly } from "./lib/saved";
 
 const state = createInitialState();
@@ -195,7 +195,7 @@ function renderSavedCount() {
 function filtersLabel(): string {
   return [
     state.types.map(typeLabel).join(", "),
-    state.styles.map(capitalize).join(", "),
+    state.styles.map(styleLabel).join(", "),
     state.accountFilter ? `@${state.accountFilter}` : "",
     state.query.trim() ? `«${state.query.trim()}»` : "",
   ]
@@ -271,13 +271,18 @@ function focusAccountFilter() {
   chips.find((chip) => chip.offsetParent !== null)?.focus();
 }
 
-/** After "Limpiar" took away the chip that had the focus: the sheet's first chip, ⚙, or the toolbar's first chip. */
+/**
+ * After "Limpiar": the control is gone (a chip, the empty list's button), hidden (the line under the bar, the
+ * toolbar's status row) or disabled (the sheet's). The focus goes to the sheet's first chip, ⚙, or the toolbar's
+ * first chip: controls that render() puts the focus back on when it draws them again (focusSelector), also after
+ * the academy's screen is left through the history.
+ */
 function focusAfterClearing(control: HTMLElement) {
   const sheet = control.closest("#filter-sheet");
   const candidates = sheet
     ? [...sheet.querySelectorAll<HTMLElement>("[data-filter]")]
     : [...document.querySelectorAll<HTMLElement>("[data-open-filters], #date-filters [data-filter], #type-filters [data-filter]")];
-  candidates.find((candidate) => candidate.offsetParent !== null)?.focus();
+  candidates.find((candidate) => candidate.offsetParent !== null)?.focus({ preventScroll: true });
 }
 
 /** One delegated listener for every data-* control rendered by the views. */
@@ -331,8 +336,8 @@ function handleClick(domEvent: MouseEvent) {
     const event = events.find((item) => item.id === eventId);
     if (!event) return;
     domEvent.preventDefault();
-    // Counted by where it was opened: the card itself, its "Detalles", or the line under it.
-    const source = control.dataset.source === "boton" || control.dataset.source === "linea" ? control.dataset.source : "tarjeta";
+    // Counted by where it was opened: the card itself or its "Detalles".
+    const source = control.dataset.source === "boton" ? "boton" : "tarjeta";
     markDetailsHintSeen();
     openEventDrawer(event, { source });
     return;
@@ -354,6 +359,8 @@ function handleClick(domEvent: MouseEvent) {
         state.accountFilter = null;
         render({ keepPlace: true });
       });
+      // Its chip ("@academia ×", in the bar or the sheet) or the toolbar's button goes away with it.
+      if (document.activeElement === document.body || document.activeElement === control) focusAfterClearing(control);
     }
     return;
   }
@@ -387,8 +394,9 @@ function handleClick(domEvent: MouseEvent) {
   const filtered = Boolean(filter) || "clearFilters" in control.dataset;
   render({ keepPlace: filtered });
 
-  // The control clicked was re-rendered away: put focus somewhere useful.
-  if (filtered && !control.isConnected && document.activeElement === document.body) focusAfterClearing(control);
+  // The control clicked was re-rendered away, or "Limpiar" (which never stays usable): put focus somewhere useful.
+  const lost = document.activeElement === document.body || document.activeElement === control;
+  if (lost && ("clearFilters" in control.dataset || (filtered && !control.isConnected))) focusAfterClearing(control);
 }
 
 /**

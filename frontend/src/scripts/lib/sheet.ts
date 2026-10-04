@@ -8,6 +8,7 @@
 // The motion itself is CSS (styles/components/sheet.css): .sheet, .is-dragging, .is-closing, --drag.
 
 import { prefersReducedMotion } from "./dom";
+import { overlayState } from "../screenHistory";
 const CLOSE_DISTANCE = 110; // px: minimum drag that closes on release…
 const CLOSE_FRACTION = 0.22; // …or this share of the screen height, whichever is larger
 const FLICK_DOWN = 0.5; // px/ms (500 px/s): a flick down this fast closes, however short
@@ -147,7 +148,9 @@ interface SheetHistoryState {
 export function openPanelSheet(sheet: HTMLDialogElement, { replacing }: { replacing?: HTMLDialogElement } = {}) {
   const takeOver = replacing?.open && (history.state as SheetHistoryState | null)?.sheet === replacing.id;
   sheet.showModal();
-  const state = { ...(history.state ?? {}), sheet: sheet.id } satisfies SheetHistoryState;
+  // Over the entry it opens on (the screen, or the event details under it), marked as an overlay: undoing a screen
+  // move from inside it doesn't go back through it (screenHistory.ts, `leave`).
+  const state = overlayState({ sheet: sheet.id } satisfies SheetHistoryState);
   if (takeOver) history.replaceState(state, ""); // before it closes: its close then leaves the history alone
   else history.pushState(state, "");
   if (replacing) dismissSheet(replacing);

@@ -1,6 +1,5 @@
 import { describe, expect, it } from "vitest";
 import { detailsEventName } from "../src/scripts/lib/analytics";
-import { detailsTeaser } from "../src/scripts/views/eventCard";
 import { eventDetailHtml, eventDrawerHtml, sheetPrice } from "../src/scripts/views/eventDetail";
 import { event } from "./factories";
 
@@ -8,32 +7,13 @@ describe("the analytics event for opened details", () => {
   it("names where they were opened from", () => {
     expect(detailsEventName("tarjeta")).toBe("detalles-tarjeta");
     expect(detailsEventName("boton")).toBe("detalles-boton");
-    expect(detailsEventName("linea")).toBe("detalles-linea");
     expect(detailsEventName("enlace")).toBe("detalles-enlace");
   });
 
-  it("anything else counts as the card", () => {
+  it("anything else counts as the card (also the retired line under it, \"linea\")", () => {
     expect(detailsEventName(undefined)).toBe("detalles-tarjeta");
+    expect(detailsEventName("linea")).toBe("detalles-tarjeta");
     expect(detailsEventName("<script>")).toBe("detalles-tarjeta");
-  });
-});
-
-describe("the line under a card: what the details add", () => {
-  const price = { label: "General", amount_cop: 25000, condition: null };
-
-  it("names the time, the prices and the way there when the event has them", () => {
-    expect(detailsTeaser(event({ start_time: "20:00", prices: [price], venue: "La Topa" }))).toBe(
-      "Ver horario, precios y cómo llegar",
-    );
-  });
-
-  it("leaves out what's missing", () => {
-    expect(detailsTeaser(event({ start_time: "20:00", prices: [price] }))).toBe("Ver horario y precios");
-    expect(detailsTeaser(event({ address: "Calle 85 # 12-20" }))).toBe("Ver cómo llegar");
-  });
-
-  it("with none of them, all the details", () => {
-    expect(detailsTeaser(event())).toBe("Ver todos los detalles");
   });
 });
 

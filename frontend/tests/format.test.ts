@@ -1,6 +1,15 @@
 import { describe, expect, it } from "vitest";
 import { escapeHtml } from "../src/scripts/lib/dom";
-import { cardWhenLabel, eventCountLabel, eventDaysLabel, formatTime, priceSummary, stickerDate } from "../src/scripts/lib/format";
+import {
+  cardWhenLabel,
+  eventCountLabel,
+  eventDaysLabel,
+  formatTime,
+  priceSummary,
+  stickerDate,
+  styleLabel,
+  stylesLabel,
+} from "../src/scripts/lib/format";
 import { eventTimes } from "../src/scripts/lib/links";
 import { event } from "./factories";
 
@@ -21,6 +30,14 @@ describe("formatting", () => {
   it("event counts", () => {
     expect(eventCountLabel(1)).toBe("1 evento");
     expect(eventCountLabel(5)).toBe("5 eventos");
+  });
+
+  it("rhythms as the filters name them: capitalized, the catch-all as «Otros ritmos»", () => {
+    expect(styleLabel("urbano")).toBe("Urbano");
+    expect(styleLabel("salsa caleña")).toBe("Salsa caleña");
+    expect(styleLabel("otro")).toBe("Otros ritmos");
+    expect(stylesLabel(["salsa", "otro", "urbano"])).toBe("Salsa · Otros ritmos · Urbano");
+    expect(stylesLabel(["salsa", "bachata", "tango", "urbano"], 3)).toBe("Salsa · Bachata · Tango");
   });
 
   it("escapes HTML", () => {

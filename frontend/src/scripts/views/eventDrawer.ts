@@ -17,7 +17,8 @@ import type { DanceEvent } from "../types";
 import { byId, escapeHtml, prefersReducedMotion } from "../lib/dom";
 import { detailsEventName, type DetailsSource, trackEvent, trackPageview } from "../lib/analytics";
 import { ICONS } from "../lib/icons";
-import { eventPath } from "../lib/links";
+import { addressAfterClosing, eventPath } from "../lib/links";
+import { overlayState } from "../screenHistory";
 import { holdClips } from "./clips";
 import { eventDrawerHtml, handleMediaLinkClick } from "./eventDetail";
 import { scrollPageTo, stickyOffset } from "./jumpBar";
@@ -57,6 +58,9 @@ let leaving = false; // sliding away
 let pendingExit: { from: number; velocity: number } | null = null; // a close waiting for its "back"
 let exitTimer = 0;
 let swapping = false; // closing only to reopen in the other mode (the window crossed 900 px)
+// Where the focus was right before closing: the browser then moves it back to what had it when the drawer was
+// shown (the first card, after the side panel swapped events), so the close handler decides from this instead.
+let focusBeforeClose: Element | null | undefined;
 
 interface HistoryState {
   eventId?: string;
@@ -180,17 +184,22 @@ export function openEventDrawer(
   const element = drawer();
   if (leaving) finishClose(); // tapped while the panel was sliding out: start over
   const wasOpen = element.open;
-  if (!wasOpen) opener = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+  // What opened it gets the focus back: the last card opened, when the side panel swaps events.
+  const active = document.activeElement;
+  if (active instanceof HTMLElement && active !== document.body && !element.contains(active)) opener = active;
+  else if (!wasOpen) opener = null;
   current = event;
   render(event);
   if (wasOpen) highlightCurrentCard();
   else show(event, shared);
   focusTitle();
   if (pushHistory) {
-    const state: HistoryState = { eventId: event.id };
-    // Another card while the side panel is open: the address changes, and back still closes.
-    if (wasOpen) history.replaceState(state, "", eventPath(event));
-    else history.pushState(state, "", eventPath(event));
+    // Another card while the side panel is open: the address changes, and back still closes. Unless the list moved
+    // to another screen meanwhile (an academy, the calendar): that screen keeps its entry, and this event gets one
+    // over it.
+    const onEventEntry = Boolean((history.state as HistoryState | null)?.eventId);
+    if (wasOpen && onEventEntry) history.replaceState({ ...history.state, eventId: event.id }, "", eventPath(event));
+    else history.pushState(overlayState({ eventId: event.id } satisfies HistoryState), "", eventPath(event));
   }
   trackPageview(eventPath(event), event.title); // which events people look at
   if (source) trackEvent(detailsEventName(source));
@@ -230,6 +239,7 @@ function finishClose() {
   leaving = false;
   pendingExit = null;
   element.classList.remove("is-closing", "is-animating", "is-dragging");
+  focusBeforeClose = document.activeElement;
   if (element.open) element.close(); // → "close": the rest of the cleanup
 }
 
@@ -444,8 +454,9 @@ export function initEventDrawer(find: (id: string) => DanceEvent | undefined) {
     }
     window.clearTimeout(exitTimer);
     leaving = false;
-    // Focus back where it was (the card or its "Detalles"), unless the visitor already moved it elsewhere.
-    const focus = document.activeElement;
+    // Focus back where it was (the last card opened, or its "Detalles"), unless the visitor already moved it elsewhere.
+    const focus = focusBeforeClose === undefined ? document.activeElement : focusBeforeClose;
+    focusBeforeClose = undefined;
     if (opener?.isConnected && (!focus || focus === document.body || element.contains(focus))) {
       opener.focus({ preventScroll: true });
     }
@@ -457,6 +468,12 @@ export function initEventDrawer(find: (id: string) => DanceEvent | undefined) {
     document.querySelectorAll(".event-card.is-current").forEach((card) => card.classList.remove("is-current"));
     // Closed some other way (the browser's own): leave the event's URL the way back would.
     if ((history.state as HistoryState | null)?.eventId) history.back();
+    // Closed on a screen the list moved to while the side panel was open (that entry kept the event's address):
+    // the address goes back to the home page's.
+    else {
+      const address = addressAfterClosing(location);
+      if (address) history.replaceState(history.state, "", address);
+    }
   });
 
   // Back (or forward): follow the URL.

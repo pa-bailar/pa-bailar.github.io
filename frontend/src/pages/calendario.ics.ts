@@ -4,8 +4,7 @@
 import type { APIRoute } from "astro";
 import { events } from "../data";
 import type { DanceEvent } from "../scripts/types";
-import { formatTime, priceSummary } from "../scripts/lib/format";
-import { eventPageUrl, eventTimes, locationText } from "../scripts/lib/links";
+import { calendarDescription, eventPageUrl, eventTimes, locationText } from "../scripts/lib/links";
 
 const HOST = new URL(import.meta.env.SITE ?? "https://pa-bailar.github.io").host;
 
@@ -38,12 +37,6 @@ function fold(line: string): string {
 function eventLines(event: DanceEvent, stamp: string): string[] {
   const { start, end, allDay } = eventTimes(event);
   const when = allDay ? `;VALUE=DATE:` : `;TZID=America/Bogota:`;
-  const details = [
-    event.start_time ? `${formatTime(event.start_time)}` : "Hora por confirmar",
-    priceSummary(event),
-    `@${event.account}`,
-    eventPageUrl(event),
-  ].filter(Boolean);
   return [
     "BEGIN:VEVENT",
     `UID:${event.id}@${HOST}`,
@@ -52,7 +45,7 @@ function eventLines(event: DanceEvent, stamp: string): string[] {
     `DTEND${when}${end}`,
     `SUMMARY:${text(event.title)}`,
     `LOCATION:${text(locationText(event))}`,
-    `DESCRIPTION:${text(details.join("\n"))}`,
+    `DESCRIPTION:${text(calendarDescription(event).join("\n"))}`,
     `URL:${eventPageUrl(event)}`,
     "END:VEVENT",
   ];

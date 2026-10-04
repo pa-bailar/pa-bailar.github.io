@@ -3,9 +3,8 @@
 // drawer instead (main.ts). Its ::after stretches over the whole card, so the card is one big target, its photo
 // flyer included.
 // Under the flyer, a row of actions like Instagram's says that it opens: "ⓘ Detalles", Compartir and, on the
-// right, Guardar; and a quiet line at the end ("Ver horario, precios y cómo llegar") says what's inside.
-// The buttons sit above the stretched link; "Detalles" and the line open the drawer like the card does, but
-// are counted apart (data-source, lib/analytics.ts).
+// right, Guardar. The buttons sit above the stretched link; "Detalles" opens the drawer like the card does, but
+// is counted apart (data-source, lib/analytics.ts).
 // A video's flyer with a clip plays it, silent, like a feed (clips.ts); a tap there turns its sound on or off
 // instead of opening the details. The posts' badge ("▦ 3") opens every post announcing the event.
 
@@ -22,7 +21,7 @@ import {
   stylesLabel,
   typeLabel,
 } from "../lib/format";
-import { eventPath, flyerUrl, mainMedia, mapsUrl, previewUrl } from "../lib/links";
+import { eventPath, flyerUrl, mainMedia, previewUrl } from "../lib/links";
 import { saveButtonHtml } from "./saveButton";
 
 const MAX_STYLES_ON_CARD = 3;
@@ -62,21 +61,6 @@ function flyerHtml(media: EventMedia, flyer: string, clip: string | null, title:
 /** A clip's sound, off until tapped (clips.ts). */
 const SOUND_BUTTON = `<button class="event-card__sound" type="button" data-sound aria-pressed="false"
   aria-label="Activar el sonido">${ICONS.soundOff}<span>Sin sonido</span></button>`;
-
-/**
- * The line at the end of a card, naming what the details add: "Ver horario, precios y cómo llegar", only
- * with what this event has (a time, prices, a place for Maps), else "Ver todos los detalles".
- */
-export function detailsTeaser(event: DanceEvent): string {
-  const parts = [
-    event.start_time ? "horario" : "",
-    event.prices.length ? "precios" : "",
-    mapsUrl(event) ? "cómo llegar" : "",
-  ].filter(Boolean);
-  if (!parts.length) return "Ver todos los detalles";
-  const last = parts.pop()!;
-  return `Ver ${parts.length ? `${parts.join(", ")} y ` : ""}${last}`;
-}
 
 /** "ⓘ Detalles" · Compartir · · · Guardar, under the flyer. */
 function actionsHtml(event: DanceEvent): string {
@@ -139,8 +123,6 @@ function eventCardHtml(event: DanceEvent): string {
         </div>`
             : ""
         }
-        <button class="event-card__more" type="button" data-event="${escapeHtml(event.id)}" data-source="linea"
-          tabindex="-1">${detailsTeaser(event)}</button>
       </div>
     </article>`;
 }

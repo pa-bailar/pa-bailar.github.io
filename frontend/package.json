@@ -6,9 +6,10 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "check": "npm run check:data && astro check && npm run check:contrast",
+    "check": "npm run check:data && astro check && npm run check:contrast && npm run check:css",
     "check:data": "node scripts/check-data.mjs",
     "check:contrast": "node scripts/check-contrast.mjs",
+    "check:css": "node scripts/check-css-vars.mjs",
     "test": "vitest run"
   },
   "dependencies": {
