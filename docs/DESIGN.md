@@ -9,10 +9,10 @@ Two themes, one system:
 
 The **structure** (type, motifs, components) comes from Fania. The **mood** of the dark theme comes from bachata sensual. Both themes share every component; only the color values change.
 
-**Theme modes**, like macOS "Auto". The toggle in the top right cycles **Auto → Día → Noche**, and the choice is remembered:
-- **Auto** (default): Fania de día from 6:00 to 17:59 and Noche Fania the rest of the day, by the visitor's clock. It switches on its own while the page is open. Bogotá is near the equator, so sunrise and sunset stay close to 6:00 and 18:00 all year.
-- **Día / Noche:** always that theme.
-- **Without JavaScript:** the device's light/dark setting.
+**Light by default.** Everyone sees Fania de día first, whatever the device's light/dark setting or the time: it's the site's main look. The switch in the top right shows the current theme, **☀ Claro** or **☾ Oscuro**, and a tap changes to the other one:
+- **Remembered** on that device (`localStorage`, key `theme`: `light` or `dark`). Where storage is blocked (private mode), the switch still works for that visit.
+- **Older saved values** (the old "Auto" mode, anything unknown) read as Claro and are removed.
+- **Without JavaScript:** Claro.
 
 ## Files
 
@@ -47,7 +47,7 @@ frontend/src/styles/
 2. **Semantic colors:** what a color is *for* (`--bg`, `--surface`, `--text-muted`, `--accent`, `--action`…). Each is `light-dark(<Fania de día>, <Noche Fania>)`. **Components only use these.**
 3. **Scales:** type sizes, spacing, radii, control sizes, motion.
 
-Themes switch through CSS `color-scheme`: `light dark` (follow the device) when no theme is set, or forced by `html[data-theme="light" | "dark"]`. `scripts/theme.ts` sets `data-theme` (the theme in use) and `data-theme-mode` (auto/light/dark, which picks the toggle's icon). An inline copy of its logic in `BaseLayout.astro` applies the theme before first paint (no flash) and sets the `theme-color` meta for the phone's address bar; the Content Security Policy allows it by its hash (`ARCHITECTURE.md`, section 3.3).
+Themes switch through CSS `color-scheme`: `light` at `:root`, `dark` only under `html[data-theme="dark"]`. An inline script in `<head>` (`src/themeScript.ts`, put in every page by `BaseLayout.astro`) reads the saved choice and sets `data-theme` before first paint, so a visitor who chose Oscuro never sees a flash of Claro; it also sets the `theme-color` meta for the phone's address bar. The Content Security Policy allows it by its hash (`ARCHITECTURE.md`, section 3.3). `scripts/theme.ts` runs the switch; the switch's icon and label follow `data-theme` through CSS, so they're right before any script loads. Both share their rule (only a saved `dark` is dark) and colors through `scripts/themeConfig.ts`. The installed app's manifest uses the light theme's paper for its splash screen and bar.
 
 ### Semantic colors
 

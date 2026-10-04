@@ -1,19 +1,17 @@
 ---
-// Theme switch: Auto (by time of day) → Día → Noche. Behavior in scripts/theme.ts, which fills the
-// label and aria-label. The icon shows the current mode.
+// Theme switch: Claro (the default) ↔ Oscuro. It shows the current theme: sun + "Claro" or moon + "Oscuro",
+// picked by CSS from <html data-theme> (set before first paint), so the label is right before any script runs.
+// Behavior and aria-label: scripts/theme.ts.
 ---
 
-<button class="theme-toggle" id="theme-toggle" type="button" aria-label="Cambiar tema">
-  <svg class="theme-toggle__icon theme-toggle__icon--auto" viewBox="0 0 24 24" aria-hidden="true">
-    <circle cx="12" cy="12" r="8"></circle>
-    <path d="M12 4a8 8 0 0 1 0 16Z" fill="currentColor" stroke="none"></path>
-  </svg>
-  <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" aria-hidden="true">
+<button class="theme-toggle" id="theme-toggle" type="button" aria-label="Modo claro. Cambiar a modo oscuro">
+  <svg class="theme-toggle__icon theme-toggle--light" viewBox="0 0 24 24" aria-hidden="true">
     <circle cx="12" cy="12" r="4"></circle>
     <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
   </svg>
-  <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" aria-hidden="true">
+  <svg class="theme-toggle__icon theme-toggle--dark" viewBox="0 0 24 24" aria-hidden="true">
     <path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"></path>
   </svg>
-  <span class="theme-label">Auto</span>
+  <span class="theme-toggle--light" aria-hidden="true">Claro</span>
+  <span class="theme-toggle--dark" aria-hidden="true">Oscuro</span>
 </button>

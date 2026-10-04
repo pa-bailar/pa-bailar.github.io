@@ -206,7 +206,7 @@ event's text, a link to another site's script) is blocked.
 | `object-src`, `base-uri`, `form-action` | `'none'` | No plugins, no `<base>`, no forms |
 
 - **Where it's set:** `astro.config.mjs` (`security.csp`). Astro adds the hashes of the scripts and styles it
-  inlines. Ours are two inline scripts, the theme before first paint (`BaseLayout.astro`) and the event pages'
+  inlines. Ours are two inline scripts, the theme before first paint (`src/themeScript.ts`, in `BaseLayout.astro`) and the event pages'
   forward to the app (`evento/[id].astro`), written as strings and added with `allowInlineScript()`
   (`src/csp.ts`), which puts their hash in the page's policy.
 - **Checked at every build** (`scripts/csp-meta.mjs`): Astro writes the `<meta>` at the end of `<head>`, where
@@ -319,7 +319,7 @@ sequenceDiagram
     participant V as Views
 
     H->>I: before first paint
-    I->>I: theme: saved mode, else light 6:00–17:59 / dark otherwise
+    I->>I: theme: dark if saved, else light
     H->>M: module script after parsing
     M->>M: events = JSON from #events-data
     M->>M: theme toggle, event dialog, jump bar, view switch, click tracking
@@ -432,10 +432,15 @@ stateDiagram-v2
 ### 5.6 Themes
 
 - **Two themes:** "Fania de día" (light) and "Noche Fania" (dark).
-- **Three modes:** auto, light and dark. **Auto** follows the visitor's clock: light from 6:00 to 17:59,
-  dark the rest of the day, switching on its own while the page is open.
-- **Remembered** in `localStorage`. An inline script in `BaseLayout.astro` applies it before the first
-  paint, so the page never flashes the wrong theme (allowed by its hash, section 3.3).
+- **Light by default** for everyone, not the device's setting nor the time. A two-way switch, "Claro" /
+  "Oscuro" (`ThemeToggle.astro`, `scripts/theme.ts`).
+- **Remembered** in `localStorage`, key `theme`, value `light` or `dark`; any other value (the old `auto`)
+  reads as light and is removed. Blocked storage: the switch works for the visit only.
+- **Before first paint:** an inline script (`src/themeScript.ts`, put in `<head>` by `BaseLayout.astro`) sets
+  `<html data-theme>` and the `theme-color` meta from the saved value, so a dark choice never flashes light
+  (allowed by its hash, section 3.3). CSS defaults to `color-scheme: light`; `[data-theme=dark]` switches.
+  The rule and colors live in `scripts/themeConfig.ts`, shared by both; `tests/theme.test.ts` runs the inline
+  script against the same cases.
 - **Colors** are CSS tokens with `light-dark()` (`styles/tokens.css`); [`DESIGN.md`](DESIGN.md) has
   them all.
 
@@ -522,7 +527,7 @@ only Instagram content it loads is a post's player, and only when a visitor taps
 | Data contract | Every field of `events.json` and `meta.json`: types, allowed values (event types, styles, confidence), real dates and time formats, `end_date` after `date` and within 7 days, unique ids, usernames, post links (`instagram.com/<p, reel, reels or tv>/<code>/`), flyer and clip paths (inside `flyers/` and `previews/`) and their files existing, sorting | `frontend/scripts/check-data.mjs` |
 | Types | `astro check`: strict TypeScript, including `noUncheckedIndexedAccess` | `tsconfig.json` |
 | Color contrast | Every color pair the site uses, in both themes, against WCAG 2.2 AA. It reads the tokens from `tokens.css`, so it can't drift from the design system | `frontend/scripts/check-contrast.mjs` |
-| Unit tests | Dates and Bogotá's "today", formatting, filtering (rhythms and dates, "Mañana", the options and their counts) and period grouping, holidays, the policy check, where the visitor can install from and its steps, which viewer slides are rendered, link previews (their text, the image's version, one image drawn with and one without a flyer) | `frontend/tests/*.test.ts` (Vitest) |
+| Unit tests | Dates and Bogotá's "today", formatting, filtering (rhythms and dates, "Mañana", the options and their counts) and period grouping, holidays, the policy check, where the visitor can install from and its steps, which viewer slides are rendered, link previews (their text, the image's version, one image drawn with and one without a flyer), the theme (the saved value, old ones, and the script before first paint) | `frontend/tests/*.test.ts` (Vitest) |
 | Build | Every page, image and feed is generated; every page's Content Security Policy allows its inline scripts and styles, and no page has a `style=""` attribute (section 3.3); every event's link preview has its tags and a 1200×630 JPEG under 280 KB (section 3.4) | `npm run build`, `frontend/scripts/csp-meta.mjs`, `frontend/scripts/og-check.mjs` |
 
 All five run in `ci` on every pull request, and the ruleset requires `ci` before merging.
@@ -542,6 +547,7 @@ frontend/
   src/
     data.ts               the data, typed, with flyer sizes (build time only)
     csp.ts                allowInlineScript(): an inline script, allowed by its hash (build time only)
+    themeScript.ts        the theme before first paint, an inline script (build time only)
     linkPreviewImage.ts   an event's link-preview image: satori + sharp (build time only)
     vendor/goatcounter-count.js   GoatCounter's script, served from the site
     env.d.ts              the build's variables: PUBLIC_CHECKED_AT, PUBLIC_VERSION
@@ -564,7 +570,7 @@ frontend/
       state.ts            AppState, filtering, period grouping
       screenHistory.ts    the phone's back between the app's screens
       types.ts            DanceEvent, EventMedia, Meta, AppState (mirror of the backend's models)
-      theme.ts, themeConfig.ts   theme modes
+      theme.ts, themeConfig.ts   the Claro / Oscuro switch, its rule and colors
       views/              upcomingView, calendarView, eventCard, eventDetail, eventDialog, filters,
                           jumpBar, viewSwitch, postsSheet, postViewer, inlinePlayer, clips, saveButton,
                           sharing, installPrompt, viewerWindow (HTML strings + their behavior)
