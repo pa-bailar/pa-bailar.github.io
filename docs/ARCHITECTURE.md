@@ -461,7 +461,7 @@ stateDiagram-v2
 
 ### 5.6 Themes
 
-- **Two themes:** "Fania de día" (light) and "Noche Fania" (dark).
+- **Two themes:** "Fania de día" (light) and "Luz de escenario" (dark; its calendar is "Contraluz").
 - **Light by default** for everyone, not the device's setting nor the time. A two-way switch, "Claro" /
   "Oscuro" (`ThemeToggle.astro`, `scripts/theme.ts`).
 - **Remembered** in `localStorage`, key `theme`, value `light` or `dark`; any other value (the old `auto`)
@@ -472,7 +472,8 @@ stateDiagram-v2
   The rule and colors live in `scripts/themeConfig.ts`, shared by both; `tests/theme.test.ts` runs the inline
   script against the same cases.
 - **Colors** are CSS tokens with `light-dark()` (`styles/tokens.css`); [`DESIGN.md`](DESIGN.md) has
-  them all.
+  them all. The dark theme adds its lighting (`--stage-light`, `--grain`, painted by `base.css`) and re-sets the
+  colors inside the calendar (a `[data-theme=dark] .calendar` block); `check-contrast.mjs` checks all three.
 
 ### 5.7 iPhone (Safari)
 

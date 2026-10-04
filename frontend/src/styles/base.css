@@ -114,6 +114,25 @@ html:has(dialog[open]) {
   color: var(--text-muted);
 }
 
+/* ---------- dark theme: Luz de escenario's lighting (tokens.css, docs/DESIGN.md) ---------- */
+
+:root[data-theme="dark"] body {
+  background: var(--stage-light), var(--grain), var(--bg);
+}
+
+/* Phones: the toolbar isn't sticky there, so it lets the light through instead of drawing a flat band. */
+@media (max-width: 719px) {
+  :root[data-theme="dark"] .toolbar {
+    background: transparent;
+  }
+}
+
+/* The viewer and the sheets share the grain, so they read as the same air. */
+:root[data-theme="dark"] .viewer-panel,
+:root[data-theme="dark"] .sheet-panel {
+  background-image: var(--grain);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

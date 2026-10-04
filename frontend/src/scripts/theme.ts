@@ -1,4 +1,4 @@
-// The theme switch: Claro ("Fania de día", the default for everyone) or Oscuro ("Noche Fania"). Clicking it
+// The theme switch: Claro ("Fania de día", the default for everyone) or Oscuro ("Luz de escenario"). Clicking it
 // switches and remembers the choice in localStorage; where storage is blocked (private mode) it still switches,
 // just for this visit. The pre-paint script (themeScript.ts) has already applied the saved theme; this keeps
 // the toggle, the attribute and the address bar color in step. Rules and settings: themeConfig.ts.

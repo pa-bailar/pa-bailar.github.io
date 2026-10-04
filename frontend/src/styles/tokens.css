@@ -4,7 +4,8 @@
  * Layer 1, palette:  raw colors. Never referenced by components.
  * Layer 2, semantic: what a color is FOR. Components only use these.
  *   Each semantic color is light-dark(<light>, <dark>):
- *   light = "Fania de día" (1970s NY salsa flyer), dark = "Noche Fania" (bachata sensual night).
+ *   light = "Fania de día" (1970s NY salsa flyer), dark = "Luz de escenario" (a bachata sensual social at night).
+ *   In dark, the calendar view is "Contraluz" (a festival poster): its own tokens, at the end of this file.
  * Layer 3, scales:   type, spacing, shape, sizes, motion.
  *
  * Theme selection: `color-scheme` decides which side of light-dark() applies.
@@ -19,88 +20,124 @@
   --wine-950: #1e0a0e;
   --wine-900: #2a0f14;
   --wine-500: #6e2a33;
-  /* Noche Fania's surfaces: the record itself, a warm near-black, so the night reads calm and the gold,
-     orange and tomato accents carry the color (the wine was too strong as a whole page). */
-  --vinyl-950: #0f0b0b;
-  --vinyl-900: #161112;
-  --vinyl-800: #231c1c;
-  --vinyl-600: #3a2f2e;
-  --vinyl-400: #7d6b69; /* dark-theme outlines: ≥3:1 on the page and on cards */
   --cream-50: #fff8ec;
   --cream-75: #f7eddc; /* cards: one step under the near-white */
   --cream-100: #f3e6d3;
   --cream-150: #ecddc6; /* page: aged offset paper of 1970s salsa flyers */
-  --cream-200: #e9dcc7;
   --cream-250: #e2d1b6; /* image wells, a step under the page */
   --cream-300: #d9c6aa;
   --cocoa-500: #6e4a44;
-  --cocoa-300: #c9afa3;
-  --cocoa-200: #b7978c;
   --tomato-700: #b02a17; /* period headings in light: deeper, calmer next to the page */
   --tomato-600: #c8321c;
-  --tomato-400: #e2452b;
   --tomato-350: #e8553b; /* type tags: light enough for wine text (≥4.5:1) */
   --orange-800: #b85410; /* deep enough for white text (4.87:1): the light primary button */
   --orange-600: #e8791c;
-  --orange-400: #f08a24;
   --marigold-600: #e9b021;
-  --marigold-400: #f2c12e;
-  --gold-400: #e8b54a; /* period headings in dark: marigold without the glare */
+  --marigold-400: #f2c12e; /* the app icon and link previews (pages/icons, linkPreviewImage.ts) */
   --rose-300: #e9b8a0;
   --palm-600: #1f7a4a;
   --white: #ffffff;
 
+  /* Luz de escenario (dark): the late-night bachata social, a hotel ballroom in an indigo and violet wash,
+     a magenta gel spot from above, gold lettering like the festival posters. */
+  --indigo-975: #0a0818; /* period headings' offset shadow */
+  --indigo-950: #0e0b1f;
+  --indigo-900: #16122b; /* the page */
+  --indigo-800: #221c3d; /* cards */
+  --indigo-600: #382f5c;
+  --indigo-400: #8579b0; /* outlines: ≥3:1 on the page and on cards */
+  --ink-900: #1c1033; /* text on the gold and pink fills */
+  --lilac-50: #f5eef7;
+  --lilac-100: #e8e0f2;
+  --lilac-300: #c3b7db;
+  --lilac-400: #a99dc6;
+  --lavender-300: #c9adf7;
+  --pink-200: #f7b0d4; /* period headings */
+  --pink-250: #f6a9d2;
+  --pink-300: #ff9fcb;
+  --pink-350: #ff8cc0;
+  --pink-400: #ff7eb9;
+  --magenta-500: #e0438f;
+  --coral-300: #f59a7c;
+  --coral-400: #f2785c;
+  --gold-300: #f4c542; /* the stage's lettering: logo, buttons, sticker, today */
+  --plum-700: #3e1f4a; /* holidays */
+
+  /* Contraluz (dark, only the calendar): a festival poster, the lineup backlit in gold, ember and magenta
+     on a black-aubergine stage. */
+  --aubergine-975: #0a050c;
+  --aubergine-950: #0c070f;
+  --aubergine-900: #140d18;
+  --aubergine-800: #211726;
+  --aubergine-600: #3a2b40;
+  --aubergine-400: #a68aab;
+  --parchment-100: #f8ecdc;
+  --parchment-200: #ecdcca;
+  --dusk-300: #cfb6b6;
+  --dusk-400: #b89aa8;
+  --apricot-300: #ffb592;
+  --blush-300: #f4b6c8;
+  --rouge-350: #ff7d86;
+  --rouge-500: #e23c6c;
+  --ember-350: #ff9a5c;
+  --ember-400: #ff8f52;
+  --ember-500: #f2683a;
+  --footlight-300: #f8bc52; /* period headings */
+  --footlight-400: #ffc63f;
+  --footlight-450: #ffbb3a;
+  --rosewine-700: #45192c; /* holidays */
+
   /* ---------- Layer 2: semantic colors (light, dark) ---------- */
   /* Surfaces */
-  --bg: light-dark(var(--cream-150), var(--vinyl-900));
-  --surface: light-dark(var(--cream-75), var(--vinyl-800));
-  --surface-sunken: light-dark(var(--cream-250), var(--vinyl-950));
-  --backdrop: light-dark(rgb(42 15 20 / 0.6), rgb(8 6 6 / 0.75));
+  --bg: light-dark(var(--cream-150), var(--indigo-900));
+  --surface: light-dark(var(--cream-75), var(--indigo-800));
+  --surface-sunken: light-dark(var(--cream-250), var(--indigo-950));
+  --backdrop: light-dark(rgb(42 15 20 / 0.6), rgb(8 5 20 / 0.78));
 
   /* Lines */
-  --border: light-dark(var(--wine-900), var(--vinyl-400));
-  --divider: light-dark(var(--cream-300), var(--vinyl-600));
+  --border: light-dark(var(--wine-900), var(--indigo-400));
+  --divider: light-dark(var(--cream-300), var(--indigo-600));
 
   /* Text */
-  --text: light-dark(var(--wine-900), var(--cream-100));
-  --text-muted: light-dark(var(--cocoa-500), var(--cocoa-300));
-  --text-italic: light-dark(var(--wine-500), var(--rose-300));
-  --logo: light-dark(var(--tomato-600), var(--marigold-400));
-  --accent: light-dark(var(--tomato-600), var(--orange-400)); /* time, active tab, selection */
-  --focus: light-dark(var(--tomato-600), var(--marigold-400));
+  --text: light-dark(var(--wine-900), var(--lilac-50));
+  --text-muted: light-dark(var(--cocoa-500), var(--lilac-300));
+  --text-italic: light-dark(var(--wine-500), var(--pink-250));
+  --logo: light-dark(var(--tomato-600), var(--gold-300));
+  --accent: light-dark(var(--tomato-600), var(--pink-400)); /* time, active tab, selection */
+  --focus: light-dark(var(--tomato-600), var(--gold-300));
 
   /* Controls */
-  --action: light-dark(var(--orange-800), var(--marigold-400)); /* primary button: deep orange / marigold */
-  --on-action: light-dark(var(--white), var(--wine-900)); /* white like the WhatsApp button; wine on marigold */
-  --chip-active-bg: light-dark(var(--wine-900), var(--marigold-400));
-  --chip-active-text: light-dark(var(--cream-100), var(--wine-900));
+  --action: light-dark(var(--orange-800), var(--gold-300)); /* primary button: deep orange / gold */
+  --on-action: light-dark(var(--white), var(--ink-900)); /* white like the WhatsApp button; ink on gold */
+  --chip-active-bg: light-dark(var(--wine-900), var(--pink-300));
+  --chip-active-text: light-dark(var(--cream-100), var(--ink-900));
   --free: var(--palm-600); /* the "Gratis" price tag */
-  --pulse: light-dark(rgb(200 50 28 / 0.45), rgb(240 138 36 / 0.5)); /* the accent's ring: "Detalles" on a first visit */
+  --pulse: light-dark(rgb(200 50 28 / 0.45), rgb(255 126 185 / 0.5)); /* the accent's ring: "Detalles" on a first visit */
   --on-free: var(--white);
 
   /* Brand motifs */
-  --stripe-1: light-dark(var(--tomato-600), var(--tomato-400));
-  --stripe-2: light-dark(var(--orange-600), var(--orange-400));
-  --stripe-3: light-dark(var(--marigold-600), var(--marigold-400));
+  --stripe-1: light-dark(var(--tomato-600), var(--magenta-500));
+  --stripe-2: light-dark(var(--orange-600), var(--coral-400));
+  --stripe-3: light-dark(var(--marigold-600), var(--gold-300));
   /* Period headings (Sanabria lettering): calmer than the logo's colors, with a soft offset shadow. */
-  --period-title: light-dark(var(--tomato-700), var(--gold-400));
-  --period-shadow: light-dark(var(--cream-300), var(--vinyl-950));
-  --sticker-bg: light-dark(var(--tomato-600), var(--marigold-400));
-  --sticker-text: light-dark(var(--cream-50), var(--wine-900));
-  --today-bg: light-dark(var(--marigold-600), var(--marigold-400));
-  --today-text: var(--wine-900);
-  --holiday-bg: light-dark(#f2d3bf, #3f1e1b); /* calendar: Colombian public holidays, a tint of the tomato */
+  --period-title: light-dark(var(--tomato-700), var(--pink-200));
+  --period-shadow: light-dark(var(--cream-300), var(--indigo-975));
+  --sticker-bg: light-dark(var(--tomato-600), var(--gold-300));
+  --sticker-text: light-dark(var(--cream-50), var(--ink-900));
+  --today-bg: light-dark(var(--marigold-600), var(--gold-300));
+  --today-text: light-dark(var(--wine-900), var(--ink-900));
+  --holiday-bg: light-dark(#f2d3bf, var(--plum-700)); /* calendar: Colombian public holidays, a tint of the first stripe */
 
   /* Event types (background of tags, pills and dots; text on them is --on-type) */
-  --type-social: light-dark(var(--marigold-600), var(--tomato-350));
-  --type-workshop: light-dark(var(--orange-600), var(--marigold-400));
-  --type-concert: light-dark(var(--tomato-350), var(--orange-400));
-  --type-festival: var(--rose-300);
-  --type-congress: var(--rose-300); /* a festival's family: multi-day, with workshops and socials */
-  --type-competition: light-dark(var(--cream-300), var(--cream-200));
-  --type-show: var(--rose-300);
-  --type-other: light-dark(var(--cream-300), var(--cocoa-200));
-  --on-type: var(--wine-900);
+  --type-social: light-dark(var(--marigold-600), var(--pink-350));
+  --type-workshop: light-dark(var(--orange-600), var(--gold-300));
+  --type-concert: light-dark(var(--tomato-350), var(--coral-300));
+  --type-festival: light-dark(var(--rose-300), var(--lavender-300));
+  --type-congress: light-dark(var(--rose-300), var(--lavender-300)); /* a festival's family: multi-day, with workshops and socials */
+  --type-competition: light-dark(var(--cream-300), var(--lilac-100));
+  --type-show: light-dark(var(--rose-300), var(--lavender-300));
+  --type-other: light-dark(var(--cream-300), var(--lilac-400));
+  --on-type: light-dark(var(--wine-900), var(--ink-900));
 
   /* ---------- Layer 3: typography ---------- */
   --font-display: "Shrikhand", "Cooper Black", Georgia, serif; /* logo, event titles */
@@ -186,4 +223,58 @@
 
 :root[data-theme="dark"] {
   color-scheme: dark;
+
+  /* Luz de escenario's lighting, painted behind the page (base.css): a magenta gel spot from above the
+     logo, a violet beam from the right, a faint haze further down, and a fine film grain over it all (an SVG
+     noise as a data: image, which the CSP's img-src allows). Text over the brightest point stays ≥4.5:1
+     (docs/DESIGN.md, "Luz de escenario"). */
+  --stage-light:
+    radial-gradient(110% 400px at 18% -70px, rgb(232 70 150 / 0.4), rgb(232 70 150 / 0.12) 50%, transparent 80%) no-repeat,
+    radial-gradient(70% 420px at 100% 40px, rgb(110 90 255 / 0.26), transparent 75%) no-repeat,
+    linear-gradient(180deg, transparent 300px, rgb(255 255 255 / 0.015) 420px, transparent 560px) no-repeat;
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.9  0 0 0 0 0.85  0 0 0 0 1  0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Contraluz: the calendar view in the dark theme (calendar.css), a festival poster hung in the ballroom.
+   The same roles, re-colored inside .calendar only: an aubergine stage, a warm gold and ember backlight. */
+:root[data-theme="dark"] .calendar {
+  --bg: var(--aubergine-900);
+  --surface: var(--aubergine-800);
+  --surface-sunken: var(--aubergine-950);
+  --border: var(--aubergine-400);
+  --divider: var(--aubergine-600);
+  --text: var(--parchment-100);
+  --text-muted: var(--dusk-300);
+  --text-italic: var(--apricot-300);
+  --accent: var(--ember-400);
+  --focus: var(--footlight-400);
+  --action: var(--footlight-400);
+  --on-action: var(--wine-900);
+  --chip-active-bg: var(--footlight-400);
+  --chip-active-text: var(--wine-900);
+  --pulse: rgb(255 143 82 / 0.5);
+  --stripe-1: var(--rouge-500);
+  --stripe-2: var(--ember-500);
+  --stripe-3: var(--footlight-450);
+  --period-title: var(--footlight-300);
+  --period-shadow: var(--aubergine-975);
+  --sticker-bg: var(--footlight-400);
+  --sticker-text: var(--wine-900);
+  --today-bg: var(--footlight-400);
+  --today-text: var(--wine-900);
+  --holiday-bg: var(--rosewine-700);
+  --type-social: var(--rouge-350);
+  --type-workshop: var(--footlight-400);
+  --type-concert: var(--ember-350);
+  --type-festival: var(--blush-300);
+  --type-congress: var(--blush-300);
+  --type-competition: var(--parchment-200);
+  --type-show: var(--blush-300);
+  --type-other: var(--dusk-400);
+  --on-type: var(--wine-900);
+  /* The backlight behind the month's name: a gold core, ember, then magenta fading into the night. */
+  --backlight:
+    radial-gradient(130% 360px at 50% -130px, rgb(255 196 90 / 0.3), rgb(246 98 60 / 0.24) 35%, rgb(214 40 110 / 0.2) 62%, transparent 90%) no-repeat,
+    radial-gradient(60% 200px at 85% 0%, rgb(255 200 110 / 0.1), transparent 80%) no-repeat;
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 0.85  0 0 0 0 0.75  0 0 0 0.045 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }

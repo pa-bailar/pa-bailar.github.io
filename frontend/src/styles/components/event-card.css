@@ -119,7 +119,7 @@
   min-width: 0;
   font-family: var(--font-display);
   font-weight: var(--weight-regular);
-  font-size: var(--text-2xl); /* 26px, large text: 4.93:1 in light, 9.47:1 in dark */
+  font-size: var(--text-2xl); /* 26px, large text: 4.93:1 in light, 10.49:1 in dark */
   line-height: 1.15;
   color: var(--period-title);
   text-shadow: 2px 2px 0 var(--period-shadow);
