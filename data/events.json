@@ -4138,9 +4138,7 @@
     "title": "Ecos en Movimiento - Clausura Mover-sé 2026",
     "event_type": "show",
     "is_recurring": false,
-    "styles": [
-      "tango"
-    ],
+    "styles": [],
     "organizer": "Mover-sé",
     "venue": "Academia de Baile Alma de Tango",
     "address": null,
@@ -4154,13 +4152,13 @@
     "artists": [],
     "activities": [
       "clausura",
-      "show"
+      "espectáculo de baile"
     ],
-    "contact": null,
+    "contact": "@mover__se",
     "confidence": "high",
     "doubts": [
       "sin precio",
-      "sin dirección exacta"
+      "sin estilos de baile especificados"
     ],
     "id": "ecos-en-movimiento-clausura-mover-se-2026-13-dic",
     "account": "mover__se",
