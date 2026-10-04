@@ -1,24 +1,5 @@
 /* Month calendar: header, grid, day cells (pills on wide screens, dots on phones). */
 
-/* Dark: "Contraluz" (tokens.css). The calendar is a festival poster hung in the ballroom: its own aubergine
-   stage, backlit behind the month's name. On phones it rises right under the bar, edge to edge (the negative
-   margins keep the content where it is in the light theme); on wider screens it's a framed poster. */
-:root[data-theme="dark"] .calendar {
-  margin: calc(-1 * var(--space-5)) calc(-1 * var(--space-4)) 0;
-  padding: var(--space-5) var(--space-4);
-  border-bottom: var(--border-width) solid var(--divider);
-  background: var(--backlight), var(--grain), var(--bg);
-  color: var(--text); /* the body's color was resolved with the page's tokens; inherit this one instead */
-}
-
-@media (min-width: 720px) {
-  :root[data-theme="dark"] .calendar {
-    margin-top: 0;
-    border: var(--border-width) solid var(--divider);
-    border-radius: var(--radius-md);
-  }
-}
-
 .calendar__head {
   display: flex;
   align-items: center;

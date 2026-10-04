@@ -461,7 +461,7 @@ stateDiagram-v2
 
 ### 5.6 Themes
 
-- **Two themes:** "Fania de día" (light) and "Luz de escenario" (dark; its calendar is "Contraluz").
+- **Two themes:** "Fania de día" (light) and "Luz de escenario" (dark).
 - **Light by default** for everyone, not the device's setting nor the time. A two-way switch, "Claro" /
   "Oscuro" (`ThemeToggle.astro`, `scripts/theme.ts`).
 - **Remembered** in `localStorage`, key `theme`, value `light` or `dark`; any other value (the old `auto`)
