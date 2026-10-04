@@ -1,4 +1,25 @@
-import type { DanceEvent } from "../src/scripts/types";
+import type { DanceEvent, EventMedia } from "../src/scripts/types";
+
+/**
+ * A screenshot of an Instagram story, as the backend stores it (docs/DATA.md): a "story-<hash>" id, the account's
+ * profile as its link, no caption, the cropped flyer.
+ */
+export function storyMedia(overrides: Partial<EventMedia> = {}): EventMedia {
+  return {
+    post_id: "story-3f9a1c2b7d4e5f60",
+    permalink: "https://www.instagram.com/academia/",
+    media_type: "STORY",
+    published: "2026-10-04T18:30:00+0000",
+    flyer: "flyers/story-3f9a1c2b7d4e5f60-0.webp",
+    caption: null,
+    ...overrides,
+  };
+}
+
+/** An event announced only by a story: most never get a post. */
+export function storyEvent(overrides: Partial<DanceEvent> = {}): DanceEvent {
+  return event({ id: "social-de-bachata-24-oct", title: "Social de bachata", media: [storyMedia()], ...overrides });
+}
 
 /** A complete event with sensible defaults; override what the test is about. */
 export function event(overrides: Partial<DanceEvent> = {}): DanceEvent {

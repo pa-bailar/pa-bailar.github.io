@@ -34,6 +34,7 @@ const MEDIA_LABELS: Record<MediaType, string> = {
   IMAGE: "Flyer",
   CAROUSEL_ALBUM: "Carrusel",
   VIDEO: "Video",
+  STORY: "Historia",
 };
 
 export function mediaLabel(type: MediaType): string {

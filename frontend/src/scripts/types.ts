@@ -16,12 +16,14 @@ export interface Price {
   condition: string | null;
 }
 
-export type MediaType = "IMAGE" | "CAROUSEL_ALBUM" | "VIDEO";
+// STORY: a screenshot of an Instagram story, added by hand (docs/DATA.md). Stories disappear after 24 hours, so its
+// permalink is the account's profile and its flyer is the only copy of it.
+export type MediaType = "IMAGE" | "CAROUSEL_ALBUM" | "VIDEO" | "STORY";
 
-/** One Instagram post announcing the event. */
+/** One Instagram post (or story) announcing the event. */
 export interface EventMedia {
-  post_id: string;
-  permalink: string;
+  post_id: string; // a story: "story-<hash>"
+  permalink: string; // the post's link; a story: the account's profile, "https://www.instagram.com/<account>/"
   media_type: MediaType;
   published: string;
   flyer: string | null; // path relative to the site root, e.g. "flyers/123-0.webp"
@@ -54,7 +56,7 @@ export interface DanceEvent {
   confidence: "high" | "medium" | "low";
   doubts: string[];
   account: string;
-  media: [EventMedia, ...EventMedia[]]; // main post first (the latest flyer; videos after flyers); always at least one
+  media: [EventMedia, ...EventMedia[]]; // main post first (the latest flyer; videos after flyers, stories last); always at least one
 }
 
 /** data/meta.json */

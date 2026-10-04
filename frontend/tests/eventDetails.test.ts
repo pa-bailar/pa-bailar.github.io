@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { detailsEventName } from "../src/scripts/lib/analytics";
 import { eventDetailHtml, eventDrawerHtml, sheetPrice } from "../src/scripts/views/eventDetail";
-import { event } from "./factories";
+import { event, storyEvent, storyMedia } from "./factories";
 
 describe("the analytics event for opened details", () => {
   it("names where they were opened from", () => {
@@ -68,6 +68,27 @@ describe("the details drawer", () => {
     expect(html({ media: [post, video, { ...post, post_id: "p3" }] })).toContain("Ver las 3 publicaciones");
   });
 
+  it("a story-only event: where it came from, and its account's profile instead of the post", () => {
+    const drawer = html({ media: [storyMedia()] });
+    expect(drawer).toContain("De una historia de @academia · las historias duran 24 horas");
+    expect(drawer).toContain(
+      `<a class="btn btn--primary" href="https://www.instagram.com/academia/" target="_blank" rel="noopener" data-track="instagram-perfil">`,
+    );
+    expect(drawer).toContain("Ver perfil en Instagram ↗");
+    expect(drawer).not.toContain("Ver en Instagram ↗");
+    expect(drawer).not.toContain("Texto de la publicación"); // a story has no caption
+    expect(drawer).not.toContain("data-media-link"); // nothing to play
+    expect(drawer.indexOf("De una historia")).toBeLessThan(drawer.indexOf("Ver perfil en Instagram"));
+  });
+
+  it("an event with a post and a story shows the post first, as it comes", () => {
+    const drawer = html({ media: [event().media[0], storyMedia()] });
+    expect(drawer).toContain("Ver en Instagram ↗");
+    expect(drawer).toContain(`href="https://www.instagram.com/p/p1/"`);
+    expect(drawer).not.toContain("De una historia");
+    expect(drawer).toContain("Ver las 2 publicaciones");
+  });
+
   it("escapes the event's text", () => {
     expect(html({ title: `<img src=x onerror="alert(1)">` })).not.toContain("<img src=x");
   });
@@ -80,5 +101,36 @@ describe("the details drawer", () => {
     expect(sheetPrice(event({ prices: options }))).toMatch(/^Desde \$\s?25\.000 <span class="to-confirm">· 2 opciones<\/span>$/);
     expect(sheetPrice(event({ prices: [{ label: "Entrada", amount_cop: 0, condition: null }] }))).toBe("Gratis");
     expect(sheetPrice(event())).toContain("Por confirmar");
+  });
+});
+
+describe("an event's page, with a story", () => {
+  it("shows a story's flyer as a plain image labeled Historia: no link to play it", () => {
+    const page = eventDetailHtml(storyEvent(), 0);
+    expect(page).toContain(`<img src="/flyers/story-3f9a1c2b7d4e5f60-0.webp"`);
+    expect(page).toContain(`<div class="event-detail__media">`);
+    expect(page).toContain("event-detail__play--story");
+    expect(page).toContain("Historia</span>");
+    expect(page).not.toContain("data-view-post"); // neither the media viewer nor the inline player
+    expect(page).not.toContain("Ver la publicación");
+    expect(page).toContain("De una historia de @academia");
+    expect(page).toContain("Ver perfil en Instagram ↗");
+  });
+
+  it("a post's flyer still opens the post; choosing the story shows it instead", () => {
+    const both = storyEvent({ media: [event().media[0], storyMedia()] });
+    const post = eventDetailHtml(both, 0);
+    expect(post).toContain(`data-view-post="0"`);
+    expect(post).not.toContain("Historia</span>");
+    const story = eventDetailHtml(both, 1);
+    expect(story).not.toContain("data-view-post");
+    expect(story).toContain("Historia</span>");
+    expect(story).toContain("Ver perfil en Instagram ↗");
+    expect(story).toContain(`data-open-posts data-selected="1"`);
+  });
+
+  it("says to check low-confidence details with the account, not a post", () => {
+    expect(eventDetailHtml(storyEvent({ confidence: "low" }), 0)).toContain("confírmalos con la cuenta.");
+    expect(eventDetailHtml(event({ confidence: "low" }), 0)).toContain("confírmalos en la publicación.");
   });
 });
