@@ -1,26 +1,15 @@
-// Link-preview image of each event page (/og/<id>.jpg): its flyer as a small JPEG.
-// Flyers are stored as WebP, which not every app shows in previews, and WhatsApp skips preview
-// images over ~300 KB. Made at build time, so nothing extra is stored in the repository.
+// Link-preview image of each event page (/og/<id>.jpg): 1200×630, the flyer with the event's date, title,
+// place and price (src/linkPreviewImage.ts). Made at build time, so nothing extra is stored in the repository.
+// Pages link it with ?v=<version> (scripts/lib/linkPreview.ts), which changes when the image does.
 
-import { readFile } from "node:fs/promises";
-import path from "node:path";
 import type { APIRoute, GetStaticPaths } from "astro";
-import sharp from "sharp";
-import { DATA_DIR, events } from "../../data";
-import { mainMedia } from "../../scripts/lib/links";
+import { events } from "../../data";
+import { eventPreviewImage } from "../../linkPreviewImage";
+import type { DanceEvent } from "../../scripts/types";
 
-const PREVIEW_WIDTH = 600;
-
-export const getStaticPaths: GetStaticPaths = () =>
-  events
-    .filter((event) => mainMedia(event).flyer)
-    .map((event) => ({ params: { id: event.id }, props: { flyer: mainMedia(event).flyer } }));
+export const getStaticPaths: GetStaticPaths = () => events.map((event) => ({ params: { id: event.id }, props: { event } }));
 
 export const GET: APIRoute = async ({ props }) => {
-  const source = await readFile(path.join(DATA_DIR, props.flyer as string));
-  const jpeg = await sharp(source)
-    .resize({ width: PREVIEW_WIDTH, withoutEnlargement: true })
-    .jpeg({ quality: 80, mozjpeg: true })
-    .toBuffer();
+  const jpeg = await eventPreviewImage(props.event as DanceEvent);
   return new Response(new Uint8Array(jpeg), { headers: { "Content-Type": "image/jpeg" } });
 };

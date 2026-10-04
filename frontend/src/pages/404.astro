@@ -1,19 +1,69 @@
 ---
+// GitHub Pages serves this for any address that doesn't exist. Most come from an old shared link: the backend
+// deletes events 60 days after they end, and their page with them. So it says so, and offers what's next: the
+// first upcoming events (as of the build, which runs at least twice a day) and the way home.
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Stripes from "../components/Stripes.astro";
-import { BASE_URL } from "../scripts/lib/links";
+import { events } from "../data";
+import { lastDay, todayIso } from "../scripts/lib/dates";
+import { capitalize } from "../scripts/lib/format";
+import { shortWhen } from "../scripts/lib/linkPreview";
+import { BASE_URL, eventPath, mainMedia, thumbUrl } from "../scripts/lib/links";
 
 const home = BASE_URL;
+const UPCOMING_SHOWN = 4;
+const today = todayIso();
+// events.json is sorted by date and time; an event over several days is upcoming until its last day.
+const upcoming = events.filter((event) => lastDay(event) >= today).slice(0, UPCOMING_SHOWN);
 ---
 
-<BaseLayout title="Página no encontrada · Pa' Bailar" description="Esta página no existe." noindex>
+<BaseLayout title="Página no encontrada · Pa' Bailar" description="Este evento ya pasó o no existe." noindex>
   <main class="container not-found">
     <Stripes />
-    <h1 class="site-header__logo">Pa' Bailar</h1>
-    <p class="not-found__message">Esta página no existe… pero la pista sigue abierta.</p>
-    <a class="btn btn--primary" href={home}>Ver los eventos</a>
+    <a class="not-found__logo" href={home}>Pa' Bailar</a>
+    <h1 class="not-found__title" data-not-found-title>Este evento ya pasó o no existe</h1>
+    <p class="not-found__message">…pero la pista sigue abierta.</p>
+
+    {
+      upcoming.length > 0 && (
+        <section class="not-found__upcoming" aria-labelledby="not-found-upcoming">
+          <h2 class="not-found__heading" id="not-found-upcoming">
+            Próximos eventos
+          </h2>
+          <ul class="not-found__list">
+            {upcoming.map((event) => {
+              const thumb = thumbUrl(mainMedia(event));
+              return (
+                <li>
+                  <a class="not-found__event" href={eventPath(event)}>
+                    {thumb ? (
+                      <img class="not-found__thumb" src={thumb} alt="" width="160" height="160" loading="lazy" decoding="async" />
+                    ) : (
+                      <span class="not-found__thumb" />
+                    )}
+                    <span class="not-found__text">
+                      <span class="not-found__when">{capitalize(shortWhen(event, today))}</span>
+                      <span class="not-found__name">{event.title}</span>
+                      <span class="not-found__place">{event.venue ?? event.address ?? `@${event.account}`}</span>
+                    </span>
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      )
+    }
+
+    <a class="btn btn--primary" href={home}>Ver todos los eventos</a>
   </main>
 </BaseLayout>
+
+<script>
+  // Not an event's address: a page that never existed, so the title says that instead.
+  const title = document.querySelector("[data-not-found-title]");
+  if (title && !location.pathname.includes("/evento/")) title.textContent = "Esta página no existe";
+</script>
 
 <style>
   .not-found {
@@ -24,14 +74,113 @@ const home = BASE_URL;
     padding-bottom: var(--space-7);
   }
 
-  .not-found .stripes {
-    width: 100%;
+  /* The stripes are another component's element: a scoped selector wouldn't reach it, and in this grid
+     (justify-items: start) they'd shrink to nothing. */
+  .not-found :global(.stripes) {
+    justify-self: stretch;
+  }
+
+  .not-found__logo {
+    font-family: var(--font-display);
+    font-size: var(--text-3xl);
+    line-height: 1;
+    color: var(--logo);
+    text-decoration: none;
+  }
+
+  .not-found__title {
+    font-family: var(--font-display);
+    font-weight: var(--weight-regular);
+    font-size: var(--text-2xl);
+    line-height: 1.15;
+    color: var(--text);
   }
 
   .not-found__message {
+    margin-top: calc(-1 * var(--space-2));
     font-family: var(--font-serif);
     font-style: italic;
+    font-weight: var(--weight-serif);
     font-size: var(--text-lg);
     color: var(--text-italic);
+  }
+
+  .not-found__upcoming {
+    justify-self: stretch;
+    max-width: 760px; /* two columns on wide screens: four events, two rows */
+    display: grid;
+    gap: var(--space-3);
+    margin-top: var(--space-2);
+  }
+
+  .not-found__heading {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: var(--weight-serif);
+    font-size: var(--text-xl);
+    color: var(--text-italic);
+  }
+
+  .not-found__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+    gap: var(--space-3);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .not-found__event {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    height: 100%;
+    padding: var(--space-2);
+    border: var(--border-width) solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .not-found__event:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  .not-found__thumb {
+    flex: none;
+    width: 72px;
+    height: 72px;
+    border-radius: var(--radius-sm);
+    background: var(--surface-sunken);
+    object-fit: cover;
+  }
+
+  .not-found__text {
+    display: grid;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  .not-found__when {
+    font-size: var(--text-sm);
+    font-weight: var(--weight-bold);
+    color: var(--accent);
+  }
+
+  .not-found__name {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+  }
+
+  .not-found__place {
+    overflow: hidden;
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 </style>

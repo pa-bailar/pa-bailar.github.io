@@ -30,8 +30,10 @@ npm run preview # the build at http://localhost:4321, with the policy (dev mode 
 ```
 
 Besides the home page, the build makes one page per event (`/evento/<id>/`: shared links point there,
-and it forwards browsers to the home page with the event open), a JPEG link preview per event
-(`/og/<id>.jpg`) and a calendar feed (`/calendario.ics`, no longer linked; kept for existing subscriptions).
+and it forwards browsers to the home page with the event open), a link-preview image per event
+(`/og/<id>.jpg`, 1200×630: the flyer with the date, title, place and price, drawn with the fonts in
+`frontend/src/assets/fonts/og/`) and a calendar feed (`/calendario.ics`, no longer linked; kept for existing
+subscriptions). The build fails if an event's preview is missing or weighs over 280 KB.
 
 ## Workflows
 
