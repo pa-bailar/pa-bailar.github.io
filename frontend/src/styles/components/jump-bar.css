@@ -1,5 +1,7 @@
-/* Phones: slim bar stuck to the top (components/JumpBar.astro, scripts/views/jumpBar.ts):
-   [🔍] [🔖 3] [⚙ 2] [Finde ▾] [Ritmo ▾]. Hides while scrolling down, comes back on scroll up. */
+/* Phones: the slim bar stuck to the top (components/JumpBar.astro, scripts/views/jumpBar.ts):
+   [🔍] [🔖 3] [⚙ 2 · Noviembre × · Hoy · Mañana · Finde · Próx. semana | Salsa · Bachata · Urbano · Tango →]
+   and, while filtering, "12 eventos · Finde, Salsa · × Limpiar" under it. Hides while scrolling down, comes
+   back on scroll up. The chips themselves: filters.css. */
 
 .jump-bar {
   position: sticky;
@@ -23,6 +25,7 @@
   align-items: center;
   gap: var(--space-2);
   height: var(--jump-bar-height);
+  padding-right: 0; /* the chips run to the screen's edge, so the next one peeks */
 }
 
 .jump-bar .chip {
@@ -32,13 +35,14 @@
   white-space: nowrap;
 }
 
-/* 🔍, 🔖 and ⚙: square buttons of a fixed size; a number on the corner (like a notification badge)
-   never changes their size. */
+/* 🔍 and 🔖: square buttons of a fixed size; a number on the corner (like a notification badge) never changes
+   their size. */
 .jump-bar__icon {
   position: relative;
   flex: none;
   justify-content: center;
-  width: var(--control-height);
+  width: var(--touch-target);
+  min-height: var(--control-height);
   padding: 0;
   color: var(--text);
 }
@@ -49,12 +53,42 @@
   color: var(--chip-active-text);
 }
 
-/* Searching: the whole bar is the search field and its ×. */
+/* The chips: one row that scrolls sideways to the screen's edge, fading there, so the next chip peeks and the
+   row reads as one that scrolls (Material's single-line chip group). As tall as the bar: the badges on the
+   corners of ⚙ and 🔖 have room. */
+.jump-bar__chips {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  align-self: stretch;
+  gap: var(--space-2);
+  min-width: 0;
+  padding: 0 var(--space-4) 0 var(--space-1);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  mask-image: linear-gradient(to right, #000 calc(100% - var(--space-6)), transparent);
+}
+
+.jump-bar__chips::-webkit-scrollbar {
+  display: none;
+}
+
+/* Between the dates and the rhythms. */
+.jump-bar__divider {
+  flex: none;
+  width: var(--border-width);
+  height: var(--space-5);
+  background: var(--divider);
+}
+
+/* Searching: the whole row is the search field and its ×. The line under it stays. */
 .jump-bar__search {
   display: none;
   flex: 1;
   gap: var(--space-2);
   min-width: 0;
+  padding-right: var(--space-4);
 }
 
 .jump-bar__search .search-input {
@@ -69,21 +103,11 @@
   display: flex;
 }
 
-/* ⚙ with the number of active filters on its corner (like a notification badge), so the button keeps
-   its size whatever is selected. */
-.jump-bar__filters {
-  position: relative;
-  flex: none;
-  justify-content: center;
-  width: var(--control-height);
-  padding: 0;
-  color: var(--text);
-}
-
+/* A number on a button's corner: how many saved events, how many filters chosen. */
 .jump-bar__badge {
   position: absolute;
-  top: -6px;
-  right: -6px;
+  top: -7px;
+  right: -7px;
   min-width: 18px;
   height: 18px;
   padding: 0 4px;
@@ -91,134 +115,17 @@
   background: var(--chip-active-bg);
   color: var(--chip-active-text);
   font-size: var(--text-2xs);
+  font-weight: var(--weight-bold);
   line-height: 18px;
   text-align: center;
 }
 
-/* Dropdown buttons: period and rhythm split the rest of the row equally, so the bar keeps its shape
-   whatever is selected; long labels are cut with an ellipsis. */
-.jump-bar__menu-button {
-  flex: 1 1 0;
-  justify-content: space-between;
-  min-width: 0;
-  max-width: 220px; /* wide but short windows: don't stretch across the screen */
-  padding-inline: var(--space-2); /* room for "Hoy + finde" on a 375px phone */
-  color: var(--text);
+.jump-bar__icon[aria-pressed="true"] .jump-bar__badge {
+  background: var(--chip-active-text);
+  color: var(--chip-active-bg);
 }
 
-.jump-bar__menu-button:disabled {
-  opacity: 0.5;
-}
-
-.jump-bar__menu-button[hidden] {
-  display: none;
-}
-
-.jump-bar__label {
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* A rhythm or a date is chosen: the button looks like a selected chip. */
-.jump-bar__menu-button.is-active {
-  background: var(--chip-active-bg);
-  border-color: var(--chip-active-bg);
-  color: var(--chip-active-text);
-}
-
-/* Dropdown menus: checklists under their button (placed by jumpBar.ts; popover: closes on "Listo",
-   an outside tap, Escape, or scrolling). Choosing keeps them open, to choose several. */
-.bar-menu {
-  position: fixed;
-  inset: auto;
-  width: max-content;
-  min-width: min(220px, calc(100vw - 16px));
-  max-width: calc(100vw - 16px); /* never wider than the screen (with 8px margins) */
-  max-height: 60vh; /* jumpBar.ts lowers it to the space left below the button */
-  margin: 0;
-  padding: var(--space-2) 0 0;
-  overflow-y: auto;
-  border: var(--border-width) solid var(--border);
-  border-radius: var(--radius-md);
-  background: var(--surface);
-  color: var(--text);
-  box-shadow: var(--shadow-menu);
-}
-
-/* One option: [box] label … count, a finger-sized row (--touch-target). */
-.bar-menu__item {
-  display: flex;
-  align-items: center; /* box, label and count centered in the row */
-  gap: var(--space-3);
-  width: 100%;
-  min-height: var(--touch-target);
-  padding: var(--space-1) var(--space-4);
-  border: 0;
-  background: none;
-  line-height: 1.2;
-  text-align: left;
-}
-
-.bar-menu__item[aria-checked="true"] {
-  font-weight: var(--weight-bold);
-  background: var(--surface-sunken);
-}
-
-/* The checkbox: an outlined square, filled with a check when chosen (the selected chip's colors). */
-.bar-menu__check {
-  display: grid;
-  flex: none;
-  place-items: center;
-  width: var(--checkbox-size);
-  height: var(--checkbox-size);
-  border: var(--border-width) solid var(--border);
-  border-radius: var(--radius-sm);
-}
-
-.bar-menu__item[aria-checked="true"] .bar-menu__check {
-  background: var(--chip-active-bg);
-  border-color: var(--chip-active-bg);
-}
-
-.bar-menu__item[aria-checked="true"] .bar-menu__check::after {
-  content: "";
-  width: 9px;
-  height: 5px;
-  margin-top: -2px;
-  border-bottom: 2px solid var(--chip-active-text);
-  border-left: 2px solid var(--chip-active-text);
-  transform: rotate(-45deg);
-}
-
-.bar-menu__label {
-  flex: 1;
-  min-width: 0;
-  overflow-wrap: anywhere; /* a long name wraps instead of widening the menu */
-}
-
-.bar-menu__count {
-  margin-left: var(--space-3);
-  color: var(--text-muted);
-  font-variant-numeric: tabular-nums;
-}
-
-/* "Listo": always in view at the bottom of the menu, however long the list. */
-.bar-menu__footer {
-  position: sticky;
-  bottom: 0;
-  display: flex;
-  justify-content: flex-end;
-  margin-top: var(--space-2);
-  padding: var(--space-2) var(--space-4);
-  border-top: var(--border-width) solid var(--divider);
-  background: var(--surface);
-}
-
-.bar-menu__done {
-  min-height: var(--touch-target);
-}
-
-/* A jump lands the period's heading just below the bar. */
+/* A filter change lands the period's heading just below the bar. */
 .agenda-group {
   scroll-margin-top: calc(var(--jump-bar-height) + var(--space-3));
 }

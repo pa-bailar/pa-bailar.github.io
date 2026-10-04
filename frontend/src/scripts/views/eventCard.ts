@@ -1,10 +1,13 @@
 // Event card used in the upcoming list and the calendar's day list.
-// The title is a link to the event's page (open in a new tab, share, crawl); a plain click opens the
-// viewer instead (main.ts). Its ::after stretches over the whole card, so the card is one big target.
+// The title is a link to the event's page (open in a new tab, share, crawl); a plain click opens the details
+// drawer instead (main.ts). Its ::after stretches over the whole card, so the card is one big target, its photo
+// flyer included.
 // Under the flyer, a row of actions like Instagram's says that it opens: "ⓘ Detalles", Compartir and, on the
 // right, Guardar; and a quiet line at the end ("Ver horario, precios y cómo llegar") says what's inside.
-// The buttons sit above the stretched link; "Detalles" and the line open the viewer like the card does, but
+// The buttons sit above the stretched link; "Detalles" and the line open the drawer like the card does, but
 // are counted apart (data-source, lib/analytics.ts).
+// A video's flyer with a clip plays it, silent, like a feed (clips.ts); a tap there turns its sound on or off
+// instead of opening the details. The posts' badge ("▦ 3") opens every post announcing the event.
 
 import type { DanceEvent, EventMedia } from "../types";
 import { isVideoCover } from "../lib/mediaLabel";
@@ -19,7 +22,7 @@ import {
   stylesLabel,
   typeLabel,
 } from "../lib/format";
-import { eventPath, flyerUrl, mainMedia, mapsUrl } from "../lib/links";
+import { eventPath, flyerUrl, mainMedia, mapsUrl, previewUrl } from "../lib/links";
 import { saveButtonHtml } from "./saveButton";
 
 const MAX_STYLES_ON_CARD = 3;
@@ -40,16 +43,25 @@ function frameRatio(media: EventMedia): number | null {
   return Math.min(Math.max(media.width / media.height, TALLEST), WIDEST);
 }
 
-function flyerHtml(media: EventMedia, flyer: string): string {
+/** The flyer, or a video's clip over its frame (`clip`: silent, looping, loaded only when it plays: clips.ts). */
+function flyerHtml(media: EventMedia, flyer: string, clip: string | null, title: string): string {
   const src = escapeHtml(flyer);
   // Exactly 4:5 fills every frame: no blurred copy needed.
   const fillsFrame = media.width && media.height && Math.abs(media.width / media.height - TALLEST) < 0.01;
+  const picture = clip
+    ? `<video class="event-card__flyer" src="${escapeHtml(clip)}" poster="${src}" muted loop playsinline preload="none"
+        data-clip aria-label="Video de ${escapeHtml(title)}"></video>`
+    : `<img class="event-card__flyer" src="${src}" alt="" loading="lazy" decoding="async" />`;
   return `
     <div class="event-card__frame">
       ${fillsFrame ? "" : `<img class="event-card__backdrop" src="${src}" alt="" loading="lazy" decoding="async" />`}
-      <img class="event-card__flyer" src="${src}" alt="" loading="lazy" decoding="async" />
+      ${picture}
     </div>`;
 }
+
+/** A clip's sound, off until tapped (clips.ts). */
+const SOUND_BUTTON = `<button class="event-card__sound" type="button" data-sound aria-pressed="false"
+  aria-label="Activar el sonido">${ICONS.soundOff}<span>Sin sonido</span></button>`;
 
 /**
  * The line at the end of a card, naming what the details add: "Ver horario, precios y cómo llegar", only
@@ -84,10 +96,15 @@ function eventCardHtml(event: DanceEvent): string {
   const media = mainMedia(event);
   const flyer = flyerUrl(media);
   const ratio = flyer ? frameRatio(media) : null;
+  const clip = flyer ? previewUrl(media) : null;
+  const count = event.media.length;
   const postCount =
-    event.media.length > 1 ? `<span class="media-count">${postCountLabel(event.media.length)}</span>` : "";
+    count > 1
+      ? `<button class="media-count" type="button" data-card-posts="${escapeHtml(event.id)}"
+          aria-label="Ver las ${postCountLabel(count)} de este evento">${ICONS.gallery}<span>${count}</span></button>`
+      : "";
   const image = flyer
-    ? flyerHtml(media, flyer)
+    ? flyerHtml(media, flyer, clip, event.title)
     : `<div class="no-flyer" aria-hidden="true">Pa'</div>`;
   const sticker = stickerDate(event);
   const when = cardWhenLabel(event);
@@ -96,12 +113,12 @@ function eventCardHtml(event: DanceEvent): string {
   const styles = stylesLabel(event.styles, MAX_STYLES_ON_CARD);
 
   return `
-    <article class="event-card">
-      <div class="event-card__media"${ratio ? ` data-flyer-ratio="${ratio.toFixed(4)}"` : ""}>
+    <article class="event-card" data-event-card="${escapeHtml(event.id)}">
+      <div class="event-card__media${clip ? " event-card__media--clip" : ""}"${ratio ? ` data-flyer-ratio="${ratio.toFixed(4)}"` : ""}>
         ${image}
         <span class="tag-type t-${escapeHtml(event.event_type)}">${typeLabel(event.event_type)}</span>
         ${postCount}
-        ${isVideoCover(media) ? `<span class="play-mark" aria-hidden="true">${ICONS.play}</span>` : ""}
+        ${clip ? SOUND_BUTTON : isVideoCover(media) ? `<span class="play-mark" aria-hidden="true">${ICONS.play}</span>` : ""}
         <span class="date-sticker${sticker.range ? " date-sticker--range" : ""}" aria-hidden="true"><b>${sticker.day}</b><small>${sticker.month}</small></span>
       </div>
       ${actionsHtml(event)}

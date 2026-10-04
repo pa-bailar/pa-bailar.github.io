@@ -69,7 +69,7 @@ export type View = "upcoming" | "calendar";
 
 export interface AppState {
   view: View;
-  typeFilter: EventType | "all";
+  types: EventType[]; // event types chosen (none = every type): an event of any of them matches
   styles: string[]; // rhythms chosen (none = every rhythm): an event with any of them matches
   dates: string[]; // periods chosen in the list ("hoy", "manana", "fin-de-semana", "2026-11"…; none = every date)
   accountFilter: string | null; // Instagram username, chosen by tapping it on a card

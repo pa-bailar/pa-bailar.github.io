@@ -12,12 +12,14 @@ import { byId, escapeHtml } from "../lib/dom";
 import { renderInstagramPost } from "../lib/instagramEmbed";
 import { flyerUrl } from "../lib/links";
 import { initPanelSheet, openPanelSheet } from "../lib/sheet";
+import { holdClips } from "./clips";
 
 let request = 0; // the latest opening: a slow player from an earlier post never lands in a later one
 
 const sheet = () => byId<HTMLDialogElement>("post-viewer");
 
-export function openPostViewer(event: DanceEvent, media: EventMedia) {
+/** `replacing`: the sheet of posts it was chosen from, which it takes the place of (lib/sheet.ts). */
+export function openPostViewer(event: DanceEvent, media: EventMedia, { replacing }: { replacing?: HTMLDialogElement } = {}) {
   const flyer = flyerUrl(media);
   const size = media.width && media.height ? ` width="${media.width}" height="${media.height}"` : "";
   byId("post-viewer-title").textContent = `@${event.account}`;
@@ -30,8 +32,9 @@ export function openPostViewer(event: DanceEvent, media: EventMedia) {
       <p class="post-viewer__status" role="status">Cargando la publicación…</p>
     </div>
     <div class="post-viewer__embed"></div>`;
-  openPanelSheet(sheet());
+  openPanelSheet(sheet(), { replacing });
   sheet().scrollTop = 0;
+  holdClips("post-viewer", true); // with sound here, the feed's silent clip waits
 
   const current = ++request;
   void renderInstagramPost(body.querySelector<HTMLElement>(".post-viewer__embed")!, media.permalink).then((shown) => {
@@ -47,5 +50,6 @@ export function initPostViewer() {
   element.addEventListener("close", () => {
     request++;
     byId("post-viewer-body").innerHTML = ""; // removes the player: a playing video stops
+    holdClips("post-viewer", false);
   });
 }

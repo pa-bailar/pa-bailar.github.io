@@ -1,23 +1,18 @@
 ---
-// Phones: the filters in a sheet that slides up from the bottom, opened by "Filtros" in the jump bar.
-// The list behind stays where it was; drag it down to dismiss (lib/sheet.ts). Chips: scripts/views/filters.ts.
+// "Filtros" (phones, from ⚙ in the bar): every date, rhythm and type with how many events each would show, and
+// the academy chosen from a card. Choices apply at once; "Ver 12 eventos" stays at the bottom and closes it.
+// It slides up from the bottom and drags down to close (lib/sheet.ts). Filled by scripts/views/filters.ts.
 ---
 
 <dialog class="sheet sheet-panel filter-sheet" id="filter-sheet" aria-labelledby="filter-sheet-title">
   <span class="sheet-handle" aria-hidden="true"></span>
-  <div class="sheet-panel__head">
+  <div class="sheet-panel__head filter-sheet__head">
     <h2 class="sheet-panel__title" id="filter-sheet-title">Filtros</h2>
+    <button class="filter-sheet__clear" id="filter-sheet-clear" type="button" data-clear-filters>Limpiar</button>
     <button class="icon-btn" type="button" data-close-sheet aria-label="Cerrar">×</button>
   </div>
-  <h3 class="filter-sheet__label" data-filter-label="date">Fechas</h3>
-  <div class="chip-row" data-filter-row="date" role="group" aria-label="Filtrar por fecha"></div>
-  <h3 class="filter-sheet__label">Tipo</h3>
-  <div class="chip-row" data-filter-row="type" role="group" aria-label="Filtrar por tipo"></div>
-  <h3 class="filter-sheet__label">Ritmo</h3>
-  <div class="chip-row" data-filter-row="style" role="group" aria-label="Filtrar por ritmo"></div>
-  <p class="account-filter" data-filter-row="account" hidden></p>
-  <div class="filter-sheet__actions">
-    <button class="btn" type="button" data-clear-filters>Quitar filtros</button>
+  <div class="filter-sheet__body" id="filter-sheet-body"></div>
+  <div class="filter-sheet__foot">
     <button class="btn btn--primary" type="button" data-close-sheet id="filter-sheet-results">Ver eventos</button>
   </div>
 </dialog>

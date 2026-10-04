@@ -1,331 +1,40 @@
-/* Event viewer (components/EventDialog.astro, scripts/views/eventDialog.ts): one slide per event, swiped
-   sideways. Phones and tablets (under 900px): each slide is the event's flyer with a sheet over the lower part
-   of the screen (half height, pulled or scrolled up to the whole screen). Wide screens: a side panel next to
-   the list. The same detail markup (eventSheetHtml) in both. */
+/* An event's details (scripts/views/eventDetail.ts): the parts shared by the details drawer (drawer.css) and the
+   event's own page, which also shows the flyer on top. */
 
-.event-dialog {
-  padding: 0;
-  border: 0;
-  background: transparent;
-  color: var(--text);
-}
+/* ---------- the head: when, the title, the type and the account ---------- */
 
-.event-dialog[open] {
+.event-detail__head {
   display: flex;
   flex-direction: column;
+  gap: var(--space-1);
 }
 
-/* The viewer takes the focus when it opens (eventDialog.ts); the dialog itself needs no outline. */
-.event-dialog:focus {
-  outline: none;
-}
-
-.event-dialog::backdrop {
-  background: var(--backdrop);
-}
-
-.viewer-track {
+/* "TALLER  @academia" under the title. */
+.event-detail__by {
   display: flex;
-  flex: 1;
-  gap: var(--space-3); /* a seam between events, seen only while swiping (like Photos) */
-  min-height: 0;
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-}
-
-.viewer-track::-webkit-scrollbar {
-  display: none;
-}
-
-.viewer-slide {
-  flex: 0 0 100%;
-  overflow-x: hidden; /* never a second sideways scroll inside the sideways swipe between events */
-  overflow-y: auto;
-  overscroll-behavior-y: contain;
-  scroll-snap-align: center;
-  scroll-snap-stop: always; /* one event per swipe, however fast */
-}
-
-/* One-time nudge, after the viewer has opened: the slides shift so about a fifth of the next (or
-   previous) event shows, holds, and slides back: "you can swipe". Any touch cancels it. Only the rendered
-   slides move (the current event and its neighbors, eventDialog.ts): the empty ones are off screen, and
-   animating dozens of slides at once costs a phone memory for nothing. */
-.viewer-track.is-hinting-next .viewer-slide[data-rendered] {
-  animation: viewer-hint-next 1100ms cubic-bezier(0.2, 0, 0, 1) 600ms;
-}
-
-.viewer-track.is-hinting-previous .viewer-slide[data-rendered] {
-  animation: viewer-hint-previous 1100ms cubic-bezier(0.2, 0, 0, 1) 600ms;
-}
-
-@keyframes viewer-hint-next {
-  30%,
-  65% {
-    transform: translateX(-20%);
-  }
-}
-
-@keyframes viewer-hint-previous {
-  30%,
-  65% {
-    transform: translateX(20%);
-  }
-}
-
-/* ---------- the bar at the top of each slide's sheet: handle, ‹ 3 de 9 ›, × ---------- */
-
-.viewer-bar {
-  position: sticky; /* stays at the top while the sheet is read */
-  top: 0;
-  z-index: var(--z-raised);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-3);
-  padding: var(--space-3) var(--space-4) var(--space-2);
-  border-bottom: var(--border-width) solid var(--divider);
-  background: var(--surface);
-}
-
-/* The handle: "pull me". A tap switches between the half and the full sheet. Phones only. */
-.viewer-bar__grab {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: calc(var(--touch-target) + var(--space-5));
-  height: var(--space-5);
-  padding: 0;
-  border: 0;
-  background: none;
-  transform: translateX(-50%);
-  cursor: grab;
-}
-
-.viewer-bar__grab .sheet-handle {
-  margin: 0;
-}
-
-.viewer-bar__nav {
-  display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: var(--space-2);
-}
-
-.viewer-bar__count {
-  min-width: 4.5em;
-  text-align: center;
+  margin-top: var(--space-1);
   font-size: var(--text-sm);
-  font-weight: var(--weight-bold);
-  font-variant-numeric: tabular-nums;
   color: var(--text-muted);
 }
 
-.viewer-bar .icon-btn:disabled {
-  opacity: 0.35;
+/* The title takes the focus when the drawer opens (it's where reading starts): no ring for that. */
+.event-dialog__title:focus {
+  outline: none;
 }
 
-/* ---------- phones and tablets: a half-height sheet under the flyer ----------
-   Each slide scrolls vertically: the flyer first, sticky at the top, then the sheet (.viewer-panel), at least
-   as tall as the screen. Scrolled to the top, the sheet covers the lower 58% (the flyer gets --viewer-peek, or
-   its own height if shorter); scrolling (or pulling) it up slides it over the flyer to the full screen. Scroll
-   snapping settles it at one of the two; further down it scrolls freely. */
+/* ---------- Cómo llegar · Compartir · Guardar: what people do next, as equal buttons, the icon over the word ---------- */
 
-@media (max-width: 899px) {
-  .event-dialog {
-    width: 100%;
-    max-width: 100%;
-    height: 100dvh;
-    max-height: 100dvh;
-    margin: 0;
-  }
-
-  .viewer-slide {
-    scroll-snap-type: y proximity;
-  }
-
-  /* Following a mouse dragging the bar, and gliding to a height after it (eventDialog.ts): no snapping in between. */
-  .event-dialog.is-gliding .viewer-slide {
-    scroll-snap-type: none;
-  }
-
-  .viewer-slide .event-dialog__visual {
-    position: sticky;
-    top: 0;
-    max-height: var(--viewer-peek); /* a taller flyer goes on under the sheet, like a post under comments */
-    padding-top: env(safe-area-inset-top);
-    scroll-snap-align: start;
-  }
-
-  .viewer-slide .event-dialog__media img,
-  .viewer-slide .event-dialog__media video {
-    max-height: none; /* the flyer at full width, as on the card */
-  }
-
-  /* A video playing in place (inlinePlayer.ts) is seen whole: the sheet waits below it. */
-  .viewer-slide .event-dialog__visual:has(.is-playing) {
-    position: relative;
-    max-height: none;
-  }
-
-  .viewer-panel {
-    position: relative;
-    z-index: var(--z-raised);
-    min-height: 100%;
-    border-top: var(--border-width) solid var(--border);
-    border-radius: var(--radius-md) var(--radius-md) 0 0;
-    background: var(--surface);
-    box-shadow: var(--shadow-menu);
-    scroll-snap-align: start;
-  }
-
-  .viewer-panel .viewer-bar {
-    padding-top: var(--space-5); /* room for the handle */
-    border-radius: var(--radius-md) var(--radius-md) 0 0;
-  }
-
-  .viewer-panel .event-dialog__info {
-    padding: var(--space-4);
-  }
-
-  .viewer-panel .event-sheet__end {
-    padding-top: 0;
-    padding-bottom: calc(var(--space-6) + env(safe-area-inset-bottom));
-  }
-}
-
-/* Tablets: the sheet keeps a readable width, centered. */
-@media (min-width: 720px) and (max-width: 899px) {
-  .viewer-slide .event-dialog__visual,
-  .viewer-panel {
-    width: min(100%, 640px);
-    margin-inline: auto;
-  }
-}
-
-/* ---------- wide screens: a side panel next to the list ----------
-   Not modal (eventDialog.ts): the list stays usable, its cards open their event here, and the page leaves the
-   panel's width free (.has-viewer-panel). The flyer is already in the list, so the details come first and the
-   flyer (with its clip, its posts, the video in place) after them. */
-
-@media (min-width: 900px) {
-  .event-dialog {
-    position: fixed;
-    inset: 0 0 0 auto;
-    z-index: var(--z-panel);
-    width: var(--panel-width);
-    max-width: 100%;
-    height: 100dvh;
-    max-height: 100dvh;
-    margin: 0;
-    border-left: var(--border-width) solid var(--border);
-    background: var(--surface);
-    box-shadow: var(--shadow-menu);
-  }
-
-  .event-dialog[open] {
-    animation: viewer-panel-in 280ms cubic-bezier(0.05, 0.7, 0.1, 1);
-  }
-
-  .event-dialog.is-closing {
-    transform: translateX(100%);
-  }
-
-  @keyframes viewer-panel-in {
-    from {
-      transform: translateX(100%);
-    }
-  }
-
-  .viewer-slide {
-    display: flex;
-    flex-direction: column;
-    background: var(--surface);
-  }
-
-  .viewer-panel {
-    display: contents; /* its parts are ordered around the flyer */
-  }
-
-  .viewer-bar__grab {
-    display: none;
-  }
-
-  .viewer-slide .event-sheet {
-    order: 1;
-  }
-
-  .viewer-slide .event-dialog__visual {
-    order: 2;
-    margin: 0 var(--space-5);
-  }
-
-  .viewer-slide .event-sheet__end {
-    order: 3;
-    padding-top: var(--space-4);
-  }
-
-  .viewer-slide .event-dialog__info {
-    padding-inline: var(--space-5);
-  }
-
-  .viewer-slide .event-dialog__media img,
-  .viewer-slide .event-dialog__media video {
-    max-height: 70vh;
-  }
-
-  /* The list moves over: nothing of it hides under the panel. */
-  .has-viewer-panel body {
-    padding-right: var(--panel-width);
-  }
-}
-
-/* ---------- the detail laid out as a sheet (eventSheetHtml) ---------- */
-
-.event-sheet__head {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--space-3);
-}
-
-/* The flyer, small: which event this is, even when the sheet covers the flyer. */
-.event-sheet__thumb {
-  flex: none;
-  width: var(--thumb-width);
-  height: var(--thumb-height);
-  object-fit: cover;
-  border: var(--border-width) solid var(--border);
-  border-radius: var(--radius-sm);
-  background: var(--surface-sunken);
-}
-
-.event-sheet__heading {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--space-1);
-  min-width: 0;
-}
-
-.event-dialog__title.event-sheet__title {
-  font-size: var(--text-xl);
-  line-height: 1.15;
-  overflow-wrap: anywhere;
-}
-
-/* Cómo llegar · Compartir · Guardar: what people do next, as equal buttons with the icon over the word. */
-.event-sheet__quick {
+.quick-actions {
   display: grid;
   grid-auto-columns: minmax(0, 1fr);
   grid-auto-flow: column;
   gap: var(--space-2);
 }
 
-.event-sheet__quick .btn {
+.quick-actions .btn {
   flex-direction: column;
   gap: var(--space-1);
   min-height: calc(var(--touch-target) + var(--space-3));
@@ -333,16 +42,43 @@
   font-size: var(--text-xs);
 }
 
-.event-sheet__quick .btn .icon {
+.quick-actions .btn .icon {
   width: var(--icon-lg);
   height: var(--icon-lg);
 }
 
-.event-sheet__quick .btn[aria-pressed="true"] {
+.quick-actions .btn[aria-pressed="true"] {
   color: var(--accent);
 }
 
-/* ---------- the detail's parts (the viewer and the event's page) ---------- */
+/* ---------- the media: "Ver el video con sonido", "Ver las 3 publicaciones" (the media viewer, the posts) ---------- */
+
+.media-links {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.media-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: var(--touch-target);
+  padding: 0 var(--space-3);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  text-align: left;
+}
+
+.media-link .icon {
+  width: var(--icon-md);
+  height: var(--icon-md);
+}
+
+/* ---------- the flyer and the rest of the detail's parts ---------- */
 
 .event-dialog__layout {
   position: relative;
@@ -399,14 +135,6 @@
   gap: var(--space-2);
 }
 
-/* In the viewer the sheet may cover the flyer's foot: the label goes to its top-left corner. */
-.viewer-slide .event-dialog__play {
-  top: var(--space-3);
-  bottom: auto;
-  left: var(--space-3);
-  transform: none;
-}
-
 /* ---------- over the flyer: date sticker and the posts badge ---------- */
 
 /* "▦ 16": every post announcing the event, in a sheet (posts-sheet.css). A printed label over the
@@ -428,13 +156,6 @@
   font-weight: var(--weight-bold);
   font-variant-numeric: tabular-nums;
   box-shadow: var(--shadow-menu);
-}
-
-.event-dialog__top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-2);
 }
 
 /* When and what, first: under the flyer and above everything else, so they show without scrolling. */
@@ -643,12 +364,4 @@
 .event-page .event-dialog__media img,
 .event-page .event-dialog__media video {
   max-height: 80vh;
-}
-
-/* Reduced motion: no nudge, no slide-in (base.css already zeroes transitions; sheet.css covers the sheet). */
-@media (prefers-reduced-motion: reduce) {
-  .viewer-track .viewer-slide,
-  .event-dialog[open] {
-    animation: none;
-  }
 }

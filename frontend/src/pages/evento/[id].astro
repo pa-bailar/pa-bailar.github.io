@@ -2,7 +2,7 @@
 // One page per event (/evento/<id>/): what a shared link opens. Its link preview (WhatsApp, Instagram,
 // iMessage, Telegram, Facebook) shows the event's date in the title, what, where and the price in the
 // description, and its image (pages/og/[id].jpg.ts); search engines get the event as schema.org data.
-// Same detail markup as the home page's dialog (scripts/views/eventDetail.ts).
+// The flyer on top, as on its card, then the same details as the home page's drawer (scripts/views/eventDetail.ts).
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import InstallOffer from "../../components/InstallOffer.astro";
 import PostViewer from "../../components/PostViewer.astro";
@@ -90,17 +90,22 @@ const structuredData = {
       }
     : {}),
 };
-// A shared link lands in the app, with this event open in the viewer (main.ts, openSharedEvent), so the visitor
-// sees it the way they'd see it from the list and can swipe to the others. This page stays for link previews and
-// search engines (they read it, they don't run it) and for browsers without scripts. Replacing it in the history
-// means "back" never comes here to bounce again. Inline, allowed by its hash (csp.ts).
+// A shared link lands in the app: the list at this event's card, with its details open over it (main.ts,
+// openSharedEvent), as if the visitor had tapped it. This page stays for link previews and search engines (they
+// read it, they don't run it), for browsers without scripts, and for an event that already passed (it's not in the
+// list): the date is checked here, in Bogotá, since the page was built earlier. `?pagina` (the app sending a
+// visitor back here) also stays. Replacing it in the history means "back" never comes here to bounce again.
+// Inline, allowed by its hash (csp.ts).
 const redirectScript = allowInlineScript(
   Astro,
-  `if (!/bot|crawl|spider|slurp|facebookexternalhit|preview/i.test(navigator.userAgent)) {
+  `(function () {
   var params = new URLSearchParams(location.search);
+  if (/bot|crawl|spider|slurp|facebookexternalhit|preview/i.test(navigator.userAgent) || params.has("pagina")) return;
+  var today = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Bogota" }).format(new Date());
+  if (today > ${jsValue(lastDay(event))}) return;
   params.set("evento", ${jsValue(event.id)});
   location.replace(${jsValue(home)} + "?" + params.toString());
-}`,
+})();`,
 );
 ---
 
@@ -115,12 +120,12 @@ const redirectScript = allowInlineScript(
       <ThemeToggle />
     </div>
     <a class="event-page__logo" href={home}>Pa' Bailar</a>
-    <a class="event-page__back" href={home}>← Ver todos los eventos</a>
+    <a class="event-page__back" href={home}>← Ver próximos eventos</a>
   </header>
 
   <main class="container">
-    {isPast && <p class="callout event-page__past">Este evento ya pasó.</p>}
-    <article class="event-page event-dialog__layout" id="event-detail" set:html={eventDetailHtml(event, 0, { headingLevel: 1 })} />
+    {isPast && <p class="callout event-page__past">Este evento ya pasó. <a href={home}>Ver próximos eventos</a></p>}
+    <article class="event-page event-dialog__layout" id="event-detail" set:html={eventDetailHtml(event, 0)} />
   </main>
 
   <SiteFooter accounts={accounts} />

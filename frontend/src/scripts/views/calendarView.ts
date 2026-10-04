@@ -7,6 +7,7 @@ import { isHoliday } from "../lib/holidays";
 import { eventCountLabel, formatDayHeading, formatLongDate, formatMonthTitle } from "../lib/format";
 import { groupByDay, hasActiveFilters, matchesFilters } from "../state";
 import { applyFlyerRatios, eventCardGridHtml } from "./eventCard";
+import { emptyActionsHtml } from "./filters";
 
 const WEEKDAY_INITIALS = ["L", "M", "M", "J", "V", "S", "D"];
 const MAX_PILLS_PER_DAY = 3;
@@ -39,9 +40,10 @@ function dayCellHtml(iso: string, dayNumber: number, dayEvents: DanceEvent[], st
 
 function emptyDayHtml(state: AppState): string {
   if (!hasActiveFilters(state)) return `<p class="text-muted">No hay eventos este día.</p>`;
+  const why = state.query.trim() ? `que coincidan con «${escapeHtml(state.query.trim())}»` : "con estos filtros";
   return `<div class="empty-state">
-      <p>No hay eventos este día con estos filtros.</p>
-      <button class="btn" data-clear-filters>Quitar filtros</button>
+      <p>No hay eventos este día ${why}.</p>
+      <div class="empty-state__actions">${emptyActionsHtml(state)}</div>
     </div>`;
 }
 
