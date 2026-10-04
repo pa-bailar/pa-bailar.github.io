@@ -58,7 +58,8 @@ function detailRows(event: DanceEvent): [string, string][] {
     : "";
   const organizer: [string, string] = [
     "Organiza",
-    escapeHtml([event.organizer, `@${event.account}`].filter(Boolean).join(" · ")),
+    // The organizer is often the account itself ("@academia"): said once.
+    escapeHtml([...new Set([event.organizer, `@${event.account}`].filter(Boolean))].join(" · ")),
   ];
   const where: [string, string] = ["Lugar", place ? `${escapeHtml(place)}${directions}` : toConfirm()];
 

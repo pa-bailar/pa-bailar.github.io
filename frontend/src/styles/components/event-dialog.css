@@ -203,6 +203,10 @@
   color: var(--text-muted);
 }
 
+.event-dialog__report .inline-link {
+  margin-left: 0;
+}
+
 .event-dialog__caption summary {
   cursor: pointer;
   font-size: var(--text-sm);

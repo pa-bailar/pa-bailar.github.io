@@ -108,6 +108,8 @@ function setDetent(next: Detent, { duration = SETTLE, easing = SETTLE_EASING } =
 function bringCardIntoView(id: string, force: boolean) {
   const card = cardOf(id);
   if (!card) return;
+  // A shared link jumps straight to it: its flyer loads now, not when the lazy loading gets to it.
+  if (force) card.querySelectorAll<HTMLImageElement>("img[loading=lazy]").forEach((image) => (image.loading = "eager"));
   const box = (card.querySelector(".event-card__media") ?? card).getBoundingClientRect();
   const barBottom = stickyOffset() + UNDER_BAR;
   const drawerTop = viewport - Math.round(viewport * MEDIUM_SHARE);
@@ -442,17 +444,17 @@ export function initEventDrawer(find: (id: string) => DanceEvent | undefined) {
     }
     window.clearTimeout(exitTimer);
     leaving = false;
-    byId("drawer-content").replaceChildren(); // nothing of it stays in memory while it's closed
-    current = null;
-    holdClips("drawer", false);
-    document.documentElement.classList.remove("has-viewer-panel");
-    document.querySelectorAll(".event-card.is-current").forEach((card) => card.classList.remove("is-current"));
     // Focus back where it was (the card or its "Detalles"), unless the visitor already moved it elsewhere.
     const focus = document.activeElement;
     if (opener?.isConnected && (!focus || focus === document.body || element.contains(focus))) {
       opener.focus({ preventScroll: true });
     }
     opener = null;
+    byId("drawer-content").replaceChildren(); // nothing of it stays in memory while it's closed
+    current = null;
+    holdClips("drawer", false);
+    document.documentElement.classList.remove("has-viewer-panel");
+    document.querySelectorAll(".event-card.is-current").forEach((card) => card.classList.remove("is-current"));
     // Closed some other way (the browser's own): leave the event's URL the way back would.
     if ((history.state as HistoryState | null)?.eventId) history.back();
   });

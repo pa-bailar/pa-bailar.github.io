@@ -14,6 +14,10 @@
   color: var(--text);
 }
 
+.drawer:focus {
+  outline: none; /* focused only on the way to its title */
+}
+
 .drawer::backdrop {
   background: transparent; /* the scrim is the dialog's own: it follows the drawer */
 }
@@ -110,7 +114,7 @@
     inset: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden;
+    overflow: clip; /* not a scroller: focusing something inside never scrolls the drawer out of place */
   }
 
   .drawer[open] {

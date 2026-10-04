@@ -5,7 +5,9 @@
 // event's head (when, title, type, account, ×) and its details; no flyer, the card is right there.
 ---
 
-<dialog class="drawer" id="event-drawer" aria-labelledby="drawer-title">
+<!-- autofocus: opening focuses the dialog itself (it fills the screen), not its first button, which sits below the
+     screen until the drawer rises: focusing that would scroll the list. The script then focuses the title. -->
+<dialog class="drawer" id="event-drawer" aria-labelledby="drawer-title" tabindex="-1" autofocus>
   <div class="drawer__scrim" data-close-drawer aria-hidden="true"></div>
   <div class="drawer__panel" id="drawer-panel">
     <div class="drawer__grip">

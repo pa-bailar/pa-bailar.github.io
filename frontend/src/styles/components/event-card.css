@@ -174,7 +174,8 @@
   overflow: hidden;
 }
 
-.event-card__frame img {
+.event-card__frame img,
+.event-card__frame video {
   position: absolute;
   inset: 0;
   display: block;

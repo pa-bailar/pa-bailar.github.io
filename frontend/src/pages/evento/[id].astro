@@ -124,7 +124,7 @@ const redirectScript = allowInlineScript(
   </header>
 
   <main class="container">
-    {isPast && <p class="callout event-page__past">Este evento ya pasó. <a href={home}>Ver próximos eventos</a></p>}
+    {isPast && <p class="callout event-page__past">Este evento ya pasó.</p>}
     <article class="event-page event-dialog__layout" id="event-detail" set:html={eventDetailHtml(event, 0)} />
   </main>
 
