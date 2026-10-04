@@ -76,9 +76,10 @@ function initSheet(sheet: HTMLDialogElement, canStartDrag: (target: HTMLElement)
   sheet.addEventListener(
     "touchstart",
     (touch) => {
-      // Not while it's already leaving, and only where dragging makes sense.
+      // Not while it's already leaving, and only where dragging makes sense. A second finger while dragging
+      // doesn't start over: the drag stays the first one's.
       const point = touch.touches[0];
-      if (!point) return;
+      if (!point || dragging) return;
       dragging = !closing.has(sheet) && canStartDrag(touch.target as HTMLElement) ? null : false;
       startX = point.clientX;
       startY = point.clientY;

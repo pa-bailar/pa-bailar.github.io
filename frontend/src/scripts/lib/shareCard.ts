@@ -21,7 +21,7 @@ import { shortDayLabel } from "./shareText";
 const WIDTH = 1080;
 const HEIGHT = 1350;
 const PAD = 64;
-const MAX_ROWS = 5;
+const MAX_ROWS = 4; // a fifth row would run into "+ N eventos más" and the footer
 const THUMB = 150;
 const ROW_GAP = 26;
 
@@ -151,7 +151,7 @@ export async function drawShareCard({ title, subtitle, events }: CardContent): P
   context.fillText(wrap(context, title, WIDTH - PAD * 2, 1)[0] ?? title, PAD, 262);
   context.fillStyle = PALETTE.muted;
   context.font = FONTS.subtitle;
-  context.fillText(subtitle, PAD, 340);
+  context.fillText(wrap(context, subtitle, WIDTH - PAD * 2, 1)[0] ?? subtitle, PAD, 340); // with filters, it can be long
 
   shown.forEach((event, index) => drawRow(context, event, thumbs[index] ?? null, 430 + index * (THUMB + ROW_GAP)));
 

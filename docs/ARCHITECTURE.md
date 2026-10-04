@@ -133,6 +133,8 @@ Notes:
   it's started from, and `import.meta.env.ASSETS_DIR` (`src/assets/`: the home page's link preview);
 - the Content Security Policy (`security.csp`, section 3.3) and the `csp-meta` integration that checks it;
 - the `og-check` integration: every event's link preview exists, is 1200×630 and light enough (section 3.4);
+- the `sw-precache` integration: writes the build's file names (`/_astro/`) into `sw.js`, which stores them when it
+  installs (section 3.2);
 - `markdown.syntaxHighlight: false`: there's no Markdown, and Shiki's highlighting needs `style` attributes,
   which the policy blocks.
 
@@ -171,7 +173,7 @@ flowchart LR
 | `/calendario.ics` | `pages/calendario.ics.ts` | A subscribable calendar feed (iCalendar, RFC 5545) with every event (its description: the time, or an event's days when it runs over several, `calendarDescription`). Rebuilt with the site, so subscribed calendars refresh on their own. No longer linked from the footer (it added little); kept so existing subscriptions keep working |
 | `/manifest.webmanifest` | `pages/manifest.webmanifest.ts` | What lets a phone install the site like an app: name, colors, icons, full screen |
 | `/icons/<name>.png` | `pages/icons/[name].png.ts` | The app icons (192, 512, maskable 512, Apple touch icon), made from SVG at build time |
-| `/sw.js` | `pages/sw.js.ts` | The service worker: makes it installable and opens it offline with the last events (pages network first; flyers and build files cached). A new version per build; the image cache's name carries the images' version (`src/images.ts`: a hash of the flyers and the thumbnails' settings), so a flyer made again under the same name reaches returning visitors |
+| `/sw.js` | `pages/sw.js.ts` | The service worker: makes it installable and opens it offline with the last events (pages network first; flyers and build files cached). Installing it stores the home page and every build file (`/_astro/`, listed after the build by `scripts/sw-precache.mjs`), so it opens offline from the first visit and after each deploy. A new version per build; the image cache's name carries the images' version (`src/images.ts`: a hash of the flyers and the thumbnails' settings), so a flyer made again under the same name reaches returning visitors |
 | `/sitemap-index.xml` | `@astrojs/sitemap` | Home and every event page, for search engines (the 404 page is excluded) |
 | `/404.html` | `pages/404.astro` | "Este evento ya pasó o no existe" (most missing addresses are old event links, whose events were deleted), the first four upcoming events as of the build, and a link home. Any other address gets "Esta página no existe" (a small script reads the path) |
 | `/flyers/*.webp` | `data/flyers/` (public folder) | The flyers, copied as they are |
@@ -427,7 +429,7 @@ stateDiagram-v2
       }
       state "Side panel (900px and wider; not modal)" as Panel
       [*] --> Sheet: showModal()
-      [*] --> Panel: show(), html.has-viewer-panel
+      [*] --> Panel: show(), html.has-side-panel
       Sheet --> [*]: ×, scrim, Escape, back, drag down from Medium
       Panel --> [*]: ×, Escape, back
   ```
@@ -449,7 +451,7 @@ stateDiagram-v2
     scrolled the list); then the title takes the focus. Closing gives it back to what opened it (the last card, when
     the side panel swapped events: the focus is read before `close()`, since the browser moves it back to the first).
   - **Side panel:** fixed on the right (`--panel-width`), opened with `show()` so the page stays usable; the page
-    leaves room for it (`.has-viewer-panel`), the open event's card is outlined (`highlightCurrentCard`, also after
+    leaves room for it (`.has-side-panel`), the open event's card is outlined (`highlightCurrentCard`, also after
     each render), and Escape is handled by the page (a non-modal dialog doesn't get it). A card tapped while it's
     open shows its event there and replaces the URL, unless the list moved to another screen meanwhile (an academy,
     the calendar): that screen keeps its entry and the event gets one over it. Closing on such a screen (its entry
@@ -471,9 +473,10 @@ stateDiagram-v2
   `detalles-enlace`. An event not in the list goes back to its page with `?pagina=1`. Link previews and search
   engines read the event's page itself (they don't run scripts).
 - **The event page** (`eventPage.ts`) is already rendered at build time (the flyer, then the drawer's details); a
-  browser leaves it for the app at once. Its script adds the theme toggle, click tracking, the posts sheet and
-  media viewer, the save button, sharing, the install offer and the service worker, the clips, and the detail's
-  clicks (the flyer plays a video in place, the posts badge, the media links).
+  browser leaves it for the app at once. What depends on the day ("Hoy", "Mañana", "Este evento ya pasó") is set
+  again when it opens: the page was built hours earlier. Its script adds the theme toggle, click tracking, the posts
+  sheet and media viewer, the save button, sharing, the install offer and the service worker, the clips, and the
+  detail's clicks (the flyer plays a video in place, the posts badge, the media links).
 - **The media:** "Ver el video con sonido" and "Ver las 4 imágenes" open the post in the media viewer
   (`postViewer.ts`, Instagram's player); "Ver las 3 publicaciones" and a card's "▦ 3" open the posts sheet
   (`postsSheet.ts`), whose chosen post opens in the media viewer in its place (`openPanelSheet(…, { replacing })`
@@ -567,7 +570,8 @@ Every browser on an iPhone is Safari's engine (WebKit), with its own limits:
   `daysOf` and `shownDay`. They're past only after their last day (the event page's "Este evento ya
   pasó"). Calendars (`eventTimes`, the ICS feed) get them as all-day events from the first day to the day
   after the last, as the format's end is exclusive (13–15 November: `DTSTART;VALUE=DATE:20261113`,
-  `DTEND;VALUE=DATE:20261116`); schema.org's `endDate` is the last day.
+  `DTEND;VALUE=DATE:20261116`); schema.org's `endDate` is the last day (for one day, the post's end time, or none:
+  the calendars' 4 hours are a guess).
 - **Adding days** (`addDays`) moves the calendar date, not 24-hour steps, so "Mañana" and "Próxima
   semana" stay right for a visitor whose time zone has daylight saving time.
 - **Colombian holidays** (`lib/holidays.ts`) are calculated, not downloaded:
@@ -604,8 +608,8 @@ only Instagram content it loads is a post's player, and only when a visitor taps
 | Types | `astro check`: strict TypeScript, including `noUncheckedIndexedAccess` | `tsconfig.json` |
 | Color contrast | Every color pair the site uses, in both themes, against WCAG 2.2 AA. It reads the tokens from `tokens.css`, so it can't drift from the design system | `frontend/scripts/check-contrast.mjs` |
 | CSS custom properties | Every `var(--name)` in the stylesheets, components and scripts has a definition; the few set from scripts (`style.setProperty`: the drawer's position, a flyer's shape, a sheet's drag) are listed, and each must still be set by one | `frontend/scripts/check-css-vars.mjs` |
-| Unit tests | Dates and Bogotá's "today", formatting, filtering (rhythms and dates, "Mañana", the options and their counts) and period grouping, holidays, the policy check, where the visitor can install from and its steps, the filter chips (`filterModel`: the bar's chips, dimmed vs hidden options, multiple types, removable chips, the badge, the line, the calendar's line; "Limpiar"'s scope; empty results), the drawer (`drawerSheet.ts`: its heights, scrim, where a drag ends and the ways it closes, keeping the tapped card in view), a shared link's entry (`sharedEventEntry`: the period to open, or the page for a past event), the details (the drawer's order, no image, its media links and price line), the history between screens and overlays (`screenHistory.ts` with the sheets, on a fake history: an academy left from inside the Filtros sheet or next to the side panel, and the address after closing), the details' history (`drawerHistory.ts`: push or replace, closing through back, back and forward, a shared link's entries) and the drawer's numbers against the CSS (`--drawer-top-gap`, the 900px breakpoint) and the sheets, the images' version for the service worker, inline handlers in the policy check, the CSS custom properties check, the calendar feed's description and the report link for an event over several days, the analytics names for opened details, things shown once (`onceFlag`, with and without storage), link previews (their text, the image's version, one image drawn with and one without a flyer), the theme (the saved value, old ones, and the script before first paint) | `frontend/tests/*.test.ts` (Vitest) |
-| Build | Every page, image and feed is generated; every page's Content Security Policy allows its inline scripts and styles, and no page has a `style=""` attribute or an inline `on…=""` handler (section 3.3); every event's link preview has its tags and a 1200×630 JPEG under 280 KB (section 3.4) | `npm run build`, `frontend/scripts/csp-meta.mjs`, `frontend/scripts/og-check.mjs` |
+| Unit tests | Dates and Bogotá's "today", formatting, filtering (rhythms and dates, "Mañana", the options and their counts) and period grouping, holidays, the policy check, where the visitor can install from and its steps, the filter chips (`filterModel`: the bar's chips, dimmed vs hidden options, multiple types, removable chips, the badge, the line, the calendar's line; "Limpiar"'s scope; empty results), the drawer (`drawerSheet.ts`: its heights, scrim, where a drag ends and the ways it closes, keeping the tapped card in view), a shared link's entry (`sharedEventEntry`: the period to open, or the page for a past event), the details (the drawer's order, no image, its media links and price line), the history between screens and overlays (`screenHistory.ts` with the sheets, on a fake history: an academy left from inside the Filtros sheet or next to the side panel, and the address after closing), the details' history (`drawerHistory.ts`: push or replace, closing through back, back and forward, a shared link's entries) and the drawer's numbers against the CSS (`--drawer-top-gap`, the 900px breakpoint) and the sheets, the images' version for the service worker, the build's files written into it, inline handlers in the policy check, the CSS custom properties check, the calendar feed's description and the report link for an event over several days, the analytics names for opened details, things shown once (`onceFlag`, with and without storage), link previews (their text, the image's version, one image drawn with and one without a flyer), the theme (the saved value, old ones, and the script before first paint) | `frontend/tests/*.test.ts` (Vitest) |
+| Build | Every page, image and feed is generated; every page's Content Security Policy allows its inline scripts and styles, and no page has a `style=""` attribute or an inline `on…=""` handler (section 3.3); every event's link preview has its tags and a 1200×630 JPEG under 280 KB (section 3.4) | `npm run build`, `frontend/scripts/csp-meta.mjs`, `frontend/scripts/og-check.mjs`, `frontend/scripts/sw-precache.mjs` (fails if `sw.js` has no list to fill in) |
 
 All six run in `ci` on every pull request, and the ruleset requires `ci` before merging.
 
@@ -616,11 +620,12 @@ All six run in `ci` on every pull request, and the ruleset requires `ci` before 
 ```
 frontend/
   astro.config.mjs        site URL, public folder (../data), sitemap, DATA_DIR and ASSETS_DIR, Content Security Policy,
-                          the csp-meta and og-check integrations, no Markdown highlighting
+                          the csp-meta, og-check and sw-precache integrations, no Markdown highlighting
   vitest.config.ts        unit tests, with Astro's settings
   scripts/                check-data.mjs, check-contrast.mjs, check-css-vars.mjs (run by npm run check); release.mjs (versions);
                           og-site.html (draws the home page's link preview); csp-meta.mjs (the policy, after
-                          the build); og-check.mjs (the events' link previews, after the build)
+                          the build); og-check.mjs (the events' link previews, after the build); sw-precache.mjs (the build's
+                          files, written into sw.js)
   tests/                  Vitest tests, factories.ts (test events), fakeHistory.ts (history and popstate in Node)
   src/
     data.ts               the data, typed, with flyer sizes (build time only)

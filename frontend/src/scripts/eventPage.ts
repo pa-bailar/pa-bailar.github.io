@@ -1,10 +1,13 @@
 // Entry point of an event's own page (pages/evento/[id].astro): theme toggle, the posts sheet and the media
 // viewer, the clips.
-// The detail itself is already in the HTML, rendered at build time.
+// The detail itself is already in the HTML, rendered at build time (hours ago, maybe yesterday): what depends on
+// today is set again here.
 
 import type { DanceEvent } from "./types";
 import { initClickTracking } from "./lib/analytics";
+import { lastDay, todayIso } from "./lib/dates";
 import { byId } from "./lib/dom";
+import { cardWhenLabel } from "./lib/format";
 import { initThemeToggle } from "./theme";
 import { eventDetailHtml, handleDetailClick } from "./views/eventDetail";
 import { watchClips } from "./views/clips";
@@ -29,6 +32,10 @@ export function initEventPage() {
     container.innerHTML = eventDetailHtml(event, selected);
     watchClips(container);
   };
-  watchClips(container); // the page arrives rendered (pages/evento/[id].astro)
+  // "Hoy", "Mañana" and "Este evento ya pasó" as of now, not of the build.
+  const when = container.querySelector(".event-detail__when");
+  if (when) when.textContent = cardWhenLabel(event);
+  byId("event-past").hidden = lastDay(event) >= todayIso();
+  watchClips(container);
   container.addEventListener("click", (domEvent) => handleDetailClick(container, domEvent, event, render));
 }
