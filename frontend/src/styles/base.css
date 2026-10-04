@@ -7,8 +7,8 @@
 }
 
 html {
-  /* Keyboard focus and jumps never land under the sticky jump bar (WCAG 2.4.11, focus not obscured). */
-  scroll-padding-top: calc(var(--jump-bar-height) + var(--space-3));
+  /* Keyboard focus and jumps never land under the pinned jump bar (WCAG 2.4.11, focus not obscured). */
+  scroll-padding-top: calc(var(--pinned-height) + var(--space-3));
   -webkit-text-size-adjust: 100%;
 }
 

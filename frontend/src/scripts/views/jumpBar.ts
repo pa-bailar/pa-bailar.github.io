@@ -1,21 +1,19 @@
-// Phones only (CSS hides it where the toolbar is sticky): one slim row stuck to the top of the screen, like the
+// Phones only (CSS hides it where the toolbar is sticky): one slim row pinned to the top of the screen, like the
 // filter bars of Google Maps or Airbnb: [🔍] [🔖 3] and a row of chips that scrolls sideways (filters.ts draws
 // them, main.ts handles their taps). Under it, while filtering, "12 eventos · Finde, Salsa · × Limpiar".
 //   - 🔍 turns the row into the search field; × clears the search and turns it back.
-//   - ⚙ opens the "Filtros" sheet.
-// Like Instagram's header, the bar hides while scrolling down and comes back on any scroll up.
-// It also keeps the visitor's place when a filter changes (captureListPosition / restoreListPosition).
+//   - ⚙ opens the "Filtros" sheet; "📅 ▾" the "Cuándo" menu (whenMenu.ts).
+// It never hides, so the filters are at hand anywhere in the list (it used to hide while scrolling down, like
+// Instagram's header). It also keeps the visitor's place when a filter changes (captureListPosition /
+// restoreListPosition).
 
 import { byId, prefersReducedMotion } from "../lib/dom";
 import { initPanelSheet, openPanelSheet } from "../lib/sheet";
+import { initWhenMenu } from "./whenMenu";
 
-const SCROLL_THRESHOLD = 8; // px of movement before reacting, so small jitters don't toggle the bar
-const ALWAYS_SHOWN_ABOVE = 200; // px from the top of the page where the bar never hides
 const READING_BAND = 0.35; // share of the screen, under the bar, where the period being read is
 const MARGIN = 8; // px left between the bar and what's put right under it
 const SCROLL_DURATION = 320; // ms: a scroll on purpose (bringing a card into view), like the drawer's rise
-
-let jumping = false; // a scroll on purpose: don't hide the bar for it
 
 export function renderJumpBar({ searching }: { searching: boolean }) {
   const bar = byId("jump-bar");
@@ -60,15 +58,11 @@ export function captureListPosition(): ListAnchor | null {
   return key ? { key, order: sections().map((section) => section.dataset.period!) } : null;
 }
 
-/** Scroll the page to `top`, on purpose: the bar stays in view meanwhile. */
+/** Scroll the page to `top`, on purpose. */
 export function scrollPageTo(top: number, { smooth = false } = {}) {
-  jumping = true;
-  byId("jump-bar").classList.remove("is-hidden");
   const target = Math.max(top, 0);
-  const done = () => requestAnimationFrame(() => requestAnimationFrame(() => (jumping = false)));
   if (!smooth || prefersReducedMotion()) {
     window.scrollTo({ top: target, behavior: "auto" });
-    done();
     return;
   }
   // Not the browser's smooth scrolling: its speed can't be set, and this one keeps pace with the drawer.
@@ -79,7 +73,6 @@ export function scrollPageTo(top: number, { smooth = false } = {}) {
     const eased = 1 - (1 - progress) ** 3;
     window.scrollTo({ top: from + (target - from) * eased, behavior: "auto" });
     if (progress < 1) requestAnimationFrame(step);
-    else done();
   };
   requestAnimationFrame(step);
 }
@@ -103,35 +96,6 @@ export function returnToScroll(scrollY: number) {
   scrollPageTo(scrollY);
 }
 
-/** Hide while scrolling down, show on any scroll up (and near the top, and while it holds the keyboard's focus). */
-function initHideOnScroll() {
-  const bar = byId("jump-bar");
-  let lastY = window.scrollY;
-  let ticking = false;
-  const update = () => {
-    ticking = false;
-    const y = window.scrollY;
-    const delta = y - lastY;
-    if (Math.abs(delta) < SCROLL_THRESHOLD) return;
-    // A chip tapped keeps the focus, but only a keyboard's focus (or typing a search) keeps the bar in view.
-    const holding = bar.querySelector(":focus-visible") || bar.querySelector("input:focus");
-    const hide = delta > 0 && y > ALWAYS_SHOWN_ABOVE && !jumping && !holding;
-    bar.classList.toggle("is-hidden", hide);
-    lastY = y;
-  };
-  window.addEventListener(
-    "scroll",
-    () => {
-      if (!ticking) requestAnimationFrame(update);
-      ticking = true;
-    },
-    { passive: true },
-  );
-  bar.addEventListener("focusin", () => {
-    if (bar.querySelector(":focus-visible, input:focus")) bar.classList.remove("is-hidden");
-  });
-}
-
 /** 🔍 turns the bar into the search field; × (data-close-search, main.ts) clears it and turns it back. */
 export function closeBarSearch() {
   byId("jump-bar").classList.remove("is-searching");
@@ -147,7 +111,7 @@ export function initJumpBar() {
     byId("jump-bar").classList.add("is-searching");
     byId("jump-search").focus();
   });
-  initHideOnScroll();
+  initWhenMenu();
   // The chips inside are handled by main.ts; "Ver 12 eventos" closes it like ×. Its groups scroll between the
   // head and that button, so a drag down starts from the head or the groups' top.
   const sheet = byId<HTMLDialogElement>("filter-sheet");

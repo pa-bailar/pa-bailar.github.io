@@ -312,7 +312,7 @@
   font-size: var(--text-xl);
 }
 
-/* ---------- the action row under the flyer, like Instagram's: ⓘ Detalles · Compartir · · · Guardar ----------
+/* ---------- the action row under the flyer, like Instagram's: Detalles › · Compartir · · · Guardar ----------
    It says the card opens (the whole card still does). Each button sits above the card's stretched link, with a
    44px target; the gaps between them still open the card. */
 .event-card__actions {
@@ -329,31 +329,67 @@
   z-index: var(--z-raised);
 }
 
-/* "ⓘ Detalles": a soft marigold (in dark, deep gold) tonal fill with no outline, the icon in tomato: the card's
-   way in, easy to see without competing with the one primary button. */
+/* "Detalles ›": a closed ink frame with no fill (the dark theme's grain shows through), and one printer's offset
+   2px down and to the right, a smooth gradient of the period rule's three colors (light: tomato, orange, marigold;
+   dark: magenta, coral, gold). The button is the 44px target; the frame is a span inside it, so the offset
+   (::before, behind the frame) can reach in under the frame's border: the frame's rounded corner then sits on the
+   offset, with no notch of the page between them. Pressed, the frame sinks 1px onto the offset and fills. */
 .event-card__details {
+  --details-press: 0px; /* how far the frame has sunk */
+  isolation: isolate;
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  min-height: var(--touch-target);
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--details-ink);
+  font-size: var(--text-md);
+  font-weight: var(--weight-bold);
+}
+
+.event-card__details-face {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
-  min-height: var(--touch-target);
-  padding: 0 var(--space-4) 0 var(--space-3);
-  border: 0;
+  gap: var(--space-1);
+  min-height: var(--details-height);
+  padding: 0 var(--space-2) 0 var(--space-3);
+  border: var(--border-width) solid var(--details-ink);
   border-radius: var(--radius-sm);
-  background: var(--details-bg);
-  color: var(--details-text);
-  font-size: var(--text-sm);
-  font-weight: var(--weight-bold);
-  transition: background-color var(--duration);
+  transform: translate(var(--details-press), var(--details-press));
+  transition:
+    transform var(--duration),
+    background-color var(--duration);
+}
+
+.event-card__details-face .icon {
+  width: var(--icon-sm);
+  height: var(--icon-sm);
+  stroke-width: 2.4;
+}
+
+/* The offset: the frame's own box (same corners), moved down and right, cut to what isn't inside the frame. The
+   cut follows the frame's inner edge (its border hides the rest), so the L that shows is seamless. */
+.event-card__details::before {
+  --details-gap: calc(var(--details-offset) - var(--details-press)); /* how much shows past the frame */
+  --details-cut: calc(100% - var(--details-gap) - var(--border-width));
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: calc((var(--touch-target) - var(--details-height)) / 2) 0;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(to right, var(--stripe-1), var(--stripe-2), var(--stripe-3));
+  transform: translate(var(--details-offset), var(--details-offset));
+  clip-path: polygon(var(--details-cut) 0, 100% 0, 100% 100%, 0 100%, 0 var(--details-cut), var(--details-cut) var(--details-cut));
 }
 
 .event-card__details:active {
-  background: var(--details-bg-pressed);
+  --details-press: 1px;
 }
 
-.event-card__details .icon {
-  width: var(--icon-md);
-  height: var(--icon-md);
-  color: var(--details-icon);
+.event-card__details:active .event-card__details-face {
+  background: var(--details-pressed);
 }
 
 .event-card__share {
@@ -381,8 +417,8 @@
   margin: 0 0 0 auto;
 }
 
-/* First visit: the first card's "Detalles" pulses once (views/detailsHint.ts). */
-.event-card__details.is-pulsing {
+/* First visit: the first card's "Detalles" pulses once (views/detailsHint.ts): its frame swells with a ring. */
+.event-card__details.is-pulsing .event-card__details-face {
   animation: details-pulse 1600ms cubic-bezier(0.2, 0, 0, 1) 300ms;
 }
 
@@ -544,7 +580,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .event-card__details.is-pulsing {
+  .event-card__details.is-pulsing .event-card__details-face {
     animation: none;
   }
 }

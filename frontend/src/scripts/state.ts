@@ -206,6 +206,38 @@ function periodNamer(today: string, { tomorrow = false } = {}): (date: string) =
   }
 }
 
+/**
+ * The days a near period covers from today, for the "Cuándo" menu's hint ("10–11 oct"): "hoy", "manana", "esta-semana",
+ * "fin-de-semana", "proxima-semana" and "resto-del-mes". Null for a month or a year: its name says it.
+ */
+export function periodDays(key: string, today = todayIso()): [string, string] | null {
+  const tomorrow = addDays(today, 1);
+  const thisWeekEnd = endOfWeek(today);
+  const weekendStart = addDays(thisWeekEnd, -2); // Friday
+  const nextWeekEnd = addDays(thisWeekEnd, 7);
+  const later = (a: string, b: string) => (a > b ? a : b);
+  const monthEnd = (() => {
+    const [year, month] = today.split("-").map(Number) as [number, number];
+    return toIsoDate(new Date(year, month, 0)); // day 0 of the next month: the last of this one
+  })();
+  switch (key) {
+    case "hoy":
+      return [today, today];
+    case TOMORROW:
+      return [tomorrow, tomorrow];
+    case "esta-semana":
+      return [tomorrow, addDays(weekendStart, -1)];
+    case "fin-de-semana":
+      return [later(weekendStart, tomorrow), thisWeekEnd];
+    case "proxima-semana":
+      return [addDays(thisWeekEnd, 1), nextWeekEnd];
+    case "resto-del-mes":
+      return [later(addDays(nextWeekEnd, 1), tomorrow), monthEnd];
+    default:
+      return null;
+  }
+}
+
 /** The days the event is on from today: an event over several days counts in every period it runs through. */
 function daysFrom(event: DanceEvent, today: string): string[] {
   return daysOf(event).filter((day) => day >= today);
