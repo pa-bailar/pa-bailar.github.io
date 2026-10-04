@@ -1,5 +1,9 @@
 // The service worker (/sw.js): phones only offer to install a site that has one, and it lets the
 // installed app open without a connection, with the events from the last visit.
+//   - Installing it stores the home page and the build's files (/_astro/: the styles and the scripts that draw the
+//     events), so the app opens offline from the first visit and after each deploy. (Stored only as pages asked for
+//     them, they missed the first visit, which loads before the worker controls it, and each new build's worker
+//     dropped them.) Their names exist only after the build: scripts/sw-precache.mjs writes them in.
 //   - Pages: network first, so the events are always the latest when online; the last copy when offline.
 //   - The build's own files (/_astro/, names change with their content): cache first.
 //   - Flyers and thumbnails: cache first, the most recent IMAGE_LIMIT. A flyer made again keeps its name, so the
@@ -10,6 +14,7 @@
 
 import type { APIRoute } from "astro";
 import { IMAGES_VERSION } from "../images";
+import { BUILD_FILE_LIST } from "../../scripts/sw-precache.mjs";
 
 const VERSION = new Date().toISOString(); // this build
 const IMAGE_LIMIT = 300;
@@ -20,9 +25,16 @@ const PAGES = "pages-" + VERSION;
 const BUILD_FILES = "build-" + VERSION;
 const IMAGES = "images-" + ${JSON.stringify(IMAGES_VERSION)};
 const IMAGE_LIMIT = ${IMAGE_LIMIT};
+const BUILD_FILE_LIST = ${BUILD_FILE_LIST};
 
 self.addEventListener("install", (event) => {
-  event.waitUntil(caches.open(PAGES).then((cache) => cache.add("/")));
+  event.waitUntil(
+    (async () => {
+      // This build's home page, not the browser's cached copy of an older one (its files could be gone).
+      await (await caches.open(PAGES)).add(new Request("/", { cache: "reload" }));
+      await (await caches.open(BUILD_FILES)).addAll(BUILD_FILE_LIST);
+    })(),
+  );
   self.skipWaiting();
 });
 
@@ -60,7 +72,9 @@ async function networkFirst(request) {
 
 async function cacheFirst(request, name, limit) {
   const cache = await caches.open(name);
-  const cached = await cache.match(request);
+  // Files named by their content or post: any copy will do, whatever headers it was stored with (the build's files
+  // are stored at install, without the Origin a page's module script sends).
+  const cached = await cache.match(request, { ignoreVary: true });
   if (cached) return cached;
   const response = await fetch(request);
   if (response.ok) {

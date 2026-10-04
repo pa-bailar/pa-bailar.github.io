@@ -198,7 +198,7 @@ WhatsApp opens with the text. What can be shared (`scripts/views/sharing.ts`):
 - **The image** (`lib/shareCard.ts`) is drawn in the browser at share time, so it always matches the day,
   the filters and the saved events: a 1080×1350 portrait (what WhatsApp and Instagram show whole) in the
   light theme's colors and the page's fonts. Stripes, "Pa' Bailar", the title in Bodoni italic ("Este
-  finde en Bogotá", "Mis planes para bailar"), the dates, up to five events (flyer thumbnail, day and time
+  finde en Bogotá", "Mis planes para bailar"), the dates, up to four events (flyer thumbnail, day and time
   in tomato, title, academy and venue), "+ N eventos más" and the site's address. It's drawn as soon as
   its button comes into view, because phones only allow sharing right at the tap; if it isn't ready, the
   text goes alone.

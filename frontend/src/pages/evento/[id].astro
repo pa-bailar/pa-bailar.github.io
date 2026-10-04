@@ -61,8 +61,9 @@ const structuredData = {
   "@type": "Event",
   name: event.title,
   startDate: isoDateTime(start),
-  // Over several days: the last day (schema.org's endDate is inclusive, unlike the calendar's exclusive end).
-  ...(isMultiDay(event) ? { endDate: lastDay(event) } : allDay ? {} : { endDate: isoDateTime(end) }),
+  // Over several days: the last day (schema.org's endDate is inclusive, unlike the calendar's exclusive end). One
+  // day: only the end the post gives (the calendar's guessed 4 hours aren't a fact to tell search engines).
+  ...(isMultiDay(event) ? { endDate: lastDay(event) } : allDay || !event.end_time ? {} : { endDate: isoDateTime(end) }),
   eventStatus: "https://schema.org/EventScheduled",
   eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
   url: eventPageUrl(event),
@@ -124,7 +125,7 @@ const redirectScript = allowInlineScript(
   </header>
 
   <main class="container">
-    {isPast && <p class="callout event-page__past">Este evento ya pasó.</p>}
+    <p class="callout event-page__past" id="event-past" hidden={!isPast}>Este evento ya pasó.</p>
     <article class="event-page event-detail__layout" id="event-detail" set:html={eventDetailHtml(event, 0)} />
   </main>
 

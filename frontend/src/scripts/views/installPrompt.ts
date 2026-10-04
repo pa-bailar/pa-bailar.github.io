@@ -120,20 +120,7 @@ async function copyLink() {
     await navigator.clipboard.writeText(url);
     copied = true;
   } catch {
-    // No clipboard API here (or not allowed): the old way, through a selected field.
-    const field = document.createElement("textarea");
-    field.value = url;
-    field.setAttribute("readonly", "");
-    field.className = "visually-hidden";
-    document.body.append(field);
-    field.select();
-    field.setSelectionRange(0, url.length);
-    try {
-      copied = document.execCommand("copy");
-    } catch {
-      copied = false;
-    }
-    field.remove();
+    // No clipboard here (an old in-app browser, or not allowed): the link is shown to copy by hand.
   }
   byId("install-status").textContent = copied
     ? "Enlace copiado. Ábrelo en tu navegador y pégalo en la barra de direcciones."

@@ -181,7 +181,7 @@
 
 /* ---------- wide screens: a side panel next to the list ----------
    Not modal: the list stays usable, its cards open their event here, and the page leaves the panel's width free
-   (.has-viewer-panel). The card is in the list: no flyer here either. */
+   (.has-side-panel). The card is in the list: no flyer here either. */
 
 @media (min-width: 900px) {
   .drawer {
@@ -232,7 +232,7 @@
   }
 
   /* The list moves over: nothing of it hides under the panel. */
-  .has-viewer-panel body {
+  .has-side-panel body {
     padding-right: var(--panel-width);
   }
 }

@@ -427,7 +427,7 @@ stateDiagram-v2
       }
       state "Side panel (900px and wider; not modal)" as Panel
       [*] --> Sheet: showModal()
-      [*] --> Panel: show(), html.has-viewer-panel
+      [*] --> Panel: show(), html.has-side-panel
       Sheet --> [*]: ×, scrim, Escape, back, drag down from Medium
       Panel --> [*]: ×, Escape, back
   ```
@@ -449,7 +449,7 @@ stateDiagram-v2
     scrolled the list); then the title takes the focus. Closing gives it back to what opened it (the last card, when
     the side panel swapped events: the focus is read before `close()`, since the browser moves it back to the first).
   - **Side panel:** fixed on the right (`--panel-width`), opened with `show()` so the page stays usable; the page
-    leaves room for it (`.has-viewer-panel`), the open event's card is outlined (`highlightCurrentCard`, also after
+    leaves room for it (`.has-side-panel`), the open event's card is outlined (`highlightCurrentCard`, also after
     each render), and Escape is handled by the page (a non-modal dialog doesn't get it). A card tapped while it's
     open shows its event there and replaces the URL, unless the list moved to another screen meanwhile (an academy,
     the calendar): that screen keeps its entry and the event gets one over it. Closing on such a screen (its entry

@@ -55,7 +55,6 @@ const state = {
   leaving: false, // sliding away
   pendingExit: null as { from: number; velocity: number } | null, // a close waiting for its "back"
   exitTimer: 0,
-  swapping: false, // closing only to reopen in the other mode (the window crossed 900 px)
   // Where the focus was right before closing: the browser then moves it back to what had it when the drawer was
   // shown (the first card, after the side panel swapped events), so the close handler decides from this instead.
   focusBeforeClose: undefined as Element | null | undefined,
@@ -156,7 +155,7 @@ function show(event: DanceEvent, shared: boolean) {
   state.mode = window.matchMedia(PANEL_QUERY).matches ? "panel" : "sheet";
   element.dataset.mode = state.mode;
   if (state.mode === "panel") {
-    document.documentElement.classList.add("has-viewer-panel");
+    document.documentElement.classList.add("has-side-panel");
     element.show();
     holdClips("drawer", false);
     highlightCurrentCard({ reveal: shared });
@@ -249,7 +248,7 @@ function cleanUpAfterClose(element: HTMLDialogElement) {
   byId("drawer-content").replaceChildren(); // nothing of it stays in memory while it's closed
   state.current = null;
   holdClips("drawer", false);
-  document.documentElement.classList.remove("has-viewer-panel");
+  document.documentElement.classList.remove("has-side-panel");
   clearCurrentCard();
   afterClosing();
 }
@@ -258,9 +257,8 @@ function cleanUpAfterClose(element: HTMLDialogElement) {
 function swapMode() {
   const element = drawer();
   if (!state.current) return;
-  state.swapping = true;
-  element.close();
-  document.documentElement.classList.remove("has-viewer-panel");
+  element.close(); // its "close" finds it open again and cleans nothing
+  document.documentElement.classList.remove("has-side-panel");
   show(state.current, false);
   focusTitle();
 }
@@ -310,12 +308,11 @@ export function initEventDrawer(find: (id: string) => DanceEvent | undefined) {
     }
   });
 
+  // The "close" event comes after the dialog closed, as a separate task. If it was opened again meanwhile (in the
+  // other mode, or another card tapped while the side panel slid away), there's nothing to clean up: doing it would
+  // empty the reopened drawer and step back out of its event.
   element.addEventListener("close", () => {
-    if (state.swapping) {
-      state.swapping = false; // reopened in the other mode already
-      return;
-    }
-    cleanUpAfterClose(element);
+    if (!element.open) cleanUpAfterClose(element);
   });
 
   // Back (or forward): follow the URL.

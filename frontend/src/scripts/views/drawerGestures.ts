@@ -86,6 +86,7 @@ export function initDrawerGestures(panel: HTMLElement, drawer: DrawerControl) {
   panel.addEventListener(
     "touchstart",
     (domEvent) => {
+      if (touch?.dragging) return; // a second finger while dragging: the first one keeps the drag (else it never ends)
       const point = domEvent.touches[0];
       touch =
         drawer.mode === "sheet" && !drawer.leaving && point && domEvent.touches.length === 1
