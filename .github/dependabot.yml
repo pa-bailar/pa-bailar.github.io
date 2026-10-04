@@ -9,6 +9,13 @@ updates:
     groups:
       npm:
         patterns: ["*"]
+    ignore:
+      # @astrojs/check 0.9 doesn't support TypeScript 7 (the grouped update failed ci): bump it by hand once it does.
+      - dependency-name: "typescript"
+        versions: [">=7"]
+      # Node's types follow the Node version the site runs on (.nvmrc, 24): a new major comes with a new Node.
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
     commit-message:
       prefix: "chore(deps)"
 
