@@ -140,6 +140,8 @@
   --control-height: 40px; /* buttons, icon buttons, theme toggle */
   --fab-size: 44px; /* phones: the floating calendar / list button (the smallest comfortable tap) */
   --chip-height: 32px;
+  --touch-target: 44px; /* rows of the bar's menus, chips in the filter sheet, on touch screens */
+  --checkbox-size: 18px; /* the boxes of the bar's menus */
   --jump-bar-height: 56px; /* phones: sticky bar with filters and period chips */
   --sticker-size: 60px;
   --day-column-width: 200px; /* day heading column on wide screens */

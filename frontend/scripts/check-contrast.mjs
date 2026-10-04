@@ -88,6 +88,10 @@ const PAIRS = [
   ["Active tab underline on page", "accent", "bg", "ui"],
   ["Selected calendar day border on cell", "accent", "surface", "ui"],
   ["Selected chip fill on page", "chip-active-bg", "bg", "ui"],
+  ["Selected chip fill in the filter sheet", "chip-active-bg", "surface", "ui"],
+  ["Checkbox outline in a bar menu", "border", "surface", "ui"],
+  ["Checked checkbox fill on a menu's chosen row", "chip-active-bg", "surface-sunken", "ui"],
+  ["Count on a menu's chosen row", "text-muted", "surface-sunken", "text"],
   ["Primary button fill on dialog", "action", "surface", "ui"],
   ["Calendar dot outline on day cell (fill color is decorative)", "border", "surface", "ui"],
 ];
