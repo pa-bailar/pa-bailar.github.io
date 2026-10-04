@@ -3983,6 +3983,64 @@
     ]
   },
   {
+    "title": "Festival Internacional Casinea - 10.ª Edición",
+    "event_type": "congress",
+    "is_recurring": false,
+    "styles": [
+      "salsa cubana",
+      "salsa en línea",
+      "cha cha chá",
+      "son",
+      "urbano"
+    ],
+    "organizer": "Festival Internacional Casinea",
+    "venue": null,
+    "address": null,
+    "area": null,
+    "date": "2026-11-13",
+    "end_date": "2026-11-16",
+    "weekday": "viernes",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Wilmer y Maria",
+      "Alexis y Christa",
+      "Yusnier Castellanos",
+      "Marly y Alexis",
+      "Sebastian y Karen",
+      "Anderson y Jeimy",
+      "Jesus Castillo",
+      "Viviana Sierra",
+      "Jesus y Milena"
+    ],
+    "activities": [
+      "talleres",
+      "competencia"
+    ],
+    "contact": "www.festivalcasinea.com",
+    "confidence": "high",
+    "doubts": [
+      "sin lugar específico",
+      "sin horarios",
+      "sin precios"
+    ],
+    "id": "festival-internacional-casinea-10-a-edicion-13-nov",
+    "account": "casineafest",
+    "media": [
+      {
+        "post_id": "18102247549996700",
+        "permalink": "https://www.instagram.com/p/DdTMWLvRmdd/",
+        "media_type": "IMAGE",
+        "published": "2026-09-15T07:38:40+0000",
+        "flyer": "flyers/18102247549996700-0.webp",
+        "caption": "10 EDICIONES. UNA HISTORIA QUE SE SIGUE BAILANDO.\n\nDiez ediciones construyendo un espacio para encontrarnos alrededor del casino, la música y las expresiones de la cultura cubana. Diez ediciones conectando bailarines, maestros, academias y comunidades de diferentes lugares en una misma pista.\n\nY para celebrar esta DÉCIMA EDICIÓN, Casinea reúne una programación de talleristas que representa la diversidad, trayectoria y evolución de nuestra comunidad.\n\nArtistas, bailarines, maestros y coreógrafos que llegan desde diferentes escenas para compartir sus conocimientos, sus estilos y sus maneras de entender el baile.\n\nDesde el casino y la rueda, hasta el son, mambo, chachachá, timba, reparto, estilo masculino y femenino, musicalidad, interpretación y trabajo corporal, cada taller será una oportunidad para aprender de quienes han hecho de la danza parte de su camino.\n\nCasinea 2026 no es solo una nueva edición. Es la celebración de diez ediciones de encuentros, aprendizaje, competencia, música y comunidad.\n\n🔥 10.ª EDICIÓN DEL FESTIVAL INTERNACIONAL CASINEA\n\n📅 13 al 16 de noviembre de 2026\n\n📍 Bogotá, Colombia\n\nUna década bailando juntos.\n\nY esto apenas sigue comenzando.\n\n#FestivalCasinea #Casinea2026 #DécimaEdición #SalsaCasino #CulturaCubana",
+        "preview": null,
+        "slides": null
+      }
+    ]
+  },
+  {
     "title": "Silvana Estrada - Vendrán Suaves Lluvias",
     "event_type": "concert",
     "is_recurring": false,
@@ -4080,9 +4138,7 @@
     "title": "Ecos en Movimiento - Clausura Mover-sé 2026",
     "event_type": "show",
     "is_recurring": false,
-    "styles": [
-      "tango"
-    ],
+    "styles": [],
     "organizer": "Mover-sé",
     "venue": "Academia de Baile Alma de Tango",
     "address": null,
@@ -4096,13 +4152,13 @@
     "artists": [],
     "activities": [
       "clausura",
-      "show"
+      "espectáculo de baile"
     ],
-    "contact": null,
+    "contact": "@mover__se",
     "confidence": "high",
     "doubts": [
       "sin precio",
-      "sin dirección exacta"
+      "sin estilos de baile especificados"
     ],
     "id": "ecos-en-movimiento-clausura-mover-se-2026-13-dic",
     "account": "mover__se",

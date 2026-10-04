@@ -11,14 +11,15 @@ import {
   clearFilters,
   createInitialState,
   defaultDayForMonth,
-  eventsInView,
+  listedDay,
   sectionId,
+  toggled,
   visibleEvents,
 } from "./state";
 import { initThemeToggle } from "./theme";
 import { renderCalendarView } from "./views/calendarView";
 import { initEventDialog, openEventDialog } from "./views/eventDialog";
-import { rankedStyles, renderFilters } from "./views/filters";
+import { filterOptions, renderFilters } from "./views/filters";
 import {
   captureListPosition,
   closeBarSearch,
@@ -44,7 +45,7 @@ const state = createInitialState();
 let events: DanceEvent[] = [];
 
 /** data-* attributes that identify a re-rendered control, so focus can be put back on it. */
-const FOCUS_KEYS = ["type", "style", "day"] as const;
+const FOCUS_KEYS = ["type", "style", "date", "day"] as const;
 
 function focusSelector(element: Element | null): string | null {
   if (!(element instanceof HTMLElement)) return null;
@@ -73,7 +74,10 @@ function render({ keepPlace = false } = {}) {
   const scope = focusScope(document.activeElement);
   const anchor = keepPlace && state.view === "upcoming" ? captureListPosition() : null;
 
-  renderFilters(events, state);
+  const options = filterOptions(events, state);
+  // A period chosen that's no longer there (the day changed while the page was open) can't be unchosen: drop it.
+  if (state.view === "upcoming") state.dates = state.dates.filter((key) => options.dates.some((option) => option.key === key));
+  renderFilters(events, state, options);
   const upcoming = byId("view-upcoming");
   const calendar = byId("view-calendar");
   upcoming.hidden = state.view !== "upcoming";
@@ -90,9 +94,9 @@ function render({ keepPlace = false } = {}) {
   renderJumpBar({
     groups,
     activeFilters: activeFilterCount(state),
-    styles: rankedStyles(eventsInView(events, state)),
-    styleFilter: state.styleFilter,
-    eventCount: eventsInView(events, state).length,
+    options,
+    styles: state.styles,
+    dates: state.dates,
     showPeriods: state.view === "upcoming",
     searching: state.query !== "",
   });
@@ -108,7 +112,7 @@ function render({ keepPlace = false } = {}) {
 let leftList: { scrollY: number; filters: string; anchor: ListAnchor | null } | null = null;
 let leftCalendar: number | null = null;
 
-const filtersKey = () => JSON.stringify([state.typeFilter, state.styleFilter, state.accountFilter]);
+const filtersKey = () => JSON.stringify([state.typeFilter, state.styles, state.dates, state.accountFilter]);
 
 /** The tabs and the floating button. Each view keeps its place. */
 function showView(view: View) {
@@ -175,11 +179,12 @@ function renderSavedCount() {
   renderSavedToggles(upcomingSaved().length, state.savedOnly);
 }
 
-/** What narrows the list, for a shared image's subtitle: "Salsa", "Talleres", "@academia", «búsqueda». */
+/** What narrows the list, for a shared image's subtitle: "Salsa, Bachata", "Talleres", "@academia", «búsqueda».
+ * (The period is the title.) */
 function filtersLabel(): string {
   return [
     state.typeFilter !== "all" ? typeLabel(state.typeFilter) : "",
-    state.styleFilter !== "all" ? capitalize(state.styleFilter) : "",
+    state.styles.map(capitalize).join(", "),
     state.accountFilter ? `@${state.accountFilter}` : "",
     state.query.trim() ? `«${state.query.trim()}»` : "",
   ]
@@ -193,7 +198,7 @@ function shareSources(groups: AgendaGroup[]): Map<string, ShareSource> {
   const filters = filtersLabel();
   for (const group of groups) {
     const title = PERIOD_SHARE_TITLES[group.key];
-    const days = group.events.map((event) => shownDay(event)); // as listed: an event under way is today's
+    const days = group.events.map((event) => listedDay(event, state.dates)); // as listed: an event under way is today's
     const first = days[0];
     const last = days.at(-1);
     if (!title || !first || !last) continue;
@@ -250,10 +255,10 @@ function focusAccountFilter() {
 /** One delegated listener for every data-* control rendered by the views. */
 function handleClick(domEvent: MouseEvent) {
   const control = (domEvent.target as HTMLElement).closest<HTMLElement>(
-    "[data-view],[data-type],[data-style],[data-account],[data-clear-filters],[data-day],[data-event],[data-month-step],[data-today],[data-show-period],[data-saved-only],[data-close-search]",
+    "[data-view],[data-type],[data-style],[data-date],[data-account],[data-clear-filters],[data-day],[data-event],[data-month-step],[data-today],[data-show-period],[data-saved-only],[data-close-search]",
   );
   if (!control) return;
-  const { view, type, style, account, day, event: eventId, monthStep, showPeriod } = control.dataset;
+  const { view, type, style, date, account, day, event: eventId, monthStep, showPeriod } = control.dataset;
 
   if ("savedOnly" in control.dataset) {
     const showSaved = () => {
@@ -314,11 +319,9 @@ function handleClick(domEvent: MouseEvent) {
     return;
   }
   if (type) state.typeFilter = type as EventType | "all";
-  // A pressed chip tapped again clears it; options in the bar's rhythm menu just select.
-  else if (style) {
-    const isToggle = control.matches(".chip") && control.getAttribute("aria-pressed") === "true";
-    state.styleFilter = isToggle ? "all" : style;
-  }
+  // Rhythms and dates take several: tapping one adds it or takes it away; "all" clears the group.
+  else if (style) state.styles = style === "all" ? [] : toggled(state.styles, style);
+  else if (date) state.dates = date === "all" ? [] : toggled(state.dates, date);
   else if ("clearFilters" in control.dataset) {
     clearFilters(state);
     document.querySelectorAll<HTMLInputElement>("[data-search]").forEach((field) => (field.value = ""));
@@ -332,8 +335,9 @@ function handleClick(domEvent: MouseEvent) {
     state.month = currentMonth();
     state.selectedDay = todayIso();
   }
-  // Filters keep the period being read in place. (Tapping an academy on a card instead moves to its notice.)
-  render({ keepPlace: Boolean(type || style || "clearFilters" in control.dataset) });
+  // Filters keep the period being read in place (or the next one left, for a date filter). (Tapping an academy
+  // on a card instead moves to its notice.)
+  render({ keepPlace: Boolean(type || style || date || "clearFilters" in control.dataset) });
 
   // The control clicked was re-rendered away: put focus somewhere useful.
   if ("clearFilters" in control.dataset) {
@@ -375,11 +379,7 @@ export function start() {
   initSharing((id) => events.find((event) => event.id === id));
   initInstallPrompt();
   registerServiceWorker();
-  initJumpBar({
-    reveal: (key) => {
-      if (showWholePeriod(key)) render();
-    },
-  });
+  initJumpBar();
   initViewSwitch(navigateView);
   initClickTracking();
   document.addEventListener("click", handleClick);

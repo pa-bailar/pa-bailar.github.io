@@ -64,6 +64,7 @@ export function eventShareText(event: DanceEvent): string {
 /** The near periods of the list that can be shared, and the title of their image. */
 export const PERIOD_SHARE_TITLES: Record<string, string> = {
   hoy: "Hoy en Bogotá",
+  manana: "Mañana en Bogotá", // only when chosen in the date filter (state.ts, TOMORROW)
   "esta-semana": "Esta semana en Bogotá",
   "fin-de-semana": "Este finde en Bogotá",
   "proxima-semana": "La próxima semana en Bogotá",

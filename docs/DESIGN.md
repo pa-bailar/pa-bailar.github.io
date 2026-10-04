@@ -30,7 +30,7 @@ frontend/src/styles/
    ├─ calendar.css
    ├─ event-dialog.css
    ├─ sheet.css          ← bottom sheets: rise, drag to dismiss (with scripts/lib/sheet.ts)
-   ├─ jump-bar.css       ← phones: the sticky filter bar and its dropdown menus
+   ├─ jump-bar.css       ← phones: the sticky filter bar and its dropdown checklists
    ├─ view-switch.css    ← phones: the floating calendar / list button
    ├─ posts-sheet.css    ← every post announcing an event
    ├─ post-viewer.css    ← a post with Instagram's player
@@ -64,7 +64,7 @@ Themes switch through CSS `color-scheme`: `light dark` (follow the device) when 
 | `--logo` | tomato-600 | marigold-400 | The wordmark |
 | `--accent` | tomato-600 | orange-400 | Event time, active tab, selected day |
 | `--action` / `--on-action` | deep orange / white | marigold / wine | The single primary button ("Ver en Instagram"), shaped like the WhatsApp one |
-| `--chip-active-*` | wine / cream | marigold / wine | Selected filter chip |
+| `--chip-active-*` | wine / cream | marigold / wine | Selected filter chip, checked box in the bar's menus |
 | `--stripe-1..3` | tomato, orange, marigold | brighter tomato, orange, marigold | 70s stripes |
 | `--sticker-*` | tomato / cream | marigold / wine | Round date sticker |
 | `--type-*` / `--on-type` | per event type | per event type | Type tag, calendar pills and dots |
@@ -88,6 +88,7 @@ Sizes: `--text-2xs` 11 · `xs` 12 · `sm` 13 · `md` 15 (body) · `lg` 17 · `xl
   - `--radius-round`: **only** the date sticker and calendar day numbers
 - `--border-width` 1.5px everywhere.
 - Controls: `--control-height` 40px (buttons, toggle), `--chip-height` 32px, `--sticker-size` 60px.
+- Touch: `--touch-target` 44px (rows of the bar's menus, chips in the filter sheet on touch screens), `--checkbox-size` 18px (the menus' boxes).
 - Small parts: `--tab-underline` 3px (the selected tab's line), `--icon-sm` 16px (marks over thumbnails), `--icon-lg` 24px (the floating button), `--handle-width` × `--handle-height` 40×4px (every sheet's grab handle, `.sheet-handle`), `--fab-size` 44px.
 - Over photos: `--on-image` (white) with `--shadow-on-image`, the same in both themes, for marks that sit on any flyer (▶, stacked squares).
 
@@ -114,6 +115,9 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves. The pa
   | *Mes* / *Mes de año* | one group per later month (year shown outside the current year) |
 
   Weeks run Monday to Sunday.
+- **Choosing dates** (the date filter, see "Filters") lists each event on its first day within the chosen periods,
+  and "Mañana", when chosen, gets a group of its own between "Hoy" and the rest (its share icon says "Mañana en
+  Bogotá"). Chosen periods open whole: no summary row, no "Ver N más".
 - **Each card says when:** "Hoy / Mañana · 8:00 p. m.", the weekday within a week ("Domingo · 6:00 p. m."), or weekday and date further away ("Martes 20 oct."). The sticker keeps the date number.
 - **An event over several days says its days** instead (`cardWhenLabel`), by where today falls (Level Up, Friday 13 to Sunday 15 November):
 
@@ -129,7 +133,8 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves. The pa
   The detail's "Cuándo" reads "Viernes 13 al domingo 15 de noviembre · hora por confirmar", and shared lists "Vie 13 – dom 15".
 - **The academy on each card** is a button: it filters the list to that academy and shows "Solo eventos de @academia · Ver todas las academias" under the chips. It sits above the card's stretched click area.
 - **Free events** show their price as a green "Gratis" label (`--free` / `--on-free`, checked for contrast).
-- **Empty results** always offer a way out: "Quitar filtros" when filters are active.
+- **Empty results** always offer a way out: "Quitar filtros" when filters are active ("No hay eventos en esas fechas
+  con estos filtros." when dates are chosen).
 - **Dance styles** are one line of text joined by a middle dot glued to the previous word with a no-break space (`stylesLabel`), never separate elements with CSS separators. The dot stays centered between words, and a wrapped line never starts with a dot.
 
 ## Info and footer
@@ -146,7 +151,7 @@ WhatsApp opens with the text. What can be shared (`scripts/views/sharing.ts`):
   page's link, whose preview shows the flyer.
 - **A near period:** a share icon at the end of "Hoy", "Esta semana", "Este fin de semana" and "Próxima
   semana" (`.share-icon`): an image of its events and a list for WhatsApp, as filtered on screen (a
-  rhythm, a type, an academy or a search goes in the subtitle).
+  rhythms, a type, an academy or a search go in the subtitle; chosen dates are the periods themselves).
 - **My plans:** in Guardados, "Tus 3 eventos guardados · Compartir mis planes" (`.plans-bar`): an image
   and a list where each event carries its own link.
 - **The image** (`lib/shareCard.ts`) is drawn in the browser at share time, so it always matches the day,
@@ -219,11 +224,12 @@ WhatsApp opens with the text. What can be shared (`scripts/views/sharing.ts`):
 
 People look for "tonight, this weekend, next week" (the date buckets Eventbrite's quick filters use), so
 the list stays short there and summarizes what's further away (`scripts/views/upcomingView.ts`):
-- **Near periods in full:** Hoy, Esta semana, Este fin de semana and Próxima semana show their flyers.
+- **Near periods in full:** Hoy, Esta semana, Este fin de semana and Próxima semana show their flyers (and
+  any period chosen in the date filter).
 - **Far events by year:** months get their own group for the next six months (relative to today, so in December next January is still its own month); beyond that, one group per year: "En 2027", or "Más adelante en 2027" when months of 2027 are already listed.
 - **Later periods summarized:** "Más adelante en <mes>" and each later month start as one row with their
   first five flyers as small squares and "Ver los 23 eventos ›" (`.period-summary`); tapping it shows
-  them in full. Choosing that period in the bar's menu opens it too.
+  them in full. Choosing that period in the date filter opens it too.
 - **Busy periods capped:** an open period shows six events, then "Ver 7 más" (`.period-more`).
 - **Short lists whole:** with 12 events or fewer (for example once filtered) nothing is summarized. With
   nothing in the near periods, the first period opens.
@@ -234,11 +240,11 @@ the list stays short there and summarizes what's further away (`scripts/views/up
 
 - **Feed like Instagram:** under 720px each event is a full-width post, the flyer edge to edge at full size and the details right below, separated by space instead of boxed cards. Nothing is shrunk into thumbnails.
 - **Jump bar** (`JumpBar.astro`, `scripts/views/jumpBar.ts`): one slim row (`--jump-bar-height`, 56px) stuck to the top, modeled on the filter bars of Google Maps and Airbnb: **[🔍] [🔖 3] [⚙ 2] [Finde ▾] [Salsa ▾]** (search and "Guardados": see "Saving and searching"). Two compact dropdowns instead of a row of chips, so nothing scrolls sideways or gets cut off.
-  - **⚙** opens the filter sheet; the badge counts active filters.
-  - **Period dropdown:** names the period on screen (scroll-spy); its menu lists each period with its number of events, and picking one jumps there. Always shown in the list (disabled, "Fechas", when nothing matches); hidden in Calendario.
-  - **Rhythm dropdown:** reads "Ritmo", or the selected rhythm in the selected-chip style; its menu lists "Todos los ritmos" and each rhythm with its number of events, most frequent first.
+  - **⚙** opens the filter sheet; the badge counts the filter groups in use (two rhythms count once).
+  - **Date dropdown:** filters by date (see "Filters"). With no date chosen it names the period on screen (scroll-spy), as a plain button; with dates chosen it's in the selected-chip style and names them: "Finde", "Hoy + finde", or "2 fechas" / "3 fechas" when the names don't fit. Always shown in the list (disabled, "Fechas", when there's nothing to choose); hidden in Calendario.
+  - **Rhythm dropdown:** reads "Ritmo", the chosen rhythm, or "2 ritmos", in the selected-chip style when any is chosen; its menu lists "Todos los ritmos" and each rhythm with its number of events, most frequent first.
   - **Fixed shape:** ⚙ has a fixed size with its badge on the corner, and the two dropdowns split the rest equally (max 220px each), cutting long names with "…". The bar never changes size as filters change.
-  - **Menus** are popovers under their button: aligned to its left edge (right edge for a button on the right half), never wider than the screen or taller than the space below; long names wrap. Options are radio items, label and count centered vertically. Scrolling or resizing closes them.
+  - **Menus** are checklists in popovers under their button: aligned to its left edge (right edge for a button on the right half), never wider than the screen or taller than the space below; long names wrap. Each option is a row of `--touch-target` height: a box (checked: the selected-chip colors with a check), the label, and its count. The first one ("Todas las fechas", "Todos los ritmos") is checked when nothing is chosen and clears the group. Choosing keeps the menu open, to choose several; "Listo" (always in view at the bottom), a tap outside, Escape, scrolling or resizing close it.
   - **Keeping your place:** when a filter changes while you're inside the list, the period you were reading stays right under the bar; if the filter removed it, the next period (else the previous one) takes its place.
   - **Hides like Instagram's header:** it hides while scrolling down and returns on any scroll up. It never hides near the top of the page, while it holds focus, or during a jump.
   - **Where it shows:** wherever the full toolbar isn't sticky (phones, short windows), in both views.
@@ -247,11 +253,46 @@ the list stays short there and summarizes what's further away (`scripts/views/up
   - **Each view keeps its place, like Instagram's tabs:** coming back to a view lands exactly where it was left. The calendar's first visit starts at its top (back up to the tabs if the page was past them). If a filter changed meanwhile, the list comes back at the same period instead, as with any filter change. The tabs behave the same.
   - **Room:** the footer gets extra bottom padding so the button never covers its last line. Hidden wherever the toolbar is sticky.
 - **Filter sheet** (`FilterSheet.astro`):
-  - **Opening:** "Filtros" opens the type and style chips in a sheet that slides up from the bottom, so the list stays where it was. Chips wrap, so every option is visible.
+  - **Opening:** "Filtros" opens the date, type and style chips in a sheet that slides up from the bottom, so the list stays where it was. Chips wrap, so every option is visible; on touch screens they're `--touch-target` tall.
   - **Results:** "Ver N eventos" closes it. The bar's ⚙ button shows how many filters are active, as a badge on its corner.
   - **Phones only:** the toolbar's chip rows are hidden, so filters are only in the sheet; no rows scroll sideways cutting chips.
   - **Dismissing:** drag it down like the viewer (see Bottom sheets).
   - **One renderer:** the same chips render into the toolbar and the sheet (`[data-filter-row]`).
+
+## Filters
+
+What narrows the list, in the toolbar on wide screens (chip rows) and on phones in the jump bar's dropdowns and
+the filter sheet (`scripts/views/filters.ts`, `jumpBar.ts`; the logic in `state.ts`):
+
+| Group | Choices | Options |
+|---|---|---|
+| Fechas | several | "Todas las fechas", then each period of the list with something on ("Hoy", "Esta semana", "Finde", "Próx. semana", "Resto de octubre", each month, each year), and "Mañana" right after "Hoy" when something is on tomorrow |
+| Tipo | one | "Todo", then each event type |
+| Ritmo | several | "Todos los ritmos", then each rhythm ("Salsa" includes its variants) |
+| Academia | one | Set by tapping an academy on a card |
+
+- **Any within a group, all across groups:** two rhythms show events with either; two periods show events on during
+  either; a period and a rhythm show that rhythm in that period. Search and "Guardados" narrow further.
+- **An event over several days counts for every day it runs:** a festival from Sunday to Tuesday is in "Finde" and in
+  "Próx. semana"; a congress under way is in "Hoy" and, while it goes on tomorrow, in "Mañana".
+- **"Mañana"** overlaps the periods (tomorrow is in "Esta semana", the weekend or next week): it's an extra option,
+  shown only when something is on tomorrow (with the other filters) and never as a group unless chosen.
+- **Counts and options follow the other groups:** each option's number is how many events it would add with the other
+  filters on, and options that would add nothing are left out, so a choice never leads to an empty list. A chosen
+  option stays (with 0) so it can be unchosen.
+- **Chosen looks chosen:** chips in the selected-chip colors with a check (`.chip--check`), boxes checked in the
+  menus, and the dropdown buttons in the selected-chip style with a summary. Chips are toggle buttons (`aria-pressed`),
+  menu rows checkboxes (`role="checkbox"`, `aria-checked`, named with their count); focus stays on the option chosen.
+- **Clearing:** the first option of each group clears it; "Quitar filtros" (the sheet, and any empty result) clears
+  all. Nothing is remembered between visits, and filters aren't in the address, as before.
+- **Dates are the list's:** the calendar has its own days, so there the date row and dropdown are hidden and the dates
+  chosen are ignored (and kept for the list).
+- **Choosing a date instead of jumping:** the date dropdown used to jump to a period. Choosing one period now shows
+  just that period, at the top of the list, which is what jumping gave, and several can be combined. When you're
+  inside the list, the period you were reading stays under the bar if it's still there; otherwise the next one chosen
+  takes its place ("Keeping your place"). With no date chosen the button still names the period on screen.
+- **Wide screens:** the date row uses the bar's short names ("Finde", "Próx. semana"), with the full name for screen
+  readers, so it fits one line; any row that doesn't fit wraps instead of cutting a chip.
 
 ## Events with several posts
 
