@@ -1,5 +1,5 @@
 // An event's details, in a drawer over the list (components/EventDrawer.astro), like Instagram's comments.
-//   - Phones and tablets (under 900 px): tapping a card, its "Detalles" or the line under it raises the drawer to
+//   - Phones and tablets (under 900 px): tapping a card or its "Detalles" raises the drawer to
 //     half height (the lower 55% of the screen) over the list, which stays where it was, visible above it under a
 //     light scrim. The list only moves when the card would be mostly hidden: then its image goes right under the
 //     bar. Pulled up, or scrolled, the drawer covers the screen (12 px from the top) and its content scrolls; pulled
@@ -174,8 +174,8 @@ function show(event: DanceEvent, shared: boolean) {
 const focusTitle = () => document.getElementById(TITLE_ID)?.focus({ preventScroll: true });
 
 /**
- * Opens `event`'s details. `source` says what opened them (a card, its "Detalles", the line under it, a shared
- * link), counted as a GoatCounter event. `shared`: the list was just scrolled to its card (a shared link).
+ * Opens `event`'s details. `source` says what opened them (a card, its "Detalles", a shared link), counted as a
+ * GoatCounter event. `shared`: the list was just scrolled to its card (a shared link).
  */
 export function openEventDrawer(
   event: DanceEvent,
