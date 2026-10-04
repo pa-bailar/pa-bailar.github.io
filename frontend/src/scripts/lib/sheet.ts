@@ -8,15 +8,12 @@
 // The motion itself is CSS (styles/components/sheet.css): .sheet, .is-dragging, .is-closing, --drag.
 
 import { prefersReducedMotion } from "./dom";
+import { FLICK, closeDistance, exitDurationFor } from "./sheetMotion";
 import { overlayState } from "../screenHistory";
-const CLOSE_DISTANCE = 110; // px: minimum drag that closes on release…
-const CLOSE_FRACTION = 0.22; // …or this share of the screen height, whichever is larger
-const FLICK_DOWN = 0.5; // px/ms (500 px/s): a flick down this fast closes, however short
+
+// A flick down (FLICK) closes however short; past closeDistance() it closes unless flicked back up (FLICK_UP).
 const FLICK_UP = -0.3; // px/ms: a flick back up cancels, however far it was dragged
 const VELOCITY_WINDOW = 80; // ms of recent movement used to measure the release velocity
-const EXIT_MIN = 160; // ms
-const EXIT_MAX = 280; // ms
-const EXIT_MIN_SPEED = 1.2; // px/ms: slow releases still leave briskly
 const SHRINK = 0.04; // scale lost at full drag progress
 const BACKDROP_FADE = 0.8; // backdrop opacity lost at full drag progress
 const RUBBER_BAND = 60; // px: most it moves when dragged up past the top
@@ -37,9 +34,7 @@ export function dismissSheet(sheet: HTMLDialogElement, { velocity = 0, instant =
   closing.add(sheet);
   const offset = new DOMMatrix(getComputedStyle(sheet).transform).m42; // px already dragged
   const remaining = Math.max(sheet.offsetHeight - offset, 0);
-  const duration = Math.round(
-    Math.min(Math.max(remaining / Math.max(velocity, EXIT_MIN_SPEED), EXIT_MIN), EXIT_MAX),
-  );
+  const duration = exitDurationFor(remaining, velocity);
   sheet.style.setProperty("--sheet-exit-duration", `${duration}ms`);
   // Same frame: drop the finger's position and add the exit state, so it continues from where it is.
   sheet.classList.remove("is-dragging");
@@ -58,7 +53,7 @@ export function dismissSheet(sheet: HTMLDialogElement, { velocity = 0, instant =
  * its top bar, or its content when scrolled to the top (otherwise the touch scrolls the content).
  * Escape also slides the sheet away instead of the browser's instant close.
  */
-export function initSheet(sheet: HTMLDialogElement, canStartDrag: (target: HTMLElement) => boolean) {
+function initSheet(sheet: HTMLDialogElement, canStartDrag: (target: HTMLElement) => boolean) {
   let startX = 0;
   let startY = 0;
   let dragging: boolean | null = null; // null = direction not decided yet; false = not a drag
@@ -122,8 +117,8 @@ export function initSheet(sheet: HTMLDialogElement, canStartDrag: (target: HTMLE
     if (!dragging) return;
     dragging = false;
     const speed = velocity();
-    const farEnough = offset > Math.max(CLOSE_DISTANCE, window.innerHeight * CLOSE_FRACTION);
-    if (speed > FLICK_DOWN || (farEnough && speed > FLICK_UP)) dismissSheet(sheet, { velocity: speed });
+    const farEnough = offset > closeDistance(window.innerHeight);
+    if (speed > FLICK || (farEnough && speed > FLICK_UP)) dismissSheet(sheet, { velocity: speed });
     else springBack(); // the transition animates it back
   };
   sheet.addEventListener("touchend", release);

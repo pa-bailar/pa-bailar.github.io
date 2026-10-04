@@ -42,6 +42,9 @@ subscriptions). The build fails if an event's preview is missing or weighs over 
 | `ci` | Every pull request | PR title format, data format check, type check, color contrast, tests, build. The required check on `main`. |
 | `deploy` | Push to `main`, a backend sweep that changed nothing, or *Run workflow* | Checks and builds the site, publishes it to GitHub Pages, then tags the new version and publishes its release (see [Versions](#versions)) |
 
+The workflows use only GitHub's own actions (`actions/*`), by major version tag (`@v7`): GitHub maintains them
+and moves the tag only for compatible releases. A third-party action would be pinned to a full commit SHA instead.
+
 `main` is protected (`protect-main` ruleset): changes only arrive through squash-merged pull requests
 that pass `ci`; force pushes and deletion are blocked. The data PRs carry the `data` label and
 merge themselves when `ci` passes.
@@ -67,8 +70,10 @@ follow the format, so no change goes uncounted.
 
 [GoatCounter](https://jzamora9.goatcounter.com) (free, no cookies, no consent banner needed): page
 visits, each event whose details were opened, where its details were opened from (`detalles-tarjeta`, `detalles-boton`,
-`detalles-enlace`; `detalles-linea` is retired), and clicks on Instagram, the contact links (WhatsApp…),
-"Cómo llegar", the media (`ver-video`, `ver-publicaciones`…), sharing, saving, installing and reports (`data-track`, `frontend/src/scripts/lib/analytics.ts`). Shared
+`detalles-enlace`; `detalles-linea` is retired), and clicks as events named `click-<name>` (`data-track="<name>"`,
+`frontend/src/scripts/lib/analytics.ts`): Instagram, the contact links (WhatsApp…), "Cómo llegar", the media
+(`click-ver-video`, `click-ver-carrusel`, `click-ver-publicaciones`, `click-ver-publicacion`), sharing, saving,
+installing and reports. Shared
 links carry `utm_source=compartido`. Local testing (localhost) isn't counted.
 
 ## Contributing

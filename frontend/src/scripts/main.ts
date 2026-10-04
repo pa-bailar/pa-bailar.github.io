@@ -6,7 +6,7 @@ import { initClickTracking } from "./lib/analytics";
 import { byId } from "./lib/dom";
 import { eventCountLabel } from "./lib/format";
 import { addMonths, currentMonth, lastDay, shownDay, todayIso } from "./lib/dates";
-import { eventPath } from "./lib/links";
+import { eventPath, sharedEventLink } from "./lib/links";
 import {
   clearFilters,
   createInitialState,
@@ -406,12 +406,10 @@ function handleClick(domEvent: MouseEvent) {
  * that isn't in the list (it already passed) goes back to its own page, which says so.
  */
 function openSharedEvent() {
-  const params = new URLSearchParams(location.search);
-  const id = params.get("evento");
-  if (!id) return;
-  params.delete("evento");
-  const rest = params.toString(); // e.g. utm_source=compartido, kept for the statistics
-  history.replaceState(null, "", `${location.pathname}${rest ? `?${rest}` : ""}${location.hash}`);
+  const link = sharedEventLink(location);
+  if (!link) return;
+  const { id, params } = link;
+  history.replaceState(null, "", link.address); // the list's entry, under the drawer's (pushed once it opens)
   const event = events.find((item) => item.id === id);
   if (!event) return;
   const entry = sharedEventEntry(groupByPeriod(visibleEvents(events, state), todayIso(), state.dates), id);

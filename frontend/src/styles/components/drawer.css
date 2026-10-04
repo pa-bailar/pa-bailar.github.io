@@ -2,7 +2,7 @@
    Phones and tablets (under 900px): a drawer that rises over the list, like Instagram's comments. The dialog
    covers the screen; its scrim (32% at half height, 55% at full: --scrim-opacity, set by the script) lets the
    list show through, and the panel moves with --drawer-y (its offset below full height). Wide screens: a side
-   panel next to the list, not modal. Its content's parts: event-dialog.css. */
+   panel next to the list, not modal. Its content's parts: event-detail.css. */
 
 .drawer {
   max-width: none;
@@ -39,16 +39,25 @@
   cursor: grab;
 }
 
-/* The handle: "pull me". A tap switches between the two heights ("Ver todo el detalle" / "Ver menos"). */
+/* The handle: "pull me". A tap switches between the two heights ("Ver todo el detalle" / "Ver menos"). 32 px tall,
+   with a 44 px target: an invisible area 6 px above (into the gap over the drawer) and below (over the head). */
 .drawer__handle {
+  position: relative;
+  z-index: var(--z-raised);
   display: grid;
   place-items: center;
   width: calc(var(--touch-target) + var(--space-5));
-  height: var(--space-5);
+  height: var(--space-6);
   padding: 0;
   border: 0;
   background: none;
   cursor: grab;
+}
+
+.drawer__handle::after {
+  content: "";
+  position: absolute;
+  inset: calc((100% - var(--touch-target)) / 2) 0;
 }
 
 .drawer__handle .sheet-handle {
@@ -73,7 +82,7 @@
   min-width: 0;
 }
 
-.drawer__heading .event-dialog__title {
+.drawer__heading .event-detail__title {
   font-size: var(--text-xl);
   line-height: 1.15;
   overflow-wrap: anywhere;

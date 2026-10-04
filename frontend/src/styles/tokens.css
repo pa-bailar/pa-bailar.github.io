@@ -33,8 +33,7 @@
   --orange-800: #b85410; /* deep enough for white text (4.87:1): the light primary button */
   --orange-600: #e8791c;
   --marigold-600: #e9b021;
-  --marigold-400: #f2c12e; /* the app icon and link previews (pages/icons, linkPreviewImage.ts) */
-  --marigold-200: #efd082; /* "Detalles": marigold-400 at 45% over the page, a soft tonal fill */
+  --marigold-200: #efd082; /* "Detalles": the app icon's marigold (#f2c12e) at 45% over the page, a soft tonal fill */
   --marigold-250: #f0cb63; /* …pressed: 65% */
   --rose-300: #e9b8a0;
   --palm-600: #1f7a4a;
@@ -173,7 +172,6 @@
   --sticker-size: 60px;
   --drawer-top-gap: 12px; /* phones: what's left above the details drawer at full height */
   --panel-width: 420px; /* wide screens: the details as a side panel */
-  --day-column-width: 200px; /* day heading column on wide screens */
   --content-width: 1120px;
 
   /* ---------- Layer 3: layers (z-index) ---------- */
@@ -182,7 +180,8 @@
   --z-panel: 20; /* wide screens: the details as a side panel, over the sticky bars */
 
   /* ---------- Layer 3: elevation ---------- */
-  --shadow-menu: 0 8px 24px light-dark(rgb(42 15 20 / 0.18), rgb(0 0 0 / 0.45)); /* dropdown menus */
+  /* What floats: the floating button, the drawer and the side panel, the posts badge, the install nudge. */
+  --shadow-menu: 0 8px 24px light-dark(rgb(42 15 20 / 0.18), rgb(0 0 0 / 0.45));
 
   /* ---------- Layer 3: over photos ---------- */
   /* Marks over any image (▶ and stacked squares on thumbnails, as on Instagram): white with a shadow,
@@ -193,9 +192,9 @@
 
   /* ---------- Layer 3: small parts ---------- */
   --tab-underline: 3px; /* the selected tab's line: Próximos / Calendario, Flyers / Videos */
-  --icon-sm: 16px; /* marks over thumbnails */
-  --icon-md: 20px; /* the cards' "Detalles", the drawer's × */
-  --icon-lg: 24px; /* the floating calendar / list button */
+  --icon-sm: 16px; /* marks over flyers and thumbnails, a chip's ×, "× Limpiar", the sound button */
+  --icon-md: 20px; /* the cards' "Detalles", the drawer's ×, the details' media links */
+  --icon-lg: 24px; /* Guardar, Compartir, ▶ over a video's flyer, the details' quick actions, the floating button */
   --handle-width: 40px; /* sheets' grab handle */
   --handle-height: 4px;
 

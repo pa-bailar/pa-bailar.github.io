@@ -2,8 +2,10 @@
 //   - A policy in a <meta> only covers what comes after it, and Astro writes it at the end of <head>: it moves
 //     right after <meta charset>, so it also covers the fonts, the theme script and GoatCounter's script.
 //   - Every inline script (not the JSON data blocks) and every <style> must be allowed by its hash, and no element
-//     may have a style="" attribute (the policy blocks them): otherwise the build fails, instead of the browser
-//     quietly blocking it on the live site.
+//     may have a style="" attribute nor an inline event handler (onclick="…", onload="…": the policy blocks both):
+//     otherwise the build fails, instead of the browser quietly blocking it on the live site.
+//   - A <meta> policy can't set frame-ancestors (nor report-uri or sandbox): only a header can, and GitHub Pages
+//     sends none. Other sites can frame these pages; with no accounts or forms here, that leads nowhere.
 
 import { createHash } from "node:crypto";
 import { readdir, readFile, writeFile } from "node:fs/promises";
@@ -43,6 +45,8 @@ export function securePage(html) {
   }
   const markup = moved.replace(INLINE, "");
   if (/<[^>]+\sstyle=/.test(markup)) problems.push('a style="" attribute (blocked: set it from a script or a class)');
+  const handler = markup.match(/<[^>]+\s(on[a-z]+)\s*=/i);
+  if (handler) problems.push(`an inline ${handler[1]}="" handler (blocked: add a listener from a script)`);
   return { html: moved, problems };
 }
 

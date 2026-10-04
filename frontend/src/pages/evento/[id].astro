@@ -125,7 +125,7 @@ const redirectScript = allowInlineScript(
 
   <main class="container">
     {isPast && <p class="callout event-page__past">Este evento ya pasó.</p>}
-    <article class="event-page event-dialog__layout" id="event-detail" set:html={eventDetailHtml(event, 0)} />
+    <article class="event-page event-detail__layout" id="event-detail" set:html={eventDetailHtml(event, 0)} />
   </main>
 
   <SiteFooter accounts={accounts} />

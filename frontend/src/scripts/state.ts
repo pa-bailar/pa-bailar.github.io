@@ -98,8 +98,8 @@ export function eventsInView(events: DanceEvent[], state: AppState): DanceEvent[
   return events.filter((event) => inMonth(event, prefix));
 }
 
-/** The events on screen, in display order: the upcoming list, or the selected calendar day. Swiping in
- * the event viewer follows this order. */
+/** The events on screen, in display order: the upcoming list, or the selected calendar day (a shared link looks
+ * for its event here: main.ts, openSharedEvent). */
 export function visibleEvents(events: DanceEvent[], state: AppState): DanceEvent[] {
   const shown = eventsInView(events, state).filter((event) => matchesFilters(event, state));
   return state.view === "upcoming"

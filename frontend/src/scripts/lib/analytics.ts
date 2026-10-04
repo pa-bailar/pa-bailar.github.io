@@ -1,7 +1,7 @@
 // Visit statistics with GoatCounter (https://www.goatcounter.com): no cookies and no personal data, so
 // no consent banner is needed. Page loads are counted by its script (layouts/BaseLayout.astro); this
 // adds what a static page can't see on its own:
-//   - each event opened (or swiped to) in the viewer, as a visit to that event's page;
+//   - each event opened in the details drawer, as a visit to that event's page;
 //   - clicks on the actions marked with data-track="<name>" (Instagram, WhatsApp, sharing…);
 //   - an event's details opened, by where they were opened from ("detalles-tarjeta"…, `detailsEventName`).
 // GoatCounter ignores localhost, so local testing isn't counted. If its script is blocked, nothing breaks.
@@ -24,7 +24,7 @@ function count(vars: { path: string; title?: string; event?: boolean }) {
   }
 }
 
-/** A page seen without a page load (the event viewer changes the URL itself). */
+/** A page seen without a page load (the details drawer changes the URL itself). */
 export function trackPageview(path: string, title: string) {
   count({ path, title });
 }

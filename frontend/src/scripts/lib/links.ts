@@ -68,6 +68,19 @@ export function addressAfterClosing({ pathname, search, hash }: Pick<Location, "
   return pathname.startsWith(`${BASE_URL}evento/`) ? `${BASE_URL}${search}${hash}` : null;
 }
 
+/**
+ * A shared link's event: `?evento=<id>` (where /evento/<id>/ forwards a browser). Its id, the other parameters
+ * (`utm_source=compartido`, kept for the statistics) and the address without it. Null without one.
+ */
+export function sharedEventLink({ pathname, search, hash }: Pick<Location, "pathname" | "search" | "hash">) {
+  const params = new URLSearchParams(search);
+  const id = params.get("evento");
+  if (!id) return null;
+  params.delete("evento");
+  const rest = params.toString();
+  return { id, params, address: `${pathname}${rest ? `?${rest}` : ""}${hash}` };
+}
+
 /** Full URL of the event's page, for sharing and calendars. */
 export function eventPageUrl(event: DanceEvent): string {
   return new URL(eventPath(event), SITE_URL).href;

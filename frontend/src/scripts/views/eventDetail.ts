@@ -88,7 +88,7 @@ function pricesHtml(event: DanceEvent): string {
       return `<li><span>${escapeHtml(price.label)}${condition}</span><b>${formatMoney(price.amount_cop)}</b></li>`;
     })
     .join("");
-  return `<h3 class="event-dialog__subheading">Precios</h3><ul class="price-list">${items}</ul>`;
+  return `<h3 class="event-detail__subheading">Precios</h3><ul class="price-list">${items}</ul>`;
 }
 
 /**
@@ -119,17 +119,17 @@ function mediaHtml(event: DanceEvent, media: EventMedia, selected: number): stri
   const clip = previewUrl(media);
   // A video with a clip plays it here, silent and looping (views/clips.ts); tapping opens it with sound.
   const picture = clip
-    ? `<video class="event-dialog__clip" src="${escapeHtml(clip)}" poster="${escapeHtml(flyer)}"${size}
+    ? `<video class="event-detail__clip" src="${escapeHtml(clip)}" poster="${escapeHtml(flyer)}"${size}
         muted loop playsinline preload="none" data-clip aria-label="Video de ${escapeHtml(event.title)}"></video>`
     : `<img src="${escapeHtml(flyer)}"${size} decoding="async" alt="${isVideo ? "Video" : "Flyer"} de ${escapeHtml(event.title)}" />`;
   // What tapping shows beyond this image (lib/mediaLabel.ts): the video with sound, or the carousel's slides.
   const label = mediaLabel(media);
   return `
-    <div class="event-dialog__frame">
-      <a class="event-dialog__media" href="${escapeHtml(media.permalink)}" target="_blank" rel="noopener"
+    <div class="event-detail__frame">
+      <a class="event-detail__media" href="${escapeHtml(media.permalink)}" target="_blank" rel="noopener"
         data-view-post="${selected}" data-track="ver-publicacion" aria-label="Ver la publicación">
         ${picture}
-        ${label ? `<span class="event-dialog__play">${ICONS[label.icon]}${label.text}</span>` : ""}
+        ${label ? `<span class="event-detail__play">${ICONS[label.icon]}${label.text}</span>` : ""}
       </a>
       <span class="date-sticker${sticker.range ? " date-sticker--range" : ""}" aria-hidden="true"><b>${sticker.day}</b><small>${sticker.month}</small></span>
       ${postsBadgeHtml(event, selected)}
@@ -139,8 +139,8 @@ function mediaHtml(event: DanceEvent, media: EventMedia, selected: number): stri
 /** When, the title, the type tag and the account: the head of the drawer, and of the page under the flyer. */
 function headHtml(event: DanceEvent, { heading, titleId }: { heading: "h1" | "h2"; titleId: string }): string {
   return `
-    <p class="event-dialog__when">${escapeHtml(cardWhenLabel(event))}</p>
-    <${heading} class="event-dialog__title" id="${titleId}" tabindex="-1">${escapeHtml(event.title)}</${heading}>
+    <p class="event-detail__when">${escapeHtml(cardWhenLabel(event))}</p>
+    <${heading} class="event-detail__title" id="${titleId}" tabindex="-1">${escapeHtml(event.title)}</${heading}>
     <p class="event-detail__by"><span class="tag-type t-${escapeHtml(event.event_type)}">${typeLabel(event.event_type)}</span><span>@${escapeHtml(event.account)}</span></p>`;
 }
 
@@ -191,11 +191,11 @@ function bodyHtml(event: DanceEvent, selected: number): string {
     ${styles ? `<p class="style-list">${escapeHtml(styles)}</p>` : ""}
     ${lowConfidence}
     ${mediaLinksHtml(event, selected)}
-    <div class="event-dialog__actions">
+    <div class="event-detail__actions">
       <a class="btn btn--primary" href="${escapeHtml(media.permalink)}" target="_blank" rel="noopener" data-track="instagram">${ICONS.instagram}Ver en Instagram ↗</a>
     </div>
-    ${media.caption ? `<details class="event-dialog__caption"><summary>Texto de la publicación</summary><p>${escapeHtml(media.caption)}</p></details>` : ""}
-    <p class="event-dialog__report"><a class="inline-link" href="${escapeHtml(feedbackUrl(event))}" target="_blank" rel="noopener" data-track="reportar-error">¿Algo está mal? Repórtalo</a></p>`;
+    ${media.caption ? `<details class="event-detail__caption"><summary>Texto de la publicación</summary><p>${escapeHtml(media.caption)}</p></details>` : ""}
+    <p class="event-detail__report"><a class="inline-link" href="${escapeHtml(feedbackUrl(event))}" target="_blank" rel="noopener" data-track="reportar-error">¿Algo está mal? Repórtalo</a></p>`;
 }
 
 /**
@@ -205,10 +205,10 @@ function bodyHtml(event: DanceEvent, selected: number): string {
 export function eventDetailHtml(event: DanceEvent, selected: number, { titleId = "event-title" }: { titleId?: string } = {}): string {
   const media = event.media[selected] ?? event.media[0];
   return `
-    <div class="event-dialog__visual">
+    <div class="event-detail__visual">
       ${mediaHtml(event, media, selected)}
     </div>
-    <div class="event-dialog__info">
+    <div class="event-detail__info">
       <div class="event-detail__head">${headHtml(event, { heading: "h1", titleId })}</div>
       ${bodyHtml(event, selected)}
     </div>`;
@@ -225,7 +225,7 @@ export function eventDrawerHtml(event: DanceEvent, { titleId }: { titleId: strin
       <div class="drawer__heading">${headHtml(event, { heading: "h2", titleId })}</div>
       <button class="drawer__close" type="button" data-close-drawer aria-label="Cerrar">${ICONS.close}</button>
     </header>
-    <div class="drawer__body event-dialog__info">${bodyHtml(event, 0)}</div>`;
+    <div class="drawer__body event-detail__info">${bodyHtml(event, 0)}</div>`;
 }
 
 /** An event's posts in their sheet; the one chosen opens in the media viewer, in the sheet's place. */
@@ -270,7 +270,7 @@ export function handleDetailClick(
     const newTab = domEvent.button !== 0 || domEvent.metaKey || domEvent.ctrlKey || domEvent.shiftKey || domEvent.altKey;
     if (!media || newTab) return false;
     domEvent.preventDefault();
-    const frame = flyer.closest<HTMLElement>(".event-dialog__frame");
+    const frame = flyer.closest<HTMLElement>(".event-detail__frame");
     if (isVideoCover(media) && frame) playInline(frame, media.permalink);
     else openPostViewer(event, media);
     return true;
