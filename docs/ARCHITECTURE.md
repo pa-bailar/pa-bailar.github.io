@@ -667,7 +667,7 @@ frontend/
 | `state.ts` | The UI state; filtering (AND across groups, OR within dates, types and rhythms); ⚙'s count; "Limpiar"; grouping by period; the date options |
 | `views/upcomingView.ts` | "Próximos"; where a shared link's event is (`sharedEventEntry`) |
 | `views/calendarView.ts` | "Calendario", with holidays |
-| `views/eventCard.ts` | A card: flyer at its shape (or a video's clip, with its sound button), date sticker, the posts' badge, the action row (Detalles, Compartir, Guardar), details, the line naming what the details add |
+| `views/eventCard.ts` | A card: flyer at its shape (or a video's clip, with its sound button), date sticker, the posts' badge, the action row (Detalles, Compartir, Guardar), details |
 | `views/detailsHint.ts`, `lib/onceFlag.ts` | The first visit's pulse on the first card's "Detalles"; things shown once per browser |
 | `views/eventDetail.ts` | An event's details (the drawer's, and the event page's with the flyer on top): head, quick actions, details, prices, media links; their clicks |
 | `views/eventDrawer.ts`, `views/drawerSheet.ts` | The details: a drawer over the list on phones (half / full height, scrim, keeping the card in view) and a side panel on wide screens; opening and closing; the geometry and where a drag ends (pure, tested) |
