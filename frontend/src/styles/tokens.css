@@ -5,7 +5,6 @@
  * Layer 2, semantic: what a color is FOR. Components only use these.
  *   Each semantic color is light-dark(<light>, <dark>):
  *   light = "Fania de día" (1970s NY salsa flyer), dark = "Luz de escenario" (a bachata sensual social at night).
- *   In dark, the calendar view is "Contraluz" (a festival poster): its own tokens, at the end of this file.
  * Layer 3, scales:   type, spacing, shape, sizes, motion.
  *
  * Theme selection: `color-scheme` decides which side of light-dark() applies.
@@ -62,30 +61,6 @@
   --coral-400: #f2785c;
   --gold-300: #f4c542; /* the stage's lettering: logo, buttons, sticker, today */
   --plum-700: #3e1f4a; /* holidays */
-
-  /* Contraluz (dark, only the calendar): a festival poster, the lineup backlit in gold, ember and magenta
-     on a black-aubergine stage. */
-  --aubergine-975: #0a050c;
-  --aubergine-950: #0c070f;
-  --aubergine-900: #140d18;
-  --aubergine-800: #211726;
-  --aubergine-600: #3a2b40;
-  --aubergine-400: #a68aab;
-  --parchment-100: #f8ecdc;
-  --parchment-200: #ecdcca;
-  --dusk-300: #cfb6b6;
-  --dusk-400: #b89aa8;
-  --apricot-300: #ffb592;
-  --blush-300: #f4b6c8;
-  --rouge-350: #ff7d86;
-  --rouge-500: #e23c6c;
-  --ember-350: #ff9a5c;
-  --ember-400: #ff8f52;
-  --ember-500: #f2683a;
-  --footlight-300: #f8bc52; /* period headings */
-  --footlight-400: #ffc63f;
-  --footlight-450: #ffbb3a;
-  --rosewine-700: #45192c; /* holidays */
 
   /* ---------- Layer 2: semantic colors (light, dark) ---------- */
   /* Surfaces */
@@ -235,46 +210,3 @@
   --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.9  0 0 0 0 0.85  0 0 0 0 1  0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Contraluz: the calendar view in the dark theme (calendar.css), a festival poster hung in the ballroom.
-   The same roles, re-colored inside .calendar only: an aubergine stage, a warm gold and ember backlight. */
-:root[data-theme="dark"] .calendar {
-  --bg: var(--aubergine-900);
-  --surface: var(--aubergine-800);
-  --surface-sunken: var(--aubergine-950);
-  --border: var(--aubergine-400);
-  --divider: var(--aubergine-600);
-  --text: var(--parchment-100);
-  --text-muted: var(--dusk-300);
-  --text-italic: var(--apricot-300);
-  --accent: var(--ember-400);
-  --focus: var(--footlight-400);
-  --action: var(--footlight-400);
-  --on-action: var(--wine-900);
-  --chip-active-bg: var(--footlight-400);
-  --chip-active-text: var(--wine-900);
-  --pulse: rgb(255 143 82 / 0.5);
-  --stripe-1: var(--rouge-500);
-  --stripe-2: var(--ember-500);
-  --stripe-3: var(--footlight-450);
-  --period-title: var(--footlight-300);
-  --period-shadow: var(--aubergine-975);
-  --sticker-bg: var(--footlight-400);
-  --sticker-text: var(--wine-900);
-  --today-bg: var(--footlight-400);
-  --today-text: var(--wine-900);
-  --holiday-bg: var(--rosewine-700);
-  --type-social: var(--rouge-350);
-  --type-workshop: var(--footlight-400);
-  --type-concert: var(--ember-350);
-  --type-festival: var(--blush-300);
-  --type-congress: var(--blush-300);
-  --type-competition: var(--parchment-200);
-  --type-show: var(--blush-300);
-  --type-other: var(--dusk-400);
-  --on-type: var(--wine-900);
-  /* The backlight behind the month's name: a gold core, ember, then magenta fading into the night. */
-  --backlight:
-    radial-gradient(130% 360px at 50% -130px, rgb(255 196 90 / 0.3), rgb(246 98 60 / 0.24) 35%, rgb(214 40 110 / 0.2) 62%, transparent 90%) no-repeat,
-    radial-gradient(60% 200px at 85% 0%, rgb(255 200 110 / 0.1), transparent 80%) no-repeat;
-  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 0.85  0 0 0 0 0.75  0 0 0 0.045 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}

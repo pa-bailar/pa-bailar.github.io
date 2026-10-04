@@ -5,7 +5,7 @@ Two themes, one system:
 | Theme | Name | Mood | Source |
 |---|---|---|---|
 | Light | **Fania de día** | A 1970s salsa flyer: cream offset paper, tomato red and marigold ink | New York salsa graphics (Izzy Sanabria, Fania Records), 1968–88 |
-| Dark | **Luz de escenario** | The late-night social: a hotel ballroom in an indigo and violet wash, a magenta gel spot from above, gold lettering, pink accents. The calendar is **Contraluz**, a festival poster backlit in gold and ember | European *bachata sensual* socials and festivals, 2010s–2020s |
+| Dark | **Luz de escenario** | The late-night social: a hotel ballroom in an indigo and violet wash, a magenta gel spot from above, gold lettering, pink accents. | European *bachata sensual* socials and festivals, 2010s–2020s |
 
 The **structure** (type, motifs, components) comes from Fania. The **mood** of the dark theme comes from bachata sensual. Both themes share every component; only the color values change, plus the dark theme's lighting ("Luz de escenario", below).
 
@@ -86,20 +86,12 @@ The dark theme isn't a flat color: the page is lit like the ballroom of a late-n
   through instead of cutting it with a flat band. The sticky jump bar keeps `--bg`.
 - **The browser bar** (`theme-color`) is the page's indigo, `#16122B` (`scripts/themeConfig.ts`).
 
-**The calendar is "Contraluz"** (backlight): a festival poster hung in the ballroom. In dark, `.calendar` re-sets
-the semantic colors to its own palette (the `:root[data-theme="dark"] .calendar` block at the end of
-`tokens.css`): a black-aubergine stage (`--bg` `#140d18`, cells `#211726`, outlines `#a68aab`), parchment text
-`#f8ecdc`, gold `#ffc63f` on wine for today and the buttons, an ember accent `#ff8f52` for the selected day,
-a wine-rose holiday `#45192c`, and warmer type colors for the dots and pills. The section paints that stage
-(`calendar.css`) with its own light, `--backlight`: a gold core, ember, then magenta behind the month's name.
-On phones it rises edge to edge right under the bar, so switching from Próximos reads as the stage changing;
-on wider screens it's a framed panel. Everything inside follows, including the selected day's cards. The
-section sets `color: var(--text)` itself, since inherited text color was resolved with the page's tokens.
+The calendar uses the same theme as the rest of the page (an earlier version gave it its own palette;
+the owner preferred one look throughout).
 
-**Contrast** (`npm run check` checks every pair in light, in dark, and again inside the calendar):
+**Contrast** (`npm run check` checks every pair in light and in dark):
 - Luz de escenario: body text 15.97:1 on the page, 14.18:1 on cards; muted 9.62:1; the lowest text pair is
   "Gratis" (5.33:1, white on green, as in light), then the pink time on cards (6.87:1); outlines ≥ 4.12:1.
-- Contraluz: text 16.38:1; muted 10.01:1; lowest text pair 5.33:1 ("Gratis"), then 6.99:1; outlines ≥ 5.63:1.
 - **Over the light**, measured on rendered pixels (the brightest background pixel behind each text, at 375 and
   1280px): logo ≥ 7.73:1, tagline ≥ 7.72:1, "Actualizado" ≥ 7.89:1, tabs ≥ 8.69:1, the switch's outline
   ≥ 3.15:1; in the calendar, the month ≥ 11.16:1 and the weekdays ≥ 8.04:1.
@@ -468,7 +460,7 @@ then the flyer, then "Ver en Instagram". × and Escape close it; it slides in fr
 
 ## Adding something new
 
-1. Need a new color, size or spacing? Add a token in `tokens.css` (semantic colors need both a light and a dark value, and a Contraluz value in the dark `.calendar` block if the calendar or its cards use them).
+1. Need a new color, size or spacing? Add a token in `tokens.css` (semantic colors need both a light and a dark value).
 2. Create `styles/components/<block>.css` and import it in `layouts/BaseLayout.astro`, after the other components. Don't chain CSS with `@import`: the dev server doesn't reload imported files.
 3. Static markup goes in an Astro component (`src/components/<Block>.astro`); markup rendered from data goes in a view (`src/scripts/views/<block>.ts`).
 4. Check both themes and a phone width (375px), and run `npm run check`, before opening the PR.

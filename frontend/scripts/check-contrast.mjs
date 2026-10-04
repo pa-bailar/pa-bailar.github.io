@@ -1,5 +1,4 @@
-// WCAG 2.2 contrast check for every color pair the site uses, in both themes, and in the dark theme's
-// calendar view ("Contraluz", its own tokens inside `.calendar`).
+// WCAG 2.2 contrast check for every color pair the site uses, in both themes.
 // Reads the tokens from src/styles/tokens.css, so it stays in sync with the design system.
 // Usage: node scripts/check-contrast.mjs   (exits 1 if any pair fails; run by `npm run check`)
 
@@ -17,19 +16,11 @@ function parseDeclarations(text) {
   return map;
 }
 
-// The first declaration of each token is the :root one; the calendar's dark overrides come later.
 const declarations = parseDeclarations(css);
-const calendarBlock = css.match(/:root\[data-theme="dark"\] \.calendar \{([^}]*)\}/);
-if (!calendarBlock) throw new Error("No dark .calendar block in tokens.css");
-const calendarOverrides = parseDeclarations(calendarBlock[1]);
 
-/** Resolve a token to a hex color for "light", "dark" or "calendar" (dark, inside `.calendar`). */
+/** Resolve a token to a hex color for "light" or "dark". */
 function resolve(token, theme, depth = 0) {
   if (depth > 10) throw new Error(`Token loop at --${token}`);
-  if (theme === "calendar") {
-    if (calendarOverrides.has(token)) return resolveValue(calendarOverrides.get(token), theme, depth);
-    theme = "dark";
-  }
   const value = declarations.get(token);
   if (!value) throw new Error(`Unknown token --${token}`);
   const lightDark = value.match(/^light-dark\((.+),\s*(var\(--[\w-]+\)|#[0-9a-f]{3,8}|rgb\([^)]*\))\)$/i);
@@ -127,9 +118,8 @@ let failures = 0;
 const THEME_NAMES = {
   light: "Fania de día (light)",
   dark: "Luz de escenario (dark)",
-  calendar: "Contraluz (dark, inside the calendar view: every pair, as its cells and the selected day's cards use them)",
 };
-for (const theme of ["light", "dark", "calendar"]) {
+for (const theme of ["light", "dark"]) {
   console.log(`\n${THEME_NAMES[theme]}`);
   for (const [what, fgToken, bgToken, kind] of PAIRS) {
     const [fg, bg] = [resolve(fgToken, theme), resolve(bgToken, theme)];
