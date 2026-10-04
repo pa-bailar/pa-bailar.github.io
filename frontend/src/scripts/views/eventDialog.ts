@@ -6,18 +6,26 @@
 //     of closing slides it away instead of making it vanish.
 // The address bar shows the current event's own URL (/evento/<id>/): opening pushes it to the history,
 // so "back" closes the viewer; swiping replaces it, so back still closes instead of stepping events.
+//
+// Memory: the track has a slide for every event (so swiping and the counter work as one strip), but only the
+// current event and its neighbors have their detail inside (`renderAround`, RENDERED_AROUND); the others are
+// empty slides of the same width. Filling all of them loaded every flyer and clip of the list at once (35
+// full-size images for 37 events, about 190 MB decoded), which made iPhone's Safari close the page. Emptied
+// slides release their clips and players, and closing the viewer empties them all.
 
 import type { DanceEvent } from "../types";
-import { byId, prefersReducedMotion } from "../lib/dom";
+import { byId, escapeHtml, prefersReducedMotion } from "../lib/dom";
 import { trackPageview } from "../lib/analytics";
 import { eventPath } from "../lib/links";
 import { dismissSheet, initSheet } from "../lib/sheet";
-import { pauseClips, watchClips } from "./clips";
+import { pauseClips, releaseClips, watchClips } from "./clips";
 import { stopInlinePlayers } from "./inlinePlayer";
 import { eventDetailHtml, handleDetailClick } from "./eventDetail";
+import { slidesToRender } from "./viewerWindow";
 
 const HINT_KEY = "swipe-hint-seen";
 const SETTLE_DELAY = 120; // ms without scrolling that count as "the swipe ended"
+const RENDERED_AROUND = 1; // events rendered on each side of the current one
 
 let list: DanceEvent[] = [];
 let index = 0;
@@ -31,12 +39,60 @@ const dialog = () => byId<HTMLDialogElement>("event-dialog");
 const track = () => byId("viewer-track");
 const slides = () => [...track().children] as HTMLElement[];
 
-function slideHtml(event: DanceEvent, position: number): string {
+/** An empty slide: its detail goes in when it's the current event or next to it (fillSlide). */
+function slideHtml(position: number): string {
   return `
     <article class="viewer-slide event-dialog__layout" data-slide="${position}" role="group"
-      aria-roledescription="evento" aria-label="${position + 1} de ${list.length}">
-      ${eventDetailHtml(event, 0, { headingLevel: 2, titleId: `event-title-${position}` })}
-    </article>`;
+      aria-roledescription="evento" aria-label="${position + 1} de ${list.length}"></article>`;
+}
+
+/** The detail, or, if this event can't be shown, a way to its page: one bad event never breaks the viewer. */
+function detailHtml(event: DanceEvent, position: number, selected = 0): string {
+  try {
+    return eventDetailHtml(event, selected, { headingLevel: 2, titleId: `event-title-${position}` });
+  } catch (error) {
+    console.error(error);
+    return `
+      <div class="event-dialog__info">
+        <h2 class="event-dialog__title" id="event-title-${position}">${escapeHtml(event.title)}</h2>
+        <p>No pudimos mostrar este evento aquí.</p>
+        <p><a class="btn" href="${escapeHtml(eventPath(event))}">Abrir su página</a></p>
+      </div>`;
+  }
+}
+
+function fillSlide(slide: HTMLElement) {
+  if (slide.dataset.rendered !== undefined) return;
+  const position = Number(slide.dataset.slide);
+  const event = list[position];
+  if (!event) return;
+  slide.innerHTML = detailHtml(event, position);
+  slide.dataset.rendered = "";
+  watchClips(slide);
+}
+
+/** Back to an empty slide, releasing its clip and player first. */
+function emptySlide(slide: HTMLElement) {
+  if (slide.dataset.rendered === undefined) return;
+  stopInlinePlayers(slide);
+  releaseClips(slide);
+  slide.replaceChildren();
+  slide.scrollTop = 0;
+  delete slide.dataset.rendered;
+}
+
+/** Fill the slides around `position`; with `trim`, empty the others (when a swipe has settled). */
+function renderAround(position: number, { trim = true } = {}) {
+  const keep = slidesToRender(position, list.length, RENDERED_AROUND);
+  slides().forEach((slide, i) => {
+    if (keep.has(i)) fillSlide(slide);
+    else if (trim) emptySlide(slide);
+  });
+}
+
+/** Empty every slide (the viewer closed, or opens on another list). */
+function emptyAll() {
+  slides().forEach(emptySlide);
 }
 
 function scrollToSlide(position: number, smooth: boolean) {
@@ -58,6 +114,7 @@ function setCurrent(position: number, { updateUrl }: { updateUrl: boolean }) {
   index = position;
   const event = list[position];
   if (!event) return;
+  renderAround(position);
   showPosition(position);
   dialog().setAttribute("aria-labelledby", `event-title-${position}`);
   slides().forEach((slide, i) => (slide.inert = i !== position));
@@ -120,10 +177,10 @@ function maybeHint() {
 
 /** Opens `event`, with `events` (the list on screen, in order) as the slides to swipe through. */
 export function openEventDialog(event: DanceEvent, events: DanceEvent[], { pushHistory = true } = {}) {
+  emptyAll(); // the slides of the list it had before, with their clips
   list = events.some((item) => item.id === event.id) ? events : [event];
   const position = list.findIndex((item) => item.id === event.id);
-  track().innerHTML = list.map(slideHtml).join("");
-  watchClips(track());
+  track().innerHTML = list.map((_, position) => slideHtml(position)).join("");
   if (!dialog().open) dialog().showModal();
   // The viewer itself takes the focus, not its first button: opening it (for example from a shared link,
   // before any tap) would otherwise show "‹" outlined as if selected. The arrow keys work from here.
@@ -147,7 +204,9 @@ export function initEventDialog(find: (id: string) => DanceEvent | undefined) {
       const event = list[position];
       const rerender = (selected: number) => {
         if (!event) return;
-        slide.innerHTML = eventDetailHtml(event, selected, { headingLevel: 2, titleId: `event-title-${position}` });
+        stopInlinePlayers(slide);
+        releaseClips(slide);
+        slide.innerHTML = detailHtml(event, position, selected);
         watchClips(slide);
       };
       if (event && handleDetailClick(slide, domEvent, event, rerender)) return;
@@ -173,7 +232,9 @@ export function initEventDialog(find: (id: string) => DanceEvent | undefined) {
         frame = requestAnimationFrame(() => {
           frame = 0;
           const closest = closestSlide();
-          if (closest >= 0) showPosition(closest);
+          if (closest < 0) return;
+          showPosition(closest);
+          renderAround(closest, { trim: false }); // the next event is there before the finger gets to it
         });
       clearTimeout(settleTimer);
       settleTimer = window.setTimeout(onTrackScroll, SETTLE_DELAY);
@@ -190,6 +251,7 @@ export function initEventDialog(find: (id: string) => DanceEvent | undefined) {
   element.addEventListener("close", () => {
     pauseClips(element);
     stopInlinePlayers(element);
+    emptyAll(); // nothing of the viewer stays in memory while it's closed
     if ((history.state as HistoryState | null)?.eventId) history.back();
   });
 

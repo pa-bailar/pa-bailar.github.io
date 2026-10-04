@@ -94,6 +94,8 @@ const PAIRS = [
   ["Count on a menu's chosen row", "text-muted", "surface-sunken", "text"],
   ["Primary button fill on dialog", "action", "surface", "ui"],
   ["Calendar dot outline on day cell (fill color is decorative)", "border", "surface", "ui"],
+  ["Install steps: a browser button's outline (.install-key) on its fill", "border", "surface-sunken", "ui"],
+  ["Install steps: the arrow toward the browser's button", "accent", "surface", "ui"],
 ];
 
 // ---------- run ----------

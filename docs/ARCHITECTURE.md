@@ -349,6 +349,10 @@ stateDiagram-v2
 
 - **The viewer is a `<dialog>`** with one slide per event on screen, in list order. Swiping uses CSS
   scroll snapping. On phones it's a bottom sheet you can drag down to close (`lib/sheet.ts`).
+- **Only three slides have content:** the current event and its two neighbors (`views/viewerWindow.ts`). The
+  others are empty slides of the same width, filled as a swipe gets near them; closing the viewer empties them
+  all. Rendering every slide loaded every flyer of the list at once, which made iPhones close the page
+  (section 5.7).
 - **The address bar follows the event:**
   - opening pushes the event's own URL to the history, so the phone's back button closes the viewer;
   - swiping replaces it, so back still closes instead of stepping through events;
@@ -372,7 +376,7 @@ stateDiagram-v2
 
 ### 5.5 Installing, saving and searching
 
-- **Install:** `views/installPrompt.ts` offers it (a banner from the second visit, a footer link): Chrome/Edge's own dialog, or the steps on iPhone. It also registers the service worker (built site only).
+- **Install:** `views/installPrompt.ts` offers it (a banner under the header, a footer link): Chrome/Edge's own dialog, or a sheet with the steps for where the visitor is (`lib/installPlace.ts`, from the user agent: Safari 26, earlier Safari, other iPhone browsers, apps' own browsers, Android). On iPhone the page can't tell whether it was added, so "Ya la agregué" and closing the steps hide the banner (section 5.7). It also registers the service worker (built site only).
 - **Saved events** live in this browser (`lib/saved.ts`, localStorage); "Guardados" filters the list and the calendar to them.
 - **Search** (`lib/search.ts`) runs on the events already in the page, accent-insensitive, every word anywhere in the event.
 - **Sharing** (`views/sharing.ts`) goes through the phone's share menu: an event (its link, with the flyer as preview), a near period or the visitor's plans (an image drawn in the browser, `lib/shareCard.ts`, and a list for WhatsApp).
@@ -386,6 +390,40 @@ stateDiagram-v2
   paint, so the page never flashes the wrong theme (allowed by its hash, section 3.3).
 - **Colors** are CSS tokens with `light-dark()` (`styles/tokens.css`); [`DESIGN.md`](DESIGN.md) has
   them all.
+
+### 5.7 iPhone (Safari)
+
+Every browser on an iPhone is Safari's engine (WebKit), with its own limits:
+- **Memory.** iOS closes a tab that uses too much memory ("A problem repeatedly occurred on…", the page
+  reloads), with no error the page can catch. Decoded images are the big cost: a 1080×1350 flyer is about
+  6 MB once decoded, whatever its file size. So:
+  - the viewer renders only the current event and its neighbors (section 5.3). Before, opening any event
+    rendered a slide per event in the list: 35 flyers (about 190 MB decoded) and every clip, loaded at once,
+    and kept after closing. Measured in WebKit with an iPhone profile: opening an event took the page from
+    100 MB to 235 MB, and four open/close rounds to 573 MB; now 118 MB and 215 MB;
+  - the one-time swipe nudge animates only those rendered slides;
+  - videos' clips (`views/clips.ts`): `preload="none"`, muted, `playsinline`, one playing at a time; a clip that
+    leaves the page is released (unwatched, its `src` removed and reloaded), so its decoder and buffers go;
+  - Instagram's player (an iframe) is removed when its slide goes off screen, when the viewer closes and when
+    the post sheet closes.
+- **One bad event can't break the viewer:** a slide that fails to render shows a link to the event's page
+  instead (`eventDialog.ts`).
+- **Installing** has no browser dialog: the page is added from the share menu. Where that menu is depends on
+  the browser and the version, so `lib/installPlace.ts` reads the user agent:
+  - Safari 26 (iOS 26 reports itself as iOS 18.6, so Safari's own `Version/26` tells): ⋯ at the bottom right →
+    Compartir → Agregar a inicio → Abrir como app web → Agregar (with the top or bottom bar layouts, Compartir is
+    in the bar);
+  - Safari 18 and earlier: Compartir in the middle of the bottom bar → Agregar a inicio → Agregar (iPad: at the
+    top right);
+  - Chrome, Edge, Firefox: their own Compartir, then the same menu (iOS 16.4 or later; earlier, only Safari:
+    the steps say so, with "Copiar enlace");
+  - Instagram, Facebook, TikTok, the Google app…: their own browsers can't install; open it in Safari, or copy
+    the link.
+
+  The home-screen app keeps its storage apart from Safari, and Safari can't ask whether it's installed. It's
+  recognized when it runs (`display-mode: standalone`, `navigator.standalone`), and shows no offer there.
+- **Head tags:** `apple-touch-icon` (180×180, opaque, iOS rounds it) and `apple-mobile-web-app-title`
+  (`BaseLayout.astro`); iOS takes the rest (name, full screen) from the manifest.
 
 ---
 
@@ -436,7 +474,7 @@ only Instagram content it loads is a post's player, and only when a visitor taps
 | Data contract | Every field of `events.json` and `meta.json`: types, allowed values (event types, styles, confidence), real dates and time formats, `end_date` after `date` and within 7 days, unique ids, usernames, post links (`instagram.com/<p, reel, reels or tv>/<code>/`), flyer and clip paths (inside `flyers/` and `previews/`) and their files existing, sorting | `frontend/scripts/check-data.mjs` |
 | Types | `astro check`: strict TypeScript, including `noUncheckedIndexedAccess` | `tsconfig.json` |
 | Color contrast | Every color pair the site uses, in both themes, against WCAG 2.2 AA. It reads the tokens from `tokens.css`, so it can't drift from the design system | `frontend/scripts/check-contrast.mjs` |
-| Unit tests | Dates and Bogotá's "today", formatting, filtering (rhythms and dates, "Mañana", the options and their counts) and period grouping, holidays, the policy check | `frontend/tests/*.test.ts` (Vitest) |
+| Unit tests | Dates and Bogotá's "today", formatting, filtering (rhythms and dates, "Mañana", the options and their counts) and period grouping, holidays, the policy check, where the visitor can install from and its steps, which viewer slides are rendered | `frontend/tests/*.test.ts` (Vitest) |
 | Build | Every page, image and feed is generated; every page's Content Security Policy allows its inline scripts and styles, and no page has a `style=""` attribute (section 3.3) | `npm run build`, `frontend/scripts/csp-meta.mjs` |
 
 All five run in `ci` on every pull request, and the ruleset requires `ci` before merging.
@@ -479,9 +517,9 @@ frontend/
       theme.ts, themeConfig.ts   theme modes
       views/              upcomingView, calendarView, eventCard, eventDetail, eventDialog, filters,
                           jumpBar, viewSwitch, postsSheet, postViewer, inlinePlayer, clips, saveButton,
-                          sharing, installPrompt (HTML strings + their behavior)
+                          sharing, installPrompt, viewerWindow (HTML strings + their behavior)
       lib/                dates, holidays, format, links, contact, mediaLabel, search, saved, share,
-                          shareText, shareCard, analytics, dom, icons, sheet, instagramEmbed
+                          shareText, shareCard, analytics, dom, icons, sheet, instagramEmbed, installPlace
     styles/               tokens.css (design tokens), base.css, components/*.css
 ```
 
@@ -493,7 +531,7 @@ frontend/
 | `views/calendarView.ts` | "Calendario", with holidays |
 | `views/eventCard.ts` | A card: flyer at its shape, date sticker, details |
 | `views/eventDetail.ts` | An event's full detail (dialog and page): the flyer of each post, details, prices, actions |
-| `views/eventDialog.ts` | The viewer: slides, swiping, URL history, closing |
+| `views/eventDialog.ts`, `views/viewerWindow.ts` | The viewer: slides (only the current event and its neighbors rendered), swiping, URL history, closing |
 | `screenHistory.ts` | History entries for the app's screens (academy, period, calendar, saved): the phone's back steps through them |
 | `views/filters.ts` | Date, type and style chips, the academy notice; the rhythm and date options with their counts; the dropdowns' labels |
 | `views/jumpBar.ts` | Phones: the sticky bar, its checklist menus (dates, rhythms), keeping your place, hiding on scroll |
@@ -504,12 +542,12 @@ frontend/
 | `lib/instagramEmbed.ts` | Instagram's player for a post, its script loaded on demand |
 | `views/postsSheet.ts`, `views/postViewer.ts` | An event's posts (Flyers / Videos); a post watched inside the site |
 | `views/inlinePlayer.ts` | A video tapped in the detail plays in the image's place (Instagram's player), removed when off screen |
-| `views/clips.ts` | Videos' clips in the detail: the one on screen plays, silent and looping |
+| `views/clips.ts` | Videos' clips in the detail: the one on screen plays, silent and looping, one at a time; released when they leave the page |
 | `lib/contact.ts` | The organizer's contact as a link: Instagram, WhatsApp, phone or website |
 | `lib/search.ts` | Search over the events in the page |
 | `lib/saved.ts`, `views/saveButton.ts` | Saved events ("Guardados"): the ids in this browser; the bookmarks and toggles |
 | `lib/share.ts`, `lib/shareText.ts`, `lib/shareCard.ts`, `views/sharing.ts` | Sharing through the phone's menu: the text, the image of a list, what each share button sends |
-| `views/installPrompt.ts` | Installing the site like an app; registers the service worker |
+| `views/installPrompt.ts`, `lib/installPlace.ts` | Installing the site like an app: the offer, and the steps for each browser; registers the service worker |
 | `lib/analytics.ts` | GoatCounter events |
 | `lib/dom.ts`, `lib/icons.ts` | DOM helpers and `escapeHtml`; inline SVG icons |
 | `lib/dates.ts`, `lib/holidays.ts`, `lib/format.ts` | Dates in Bogotá, Colombian holidays, Spanish formatting |

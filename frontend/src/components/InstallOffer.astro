@@ -1,7 +1,9 @@
 ---
 // Installing the site like an app (scripts/views/installPrompt.ts): the banner under the header (phones,
-// dismissible) and the sheet with the steps for where the visitor is. Hidden until the script shows them.
+// dismissible) and the sheet with the steps for where the visitor is (lib/installPlace.ts). Hidden until the
+// script shows them.
 import { BASE_URL } from "../scripts/lib/links";
+import { ICONS } from "../scripts/lib/icons";
 ---
 
 <aside class="container install-banner" id="install-banner" aria-label="Instalar la app" hidden>
@@ -25,5 +27,14 @@ import { BASE_URL } from "../scripts/lib/links";
     <button class="icon-btn" type="button" data-close-sheet aria-label="Cerrar">×</button>
   </div>
   <ol class="install-sheet__steps" id="install-steps"></ol>
-  <p class="install-sheet__note">Pa' Bailar queda en tu pantalla de inicio y se abre como una app.</p>
+  <div class="install-sheet__actions">
+    <button class="btn" type="button" id="install-copy" data-install-copy data-track="instalar-copiar-enlace" hidden>
+      <Fragment set:html={ICONS.link} />Copiar enlace
+    </button>
+    <button class="btn" type="button" id="install-done" data-install-done data-track="instalar-hecho" hidden>Ya la agregué</button>
+    <p class="install-sheet__status" id="install-status" role="status"></p>
+  </div>
+  <p class="install-sheet__note" id="install-note">Pa' Bailar queda en tu pantalla de inicio y se abre como una app.</p>
+  <!-- Where the browser's button is (its bar, below the page): an arrow pointing at it. -->
+  <span class="install-sheet__pointer" id="install-pointer" aria-hidden="true" hidden><Fragment set:html={ICONS.arrowDown} /></span>
 </dialog>
