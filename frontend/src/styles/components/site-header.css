@@ -64,18 +64,8 @@
   stroke-linecap: round;
 }
 
-/* Show the icon of the current mode: half circle (auto, the default), sun (día) or moon (noche). */
-.theme-toggle__icon--sun,
-.theme-toggle__icon--moon {
-  display: none;
-}
-
-:root[data-theme-mode="light"] .theme-toggle__icon--sun,
-:root[data-theme-mode="dark"] .theme-toggle__icon--moon {
-  display: block;
-}
-
-:root[data-theme-mode="light"] .theme-toggle__icon--auto,
-:root[data-theme-mode="dark"] .theme-toggle__icon--auto {
+/* Show the current theme: sun + "Claro" (the default, also without data-theme) or moon + "Oscuro". */
+:root[data-theme="dark"] .theme-toggle--light,
+:root:not([data-theme="dark"]) .theme-toggle--dark {
   display: none;
 }

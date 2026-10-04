@@ -1,10 +1,21 @@
-// Theme settings shared by scripts/theme.ts and the inline pre-paint script in BaseLayout.astro, so the
-// two can't drift apart.
+// Theme settings and rules shared by scripts/theme.ts (the toggle) and the pre-paint script (themeScript.ts,
+// inlined by BaseLayout.astro), so the two can't drift apart.
 
 export type Theme = "light" | "dark";
 
+/** localStorage key with the visitor's choice: "light" or "dark". */
 export const THEME_STORAGE_KEY = "theme";
-export const DAY_START_HOUR = 6; // "Fania de día" from 6:00…
-export const NIGHT_START_HOUR = 18; // …to 17:59, "Noche Fania" the rest of the day
 /** Browser UI color (address bar on phones) per theme: the page background token (--bg). */
 export const THEME_COLORS: Record<Theme, string> = { light: "#ECDDC6", dark: "#161112" };
+
+/** The theme a stored value asks for. Light ("Fania de día") is the default: only a saved "dark" is dark;
+ * nothing saved, "light", blocked storage and anything else (the old "auto" mode, unknown values) are light. */
+export function storedTheme(value: string | null | undefined): Theme {
+  return value === "dark" ? "dark" : "light";
+}
+
+/** Whether a stored value is one this version writes; anything else is left from an older one. */
+export const isThemeValue = (value: string | null | undefined): value is Theme => value === "light" || value === "dark";
+
+/** The toggle switches between the two. */
+export const otherTheme = (theme: Theme): Theme => (theme === "dark" ? "light" : "dark");

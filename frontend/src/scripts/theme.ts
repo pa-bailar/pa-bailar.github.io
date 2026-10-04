@@ -1,88 +1,47 @@
-// Theme modes, like macOS "Auto":
-//   auto  → "Fania de día" (light) from 6:00 to 17:59 and "Noche Fania" (dark) the rest of the day,
-//           by the visitor's clock, switching on its own while the page is open
-//   light → always light
-//   dark  → always dark
-// The toggle cycles auto → light → dark → auto; the choice is remembered (auto is the default).
-// BaseLayout.astro applies the same rules before first paint (an inline script); both read their
-// settings from themeConfig.ts.
+// The theme switch: Claro ("Fania de día", the default for everyone) or Oscuro ("Noche Fania"). Clicking it
+// switches and remembers the choice in localStorage; where storage is blocked (private mode) it still switches,
+// just for this visit. The pre-paint script (themeScript.ts) has already applied the saved theme; this keeps
+// the toggle, the attribute and the address bar color in step. Rules and settings: themeConfig.ts.
 
 import { byId } from "./lib/dom";
-import {
-  DAY_START_HOUR,
-  NIGHT_START_HOUR,
-  THEME_COLORS,
-  THEME_STORAGE_KEY as STORAGE_KEY,
-  type Theme,
-} from "./themeConfig";
+import { isThemeValue, otherTheme, storedTheme, THEME_COLORS, THEME_STORAGE_KEY, type Theme } from "./themeConfig";
 
-type Mode = "auto" | "light" | "dark";
+const THEME_NAMES: Record<Theme, string> = { light: "claro", dark: "oscuro" };
 
-const MODES: Mode[] = ["auto", "light", "dark"];
-const RECHECK_MS = 60_000;
-const MODE_LABELS: Record<Mode, string> = { auto: "Auto", light: "Día", dark: "Noche" };
-const THEME_NAMES: Record<Theme, string> = { light: "día", dark: "noche" };
-
-/** auto → light → dark → auto */
-function nextMode(mode: Mode): Mode {
-  return MODES[(MODES.indexOf(mode) + 1) % MODES.length] ?? "auto";
-}
-
-function savedMode(): Mode {
+/** The saved theme. Cleans up a value left by an older version (the old "auto" mode): it reads as light. */
+function savedTheme(): Theme {
   try {
-    const value = localStorage.getItem(STORAGE_KEY);
-    return value === "light" || value === "dark" ? value : "auto";
+    const value = localStorage.getItem(THEME_STORAGE_KEY);
+    if (value !== null && !isThemeValue(value)) localStorage.removeItem(THEME_STORAGE_KEY);
+    return storedTheme(value);
   } catch {
-    return "auto"; // storage blocked (private mode, etc.)
+    return "light"; // storage blocked (private mode, etc.)
   }
 }
 
-function saveMode(mode: Mode) {
+function saveTheme(theme: Theme) {
   try {
-    if (mode === "auto") localStorage.removeItem(STORAGE_KEY);
-    else localStorage.setItem(STORAGE_KEY, mode);
+    localStorage.setItem(THEME_STORAGE_KEY, theme);
   } catch {
     // Not persisted; still applies for this visit.
   }
 }
 
-function timeOfDayTheme(now = new Date()): Theme {
-  const hour = now.getHours();
-  return hour >= DAY_START_HOUR && hour < NIGHT_START_HOUR ? "light" : "dark";
-}
-
-function resolveTheme(mode: Mode): Theme {
-  return mode === "auto" ? timeOfDayTheme() : mode;
-}
-
-function apply(mode: Mode, button: HTMLButtonElement) {
-  const theme = resolveTheme(mode);
-  const root = document.documentElement;
-  root.dataset.theme = theme;
-  root.dataset.themeMode = mode;
+/** The page shows `theme`; the button's visible label (Claro / Oscuro) follows it through CSS. */
+function apply(theme: Theme, button: HTMLButtonElement) {
+  document.documentElement.dataset.theme = theme;
   document.querySelector<HTMLMetaElement>('meta[name="theme-color"]')?.setAttribute("content", THEME_COLORS[theme]);
-
-  const next = nextMode(mode);
-  button.querySelector(".theme-label")!.textContent = MODE_LABELS[mode];
-  const current = mode === "auto" ? `automático (ahora ${THEME_NAMES[theme]})` : THEME_NAMES[theme];
-  button.setAttribute("aria-label", `Tema: ${current}. Cambiar a ${MODE_LABELS[next].toLowerCase()}`);
+  button.setAttribute("aria-label", `Modo ${THEME_NAMES[theme]}. Cambiar a modo ${THEME_NAMES[otherTheme(theme)]}`);
 }
 
 export function initThemeToggle() {
   const button = byId<HTMLButtonElement>("theme-toggle");
-  let mode = savedMode();
-  apply(mode, button);
+  let theme = savedTheme();
+  apply(theme, button);
 
   button.addEventListener("click", () => {
-    mode = nextMode(mode);
-    saveMode(mode);
-    apply(mode, button);
+    theme = otherTheme(theme);
+    saveTheme(theme);
+    apply(theme, button);
   });
-
-  // In auto mode, switch at 6:00 and 18:00 while the page stays open, and when coming back to it.
-  const recheck = () => {
-    if (mode === "auto") apply(mode, button);
-  };
-  setInterval(recheck, RECHECK_MS);
-  document.addEventListener("visibilitychange", recheck);
 }
