@@ -28,7 +28,13 @@ const updatedLabel = new Date(checkedAt).toLocaleDateString("es-CO", {
 <BaseLayout
   title="Pa' Bailar · Bogotá"
   description="Sociales y talleres de baile en Bogotá: salsa, bachata, mambo y más, en un solo lugar."
-  image="og/sitio.jpg"
+  image={{
+    path: "og/sitio.jpg",
+    width: 1200,
+    height: 630,
+    type: "image/jpeg",
+    alt: "Pa' Bailar: sociales y talleres de baile en Bogotá",
+  }}
 >
   <SiteHeader updatedLabel={updatedLabel} />
   <InstallOffer />

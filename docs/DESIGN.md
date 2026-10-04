@@ -143,7 +143,7 @@ Everything goes through the phone's own share menu (`lib/share.ts`, Web Share): 
 WhatsApp, a group, Instagram, Telegram or "copy", as in any app. Where there's no menu (most computers),
 WhatsApp opens with the text. What can be shared (`scripts/views/sharing.ts`):
 - **An event:** "Compartir" in its detail (WhatsApp green): its title, date, place and price, and its
-  page's link, whose preview shows the flyer.
+  page's link, whose preview shows its own image (see "Link previews").
 - **A near period:** a share icon at the end of "Hoy", "Esta semana", "Este fin de semana" and "Próxima
   semana" (`.share-icon`): an image of its events and a list for WhatsApp, as filtered on screen (a
   rhythm, a type, an academy or a search goes in the subtitle).
@@ -158,6 +158,39 @@ WhatsApp opens with the text. What can be shared (`scripts/views/sharing.ts`):
   text goes alone.
 - **The texts** (`lib/shareText.ts`) are written for WhatsApp: the title in *bold*, one line per event
   ("• Sáb 3 · 6:00 p. m. — *Salsa Freestyle* (@madyumdance)"). Shared links carry `utm_source=compartido`.
+
+## Link previews
+
+What a chat shows when an event's link is shared (WhatsApp, Instagram, iMessage, Telegram, Facebook), made at build
+time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section 3.4).
+
+- **Title and description:** "Intensivo Ritmos Cubanos — dom 4 oct, 9:00 a. m." ("Level Up Bachata Fusion Congress —
+  13–15 nov" over several days) and "Taller de salsa cubana · Cra 16 #52-46 · Desde $ 35.000 · Pa' Bailar"
+  (`lib/linkPreview.ts`). The date is in the title because descriptions are often cut.
+- **The image, 1200×630** (1.91:1, the shape every app shows whole; a vertical flyer alone gets cropped or
+  shrunk), the flyer on the left and the event on the right:
+  - **Left half:** the whole flyer (never cropped, as everywhere on the site) over a blurred, darker copy of itself,
+    with a soft shadow. A video's flyer is its frame. Without a flyer, the app icon's record on wine.
+  - **The date sticker** sits on the seam, over the flyer's lower corner, like on the cards: the same record label
+    (tomato, cream text, wine outline), 136 px. Over several days within a month it shows "13–15 / NOV"; across
+    months the first day (`stickerDate`).
+  - **Right half, on the page's paper** (cream-150): the stripes; the date and time in tomato (`--accent`), with real
+    dates, never "Hoy" or "Mañana", since apps keep previews for days (the year when it isn't this one; the time
+    moves whole to the next line when it doesn't fit); the title in Shrikhand, smaller as it gets longer (68 to
+    42 px), at most three lines; the place (venue, address, area) in `--text-muted`, at most two lines; the price,
+    "Gratis" as the cards' green tag (`--free`), otherwise "Desde $ 35.000" in bold; at the bottom "Pa' Bailar" in
+    Shrikhand tomato and "pa-bailar.github.io" in Bodoni italic (`--text-italic`).
+  - **Always the day theme's colors:** a preview is seen in apps of either theme, and the paper reads in both.
+  - **Under 280 KB** (WhatsApp skips images over about 300 KB); most weigh about 115 KB.
+- **The home page** keeps its own preview (`/og/sitio.jpg`: stripes, "Pa' Bailar", the tagline and the record).
+
+## Not found (404)
+
+- Most missing addresses are old event links (events leave the data 60 days after they end), so the page says
+  "Este evento ya pasó o no existe" ("Esta página no existe" for any other address), "…pero la pista sigue
+  abierta." in Bodoni italic, then "Próximos eventos": the first four upcoming events as rows (thumbnail, date in
+  tomato, title in Shrikhand, venue), two columns on wide screens, and "Ver todos los eventos".
+- The stripes stretch across the page, like the header's.
 
 ## Installing it like an app
 
@@ -267,7 +300,7 @@ An event can be announced by several Instagram posts (a flyer, then a video, a r
   - **Reduced motion:** no rise and no slide.
 - **Back moves between the app's screens** (`screenHistory.ts`): an academy's events, a period opened whole, the calendar and "Guardados" each get a history entry, so the phone's back button returns to the previous screen where it was scrolled, instead of leaving the site (which closes the installed app). Undoing one from the page ("Ver todas las academias", the list button, "Guardados" again) steps back, so history never piles up. The app restores scrolling itself (`history.scrollRestoration = "manual"`).
 - **The viewer has a URL:** opening pushes `/evento/<id>/`, so the phone's back button closes it; swiping replaces it, so back still closes instead of stepping through events. A copied link opens that event's page.
-- **Shared links open the app.** An event's link (`/evento/<id>/`) forwards a browser to the home page with that event already in the viewer (`main.ts`, `openSharedEvent`): the visitor sees it as from the list, can swipe to the others, and "back" closes it onto the list instead of leaving the site. The page itself stays for link previews (WhatsApp, Instagram: its flyer as a small JPEG made at build time, `pages/og/[id].jpg.ts`), for search engines (schema.org `Event` data) and for browsers without scripts.
+- **Shared links open the app.** An event's link (`/evento/<id>/`) forwards a browser to the home page with that event already in the viewer (`main.ts`, `openSharedEvent`): the visitor sees it as from the list, can swipe to the others, and "back" closes it onto the list instead of leaving the site. The page itself stays for link previews (WhatsApp, Instagram: see "Link previews"), for search engines (schema.org `Event` data) and for browsers without scripts.
 - **Missing details say "Por confirmar"** in their own row (hora, lugar, precio), in muted italics. Gemini's free-text doubts are not shown; a low-confidence extraction gets one note asking to confirm in the post.
 - **"Cómo llegar"** after the venue opens Google Maps (only when there's a venue or address).
 - **Reporting an error:** the detail ends with a small "¿Algo está mal? Repórtalo" link to the Google Form, with the event filled in (`feedbackUrl`); the footer has "Escríbenos" for anything else. Out of the way of the actions, because almost everyone just wants the event.

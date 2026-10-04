@@ -2,6 +2,7 @@ import sitemap from "@astrojs/sitemap";
 import { fileURLToPath } from "node:url";
 import { defineConfig } from "astro/config";
 import cspMeta from "./scripts/csp-meta.mjs";
+import ogCheck from "./scripts/og-check.mjs";
 
 // The data folder, wherever the build or dev server is started from: pages read flyers from it at build time.
 const dataDir = fileURLToPath(new URL("../data/", import.meta.url));
@@ -21,7 +22,12 @@ export default defineConfig({
   },
   // sitemap-index.xml: the home page and every event page, so search engines find the events.
   // cspMeta: the policy below, moved to the top of each page and checked (scripts/csp-meta.mjs).
-  integrations: [sitemap({ filter: (page) => !page.includes("/404") }), cspMeta()],
+  // ogCheck: every event's link preview exists, is 1200×630 and light enough for WhatsApp (scripts/og-check.mjs).
+  integrations: [
+    sitemap({ filter: (page) => !page.includes("/404") }),
+    cspMeta(),
+    ogCheck({ eventsFile: new URL("../data/events.json", import.meta.url) }),
+  ],
   // No Markdown here; Shiki's highlighting needs style attributes, which the policy blocks.
   markdown: { syntaxHighlight: false },
   // Content Security Policy (docs/ARCHITECTURE.md): GitHub Pages can't send headers, so Astro writes it as a
