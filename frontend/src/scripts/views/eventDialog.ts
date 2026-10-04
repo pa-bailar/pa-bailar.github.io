@@ -231,6 +231,8 @@ function closestSlide(): number {
 
 /** After a swipe settles, the slide closest to the center is the current one. */
 function onTrackScroll() {
+  // Closing hides the track, which resets its scroll: that's no swipe (it would put an event's URL back).
+  if (!dialog().open) return;
   const closest = closestSlide();
   if (closest >= 0 && closest !== index) {
     setCurrent(closest, { updateUrl: true });
@@ -354,6 +356,7 @@ export function initEventDialog(find: (id: string) => DanceEvent | undefined) {
       if (!frame)
         frame = requestAnimationFrame(() => {
           frame = 0;
+          if (!element.open) return;
           const closest = closestSlide();
           if (closest >= 0) renderAround(closest, { trim: false }); // there before the finger gets to it
         });
