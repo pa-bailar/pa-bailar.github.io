@@ -28,7 +28,7 @@ frontend/src/styles/
    ├─ toolbar.css
    ├─ event-card.css
    ├─ calendar.css
-   ├─ event-dialog.css   ← an event's details: the parts shared by the drawer and the event's page
+   ├─ event-detail.css   ← an event's details: the parts shared by the drawer and the event's page
    ├─ drawer.css         ← the details drawer over the list (phones), the side panel (wide screens)
    ├─ sheet.css          ← bottom sheets: rise, drag to dismiss (with scripts/lib/sheet.ts)
    ├─ jump-bar.css       ← phones: the sticky bar, its row of chips and the line under it
@@ -45,7 +45,7 @@ frontend/src/styles/
 
 `tokens.css` has three layers:
 
-1. **Palette:** raw named colors (`--wine-900`, `--tomato-600`, `--marigold-400`…). **Components never use these.**
+1. **Palette:** raw named colors (`--wine-900`, `--tomato-600`, `--marigold-600`…). **Components never use these.**
 2. **Semantic colors:** what a color is *for* (`--bg`, `--surface`, `--text-muted`, `--accent`, `--action`…). Each is `light-dark(<Fania de día>, <Luz de escenario>)`. **Components only use these.**
 3. **Scales:** type sizes, spacing, radii, control sizes, motion.
 
@@ -72,6 +72,8 @@ Themes switch through CSS `color-scheme`: `light` at `:root`, `dark` only under 
 | `--details-bg` / `-pressed` | marigold-200 `#efd082` / `#f0cb63` | gold-900 `#3e322f` / `#544432` | The cards' "Detalles", a tonal fill |
 | `--details-text` / `--details-icon` | wine / tomato-700 | gold-300 / gold-300 | Its label (11.9:1, 7.6:1) and icon (4.4:1, 7.6:1) |
 | `--scrim` | wine-950 | indigo-975 | Under the details drawer: 32% at half height, 55% at full |
+| `--backdrop` | wine at 60% | indigo-black at 78% | Behind the bottom sheets (the filters, the posts, the media viewer, the install steps) |
+| `--focus` | tomato-600 | gold-300 | The keyboard's focus ring |
 | `--stripe-1..3` | tomato, orange, marigold | magenta `#e0438f`, coral `#f2785c`, gold | 70s stripes |
 | `--period-title` / `--period-shadow` | deep tomato / sand | pink-200 `#f7b0d4` / indigo-975 | Period headings |
 | `--sticker-*` | tomato / cream | gold / ink | Round date sticker |
@@ -125,10 +127,10 @@ few set from scripts are listed there): an undefined `--text-base` once left the
   - `--radius-round`: **only** the date sticker and calendar day numbers
 - `--border-width` 1.5px everywhere.
 - Controls: `--control-height` 40px (buttons, toggle), `--chip-height` 32px, `--sticker-size` 60px.
-- Touch: `--touch-target` 44px (the filter chips, the cards' action row, the drawer's buttons).
+- Touch: `--touch-target` 44px (the filter chips, the bar's 🔍 and 🔖, the cards' action row, the drawer's buttons and handle). A control drawn smaller (a 40px chip, the 32px handle) gets an invisible `::after` that makes up the difference above and below, so the bar stays 56px.
 - The phone bar: `--jump-bar-height` 56px, `--filter-line-height` 40px (the line under it while filtering).
 - The details: `--drawer-top-gap` 12px (phones: what's left above the drawer at full height), `--panel-width` 420px (wide screens: the side panel).
-- Small parts: `--tab-underline` 3px (the selected tab's line), `--icon-sm` 16px (marks over thumbnails, a chip's ×), `--icon-md` 20px (the cards' "Detalles", the drawer's ×), `--icon-lg` 24px (the floating button), `--handle-width` × `--handle-height` 40×4px (every sheet's grab handle, `.sheet-handle`), `--fab-size` 44px.
+- Small parts: `--tab-underline` 3px (the selected tab's line), `--icon-sm` 16px (marks over flyers and thumbnails, a chip's ×, "× Limpiar", the sound button), `--icon-md` 20px (the cards' "Detalles", the drawer's ×, the details' media links), `--icon-lg` 24px (Guardar, Compartir, ▶ over a video's flyer, the details' quick actions, the floating button), `--handle-width` × `--handle-height` 40×4px (every sheet's grab handle, `.sheet-handle`), `--fab-size` 44px.
 - Over photos: `--on-image` (white) with `--shadow-on-image`, the same in both themes, for marks that sit on any flyer (▶, stacked squares); `--on-image-bg` (black at 60%) behind words and marks on a flyer ("Sin sonido", ▶).
 
 ## Signature motifs
@@ -186,7 +188,7 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves. The pa
 Everything goes through the phone's own share menu (`lib/share.ts`, Web Share): the visitor picks
 WhatsApp, a group, Instagram, Telegram or "copy", as in any app. Where there's no menu (most computers),
 WhatsApp opens with the text. What can be shared (`scripts/views/sharing.ts`):
-- **An event:** "Compartir" in its detail (WhatsApp green): its title, date, place and price, and its
+- **An event:** "Compartir" in its details (an outlined `.btn`) or on its card: its title, date, place and price, and its
   page's link, whose preview shows its own image (see "Link previews").
 - **A near period:** a share icon at the end of "Hoy", "Esta semana", "Este fin de semana" and "Próxima
   semana" (`.share-icon`): an image of its events and a list for WhatsApp, as filtered on screen (a
@@ -238,7 +240,7 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
 
 ## Installing it like an app
 
-- **What makes it installable:** the manifest (`pages/manifest.webmanifest.ts`: name, wine colors, icons) and a
+- **What makes it installable:** the manifest (`pages/manifest.webmanifest.ts`: name, icons, and the light theme's paper `#ECDDC6` as its background and bar color, `THEME_COLORS.light`) and a
   service worker (`pages/sw.js.ts`). Icons are a record with a marigold label on the logo's tomato red,
   made at build time (`pages/icons/[name].png.ts`), with a smaller "maskable" one for phones that cut
   icons into circles or squircles.
@@ -388,7 +390,7 @@ An event can be announced by several Instagram posts (a flyer, then a video, a r
 - **The media viewer** (`PostViewer.astro`, `scripts/views/postViewer.ts`): the post inside the site, in a sheet over everything (the drawer included), with Instagram's own player (`lib/instagramEmbed.ts`). Videos play there with sound and carousels swipe through all their slides. Opening the Instagram app would leave the site, and the app's back button doesn't come back. The sheet's bar keeps "Abrir en Instagram ↗". Our copy of the flyer shows at once and the player replaces it when ready; if it can't load, the flyer stays with "Esta publicación solo se puede ver en Instagram." Instagram's script loads on the first tap only, never with the page. Closing it removes the player, so a video stops. It opens from the details' "Ver el video con sonido" or "Ver las 4 imágenes" (a carousel), from a post chosen among the event's posts, and on an event's page from its flyer.
 - **Videos play in the feed.** When a card's image is a video's frame and the backend made its clip (`preview`), the card plays it: silent, looping, about 6 seconds, like Instagram's feed (`views/clips.ts`). "Sin sonido" sits in the clip's lower-left corner (`.event-card__sound`, white on `--on-image-bg`); a tap anywhere on the clip turns its sound on ("Con sonido") or off, right there, and doesn't open the details. Only the clip on screen plays, one at a time; a clip that leaves the screen goes silent and unloads. It doesn't autoplay with reduced motion or the browser's data saver: the still frame stays (a tap still plays it with sound). The service worker doesn't cache clips.
 - **A video without a clip** (Instagram gave no file) keeps a ▶ in a dark circle in the middle of the card's image (`.play-mark`); the card opens the details like a photo, and "Ver el video con sonido" there plays it.
-- **On an event's page** the flyer is on top: its clip plays, a label says what's behind it (`lib/mediaLabel.ts`, `.event-dialog__play`: "▶ Ver con sonido", "▶ Ver video", "Ver las 4"), and a tapped video plays in place (`views/inlinePlayer.ts`: Instagram's player in the image's place, full length, with sound; removed once it's out of view).
+- **On an event's page** the flyer is on top: its clip plays, a label says what's behind it (`lib/mediaLabel.ts`, `.event-detail__play`: "▶ Ver con sonido", "▶ Ver video", "Ver las 4"), and a tapped video plays in place (`views/inlinePlayer.ts`: Instagram's player in the image's place, full length, with sound; removed once it's out of view).
 - **"Ver en Instagram ↗"** in the details is the explicit way to the app; the ↗ says it leaves the site.
 
 ## Opening an event
@@ -460,7 +462,7 @@ puts the address back to the home page's.
 - **The event's page** is what a shared link points to, for link previews (see "Link previews"), search engines
   (schema.org `Event` data) and browsers without scripts. Its header links "← Ver próximos eventos"; a past event says
   "Este evento ya pasó."
-- **Panel sheets** (filters, an event's posts, a post) share one base: `.sheet-panel` (`sheet.css`, attached to the bottom on phones, a centered window on wide screens) and `initPanelSheet` / `openPanelSheet` (`lib/sheet.ts`: ×, backdrop, drag down, Escape). Each gets its own history entry, so the phone's back button closes only the sheet on top: a post, then the details, then the list. A sheet opened in another's place (a post chosen among the posts) takes over its entry.
+- **Panel sheets** (filters, an event's posts, a post, the install steps) share one base: `.sheet-panel` (`sheet.css`, attached to the bottom on phones, a centered window on wide screens) and `initPanelSheet` / `openPanelSheet` (`lib/sheet.ts`: ×, backdrop, drag down, Escape). Each gets its own history entry, so the phone's back button closes only the sheet on top: a post, then the details, then the list. A sheet opened in another's place (a post chosen among the posts) takes over its entry.
 - **Bottom sheets** (the panel sheets; `lib/sheet.ts`, `sheet.css`) behave like native ones, with values from Material/iOS sheets, the same as the drawer:
   - **Opening:** they rise in 320ms (Material's emphasized-decelerate curve) while the backdrop fades in.
   - **Dragging:** dragging down follows the finger 1:1, shrinks the sheet slightly and fades the backdrop. Dragging up past the top rubber-bands.
@@ -485,7 +487,7 @@ puts the address back to the home page's.
 - **Event-type color** is applied with a `.t-<type>` class, which exposes `--type` for that element (tags, pills, dots).
 - **No emoji in the UI.** Use text or inline SVG icons.
 - **No `style=""` attributes** in markup: the Content Security Policy blocks them and the build fails on them. Use a class, or set a value that depends on the data from a script (`element.style.setProperty`), like a card's `--flyer-ratio`.
-- **Flyers are never cropped**, in cards or the dialog (`object-fit: contain`). Like Instagram's feed, phones show each flyer at its own shape, from 4:5 (portrait) to 1.91:1 (landscape). The size comes from the file at build time (`src/data.ts`), so the page never jumps as images load. Taller flyers (stories) get a 4:5 frame, and so does every card on wider screens, so rows line up. The space around a flyer of another shape is filled with a blurred copy of itself.
+- **Flyers are never cropped**, on cards or on an event's page (`object-fit: contain`; the drawer shows none). Like Instagram's feed, phones show each flyer at its own shape, from 4:5 (portrait) to 1.91:1 (landscape). The size comes from the file at build time (`src/data.ts`), so the page never jumps as images load. Taller flyers (stories) get a 4:5 frame, and so does every card on wider screens, so rows line up. The space around a flyer of another shape is filled with a blurred copy of itself.
 - **Accessibility:**
   - Every interactive element is a real `<button>` or `<a>`.
   - Visible focus ring (`--focus`).

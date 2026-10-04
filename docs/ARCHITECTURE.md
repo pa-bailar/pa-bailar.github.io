@@ -130,8 +130,15 @@ Notes:
   becomes `https://pa-bailar.github.io/flyers/123-0.webp`;
 - the `@astrojs/sitemap` integration;
 - `import.meta.env.DATA_DIR`, the data folder's absolute path, so the build finds the flyers wherever
-  it's started from;
-- the Content Security Policy (`security.csp`, section 3.3) and the `csp-meta` integration that checks it.
+  it's started from, and `import.meta.env.ASSETS_DIR` (`src/assets/`: the home page's link preview);
+- the Content Security Policy (`security.csp`, section 3.3) and the `csp-meta` integration that checks it;
+- the `og-check` integration: every event's link preview exists, is 1200×630 and light enough (section 3.4);
+- `markdown.syntaxHighlight: false`: there's no Markdown, and Shiki's highlighting needs `style` attributes,
+  which the policy blocks.
+
+Astro is pinned to its minor version (`~7.3.5` in `package.json`, patches only): the policy's `<meta>` and
+hashes come from Astro's `security.csp`, so a minor update can change what `csp-meta.mjs` reads. Update it on
+purpose, then build and check the console.
 
 ### 3.1 Reading the data: `src/data.ts`
 
@@ -160,11 +167,11 @@ flowchart LR
 | `/evento/<id>/` | `pages/evento/[id].astro` | One page per event: where a shared link points. A browser is forwarded to the home page with the event open over the list, unless it's past (section 5.3). Rendered at build time: the flyer, then the same details as the drawer. Includes the link preview's tags (section 3.4) and schema.org `Event` data for search engines |
 | `/og/<id>.jpg` | `pages/og/[id].jpg.ts` | Each event's link-preview image: 1200×630, the flyer with the date, title, place and price (section 3.4) |
 | `/og/sitio.jpg` | `pages/og/sitio.jpg.ts` | The home page's link preview (1200×630): stripes, "Pa' Bailar", the tagline and the record. Drawn once with the site's fonts by `scripts/og-site.html` and stored as `src/assets/og-site.jpg` |
-| `/thumbs/<flyer>.webp` | `pages/thumbs/[name].webp.ts` | A 160 px square thumbnail of every flyer, for the sheet with an event's posts (opened from the "▦ 16" badge on the flyer). A few KB each instead of the 100–200 KB flyer, so they show at once on a phone |
+| `/thumbs/<flyer>.webp` | `pages/thumbs/[name].webp.ts` | A 160 px square thumbnail of every flyer: the sheet with an event's posts, the summarized periods' row of small flyers, the 404 page and a shared list's image (`lib/shareCard.ts`). A few KB each instead of the 100–200 KB flyer, so they show at once on a phone |
 | `/calendario.ics` | `pages/calendario.ics.ts` | A subscribable calendar feed (iCalendar, RFC 5545) with every event (its description: the time, or an event's days when it runs over several, `calendarDescription`). Rebuilt with the site, so subscribed calendars refresh on their own. No longer linked from the footer (it added little); kept so existing subscriptions keep working |
 | `/manifest.webmanifest` | `pages/manifest.webmanifest.ts` | What lets a phone install the site like an app: name, colors, icons, full screen |
 | `/icons/<name>.png` | `pages/icons/[name].png.ts` | The app icons (192, 512, maskable 512, Apple touch icon), made from SVG at build time |
-| `/sw.js` | `pages/sw.js.ts` | The service worker: makes it installable and opens it offline with the last events (pages network first; flyers and build files cached). A new version per build |
+| `/sw.js` | `pages/sw.js.ts` | The service worker: makes it installable and opens it offline with the last events (pages network first; flyers and build files cached). A new version per build; the image cache's name carries the images' version (`src/images.ts`: a hash of the flyers and the thumbnails' settings), so a flyer made again under the same name reaches returning visitors |
 | `/sitemap-index.xml` | `@astrojs/sitemap` | Home and every event page, for search engines (the 404 page is excluded) |
 | `/404.html` | `pages/404.astro` | "Este evento ya pasó o no existe" (most missing addresses are old event links, whose events were deleted), the first four upcoming events as of the build, and a link home. Any other address gets "Esta página no existe" (a small script reads the path) |
 | `/flyers/*.webp` | `data/flyers/` (public folder) | The flyers, copied as they are |
@@ -211,11 +218,13 @@ event's text, a link to another site's script) is blocked.
   (`src/csp.ts`), which puts their hash in the page's policy.
 - **Checked at every build** (`scripts/csp-meta.mjs`): Astro writes the `<meta>` at the end of `<head>`, where
   it wouldn't cover what comes before it; the integration moves it right after `<meta charset>`. It also fails
-  the build if a page has an inline script or `<style>` the policy doesn't allow, or any `style=""` attribute.
+  the build if a page has an inline script or `<style>` the policy doesn't allow, any `style=""` attribute, or any
+  inline event handler (`onclick=""`, `onerror=""`…).
   So a new inline script needs `allowInlineScript()`, and a style that depends on data is set from a script
   (`element.style`, which the policy allows), like the cards' flyer shape (`applyFlyerRatios`, `eventCard.ts`).
-- **What a `<meta>` can't do:** `frame-ancestors` (who may frame the site), reports and other headers aren't
-  possible on GitHub Pages.
+- **What a `<meta>` can't do:** `frame-ancestors` (who may frame the site), `sandbox`, reports and other headers
+  need a response header, and GitHub Pages sends none. Other sites can frame the pages; with no accounts or forms,
+  that leads nowhere.
 - **`npm run dev` doesn't apply it** (Vite's dev server injects scripts). To try it: `npm run build` and
   `npm run preview`, then look for "Content Security Policy" errors in the console.
 
@@ -322,15 +331,16 @@ sequenceDiagram
     I->>I: theme: dark if saved, else light
     H->>M: module script after parsing
     M->>M: events = JSON from #events-data
-    M->>M: theme toggle, details drawer, clips' sound, jump bar, view switch, click tracking
+    M->>M: theme toggle, details drawer, posts sheet, media viewer, clips' sound, sharing, install offer, service worker, jump bar, view switch, click tracking, save buttons
     M->>V: render(): filters, Próximos or Calendario, jump bar, view switch
+    M->>M: a shared link's event (openSharedEvent), then the screens' history (initScreenHistory)
 ```
 
 - **No data request:** the events arrive inside the HTML, so the first render needs no network.
   The flyers load lazily as they come into view.
 - **One delegated click listener** in `main.ts` handles every control marked with a `data-*` attribute:
-  view, a filter chip (`data-filter` + `data-value`), academy, clear filters, clear search, ⚙, day, month, today,
-  event, a card's posts.
+  view, a filter chip (`data-filter` + `data-value`), academy, clear filters, clear search, close the search, ⚙, day,
+  month, today, event, a card's posts, a period opened whole (`data-show-period`), "Guardados" (`data-saved-only`).
 
 ### 5.2 State and rendering
 
@@ -426,7 +436,8 @@ stateDiagram-v2
     scrim (`--scrim`, its opacity following the drawer: 32% at half height, 55% at full) and the panel, moved by
     `--drawer-y` (its offset below full height). Its geometry and gestures are pure functions in
     `views/drawerSheet.ts` (tested): `offsetFor` (half height: the lower 55%; full: 12px from the top), `scrimAt`,
-    `settle` (a flick of 0.5 px/ms goes its way; else past max(110px, 22% of the screen) below half height closes,
+    `settle` (a flick of 0.5 px/ms goes its way; else past max(110px, 22% of the screen) below half height closes, the
+    same numbers as the bottom sheets, from `lib/sheetMotion.ts`;
     else the nearer height; from full, a pull down lands at half), `exitDuration` (160–280ms) and `cardScrollDelta`
     (how far the list moves so the tapped card stays in view: only when it would be mostly hidden, then its flyer
     goes under the bar). Touch: at half height every vertical drag moves the drawer (`touch-action: none`); at full
@@ -452,15 +463,17 @@ stateDiagram-v2
 - **The address bar follows the event:** opening pushes the event's own URL (`/evento/<id>/`), so the phone's back
   button closes it; every event's URL is a real page, so copying the address shares the event.
 - **A shared link opens the app:** the event's page forwards a browser to `/?evento=<id>` (its inline script, unless
-  the event is past in Bogotá's date, or `?pagina` is set). `openSharedEvent` (`main.ts`) takes the parameter off the
+  the event is past in Bogotá's date, `?pagina` is set, or the visitor is a bot or a link-preview fetcher, by its
+  user agent). `openSharedEvent` (`main.ts`) takes the parameter off the
   address (keeping the others, like `utm_source`), finds the event's card (`sharedEventEntry`, `upcomingView.ts`:
   its period opened whole first if it's summarized or past "Ver N más"), waits for the fonts and a laid-out frame,
   then opens the drawer with the list scrolled to the card (`shared`: its flyer loads at once) and counts
   `detalles-enlace`. An event not in the list goes back to its page with `?pagina=1`. Link previews and search
   engines read the event's page itself (they don't run scripts).
 - **The event page** (`eventPage.ts`) is already rendered at build time (the flyer, then the drawer's details); a
-  browser leaves it for the app at once. Its script adds the theme toggle, the clips, the posts sheet and media
-  viewer, and click tracking.
+  browser leaves it for the app at once. Its script adds the theme toggle, click tracking, the posts sheet and
+  media viewer, the save button, sharing, the install offer and the service worker, the clips, and the detail's
+  clicks (the flyer plays a video in place, the posts badge, the media links).
 - **The media:** "Ver el video con sonido" and "Ver las 4 imágenes" open the post in the media viewer
   (`postViewer.ts`, Instagram's player); "Ver las 3 publicaciones" and a card's "▦ 3" open the posts sheet
   (`postsSheet.ts`), whose chosen post opens in the media viewer in its place (`openPanelSheet(…, { replacing })`
@@ -591,8 +604,8 @@ only Instagram content it loads is a post's player, and only when a visitor taps
 | Types | `astro check`: strict TypeScript, including `noUncheckedIndexedAccess` | `tsconfig.json` |
 | Color contrast | Every color pair the site uses, in both themes, against WCAG 2.2 AA. It reads the tokens from `tokens.css`, so it can't drift from the design system | `frontend/scripts/check-contrast.mjs` |
 | CSS custom properties | Every `var(--name)` in the stylesheets, components and scripts has a definition; the few set from scripts (`style.setProperty`: the drawer's position, a flyer's shape, a sheet's drag) are listed, and each must still be set by one | `frontend/scripts/check-css-vars.mjs` |
-| Unit tests | Dates and Bogotá's "today", formatting, filtering (rhythms and dates, "Mañana", the options and their counts) and period grouping, holidays, the policy check, where the visitor can install from and its steps, the filter chips (`filterModel`: the bar's chips, dimmed vs hidden options, multiple types, removable chips, the badge, the line, the calendar's line; "Limpiar"'s scope; empty results), the drawer (`drawerSheet.ts`: its heights, scrim, where a drag ends and the ways it closes, keeping the tapped card in view), a shared link's entry (`sharedEventEntry`: the period to open, or the page for a past event), the details (the drawer's order, no image, its media links and price line), the history between screens and overlays (`screenHistory.ts` with the sheets, on a fake history: an academy left from inside the Filtros sheet or next to the side panel, and the address after closing), the CSS custom properties check, the calendar feed's description and the report link for an event over several days, the analytics names for opened details, things shown once (`onceFlag`, with and without storage), link previews (their text, the image's version, one image drawn with and one without a flyer), the theme (the saved value, old ones, and the script before first paint) | `frontend/tests/*.test.ts` (Vitest) |
-| Build | Every page, image and feed is generated; every page's Content Security Policy allows its inline scripts and styles, and no page has a `style=""` attribute (section 3.3); every event's link preview has its tags and a 1200×630 JPEG under 280 KB (section 3.4) | `npm run build`, `frontend/scripts/csp-meta.mjs`, `frontend/scripts/og-check.mjs` |
+| Unit tests | Dates and Bogotá's "today", formatting, filtering (rhythms and dates, "Mañana", the options and their counts) and period grouping, holidays, the policy check, where the visitor can install from and its steps, the filter chips (`filterModel`: the bar's chips, dimmed vs hidden options, multiple types, removable chips, the badge, the line, the calendar's line; "Limpiar"'s scope; empty results), the drawer (`drawerSheet.ts`: its heights, scrim, where a drag ends and the ways it closes, keeping the tapped card in view), a shared link's entry (`sharedEventEntry`: the period to open, or the page for a past event), the details (the drawer's order, no image, its media links and price line), the history between screens and overlays (`screenHistory.ts` with the sheets, on a fake history: an academy left from inside the Filtros sheet or next to the side panel, and the address after closing), the details' history (`drawerHistory.ts`: push or replace, closing through back, back and forward, a shared link's entries) and the drawer's numbers against the CSS (`--drawer-top-gap`, the 900px breakpoint) and the sheets, the images' version for the service worker, inline handlers in the policy check, the CSS custom properties check, the calendar feed's description and the report link for an event over several days, the analytics names for opened details, things shown once (`onceFlag`, with and without storage), link previews (their text, the image's version, one image drawn with and one without a flyer), the theme (the saved value, old ones, and the script before first paint) | `frontend/tests/*.test.ts` (Vitest) |
+| Build | Every page, image and feed is generated; every page's Content Security Policy allows its inline scripts and styles, and no page has a `style=""` attribute or an inline `on…=""` handler (section 3.3); every event's link preview has its tags and a 1200×630 JPEG under 280 KB (section 3.4) | `npm run build`, `frontend/scripts/csp-meta.mjs`, `frontend/scripts/og-check.mjs` |
 
 All six run in `ci` on every pull request, and the ruleset requires `ci` before merging.
 
@@ -602,7 +615,8 @@ All six run in `ci` on every pull request, and the ruleset requires `ci` before 
 
 ```
 frontend/
-  astro.config.mjs        site URL, public folder (../data), sitemap, DATA_DIR, Content Security Policy
+  astro.config.mjs        site URL, public folder (../data), sitemap, DATA_DIR and ASSETS_DIR, Content Security Policy,
+                          the csp-meta and og-check integrations, no Markdown highlighting
   vitest.config.ts        unit tests, with Astro's settings
   scripts/                check-data.mjs, check-contrast.mjs, check-css-vars.mjs (run by npm run check); release.mjs (versions);
                           og-site.html (draws the home page's link preview); csp-meta.mjs (the policy, after
@@ -614,7 +628,8 @@ frontend/
     themeScript.ts        the theme before first paint, an inline script (build time only)
     linkPreviewImage.ts   an event's link-preview image: satori + sharp (build time only)
     vendor/goatcounter-count.js   GoatCounter's script, served from the site
-    env.d.ts              the build's variables: PUBLIC_CHECKED_AT, PUBLIC_VERSION
+    env.d.ts              the build's variables: PUBLIC_CHECKED_AT, PUBLIC_VERSION, DATA_DIR, ASSETS_DIR
+    images.ts             the flyers' list, the thumbnails' settings and the images' version (service worker)
     assets/og-site.jpg    the home page's link preview, drawn by scripts/og-site.html
     assets/fonts/og/      the fonts drawn into the events' link previews (TTF, with their OFL licenses)
     layouts/BaseLayout.astro   <head>: meta, previews, fonts, theme before paint, GoatCounter, the CSS
@@ -635,12 +650,13 @@ frontend/
       screenHistory.ts    the phone's back between the app's screens
       types.ts            DanceEvent, EventMedia, Meta, AppState (mirror of the backend's models)
       theme.ts, themeConfig.ts   the Claro / Oscuro switch, its rule and colors
-      views/              upcomingView, calendarView, eventCard, eventDetail, eventDrawer, drawerSheet,
+      views/              upcomingView, calendarView, eventCard, eventDetail, eventDrawer, drawerSheet, drawerGestures,
+                          drawerHistory,
                           filters, jumpBar, viewSwitch, postsSheet, postViewer, inlinePlayer, clips, saveButton,
                           sharing, installPrompt, detailsHint (HTML strings + their
                           behavior)
       lib/                dates, holidays, format, links, linkPreview, contact, mediaLabel, search, saved,
-                          share, shareText, shareCard, analytics, dom, icons, sheet, instagramEmbed, installPlace,
+                          share, shareText, shareCard, analytics, dom, icons, sheet, sheetMotion, instagramEmbed, installPlace,
                           onceFlag
     styles/               tokens.css (design tokens), base.css, components/*.css
 ```
@@ -654,7 +670,9 @@ frontend/
 | `views/eventCard.ts` | A card: flyer at its shape (or a video's clip, with its sound button), date sticker, the posts' badge, the action row (Detalles, Compartir, Guardar), details, the line naming what the details add |
 | `views/detailsHint.ts`, `lib/onceFlag.ts` | The first visit's pulse on the first card's "Detalles"; things shown once per browser |
 | `views/eventDetail.ts` | An event's details (the drawer's, and the event page's with the flyer on top): head, quick actions, details, prices, media links; their clicks |
-| `views/eventDrawer.ts`, `views/drawerSheet.ts` | The details: a drawer over the list on phones (half / full height, drag, scrim, keeping the card in view) and a side panel on wide screens; URL history, closing; the geometry and gestures' pure part |
+| `views/eventDrawer.ts`, `views/drawerSheet.ts` | The details: a drawer over the list on phones (half / full height, scrim, keeping the card in view) and a side panel on wide screens; opening and closing; the geometry and where a drag ends (pure, tested) |
+| `views/drawerGestures.ts` | Dragging the drawer: touch, mouse or pen, the wheel (through `DrawerControl`) |
+| `views/drawerHistory.ts` | The details' history entries: the event's address, closing through back, what back or forward does (`historyMove`) |
 | `screenHistory.ts` | History entries for the app's screens (academy, period, calendar, saved): the phone's back steps through them. Overlays (sheets, the details) carry the screen under them (`overlayState`); a screen left from inside one is skipped later |
 | `views/filters.ts` | The filters' model (`filterModel`: options, counts, dimmed, the bar's chips, what's applied, the badge, the line) and drawing it: the phone bar's chips and line, the filter sheet, the toolbar's rows and status; empty results |
 | `views/jumpBar.ts` | Phones: the sticky bar (search, the filter sheet), keeping your place, hiding on scroll, scrolling on purpose |
@@ -662,7 +680,7 @@ frontend/
 | `lib/links.ts` | Every URL built from an event: flyer, clip, page, link preview, Maps, the report form |
 | `lib/linkPreview.ts`, `linkPreviewImage.ts` | A shared link's preview: its title, description, the image's text and version; the image itself (build time) |
 | `lib/mediaLabel.ts` | What the label over a post's image says (Ver con sonido, Ver video, Ver las N), and which cards get a ▶ |
-| `lib/sheet.ts` | Bottom sheets that drag to dismiss; panel sheets with their own back-button step |
+| `lib/sheet.ts`, `lib/sheetMotion.ts` | Bottom sheets that drag to dismiss; panel sheets with their own back-button step; the release and exit numbers they share with the drawer |
 | `lib/instagramEmbed.ts` | Instagram's player for a post, its script loaded on demand |
 | `views/postsSheet.ts`, `views/postViewer.ts` | An event's posts (Flyers / Videos); a post watched inside the site (the media viewer) |
 | `views/inlinePlayer.ts` | A video tapped in the detail plays in the image's place (Instagram's player), removed when off screen |
