@@ -23,7 +23,7 @@ Requires Node.js 24 (`.nvmrc`). From `frontend/`:
 ```bash
 npm ci          # first time
 npm run dev     # local preview at http://localhost:4321
-npm run check   # data format + type check + color contrast (WCAG AA)
+npm run check   # data format + type check + color contrast (WCAG AA) + CSS custom properties
 npm test        # unit tests (Vitest)
 npm run build   # static site in frontend/dist/ (fails if a page breaks its Content Security Policy)
 npm run preview # the build at http://localhost:4321, with the policy (dev mode doesn't apply it)
@@ -40,7 +40,7 @@ subscriptions). The build fails if an event's preview is missing or weighs over 
 | Workflow | When | What |
 |---|---|---|
 | `ci` | Every pull request | PR title format, data format check, type check, color contrast, tests, build. The required check on `main`. |
-| `deploy` | Push to `main`, a backend sweep that changed nothing, or *Run workflow* | Tags the new version and publishes its release (see [Versions](#versions)), builds the site and publishes it to GitHub Pages |
+| `deploy` | Push to `main`, a backend sweep that changed nothing, or *Run workflow* | Checks and builds the site, publishes it to GitHub Pages, then tags the new version and publishes its release (see [Versions](#versions)) |
 
 `main` is protected (`protect-main` ruleset): changes only arrive through squash-merged pull requests
 that pass `ci`; force pushes and deletion are blocked. The data PRs carry the `data` label and
@@ -58,7 +58,7 @@ Each merged pull request's title (Conventional Commits) sets the site's next ver
 | `feat!: …`, or `BREAKING CHANGE:` in the description | major: 1.2.0 → 2.0.0 |
 | `docs`, `chore` (the data PRs), `ci`, `test`, `build` | none: visitors see nothing new |
 
-On every deploy, a new version is tagged (`v1.3.0`) and published as a
+Once a deploy is live, a new version is tagged (`v1.3.0`) and published as a
 [GitHub Release](https://github.com/pa-bailar/pa-bailar.github.io/releases) listing its changes, one line
 per PR. The footer shows "versión 1.3.0", linked to its release. `ci` rejects a PR whose title doesn't
 follow the format, so no change goes uncounted.
@@ -67,7 +67,7 @@ follow the format, so no change goes uncounted.
 
 [GoatCounter](https://jzamora9.goatcounter.com) (free, no cookies, no consent banner needed): page
 visits, each event whose details were opened, where its details were opened from (`detalles-tarjeta`, `detalles-boton`,
-`detalles-linea`, `detalles-enlace`), and clicks on Instagram, the contact links (WhatsApp…),
+`detalles-enlace`; `detalles-linea` is retired), and clicks on Instagram, the contact links (WhatsApp…),
 "Cómo llegar", the media (`ver-video`, `ver-publicaciones`…), sharing, saving, installing and reports (`data-track`, `frontend/src/scripts/lib/analytics.ts`). Shared
 links carry `utm_source=compartido`. Local testing (localhost) isn't counted.
 

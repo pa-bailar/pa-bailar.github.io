@@ -111,7 +111,10 @@ the owner preferred one look throughout).
 | `--font-serif` | **Bodoni Moda Italic** | Tagline, day headings, month title, dialog subheadings: the sensual touch. Always italic, weight 500. |
 | `--font-sans` | **Instrument Sans** | Everything else. 400 regular, 600 bold. No other weights. |
 
-Sizes: `--text-2xs` 11 · `xs` 12 · `sm` 13 · `md` 15 (body) · `lg` 17 · `xl` 21 · `2xl` 26 · `3xl` 36 · `logo` 44–72 (fluid).
+Sizes: `--text-2xs` 11 · `xs` 12 · `sm` 13 · `md` 15 (body) · `base` 16 · `lg` 17 · `xl` 21 · `2xl` 26 · `3xl` 36 · `logo` 44–72 (fluid).
+`--text-base` is for the search fields (under 16px, iPhones zoom the page in on focus) and the media viewer's title.
+`npm run check` fails when a stylesheet reads a custom property nobody defines (`scripts/check-css-vars.mjs`; the
+few set from scripts are listed there): an undefined `--text-base` once left the search fields at 15px.
 
 ### Spacing, shape and sizes
 
@@ -171,7 +174,7 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves. The pa
 - **Free events** show their price as a green "Gratis" label (`--free` / `--on-free`, checked for contrast).
 - **Empty results** always offer a way out (see "Filters"): "Limpiar filtros", "Borrar la búsqueda", "Ver todos, no
   solo guardados".
-- **Dance styles** are one line of text joined by a middle dot glued to the previous word with a no-break space (`stylesLabel`), never separate elements with CSS separators. The dot stays centered between words, and a wrapped line never starts with a dot.
+- **Dance styles** are one line of text joined by a middle dot glued to the previous word with a no-break space (`stylesLabel`), never separate elements with CSS separators. The dot stays centered between words, and a wrapped line never starts with a dot. Each is named as in the filters (`styleLabel`): "Salsa · Urbano · Otros ritmos", never the data's "otro".
 
 ## Info and footer
 
@@ -310,7 +313,7 @@ the list stays short there and summarizes what's further away (`scripts/views/up
 
 - **Feed like Instagram:** under 720px each event is a full-width post, the flyer edge to edge at full size and the details right below, separated by space instead of boxed cards. Nothing is shrunk into thumbnails.
 - **Jump bar** (`JumpBar.astro`, `scripts/views/jumpBar.ts`): one slim row (`--jump-bar-height`, 56px) stuck to the top, modeled on the filter bars of Google Maps and Airbnb: **[🔍] [🔖 3]**, then one row of chips that scrolls sideways: **[⚙ 3] [Noviembre ×] [Hoy] [Mañana] [Finde] [Próx. semana] | [Salsa] [Bachata] [Urbano] [Tango]** (search and "Guardados": see "Saving and searching"; the chips: see "Filters").
-  - **The row runs to the screen's edge** and fades there (a mask), so the next chip peeks and it reads as a row that scrolls (Material's single-line chip group). It keeps where it was scrolled while choosing.
+  - **The row runs to the screen's edge** and fades there (a mask), so the next chip peeks and it reads as a row that scrolls (Material's single-line chip group). It keeps where it was scrolled while choosing, unless a new choice would be out of sight (made in the sheet, or a chip further along): then it scrolls just enough to show the first one.
   - **⚙** opens the filter sheet; its badge counts every choice in use (two rhythms count two, like Airbnb's).
   - **The line under it** ("12 eventos · Finde, Salsa" and "× Limpiar"), only while filtering (`--filter-line-height`, 40px): see "Filters".
   - **Keeping your place:** when a filter changes while you're inside the list, the period you were reading stays right under the bar; if the filter removed it, the next period (else the previous one) takes its place. The period being read is the lowest one crossing a band under the bar (`captureListPosition`).
@@ -320,11 +323,13 @@ the list stays short there and summarizes what's further away (`scripts/views/up
   - **Look:** the action color (`--action` / `--on-action`), ringed with the page color and a shadow, so it stands out even over a flyer of the same colors.
   - **Each view keeps its place, like Instagram's tabs:** coming back to a view lands exactly where it was left. The calendar's first visit starts at its top (back up to the tabs if the page was past them). If a filter changed meanwhile, the list comes back at the same period instead, as with any filter change. The tabs behave the same.
   - **Room:** the footer gets extra bottom padding so the button never covers its last line. Hidden wherever the toolbar is sticky.
+  - **Away while the tabs are on screen** (`.is-away`, an IntersectionObserver on the tabs): they do the same, and on a first visit it would sit on the first card's date sticker. It fades in once the tabs scroll under the bar.
 - **Filter sheet** (`FilterSheet.astro`, `filter-sheet.css`), from ⚙:
   - **Head:** "Filtros", "Limpiar" (in `--accent-text`, only enabled with something to clear) and ×.
   - **Groups**, in a body that scrolls between the head and the button: **Fecha** · *elige una o varias* (every period and month), **Ritmo** · *elige uno o varios* (every rhythm, the bar's four first, "Otros ritmos" last), **Tipo de evento** (several too), and **Academia** (the one chosen from a card, as "@academia ×"). Each option with its count ("Noviembre 2"); the ones with nothing to show dimmed. Chips wrap, `--control-height` tall with a 44px target.
   - **"Ver 12 eventos"** stays at the bottom (the primary button): "Ver 1 evento", or "Sin eventos: cambia los filtros", disabled. It closes the sheet; choices apply at once, there's no apply step.
-  - **Closing:** ×, a drag down (from the head, or from the groups scrolled to the top), the backdrop, Escape, back.
+  - **Closing:** ×, a drag down (from the head, or from the groups scrolled to the top), the backdrop, Escape, back. The focus goes back to ⚙ (the new one, when a choice drew the row again).
+  - **The academy in it:** "@academia ×" or "Limpiar" in the sheet takes the academy away right there, and the sheet stays open; closing it later doesn't bring the academy back (see "Back moves between the app's screens").
   - **In the calendar:** Fecha says "En el calendario eliges el día en el mes."
 
 ## Filters
@@ -369,7 +374,8 @@ screens in the toolbar's chip rows:
   búsqueda"; in Guardados also "Ver todos, no solo guardados".
 - **Semantics:** filter chips are toggle buttons (`aria-pressed`), short names carry the full one ("Finde": "Este fin de
   semana", "Próx. semana": "Próxima semana"); removable chips are named "Quitar Noviembre"; ⚙ is "Todos los filtros,
-  3 activos". Focus stays on the chip chosen; when "Limpiar" removes it, focus goes to ⚙ (or the sheet's first chip).
+  3 activos". Focus stays on the chip chosen; after "Limpiar" (which hides or disables itself) or removing the academy,
+  focus goes to ⚙ (or the sheet's first chip, or the toolbar's first chip on wide screens).
 - **Wide screens:** the toolbar keeps its chip rows (dates with the bar's short names, types, rhythms), chosen chips
   with ×, the same dimming, and a status row: "Solo eventos de @academia · Ver todas las academias", "12 eventos" and a
   "Limpiar filtros" chip. Rows that don't fit wrap instead of cutting a chip.
@@ -399,11 +405,10 @@ list. Now they open like Instagram's comments: a drawer rises over the list, and
   without competing with the one primary button: `--details-bg` (light: marigold at 45% over the page, `#efd082`;
   dark: gold at 18% over the page, `#3e322f`), its label in `--details-text` (wine, 11.9:1; gold, 7.6:1) and its icon in
   `--details-icon` (tomato-700, 4.4:1; gold). Pressed: `--details-bg-pressed`.
-- **A quiet line at the card's foot** (`.event-card__more`), like "Ver los 12 comentarios", naming what the details
-  add for this event (`detailsTeaser`): "Ver horario, precios y cómo llegar", only with what it has ("Ver horario y
-  precios", "Ver cómo llegar"), else "Ver todos los detalles". `--text-muted`.
-- **The whole card opens the details**, its photo flyer included: card, flyer, "Detalles" and the line open the same
-  drawer (a video's clip toggles its sound instead, and the posts' badge opens the posts).
+- **No line at the card's foot:** a muted "Ver horario, precios y cómo llegar" used to end each card; "Detalles" on
+  every card already says it, so the card ends with its price and rhythms.
+- **The whole card opens the details**, its photo flyer included: card, flyer and "Detalles" open the same drawer (a
+  video's clip toggles its sound instead, and the posts' badge opens the posts).
 - **The date sticker sits inside the flyer's bottom-right corner** on cards too.
 - **First visit:** the first card's "Detalles" pulses gently once (a ring in `--pulse` and a slight swell, 1.6s) when
   its row is fully on screen (`views/detailsHint.ts`), never again in this browser (`details-hint-seen` in
@@ -442,7 +447,9 @@ list. Now they open like Instagram's comments: a drawer rises over the list, and
 **The side panel** (900px and wider): the same content, in a panel on the right (`--panel-width`, 420px), not modal, so
 the list stays usable next to it: the page leaves room for it, another card shows its event in the panel (the address
 changes without adding to the history), and the open event's card is outlined in the accent color. × and Escape close
-it; it slides in from the right.
+it; it slides in from the right, and the focus goes back to the last card opened. The list next to it can move to
+another screen (an academy, the calendar): another card then gets its own history entry, and closing the panel there
+puts the address back to the home page's.
 
 ## Event detail: drawer and page
 
@@ -461,11 +468,12 @@ it; it slides in from the right.
   - **Closing:** it continues from where the finger left it, at the finger's speed (160–280ms, accelerating curve). ×, Escape and back slide it away the same way. When Safari's edge swipe already animated the back navigation, it closes at once.
   - **Reduced motion:** no rise and no slide.
 - **Back moves between the app's screens** (`screenHistory.ts`): an academy's events, a period opened whole, the calendar and "Guardados" each get a history entry, so the phone's back button returns to the previous screen where it was scrolled, instead of leaving the site (which closes the installed app). Undoing one from the page ("Ver todas las academias", "@academia ×", the list button, "Guardados" again) steps back, so history never piles up. The app restores scrolling itself (`history.scrollRestoration = "manual"`).
+  - **Overlays** (the sheets and the details) get entries on top of the screen's, marked as overlays (`overlayState`). Undoing a move from inside one (the "Filtros" sheet's "@academia ×" or "Limpiar", the list next to the side panel) can't step back without closing it: the move is undone right there, the overlay stays, and its screen's entry is skipped when back (or closing the overlay) reaches it.
 - **The details have a URL:** opening pushes `/evento/<id>/`, so the phone's back button closes them. A copied link opens that event's page.
 - **Shared links open the app.** An event's link (`/evento/<id>/`) forwards a browser to the home page (`?evento=<id>`), which shows the list scrolled to that event's card (its period opened whole if it was summarized or past "Ver N más") with its drawer open at half height over it (`main.ts`, `openSharedEvent`): × or back leave the visitor on the list, not off the site. A past event (checked in Bogotá's time when the page opens) or one no longer in the list stays on its page.
 - **Missing details say "Por confirmar"** in their own row (hora, lugar, precio), in muted italics. Gemini's free-text doubts are not shown; a low-confidence extraction gets one note asking to confirm in the post.
 - **"Cómo llegar"** after the venue opens Google Maps (only when there's a venue or address).
-- **Reporting an error:** the detail ends with a small "¿Algo está mal? Repórtalo" link to the Google Form, with the event filled in (`feedbackUrl`); the footer has "Escríbenos" for anything else. Out of the way of the actions, because almost everyone just wants the event.
+- **Reporting an error:** the detail ends with a small "¿Algo está mal? Repórtalo" link to the Google Form, with the event filled in (`feedbackUrl`: its title, its day or days, its id); the footer has "Escríbenos" for anything else. Out of the way of the actions, because almost everyone just wants the event.
 - **The contact is a link** (`lib/contact.ts`): an @username opens its Instagram; a mobile number opens a WhatsApp chat (`wa.me/57…`, with the WhatsApp icon), not a call: that's how people reach academies; a landline (60X) is a call (`tel:`), since it has no WhatsApp; a website opens it. A number that isn't a full Colombian or international one stays plain text.
 - **Icons** (`scripts/lib/icons.ts`): Instagram and WhatsApp marks (Simple Icons, CC0) and drawn icons (calendar, pin, ×, sound on and off, an arrow out, and for the install steps Safari's ⋯, Compartir and Agregar a inicio, a link and an arrow), inline SVG in the text color, hidden from screen readers.
 
