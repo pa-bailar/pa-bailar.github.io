@@ -8,13 +8,12 @@
  * Layer 3, scales:   type, spacing, shape, sizes, motion.
  *
  * Theme selection: `color-scheme` decides which side of light-dark() applies.
- *   default            → follows the device (light dark)
- *   [data-theme=light] → forced light (visitor's choice, saved by scripts/theme.ts)
- *   [data-theme=dark]  → forced dark
+ *   default            → light, for everyone (not the device's setting)
+ *   [data-theme=dark]  → dark: the visitor chose Oscuro (saved by scripts/theme.ts)
  */
 
 :root {
-  color-scheme: light dark;
+  color-scheme: light;
 
   /* ---------- Layer 1: palette ---------- */
   --wine-950: #1e0a0e;
@@ -183,10 +182,6 @@
      720px  phones vs. wider: the feed, the jump bar and the filter sheet
      900px  the event viewer: a half-height sheet below it, a side panel from it
      960px  wide: more card columns */
-}
-
-:root[data-theme="light"] {
-  color-scheme: light;
 }
 
 :root[data-theme="dark"] {

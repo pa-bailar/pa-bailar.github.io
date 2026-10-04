@@ -25,22 +25,35 @@ import "../styles/components/install.css";
 
 // GoatCounter's count.js, served from this site (so the CSP allows no other script host): vendor/.
 import goatcounterScript from "../vendor/goatcounter-count.js?url";
-import { allowInlineScript, jsValue } from "../csp";
+import { allowInlineScript } from "../csp";
 import { BASE_URL } from "../scripts/lib/links";
-import { DAY_START_HOUR, NIGHT_START_HOUR, THEME_COLORS, THEME_STORAGE_KEY } from "../scripts/themeConfig";
+import { THEME_COLORS } from "../scripts/themeConfig";
+import { themePrePaintScript } from "../themeScript";
+
+/** A link preview's image: its path under the site root (with its ?v= version, if any) and what apps need to
+ * show it on the first share (size, type) and to describe it (alt). */
+export interface PreviewImage {
+  path: string;
+  width: number;
+  height: number;
+  type: string;
+  alt: string;
+}
 
 interface Props {
   title: string;
   description: string;
-  /** Path of an image under the site's public folder (e.g. a flyer) for link previews. */
-  image?: string | null;
+  /** The link preview's title, when it says more than the page's (an event's date); otherwise `title`. */
+  previewTitle?: string;
+  /** The link preview's image (WhatsApp, Instagram, iMessage, Telegram, Facebook). */
+  image?: PreviewImage | null;
   /** Pages that shouldn't be indexed (the 404): no canonical URL, robots noindex. */
   noindex?: boolean;
 }
 
-const { title, description, image, noindex = false } = Astro.props;
+const { title, description, previewTitle = title, image, noindex = false } = Astro.props;
 const pageUrl = new URL(Astro.url.pathname, Astro.site);
-const imageUrl = image ? new URL(`${BASE_URL}${image}`, Astro.site) : null;
+const imageUrl = image ? new URL(`${BASE_URL}${image.path}`, Astro.site) : null;
 
 // Record-label favicon in the brand colors (wine + marigold).
 const favicon =
@@ -51,27 +64,8 @@ const favicon =
       "<circle cx='32' cy='32' r='3' fill='#2A0F14'/></svg>",
   );
 
-// Apply the theme before first paint so the page never flashes the wrong one. Same rules as resolveTheme() in
-// scripts/theme.ts (saved mode, else by the hour), same settings (themeConfig.ts). Inline, allowed by its hash.
-const themeScript = allowInlineScript(
-  Astro,
-  `(function () {
-  var storageKey = ${jsValue(THEME_STORAGE_KEY)}, dayStart = ${DAY_START_HOUR}, nightStart = ${NIGHT_START_HOUR};
-  var colors = ${jsValue(THEME_COLORS)};
-  var mode = "auto";
-  try {
-    var saved = localStorage.getItem(storageKey);
-    if (saved === "light" || saved === "dark") mode = saved;
-  } catch (e) {}
-  var hour = new Date().getHours();
-  var theme = mode === "auto" ? (hour >= dayStart && hour < nightStart ? "light" : "dark") : mode;
-  var root = document.documentElement;
-  root.dataset.theme = theme;
-  root.dataset.themeMode = mode;
-  var meta = document.querySelector('meta[name="theme-color"]');
-  if (meta) meta.setAttribute("content", colors[theme]);
-})();`,
-);
+// The theme before first paint (themeScript.ts): light unless the visitor chose Oscuro. Inline, allowed by its hash.
+const themeScript = allowInlineScript(Astro, themePrePaintScript);
 ---
 
 <!doctype html>
@@ -83,15 +77,31 @@ const themeScript = allowInlineScript(
     <meta name="description" content={description} />
     {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={pageUrl} />}
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <!-- Link previews (WhatsApp, Instagram, Facebook) -->
+    <!-- Link previews (WhatsApp, Instagram, iMessage, Telegram, Facebook). The image's size and type let an app
+         show it on the very first share, before it has downloaded it. -->
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="es_CO" />
     <meta property="og:site_name" content="Pa' Bailar" />
-    <meta property="og:title" content={title} />
+    <meta property="og:title" content={previewTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={pageUrl} />
-    {imageUrl && <meta property="og:image" content={imageUrl} />}
+    {
+      image && imageUrl && (
+        <>
+          <meta property="og:image" content={imageUrl} />
+          <meta property="og:image:secure_url" content={imageUrl} />
+          <meta property="og:image:type" content={image.type} />
+          <meta property="og:image:width" content={String(image.width)} />
+          <meta property="og:image:height" content={String(image.height)} />
+          <meta property="og:image:alt" content={image.alt} />
+        </>
+      )
+    }
     <meta name="twitter:card" content={imageUrl ? "summary_large_image" : "summary"} />
+    <meta name="twitter:title" content={previewTitle} />
+    <meta name="twitter:description" content={description} />
+    {image && imageUrl && <meta name="twitter:image" content={imageUrl} />}
+    {image && <meta name="twitter:image:alt" content={image.alt} />}
     <meta name="theme-color" content={THEME_COLORS.light} />
     <link rel="icon" href={favicon} />
     <!-- Installing it like an app (pages/manifest.webmanifest.ts, scripts/views/installPrompt.ts) -->

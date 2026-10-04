@@ -19,8 +19,10 @@ export const GET: APIRoute = () =>
       start_url: BASE_URL,
       scope: BASE_URL,
       display: "standalone",
-      background_color: THEME_COLORS.dark, // the splash screen while it opens: wine, like the icon
-      theme_color: THEME_COLORS.dark,
+      // The splash screen while it opens and the bar's color: the light theme's paper, the theme the app opens in
+      // (unless the visitor chose Oscuro; the page's theme-color meta then takes over once it loads).
+      background_color: THEME_COLORS.light,
+      theme_color: THEME_COLORS.light,
       related_applications: [{ platform: "webapp", url: MANIFEST_URL }],
       prefer_related_applications: false,
       icons: [

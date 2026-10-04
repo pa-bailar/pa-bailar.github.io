@@ -1,6 +1,7 @@
 ---
 // One page per event (/evento/<id>/): what a shared link opens. Its link preview (WhatsApp, Instagram,
-// Facebook) shows the event's flyer, and search engines get the event as schema.org data.
+// iMessage, Telegram, Facebook) shows the event's date in the title, what, where and the price in the
+// description, and its image (pages/og/[id].jpg.ts); search engines get the event as schema.org data.
 // Same detail markup as the home page's dialog (scripts/views/eventDetail.ts).
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import InstallOffer from "../../components/InstallOffer.astro";
@@ -13,7 +14,14 @@ import { allowInlineScript, jsValue } from "../../csp";
 import { accounts, events } from "../../data";
 import { isMultiDay, lastDay, todayIso } from "../../scripts/lib/dates";
 import type { DanceEvent } from "../../scripts/types";
-import { eventDaysLabel, formatTime, placeLabel } from "../../scripts/lib/format";
+import {
+  PREVIEW_HEIGHT,
+  PREVIEW_WIDTH,
+  previewDescription,
+  previewImageAlt,
+  previewTitle,
+  previewVersion,
+} from "../../scripts/lib/linkPreview";
 import { BASE_URL, eventPageUrl, eventTimes, flyerUrl, mainMedia, previewImagePath } from "../../scripts/lib/links";
 import { eventDetailHtml } from "../../scripts/views/eventDetail";
 
@@ -30,10 +38,16 @@ const home = BASE_URL;
 const today = todayIso();
 const isPast = lastDay(event) < today; // over several days: once its last day has passed
 
-const time = formatTime(event.start_time);
-const description = [`${eventDaysLabel(event)}${time ? ` · ${time}` : ""}`, placeLabel(event), `@${event.account}`]
-  .filter(Boolean)
-  .join(" · ");
+// The link preview: "Intensivo Ritmos Cubanos — dom 4 oct, 9:00 a. m.", "Taller de salsa cubana · Cra 16 #52-46 ·
+// Desde $ 35.000 · Pa' Bailar", and the image with its version (it changes when the image does).
+const description = previewDescription(event);
+const previewImage = {
+  path: previewImagePath(event, previewVersion(event)),
+  width: PREVIEW_WIDTH,
+  height: PREVIEW_HEIGHT,
+  type: "image/jpeg",
+  alt: previewImageAlt(event),
+};
 
 // schema.org Event (https://schema.org/Event), as search engines read it.
 const { start, end, allDay } = eventTimes(event);
@@ -90,7 +104,7 @@ const redirectScript = allowInlineScript(
 );
 ---
 
-<BaseLayout title={`${event.title} · Pa' Bailar`} description={description} image={previewImagePath(event)}>
+<BaseLayout title={`${event.title} · Pa' Bailar`} previewTitle={previewTitle(event)} description={description} image={previewImage}>
   <script slot="head" type="application/ld+json" set:html={jsValue(structuredData)} />
   <!-- Opens the event in the app (redirectScript, above). -->
   <script slot="head" is:inline set:html={redirectScript} />

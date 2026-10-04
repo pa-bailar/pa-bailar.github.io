@@ -157,8 +157,8 @@ flowchart LR
 | Output | Source | What it is |
 |---|---|---|
 | `/` (`index.html`) | `pages/index.astro` | The app: header, toolbar, jump bar, both views, dialog, filter sheet. Every event is embedded as JSON (`<script type="application/json" id="events-data">`), and the browser renders the cards and calendar from it. The preview image is the brand's own (`/og/sitio.jpg`), not an event's flyer |
-| `/evento/<id>/` | `pages/evento/[id].astro` | One page per event: where a shared link points. A browser is forwarded to the home page with the event open (section 5.3). Rendered at build time with the same markup as the dialog. Includes Open Graph tags (the flyer as the link preview) and schema.org `Event` data for search engines |
-| `/og/<id>.jpg` | `pages/og/[id].jpg.ts` | Each event's link-preview image: its flyer as a 600 px JPEG. WebP isn't shown by every app, and WhatsApp skips images over about 300 KB |
+| `/evento/<id>/` | `pages/evento/[id].astro` | One page per event: where a shared link points. A browser is forwarded to the home page with the event open (section 5.3). Rendered at build time with the same markup as the dialog. Includes the link preview's tags (section 3.4) and schema.org `Event` data for search engines |
+| `/og/<id>.jpg` | `pages/og/[id].jpg.ts` | Each event's link-preview image: 1200×630, the flyer with the date, title, place and price (section 3.4) |
 | `/og/sitio.jpg` | `pages/og/sitio.jpg.ts` | The home page's link preview (1200×630): stripes, "Pa' Bailar", the tagline and the record. Drawn once with the site's fonts by `scripts/og-site.html` and stored as `src/assets/og-site.jpg` |
 | `/thumbs/<flyer>.webp` | `pages/thumbs/[name].webp.ts` | A 160 px square thumbnail of every flyer, for the sheet with an event's posts (opened from the "▦ 16" badge on the flyer). A few KB each instead of the 100–200 KB flyer, so they show at once on a phone |
 | `/calendario.ics` | `pages/calendario.ics.ts` | A subscribable calendar feed (iCalendar, RFC 5545) with every event. Rebuilt with the site, so subscribed calendars refresh on their own. No longer linked from the footer (it added little); kept so existing subscriptions keep working |
@@ -166,7 +166,7 @@ flowchart LR
 | `/icons/<name>.png` | `pages/icons/[name].png.ts` | The app icons (192, 512, maskable 512, Apple touch icon), made from SVG at build time |
 | `/sw.js` | `pages/sw.js.ts` | The service worker: makes it installable and opens it offline with the last events (pages network first; flyers and build files cached). A new version per build |
 | `/sitemap-index.xml` | `@astrojs/sitemap` | Home and every event page, for search engines (the 404 page is excluded) |
-| `/404.html` | `pages/404.astro` | "Esta página no existe…", with a link home |
+| `/404.html` | `pages/404.astro` | "Este evento ya pasó o no existe" (most missing addresses are old event links, whose events were deleted), the first four upcoming events as of the build, and a link home. Any other address gets "Esta página no existe" (a small script reads the path) |
 | `/flyers/*.webp` | `data/flyers/` (public folder) | The flyers, copied as they are |
 | `/previews/*.mp4` | `data/previews/` (public folder) | Videos' clips (6 silent seconds), copied as they are |
 
@@ -174,7 +174,7 @@ flowchart LR
 flowchart TD
     D["src/data.ts<br/>(events + flyer sizes)"] --> IDX["index.astro → /"]
     D --> EVT["evento/[id].astro → /evento/&lt;id&gt;/"]
-    D --> OG["og/[id].jpg.ts → /og/&lt;id&gt;.jpg"]
+    D --> OG["og/[id].jpg.ts → /og/&lt;id&gt;.jpg<br/>(linkPreviewImage.ts, section 3.4)"]
     D --> ICS["calendario.ics.ts → /calendario.ics"]
     D --> TH["thumbs/[name].webp.ts → /thumbs/&lt;flyer&gt;.webp"]
     IDX --> SM["sitemap-index.xml"]
@@ -206,7 +206,7 @@ event's text, a link to another site's script) is blocked.
 | `object-src`, `base-uri`, `form-action` | `'none'` | No plugins, no `<base>`, no forms |
 
 - **Where it's set:** `astro.config.mjs` (`security.csp`). Astro adds the hashes of the scripts and styles it
-  inlines. Ours are two inline scripts, the theme before first paint (`BaseLayout.astro`) and the event pages'
+  inlines. Ours are two inline scripts, the theme before first paint (`src/themeScript.ts`, in `BaseLayout.astro`) and the event pages'
   forward to the app (`evento/[id].astro`), written as strings and added with `allowInlineScript()`
   (`src/csp.ts`), which puts their hash in the page's policy.
 - **Checked at every build** (`scripts/csp-meta.mjs`): Astro writes the `<meta>` at the end of `<head>`, where
@@ -218,6 +218,54 @@ event's text, a link to another site's script) is blocked.
   possible on GitHub Pages.
 - **`npm run dev` doesn't apply it** (Vite's dev server injects scripts). To try it: `npm run build` and
   `npm run preview`, then look for "Content Security Policy" errors in the console.
+
+### 3.4 Link previews
+
+What WhatsApp, Instagram, iMessage, Telegram and Facebook show when an event's link (`/evento/<id>/`) is shared.
+They read the page's Open Graph tags (they don't run scripts) and download its image.
+
+```mermaid
+flowchart LR
+    EV["event (data.ts)"] --> LP["lib/linkPreview.ts<br/>title, description, text on the image, version"]
+    LP --> PG["evento/[id].astro<br/>og:title, og:description, og:image?v=…"]
+    LP --> IMG["linkPreviewImage.ts<br/>satori (fonts/og) → SVG,<br/>sharp: blurred flyer + JPEG"]
+    IMG --> OG["/og/&lt;id&gt;.jpg (1200×630)"]
+    PG --> CHK["og-check.mjs, after the build"]
+    OG --> CHK
+```
+
+- **The text** (`scripts/lib/linkPreview.ts`, pure, tested): the title with the date, "Intensivo Ritmos Cubanos —
+  dom 4 oct, 9:00 a. m." (over several days "Level Up Bachata Fusion Congress — 13–15 nov", without the time); the
+  description, "Taller de salsa cubana · Cra 16 #52-46 · Desde $ 35.000 · Pa' Bailar"; the image's `alt`. Apps
+  keep a preview for days, so dates are always real ones, never "Hoy" or "Mañana".
+- **The tags** (`BaseLayout.astro`): `og:title`, `og:description`, `og:url`, `og:type`, `og:locale` (`es_CO`),
+  `og:site_name`, `og:image` (absolute, with `?v=`), `og:image:width`, `og:image:height`, `og:image:type`,
+  `og:image:alt`, and `twitter:card` `summary_large_image` with its title, description and image. Without the size,
+  Facebook and WhatsApp may show no image on a link's first share (they haven't downloaded it yet). The home page
+  keeps its own image (`/og/sitio.jpg`), with the same tags.
+- **The image** (`src/linkPreviewImage.ts`, `pages/og/[id].jpg.ts`): 1200×630 (1.91:1, what every app shows whole;
+  a vertical flyer alone gets cropped or shrunk). Its design is in [`DESIGN.md`](DESIGN.md), "Link previews".
+  - **Text with the site's fonts, without system fonts:** satori lays out the text and turns it into SVG paths, with
+    the TTF files in `src/assets/fonts/og/` (Shrikhand, Instrument Sans 400 and 600, Bodoni Moda Medium Italic, each
+    with its SIL Open Font License). The build machine has no fonts, and satori reads neither WOFF2 nor system fonts.
+    satori's version is pinned (`package.json`): an update can move text, so check the images after one.
+  - **The flyer:** sharp blurs a copy of it for the background of the left half, fits the whole flyer over it with
+    a soft shadow, draws the SVG on top and writes a JPEG (quality 84, full color resolution so the red and green
+    text stays crisp; a busy flyer that would weigh more than 280 KB is written again at lower quality). A video's
+    flyer is its frame, as everywhere. An event without a flyer gets the record of the app icon.
+  - **Cost:** about 0.12 s per event: with 77 events the build takes about 10 s more (15 s instead of 5 s), and the
+    images weigh about 115 KB each (9 MB in all, from 5 MB for the old 600 px flyers).
+- **Corrections reach the apps** (`?v=`): apps cache a preview by its URL, and GitHub Pages can't send cache headers
+  (it serves everything with a 10-minute cache). So the image's URL carries a short hash of what it shows
+  (`previewVersion`): the days, time, title, place, price, the flyer's file and size, and `PREVIEW_DESIGN_VERSION`
+  (bump it when the design changes). A corrected event gets a new URL, which apps fetch again; anything the image
+  doesn't show (caption, styles, contact) keeps the old one, so nothing is fetched again for nothing. The page's own
+  text (title, description) is read again whenever an app refreshes the link.
+- **Checked at every build** (`scripts/og-check.mjs`): every event in `events.json` has its page with all the
+  tags, and its `og:image` has a version and points to a file the build made, a 1200×630 JPEG as the tags say,
+  under 280 KB (WhatsApp skips preview images over about 300 KB). Otherwise the build fails.
+- **Old links:** events are deleted 60 days after they end (section 2), and their pages and images with them. Their
+  links then open the 404 page, which says the event passed and lists what's next (section 3.2).
 
 ---
 
@@ -271,7 +319,7 @@ sequenceDiagram
     participant V as Views
 
     H->>I: before first paint
-    I->>I: theme: saved mode, else light 6:00–17:59 / dark otherwise
+    I->>I: theme: dark if saved, else light
     H->>M: module script after parsing
     M->>M: events = JSON from #events-data
     M->>M: theme toggle, event dialog, jump bar, view switch, click tracking
@@ -379,15 +427,20 @@ stateDiagram-v2
 - **Install:** `views/installPrompt.ts` offers it (a banner under the header, a footer link): Chrome/Edge's own dialog, or a sheet with the steps for where the visitor is (`lib/installPlace.ts`, from the user agent: Safari 26, earlier Safari, other iPhone browsers, apps' own browsers, Android). On iPhone the page can't tell whether it was added, so "Ya la agregué" and closing the steps hide the banner (section 5.7). It also registers the service worker (built site only).
 - **Saved events** live in this browser (`lib/saved.ts`, localStorage); "Guardados" filters the list and the calendar to them.
 - **Search** (`lib/search.ts`) runs on the events already in the page, accent-insensitive, every word anywhere in the event.
-- **Sharing** (`views/sharing.ts`) goes through the phone's share menu: an event (its link, with the flyer as preview), a near period or the visitor's plans (an image drawn in the browser, `lib/shareCard.ts`, and a list for WhatsApp).
+- **Sharing** (`views/sharing.ts`) goes through the phone's share menu: an event (its link, whose preview shows the flyer, date, title, place and price: section 3.4), a near period or the visitor's plans (an image drawn in the browser, `lib/shareCard.ts`, and a list for WhatsApp).
 
 ### 5.6 Themes
 
 - **Two themes:** "Fania de día" (light) and "Noche Fania" (dark).
-- **Three modes:** auto, light and dark. **Auto** follows the visitor's clock: light from 6:00 to 17:59,
-  dark the rest of the day, switching on its own while the page is open.
-- **Remembered** in `localStorage`. An inline script in `BaseLayout.astro` applies it before the first
-  paint, so the page never flashes the wrong theme (allowed by its hash, section 3.3).
+- **Light by default** for everyone, not the device's setting nor the time. A two-way switch, "Claro" /
+  "Oscuro" (`ThemeToggle.astro`, `scripts/theme.ts`).
+- **Remembered** in `localStorage`, key `theme`, value `light` or `dark`; any other value (the old `auto`)
+  reads as light and is removed. Blocked storage: the switch works for the visit only.
+- **Before first paint:** an inline script (`src/themeScript.ts`, put in `<head>` by `BaseLayout.astro`) sets
+  `<html data-theme>` and the `theme-color` meta from the saved value, so a dark choice never flashes light
+  (allowed by its hash, section 3.3). CSS defaults to `color-scheme: light`; `[data-theme=dark]` switches.
+  The rule and colors live in `scripts/themeConfig.ts`, shared by both; `tests/theme.test.ts` runs the inline
+  script against the same cases.
 - **Colors** are CSS tokens with `light-dark()` (`styles/tokens.css`); [`DESIGN.md`](DESIGN.md) has
   them all.
 
@@ -474,8 +527,8 @@ only Instagram content it loads is a post's player, and only when a visitor taps
 | Data contract | Every field of `events.json` and `meta.json`: types, allowed values (event types, styles, confidence), real dates and time formats, `end_date` after `date` and within 7 days, unique ids, usernames, post links (`instagram.com/<p, reel, reels or tv>/<code>/`), flyer and clip paths (inside `flyers/` and `previews/`) and their files existing, sorting | `frontend/scripts/check-data.mjs` |
 | Types | `astro check`: strict TypeScript, including `noUncheckedIndexedAccess` | `tsconfig.json` |
 | Color contrast | Every color pair the site uses, in both themes, against WCAG 2.2 AA. It reads the tokens from `tokens.css`, so it can't drift from the design system | `frontend/scripts/check-contrast.mjs` |
-| Unit tests | Dates and Bogotá's "today", formatting, filtering (rhythms and dates, "Mañana", the options and their counts) and period grouping, holidays, the policy check, where the visitor can install from and its steps, which viewer slides are rendered | `frontend/tests/*.test.ts` (Vitest) |
-| Build | Every page, image and feed is generated; every page's Content Security Policy allows its inline scripts and styles, and no page has a `style=""` attribute (section 3.3) | `npm run build`, `frontend/scripts/csp-meta.mjs` |
+| Unit tests | Dates and Bogotá's "today", formatting, filtering (rhythms and dates, "Mañana", the options and their counts) and period grouping, holidays, the policy check, where the visitor can install from and its steps, which viewer slides are rendered, link previews (their text, the image's version, one image drawn with and one without a flyer), the theme (the saved value, old ones, and the script before first paint) | `frontend/tests/*.test.ts` (Vitest) |
+| Build | Every page, image and feed is generated; every page's Content Security Policy allows its inline scripts and styles, and no page has a `style=""` attribute (section 3.3); every event's link preview has its tags and a 1200×630 JPEG under 280 KB (section 3.4) | `npm run build`, `frontend/scripts/csp-meta.mjs`, `frontend/scripts/og-check.mjs` |
 
 All five run in `ci` on every pull request, and the ruleset requires `ci` before merging.
 
@@ -489,14 +542,17 @@ frontend/
   vitest.config.ts        unit tests, with Astro's settings
   scripts/                check-data.mjs, check-contrast.mjs (run by npm run check); release.mjs (versions);
                           og-site.html (draws the home page's link preview); csp-meta.mjs (the policy, after
-                          the build)
+                          the build); og-check.mjs (the events' link previews, after the build)
   tests/                  Vitest tests, factories.ts (test events)
   src/
     data.ts               the data, typed, with flyer sizes (build time only)
     csp.ts                allowInlineScript(): an inline script, allowed by its hash (build time only)
+    themeScript.ts        the theme before first paint, an inline script (build time only)
+    linkPreviewImage.ts   an event's link-preview image: satori + sharp (build time only)
     vendor/goatcounter-count.js   GoatCounter's script, served from the site
     env.d.ts              the build's variables: PUBLIC_CHECKED_AT, PUBLIC_VERSION
     assets/og-site.jpg    the home page's link preview, drawn by scripts/og-site.html
+    assets/fonts/og/      the fonts drawn into the events' link previews (TTF, with their OFL licenses)
     layouts/BaseLayout.astro   <head>: meta, previews, fonts, theme before paint, GoatCounter, the CSS
     pages/
       index.astro         the app
@@ -514,12 +570,12 @@ frontend/
       state.ts            AppState, filtering, period grouping
       screenHistory.ts    the phone's back between the app's screens
       types.ts            DanceEvent, EventMedia, Meta, AppState (mirror of the backend's models)
-      theme.ts, themeConfig.ts   theme modes
+      theme.ts, themeConfig.ts   the Claro / Oscuro switch, its rule and colors
       views/              upcomingView, calendarView, eventCard, eventDetail, eventDialog, filters,
                           jumpBar, viewSwitch, postsSheet, postViewer, inlinePlayer, clips, saveButton,
                           sharing, installPrompt, viewerWindow (HTML strings + their behavior)
-      lib/                dates, holidays, format, links, contact, mediaLabel, search, saved, share,
-                          shareText, shareCard, analytics, dom, icons, sheet, instagramEmbed, installPlace
+      lib/                dates, holidays, format, links, linkPreview, contact, mediaLabel, search, saved,
+                          share, shareText, shareCard, analytics, dom, icons, sheet, instagramEmbed, installPlace
     styles/               tokens.css (design tokens), base.css, components/*.css
 ```
 
@@ -537,6 +593,7 @@ frontend/
 | `views/jumpBar.ts` | Phones: the sticky bar, its checklist menus (dates, rhythms), keeping your place, hiding on scroll |
 | `views/viewSwitch.ts` | Phones: the floating calendar / list button |
 | `lib/links.ts` | Every URL built from an event: flyer, clip, page, link preview, Maps, the report form |
+| `lib/linkPreview.ts`, `linkPreviewImage.ts` | A shared link's preview: its title, description, the image's text and version; the image itself (build time) |
 | `lib/mediaLabel.ts` | What the label over a post's image says (Ver con sonido, Ver video, Ver las N), and which cards get a ▶ |
 | `lib/sheet.ts` | Bottom sheets that drag to dismiss; panel sheets with their own back-button step |
 | `lib/instagramEmbed.ts` | Instagram's player for a post, its script loaded on demand |
