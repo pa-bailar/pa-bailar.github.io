@@ -260,9 +260,115 @@
 }
 
 .event-card__title {
-  padding-right: calc(var(--sticker-size) - var(--space-1)); /* keep clear of the sticker */
   font-family: var(--font-display);
   font-size: var(--text-xl);
+}
+
+/* ---------- the action row under the flyer, like Instagram's: ⓘ Detalles · Compartir · · · Guardar ----------
+   It says the card opens (the whole card still does). Each button sits above the card's stretched link, with a
+   44px target; the gaps between them still open the card. */
+.event-card__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-2) var(--space-3) 0;
+}
+
+.event-card__details,
+.event-card__share,
+.event-card__actions .save-button {
+  position: relative;
+  z-index: var(--z-raised);
+}
+
+/* "ⓘ Detalles": an icon and a word, outlined thin (a quiet label, not a second primary button). */
+.event-card__details {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--touch-target);
+  padding: 0 var(--space-4) 0 var(--space-3);
+  border: var(--border-width-thin) solid var(--border);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+}
+
+.event-card__details .icon {
+  width: var(--icon-md);
+  height: var(--icon-md);
+}
+
+.event-card__share {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: var(--touch-target);
+  height: var(--touch-target);
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text);
+}
+
+.event-card__share .icon {
+  width: var(--icon-lg);
+  height: var(--icon-lg);
+}
+
+/* Guardar at the right end of the row. */
+.event-card__actions .save-button {
+  width: var(--touch-target);
+  height: var(--touch-target);
+  margin: 0 0 0 auto;
+}
+
+/* First visit: the first card's "Detalles" pulses once (views/detailsHint.ts). */
+.event-card__details.is-pulsing {
+  animation: details-pulse 1600ms cubic-bezier(0.2, 0, 0, 1) 300ms;
+}
+
+@keyframes details-pulse {
+  0% {
+    box-shadow: 0 0 0 0 var(--pulse);
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.06);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    box-shadow: 0 0 0 14px transparent;
+  }
+}
+
+/* "Ver horario, precios y cómo llegar": a quiet line at the end, like Instagram's "Ver los 12 comentarios". */
+.event-card__more {
+  position: relative;
+  z-index: var(--z-raised);
+  align-self: flex-start;
+  margin-top: auto; /* at the card's foot, under the price line when there's one */
+  padding: var(--space-2) 0 var(--space-1);
+  border: 0;
+  background: none;
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  text-align: left;
+}
+
+.event-card__foot + .event-card__more {
+  margin-top: 0;
+}
+
+/* Wide screens: the event open in the side panel (event-dialog.css) is outlined in the list. */
+.event-card.is-current {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
 }
 
 .event-card__hit {
@@ -312,12 +418,6 @@
   padding-top: var(--space-2);
 }
 
-/* The bookmark at the end of the last line, like Instagram's at the end of a post's actions (the date
-   sticker takes the card's top-right corner). */
-.event-card__foot .save-button {
-  margin-left: auto;
-}
-
 .event-card__price {
   font-size: var(--text-sm);
   font-weight: var(--weight-bold);
@@ -332,10 +432,12 @@
 
 /* ---------- date sticker (record label) ---------- */
 
+/* Inside the flyer's bottom-right corner, on cards as in the detail: hanging below it, it covered the action
+   row's Guardar. */
 .date-sticker {
   position: absolute;
   right: var(--space-3);
-  bottom: calc(var(--sticker-size) / -2.3);
+  bottom: var(--space-3);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -395,6 +497,17 @@
   }
 
   .event-card__body {
-    padding: var(--space-4) var(--space-4) 0;
+    padding: var(--space-3) var(--space-4) 0;
+  }
+
+  /* "Detalles" lines up with the text below; Guardar's icon with the text's right edge. */
+  .event-card__actions {
+    padding: var(--space-2) var(--space-1) 0 var(--space-4);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .event-card__details.is-pulsing {
+    animation: none;
   }
 }

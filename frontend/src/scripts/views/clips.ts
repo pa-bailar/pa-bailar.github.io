@@ -50,6 +50,16 @@ export function pauseClips(root: ParentNode = document) {
   root.querySelectorAll<HTMLVideoElement>("video[data-clip]").forEach((clip) => clip.pause());
 }
 
+/**
+ * Play the clip under `root` again after `pauseClips` (the viewer's sheet went back down and uncovered it).
+ * Only a clip already watched, and never when the visitor asks for less motion or data.
+ */
+export function resumeClips(root: ParentNode) {
+  if (holdBack()) return;
+  const clip = [...root.querySelectorAll<HTMLVideoElement>("video[data-clip]")].find((item) => watched.has(item));
+  if (clip?.paused) play(clip);
+}
+
 function release(clip: HTMLVideoElement) {
   observer?.unobserve(clip);
   watched.delete(clip);

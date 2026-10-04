@@ -96,6 +96,15 @@ const PAIRS = [
   ["Calendar dot outline on day cell (fill color is decorative)", "border", "surface", "ui"],
   ["Install steps: a browser button's outline (.install-key) on its fill", "border", "surface-sunken", "ui"],
   ["Install steps: the arrow toward the browser's button", "accent", "surface", "ui"],
+  // The cards' action row and the viewer's sheet (docs/DESIGN.md, "Opening an event").
+  ["Card: \"Detalles\" thin outline on the page (phones)", "border", "bg", "ui"],
+  ["Card: \"Detalles\" thin outline on the card (wide screens)", "border", "surface", "ui"],
+  ["Card: \"Detalles\" label on the page (phones)", "text", "bg", "text"],
+  ["Card: \"Ver horario, precios y cómo llegar\" on the page (phones)", "text-muted", "bg", "text"],
+  ["Card: \"Ver horario, precios y cómo llegar\" on the card (wide screens)", "text-muted", "surface", "text"],
+  ["Viewer sheet: quick action outline", "border", "surface", "ui"],
+  ["Viewer sheet: \"Guardado\" quick action (accent, 12px bold)", "accent", "surface", "text"],
+  ["Side panel: the open event's card outline on the page", "accent", "bg", "ui"],
 ];
 
 // ---------- run ----------

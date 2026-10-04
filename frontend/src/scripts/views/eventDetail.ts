@@ -11,13 +11,14 @@ import {
   formatMoney,
   formatTime,
   placeLabel,
+  priceSummary,
   stickerDate,
   stylesLabel,
   typeLabel,
 } from "../lib/format";
 import { contactLink, type ContactKind } from "../lib/contact";
 import { ICONS } from "../lib/icons";
-import { feedbackUrl, flyerUrl, mapsUrl, previewUrl } from "../lib/links";
+import { feedbackUrl, flyerUrl, mapsUrl, previewUrl, thumbUrl } from "../lib/links";
 import { isVideoCover, mediaLabel } from "../lib/mediaLabel";
 import { playInline } from "./inlinePlayer";
 import { openPostViewer } from "./postViewer";
@@ -43,30 +44,48 @@ function toConfirm(text = "Por confirmar"): string {
   return `<span class="to-confirm">${text}</span>`;
 }
 
-/** [term, HTML value] rows. Missing details say "Por confirmar" right where they belong. */
-function detailRows(event: DanceEvent): [string, string][] {
+/**
+ * [term, HTML value] rows. Missing details say "Por confirmar" right where they belong. The viewer's sheet
+ * (`sheet`) puts the place and the price right after the time, the price as one line ("Desde $ 25.000 · 2
+ * opciones"): what people look for first.
+ */
+function detailRows(event: DanceEvent, { sheet = false } = {}): [string, string][] {
   const time = [formatTime(event.start_time), formatTime(event.end_time)].filter(Boolean).join(" – ");
   const when = `${escapeHtml(eventDaysLabel(event))} · ${time ? escapeHtml(time) : toConfirm("hora por confirmar")}`;
-  const place = placeLabel(event);
+  // The venue may be the organizer's own place (placeLabel leaves it out then): still the place to go.
+  const place = placeLabel(event) || event.venue || "";
   const maps = mapsUrl(event);
   const directions = maps
     ? ` <a class="inline-link" href="${escapeHtml(maps)}" target="_blank" rel="noopener" data-track="como-llegar">${ICONS.pin}Cómo llegar</a>`
     : "";
-
-  const rows: [string, string][] = [
-    ["Cuándo", when],
-    ["Organiza", escapeHtml([event.organizer, `@${event.account}`].filter(Boolean).join(" · "))],
-    ["Lugar", place ? `${escapeHtml(place)}${directions}` : toConfirm()],
+  const organizer: [string, string] = [
+    "Organiza",
+    escapeHtml([event.organizer, `@${event.account}`].filter(Boolean).join(" · ")),
   ];
-  if (!event.prices.length) rows.push(["Precio", toConfirm()]);
+  const where: [string, string] = ["Lugar", place ? `${escapeHtml(place)}${directions}` : toConfirm()];
+
+  const rows: [string, string][] = sheet
+    ? [["Cuándo", when], where, ["Precio", sheetPrice(event)], organizer]
+    : [["Cuándo", when], organizer, where];
+  if (!sheet && !event.prices.length) rows.push(["Precio", toConfirm()]);
   if (event.artists.length) rows.push(["Con", escapeHtml(event.artists.join(", "))]);
   if (event.activities.length) rows.push(["Incluye", escapeHtml(event.activities.join(" · "))]);
   if (event.contact) rows.push(["Contacto", contactHtml(event.contact)]);
   return rows;
 }
 
-function pricesHtml(event: DanceEvent): string {
-  if (!event.prices.length) return "";
+/** The sheet's price line: "Gratis", "$ 30.000", "Desde $ 25.000 · 3 opciones", or "Por confirmar". */
+export function sheetPrice(event: DanceEvent): string {
+  const summary = priceSummary(event);
+  if (!summary) return toConfirm();
+  const free = event.prices.every((price) => price.amount_cop === 0);
+  const options = event.prices.length > 1 ? ` <span class="to-confirm">· ${event.prices.length} opciones</span>` : "";
+  return `${free ? "Gratis" : escapeHtml(summary)}${options}`;
+}
+
+function pricesHtml(event: DanceEvent, { sheet = false } = {}): string {
+  // In the sheet, a single price without conditions is already its "Precio" line.
+  if (!event.prices.length || (sheet && event.prices.length === 1 && !event.prices[0]?.condition)) return "";
   const items = event.prices
     .map((price) => {
       const condition = price.condition ? ` <small>(${escapeHtml(price.condition)})</small>` : "";
@@ -165,6 +184,67 @@ export function eventDetailHtml(
       </div>
       ${media.caption ? `<details class="event-dialog__caption"><summary>Texto de la publicación</summary><p>${escapeHtml(media.caption)}</p></details>` : ""}
       <p class="event-dialog__report"><a class="inline-link" href="${escapeHtml(feedbackUrl(event))}" target="_blank" rel="noopener" data-track="reportar-error">¿Algo está mal? Repórtalo</a></p>
+    </div>`;
+}
+
+/**
+ * The viewer's detail (eventDialog.ts), laid out as a sheet: what's new comes first, and the flyer stays where it
+ * was seen. `bar` is the viewer's bar (‹ 3 de 9 › ×), at the top of the sheet.
+ *   - the flyer (with its clip, its posts and the video in place), above the sheet on phones;
+ *   - the sheet: a small thumbnail with when and the title, three quick actions (Cómo llegar · Compartir ·
+ *     Guardar), then when, where, the price and who organizes, the prices, the rhythms;
+ *   - at its end, "Ver en Instagram", the post's text and "¿Algo está mal? Repórtalo".
+ * On wide screens it's a side panel, and the flyer goes between the details and the end (event-dialog.css).
+ */
+export function eventSheetHtml(
+  event: DanceEvent,
+  selected: number,
+  { titleId, bar }: { titleId: string; bar: string },
+): string {
+  const media = event.media[selected] ?? event.media[0];
+  const thumb = thumbUrl(media);
+  const maps = mapsUrl(event);
+  const rows = detailRows(event, { sheet: true })
+    .map(([term, value]) => `<dt>${term}</dt><dd>${value}</dd>`)
+    .join("");
+  const styles = stylesLabel(event.styles);
+  const lowConfidence =
+    event.confidence === "low"
+      ? `<p class="callout">Algunos datos se leyeron del flyer con poca seguridad: confírmalos en la publicación.</p>`
+      : "";
+  return `
+    <div class="event-dialog__visual">
+      ${mediaHtml(event, media, selected)}
+    </div>
+    <div class="viewer-panel">
+      ${bar}
+      <div class="event-dialog__info event-sheet">
+        <div class="event-sheet__head">
+          ${thumb ? `<img class="event-sheet__thumb" src="${escapeHtml(thumb)}" alt="" width="56" height="70" decoding="async" />` : ""}
+          <div class="event-sheet__heading">
+            <p class="event-dialog__when">${escapeHtml(cardWhenLabel(event))}</p>
+            <h2 class="event-dialog__title event-sheet__title" id="${titleId}">${escapeHtml(event.title)}</h2>
+            <span class="tag-type t-${escapeHtml(event.event_type)}">${typeLabel(event.event_type)}</span>
+          </div>
+        </div>
+        <div class="event-sheet__quick">
+          ${maps ? `<a class="btn" href="${escapeHtml(maps)}" target="_blank" rel="noopener" data-track="como-llegar">${ICONS.pin}<span>Cómo llegar</span></a>` : ""}
+          <button class="btn" type="button" data-share-event="${escapeHtml(event.id)}" data-track="compartir-evento">${ICONS.share}<span>Compartir</span></button>
+          ${saveButtonHtml(event, { labeled: true, className: "btn" })}
+        </div>
+        <div class="stripes" aria-hidden="true"><i></i><i></i><i></i></div>
+        <dl class="detail-list">${rows}</dl>
+        ${pricesHtml(event, { sheet: true })}
+        ${styles ? `<p class="style-list">${escapeHtml(styles)}</p>` : ""}
+        ${lowConfidence}
+      </div>
+      <div class="event-dialog__info event-sheet__end">
+        <div class="event-dialog__actions">
+          <a class="btn btn--primary" href="${escapeHtml(media.permalink)}" target="_blank" rel="noopener" data-track="instagram">${ICONS.instagram}Ver en Instagram ↗</a>
+        </div>
+        ${media.caption ? `<details class="event-dialog__caption"><summary>Texto de la publicación</summary><p>${escapeHtml(media.caption)}</p></details>` : ""}
+        <p class="event-dialog__report"><a class="inline-link" href="${escapeHtml(feedbackUrl(event))}" target="_blank" rel="noopener" data-track="reportar-error">¿Algo está mal? Repórtalo</a></p>
+      </div>
     </div>`;
 }
 

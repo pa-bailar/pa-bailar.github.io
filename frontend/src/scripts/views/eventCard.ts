@@ -1,6 +1,10 @@
 // Event card used in the upcoming list and the calendar's day list.
 // The title is a link to the event's page (open in a new tab, share, crawl); a plain click opens the
 // viewer instead (main.ts). Its ::after stretches over the whole card, so the card is one big target.
+// Under the flyer, a row of actions like Instagram's says that it opens: "ⓘ Detalles", Compartir and, on the
+// right, Guardar; and a quiet line at the end ("Ver horario, precios y cómo llegar") says what's inside.
+// The buttons sit above the stretched link; "Detalles" and the line open the viewer like the card does, but
+// are counted apart (data-source, lib/analytics.ts).
 
 import type { DanceEvent, EventMedia } from "../types";
 import { isVideoCover } from "../lib/mediaLabel";
@@ -15,7 +19,7 @@ import {
   stylesLabel,
   typeLabel,
 } from "../lib/format";
-import { eventPath, flyerUrl, mainMedia } from "../lib/links";
+import { eventPath, flyerUrl, mainMedia, mapsUrl } from "../lib/links";
 import { saveButtonHtml } from "./saveButton";
 
 const MAX_STYLES_ON_CARD = 3;
@@ -47,6 +51,35 @@ function flyerHtml(media: EventMedia, flyer: string): string {
     </div>`;
 }
 
+/**
+ * The line at the end of a card, naming what the details add: "Ver horario, precios y cómo llegar", only
+ * with what this event has (a time, prices, a place for Maps), else "Ver todos los detalles".
+ */
+export function detailsTeaser(event: DanceEvent): string {
+  const parts = [
+    event.start_time ? "horario" : "",
+    event.prices.length ? "precios" : "",
+    mapsUrl(event) ? "cómo llegar" : "",
+  ].filter(Boolean);
+  if (!parts.length) return "Ver todos los detalles";
+  const last = parts.pop()!;
+  return `Ver ${parts.length ? `${parts.join(", ")} y ` : ""}${last}`;
+}
+
+/** "ⓘ Detalles" · Compartir · · · Guardar, under the flyer. */
+function actionsHtml(event: DanceEvent): string {
+  const id = escapeHtml(event.id);
+  const title = escapeHtml(event.title);
+  return `
+    <div class="event-card__actions">
+      <button class="event-card__details" type="button" data-event="${id}" data-source="boton"
+        aria-label="Detalles: ${title}">${ICONS.info}<span>Detalles</span></button>
+      <button class="event-card__share" type="button" data-share-event="${id}" data-track="compartir-tarjeta"
+        aria-label="Compartir: ${title}">${ICONS.share}</button>
+      ${saveButtonHtml(event)}
+    </div>`;
+}
+
 function eventCardHtml(event: DanceEvent): string {
   const media = mainMedia(event);
   const flyer = flyerUrl(media);
@@ -71,6 +104,7 @@ function eventCardHtml(event: DanceEvent): string {
         ${isVideoCover(media) ? `<span class="play-mark" aria-hidden="true">${ICONS.play}</span>` : ""}
         <span class="date-sticker${sticker.range ? " date-sticker--range" : ""}" aria-hidden="true"><b>${sticker.day}</b><small>${sticker.month}</small></span>
       </div>
+      ${actionsHtml(event)}
       <div class="event-card__body">
         <p class="event-card__time">${escapeHtml(when)}</p>
         <h3 class="event-card__title">
@@ -80,11 +114,16 @@ function eventCardHtml(event: DanceEvent): string {
           <button class="event-card__account" data-account="${escapeHtml(event.account)}" aria-label="Ver solo eventos de @${escapeHtml(event.account)}">@${escapeHtml(event.account)}</button>
         </p>
         ${place ? `<p class="event-card__meta">${escapeHtml(place)}</p>` : ""}
-        <div class="event-card__foot">
+        ${
+          price || styles
+            ? `<div class="event-card__foot">
           ${price ? `<span class="event-card__price${isFree(event) ? " event-card__price--free" : ""}">${escapeHtml(price)}</span>` : ""}
           ${styles ? `<span class="style-list">${escapeHtml(styles)}</span>` : ""}
-          ${saveButtonHtml(event)}
-        </div>
+        </div>`
+            : ""
+        }
+        <button class="event-card__more" type="button" data-event="${escapeHtml(event.id)}" data-source="linea"
+          tabindex="-1">${detailsTeaser(event)}</button>
       </div>
     </article>`;
 }
