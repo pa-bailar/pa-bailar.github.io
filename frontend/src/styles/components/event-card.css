@@ -402,24 +402,6 @@
   }
 }
 
-/* "Ver horario, precios y cómo llegar": a quiet line at the end, like Instagram's "Ver los 12 comentarios". */
-.event-card__more {
-  position: relative;
-  z-index: var(--z-raised);
-  align-self: flex-start;
-  margin-top: auto; /* at the card's foot, under the price line when there's one */
-  padding: var(--space-2) 0 var(--space-1);
-  border: 0;
-  background: none;
-  color: var(--text-muted);
-  font-size: var(--text-sm);
-  text-align: left;
-}
-
-.event-card__foot + .event-card__more {
-  margin-top: 0;
-}
-
 /* Wide screens: the event open in the side panel (drawer.css) is outlined in the list. */
 .event-card.is-current {
   outline: 3px solid var(--accent);

@@ -1,6 +1,7 @@
 // Phones only (CSS hides it where the toolbar with the view tabs is sticky): a round-cornered icon
 // button floating at the bottom right that switches between the upcoming list and the calendar. On
-// phones the tabs scroll away with the page, so without it the calendar is easy to forget.
+// phones the tabs scroll away with the page, so without it the calendar is easy to forget. While the tabs are on
+// screen it stays away: they do the same, and on a first visit it would cover the first card's date sticker.
 
 import type { View } from "../types";
 import { byId } from "../lib/dom";
@@ -24,4 +25,14 @@ export function renderViewSwitch(current: View) {
 export function initViewSwitch(show: (view: View) => void) {
   const button = byId("view-switch");
   button.addEventListener("click", () => show(button.dataset.switchTo as View));
+  const tabs = document.querySelector(".toolbar .tabs");
+  if (!tabs || !("IntersectionObserver" in window)) {
+    button.classList.remove("is-away"); // it arrives away (ViewSwitch.astro)
+    return;
+  }
+  // The tabs count as gone once under the jump bar stuck to the top (--jump-bar-height).
+  const barHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--jump-bar-height")) || 0;
+  new IntersectionObserver(([entry]) => button.classList.toggle("is-away", Boolean(entry?.isIntersecting)), {
+    rootMargin: `-${barHeight}px 0px 0px 0px`,
+  }).observe(tabs);
 }

@@ -150,5 +150,13 @@ export function initJumpBar() {
   initHideOnScroll();
   // The chips inside are handled by main.ts; "Ver 12 eventos" closes it like ×. Its groups scroll between the
   // head and that button, so a drag down starts from the head or the groups' top.
-  initPanelSheet(byId<HTMLDialogElement>("filter-sheet"), undefined, { scroller: byId("filter-sheet-body") });
+  const sheet = byId<HTMLDialogElement>("filter-sheet");
+  initPanelSheet(sheet, undefined, { scroller: byId("filter-sheet-body") });
+  // Closed after a choice: the ⚙ that opened it was drawn again meanwhile, so the browser can't give it the focus
+  // back. The new ⚙ gets it.
+  sheet.addEventListener("close", () => {
+    const focus = document.activeElement;
+    if (focus && focus !== document.body && !sheet.contains(focus)) return;
+    byId("jump-chips").querySelector<HTMLElement>("[data-open-filters]")?.focus({ preventScroll: true });
+  });
 }

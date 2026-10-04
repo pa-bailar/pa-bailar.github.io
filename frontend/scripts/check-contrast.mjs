@@ -108,8 +108,6 @@ const PAIRS = [
   ["Card: \"Detalles\" label on its tonal fill (13px bold)", "details-text", "details-bg", "text"],
   ["Card: \"Detalles\" label on its pressed fill", "details-text", "details-bg-pressed", "text"],
   ["Card: \"Detalles\" icon on its tonal fill", "details-icon", "details-bg", "ui"],
-  ["Card: \"Ver horario, precios y cómo llegar\" on the page (phones)", "text-muted", "bg", "text"],
-  ["Card: \"Ver horario, precios y cómo llegar\" on the card (wide screens)", "text-muted", "surface", "text"],
   ["Drawer: quick action and media link outline", "border", "surface", "ui"],
   ["Drawer: \"Guardado\" quick action (accent, 12px bold)", "accent", "surface", "text"],
   ["Side panel: the open event's card outline on the page", "accent", "bg", "ui"],

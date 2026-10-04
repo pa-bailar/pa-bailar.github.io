@@ -137,6 +137,7 @@
   --text-xs: 0.75rem; /* 12 */
   --text-sm: 0.8125rem; /* 13 */
   --text-md: 0.9375rem; /* 15, body */
+  --text-base: 1rem; /* 16: search fields (under 16 px, iPhones zoom in on focus) and the post viewer's title */
   --text-lg: 1.0625rem; /* 17 */
   --text-xl: 1.3125rem; /* 21 */
   --text-2xl: 1.625rem; /* 26 */

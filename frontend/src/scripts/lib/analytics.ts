@@ -30,12 +30,13 @@ export function trackPageview(path: string, title: string) {
 }
 
 /**
- * Where an event's details were opened from: a tap on the card, its "Detalles" button, the line under it
- * ("Ver horario, precios y cómo llegar") or a shared link (/?evento=<id>).
+ * Where an event's details were opened from: a tap on the card, its "Detalles" button or a shared link
+ * (/?evento=<id>). Retired: "linea", the line that ended each card until October 2026 ("detalles-linea" in the
+ * statistics before then).
  */
-export type DetailsSource = "tarjeta" | "boton" | "linea" | "enlace";
+export type DetailsSource = "tarjeta" | "boton" | "enlace";
 
-const DETAILS_SOURCES: readonly DetailsSource[] = ["tarjeta", "boton", "linea", "enlace"];
+const DETAILS_SOURCES: readonly DetailsSource[] = ["tarjeta", "boton", "enlace"];
 
 /** The GoatCounter event for details opened from `source` ("detalles-boton"); an unknown source counts as the card. */
 export function detailsEventName(source: string | undefined): string {

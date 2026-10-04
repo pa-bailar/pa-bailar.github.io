@@ -40,12 +40,20 @@ export function mediaLabel(type: MediaType): string {
   return MEDIA_LABELS[type] ?? "Publicación";
 }
 
+/** The catch-all rhythm in the data ("otro"): "Otros ritmos" wherever it's shown. */
+export const OTHER_STYLE = "otro";
+
+/** A rhythm as shown: "Salsa", "Salsa caleña", "Otros ritmos" (the filters, the cards, the details). */
+export function styleLabel(style: string): string {
+  return style === OTHER_STYLE ? "Otros ritmos" : capitalize(style);
+}
+
 /**
- * "salsa · mambo · afro". The no-break space glues each dot to the word before it, so a wrapped line
+ * "Salsa · Mambo · Otros ritmos". The no-break space glues each dot to the word before it, so a wrapped line
  * never starts with a dot.
  */
 export function stylesLabel(styles: string[], max = styles.length): string {
-  return styles.slice(0, max).join(" · ");
+  return styles.slice(0, max).map(styleLabel).join(" · ");
 }
 
 /** "1 evento" / "5 eventos" */
