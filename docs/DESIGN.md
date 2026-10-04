@@ -5,9 +5,9 @@ Two themes, one system:
 | Theme | Name | Mood | Source |
 |---|---|---|---|
 | Light | **Fania de día** | A 1970s salsa flyer: cream offset paper, tomato red and marigold ink | New York salsa graphics (Izzy Sanabria, Fania Records), 1968–88 |
-| Dark | **Noche Fania** | A dance floor at night: record black (a warm near-black), candlelit cream, gold accents | Spanish *bachata sensual* events (Korke & Judith era), 2010s–2020s |
+| Dark | **Luz de escenario** | The late-night social: a hotel ballroom in an indigo and violet wash, a magenta gel spot from above, gold lettering, pink accents. The calendar is **Contraluz**, a festival poster backlit in gold and ember | European *bachata sensual* socials and festivals, 2010s–2020s |
 
-The **structure** (type, motifs, components) comes from Fania. The **mood** of the dark theme comes from bachata sensual. Both themes share every component; only the color values change.
+The **structure** (type, motifs, components) comes from Fania. The **mood** of the dark theme comes from bachata sensual. Both themes share every component; only the color values change, plus the dark theme's lighting ("Luz de escenario", below).
 
 **Light by default.** Everyone sees Fania de día first, whatever the device's light/dark setting or the time: it's the site's main look. The switch in the top right shows the current theme, **☀ Claro** or **☾ Oscuro**, and a tap changes to the other one:
 - **Remembered** on that device (`localStorage`, key `theme`: `light` or `dark`). Where storage is blocked (private mode), the switch still works for that visit.
@@ -44,31 +44,65 @@ frontend/src/styles/
 `tokens.css` has three layers:
 
 1. **Palette:** raw named colors (`--wine-900`, `--tomato-600`, `--marigold-400`…). **Components never use these.**
-2. **Semantic colors:** what a color is *for* (`--bg`, `--surface`, `--text-muted`, `--accent`, `--action`…). Each is `light-dark(<Fania de día>, <Noche Fania>)`. **Components only use these.**
+2. **Semantic colors:** what a color is *for* (`--bg`, `--surface`, `--text-muted`, `--accent`, `--action`…). Each is `light-dark(<Fania de día>, <Luz de escenario>)`. **Components only use these.**
 3. **Scales:** type sizes, spacing, radii, control sizes, motion.
 
 Themes switch through CSS `color-scheme`: `light` at `:root`, `dark` only under `html[data-theme="dark"]`. An inline script in `<head>` (`src/themeScript.ts`, put in every page by `BaseLayout.astro`) reads the saved choice and sets `data-theme` before first paint, so a visitor who chose Oscuro never sees a flash of Claro; it also sets the `theme-color` meta for the phone's address bar. The Content Security Policy allows it by its hash (`ARCHITECTURE.md`, section 3.3). `scripts/theme.ts` runs the switch; the switch's icon and label follow `data-theme` through CSS, so they're right before any script loads. Both share their rule (only a saved `dark` is dark) and colors through `scripts/themeConfig.ts`. The installed app's manifest uses the light theme's paper for its splash screen and bar.
 
 ### Semantic colors
 
-| Token | Fania de día | Noche Fania | Use |
+| Token | Fania de día | Luz de escenario | Use |
 |---|---|---|---|
-| `--bg` | cream-150 (aged offset paper) | vinyl-900 (the record: warm near-black) | Page background |
-| `--surface` | cream-75 | vinyl-800 | Cards, dialog, buttons |
-| `--surface-sunken` | cream-250 | vinyl-950 | Image wells, callouts |
-| `--border` | wine-900 | vinyl-400 | Outlines of cards, chips, buttons |
-| `--divider` | cream-300 | vinyl-600 | Lines between sections and rows |
-| `--text` | wine-900 | cream-100 | Body text |
-| `--text-muted` | cocoa-500 | cocoa-300 | Metadata, captions |
-| `--text-italic` | wine-500 | rose-300 | Bodoni italic accents |
-| `--logo` | tomato-600 | marigold-400 | The wordmark |
-| `--accent` | tomato-600 | orange-400 | Event time, active tab, selected day |
-| `--action` / `--on-action` | deep orange / white | marigold / wine | The single primary button ("Ver en Instagram"), shaped like the WhatsApp one |
-| `--chip-active-*` | wine / cream | marigold / wine | Selected filter chip, checked box in the bar's menus |
-| `--stripe-1..3` | tomato, orange, marigold | brighter tomato, orange, marigold | 70s stripes |
-| `--sticker-*` | tomato / cream | marigold / wine | Round date sticker |
-| `--pulse` | tomato, translucent | orange, translucent | The ring of the first visit's pulse on "Detalles" (decorative) |
-| `--type-*` / `--on-type` | per event type | per event type | Type tag, calendar pills and dots |
+| `--bg` | cream-150 (aged offset paper) | indigo-900 `#16122b` (the ballroom) | Page background |
+| `--surface` | cream-75 | indigo-800 `#221c3d` | Cards, dialog, buttons |
+| `--surface-sunken` | cream-250 | indigo-950 `#0e0b1f` | Image wells, callouts |
+| `--border` | wine-900 | indigo-400 `#8579b0` | Outlines of cards, chips, buttons |
+| `--divider` | cream-300 | indigo-600 `#382f5c` | Lines between sections and rows |
+| `--text` | wine-900 | lilac-50 `#f5eef7` | Body text |
+| `--text-muted` | cocoa-500 | lilac-300 `#c3b7db` | Metadata, captions |
+| `--text-italic` | wine-500 | pink-250 `#f6a9d2` | Bodoni italic accents |
+| `--logo` | tomato-600 | gold-300 `#f4c542` | The wordmark |
+| `--accent` | tomato-600 | pink-400 `#ff7eb9` | Event time, active tab, selected day |
+| `--action` / `--on-action` | deep orange / white | gold / ink `#1c1033` | The single primary button ("Ver en Instagram"), shaped like the WhatsApp one |
+| `--chip-active-*` | wine / cream | pink-300 `#ff9fcb` / ink | Selected filter chip, checked box in the bar's menus |
+| `--stripe-1..3` | tomato, orange, marigold | magenta `#e0438f`, coral `#f2785c`, gold | 70s stripes |
+| `--period-title` / `--period-shadow` | deep tomato / sand | pink-200 `#f7b0d4` / indigo-975 | Period headings |
+| `--sticker-*` | tomato / cream | gold / ink | Round date sticker |
+| `--today-*` | marigold / wine | gold / ink | Today's number in the calendar |
+| `--holiday-bg` | a tomato tint | plum-700 `#3e1f4a` | Calendar: public holidays |
+| `--pulse` | tomato, translucent | pink, translucent | The ring of the first visit's pulse on "Detalles" (decorative) |
+| `--type-*` / `--on-type` | per event type | pink (social), gold (workshop), coral (concert), lavender `#c9adf7` (festival, congress, show), lilac (competition, other) / ink | Type tag, calendar pills and dots |
+
+### Luz de escenario: the dark theme's lighting
+
+The dark theme isn't a flat color: the page is lit like the ballroom of a late-night bachata sensual social.
+- **The light** (`--stage-light`, painted on `body` by `base.css` under `[data-theme=dark]`): a magenta gel
+  spot from above the logo (`rgb(232 70 150)` at 40%, fading by 80% of its 400px), a violet beam from the
+  right (`rgb(110 90 255)` at 26%) and a faint haze further down. It scrolls with the page: it lights the header
+  and fades before the first cards.
+- **The grain** (`--grain`): a fine film noise (an SVG `feTurbulence` as a `data:` image, which the CSP's
+  `img-src` allows) at 5%, over the page, the viewer's sheet and the bottom sheets, so they read as the same air.
+- **Phones:** the toolbar (tabs and chips) isn't sticky there, so it's transparent in dark and lets the light
+  through instead of cutting it with a flat band. The sticky jump bar keeps `--bg`.
+- **The browser bar** (`theme-color`) is the page's indigo, `#16122B` (`scripts/themeConfig.ts`).
+
+**The calendar is "Contraluz"** (backlight): a festival poster hung in the ballroom. In dark, `.calendar` re-sets
+the semantic colors to its own palette (the `:root[data-theme="dark"] .calendar` block at the end of
+`tokens.css`): a black-aubergine stage (`--bg` `#140d18`, cells `#211726`, outlines `#a68aab`), parchment text
+`#f8ecdc`, gold `#ffc63f` on wine for today and the buttons, an ember accent `#ff8f52` for the selected day,
+a wine-rose holiday `#45192c`, and warmer type colors for the dots and pills. The section paints that stage
+(`calendar.css`) with its own light, `--backlight`: a gold core, ember, then magenta behind the month's name.
+On phones it rises edge to edge right under the bar, so switching from Próximos reads as the stage changing;
+on wider screens it's a framed panel. Everything inside follows, including the selected day's cards. The
+section sets `color: var(--text)` itself, since inherited text color was resolved with the page's tokens.
+
+**Contrast** (`npm run check` checks every pair in light, in dark, and again inside the calendar):
+- Luz de escenario: body text 15.97:1 on the page, 14.18:1 on cards; muted 9.62:1; the lowest text pair is
+  "Gratis" (5.33:1, white on green, as in light), then the pink time on cards (6.87:1); outlines ≥ 4.12:1.
+- Contraluz: text 16.38:1; muted 10.01:1; lowest text pair 5.33:1 ("Gratis"), then 6.99:1; outlines ≥ 5.63:1.
+- **Over the light**, measured on rendered pixels (the brightest background pixel behind each text, at 375 and
+  1280px): logo ≥ 7.73:1, tagline ≥ 7.72:1, "Actualizado" ≥ 7.89:1, tabs ≥ 8.69:1, the switch's outline
+  ≥ 3.15:1; in the calendar, the month ≥ 11.16:1 and the weekdays ≥ 8.04:1.
 
 ### Typography
 
@@ -104,7 +138,7 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves. The pa
 
 ## Upcoming list
 
-- **Period headers** (Izzy Sanabria's Fania lettering): the title in the display face (Shrikhand) in `--period-title` (deeper tomato in light, soft gold in dark: calmer than the logo, no glare) with a 2px offset shadow (`--period-shadow`: sand in light, the deepest black in dark), between two thin lines made of the three Fania colors side by side and the event count ("5 eventos"), with generous space above. Page colors only, so it never reads as a post. Title contrast 4.93:1 (light) and 9.47:1 (dark): it passes even the normal-text 4.5:1.
+- **Period headers** (Izzy Sanabria's Fania lettering): the title in the display face (Shrikhand) in `--period-title` (deeper tomato in light, soft pink in dark: calmer than the logo, no glare) with a 2px offset shadow (`--period-shadow`: sand in light, the deepest black in dark), between two thin lines made of the three Fania colors side by side and the event count ("5 eventos"), with generous space above. Page colors only, so it never reads as a post. Title contrast 4.93:1 (light) and 10.49:1 (dark): it passes even the normal-text 4.5:1.
 - **Grouped by period, not by day** (`groupByPeriod` in `scripts/state.ts`). Days with one or two events share rows instead of each leaving a mostly empty row. The buckets don't overlap, follow the usual calendar "date range" grouping, and split out the weekend because that's when most socials happen:
 
   | Group | Range |
@@ -434,7 +468,7 @@ then the flyer, then "Ver en Instagram". × and Escape close it; it slides in fr
 
 ## Adding something new
 
-1. Need a new color, size or spacing? Add a token in `tokens.css` (semantic colors need both a light and a dark value).
+1. Need a new color, size or spacing? Add a token in `tokens.css` (semantic colors need both a light and a dark value, and a Contraluz value in the dark `.calendar` block if the calendar or its cards use them).
 2. Create `styles/components/<block>.css` and import it in `layouts/BaseLayout.astro`, after the other components. Don't chain CSS with `@import`: the dev server doesn't reload imported files.
 3. Static markup goes in an Astro component (`src/components/<Block>.astro`); markup rendered from data goes in a view (`src/scripts/views/<block>.ts`).
 4. Check both themes and a phone width (375px), and run `npm run check`, before opening the PR.
