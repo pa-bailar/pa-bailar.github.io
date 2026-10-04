@@ -392,6 +392,18 @@ An event can be announced by several Instagram posts (a flyer, then a video, a r
 - **A video without a clip** (Instagram gave no file) keeps a ▶ in a dark circle in the middle of the card's image (`.play-mark`); the card opens the details like a photo, and "Ver el video con sonido" there plays it.
 - **On an event's page** the flyer is on top: its clip plays, a label says what's behind it (`lib/mediaLabel.ts`, `.event-detail__play`: "▶ Ver con sonido", "▶ Ver video", "Ver las 4"), and a tapped video plays in place (`views/inlinePlayer.ts`: Instagram's player in the image's place, full length, with sound; removed once it's out of view).
 - **"Ver en Instagram ↗"** in the details is the explicit way to the app; the ↗ says it leaves the site.
+- **Stories** (`media_type` `STORY`: a screenshot of a story, [`DATA.md`](DATA.md#stories)) have no post to show, and
+  the story itself is gone after 24 hours:
+  - On an event's page the flyer is a plain image, not a link. "Historia" (a dashed ring, `ICONS.story`) is a caption
+    in its top-left corner, where a story shows its account (`.event-detail__play--story`: white on `--on-image-bg`,
+    `--text-xs`, like a card's "Sin sonido"), not the action-colored label the others are, since there's nothing to tap.
+  - In the details, over the main button: "De una historia de @cuenta · las historias duran 24 horas"
+    (`.event-detail__source`, `--text-sm` in `--text-muted`, with the ring), and the button says
+    "Ver perfil en Instagram ↗" and opens the account's profile.
+  - In the posts sheet a story is among the Flyers, its thumbnail marked with the ring ("Historia 2 de 2"); chosen, the
+    media viewer shows only its flyer with the same line, and its bar says "Ver perfil en Instagram ↗".
+  - A low-confidence note says "confírmalos con la cuenta" instead of "en la publicación".
+  - A post's media comes before a story's (the data's order), so a post's flyer is the cover once there is one.
 
 ## Opening an event
 
@@ -477,7 +489,7 @@ puts the address back to the home page's.
 - **"Cómo llegar"** after the venue opens Google Maps (only when there's a venue or address).
 - **Reporting an error:** the detail ends with a small "¿Algo está mal? Repórtalo" link to the Google Form, with the event filled in (`feedbackUrl`: its title, its day or days, its id); the footer has "Escríbenos" for anything else. Out of the way of the actions, because almost everyone just wants the event.
 - **The contact is a link** (`lib/contact.ts`): an @username opens its Instagram; a mobile number opens a WhatsApp chat (`wa.me/57…`, with the WhatsApp icon), not a call: that's how people reach academies; a landline (60X) is a call (`tel:`), since it has no WhatsApp; a website opens it. A number that isn't a full Colombian or international one stays plain text.
-- **Icons** (`scripts/lib/icons.ts`): Instagram and WhatsApp marks (Simple Icons, CC0) and drawn icons (calendar, pin, ×, sound on and off, an arrow out, and for the install steps Safari's ⋯, Compartir and Agregar a inicio, a link and an arrow), inline SVG in the text color, hidden from screen readers.
+- **Icons** (`scripts/lib/icons.ts`): Instagram and WhatsApp marks (Simple Icons, CC0) and drawn icons (calendar, pin, ×, sound on and off, an arrow out, a story's dashed ring, and for the install steps Safari's ⋯, Compartir and Agregar a inicio, a link and an arrow), inline SVG in the text color, hidden from screen readers.
 
 ## Component rules
 
