@@ -1,8 +1,9 @@
 // The filters: what's chosen and what can be chosen, and where they're drawn.
-//   - Phones, the bar (JumpBar.astro): [⚙ 3] [Noviembre ×] [Hoy] [Mañana] [Finde] [Próx. semana] | [Salsa] [Bachata]
-//     [Urbano] [Tango], one row that scrolls sideways. One tap chooses a chip (dark, with ×), another unchooses it.
-//     ⚙ opens the "Filtros" sheet with every option; a choice made there that has no chip of its own in the row
-//     shows as a removable chip after ⚙ ("Noviembre ×", "Social ×", "@academia ×").
+//   - Phones, the bar (JumpBar.astro), pinned to the top: [⚙ 3] [Social ×] [📅 ▾] | [Salsa] [Bachata] [Urbano] [Tango],
+//     one row that scrolls sideways. "📅 ▾" ("Cuándo") opens a short menu with one choice of date (whenMenu.ts);
+//     once chosen it reads "📅 Finde" with its own × beside it. A rhythm chip is chosen with one tap (dark, with ×),
+//     unchosen with another. ⚙ opens the "Filtros" sheet with every option (several dates too); a choice made
+//     there that has no chip of its own in the row shows as a removable chip after ⚙ ("Social ×", "@academia ×").
 //   - Under the bar, only while filtering: "12 eventos · Finde, Salsa" and "× Limpiar".
 //   - The sheet (FilterSheet.astro): every date, rhythm and type with its count, the academy, "Limpiar" and
 //     "Ver 12 eventos".
@@ -255,7 +256,7 @@ function chipHtml(item: FilterOption, { short = false, counts = false } = {}): s
     aria-pressed="${item.chosen}"${item.dimmed ? ` aria-disabled="true"` : ""}${spoken !== label ? ` aria-label="${escapeHtml(spoken)}"` : ""}>${escapeHtml(label)}${count}${item.chosen ? X : ""}</button>`;
 }
 
-/** A choice made elsewhere (the sheet, a card's academy), as a chip that removes it: "Noviembre ×". */
+/** A choice made elsewhere (the sheet, a card's academy), as a chip that removes it: "Social ×". */
 function removableHtml(item: AppliedFilter): string {
   const data = item.group === "account" ? `data-account=""` : `data-filter="${item.group}" data-value="${escapeHtml(item.value)}"`;
   return `<button class="chip filter-chip is-chosen" type="button" ${data} aria-label="Quitar ${escapeHtml(item.name)}">${escapeHtml(item.label)}${X}</button>`;
