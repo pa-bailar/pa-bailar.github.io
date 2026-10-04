@@ -43,7 +43,7 @@ flowchart LR
 
     subgraph Repo["pa-bailar/pa-bailar.github.io (this repository)"]
         PR["data PR<br/>(pa-bailar-bot, label data)"]
-        CI["ci: data contract, types,<br/>contrast, tests, build"]
+        CI["ci: data contract, types,<br/>contrast, CSS, tests, build"]
         MAIN[("main<br/>data/ + frontend/")]
         DEP["deploy: astro build →<br/>GitHub Pages"]
     end
@@ -91,7 +91,7 @@ sequenceDiagram
         B->>R: push branch data/sweep-<day>-<run> (as pa-bailar-bot)
         B->>R: open PR "chore(data): daily sweep <day>", label data, enable auto-merge
         R->>CI: pull_request
-        CI->>CI: check-data, astro check, contrast, tests, build
+        CI->>CI: check-data, astro check, contrast, CSS properties, tests, build
         CI-->>R: ci passed
         R->>R: squash merge (ruleset: ci required), delete branch
         R->>D: push to main
@@ -284,7 +284,7 @@ flowchart LR
 
 | Workflow | Trigger | Steps | Permissions |
 |---|---|---|---|
-| `ci` | Every pull request (including data PRs, and title edits); manual | The PR title (Conventional Commits, `release.mjs check`). `npm ci`. Then `npm run check`, which is the data contract (`check-data.mjs`), `astro check` (strict TypeScript) color contrast (`check-contrast.mjs`) and the CSS custom properties (`check-css-vars.mjs`). Then `npm test` (Vitest), then `npm run build` | `contents: read` |
+| `ci` | Every pull request (including data PRs, and title edits); manual | The PR title (Conventional Commits, `release.mjs check`). `npm ci`. Then `npm run check`, which is the data contract (`check-data.mjs`), `astro check` (strict TypeScript), color contrast (`check-contrast.mjs`) and the CSS custom properties (`check-css-vars.mjs`). Then `npm test` (Vitest), then `npm run build` | `contents: read` |
 | `deploy` | Push to `main` (every merged PR); manual; the backend's sweep on days without changes (with `checked_at`) | **version** job: the version from the commits since the last tag (`release.mjs plan`), and its release notes (an artifact). **build** job: `npm ci`, `npm run check`, `npm run build` (with `PUBLIC_CHECKED_AT` and `PUBLIC_VERSION`), upload the Pages artifact. **deploy** job: publish to GitHub Pages (environment `github-pages`). **release** job, only after a successful deploy and when the commits change the site: tag the version and publish its GitHub Release (`gh release create`). A failed build or deploy tags nothing, and the next run works out the same version again | Version and build: `contents: read` (the build runs npm's install scripts). Deploy: `pages: write`, `id-token: write`. Release: `contents: write` (it runs no npm package, only `gh`) |
 
 - **One deploy at a time:** `concurrency: pages` without cancelling, so two merges in a row publish one
@@ -405,7 +405,7 @@ flowchart TD
 ```mermaid
 stateDiagram-v2
     [*] --> List
-    List --> Drawer: tap a card (its photo flyer too), "Detalles" or its line / pushState /evento/<id>/
+    List --> Drawer: tap a card (its photo flyer too) or "Detalles" / pushState /evento/<id>/
     Drawer --> Drawer: another card (side panel) / replaceState /evento/<other id>/
     Drawer --> List: ×, the scrim, Escape, drag down, or back (all through history.back)
     [*] --> EventPage: a shared link, or a link opened in a new tab
