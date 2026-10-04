@@ -388,15 +388,45 @@ flowchart TD
 ```mermaid
 stateDiagram-v2
     [*] --> List
-    List --> Viewer: tap a card / pushState /evento/<id>/
-    Viewer --> Viewer: swipe, ‹ ›, arrow keys / replaceState /evento/<other id>/
+    List --> Viewer: tap a card, "Detalles" or its line / pushState /evento/<id>/
+    Viewer --> Viewer: swipe, ‹ ›, arrow keys (or another card, side panel) / replaceState /evento/<other id>/
     Viewer --> List: ×, Escape, drag down, or back
     [*] --> EventPage: a shared link, or a link opened in a new tab
     EventPage --> Viewer: forwards to /?evento=<id>, the list behind
 ```
 
 - **The viewer is a `<dialog>`** with one slide per event on screen, in list order. Swiping uses CSS
-  scroll snapping. On phones it's a bottom sheet you can drag down to close (`lib/sheet.ts`).
+  scroll snapping. Each slide carries its own bar (‹ "3 de 9" › ×) and the detail laid out as a sheet
+  (`eventSheetHtml`: thumbnail, title, quick actions, then the details). Two modes, chosen when it opens and
+  switched if the window crosses 900px while open (`eventDialog.ts`, `showDialog` / `swapMode`):
+
+  ```mermaid
+  stateDiagram-v2
+      state "Sheet (phones, under 900px; modal)" as Sheet {
+          [*] --> Medium
+          Medium --> Full: pull or scroll up, tap the handle, mouse drag
+          Full --> Medium: pull or scroll down, tap the handle
+      }
+      state "Side panel (900px and wider; not modal)" as Panel
+      [*] --> Sheet: showModal()
+      [*] --> Panel: show(), html.has-viewer-panel
+      Sheet --> [*]: ×, Escape, back, drag down from Medium
+      Panel --> [*]: ×, Escape, back
+  ```
+
+  - **Sheet:** each slide scrolls vertically, the flyer first (sticky) and the sheet after it, at least as tall as the
+    screen. Scrolled to the top it's the half sheet ("medium": the flyer gets `--viewer-peek`, the sheet the other
+    58%); scrolled by the flyer's height it's the full sheet. So touch uses the browser's own scrolling, with CSS
+    scroll snapping (`proximity`) at the two heights; a mouse or pen dragging the bar follows the pointer (pointer
+    events) and `settle` (`views/viewerSheet.ts`, tested) picks the height or closes. Dragging down from the half
+    sheet closes it (`lib/sheet.ts`). The height is the current slide's scroll (`detentAt`), kept on the dialog
+    (`data-detent`) and given to the neighbors, so swiping keeps it. The full sheet pauses the clip it covers.
+  - **Side panel:** fixed on the right (`--panel-width`), opened with `show()` so the page stays usable; the page
+    leaves room for it (`.has-viewer-panel`), the open event's card is outlined (`highlightCurrentCard`, also after
+    each render), and Escape is handled by the page (a non-modal dialog doesn't get it). A card tapped while it's
+    open shows its event there and replaces the URL.
+  - **Focus:** opening focuses the dialog; closing gives the focus back to what opened it (the card or its
+    "Detalles").
 - **Only three slides have content:** the current event and its two neighbors (`views/viewerWindow.ts`). The
   others are empty slides of the same width, filled as a swipe gets near them; closing the viewer empties them
   all. Rendering every slide loaded every flyer of the list at once, which made iPhones close the page
@@ -455,6 +485,9 @@ Every browser on an iPhone is Safari's engine (WebKit), with its own limits:
     and kept after closing. Measured in WebKit with an iPhone profile: opening an event took the page from
     100 MB to 235 MB, and four open/close rounds to 573 MB; now 118 MB and 215 MB;
   - the one-time swipe nudge animates only those rendered slides;
+  - the viewer's sheet adds only a 160 px thumbnail per rendered slide (`/thumbs/`, a few KB); the flyer above the
+    sheet is the slide's own image, not a second copy. A step with ‹ › that fills slides on its way trims back to
+    three once it settles;
   - videos' clips (`views/clips.ts`): `preload="none"`, muted, `playsinline`, one playing at a time; a clip that
     leaves the page is released (unwatched, its `src` removed and reloaded), so its decoder and buffers go;
   - Instagram's player (an iframe) is removed when its slide goes off screen, when the viewer closes and when
@@ -509,7 +542,7 @@ Every browser on an iPhone is Safari's engine (WebKit), with its own limits:
 | Service | What for | Data sent | If it's down |
 |---|---|---|---|
 | **GitHub Pages** | Hosting | | The site is down |
-| **GoatCounter** (`jzamora9.goatcounter.com`) | Visit statistics, without cookies or personal data, so no consent banner is needed | Page views. Each event opened in the viewer, as a view of its page. Clicks on elements with `data-track` (Instagram, the contact links, "Cómo llegar", sharing, saving, installing, reports). Local testing isn't counted. Its script (`count.js`) is a copy served from the site (`src/vendor/goatcounter-count.js`, ISC license), not loaded from `gc.zgo.at`: the policy (section 3.3) then allows no other script host, and GoatCounter keeps its `/count` endpoint compatible, so the copy needs no updates | Nothing breaks: the script is optional and wrapped in `try` (`lib/analytics.ts`) |
+| **GoatCounter** (`jzamora9.goatcounter.com`) | Visit statistics, without cookies or personal data, so no consent banner is needed | Page views. Each event opened in the viewer, as a view of its page. Where details were opened from, as events: `detalles-tarjeta` (the card), `detalles-boton` (its "Detalles"), `detalles-linea` (the line under it), `detalles-enlace` (a shared link; `detailsEventName`). Clicks on elements with `data-track` (Instagram, the contact links, "Cómo llegar", sharing, including `compartir-tarjeta` from a card's row, saving, installing, reports). Local testing isn't counted. Its script (`count.js`) is a copy served from the site (`src/vendor/goatcounter-count.js`, ISC license), not loaded from `gc.zgo.at`: the policy (section 3.3) then allows no other script host, and GoatCounter keeps its `/count` endpoint compatible, so the copy needs no updates | Nothing breaks: the script is optional and wrapped in `try` (`lib/analytics.ts`) |
 | **Instagram embed** (`instagram.com/embed.js`) | Showing a post inside the site when a visitor taps a flyer (videos play, carousels swipe) | Loaded only on that tap, never with the page: the post's link; Instagram's player then runs as Meta's code (and cookies) inside its frame | Our copy of the flyer stays, with "Abrir en Instagram" (also when a post's link can't be read) |
 | **Google Fonts** | Shrikhand, Bodoni Moda (italic) and Instrument Sans | The font request | System fonts are used |
 | **Instagram, WhatsApp, Google Maps** | Links the visitor chooses to open | Only what's in the link | |
@@ -527,7 +560,7 @@ only Instagram content it loads is a post's player, and only when a visitor taps
 | Data contract | Every field of `events.json` and `meta.json`: types, allowed values (event types, styles, confidence), real dates and time formats, `end_date` after `date` and within 7 days, unique ids, usernames, post links (`instagram.com/<p, reel, reels or tv>/<code>/`), flyer and clip paths (inside `flyers/` and `previews/`) and their files existing, sorting | `frontend/scripts/check-data.mjs` |
 | Types | `astro check`: strict TypeScript, including `noUncheckedIndexedAccess` | `tsconfig.json` |
 | Color contrast | Every color pair the site uses, in both themes, against WCAG 2.2 AA. It reads the tokens from `tokens.css`, so it can't drift from the design system | `frontend/scripts/check-contrast.mjs` |
-| Unit tests | Dates and Bogotá's "today", formatting, filtering (rhythms and dates, "Mañana", the options and their counts) and period grouping, holidays, the policy check, where the visitor can install from and its steps, which viewer slides are rendered, link previews (their text, the image's version, one image drawn with and one without a flyer), the theme (the saved value, old ones, and the script before first paint) | `frontend/tests/*.test.ts` (Vitest) |
+| Unit tests | Dates and Bogotá's "today", formatting, filtering (rhythms and dates, "Mañana", the options and their counts) and period grouping, holidays, the policy check, where the visitor can install from and its steps, which viewer slides are rendered, the viewer sheet's two heights (`detentAt`, `settle`), what the details add (a card's line, the sheet's order and price line), the analytics names for opened details, things shown once (`onceFlag`, with and without storage), link previews (their text, the image's version, one image drawn with and one without a flyer), the theme (the saved value, old ones, and the script before first paint) | `frontend/tests/*.test.ts` (Vitest) |
 | Build | Every page, image and feed is generated; every page's Content Security Policy allows its inline scripts and styles, and no page has a `style=""` attribute (section 3.3); every event's link preview has its tags and a 1200×630 JPEG under 280 KB (section 3.4) | `npm run build`, `frontend/scripts/csp-meta.mjs`, `frontend/scripts/og-check.mjs` |
 
 All five run in `ci` on every pull request, and the ruleset requires `ci` before merging.
@@ -573,9 +606,11 @@ frontend/
       theme.ts, themeConfig.ts   the Claro / Oscuro switch, its rule and colors
       views/              upcomingView, calendarView, eventCard, eventDetail, eventDialog, filters,
                           jumpBar, viewSwitch, postsSheet, postViewer, inlinePlayer, clips, saveButton,
-                          sharing, installPrompt, viewerWindow (HTML strings + their behavior)
+                          sharing, installPrompt, viewerWindow, viewerSheet, detailsHint (HTML strings + their
+                          behavior)
       lib/                dates, holidays, format, links, linkPreview, contact, mediaLabel, search, saved,
-                          share, shareText, shareCard, analytics, dom, icons, sheet, instagramEmbed, installPlace
+                          share, shareText, shareCard, analytics, dom, icons, sheet, instagramEmbed, installPlace,
+                          onceFlag
     styles/               tokens.css (design tokens), base.css, components/*.css
 ```
 
@@ -585,9 +620,10 @@ frontend/
 | `state.ts` | The UI state; filtering (AND across groups, OR within rhythms and dates); grouping by period; the date options |
 | `views/upcomingView.ts` | "Próximos" |
 | `views/calendarView.ts` | "Calendario", with holidays |
-| `views/eventCard.ts` | A card: flyer at its shape, date sticker, details |
+| `views/eventCard.ts` | A card: flyer at its shape, date sticker, the action row (Detalles, Compartir, Guardar), details, the line naming what the details add |
+| `views/detailsHint.ts`, `lib/onceFlag.ts` | The first visit's pulse on the first card's "Detalles"; things shown once per browser |
 | `views/eventDetail.ts` | An event's full detail (dialog and page): the flyer of each post, details, prices, actions |
-| `views/eventDialog.ts`, `views/viewerWindow.ts` | The viewer: slides (only the current event and its neighbors rendered), swiping, URL history, closing |
+| `views/eventDialog.ts`, `views/viewerWindow.ts`, `views/viewerSheet.ts` | The viewer: slides (only the current event and its neighbors rendered), swiping, the half / full sheet on phones and the side panel on wide screens, URL history, closing |
 | `screenHistory.ts` | History entries for the app's screens (academy, period, calendar, saved): the phone's back steps through them |
 | `views/filters.ts` | Date, type and style chips, the academy notice; the rhythm and date options with their counts; the dropdowns' labels |
 | `views/jumpBar.ts` | Phones: the sticky bar, its checklist menus (dates, rhythms), keeping your place, hiding on scroll |
@@ -605,7 +641,7 @@ frontend/
 | `lib/saved.ts`, `views/saveButton.ts` | Saved events ("Guardados"): the ids in this browser; the bookmarks and toggles |
 | `lib/share.ts`, `lib/shareText.ts`, `lib/shareCard.ts`, `views/sharing.ts` | Sharing through the phone's menu: the text, the image of a list, what each share button sends |
 | `views/installPrompt.ts`, `lib/installPlace.ts` | Installing the site like an app: the offer, and the steps for each browser; registers the service worker |
-| `lib/analytics.ts` | GoatCounter events |
+| `lib/analytics.ts` | GoatCounter events: page views of events, clicks (`data-track`), where details were opened from |
 | `lib/dom.ts`, `lib/icons.ts` | DOM helpers and `escapeHtml`; inline SVG icons |
 | `lib/dates.ts`, `lib/holidays.ts`, `lib/format.ts` | Dates in Bogotá, Colombian holidays, Spanish formatting |
 

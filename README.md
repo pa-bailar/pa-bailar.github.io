@@ -66,7 +66,8 @@ follow the format, so no change goes uncounted.
 ## Visit statistics
 
 [GoatCounter](https://jzamora9.goatcounter.com) (free, no cookies, no consent banner needed): page
-visits, each event opened in the viewer, and clicks on Instagram, the contact links (WhatsApp…),
+visits, each event opened in the viewer, where its details were opened from (`detalles-tarjeta`, `detalles-boton`,
+`detalles-linea`, `detalles-enlace`), and clicks on Instagram, the contact links (WhatsApp…),
 "Cómo llegar", sharing, saving, installing and reports (`data-track`, `frontend/src/scripts/lib/analytics.ts`). Shared
 links carry `utm_source=compartido`. Local testing (localhost) isn't counted.
 
