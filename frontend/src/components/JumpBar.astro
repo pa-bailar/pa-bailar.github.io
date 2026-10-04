@@ -1,29 +1,21 @@
 ---
-// Phones only: slim bar stuck to the top with search, saved, the filters button and two dropdowns,
-// dates and rhythm, each choosing several (scripts/views/jumpBar.ts fills them). Nothing scrolls sideways, so nothing gets cut
-// off. Searching turns the whole bar into the search field.
+// Phones: the slim bar stuck to the top. 🔍 and 🔖, then one row of chips that scrolls sideways: ⚙ (the
+// "Filtros" sheet), the choices made there, the near dates and four rhythms, each chosen with one tap
+// (scripts/views/filters.ts fills it). Under it, only while filtering, "12 eventos · Finde, Salsa" and
+// "× Limpiar". Searching turns the row into the search field (scripts/views/jumpBar.ts).
 import { ICONS } from "../scripts/lib/icons";
 ---
 
-<nav class="jump-bar" id="jump-bar" aria-label="Filtros rápidos" hidden>
+<nav class="jump-bar" id="jump-bar" aria-label="Filtros" hidden>
   <div class="container jump-bar__inner">
     <button class="chip jump-bar__icon" id="jump-search-open" type="button" aria-label="Buscar"><Fragment set:html={ICONS.search} /></button>
     <button class="chip jump-bar__icon" type="button" data-saved-only aria-pressed="false" aria-label="Guardados"><Fragment set:html={ICONS.bookmark} /><span class="jump-bar__badge" data-saved-count hidden></span></button>
-    <button class="chip jump-bar__icon jump-bar__filters" id="jump-filters" type="button" aria-label="Filtros"></button>
-    <button class="chip jump-bar__menu-button" id="jump-period" type="button" popovertarget="jump-period-menu"
-      aria-label="Filtrar por fecha">
-      <span class="jump-bar__label" id="jump-period-label"></span><span aria-hidden="true">▾</span>
-    </button>
-    <button class="chip jump-bar__menu-button" id="jump-style" type="button" popovertarget="jump-style-menu"
-      aria-label="Filtrar por ritmo">
-      <span class="jump-bar__label" id="jump-style-label">Ritmo</span><span aria-hidden="true">▾</span>
-    </button>
+    <div class="jump-bar__chips" id="jump-chips" role="group" aria-label="Filtros rápidos"></div>
     <div class="jump-bar__search">
       <input class="search-input" id="jump-search" type="search" data-search placeholder="Buscar evento, academia, ritmo…"
         aria-label="Buscar eventos" enterkeyhint="search" autocomplete="off" />
       <button class="chip jump-bar__icon" type="button" data-close-search aria-label="Cerrar la búsqueda">×</button>
     </div>
   </div>
-  <div class="bar-menu" id="jump-period-menu" popover role="group" aria-label="Fechas"></div>
-  <div class="bar-menu" id="jump-style-menu" popover role="group" aria-label="Ritmos"></div>
+  <div class="container filter-summary" id="jump-summary" hidden></div>
 </nav>

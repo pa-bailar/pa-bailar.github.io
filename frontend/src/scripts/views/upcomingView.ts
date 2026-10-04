@@ -16,7 +16,8 @@ import { PERIOD_SHARE_TITLES } from "../lib/shareText";
 import { eventCountLabel } from "../lib/format";
 import { mainMedia, thumbUrl } from "../lib/links";
 import { todayIso } from "../lib/dates";
-import { eventsInView, groupByPeriod, hasActiveFilters, matchesFilters, sectionId } from "../state";
+import { eventsInView, groupByPeriod, matchesFilters, sectionId } from "../state";
+import { emptyResultsHtml } from "./filters";
 import { applyFlyerRatios, eventCardGridHtml } from "./eventCard";
 import type { AgendaGroup } from "../state";
 
@@ -71,6 +72,20 @@ export function isPeriodOpen(groups: AgendaGroup[], position: number): boolean {
   return total <= SHORT_LIST || shownWhole.has(group.key) || OPEN_PERIODS.has(group.key) || (!anyNear && position === 0);
 }
 
+/**
+ * A shared link's event in the list: whether it's there at all (not when it's past), and the period to open whole
+ * first when its card isn't shown yet (a summarized period, or past a busy period's "Ver N más").
+ */
+export function sharedEventEntry(groups: AgendaGroup[], id: string): { listed: false } | { listed: true; open: string | null } {
+  const position = groups.findIndex((group) => group.events.some((event) => event.id === id));
+  const group = groups[position];
+  if (!group) return { listed: false };
+  const index = group.events.findIndex((event) => event.id === id);
+  const shown =
+    isPeriodOpen(groups, position) && (shownWhole.has(group.key) || group.events.length <= PERIOD_LIMIT || index < PERIOD_LIMIT);
+  return { listed: true, open: shown ? null : group.key };
+}
+
 /** `whole`: every event, without "Ver N más" (a period chosen in the date filter). */
 function groupBodyHtml(group: AgendaGroup, open: boolean, whole: boolean): string {
   if (whole) return eventCardGridHtml(group.events);
@@ -109,28 +124,13 @@ export function renderUpcomingView(
   const upcoming = eventsInView(events, state).filter((event) => matchesFilters(event, state));
   const groups = groupByPeriod(upcoming, todayIso(), state.dates);
   const datesChosen = state.dates.length > 0;
-
   if (!upcoming.length) {
-    container.innerHTML = state.savedOnly && !state.query
-      ? `<div class="empty-state">
-          <p>Aún no tienes eventos guardados.</p>
-          <p>Toca el marcador de un evento para guardarlo aquí.</p>
-          <button class="btn" data-saved-only>Ver todos los eventos</button>
-        </div>`
-      : state.query
-        ? `<div class="empty-state">
-          <p>Ningún evento próximo coincide con «${escapeHtml(state.query.trim())}».</p>
-          <button class="btn" data-clear-filters>Quitar la búsqueda y los filtros</button>
-        </div>`
-      : hasActiveFilters(state)
-      ? `<div class="empty-state">
-          <p>${datesChosen ? "No hay eventos en esas fechas con estos filtros." : "No hay eventos próximos con estos filtros."}</p>
-          <button class="btn" data-clear-filters>Quitar filtros</button>
-        </div>`
-      : `<div class="empty-state">
-          <p>No hay eventos próximos por ahora.</p>
-          <p>Las academias publican casi a diario: vuelve en unos días.</p>
-        </div>`;
+    container.innerHTML =
+      emptyResultsHtml(state) ??
+      `<div class="empty-state">
+        <p>No hay eventos próximos por ahora.</p>
+        <p>Las academias publican casi a diario: vuelve en unos días.</p>
+      </div>`;
   } else {
     container.innerHTML = (state.savedOnly ? plansBarHtml(upcoming.length) : "") + groups
       .map((group, position) => {

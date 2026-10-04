@@ -85,25 +85,11 @@
 
 /* ---------- filter chips ---------- */
 
-/* "Solo eventos de @academia · Ver todas las academias", shown after tapping an academy on a card. */
-.account-filter {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-2) var(--space-3);
-  font-size: var(--text-sm);
-}
-
-.account-filter[hidden] {
-  display: none;
-}
-
-/* Phones: the filter chips live in the filter sheet (opened from the jump bar), not in rows that
-   scroll sideways and cut chips at the edge. Wider screens show them here. */
+/* Phones: the filters live in the jump bar and its sheet (filters.css), and the academy chosen is a chip there.
+   Wider screens show them here. */
 @media (max-width: 719px) {
-  .toolbar [data-filter-row="date"],
-  .toolbar [data-filter-row="type"],
-  .toolbar [data-filter-row="style"] {
+  .toolbar .chip-row,
+  .toolbar .filter-status {
     display: none;
   }
 }
@@ -148,24 +134,6 @@
   background: var(--chip-active-bg);
   border-color: var(--chip-active-bg);
   color: var(--chip-active-text);
-}
-
-/* Rhythms and dates take several choices: a chosen one also gets a check, so it reads as a checklist. */
-.chip--check {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-}
-
-.chip--check[aria-pressed="true"]::before {
-  content: "";
-  flex: none;
-  width: 9px;
-  height: 5px;
-  margin-top: -3px;
-  border-bottom: 2px solid currentColor;
-  border-left: 2px solid currentColor;
-  transform: rotate(-45deg);
 }
 
 @media (min-width: 720px) {

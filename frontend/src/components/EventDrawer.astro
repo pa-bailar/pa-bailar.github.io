@@ -1,0 +1,20 @@
+---
+// An event's details (scripts/views/eventDrawer.ts). Phones: a drawer that rises over the list, which stays in
+// view above it under a light scrim (half height, pulled up to the whole screen), like Instagram's comments. Wide
+// screens: a side panel next to the list. Its content (scripts/views/eventDetail.ts, eventDrawerHtml) is the
+// event's head (when, title, type, account, ×) and its details; no flyer, the card is right there.
+---
+
+<!-- autofocus: opening focuses the dialog itself (it fills the screen), not its first button, which sits below the
+     screen until the drawer rises: focusing that would scroll the list. The script then focuses the title. -->
+<dialog class="drawer" id="event-drawer" aria-labelledby="drawer-title" tabindex="-1" autofocus>
+  <div class="drawer__scrim" data-close-drawer aria-hidden="true"></div>
+  <div class="drawer__panel" id="drawer-panel">
+    <div class="drawer__grip">
+      <button class="drawer__handle" type="button" data-detent-toggle aria-expanded="false" aria-label="Ver todo el detalle">
+        <span class="sheet-handle" aria-hidden="true"></span>
+      </button>
+    </div>
+    <div class="drawer__content" id="drawer-content"></div>
+  </div>
+</dialog>

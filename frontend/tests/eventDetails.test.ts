@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { detailsEventName } from "../src/scripts/lib/analytics";
 import { detailsTeaser } from "../src/scripts/views/eventCard";
-import { eventSheetHtml, sheetPrice } from "../src/scripts/views/eventDetail";
+import { eventDetailHtml, eventDrawerHtml, sheetPrice } from "../src/scripts/views/eventDetail";
 import { event } from "./factories";
 
 describe("the analytics event for opened details", () => {
@@ -37,17 +37,33 @@ describe("the line under a card: what the details add", () => {
   });
 });
 
-describe("the viewer's sheet", () => {
-  const bar = `<div class="viewer-bar"></div>`;
-  const html = (overrides = {}) => eventSheetHtml(event(overrides), 0, { titleId: "event-title-3", bar });
+describe("the details drawer", () => {
+  const html = (overrides = {}) => eventDrawerHtml(event(overrides), { titleId: "drawer-title" });
 
-  it("starts with the thumbnail, when and the title, then the quick actions", () => {
-    const sheet = html({ title: "Social de salsa", start_time: "20:00", venue: "La Topa" });
-    const order = ["viewer-bar", "event-sheet__thumb", "event-dialog__when", 'id="event-title-3"', "event-sheet__quick", "detail-list"];
-    const positions = order.map((part) => sheet.indexOf(part));
+  it("starts with when, the title, the type and the account, ×, then the quick actions and the details", () => {
+    const drawer = html({ title: "Social de salsa", start_time: "20:00", venue: "La Topa", account: "latopa" });
+    const order = [
+      "event-dialog__when",
+      'id="drawer-title"',
+      "tag-type",
+      "@latopa",
+      "data-close-drawer",
+      "quick-actions",
+      "stripes",
+      "detail-list",
+      "Ver en Instagram",
+      "Repórtalo",
+    ];
+    const positions = order.map((part) => drawer.indexOf(part));
     expect(positions.every((position) => position >= 0)).toBe(true);
     expect([...positions].sort((a, b) => a - b)).toEqual(positions);
-    expect(sheet).toContain("Social de salsa");
+    expect(drawer).toContain("Social de salsa");
+  });
+
+  it("has no flyer and no thumbnail: the card is right there", () => {
+    expect(html()).not.toContain("<img");
+    expect(html()).not.toContain("<video");
+    expect(eventDetailHtml(event(), 0)).toContain("<img"); // the event's own page keeps the flyer on top
   });
 
   it("offers Cómo llegar only when there's a place to go", () => {
@@ -58,10 +74,18 @@ describe("the viewer's sheet", () => {
   });
 
   it("lists when, where, the price and who organizes, in that order", () => {
-    const sheet = html();
-    const terms = ["<dt>Cuándo</dt>", "<dt>Lugar</dt>", "<dt>Precio</dt>", "<dt>Organiza</dt>"].map((term) => sheet.indexOf(term));
+    const drawer = html();
+    const terms = ["<dt>Cuándo</dt>", "<dt>Lugar</dt>", "<dt>Precio</dt>", "<dt>Organiza</dt>"].map((term) => drawer.indexOf(term));
     expect(terms.every((position) => position >= 0)).toBe(true);
     expect([...terms].sort((a, b) => a - b)).toEqual(terms);
+  });
+
+  it("links to the video with sound and to the other posts, only when there are", () => {
+    const [post] = event().media;
+    const video = { ...post, post_id: "v", media_type: "VIDEO" as const, preview: "previews/v.mp4" };
+    expect(html()).not.toContain("data-media-link");
+    expect(html({ media: [video] })).toContain("Ver el video con sonido");
+    expect(html({ media: [post, video, { ...post, post_id: "p3" }] })).toContain("Ver las 3 publicaciones");
   });
 
   it("escapes the event's text", () => {

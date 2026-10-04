@@ -94,21 +94,24 @@ const PAIRS = [
   ["Selected calendar day border on cell", "accent", "surface", "ui"],
   ["Selected chip fill on page", "chip-active-bg", "bg", "ui"],
   ["Selected chip fill in the filter sheet", "chip-active-bg", "surface", "ui"],
-  ["Checkbox outline in a bar menu", "border", "surface", "ui"],
-  ["Checked checkbox fill on a menu's chosen row", "chip-active-bg", "surface-sunken", "ui"],
-  ["Count on a menu's chosen row", "text-muted", "surface-sunken", "text"],
+  // The filters (docs/DESIGN.md, "Filters"). Dimmed options (--dimmed) are inactive controls: exempt.
+  ["Filter chip label and outline on the page (phone bar)", "text", "bg", "text"],
+  ["Filter chip count in the sheet", "text-muted", "surface", "text"],
+  ["Badge on ⚙ / 🔖 (11px bold)", "chip-active-text", "chip-active-bg", "text"],
+  ["Filter line: \"× Limpiar\" on the page (13px bold)", "accent-text", "bg", "text"],
+  ["Filter sheet: \"Limpiar\" on the sheet (13px bold)", "accent-text", "surface", "text"],
   ["Primary button fill on dialog", "action", "surface", "ui"],
   ["Calendar dot outline on day cell (fill color is decorative)", "border", "surface", "ui"],
   ["Install steps: a browser button's outline (.install-key) on its fill", "border", "surface-sunken", "ui"],
   ["Install steps: the arrow toward the browser's button", "accent", "surface", "ui"],
-  // The cards' action row and the viewer's sheet (docs/DESIGN.md, "Opening an event").
-  ["Card: \"Detalles\" thin outline on the page (phones)", "border", "bg", "ui"],
-  ["Card: \"Detalles\" thin outline on the card (wide screens)", "border", "surface", "ui"],
-  ["Card: \"Detalles\" label on the page (phones)", "text", "bg", "text"],
+  // The cards' action row and the details drawer (docs/DESIGN.md, "Opening an event").
+  ["Card: \"Detalles\" label on its tonal fill (13px bold)", "details-text", "details-bg", "text"],
+  ["Card: \"Detalles\" label on its pressed fill", "details-text", "details-bg-pressed", "text"],
+  ["Card: \"Detalles\" icon on its tonal fill", "details-icon", "details-bg", "ui"],
   ["Card: \"Ver horario, precios y cómo llegar\" on the page (phones)", "text-muted", "bg", "text"],
   ["Card: \"Ver horario, precios y cómo llegar\" on the card (wide screens)", "text-muted", "surface", "text"],
-  ["Viewer sheet: quick action outline", "border", "surface", "ui"],
-  ["Viewer sheet: \"Guardado\" quick action (accent, 12px bold)", "accent", "surface", "text"],
+  ["Drawer: quick action and media link outline", "border", "surface", "ui"],
+  ["Drawer: \"Guardado\" quick action (accent, 12px bold)", "accent", "surface", "text"],
   ["Side panel: the open event's card outline on the page", "accent", "bg", "ui"],
 ];
 

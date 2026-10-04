@@ -1,4 +1,4 @@
-// Bottom sheets (the event viewer on phones, the filter sheet), with the behavior of native ones
+// Bottom sheets (the filters, an event's posts, a post), with the behavior of native ones
 // (values from Material/iOS sheets and Apple's "fluid interfaces" guidance):
 //   - drag down to dismiss: the sheet follows the finger 1:1, shrinks slightly and the backdrop fades
 //     with it; dragging up past the top resists like a rubber band;
@@ -139,26 +139,38 @@ interface SheetHistoryState {
 }
 
 /**
- * Open a panel sheet with its own history entry (same URL), like the event viewer's: the phone's back
- * button closes this sheet only, and the next back what was under it (the viewer, then the list).
+ * Open a panel sheet with its own history entry (same URL), like the event drawer's: the phone's back
+ * button closes this sheet only, and the next back what was under it (the drawer, then the list).
+ * `replacing`: a sheet it takes the place of (a post chosen among an event's posts): that one slides away and
+ * this one takes over its history entry, so back doesn't step through a sheet that's gone.
  */
-export function openPanelSheet(sheet: HTMLDialogElement) {
+export function openPanelSheet(sheet: HTMLDialogElement, { replacing }: { replacing?: HTMLDialogElement } = {}) {
+  const takeOver = replacing?.open && (history.state as SheetHistoryState | null)?.sheet === replacing.id;
   sheet.showModal();
-  history.pushState({ ...(history.state ?? {}), sheet: sheet.id } satisfies SheetHistoryState, "");
+  const state = { ...(history.state ?? {}), sheet: sheet.id } satisfies SheetHistoryState;
+  if (takeOver) history.replaceState(state, ""); // before it closes: its close then leaves the history alone
+  else history.pushState(state, "");
+  if (replacing) dismissSheet(replacing);
 }
 
 /**
  * A panel sheet (the filters, an event's posts, a post), opened with openPanelSheet: × (`[data-close-sheet]`)
  * and a tap on the backdrop close it; it drags down to dismiss from its head (`.sheet-panel__head`) or
- * whenever its content is scrolled to the top; back closes it. `onClick` gets every other click inside.
+ * whenever its content is scrolled to the top (`scroller`: what scrolls, when it isn't the sheet itself); back
+ * closes it. `onClick` gets every other click inside.
  */
-export function initPanelSheet(sheet: HTMLDialogElement, onClick?: (target: HTMLElement) => void) {
+export function initPanelSheet(
+  sheet: HTMLDialogElement,
+  onClick?: (target: HTMLElement) => void,
+  { scroller = sheet }: { scroller?: HTMLElement } = {},
+) {
   sheet.addEventListener("click", (domEvent) => {
     const target = domEvent.target as HTMLElement;
-    if (target === sheet || target.closest("[data-close-sheet]")) dismissSheet(sheet);
+    const close = target.closest<HTMLButtonElement>("[data-close-sheet]");
+    if (target === sheet || (close && !close.disabled)) dismissSheet(sheet);
     else onClick?.(target);
   });
-  initSheet(sheet, (target) => Boolean(target.closest(".sheet-panel__head")) || sheet.scrollTop <= 0);
+  initSheet(sheet, (target) => Boolean(target.closest(".sheet-panel__head")) || scroller.scrollTop <= 0);
   // Closed by ×, backdrop, Escape or a drag: leave its history entry the way back would.
   sheet.addEventListener("close", () => {
     if ((history.state as SheetHistoryState | null)?.sheet === sheet.id) history.back();

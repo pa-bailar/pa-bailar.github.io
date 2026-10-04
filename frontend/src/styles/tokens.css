@@ -26,6 +26,7 @@
   --cream-250: #e2d1b6; /* image wells, a step under the page */
   --cream-300: #d9c6aa;
   --cocoa-500: #6e4a44;
+  --cocoa-200: #b7978c; /* a filter option with nothing to show: dimmed */
   --tomato-700: #b02a17; /* period headings in light: deeper, calmer next to the page */
   --tomato-600: #c8321c;
   --tomato-350: #e8553b; /* type tags: light enough for wine text (≥4.5:1) */
@@ -33,6 +34,8 @@
   --orange-600: #e8791c;
   --marigold-600: #e9b021;
   --marigold-400: #f2c12e; /* the app icon and link previews (pages/icons, linkPreviewImage.ts) */
+  --marigold-200: #efd082; /* "Detalles": marigold-400 at 45% over the page, a soft tonal fill */
+  --marigold-250: #f0cb63; /* …pressed: 65% */
   --rose-300: #e9b8a0;
   --palm-600: #1f7a4a;
   --white: #ffffff;
@@ -61,6 +64,8 @@
   --coral-400: #f2785c;
   --gold-300: #f4c542; /* the stage's lettering: logo, buttons, sticker, today */
   --plum-700: #3e1f4a; /* holidays */
+  --gold-900: #3e322f; /* "Detalles": gold-300 at 18% over the page, a deep gold tint */
+  --gold-850: #544432; /* …pressed: 28% */
 
   /* ---------- Layer 2: semantic colors (light, dark) ---------- */
   /* Surfaces */
@@ -68,6 +73,7 @@
   --surface: light-dark(var(--cream-75), var(--indigo-800));
   --surface-sunken: light-dark(var(--cream-250), var(--indigo-950));
   --backdrop: light-dark(rgb(42 15 20 / 0.6), rgb(8 5 20 / 0.78));
+  --scrim: light-dark(var(--wine-950), var(--indigo-975)); /* under the details drawer, at 32% (half) to 55% (full) */
 
   /* Lines */
   --border: light-dark(var(--wine-900), var(--indigo-400));
@@ -79,6 +85,7 @@
   --text-italic: light-dark(var(--wine-500), var(--pink-250));
   --logo: light-dark(var(--tomato-600), var(--gold-300));
   --accent: light-dark(var(--tomato-600), var(--pink-400)); /* time, active tab, selection */
+  --accent-text: light-dark(var(--tomato-700), var(--pink-400)); /* the accent as a word on the page ("× Limpiar"): ≥4.5:1 */
   --focus: light-dark(var(--tomato-600), var(--gold-300));
 
   /* Controls */
@@ -89,6 +96,13 @@
   --free: var(--palm-600); /* the "Gratis" price tag */
   --pulse: light-dark(rgb(200 50 28 / 0.45), rgb(255 126 185 / 0.5)); /* the accent's ring: "Detalles" on a first visit */
   --on-free: var(--white);
+  /* "Detalles" on each card: a soft tonal fill (Material's filled-tonal, medium emphasis), no outline. */
+  --details-bg: light-dark(var(--marigold-200), var(--gold-900));
+  --details-bg-pressed: light-dark(var(--marigold-250), var(--gold-850));
+  --details-text: light-dark(var(--wine-900), var(--gold-300));
+  --details-icon: light-dark(var(--tomato-700), var(--gold-300));
+  /* A filter option with nothing to show with the other filters: dimmed in place (inactive: exempt from contrast). */
+  --dimmed: light-dark(var(--cocoa-200), var(--indigo-400));
 
   /* Brand motifs */
   --stripe-1: light-dark(var(--tomato-600), var(--magenta-500));
@@ -152,22 +166,19 @@
   --control-height: 40px; /* buttons, icon buttons, theme toggle */
   --fab-size: 44px; /* phones: the floating calendar / list button (the smallest comfortable tap) */
   --chip-height: 32px;
-  --touch-target: 44px; /* rows of the bar's menus, chips in the filter sheet, on touch screens */
-  --checkbox-size: 18px; /* the boxes of the bar's menus */
-  --jump-bar-height: 56px; /* phones: sticky bar with filters and period chips */
+  --touch-target: 44px; /* the filter chips, the cards' action row, the drawer's buttons */
+  --jump-bar-height: 56px; /* phones: sticky bar with search, Guardados and the filter chips */
+  --filter-line-height: 40px; /* phones: "12 eventos · Finde, Salsa · × Limpiar" under the bar, while filtering */
   --sticker-size: 60px;
-  --border-width-thin: 1px; /* a quiet outline: the cards' "Detalles" */
-  --viewer-peek: 42dvh; /* phones: the flyer's area above the viewer's half sheet (the sheet: the other 58%) */
-  --panel-width: 420px; /* wide screens: the event viewer as a side panel */
-  --thumb-width: 56px; /* the flyer's thumbnail at the top of the viewer's sheet (4:5) */
-  --thumb-height: 70px;
+  --drawer-top-gap: 12px; /* phones: what's left above the details drawer at full height */
+  --panel-width: 420px; /* wide screens: the details as a side panel */
   --day-column-width: 200px; /* day heading column on wide screens */
   --content-width: 1120px;
 
   /* ---------- Layer 3: layers (z-index) ---------- */
   --z-raised: 1; /* above a sibling's stretched click area */
   --z-sticky: 10; /* the sticky toolbar and jump bar */
-  --z-panel: 20; /* wide screens: the event viewer as a side panel, over the sticky bars */
+  --z-panel: 20; /* wide screens: the details as a side panel, over the sticky bars */
 
   /* ---------- Layer 3: elevation ---------- */
   --shadow-menu: 0 8px 24px light-dark(rgb(42 15 20 / 0.18), rgb(0 0 0 / 0.45)); /* dropdown menus */
@@ -177,11 +188,12 @@
      the same in both themes, so they read on light and dark flyers alike. */
   --on-image: #fff;
   --shadow-on-image: drop-shadow(0 1px 2px rgb(0 0 0 / 0.7));
+  --on-image-bg: rgb(0 0 0 / 0.6); /* behind words and marks over any image: ▶, "Sin sonido" */
 
   /* ---------- Layer 3: small parts ---------- */
   --tab-underline: 3px; /* the selected tab's line: Próximos / Calendario, Flyers / Videos */
   --icon-sm: 16px; /* marks over thumbnails */
-  --icon-md: 20px; /* the cards' "Detalles" */
+  --icon-md: 20px; /* the cards' "Detalles", the drawer's × */
   --icon-lg: 24px; /* the floating calendar / list button */
   --handle-width: 40px; /* sheets' grab handle */
   --handle-height: 4px;
@@ -192,7 +204,7 @@
 
   /* Breakpoints (media queries can't read custom properties, so they're written as numbers):
      720px  phones vs. wider: the feed, the jump bar and the filter sheet
-     900px  the event viewer: a half-height sheet below it, a side panel from it
+     900px  the details: a drawer over the list below it, a side panel from it
      960px  wide: more card columns */
 }
 

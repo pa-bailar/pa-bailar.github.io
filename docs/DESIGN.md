@@ -28,9 +28,11 @@ frontend/src/styles/
    ├─ toolbar.css
    ├─ event-card.css
    ├─ calendar.css
-   ├─ event-dialog.css
+   ├─ event-dialog.css   ← an event's details: the parts shared by the drawer and the event's page
+   ├─ drawer.css         ← the details drawer over the list (phones), the side panel (wide screens)
    ├─ sheet.css          ← bottom sheets: rise, drag to dismiss (with scripts/lib/sheet.ts)
-   ├─ jump-bar.css       ← phones: the sticky filter bar and its dropdown checklists
+   ├─ jump-bar.css       ← phones: the sticky bar, its row of chips and the line under it
+   ├─ filters.css        ← the filter chips (bar, sheet, toolbar), the line and the toolbar's status row
    ├─ view-switch.css    ← phones: the floating calendar / list button
    ├─ posts-sheet.css    ← every post announcing an event
    ├─ post-viewer.css    ← a post with Instagram's player
@@ -64,7 +66,12 @@ Themes switch through CSS `color-scheme`: `light` at `:root`, `dark` only under 
 | `--logo` | tomato-600 | gold-300 `#f4c542` | The wordmark |
 | `--accent` | tomato-600 | pink-400 `#ff7eb9` | Event time, active tab, selected day |
 | `--action` / `--on-action` | deep orange / white | gold / ink `#1c1033` | The single primary button ("Ver en Instagram"), shaped like the WhatsApp one |
-| `--chip-active-*` | wine / cream | pink-300 `#ff9fcb` / ink | Selected filter chip, checked box in the bar's menus |
+| `--accent-text` | tomato-700 | pink-400 | The accent as a word on the page: "× Limpiar" (4.93:1; `--accent` is 4.0:1 on the page) |
+| `--chip-active-*` | wine / cream | pink-300 `#ff9fcb` / ink | Selected filter chip, the badges on ⚙ and 🔖 |
+| `--dimmed` | cocoa-200 | indigo-400 | A filter option with nothing to show: its label and dashed outline (inactive, exempt from contrast) |
+| `--details-bg` / `-pressed` | marigold-200 `#efd082` / `#f0cb63` | gold-900 `#3e322f` / `#544432` | The cards' "Detalles", a tonal fill |
+| `--details-text` / `--details-icon` | wine / tomato-700 | gold-300 / gold-300 | Its label (11.9:1, 7.6:1) and icon (4.4:1, 7.6:1) |
+| `--scrim` | wine-950 | indigo-975 | Under the details drawer: 32% at half height, 55% at full |
 | `--stripe-1..3` | tomato, orange, marigold | magenta `#e0438f`, coral `#f2785c`, gold | 70s stripes |
 | `--period-title` / `--period-shadow` | deep tomato / sand | pink-200 `#f7b0d4` / indigo-975 | Period headings |
 | `--sticker-*` | tomato / cream | gold / ink | Round date sticker |
@@ -81,7 +88,7 @@ The dark theme isn't a flat color: the page is lit like the ballroom of a late-n
   right (`rgb(110 90 255)` at 26%) and a faint haze further down. It scrolls with the page: it lights the header
   and fades before the first cards.
 - **The grain** (`--grain`): a fine film noise (an SVG `feTurbulence` as a `data:` image, which the CSP's
-  `img-src` allows) at 5%, over the page, the viewer's sheet and the bottom sheets, so they read as the same air.
+  `img-src` allows) at 5%, over the page, the details drawer and the bottom sheets, so they read as the same air.
 - **Phones:** the toolbar (tabs and chips) isn't sticky there, so it's transparent in dark and lets the light
   through instead of cutting it with a flat band. The sticky jump bar keeps `--bg`.
 - **The browser bar** (`theme-color`) is the page's indigo, `#16122B` (`scripts/themeConfig.ts`).
@@ -115,10 +122,11 @@ Sizes: `--text-2xs` 11 · `xs` 12 · `sm` 13 · `md` 15 (body) · `lg` 17 · `xl
   - `--radius-round`: **only** the date sticker and calendar day numbers
 - `--border-width` 1.5px everywhere.
 - Controls: `--control-height` 40px (buttons, toggle), `--chip-height` 32px, `--sticker-size` 60px.
-- Touch: `--touch-target` 44px (rows of the bar's menus, chips in the filter sheet on touch screens, the cards' action row), `--checkbox-size` 18px (the menus' boxes).
-- The viewer: `--viewer-peek` 42dvh (phones: the flyer's area above the half sheet), `--panel-width` 420px (wide screens: the side panel), `--thumb-width` × `--thumb-height` 56×70px (the sheet's thumbnail), `--border-width-thin` 1px (the cards' "Detalles").
-- Small parts: `--tab-underline` 3px (the selected tab's line), `--icon-sm` 16px (marks over thumbnails), `--icon-md` 20px (the cards' "Detalles"), `--icon-lg` 24px (the floating button), `--handle-width` × `--handle-height` 40×4px (every sheet's grab handle, `.sheet-handle`), `--fab-size` 44px.
-- Over photos: `--on-image` (white) with `--shadow-on-image`, the same in both themes, for marks that sit on any flyer (▶, stacked squares).
+- Touch: `--touch-target` 44px (the filter chips, the cards' action row, the drawer's buttons).
+- The phone bar: `--jump-bar-height` 56px, `--filter-line-height` 40px (the line under it while filtering).
+- The details: `--drawer-top-gap` 12px (phones: what's left above the drawer at full height), `--panel-width` 420px (wide screens: the side panel).
+- Small parts: `--tab-underline` 3px (the selected tab's line), `--icon-sm` 16px (marks over thumbnails, a chip's ×), `--icon-md` 20px (the cards' "Detalles", the drawer's ×), `--icon-lg` 24px (the floating button), `--handle-width` × `--handle-height` 40×4px (every sheet's grab handle, `.sheet-handle`), `--fab-size` 44px.
+- Over photos: `--on-image` (white) with `--shadow-on-image`, the same in both themes, for marks that sit on any flyer (▶, stacked squares); `--on-image-bg` (black at 60%) behind words and marks on a flyer ("Sin sonido", ▶).
 
 ## Signature motifs
 
@@ -159,10 +167,10 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves. The pa
   | its last day | En curso · último día |
 
   The detail's "Cuándo" reads "Viernes 13 al domingo 15 de noviembre · hora por confirmar", and shared lists "Vie 13 – dom 15".
-- **The academy on each card** is a button: it filters the list to that academy and shows "Solo eventos de @academia · Ver todas las academias" under the chips. It sits above the card's stretched click area.
+- **The academy on each card** is a button: it filters the list to that academy, shown as "@academia ×" in the phone bar and "Solo eventos de @academia · Ver todas las academias" in the toolbar on wide screens. It sits above the card's stretched click area.
 - **Free events** show their price as a green "Gratis" label (`--free` / `--on-free`, checked for contrast).
-- **Empty results** always offer a way out: "Quitar filtros" when filters are active ("No hay eventos en esas fechas
-  con estos filtros." when dates are chosen).
+- **Empty results** always offer a way out (see "Filters"): "Limpiar filtros", "Borrar la búsqueda", "Ver todos, no
+  solo guardados".
 - **Dance styles** are one line of text joined by a middle dot glued to the previous word with a no-break space (`stylesLabel`), never separate elements with CSS separators. The dot stays centered between words, and a wrapped line never starts with a dot.
 
 ## Info and footer
@@ -269,8 +277,8 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
 ## Saving and searching
 
 - **Saving ("Guardar")** is a bookmark, like Instagram's: at the right end of each card's action row (see "Opening
-  an event"), among the viewer's quick actions (with its word: "Guardar" / "Guardado") and next to the date on an
-  event's page (`.save-button`, `scripts/views/saveButton.ts`). Filled in the accent color
+  an event"), and among the quick actions of the details and of an event's page (with its word: "Guardar" /
+  "Guardado") (`.save-button`, `scripts/views/saveButton.ts`). Filled in the accent color
   when saved. Saved events live in this browser (`lib/saved.ts`, localStorage): no account, nothing
   sent anywhere. Events no longer in the data are forgotten.
 - **"Guardados"** shows only saved events, in the list and the calendar: 🔖 in the phone bar (with the
@@ -301,144 +309,165 @@ the list stays short there and summarizes what's further away (`scripts/views/up
 ## Phones: feed, jump bar, view switch and filter sheet
 
 - **Feed like Instagram:** under 720px each event is a full-width post, the flyer edge to edge at full size and the details right below, separated by space instead of boxed cards. Nothing is shrunk into thumbnails.
-- **Jump bar** (`JumpBar.astro`, `scripts/views/jumpBar.ts`): one slim row (`--jump-bar-height`, 56px) stuck to the top, modeled on the filter bars of Google Maps and Airbnb: **[🔍] [🔖 3] [⚙ 2] [Finde ▾] [Salsa ▾]** (search and "Guardados": see "Saving and searching"). Two compact dropdowns instead of a row of chips, so nothing scrolls sideways or gets cut off.
-  - **⚙** opens the filter sheet; the badge counts the filter groups in use (two rhythms count once).
-  - **Date dropdown:** filters by date (see "Filters"). With no date chosen it names the period on screen (scroll-spy), as a plain button; with dates chosen it's in the selected-chip style and names them: "Finde", "Hoy + finde", or "2 fechas" / "3 fechas" when the names don't fit. Always shown in the list (disabled, "Fechas", when there's nothing to choose); hidden in Calendario.
-  - **Rhythm dropdown:** reads "Ritmo", the chosen rhythm, or "2 ritmos", in the selected-chip style when any is chosen; its menu lists "Todos los ritmos" and each rhythm with its number of events, most frequent first.
-  - **Fixed shape:** ⚙ has a fixed size with its badge on the corner, and the two dropdowns split the rest equally (max 220px each), cutting long names with "…". The bar never changes size as filters change.
-  - **Menus** are checklists in popovers under their button: aligned to its left edge (right edge for a button on the right half), never wider than the screen or taller than the space below; long names wrap. Each option is a row of `--touch-target` height: a box (checked: the selected-chip colors with a check), the label, and its count. The first one ("Todas las fechas", "Todos los ritmos") is checked when nothing is chosen and clears the group. Choosing keeps the menu open, to choose several; "Listo" (always in view at the bottom), a tap outside, Escape, scrolling or resizing close it.
-  - **Keeping your place:** when a filter changes while you're inside the list, the period you were reading stays right under the bar; if the filter removed it, the next period (else the previous one) takes its place.
-  - **Hides like Instagram's header:** it hides while scrolling down and returns on any scroll up. It never hides near the top of the page, while it holds focus, or during a jump.
+- **Jump bar** (`JumpBar.astro`, `scripts/views/jumpBar.ts`): one slim row (`--jump-bar-height`, 56px) stuck to the top, modeled on the filter bars of Google Maps and Airbnb: **[🔍] [🔖 3]**, then one row of chips that scrolls sideways: **[⚙ 3] [Noviembre ×] [Hoy] [Mañana] [Finde] [Próx. semana] | [Salsa] [Bachata] [Urbano] [Tango]** (search and "Guardados": see "Saving and searching"; the chips: see "Filters").
+  - **The row runs to the screen's edge** and fades there (a mask), so the next chip peeks and it reads as a row that scrolls (Material's single-line chip group). It keeps where it was scrolled while choosing.
+  - **⚙** opens the filter sheet; its badge counts every choice in use (two rhythms count two, like Airbnb's).
+  - **The line under it** ("12 eventos · Finde, Salsa" and "× Limpiar"), only while filtering (`--filter-line-height`, 40px): see "Filters".
+  - **Keeping your place:** when a filter changes while you're inside the list, the period you were reading stays right under the bar; if the filter removed it, the next period (else the previous one) takes its place. The period being read is the lowest one crossing a band under the bar (`captureListPosition`).
+  - **Hides like Instagram's header:** it hides while scrolling down and returns on any scroll up. It never hides near the top of the page, during a jump, while the keyboard's focus is in it, or while typing a search (a chip tapped keeps the focus, but not the bar).
   - **Where it shows:** wherever the full toolbar isn't sticky (phones, short windows), in both views.
 - **View switch** (`ViewSwitch.astro`, `scripts/views/viewSwitch.ts`): the tabs scroll away on phones, so an icon button (`--fab-size`, 44px) floats at the bottom right. It offers the other view: a calendar icon in the list, a list icon in the calendar (named for screen readers).
   - **Look:** the action color (`--action` / `--on-action`), ringed with the page color and a shadow, so it stands out even over a flyer of the same colors.
   - **Each view keeps its place, like Instagram's tabs:** coming back to a view lands exactly where it was left. The calendar's first visit starts at its top (back up to the tabs if the page was past them). If a filter changed meanwhile, the list comes back at the same period instead, as with any filter change. The tabs behave the same.
   - **Room:** the footer gets extra bottom padding so the button never covers its last line. Hidden wherever the toolbar is sticky.
-- **Filter sheet** (`FilterSheet.astro`):
-  - **Opening:** "Filtros" opens the date, type and style chips in a sheet that slides up from the bottom, so the list stays where it was. Chips wrap, so every option is visible; on touch screens they're `--touch-target` tall.
-  - **Results:** "Ver N eventos" closes it. The bar's ⚙ button shows how many filters are active, as a badge on its corner.
-  - **Phones only:** the toolbar's chip rows are hidden, so filters are only in the sheet; no rows scroll sideways cutting chips.
-  - **Dismissing:** drag it down like the viewer (see Bottom sheets).
-  - **One renderer:** the same chips render into the toolbar and the sheet (`[data-filter-row]`).
+- **Filter sheet** (`FilterSheet.astro`, `filter-sheet.css`), from ⚙:
+  - **Head:** "Filtros", "Limpiar" (in `--accent-text`, only enabled with something to clear) and ×.
+  - **Groups**, in a body that scrolls between the head and the button: **Fecha** · *elige una o varias* (every period and month), **Ritmo** · *elige uno o varios* (every rhythm, the bar's four first, "Otros ritmos" last), **Tipo de evento** (several too), and **Academia** (the one chosen from a card, as "@academia ×"). Each option with its count ("Noviembre 2"); the ones with nothing to show dimmed. Chips wrap, `--control-height` tall with a 44px target.
+  - **"Ver 12 eventos"** stays at the bottom (the primary button): "Ver 1 evento", or "Sin eventos: cambia los filtros", disabled. It closes the sheet; choices apply at once, there's no apply step.
+  - **Closing:** ×, a drag down (from the head, or from the groups scrolled to the top), the backdrop, Escape, back.
+  - **In the calendar:** Fecha says "En el calendario eliges el día en el mes."
 
 ## Filters
 
-What narrows the list, in the toolbar on wide screens (chip rows) and on phones in the jump bar's dropdowns and
-the filter sheet (`scripts/views/filters.ts`, `jumpBar.ts`; the logic in `state.ts`):
+What narrows the list (`scripts/views/filters.ts`, the logic in `state.ts`), in the phone bar and its sheet, and on wide
+screens in the toolbar's chip rows:
 
-| Group | Choices | Options |
-|---|---|---|
-| Fechas | several | "Todas las fechas", then each period of the list with something on ("Hoy", "Esta semana", "Finde", "Próx. semana", "Resto de octubre", each month, each year), and "Mañana" right after "Hoy" when something is on tomorrow |
-| Tipo | one | "Todo", then each event type |
-| Ritmo | several | "Todos los ritmos", then each rhythm ("Salsa" includes its variants) |
-| Academia | one | Set by tapping an academy on a card |
+| Group | Choices | Options | In the phone bar |
+|---|---|---|---|
+| Fecha | several | each period of the list with something on ("Hoy", "Esta semana", "Este fin de semana", "Próxima semana", "Más adelante en octubre", each month, each year), and "Mañana" right after "Hoy" when something is on tomorrow | Hoy · Mañana · Finde · Próx. semana, when there's something on then |
+| Ritmo | several | each rhythm ("Salsa" includes its variants), "Otros ritmos" last | Salsa · Bachata · Urbano · Tango, always (the owner's choice) |
+| Tipo de evento | several | each event type | from the sheet |
+| Academia | one | set by tapping an academy on a card | "@academia ×" |
 
-- **Any within a group, all across groups:** two rhythms show events with either; two periods show events on during
-  either; a period and a rhythm show that rhythm in that period. Search and "Guardados" narrow further.
+- **One tap chooses, another unchooses.** A chosen chip takes the selected-chip colors (`--chip-active-*`) with an ×;
+  tapping it again (or its × anywhere) removes it. Choices made in the sheet that have no chip of their own in the bar
+  show right after ⚙ as removable chips: "Noviembre ×", "Social ×", "@academia ×".
+- **Dimmed, never hidden:** an option that would show nothing with the other filters stays in place, dimmed (dashed,
+  in `--dimmed`; `aria-disabled`, still focusable, a tap does nothing), so the row never jumps while choosing. A chosen
+  option is never dimmed, so it can always be removed. Each option's count is how many events it would show with the
+  other filters on.
+- **Any within a group, all across groups:** two rhythms show events with either; two types, events of either; two
+  periods, events on during either; a period and a rhythm, that rhythm in that period. Search and "Guardados" narrow
+  further.
 - **An event over several days counts for every day it runs:** a festival from Sunday to Tuesday is in "Finde" and in
   "Próx. semana"; a congress under way is in "Hoy" and, while it goes on tomorrow, in "Mañana".
 - **"Mañana"** overlaps the periods (tomorrow is in "Esta semana", the weekend or next week): it's an extra option,
-  shown only when something is on tomorrow (with the other filters) and never as a group unless chosen.
-- **Counts and options follow the other groups:** each option's number is how many events it would add with the other
-  filters on, and options that would add nothing are left out, so a choice never leads to an empty list. A chosen
-  option stays (with 0) so it can be unchosen.
-- **Chosen looks chosen:** chips in the selected-chip colors with a check (`.chip--check`), boxes checked in the
-  menus, and the dropdown buttons in the selected-chip style with a summary. Chips are toggle buttons (`aria-pressed`),
-  menu rows checkboxes (`role="checkbox"`, `aria-checked`, named with their count); focus stays on the option chosen.
-- **Clearing:** the first option of each group clears it; "Quitar filtros" (the sheet, and any empty result) clears
-  all. Nothing is remembered between visits, and filters aren't in the address, as before.
-- **Dates are the list's:** the calendar has its own days, so there the date row and dropdown are hidden and the dates
-  chosen are ignored (and kept for the list).
-- **Choosing a date instead of jumping:** the date dropdown used to jump to a period. Choosing one period now shows
-  just that period, at the top of the list, which is what jumping gave, and several can be combined. When you're
-  inside the list, the period you were reading stays under the bar if it's still there; otherwise the next one chosen
-  takes its place ("Keeping your place"). With no date chosen the button still names the period on screen.
-- **Wide screens:** the date row uses the bar's short names ("Finde", "Próx. semana"), with the full name for screen
-  readers, so it fits one line; any row that doesn't fit wraps instead of cutting a chip.
+  shown only when something is on tomorrow and never as a group unless chosen.
+- **Choosing a date** shows just those periods, at the top of the list, whole (no summary rows, no "Ver N más").
+- **What's chosen, at a glance:** under the bar, only while filtering, "**12 eventos** · Finde, Salsa" on the left (the
+  count in `--text`, the names in `--text-muted`, cut with "…" when long) and "× Limpiar" on the right (`--accent-text`,
+  named "Limpiar filtros" for screen readers). The count is also said politely to screen readers after each change
+  (`#results-status`). In the calendar it reads "5 eventos en octubre · Salsa".
+- **Clearing:** "× Limpiar", the sheet's "Limpiar", the toolbar's "Limpiar filtros" and an empty result's "Limpiar
+  filtros" clear the dates, rhythms, types and academy, not the search nor "Guardados" (they have their own way out).
+  Nothing is remembered between visits, and filters aren't in the address.
+- **Dates are the list's:** the calendar has its own days, so there the date chips hide (rhythms stay), the dates chosen
+  are ignored (and kept for the list) and the badge doesn't count them.
+- **Searching:** the bar becomes the search field, as before; the line under it stays while filtering.
+- **Empty results always offer a way out:** with filters, "No hay eventos con estos filtros" · "Prueba con otras fechas
+  o ritmos." · "Limpiar filtros"; with a search, "No encontramos eventos" · "Nada coincide con «…»." · "Borrar la
+  búsqueda"; in Guardados also "Ver todos, no solo guardados".
+- **Semantics:** filter chips are toggle buttons (`aria-pressed`), short names carry the full one ("Finde": "Este fin de
+  semana", "Próx. semana": "Próxima semana"); removable chips are named "Quitar Noviembre"; ⚙ is "Todos los filtros,
+  3 activos". Focus stays on the chip chosen; when "Limpiar" removes it, focus goes to ⚙ (or the sheet's first chip).
+- **Wide screens:** the toolbar keeps its chip rows (dates with the bar's short names, types, rhythms), chosen chips
+  with ×, the same dimming, and a status row: "Solo eventos de @academia · Ver todas las academias", "12 eventos" and a
+  "Limpiar filtros" chip. Rows that don't fit wrap instead of cutting a chip.
 
 ## Events with several posts
 
 An event can be announced by several Instagram posts (a flyer, then a video, a reminder). It's still **one** card:
-- **Card:** shows the main post's flyer (images come before videos). A `.media-count` label ("2 publicaciones") sits in the flyer's top-right corner.
-- **Dialog and event page:** a `.posts-badge` ("▦ 16") in the flyer's top-right corner opens every post in a sheet (`PostsSheet.astro`, `scripts/views/postsSheet.ts`), like Airbnb's photo count: the gallery takes no room in the detail, so the date and title stay in view under the flyer. The sheet rises from the bottom on phones and is a centered window on wide screens. It has two tabs, Flyers (photos and carousels) and Videos, when the event has both, and square thumbnails like Instagram's grid (▶ on videos, stacked squares on carousels, white with a shadow) that wrap. Thumbnails are 160 px files made at build time (`pages/thumbs/[name].webp.ts`), a few KB each. Choosing one shows it in the detail (image, "Ver en Instagram" link, caption) and closes the sheet; the detail keeps its scroll position.
-- **Never a sideways scroll inside the viewer:** the viewer already swipes sideways between events, so nothing inside a slide may scroll sideways (`.viewer-slide { overflow-x: hidden }`).
-- **Watching a post here:** tapping the flyer opens the post inside the site, in a sheet (`PostViewer.astro`, `scripts/views/postViewer.ts`), with Instagram's own player (`lib/instagramEmbed.ts`). Videos play there and carousels swipe through all their slides. Opening the Instagram app would leave the site, and the app's back button doesn't come back. The sheet's bar keeps "Abrir en Instagram ↗". Our copy of the flyer shows at once and the player replaces it when ready; if it can't load, the flyer stays with "Esta publicación solo se puede ver en Instagram." Instagram's script loads on the first tap only, never with the page. Closing the sheet removes the player, so a video stops. A label over the image says what's behind it (`lib/mediaLabel.ts`, `.event-dialog__play`): "▶ Ver con sonido" when its clip already plays, "▶ Ver video" for a video without a clip, "Ver las 4" (carousel icon) for a carousel; none for a single photo.
-- **A video plays in place** (`views/inlinePlayer.ts`): tapping a video (a reel, or a carousel shown with its clip) turns the image itself into Instagram's player, full length and with sound, without a second sheet on top; the details stay below. Our caption is already in the detail, so the player comes without Instagram's (shorter). While it loads the image stays ("Cargando el video…"); if it can't load, the image comes back with a note. Swiping to another event or closing the viewer removes the player, so no sound plays off screen; the clip comes back. Photos and carousels still open the post sheet. Instagram's player catches touches, so while it's open, swiping on it doesn't move to the next event (the arrows and the area below do).
-- **Videos move by themselves.** When the image is a video's frame and the backend made its clip (`preview`), the detail plays it: silent, looping, about 6 seconds, like a feed (`views/clips.ts`). Only the clip on screen plays, one at a time; swiping away pauses it, and a clip whose slide is emptied (the viewer renders only the current event and its neighbors) or whose viewer closed is released, so phones don't run out of memory. It doesn't autoplay with reduced motion or the browser's data saver: the still frame stays. Tapping opens the post with sound, as any image. The service worker doesn't cache clips.
-- **Video events are marked in the list:** a ▶ in a dark circle in the middle of the card's image (`.play-mark`), like any video thumbnail, so it's clear before opening it.
-- **"Ver en Instagram ↗"** in the actions is the explicit way to the app; the ↗ says it leaves the site.
+- **Card:** shows the main post's flyer (images come before videos). A `.media-count` button ("▦ 3") in the flyer's top-right corner opens every post (above the card's stretched link, with a 44px target).
+- **Every post, in a sheet** (`PostsSheet.astro`, `scripts/views/postsSheet.ts`): from the card's "▦ 3", the details' "Ver las 3 publicaciones", or the event page's `.posts-badge` over its flyer. It rises from the bottom on phones and is a centered window on wide screens, with two tabs, Flyers (photos and carousels) and Videos, when the event has both, and square thumbnails like Instagram's grid (▶ on videos, stacked squares on carousels, white with a shadow) that wrap. Thumbnails are 160 px files made at build time (`pages/thumbs/[name].webp.ts`), a few KB each. Choosing one opens it in the media viewer, in the sheet's place (it takes over the sheet's history entry, so back returns to the list or the details, not to a sheet that's gone); on an event's page it shows that post on the page instead (image, "Ver en Instagram" link, caption).
+- **The media viewer** (`PostViewer.astro`, `scripts/views/postViewer.ts`): the post inside the site, in a sheet over everything (the drawer included), with Instagram's own player (`lib/instagramEmbed.ts`). Videos play there with sound and carousels swipe through all their slides. Opening the Instagram app would leave the site, and the app's back button doesn't come back. The sheet's bar keeps "Abrir en Instagram ↗". Our copy of the flyer shows at once and the player replaces it when ready; if it can't load, the flyer stays with "Esta publicación solo se puede ver en Instagram." Instagram's script loads on the first tap only, never with the page. Closing it removes the player, so a video stops. It opens from the details' "Ver el video con sonido" or "Ver las 4 imágenes" (a carousel), from a post chosen among the event's posts, and on an event's page from its flyer.
+- **Videos play in the feed.** When a card's image is a video's frame and the backend made its clip (`preview`), the card plays it: silent, looping, about 6 seconds, like Instagram's feed (`views/clips.ts`). "Sin sonido" sits in the clip's lower-left corner (`.event-card__sound`, white on `--on-image-bg`); a tap anywhere on the clip turns its sound on ("Con sonido") or off, right there, and doesn't open the details. Only the clip on screen plays, one at a time; a clip that leaves the screen goes silent and unloads. It doesn't autoplay with reduced motion or the browser's data saver: the still frame stays (a tap still plays it with sound). The service worker doesn't cache clips.
+- **A video without a clip** (Instagram gave no file) keeps a ▶ in a dark circle in the middle of the card's image (`.play-mark`); the card opens the details like a photo, and "Ver el video con sonido" there plays it.
+- **On an event's page** the flyer is on top: its clip plays, a label says what's behind it (`lib/mediaLabel.ts`, `.event-dialog__play`: "▶ Ver con sonido", "▶ Ver video", "Ver las 4"), and a tapped video plays in place (`views/inlinePlayer.ts`: Instagram's player in the image's place, full length, with sound; removed once it's out of view).
+- **"Ver en Instagram ↗"** in the details is the explicit way to the app; the ↗ says it leaves the site.
 
 ## Opening an event
 
-On phones each event is a flyer with text under it, and nothing said it opens; the bookmark and the underlined
-@academia looked tappable but did other things. And a tap showed the same flyer again, full screen, with the new
-information below the fold, so it could feel like nothing happened. So:
+On phones each event is a flyer with text under it. The details used to open as a viewer that showed the same flyer again
+over the list, with what was new half a screen down, and it moved sideways between events, so it felt like leaving the
+list. Now they open like Instagram's comments: a drawer rises over the list, and the list stays where it was.
 
 - **An action row under each card's flyer, like Instagram's** (`.event-card__actions`, `views/eventCard.ts`):
-  **ⓘ Detalles** on the left (an icon and the word, outlined thin: `--border-width-thin`, 1px, in `--border`; a quiet
-  label, not a second primary button), **Compartir** (the share icon: the event's link through the phone's menu) and
-  **Guardar** (the bookmark) on the right. Each is a 44px target (`--touch-target`) above the card's stretched link,
-  and the gaps between them still open the card.
+  **ⓘ Detalles** on the left, **Compartir** (the share icon: the event's link through the phone's menu) and **Guardar**
+  (the bookmark) on the right. Each is a 44px target (`--touch-target`) above the card's stretched link, and the gaps
+  between them still open the card.
+- **"Detalles" is a soft tonal fill** (Material's filled-tonal: medium emphasis, no outline), so it's found at a glance
+  without competing with the one primary button: `--details-bg` (light: marigold at 45% over the page, `#efd082`;
+  dark: gold at 18% over the page, `#3e322f`), its label in `--details-text` (wine, 11.9:1; gold, 7.6:1) and its icon in
+  `--details-icon` (tomato-700, 4.4:1; gold). Pressed: `--details-bg-pressed`.
 - **A quiet line at the card's foot** (`.event-card__more`), like "Ver los 12 comentarios", naming what the details
   add for this event (`detailsTeaser`): "Ver horario, precios y cómo llegar", only with what it has ("Ver horario y
   precios", "Ver cómo llegar"), else "Ver todos los detalles". `--text-muted`.
-- **The whole card still opens the details.** Card, "Detalles" and the line open the same viewer.
-- **The date sticker sits inside the flyer's bottom-right corner** on cards too (it used to hang below it, where
-  Guardar now is). The title no longer keeps room for it.
+- **The whole card opens the details**, its photo flyer included: card, flyer, "Detalles" and the line open the same
+  drawer (a video's clip toggles its sound instead, and the posts' badge opens the posts).
+- **The date sticker sits inside the flyer's bottom-right corner** on cards too.
 - **First visit:** the first card's "Detalles" pulses gently once (a ring in `--pulse` and a slight swell, 1.6s) when
   its row is fully on screen (`views/detailsHint.ts`), never again in this browser (`details-hint-seen` in
   localStorage, `lib/onceFlag.ts`), and not at all once the visitor has opened any details. No hint bubble over the
   list. Nothing moves with reduced motion.
 
-**The viewer as a sheet** (phones and tablets, under 900px):
+**The drawer** (phones and tablets, under 900px; `EventDrawer.astro`, `drawer.css`, `scripts/views/eventDrawer.ts`):
 
-- **It opens at half height:** the sheet covers the lower 58% of the screen and the event's flyer stays above it
-  (`--viewer-peek`, 42% of the screen, or the flyer's own height when it's shorter), like a post under Instagram's
-  comments. What's new is on screen at once.
-- **The sheet:** its bar (handle, ‹ "3 de 9" ›, ×); a small thumbnail of the flyer (`--thumb-width` ×
-  `--thumb-height`, 56×70) with when and the title and the type tag; three quick actions as equal buttons with the
-  icon over the word: **Cómo llegar** (only with a place) · **Compartir** · **Guardar** ("Guardado", in the accent
-  color, once saved); the stripes; then **Cuándo, Lugar, Precio** (one line: "Desde $ 25.000 · 3 opciones", "Gratis"
-  or "Por confirmar") and **Organiza**, then the rest (Con, Incluye, Contacto), the prices when there's more than
-  one, the rhythms; at the end "Ver en Instagram ↗", the post's text and "¿Algo está mal? Repórtalo".
-- **Expanding:** pulling the sheet up, or just scrolling it, slides it over the flyer to the whole screen; scroll
-  snapping settles it at one of the two heights, and further down it scrolls freely. Pulling it down returns to half
-  height, and once more closes it. The handle is a button: a tap switches between the two heights ("Ver todo el
-  detalle" / "Ver menos"). A mouse can drag the bar too.
-- **Swiping keeps the height:** the next event opens at the height the sheet had.
-- **The flyer above the sheet** is the detail's own: a video's clip plays there (and stops while the full sheet
-  covers it), "Ver con sonido" / "Ver las 4" sit in its top-left corner, the posts badge in its top-right corner, and
-  a video tapped plays in place, whole, with the sheet waiting below it.
+- **Over the list:** it rises from the bottom to half height (the lower 55% of the screen) in 320ms (Material's
+  emphasized-decelerate curve). The list doesn't change or navigate: it stays visible above, under a light scrim
+  (`--scrim` at 32% at half height, 55% at full, following the drawer). It only scrolls when the tapped card would be
+  mostly hidden: then its flyer's top goes right under the bar.
+- **No flyer, no thumbnail:** the visitor is looking at the card. The head: the date line (`--accent`), the title
+  (Shrikhand), the type tag and @account, and × on the right. Then **Cómo llegar** (only with a place) · **Compartir** ·
+  **Guardar** ("Guardado", in the accent color, once saved), equal buttons with the icon over the word; the stripes;
+  **Cuándo, Lugar, Precio** (one line: "Desde $ 25.000 · 3 opciones", "Gratis" or "Por confirmar") and **Organiza**
+  (the organizer and the account, said once when they're the same), then Con, Incluye, Contacto; the prices when
+  there's more than one; the rhythms; the media links, outlined rows ("Ver el video con sonido", "Ver las 4 imágenes",
+  "Ver las 3 publicaciones"); "Ver en Instagram ↗"; the post's text; "¿Algo está mal? Repórtalo". At half height,
+  when, where and the price are on screen.
+- **Two heights:** half and full (12px from the top, `--drawer-top-gap`). Pulling it up, or scrolling its content at
+  half height (also the wheel, or the keyboard reaching something below), expands it; at full height its content
+  scrolls. Pulling down from its bar, or from the top of its content, returns it to half height; another pull closes
+  it. The handle is a button: a tap switches heights ("Ver todo el detalle" / "Ver menos"). A mouse can drag it too.
+  On release: a flick (>0.5 px/ms) goes the way it moved; otherwise past max(110px, 22% of the screen) below half
+  height closes, else the nearer height (300ms).
+- **Closing:** a drag down, a tap on the scrim, ×, Escape or the back button, all through the history (back): it
+  slides away at the finger's speed (160–280ms, accelerating curve), at once when Safari's edge swipe already animated
+  it, and with no motion under reduced motion.
+- **Modal:** the page behind doesn't scroll, focus goes to the title and back to what opened it (the card or its
+  "Detalles"), and it's announced as a dialog named by the event's title.
+- **One event at a time:** no ‹ › between events, no counter, no swipe nudge (Instagram's comments don't move
+  between posts).
+- **The list's clips** keep playing above the half drawer and pause under the full one.
 
-**The viewer as a side panel** (900px and wider): a panel on the right (`--panel-width`, 420px), not modal, so the
-list stays usable next to it: the page leaves room for it, another card opens its event in the panel (the address
-changes without adding to the history), and the open event's card is outlined in the accent color. Details first,
-then the flyer, then "Ver en Instagram". × and Escape close it; it slides in from the right.
+**The side panel** (900px and wider): the same content, in a panel on the right (`--panel-width`, 420px), not modal, so
+the list stays usable next to it: the page leaves room for it, another card shows its event in the panel (the address
+changes without adding to the history), and the open event's card is outlined in the accent color. × and Escape close
+it; it slides in from the right.
 
-## Event detail: dialog and page
+## Event detail: drawer and page
 
-- **Same parts in both** (`scripts/views/eventDetail.ts`): each event's own page (`pages/evento/[id].astro`, one static page per event, `eventDetailHtml`) shows the flyer, then the date line (`.event-dialog__when`, the cards' "Domingo · 8:00 p. m." in the accent color), the title, the type tag, the stripes and the details. The home page's viewer lays the same parts out as a sheet (`eventSheetHtml`, "Opening an event" below).
-- **The viewer swipes between events** (`EventDialog.astro`, `scripts/views/eventDialog.ts`):
-  - **What's in it:** one full-width slide per event on screen, in list order (or the selected calendar day's). Swipe sideways (or ‹ ›, or the arrow keys) to change event; scroll up and down to read.
-  - **No peeking neighbors:** like Instagram posts, each event fills the width.
-  - **Each slide has its bar:** "3 de 9" with ‹ › and ×, at the top of its sheet, so the counter moves with the event while swiping.
-  - **Opening it** focuses the viewer itself, not its first button (no outlined ‹ when it opens from a shared link); a shared link opens it once the page has settled, and it stays on the same event when the screen changes size.
-  - **Signaling the swipe:** the "3 de 9" counter with ‹ › (dots fail past ~10 items), a seam between events while swiping, and a one-time nudge. The nudge plays after opening: about a fifth of the next event shows, holds, and slides back. It stops at the first touch and isn't repeated after the first swipe.
-- **Panel sheets** (filters, an event's posts, a post) share one base: `.sheet-panel` (`sheet.css`, attached to the bottom on phones, a centered window on wide screens) and `initPanelSheet` / `openPanelSheet` (`lib/sheet.ts`: ×, backdrop, drag down, Escape). Each gets its own history entry, so the phone's back button closes only the sheet on top: a post, then the event viewer, then the list.
-- **Bottom sheets** (the viewer on phones and the panel sheets; `lib/sheet.ts`, `sheet.css`) behave like native ones, with values from Material/iOS sheets (the viewer drags down to close from its half height):
+- **Same parts in both** (`scripts/views/eventDetail.ts`): the drawer's content (`eventDrawerHtml`) and each event's own
+  page (`pages/evento/[id].astro`, one static page per event, `eventDetailHtml`). The page shows the flyer on top, as on
+  its card (with its clip, its posts badge and the label of what's behind it), then the same head and details as the
+  drawer.
+- **The event's page** is what a shared link points to, for link previews (see "Link previews"), search engines
+  (schema.org `Event` data) and browsers without scripts. Its header links "← Ver próximos eventos"; a past event says
+  "Este evento ya pasó."
+- **Panel sheets** (filters, an event's posts, a post) share one base: `.sheet-panel` (`sheet.css`, attached to the bottom on phones, a centered window on wide screens) and `initPanelSheet` / `openPanelSheet` (`lib/sheet.ts`: ×, backdrop, drag down, Escape). Each gets its own history entry, so the phone's back button closes only the sheet on top: a post, then the details, then the list. A sheet opened in another's place (a post chosen among the posts) takes over its entry.
+- **Bottom sheets** (the panel sheets; `lib/sheet.ts`, `sheet.css`) behave like native ones, with values from Material/iOS sheets, the same as the drawer:
   - **Opening:** they rise in 320ms (Material's emphasized-decelerate curve) while the backdrop fades in.
   - **Dragging:** dragging down follows the finger 1:1, shrinks the sheet slightly and fades the backdrop. Dragging up past the top rubber-bands.
   - **Release:** a flick down (>0.5 px/ms) closes, as does a drag past max(110px, 22% of the screen) unless flicked back up. Otherwise it springs back (300ms).
   - **Closing:** it continues from where the finger left it, at the finger's speed (160–280ms, accelerating curve). ×, Escape and back slide it away the same way. When Safari's edge swipe already animated the back navigation, it closes at once.
   - **Reduced motion:** no rise and no slide.
-- **Back moves between the app's screens** (`screenHistory.ts`): an academy's events, a period opened whole, the calendar and "Guardados" each get a history entry, so the phone's back button returns to the previous screen where it was scrolled, instead of leaving the site (which closes the installed app). Undoing one from the page ("Ver todas las academias", the list button, "Guardados" again) steps back, so history never piles up. The app restores scrolling itself (`history.scrollRestoration = "manual"`).
-- **The viewer has a URL:** opening pushes `/evento/<id>/`, so the phone's back button closes it; swiping replaces it, so back still closes instead of stepping through events. A copied link opens that event's page.
-- **Shared links open the app.** An event's link (`/evento/<id>/`) forwards a browser to the home page with that event already in the viewer (`main.ts`, `openSharedEvent`): the visitor sees it as from the list, can swipe to the others, and "back" closes it onto the list instead of leaving the site. The page itself stays for link previews (WhatsApp, Instagram: see "Link previews"), for search engines (schema.org `Event` data) and for browsers without scripts.
+- **Back moves between the app's screens** (`screenHistory.ts`): an academy's events, a period opened whole, the calendar and "Guardados" each get a history entry, so the phone's back button returns to the previous screen where it was scrolled, instead of leaving the site (which closes the installed app). Undoing one from the page ("Ver todas las academias", "@academia ×", the list button, "Guardados" again) steps back, so history never piles up. The app restores scrolling itself (`history.scrollRestoration = "manual"`).
+- **The details have a URL:** opening pushes `/evento/<id>/`, so the phone's back button closes them. A copied link opens that event's page.
+- **Shared links open the app.** An event's link (`/evento/<id>/`) forwards a browser to the home page (`?evento=<id>`), which shows the list scrolled to that event's card (its period opened whole if it was summarized or past "Ver N más") with its drawer open at half height over it (`main.ts`, `openSharedEvent`): × or back leave the visitor on the list, not off the site. A past event (checked in Bogotá's time when the page opens) or one no longer in the list stays on its page.
 - **Missing details say "Por confirmar"** in their own row (hora, lugar, precio), in muted italics. Gemini's free-text doubts are not shown; a low-confidence extraction gets one note asking to confirm in the post.
 - **"Cómo llegar"** after the venue opens Google Maps (only when there's a venue or address).
 - **Reporting an error:** the detail ends with a small "¿Algo está mal? Repórtalo" link to the Google Form, with the event filled in (`feedbackUrl`); the footer has "Escríbenos" for anything else. Out of the way of the actions, because almost everyone just wants the event.
 - **The contact is a link** (`lib/contact.ts`): an @username opens its Instagram; a mobile number opens a WhatsApp chat (`wa.me/57…`, with the WhatsApp icon), not a call: that's how people reach academies; a landline (60X) is a call (`tel:`), since it has no WhatsApp; a website opens it. A number that isn't a full Colombian or international one stays plain text.
-- **Icons** (`scripts/lib/icons.ts`): Instagram and WhatsApp marks (Simple Icons, CC0) and drawn icons (calendar, pin, and for the install steps Safari's ⋯, Compartir and Agregar a inicio, a link and an arrow), inline SVG in the text color, hidden from screen readers.
+- **Icons** (`scripts/lib/icons.ts`): Instagram and WhatsApp marks (Simple Icons, CC0) and drawn icons (calendar, pin, ×, sound on and off, an arrow out, and for the install steps Safari's ⋯, Compartir and Agregar a inicio, a link and an arrow), inline SVG in the text color, hidden from screen readers.
 
 ## Component rules
 

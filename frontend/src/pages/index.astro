@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CalendarView from "../components/CalendarView.astro";
-import EventDialog from "../components/EventDialog.astro";
+import EventDrawer from "../components/EventDrawer.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import ViewToolbar from "../components/ViewToolbar.astro";
@@ -47,7 +47,7 @@ const updatedLabel = new Date(checkedAt).toLocaleDateString("es-CO", {
   </main>
 
   <SiteFooter accounts={accounts} />
-  <EventDialog />
+  <EventDrawer />
   <PostsSheet />
   <PostViewer />
   <FilterSheet />

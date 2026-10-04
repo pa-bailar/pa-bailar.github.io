@@ -1,5 +1,5 @@
-// Entry point of an event's own page (pages/evento/[id].astro): theme toggle, the posts sheet and the post
-// viewer.
+// Entry point of an event's own page (pages/evento/[id].astro): theme toggle, the posts sheet and the media
+// viewer, the clips.
 // The detail itself is already in the HTML, rendered at build time.
 
 import type { DanceEvent } from "./types";
@@ -26,7 +26,7 @@ export function initEventPage() {
   const event: DanceEvent = JSON.parse(byId("event-data").textContent || "null");
   const container = byId("event-detail");
   const render = (selected: number) => {
-    container.innerHTML = eventDetailHtml(event, selected, { headingLevel: 1 });
+    container.innerHTML = eventDetailHtml(event, selected);
     watchClips(container);
   };
   watchClips(container); // the page arrives rendered (pages/evento/[id].astro)

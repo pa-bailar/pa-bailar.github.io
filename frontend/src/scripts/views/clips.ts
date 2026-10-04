@@ -1,15 +1,22 @@
-// Videos' short silent clips in the detail (eventDetail.ts, `<video data-clip>`): like a feed, the one on screen
-// plays by itself, muted and looping, so a video looks like a video without a tap; tapping still opens the
-// post with sound (postViewer.ts). None autoplays when the visitor asks for less: reduced motion, or the
-// browser's data saver. Then the frame stays still with its "Ver con sonido" label, as before.
+// Videos' short silent clips (`<video data-clip>`): on the cards of the list, like a feed, and on an event's page.
+// The one on screen plays by itself, muted and looping, so a video looks like a video without a tap. None
+// autoplays when the visitor asks for less: reduced motion, or the browser's data saver. Then the frame stays
+// still.
+//   - On a card, a tap on the video turns its sound on, and another off, right there ("Sin sonido" / "Con
+//     sonido"), like Instagram's feed: it doesn't open the details. A clip that leaves the screen goes silent.
+//   - Something over the list can hold them (`holdClips`): the details drawer at full height covers them, and
+//     the media viewer plays the post with sound. They pause, and the one on screen plays again once nothing
+//     holds them.
 //
 // Phones have little memory for video, and iPhone's Safari closes the page ("A problem repeatedly
 // occurred") when it runs out. So clips are kept to the minimum:
 //   - only one plays at a time: starting one pauses the others;
 //   - they load nothing until they play (`preload="none"`, set in the markup);
-//   - a clip leaving the page (its slide emptied, the viewer closed) is released: unwatched, its source
-//     removed and reloaded, which frees its decoder and buffers. A detached video that's still watched or
-//     still has a source keeps them.
+//   - a clip that leaves the screen unloads (its source is taken out and kept aside, put back when it's seen
+//     again), and one that leaves the page (the list redrawn) is released: unwatched, its source removed,
+//     which frees its decoder and buffers.
+
+import { ICONS } from "../lib/icons";
 
 const VISIBLE = 0.6; // share of the clip on screen to play it
 
@@ -19,58 +26,123 @@ const holdBack = () =>
 
 let observer: IntersectionObserver | null = null;
 const watched = new Set<HTMLVideoElement>();
+const inView = new Set<HTMLVideoElement>(); // clips at least VISIBLE on screen
+const holds = new Set<string>(); // what's holding them ("drawer", "post-viewer")
 
 function play(clip: HTMLVideoElement) {
   watched.forEach((other) => other !== clip && other.pause()); // one at a time
+  const source = clip.dataset.src;
+  if (!clip.getAttribute("src") && source) clip.src = source; // back from unloading
   clip.preload = "auto";
   void clip.play().catch(() => {}); // a browser that refuses autoplay keeps the still frame
+}
+
+/** Off screen: no sound, and nothing loaded (the source is kept aside for when it comes back). */
+function unload(clip: HTMLVideoElement) {
+  clip.pause();
+  mute(clip);
+  const source = clip.getAttribute("src");
+  if (!source) return;
+  clip.dataset.src = source;
+  clip.removeAttribute("src");
+  clip.load(); // with no source, the browser drops what it had loaded
 }
 
 function onSight(entries: IntersectionObserverEntry[]) {
   for (const entry of entries) {
     const clip = entry.target as HTMLVideoElement;
-    if (!clip.isConnected) release(clip);
-    else if (entry.isIntersecting && entry.intersectionRatio >= VISIBLE && !holdBack()) play(clip);
-    else clip.pause();
+    if (!clip.isConnected) {
+      release(clip);
+      continue;
+    }
+    const seen = entry.isIntersecting && entry.intersectionRatio >= VISIBLE;
+    if (seen) inView.add(clip);
+    else inView.delete(clip);
+    if (!entry.isIntersecting) unload(clip);
+    else if (seen && !holds.size && (!holdBack() || !clip.muted)) play(clip);
+    else {
+      clip.pause();
+      mute(clip); // half out of view: no sound from a video being scrolled away
+    }
   }
 }
 
-/** Watch the clips under `root` (after the detail is rendered or re-rendered): play the one in view. */
+/** Watch the clips under `root` (after it's rendered): play the one in view. Clips no longer in the page go. */
 export function watchClips(root: ParentNode = document) {
   if (typeof IntersectionObserver === "undefined") return; // very old browsers: the still frame stays
+  watched.forEach((clip) => !clip.isConnected && release(clip));
   observer ??= new IntersectionObserver(onSight, { threshold: [0, VISIBLE, 1] });
   root.querySelectorAll<HTMLVideoElement>("video[data-clip]").forEach((clip) => {
+    if (watched.has(clip)) return;
     watched.add(clip);
     observer!.observe(clip);
   });
 }
 
-/** Stop every clip (the viewer closed). */
-export function pauseClips(root: ParentNode = document) {
-  root.querySelectorAll<HTMLVideoElement>("video[data-clip]").forEach((clip) => clip.pause());
-}
-
 /**
- * Play the clip under `root` again after `pauseClips` (the viewer's sheet went back down and uncovered it).
- * Only a clip already watched, and never when the visitor asks for less motion or data.
+ * Hold every clip (`on`) for `reason`, or let them go: paused while anything holds them; then the one on screen
+ * plays again (never when the visitor asks for less motion or data).
  */
-export function resumeClips(root: ParentNode) {
-  if (holdBack()) return;
-  const clip = [...root.querySelectorAll<HTMLVideoElement>("video[data-clip]")].find((item) => watched.has(item));
-  if (clip?.paused) play(clip);
+export function holdClips(reason: string, on: boolean) {
+  if (on) {
+    holds.add(reason);
+    watched.forEach((clip) => clip.pause());
+    return;
+  }
+  holds.delete(reason);
+  if (holds.size) return;
+  const clip = [...inView].find((item) => item.isConnected);
+  if (clip && (!holdBack() || !clip.muted)) play(clip);
 }
 
 function release(clip: HTMLVideoElement) {
   observer?.unobserve(clip);
   watched.delete(clip);
+  inView.delete(clip);
   clip.pause();
+  delete clip.dataset.src;
   if (clip.hasAttribute("src")) {
     clip.removeAttribute("src");
-    clip.load(); // with no source, the browser drops what it had loaded
+    clip.load();
   }
 }
 
 /** Free the clips under `root` before it's removed or replaced: nothing of them stays in memory. */
 export function releaseClips(root: ParentNode = document) {
   root.querySelectorAll<HTMLVideoElement>("video[data-clip]").forEach(release);
+}
+
+// ---------- the sound of a card's clip ----------
+
+function soundButton(clip: HTMLVideoElement): HTMLElement | null {
+  return clip.closest(".event-card__media")?.querySelector<HTMLElement>("[data-sound]") ?? null;
+}
+
+function showSound(clip: HTMLVideoElement) {
+  const button = soundButton(clip);
+  if (!button) return;
+  const on = !clip.muted;
+  button.setAttribute("aria-pressed", String(on));
+  button.setAttribute("aria-label", on ? "Quitar el sonido" : "Activar el sonido");
+  button.innerHTML = `${on ? ICONS.soundOn : ICONS.soundOff}<span>${on ? "Con sonido" : "Sin sonido"}</span>`;
+}
+
+function mute(clip: HTMLVideoElement) {
+  if (clip.muted) return;
+  clip.muted = true;
+  showSound(clip);
+}
+
+/** A tap on a card's video: its sound on (it plays, the others pause), or off again. Not the posts' badge. */
+export function initClipSound() {
+  document.addEventListener("click", (domEvent) => {
+    const target = domEvent.target as HTMLElement;
+    const media = target.closest<HTMLElement>(".event-card__media--clip");
+    const clip = media?.querySelector<HTMLVideoElement>("video[data-clip]");
+    if (!clip || target.closest("[data-card-posts]")) return;
+    domEvent.preventDefault();
+    clip.muted = !clip.muted;
+    showSound(clip);
+    if (!clip.muted) play(clip); // a tap: sound is allowed now
+  });
 }

@@ -93,8 +93,9 @@ img {
   border: 0;
 }
 
-/* Don't let the page behind an open dialog scroll (notably on iOS). */
-html:has(dialog[open]) {
+/* Don't let the page behind a modal dialog scroll (notably on iOS). The details' side panel isn't modal: the
+   list next to it keeps scrolling. */
+html:has(dialog:modal) {
   overflow: hidden;
 }
 
@@ -114,6 +115,26 @@ html:has(dialog[open]) {
   color: var(--text-muted);
 }
 
+/* "No hay eventos con estos filtros": what happened, in the period headings' lettering. */
+.empty-state__title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  color: var(--period-title);
+}
+
+/* "Limpiar filtros", "Borrar la búsqueda", "Ver todos, no solo guardados". */
+.empty-state__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.empty-state__actions:empty {
+  display: none;
+}
+
 /* ---------- dark theme: Luz de escenario's lighting (tokens.css, docs/DESIGN.md) ---------- */
 
 :root[data-theme="dark"] body {
@@ -127,8 +148,9 @@ html:has(dialog[open]) {
   }
 }
 
-/* The viewer and the sheets share the grain, so they read as the same air. */
-:root[data-theme="dark"] .viewer-panel,
+/* The details drawer and the sheets share the grain, so they read as the same air. */
+:root[data-theme="dark"] .drawer__panel,
+:root[data-theme="dark"] .drawer[data-mode="panel"],
 :root[data-theme="dark"] .sheet-panel {
   background-image: var(--grain);
 }

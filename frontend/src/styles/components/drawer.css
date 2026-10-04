@@ -1,0 +1,235 @@
+/* An event's details (components/EventDrawer.astro, scripts/views/eventDrawer.ts).
+   Phones and tablets (under 900px): a drawer that rises over the list, like Instagram's comments. The dialog
+   covers the screen; its scrim (32% at half height, 55% at full: --scrim-opacity, set by the script) lets the
+   list show through, and the panel moves with --drawer-y (its offset below full height). Wide screens: a side
+   panel next to the list, not modal. Its content's parts: event-dialog.css. */
+
+.drawer {
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+}
+
+.drawer:focus {
+  outline: none; /* focused only on the way to its title */
+}
+
+.drawer::backdrop {
+  background: transparent; /* the scrim is the dialog's own: it follows the drawer */
+}
+
+.drawer__content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* ---------- the head: handle, then when, the title, the type and the account, and × ---------- */
+
+.drawer__grip {
+  display: flex;
+  flex: none;
+  justify-content: center;
+  touch-action: none;
+  cursor: grab;
+}
+
+/* The handle: "pull me". A tap switches between the two heights ("Ver todo el detalle" / "Ver menos"). */
+.drawer__handle {
+  display: grid;
+  place-items: center;
+  width: calc(var(--touch-target) + var(--space-5));
+  height: var(--space-5);
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: grab;
+}
+
+.drawer__handle .sheet-handle {
+  margin: 0;
+}
+
+.drawer__head {
+  display: flex;
+  flex: none;
+  align-items: flex-start;
+  gap: var(--space-2);
+  padding: 0 var(--space-2) var(--space-3) var(--space-4);
+  border-bottom: var(--border-width) solid var(--divider);
+  touch-action: none; /* it drags the drawer, at any height */
+}
+
+.drawer__heading {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 0;
+}
+
+.drawer__heading .event-dialog__title {
+  font-size: var(--text-xl);
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+
+.drawer__close {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: var(--touch-target);
+  height: var(--touch-target);
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text);
+}
+
+.drawer__close .icon {
+  width: var(--icon-md);
+  height: var(--icon-md);
+}
+
+/* ---------- the body: the details ---------- */
+
+.drawer__body {
+  flex: 1;
+  min-height: 0;
+  padding: var(--space-4) var(--space-4) calc(var(--space-6) + env(safe-area-inset-bottom));
+  overflow: hidden; /* at half height it doesn't scroll: scrolling it pulls the drawer up */
+  overscroll-behavior: none;
+}
+
+/* ---------- phones and tablets: a drawer over the list ---------- */
+
+@media (max-width: 899px) {
+  .drawer {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: clip; /* not a scroller: focusing something inside never scrolls the drawer out of place */
+  }
+
+  .drawer[open] {
+    display: block;
+  }
+
+  .drawer__scrim {
+    position: absolute;
+    inset: 0;
+    background: var(--scrim);
+    opacity: var(--scrim-opacity, 0);
+    touch-action: none;
+  }
+
+  .drawer__panel {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - var(--drawer-top-gap));
+    margin-inline: auto;
+    border-top: var(--border-width) solid var(--border);
+    border-radius: var(--space-3) var(--space-3) 0 0;
+    background: var(--surface);
+    box-shadow: var(--shadow-menu);
+    transform: translateY(var(--drawer-y, 100%));
+    touch-action: none; /* at half height every vertical drag moves the drawer */
+    will-change: transform;
+  }
+
+  .drawer.is-animating .drawer__panel {
+    transition: transform var(--drawer-duration, 320ms) var(--drawer-easing, ease-out);
+  }
+
+  .drawer.is-animating .drawer__scrim {
+    transition: opacity var(--drawer-duration, 320ms) linear;
+  }
+
+  /* Full height: the content scrolls (the drawer follows the finger from its bar, or from the content's top). */
+  .drawer[data-detent="full"] .drawer__body {
+    overflow-y: auto;
+    touch-action: pan-y;
+  }
+}
+
+/* Tablets: a readable width, centered. */
+@media (min-width: 720px) and (max-width: 899px) {
+  .drawer__panel {
+    width: min(100%, 640px);
+    border-inline: var(--border-width) solid var(--border);
+  }
+}
+
+/* ---------- wide screens: a side panel next to the list ----------
+   Not modal: the list stays usable, its cards open their event here, and the page leaves the panel's width free
+   (.has-viewer-panel). The card is in the list: no flyer here either. */
+
+@media (min-width: 900px) {
+  .drawer {
+    position: fixed;
+    inset: 0 0 0 auto;
+    z-index: var(--z-panel);
+    width: var(--panel-width);
+    height: 100dvh;
+    border-left: var(--border-width) solid var(--border);
+    background: var(--surface);
+    box-shadow: var(--shadow-menu);
+    transition: transform 200ms cubic-bezier(0.3, 0, 0.8, 0.15);
+  }
+
+  .drawer[open] {
+    display: flex;
+    animation: drawer-panel-in 280ms cubic-bezier(0.05, 0.7, 0.1, 1);
+  }
+
+  .drawer.is-closing {
+    transform: translateX(100%);
+  }
+
+  @keyframes drawer-panel-in {
+    from {
+      transform: translateX(100%);
+    }
+  }
+
+  .drawer__scrim,
+  .drawer__grip {
+    display: none;
+  }
+
+  .drawer__panel {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .drawer__head {
+    padding-top: var(--space-4);
+  }
+
+  .drawer__body {
+    overflow-y: auto;
+  }
+
+  /* The list moves over: nothing of it hides under the panel. */
+  .has-viewer-panel body {
+    padding-right: var(--panel-width);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drawer[open] {
+    animation: none;
+  }
+}

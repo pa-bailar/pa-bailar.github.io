@@ -1,0 +1,144 @@
+/* The filter chips (scripts/views/filters.ts), in the phone bar, the "Filtros" sheet and the toolbar, and what
+   tells what's chosen: the line under the bar and the toolbar's status row. The chip's base: toolbar.css. */
+
+/* One tap chooses (the selected chip's colors, with ×), another unchooses. 44 px to the finger. */
+.filter-chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--text);
+  white-space: nowrap;
+}
+
+/* The bar's and the sheet's are finger-sized (the toolbar's, on wide screens, are the compact chips). */
+.jump-bar .filter-chip,
+.filter-sheet .filter-chip {
+  min-height: var(--control-height);
+}
+
+.filter-chip::after {
+  content: "";
+  position: absolute;
+  inset: calc((var(--control-height) - var(--touch-target)) / 2) 0; /* a 44 px target on a 40 px chip */
+}
+
+.filter-chip[aria-pressed="true"],
+.filter-chip.is-chosen {
+  background: var(--chip-active-bg);
+  border-color: var(--chip-active-bg);
+  color: var(--chip-active-text);
+}
+
+.filter-chip__x {
+  display: inline-flex;
+  margin-right: calc(var(--space-1) * -1);
+}
+
+.filter-chip__x .icon {
+  width: var(--icon-sm);
+  height: var(--icon-sm);
+}
+
+/* The sheet's counts: "Noviembre 2". */
+.filter-chip__count {
+  font-weight: var(--weight-regular);
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+}
+
+/* Nothing to show with the other filters: dimmed in place (not hidden, so the row never jumps), dashed. */
+.filter-chip[aria-disabled="true"] {
+  border-style: dashed;
+  border-color: var(--dimmed);
+  color: var(--dimmed);
+  cursor: default;
+}
+
+.filter-chip[aria-disabled="true"] .filter-chip__count {
+  color: inherit;
+}
+
+/* ⚙: a square, with the number of choices on its corner. */
+.filter-chip--icon {
+  flex: none;
+  justify-content: center;
+  width: var(--touch-target);
+  padding: 0;
+}
+
+/* ---------- the line under the phone bar, while filtering ---------- */
+
+.filter-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  height: var(--filter-line-height);
+  padding-right: var(--space-2);
+  font-size: var(--text-sm);
+}
+
+.filter-summary[hidden] {
+  display: none;
+}
+
+.filter-summary__text {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--text-muted);
+}
+
+.filter-summary__text b {
+  color: var(--text);
+  font-weight: var(--weight-bold);
+}
+
+.filter-summary__clear {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: var(--touch-target);
+  padding: 0 var(--space-2);
+  border: 0;
+  background: none;
+  color: var(--accent-text);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+}
+
+.filter-summary__clear .icon {
+  width: var(--icon-sm);
+  height: var(--icon-sm);
+}
+
+/* ---------- wide screens: the toolbar's status row ---------- */
+
+/* "Solo eventos de @academia · Ver todas las academias", "12 eventos", "× Limpiar filtros". */
+.filter-status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+  font-size: var(--text-sm);
+}
+
+.filter-status[hidden] {
+  display: none;
+}
+
+.filter-status__count {
+  color: var(--text-muted);
+}
+
+.filter-status__count b {
+  color: var(--text);
+}
+
+.filter-status__clear .icon {
+  width: var(--icon-sm);
+  height: var(--icon-sm);
+}

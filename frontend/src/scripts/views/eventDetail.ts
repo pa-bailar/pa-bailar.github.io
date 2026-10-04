@@ -1,10 +1,9 @@
-// Event detail: the flyer of the selected post, then when and what (so swiping between events that share
-// a flyer still shows which is which), all details, prices and actions. Pure HTML strings, so the same
-// markup is used by the dialog (in the browser) and by each event's own page (pages/evento/[id].astro,
-// at build time).
+// Event detail: when and what, the quick actions, every detail, the prices and the media. Pure HTML strings, so
+// the same markup is used by the details drawer (in the browser, eventDrawer.ts) and by each event's own page
+// (pages/evento/[id].astro, at build time), which also shows the flyer on top, like the card.
 
 import type { DanceEvent, EventMedia } from "../types";
-import { escapeHtml } from "../lib/dom";
+import { byId, escapeHtml } from "../lib/dom";
 import {
   cardWhenLabel,
   eventDaysLabel,
@@ -18,7 +17,7 @@ import {
 } from "../lib/format";
 import { contactLink, type ContactKind } from "../lib/contact";
 import { ICONS } from "../lib/icons";
-import { feedbackUrl, flyerUrl, mapsUrl, previewUrl, thumbUrl } from "../lib/links";
+import { feedbackUrl, flyerUrl, mapsUrl, previewUrl } from "../lib/links";
 import { isVideoCover, mediaLabel } from "../lib/mediaLabel";
 import { playInline } from "./inlinePlayer";
 import { openPostViewer } from "./postViewer";
@@ -45,11 +44,10 @@ function toConfirm(text = "Por confirmar"): string {
 }
 
 /**
- * [term, HTML value] rows. Missing details say "Por confirmar" right where they belong. The viewer's sheet
- * (`sheet`) puts the place and the price right after the time, the price as one line ("Desde $ 25.000 · 2
- * opciones"): what people look for first.
+ * [term, HTML value] rows. Missing details say "Por confirmar" right where they belong. The place and the price
+ * come right after the time, the price as one line ("Desde $ 25.000 · 2 opciones"): what people look for first.
  */
-function detailRows(event: DanceEvent, { sheet = false } = {}): [string, string][] {
+function detailRows(event: DanceEvent): [string, string][] {
   const time = [formatTime(event.start_time), formatTime(event.end_time)].filter(Boolean).join(" – ");
   const when = `${escapeHtml(eventDaysLabel(event))} · ${time ? escapeHtml(time) : toConfirm("hora por confirmar")}`;
   // The venue may be the organizer's own place (placeLabel leaves it out then): still the place to go.
@@ -60,21 +58,19 @@ function detailRows(event: DanceEvent, { sheet = false } = {}): [string, string]
     : "";
   const organizer: [string, string] = [
     "Organiza",
-    escapeHtml([event.organizer, `@${event.account}`].filter(Boolean).join(" · ")),
+    // The organizer is often the account itself ("@academia"): said once.
+    escapeHtml([...new Set([event.organizer, `@${event.account}`].filter(Boolean))].join(" · ")),
   ];
   const where: [string, string] = ["Lugar", place ? `${escapeHtml(place)}${directions}` : toConfirm()];
 
-  const rows: [string, string][] = sheet
-    ? [["Cuándo", when], where, ["Precio", sheetPrice(event)], organizer]
-    : [["Cuándo", when], organizer, where];
-  if (!sheet && !event.prices.length) rows.push(["Precio", toConfirm()]);
+  const rows: [string, string][] = [["Cuándo", when], where, ["Precio", sheetPrice(event)], organizer];
   if (event.artists.length) rows.push(["Con", escapeHtml(event.artists.join(", "))]);
   if (event.activities.length) rows.push(["Incluye", escapeHtml(event.activities.join(" · "))]);
   if (event.contact) rows.push(["Contacto", contactHtml(event.contact)]);
   return rows;
 }
 
-/** The sheet's price line: "Gratis", "$ 30.000", "Desde $ 25.000 · 3 opciones", or "Por confirmar". */
+/** The price line: "Gratis", "$ 30.000", "Desde $ 25.000 · 3 opciones", or "Por confirmar". */
 export function sheetPrice(event: DanceEvent): string {
   const summary = priceSummary(event);
   if (!summary) return toConfirm();
@@ -83,9 +79,9 @@ export function sheetPrice(event: DanceEvent): string {
   return `${free ? "Gratis" : escapeHtml(summary)}${options}`;
 }
 
-function pricesHtml(event: DanceEvent, { sheet = false } = {}): string {
-  // In the sheet, a single price without conditions is already its "Precio" line.
-  if (!event.prices.length || (sheet && event.prices.length === 1 && !event.prices[0]?.condition)) return "";
+function pricesHtml(event: DanceEvent): string {
+  // A single price without conditions is already its "Precio" line.
+  if (!event.prices.length || (event.prices.length === 1 && !event.prices[0]?.condition)) return "";
   const items = event.prices
     .map((price) => {
       const condition = price.condition ? ` <small>(${escapeHtml(price.condition)})</small>` : "";
@@ -140,119 +136,126 @@ function mediaHtml(event: DanceEvent, media: EventMedia, selected: number): stri
     </div>`;
 }
 
+/** When, the title, the type tag and the account: the head of the drawer, and of the page under the flyer. */
+function headHtml(event: DanceEvent, { heading, titleId }: { heading: "h1" | "h2"; titleId: string }): string {
+  return `
+    <p class="event-dialog__when">${escapeHtml(cardWhenLabel(event))}</p>
+    <${heading} class="event-dialog__title" id="${titleId}" tabindex="-1">${escapeHtml(event.title)}</${heading}>
+    <p class="event-detail__by"><span class="tag-type t-${escapeHtml(event.event_type)}">${typeLabel(event.event_type)}</span><span>@${escapeHtml(event.account)}</span></p>`;
+}
+
 /**
- * The detail's inner HTML. `selected` is the post shown. The title is an h1 on the event page and an h2
- * in the viewer, where each slide has its own `titleId`. Right under the flyer: when ("Domingo · 8:00
- * p. m.") and the title, so they're on screen without scrolling.
+ * Beyond the text: the post's video with sound, a carousel's images, the event's other posts. Each opens in the
+ * full-screen media viewer (postViewer.ts) or the sheet of posts (postsSheet.ts): the details never show the
+ * flyer again (the visitor is looking at it, on the card).
  */
-export function eventDetailHtml(
-  event: DanceEvent,
-  selected: number,
-  { headingLevel, titleId = "event-title" }: { headingLevel: 1 | 2; titleId?: string },
-): string {
+function mediaLinksHtml(event: DanceEvent, selected: number): string {
   const media = event.media[selected] ?? event.media[0];
-  const permalink = escapeHtml(media.permalink);
+  const link = (kind: string, icon: string, text: string) =>
+    `<button class="media-link" type="button" data-media-link="${kind}" data-post="${selected}" data-track="ver-${kind}">${icon}<span>${text}</span></button>`;
+  const label = mediaLabel(media);
+  const links = [
+    isVideoCover(media) ? link("video", ICONS.play, "Ver el video con sonido") : "",
+    !isVideoCover(media) && label?.icon === "carousel" ? link("carrusel", ICONS.carousel, `Ver las ${media.slides} imágenes`) : "",
+    event.media.length > 1 ? link("publicaciones", ICONS.gallery, `Ver las ${event.media.length} publicaciones`) : "",
+  ].filter(Boolean);
+  return links.length ? `<div class="media-links">${links.join("")}</div>` : "";
+}
+
+/**
+ * Everything after the head, in the order people look for it: Cómo llegar · Compartir · Guardar; the stripes;
+ * when, where, the price (one line) and who organizes, then the rest; the prices; the rhythms; the media; "Ver en
+ * Instagram"; the post's text; "¿Algo está mal? Repórtalo". At the drawer's half height, when, where and the
+ * price are on screen.
+ */
+function bodyHtml(event: DanceEvent, selected: number): string {
+  const media = event.media[selected] ?? event.media[0];
+  const maps = mapsUrl(event);
   const rows = detailRows(event)
     .map(([term, value]) => `<dt>${term}</dt><dd>${value}</dd>`)
     .join("");
   const styles = stylesLabel(event.styles);
-  const heading = `h${headingLevel}`;
   const lowConfidence =
     event.confidence === "low"
       ? `<p class="callout">Algunos datos se leyeron del flyer con poca seguridad: confírmalos en la publicación.</p>`
       : "";
+  return `
+    <div class="quick-actions">
+      ${maps ? `<a class="btn" href="${escapeHtml(maps)}" target="_blank" rel="noopener" data-track="como-llegar">${ICONS.pin}<span>Cómo llegar</span></a>` : ""}
+      <button class="btn" type="button" data-share-event="${escapeHtml(event.id)}" data-track="compartir-evento">${ICONS.share}<span>Compartir</span></button>
+      ${saveButtonHtml(event, { labeled: true, className: "btn" })}
+    </div>
+    <div class="stripes" aria-hidden="true"><i></i><i></i><i></i></div>
+    <dl class="detail-list">${rows}</dl>
+    ${pricesHtml(event)}
+    ${styles ? `<p class="style-list">${escapeHtml(styles)}</p>` : ""}
+    ${lowConfidence}
+    ${mediaLinksHtml(event, selected)}
+    <div class="event-dialog__actions">
+      <a class="btn btn--primary" href="${escapeHtml(media.permalink)}" target="_blank" rel="noopener" data-track="instagram">${ICONS.instagram}Ver en Instagram ↗</a>
+    </div>
+    ${media.caption ? `<details class="event-dialog__caption"><summary>Texto de la publicación</summary><p>${escapeHtml(media.caption)}</p></details>` : ""}
+    <p class="event-dialog__report"><a class="inline-link" href="${escapeHtml(feedbackUrl(event))}" target="_blank" rel="noopener" data-track="reportar-error">¿Algo está mal? Repórtalo</a></p>`;
+}
 
+/**
+ * An event's own page (pages/evento/[id].astro, at build time; eventPage.ts when another post is chosen): the
+ * flyer on top, as on its card, then the same details as the drawer. `selected` is the post shown.
+ */
+export function eventDetailHtml(event: DanceEvent, selected: number, { titleId = "event-title" }: { titleId?: string } = {}): string {
+  const media = event.media[selected] ?? event.media[0];
   return `
     <div class="event-dialog__visual">
       ${mediaHtml(event, media, selected)}
     </div>
     <div class="event-dialog__info">
-      <div class="event-dialog__top">
-        <p class="event-dialog__when">${escapeHtml(cardWhenLabel(event))}</p>
-        ${saveButtonHtml(event)}
-      </div>
-      <${heading} class="event-dialog__title" id="${titleId}">${escapeHtml(event.title)}</${heading}>
-      <span class="tag-type t-${escapeHtml(event.event_type)}">${typeLabel(event.event_type)}</span>
-      <div class="stripes" aria-hidden="true"><i></i><i></i><i></i></div>
-      <dl class="detail-list">${rows}</dl>
-      ${pricesHtml(event)}
-      ${styles ? `<p class="style-list">${escapeHtml(styles)}</p>` : ""}
-      ${lowConfidence}
-      <div class="event-dialog__actions">
-        <a class="btn btn--primary" href="${permalink}" target="_blank" rel="noopener" data-track="instagram">${ICONS.instagram}Ver en Instagram ↗</a>
-        <button class="btn" type="button" data-share-event="${escapeHtml(event.id)}" data-track="compartir-evento">${ICONS.share}Compartir</button>
-      </div>
-      ${media.caption ? `<details class="event-dialog__caption"><summary>Texto de la publicación</summary><p>${escapeHtml(media.caption)}</p></details>` : ""}
-      <p class="event-dialog__report"><a class="inline-link" href="${escapeHtml(feedbackUrl(event))}" target="_blank" rel="noopener" data-track="reportar-error">¿Algo está mal? Repórtalo</a></p>
+      <div class="event-detail__head">${headHtml(event, { heading: "h1", titleId })}</div>
+      ${bodyHtml(event, selected)}
     </div>`;
 }
 
 /**
- * The viewer's detail (eventDialog.ts), laid out as a sheet: what's new comes first, and the flyer stays where it
- * was seen. `bar` is the viewer's bar (‹ 3 de 9 › ×), at the top of the sheet.
- *   - the flyer (with its clip, its posts and the video in place), above the sheet on phones;
- *   - the sheet: a small thumbnail with when and the title, three quick actions (Cómo llegar · Compartir ·
- *     Guardar), then when, where, the price and who organizes, the prices, the rhythms;
- *   - at its end, "Ver en Instagram", the post's text and "¿Algo está mal? Repórtalo".
- * On wide screens it's a side panel, and the flyer goes between the details and the end (event-dialog.css).
+ * The drawer's content (eventDrawer.ts): its head (when, title, type and account, ×) stays in place while the
+ * body scrolls. No flyer and no thumbnail: the card is right there (above it on phones, in the list on wide
+ * screens). Only the main post: the others are a link away ("Ver las 3 publicaciones").
  */
-export function eventSheetHtml(
-  event: DanceEvent,
-  selected: number,
-  { titleId, bar }: { titleId: string; bar: string },
-): string {
-  const media = event.media[selected] ?? event.media[0];
-  const thumb = thumbUrl(media);
-  const maps = mapsUrl(event);
-  const rows = detailRows(event, { sheet: true })
-    .map(([term, value]) => `<dt>${term}</dt><dd>${value}</dd>`)
-    .join("");
-  const styles = stylesLabel(event.styles);
-  const lowConfidence =
-    event.confidence === "low"
-      ? `<p class="callout">Algunos datos se leyeron del flyer con poca seguridad: confírmalos en la publicación.</p>`
-      : "";
+export function eventDrawerHtml(event: DanceEvent, { titleId }: { titleId: string }): string {
   return `
-    <div class="event-dialog__visual">
-      ${mediaHtml(event, media, selected)}
-    </div>
-    <div class="viewer-panel">
-      ${bar}
-      <div class="event-dialog__info event-sheet">
-        <div class="event-sheet__head">
-          ${thumb ? `<img class="event-sheet__thumb" src="${escapeHtml(thumb)}" alt="" width="56" height="70" decoding="async" />` : ""}
-          <div class="event-sheet__heading">
-            <p class="event-dialog__when">${escapeHtml(cardWhenLabel(event))}</p>
-            <h2 class="event-dialog__title event-sheet__title" id="${titleId}">${escapeHtml(event.title)}</h2>
-            <span class="tag-type t-${escapeHtml(event.event_type)}">${typeLabel(event.event_type)}</span>
-          </div>
-        </div>
-        <div class="event-sheet__quick">
-          ${maps ? `<a class="btn" href="${escapeHtml(maps)}" target="_blank" rel="noopener" data-track="como-llegar">${ICONS.pin}<span>Cómo llegar</span></a>` : ""}
-          <button class="btn" type="button" data-share-event="${escapeHtml(event.id)}" data-track="compartir-evento">${ICONS.share}<span>Compartir</span></button>
-          ${saveButtonHtml(event, { labeled: true, className: "btn" })}
-        </div>
-        <div class="stripes" aria-hidden="true"><i></i><i></i><i></i></div>
-        <dl class="detail-list">${rows}</dl>
-        ${pricesHtml(event, { sheet: true })}
-        ${styles ? `<p class="style-list">${escapeHtml(styles)}</p>` : ""}
-        ${lowConfidence}
-      </div>
-      <div class="event-dialog__info event-sheet__end">
-        <div class="event-dialog__actions">
-          <a class="btn btn--primary" href="${escapeHtml(media.permalink)}" target="_blank" rel="noopener" data-track="instagram">${ICONS.instagram}Ver en Instagram ↗</a>
-        </div>
-        ${media.caption ? `<details class="event-dialog__caption"><summary>Texto de la publicación</summary><p>${escapeHtml(media.caption)}</p></details>` : ""}
-        <p class="event-dialog__report"><a class="inline-link" href="${escapeHtml(feedbackUrl(event))}" target="_blank" rel="noopener" data-track="reportar-error">¿Algo está mal? Repórtalo</a></p>
-      </div>
-    </div>`;
+    <header class="drawer__head">
+      <div class="drawer__heading">${headHtml(event, { heading: "h2", titleId })}</div>
+      <button class="drawer__close" type="button" data-close-drawer aria-label="Cerrar">${ICONS.close}</button>
+    </header>
+    <div class="drawer__body event-dialog__info">${bodyHtml(event, 0)}</div>`;
+}
+
+/** An event's posts in their sheet; the one chosen opens in the media viewer, in the sheet's place. */
+export function openEventPosts(event: DanceEvent, selected = 0) {
+  openPostsSheet(event, selected, (index) => {
+    const media = event.media[index];
+    if (media) openPostViewer(event, media, { replacing: byId<HTMLDialogElement>("posts-sheet") });
+  });
 }
 
 /**
- * Clicks in the detail that open a sheet, false for any other:
- *   - the flyer: watch the post here (postViewer.ts). A new-tab click follows the link to Instagram;
- *   - the posts badge: every post in a sheet; choosing one re-renders the detail with it (its image,
- *     "Ver en Instagram" link and caption), without moving.
+ * A media link of the details (`[data-media-link]`): the video (or the carousel) in the media viewer, or the
+ * event's posts. False for any other click.
+ */
+export function handleMediaLinkClick(domEvent: MouseEvent, event: DanceEvent): boolean {
+  const link = (domEvent.target as HTMLElement).closest<HTMLElement>("[data-media-link]");
+  if (!link) return false;
+  const selected = Number(link.dataset.post ?? 0);
+  if (link.dataset.mediaLink === "publicaciones") openEventPosts(event, selected);
+  else openPostViewer(event, event.media[selected] ?? event.media[0]);
+  return true;
+}
+
+/**
+ * Clicks on an event's page that open something, false for any other:
+ *   - the flyer: watch the post here (a video in place, inlinePlayer.ts; else the media viewer, postViewer.ts).
+ *     A new-tab click follows the link to Instagram;
+ *   - the posts badge: every post in a sheet; choosing one shows it on the page (its image, "Ver en Instagram"
+ *     link and caption);
+ *   - the media links, as in the drawer.
  */
 export function handleDetailClick(
   container: HTMLElement,
@@ -267,31 +270,16 @@ export function handleDetailClick(
     const newTab = domEvent.button !== 0 || domEvent.metaKey || domEvent.ctrlKey || domEvent.shiftKey || domEvent.altKey;
     if (!media || newTab) return false;
     domEvent.preventDefault();
-    // A video plays right here, in the image's place (inlinePlayer.ts); photos and carousels open the post sheet.
     const frame = flyer.closest<HTMLElement>(".event-dialog__frame");
     if (isVideoCover(media) && frame) playInline(frame, media.permalink);
     else openPostViewer(event, media);
     return true;
   }
   const badge = target.closest<HTMLElement>("[data-open-posts]");
-  if (!badge) return false;
+  if (!badge) return handleMediaLinkClick(domEvent, event);
   openPostsSheet(event, Number(badge.dataset.selected ?? 0), (index) => {
-    keepingScroll(container, () => render(index));
+    render(index);
     container.querySelector<HTMLElement>("[data-open-posts]")?.focus({ preventScroll: true });
   });
   return true;
-}
-
-/**
- * Re-render without moving: the viewer's slide (phones) and its details column (wide screens) scroll on
- * their own, and replacing their content would send them back to the top. Their positions are put back
- * right after the new content is in.
- */
-function keepingScroll(container: HTMLElement, render: () => void) {
-  const scrollers = () => [container, container.querySelector<HTMLElement>(".event-dialog__info")];
-  const positions = scrollers().map((element) => element?.scrollTop ?? 0);
-  render();
-  scrollers().forEach((element, index) => {
-    if (element) element.scrollTop = positions[index] ?? 0;
-  });
 }

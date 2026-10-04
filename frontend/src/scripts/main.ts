@@ -1,36 +1,45 @@
 // Entry point: load the events embedded in the page, wire up interactions and render.
 
 import type { DanceEvent, EventType, View } from "./types";
-import type { AgendaGroup } from "./state";
+import type { AgendaGroup, FilterGroup } from "./state";
 import { initClickTracking } from "./lib/analytics";
 import { byId } from "./lib/dom";
 import { eventCountLabel } from "./lib/format";
 import { addMonths, currentMonth, lastDay, shownDay, todayIso } from "./lib/dates";
+import { eventPath } from "./lib/links";
 import {
-  activeFilterCount,
   clearFilters,
   createInitialState,
   defaultDayForMonth,
+  groupByPeriod,
   listedDay,
-  sectionId,
   toggled,
   visibleEvents,
 } from "./state";
 import { initThemeToggle } from "./theme";
 import { renderCalendarView } from "./views/calendarView";
-import { highlightCurrentCard, initEventDialog, openEventDialog } from "./views/eventDialog";
+import { initClipSound, watchClips } from "./views/clips";
+import { highlightCurrentCard, initEventDrawer, openEventDrawer } from "./views/eventDrawer";
+import { openEventPosts } from "./views/eventDetail";
 import { armDetailsHint, markDetailsHintSeen } from "./views/detailsHint";
-import { filterOptions, renderFilters } from "./views/filters";
+import { filterModel, renderFilters, staleDates } from "./views/filters";
 import {
   captureListPosition,
   closeBarSearch,
   initJumpBar,
   type ListAnchor,
+  openFilterSheet,
   renderJumpBar,
   restoreListPosition,
   returnToScroll,
 } from "./views/jumpBar";
-import { renderUpcomingView, setWholePeriods, showWholePeriod, wholePeriods } from "./views/upcomingView";
+import {
+  renderUpcomingView,
+  setWholePeriods,
+  sharedEventEntry,
+  showWholePeriod,
+  wholePeriods,
+} from "./views/upcomingView";
 import { goTo, initScreenHistory, leave, sameScreen, type Screen } from "./screenHistory";
 import { initPostViewer } from "./views/postViewer";
 import { initPostsSheet } from "./views/postsSheet";
@@ -45,19 +54,23 @@ import { isSaved, keepOnly } from "./lib/saved";
 const state = createInitialState();
 let events: DanceEvent[] = [];
 
-/** data-* attributes that identify a re-rendered control, so focus can be put back on it. */
-const FOCUS_KEYS = ["type", "style", "date", "day"] as const;
-
+/**
+ * The control that had the focus, as a selector for the same control once it's drawn again: a filter chip, a
+ * calendar day, ⚙.
+ */
 function focusSelector(element: Element | null): string | null {
   if (!(element instanceof HTMLElement)) return null;
-  const key = FOCUS_KEYS.find((name) => element.dataset[name] !== undefined);
-  return key ? `[data-${key}="${CSS.escape(element.dataset[key]!)}"]` : null;
+  const { filter, value, day } = element.dataset;
+  if (filter && value !== undefined) return `[data-filter="${CSS.escape(filter)}"][data-value="${CSS.escape(value)}"]`;
+  if (day) return `[data-day="${CSS.escape(day)}"]`;
+  if (element.matches("[data-open-filters]")) return "[data-open-filters]";
+  return null;
 }
 
+/** The number of events, said politely to screen readers after each change. */
 function announce(count: number) {
   const label = eventCountLabel(count);
   byId("results-status").textContent = state.view === "upcoming" ? `${label} próximos` : `${label} este día`;
-  byId("filter-sheet-results").textContent = count ? `Ver ${label}` : "Ver resultados";
 }
 
 /** Containers whose controls are re-rendered: focus goes back to the same control in the same one. */
@@ -75,10 +88,14 @@ function render({ keepPlace = false } = {}) {
   const scope = focusScope(document.activeElement);
   const anchor = keepPlace && state.view === "upcoming" ? captureListPosition() : null;
 
-  const options = filterOptions(events, state);
+  let model = filterModel(events, state);
   // A period chosen that's no longer there (the day changed while the page was open) can't be unchosen: drop it.
-  if (state.view === "upcoming") state.dates = state.dates.filter((key) => options.dates.some((option) => option.key === key));
-  renderFilters(events, state, options);
+  const stale = staleDates(model, state);
+  if (stale.length) {
+    state.dates = state.dates.filter((key) => !stale.includes(key));
+    model = filterModel(events, state);
+  }
+  renderFilters(model, state);
   const upcoming = byId("view-upcoming");
   const calendar = byId("view-calendar");
   upcoming.hidden = state.view !== "upcoming";
@@ -91,17 +108,10 @@ function render({ keepPlace = false } = {}) {
   const { shown, groups } =
     state.view === "upcoming"
       ? renderUpcomingView(upcoming, events, state)
-      : { shown: renderCalendarView(events, state), groups: [] }; // the calendar has no periods to jump to
-  renderJumpBar({
-    groups,
-    activeFilters: activeFilterCount(state),
-    options,
-    styles: state.styles,
-    dates: state.dates,
-    showPeriods: state.view === "upcoming",
-    searching: state.query !== "",
-  });
+      : { shown: renderCalendarView(events, state), groups: [] }; // the calendar has no periods
+  renderJumpBar({ searching: state.query !== "" });
   renderSavedCount();
+  watchClips(byId(state.view === "upcoming" ? "view-upcoming" : "view-calendar")); // the videos' clips, as a feed
   if (anchor) restoreListPosition(anchor);
   announce(shown);
   setShareSources(shareSources(groups));
@@ -115,7 +125,7 @@ function render({ keepPlace = false } = {}) {
 let leftList: { scrollY: number; filters: string; anchor: ListAnchor | null } | null = null;
 let leftCalendar: number | null = null;
 
-const filtersKey = () => JSON.stringify([state.typeFilter, state.styles, state.dates, state.accountFilter]);
+const filtersKey = () => JSON.stringify([state.types, state.styles, state.dates, state.accountFilter]);
 
 /** The tabs and the floating button. Each view keeps its place. */
 function showView(view: View) {
@@ -128,7 +138,7 @@ function showView(view: View) {
   if (view === "upcoming") {
     if (!leftList) return;
     // Same filters: the very same spot. Filters changed in the calendar: the same period, as any filter change.
-    if (leftList.filters === filtersKey()) returnToScroll(leftList.scrollY, leftList.anchor);
+    if (leftList.filters === filtersKey()) returnToScroll(leftList.scrollY);
     else if (leftList.anchor) restoreListPosition(leftList.anchor);
     return;
   }
@@ -137,9 +147,7 @@ function showView(view: View) {
     return;
   }
   // The first time, if the page was scrolled past the tabs: back up to them, so the calendar is seen whole.
-  const toolbar = document.querySelector<HTMLElement>(".toolbar");
-  const top = toolbar?.getBoundingClientRect().top ?? 0;
-  if (top < 0) window.scrollTo({ top: top + window.scrollY, behavior: "auto" });
+  backToTop();
 }
 
 /** The tabs and the floating button: the calendar is a move of its own ("back" returns to the list). */
@@ -186,7 +194,7 @@ function renderSavedCount() {
  * (The period is the title.) */
 function filtersLabel(): string {
   return [
-    state.typeFilter !== "all" ? typeLabel(state.typeFilter) : "",
+    state.types.map(typeLabel).join(", "),
     state.styles.map(capitalize).join(", "),
     state.accountFilter ? `@${state.accountFilter}` : "",
     state.query.trim() ? `«${state.query.trim()}»` : "",
@@ -250,18 +258,35 @@ function handleSearchInput(domEvent: Event) {
   }, 150);
 }
 
-/** After filtering by academy from a card far down the list, move to the filter notice (and its "show all" button). */
+/** No search anymore: the fields empty, the bar back to its chips. */
+function clearSearch() {
+  state.query = "";
+  document.querySelectorAll<HTMLInputElement>("[data-search]").forEach((field) => (field.value = ""));
+  closeBarSearch();
+}
+
+/** After filtering by academy from a card far down the list: focus its chip ("@academia ×"), where it can be undone. */
 function focusAccountFilter() {
-  byId("account-filter").querySelector<HTMLElement>("button")?.focus();
+  const chips = [...document.querySelectorAll<HTMLElement>('#jump-chips [data-account], #filter-status [data-account]')];
+  chips.find((chip) => chip.offsetParent !== null)?.focus();
+}
+
+/** After "Limpiar" took away the chip that had the focus: the sheet's first chip, ⚙, or the toolbar's first chip. */
+function focusAfterClearing(control: HTMLElement) {
+  const sheet = control.closest("#filter-sheet");
+  const candidates = sheet
+    ? [...sheet.querySelectorAll<HTMLElement>("[data-filter]")]
+    : [...document.querySelectorAll<HTMLElement>("[data-open-filters], #date-filters [data-filter], #type-filters [data-filter]")];
+  candidates.find((candidate) => candidate.offsetParent !== null)?.focus();
 }
 
 /** One delegated listener for every data-* control rendered by the views. */
 function handleClick(domEvent: MouseEvent) {
   const control = (domEvent.target as HTMLElement).closest<HTMLElement>(
-    "[data-view],[data-type],[data-style],[data-date],[data-account],[data-clear-filters],[data-day],[data-event],[data-month-step],[data-today],[data-show-period],[data-saved-only],[data-close-search]",
+    "[data-view],[data-filter],[data-account],[data-clear-filters],[data-clear-search],[data-open-filters],[data-day],[data-event],[data-card-posts],[data-month-step],[data-today],[data-show-period],[data-saved-only],[data-close-search]",
   );
   if (!control) return;
-  const { view, type, style, date, account, day, event: eventId, monthStep, showPeriod } = control.dataset;
+  const { view, filter, value, account, day, event: eventId, cardPosts, monthStep, showPeriod } = control.dataset;
 
   if ("savedOnly" in control.dataset) {
     const showSaved = () => {
@@ -273,11 +298,13 @@ function handleClick(domEvent: MouseEvent) {
     else goTo("saved", showSaved);
     return;
   }
-  if ("closeSearch" in control.dataset) {
-    state.query = "";
-    document.querySelectorAll<HTMLInputElement>("[data-search]").forEach((field) => (field.value = ""));
-    closeBarSearch();
+  if ("closeSearch" in control.dataset || "clearSearch" in control.dataset) {
+    clearSearch();
     render();
+    return;
+  }
+  if ("openFilters" in control.dataset) {
+    openFilterSheet();
     return;
   }
   if (showPeriod) {
@@ -287,13 +314,19 @@ function handleClick(domEvent: MouseEvent) {
     goTo("period", () => {
       if (showWholePeriod(showPeriod)) render();
     });
-    const cards = document.getElementById(sectionId(showPeriod))?.querySelectorAll<HTMLElement>(".event-card__hit");
+    const cards = section?.isConnected
+      ? section.querySelectorAll<HTMLElement>(".event-card__hit")
+      : document.querySelector(`[data-period="${CSS.escape(showPeriod)}"]`)?.querySelectorAll<HTMLElement>(".event-card__hit");
     cards?.[before]?.focus({ preventScroll: true });
     return;
   }
-
+  if (cardPosts) {
+    const event = events.find((item) => item.id === cardPosts);
+    if (event) openEventPosts(event);
+    return;
+  }
   if (eventId) {
-    // The card's title is a link: let the browser handle new-tab clicks; a plain click opens the viewer.
+    // The card's title is a link: let the browser handle new-tab clicks; a plain click opens the details.
     if (domEvent.button !== 0 || domEvent.metaKey || domEvent.ctrlKey || domEvent.shiftKey || domEvent.altKey) return;
     const event = events.find((item) => item.id === eventId);
     if (!event) return;
@@ -301,7 +334,7 @@ function handleClick(domEvent: MouseEvent) {
     // Counted by where it was opened: the card itself, its "Detalles", or the line under it.
     const source = control.dataset.source === "boton" || control.dataset.source === "linea" ? control.dataset.source : "tarjeta";
     markDetailsHintSeen();
-    openEventDialog(event, visibleEvents(events, state), { source });
+    openEventDrawer(event, { source });
     return;
   }
   if (view) {
@@ -309,7 +342,7 @@ function handleClick(domEvent: MouseEvent) {
     return;
   }
   if (account !== undefined) {
-    // An academy's events (its @ on a card), or all of them again ("" from the notice's button).
+    // An academy's events (its @ on a card), or all of them again ("" from its chip or the notice's button).
     if (account) {
       goTo("account", () => {
         state.accountFilter = account;
@@ -319,21 +352,30 @@ function handleClick(domEvent: MouseEvent) {
     } else {
       leave("account", () => {
         state.accountFilter = null;
-        render();
+        render({ keepPlace: true });
       });
     }
     return;
   }
-  if (type) state.typeFilter = type as EventType | "all";
-  // Rhythms and dates take several: tapping one adds it or takes it away; "all" clears the group.
-  else if (style) state.styles = style === "all" ? [] : toggled(state.styles, style);
-  else if (date) state.dates = date === "all" ? [] : toggled(state.dates, date);
-  else if ("clearFilters" in control.dataset) {
+  if (filter && value !== undefined) {
+    // One tap chooses, another unchooses; a dimmed option (nothing to show with the other filters) does nothing.
+    if (control.getAttribute("aria-disabled") === "true") return;
+    const group = filter as FilterGroup;
+    if (group === "types") state.types = toggled(state.types, value) as EventType[];
+    else state[group] = toggled(state[group], value);
+  } else if ("clearFilters" in control.dataset) {
+    // "Limpiar": dates, rhythms, types and the academy (its screen is left as "back" would). Not the search
+    // nor "Guardados".
+    const account = state.accountFilter;
     clearFilters(state);
-    document.querySelectorAll<HTMLInputElement>("[data-search]").forEach((field) => (field.value = ""));
-    closeBarSearch();
-  }
-  else if (day) state.selectedDay = day;
+    if (account) {
+      state.accountFilter = account; // `leave` takes it away, through the history when it came from a card
+      leave("account", () => {
+        state.accountFilter = null;
+        render({ keepPlace: true });
+      });
+    }
+  } else if (day) state.selectedDay = day;
   else if (monthStep) {
     state.month = addMonths(state.month, Number(monthStep));
     state.selectedDay = defaultDayForMonth(events, state.month);
@@ -341,23 +383,19 @@ function handleClick(domEvent: MouseEvent) {
     state.month = currentMonth();
     state.selectedDay = todayIso();
   }
-  // Filters keep the period being read in place (or the next one left, for a date filter). (Tapping an academy
-  // on a card instead moves to its notice.)
-  render({ keepPlace: Boolean(type || style || date || "clearFilters" in control.dataset) });
+  // Filters keep the period being read in place (or the next one left, for a date filter).
+  const filtered = Boolean(filter) || "clearFilters" in control.dataset;
+  render({ keepPlace: filtered });
 
   // The control clicked was re-rendered away: put focus somewhere useful.
-  if ("clearFilters" in control.dataset) {
-    // The first type chip that can be seen (in the open sheet, or the toolbar), else the bar's ⚙.
-    const chips = [...document.querySelectorAll<HTMLElement>('[data-filter-row="type"] button')];
-    const visible = chips.find((chip) => chip.closest("#filter-sheet[open]") || chip.offsetParent !== null);
-    (visible ?? byId("jump-filters")).focus();
-  }
+  if (filtered && !control.isConnected && document.activeElement === document.body) focusAfterClearing(control);
 }
 
 /**
- * A shared link (/evento/<id>/, which forwards here as ?evento=<id>): the app opens with that event in the
- * viewer, the list behind it. The address goes back to the home page first, so "back" closes the viewer
- * onto the list instead of leaving the site. Past events open alone (they're not in the list).
+ * A shared link (/evento/<id>/, which forwards here as ?evento=<id>): the list opens at that event's card (its
+ * period opened whole if it was summarized), with its details drawer at half height over it. The address goes
+ * back to the home page first, so × or "back" leave the visitor on the list instead of leaving the site. An event
+ * that isn't in the list (it already passed) goes back to its own page, which says so.
  */
 function openSharedEvent() {
   const params = new URLSearchParams(location.search);
@@ -368,10 +406,16 @@ function openSharedEvent() {
   history.replaceState(null, "", `${location.pathname}${rest ? `?${rest}` : ""}${location.hash}`);
   const event = events.find((item) => item.id === id);
   if (!event) return;
-  // Once the page has settled (fonts in, layout measured): opened earlier, the viewer could size itself
-  // to a page that was still changing.
+  const entry = sharedEventEntry(groupByPeriod(visibleEvents(events, state), todayIso(), state.dates), id);
+  if (!entry.listed) {
+    params.set("pagina", "1"); // its page stays (it would forward here again otherwise)
+    location.replace(`${eventPath(event)}?${params}`);
+    return;
+  }
+  if (entry.open && showWholePeriod(entry.open)) render();
+  // Once the page has settled (fonts in, layout measured): the card is found where it will stay.
   void document.fonts.ready.then(() =>
-    requestAnimationFrame(() => requestAnimationFrame(() => openEventDialog(event, visibleEvents(events, state), { source: "enlace" }))),
+    requestAnimationFrame(() => requestAnimationFrame(() => openEventDrawer(event, { source: "enlace", shared: true }))),
   );
 }
 
@@ -379,9 +423,10 @@ export function start() {
   events = JSON.parse(byId("events-data").textContent || "[]");
   keepOnly(new Set(events.map((event) => event.id))); // saved events no longer in the data are forgotten
   initThemeToggle();
-  initEventDialog((id) => events.find((event) => event.id === id));
+  initEventDrawer((id) => events.find((event) => event.id === id));
   initPostsSheet();
   initPostViewer();
+  initClipSound();
   initSharing((id) => events.find((event) => event.id === id));
   initInstallPrompt();
   registerServiceWorker();

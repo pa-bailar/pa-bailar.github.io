@@ -1,42 +1,99 @@
-/* Phones: filters in a sheet that slides up from the bottom (components/FilterSheet.astro). Its layout,
-   motion and drag-to-dismiss are the shared panel sheet's (sheet.css, lib/sheet.ts). */
+/* Phones: "Filtros", a sheet that slides up from the bottom (components/FilterSheet.astro). Its motion and
+   drag-to-dismiss are the shared panel sheet's (sheet.css, lib/sheet.ts). The head stays at the top and
+   "Ver 12 eventos" at the bottom; the groups scroll between them. */
 
+.filter-sheet[open] {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* the groups scroll, not the sheet */
+  padding-bottom: 0;
+}
+
+.filter-sheet__head {
+  flex: none;
+  margin: 0 calc(var(--space-4) * -1);
+  padding: 0 var(--space-2) var(--space-2) var(--space-4);
+  border-bottom: var(--border-width) solid var(--divider);
+}
+
+.filter-sheet__head .sheet-panel__title {
+  flex: 1;
+}
+
+/* "Limpiar": only with something to clear. */
+.filter-sheet__clear {
+  min-height: var(--touch-target);
+  padding: 0 var(--space-3);
+  border: 0;
+  background: none;
+  color: var(--accent-text);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.filter-sheet__clear:disabled {
+  color: var(--dimmed);
+  text-decoration: none;
+  cursor: default;
+}
+
+.filter-sheet__body {
+  flex: 1;
+  min-height: 0;
+  margin: 0 calc(var(--space-4) * -1);
+  padding: 0 var(--space-4) var(--space-4);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+/* "Fecha · elige una o varias". */
 .filter-sheet__label {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
   margin: var(--space-4) 0 var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  color: var(--text-muted);
+}
+
+.filter-sheet__label small {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-regular);
+}
+
+/* Every option in view: chips wrap here instead of scrolling sideways. */
+.filter-sheet__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.filter-sheet__note {
   font-size: var(--text-sm);
   color: var(--text-muted);
 }
 
-.filter-sheet__label[hidden] {
-  display: none;
+/* "Ver 12 eventos": always in view at the bottom. */
+.filter-sheet__foot {
+  flex: none;
+  margin: 0 calc(var(--space-4) * -1);
+  padding: var(--space-3) var(--space-4) calc(var(--space-3) + env(safe-area-inset-bottom));
+  border-top: var(--border-width) solid var(--divider);
 }
 
-/* Finger-sized chips in the sheet (--touch-target), where there's room for them. */
-@media (pointer: coarse) {
-  .filter-sheet .chip {
-    min-height: var(--touch-target);
-  }
+.filter-sheet__foot .btn {
+  width: 100%;
+  min-height: calc(var(--touch-target) + var(--space-1));
+  font-size: var(--text-md);
 }
 
-/* All the options in view: chips wrap here instead of scrolling sideways. */
-.filter-sheet .chip-row {
-  flex-wrap: wrap;
-  margin: 0;
-  padding: 0;
-  overflow: visible;
+.filter-sheet__foot .btn:disabled {
+  background: transparent;
+  border-color: var(--dimmed);
+  color: var(--dimmed);
+  cursor: default;
 }
-
-.filter-sheet .account-filter {
-  margin-top: var(--space-4);
-}
-
-.filter-sheet__actions {
-  display: flex;
-  gap: var(--space-2);
-  margin-top: var(--space-5);
-}
-
-.filter-sheet__actions .btn--primary {
-  flex: 1;
-}
-

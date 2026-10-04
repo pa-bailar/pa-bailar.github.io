@@ -9,7 +9,7 @@ import { matchesQuery } from "./lib/search";
 export function createInitialState(): AppState {
   return {
     view: "upcoming",
-    typeFilter: "all",
+    types: [],
     styles: [],
     dates: [],
     accountFilter: null,
@@ -37,13 +37,16 @@ function datesApply(state: AppState): boolean {
   return state.view === "upcoming" && state.dates.length > 0;
 }
 
+/** The groups of choices in the filters (the academy is set from a card, the search and Guardados apart). */
+export type FilterGroup = "dates" | "styles" | "types";
+
 /**
- * Whether the event passes every filter: AND across them (type, rhythms, dates, academy, Guardados, search),
- * OR within the rhythms and within the dates. `except` leaves one group out: the options of that group are
- * counted against the others (filterOptions).
+ * Whether the event passes every filter: AND across them (types, rhythms, dates, academy, Guardados, search),
+ * OR within each group of choices. `except` leaves one group out: the options of that group are counted against
+ * the others (filterModel, views/filters.ts).
  */
-export function matchesFilters(event: DanceEvent, state: AppState, except?: "styles" | "dates"): boolean {
-  const typeOk = state.typeFilter === "all" || event.event_type === state.typeFilter;
+export function matchesFilters(event: DanceEvent, state: AppState, except?: FilterGroup): boolean {
+  const typeOk = except === "types" || !state.types.length || state.types.includes(event.event_type);
   const stylesOk = except === "styles" || matchesStyles(event, state.styles);
   const datesOk = except === "dates" || !datesApply(state) || matchesDates(event, state.dates);
   const accountOk = !state.accountFilter || event.account === state.accountFilter;
@@ -51,10 +54,10 @@ export function matchesFilters(event: DanceEvent, state: AppState, except?: "sty
   return typeOk && stylesOk && datesOk && accountOk && savedOk && matchesQuery(event, state.query);
 }
 
-/** Filter groups in use (several rhythms count once), for the ⚙ badge. */
+/** Every choice in use, for the ⚙ badge: each date (in the list), rhythm and type, and the academy. */
 export function activeFilterCount(state: AppState): number {
-  return [state.typeFilter !== "all", state.styles.length > 0, datesApply(state), state.accountFilter !== null].filter(Boolean)
-    .length;
+  const dates = state.view === "upcoming" ? state.dates.length : 0; // the calendar has its own days
+  return dates + state.styles.length + state.types.length + (state.accountFilter ? 1 : 0);
 }
 
 /** Anything narrowing the list: the filters, a search, or "Guardados". */
@@ -67,13 +70,12 @@ export function toggled(values: string[], value: string): string[] {
   return values.includes(value) ? values.filter((item) => item !== value) : [...values, value];
 }
 
+/** "Limpiar": the dates, rhythms, types and academy. Not the search nor "Guardados", which have their own way out. */
 export function clearFilters(state: AppState) {
-  state.typeFilter = "all";
+  state.types = [];
   state.styles = [];
   state.dates = [];
   state.accountFilter = null;
-  state.query = "";
-  state.savedOnly = false;
 }
 
 function monthPrefix(month: Date): string {
@@ -248,10 +250,10 @@ export interface DateOption extends Period {
 /**
  * The date filter's options, in order: every period with an upcoming event on (from today), with "Mañana"
  * after "Hoy" when something is on tomorrow. `upcoming`: the upcoming events before any filter (which periods
- * exist); `counted`: those passing the other filters (each option's count). Options nothing would add are left
- * out, unless chosen (so they can be unchosen).
+ * exist); `counted`: those passing the other filters (each option's count). An option nothing would add stays,
+ * with 0: the filters dim it in place, so the chips never move.
  */
-export function dateOptions(upcoming: DanceEvent[], counted: DanceEvent[], chosen: string[], today = todayIso()): DateOption[] {
+export function dateOptions(upcoming: DanceEvent[], counted: DanceEvent[], today = todayIso()): DateOption[] {
   const days = [...new Set(upcoming.flatMap((event) => daysFrom(event, today)))].sort();
   const periodOf = periodNamer(today);
   const periods = new Map<string, Period>();
@@ -263,9 +265,7 @@ export function dateOptions(upcoming: DanceEvent[], counted: DanceEvent[], chose
   if (days.includes(addDays(today, 1))) {
     options.splice(periods.has("hoy") ? 1 : 0, 0, { key: TOMORROW, label: "Mañana", shortLabel: "Mañana" });
   }
-  return options
-    .map((period) => ({ ...period, count: counted.filter((event) => matchesDates(event, [period.key], today)).length }))
-    .filter((option) => option.count > 0 || chosen.includes(option.key));
+  return options.map((period) => ({ ...period, count: counted.filter((event) => matchesDates(event, [period.key], today)).length }));
 }
 
 /** Events grouped by date, keeping the input order (events.json is already sorted). An event over several

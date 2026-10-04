@@ -1,7 +1,7 @@
 ---
 import { ICONS } from "../scripts/lib/icons";
-// Bar with the view tabs and the filter chips (chips are rendered by scripts/views/filters.ts).
-// Sticky on wide screens only (see toolbar.css).
+// Bar with the view tabs and, on wide screens, the filter chips and "12 eventos · Limpiar filtros" (rendered by
+// scripts/views/filters.ts; phones have them in the jump bar). Sticky on wide screens only (see toolbar.css).
 ---
 
 <div class="toolbar">
@@ -25,10 +25,10 @@ import { ICONS } from "../scripts/lib/icons";
           aria-label="Buscar eventos" autocomplete="off" />
       </div>
     </div>
-    <div class="chip-row" id="date-filters" data-filter-row="date" role="group" aria-label="Filtrar por fecha"></div>
-    <div class="chip-row" id="type-filters" data-filter-row="type" role="group" aria-label="Filtrar por tipo"></div>
-    <div class="chip-row" id="style-filters" data-filter-row="style" role="group" aria-label="Filtrar por ritmo"></div>
-    <p class="account-filter" id="account-filter" data-filter-row="account" hidden></p>
+    <div class="chip-row" id="date-filters" role="group" aria-label="Filtrar por fecha"></div>
+    <div class="chip-row" id="type-filters" role="group" aria-label="Filtrar por tipo"></div>
+    <div class="chip-row" id="style-filters" role="group" aria-label="Filtrar por ritmo"></div>
+    <p class="filter-status" id="filter-status" hidden></p>
   </div>
   <p class="visually-hidden" id="results-status" role="status"></p>
 </div>
