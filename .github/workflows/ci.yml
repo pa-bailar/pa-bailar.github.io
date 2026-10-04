@@ -1,6 +1,6 @@
-# The `ci` check required on main: data format check, type check (strict) + color contrast, unit tests
-# (Vitest), and build. On pull requests, also the title: it becomes the commit on main (squash merge), whose
-# Conventional Commits type sets the next version (frontend/scripts/release.mjs).
+# The `ci` check required on main: data format check, type check (strict), color contrast and CSS custom
+# properties, unit tests (Vitest), and build. On pull requests, also the title: it becomes the commit on main
+# (squash merge), whose Conventional Commits type sets the next version (frontend/scripts/release.mjs).
 # Runs on every pull request, including the data PRs opened by the pa-bailar-bot GitHub App
 # from the (private) backend repository.
 name: ci
@@ -37,7 +37,7 @@ jobs:
           TITLE: ${{ github.event.pull_request.title }}
         run: node scripts/release.mjs check "$TITLE"
       - run: npm ci
-      - name: Data format, type check and color contrast
+      - name: Data format, type check, color contrast and CSS properties
         run: npm run check
       - name: Unit tests
         run: npm test
