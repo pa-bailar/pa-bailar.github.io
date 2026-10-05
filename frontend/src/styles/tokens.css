@@ -172,6 +172,7 @@
   --bottom-nav-space: 0px; /* what the bar at the bottom covers, its height and the home indicator's inset (phones: bottom-nav.css) */
   --nav-indicator-width: 48px; /* the bar's item that's on (Guardados, a search): the pill behind its icon, --chip-height tall */
   --menu-width: 304px; /* the "Cuándo" menu under its chip (narrower on a narrower screen) */
+  --pill-panel-width: 456px; /* wide screens: the Ritmo and Tipo panels under their pills (narrower on a narrower screen) */
   --switch-width: 44px; /* the filter sheet's switch ("Ocultar eventos de bares"): its track */
   --switch-height: 24px;
   --sticker-size: 60px;

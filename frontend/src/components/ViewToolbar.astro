@@ -1,8 +1,11 @@
 ---
 import { ICONS } from "../scripts/lib/icons";
-// Wide screens: the view tabs, "Guardados" and the search field, the filter chips and "12 eventos · Limpiar filtros"
-// (rendered by scripts/views/filters.ts). Sticky (see toolbar.css). Phones don't show it: the bar pinned to the top
-// has the chips (JumpBar.astro), the bar at the bottom the views, search, Guardados and Filtros (BottomNav.astro).
+// Wide screens: the view tabs, "Guardados" and the search field; under them one row of dropdown pills, [🕒 Cuándo ▾]
+// (the list only) [Ritmo ▾] [Tipo ▾], and the toggle chip "Ocultar bares"; each pill opens its panel (Cuándo's menu, the
+// rhythms under their families, the types). Under the pills, while filtering: "12 eventos", the choices as removable
+// chips and "× Limpiar". Drawn by scripts/views/filters.ts, the panels opened by scripts/views/filterPanels.ts. Sticky
+// (see toolbar.css). Phones don't show it: the bar pinned to the top has the chips (JumpBar.astro), the bar at the
+// bottom the views, search, Guardados and Filtros (BottomNav.astro).
 ---
 
 <div class="toolbar">
@@ -24,9 +27,10 @@ import { ICONS } from "../scripts/lib/icons";
           aria-label="Buscar eventos" autocomplete="off" />
       </div>
     </div>
-    <div class="chip-row" id="date-filters" role="group" aria-label="Filtrar por fecha"></div>
-    <div class="chip-row" id="type-filters" role="group" aria-label="Filtrar por tipo"></div>
-    <div class="chip-row" id="style-filters" role="group" aria-label="Filtrar por ritmo"></div>
-    <p class="filter-status" id="filter-status" hidden></p>
+    <div class="filter-pills" id="filter-pills" role="group" aria-label="Filtros"></div>
+    <div class="when-menu pill-panel pill-panel--menu" id="pill-panel-when" role="menu" aria-label="Cuándo" hidden></div>
+    <div class="pill-panel" id="pill-panel-styles" role="dialog" aria-label="Ritmo" hidden></div>
+    <div class="pill-panel" id="pill-panel-types" role="dialog" aria-label="Tipo de evento" hidden></div>
+    <div class="filter-status" id="filter-status" role="group" aria-label="Filtros elegidos" hidden></div>
   </div>
 </div>

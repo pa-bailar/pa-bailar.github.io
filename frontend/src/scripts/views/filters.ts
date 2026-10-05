@@ -7,9 +7,12 @@
 //     ("Social ×", "Sin bares ×").
 //   - Under the bar, only while filtering: "12 eventos · Finde, Salsa" and "× Limpiar".
 //   - The sheet (FilterSheet.astro): the switch "Ocultar eventos de bares" first (remembered; while on, "Sin bares ×"
-//     in the row), every date, rhythm and type with its count, "Limpiar" and "Ver 12 eventos".
-//   - Wide screens: the toolbar's chip rows (dates, types and "Ocultar bares", rhythms) and a status row ("12 eventos ·
-//     Limpiar filtros").
+//     in the row), every date, rhythm (under its family: Salsa, Bachata, Urbanos, Otros) and type with its count,
+//     "Limpiar" and "Ver 12 eventos".
+//   - Wide screens (ViewToolbar.astro): one row of dropdown pills, [🕒 Cuándo ▾] (the list only) [Ritmo · 2 ▾] [Tipo ▾],
+//     and the toggle chip "Ocultar bares"; each pill opens its panel (filterPanels.ts): Cuándo's menu, the rhythms
+//     under their families, the types. Under the row, while filtering: "12 eventos", every choice as a removable chip
+//     ("Finde ×", "Salsa ×", "Sin bares ×") and "× Limpiar".
 // What each shows, and how options are counted and dimmed, is the model (lib/filterModel.ts, pure and tested); the
 // "Cuándo" menu draws itself (whenMenu.ts).
 
@@ -21,13 +24,17 @@ import {
   type AppliedFilter,
   type FilterModel,
   type FilterOption,
+  type FilterPill,
+  type PillKey,
   type WhenModel,
   HIDE_BARS_FILTER,
   resultsButtonLabel,
   summaryLine,
 } from "../lib/filterModel";
+import type { FamilyGroup } from "../lib/styleFamilies";
 import { activeFilterCount } from "../state";
-import { renderWhenMenu } from "./whenMenu";
+import { openPanelKey, panelId } from "./filterPanels";
+import { renderWhenMenu, whenMenuHtml } from "./whenMenu";
 /**
  * The ways out of an empty result, for what's narrowing it: "Limpiar filtros", "Borrar la búsqueda", "Ver todos,
  * no solo guardados".
@@ -100,8 +107,8 @@ export function barsSwitchHtml(on: boolean): string {
     </button>`;
 }
 
-/** Wide screens: the same choice as a chip at the end of the types' row, "Ocultar bares" (with × while on). */
-function barsChipHtml(on: boolean): string {
+/** Wide screens: the same choice as a toggle chip at the end of the pills' row, "Ocultar bares" (with × while on). */
+export function barsChipHtml(on: boolean): string {
   return `<button class="chip filter-chip filter-chip--bars" type="button" ${BARS_DATA} aria-pressed="${on}"
     aria-label="Ocultar eventos de bares">Ocultar bares${on ? X : ""}</button>`;
 }
@@ -188,7 +195,9 @@ function renderSheet(model: FilterModel, state: AppState) {
   body.innerHTML = [
     `<div class="filter-sheet__switch">${barsSwitchHtml(model.hideBars)}</div>`,
     dates,
-    group("Ritmo", "elige uno o varios", model.styles, "Ritmo"),
+    model.styles.length
+      ? `<h3 class="filter-sheet__label">Ritmo <small>elige uno o varios</small></h3>${familiesHtml(model.styleGroups, "sheet")}`
+      : "",
     group("Tipo de evento", "", model.types, "Tipo de evento"),
   ].join("");
   body.scrollTop = scrolled;
@@ -198,22 +207,77 @@ function renderSheet(model: FilterModel, state: AppState) {
   results.disabled = model.shown === 0;
 }
 
-/** Wide screens: the toolbar's rows (short date names, the full one for screen readers) and the status row. */
-function renderToolbar(model: FilterModel, state: AppState) {
-  const fill = (row: string, html: string, hidden = false) => {
-    const container = byId(row);
-    container.innerHTML = html;
-    container.hidden = hidden;
-  };
-  fill("date-filters", model.dates.map((item) => chipHtml(item, { short: true })).join(""), state.view !== "upcoming");
-  fill("type-filters", [...model.types.map((item) => chipHtml(item)), barsChipHtml(model.hideBars)].join(""));
-  fill("style-filters", model.styles.map((item) => chipHtml(item)).join(""));
+/**
+ * The rhythms under their families, a small heading over each family's chips (with their counts): the sheet's Ritmo
+ * and the toolbar's Ritmo panel. `scope` keeps the headings' ids apart ("sheet", "panel").
+ */
+export function familiesHtml(groups: FamilyGroup<FilterOption>[], scope: string): string {
+  return groups
+    .map(({ family, items }) => {
+      const id = `${scope}-family-${family.key}`;
+      return `<div class="filter-family" role="group" aria-labelledby="${id}">
+        <p class="filter-family__name" id="${id}">${escapeHtml(family.label)}</p>
+        <div class="filter-family__chips">${items.map((item) => chipHtml(item, { counts: true })).join("")}</div>
+      </div>`;
+    })
+    .join("");
+}
+
+const POPUP: Record<PillKey, string> = { when: "menu", styles: "dialog", types: "dialog" };
+
+/**
+ * A pill of the toolbar (wide screens): "Ritmo ▾", "Ritmo · 2 ▾" in the selected-chip colors while something in it is
+ * chosen; Cuándo with its clock. A button that opens its panel (`aria-haspopup`, `aria-expanded`, `aria-controls`),
+ * named with what's chosen ("Ritmo, 2 elegidos").
+ */
+export function pillHtml(pill: FilterPill, open: boolean): string {
+  const chosen = pill.count > 0;
+  return `<button class="chip filter-pill${chosen ? " is-chosen" : ""}" type="button" id="pill-${pill.key}" data-pill="${pill.key}"
+    aria-haspopup="${POPUP[pill.key]}" aria-expanded="${open}" aria-controls="${panelId(pill.key)}"
+    aria-label="${escapeHtml(pill.name)}">${pill.key === "when" ? ICONS.clock : ""}<span>${escapeHtml(pill.label)}</span>${
+      ICONS.chevronDown
+    }</button>`;
+}
+
+/** The pills' row: Cuándo (the list), Ritmo, Tipo, then "Ocultar bares" set a little apart. */
+export function pillsRowHtml(model: FilterModel, open: PillKey | null): string {
+  return [...model.pills.map((pill) => pillHtml(pill, open === pill.key)), barsChipHtml(model.hideBars)].join("");
+}
+
+/** A panel's content: Ritmo (its families) and Tipo (its chips), each option with its count; Cuándo is its menu. */
+export function panelHtml(key: PillKey, model: FilterModel): string {
+  if (key === "when") return model.when ? whenMenuHtml(model.when) : "";
+  const head = (title: string) =>
+    `<p class="pill-panel__head" aria-hidden="true">${title} <small>elige uno o varios</small></p>`;
+  if (key === "styles") return `${head("Ritmo")}${familiesHtml(model.styleGroups, "panel")}`;
+  return `${head("Tipo de evento")}<div class="filter-family__chips">${model.types.map((item) => chipHtml(item, { counts: true })).join("")}</div>`;
+}
+
+/**
+ * Under the pills, only while filtering: "12 eventos" (in the calendar "5 eventos en octubre"), every choice as a
+ * removable chip ("Finde ×", "Salsa ×", "Social ×", "Sin bares ×") and "× Limpiar".
+ */
+export function statusHtml(model: FilterModel, state: AppState): string {
+  if (!model.active) return "";
   const { count, where } = summaryLine(model, state);
-  const clear = model.active
-    ? `<span class="filter-status__count"><b>${count}</b>${escapeHtml(where)}</span>
-       <button class="chip filter-chip filter-status__clear" type="button" data-clear-filters>${ICONS.close}Limpiar filtros</button>`
-    : "";
-  fill("filter-status", clear, !clear);
+  return `<p class="filter-status__count"><b>${count}</b>${escapeHtml(where)}</p>
+    ${model.applied.map(removableHtml).join("")}
+    <button class="filter-summary__clear filter-status__clear" type="button" data-clear-filters aria-label="Limpiar filtros">${ICONS.close}Limpiar</button>`;
+}
+
+/** Wide screens: the pills, their panels' content (also while one is open: the counts follow) and the status row. */
+function renderToolbar(model: FilterModel, state: AppState) {
+  const open = openPanelKey();
+  byId("filter-pills").innerHTML = pillsRowHtml(model, open);
+  for (const key of ["when", "styles", "types"] as const) {
+    const panel = byId(panelId(key));
+    const scrolled = panel.scrollTop;
+    panel.innerHTML = panelHtml(key, model);
+    panel.scrollTop = scrolled;
+  }
+  const status = byId("filter-status");
+  status.innerHTML = statusHtml(model, state);
+  status.hidden = !model.active;
 }
 
 /** Draws every place the filters show: the phone bar and its line, the sheet, the toolbar. */
