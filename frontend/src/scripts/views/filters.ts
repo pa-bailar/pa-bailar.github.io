@@ -1,7 +1,7 @@
 // The filters: what's chosen and what can be chosen, and where they're drawn.
-//   - Phones, the bar (JumpBar.astro), pinned to the top: [⚙ 3] [Social ×] [📅 ▾] | [Salsa] [Bachata] [Urbano] [Tango],
-//     one row that scrolls sideways. "📅 ▾" ("Cuándo") opens a short menu with one choice of date (whenMenu.ts);
-//     once chosen it reads "📅 Finde" with its own × beside it. A rhythm chip is chosen with one tap (dark, with ×),
+//   - Phones, the bar (JumpBar.astro), pinned to the top: [⚙ 3] [Social ×] [🕒 ▾] | [Salsa] [Bachata] [Urbano] [Tango],
+//     one row that scrolls sideways. "🕒 ▾" ("Cuándo") opens a short menu with one choice of date (whenMenu.ts);
+//     once chosen it reads "🕒 Finde" with its own × beside it. A rhythm chip is chosen with one tap (dark, with ×),
 //     unchosen with another. ⚙ opens the "Filtros" sheet with every option (several dates too); a choice made
 //     there that has no chip of its own in the row shows as a removable chip after ⚙ ("Social ×", "@academia ×").
 //   - Under the bar, only while filtering: "12 eventos · Finde, Salsa" and "× Limpiar".
@@ -60,7 +60,7 @@ export interface WhenOption {
 
 /** The bar's "Cuándo": its chip and its menu (list only; the calendar has its own days). */
 export interface WhenModel {
-  label: string; // the chip's: "" (nothing chosen: "📅 ▾"), "Finde", "Finde +1" (several, from the sheet)
+  label: string; // the chip's: "" (nothing chosen: "🕒 ▾"), "Finde", "Finde +1" (several, from the sheet)
   name: string; // for screen readers: "Cualquier fecha", "Este fin de semana", "Este fin de semana y Noviembre"
   chosen: boolean;
   options: WhenOption[]; // "Cualquier fecha", then every period with something on
@@ -311,13 +311,14 @@ function renderBarChips(model: FilterModel, state: AppState) {
 }
 
 /**
- * "Cuándo" in the bar: a button that opens its menu ("📅 ▾", or "📅 Finde" once a date is chosen) and, beside it
+ * "Cuándo" in the bar: a button that opens its menu ("🕒 ▾", or "🕒 Finde" once a date is chosen; a clock, so it
+ * doesn't look like the floating calendar button) and, beside it
  * (not inside: two targets), × to take the date away. One piece to the eye: the chosen colors, a line between.
  */
 function whenChipHtml(when: WhenModel): string {
   const open = `<button class="chip filter-chip when-chip__open" type="button" id="when-open" data-when-open
     aria-haspopup="menu" aria-expanded="false" aria-controls="when-menu" aria-label="Cuándo: ${escapeHtml(when.name)}">${
-      ICONS.calendar
+      ICONS.clock
     }${when.chosen ? `<span>${escapeHtml(when.label)}</span>` : `<span class="when-chip__word">Cuándo</span>${ICONS.chevronDown}`}</button>`;
   const clear = when.chosen
     ? `<button class="chip filter-chip when-chip__clear" type="button" data-when-clear
