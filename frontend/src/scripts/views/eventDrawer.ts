@@ -17,6 +17,7 @@ import { byId, escapeHtml, prefersReducedMotion } from "../lib/dom";
 import { detailsEventName, type DetailsSource, trackEvent, trackPageview } from "../lib/analytics";
 import { ICONS } from "../lib/icons";
 import { eventPath } from "../lib/links";
+import { DURATION, EASE } from "../lib/motion";
 import { holdClips } from "./clips";
 import { initDrawerGestures } from "./drawerGestures";
 import { afterClosing, backOutOfEvent, enterEvent, historyMove } from "./drawerHistory";
@@ -35,12 +36,6 @@ import { scrollPageTo, stickyOffset } from "./jumpBar";
 
 const PANEL_QUERY = `(min-width: ${PANEL_MIN_WIDTH}px)`; // wide enough for the list and a side panel (--panel-width)
 const TITLE_ID = "drawer-title";
-const RISE = 320; // ms, Material's emphasized decelerate: quick, with a soft landing
-const RISE_EASING = "cubic-bezier(0.05, 0.7, 0.1, 1)";
-const SETTLE = 300; // ms, between the two heights or springing back
-const SETTLE_EASING = "cubic-bezier(0.2, 0, 0, 1)";
-const EXIT_EASING = "cubic-bezier(0.3, 0, 0.8, 0.15)"; // emphasized accelerate: it leaves and keeps going
-const PANEL_EXIT = 200; // ms: the side panel slides out
 const UNDER_BAR = 8; // px left between the bar and the card brought into view
 
 /** The drawer's state while the page is open. */
@@ -77,7 +72,13 @@ const clearCurrentCard = () =>
 // ---------- the drawer's height (phones) ----------
 
 /** Puts the drawer `next` px below its full height, the scrim following; `duration` animates it (CSS). */
-function place(next: number, { duration = 0, easing = SETTLE_EASING } = {}) {
+/** How the drawer moves to a height: for how long (ms; 0 at once) and along which curve. */
+interface Motion {
+  duration?: number;
+  easing?: string;
+}
+
+function place(next: number, { duration = 0, easing = EASE.standard }: Motion = {}) {
   state.offset = next;
   const element = drawer();
   const animate = duration > 0 && !prefersReducedMotion();
@@ -90,7 +91,7 @@ function place(next: number, { duration = 0, easing = SETTLE_EASING } = {}) {
   element.style.setProperty("--scrim-opacity", scrimAt(next, state.viewport).toFixed(3));
 }
 
-function setDetent(next: Detent, { duration = SETTLE, easing = SETTLE_EASING } = {}) {
+function setDetent(next: Detent, { duration = DURATION.settle, easing = EASE.standard }: Motion = {}) {
   state.detent = next;
   const element = drawer();
   element.dataset.detent = next;
@@ -166,7 +167,7 @@ function show(event: DanceEvent, shared: boolean) {
   element.showModal();
   place(offsetFor("closed", state.viewport)); // from just below the screen…
   element.getBoundingClientRect(); // …laid out there before it rises
-  setDetent("medium", { duration: RISE, easing: RISE_EASING });
+  setDetent("medium", { duration: DURATION.enter, easing: EASE.emphasizedDecelerate });
 }
 
 const focusTitle = () => document.getElementById(TITLE_ID)?.focus({ preventScroll: true });
@@ -216,11 +217,11 @@ function leave({ from = state.offset, velocity = 0, instant = false } = {}) {
   if (instant || prefersReducedMotion()) return finishClose();
   if (state.mode === "panel") {
     element.classList.add("is-closing");
-    state.exitTimer = window.setTimeout(finishClose, PANEL_EXIT);
+    state.exitTimer = window.setTimeout(finishClose, DURATION.panelOut);
     return;
   }
   const duration = exitDuration(from, state.viewport, velocity);
-  place(offsetFor("closed", state.viewport), { duration, easing: EXIT_EASING });
+  place(offsetFor("closed", state.viewport), { duration, easing: EASE.emphasizedAccelerate });
   state.exitTimer = window.setTimeout(finishClose, duration);
 }
 

@@ -201,6 +201,14 @@
   /* ---------- Layer 3: motion ---------- */
   --duration: 150ms; /* hovers, small state changes */
   --duration-bar: 250ms; /* the floating view switch fading in and out */
+  --duration-enter: 320ms; /* a bottom sheet rising, the details drawer rising to half height */
+  --duration-settle: 300ms; /* a sheet or the drawer settling: between heights, springing back after a drag */
+  --duration-panel-in: 280ms; /* the side panel sliding in (wide screens) */
+  --duration-panel-out: 200ms; /* the side panel sliding out */
+  /* Material 3's curves. Scripts mirror these and the durations above in scripts/lib/motion.ts (tested). */
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1); /* settling, springing back, the first visit's pulse */
+  --ease-emphasized-decelerate: cubic-bezier(0.05, 0.7, 0.1, 1); /* coming in: quick, with a soft landing */
+  --ease-emphasized-accelerate: cubic-bezier(0.3, 0, 0.8, 0.15); /* leaving: it goes and keeps going */
 
   /* Breakpoints (media queries can't read custom properties, so they're written as numbers):
      720px  phones vs. wider: the feed, the jump bar and the filter sheet
