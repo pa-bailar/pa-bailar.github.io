@@ -41,7 +41,7 @@ export function storyAccount(media: EventMedia): string | null {
 
 /**
  * Where a story's flyer came from, said with its link (the details, the media viewer): "De una historia de
- * @academia · las historias duran 24 horas", so "Ver perfil en Instagram" leading to the account, not to the story,
+ * @academia · las historias duran 24 horas", so the profile it leads to (the account, not the story)
  * makes sense. The event's account when the link doesn't name one.
  */
 export function storySource(event: Pick<DanceEvent, "account">, media: EventMedia): string {

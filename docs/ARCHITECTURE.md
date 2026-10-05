@@ -491,24 +491,24 @@ stateDiagram-v2
   date sticker and its sessions (the next one, those past) depend on the day too; the build's is the fallback. Its script adds the theme toggle, click tracking, the posts
   sheet and media viewer, the save button, sharing, the install offer and the service worker, the clips, and the
   detail's clicks (the flyer plays a video in place, the posts badge, the media links).
-- **The media:** "Ver el video con sonido" and "Ver las 4 imágenes" open the post in the media viewer
-  (`postViewer.ts`, Instagram's player); "Ver las 3 publicaciones" and a card's "▦ 3" open the posts sheet
+- **The media:** the details' **Instagram** quick action (`data-media-link`: `video`, `carrusel` or `publicacion`,
+  said in its `aria-label`) opens the post in the media viewer (`postViewer.ts`, Instagram's player); it's a link to
+  the post underneath, so a new-tab click follows it; "Ver las 3 publicaciones" and a card's "▦ 3" open the posts sheet
   (`postsSheet.ts`), whose chosen post opens in the media viewer in its place (`openPanelSheet(…, { replacing })`
   takes over the sheet's history entry). On the event page, the flyer still plays a video in place
   (`inlinePlayer.ts`).
 - **A story** (`media_type` `STORY`, [`DATA.md`](DATA.md#stories); `isStory` in `lib/mediaLabel.ts`) has no post
   behind it: its flyer is a plain image on the event page (not a link, labeled "Historia"), the media viewer shows
   only the flyer and never loads Instagram's player, and the inline player never gets it. The details say "De una
-  historia de @cuenta · las historias duran 24 horas" over "Ver perfil en Instagram ↗", which opens the account's
-  profile (its `permalink`).
+  historia de @cuenta · las historias duran 24 horas", and their Instagram quick action opens the account's profile
+  in the media viewer (a `data-profile` link to its `permalink`).
 - **An account's @** (on a card and in the details) opens its profile in the media viewer: an iframe of Instagram's
   profile embed (`profileEmbedUrl`, `https://www.instagram.com/<account>/embed/`; `frame-src` already allows
   Instagram), covered by "Cargando el perfil…" until it has drawn. The link underneath is the profile itself, for a new
   tab. There's no account filter anymore.
 - **The actions** are plain links built in `lib/links.ts`:
-  - "Ver en Instagram" opens the post (a story's "Ver perfil en Instagram", the profile);
   - "Compartir" opens the phone's share menu with the event's text and page URL (`views/sharing.ts`);
-  - "Cómo llegar" opens Google Maps' search URL.
+  - "Cómo llegar" (in the Lugar row) opens Google Maps' search URL.
 
 ### 5.4 Flyers
 
@@ -622,7 +622,7 @@ Every browser on an iPhone is Safari's engine (WebKit), with its own limits:
 |---|---|---|---|
 | **GitHub Pages** | Hosting | | The site is down |
 | **GoatCounter** (`jzamora9.goatcounter.com`) | Visit statistics, without cookies or personal data, so no consent banner is needed | Page views. Each event opened in the details drawer, as a view of its page. Where details were opened from, as events: `detalles-tarjeta` (the card), `detalles-boton` (its "Detalles"), `detalles-enlace` (a shared link; `detailsEventName`); `detalles-linea` (the line that ended each card) is retired since October 2026. Clicks on elements with `data-track` (Instagram, the contact links, "Cómo llegar", sharing, including `compartir-tarjeta` from a card's row, saving, installing, reports). Local testing isn't counted. Its script (`count.js`) is a copy served from the site (`src/vendor/goatcounter-count.js`, ISC license), not loaded from `gc.zgo.at`: the policy (section 3.3) then allows no other script host, and GoatCounter keeps its `/count` endpoint compatible, so the copy needs no updates | Nothing breaks: the script is optional and wrapped in `try` (`lib/analytics.ts`) |
-| **Instagram embed** (`instagram.com/embed.js`) | Showing a post inside the site (the media viewer: "Ver el video con sonido", a post chosen among the event's posts, an event page's flyer; videos play, carousels swipe) | Loaded only on that tap, never with the page: the post's link; Instagram's player then runs as Meta's code (and cookies) inside its frame | Our copy of the flyer stays, with "Abrir en Instagram" (also when a post's link can't be read) |
+| **Instagram embed** (`instagram.com/embed.js`) | Showing a post inside the site (the media viewer: the details' Instagram quick action, a post chosen among the event's posts, an event page's flyer; videos play, carousels swipe) | Loaded only on that tap, never with the page: the post's link; Instagram's player then runs as Meta's code (and cookies) inside its frame | Our copy of the flyer stays, with "Abrir en Instagram" (also when a post's link can't be read) |
 | **Instagram profile embed** (`instagram.com/<account>/embed/`, an iframe) | An account's profile inside the site (a card's or the details' @): its photo, counts and latest posts | Loaded only on that tap: the account's name; Instagram's page runs as Meta's code (and cookies) inside its frame | "El perfil no cargó aquí: ábrelo en Instagram.", and the bar's "Abrir en Instagram ↗" |
 | **Google Fonts** | Shrikhand, Bodoni Moda (italic) and Instrument Sans | The font request | System fonts are used |
 | **Instagram, WhatsApp, Google Maps** | Links the visitor chooses to open | Only what's in the link | |
