@@ -33,6 +33,7 @@ import {
   renderJumpBar,
   restoreListPosition,
   returnToScroll,
+  scrollPageTo,
   stickyOffset,
 } from "./views/jumpBar";
 import {
@@ -148,27 +149,35 @@ function showView(view: View) {
     else if (leftList.anchor) restoreListPosition(leftList.anchor);
     return;
   }
-  if (leftCalendar !== null) {
-    returnToScroll(leftCalendar);
-    return;
+  if (leftCalendar !== null) returnToScroll(leftCalendar);
+  else {
+    // The first time, from anywhere in the list: the month's title under the pinned bar if the page is past it.
+    const head = document.querySelector<HTMLElement>(".calendar__head");
+    const offset = stickyOffset() + 8;
+    if (head && head.getBoundingClientRect().top < offset) {
+      window.scrollTo({ top: head.getBoundingClientRect().top + window.scrollY - offset, behavior: "auto" });
+    }
   }
-  // The first time: the month and the start of its day's list together on screen.
-  settleCalendar();
+  revealDay();
 }
 
+/** How much of the day's list shows under its heading once it's revealed: the start of the first card. */
+const DAY_PEEK = 96;
+
 /**
- * The calendar's first opening: the month's title right under the pinned bar, so the grid and the top of the selected
- * day's list share the screen (on a phone the list started below the fold, and tapping a day seemed to do nothing).
- * Only when the list's start isn't on screen, or the page is already past the month; at once, with no animation.
+ * The calendar's one rule: whatever changes the day's list (opening the calendar, coming back to it, a day, the
+ * month's ‹ ›, "Hoy", a filter, a search, "Guardados", back), the start of that list ends up on screen. When its
+ * heading and the top of what follows are below the fold, the page moves just that far (gliding after a tap, at
+ * once otherwise); when they're on screen, or above it (the visitor is reading the cards), it doesn't move. On a
+ * phone the list starts below the fold at the top of the page, and a tap there seemed to do nothing (the owner,
+ * 4 October 2026).
  */
-function settleCalendar() {
-  const head = document.querySelector<HTMLElement>(".calendar__head");
+function revealDay({ smooth = false } = {}) {
+  if (state.view !== "calendar") return;
   const day = document.querySelector<HTMLElement>(".calendar__day-heading");
-  if (!head || !day) return;
-  const offset = stickyOffset() + 8;
-  const headTop = head.getBoundingClientRect().top;
-  if (headTop >= offset && day.getBoundingClientRect().top < window.innerHeight - 160) return;
-  window.scrollTo({ top: headTop + window.scrollY - offset, behavior: "auto" });
+  if (!day) return;
+  const below = day.getBoundingClientRect().bottom + DAY_PEEK - window.innerHeight;
+  if (below > 0) scrollPageTo(window.scrollY + below, { smooth });
 }
 
 /** The tabs and the floating button: the calendar is a move of its own ("back" returns to the list). */
@@ -196,6 +205,7 @@ function applyScreen(screen: Screen) {
   }
   render();
   returnToScroll(screen.scrollY);
+  revealDay();
 }
 
 /** The saved events still to come, in the list's order (a series by its next session). */
@@ -257,6 +267,7 @@ function backToTop() {
   const toolbar = document.querySelector<HTMLElement>(".toolbar");
   const top = toolbar?.getBoundingClientRect().top ?? 0;
   if (top < 0) window.scrollTo({ top: top + window.scrollY, behavior: "auto" });
+  revealDay(); // in the calendar, the day's list still starts on screen
 }
 
 let searchTimer = 0;
@@ -398,6 +409,7 @@ function handleClick(domEvent: MouseEvent) {
   // Filters keep the period being read in place (or the next one left, for a date filter).
   const filtered = Boolean(filter) || "clearFilters" in control.dataset;
   render({ keepPlace: filtered });
+  revealDay({ smooth: true }); // the calendar: a day, ‹ ›, "Hoy" or a filter changed what the day lists
 
   // The control clicked was re-rendered away, or "Limpiar" (which never stays usable): put focus somewhere useful.
   const lost = document.activeElement === document.body || document.activeElement === control;
