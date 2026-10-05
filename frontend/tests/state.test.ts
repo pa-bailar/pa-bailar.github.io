@@ -94,7 +94,8 @@ describe("events over several days", () => {
 
   it("while it goes on, it's listed under Hoy, first", () => {
     for (const today of ["2026-11-13", "2026-11-14", "2026-11-15"]) {
-      const groups = groupByPeriod([congress, social], today);
+      // The upcoming events, as the list gets them (on Sunday the social has passed).
+      const groups = groupByPeriod([congress, social].filter((item) => lastDay(item) >= today), today);
       expect(groups[0]?.key).toBe("hoy");
       expect(groups[0]?.events[0]?.id).toBe("level-up");
     }

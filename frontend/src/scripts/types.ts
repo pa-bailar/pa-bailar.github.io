@@ -34,6 +34,13 @@ export interface EventMedia {
   height?: number;
 }
 
+/** One dated session of a workshop series (docs/DATA.md, "Workshop series"). */
+export interface Session {
+  date: string; // YYYY-MM-DD
+  start_time: string | null; // HH:MM, 24-hour
+  end_time: string | null;
+}
+
 export interface DanceEvent {
   id: string;
   title: string;
@@ -44,10 +51,11 @@ export interface DanceEvent {
   venue: string | null;
   address: string | null;
   area: string | null;
-  date: string; // YYYY-MM-DD; over several days, the first one
-  end_date?: string | null; // the last day of an event over several consecutive days (docs/DATA.md); absent in older data
+  date: string; // YYYY-MM-DD; over several days, the first one; a series, its first session's
+  end_date?: string | null; // the last day of an event over several consecutive days, or a series' last session (docs/DATA.md); absent in older data
+  sessions?: Session[] | null; // a workshop series: its 2 to 12 dated sessions, in order; null for any other event, absent in older data
   weekday: string | null;
-  start_time: string | null; // HH:MM, 24-hour
+  start_time: string | null; // HH:MM, 24-hour; a series: its first session's
   end_time: string | null;
   prices: Price[];
   artists: string[];

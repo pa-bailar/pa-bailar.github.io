@@ -1,7 +1,7 @@
 // Spanish (Colombia) display formatting.
 
-import type { DanceEvent, EventType, MediaType } from "../types";
-import { addDays, daysBetween, isMultiDay, lastDay, parseIsoDate, todayIso } from "./dates";
+import type { DanceEvent, EventType, MediaType, Session } from "../types";
+import { addDays, daysBetween, isMultiDay, isSeries, lastDay, nextSession, parseIsoDate, shownDay, todayIso } from "./dates";
 import { isHoliday } from "./holidays";
 
 const LOCALE = "es-CO";
@@ -143,8 +143,44 @@ export function dateRangeLabel(start: string, end: string): string {
   return capitalize(start === end ? dayName(end, true) : `${dayName(start, !sameMonth)} al ${dayName(end, true)}`);
 }
 
-/** An event's day in full: "Sábado, 3 de octubre", or its days: "Viernes 13 al domingo 15 de noviembre". */
+/** "dom 8 nov": a session's day, short. */
+export function sessionDayLabel(iso: string): string {
+  const date = parseIsoDate(iso);
+  return `${shortWeekday.format(date).replace(".", "")} ${date.getDate()} ${shortMonthName(iso)}`;
+}
+
+/**
+ * A workshop series' sessions: "4 sesiones: 8, 22, 29 nov y 6 dic" (the backend's admin answers say it the same way),
+ * with the year after each month when they span two years ("2 sesiones: 29 dic 2026 y 5 ene 2027").
+ */
+export function sessionsLabel(sessions: Pick<Session, "date">[]): string {
+  const twoYears = new Set(sessions.map((session) => session.date.slice(0, 4))).size > 1;
+  const parts = sessions.map(({ date }, index) => {
+    const following = sessions[index + 1]?.date;
+    const lastOfMonth = !following || following.slice(0, 7) !== date.slice(0, 7);
+    const day = String(parseIsoDate(date).getDate());
+    return lastOfMonth ? `${day} ${shortMonthName(date)}${twoYears ? ` ${date.slice(0, 4)}` : ""}` : day;
+  });
+  const listed = parts.length > 1 ? `${parts.slice(0, -1).join(", ")} y ${parts.at(-1)}` : parts.join("");
+  return `${sessions.length} sesiones: ${listed}`;
+}
+
+/** "2:00 p. m. – 5:00 p. m." (as the details' "Cuándo"), "2:00 p. m." or "" (no start time). Each time is kept on one
+ * line (no-break spaces): a narrow row wraps between them, never inside "p. m.". */
+export function timeSpanLabel(start: string | null, end: string | null): string {
+  const time = (value: string | null) => formatTime(value).replaceAll(" ", "\u00a0");
+  return start ? [time(start), time(end)].filter(Boolean).join(" – ") : "";
+}
+
+/** Whether every session of a series has the same times (then they're said once, not on each session). */
+export function sameSessionTimes(sessions: Session[]): boolean {
+  return sessions.every((session) => session.start_time === sessions[0]?.start_time && session.end_time === sessions[0]?.end_time);
+}
+
+/** An event's day in full: "Sábado, 3 de octubre", its days: "Viernes 13 al domingo 15 de noviembre", or a series'
+ * sessions: "4 sesiones: 8, 22, 29 nov y 6 dic". */
 export function eventDaysLabel(event: DanceEvent): string {
+  if (isSeries(event)) return sessionsLabel(event.sessions);
   return isMultiDay(event) ? dateRangeLabel(event.date, lastDay(event)) : formatLongDate(event.date);
 }
 
@@ -167,11 +203,30 @@ function multiDayWhenLabel(event: DanceEvent, today: string): string {
 }
 
 /**
+ * A workshop series on its card, by its next session: within a week like any event, with which session it is ("Hoy ·
+ * 2:00 p. m. · sesión 2 de 4", "Mañana · …", "Domingo · …"); further away, "4 sesiones · próxima: dom 22 nov"; once
+ * every session has passed, "4 sesiones · 8 nov – 6 dic".
+ */
+function seriesWhenLabel(sessions: Session[], today: string): string {
+  const first = sessions[0]!;
+  const last = sessions.at(-1)!;
+  const next = nextSession({ date: first.date, end_date: last.date, sessions }, today);
+  const count = `${sessions.length} sesiones`;
+  if (!next) return `${count} · ${spanLabel(first.date, last.date)}`;
+  const days = daysBetween(today, next.date);
+  if (days >= 7) return `${count} · próxima: ${sessionDayLabel(next.date)}`;
+  const day = days === 0 ? "Hoy" : days === 1 ? "Mañana" : capitalize(weekdayName.format(parseIsoDate(next.date)));
+  const which = `sesión ${sessions.indexOf(next) + 1} de ${sessions.length}`;
+  return [day, formatTime(next.start_time), which].filter(Boolean).join(" · ");
+}
+
+/**
  * When an event happens, as shown on its card: "Hoy · 8:00 p. m.", "Mañana · 6:00 p. m.",
  * "Sábado · 8:00 p. m." within a week, "Martes 20 oct. · 7:00 p. m." further away. An event over several
- * days shows its days instead (multiDayWhenLabel).
+ * days shows its days instead (multiDayWhenLabel); a workshop series, its next session (seriesWhenLabel).
  */
 export function cardWhenLabel(event: DanceEvent, today = todayIso()): string {
+  if (isSeries(event)) return seriesWhenLabel(event.sessions, today);
   if (isMultiDay(event)) return multiDayWhenLabel(event, today);
   const days = daysBetween(today, event.date);
   const date = parseIsoDate(event.date);
@@ -199,10 +254,18 @@ export function formatMonthTitle(month: Date): string {
 
 /**
  * Parts for the round date sticker: { day: "03", month: "OCT" }. An event over several days in one month
- * shows its days ("13–15", `range`); across months, its first day (the card's text gives the range).
+ * shows its days ("13–15", `range`); across months, its first day (the card's text gives the range). A workshop
+ * series shows its next session as of `today` (the last once all have passed).
  */
-export function stickerDate(event: Pick<DanceEvent, "date" | "end_date">): { day: string; month: string; range: boolean } {
+export function stickerDate(
+  event: Pick<DanceEvent, "date" | "end_date" | "sessions">,
+  today = todayIso(),
+): { day: string; month: string; range: boolean } {
   const day = (iso: string) => String(parseIsoDate(iso).getDate()).padStart(2, "0");
+  if (isSeries(event)) {
+    const shown = shownDay(event, today);
+    return { day: day(shown), month: shortMonthName(shown).toUpperCase(), range: false };
+  }
   const end = lastDay(event);
   const range = isMultiDay(event) && end.slice(0, 7) === event.date.slice(0, 7);
   return {

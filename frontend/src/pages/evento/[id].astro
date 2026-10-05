@@ -12,7 +12,7 @@ import Stripes from "../../components/Stripes.astro";
 import ThemeToggle from "../../components/ThemeToggle.astro";
 import { allowInlineScript, jsValue } from "../../csp";
 import { accounts, events } from "../../data";
-import { isMultiDay, lastDay, todayIso } from "../../scripts/lib/dates";
+import { isMultiDay, isSeries, lastDay, todayIso } from "../../scripts/lib/dates";
 import type { DanceEvent } from "../../scripts/types";
 import {
   PREVIEW_HEIGHT,
@@ -22,7 +22,7 @@ import {
   previewTitle,
   previewVersion,
 } from "../../scripts/lib/linkPreview";
-import { BASE_URL, eventPageUrl, eventTimes, flyerUrl, mainMedia, previewImagePath } from "../../scripts/lib/links";
+import { BASE_URL, eventPageUrl, eventTimes, flyerUrl, mainMedia, previewImagePath, sessionTimes, type EventTimes } from "../../scripts/lib/links";
 import { eventDetailHtml } from "../../scripts/views/eventDetail";
 
 export function getStaticPaths() {
@@ -51,33 +51,60 @@ const previewImage = {
 
 // schema.org Event (https://schema.org/Event), as search engines read it.
 const { start, end, allDay } = eventTimes(event);
-const isoDateTime = (value: string) =>
-  allDay
-    ? `${value.slice(0, 4)}-${value.slice(4, 6)}-${value.slice(6, 8)}`
-    : `${value.slice(0, 4)}-${value.slice(4, 6)}-${value.slice(6, 8)}T${value.slice(9, 11)}:${value.slice(11, 13)}:00-05:00`;
+const isoDate = (value: string) => `${value.slice(0, 4)}-${value.slice(4, 6)}-${value.slice(6, 8)}`;
+const isoDateTime = (value: string, day: boolean = allDay) =>
+  day ? isoDate(value) : `${isoDate(value)}T${value.slice(9, 11)}:${value.slice(11, 13)}:00-05:00`;
 const flyer = flyerUrl(mainMedia(event));
+const location = {
+  "@type": "Place",
+  name: event.venue ?? event.organizer ?? `@${event.account}`,
+  address: {
+    "@type": "PostalAddress",
+    ...(event.address ? { streetAddress: event.address } : {}),
+    addressLocality: "Bogotá",
+    addressCountry: "CO",
+  },
+};
+// A workshop series: one Event from its first session to its last (what Google reads: startDate and endDate), with each
+// session as a `subEvent` of its own (schema.org's way to say which days; Google doesn't use it, but it's valid). As for
+// one day, a session's end only when the post gives it.
+const series = isSeries(event)
+  ? sessionTimes(event).map((times: EventTimes, index) => ({ times, session: event.sessions![index]! }))
+  : [];
+const sessionEnd = ({ times, session }: (typeof series)[number]) =>
+  session.start_time && session.end_time ? isoDateTime(times.end, false) : null;
+const subEvents = series.map((item, index) => ({
+  "@type": "Event",
+  name: `${event.title} (sesión ${index + 1} de ${series.length})`,
+  startDate: isoDateTime(item.times.start, item.times.allDay),
+  ...(sessionEnd(item) ? { endDate: sessionEnd(item) } : {}),
+  eventStatus: "https://schema.org/EventScheduled",
+  eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+  location,
+}));
+const lastSession = series.at(-1);
+const endDate = isMultiDay(event)
+  ? { endDate: lastDay(event) }
+  : lastSession
+    ? { endDate: sessionEnd(lastSession) ?? lastSession.session.date }
+    : allDay || !event.end_time
+      ? {}
+      : { endDate: isoDateTime(end) };
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "Event",
   name: event.title,
   startDate: isoDateTime(start),
-  // Over several days: the last day (schema.org's endDate is inclusive, unlike the calendar's exclusive end). One
-  // day: only the end the post gives (the calendar's guessed 4 hours aren't a fact to tell search engines).
-  ...(isMultiDay(event) ? { endDate: lastDay(event) } : allDay || !event.end_time ? {} : { endDate: isoDateTime(end) }),
+  // Over several days: the last day (schema.org's endDate is inclusive, unlike the calendar's exclusive end); a series:
+  // its last session's end, or day. One day: only the end the post gives (the calendar's guessed 4 hours aren't a fact
+  // to tell search engines).
+  ...endDate,
+  ...(subEvents.length ? { subEvent: subEvents } : {}),
   eventStatus: "https://schema.org/EventScheduled",
   eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
   url: eventPageUrl(event),
   ...(flyer ? { image: [new URL(flyer, Astro.site).href] } : {}),
-  location: {
-    "@type": "Place",
-    name: event.venue ?? event.organizer ?? `@${event.account}`,
-    address: {
-      "@type": "PostalAddress",
-      ...(event.address ? { streetAddress: event.address } : {}),
-      addressLocality: "Bogotá",
-      addressCountry: "CO",
-    },
-  },
+  location,
   organizer: { "@type": "Organization", name: event.organizer ?? `@${event.account}`, url: `https://www.instagram.com/${event.account}/` },
   ...(event.prices.length
     ? {

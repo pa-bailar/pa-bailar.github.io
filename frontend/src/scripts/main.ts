@@ -13,6 +13,7 @@ import {
   defaultDayForMonth,
   groupByPeriod,
   listedDay,
+  listOrder,
   toggled,
   visibleEvents,
 } from "./state";
@@ -182,10 +183,10 @@ function applyScreen(screen: Screen) {
   returnToScroll(screen.scrollY);
 }
 
-/** The saved events still to come, in date order. */
+/** The saved events still to come, in the list's order (a series by its next session). */
 function upcomingSaved(): DanceEvent[] {
   const today = todayIso();
-  return events.filter((event) => lastDay(event) >= today && isSaved(event.id));
+  return listOrder(events.filter((event) => lastDay(event) >= today && isSaved(event.id)), today);
 }
 
 /** "Guardados 3": how many upcoming events are saved, on the toggles. */

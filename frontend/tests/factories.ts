@@ -1,4 +1,4 @@
-import type { DanceEvent, EventMedia } from "../src/scripts/types";
+import type { DanceEvent, EventMedia, Session } from "../src/scripts/types";
 
 /**
  * A screenshot of an Instagram story, as the backend stores it (docs/DATA.md): a "story-<hash>" id, the account's
@@ -19,6 +19,32 @@ export function storyMedia(overrides: Partial<EventMedia> = {}): EventMedia {
 /** An event announced only by a story: most never get a post. */
 export function storyEvent(overrides: Partial<DanceEvent> = {}): DanceEvent {
   return event({ id: "social-de-bachata-24-oct", title: "Social de bachata", media: [storyMedia()], ...overrides });
+}
+
+/** A workshop series' sessions on these days, each from 14:00 to 17:00 unless given. */
+export function sessionsOn(dates: string[], times: Partial<Session> = {}): Session[] {
+  return dates.map((date) => ({ date, start_time: "14:00", end_time: "17:00", ...times }));
+}
+
+/**
+ * A workshop series as the backend stores it (docs/DATA.md, "Workshop series"): an "intensivo" on Sundays 8, 22 and 29
+ * November and 6 December, 2:00 to 5:00 p. m.; `date`, `end_date` and the times are its first and last sessions'.
+ */
+export function seriesEvent(overrides: Partial<DanceEvent> = {}): DanceEvent {
+  const sessions = overrides.sessions ?? sessionsOn(["2026-11-08", "2026-11-22", "2026-11-29", "2026-12-06"]);
+  return event({
+    id: "programa-intensivo-de-bachata-8-nov",
+    title: "Programa intensivo de bachata",
+    event_type: "workshop",
+    styles: ["bachata"],
+    date: sessions[0]!.date,
+    end_date: sessions.at(-1)!.date,
+    weekday: "domingo",
+    start_time: sessions[0]!.start_time,
+    end_time: sessions[0]!.end_time,
+    sessions,
+    ...overrides,
+  });
 }
 
 /** A complete event with sensible defaults; override what the test is about. */

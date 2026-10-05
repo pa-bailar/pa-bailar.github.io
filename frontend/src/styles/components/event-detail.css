@@ -20,6 +20,27 @@
   color: var(--text-muted);
 }
 
+/* "@academia ↗": opens the account's Instagram profile. Its tap area reaches 44px tall over the line's padding, without
+   making the line taller. */
+.event-detail__account {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-weight: var(--weight-bold);
+  color: var(--accent-text);
+}
+
+.event-detail__account::after {
+  position: absolute;
+  inset: calc((var(--touch-target) - 100%) / -2) calc(var(--space-2) * -1);
+  content: "";
+}
+
+.event-detail__account:hover {
+  text-decoration: underline;
+}
+
 /* The title takes the focus when the drawer opens (it's where reading starts): no ring for that. */
 .event-detail__title:focus {
   outline: none;
@@ -315,6 +336,55 @@
 
 .price-list small {
   color: var(--text-muted);
+}
+
+/* A workshop series' sessions: one per line, the next one marked with an accent bar and "Próxima", those past muted. */
+.session-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: var(--border-width) solid var(--divider);
+}
+
+/* The day, its time (when sessions differ) and the tag on one row: the time wraps before the tag moves down. */
+.session-list__item {
+  display: grid;
+  grid-template-columns: minmax(6.5em, auto) minmax(0, 1fr) auto; /* the times line up under each other */
+  align-items: baseline;
+  column-gap: var(--space-3);
+  padding: var(--space-2) var(--space-2) var(--space-2) var(--space-3); /* room for the next one's bar */
+  border-bottom: var(--border-width) solid var(--divider);
+}
+
+.session-list__day {
+  font-weight: var(--weight-bold);
+}
+
+.session-list__time {
+  font-size: var(--text-sm);
+}
+
+.session-list__tag {
+  grid-column: 3;
+  justify-self: end;
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.session-list__item.is-next {
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+
+.session-list__item.is-next .session-list__tag {
+  color: var(--accent-text);
+}
+
+.session-list__item.is-past,
+.session-list__item.is-past .session-list__day {
+  color: var(--text-muted);
+  font-weight: normal;
 }
 
 .callout {

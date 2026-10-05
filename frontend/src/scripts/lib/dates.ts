@@ -1,6 +1,6 @@
 // Date helpers. Event dates are plain "YYYY-MM-DD" strings in Bogotá local time.
 
-import type { DanceEvent } from "../types";
+import type { DanceEvent, Session } from "../types";
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 
@@ -62,26 +62,61 @@ export function mondayOffset(month: Date): number {
   return (month.getDay() + 6) % 7;
 }
 
-// ---------- events over several days (end_date, docs/DATA.md) ----------
+// ---------- events over several days (end_date) and workshop series (sessions), docs/DATA.md ----------
 
-/** The event's last day: its end_date over several days, else its date. It's upcoming until then. */
+/** What the day helpers read of an event. */
+type EventDays = Pick<DanceEvent, "date" | "end_date" | "sessions">;
+
+/** The event's last day: its end_date over several days (a series: its last session), else its date. It's upcoming
+ * until then. */
 export function lastDay(event: Pick<DanceEvent, "date" | "end_date">): string {
   return event.end_date ?? event.date;
 }
 
-/** Whether the event lasts several consecutive days (a congress, a festival weekend). */
-export function isMultiDay(event: Pick<DanceEvent, "date" | "end_date">): boolean {
-  return Boolean(event.end_date) && lastDay(event) > event.date;
+/** Whether the event is a workshop series: one program on several separate, dated sessions. */
+export function isSeries(event: EventDays): event is EventDays & { sessions: [Session, Session, ...Session[]] } {
+  return (event.sessions?.length ?? 0) > 1;
 }
 
-/** Every day of the event, first to last ("2026-11-13", "2026-11-14", "2026-11-15"). */
-export function daysOf(event: Pick<DanceEvent, "date" | "end_date">): string[] {
+/** Whether the event lasts several consecutive days (a congress, a festival weekend). A series isn't: it's only on
+ * its sessions' days. */
+export function isMultiDay(event: EventDays): boolean {
+  return !isSeries(event) && Boolean(event.end_date) && lastDay(event) > event.date;
+}
+
+/** Every day the event is on: its date, every day from the first to the last ("2026-11-13", "2026-11-14",
+ * "2026-11-15"), or a series' session days (not the days between them). */
+export function daysOf(event: EventDays): string[] {
+  if (isSeries(event)) return event.sessions.map((session) => session.date);
   const days: string[] = [];
   for (let day = event.date; day <= lastDay(event) && days.length < 31; day = addDays(day, 1)) days.push(day);
   return days;
 }
 
-/** The day the list shows the event under: its date, or today while it goes on (a congress since Friday is "Hoy"). */
-export function shownDay(event: Pick<DanceEvent, "date" | "end_date">, today = todayIso()): string {
+/** A series' next session: the first on or after today; null once every one has passed (or for any other event). */
+export function nextSession(event: EventDays, today = todayIso()): Session | null {
+  return isSeries(event) ? (event.sessions.find((session) => session.date >= today) ?? null) : null;
+}
+
+/** The session a series shows (its card's date, the list's day): the next one, or the last once all have passed. */
+export function shownSession(event: EventDays & { sessions: Session[] }, today = todayIso()): Session {
+  return nextSession(event, today) ?? event.sessions.at(-1)!;
+}
+
+/**
+ * The day the list shows the event under: its date; today while an event over several days goes on (a congress
+ * since Friday is "Hoy"); a series' next session (it moves to the following one once a session passes).
+ */
+export function shownDay(event: EventDays, today = todayIso()): string {
+  if (isSeries(event)) return shownSession(event, today).date;
   return event.date < today && lastDay(event) >= today ? today : event.date;
+}
+
+/**
+ * When the event starts on `day` ("HH:MM", or "" when it isn't known or the event began on an earlier day): a series'
+ * session time, else its start time on its first day. Orders the events listed on one day.
+ */
+export function startOn(event: EventDays & Pick<DanceEvent, "start_time">, day: string): string {
+  if (isSeries(event)) return event.sessions.find((session) => session.date === day)?.start_time ?? "";
+  return day === event.date ? (event.start_time ?? "") : "";
 }

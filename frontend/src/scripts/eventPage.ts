@@ -5,7 +5,7 @@
 
 import type { DanceEvent } from "./types";
 import { initClickTracking } from "./lib/analytics";
-import { lastDay, todayIso } from "./lib/dates";
+import { isSeries, lastDay, todayIso } from "./lib/dates";
 import { byId } from "./lib/dom";
 import { cardWhenLabel } from "./lib/format";
 import { initThemeToggle } from "./theme";
@@ -32,10 +32,14 @@ export function initEventPage() {
     container.innerHTML = eventDetailHtml(event, selected);
     watchClips(container);
   };
-  // "Hoy", "Mañana" and "Este evento ya pasó" as of now, not of the build.
-  const when = container.querySelector(".event-detail__when");
-  if (when) when.textContent = cardWhenLabel(event);
+  // "Hoy", "Mañana" and "Este evento ya pasó" as of now, not of the build. A workshop series is drawn again whole: its
+  // date sticker and its sessions (the next one, those past) depend on the day too.
+  if (isSeries(event)) render(0);
+  else {
+    const when = container.querySelector(".event-detail__when");
+    if (when) when.textContent = cardWhenLabel(event);
+    watchClips(container);
+  }
   byId("event-past").hidden = lastDay(event) >= todayIso();
-  watchClips(container);
   container.addEventListener("click", (domEvent) => handleDetailClick(container, domEvent, event, render));
 }

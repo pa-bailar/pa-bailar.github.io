@@ -134,3 +134,16 @@ describe("an event's page, with a story", () => {
     expect(eventDetailHtml(event({ confidence: "low" }), 0)).toContain("confírmalos en la publicación.");
   });
 });
+
+describe("the account in the details' head", () => {
+  it("opens its Instagram profile in a new tab, named for screen readers (a card's still filters the list)", () => {
+    const drawer = eventDrawerHtml(event({ account: "la.topa_bogota" }), { titleId: "t" });
+    const link = /<a class="event-detail__account"[^>]*>.*?<\/a>/.exec(drawer)?.[0] ?? "";
+    expect(link).toContain('href="https://www.instagram.com/la.topa_bogota/"');
+    expect(link).toContain('target="_blank" rel="noopener"');
+    expect(link).toContain('aria-label="Abrir @la.topa_bogota en Instagram"');
+    expect(link).toContain('data-track="instagram-cuenta"');
+    expect(link).toContain("@la.topa_bogota");
+    expect(eventDetailHtml(event({ account: "academia" }), 0)).toContain('href="https://www.instagram.com/academia/"');
+  });
+});

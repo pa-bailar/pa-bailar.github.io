@@ -5,8 +5,8 @@
 // Pure functions, tested in tests/linkPreview.test.ts.
 
 import type { DanceEvent } from "../types";
-import { isMultiDay, lastDay, parseIsoDate, todayIso } from "./dates";
-import { capitalize, dateRangeLabel, formatTime, priceSummary, stickerDate, typeLabel } from "./format";
+import { isMultiDay, isSeries, lastDay, parseIsoDate, todayIso } from "./dates";
+import { capitalize, dateRangeLabel, formatLongDate, formatTime, priceSummary, stickerDate, typeLabel } from "./format";
 
 /** The image's size: 1.91:1, what WhatsApp, Instagram, iMessage, Telegram and Facebook show whole. */
 export const PREVIEW_WIDTH = 1200;
@@ -40,10 +40,17 @@ function otherYear(iso: string, today: string): string {
 /**
  * The event's date, short: "dom 4 oct, 9:00 a. m.", "13–15 nov" over several days, "31 oct – 2 nov" across
  * months; the year when it isn't this one ("18–22 feb 2027"). Events over several days leave the time out,
- * as their cards do.
+ * as their cards do. A workshop series from its first session, "4 sesiones desde dom 8 nov, 2:00 p. m.": a preview
+ * stays in chats for weeks, and "desde" stays true as sessions pass.
  */
 export function shortWhen(event: DanceEvent, today = todayIso()): string {
   const day = (iso: string) => parseIsoDate(iso).getDate();
+  const oneDay = (iso: string, time: string | null) => {
+    const weekday = shortWeekday.format(parseIsoDate(iso)).replace(".", "");
+    const date = `${weekday} ${day(iso)} ${monthShort(iso)}${otherYear(iso, today)}`;
+    return time ? `${date}, ${formatTime(time)}` : date;
+  };
+  if (isSeries(event)) return `${event.sessions.length} sesiones desde ${oneDay(event.date, event.start_time)}`;
   if (isMultiDay(event)) {
     const end = lastDay(event);
     const sameMonth = end.slice(0, 7) === event.date.slice(0, 7);
@@ -52,10 +59,7 @@ export function shortWhen(event: DanceEvent, today = todayIso()): string {
       : `${day(event.date)} ${monthShort(event.date)} – ${day(end)} ${monthShort(end)}`;
     return days + otherYear(end, today);
   }
-  const weekday = shortWeekday.format(parseIsoDate(event.date)).replace(".", "");
-  const date = `${weekday} ${day(event.date)} ${monthShort(event.date)}${otherYear(event.date, today)}`;
-  const time = formatTime(event.start_time);
-  return time ? `${date}, ${time}` : date;
+  return oneDay(event.date, event.start_time);
 }
 
 /** The preview's title: "Intensivo Ritmos Cubanos — dom 4 oct, 9:00 a. m.", "Level Up — 13–15 nov". */
@@ -83,7 +87,8 @@ export function previewDescription(event: DanceEvent): string {
 
 /** The text on the image (pages/og/[id].jpg.ts). */
 export interface PreviewCard {
-  /** "Domingo 4 de octubre", "Viernes 13 al domingo 15 de noviembre", with the year when it isn't this one. */
+  /** "Domingo 4 de octubre", "Viernes 13 al domingo 15 de noviembre", "4 sesiones desde el domingo 8 de noviembre", with
+   * the year when it isn't this one. */
   days: string;
   /** "9:00 a. m."; "" without one, or over several days (as on the cards). */
   time: string;
@@ -93,12 +98,16 @@ export interface PreviewCard {
   /** "Desde $ 35.000", "Gratis" or "" without prices. */
   price: string;
   free: boolean;
-  /** The round date sticker, as on the cards (stickerDate): "04 / OCT", "13–15 / NOV" within a month. */
+  /** The round date sticker, as on the cards (stickerDate): "04 / OCT", "13–15 / NOV" within a month; a series' first
+   * session (the cards' shows the next one, but a preview stays in chats for weeks). */
   sticker: ReturnType<typeof stickerDate>;
 }
 
 export function previewCard(event: DanceEvent, today = todayIso()): PreviewCard {
-  const days = dateRangeLabel(event.date, lastDay(event)) + (otherYear(lastDay(event), today) ? ` de ${lastDay(event).slice(0, 4)}` : "");
+  const year = (iso: string) => (otherYear(iso, today) ? ` de ${iso.slice(0, 4)}` : "");
+  const days = isSeries(event)
+    ? `${event.sessions.length} sesiones desde el ${formatLongDate(event.date).replace(",", "").toLowerCase()}${year(event.date)}`
+    : dateRangeLabel(event.date, lastDay(event)) + year(lastDay(event));
   const time = isMultiDay(event) ? "" : formatTime(event.start_time);
   const price = priceSummary(event);
   return {
@@ -108,7 +117,7 @@ export function previewCard(event: DanceEvent, today = todayIso()): PreviewCard 
     place: previewPlace(event),
     price,
     free: price === "Gratis",
-    sticker: stickerDate(event),
+    sticker: stickerDate(event, event.date),
   };
 }
 
