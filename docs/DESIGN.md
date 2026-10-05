@@ -629,10 +629,9 @@ list. Now they open like Instagram's comments: a drawer rises over the list, and
 - **The list's clips** keep playing above the half drawer and pause under the full one.
 
 **The side panel** (900px and wider, 600px and taller): the same content, in a panel on the right (`--panel-width`, 420px), not modal, so
-the list stays usable next to it: the page leaves room for it, moving the list left only by what the panel would cover
-(nothing on a page 1960px wide or more, plus the scrollbar, where the centered column already clears it; the page's
-scroll isn't locked, so the scrollbar stays; the owner found the whole page shifting on a wide
-screen, 5 Oct 2026), another card shows its event in the panel (the address
+the list stays usable next to it. **The page never moves** when it opens or closes (the owner, 5 Oct 2026: the list
+shifting left felt shaky): the panel lies over the page's right side, like Gmail's or Maps', and on a narrower screen
+covers part of the rightmost cards while it's open; the page's scroll isn't locked, so the scrollbar stays. Another card shows its event in the panel (the address
 changes without adding to the history), and the open event's card is outlined in the accent color. × and Escape close
 it; it slides in from the right, and the focus goes back to the last card opened. The list next to it can move to
 another screen (a period opened whole, the calendar): another card then gets its own history entry, and closing the panel there

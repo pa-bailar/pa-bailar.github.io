@@ -180,8 +180,8 @@
 }
 
 /* ---------- wide screens: a side panel next to the list ----------
-   Not modal: the list stays usable, its cards open their event here, and the page leaves the panel's width free
-   (.has-side-panel). The card is in the list: no flyer here either. */
+   Not modal: the list stays usable, its cards open their event here; the panel lies over the page's right side and the
+   page never moves. The card is in the list: no flyer here either. */
 
 @media (min-width: 900px) and (min-height: 600px) {
   .drawer {
@@ -231,13 +231,9 @@
     overflow-y: auto;
   }
 
-  /* Nothing of the page hides under the panel, and it moves no more than that takes: the centered column
-     (--content-width) moves left only by what the panel would cover of it. A page with room beside it (1960px wide and
-     up, without the scrollbar) moves nothing; a narrower one gives up the panel's whole width, as before. (Padding's % is the page's
-     width, without the scrollbar.) */
-  .has-side-panel body {
-    padding-right: clamp(0px, 2 * var(--panel-width) + var(--content-width) - 100%, var(--panel-width));
-  }
+  /* The page never moves when the panel opens or closes (the owner, 5 Oct 2026: moving it felt shaky): the panel lies
+     over the page's right side, like Gmail's or Maps'. On a narrower screen it covers part of the rightmost cards while
+     it's open; nothing reflows. */
 }
 
 @media (prefers-reduced-motion: reduce) {
