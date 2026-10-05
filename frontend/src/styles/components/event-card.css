@@ -369,12 +369,14 @@
 }
 
 /* The offset: the frame's own box (same rounded corners), placed --details-offset down and to the right with insets
-   (snapped like the frame, never a transform), and cut to the L outside the frame: it starts at the frame's outer
-   edge, so it reads as a separate band, never as a thicker border. Where the frame's corner is rounded, the cut
-   steps in diagonally by the radius, under the ink: the band fills the corner, with no notch of the page. */
+   (snapped like the frame, never a transform), and cut to an L that starts in the middle of the frame's ink line: the
+   opaque ink covers the band's edge, so no sliver of the page shows between them at any pixel density (cut at the
+   ink's outer edge, the antialiased pixels left a thin line of page there), and nothing shows inside the frame (the
+   cut is half the ink's width short of its inner edge). The cut's corner lies within the ink of the frame's rounded
+   corner, so the band fills that corner too. */
 .event-card__details::before {
   --details-gap: calc(var(--details-offset) - var(--details-press)); /* what shows past the frame */
-  --details-cut: calc(100% - var(--details-gap));
+  --details-cut: calc(100% - var(--details-gap) - var(--border-width) / 2);
   content: "";
   position: absolute;
   z-index: -1;
@@ -384,15 +386,7 @@
   height: calc(100% + 2 * var(--border-width));
   border-radius: var(--radius-sm);
   background: linear-gradient(to right, var(--stripe-1), var(--stripe-2), var(--stripe-3));
-  clip-path: polygon(
-    var(--details-cut) 0,
-    100% 0,
-    100% 100%,
-    0 100%,
-    0 var(--details-cut),
-    calc(var(--details-cut) - var(--radius-sm)) var(--details-cut),
-    var(--details-cut) calc(var(--details-cut) - var(--radius-sm))
-  );
+  clip-path: polygon(var(--details-cut) 0, 100% 0, 100% 100%, 0 100%, 0 var(--details-cut), var(--details-cut) var(--details-cut));
 }
 
 .event-card__details:active {

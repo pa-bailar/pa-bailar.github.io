@@ -453,14 +453,17 @@ list. Now they open like Instagram's comments: a drawer rises over the list, and
   misregistered print. It's found at a glance without competing with the one primary button.
   - **Built:** the button is the frame (36px, `--details-height`; an `::after` makes the target 44px), and the offset is
     its `::before` behind it (`isolation: isolate`, `z-index: -1`): the frame's own box with the same corners, placed
-    2px down and right, cut (`clip-path`) to the L outside the frame's outer edge, so it reads as a separate band, a
-    hard copy of the box, never as a thicker border. Where the frame's corner is rounded, the cut steps in diagonally
-    by the radius, under the ink, so the band fills the corner: no notch of the page there (the mockup had one at the
-    bottom-right). The offset fits in the gap before Compartir, which doesn't move.
+    2px down and right, cut (`clip-path`) to an L that starts in the middle of the frame's ink line. The opaque ink
+    covers the band's edge, so ink and band meet with no line of page between them at any pixel density, and the band
+    never shows inside the frame (the cut stays half the ink's width short of its inner edge). The cut's corner falls
+    within the ink of the frame's rounded corner, so the band fills that corner too: no notch. It reads as a hard copy
+    of the box, and fits in the gap before Compartir, which doesn't move.
   - **Hard edges:** it's placed and moved with insets and `top`/`left`, never a `transform`: layout positions snap to
-    the screen's pixels like the frame's border, while a transform drew the band antialiased, blending into the ink
-    (the first build cut the band under the border and moved it with a transform: at 3x it read as a smear). Checked
-    against the mockup at 1x, 2x and 3x, in both themes.
+    the screen's pixels like the frame's border, while a transform drew the band antialiased, blending into the ink.
+    Two earlier builds got it wrong: the first cut the band at the ink's inner edge and moved it with a transform (a
+    smear at 3x); the second cut it at the ink's outer edge, where the 1.5px line's antialiased pixels left a thin line
+    of page between ink and band (cream in light, blue in dark; the mockup has it too). Checked at 1x, 2x, 2.625x, 3x
+    and 3.5x, in both themes, at rest and pressed.
   - **Pressed:** the frame sinks 1px onto the offset (half of it still shows) and fills with `--details-pressed`
     (cream-250; indigo-800).
   - **Contrast:** the frame (≥3:1) and the label (≥4.5:1) against the page and a card, and the label on its pressed fill,
