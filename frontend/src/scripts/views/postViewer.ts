@@ -13,7 +13,7 @@
 //     over the back button). Until then the card's @ filtered the list to the account; that filter is gone.
 
 import type { DanceEvent, EventMedia } from "../types";
-import { byId, escapeHtml } from "../lib/dom";
+import { byId, escapeHtml, isPlainClick } from "../lib/dom";
 import { renderInstagramPost } from "../lib/instagramEmbed";
 import { flyerUrl, profileEmbedUrl, profileUrl } from "../lib/links";
 import { isStory, storySource } from "../lib/mediaLabel";
@@ -65,7 +65,7 @@ export function openPostViewer(event: DanceEvent, media: EventMedia, { replacing
 }
 
 /** An account's profile in the sheet. */
-export function openProfileViewer(account: string) {
+function openProfileViewer(account: string) {
   byId("post-viewer-title").textContent = `@${account}`;
   const open = byId<HTMLAnchorElement>("post-viewer-open");
   open.href = profileUrl(account);
@@ -104,10 +104,10 @@ export function initPostViewer() {
   // A tap on an account's @ opens its profile here; a new tab or window (a modifier key) still gets Instagram.
   document.addEventListener("click", (domEvent) => {
     const link = (domEvent.target as HTMLElement).closest<HTMLAnchorElement>("a[data-profile]");
-    if (!link || domEvent.defaultPrevented || domEvent.button !== 0) return;
-    if (domEvent.metaKey || domEvent.ctrlKey || domEvent.shiftKey || domEvent.altKey) return;
+    const account = link?.dataset.profile;
+    if (account === undefined || domEvent.defaultPrevented || !isPlainClick(domEvent)) return;
     domEvent.preventDefault();
-    openProfileViewer(link.dataset.profile!);
+    openProfileViewer(account);
   });
   element.addEventListener("close", () => {
     request++;

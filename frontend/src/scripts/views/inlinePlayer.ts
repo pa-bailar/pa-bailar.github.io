@@ -1,4 +1,4 @@
-// A video plays where its image was: on an event's own page (eventDetail.ts, handleDetailClick), tapping a video's
+// A video plays where its image was: on an event's own page (eventDetailActions.ts, handleDetailClick), tapping a video's
 // flyer (a reel, or a carousel shown with its clip) turns the image itself into Instagram's player
 // (lib/instagramEmbed.ts), full length and with sound, in the same place, instead of a sheet on top. The details
 // stay below it.

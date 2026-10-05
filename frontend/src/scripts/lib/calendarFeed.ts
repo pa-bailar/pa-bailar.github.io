@@ -1,5 +1,5 @@
 // The calendar feed (/calendario.ics, iCalendar RFC 5545), written by pages/calendario.ics.ts. Pure, so it's tested
-// (tests/calendarFeed.test.ts).
+// (tests/series.test.ts).
 //
 // A workshop series is one VEVENT per session, each with its own times and its own UID (the event's id and the
 // session's date, so a session keeps its entry when the others change). Not one VEVENT with RDATEs: an RDATE can't

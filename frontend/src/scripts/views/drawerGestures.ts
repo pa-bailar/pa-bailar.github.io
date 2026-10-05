@@ -3,9 +3,8 @@
 // through `DrawerControl`.
 
 import { type Detent, offsetFor, settle } from "./drawerSheet";
+import { DRAWER_DRAG_SLOP, type MotionSample, VELOCITY_WINDOW, releaseVelocity } from "../lib/sheetMotion";
 
-const DRAG_SLOP = 4; // px a finger or mouse moves before it's a drag
-const VELOCITY_WINDOW = 80; // ms of recent movement for the release speed
 const RUBBER_BAND = 0.7; // pulled up past full height, it moves less and less
 const WHEEL_DOWN = 30; // px of wheel up, at the top of the full drawer, that bring it back to half height
 
@@ -35,7 +34,7 @@ interface Drag {
   startY: number;
   startOffset: number;
   from: Detent;
-  samples: { y: number; time: number }[];
+  samples: MotionSample[];
   moved: boolean;
 }
 
@@ -52,13 +51,13 @@ export function initDrawerGestures(panel: HTMLElement, drawer: DrawerControl) {
 
   const dragMove = (y: number, time: number) => {
     if (!drag) return;
-    if (Math.abs(y - drag.startY) > DRAG_SLOP) drag.moved = true;
+    if (Math.abs(y - drag.startY) > DRAWER_DRAG_SLOP) drag.moved = true;
     let next = drag.startOffset + (y - drag.startY);
     if (next < 0) next = -((-next) ** RUBBER_BAND);
     drawer.setDragging(true);
     drawer.place(next);
     drag.samples.push({ y, time });
-    drag.samples = drag.samples.filter((sample) => time - sample.time <= VELOCITY_WINDOW);
+    drag.samples = drag.samples.filter((sample) => time - sample.time <= VELOCITY_WINDOW); // only these count
   };
 
   /** Let go: settle at a height, or close. False when it wasn't a drag (a tap). */
@@ -72,8 +71,7 @@ export function initDrawerGestures(panel: HTMLElement, drawer: DrawerControl) {
       if (drawer.offset !== resting) drawer.place(resting);
       return false;
     }
-    const [first, last] = [ended.samples[0], ended.samples.at(-1)];
-    const velocity = first && last && last.time > first.time ? (last.y - first.y) / (last.time - first.time) : 0;
+    const velocity = releaseVelocity(ended.samples);
     const target = settle(drawer.offset, drawer.viewport, velocity, ended.from);
     if (target === "close") drawer.close({ from: drawer.offset, velocity: Math.max(velocity, 0) });
     else drawer.setDetent(target);
@@ -102,7 +100,7 @@ export function initDrawerGestures(panel: HTMLElement, drawer: DrawerControl) {
       if (!touch || !point) return;
       const [dx, dy] = [point.clientX - touch.x, point.clientY - touch.y];
       if (!touch.decided) {
-        if (Math.abs(dx) < DRAG_SLOP && Math.abs(dy) < DRAG_SLOP) return;
+        if (Math.abs(dx) < DRAWER_DRAG_SLOP && Math.abs(dy) < DRAWER_DRAG_SLOP) return;
         touch.decided = true;
         const atTop = (drawer.body()?.scrollTop ?? 0) <= 0;
         touch.dragging = Math.abs(dy) >= Math.abs(dx) && (drawer.detent === "medium" || touch.bar || (atTop && dy > 0));
@@ -135,7 +133,7 @@ export function initDrawerGestures(panel: HTMLElement, drawer: DrawerControl) {
   });
   panel.addEventListener("pointermove", (domEvent) => {
     if (!drag || domEvent.pointerType === "touch") return;
-    if (!drag.moved && Math.abs(domEvent.clientY - drag.startY) <= DRAG_SLOP) return;
+    if (!drag.moved && Math.abs(domEvent.clientY - drag.startY) <= DRAWER_DRAG_SLOP) return;
     if (!captured) {
       panel.setPointerCapture(domEvent.pointerId); // only once it's a drag: a tap's click lands on the handle
       captured = true;

@@ -141,6 +141,6 @@ export function eventCardGridHtml(events: DanceEvent[]): string {
  */
 export function applyFlyerRatios(root: ParentNode) {
   root.querySelectorAll<HTMLElement>("[data-flyer-ratio]").forEach((media) => {
-    media.style.setProperty("--flyer-ratio", media.dataset.flyerRatio!);
+    media.style.setProperty("--flyer-ratio", media.dataset.flyerRatio ?? "");
   });
 }

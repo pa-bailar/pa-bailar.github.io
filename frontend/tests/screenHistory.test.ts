@@ -170,3 +170,11 @@ describe("addressAfterClosing", () => {
     expect(addressAfterClosing({ pathname: "/", search: "", hash: "" })).toBeNull();
   });
 });
+
+describe("historyState", () => {
+  it("reads an entry's state, and one the app didn't write as empty", () => {
+    expect(screens.historyState({ eventId: "social-1", overlay: true })).toEqual({ eventId: "social-1", overlay: true });
+    expect(screens.historyState(null)).toEqual({});
+    expect(screens.historyState("left by another page")).toEqual({});
+  });
+});

@@ -3,7 +3,7 @@
 // of it goes. Pure functions, so they're tested (tests/shareText.test.ts).
 
 import type { DanceEvent } from "../types";
-import { isMultiDay, isSeries, lastDay, parseIsoDate, shownSession, todayIso } from "./dates";
+import { isMultiDay, isSeries, lastDay, shownSession, todayIso } from "./dates";
 import {
   capitalize,
   eventCountLabel,
@@ -13,12 +13,8 @@ import {
   priceSummary,
   sameSessionTimes,
   shortRangeLabel,
+  shortWeekdayAndDay,
 } from "./format";
-
-const LOCALE = "es-CO";
-
-const part = (iso: string, options: Intl.DateTimeFormatOptions) =>
-  new Intl.DateTimeFormat(LOCALE, options).format(parseIsoDate(iso));
 
 /** The day an event is shared on, and its start time: its date, or a series' next session (as listed). */
 function sharedDay(event: DanceEvent, today: string): { day: string; time: string | null } {
@@ -30,7 +26,7 @@ function sharedDay(event: DanceEvent, today: string): { day: string; time: strin
 /** "Sáb 3", "Vie 13 – dom 15" for an event over several days, or a series' next session. */
 function shortDays(event: DanceEvent, today = todayIso()): string {
   if (isMultiDay(event)) return shortRangeLabel(event.date, lastDay(event), false);
-  return capitalize(part(sharedDay(event, today).day, { weekday: "short", day: "numeric" }).replace(".", ""));
+  return capitalize(shortWeekdayAndDay(sharedDay(event, today).day));
 }
 
 /** "SÁB 3" or "VIE 13 – DOM 15": the day on a share card's row. */

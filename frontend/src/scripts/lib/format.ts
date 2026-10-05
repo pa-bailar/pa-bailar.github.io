@@ -1,10 +1,22 @@
 // Spanish (Colombia) display formatting.
 
 import type { DanceEvent, EventType, MediaType, Session } from "../types";
-import { addDays, daysBetween, isMultiDay, isSeries, lastDay, nextSession, parseIsoDate, shownDay, todayIso } from "./dates";
+import {
+  addDays,
+  daysBetween,
+  isMultiDay,
+  isSeries,
+  lastDay,
+  nextSession,
+  parseIsoDate,
+  sameMonth,
+  shownDay,
+  todayIso,
+} from "./dates";
 import { isHoliday } from "./holidays";
 
-const LOCALE = "es-CO";
+/** Spanish as written in Colombia: every date, month and price on the site. */
+export const LOCALE = "es-CO";
 
 const TYPE_LABELS: Record<EventType, string> = {
   social: "Social",
@@ -37,7 +49,8 @@ const MEDIA_LABELS: Record<MediaType, string> = {
   STORY: "Historia",
 };
 
-export function mediaLabel(type: MediaType): string {
+/** A post's kind, as said to screen readers in the posts sheet: "Video 2 de 3". */
+export function mediaTypeLabel(type: MediaType): string {
   return MEDIA_LABELS[type] ?? "Publicación";
 }
 
@@ -103,8 +116,18 @@ function weekdayAndDay(iso: string): string {
 }
 
 /** "nov" (Intl writes "nov."). */
-function shortMonthName(iso: string): string {
+export function shortMonthName(iso: string): string {
   return shortMonth.format(parseIsoDate(iso)).replace(".", "");
+}
+
+/** "dom" (Intl writes "dom."). */
+export function shortWeekdayName(iso: string): string {
+  return shortWeekday.format(parseIsoDate(iso)).replace(".", "");
+}
+
+/** "dom 15" */
+export function shortWeekdayAndDay(iso: string): string {
+  return `${shortWeekdayName(iso)} ${parseIsoDate(iso).getDate()}`;
 }
 
 /**
@@ -112,12 +135,9 @@ function shortMonthName(iso: string): string {
  * 2 nov". `withMonth` false leaves the month out when both days are in the same one ("Vie 13 – dom 15").
  */
 export function shortRangeLabel(start: string, end: string, withMonth = true): string {
-  const sameMonth = start.slice(0, 7) === end.slice(0, 7);
-  const day = (iso: string, month: boolean) => {
-    const date = parseIsoDate(iso);
-    return `${shortWeekday.format(date).replace(".", "")} ${date.getDate()}${month ? ` ${shortMonthName(iso)}` : ""}`;
-  };
-  return capitalize(`${day(start, !sameMonth)} – ${day(end, withMonth || !sameMonth)}`);
+  const oneMonth = sameMonth(start, end);
+  const day = (iso: string, month: boolean) => `${shortWeekdayAndDay(iso)}${month ? ` ${shortMonthName(iso)}` : ""}`;
+  return capitalize(`${day(start, !oneMonth)} – ${day(end, withMonth || !oneMonth)}`);
 }
 
 /**
@@ -126,8 +146,8 @@ export function shortRangeLabel(start: string, end: string, withMonth = true): s
 export function spanLabel(start: string, end: string): string {
   const first = parseIsoDate(start);
   const last = parseIsoDate(end);
-  if (start === end) return `${shortWeekday.format(first).replace(".", "")} ${first.getDate()}`;
-  if (start.slice(0, 7) === end.slice(0, 7)) return `${first.getDate()}–${last.getDate()} ${shortMonthName(end)}`;
+  if (start === end) return shortWeekdayAndDay(start);
+  if (sameMonth(start, end)) return `${first.getDate()}–${last.getDate()} ${shortMonthName(end)}`;
   return `${first.getDate()} ${shortMonthName(start)} – ${last.getDate()} ${shortMonthName(end)}`;
 }
 
@@ -139,14 +159,12 @@ function dayName(iso: string, withMonth: boolean): string {
 
 /** "Viernes 2 al domingo 4 de octubre", "Viernes 30 de octubre al domingo 1 de noviembre", or one day. */
 export function dateRangeLabel(start: string, end: string): string {
-  const sameMonth = start.slice(0, 7) === end.slice(0, 7);
-  return capitalize(start === end ? dayName(end, true) : `${dayName(start, !sameMonth)} al ${dayName(end, true)}`);
+  return capitalize(start === end ? dayName(end, true) : `${dayName(start, !sameMonth(start, end))} al ${dayName(end, true)}`);
 }
 
 /** "dom 8 nov": a session's day, short. */
 export function sessionDayLabel(iso: string): string {
-  const date = parseIsoDate(iso);
-  return `${shortWeekday.format(date).replace(".", "")} ${date.getDate()} ${shortMonthName(iso)}`;
+  return `${shortWeekdayAndDay(iso)} ${shortMonthName(iso)}`;
 }
 
 /**
@@ -157,7 +175,7 @@ export function sessionsLabel(sessions: Pick<Session, "date">[]): string {
   const twoYears = new Set(sessions.map((session) => session.date.slice(0, 4))).size > 1;
   const parts = sessions.map(({ date }, index) => {
     const following = sessions[index + 1]?.date;
-    const lastOfMonth = !following || following.slice(0, 7) !== date.slice(0, 7);
+    const lastOfMonth = !following || !sameMonth(following, date);
     const day = String(parseIsoDate(date).getDate());
     return lastOfMonth ? `${day} ${shortMonthName(date)}${twoYears ? ` ${date.slice(0, 4)}` : ""}` : day;
   });
@@ -267,7 +285,7 @@ export function stickerDate(
     return { day: day(shown), month: shortMonthName(shown).toUpperCase(), range: false };
   }
   const end = lastDay(event);
-  const range = isMultiDay(event) && end.slice(0, 7) === event.date.slice(0, 7);
+  const range = isMultiDay(event) && sameMonth(end, event.date);
   return {
     day: range ? `${day(event.date)}–${day(end)}` : day(event.date),
     month: shortMonthName(event.date).toUpperCase(),

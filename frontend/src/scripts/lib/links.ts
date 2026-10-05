@@ -47,7 +47,6 @@ export function feedbackUrl(event?: DanceEvent): string {
   return `${FEEDBACK_FORM}?${params}`;
 }
 
-/** The main post: the one shown on the card and shared by default. */
 /** The account's Instagram profile ("https://www.instagram.com/academia/"). */
 export function profileUrl(account: string): string {
   return `https://www.instagram.com/${encodeURIComponent(account)}/`;
@@ -58,6 +57,7 @@ export function profileEmbedUrl(account: string): string {
   return `https://www.instagram.com/${encodeURIComponent(account)}/embed/`;
 }
 
+/** The main post: the one shown on the card and shared by default. */
 export function mainMedia(event: DanceEvent): EventMedia {
   return event.media[0];
 }

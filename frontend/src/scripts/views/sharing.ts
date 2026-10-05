@@ -4,6 +4,7 @@
 //   - a near period of the list (the share icon on "Hoy", "Esta semana", "Este finde", "Próxima semana"):
 //     an image of its events (lib/shareCard.ts) and a list for WhatsApp, as filtered on screen;
 //   - the visitor's plans ("Compartir mis planes" in Guardados): an image and the list, each with its link.
+// What each button shares is set after every render (lib/shareSources.ts, through setShareSources).
 // A list's image is drawn ahead of time, when its button comes into view, because phones only allow
 // sharing right at the tap: drawing it then would lose the tap. If it isn't ready, the text goes alone.
 
@@ -11,15 +12,8 @@ import type { DanceEvent } from "../types";
 import { eventPageUrl, BASE_URL } from "../lib/links";
 import { shareContent } from "../lib/share";
 import { drawShareCard } from "../lib/shareCard";
+import type { ShareSource } from "../lib/shareSources";
 import { eventShareText } from "../lib/shareText";
-
-/** What a list's share button shares (data-share="<key>"). */
-export interface ShareSource {
-  title: string; // the image's title: "Este finde en Bogotá"
-  subtitle: string; // "Viernes 2 al domingo 4 de octubre · Salsa"
-  text: string; // the message
-  events: DanceEvent[];
-}
 
 // Tagged so visits from shared links count as such (messaging apps hide where a visit came from).
 const shareUrl = (url: string) => `${url}${url.includes("?") ? "&" : "?"}utm_source=compartido`;
@@ -54,7 +48,10 @@ export function setShareSources(next: Map<string, ShareSource>) {
   observer?.disconnect();
   observer = new IntersectionObserver(
     (entries) =>
-      entries.forEach((entry) => entry.isIntersecting && prepare((entry.target as HTMLElement).dataset.share!)),
+      entries.forEach((entry) => {
+        const key = (entry.target as HTMLElement).dataset.share;
+        if (entry.isIntersecting && key !== undefined) prepare(key);
+      }),
     { rootMargin: "300px" },
   );
   document.querySelectorAll<HTMLElement>("[data-share]").forEach((button) => observer!.observe(button));
@@ -79,11 +76,11 @@ function shareEvent(event: DanceEvent) {
 export function initSharing(findEvent: (id: string) => DanceEvent | undefined) {
   document.addEventListener("click", (domEvent) => {
     const target = domEvent.target as HTMLElement;
-    const list = target.closest<HTMLElement>("[data-share]");
-    const single = target.closest<HTMLElement>("[data-share-event]");
-    if (list) shareSource(list.dataset.share!);
-    else if (single) {
-      const event = findEvent(single.dataset.shareEvent!);
+    const list = target.closest<HTMLElement>("[data-share]")?.dataset.share;
+    const single = target.closest<HTMLElement>("[data-share-event]")?.dataset.shareEvent;
+    if (list !== undefined) shareSource(list);
+    else if (single !== undefined) {
+      const event = findEvent(single);
       if (event) shareEvent(event);
     }
   });

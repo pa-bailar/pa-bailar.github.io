@@ -12,13 +12,14 @@ import PostViewer from "../components/PostViewer.astro";
 import PostsSheet from "../components/PostsSheet.astro";
 import ViewSwitch from "../components/ViewSwitch.astro";
 import { accounts, events, meta } from "../data";
+import { LOCALE } from "../scripts/lib/format";
 
 // Escape "<" so a caption can never end the inline JSON script block early.
 const eventsJson = JSON.stringify(events).replace(/</g, "\\u003c");
 // When the data was last checked: the backend's sweep passes PUBLIC_CHECKED_AT to the build; otherwise
 // (local builds, code deploys) the time of the last data change recorded in meta.json.
 const checkedAt = import.meta.env.PUBLIC_CHECKED_AT || meta.generated_at;
-const updatedLabel = new Date(checkedAt).toLocaleDateString("es-CO", {
+const updatedLabel = new Date(checkedAt).toLocaleDateString(LOCALE, {
   day: "numeric",
   month: "long",
   timeZone: "America/Bogota",

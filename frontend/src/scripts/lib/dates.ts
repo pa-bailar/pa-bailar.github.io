@@ -33,6 +33,11 @@ export function addDays(iso: string, days: number): string {
   return toIsoDate(new Date(date.getFullYear(), date.getMonth(), date.getDate() + days));
 }
 
+/** Whether two dates ("YYYY-MM-DD") are in the same month of the same year. */
+export function sameMonth(a: string, b: string): boolean {
+  return a.slice(0, 7) === b.slice(0, 7);
+}
+
 function startOfMonth(date: Date): Date {
   return new Date(date.getFullYear(), date.getMonth(), 1);
 }

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { mediaLabel as typeLabel } from "../src/scripts/lib/format";
+import { mediaTypeLabel } from "../src/scripts/lib/format";
 import { isStory, isVideoCover, mediaLabel, storyAccount, storySource } from "../src/scripts/lib/mediaLabel";
 import type { EventMedia } from "../src/scripts/types";
 import { storyMedia } from "./factories";
@@ -42,7 +42,7 @@ describe("what the label over a post's image says", () => {
     expect(isStory(story)).toBe(true);
     expect(isStory(media({}))).toBe(false);
     expect(isVideoCover(story)).toBe(false);
-    expect(typeLabel("STORY")).toBe("Historia"); // the posts sheet's "Historia 1 de 1"
+    expect(mediaTypeLabel("STORY")).toBe("Historia"); // the posts sheet's "Historia 1 de 1"
   });
 
   it("a story's account comes from its link, the profile", () => {

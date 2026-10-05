@@ -9,7 +9,7 @@
 
 import type { DanceEvent, EventMedia } from "../types";
 import { byId, escapeHtml } from "../lib/dom";
-import { mediaLabel } from "../lib/format";
+import { mediaTypeLabel } from "../lib/format";
 import { ICONS } from "../lib/icons";
 import { thumbUrl } from "../lib/links";
 import { dismissSheet, initPanelSheet, openPanelSheet } from "../lib/sheet";
@@ -27,6 +27,8 @@ const POST_BADGES: Partial<Record<EventMedia["media_type"], string>> = {
   STORY: ICONS.story,
 };
 
+const isPostKind = (value: string | undefined): value is PostKind => POST_KINDS.some(({ kind }) => kind === value);
+
 function postKind(media: EventMedia): PostKind {
   return media.media_type === "VIDEO" ? "videos" : "flyers";
 }
@@ -41,7 +43,7 @@ function thumbHtml(media: EventMedia, index: number, position: number, count: nu
   const badge = POST_BADGES[media.media_type];
   return `
     <button class="post-thumb" type="button" data-post-index="${index}" aria-pressed="${selected}"
-      aria-label="${mediaLabel(media.media_type)} ${position + 1} de ${count}">
+      aria-label="${mediaTypeLabel(media.media_type)} ${position + 1} de ${count}">
       ${thumb ? `<img src="${escapeHtml(thumb)}" alt="" width="160" height="160" />` : ""}
       ${badge ? `<span class="post-thumb__badge" aria-hidden="true">${badge}</span>` : ""}
     </button>`;
@@ -92,7 +94,8 @@ export function initPostsSheet() {
     const tab = target.closest<HTMLElement>("[data-post-kind]");
     const thumb = target.closest<HTMLElement>("[data-post-index]");
     if (tab && current) {
-      current.kind = tab.dataset.postKind as PostKind;
+      const kind = tab.dataset.postKind;
+      if (isPostKind(kind)) current.kind = kind;
       render();
       element.querySelector<HTMLElement>(`[data-post-kind="${current.kind}"]`)?.focus();
     } else if (thumb && current) {

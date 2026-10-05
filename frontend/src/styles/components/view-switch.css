@@ -1,6 +1,5 @@
 /* Phones: the floating calendar / list button (components/ViewSwitch.astro), icon only, bottom right.
-   In the action color (like "Ver en Instagram"), ringed with the page color so it stands out even
-   over a flyer of the same colors. Away while the view tabs are on screen (.is-away, viewSwitch.ts): they do the
+   In the action color, ringed with the page color so it stands out even over a flyer of the same colors. Away while the view tabs are on screen (.is-away, viewSwitch.ts): they do the
    same, and on a first visit it would sit on the first card's date sticker. */
 
 .view-switch {

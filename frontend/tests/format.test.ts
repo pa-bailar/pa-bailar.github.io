@@ -5,11 +5,16 @@ import {
   eventCountLabel,
   eventDaysLabel,
   formatTime,
+  LOCALE,
   priceSummary,
+  shortMonthName,
+  shortWeekdayAndDay,
+  shortWeekdayName,
   stickerDate,
   styleLabel,
   stylesLabel,
 } from "../src/scripts/lib/format";
+import { addDays, parseIsoDate, sameMonth } from "../src/scripts/lib/dates";
 import { eventTimes } from "../src/scripts/lib/links";
 import { event } from "./factories";
 
@@ -42,6 +47,28 @@ describe("formatting", () => {
 
   it("escapes HTML", () => {
     expect(escapeHtml(`<a href="x">'&'</a>`)).toBe("&lt;a href=&quot;x&quot;&gt;&#39;&amp;&#39;&lt;/a&gt;");
+  });
+});
+
+describe("short dates", () => {
+  it("names weekdays and months without Intl's dot", () => {
+    expect(shortWeekdayName("2026-11-08")).toBe("dom");
+    expect(shortMonthName("2026-11-08")).toBe("nov");
+    expect(shortWeekdayAndDay("2026-10-03")).toBe("sáb 3");
+  });
+
+  it("writes a weekday and its day as Intl does, every day of a year", () => {
+    const intl = new Intl.DateTimeFormat(LOCALE, { weekday: "short", day: "numeric" });
+    for (let day = 0; day < 366; day++) {
+      const iso = addDays("2026-01-01", day);
+      expect(shortWeekdayAndDay(iso)).toBe(intl.format(parseIsoDate(iso)).replace(".", ""));
+    }
+  });
+
+  it("tells whether two days share a month", () => {
+    expect(sameMonth("2026-10-01", "2026-10-31")).toBe(true);
+    expect(sameMonth("2026-10-31", "2026-11-01")).toBe(false);
+    expect(sameMonth("2026-10-03", "2027-10-03")).toBe(false);
   });
 });
 

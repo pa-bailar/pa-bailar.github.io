@@ -34,9 +34,21 @@ export interface Screen {
 
 export type ScreenData = Omit<Screen, "steps">;
 
-interface ScreenHistoryState {
+/** What any of the app's history entries may hold: the screen, and the overlay over it, if any. */
+export interface AppHistoryState {
   screen?: Screen;
-  overlay?: boolean; // a sheet or the event details, over the screen in `screen`
+  overlay?: boolean; // a sheet, the event details or the "Cuándo" menu, over the screen in `screen`
+  eventId?: string; // the event details' entry (views/drawerHistory.ts)
+  sheet?: string; // a panel sheet's entry: the sheet's id (lib/sheet.ts)
+  menu?: string; // the "Cuándo" menu's entry (views/whenMenu.ts)
+}
+
+/**
+ * A history entry's state, typed: the current entry's (`history.state`) or a popstate's. An entry the app didn't
+ * write (the first one, or a page's from before) reads as {}.
+ */
+export function historyState(state: unknown = history.state): AppHistoryState {
+  return typeof state === "object" && state !== null ? (state as AppHistoryState) : {};
 }
 
 interface Hooks {
@@ -52,13 +64,12 @@ let counter = 0;
 const skipped = new Set<string>();
 
 const newId = () => `${Date.now().toString(36)}.${(counter++).toString(36)}`;
-const entry = () => (history.state ?? {}) as ScreenHistoryState;
-const stepsOf = (state: ScreenHistoryState): Step[] => state.screen?.steps ?? [{ id: newId() }];
+const stepsOf = (state: AppHistoryState): Step[] => state.screen?.steps ?? [{ id: newId() }];
 
 /** The current entry remembers the screen as it is now (above all, how far down it was). */
-function remember(steps = stepsOf(entry())) {
+function remember(steps = stepsOf(historyState())) {
   if (!hooks) return;
-  history.replaceState({ ...entry(), screen: { ...hooks.current(), steps } } satisfies ScreenHistoryState, "");
+  history.replaceState({ ...historyState(), screen: { ...hooks.current(), steps } } satisfies AppHistoryState, "");
 }
 
 export function initScreenHistory(screenHooks: Hooks) {
@@ -68,7 +79,7 @@ export function initScreenHistory(screenHooks: Hooks) {
   history.scrollRestoration = "manual";
   remember();
   window.addEventListener("popstate", (domEvent) => {
-    const state = (domEvent.state ?? {}) as ScreenHistoryState;
+    const state = historyState(domEvent.state);
     const step = state.screen?.steps?.at(-1);
     // A screen undone from inside an overlay: on to the one before it.
     if (step && !state.overlay && skipped.delete(step.id)) {
@@ -82,11 +93,11 @@ export function initScreenHistory(screenHooks: Hooks) {
 /** A move to another screen: `move` changes and draws it; then it gets its own history entry. */
 export function goTo(kind: ScreenKind, move: () => void) {
   remember();
-  const steps = stepsOf(entry());
+  const steps = stepsOf(historyState());
   move();
   if (hooks) {
     const screen: Screen = { ...hooks.current(), steps: [...steps, { id: newId(), kind }] };
-    history.pushState({ screen } satisfies ScreenHistoryState, "");
+    history.pushState({ screen } satisfies AppHistoryState, "");
   }
 }
 
@@ -95,7 +106,7 @@ export function goTo(kind: ScreenKind, move: () => void) {
  * overlay, `move` here too, and that screen's entry is skipped later.
  */
 export function leave(kind: ScreenKind, move: () => void) {
-  const state = entry();
+  const state = historyState();
   const steps = stepsOf(state);
   const last = steps.at(-1);
   if (last?.kind === kind && steps.length > 1) {
@@ -116,8 +127,8 @@ export function leave(kind: ScreenKind, move: () => void) {
  * The history state of an overlay (a sheet, the event details) opened over the current entry: it carries the
  * screen under it (and whatever else that entry holds, like the open event), plus `extra`.
  */
-export function overlayState<T extends object>(extra: T): T & ScreenHistoryState {
-  return { ...entry(), ...extra, overlay: true };
+export function overlayState(extra: Omit<AppHistoryState, "screen" | "overlay">): AppHistoryState {
+  return { ...historyState(), ...extra, overlay: true };
 }
 
 export function sameScreen(a: Omit<ScreenData, "scrollY">, b: Omit<ScreenData, "scrollY">): boolean {

@@ -157,11 +157,11 @@
   }
 
   .drawer.is-animating .drawer__panel {
-    transition: transform var(--drawer-duration, 320ms) var(--drawer-easing, ease-out);
+    transition: transform var(--drawer-duration, var(--duration-enter)) var(--drawer-easing, ease-out);
   }
 
   .drawer.is-animating .drawer__scrim {
-    transition: opacity var(--drawer-duration, 320ms) linear;
+    transition: opacity var(--drawer-duration, var(--duration-enter)) linear;
   }
 
   /* Full height: the content scrolls (the drawer follows the finger from its bar, or from the content's top). */
@@ -193,12 +193,12 @@
     border-left: var(--border-width) solid var(--border);
     background: var(--surface);
     box-shadow: var(--shadow-menu);
-    transition: transform 200ms cubic-bezier(0.3, 0, 0.8, 0.15);
+    transition: transform var(--duration-panel-out) var(--ease-emphasized-accelerate);
   }
 
   .drawer[open] {
     display: flex;
-    animation: drawer-panel-in 280ms cubic-bezier(0.05, 0.7, 0.1, 1);
+    animation: drawer-panel-in var(--duration-panel-in) var(--ease-emphasized-decelerate);
   }
 
   .drawer.is-closing {

@@ -27,7 +27,7 @@ export function saveButtonHtml(event: DanceEvent, { labeled = false, className =
 function syncSaveButtons(id?: string) {
   const selector = id ? `[data-save="${CSS.escape(id)}"]` : "[data-save]";
   document.querySelectorAll<HTMLElement>(selector).forEach((button) => {
-    const saved = isSaved(button.dataset.save!);
+    const saved = isSaved(button.dataset.save ?? "");
     button.setAttribute("aria-pressed", String(saved));
     button.innerHTML = buttonInner(saved, button.dataset.saveLabeled !== undefined);
   });
@@ -49,11 +49,11 @@ export function renderSavedToggles(count: number, active: boolean) {
 /** Bookmark clicks anywhere on the page; `onChange` runs after an event is saved or unsaved. */
 export function initSaveButtons(onChange: () => void = () => {}) {
   document.addEventListener("click", (domEvent) => {
-    const button = (domEvent.target as HTMLElement).closest<HTMLElement>("[data-save]");
-    if (!button) return;
+    const id = (domEvent.target as HTMLElement).closest<HTMLElement>("[data-save]")?.dataset.save;
+    if (id === undefined) return;
     domEvent.preventDefault();
-    toggleSaved(button.dataset.save!);
-    syncSaveButtons(button.dataset.save);
+    toggleSaved(id);
+    syncSaveButtons(id);
     onChange();
   });
   syncSaveButtons();

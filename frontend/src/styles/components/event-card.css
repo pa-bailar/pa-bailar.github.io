@@ -449,11 +449,11 @@
 
 /* First visit: the first card's "Detalles" pulses once (views/detailsHint.ts): it swells, and a ring leaves its frame. */
 .event-card__details.is-pulsing {
-  animation: details-swell 1600ms cubic-bezier(0.2, 0, 0, 1) 300ms;
+  animation: details-swell 1600ms var(--ease-standard) 300ms;
 }
 
 .event-card__details.is-pulsing::after {
-  animation: details-ring 1600ms cubic-bezier(0.2, 0, 0, 1) 300ms;
+  animation: details-ring 1600ms var(--ease-standard) 300ms;
 }
 
 @keyframes details-swell {
@@ -503,13 +503,12 @@
   color: var(--text-muted);
 }
 
-/* The academy: filters the list by it. Above the stretched title button, so it gets its own taps. */
+/* The account: opens its profile inside the site (lib/accountLink.ts). Above the stretched title button, so it gets
+   its own taps. */
 .event-card__account {
   position: relative;
   z-index: var(--z-raised);
   padding: var(--space-1) 0;
-  border: 0;
-  background: none;
   color: inherit;
   text-decoration: underline;
   text-decoration-color: var(--divider);

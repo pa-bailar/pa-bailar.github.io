@@ -11,6 +11,14 @@ export function prefersReducedMotion(): boolean {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
+/**
+ * A plain click: the main button, no modifier key. Anything else (a middle click, ⌘ or Ctrl, Shift, Alt) asks the
+ * browser for a new tab or window, so a link is left to do just that.
+ */
+export function isPlainClick(domEvent: MouseEvent): boolean {
+  return domEvent.button === 0 && !domEvent.metaKey && !domEvent.ctrlKey && !domEvent.shiftKey && !domEvent.altKey;
+}
+
 const HTML_ESCAPES: Record<string, string> = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" };
 
 /** Escape text before putting it inside an HTML template string. */

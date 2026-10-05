@@ -1,12 +1,14 @@
 // Theme settings and rules shared by scripts/theme.ts (the toggle) and the pre-paint script (themeScript.ts,
 // inlined by BaseLayout.astro), so the two can't drift apart.
 
+import { BRAND } from "./lib/brandColors";
+
 export type Theme = "light" | "dark";
 
 /** localStorage key with the visitor's choice: "light" or "dark". */
 export const THEME_STORAGE_KEY = "theme";
 /** Browser UI color (address bar on phones) per theme: the page background token (--bg). */
-export const THEME_COLORS: Record<Theme, string> = { light: "#ECDDC6", dark: "#16122B" };
+export const THEME_COLORS: Record<Theme, string> = { light: BRAND.cream150, dark: BRAND.indigo900 };
 
 /** The theme a stored value asks for. Light ("Fania de día") is the default: only a saved "dark" is dark;
  * nothing saved, "light", blocked storage and anything else (the old "auto" mode, unknown values) are light. */

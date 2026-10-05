@@ -30,6 +30,7 @@ import goatcounterScript from "../vendor/goatcounter-count.js?url";
 import { allowInlineScript } from "../csp";
 import { BASE_URL } from "../scripts/lib/links";
 import { THEME_COLORS } from "../scripts/themeConfig";
+import { BRAND, ICON_MARIGOLD } from "../scripts/lib/brandColors";
 import { themePrePaintScript } from "../themeScript";
 
 /** A link preview's image: its path under the site root (with its ?v= version, if any) and what apps need to
@@ -62,8 +63,8 @@ const favicon =
   "data:image/svg+xml," +
   encodeURIComponent(
     "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'>" +
-      "<circle cx='32' cy='32' r='30' fill='#2A0F14'/><circle cx='32' cy='32' r='14' fill='#F2C12E'/>" +
-      "<circle cx='32' cy='32' r='3' fill='#2A0F14'/></svg>",
+      `<circle cx='32' cy='32' r='30' fill='${BRAND.wine900}'/><circle cx='32' cy='32' r='14' fill='${ICON_MARIGOLD}'/>` +
+      `<circle cx='32' cy='32' r='3' fill='${BRAND.wine900}'/></svg>`,
   );
 
 // The theme before first paint (themeScript.ts): light unless the visitor chose Oscuro. Inline, allowed by its hash.

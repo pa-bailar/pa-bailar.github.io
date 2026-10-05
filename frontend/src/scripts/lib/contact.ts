@@ -6,6 +6,8 @@
 // Colombian numbers get the country code (57); a number that isn't a full Colombian or international one
 // stays plain text, rather than a link that wouldn't work.
 
+import { profileUrl } from "./links";
+
 export type ContactKind = "instagram" | "whatsapp" | "phone" | "web";
 
 export interface ContactLink {
@@ -31,7 +33,7 @@ function internationalNumber(text: string): string | null {
 export function contactLink(contact: string): ContactLink | null {
   const text = contact.trim();
   const handle = HANDLE.exec(text);
-  if (handle) return { kind: "instagram", href: `https://www.instagram.com/${handle[1]}/`, label: text };
+  if (handle) return { kind: "instagram", href: profileUrl(handle[1]!), label: text };
   if (WEBSITE.test(text)) {
     return { kind: "web", href: /^https?:\/\//i.test(text) ? text : `https://${text}`, label: text.replace(/^https?:\/\//i, "") };
   }

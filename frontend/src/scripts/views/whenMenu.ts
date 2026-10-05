@@ -1,6 +1,6 @@
-// "Cuándo" in the phone bar (filters.ts draws the chip and the menu's items): a short menu that hangs from its chip,
-// like Google Maps' filter chips with a ▾. One date at a time: a tap applies it and closes the menu (main.ts), with
-// no "Listo". Several dates are still chosen in the "Filtros" sheet.
+// "Cuándo" in the phone bar (filters.ts draws the chip, this module the menu's items): a short menu that hangs from
+// its chip, like Google Maps' filter chips with a ▾. One date at a time: a tap applies it and closes the menu
+// (main.ts), with no "Listo". Several dates are still chosen in the "Filtros" sheet.
 //   - Closes with Escape, a tap outside it (that tap does nothing else), Tab, the chip again, or back: it has a
 //     history entry of its own, as an overlay (screenHistory.ts), like the sheets.
 //   - Keyboard: the menu pattern of the ARIA practices (menuitemradio): ↓ on the chip opens it, ↑ ↓ Home End move,
@@ -8,12 +8,11 @@
 //   - Placed under its chip inside the pinned bar (so it moves with it), never past the screen's edges; it
 //     scrolls when the screen is short.
 
-import { byId } from "../lib/dom";
-import { overlayState } from "../screenHistory";
-
-interface MenuHistoryState {
-  menu?: string;
-}
+import { byId, escapeHtml } from "../lib/dom";
+import type { WhenModel, WhenOption } from "../lib/filterModel";
+import { eventCountLabel } from "../lib/format";
+import { ICONS } from "../lib/icons";
+import { historyState, overlayState } from "../screenHistory";
 
 const MENU = "when";
 const GAP = 4; // px between the chip and the menu
@@ -103,7 +102,7 @@ export function openWhenMenu({ last = false } = {}) {
   menu().hidden = false;
   button.setAttribute("aria-expanded", "true");
   place();
-  history.pushState(overlayState({ menu: MENU } satisfies MenuHistoryState), "");
+  history.pushState(overlayState({ menu: MENU }), "");
   const options = items();
   focusItem(last ? options.at(-1) : (options.find((item) => item.getAttribute("aria-checked") === "true") ?? options[0]));
 }
@@ -121,7 +120,7 @@ function hide({ focusChip = false } = {}) {
 export function closeWhenMenu({ focusChip = false } = {}) {
   if (!isWhenMenuOpen()) return;
   hide({ focusChip });
-  if ((history.state as MenuHistoryState | null)?.menu === MENU) history.back();
+  if (historyState().menu === MENU) history.back();
 }
 
 /** After a redraw (the chip is drawn again): still marked open and in place, or closed if the chip is gone. */
@@ -200,6 +199,42 @@ export function initWhenMenu() {
   byId("jump-chips").addEventListener("scroll", follow, { passive: true });
   // Back: the entry under the menu's is now current.
   window.addEventListener("popstate", (event) => {
-    if ((event.state as MenuHistoryState | null)?.menu !== MENU) hide();
+    if (historyState(event.state).menu !== MENU) hide();
   });
+}
+
+// ---------- drawing ----------
+
+/**
+ * The menu's items (JumpBar.astro's #when-menu, the model's `when`): one date at a time, each with its days
+ * and how many events. A tap applies it and closes the menu; one with nothing to show is dimmed.
+ */
+export function whenMenuHtml(when: WhenModel): string {
+  const item = (option: WhenOption) => {
+    const spoken = `${option.label}${option.hint ? ` (${option.hint})` : ""}, ${eventCountLabel(option.count)}`;
+    return `<button class="when-menu__item" type="button" role="menuitemradio" tabindex="-1" data-when="${escapeHtml(option.value)}"
+      aria-checked="${option.chosen}"${option.dimmed ? ` aria-disabled="true"` : ""} aria-label="${escapeHtml(spoken)}">
+      <span class="when-menu__tick" aria-hidden="true">${option.chosen ? ICONS.check : ""}</span>
+      <span class="when-menu__label">${escapeHtml(option.label)}${option.hint ? ` <small>${escapeHtml(option.hint)}</small>` : ""}</span>
+      <span class="when-menu__count" aria-hidden="true">${option.count}</span></button>`;
+  };
+  const [any, ...periods] = when.options;
+  return [
+    `<p class="when-menu__head" aria-hidden="true">Cuándo</p>`,
+    any ? item(any) : "",
+    `<div class="when-menu__separator" role="separator"></div>`,
+    ...periods.map(item),
+  ].join("");
+}
+
+/** The menu's content follows the filters, also while it's open (the counts); empty without "Cuándo" (the calendar). */
+export function renderWhenMenu(when: WhenModel | null) {
+  const element = menu();
+  if (!when) {
+    element.innerHTML = "";
+    return;
+  }
+  const focused = (document.activeElement as HTMLElement | null)?.closest<HTMLElement>("#when-menu [data-when]")?.dataset.when;
+  element.innerHTML = whenMenuHtml(when);
+  if (focused !== undefined) element.querySelector<HTMLElement>(`[data-when="${CSS.escape(focused)}"]`)?.focus();
 }
