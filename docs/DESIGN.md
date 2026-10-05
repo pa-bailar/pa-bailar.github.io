@@ -93,7 +93,7 @@ The dark theme isn't a flat color: the page is lit like the ballroom of a late-n
   `img-src` allows) at 5%, over the page, the details drawer and the bottom sheets, so they read as the same air.
 - **Phones:** the toolbar (tabs and chips) isn't sticky there, so it's transparent in dark and lets the light
   through instead of cutting it with a flat band. The pinned jump bar keeps `--bg`.
-- **The browser bar** (`theme-color`) is the page's indigo, `#16122B` (`scripts/themeConfig.ts`).
+- **The browser bar** (`theme-color`) is the page's indigo, `#16122B` (`scripts/themeConfig.ts`, from `lib/brandColors.ts`).
 
 The calendar uses the same theme as the rest of the page (an earlier version gave it its own palette;
 the owner preferred one look throughout).
@@ -137,6 +137,29 @@ few set from scripts are listed there): an undefined `--text-base` once left the
 - The details: `--drawer-top-gap` 12px (phones: what's left above the drawer at full height), `--panel-width` 420px (wide screens: the side panel).
 - Small parts: `--tab-underline` 3px (the selected tab's line), `--icon-sm` 16px (marks over flyers and thumbnails, a chip's ×, "× Limpiar", a card's "Video"), `--icon-md` 20px ("Cuándo"'s clock and check, the cards' Compartir, the drawer's ×, the details' media links), `--icon-lg` 24px (Guardar, the details' quick actions, the floating button), `--handle-width` × `--handle-height` 40×4px (every sheet's grab handle, `.sheet-handle`), `--fab-size` 44px.
 - Over photos: `--on-image` (white) with `--shadow-on-image`, the same in both themes, for marks that sit on any flyer (stacked squares); `--on-image-bg` (black at 60%) behind words and marks on a flyer (a card's "Video", "Historia").
+
+### Motion
+
+Material 3's curves and the sheets' and drawer's durations, in `tokens.css`. Scripts read the ones they need from
+`scripts/lib/motion.ts` (`DURATION`, `EASE`); `tests/motion.test.ts` fails if the two disagree, or if a stylesheet
+writes a curve itself. With reduced motion nothing animates (`base.css`).
+
+| Token | Value | Use |
+|---|---|---|
+| `--duration` | 150ms | Hovers, small state changes |
+| `--duration-bar` | 250ms | The floating view switch fading in and out |
+| `--duration-enter` | 320ms | A bottom sheet rising, the details drawer rising to half height |
+| `--duration-settle` | 300ms | A sheet or the drawer settling: between heights, springing back after a drag |
+| `--duration-panel-in` / `--duration-panel-out` | 280ms / 200ms | The side panel sliding in and out (wide screens) |
+| `--ease-standard` | `cubic-bezier(0.2, 0, 0, 1)` | Settling, springing back, the first visit's pulse on "Detalles" |
+| `--ease-emphasized-decelerate` | `cubic-bezier(0.05, 0.7, 0.1, 1)` | Coming in: quick, with a soft landing |
+| `--ease-emphasized-accelerate` | `cubic-bezier(0.3, 0, 0.8, 0.15)` | Leaving: it goes and keeps going |
+
+Leaving after a drag takes 160–280ms at the finger's speed (`lib/sheetMotion.ts`), set by the script.
+
+The palette's hex values for what can't read CSS (the link previews, the share card, the app's icons, the favicon,
+`theme-color`) are in `scripts/lib/brandColors.ts`, named as their tokens and checked against `tokens.css`
+(`tests/brandColors.test.ts`).
 
 ## Signature motifs
 
@@ -348,7 +371,7 @@ the list stays short there and summarizes what's further away (`scripts/views/up
   - **Where it shows:** wherever the full toolbar isn't sticky (phones, short windows), in both views.
 - **View switch** (`ViewSwitch.astro`, `scripts/views/viewSwitch.ts`): the tabs scroll away on phones, so an icon button (`--fab-size`, 44px) floats at the bottom right. It offers the other view: a calendar icon in the list, a list icon in the calendar (named for screen readers).
   - **Look:** the action color (`--action` / `--on-action`), ringed with the page color and a shadow, so it stands out even over a flyer of the same colors.
-  - **Each view keeps its place, like Instagram's tabs:** coming back to a view lands exactly where it was left. The calendar keeps one rule instead (`revealDay` in `main.ts`): **whatever changes the day's list ends with its start on screen**: opening the calendar (from the top or from deep in the list; the first time, the month's title lands under the pinned bar if the page was past it), coming back to it, a day, the month's ‹ ›, "Hoy", a filter, a search, "Guardados", back and forward. When the day's heading and the top of what follows (`DAY_PEEK`, 96px) are below the fold, the page moves just that far: gliding after a tap (at once with reduced motion), at once otherwise. When they're on screen, or above it (the visitor is reading the cards), it doesn't move, so trying days one after another never shakes the grid. On a phone the list started below the fold, and a tap there seemed to do nothing (the owner, 4 October 2026; a first-visit-only fix wasn't enough: after scrolling back up it happened again).
+  - **Each view keeps its place, like Instagram's tabs:** coming back to a view lands exactly where it was left. The calendar keeps one rule instead (`revealDay` in `views/viewNavigation.ts`): **whatever changes the day's list ends with its start on screen**: opening the calendar (from the top or from deep in the list; the first time, the month's title lands under the pinned bar if the page was past it), coming back to it, a day, the month's ‹ ›, "Hoy", a filter, a search, "Guardados", back and forward. When the day's heading and the top of what follows (`DAY_PEEK`, 96px) are below the fold, the page moves just that far: gliding after a tap (at once with reduced motion), at once otherwise. When they're on screen, or above it (the visitor is reading the cards), it doesn't move, so trying days one after another never shakes the grid. On a phone the list started below the fold, and a tap there seemed to do nothing (the owner, 4 October 2026; a first-visit-only fix wasn't enough: after scrolling back up it happened again).
   - **A day tapped in the calendar says so where the list starts:** its heading ("Miércoles, 14 de octubre") has the count under it ("3 eventos", `--accent-text`, bold; none on an empty day, which says "No hay eventos este día.") and glows briefly in the accent when the day changes (`.calendar__day-heading.is-new`, 900ms; not on other redraws, and not with reduced motion). A tap moves the page only to bring the list's start on screen (the rule above), never otherwise. Screen readers hear "Miércoles, 14 de octubre: 3 eventos" (`#results-status`). If a filter changed meanwhile, the list comes back at the same period instead, as with any filter change. The tabs behave the same.
   - **Room:** the footer gets extra bottom padding so the button never covers its last line. Hidden wherever the toolbar is sticky.
   - **Away while the tabs are on screen** (`.is-away`, an IntersectionObserver on the tabs): they do the same, and on a first visit it would sit on the first card's date sticker. It fades in once the tabs scroll under the bar.
@@ -361,7 +384,7 @@ the list stays short there and summarizes what's further away (`scripts/views/up
 
 ## Filters
 
-What narrows the list (`scripts/views/filters.ts`, the logic in `state.ts`), in the phone bar and its sheet, and on wide
+What narrows the list (`scripts/views/filters.ts`, the model in `lib/filterModel.ts`, the logic in `state.ts`), in the phone bar and its sheet, and on wide
 screens in the toolbar's chip rows:
 
 | Group | Choices | Options | In the phone bar |

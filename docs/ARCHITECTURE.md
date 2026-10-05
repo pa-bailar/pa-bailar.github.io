@@ -342,7 +342,8 @@ sequenceDiagram
 
 - **No data request:** the events arrive inside the HTML, so the first render needs no network.
   The flyers load lazily as they come into view.
-- **One delegated click listener** in `main.ts` handles every control marked with a `data-*` attribute:
+- **One delegated click listener** in `main.ts` handles every control marked with a `data-*` attribute (`CONTROLS`:
+  each attribute with its named handler, tried in order):
   view, a filter chip (`data-filter` + `data-value`), "Cuándo" (`data-when-open`, an option `data-when`, its ×
   `data-when-clear`), clear filters, clear search, close the search, ⚙, day,
   month, today, event, a card's posts, a period opened whole (`data-show-period`), "Guardados" (`data-saved-only`).
@@ -354,7 +355,7 @@ flowchart TD
     ST["AppState (state.ts)<br/>view · types · styles · dates ·<br/>query · savedOnly · month · selectedDay"]
     CLICK["Click on a data-* control<br/>(main.ts handleClick)"] --> ST
     ST --> R["render()"]
-    R --> F["filters.ts<br/>filterModel → the bar's chips and line,<br/>the filter sheet, the toolbar's rows"]
+    R --> F["lib/filterModel.ts → views/filters.ts<br/>the bar's chips and line,<br/>the filter sheet, the toolbar's rows"]
     R --> U["upcomingView.ts<br/>Próximos: events grouped by period"]
     R --> C["calendarView.ts<br/>Calendario: month grid + the day's events"]
     R --> J["jumpBar.ts<br/>phones: the pinned bar, search, keeping your place"]
@@ -381,7 +382,7 @@ flowchart TD
   - **Rhythms** (`styles`, several): filtering by a family ("salsa") also matches its variants ("salsa caleña").
   - **Search** and **Guardados**.
 
-  The options (`filterModel` in `views/filters.ts`, pure and tested; `dateOptions` in `state.ts`) exist by the events in
+  The options (`filterModel` in `lib/filterModel.ts`, pure and tested; `dateOptions` in `state.ts`) exist by the events in
   view before any filter, in a stable order, so chips never move; each is counted against the other groups
   (`matchesFilters(event, state, except)`), and one with nothing to show is `dimmed` (unless chosen), not hidden. The
   model also gives the bar's "Cuándo" (`when`, `whenModel`: the chip's label, "Finde" or "Finde +1", and the menu's
@@ -403,7 +404,7 @@ flowchart TD
   and later periods start as a summary row ("Ver los 23 eventos"); `DESIGN.md`, "Long lists".
 - **"Calendario"** shows a month grid. Dots mark days with events, Colombian holidays are tinted, and
   the selected day's events are listed below, under its heading and count (which glows when the day changes).
-  Whatever changes that list ends with its start on screen (`revealDay` in `main.ts`: the page moves only when it's below
+  Whatever changes that list ends with its start on screen (`revealDay` in `views/viewNavigation.ts`: the page moves only when it's below
   the fold). An event over several days is on each of its days
   (`groupByDay`), across months too: a festival from 31 October to 2 November shows in both months. A workshop series
   is on its sessions' days only, and a month without one of them doesn't list it. A day's events go by their start
@@ -460,7 +461,8 @@ stateDiagram-v2
     goes under the bar). Touch: at half height every vertical drag moves the drawer (`touch-action: none`); at full
     the content scrolls natively and the drawer follows the finger from its bar, or from the content's top pulling
     down. A mouse or pen drags the bar (pointer capture once it's a drag, so the handle's tap still works). Rise
-    320ms, settle 300ms, CSS transitions; no motion with reduced motion.
+    320ms, settle 300ms, CSS transitions (the motion tokens, `--duration-*` and `--ease-*` in `tokens.css`, mirrored
+    by `lib/motion.ts`); no motion with reduced motion.
   - **Modal:** `showModal()` makes the list inert and `html:has(dialog:modal)` stops it scrolling. The dialog has
     `autofocus`, so opening focuses the dialog itself, not its handle (which is still below the screen: focusing it
     scrolled the list); then the title takes the focus. Closing gives it back to what opened it (the last card, when
@@ -542,7 +544,7 @@ stateDiagram-v2
 - **Before first paint:** an inline script (`src/themeScript.ts`, put in `<head>` by `BaseLayout.astro`) sets
   `<html data-theme>` and the `theme-color` meta from the saved value, so a dark choice never flashes light
   (allowed by its hash, section 3.3). CSS defaults to `color-scheme: light`; `[data-theme=dark]` switches.
-  The rule and colors live in `scripts/themeConfig.ts`, shared by both; `tests/theme.test.ts` runs the inline
+  The rule and colors live in `scripts/themeConfig.ts` (the colors from `lib/brandColors.ts`), shared by both; `tests/theme.test.ts` runs the inline
   script against the same cases.
 - **Colors** are CSS tokens with `light-dark()` (`styles/tokens.css`); [`DESIGN.md`](DESIGN.md) has
   them all. The dark theme adds its lighting (`--stage-light`, `--grain`, painted by `base.css`); the calendar uses
@@ -644,7 +646,7 @@ only Instagram content it loads is a post's player, and only when a visitor taps
 | Types | `astro check`: strict TypeScript, including `noUncheckedIndexedAccess` | `tsconfig.json` |
 | Color contrast | Every color pair the site uses, in both themes, against WCAG 2.2 AA. It reads the tokens from `tokens.css`, so it can't drift from the design system | `frontend/scripts/check-contrast.mjs` |
 | CSS custom properties | Every `var(--name)` in the stylesheets, components and scripts has a definition; the few set from scripts (`style.setProperty`: the drawer's position, a flyer's shape, a sheet's drag) are listed, and each must still be set by one | `frontend/scripts/check-css-vars.mjs` |
-| Unit tests | Dates and Bogotá's "today", formatting, filtering (rhythms and dates, "Mañana", the options and their counts) and period grouping, holidays, the policy check, where the visitor can install from and its steps, the filter chips (`filterModel`: the bar's chips, "Cuándo" (its label with one or several dates, its options and counts, each period's days, the menu's radio items, where it hangs, its keys), dimmed vs hidden options, multiple types, removable chips, the badge, the line, the calendar's line; "Limpiar"'s scope; empty results), the drawer (`drawerSheet.ts`: its heights, scrim, where a drag ends and the ways it closes, keeping the tapped card in view), a shared link's entry (`sharedEventEntry`: the period to open, or the page for a past event), the details (the drawer's order, no image, its media links and price line), the history between screens and overlays (`screenHistory.ts` with the sheets, on a fake history: a period left from inside the Filtros sheet or next to the side panel, and the address after closing), the details' history (`drawerHistory.ts`: push or replace, closing through back, back and forward, a shared link's entries) and the drawer's numbers against the CSS (`--drawer-top-gap`, the 900px breakpoint) and the sheets, the images' version for the service worker, the build's files written into it, inline handlers in the policy check, the CSS custom properties check, the calendar feed's description and the report link for an event over several days, workshop series (`series.test.ts`: the next session before, between, on and after its sessions; where the list puts it; the date filters and "Cuándo"'s counts; the calendar's days; the card, its sticker and the details' sessions; the calendar feed's entries; link previews and shared texts; the data check's rules), the details' account opening its profile inside the site (`data-profile`), the analytics names for opened details, stories (the data check: a profile link only for a `STORY`; the "Historia" label, the line and "Ver perfil en Instagram", an event with only a story, a post's media before a story's), things shown once (`onceFlag`, with and without storage), link previews (their text, the image's version, one image drawn with and one without a flyer), the theme (the saved value, old ones, and the script before first paint) | `frontend/tests/*.test.ts` (Vitest) |
+| Unit tests | Dates and Bogotá's "today", formatting, filtering (rhythms and dates, "Mañana", the options and their counts) and period grouping, holidays, the policy check, where the visitor can install from and its steps, the filter chips (`filterModel`: the bar's chips, "Cuándo" (its label with one or several dates, its options and counts, each period's days, the menu's radio items, where it hangs, its keys), dimmed vs hidden options, multiple types, removable chips, the badge, the line, the calendar's line; "Limpiar"'s scope; empty results), the drawer (`drawerSheet.ts`: its heights, scrim, where a drag ends and the ways it closes, keeping the tapped card in view), a shared link's entry (`sharedEventEntry`: the period to open, or the page for a past event), the details (the drawer's order, no image, its media links and price line), the history between screens and overlays (`screenHistory.ts` with the sheets, on a fake history: a period left from inside the Filtros sheet or next to the side panel, and the address after closing), the details' history (`drawerHistory.ts`: push or replace, closing through back, back and forward, a shared link's entries) and the drawer's numbers against the CSS (`--drawer-top-gap`, the 900px breakpoint) and the sheets, the images' version for the service worker, the build's files written into it, inline handlers in the policy check, the CSS custom properties check, the calendar feed's description and the report link for an event over several days, workshop series (`series.test.ts`: the next session before, between, on and after its sessions; where the list puts it; the date filters and "Cuándo"'s counts; the calendar's days; the card, its sticker and the details' sessions; the calendar feed's entries; link previews and shared texts; the data check's rules), the details' account opening its profile inside the site (`data-profile`), the analytics names for opened details, stories (the data check: a profile link only for a `STORY`; the "Historia" label, the line and "Ver perfil en Instagram", an event with only a story, a post's media before a story's), things shown once (`onceFlag`, with and without storage), link previews (their text, the image's version, one image drawn with and one without a flyer), the theme (the saved value, old ones, and the script before first paint), the motion tokens and the brand's hex colors against `tokens.css`, the release velocity, what each list's share button shares (`shareSources`), the short dates against Intl, the values read from the page (`isView`, `isFilterGroup`) and history entries (`historyState`), links that leave the site | `frontend/tests/*.test.ts` (Vitest) |
 | Build | Every page, image and feed is generated; every page's Content Security Policy allows its inline scripts and styles, and no page has a `style=""` attribute or an inline `on…=""` handler (section 3.3); every event's link preview has its tags and a 1200×630 JPEG under 280 KB (section 3.4) | `npm run build`, `frontend/scripts/csp-meta.mjs`, `frontend/scripts/og-check.mjs`, `frontend/scripts/sw-precache.mjs` (fails if `sw.js` has no list to fill in) |
 
 All six run in `ci` on every pull request, and the ruleset requires `ci` before merging.
@@ -685,20 +687,19 @@ frontend/
     components/           SiteHeader, ThemeToggle, Stripes, ViewToolbar, ViewSwitch, JumpBar, FilterSheet,
                           CalendarView, EventDrawer, PostsSheet, PostViewer, InstallOffer, SiteFooter
     scripts/
-      main.ts             entry point of the home page: state, clicks, render
+      main.ts             entry point of the home page: state, render, the clicks' handlers
       eventPage.ts        entry point of an event's page
       state.ts            AppState, filtering, period grouping
       screenHistory.ts    the phone's back between the app's screens
       types.ts            DanceEvent, EventMedia, Meta, AppState (mirror of the backend's models)
       theme.ts, themeConfig.ts   the Claro / Oscuro switch, its rule and colors
-      views/              upcomingView, calendarView, eventCard, eventDetail, eventDrawer, drawerSheet, drawerGestures,
-                          drawerHistory,
-                          filters, jumpBar, whenMenu, viewSwitch, postsSheet, postViewer, inlinePlayer, clips, saveButton,
-                          sharing, installPrompt, detailsHint (HTML strings + their
-                          behavior)
-      lib/                dates, holidays, format, links, linkPreview, calendarFeed, contact, mediaLabel, search, saved,
-                          share, shareText, shareCard, analytics, dom, icons, sheet, sheetMotion, instagramEmbed, installPlace,
-                          onceFlag
+      views/              upcomingView, calendarView, viewNavigation, eventCard, eventDetail, eventDetailActions, eventDrawer,
+                          drawerSheet, drawerGestures, drawerHistory, filters, jumpBar, whenMenu, viewSwitch, postsSheet,
+                          postViewer, inlinePlayer, clips, saveButton, sharing, installPrompt, detailsHint (HTML strings +
+                          their behavior)
+      lib/                dates, holidays, format, links, linkPreview, calendarFeed, contact, mediaLabel, filterModel, search,
+                          saved, share, shareText, shareSources, shareCard, analytics, dom, focus, icons, accountLink,
+                          externalLink, sheet, sheetMotion, motion, brandColors, instagramEmbed, installPlace, onceFlag
     styles/               tokens.css (design tokens), base.css, components/*.css
 ```
 
@@ -710,20 +711,26 @@ frontend/
 | `views/calendarView.ts` | "Calendario", with holidays |
 | `views/eventCard.ts` | A card: flyer at its shape (or a video's clip; a clip-less video's "Video" mark), date sticker, the posts' badge, the action row ("Detalles ›" with its offset, Compartir, Guardar), details |
 | `views/detailsHint.ts`, `lib/onceFlag.ts` | The first visit's pulse on the first card's "Detalles"; things shown once per browser |
-| `views/eventDetail.ts` | An event's details (the drawer's, and the event page's with the flyer on top): head, quick actions, details, prices, media links; their clicks |
+| `views/eventDetail.ts` | An event's details (the drawer's, and the event page's with the flyer on top): head, quick actions, details, prices, media links. Pure HTML strings, imported at build time by the event pages |
+| `views/eventDetailActions.ts` | What the details' clicks open: the post in the media viewer, the event's posts (`openEventPosts`), a video in place on the event's page (`handleDetailClick`) |
 | `views/eventDrawer.ts`, `views/drawerSheet.ts` | The details: a drawer over the list on phones (half / full height, scrim, keeping the card in view) and a side panel on wide screens; opening and closing; the geometry and where a drag ends (pure, tested) |
 | `views/drawerGestures.ts` | Dragging the drawer: touch, mouse or pen, the wheel (through `DrawerControl`) |
 | `views/drawerHistory.ts` | The details' history entries: the event's address, closing through back, what back or forward does (`historyMove`) |
-| `screenHistory.ts` | History entries for the app's screens (period, calendar, saved): the phone's back steps through them. Overlays (sheets, the details) carry the screen under them (`overlayState`); a screen left from inside one is skipped later |
-| `views/filters.ts` | The filters' model (`filterModel`: options, counts, dimmed, the bar's chips, what's applied, the badge, the line) and drawing it: the phone bar's chips and line, the filter sheet, the toolbar's rows and status; empty results |
+| `screenHistory.ts` | History entries for the app's screens (period, calendar, saved): the phone's back steps through them. Overlays (sheets, the details, the "Cuándo" menu) carry the screen under them (`overlayState`); a screen left from inside one is skipped later. Every entry's state is one type (`AppHistoryState`), read with `historyState` |
+| `lib/filterModel.ts` | The filters' model, pure: options, counts, dimmed, the bar's chips, "Cuándo" (`whenModel`), what's applied, the badge, the line (`summaryLine`), stale dates |
+| `views/filters.ts` | Drawing the model: the phone bar's chips and line, the filter sheet, the toolbar's rows and status; empty results |
 | `views/jumpBar.ts` | Phones: the pinned bar (search, the filter sheet; it never hides), keeping your place, scrolling on purpose |
-| `views/whenMenu.ts` | Phones: the "Cuándo" menu under its chip: opening (its own history entry, as an overlay), where it hangs (`menuPlacement`), the keys (`nextOption`), closing (Escape, a tap outside that does nothing else, Tab, back) and the focus |
+| `views/whenMenu.ts` | Phones: the "Cuándo" menu under its chip: its items (`whenMenuHtml`), opening (its own history entry, as an overlay), where it hangs (`menuPlacement`), the keys (`nextOption`), closing (Escape, a tap outside that does nothing else, Tab, back) and the focus |
 | `views/viewSwitch.ts` | Phones: the floating calendar / list button |
+| `views/viewNavigation.ts` | Switching views, each back where it was left; the calendar's day list on screen (`revealDay`); the screens' history hooks (`currentScreen`, `applyScreen`) |
+| `lib/focus.ts` | Keeping the keyboard's focus through a redraw (`focusSelector`, `focusScope`), and after "Limpiar" |
 | `lib/links.ts` | Every URL built from an event: flyer, clip, page, link preview, Maps, the report form; calendar times (a series' per session) |
 | `lib/calendarFeed.ts` | The calendar feed's text (`/calendario.ics`): one VEVENT per event, or per session of a workshop series |
 | `lib/linkPreview.ts`, `linkPreviewImage.ts` | A shared link's preview: its title, description, the image's text and version; the image itself (build time) |
 | `lib/mediaLabel.ts` | What the label over a post's image says (Ver con sonido, Ver video, Ver las N, Historia), and which cards get a ▶; stories (`isStory`, `storySource`: "De una historia de @cuenta…") |
-| `lib/sheet.ts`, `lib/sheetMotion.ts` | Bottom sheets that drag to dismiss; panel sheets with their own back-button step; the release and exit numbers they share with the drawer |
+| `lib/sheet.ts`, `lib/sheetMotion.ts` | Bottom sheets that drag to dismiss; panel sheets with their own back-button step; the release and exit numbers they share with the drawer (`releaseVelocity`, the flick, the slops) |
+| `lib/motion.ts` | The motion tokens scripts use (durations, Material's curves), mirroring `tokens.css` |
+| `lib/brandColors.ts` | The palette as hex, for what can't read CSS (link previews, the share card, the app's icons, the favicon, `theme-color`), checked against `tokens.css` |
 | `lib/instagramEmbed.ts` | Instagram's player for a post, its script loaded on demand |
 | `views/postsSheet.ts`, `views/postViewer.ts` | An event's posts (Flyers / Videos); a post watched inside the site (the media viewer); an account's profile there (`openProfileViewer`: any `a[data-profile]`, the card's and the details' @) |
 | `views/inlinePlayer.ts` | A video tapped in the detail plays in the image's place (Instagram's player), removed when off screen |
@@ -731,11 +738,12 @@ frontend/
 | `lib/contact.ts` | The organizer's contact as a link: Instagram, WhatsApp, phone or website |
 | `lib/search.ts` | Search over the events in the page |
 | `lib/saved.ts`, `views/saveButton.ts` | Saved events ("Guardados"): the ids in this browser; the bookmarks and toggles |
-| `lib/share.ts`, `lib/shareText.ts`, `lib/shareCard.ts`, `views/sharing.ts` | Sharing through the phone's menu: the text, the image of a list, what each share button sends |
+| `lib/share.ts`, `lib/shareText.ts`, `lib/shareSources.ts`, `lib/shareCard.ts`, `views/sharing.ts` | Sharing through the phone's menu: the text, what each list's button shares (`shareSources`, pure), the image of a list, the buttons |
 | `views/installPrompt.ts`, `lib/installPlace.ts` | Installing the site like an app: the offer, and the steps for each browser; registers the service worker |
 | `lib/analytics.ts` | GoatCounter events: page views of events, clicks (`data-track`), where details were opened from |
-| `lib/dom.ts`, `lib/icons.ts` | DOM helpers and `escapeHtml`; inline SVG icons |
-| `lib/dates.ts`, `lib/holidays.ts`, `lib/format.ts` | Dates in Bogotá (an event's days: over several days, or a workshop series' sessions), Colombian holidays, Spanish formatting |
+| `lib/dom.ts`, `lib/icons.ts` | DOM helpers (`escapeHtml`, `isPlainClick`: a click that isn't asking for a new tab); inline SVG icons |
+| `lib/accountLink.ts`, `lib/externalLink.ts` | Links as HTML: an account's @ (its profile inside the site), and any other that leaves in a new tab (`externalLinkHtml`) |
+| `lib/dates.ts`, `lib/holidays.ts`, `lib/format.ts` | Dates in Bogotá (an event's days: over several days, or a workshop series' sessions), Colombian holidays, Spanish formatting (`LOCALE`, the short weekday and month names shared by the cards, previews and shared texts) |
 
 ---
 
