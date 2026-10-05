@@ -22,7 +22,7 @@ export default defineConfig({
       "import.meta.env.ASSETS_DIR": JSON.stringify(assetsDir),
     },
   },
-  // sitemap-index.xml: the home page and every event page, so search engines find the events.
+  // sitemap-index.xml: the home page, the calendar (/calendario/) and every event page, so search engines find them.
   // cspMeta: the policy below, moved to the top of each page and checked (scripts/csp-meta.mjs).
   // ogCheck: every event's link preview exists, is 1200×630 and light enough for WhatsApp (scripts/og-check.mjs).
   // swPrecache: the service worker gets the names of the build's files, to store them offline (scripts/sw-precache.mjs).

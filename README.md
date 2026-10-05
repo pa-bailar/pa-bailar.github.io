@@ -75,7 +75,8 @@ visits, each event whose details were opened, where its details were opened from
 `detalles-enlace`; `detalles-linea` is retired), and clicks as events named `click-<name>` (`data-track="<name>"`,
 `frontend/src/scripts/lib/analytics.ts`): Instagram (the details' Instagram button: `click-ver-video`, `click-ver-carrusel`, `click-ver-publicacion`; the viewer's "Abrir en Instagram": `click-instagram-desde-visor`, `click-instagram-perfil-desde-visor`), an account's @ (`click-perfil-tarjeta`, `-detalle`, `-organiza`, `-historia`, `-fuentes`, and `click-contacto-instagram`), the other contact links (WhatsApp…), "Cómo llegar", the other posts
 (`click-ver-publicaciones`), sharing, saving,
-installing and reports. Shared
+installing and reports, and the bar at the bottom (`click-barra-eventos`, `-calendario`, `-buscar`, `-guardados`,
+`-filtros`). Shared
 links carry `utm_source=compartido`. Local testing (localhost) isn't counted.
 
 ## Contributing
