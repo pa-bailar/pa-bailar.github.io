@@ -217,8 +217,7 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves. The pa
   abajo" when their times differ), and shared texts the same; a period's shared list gives its next session.
 - **Every @account is one link** (`accountLinkHtml` / `accountLinkAttrs` in `lib/accountLink.ts`): the card's, the details' head, Organiza, an @ Contacto, a story's Instagram button and the footer's sources all open the profile inside the site (`tests/accountLink.test.ts` fails on any other instagram.com profile link). **The academy on each card** ("@academia") opens its Instagram profile inside the site: the media viewer's sheet with Instagram's profile embed (its photo, counts and latest posts) and "Abrir en Instagram ↗" in the bar (`openProfileViewer` in `views/postViewer.ts`). The same as the details' @. It used to filter the list to the account; the owner dropped that filter on 4 October 2026 (an academy rarely has several events at once, and people expected its Instagram), and opening Instagram itself left the site with the app's back button. It's a link to the profile underneath, so a new tab still gets Instagram. It sits above the card's stretched click area.
 - **Free events** show their price as a green "Gratis" label (`--free` / `--on-free`, checked for contrast).
-- **Empty results** always offer a way out (see "Filters"): "Limpiar filtros", "Borrar la búsqueda", "Ver todos, no
-  solo guardados".
+- **Empty results** always offer a way out (see "Filters"): "Limpiar filtros", "Borrar la búsqueda".
 - **Dance styles** are one line of text joined by a middle dot glued to the previous word with a no-break space (`stylesLabel`), never separate elements with CSS separators. The dot stays centered between words, and a wrapped line never starts with a dot. Each is named as in the filters (`styleLabel`): "Salsa · Urbano · Otros ritmos", never the data's "otro".
 
 ## Info and footer
@@ -333,10 +332,24 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
   "Guardado") (`.save-button`, `scripts/views/saveButton.ts`). Filled in the accent color
   when saved. Saved events live in this browser (`lib/saved.ts`, localStorage): no account, nothing
   sent anywhere. Events no longer in the data are forgotten.
-- **"Guardados"** shows only saved events, in the list and the calendar: Guardados in the bar at the bottom on
-  phones (with the number of upcoming saved events on its corner; on, its pill in the selected-chip colors) and a
-  "Guardados" chip in the toolbar on wide screens.
-  With none saved it says how to save one.
+- **Guardados is a place of its own** (`views/savedView.ts`, `/guardados/`), like Instagram's Saved and Airbnb's
+  Wishlists (the owner, 5 October 2026: as a toggle over the list and the calendar it read as "the calendar without
+  the calendar", and you could be in Eventos and Guardados at once). Guardados in the bar at the bottom (with the
+  number of upcoming saved events on its corner) and a third tab on wide screens ("Guardados 3").
+  - **What it shows:** "Tus 3 eventos guardados · Compartir mis planes", then the saved events to come by period, as in
+    the list but always whole (no summaries, no "Ver N más"), then the past ones folded at the end: **"Ya pasaron (2)
+    ⌄"** (a `<details>`, the latest first; it stays open or folded as left while the view is drawn again). Saved but
+    none to come: "Ninguno de tus eventos guardados está por venir" and "Ver eventos".
+  - **No filters there:** a short, personal list. Filtros is off in the bar (faded, `aria-disabled`, named "Filtros: no
+    se usan en Guardados"; its badge stays, since the list still uses them), the pinned bar and the toolbar's pills and
+    status row are hidden (`body[data-view="saved"]`). The filters stay set for the list. **The search applies**, as in
+    every view: "No encontramos eventos guardados" · "Nada de lo que guardaste coincide con «…»." · "Borrar la búsqueda".
+  - **Empty:** a big bookmark, "Aún no tienes eventos guardados", "Toca 🔖 en un evento para tenerlo aquí, a la mano. Se
+    quedan en este navegador, sin crear cuenta." and "Ver eventos".
+  - **Unsaving there** takes the card away at once, the page staying where it was.
+  - **The calendar marks the days** holding a saved event (as filtered on screen) with a small filled bookmark in the
+    day's top right corner, in `--accent-text`, and says it to screen readers ("…, 3 eventos, 1 guardado"); the
+    legend under the grid has "Festivo" and "Guardado".
 - **Search** (`lib/search.ts`) runs on the events already in the page: accent- and case-insensitive,
   every word must appear somewhere in the event (title, academy, organizer, venue, area, artists,
   rhythms, activities, type). On phones Buscar turns the bar at the bottom into the field (see "The bar at the
@@ -393,8 +406,8 @@ the list stays short there and summarizes what's further away (`scripts/views/up
   - **The view on screen** (`aria-current="page"`): its icon and label in `--accent-text`, and a 3px `--accent` line on
     the bar's top edge over it (the tabs' underline, upside down). Tapping it again goes back to the top of the page,
     like Instagram's tabs.
-  - **On:** Guardados showing only saved events (`aria-pressed`), and Buscar with a search kept: the icon sits in a
-    pill (`--nav-indicator-width` × `--chip-height`) in the selected-chip colors, like the toggle it replaced.
+  - **On:** Buscar with a search kept: the icon sits in a pill (`--nav-indicator-width` × `--chip-height`) in the
+    selected-chip colors. **Off:** Filtros in Guardados (faded to 40%, `aria-disabled`, still focusable).
   - **Badges:** the number of upcoming saved events on Guardados, and on Filtros every choice in use (two rhythms count
     two, like Airbnb's; hiding the bars counts one): the fixed place for it, where the chips scrolled it sideways.
     Filtros is named "Filtros, 2 activos"; Guardados "Guardados, 3".
@@ -415,13 +428,15 @@ the list stays short there and summarizes what's further away (`scripts/views/up
     put under them (no hiding, nothing to animate). The "Cuándo" menu stops above it.
   - **Room:** the footer's bottom padding and the install reminder add `--bottom-nav-space`; `scroll-padding-bottom`
     keeps the keyboard's focus above it; the calendar's day list counts the screen as ending at it (`revealDay`).
-  - **Wide screens** don't show it: the tabs, "Guardados", the search field and the filters' pills in the toolbar
-    (see "Filters"), and Info in the header.
-  - **Each view has its own address:** the list is `/`, the calendar `/calendario/` (`pages/calendario/`, the same page
-    opening on the calendar: `components/HomePage.astro`), so reloading or sharing the calendar keeps it; the bar's
-    Eventos and Calendario (links to the two addresses), the tabs on wide screens and back move between them, the tab's title follows (`lib/viewTitles.ts`), and
-    closing an event goes back to its view's address. Opened straight on `/calendario/`, the list isn't under it in
-    the history: switching to it happens in place, and back leaves, as from any shared link (the owner, 4 October 2026).
+  - **Wide screens** don't show it: the tabs (Próximos, Calendario, Guardados), the search field and the filters' pills
+    in the toolbar (see "Filters"), and Info in the header.
+  - **Each view has its own address:** the list is `/`, the calendar `/calendario/`, Guardados `/guardados/`
+    (`pages/calendario/`, `pages/guardados/`: the same page opening on that view, `components/HomePage.astro`), so
+    reloading or sharing it keeps it; the bar's Eventos, Calendario and Guardados (links to the addresses), the tabs on
+    wide screens and back move between them, the tab's title follows (`lib/viewTitles.ts`), and closing an event goes
+    back to its view's address. `/guardados/` isn't indexed (`noindex`, not in the sitemap: it's each visitor's).
+    Opened straight on `/calendario/` or `/guardados/`, the list isn't under it in the history: switching to it
+    happens in place, and back leaves, as from any shared link (the owner, 4 October 2026).
   - **The list keeps its place, like Instagram's tabs:** coming back to it lands exactly where it was left. **The
     calendar always opens on its home** instead: the month's title under the pinned bar if the page is past it, and the
     day's list on screen, never where it was scrolled before (its cards look like the list's, and visitors coming back
@@ -492,8 +507,8 @@ screens in the toolbar's pills and their panels:
   option is never dimmed, so it can always be removed. Each option's count is how many events it would show with the
   other filters on.
 - **Any within a group, all across groups:** two rhythms show events with either; two types, events of either; two
-  periods, events on during either; a period and a rhythm, that rhythm in that period. Search and "Guardados" narrow
-  further.
+  periods, events on during either; a period and a rhythm, that rhythm in that period. Search narrows further.
+  Guardados has no filters (see "Saving and searching").
 - **An event over several days counts for every day it runs:** a festival from Sunday to Tuesday is in "Finde" and in
   "Próx. semana"; a congress under way is in "Hoy" and, while it goes on tomorrow, in "Mañana". A workshop series counts
   for every period with a session to come, once each, and not for the days between sessions (the day before a session,
@@ -516,7 +531,8 @@ screens in the toolbar's pills and their panels:
   - **Wide screens:** "Ocultar bares" at the end of the pills' row, a little apart (a toggle chip, with × while on,
     named by its words: "Ocultar bares", pressed or not).
   - **While on**, the bars' events are gone wherever the filters apply: the list, the calendar (dots, names, a day's
-    label, heading, count and list), search, Guardados, every option's count and "Ver 12 eventos". It **counts one** on
+    label, heading, count and list), search, every option's count and "Ver 12 eventos" (not Guardados, which has no
+    filters). It **counts one** on
     Filtros' badge (in both views), shows as **"Sin bares ×"** in the row (a tap shows them again; named "Mostrar los eventos de
     bares") and in the line under the bar ("37 eventos · Sin bares"). Off, nothing shows anywhere but the switch.
   - **Remembered** on that device (`localStorage`, key `hide-bars`, `1` while on; nothing while off). Where storage is
@@ -526,14 +542,14 @@ screens in the toolbar's pills and their panels:
     there), and the switch stays as it was.
 - **Clearing:** "× Limpiar" (under the phone bar and in the toolbar's status row), the sheet's "Limpiar" and an empty result's "Limpiar
   filtros" clear the dates, rhythms and types, and **show the bars again** (and forget it on the device): it counts on
-  the badge, so "Limpiar" leaves nothing counted there. Not the search nor "Guardados" (they have their own way out).
+  the badge, so "Limpiar" leaves nothing counted there. Not the search (it has its own way out).
   Nothing else is remembered between visits, and filters aren't in the address.
 - **Dates are the list's:** the calendar has its own days, so there "Cuándo" hides (rhythms stay), the dates chosen
   are ignored (and kept for the list) and the badge doesn't count them.
 - **Searching:** the bar at the bottom becomes the search field; the line under the pinned bar stays while filtering.
 - **Empty results always offer a way out:** with filters, "No hay eventos con estos filtros" · "Prueba con otras fechas
   o ritmos." · "Limpiar filtros"; with a search, "No encontramos eventos" · "Nada coincide con «…»." · "Borrar la
-  búsqueda"; in Guardados also "Ver todos, no solo guardados".
+  búsqueda" (Guardados has its own: see "Saving and searching").
 - **Semantics:** filter chips are toggle buttons (`aria-pressed`), short names carry the full one ("Finde": "Este fin de
   semana", "Próx. semana": "Próxima semana"); removable chips are named "Quitar Social"; "Cuándo"'s × is "Quitar Este
   fin de semana"; Filtros is "Filtros, 3 activos"; the bars' switch is a `role="switch"`. Focus stays on the chip chosen; after "Limpiar" (which hides or disables itself),
@@ -541,7 +557,8 @@ screens in the toolbar's pills and their panels:
 - **Wide screens (the toolbar, from 720px wide and 600px tall, tablets included): dropdown pills** (the owner, 5 October
   2026). The toolbar used to show dates, types and rhythms as three or four unlabeled rows of identical chips, and the
   kinds read as one. Now, as on Meetup, Google Flights and Airbnb (Baymard: a horizontal bar of dropdowns suits a
-  handful of filter kinds), the tabs, "Guardados" and the search field keep their row, and under it **one row of
+  handful of filter kinds), the tabs (Guardados one of them) and the search field keep their row, and under it (not in
+  Guardados) **one row of
   pills**: **[🕒 Cuándo ▾]** (the list only; the calendar keeps its month) **[Ritmo ▾] [Tipo ▾]** and the toggle chip
   **"Ocultar bares"**, a little apart (`views/filters.ts` draws them, `views/filterPanels.ts` opens their panels).
   - **A pill** is a compact chip with ▾ (which turns while its panel is open). With something chosen in it, it takes
@@ -555,7 +572,7 @@ screens in the toolbar's pills and their panels:
     a click on the panel's background keeps it in the panel), the pill again, Tab out of it, a click outside, back
     (one history entry, as an overlay, like "Cuándo"'s menu), or the window getting too small for the toolbar (its
     entry goes too: nothing invisible is left to catch taps or back). A click outside the toolbar and the side panel
-    does nothing else (it could open an event); in them (a tab, "Guardados", the search, a removable chip, the side
+    does nothing else (it could open an event); in them (a tab, the search, a removable chip, the side
     panel's ×, Instagram or Guardar) it does its job, once the panel's history entry is gone. The focus goes back to
     the pill.
   - **Placed** under its pill, its left edge with the pill's, never past the screen's sides nor under the details'
@@ -704,8 +721,7 @@ screen undone from inside the panel and lands on another event's entry is ignore
   - **Release:** a flick down (>0.5 px/ms) closes, as does a drag past max(110px, 22% of the screen) unless flicked back up. Otherwise it springs back (300ms).
   - **Closing:** it continues from where the finger left it, at the finger's speed (160–280ms, accelerating curve). ×, Escape and back slide it away the same way. When Safari's edge swipe already animated the back navigation, it closes at once.
   - **Reduced motion:** no rise and no slide.
-- **Back moves between the app's screens** (`screenHistory.ts`): a period opened whole, the calendar and "Guardados" each get a history entry, so the phone's back button returns to the previous screen where it was scrolled, instead of leaving the site (which closes the installed app). Undoing one from the page (the list button, "Guardados" again) steps back, so history never piles up; stepping back
-  out of the calendar keeps "Guardados" as it was set in it (`apply(screen, undoing)`). Back from an in-page jump
+- **Back moves between the app's screens** (`screenHistory.ts`): a period opened whole, the calendar and Guardados each get a history entry, so the phone's back button returns to the previous screen where it was scrolled, instead of leaving the site (which closes the installed app). Undoing one from the page (Eventos in the bar) steps back, so history never piles up. Between the calendar and Guardados the entry is replaced (`replaceScreen`): back from either returns to the list, like Instagram's tabs (opened straight on one of them, the other gets its own entry, so back returns there). Back from an in-page jump
   (Info, `#info`) puts the scroll back where it was (the entry remembers it just before the jump). The app restores scrolling itself (`history.scrollRestoration = "manual"`).
   - **Overlays** (the sheets and the details) get entries on top of the screen's, marked as overlays (`overlayState`). Undoing a move from inside one (the "Filtros" sheet's "Limpiar", the list next to the side panel) can't step back without closing it: the move is undone right there, the overlay stays, and its screen's entry is skipped when back (or closing the overlay) reaches it.
 - **The details have a URL:** opening pushes `/evento/<id>/`, so the phone's back button closes them. A copied link opens that event's page.
