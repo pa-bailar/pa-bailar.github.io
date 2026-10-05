@@ -402,8 +402,9 @@ flowchart TD
   Long lists stay short where it matters: the near periods show their flyers in full (six, then "Ver N más"),
   and later periods start as a summary row ("Ver los 23 eventos"); `DESIGN.md`, "Long lists".
 - **"Calendario"** shows a month grid. Dots mark days with events, Colombian holidays are tinted, and
-  the selected day's events are listed below, under its heading and count (which glows when the day changes;
-  the first visit lands the month under the pinned bar so both are on screen). An event over several days is on each of its days
+  the selected day's events are listed below, under its heading and count (which glows when the day changes).
+  Whatever changes that list ends with its start on screen (`revealDay` in `main.ts`: the page moves only when it's below
+  the fold). An event over several days is on each of its days
   (`groupByDay`), across months too: a festival from 31 October to 2 November shows in both months. A workshop series
   is on its sessions' days only, and a month without one of them doesn't list it. A day's events go by their start
   time that day.
