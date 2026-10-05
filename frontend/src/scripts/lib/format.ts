@@ -37,7 +37,8 @@ const MEDIA_LABELS: Record<MediaType, string> = {
   STORY: "Historia",
 };
 
-export function mediaLabel(type: MediaType): string {
+/** A post's kind, as said to screen readers in the posts sheet: "Video 2 de 3". */
+export function mediaTypeLabel(type: MediaType): string {
   return MEDIA_LABELS[type] ?? "Publicación";
 }
 
