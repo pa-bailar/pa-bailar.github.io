@@ -5,7 +5,7 @@ import { initClickTracking } from "./lib/analytics";
 import { byId, isPlainClick } from "./lib/dom";
 import { focusAfterClearing, focusScope, focusSelector } from "./lib/focus";
 import { eventCountLabel, formatLongDate } from "./lib/format";
-import { addMonths, currentMonth, lastDay, todayIso } from "./lib/dates";
+import { addMonths, currentMonth, isUpcoming, nowInBogota, todayIso } from "./lib/dates";
 import { eventPath, sharedEventLink, viewOfPath, viewPath } from "./lib/links";
 import { shareSources } from "./lib/shareSources";
 import {
@@ -44,6 +44,7 @@ import { initViewSwitch, renderViewSwitch } from "./views/viewSwitch";
 import { viewNavigation } from "./views/viewNavigation";
 import { closeWhenMenu, isWhenMenuOpen, openWhenMenu, syncWhenMenu } from "./views/whenMenu";
 import { initSaveButtons, renderSavedToggles } from "./views/saveButton";
+import { watchDayChange } from "./views/dayChange";
 import { initInstallPrompt, offerAfterSaving, registerServiceWorker } from "./views/installPrompt";
 import { initSharing, plansEventUrl, setShareSources } from "./views/sharing";
 import { isSaved, keepOnly } from "./lib/saved";
@@ -108,8 +109,8 @@ function render({ keepPlace = false } = {}) {
 
 /** The saved events still to come, in the list's order (a series by its next session). */
 function upcomingSaved(): DanceEvent[] {
-  const today = todayIso();
-  return listOrder(events.filter((event) => lastDay(event) >= today && isSaved(event.id)), today);
+  const now = nowInBogota();
+  return listOrder(events.filter((event) => isUpcoming(event, now) && isSaved(event.id)), todayIso());
 }
 
 /** "Guardados 3": how many upcoming events are saved, on the toggles. */
@@ -359,4 +360,5 @@ export function start() {
   if (opensOnCalendar) openedOnCalendar();
   openSharedEvent();
   initScreenHistory({ current: currentScreen, apply: applyScreen, address: (screen) => viewPath(screen.view) });
+  watchDayChange(state, () => render()); // shown again on another day: today's events, or the latest ones
 }

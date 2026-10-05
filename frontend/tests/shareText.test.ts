@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { dateRangeLabel } from "../src/scripts/lib/format";
-import { eventShareText, periodShareText, plansShareText, shortDayLabel } from "../src/scripts/lib/shareText";
+import { eventShareText, periodShareText, plansShareText, shareRowWhen } from "../src/scripts/lib/shareText";
 import { event } from "./factories";
 
 const salsa = event({ id: "salsa", title: "Salsa Freestyle", date: "2026-10-03", start_time: "18:00", account: "madyumdance" });
@@ -11,7 +11,7 @@ describe("shared texts", () => {
     expect(dateRangeLabel("2026-10-02", "2026-10-04")).toBe("Viernes 2 al domingo 4 de octubre");
     expect(dateRangeLabel("2026-10-30", "2026-11-01")).toBe("Viernes 30 de octubre al domingo 1 de noviembre");
     expect(dateRangeLabel("2026-10-04", "2026-10-04")).toBe("Domingo 4 de octubre");
-    expect(shortDayLabel(event({ date: "2026-10-03" }))).toBe("SÁB 3");
+    expect(shareRowWhen(event({ date: "2026-10-03" }))).toBe("SÁB 3");
   });
 
   it("a period is its title and one line per event, for WhatsApp", () => {
@@ -43,7 +43,7 @@ describe("shared texts of events over several days", () => {
       "• Vie 13 – dom 15 — *Level Up* (@levelupbfc)",
       "• Sáb 31 oct – lun 2 nov — *Aniversario* (@distritosocialbog)",
     ]);
-    expect(shortDayLabel(congress)).toBe("VIE 13 – DOM 15");
+    expect(shareRowWhen(congress)).toBe("VIE 13 – DOM 15");
   });
 
   it("one event says its days in full", () => {

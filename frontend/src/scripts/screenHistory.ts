@@ -115,7 +115,7 @@ export function initScreenHistory(screenHooks: Hooks) {
     if (jumpedBack && state.screen && !state.overlay) window.scrollTo({ top: state.screen.scrollY, behavior: "auto" });
   });
   // Before an in-page jump: this entry remembers where the page was, for back to return there.
-  if (typeof document === "undefined") return; // unit tests: a fake history, no page
+  if (typeof document?.addEventListener !== "function") return; // unit tests: a fake history, no real page
   document.addEventListener(
     "click",
     (domEvent) => {

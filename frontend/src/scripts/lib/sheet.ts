@@ -25,6 +25,10 @@ const BACKDROP_FADE = 0.8; // backdrop opacity lost at full drag progress
 const RUBBER_BAND = 60; // px: most it moves when dragged up past the top
 
 const closing = new WeakSet<HTMLDialogElement>();
+/** What had the focus when each panel sheet opened; for one that took another's place, what opened that one. */
+const openers = new WeakMap<HTMLDialogElement, Element | null>();
+/** Panel sheets open in another's place: closing gives the focus back to their opener (initPanelSheet). */
+const tookPlace = new WeakSet<HTMLDialogElement>();
 
 /**
  * Slide the sheet away, then close it. `velocity` (px/ms) carries a flick's speed into the exit;
@@ -133,10 +137,19 @@ function initSheet(sheet: HTMLDialogElement, canStartDrag: (target: HTMLElement)
  * Open a panel sheet with its own history entry (same URL), like the event drawer's: the phone's back
  * button closes this sheet only, and the next back what was under it (the drawer, then the list).
  * `replacing`: a sheet it takes the place of (a post chosen among an event's posts): that one slides away and
- * this one takes over its history entry, so back doesn't step through a sheet that's gone.
+ * this one takes over its history entry, so back doesn't step through a sheet that's gone, and its opener (the
+ * details' "Ver las 3 publicaciones"): the browser would give the focus back to the post's thumbnail, inside the
+ * closed sheet, which leaves it nowhere.
  */
 export function openPanelSheet(sheet: HTMLDialogElement, { replacing }: { replacing?: HTMLDialogElement } = {}) {
   const takeOver = replacing?.open && historyState().sheet === replacing.id;
+  if (replacing?.open) {
+    openers.set(sheet, openers.get(replacing) ?? null);
+    tookPlace.add(sheet);
+  } else {
+    openers.set(sheet, document.activeElement);
+    tookPlace.delete(sheet);
+  }
   sheet.showModal();
   // Over the entry it opens on (the screen, or the event details under it), marked as an overlay: undoing a screen
   // move from inside it doesn't go back through it (screenHistory.ts, `leave`).
@@ -164,12 +177,21 @@ export function initPanelSheet(
     else onClick?.(target);
   });
   initSheet(sheet, (target) => Boolean(target.closest(".sheet-panel__head")) || scroller.scrollTop <= 0);
-  // Closed by ×, backdrop, Escape or a drag: leave its history entry the way back would.
+  // Closed by ×, backdrop, Escape or a drag: leave its history entry the way back would. One open in another's place
+  // gives the focus back to that one's opener (openPanelSheet), if it's still on the page.
   sheet.addEventListener("close", () => {
     if (historyState().sheet === sheet.id) history.back();
+    const opener = openers.get(sheet);
+    if (tookPlace.has(sheet) && opener?.isConnected) (opener as HTMLElement).focus({ preventScroll: true });
+    tookPlace.delete(sheet);
+    openers.delete(sheet);
   });
-  // Back: the entry under this sheet's is now current, so the sheet goes.
+  // Back: the entry under this sheet's is now current, so the sheet goes. Forward onto its entry once it's closed: its
+  // content is gone (a post, a profile), so that entry is a dead step: back over it. Otherwise the details under it
+  // would need two ×, the first only leaving this entry.
   window.addEventListener("popstate", (domEvent) => {
-    if (sheet.open && historyState(domEvent.state).sheet !== sheet.id) dismissSheet(sheet);
+    const onItsEntry = historyState(domEvent.state).sheet === sheet.id;
+    if (sheet.open && !onItsEntry) dismissSheet(sheet);
+    else if (!sheet.open && onItsEntry) history.back();
   });
 }

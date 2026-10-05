@@ -6,14 +6,15 @@
 //     dropped them.) Their names exist only after the build: scripts/sw-precache.mjs writes them in.
 //   - Pages: network first, so the events are always the latest when online; the last copy when offline.
 //   - The build's own files (/_astro/, names change with their content): cache first.
-//   - Flyers and thumbnails: cache first, the most recent IMAGE_LIMIT. A flyer made again keeps its name, so the
-//     cache's name carries the images' version (src/images.ts: a hash of the flyers and the thumbnails' settings):
-//     when any changes, the new worker starts a new image cache and drops the old one.
+//   - Flyers and thumbnails: cache first, in one image cache kept across builds, the most recent IMAGE_LIMIT. Their
+//     URLs carry each file's version (`?v=`, src/images.ts), so a flyer made again under its name is a new URL: it's
+//     fetched, and replaces its older copies (same path, another ?v=). Offline, an older copy is better than none.
+//     (Until October 2026 the cache's name carried a hash of every flyer, so each new flyer, nearly every sweep,
+//     dropped a returning visitor's whole image cache. Those "images-<hash>" caches are deleted once, like any other.)
 //   - Anything from other sites (fonts, Instagram, statistics) and everything else: straight to the network.
 // Each build gets its own version: the new worker takes over at once and drops the old pages and files.
 
 import type { APIRoute } from "astro";
-import { IMAGES_VERSION } from "../images";
 import { BUILD_FILE_LIST } from "../../scripts/sw-precache.mjs";
 
 const VERSION = new Date().toISOString(); // this build
@@ -23,7 +24,7 @@ const worker = `
 const VERSION = ${JSON.stringify(VERSION)};
 const PAGES = "pages-" + VERSION;
 const BUILD_FILES = "build-" + VERSION;
-const IMAGES = "images-" + ${JSON.stringify(IMAGES_VERSION)};
+const IMAGES = "images";
 const IMAGE_LIMIT = ${IMAGE_LIMIT};
 const BUILD_FILE_LIST = ${BUILD_FILE_LIST};
 
@@ -57,7 +58,7 @@ self.addEventListener("fetch", (event) => {
   if (url.origin !== self.location.origin) return;
   if (request.mode === "navigate") event.respondWith(networkFirst(request));
   else if (url.pathname.startsWith("/_astro/")) event.respondWith(cacheFirst(request, BUILD_FILES));
-  else if (/^\\/(flyers|thumbs)\\//.test(url.pathname)) event.respondWith(cacheFirst(request, IMAGES, IMAGE_LIMIT));
+  else if (/^\\/(flyers|thumbs)\\//.test(url.pathname)) event.respondWith(cachedImage(request));
 });
 
 async function networkFirst(request) {
@@ -71,19 +72,36 @@ async function networkFirst(request) {
   }
 }
 
-async function cacheFirst(request, name, limit) {
+async function cacheFirst(request, name) {
   const cache = await caches.open(name);
-  // Files named by their content or post: any copy will do, whatever headers it was stored with (the build's files
-  // are stored at install, without the Origin a page's module script sends).
+  // Files named by their content: any copy will do, whatever headers it was stored with (the build's files are stored
+  // at install, without the Origin a page's module script sends).
   const cached = await cache.match(request, { ignoreVary: true });
   if (cached) return cached;
   const response = await fetch(request);
+  if (response.ok) await cache.put(request, response.clone());
+  return response;
+}
+
+// A flyer or a thumbnail, by its URL with its version (?v=): a new version replaces the file's older copies, and the
+// cache keeps the most recent IMAGE_LIMIT. Offline, an older copy of the file is better than none.
+async function cachedImage(request) {
+  const cache = await caches.open(IMAGES);
+  const cached = await cache.match(request, { ignoreVary: true });
+  if (cached) return cached;
+  let response;
+  try {
+    response = await fetch(request);
+  } catch (error) {
+    const older = await cache.match(request, { ignoreVary: true, ignoreSearch: true });
+    if (older) return older;
+    throw error;
+  }
   if (response.ok) {
+    await cache.delete(request, { ignoreSearch: true });
     await cache.put(request, response.clone());
-    if (limit) {
-      const keys = await cache.keys();
-      for (const key of keys.slice(0, Math.max(keys.length - limit, 0))) await cache.delete(key);
-    }
+    const keys = await cache.keys();
+    for (const key of keys.slice(0, Math.max(keys.length - IMAGE_LIMIT, 0))) await cache.delete(key);
   }
   return response;
 }

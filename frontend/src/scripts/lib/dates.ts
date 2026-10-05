@@ -22,6 +22,22 @@ export function todayIso(): string {
   return bogotaDate.format(new Date());
 }
 
+const bogotaClock = new Intl.DateTimeFormat("en-CA", {
+  timeZone: "America/Bogota",
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+  hour: "2-digit",
+  minute: "2-digit",
+  hourCycle: "h23",
+});
+
+/** Now in Bogotá, "YYYY-MM-DD HH:MM": compared with when an event is over (endsAt). */
+export function nowInBogota(): string {
+  const part = Object.fromEntries(bogotaClock.formatToParts(new Date()).map(({ type, value }) => [type, value]));
+  return `${part.year}-${part.month}-${part.day} ${part.hour}:${part.minute}`;
+}
+
 /** The first day of the current month in Bogotá. */
 export function currentMonth(): Date {
   return startOfMonth(parseIsoDate(todayIso()));
@@ -108,13 +124,38 @@ export function shownSession(event: EventDays & { sessions: Session[] }, today =
   return nextSession(event, today) ?? event.sessions.at(-1)!;
 }
 
+/** What endsAt reads of an event. */
+type EventEnd = EventDays & Pick<DanceEvent, "start_time" | "end_time">;
+
 /**
- * The day the list shows the event under: its date; today while an event over several days goes on (a congress
- * since Friday is "Hoy"); a series' next session (it moves to the following one once a session passes).
+ * When the event is over, "YYYY-MM-DD HH:MM" in Bogotá: the end of its last day ("24:00"), or, for a night past
+ * midnight (a one-day event, or a series' last session, ending before it starts: 21:00–03:00; end_date stays null,
+ * docs/DATA.md), its end time the morning after. Over several days the times are the first day's start and the last
+ * day's end, so they don't say that.
  */
-export function shownDay(event: EventDays, today = todayIso()): string {
-  if (isSeries(event)) return shownSession(event, today).date;
-  return event.date < today && lastDay(event) >= today ? today : event.date;
+export function endsAt(event: EventEnd): string {
+  const last = lastDay(event);
+  const times = isSeries(event) ? event.sessions.at(-1)! : isMultiDay(event) ? null : event;
+  const { start_time: start, end_time: end } = times ?? {};
+  return start && end && end > "00:00" && end < start ? `${addDays(last, 1)} ${end}` : `${last} 24:00`;
+}
+
+/**
+ * Whether the event is still to come or on: before endsAt. The one rule for the list, "Guardados", the event page's
+ * "Este evento ya pasó", a shared link and the 404 page. `now`: Bogotá's "YYYY-MM-DD HH:MM" (nowInBogota), or a day
+ * alone, which means its start (anything still on that morning counts).
+ */
+export function isUpcoming(event: EventEnd, now = nowInBogota()): boolean {
+  return now < endsAt(event);
+}
+
+/**
+ * The day the list shows the event under: its date (a series: its next session's); today while it goes on after
+ * starting on an earlier day (a congress since Friday is "Hoy", and so is last night's social still on at 1 a. m.).
+ */
+export function shownDay(event: EventEnd, today = todayIso()): string {
+  const day = isSeries(event) ? shownSession(event, today).date : event.date;
+  return day < today && isUpcoming(event, today) ? today : day;
 }
 
 /**

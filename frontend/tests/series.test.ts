@@ -8,7 +8,7 @@ import { addDays, daysOf, isMultiDay, isSeries, lastDay, nextSession, shownDay }
 import { cardWhenLabel, eventDaysLabel, sessionsLabel, stickerDate } from "../src/scripts/lib/format";
 import { eventTimes, feedbackUrl } from "../src/scripts/lib/links";
 import { previewCard, previewTitle, previewVersion } from "../src/scripts/lib/linkPreview";
-import { eventShareText, periodShareText } from "../src/scripts/lib/shareText";
+import { eventShareText, periodShareText, shareRowWhen } from "../src/scripts/lib/shareText";
 import {
   createInitialState,
   dateOptions,
@@ -343,6 +343,20 @@ describe("a series when shared", () => {
     expect(eventShareText(series).split("\n")[1]).toBe("4 sesiones: 8, 22, 29 nov y 6 dic · 2:00 p. m.");
     on("2026-11-23");
     expect(periodShareText("Este finde en Bogotá", [series])).toContain("• Dom 29 · 2:00 p. m. — *Programa intensivo de bachata*");
+  });
+
+  it("a shared list's image gives its next session's day and time, not the first session's time", () => {
+    const evenings = seriesEvent({
+      sessions: [
+        { date: "2026-11-08", start_time: "14:00", end_time: "17:00" },
+        { date: "2026-11-22", start_time: "19:00", end_time: "21:00" },
+      ],
+    });
+    expect(shareRowWhen(evenings, "2026-10-04")).toBe("DOM 8 · 2:00 p. m.");
+    expect(shareRowWhen(evenings, "2026-11-10")).toBe("DOM 22 · 7:00 p. m.");
+    on("2026-11-10");
+    expect(shareRowWhen(evenings)).toBe("DOM 22 · 7:00 p. m.");
+    expect(periodShareText("Próxima semana en Bogotá", [evenings])).toContain("• Dom 22 · 7:00 p. m.");
   });
 
   it("the report form names its sessions", () => {

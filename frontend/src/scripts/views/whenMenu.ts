@@ -197,9 +197,11 @@ export function initWhenMenu() {
   window.addEventListener("scroll", follow, { passive: true });
   window.addEventListener("resize", follow);
   byId("jump-chips").addEventListener("scroll", follow, { passive: true });
-  // Back: the entry under the menu's is now current.
+  // Back: the entry under the menu's is now current. Forward onto its entry once it's closed: a dead step, back over it
+  // (as the sheets do, lib/sheet.ts).
   window.addEventListener("popstate", (event) => {
     if (historyState(event.state).menu !== MENU) hide();
+    else if (!isWhenMenuOpen()) history.back();
   });
 }
 

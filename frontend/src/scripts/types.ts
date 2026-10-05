@@ -32,6 +32,7 @@ export interface EventMedia {
   caption: string | null;
   width?: number; // the flyer's size in pixels, added at build time (src/data.ts)
   height?: number;
+  version?: string; // a short hash of the flyer's file, added at build time (src/data.ts): its URL's ?v= (src/images.ts)
 }
 
 /** One dated session of a workshop series (docs/DATA.md, "Workshop series"). */
