@@ -51,3 +51,13 @@ describe("Guardados: a place of its own", () => {
     expect(read("src/pages/sw.js.ts")).toContain('"/guardados/"');
   });
 });
+
+describe("the page's own marks never look like controls", () => {
+  it("the view on screen is marked on <body> as data-screen: a data-view there made every click a tap on the tab", () => {
+    const main = readFileSync(new URL("../src/scripts/main.ts", import.meta.url), "utf8");
+    const css = readFileSync(new URL("../src/styles/components/toolbar.css", import.meta.url), "utf8");
+    expect(main).toContain("document.body.dataset.screen = state.view");
+    expect(main).not.toMatch(/document\.(body|documentElement)\.dataset\.view\b/);
+    expect(css).not.toContain("body[data-view");
+  });
+});
