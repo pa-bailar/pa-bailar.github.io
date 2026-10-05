@@ -18,7 +18,8 @@ This repository only builds and publishes the site.
 
 ## Develop
 
-Requires Node.js 24 (`.nvmrc`). From `frontend/`:
+Requires Node.js 24 (`.nvmrc`). No keys or `.env` file are needed: the build reads only public data (the deploy
+passes it the version and the last check time, `PUBLIC_VERSION` and `PUBLIC_CHECKED_AT`). From `frontend/`:
 
 ```bash
 npm ci          # first time
