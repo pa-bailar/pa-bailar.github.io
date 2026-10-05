@@ -22,7 +22,17 @@ import {
   previewTitle,
   previewVersion,
 } from "../../scripts/lib/linkPreview";
-import { BASE_URL, eventPageUrl, eventTimes, flyerUrl, mainMedia, previewImagePath, sessionTimes, type EventTimes } from "../../scripts/lib/links";
+import {
+  BASE_URL,
+  eventPageUrl,
+  eventTimes,
+  flyerUrl,
+  mainMedia,
+  previewImagePath,
+  profileUrl,
+  sessionTimes,
+  type EventTimes,
+} from "../../scripts/lib/links";
 import { eventDetailHtml } from "../../scripts/views/eventDetail";
 
 export function getStaticPaths() {
@@ -105,7 +115,7 @@ const structuredData = {
   url: eventPageUrl(event),
   ...(flyer ? { image: [new URL(flyer, Astro.site).href] } : {}),
   location,
-  organizer: { "@type": "Organization", name: event.organizer ?? `@${event.account}`, url: `https://www.instagram.com/${event.account}/` },
+  organizer: { "@type": "Organization", name: event.organizer ?? `@${event.account}`, url: profileUrl(event.account) },
   ...(event.prices.length
     ? {
         offers: event.prices.map((price) => ({

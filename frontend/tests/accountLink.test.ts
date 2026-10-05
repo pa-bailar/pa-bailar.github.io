@@ -38,14 +38,12 @@ describe("an account's link", () => {
   });
 
   it("no source file writes its own instagram.com profile link", () => {
-    // Allowed: the helpers that build profile URLs, Instagram's player, the viewer's way out, metadata and comments.
+    // Allowed: the helper that builds profile URLs, Instagram's player, the viewer's way out, and a comment.
     const allowed = new Set([
       "scripts/lib/links.ts",
-      "scripts/lib/contact.ts",
       "scripts/lib/instagramEmbed.ts",
       "scripts/types.ts",
       "components/PostViewer.astro",
-      "pages/evento/[id].astro",
     ]);
     const root = path.resolve(__dirname, "../src");
     const files: string[] = [];
