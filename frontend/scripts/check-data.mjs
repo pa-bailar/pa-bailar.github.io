@@ -43,6 +43,41 @@ const isDate = (value) =>
   DATE.test(value ?? "") && new Date(`${value}T00:00:00Z`).toISOString().slice(0, 10) === value;
 const daysFrom = (start, end) => Math.round((Date.parse(`${end}T00:00:00Z`) - Date.parse(`${start}T00:00:00Z`)) / 86_400_000);
 const MAX_EVENT_DAYS = 7; // the backend's config.MAX_EVENT_DAYS
+// A workshop series (docs/DATA.md, "Workshop series"): the backend's MIN_SERIES_SESSIONS, MAX_SERIES_SESSIONS and
+// MAX_SERIES_DAYS (the last session at most this many days in all after the first: end_date ≤ date + 122).
+const MIN_SERIES_SESSIONS = 2;
+const MAX_SERIES_SESSIONS = 12;
+const MAX_SERIES_DAYS = 123;
+
+/**
+ * What breaks a workshop series' rules (the backend's models.series_problems): from MIN to MAX sessions, each with a
+ * real date and its two times (HH:MM or null), in order without repeats, the last at most MAX_SERIES_DAYS days in all
+ * after the first; `date` the first session's and `end_date` the last's.
+ */
+function seriesProblems(event) {
+  const sessions = event.sessions;
+  if (!Array.isArray(sessions)) return ["sessions must be a list or null"];
+  const problems = [];
+  if (sessions.length < MIN_SERIES_SESSIONS || sessions.length > MAX_SERIES_SESSIONS) {
+    problems.push(`${sessions.length} sessions: ${MIN_SERIES_SESSIONS} to ${MAX_SERIES_SESSIONS} expected`);
+  }
+  const dates = sessions.map((session) => session?.date);
+  if (!dates.every(isDate)) problems.push("a session without a valid date");
+  else if (dates.some((date, index) => index > 0 && date <= dates[index - 1])) problems.push("sessions out of order or repeated");
+  else if (dates.length && daysFrom(dates[0], dates.at(-1)) + 1 > MAX_SERIES_DAYS) {
+    problems.push(`sessions over more than ${MAX_SERIES_DAYS} days`);
+  }
+  for (const session of sessions) {
+    const times = [session?.start_time, session?.end_time];
+    if (times.some((time) => time === undefined || (time !== null && !TIME.test(time)))) {
+      problems.push(`bad times in the session of ${session?.date}: HH:MM or null`);
+    }
+  }
+  if (sessions.length && (event.date !== dates[0] || event.end_date !== dates.at(-1))) {
+    problems.push("date and end_date must be the first and last sessions' dates");
+  }
+  return problems;
+}
 
 /**
  * What in `events` and `meta` (events.json and meta.json, parsed) breaks the contract, one line each: none, they're
@@ -76,8 +111,11 @@ export function checkData(events, meta, fileExists) {
       check(isNullableString(event[field]), at, `${field} must be a string or null`);
     }
     check(isDate(event.date), at, `bad date ${event.date}`);
-    // Over several consecutive days: the last one, after `date` and at most MAX_EVENT_DAYS in all.
-    if (event.end_date != null) {
+    // A workshop series: its sessions' rules instead of the days' limit (its end_date is its last session).
+    if (event.sessions != null) {
+      for (const problem of seriesProblems(event)) check(false, at, `bad sessions: ${problem}`);
+    } else if (event.end_date != null) {
+      // Over several consecutive days: the last one, after `date` and at most MAX_EVENT_DAYS in all.
       const days = isDate(event.end_date) && isDate(event.date) ? daysFrom(event.date, event.end_date) + 1 : NaN;
       check(days > 1 && days <= MAX_EVENT_DAYS, at, `bad end_date ${event.end_date}: after date, ${MAX_EVENT_DAYS} days at most`);
     }

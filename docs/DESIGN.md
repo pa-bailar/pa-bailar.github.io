@@ -141,7 +141,7 @@ few set from scripts are listed there): an undefined `--text-base` once left the
 ## Signature motifs
 
 - **70s stripes** (`<Stripes />`): three bands (tomato, orange, marigold). Used in the page headers (home, event page, 404), the event detail and the footer; the period headings use the same three colors as one thin line. Don't use them anywhere else; they lose meaning if repeated. The one exception: the cards' "Detalles ›" has a printer's offset under its frame in the same three colors, as a smooth gradient (the owner's choice; see "Opening an event").
-- **Date sticker:** a round "record label" with the day and month, inside the bottom-right corner of each flyer, on cards and in the event detail. Two events sharing one flyer (a monthly schedule) are told apart by it while swiping. An event over several days within one month shows its days, "13–15 / NOV", a size smaller (`--text-sm`, `.date-sticker--range`) to fit the 60 px circle; across months it keeps the first day ("31 / OCT"), and the card's line gives the range.
+- **Date sticker:** a round "record label" with the day and month, inside the bottom-right corner of each flyer, on cards and in the event detail. Two events sharing one flyer (a monthly schedule) are told apart by it while swiping. An event over several days within one month shows its days, "13–15 / NOV", a size smaller (`--text-sm`, `.date-sticker--range`) to fit the 60 px circle; across months it keeps the first day ("31 / OCT"), and the card's line gives the range. A workshop series shows its next session ("29 / NOV"), the last once all have passed.
 - **Italic headings:** group, day and month headings in Bodoni italic, like a handwritten setlist.
 
 The light theme's creams are the paper of 1970s salsa flyers and sleeves. The page uses the slightly darker, aged tone (`#ECDDC6`) rather than near-white, so it isn't glaring. Cards sit one step lighter so they still lift off the page.
@@ -177,6 +177,18 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves. The pa
   | its last day | En curso · último día |
 
   The detail's "Cuándo" reads "Viernes 13 al domingo 15 de noviembre · hora por confirmar", and shared lists "Vie 13 – dom 15".
+- **A workshop series** (one program on separate dated sessions, `DATA.md`) is one card, listed under its next session's
+  day (among that day's events by its time) and moving on as each session passes; it leaves the list after the last.
+  Its card says the next session (`cardWhenLabel`), its sticker shows that session's day:
+
+  | When | Card |
+  |---|---|
+  | further than a week | 4 sesiones · próxima: dom 22 nov |
+  | within a week | Domingo · 2:00 p. m. · sesión 3 de 4 (Hoy, Mañana as for any event; the session's own time) |
+  | after the last | 4 sesiones · 8 nov – 6 dic (only on its page) |
+
+  The detail's "Cuándo" reads "4 sesiones: 8, 22, 29 nov y 6 dic · 2:00 p. m. – 5:00 p. m." ("horario de cada sesión
+  abajo" when their times differ), and shared texts the same; a period's shared list gives its next session.
 - **The academy on each card** is a button: it filters the list to that academy, shown as "@academia ×" in the phone bar and "Solo eventos de @academia · Ver todas las academias" in the toolbar on wide screens. It sits above the card's stretched click area.
 - **Free events** show their price as a green "Gratis" label (`--free` / `--on-free`, checked for contrast).
 - **Empty results** always offer a way out (see "Filters"): "Limpiar filtros", "Borrar la búsqueda", "Ver todos, no
@@ -216,7 +228,8 @@ What a chat shows when an event's link is shared (WhatsApp, Instagram, iMessage,
 time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section 3.4).
 
 - **Title and description:** "Intensivo Ritmos Cubanos — dom 4 oct, 9:00 a. m." ("Level Up Bachata Fusion Congress —
-  13–15 nov" over several days) and "Taller de salsa cubana · Cra 16 #52-46 · Desde $ 35.000 · Pa' Bailar"
+  13–15 nov" over several days; a workshop series "… — 4 sesiones desde dom 8 nov, 2:00 p. m.", with "4 sesiones desde el
+  domingo 8 de noviembre" and its first session's sticker on the image: true for as long as a chat keeps it) and "Taller de salsa cubana · Cra 16 #52-46 · Desde $ 35.000 · Pa' Bailar"
   (`lib/linkPreview.ts`). The date is in the title because descriptions are often cut.
 - **The image, 1200×630** (1.91:1, the shape every app shows whole; a vertical flyer alone gets cropped or
   shrunk), the flyer on the left and the event on the right:
@@ -389,7 +402,9 @@ screens in the toolbar's chip rows:
   periods, events on during either; a period and a rhythm, that rhythm in that period. Search and "Guardados" narrow
   further.
 - **An event over several days counts for every day it runs:** a festival from Sunday to Tuesday is in "Finde" and in
-  "Próx. semana"; a congress under way is in "Hoy" and, while it goes on tomorrow, in "Mañana".
+  "Próx. semana"; a congress under way is in "Hoy" and, while it goes on tomorrow, in "Mañana". A workshop series counts
+  for every period with a session to come, once each, and not for the days between sessions (the day before a session,
+  "Mañana").
 - **"Mañana"** overlaps the periods (tomorrow is in "Esta semana", the weekend or next week): it's an extra option,
   shown only when something is on tomorrow and never as a group unless chosen.
 - **Choosing a date** shows just those periods, at the top of the list, whole (no summary rows, no "Ver N más").
@@ -493,11 +508,14 @@ list. Now they open like Instagram's comments: a drawer rises over the list, and
   (`--scrim` at 32% at half height, 55% at full, following the drawer). It only scrolls when the tapped card would be
   mostly hidden: then its flyer's top goes right under the bar.
 - **No flyer, no thumbnail:** the visitor is looking at the card. The head: the date line (`--accent`), the title
-  (Shrikhand), the type tag and @account, and × on the right. Then **Cómo llegar** (only with a place) · **Compartir** ·
+  (Shrikhand), the type tag and "@account ↗" (a link to its Instagram profile, in `--accent-text`, bold; its tap area
+  44px tall without making the line taller; on a card the account filters the list instead), and × on the right. Then **Cómo llegar** (only with a place) · **Compartir** ·
   **Guardar** ("Guardado", in the accent color, once saved), equal buttons with the icon over the word; the stripes;
   **Cuándo, Lugar, Precio** (one line: "Desde $ 25.000 · 3 opciones", "Gratis" or "Por confirmar") and **Organiza**
   (the organizer and the account, said once when they're the same), then Con, Incluye, Contacto; the prices when
-  there's more than one; the rhythms; the media links, outlined rows ("Ver el video con sonido", "Ver las 4 imágenes",
+  there's more than one (a workshop series' **Sesiones** come first: one row each, "Dom 8 nov", with its times when
+  they differ between sessions; the next one marked by a 3px `--accent` bar and "PRÓXIMA" ("HOY" on its day) in
+  `--accent-text`, those past in `--text-muted` with "YA PASÓ"); the rhythms; the media links, outlined rows ("Ver el video con sonido", "Ver las 4 imágenes",
   "Ver las 3 publicaciones"); "Ver en Instagram ↗"; the post's text; "¿Algo está mal? Repórtalo". At half height,
   when, where and the price are on screen.
 - **Two heights:** half and full (12px from the top, `--drawer-top-gap`). Pulling it up, or scrolling its content at

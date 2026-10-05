@@ -5,16 +5,21 @@
 import type { DanceEvent, EventMedia } from "../types";
 import { byId, escapeHtml } from "../lib/dom";
 import {
+  capitalize,
   cardWhenLabel,
   eventDaysLabel,
   formatMoney,
   formatTime,
   placeLabel,
   priceSummary,
+  sameSessionTimes,
+  sessionDayLabel,
   stickerDate,
   stylesLabel,
+  timeSpanLabel,
   typeLabel,
 } from "../lib/format";
+import { isSeries, nextSession, todayIso } from "../lib/dates";
 import { contactLink, type ContactKind } from "../lib/contact";
 import { ICONS } from "../lib/icons";
 import { feedbackUrl, flyerUrl, mapsUrl, previewUrl } from "../lib/links";
@@ -49,7 +54,14 @@ function toConfirm(text = "Por confirmar"): string {
  */
 function detailRows(event: DanceEvent): [string, string][] {
   const time = [formatTime(event.start_time), formatTime(event.end_time)].filter(Boolean).join(" – ");
-  const when = `${escapeHtml(eventDaysLabel(event))} · ${time ? escapeHtml(time) : toConfirm("hora por confirmar")}`;
+  // A series whose sessions have different times gives each its own, in the list of sessions.
+  const perSession = isSeries(event) && !sameSessionTimes(event.sessions);
+  const timeHtml = perSession
+    ? `<span class="to-confirm">horario de cada sesión abajo</span>`
+    : time
+      ? escapeHtml(time)
+      : toConfirm("hora por confirmar");
+  const when = `${escapeHtml(eventDaysLabel(event))} · ${timeHtml}`;
   // The venue may be the organizer's own place (placeLabel leaves it out then): still the place to go.
   const place = placeLabel(event) || event.venue || "";
   const maps = mapsUrl(event);
@@ -77,6 +89,32 @@ export function sheetPrice(event: DanceEvent): string {
   const free = event.prices.every((price) => price.amount_cop === 0);
   const options = event.prices.length > 1 ? ` <span class="to-confirm">· ${event.prices.length} opciones</span>` : "";
   return `${free ? "Gratis" : escapeHtml(summary)}${options}`;
+}
+
+/**
+ * A workshop series' sessions, one per line: "Dom 8 nov", with its times when they differ between sessions. The next
+ * one is marked "Próxima" (or "Hoy"), those past are dimmed with "Ya pasó". As of `today`: the drawer's is the
+ * visitor's; an event's page is built hours earlier, so its script draws them again (eventPage.ts).
+ */
+export function sessionsHtml(event: DanceEvent, today = todayIso()): string {
+  if (!isSeries(event)) return "";
+  const next = nextSession(event, today);
+  const withTimes = !sameSessionTimes(event.sessions);
+  const items = event.sessions
+    .map((session) => {
+      const past = session.date < today;
+      const isNext = session === next;
+      const tag = past ? "Ya pasó" : isNext ? (session.date === today ? "Hoy" : "Próxima") : "";
+      const time = withTimes ? timeSpanLabel(session.start_time, session.end_time) || "Hora por confirmar" : "";
+      const state = past ? " is-past" : isNext ? " is-next" : "";
+      return `<li class="session-list__item${state}">
+        <span class="session-list__day">${escapeHtml(capitalize(sessionDayLabel(session.date)))}</span>
+        ${time ? `<span class="session-list__time">${escapeHtml(time)}</span>` : ""}
+        ${tag ? `<span class="session-list__tag">${tag}</span>` : ""}
+      </li>`;
+    })
+    .join("");
+  return `<h3 class="event-detail__subheading">Sesiones</h3><ol class="session-list">${items}</ol>`;
 }
 
 function pricesHtml(event: DanceEvent): string {
@@ -144,12 +182,21 @@ function mediaHtml(event: DanceEvent, media: EventMedia, selected: number): stri
     </div>`;
 }
 
-/** When, the title, the type tag and the account: the head of the drawer, and of the page under the flyer. */
+/** The account's Instagram profile ("https://www.instagram.com/academia/"). */
+export function profileUrl(account: string): string {
+  return `https://www.instagram.com/${encodeURIComponent(account)}/`;
+}
+
+/**
+ * When, the title, the type tag and the account: the head of the drawer, and of the page under the flyer. The account
+ * opens its Instagram profile (on a card, it filters the list to it instead).
+ */
 function headHtml(event: DanceEvent, { heading, titleId }: { heading: "h1" | "h2"; titleId: string }): string {
+  const account = escapeHtml(event.account);
   return `
     <p class="event-detail__when">${escapeHtml(cardWhenLabel(event))}</p>
     <${heading} class="event-detail__title" id="${titleId}" tabindex="-1">${escapeHtml(event.title)}</${heading}>
-    <p class="event-detail__by"><span class="tag-type t-${escapeHtml(event.event_type)}">${typeLabel(event.event_type)}</span><span>@${escapeHtml(event.account)}</span></p>`;
+    <p class="event-detail__by"><span class="tag-type t-${escapeHtml(event.event_type)}">${typeLabel(event.event_type)}</span><a class="event-detail__account" href="${escapeHtml(profileUrl(event.account))}" target="_blank" rel="noopener" data-track="instagram-cuenta" aria-label="Abrir @${account} en Instagram">@${account}<span aria-hidden="true">↗</span></a></p>`;
 }
 
 /**
@@ -196,6 +243,7 @@ function bodyHtml(event: DanceEvent, selected: number): string {
     </div>
     <div class="stripes" aria-hidden="true"><i></i><i></i><i></i></div>
     <dl class="detail-list">${rows}</dl>
+    ${sessionsHtml(event)}
     ${pricesHtml(event)}
     ${styles ? `<p class="style-list">${escapeHtml(styles)}</p>` : ""}
     ${lowConfidence}

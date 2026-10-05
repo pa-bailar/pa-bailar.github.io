@@ -3,7 +3,7 @@
 // of it goes. Pure functions, so they're tested (tests/shareText.test.ts).
 
 import type { DanceEvent } from "../types";
-import { isMultiDay, lastDay, parseIsoDate } from "./dates";
+import { isMultiDay, isSeries, lastDay, parseIsoDate, shownSession, todayIso } from "./dates";
 import {
   capitalize,
   eventCountLabel,
@@ -11,6 +11,7 @@ import {
   formatTime,
   placeLabel,
   priceSummary,
+  sameSessionTimes,
   shortRangeLabel,
 } from "./format";
 
@@ -19,10 +20,17 @@ const LOCALE = "es-CO";
 const part = (iso: string, options: Intl.DateTimeFormatOptions) =>
   new Intl.DateTimeFormat(LOCALE, options).format(parseIsoDate(iso));
 
-/** "Sáb 3", or "Vie 13 – dom 15" for an event over several days. */
-function shortDays(event: DanceEvent): string {
+/** The day an event is shared on, and its start time: its date, or a series' next session (as listed). */
+function sharedDay(event: DanceEvent, today: string): { day: string; time: string | null } {
+  if (!isSeries(event)) return { day: event.date, time: event.start_time };
+  const session = shownSession(event, today);
+  return { day: session.date, time: session.start_time };
+}
+
+/** "Sáb 3", "Vie 13 – dom 15" for an event over several days, or a series' next session. */
+function shortDays(event: DanceEvent, today = todayIso()): string {
   if (isMultiDay(event)) return shortRangeLabel(event.date, lastDay(event), false);
-  return capitalize(part(event.date, { weekday: "short", day: "numeric" }).replace(".", ""));
+  return capitalize(part(sharedDay(event, today).day, { weekday: "short", day: "numeric" }).replace(".", ""));
 }
 
 /** "SÁB 3" or "VIE 13 – DOM 15": the day on a share card's row. */
@@ -30,10 +38,11 @@ export function shortDayLabel(event: DanceEvent): string {
   return shortDays(event).toUpperCase();
 }
 
-/** "Sáb 3 · 6:00 p. m.": a line's start in a shared list. */
+/** "Sáb 3 · 6:00 p. m.": a line's start in a shared list (a series: its next session's). */
 function listDay(event: DanceEvent): string {
-  const day = shortDays(event);
-  const time = formatTime(event.start_time);
+  const today = todayIso();
+  const day = shortDays(event, today);
+  const time = formatTime(sharedDay(event, today).time);
   return time ? `${day} · ${time}` : day;
 }
 
@@ -53,9 +62,11 @@ export function plansShareText(events: DanceEvent[], eventUrl: (event: DanceEven
   return [`*Mis planes para bailar* 💃🕺 (${eventCountLabel(events.length)})`, ...lines].join("\n");
 }
 
-/** One event: title, when, where and price (the link goes alongside, with the flyer as preview). */
+/** One event: title, when, where and price (the link goes alongside, with the flyer as preview). A series: its
+ * sessions ("4 sesiones: 8, 22, 29 nov y 6 dic"), with the time when every session has the same. */
 export function eventShareText(event: DanceEvent): string {
-  const time = event.start_time ? ` · ${formatTime(event.start_time)}` : "";
+  const start = isSeries(event) && !sameSessionTimes(event.sessions) ? null : event.start_time;
+  const time = start ? ` · ${formatTime(start)}` : "";
   return [`*${event.title}*`, `${eventDaysLabel(event)}${time}`, placeLabel(event), priceSummary(event)]
     .filter(Boolean)
     .join("\n");

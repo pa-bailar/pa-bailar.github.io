@@ -1,7 +1,7 @@
 // URLs built from an event: flyer image, its own page, Google Maps, the report form, and calendar times.
 
-import type { DanceEvent, EventMedia } from "../types";
-import { addDays, isMultiDay, lastDay } from "./dates";
+import type { DanceEvent, EventMedia, Session } from "../types";
+import { addDays, isMultiDay, isSeries, lastDay } from "./dates";
 import { eventDaysLabel, formatTime, priceSummary } from "./format";
 
 export const BASE_URL = import.meta.env.BASE_URL.replace(/\/?$/, "/");
@@ -33,11 +33,16 @@ export function previewUrl(media: EventMedia): string | null {
 
 /**
  * The report form; for an event, with it filled in: "Título (2026-10-03) · <id>", the id to find it. An event over
- * several days gives its days: "Festival (2026-11-13 al 2026-11-15) · <id>".
+ * several days gives its days: "Festival (2026-11-13 al 2026-11-15) · <id>"; a series, its sessions: "Intensivo
+ * (2026-11-08, 2026-11-22, 2026-11-29, 2026-12-06) · <id>".
  */
 export function feedbackUrl(event?: DanceEvent): string {
   if (!event) return FEEDBACK_FORM;
-  const days = isMultiDay(event) ? `${event.date} al ${lastDay(event)}` : event.date;
+  const days = isSeries(event)
+    ? event.sessions.map((session) => session.date).join(", ")
+    : isMultiDay(event)
+      ? `${event.date} al ${lastDay(event)}`
+      : event.date;
   const params = new URLSearchParams({ usp: "pp_url", [FEEDBACK_EVENT_FIELD]: `${event.title} (${days}) · ${event.id}` });
   return `${FEEDBACK_FORM}?${params}`;
 }
@@ -95,21 +100,33 @@ export interface EventTimes {
 /**
  * Start and end for calendars. Without a start time it's an all-day event; without an end time it
  * lasts DEFAULT_DURATION_HOURS; an end before the start means it finishes after midnight. An event over
- * several days is all day from its first day to its last (the end is exclusive: the day after the last).
+ * several days is all day from its first day to its last (the end is exclusive: the day after the last). A workshop
+ * series: its first session (each session's own: sessionTimes).
  */
 export function eventTimes(event: DanceEvent): EventTimes {
-  const day = event.date.replaceAll("-", "");
-  const nextDay = addDays(event.date, 1).replaceAll("-", "");
-  if (isMultiDay(event)) return { start: day, end: addDays(lastDay(event), 1).replaceAll("-", ""), allDay: true };
-  if (!event.start_time) return { start: day, end: nextDay, allDay: true };
+  if (isMultiDay(event)) {
+    return { start: event.date.replaceAll("-", ""), end: addDays(lastDay(event), 1).replaceAll("-", ""), allDay: true };
+  }
+  return dayTimes(event);
+}
 
-  const startHour = Number(event.start_time.slice(0, 2));
+/** A workshop series' sessions, each with its own times, for calendars: one entry per session. */
+export function sessionTimes(event: DanceEvent): EventTimes[] {
+  return (event.sessions ?? []).map(dayTimes);
+}
+
+/** One day's start and end (an event on one day, or one session). */
+function dayTimes({ date, start_time, end_time }: Pick<Session, "date" | "start_time" | "end_time">): EventTimes {
+  const day = date.replaceAll("-", "");
+  const nextDay = addDays(date, 1).replaceAll("-", "");
+  if (!start_time) return { start: day, end: nextDay, allDay: true };
+
+  const startHour = Number(start_time.slice(0, 2));
   const endTime =
-    event.end_time ??
-    `${String((startHour + DEFAULT_DURATION_HOURS) % 24).padStart(2, "0")}:${event.start_time.slice(3)}`;
-  const endDay = endTime <= event.start_time ? nextDay : day;
+    end_time ?? `${String((startHour + DEFAULT_DURATION_HOURS) % 24).padStart(2, "0")}:${start_time.slice(3)}`;
+  const endDay = endTime <= start_time ? nextDay : day;
   return {
-    start: `${day}T${event.start_time.replace(":", "")}00`,
+    start: `${day}T${start_time.replace(":", "")}00`,
     end: `${endDay}T${endTime.replace(":", "")}00`,
     allDay: false,
   };
@@ -117,9 +134,15 @@ export function eventTimes(event: DanceEvent): EventTimes {
 
 /**
  * The calendar feed's description, one line each: when ("9:00 p. m.", "Hora por confirmar"; an event over several
- * days, its days: "Viernes 13 al domingo 15 de noviembre · 8:00 p. m."), the price, the account, the event's page.
+ * days, its days: "Viernes 13 al domingo 15 de noviembre · 8:00 p. m."; a series' session, which one and every one:
+ * "Sesión 2 de 4 · 2:00 p. m.", "4 sesiones: 8, 22, 29 nov y 6 dic"), the price, the account, the event's page.
  */
-export function calendarDescription(event: DanceEvent): string[] {
+export function calendarDescription(event: DanceEvent, session?: Session): string[] {
+  if (session && isSeries(event)) {
+    const which = `Sesión ${event.sessions.indexOf(session) + 1} de ${event.sessions.length}`;
+    const when = [which, formatTime(session.start_time) || "hora por confirmar"].join(" · ");
+    return [when, eventDaysLabel(event), priceSummary(event), `@${event.account}`, eventPageUrl(event)].filter(Boolean);
+  }
   const time = formatTime(event.start_time);
   const when = isMultiDay(event) ? [eventDaysLabel(event), time].filter(Boolean).join(" · ") : time || "Hora por confirmar";
   return [when, priceSummary(event), `@${event.account}`, eventPageUrl(event)].filter(Boolean);
