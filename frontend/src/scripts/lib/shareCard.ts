@@ -14,9 +14,8 @@
 //   ═══ stripes ═══
 
 import type { DanceEvent } from "../types";
-import { formatTime } from "./format";
 import { mainMedia, thumbUrl } from "./links";
-import { shortDayLabel } from "./shareText";
+import { shareRowWhen } from "./shareText";
 import { BRAND } from "./brandColors";
 
 const WIDTH = 1080;
@@ -107,11 +106,10 @@ function drawRow(context: CanvasRenderingContext2D, event: DanceEvent, thumb: HT
 
   const left = PAD + THUMB + 28;
   const width = WIDTH - left - PAD;
-  const time = formatTime(event.start_time);
   context.textBaseline = "top";
   context.fillStyle = PALETTE.logo;
   context.font = FONTS.day;
-  context.fillText([shortDayLabel(event), time].filter(Boolean).join(" · "), left, top + 8);
+  context.fillText(shareRowWhen(event), left, top + 8); // a series: its next session's day and time
   context.fillStyle = PALETTE.ink;
   context.font = FONTS.event;
   const titleLines = wrap(context, event.title, width, 2);

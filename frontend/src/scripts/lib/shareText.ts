@@ -29,17 +29,17 @@ function shortDays(event: DanceEvent, today = todayIso()): string {
   return capitalize(shortWeekdayAndDay(sharedDay(event, today).day));
 }
 
-/** "SÁB 3" or "VIE 13 – DOM 15": the day on a share card's row. */
-export function shortDayLabel(event: DanceEvent): string {
-  return shortDays(event).toUpperCase();
-}
-
-/** "Sáb 3 · 6:00 p. m.": a line's start in a shared list (a series: its next session's). */
-function listDay(event: DanceEvent): string {
-  const today = todayIso();
+/** "Sáb 3 · 6:00 p. m.": a line's start in a shared list (a series: its next session's day and time). */
+function listDay(event: DanceEvent, today = todayIso()): string {
   const day = shortDays(event, today);
   const time = formatTime(sharedDay(event, today).time);
   return time ? `${day} · ${time}` : day;
+}
+
+/** "SÁB 3 · 6:00 p. m." or "VIE 13 – DOM 15": when, on a shared list's image (lib/shareCard.ts); a series: its next
+ * session's day and time, as in the list's text. */
+export function shareRowWhen(event: DanceEvent, today = todayIso()): string {
+  return [shortDays(event, today).toUpperCase(), formatTime(sharedDay(event, today).time)].filter(Boolean).join(" · ");
 }
 
 /** One line per event: "• Sáb 3 · 6:00 p. m. — *Salsa Freestyle* (@madyumdance)". */
