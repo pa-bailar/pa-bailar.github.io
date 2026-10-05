@@ -4,6 +4,8 @@
 //     calendar's day and month move to today if they were the day it was drawn on, and the views draw again.
 //   - Hours later (STALE_AFTER_MS) and online, it loads again instead: the events are embedded at build time, and the
 //     site is rebuilt twice a day with the sweep. The service worker serves pages network first, so that's the latest.
+//   - A page on screen across midnight (Bogotá's): a timer for the next midnight draws it again then (never a reload
+//     under the visitor's eyes), and is set again for the one after.
 
 import type { AppState } from "../types";
 import { parseIsoDate, sameMonth, todayIso, toIsoDate } from "../lib/dates";
@@ -38,7 +40,21 @@ export function resumeAction({
   return today === renderedDay ? "none" : "render";
 }
 
-/** Watches for the page shown again (main.ts, start). `render` draws every view again. */
+const HOUR_MS = 60 * 60 * 1000;
+const BOGOTA_OFFSET_MS = 5 * HOUR_MS; // UTC−5 all year
+const DAY_MS = 24 * HOUR_MS;
+const AFTER_MIDNIGHT_MS = 1000; // a second past it, so "today" is surely the new day
+
+/** How long from `now` until just after the next midnight in Bogotá. */
+export function untilNextDay(now: number): number {
+  const sinceMidnight = (((now - BOGOTA_OFFSET_MS) % DAY_MS) + DAY_MS) % DAY_MS;
+  return DAY_MS - sinceMidnight + AFTER_MIDNIGHT_MS;
+}
+
+/**
+ * Watches for the page shown again (main.ts, start), and for midnight while it's on screen. `render` draws every view
+ * again.
+ */
 export function watchDayChange(state: AppState, render: () => void) {
   const loadedAt = Date.now();
   let renderedDay = todayIso();
@@ -57,4 +73,15 @@ export function watchDayChange(state: AppState, render: () => void) {
   window.addEventListener("pageshow", (event) => {
     if ((event as PageTransitionEvent).persisted) check();
   });
+  // Midnight with the page on screen: drawn again for the new day. Hidden, it waits to be shown (check, above).
+  const atMidnight = () => {
+    const today = todayIso();
+    if (document.visibilityState === "visible" && today !== renderedDay) {
+      moveToToday(state, renderedDay, today);
+      renderedDay = today;
+      render();
+    }
+    setTimeout(atMidnight, untilNextDay(Date.now()));
+  };
+  setTimeout(atMidnight, untilNextDay(Date.now()));
 }

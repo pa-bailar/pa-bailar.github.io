@@ -56,8 +56,13 @@ export function captureListPosition(): ListAnchor | null {
   return key ? { key, order: sections().flatMap((section) => section.dataset.period ?? []) } : null;
 }
 
+/** The running scroll on purpose, if any: a new one, or the visitor's own wheel or touch, stops it. */
+let stopScrolling: (() => void) | null = null;
+const VISITOR_SCROLLS = ["wheel", "touchstart"] as const;
+
 /** Scroll the page to `top`, on purpose. */
 export function scrollPageTo(top: number, { smooth = false } = {}) {
+  stopScrolling?.();
   const target = Math.max(top, 0);
   if (!smooth || prefersReducedMotion()) {
     window.scrollTo({ top: target, behavior: "auto" });
@@ -66,13 +71,22 @@ export function scrollPageTo(top: number, { smooth = false } = {}) {
   // Not the browser's smooth scrolling: its speed can't be set, and this one keeps pace with the drawer.
   const from = window.scrollY;
   const start = performance.now();
+  let frame = 0;
+  const stop = () => {
+    cancelAnimationFrame(frame);
+    VISITOR_SCROLLS.forEach((type) => window.removeEventListener(type, stop, true));
+    if (stopScrolling === stop) stopScrolling = null;
+  };
   const step = (now: number) => {
     const progress = Math.min((now - start) / SCROLL_DURATION, 1);
     const eased = 1 - (1 - progress) ** 3;
     window.scrollTo({ top: from + (target - from) * eased, behavior: "auto" });
-    if (progress < 1) requestAnimationFrame(step);
+    if (progress < 1) frame = requestAnimationFrame(step);
+    else stop();
   };
-  requestAnimationFrame(step);
+  stopScrolling = stop;
+  VISITOR_SCROLLS.forEach((type) => window.addEventListener(type, stop, { capture: true, passive: true }));
+  frame = requestAnimationFrame(step);
 }
 
 /**
