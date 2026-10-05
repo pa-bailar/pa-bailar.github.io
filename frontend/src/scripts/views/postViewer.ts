@@ -35,7 +35,7 @@ export function openPostViewer(event: DanceEvent, media: EventMedia, { replacing
   open.textContent = story ? "Ver perfil en Instagram ↗" : "Abrir en Instagram ↗";
   open.dataset.track = story ? "instagram-perfil-desde-visor" : "instagram-desde-visor";
   const body = byId("post-viewer-body");
-  body.classList.remove("is-ready");
+  body.classList.remove("is-ready", "post-viewer__body--profile");
   const current = ++request;
   if (story) {
     body.innerHTML = `
@@ -82,8 +82,13 @@ export function openProfileViewer(account: string) {
     <div class="post-viewer__embed post-viewer__embed--profile">
       <iframe src="${escapeHtml(profileEmbedUrl(account))}" title="Perfil de @${name} en Instagram"></iframe>
     </div>`;
+  body.classList.add("post-viewer__body--profile");
+  // The frame's "load" comes before Instagram draws the profile (its script fills it a moment later): the sheet's
+  // "Cargando el perfil…" stays over it a little longer, so there's no blank white box.
   const frame = body.querySelector("iframe")!;
-  frame.addEventListener("load", () => current === request && body.classList.add("is-ready"), { once: true });
+  frame.addEventListener("load", () => window.setTimeout(() => current === request && body.classList.add("is-ready"), 1500), {
+    once: true,
+  });
   // An embed that never arrives (blocked, offline): the bar's link still works.
   window.setTimeout(() => {
     if (current !== request || body.classList.contains("is-ready")) return;
