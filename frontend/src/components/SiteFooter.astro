@@ -1,6 +1,7 @@
 ---
 import Stripes from "./Stripes.astro";
 import { ICONS } from "../scripts/lib/icons";
+import { accountLinkAttrs } from "../scripts/lib/accountLink";
 import { feedbackUrl } from "../scripts/lib/links";
 
 interface Props {
@@ -28,7 +29,7 @@ const releaseUrl = version ? `https://github.com/pa-bailar/pa-bailar.github.io/r
     <details class="site-footer__sources">
       <summary><Fragment set:html={ICONS.instagram} /> Fuentes: {accounts.length} cuentas de Instagram</summary>
       <p class="site-footer__links">
-        {accounts.map((account) => <a href={`https://www.instagram.com/${account}/`} target="_blank" rel="noopener">@{account}</a>)}
+        {accounts.map((account) => <a {...accountLinkAttrs(account, { track: "perfil-fuentes" })}>@{account}</a>)}
       </p>
     </details>
     <p class="site-footer__install" data-install-offer hidden>

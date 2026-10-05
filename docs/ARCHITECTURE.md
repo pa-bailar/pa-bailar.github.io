@@ -503,7 +503,8 @@ stateDiagram-v2
   only the flyer and never loads Instagram's player, and the inline player never gets it. The details say "De una
   historia de @cuenta · las historias duran 24 horas", and their Instagram quick action opens the account's profile
   in the media viewer (a `data-profile` link to its `permalink`).
-- **An account's @** (on a card and in the details) opens its profile in the media viewer: an iframe of Instagram's
+- **An account's @** (anywhere: a card, the details' head, Organiza, an @ Contacto, a story's Instagram button, the
+  footer's sources; all built by `lib/accountLink.ts`) opens its profile in the media viewer: an iframe of Instagram's
   profile embed (`profileEmbedUrl`, `https://www.instagram.com/<account>/embed/`; `frame-src` already allows
   Instagram), covered by "Cargando el perfil…" until it has drawn. The link underneath is the profile itself, for a new
   tab. There's no account filter anymore.

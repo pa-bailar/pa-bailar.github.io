@@ -189,7 +189,7 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves. The pa
 
   The detail's "Cuándo" reads "4 sesiones: 8, 22, 29 nov y 6 dic · 2:00 p. m. – 5:00 p. m." ("horario de cada sesión
   abajo" when their times differ), and shared texts the same; a period's shared list gives its next session.
-- **The academy on each card** ("@academia") opens its Instagram profile inside the site: the media viewer's sheet with Instagram's profile embed (its photo, counts and latest posts) and "Abrir en Instagram ↗" in the bar (`openProfileViewer` in `views/postViewer.ts`). The same as the details' @. It used to filter the list to the account; the owner dropped that filter on 4 October 2026 (an academy rarely has several events at once, and people expected its Instagram), and opening Instagram itself left the site with the app's back button. It's a link to the profile underneath, so a new tab still gets Instagram. It sits above the card's stretched click area.
+- **Every @account is one link** (`accountLinkHtml` / `accountLinkAttrs` in `lib/accountLink.ts`): the card's, the details' head, Organiza, an @ Contacto, a story's Instagram button and the footer's sources all open the profile inside the site (`tests/accountLink.test.ts` fails on any other instagram.com profile link). **The academy on each card** ("@academia") opens its Instagram profile inside the site: the media viewer's sheet with Instagram's profile embed (its photo, counts and latest posts) and "Abrir en Instagram ↗" in the bar (`openProfileViewer` in `views/postViewer.ts`). The same as the details' @. It used to filter the list to the account; the owner dropped that filter on 4 October 2026 (an academy rarely has several events at once, and people expected its Instagram), and opening Instagram itself left the site with the app's back button. It's a link to the profile underneath, so a new tab still gets Instagram. It sits above the card's stretched click area.
 - **Free events** show their price as a green "Gratis" label (`--free` / `--on-free`, checked for contrast).
 - **Empty results** always offer a way out (see "Filters"): "Limpiar filtros", "Borrar la búsqueda", "Ver todos, no
   solo guardados".
@@ -513,7 +513,7 @@ list. Now they open like Instagram's comments: a drawer rises over the list, and
   44px tall without making the line taller), and × on the right. Then **Instagram** (the post inside the site; a story: the profile) · **Compartir** ·
   **Guardar** ("Guardado", in the accent color, once saved), equal buttons with the icon over the word; the stripes;
   **Cuándo, Lugar** (with its "📍 Cómo llegar" link, the only one since the quick action became Instagram), **Precio** (one line: "Desde $ 25.000 · 3 opciones", "Gratis" or "Por confirmar") and **Organiza**
-  (the organizer and the account, said once when they're the same), then Con, Incluye, Contacto; the prices when
+  (the organizer and the account, said once when they're the same; the @ is the account's link), then Con, Incluye, Contacto (an @handle is an account's link too); the prices when
   there's more than one (a workshop series' **Sesiones** come first: one row each, "Dom 8 nov", with its times when
   they differ between sessions; the next one marked by a 3px `--accent` bar and "PRÓXIMA" ("HOY" on its day) in
   `--accent-text`, those past in `--text-muted` with "YA PASÓ"); the rhythms; "Ver las 3 publicaciones" (an outlined row, when there are several); a story's line; the post's text; "¿Algo está mal? Repórtalo". At half height,
