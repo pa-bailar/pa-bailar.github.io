@@ -7,8 +7,10 @@
 }
 
 html {
-  /* Keyboard focus and jumps never land under the pinned jump bar (WCAG 2.4.11, focus not obscured). */
+  /* Keyboard focus and jumps never land under the pinned jump bar, nor under the bar at the bottom (WCAG 2.4.11,
+     focus not obscured). */
   scroll-padding-top: calc(var(--pinned-height) + var(--space-3));
+  scroll-padding-bottom: calc(var(--bottom-nav-space) + var(--space-3));
   -webkit-text-size-adjust: 100%;
 }
 
@@ -139,13 +141,6 @@ html:has(dialog:modal) {
 
 :root[data-theme="dark"] body {
   background: var(--stage-light), var(--grain), var(--bg);
-}
-
-/* Phones: the toolbar isn't sticky there, so it lets the light through instead of drawing a flat band. */
-@media (max-width: 719px) {
-  :root[data-theme="dark"] .toolbar {
-    background: transparent;
-  }
 }
 
 /* The details drawer and the sheets share the grain, so they read as the same air. */

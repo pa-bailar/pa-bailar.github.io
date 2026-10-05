@@ -18,8 +18,7 @@
 }
 
 /* A 44 px target on a 40 px chip, without a taller bar: an invisible area above and below (the toolbar's compact
-   chips get the same few px). It's placed from inside the border, hence the border's width. The bar's 🔍 and 🔖
-   too (jump-bar.css). */
+   chips get the same few px). It's placed from inside the border, hence the border's width. */
 .filter-chip::after {
   content: "";
   position: absolute;
@@ -60,19 +59,6 @@
 
 .filter-chip[aria-disabled="true"] .filter-chip__count {
   color: inherit;
-}
-
-/* ⚙: a 40 px square like 🔍 and 🔖, with the number of choices on its corner; 44 px to the finger, 2 px past each
-   side (the row's gaps are 8 px). */
-.filter-chip--icon {
-  flex: none;
-  justify-content: center;
-  width: var(--control-height);
-  padding: 0;
-}
-
-.filter-chip--icon::after {
-  inset: calc((var(--control-height) - var(--touch-target)) / 2 - var(--border-width));
 }
 
 /* ---------- "Cuándo" in the phone bar (filters.ts, whenMenu.ts) ----------

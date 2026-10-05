@@ -1,0 +1,42 @@
+---
+// Phones: the bar at the bottom of the screen, like Instagram's (scripts/views/bottomNav.ts, bottom-nav.css):
+// Eventos (the list, /) · Calendario (/calendario/) · Buscar · Guardados · Filtros. The views are links to their
+// addresses (main.ts moves between them through views/viewNavigation.ts); Guardados and Filtros are the same
+// controls as before (data-saved-only, data-open-filters), with their numbers on the icon's corner. Buscar turns the
+// bar into the search field, docked at the bottom above the keyboard. Wide screens don't show it: the toolbar and
+// the header have the same actions. Hidden until the script draws it (no bar without JavaScript, where nothing works).
+// The labels under the icons can be turned off (data-labels="off"): the owner hasn't chosen yet (docs/DESIGN.md).
+import { ICONS } from "../scripts/lib/icons";
+import { viewPath } from "../scripts/lib/links";
+---
+
+<nav class="bottom-nav" id="bottom-nav" aria-label="Menú principal" data-labels="on" hidden>
+  <div class="bottom-nav__items">
+    <a class="bottom-nav__item" href={viewPath("upcoming")} data-view="upcoming" data-track="barra-eventos">
+      <span class="bottom-nav__icon"><Fragment set:html={ICONS.list} /></span>
+      <span class="bottom-nav__label">Eventos</span>
+    </a>
+    <a class="bottom-nav__item" href={viewPath("calendar")} data-view="calendar" data-track="barra-calendario">
+      <span class="bottom-nav__icon"><Fragment set:html={ICONS.calendar} /></span>
+      <span class="bottom-nav__label">Calendario</span>
+    </a>
+    <button class="bottom-nav__item" id="bottom-search-open" type="button" aria-expanded="false" aria-controls="bottom-search"
+      data-track="barra-buscar">
+      <span class="bottom-nav__icon"><Fragment set:html={ICONS.search} /></span>
+      <span class="bottom-nav__label">Buscar</span>
+    </button>
+    <button class="bottom-nav__item" type="button" data-saved-only aria-pressed="false" data-track="barra-guardados">
+      <span class="bottom-nav__icon"><Fragment set:html={ICONS.bookmark} /><span class="bottom-nav__badge" data-saved-count hidden></span></span>
+      <span class="bottom-nav__label">Guardados</span>
+    </button>
+    <button class="bottom-nav__item" id="bottom-filters" type="button" data-open-filters aria-haspopup="dialog" data-track="barra-filtros">
+      <span class="bottom-nav__icon"><Fragment set:html={ICONS.sliders} /><span class="bottom-nav__badge" id="bottom-filters-count" hidden></span></span>
+      <span class="bottom-nav__label">Filtros</span>
+    </button>
+  </div>
+  <form class="bottom-nav__search" id="bottom-search" role="search" aria-label="Buscar eventos">
+    <input class="search-input" id="bottom-search-input" type="search" data-search placeholder="Buscar evento, academia, ritmo…"
+      aria-label="Buscar eventos" enterkeyhint="search" autocomplete="off" />
+    <button class="icon-btn bottom-nav__close" type="button" data-close-search aria-label="Cerrar la búsqueda"><Fragment set:html={ICONS.close} /></button>
+  </form>
+</nav>

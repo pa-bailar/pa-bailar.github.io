@@ -78,7 +78,7 @@ export interface FilterModel {
   hideBars: boolean; // "Ocultar eventos de bares" is on (the sheet's switch, the toolbar's chip)
   applied: AppliedFilter[]; // every choice: dates, rhythms, types, and "Sin bares" while the bars are hidden
   extra: AppliedFilter[]; // those without a chip of their own in the bar
-  active: number; // ⚙'s badge: every choice (hiding the bars counts one)
+  active: number; // Filtros' badge (the bar at the bottom): every choice (hiding the bars counts one)
   shown: number; // events the view shows with every filter on (the list, or the calendar's month)
 }
 

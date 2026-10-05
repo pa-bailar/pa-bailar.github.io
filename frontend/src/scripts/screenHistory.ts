@@ -37,10 +37,11 @@ export type ScreenData = Omit<Screen, "steps">;
 /** What any of the app's history entries may hold: the screen, and the overlay over it, if any. */
 export interface AppHistoryState {
   screen?: Screen;
-  overlay?: boolean; // a sheet, the event details or the "Cuándo" menu, over the screen in `screen`
+  overlay?: boolean; // a sheet, the event details, the "Cuándo" menu or the search field, over the screen in `screen`
   eventId?: string; // the event details' entry (views/drawerHistory.ts)
   sheet?: string; // a panel sheet's entry: the sheet's id (lib/sheet.ts)
   menu?: string; // the "Cuándo" menu's entry (views/whenMenu.ts)
+  search?: boolean; // the search field docked at the bottom (views/bottomNav.ts)
 }
 
 /**

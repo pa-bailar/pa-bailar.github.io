@@ -79,7 +79,7 @@ export function matchesFilters(event: DanceEvent, state: AppState, except?: Filt
   return typeOk && stylesOk && datesOk && barsOk && savedOk && matchesQuery(event, state.query);
 }
 
-/** Every choice in use, for the ⚙ badge: each date (in the list), rhythm and type, and hiding the bars (one). */
+/** Every choice in use, for Filtros' badge: each date (in the list), rhythm and type, and hiding the bars (one). */
 export function activeFilterCount(state: AppState): number {
   const dates = state.view === "upcoming" ? state.dates.length : 0; // the calendar has its own days
   return dates + state.styles.length + state.types.length + (state.hideBars ? 1 : 0);

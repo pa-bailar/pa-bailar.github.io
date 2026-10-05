@@ -1,0 +1,225 @@
+/* Phones: the bar at the bottom of the screen, like Instagram's (components/BottomNav.astro, scripts/views/bottomNav.ts):
+   [Eventos] [Calendario] [Buscar] [Guardados 3] [Filtros 2], five equal items, 24 px icons with their labels under
+   them (60 px), or icons only (data-labels="off", 52 px: the owner hasn't chosen yet), plus the home indicator's inset.
+   - The view on screen (aria-current): the accent's color and a line on its top edge, like a tab's.
+   - On (Guardados showing only saved events, a search kept): the pill behind the icon in the selected chip's colors,
+     like the old toggle in the pinned bar.
+   - Searching: the bar is the search field and its ×, lifted right above the keyboard (--keyboard-inset, set from
+     the visualViewport by the script).
+   Sheets and the details drawer are modal dialogs in the top layer: they cover it. Opaque (--bg), with a line on
+   top, like the pinned bar. */
+
+.bottom-nav {
+  position: fixed;
+  right: 0;
+  bottom: var(--keyboard-inset, 0px);
+  left: 0;
+  z-index: var(--z-sticky);
+  padding: 0 env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  background: var(--bg);
+  border-top: var(--border-width) solid var(--divider);
+}
+
+.bottom-nav[hidden] {
+  display: none;
+}
+
+/* Above the keyboard, the home indicator is under it: no inset. */
+.bottom-nav.is-lifted {
+  padding-bottom: 0;
+}
+
+/* Icons only: the labels stay for screen readers. */
+:root:has(#bottom-nav[data-labels="off"]) {
+  --bottom-nav-height: var(--bottom-nav-icons-height);
+}
+
+/* What it covers, for the footer, the install reminder and the keyboard's focus (scroll-padding-bottom): only where
+   it shows. */
+@media not ((min-width: 720px) and (min-height: 600px)) {
+  :root:has(#bottom-nav:not([hidden])) {
+    --bottom-nav-space: calc(var(--bottom-nav-height) + env(safe-area-inset-bottom));
+  }
+}
+
+/* Wide screens: the toolbar and the header have the same actions. */
+@media (min-width: 720px) and (min-height: 600px) {
+  .bottom-nav {
+    display: none;
+  }
+}
+
+.bottom-nav__items {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  max-width: var(--content-width);
+  height: var(--bottom-nav-height);
+  margin: 0 auto;
+}
+
+.bottom-nav.is-searching .bottom-nav__items {
+  display: none;
+}
+
+/* Each item fills its fifth of the bar (75 px wide at 375 px, 64 at 320), the whole height: 44 px and more. */
+.bottom-nav__item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text);
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-bold);
+  line-height: 1.2;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.bottom-nav__item:focus-visible {
+  outline-offset: -4px;
+}
+
+/* The icon's place: the pill when the item is on, and where the badge hangs. */
+.bottom-nav__icon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--nav-indicator-width);
+  height: var(--chip-height);
+  border-radius: var(--radius-sm);
+}
+
+.bottom-nav__icon .icon {
+  width: var(--icon-lg);
+  height: var(--icon-lg);
+}
+
+.bottom-nav__label {
+  max-width: 100%;
+  overflow: hidden;
+  color: var(--text-muted);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bottom-nav[data-labels="off"] .bottom-nav__label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+/* The view on screen: the accent, and a line on the bar's top edge (the tabs' underline, upside down). */
+.bottom-nav__item[aria-current="page"],
+.bottom-nav__item[aria-current="page"] .bottom-nav__label {
+  color: var(--accent-text);
+}
+
+.bottom-nav__item[aria-current="page"]::before {
+  content: "";
+  position: absolute;
+  top: calc(var(--border-width) * -1);
+  left: 50%;
+  width: var(--nav-indicator-width);
+  height: var(--tab-underline);
+  background: var(--accent);
+  translate: -50% 0;
+}
+
+/* On: Guardados showing only saved events, a search kept while the field is closed. */
+.bottom-nav__item[aria-pressed="true"] .bottom-nav__icon,
+.bottom-nav__item.is-on .bottom-nav__icon {
+  background: var(--chip-active-bg);
+  color: var(--chip-active-text);
+}
+
+.bottom-nav__item[aria-pressed="true"] .bottom-nav__label,
+.bottom-nav__item.is-on .bottom-nav__label {
+  color: var(--text);
+}
+
+/* A number on the icon's corner: how many saved events, how many filters in use. */
+.bottom-nav__badge {
+  position: absolute;
+  top: -5px;
+  left: calc(50% + var(--space-2));
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 9px;
+  background: var(--chip-active-bg);
+  color: var(--chip-active-text);
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-bold);
+  line-height: 18px;
+  text-align: center;
+}
+
+.bottom-nav__badge[hidden] {
+  display: none;
+}
+
+/* On the pill (it has the badge's colors): the badge inverts, with a ring of the page so it stays apart. */
+.bottom-nav__item[aria-pressed="true"] .bottom-nav__badge,
+.bottom-nav__item.is-on .bottom-nav__badge {
+  background: var(--chip-active-text);
+  color: var(--chip-active-bg);
+  box-shadow: 0 0 0 var(--border-width) var(--chip-active-bg);
+}
+
+/* ---------- searching: the field docked at the bottom ---------- */
+
+.bottom-nav__search {
+  display: none;
+  align-items: center;
+  gap: var(--space-2);
+  max-width: var(--content-width);
+  height: var(--bottom-nav-height);
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+.bottom-nav.is-searching .bottom-nav__search {
+  display: flex;
+}
+
+.bottom-nav__search .search-input {
+  flex: 1;
+  min-height: var(--control-height);
+}
+
+/* One way to close: our × beside it, not also the browser's inside the field. */
+.bottom-nav__search .search-input::-webkit-search-cancel-button {
+  appearance: none;
+}
+
+/* ×: a 40 px square, 44 px to the finger. */
+.bottom-nav__close {
+  position: relative;
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  color: var(--text);
+}
+
+.bottom-nav__close::after {
+  content: "";
+  position: absolute;
+  inset: calc((var(--control-height) - var(--touch-target)) / 2 - var(--border-width));
+}
+
+.bottom-nav__close .icon {
+  width: var(--icon-md);
+  height: var(--icon-md);
+}

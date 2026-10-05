@@ -1,6 +1,7 @@
 ---
 import Stripes from "./Stripes.astro";
 import ThemeToggle from "./ThemeToggle.astro";
+import { ICONS } from "../scripts/lib/icons";
 
 interface Props {
   updatedLabel: string;
@@ -13,6 +14,8 @@ const { updatedLabel } = Astro.props;
   <div class="container site-header__inner">
     <div class="site-header__top">
       <Stripes />
+      <!-- Info: a link to the footer ("Sobre Pa' Bailar"); back returns to where the page was (screenHistory.ts). -->
+      <a class="icon-btn site-header__info" href="#info" aria-label="Info: sobre Pa' Bailar" title="Sobre Pa' Bailar"><Fragment set:html={ICONS.info} /></a>
       <ThemeToggle />
     </div>
     <h1 class="site-header__logo">Pa' Bailar</h1>

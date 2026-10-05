@@ -69,3 +69,28 @@
 :root:not([data-theme="dark"]) .theme-toggle--dark {
   display: none;
 }
+
+/* ---------- Info (i) ---------- */
+
+/* A link to the footer ("Sobre Pa' Bailar"), drawn as a 40 px square like the switch beside it (8 px from it, 16 from
+   the stripes); 44 px to the finger. It used to be a tab after Próximos and Calendario. */
+.site-header__info {
+  position: relative;
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: calc(var(--space-2) - var(--space-4));
+  color: var(--text);
+}
+
+.site-header__info::after {
+  content: "";
+  position: absolute;
+  inset: calc((var(--control-height) - var(--touch-target)) / 2 - var(--border-width));
+}
+
+.site-header__info .icon {
+  width: var(--icon-md);
+  height: var(--icon-md);
+}

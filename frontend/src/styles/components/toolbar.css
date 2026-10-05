@@ -1,18 +1,20 @@
-/* Sticky toolbar: view tabs and filter chips. */
+/* Wide screens: the sticky toolbar with the view tabs, "Guardados", the search field and the filter chips. */
 
 .toolbar {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
   background: var(--bg);
   border-top: var(--border-width) solid var(--divider);
   border-bottom: var(--border-width) solid var(--divider);
 }
 
-/* Sticky only where there's room: on phones (and phones in landscape) a sticky bar with two chip
-   rows would permanently cover a quarter of the screen. */
-@media (min-width: 720px) and (min-height: 600px) {
+/* Phones (and phones in landscape) have it all in the bar pinned to the top (the chips, jump-bar.css) and the bar at
+   the bottom (the views, search, Guardados, Filtros: bottom-nav.css). A sticky toolbar with its chip rows would cover
+   a quarter of the screen there. */
+@media not ((min-width: 720px) and (min-height: 600px)) {
   .toolbar {
-    position: sticky;
-    top: 0;
-    z-index: var(--z-sticky);
+    display: none;
   }
 }
 
@@ -37,8 +39,7 @@
   gap: var(--space-5);
 }
 
-/* Wide screens: "Guardados" and the search field at the end of the tabs' row. Phones have them in the
-   jump bar. */
+/* "Guardados" and the search field at the end of the tabs' row. */
 .toolbar__tools {
   display: flex;
   align-items: center;
@@ -56,19 +57,6 @@
   width: min(320px, 40vw);
 }
 
-@media (max-width: 719px) {
-  .toolbar__tools {
-    display: none;
-  }
-}
-
-/* "Info": a link to the footer, beside the view tabs and looking like one (never selected). */
-.tabs__link {
-  display: inline-flex;
-  align-items: center;
-  text-decoration: none;
-}
-
 .tabs__tab {
   padding: var(--space-2) 0;
   border: 0;
@@ -84,15 +72,6 @@
 }
 
 /* ---------- filter chips ---------- */
-
-/* Phones: the filters live in the jump bar and its sheet (filters.css), and the academy chosen is a chip there.
-   Wider screens show them here. */
-@media (max-width: 719px) {
-  .toolbar .chip-row,
-  .toolbar .filter-status {
-    display: none;
-  }
-}
 
 .chip-row {
   display: flex;

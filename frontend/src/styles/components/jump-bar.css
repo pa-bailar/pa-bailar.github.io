@@ -1,5 +1,6 @@
 /* Phones: the slim bar pinned to the top (components/JumpBar.astro, scripts/views/jumpBar.ts):
-   [🔍] [🔖 3] [⚙ 2 · Social × · 🕒 ▾ | Salsa · Bachata · Urbano · Tango →]
+   [Sin bares × · Social × · 🕒 ▾ | Salsa · Bachata · Urbano · Tango →] (search, Guardados and Filtros are in the
+   bar at the bottom: bottom-nav.css)
    and, while filtering, "12 eventos · Finde, Salsa · × Limpiar" under it. It never hides: the filters are at hand
    anywhere in the list. The chips themselves and the "Cuándo" menu: filters.css.
    iOS Safari: sticky needs no overflow other than `clip`/visible on its ancestors (html, body), and no transform
@@ -39,34 +40,9 @@
   white-space: nowrap;
 }
 
-/* 🔍 and 🔖: 40 px squares (like ⚙); a number on the corner (like a notification badge) never changes their
-   size. */
-.jump-bar__icon {
-  position: relative;
-  flex: none;
-  justify-content: center;
-  width: var(--control-height);
-  min-height: var(--control-height);
-  padding: 0;
-  color: var(--text);
-}
-
-/* 44 px to the finger on a 40 px square, 2 px past each side (the gaps are 8 px): the bar is 56 px, so it fits. */
-.jump-bar__icon::after {
-  content: "";
-  position: absolute;
-  inset: calc((var(--control-height) - var(--touch-target)) / 2 - var(--border-width));
-}
-
-.jump-bar__icon[aria-pressed="true"] {
-  background: var(--chip-active-bg);
-  border-color: var(--chip-active-bg);
-  color: var(--chip-active-text);
-}
-
 /* The chips: one row that scrolls sideways to the screen's edge, fading there, so the next chip peeks and the
-   row reads as one that scrolls (Material's single-line chip group). As tall as the bar: the badges on the
-   corners of ⚙ and 🔖 have room. */
+   row reads as one that scrolls (Material's single-line chip group). As tall as the bar: the chips' 44 px targets
+   have room. */
 .jump-bar__chips {
   display: flex;
   flex: 1;
@@ -91,49 +67,6 @@
   width: var(--border-width);
   height: var(--space-5);
   background: var(--divider);
-}
-
-/* Searching: the whole row is the search field and its ×. The line under it stays. */
-.jump-bar__search {
-  display: none;
-  flex: 1;
-  gap: var(--space-2);
-  min-width: 0;
-  padding-right: var(--space-4);
-}
-
-.jump-bar__search .search-input {
-  flex: 1;
-}
-
-.jump-bar.is-searching .jump-bar__inner > :not(.jump-bar__search) {
-  display: none;
-}
-
-.jump-bar.is-searching .jump-bar__search {
-  display: flex;
-}
-
-/* A number on a button's corner: how many saved events, how many filters chosen. */
-.jump-bar__badge {
-  position: absolute;
-  top: -7px;
-  right: -7px;
-  min-width: 18px;
-  height: 18px;
-  padding: 0 4px;
-  border-radius: 9px;
-  background: var(--chip-active-bg);
-  color: var(--chip-active-text);
-  font-size: var(--text-2xs);
-  font-weight: var(--weight-bold);
-  line-height: 18px;
-  text-align: center;
-}
-
-.jump-bar__icon[aria-pressed="true"] .jump-bar__badge {
-  background: var(--chip-active-text);
-  color: var(--chip-active-bg);
 }
 
 /* A jump or a filter change lands the period's heading just below the pinned bar (and its line). */

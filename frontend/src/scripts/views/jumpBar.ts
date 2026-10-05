@@ -1,8 +1,8 @@
 // Phones only (CSS hides it where the toolbar is sticky): one slim row pinned to the top of the screen, like the
-// filter bars of Google Maps or Airbnb: [🔍] [🔖 3] and a row of chips that scrolls sideways (filters.ts draws
-// them, main.ts handles their taps). Under it, while filtering, "12 eventos · Finde, Salsa · × Limpiar".
-//   - 🔍 turns the row into the search field; × clears the search and turns it back.
-//   - ⚙ opens the "Filtros" sheet; "🕒 ▾" the "Cuándo" menu (whenMenu.ts).
+// filter bars of Google Maps or Airbnb: a row of chips that scrolls sideways (filters.ts draws them, main.ts handles
+// their taps). Under it, while filtering, "12 eventos · Finde, Salsa · × Limpiar".
+//   - "🕒 ▾" opens the "Cuándo" menu (whenMenu.ts); Filtros in the bar at the bottom (bottomNav.ts) the "Filtros"
+//     sheet, set up here.
 // It never hides, so the filters are at hand anywhere in the list (it used to hide while scrolling down, like
 // Instagram's header). It also keeps the visitor's place when a filter changes (captureListPosition /
 // restoreListPosition).
@@ -15,10 +15,8 @@ const READING_BAND = 0.35; // share of the screen, under the bar, where the peri
 const MARGIN = 8; // px left between the bar and what's put right under it
 const SCROLL_DURATION = 320; // ms: a scroll on purpose (bringing a card into view), like the drawer's rise
 
-export function renderJumpBar({ searching }: { searching: boolean }) {
-  const bar = byId("jump-bar");
-  bar.hidden = false;
-  if (searching) bar.classList.add("is-searching");
+export function renderJumpBar() {
+  byId("jump-bar").hidden = false;
 }
 
 /** Height of what's stuck to the top of the screen (the bar and its line on phones, the toolbar on wide screens). */
@@ -96,31 +94,21 @@ export function returnToScroll(scrollY: number) {
   scrollPageTo(scrollY);
 }
 
-/** 🔍 turns the bar into the search field; × (data-close-search, main.ts) clears it and turns it back. */
-export function closeBarSearch() {
-  byId("jump-bar").classList.remove("is-searching");
-}
-
-/** ⚙ (data-open-filters): the sheet slides up; the list stays where it was behind it. */
+/** Filtros (data-open-filters): the sheet slides up; the list stays where it was behind it. */
 export function openFilterSheet() {
   openPanelSheet(byId<HTMLDialogElement>("filter-sheet"));
 }
 
 export function initJumpBar() {
-  byId("jump-search-open").addEventListener("click", () => {
-    byId("jump-bar").classList.add("is-searching");
-    byId("jump-search").focus();
-  });
   initWhenMenu();
   // The chips inside are handled by main.ts; "Ver 12 eventos" closes it like ×. Its groups scroll between the
   // head and that button, so a drag down starts from the head or the groups' top.
   const sheet = byId<HTMLDialogElement>("filter-sheet");
   initPanelSheet(sheet, undefined, { scroller: byId("filter-sheet-body") });
-  // Closed after a choice: the ⚙ that opened it was drawn again meanwhile, so the browser can't give it the focus
-  // back. The new ⚙ gets it.
+  // Closed with the focus nowhere (a choice drew its chip again): it goes back to Filtros, in the bar at the bottom.
   sheet.addEventListener("close", () => {
     const focus = document.activeElement;
     if (focus && focus !== document.body && !sheet.contains(focus)) return;
-    byId("jump-chips").querySelector<HTMLElement>("[data-open-filters]")?.focus({ preventScroll: true });
+    document.getElementById("bottom-filters")?.focus({ preventScroll: true });
   });
 }

@@ -343,9 +343,9 @@ sequenceDiagram
     I->>I: theme: dark if saved, else light
     H->>M: module script after parsing
     M->>M: events = JSON from #events-data
-    M->>M: theme toggle, details drawer, posts sheet, media viewer, sharing, install offer, service worker, jump bar, view switch, click tracking, save buttons
+    M->>M: theme toggle, details drawer, posts sheet, media viewer, sharing, install offer, service worker, jump bar, bottom bar, click tracking, save buttons
     M->>M: the view from the address (viewOfPath: /calendario/ is the calendar)
-    M->>V: render(): filters, Próximos or Calendario, jump bar, view switch
+    M->>V: render(): filters, Próximos or Calendario, jump bar, bottom bar
     M->>V: opened on /calendario/: the calendar's home on screen (openedOnCalendar)
     M->>M: a shared link's event (openSharedEvent), then the screens' history (initScreenHistory)
     M->>M: watchDayChange: shown again on another day, draw again (or load again)
@@ -362,8 +362,9 @@ sequenceDiagram
 - **One delegated click listener** in `main.ts` handles every control marked with a `data-*` attribute (`CONTROLS`:
   each attribute with its named handler, tried in order):
   "Cuándo" (`data-when-open`, an option `data-when`, its × `data-when-clear`), "Guardados" (`data-saved-only`), close
-  and clear the search, ⚙ (`data-open-filters`), a period opened whole (`data-show-period`), a card's posts
-  (`data-card-posts`), an event (`data-event`), a view tab (`data-view`), a filter chip (`data-filter` + `data-value`),
+  and clear the search, Filtros (`data-open-filters`), a period opened whole (`data-show-period`), a card's posts
+  (`data-card-posts`), an event (`data-event`), a view (`data-view`: the bottom bar's Eventos and Calendario, links
+  whose plain clicks it takes over; the tabs on wide screens), a filter chip (`data-filter` + `data-value`),
   clear filters, and the calendar's day, month (`data-month-step`) and "Hoy" (`data-today`).
 
 ### 5.2 State and rendering
@@ -378,7 +379,7 @@ flowchart TD
     R --> C["calendarView.ts<br/>Calendario: month grid + the day's events"]
     R --> J["jumpBar.ts<br/>phones: the pinned bar, search, keeping your place"]
     J --> WM["whenMenu.ts<br/>the Cuándo menu: open, place, keys, close"]
-    R --> VS["viewSwitch.ts<br/>phones: floating calendar / list button"]
+    R --> BN["bottomNav.ts<br/>phones: the bar at the bottom,<br/>the search field above the keyboard"]
     U --> CARD["eventCard.ts"]
     C --> CARD
     CARD -- "tap" --> DLG["eventDrawer.ts<br/>details drawer over the list"]
@@ -400,8 +401,8 @@ flowchart TD
   - **Rhythms** (`styles`, several): filtering by a family ("salsa") also matches its variants ("salsa caleña").
   - **Bars** (`hideBars`, on or off; off by default): while on, no event with `bar: true` (`isBar`, `matchesBars`;
     an event without the field isn't a bar). Not a group of options: it isn't left out of any option's count, so every
-    count leaves the bars out while they're hidden. ⚙'s badge counts it as one, in both views; the model lists it last
-    among the choices as "Sin bares" (`HIDDEN_BARS`, a removable chip after ⚙ and a name in the line), and its controls
+    count leaves the bars out while they're hidden. Filtros' badge counts it as one, in both views; the model lists it last
+    among the choices as "Sin bares" (`HIDDEN_BARS`, a removable chip in the row and a name in the line), and its controls
     (the sheet's switch, the toolbar's chip, "Sin bares ×") carry `data-filter="bars"`, which `toggleFilter` in
     `main.ts` turns on or off. **Remembered** in this browser: `lib/storedSwitch.ts` (`storedSwitch`, a reusable on/off
     setting: `1` while on, the key removed while off; storage blocked, it reads as off and what's set holds for the
@@ -420,7 +421,7 @@ flowchart TD
   model also gives the bar's "Cuándo" (`when`, `whenModel`: the chip's label, "Finde" or "Finde +1", and the menu's
   options, "Cualquier fecha" first, each with its count and its days from `periodDays`, e.g. "9–11 oct"; null in the
   calendar), its rhythm chips (`quickStyles`: Salsa, Bachata, Urbano, Tango, fixed), every choice in use (`applied`)
-  and those without a chip of their own (`extra`, removable chips after ⚙; never a date, "Cuándo" shows them), ⚙'s badge (`active`,
+  and those without a chip of their own (`extra`, removable chips first in the row; never a date, "Cuándo" shows them), Filtros' badge in the bar at the bottom (`active`,
   `activeFilterCount`: every choice; dates only in the list) and the count shown (`shown`). `summaryLine` writes the
   line under the bar ("12 eventos · Finde, Salsa"; in the calendar "5 eventos en octubre · Salsa"). `clearFilters`
   ("Limpiar") clears dates, rhythms and types and shows the bars again (`main.ts` forgets it in storage), not the
@@ -453,7 +454,7 @@ flowchart TD
   - the list remembers where it was left, so switching to the calendar and back returns you to the same spot (to the
     same period if a filter changed in the calendar). The calendar instead always opens on its home: the month's
     title under the pinned bar if the page is past it, and the day's list on screen (`calendarHome` and `revealDay` in
-    `views/viewNavigation.ts`; `DESIGN.md`, "Phones: feed, jump bar, view switch and filter sheet").
+    `views/viewNavigation.ts`; `DESIGN.md`, "Phones: feed, jump bar, the bar at the bottom and filter sheet").
 
 ### 5.3 The details drawer and URLs
 
@@ -582,6 +583,11 @@ stateDiagram-v2
   lasts for the visit): `theme`, `saved-events`, `hide-bars` (`lib/storedSwitch.ts`), things shown once
   (`lib/onceFlag.ts`, e.g. `details-hint-seen`) and the install offer's `install-dismissed-at`.
 - **Search** (`lib/search.ts`) runs on the events already in the page, accent-insensitive, every word anywhere in the event.
+  On phones its field is the bar at the bottom (`views/bottomNav.ts`): Buscar opens it with a history entry of its
+  own, an overlay (`{ search: true, overlay: true }` over the screen's state, the same address; `searchHistory`): back
+  or × leaves it and clears the search, the keyboard's Enter leaves it and keeps the search, and forward onto it once
+  closed goes back over it, like the sheets' entries. Typing goes through the same `[data-search]` input handler as the
+  toolbar's field (`main.ts`).
 - **Sharing** (`views/sharing.ts`) goes through the phone's share menu: an event (its link, whose preview shows the flyer, date, title, place and price: section 3.4), a near period or the visitor's plans (an image drawn in the browser, `lib/shareCard.ts`, and a list for WhatsApp).
 
 ### 5.6 Themes
@@ -633,6 +639,18 @@ Every browser on an iPhone is Safari's engine (WebKit), with its own limits:
 
   The home-screen app keeps its storage apart from Safari, and Safari can't ask whether it's installed. It's
   recognized when it runs (`display-mode: standalone`, `navigator.standalone`), and shows no offer there.
+- **The keyboard and the bar at the bottom** (`views/bottomNav.ts`). iOS doesn't shrink the layout viewport when the
+  keyboard opens: a `position: fixed; bottom: 0` bar stays under the keyboard, and the visual viewport shrinks and pans
+  (`visualViewport.offsetTop`). While the search field has the focus, the bar rises by `keyboardInset` (pure, tested):
+  the layout viewport's height (`documentElement.clientHeight`) minus the visual viewport's `height + offsetTop`, never
+  below 0, set as `--keyboard-inset` on the bar (its `bottom`), with the home indicator's padding dropped (`.is-lifted`).
+  It's read again on the visual viewport's `resize` and `scroll` and the window's `resize`, and 100, 300 and 600ms
+  after focus and blur, since the keyboard animates without always telling. Known iOS bug: `offsetTop` can stay
+  stale after the keyboard closes; on blur the inset drops to 0 at once (it only applies while the field has the
+  focus), and a stale `offsetTop` with a full-height viewport comes out ≤ 0 anyway. Without `visualViewport` the inset
+  is 0 and the browser places the bar (Chrome on Android before 108 resized the layout viewport itself). The page
+  has no `viewport-fit=cover`, so `env(safe-area-inset-bottom)` is 0 and iOS keeps the bar above the home indicator.
+  Untested on a real iPhone yet: Safari 26's floating toolbar may sit over the bar.
 - **Head tags:** `apple-touch-icon` (180×180, opaque, iOS rounds it) and `apple-mobile-web-app-title`
   (`BaseLayout.astro`); iOS takes the rest (name, full screen) from the manifest.
 
@@ -703,7 +721,7 @@ only Instagram content it loads is a post's player or an account's profile embed
 | Types | `astro check`: strict TypeScript, including `noUncheckedIndexedAccess` | `tsconfig.json` |
 | Color contrast | Every color pair the site uses, in both themes, against WCAG 2.2 AA. It reads the tokens from `tokens.css`, so it can't drift from the design system | `frontend/scripts/check-contrast.mjs` |
 | CSS custom properties | Every `var(--name)` in the stylesheets, components and scripts has a definition; the few set from scripts (`style.setProperty`: the drawer's position, a flyer's shape, a sheet's drag) are listed, and each must still be set by one | `frontend/scripts/check-css-vars.mjs` |
-| Unit tests | Dates and Bogotá's "today", formatting, filtering (rhythms and dates, "Mañana", the options and their counts) and period grouping, holidays, the policy check, where the visitor can install from and its steps, the filter chips (`filterModel`: the bar's chips, "Cuándo" (its label with one or several dates, its options and counts, each period's days, the menu's radio items, where it hangs, its keys), dimmed vs hidden options, multiple types, removable chips, the badge, the line, the calendar's line; "Limpiar"'s scope; empty results), the drawer (`drawerSheet.ts`: its heights, scrim, where a drag ends and the ways it closes, keeping the tapped card in view), a shared link's entry (`sharedEventEntry`: the period to open, or the page for a past event), the details (the drawer's order, no image, its media links and price line), the history between screens and overlays (`screenHistory.ts` with the sheets, on a fake history: a period left from inside the Filtros sheet or next to the side panel, the address after closing, each view's address (`/calendario/` and back to `/`), "Guardados" turned off in the calendar staying off in the list), the sheets (`sheetHistory.test.ts`: the focus after a post opened in the posts sheet's place; forward onto a closed sheet's or the "Cuándo" menu's entry), the details' history (`drawerHistory.ts`: push or replace, closing through back, back and forward, an earlier event's entry not reopened while closing, a shared link's entries) and the drawer's numbers against the CSS (`--drawer-top-gap`, the 900px breakpoint) and the sheets, each flyer's version (`?v=`) and the service worker's image cache, run against fake caches (`images.test.ts`: one cache across builds, a flyer made again replacing its old copy, an older copy offline), the build's files written into it, inline handlers in the policy check, the CSS custom properties check, the calendar feed's description and the report link for an event over several days, workshop series (`series.test.ts`: the next session before, between, on and after its sessions; where the list puts it; the date filters and "Cuándo"'s counts; the calendar's days; the card, its sticker and the details' sessions; the calendar feed's entries; link previews and shared texts; the data check's rules), every @account as one shared link that opens the profile inside the site (`accountLink.test.ts`, which also fails on a hand-written profile link), the "Video" label on every video's card, a phone calendar day's dots (`calendarDots.test.ts`: at most six, then four and "+N"), the contact links, the media labels, search and saved events, which periods open, shared texts, versions and release notes, the analytics names for opened details, stories (the data check: a profile link only for a `STORY`; the "Historia" label, the line and "Ver perfil en Instagram", an event with only a story, a post's media before a story's), things shown once (`onceFlag`, with and without storage), hiding the bars (`hideBars.test.ts`: `bar` absent is not a bar, the list, the calendar's days and dots, the options' counts, the badge and "Sin bares", "Limpiar", the sheet's switch, the setting remembered and with storage blocked, and a guard: every path filters through `matchesFilters`), link previews (their text, the image's version, one image drawn with and one without a flyer), the theme (the saved value, old ones, and the script before first paint), the motion tokens and the brand's hex colors against `tokens.css`, the release velocity, what each list's share button shares (`shareSources`), the short dates against Intl, the values read from the page (`isView`, `isFilterGroup`) and history entries (`historyState`), links that leave the site, the page shown again on another day (`dayChange.test.ts`), a night past midnight (`overnight.test.ts`: over at its end time the morning after, listed under "Hoy" until then) | `frontend/tests/*.test.ts` (Vitest) |
+| Unit tests | Dates and Bogotá's "today", formatting, filtering (rhythms and dates, "Mañana", the options and their counts) and period grouping, holidays, the policy check, where the visitor can install from and its steps, the filter chips (`filterModel`: the bar's chips, "Cuándo" (its label with one or several dates, its options and counts, each period's days, the menu's radio items, where it hangs, its keys), dimmed vs hidden options, multiple types, removable chips, the badge, the line, the calendar's line; "Limpiar"'s scope; empty results), the drawer (`drawerSheet.ts`: its heights, scrim, where a drag ends and the ways it closes, keeping the tapped card in view), a shared link's entry (`sharedEventEntry`: the period to open, or the page for a past event), the details (the drawer's order, no image, its media links and price line), the history between screens and overlays (`screenHistory.ts` with the sheets, on a fake history: a period left from inside the Filtros sheet or next to the side panel, the address after closing, each view's address (`/calendario/` and back to `/`), "Guardados" turned off in the calendar staying off in the list), the sheets (`sheetHistory.test.ts`: the focus after a post opened in the posts sheet's place; forward onto a closed sheet's or the "Cuándo" menu's entry), the details' history (`drawerHistory.ts`: push or replace, closing through back, back and forward, an earlier event's entry not reopened while closing, a shared link's entries) and the drawer's numbers against the CSS (`--drawer-top-gap`, the 900px breakpoint) and the sheets, each flyer's version (`?v=`) and the service worker's image cache, run against fake caches (`images.test.ts`: one cache across builds, a flyer made again replacing its old copy, an older copy offline), the build's files written into it, inline handlers in the policy check, the CSS custom properties check, the calendar feed's description and the report link for an event over several days, workshop series (`series.test.ts`: the next session before, between, on and after its sessions; where the list puts it; the date filters and "Cuándo"'s counts; the calendar's days; the card, its sticker and the details' sessions; the calendar feed's entries; link previews and shared texts; the data check's rules), every @account as one shared link that opens the profile inside the site (`accountLink.test.ts`, which also fails on a hand-written profile link), the "Video" label on every video's card, a phone calendar day's dots (`calendarDots.test.ts`: at most six, then four and "+N"), the contact links, the media labels, search and saved events, which periods open, shared texts, versions and release notes, the analytics names for opened details, stories (the data check: a profile link only for a `STORY`; the "Historia" label, the line and "Ver perfil en Instagram", an event with only a story, a post's media before a story's), things shown once (`onceFlag`, with and without storage), hiding the bars (`hideBars.test.ts`: `bar` absent is not a bar, the list, the calendar's days and dots, the options' counts, the badge and "Sin bares", "Limpiar", the sheet's switch, the setting remembered and with storage blocked, and a guard: every path filters through `matchesFilters`), link previews (their text, the image's version, one image drawn with and one without a flyer), the bar at the bottom (`bottomNav.test.ts`: Filtros' badge and name with "Sin bares", the view on screen, Guardados and a kept search, the search field's history entry on a fake history (back, ×, forward, the details over it), the keyboard's inset (`keyboardInset`: iOS's pan, collapsed toolbars, a stale `offsetTop`, no visualViewport), and a guard: five items in order, no floating button, phones only, Info in the header), the theme (the saved value, old ones, and the script before first paint), the motion tokens and the brand's hex colors against `tokens.css`, the release velocity, what each list's share button shares (`shareSources`), the short dates against Intl, the values read from the page (`isView`, `isFilterGroup`) and history entries (`historyState`), links that leave the site, the page shown again on another day (`dayChange.test.ts`), a night past midnight (`overnight.test.ts`: over at its end time the morning after, listed under "Hoy" until then) | `frontend/tests/*.test.ts` (Vitest) |
 | Build | Every page, image and feed is generated; every page's Content Security Policy allows its inline scripts and styles, and no page has a `style=""` attribute or an inline `on…=""` handler (section 3.3); every event's link preview has its tags and a 1200×630 JPEG under 280 KB (section 3.4) | `npm run build`, `frontend/scripts/csp-meta.mjs`, `frontend/scripts/og-check.mjs`, `frontend/scripts/sw-precache.mjs` (fails if `sw.js` has no list to fill in) |
 
 All six run in `ci` on every pull request, and the ruleset requires `ci` before merging.
@@ -743,7 +761,7 @@ frontend/
       calendario.ics.ts   the calendar feed (no longer linked; written by lib/calendarFeed.ts)
       404.astro
     components/           HomePage (the app's body, for / and /calendario/), SiteHeader, ThemeToggle, Stripes,
-                          ViewToolbar, ViewSwitch, JumpBar, FilterSheet, CalendarView, EventDrawer, PostsSheet,
+                          ViewToolbar, JumpBar, BottomNav, FilterSheet, CalendarView, EventDrawer, PostsSheet,
                           PostViewer, InstallOffer, SiteFooter
     scripts/
       main.ts             entry point of the home page: state, render, the clicks' handlers
@@ -753,7 +771,7 @@ frontend/
       types.ts            DanceEvent, EventMedia, Meta, AppState (mirror of the backend's models)
       theme.ts, themeConfig.ts   the Claro / Oscuro switch, its rule and colors
       views/              upcomingView, calendarView, viewNavigation, eventCard, eventDetail, eventDetailActions, eventDrawer,
-                          drawerSheet, drawerGestures, drawerHistory, filters, jumpBar, whenMenu, viewSwitch, postsSheet,
+                          drawerSheet, drawerGestures, drawerHistory, filters, jumpBar, whenMenu, bottomNav, postsSheet,
                           postViewer, inlinePlayer, clips, saveButton, sharing, installPrompt, detailsHint, dayChange (HTML strings +
                           their behavior)
       lib/                dates, holidays, format, links, linkPreview, calendarFeed, contact, mediaLabel, filterModel, search,
@@ -766,7 +784,7 @@ frontend/
 | Module | Responsibility |
 |---|---|
 | `data.ts` | Reads `data/`, adds flyer sizes and versions (`?v=`), lists every account the sweep reads (`meta.accounts`, else the accounts with events) for the footer's sources |
-| `state.ts` | The UI state; filtering (AND across groups, OR within dates, types and rhythms; hiding the bars: `isBar`, `matchesBars`, `HIDE_BARS_KEY`); ⚙'s count; "Limpiar"; grouping by period; the date options |
+| `state.ts` | The UI state; filtering (AND across groups, OR within dates, types and rhythms; hiding the bars: `isBar`, `matchesBars`, `HIDE_BARS_KEY`); Filtros' count (the badge); "Limpiar"; grouping by period; the date options |
 | `views/upcomingView.ts` | "Próximos"; where a shared link's event is (`sharedEventEntry`) |
 | `views/calendarView.ts` | "Calendario", with holidays; each day's events with the filters on (`calendarDays`); a day's dots on phones (`dotsHtml`, at most `MAX_DOTS_PER_DAY`); the selected day's heading with its count, glowing when the day changes |
 | `views/eventCard.ts` | A card: flyer at its shape (or a video's clip; every video's "Video" mark, clip or not), date sticker, the posts' badge, the action row ("Detalles ›" with its offset, Compartir, Guardar), details |
@@ -777,15 +795,15 @@ frontend/
 | `views/eventDrawer.ts`, `views/drawerSheet.ts` | The details: a drawer over the list on phones (half / full height, scrim, keeping the card in view) and a side panel on wide screens; opening and closing; the geometry and where a drag ends (pure, tested) |
 | `views/drawerGestures.ts` | Dragging the drawer: touch, mouse or pen, the wheel (through `DrawerControl`) |
 | `views/drawerHistory.ts` | The details' history entries: the event's address, closing through back, what back or forward does (`historyMove`) |
-| `screenHistory.ts` | History entries for the app's screens (period, calendar, saved): the phone's back steps through them. Its hooks (`initScreenHistory`): the screen on show (`current`), putting one back (`apply(screen, undoing)`: stepping back out of the calendar keeps "Guardados" as it was set there) and each screen's address (`address`: `viewPath`, so the calendar's entries are `/calendario/`). Back from an in-page jump ("Info", `#info`) puts the scroll back. Overlays (sheets, the details, the "Cuándo" menu) carry the screen under them (`overlayState`); a screen left from inside one is skipped later. Every entry's state is one type (`AppHistoryState`), read with `historyState` |
+| `screenHistory.ts` | History entries for the app's screens (period, calendar, saved): the phone's back steps through them. Its hooks (`initScreenHistory`): the screen on show (`current`), putting one back (`apply(screen, undoing)`: stepping back out of the calendar keeps "Guardados" as it was set there) and each screen's address (`address`: `viewPath`, so the calendar's entries are `/calendario/`). Back from an in-page jump (the header's Info, `#info`) puts the scroll back. Overlays (sheets, the details, the "Cuándo" menu, the search field) carry the screen under them (`overlayState`); a screen left from inside one is skipped later. Every entry's state is one type (`AppHistoryState`), read with `historyState` |
 | `components/HomePage.astro`, `lib/viewTitles.ts` | The app's page, for both addresses (`/` and `/calendario/`, by its `view`); each view's title and description, for the page's head and the tab's title when the view changes |
 | `lib/filterModel.ts` | The filters' model, pure: options, counts, dimmed, the bar's chips, "Cuándo" (`whenModel`), what's applied, the badge, the line (`summaryLine`), stale dates |
 | `views/filters.ts` | Drawing the model: the phone bar's chips and line, the filter sheet, the toolbar's rows and status; empty results |
-| `views/jumpBar.ts` | Phones: the pinned bar (search, the filter sheet; it never hides), keeping your place, scrolling on purpose |
+| `views/jumpBar.ts` | Phones: the pinned bar (the chips; it never hides), the filter sheet's setup, keeping your place, scrolling on purpose |
 | `views/whenMenu.ts` | Phones: the "Cuándo" menu under its chip: its items (`whenMenuHtml`), opening (its own history entry, as an overlay), where it hangs (`menuPlacement`), the keys (`nextOption`), closing (Escape, a tap outside that does nothing else, Tab, back) and the focus |
-| `views/viewSwitch.ts` | Phones: the floating calendar / list button |
+| `views/bottomNav.ts` | Phones: the bar at the bottom (Eventos, Calendario, Buscar, Guardados, Filtros): the view on screen (`aria-current`), Filtros' badge and name (`navItems`, `filtersLabel`), the search field docked above the keyboard (`openSearchField`, `closeSearchField`, `keyboardInset`) and its history entry (`searchHistory`), the bar's height for what must stay above it (`bottomInset`) |
 | `views/dayChange.ts` | The page shown again on another day: the calendar's day and month to today, drawn again; hours later and online, loaded again |
-| `views/viewNavigation.ts` | Switching views (the list back where it was left, the calendar on its home: `calendarHome`, also when the page opens on `/calendario/`), the tab's title; the calendar's day list on screen (`revealDay`); the screens' history hooks (`currentScreen`, `applyScreen`) |
+| `views/viewNavigation.ts` | Switching views (the list back where it was left, the calendar on its home: `calendarHome`, also when the page opens on `/calendario/`; the view on screen again: the top of the page), the tab's title; the calendar's day list on screen (`revealDay`); the screens' history hooks (`currentScreen`, `applyScreen`) |
 | `lib/focus.ts` | Keeping the keyboard's focus through a redraw (`focusSelector`, `focusScope`), and after "Limpiar" |
 | `lib/accountLink.ts` | Every @account's link (`accountLinkHtml`, `accountLinkAttrs`): the profile, opened inside the site (`data-profile`); `tests/accountLink.test.ts` fails on any other profile link |
 | `lib/links.ts` | Every URL built from an event: flyer, clip, page, link preview, Maps, the report form; an account's profile and its embed (`profileUrl`, `profileEmbedUrl`); each view's address (`viewPath`, `viewOfPath`) and where closing an event returns (`addressAfterClosing`); calendar times (a series' per session) |
