@@ -306,8 +306,9 @@
   overflow-wrap: anywhere;
 }
 
-/* A detail the post doesn't give. */
-.to-confirm {
+/* A detail the post doesn't give, and a note beside one ("· 2 opciones"). */
+.to-confirm,
+.detail-note {
   font-style: italic;
   color: var(--text-muted);
 }

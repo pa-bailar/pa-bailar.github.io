@@ -49,8 +49,14 @@ function contactHtml(contact: string): string {
   return `<a class="inline-link contact-link" href="${escapeHtml(link.href)}"${external} data-track="contacto-${link.kind}">${CONTACT_ICONS[link.kind]}${escapeHtml(link.label)}</a>`;
 }
 
+/** A detail the post doesn't give: "Por confirmar", "hora por confirmar". */
 function toConfirm(text = "Por confirmar"): string {
   return `<span class="to-confirm">${text}</span>`;
+}
+
+/** A note beside a detail, styled like the missing ones: "· 2 opciones", "horario de cada sesión abajo". */
+function detailNote(text: string): string {
+  return `<span class="detail-note">${text}</span>`;
 }
 
 /**
@@ -62,7 +68,7 @@ function detailRows(event: DanceEvent): [string, string][] {
   // A series whose sessions have different times gives each its own, in the list of sessions.
   const perSession = isSeries(event) && !sameSessionTimes(event.sessions);
   const timeHtml = perSession
-    ? `<span class="to-confirm">horario de cada sesión abajo</span>`
+    ? detailNote("horario de cada sesión abajo")
     : time
       ? escapeHtml(time)
       : toConfirm("hora por confirmar");
@@ -93,7 +99,7 @@ export function sheetPrice(event: DanceEvent): string {
   const summary = priceSummary(event);
   if (!summary) return toConfirm();
   const free = event.prices.every((price) => price.amount_cop === 0);
-  const options = event.prices.length > 1 ? ` <span class="to-confirm">· ${event.prices.length} opciones</span>` : "";
+  const options = event.prices.length > 1 ? ` ${detailNote(`· ${event.prices.length} opciones`)}` : "";
   return `${free ? "Gratis" : escapeHtml(summary)}${options}`;
 }
 

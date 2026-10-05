@@ -111,7 +111,7 @@ describe("the details drawer", () => {
       { label: "Preventa", amount_cop: 25000, condition: null },
       { label: "Taquilla", amount_cop: 30000, condition: null },
     ];
-    expect(sheetPrice(event({ prices: options }))).toMatch(/^Desde \$\s?25\.000 <span class="to-confirm">· 2 opciones<\/span>$/);
+    expect(sheetPrice(event({ prices: options }))).toMatch(/^Desde \$\s?25\.000 <span class="detail-note">· 2 opciones<\/span>$/);
     expect(sheetPrice(event({ prices: [{ label: "Entrada", amount_cop: 0, condition: null }] }))).toBe("Gratis");
     expect(sheetPrice(event())).toContain("Por confirmar");
   });
