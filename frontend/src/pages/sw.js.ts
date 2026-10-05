@@ -1,7 +1,7 @@
 // The service worker (/sw.js): phones only offer to install a site that has one, and it lets the
 // installed app open without a connection, with the events from the last visit.
-//   - Installing it stores the home page and the build's files (/_astro/: the styles and the scripts that draw the
-//     events), so the app opens offline from the first visit and after each deploy. (Stored only as pages asked for
+//   - Installing it stores both views' pages (/ and /calendario/) and the build's files (/_astro/: the styles and the
+//     scripts that draw the events), so the app opens offline from the first visit and after each deploy. (Stored only as pages asked for
 //     them, they missed the first visit, which loads before the worker controls it, and each new build's worker
 //     dropped them.) Their names exist only after the build: scripts/sw-precache.mjs writes them in.
 //   - Pages: network first, so the events are always the latest when online; the last copy when offline.

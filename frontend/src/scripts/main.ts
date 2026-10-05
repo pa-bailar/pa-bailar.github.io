@@ -353,7 +353,7 @@ export function start() {
     render();
     returnToScroll(scrollY);
   });
-  // The page's own address picks the view it opens on: /calendario/ is the calendar (HomePage.astro data-start-view).
+  // The page's own address picks the view it opens on: /calendario/ is the calendar (lib/links.ts viewOfPath).
   const opensOnCalendar = viewOfPath(location.pathname) === "calendar";
   if (opensOnCalendar) state.view = "calendar";
   render();

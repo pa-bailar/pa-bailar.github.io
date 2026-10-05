@@ -29,7 +29,8 @@ npm run build   # static site in frontend/dist/ (fails if a page breaks its Cont
 npm run preview # the build at http://localhost:4321, with the policy (dev mode doesn't apply it)
 ```
 
-Besides the home page, the build makes one page per event (`/evento/<id>/`: shared links point there,
+Besides the home page (the list, `/`) and the calendar's own address (`/calendario/`, the same page opening on the
+calendar), the build makes one page per event (`/evento/<id>/`: shared links point there,
 and it forwards browsers to the home page with the event's details open over the list, unless it already passed), a link-preview image per event
 (`/og/<id>.jpg`, 1200×630: the flyer with the date, title, place and price, drawn with the fonts in
 `frontend/src/assets/fonts/og/`) and a calendar feed (`/calendario.ics`, no longer linked; kept for existing

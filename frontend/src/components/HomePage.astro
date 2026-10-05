@@ -1,7 +1,7 @@
 ---
 // The home page's body, for both of its addresses (pages/index.astro: the list, "Próximos"; pages/calendario/: the
-// calendar). One page, two views: `view` is the one it opens on, so reloading or sharing the calendar keeps it there
-// (main.ts reads data-start-view). Switching views changes the address (views/viewNavigation.ts).
+// calendar). One page, two views: `view` gives it its title and description; the view it opens on comes from the
+// address (main.ts, lib/links.ts viewOfPath), so reloading or sharing the calendar keeps it there. Switching views changes the address (views/viewNavigation.ts).
 import type { View } from "../scripts/types";
 import { VIEW_TITLES } from "../scripts/lib/viewTitles";
 
@@ -54,7 +54,7 @@ const { view } = Astro.props;
   <ViewToolbar />
   <JumpBar />
 
-  <main class="container page-main" data-start-view={view}>
+  <main class="container page-main">
     <section id="view-upcoming" role="tabpanel" aria-labelledby="tab-upcoming"></section>
     <CalendarView />
   </main>
