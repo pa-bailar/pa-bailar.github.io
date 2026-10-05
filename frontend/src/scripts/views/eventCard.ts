@@ -62,14 +62,14 @@ function flyerHtml(media: EventMedia, flyer: string, clip: string | null, title:
 const SOUND_BUTTON = `<button class="event-card__sound" type="button" data-sound aria-pressed="false"
   aria-label="Activar el sonido">${ICONS.soundOff}<span>Sin sonido</span></button>`;
 
-/** "Detalles ›" · Compartir · · · Guardar, under the flyer. The frame is a span inside the button (event-card.css). */
+/** "Detalles ›" · Compartir · · · Guardar, under the flyer. */
 function actionsHtml(event: DanceEvent): string {
   const id = escapeHtml(event.id);
   const title = escapeHtml(event.title);
   return `
     <div class="event-card__actions">
       <button class="event-card__details" type="button" data-event="${id}" data-source="boton"
-        aria-label="Detalles: ${title}"><span class="event-card__details-face">Detalles${ICONS.chevronRight}</span></button>
+        aria-label="Detalles: ${title}">Detalles${ICONS.chevronRight}</button>
       <button class="event-card__share" type="button" data-share-event="${id}" data-track="compartir-tarjeta"
         aria-label="Compartir: ${title}">${ICONS.share}</button>
       ${saveButtonHtml(event)}

@@ -110,9 +110,9 @@ const PAIRS = [
   ["Install steps: a browser button's outline (.install-key) on its fill", "border", "surface-sunken", "ui"],
   ["Install steps: the arrow toward the browser's button", "accent", "surface", "ui"],
   // The cards' action row and the details drawer (docs/DESIGN.md, "Opening an event").
-  ["Card: \"Detalles ›\" label on the page (phones' feed, 15px bold)", "details-ink", "bg", "text"],
-  ["Card: \"Detalles ›\" label on a card (wide screens)", "details-ink", "surface", "text"],
-  ["Card: \"Detalles ›\" label on its pressed fill", "details-ink", "details-pressed", "text"],
+  ["Card: \"Detalles ›\" label on the page (phones' feed, 15px bold)", "text", "bg", "text"],
+  ["Card: \"Detalles ›\" label on a card (wide screens)", "text", "surface", "text"],
+  ["Card: \"Detalles ›\" label on its pressed fill", "text", "details-pressed", "text"],
   ["Card: \"Detalles ›\" frame on the page", "details-ink", "bg", "ui"],
   ["Card: \"Detalles ›\" frame on a card (wide screens)", "details-ink", "surface", "ui"],
   ["Drawer: quick action and media link outline", "border", "surface", "ui"],

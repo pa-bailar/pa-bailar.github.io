@@ -331,64 +331,72 @@
 
 /* "Detalles ›": a closed ink frame with no fill (the dark theme's grain shows through), and one printer's offset
    2px down and to the right, a smooth gradient of the period rule's three colors (light: tomato, orange, marigold;
-   dark: magenta, coral, gold). The button is the 44px target; the frame is a span inside it, so the offset
-   (::before, behind the frame) can reach in under the frame's border: the frame's rounded corner then sits on the
-   offset, with no notch of the page between them. Pressed, the frame sinks 1px onto the offset and fills. */
+   dark: magenta, coral, gold): a copy of the box, misregistered. The button is the frame (36px); its ::after makes
+   the target 44px. Pressed, the frame sinks 1px onto the offset and fills. */
 .event-card__details {
   --details-press: 0px; /* how far the frame has sunk */
-  isolation: isolate;
+  isolation: isolate; /* the offset (z-index: -1) goes behind the frame, not behind the card */
   display: inline-flex;
   flex: none;
-  align-items: center;
-  min-height: var(--touch-target);
-  padding: 0;
-  border: 0;
-  background: none;
-  color: var(--details-ink);
-  font-size: var(--text-md);
-  font-weight: var(--weight-bold);
-}
-
-.event-card__details-face {
-  display: inline-flex;
   align-items: center;
   gap: var(--space-1);
   min-height: var(--details-height);
   padding: 0 var(--space-2) 0 var(--space-3);
   border: var(--border-width) solid var(--details-ink);
   border-radius: var(--radius-sm);
-  transform: translate(var(--details-press), var(--details-press));
-  transition:
-    transform var(--duration),
-    background-color var(--duration);
+  background: transparent;
+  color: var(--text);
+  font-size: var(--text-md);
+  font-weight: var(--weight-bold);
+  /* Sinking moves it with top/left, not a transform: layout positions are snapped to the screen's pixels, so the
+     frame and its offset keep hard edges (a transform drew them antialiased: a smear). */
+  top: var(--details-press);
+  left: var(--details-press);
+  transition: background-color var(--duration);
 }
 
-.event-card__details-face .icon {
+.event-card__details .icon {
   width: var(--icon-sm);
   height: var(--icon-sm);
   stroke-width: 2.4;
 }
 
-/* The offset: the frame's own box (same corners), moved down and right, cut to what isn't inside the frame. The
-   cut follows the frame's inner edge (its border hides the rest), so the L that shows is seamless. */
+/* 44px to the finger on the 36px frame. */
+.event-card__details::after {
+  content: "";
+  position: absolute;
+  inset: calc((var(--details-height) - var(--touch-target)) / 2 - var(--border-width)) calc(var(--border-width) * -1);
+}
+
+/* The offset: the frame's own box (same rounded corners), placed --details-offset down and to the right with insets
+   (snapped like the frame, never a transform), and cut to the L outside the frame: it starts at the frame's outer
+   edge, so it reads as a separate band, never as a thicker border. Where the frame's corner is rounded, the cut
+   steps in diagonally by the radius, under the ink: the band fills the corner, with no notch of the page. */
 .event-card__details::before {
-  --details-gap: calc(var(--details-offset) - var(--details-press)); /* how much shows past the frame */
-  --details-cut: calc(100% - var(--details-gap) - var(--border-width));
+  --details-gap: calc(var(--details-offset) - var(--details-press)); /* what shows past the frame */
+  --details-cut: calc(100% - var(--details-gap));
   content: "";
   position: absolute;
   z-index: -1;
-  inset: calc((var(--touch-target) - var(--details-height)) / 2) 0;
+  top: calc(var(--details-gap) - var(--border-width));
+  left: calc(var(--details-gap) - var(--border-width));
+  width: calc(100% + 2 * var(--border-width));
+  height: calc(100% + 2 * var(--border-width));
   border-radius: var(--radius-sm);
   background: linear-gradient(to right, var(--stripe-1), var(--stripe-2), var(--stripe-3));
-  transform: translate(var(--details-offset), var(--details-offset));
-  clip-path: polygon(var(--details-cut) 0, 100% 0, 100% 100%, 0 100%, 0 var(--details-cut), var(--details-cut) var(--details-cut));
+  clip-path: polygon(
+    var(--details-cut) 0,
+    100% 0,
+    100% 100%,
+    0 100%,
+    0 var(--details-cut),
+    calc(var(--details-cut) - var(--radius-sm)) var(--details-cut),
+    var(--details-cut) calc(var(--details-cut) - var(--radius-sm))
+  );
 }
 
 .event-card__details:active {
   --details-press: 1px;
-}
-
-.event-card__details:active .event-card__details-face {
   background: var(--details-pressed);
 }
 
@@ -418,7 +426,7 @@
 }
 
 /* First visit: the first card's "Detalles" pulses once (views/detailsHint.ts): its frame swells with a ring. */
-.event-card__details.is-pulsing .event-card__details-face {
+.event-card__details.is-pulsing {
   animation: details-pulse 1600ms cubic-bezier(0.2, 0, 0, 1) 300ms;
 }
 
@@ -580,7 +588,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .event-card__details.is-pulsing .event-card__details-face {
+  .event-card__details.is-pulsing {
     animation: none;
   }
 }

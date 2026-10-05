@@ -93,7 +93,7 @@
   --on-free: var(--white);
   /* "Detalles ›" on each card: a closed ink frame on the page (no fill), with one printer's offset under it in the
      period rule's three colors (event-card.css); pressed, the frame sinks onto it and fills. */
-  --details-ink: light-dark(var(--wine-900), var(--lilac-300)); /* frame and label */
+  --details-ink: light-dark(var(--wine-900), var(--lilac-300)); /* its frame (the label is --text) */
   --details-pressed: light-dark(var(--cream-250), var(--indigo-800));
   /* A filter option with nothing to show with the other filters: dimmed in place (inactive: exempt from contrast). */
   --dimmed: light-dark(var(--cocoa-200), var(--indigo-400));

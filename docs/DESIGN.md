@@ -69,7 +69,7 @@ Themes switch through CSS `color-scheme`: `light` at `:root`, `dark` only under 
 | `--accent-text` | tomato-700 | pink-400 | The accent as a word on the page: "× Limpiar" (4.93:1; `--accent` is 4.0:1 on the page) |
 | `--chip-active-*` | wine / cream | pink-300 `#ff9fcb` / ink | Selected filter chip, the badges on ⚙ and 🔖 |
 | `--dimmed` | cocoa-200 | indigo-400 | A filter option with nothing to show: its label and dashed outline (inactive, exempt from contrast) |
-| `--details-ink` | wine-900 | lilac-300 `#c3b7db` | The cards' "Detalles ›": its frame and label (13.4:1 and 9.62:1 on the page; 8.54:1 on a dark card) |
+| `--details-ink` | wine-900 | lilac-300 `#c3b7db` | The cards' "Detalles ›": its frame (13.4:1 and 9.62:1 on the page; 8.54:1 on a dark card); the label is `--text` |
 | `--details-pressed` | cream-250 | indigo-800 | "Detalles ›" pressed: the frame's fill |
 | `--scrim` | wine-950 | indigo-975 | Under the details drawer: 32% at half height, 55% at full |
 | `--backdrop` | wine at 60% | indigo-black at 78% | Behind the bottom sheets (the filters, the posts, the media viewer, the install steps) |
@@ -447,16 +447,20 @@ list. Now they open like Instagram's comments: a drawer rises over the list, and
   between them still open the card.
 - **"Detalles ›" is a printed label with an offset** (the owner's pick, "G2"): a closed ink frame (`--border-width`,
   `--details-ink`: wine in light, lilac-300 in dark) with no fill, so the page (and the dark theme's grain) shows
-  through; the label "Detalles" (`--text-md`, bold, in the same ink) and a trailing chevron (no ⓘ). Under it, **one
+  through; the label "Detalles" (`--text-md`, bold, `--text`) and a trailing chevron (no ⓘ). Under it, **one
   offset layer**, `--details-offset` (2px) down and to the right, filled with a smooth left-to-right gradient of the
   period rule's three colors (`--stripe-1..3`: tomato → orange → marigold; in dark magenta → coral → gold), like a
   misregistered print. It's found at a glance without competing with the one primary button.
-  - **Built:** the button is the 44px target; the frame is a span inside it (`.event-card__details-face`, 36px,
-    `--details-height`), and the offset is the button's `::before` behind it (`isolation: isolate`, `z-index: -1`): the
-    frame's own box with the same corners, moved 2px, and cut (`clip-path`) to everything outside the frame's inner
-    edge. The frame's border covers the rest, so its rounded corner sits on the offset with no notch of the page
-    between them (the mockup cut it at the frame's outer edge, which left one at the bottom-right corner). The offset
-    fits in the gap before Compartir, which doesn't move.
+  - **Built:** the button is the frame (36px, `--details-height`; an `::after` makes the target 44px), and the offset is
+    its `::before` behind it (`isolation: isolate`, `z-index: -1`): the frame's own box with the same corners, placed
+    2px down and right, cut (`clip-path`) to the L outside the frame's outer edge, so it reads as a separate band, a
+    hard copy of the box, never as a thicker border. Where the frame's corner is rounded, the cut steps in diagonally
+    by the radius, under the ink, so the band fills the corner: no notch of the page there (the mockup had one at the
+    bottom-right). The offset fits in the gap before Compartir, which doesn't move.
+  - **Hard edges:** it's placed and moved with insets and `top`/`left`, never a `transform`: layout positions snap to
+    the screen's pixels like the frame's border, while a transform drew the band antialiased, blending into the ink
+    (the first build cut the band under the border and moved it with a transform: at 3x it read as a smear). Checked
+    against the mockup at 1x, 2x and 3x, in both themes.
   - **Pressed:** the frame sinks 1px onto the offset (half of it still shows) and fills with `--details-pressed`
     (cream-250; indigo-800).
   - **Contrast:** the frame (≥3:1) and the label (≥4.5:1) against the page and a card, and the label on its pressed fill,
