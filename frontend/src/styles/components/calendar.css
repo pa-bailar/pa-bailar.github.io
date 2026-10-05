@@ -168,3 +168,36 @@
     display: none;
   }
 }
+
+/* The selected day's heading (calendarView.ts): its count on a line of its own, and a brief glow when the day changes,
+   so a tap shows where the list starts. No glow when the visitor asks for less motion: the new text says it. */
+.day-heading__count {
+  display: block;
+  margin-top: var(--space-1);
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-weight: var(--weight-bold);
+  font-size: var(--text-sm);
+  color: var(--accent-text);
+}
+
+.calendar__day-heading {
+  margin-inline: calc(var(--space-2) * -1);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .calendar__day-heading.is-new {
+    animation: day-glow 900ms ease-out;
+  }
+}
+
+@keyframes day-glow {
+  from {
+    background: color-mix(in srgb, var(--accent) 22%, transparent);
+  }
+  to {
+    background: transparent;
+  }
+}
