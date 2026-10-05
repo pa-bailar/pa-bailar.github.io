@@ -89,6 +89,14 @@ body[data-view="saved"] :is(.filter-pills, .filter-status, .jump-bar) {
   display: none;
 }
 
+/* Phones: without the pinned bar between them, the header's own bottom space is enough; the list's top padding on top
+   of it left a hole over "Compartir mis planes" (the owner, 5 Oct 2026). */
+@media not ((min-width: 720px) and (min-height: 600px)) {
+  body[data-view="saved"] .page-main {
+    padding-top: 0;
+  }
+}
+
 /* ---------- chips (the filters') ---------- */
 
 .chip {

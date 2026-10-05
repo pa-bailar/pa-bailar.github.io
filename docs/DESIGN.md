@@ -342,7 +342,8 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
     none to come: "Ninguno de tus eventos guardados está por venir" and "Ver eventos".
   - **No filters there:** a short, personal list. Filtros is off in the bar (faded, `aria-disabled`, named "Filtros: no
     se usan en Guardados"; its badge stays, since the list still uses them), the pinned bar and the toolbar's pills and
-    status row are hidden (`body[data-view="saved"]`). The filters stay set for the list. **The search applies**, as in
+    status row are hidden (`body[data-view="saved"]`; on phones the list's top padding goes too, or the header's
+    space and the list's stacked up as a hole where the pinned bar sits elsewhere). The filters stay set for the list. **The search applies**, as in
     every view: "No encontramos eventos guardados" · "Nada de lo que guardaste coincide con «…»." · "Borrar la búsqueda".
   - **Empty:** a big bookmark, "Aún no tienes eventos guardados", "Toca 🔖 en un evento para tenerlo aquí, a la mano. Se
     quedan en este navegador, sin crear cuenta." and "Ver eventos".
