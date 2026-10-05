@@ -11,6 +11,7 @@ import {
   scrimAt,
   settle,
 } from "../src/scripts/views/drawerSheet";
+import { VELOCITY_WINDOW, releaseVelocity } from "../src/scripts/lib/sheetMotion";
 
 const SCREEN = 812; // an iPhone's height, in CSS px
 const MEDIUM = offsetFor("medium", SCREEN);
@@ -80,5 +81,23 @@ describe("keeping the tapped card in view", () => {
 
   it("a shared link always lines it up", () => {
     expect(cardScrollDelta({ top: 70, bottom: 500 }, { ...bar, force: true })).toBe(6);
+  });
+});
+
+describe("the release velocity (sheets and drawer)", () => {
+  it("is the last VELOCITY_WINDOW ms of movement, in px/ms", () => {
+    const samples = [
+      { y: 0, time: 0 }, // too old: left out
+      { y: 100, time: 100 },
+      { y: 140, time: 140 },
+      { y: 180, time: 100 + VELOCITY_WINDOW },
+    ];
+    expect(releaseVelocity(samples)).toBe(1);
+  });
+
+  it("is 0 without movement over time, negative upwards", () => {
+    expect(releaseVelocity([])).toBe(0);
+    expect(releaseVelocity([{ y: 10, time: 5 }])).toBe(0);
+    expect(releaseVelocity([{ y: 100, time: 0 }, { y: 60, time: 40 }])).toBe(-1);
   });
 });

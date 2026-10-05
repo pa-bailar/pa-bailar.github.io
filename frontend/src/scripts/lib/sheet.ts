@@ -8,16 +8,21 @@
 // The motion itself is CSS (styles/components/sheet.css): .sheet, .is-dragging, .is-closing, --drag.
 
 import { prefersReducedMotion } from "./dom";
-import { FLICK, closeDistance, exitDurationFor } from "./sheetMotion";
+import {
+  FLICK,
+  type MotionSample,
+  SHEET_DIRECTION_SLOP,
+  closeDistance,
+  exitDurationFor,
+  releaseVelocity,
+} from "./sheetMotion";
 import { overlayState } from "../screenHistory";
 
 // A flick down (FLICK) closes however short; past closeDistance() it closes unless flicked back up (FLICK_UP).
 const FLICK_UP = -0.3; // px/ms: a flick back up cancels, however far it was dragged
-const VELOCITY_WINDOW = 80; // ms of recent movement used to measure the release velocity
 const SHRINK = 0.04; // scale lost at full drag progress
 const BACKDROP_FADE = 0.8; // backdrop opacity lost at full drag progress
 const RUBBER_BAND = 60; // px: most it moves when dragged up past the top
-const DIRECTION_SLOP = 10; // px moved before deciding between a drag and a scroll/swipe
 
 const closing = new WeakSet<HTMLDialogElement>();
 
@@ -58,14 +63,7 @@ function initSheet(sheet: HTMLDialogElement, canStartDrag: (target: HTMLElement)
   let startY = 0;
   let dragging: boolean | null = null; // null = direction not decided yet; false = not a drag
   let offset = 0; // px the sheet is moved down (negative: rubber band above the top)
-  let samples: { y: number; time: number }[] = [];
-
-  const velocity = () => {
-    const latest = samples.at(-1);
-    const recent = latest ? samples.filter((sample) => latest.time - sample.time <= VELOCITY_WINDOW) : [];
-    const [first, last] = [recent[0], recent.at(-1)];
-    return first && last && last.time > first.time ? (last.y - first.y) / (last.time - first.time) : 0;
-  };
+  let samples: MotionSample[] = [];
 
   const springBack = () => {
     sheet.classList.remove("is-dragging");
@@ -98,7 +96,7 @@ function initSheet(sheet: HTMLDialogElement, canStartDrag: (target: HTMLElement)
       const [x, y] = [point.clientX, point.clientY];
       if (dragging === null) {
         const [dx, dy] = [x - startX, y - startY];
-        if (Math.abs(dx) < DIRECTION_SLOP && Math.abs(dy) < DIRECTION_SLOP) return;
+        if (Math.abs(dx) < SHEET_DIRECTION_SLOP && Math.abs(dy) < SHEET_DIRECTION_SLOP) return;
         dragging = dy > 0 && Math.abs(dy) > Math.abs(dx); // down: drag; sideways or up: swipe or scroll
         if (!dragging) return;
         sheet.classList.add("is-dragging");
@@ -117,7 +115,7 @@ function initSheet(sheet: HTMLDialogElement, canStartDrag: (target: HTMLElement)
   const release = () => {
     if (!dragging) return;
     dragging = false;
-    const speed = velocity();
+    const speed = releaseVelocity(samples);
     const farEnough = offset > closeDistance(window.innerHeight);
     if (speed > FLICK || (farEnough && speed > FLICK_UP)) dismissSheet(sheet, { velocity: speed });
     else springBack(); // the transition animates it back
