@@ -96,6 +96,11 @@ describe("back and forward (historyMove)", () => {
     expect(drawer.historyMove({ eventId: "salsa-2" }, closed, exists)).toEqual({ kind: "open", eventId: "salsa-2" });
   });
 
+  it("while closing, landing on an earlier event's entry doesn't open it (a skipped screen led there)", () => {
+    const closing = { ...open, leaving: true, currentId: "salsa-2" };
+    expect(drawer.historyMove({ eventId: "social-1" }, closing, exists)).toEqual({ kind: "none" });
+  });
+
   it("no event (or one that's gone): the open details close, closed ones stay closed", () => {
     expect(drawer.historyMove({ screen: {} }, open, exists)).toEqual({ kind: "close" });
     expect(drawer.historyMove({ eventId: "gone" }, open, exists)).toEqual({ kind: "close" });

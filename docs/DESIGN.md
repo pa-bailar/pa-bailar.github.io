@@ -568,7 +568,7 @@ list. Now they open like Instagram's comments: a drawer rises over the list, and
 the list stays usable next to it: the page leaves room for it, another card shows its event in the panel (the address
 changes without adding to the history), and the open event's card is outlined in the accent color. × and Escape close
 it; it slides in from the right, and the focus goes back to the last card opened. The list next to it can move to
-another screen (a period opened whole, the calendar): another card then gets its own history entry, and closing the panel there
+another screen (a period opened whole, the calendar): another card then gets its own history entry, and closing the panel there Closing never reopens an earlier event: a "back" that passes over a screen undone from inside the panel and lands on another event's entry is ignored while the panel slides out (`historyMove`), and the close then steps out of that entry too.
 puts the address back to the home page's.
 
 ## Event detail: drawer and page
