@@ -27,14 +27,16 @@ export function savedLists(
   return { upcoming, past };
 }
 
-/** "Tus 3 eventos guardados · Compartir mis planes" (views/sharing.ts shares them: lib/shareSources.ts "planes"). */
+/**
+ * One light row: "Tus 3 eventos guardados" and a small "Compartir" at its end, named "Compartir mis planes" (it starts
+ * with its visible word). views/sharing.ts shares them (lib/shareSources.ts "planes").
+ */
 function plansBarHtml(count: number): string {
   return `
     <div class="plans-bar">
       <p class="plans-bar__count">${count === 1 ? "Tu evento guardado" : `Tus ${count} eventos guardados`}</p>
-      <button class="btn btn--primary" type="button" data-share="planes" data-track="compartir-planes">
-        ${ICONS.share}Compartir mis planes
-      </button>
+      <button class="btn btn--primary plans-bar__share" type="button" data-share="planes" data-track="compartir-planes"
+        aria-label="Compartir mis planes">${ICONS.share}Compartir</button>
     </div>`;
 }
 

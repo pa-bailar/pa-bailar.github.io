@@ -238,7 +238,8 @@ WhatsApp opens with the text. What can be shared (`scripts/views/sharing.ts`):
 - **A near period:** a share icon at the end of "Hoy", "Esta semana", "Este fin de semana" and "Próxima
   semana" (`.share-icon`): an image of its events and a list for WhatsApp, as filtered on screen (a
   rhythms, a type or a search go in the subtitle; chosen dates are the periods themselves).
-- **My plans:** in Guardados, "Tus 3 eventos guardados · Compartir mis planes" (`.plans-bar`): an image
+- **My plans:** in Guardados, "Tus 3 eventos guardados" and a small "Compartir" at the row's end (`.plans-bar`, named
+  "Compartir mis planes"; a light row, not a box: the owner, 5 Oct 2026): an image
   and a list where each event carries its own link.
 - **The image** (`lib/shareCard.ts`) is drawn in the browser at share time, so it always matches the day,
   the filters and the saved events: a 1080×1350 portrait (what WhatsApp and Instagram show whole) in the
@@ -336,7 +337,7 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
   Wishlists (the owner, 5 October 2026: as a toggle over the list and the calendar it read as "the calendar without
   the calendar", and you could be in Eventos and Guardados at once). Guardados in the bar at the bottom (with the
   number of upcoming saved events on its corner) and a third tab on wide screens ("Guardados 3").
-  - **What it shows:** "Tus 3 eventos guardados · Compartir mis planes", then the saved events to come by period, as in
+  - **What it shows:** "Tus 3 eventos guardados [Compartir]", then the saved events to come by period, as in
     the list but always whole (no summaries, no "Ver N más"), then the past ones folded at the end: **"Ya pasaron (2)
     ⌄"** (a `<details>`, the latest first; it stays open or folded as left while the view is drawn again). Saved but
     none to come: "Ninguno de tus eventos guardados está por venir" and "Ver eventos".

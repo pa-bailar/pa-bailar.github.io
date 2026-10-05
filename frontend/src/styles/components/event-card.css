@@ -69,22 +69,31 @@
 
 /* ---------- Guardados (views/savedView.ts) ---------- */
 
-/* "Tus 3 eventos guardados · Compartir mis planes" over the saved events. */
+/* "Tus 3 eventos guardados [Compartir]": one light row over the saved events, the button small at its end (the owner,
+   5 Oct 2026: the boxed bar with a full-size button took too much of the screen). */
 .plans-bar {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-3);
-  margin-bottom: var(--space-5);
-  padding: var(--space-3) var(--space-4);
-  border: var(--border-width) solid var(--border);
-  border-radius: var(--radius-md);
-  background: var(--surface);
+  margin-bottom: var(--space-4);
 }
 
 .plans-bar__count {
   font-weight: var(--weight-bold);
+}
+
+.plans-bar__share {
+  flex: none;
+  min-height: var(--chip-height);
+  padding: var(--space-1) var(--space-3);
+}
+
+/* Finger-sized on touch screens, as the chips. */
+@media (pointer: coarse) {
+  .plans-bar__share {
+    min-height: var(--control-height);
+  }
 }
 
 /* None of the saved events is still to come: said, with "Ver eventos". */
