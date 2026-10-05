@@ -568,8 +568,10 @@ list. Now they open like Instagram's comments: a drawer rises over the list, and
 the list stays usable next to it: the page leaves room for it, another card shows its event in the panel (the address
 changes without adding to the history), and the open event's card is outlined in the accent color. × and Escape close
 it; it slides in from the right, and the focus goes back to the last card opened. The list next to it can move to
-another screen (a period opened whole, the calendar): another card then gets its own history entry, and closing the panel there Closing never reopens an earlier event: a "back" that passes over a screen undone from inside the panel and lands on another event's entry is ignored while the panel slides out (`historyMove`), and the close then steps out of that entry too.
-puts the address back to the home page's.
+another screen (a period opened whole, the calendar): another card then gets its own history entry, and closing the panel there
+puts the address back to its view's (`/` or `/calendario/`). Closing never reopens an earlier event: a "back" that passes over a
+screen undone from inside the panel and lands on another event's entry is ignored while the panel slides out
+(`historyMove`), and the close then steps out of that entry too.
 
 ## Event detail: drawer and page
 
@@ -615,7 +617,8 @@ puts the address back to the home page's.
   - `npm run check` runs `scripts/check-contrast.mjs`, which reads `tokens.css` and checks every pair the components use; CI fails if one drops below AA. New color pairs go in its `PAIRS` list.
   - Don't dim text with `opacity`: use `--text-muted`. Colored marks that aren't text (calendar dots) get a `--border` outline.
   - **A calendar day never grows its week:** on phones at most two rows of dots (six; past that, five and a muted "+N"
-    in the sixth place, `MAX_DOTS_PER_DAY`), on wide screens three names and "+N". The exact count is in the day's
+    in the sixth place, `.cal-dots-more`; `dotsHtml` and `MAX_DOTS_PER_DAY` in `views/calendarView.ts`), on wide
+    screens three names and "+N". The exact count is in the day's
     label and the heading over its list (the owner, 4 October 2026).
   - `--divider` and the stripes are decorative and exempt.
   - Motion is respected via `prefers-reduced-motion`.
