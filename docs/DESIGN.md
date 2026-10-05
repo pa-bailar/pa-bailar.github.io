@@ -616,8 +616,8 @@ screen undone from inside the panel and lands on another event's entry is ignore
   - Contrast meets WCAG 2.2 AA in both themes: ≥ 4.5:1 for text, ≥ 3:1 for large text and for the outlines and indicators people need to see (borders, focus ring, selected states).
   - `npm run check` runs `scripts/check-contrast.mjs`, which reads `tokens.css` and checks every pair the components use; CI fails if one drops below AA. New color pairs go in its `PAIRS` list.
   - Don't dim text with `opacity`: use `--text-muted`. Colored marks that aren't text (calendar dots) get a `--border` outline.
-  - **A calendar day never grows its week:** on phones at most two rows of dots (six; past that, five and a muted "+N"
-    in the sixth place, `.cal-dots-more`; `dotsHtml` and `MAX_DOTS_PER_DAY` in `views/calendarView.ts`), on wide
+  - **A calendar day never grows its week:** on phones at most two rows of dots (six; past that, four and a muted "+N"
+    in the last two places, which fits a 320 px phone's three-dot rows even as "+12", `.cal-dots-more`; `dotsHtml` and `MAX_DOTS_PER_DAY` in `views/calendarView.ts`), on wide
     screens three names and "+N". The exact count is in the day's
     label and the heading over its list (the owner, 4 October 2026).
   - `--divider` and the stripes are decorative and exempt.

@@ -12,9 +12,9 @@ describe("a day's dots on phones", () => {
     expect(dotsHtml(day(6))).not.toContain("+");
   });
 
-  it('more than six: five dots and "+N" in the last place, so the week keeps its height', () => {
-    expect(dots(dotsHtml(day(7)))).toBe(5);
-    expect(dotsHtml(day(7))).toContain('<span class="cal-dots-more">+2</span>');
-    expect(dotsHtml(day(20))).toContain("+15");
+  it('more than six: four dots and "+N" in the last two places, so the week keeps its height', () => {
+    expect(dots(dotsHtml(day(7)))).toBe(4);
+    expect(dotsHtml(day(7))).toContain('<span class="cal-dots-more">+3</span>');
+    expect(dotsHtml(day(20))).toContain("+16");
   });
 });
