@@ -19,7 +19,7 @@ import {
 } from "./state";
 import { initThemeToggle } from "./theme";
 import { renderCalendarView } from "./views/calendarView";
-import { initClipSound, watchClips } from "./views/clips";
+import { watchClips } from "./views/clips";
 import { highlightCurrentCard, initEventDrawer, openEventDrawer } from "./views/eventDrawer";
 import { openEventPosts } from "./views/eventDetail";
 import { armDetailsHint, markDetailsHintSeen } from "./views/detailsHint";
@@ -457,7 +457,6 @@ export function start() {
   initEventDrawer((id) => events.find((event) => event.id === id));
   initPostsSheet();
   initPostViewer();
-  initClipSound();
   initSharing((id) => events.find((event) => event.id === id));
   initInstallPrompt();
   registerServiceWorker();

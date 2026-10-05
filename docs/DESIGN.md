@@ -135,8 +135,8 @@ few set from scripts are listed there): an undefined `--text-base` once left the
   `--details-tuck` (how far the offset reaches under the frame's ink: one device pixel from 2x, half of one below; set
   per screen density in `tokens.css`).
 - The details: `--drawer-top-gap` 12px (phones: what's left above the drawer at full height), `--panel-width` 420px (wide screens: the side panel).
-- Small parts: `--tab-underline` 3px (the selected tab's line), `--icon-sm` 16px (marks over flyers and thumbnails, a chip's ×, "× Limpiar", the sound button), `--icon-md` 20px ("Cuándo"'s calendar and check, the drawer's ×, the details' media links), `--icon-lg` 24px (Guardar, Compartir, ▶ over a video's flyer, the details' quick actions, the floating button), `--handle-width` × `--handle-height` 40×4px (every sheet's grab handle, `.sheet-handle`), `--fab-size` 44px.
-- Over photos: `--on-image` (white) with `--shadow-on-image`, the same in both themes, for marks that sit on any flyer (▶, stacked squares); `--on-image-bg` (black at 60%) behind words and marks on a flyer ("Sin sonido", ▶).
+- Small parts: `--tab-underline` 3px (the selected tab's line), `--icon-sm` 16px (marks over flyers and thumbnails, a chip's ×, "× Limpiar", a card's "Video"), `--icon-md` 20px ("Cuándo"'s calendar and check, the drawer's ×, the details' media links), `--icon-lg` 24px (Guardar, Compartir, the details' quick actions, the floating button), `--handle-width` × `--handle-height` 40×4px (every sheet's grab handle, `.sheet-handle`), `--fab-size` 44px.
+- Over photos: `--on-image` (white) with `--shadow-on-image`, the same in both themes, for marks that sit on any flyer (stacked squares); `--on-image-bg` (black at 60%) behind words and marks on a flyer (a card's "Video", "Historia").
 
 ## Signature motifs
 
@@ -435,15 +435,15 @@ An event can be announced by several Instagram posts (a flyer, then a video, a r
 - **Card:** shows the main post's flyer (images come before videos). A `.media-count` button ("▦ 3") in the flyer's top-right corner opens every post (above the card's stretched link, with a 44px target).
 - **Every post, in a sheet** (`PostsSheet.astro`, `scripts/views/postsSheet.ts`): from the card's "▦ 3", the details' "Ver las 3 publicaciones", or the event page's `.posts-badge` over its flyer. It rises from the bottom on phones and is a centered window on wide screens, with two tabs, Flyers (photos and carousels) and Videos, when the event has both, and square thumbnails like Instagram's grid (▶ on videos, stacked squares on carousels, white with a shadow) that wrap. Thumbnails are 160 px files made at build time (`pages/thumbs/[name].webp.ts`), a few KB each. Choosing one opens it in the media viewer, in the sheet's place (it takes over the sheet's history entry, so back returns to the list or the details, not to a sheet that's gone); on an event's page it shows that post on the page instead (image, "Ver en Instagram" link, caption).
 - **The media viewer** (`PostViewer.astro`, `scripts/views/postViewer.ts`): the post inside the site, in a sheet over everything (the drawer included), with Instagram's own player (`lib/instagramEmbed.ts`). Videos play there with sound and carousels swipe through all their slides. Opening the Instagram app would leave the site, and the app's back button doesn't come back. The sheet's bar keeps "Abrir en Instagram ↗". Our copy of the flyer shows at once and the player replaces it when ready; if it can't load, the flyer stays with "Esta publicación solo se puede ver en Instagram." Instagram's script loads on the first tap only, never with the page. Closing it removes the player, so a video stops. It opens from the details' "Ver el video con sonido" or "Ver las 4 imágenes" (a carousel), from a post chosen among the event's posts, and on an event's page from its flyer.
-- **Videos play in the feed.** When a card's image is a video's frame and the backend made its clip (`preview`), the card plays it: silent, looping, about 6 seconds, like Instagram's feed (`views/clips.ts`). "Sin sonido" sits in the clip's lower-left corner (`.event-card__sound`, white on `--on-image-bg`); a tap anywhere on the clip turns its sound on ("Con sonido") or off, right there, and doesn't open the details. Only the clip on screen plays, one at a time; a clip that leaves the screen goes silent and unloads. It doesn't autoplay with reduced motion or the browser's data saver: the still frame stays (a tap still plays it with sound). The service worker doesn't cache clips.
-- **A video without a clip** (Instagram gave no file) keeps a ▶ in a dark circle in the middle of the card's image (`.play-mark`); the card opens the details like a photo, and "Ver el video con sonido" there plays it.
+- **Videos play in the feed.** When a card's image is a video's frame and the backend made its clip (`preview`), the card plays it: silent, looping, about 6 seconds, like Instagram's feed (`views/clips.ts`). The clips have no sound (the backend cuts them without it), so there's no sound control: a tap on the clip opens the details like the rest of the card, and the full video with its sound plays there ("Ver el video con sonido", Instagram's player). The owner's call of 4 October 2026, after a "Sin sonido / Con sonido" toggle that did nothing. Only the clip on screen plays, one at a time; a clip that leaves the screen unloads. It doesn't autoplay with reduced motion or the browser's data saver: the still frame stays. The service worker doesn't cache clips.
+- **A video without a clip** (Instagram gave no file) says "Video" (a camera, `ICONS.video`) at the lower left of the card's image (`.video-mark`, white on `--on-image-bg`, `--text-xs`; the sticker is on the right). Not a ▶ in the middle: that promised it would play on the card. The card opens the details like a photo, and "Ver el video con sonido" there plays it.
 - **On an event's page** the flyer is on top: its clip plays, a label says what's behind it (`lib/mediaLabel.ts`, `.event-detail__play`: "▶ Ver con sonido", "▶ Ver video", "Ver las 4"), and a tapped video plays in place (`views/inlinePlayer.ts`: Instagram's player in the image's place, full length, with sound; removed once it's out of view).
 - **"Ver en Instagram ↗"** in the details is the explicit way to the app; the ↗ says it leaves the site.
 - **Stories** (`media_type` `STORY`: a screenshot of a story, [`DATA.md`](DATA.md#stories)) have no post to show, and
   the story itself is gone after 24 hours:
   - On an event's page the flyer is a plain image, not a link. "Historia" (a dashed ring, `ICONS.story`) is a caption
     in its top-left corner, where a story shows its account (`.event-detail__play--story`: white on `--on-image-bg`,
-    `--text-xs`, like a card's "Sin sonido"), not the action-colored label the others are, since there's nothing to tap.
+    `--text-xs`, like a card's "Video"), not the action-colored label the others are, since there's nothing to tap.
   - In the details, over the main button: "De una historia de @cuenta · las historias duran 24 horas"
     (`.event-detail__source`, `--text-sm` in `--text-muted`, with the ring), and the button says
     "Ver perfil en Instagram ↗" and opens the account's profile.
@@ -493,7 +493,7 @@ list. Now they open like Instagram's comments: a drawer rises over the list, and
 - **No line at the card's foot:** a muted "Ver horario, precios y cómo llegar" used to end each card; "Detalles" on
   every card already says it, so the card ends with its price and rhythms.
 - **The whole card opens the details**, its photo flyer included: card, flyer and "Detalles" open the same drawer (a
-  video's clip toggles its sound instead, and the posts' badge opens the posts).
+  video's clip too; the posts' badge opens the posts).
 - **The date sticker sits inside the flyer's bottom-right corner** on cards too.
 - **First visit:** the first card's "Detalles" pulses gently once (its frame: a ring in `--pulse` and a slight swell,
   1.6s; kept with the new button, which is still the way in to learn) when
@@ -564,7 +564,7 @@ puts the address back to the home page's.
 - **"Cómo llegar"** after the venue opens Google Maps (only when there's a venue or address).
 - **Reporting an error:** the detail ends with a small "¿Algo está mal? Repórtalo" link to the Google Form, with the event filled in (`feedbackUrl`: its title, its day or days, its id); the footer has "Escríbenos" for anything else. Out of the way of the actions, because almost everyone just wants the event.
 - **The contact is a link** (`lib/contact.ts`): an @username opens its Instagram; a mobile number opens a WhatsApp chat (`wa.me/57…`, with the WhatsApp icon), not a call: that's how people reach academies; a landline (60X) is a call (`tel:`), since it has no WhatsApp; a website opens it. A number that isn't a full Colombian or international one stays plain text.
-- **Icons** (`scripts/lib/icons.ts`): Instagram and WhatsApp marks (Simple Icons, CC0) and drawn icons (calendar, pin, ×, sound on and off, an arrow out, a story's dashed ring, and for the install steps Safari's ⋯, Compartir and Agregar a inicio, a link and an arrow), inline SVG in the text color, hidden from screen readers.
+- **Icons** (`scripts/lib/icons.ts`): Instagram and WhatsApp marks (Simple Icons, CC0) and drawn icons (calendar, a video camera, pin, ×, an arrow out, a story's dashed ring, and for the install steps Safari's ⋯, Compartir and Agregar a inicio, a link and an arrow), inline SVG in the text color, hidden from screen readers.
 
 ## Component rules
 

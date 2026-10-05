@@ -23,6 +23,7 @@ export const ICONS = {
   phone: icon(`<rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/>`, false), // installing the app
   message: icon(`<path d="M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H9l-5 4V6a1 1 0 0 1 1-1z"/>`, false), // feedback
   calendar: icon(`<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>`, false),
+  video: icon(`<rect x="2.5" y="6" width="13" height="12" rx="2"/><path d="m15.5 10.5 6-3.5v10l-6-3.5"/>`, false), // a video without a clip on a card
   list: icon(`<path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/>`, false),
   play: icon(`<path d="M8 5.5v13a.5.5 0 0 0 .77.42l10.2-6.5a.5.5 0 0 0 0-.84L8.77 5.08A.5.5 0 0 0 8 5.5z"/>`),
   carousel: icon(`<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M4 16V6a2 2 0 0 1 2-2h10"/>`, false),
@@ -38,8 +39,6 @@ export const ICONS = {
   arrowDown: icon(`<path d="M12 4v15M6 13l6 6 6-6"/>`, false),
   info: icon(`<circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.5h.01"/>`, false), // an event's "Detalles"
   close: icon(`<path d="M6 6l12 12M18 6 6 18"/>`, false), // removing a filter, closing the details
-  soundOff: icon(`<path d="M11 5 6 9H3v6h3l5 4z"/><path d="m22 9-6 6M16 9l6 6"/>`, false), // a feed clip, muted
-  soundOn: icon(`<path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/>`, false),
   external: icon(`<path d="M14 4h6v6M20 4l-9 9"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/>`, false),
   pin: icon(`<path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>`, false),
   chevronDown: icon(`<path d="m6 9 6 6 6-6"/>`, false), // "Cuándo ▾": opens a menu

@@ -188,7 +188,7 @@
      the same in both themes, so they read on light and dark flyers alike. */
   --on-image: #fff;
   --shadow-on-image: drop-shadow(0 1px 2px rgb(0 0 0 / 0.7));
-  --on-image-bg: rgb(0 0 0 / 0.6); /* behind words and marks over any image: ▶, "Sin sonido" */
+  --on-image-bg: rgb(0 0 0 / 0.6); /* behind words and marks over any image: a card's "Video", "Historia" */
 
   /* ---------- Layer 3: small parts ---------- */
   --tab-underline: 3px; /* the selected tab's line: Próximos / Calendario, Flyers / Videos */
