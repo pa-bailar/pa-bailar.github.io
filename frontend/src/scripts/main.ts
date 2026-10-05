@@ -5,7 +5,7 @@ import { initClickTracking } from "./lib/analytics";
 import { byId, isPlainClick } from "./lib/dom";
 import { focusAfterClearing, focusScope, focusSelector } from "./lib/focus";
 import { eventCountLabel, formatLongDate } from "./lib/format";
-import { addMonths, currentMonth, lastDay, todayIso } from "./lib/dates";
+import { addMonths, currentMonth, isUpcoming, nowInBogota, todayIso } from "./lib/dates";
 import { eventPath, sharedEventLink } from "./lib/links";
 import { shareSources } from "./lib/shareSources";
 import {
@@ -106,8 +106,8 @@ function render({ keepPlace = false } = {}) {
 
 /** The saved events still to come, in the list's order (a series by its next session). */
 function upcomingSaved(): DanceEvent[] {
-  const today = todayIso();
-  return listOrder(events.filter((event) => lastDay(event) >= today && isSaved(event.id)), today);
+  const now = nowInBogota();
+  return listOrder(events.filter((event) => isUpcoming(event, now) && isSaved(event.id)), todayIso());
 }
 
 /** "Guardados 3": how many upcoming events are saved, on the toggles. */

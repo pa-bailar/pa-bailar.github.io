@@ -10,7 +10,7 @@ import {
   nextSession,
   parseIsoDate,
   sameMonth,
-  shownDay,
+  shownSession,
   todayIso,
 } from "./dates";
 import { isHoliday } from "./holidays";
@@ -281,7 +281,7 @@ export function stickerDate(
 ): { day: string; month: string; range: boolean } {
   const day = (iso: string) => String(parseIsoDate(iso).getDate()).padStart(2, "0");
   if (isSeries(event)) {
-    const shown = shownDay(event, today);
+    const shown = shownSession(event, today).date;
     return { day: day(shown), month: shortMonthName(shown).toUpperCase(), range: false };
   }
   const end = lastDay(event);

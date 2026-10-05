@@ -5,7 +5,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Stripes from "../components/Stripes.astro";
 import { events } from "../data";
-import { lastDay, todayIso } from "../scripts/lib/dates";
+import { isUpcoming, todayIso } from "../scripts/lib/dates";
 import { capitalize } from "../scripts/lib/format";
 import { shortWhen } from "../scripts/lib/linkPreview";
 import { BASE_URL, eventPath, mainMedia, thumbUrl } from "../scripts/lib/links";
@@ -14,7 +14,7 @@ const home = BASE_URL;
 const UPCOMING_SHOWN = 4;
 const today = todayIso();
 // events.json is sorted by date and time; an event over several days is upcoming until its last day.
-const upcoming = events.filter((event) => lastDay(event) >= today).slice(0, UPCOMING_SHOWN);
+const upcoming = events.filter((event) => isUpcoming(event, today)).slice(0, UPCOMING_SHOWN);
 ---
 
 <BaseLayout title="Página no encontrada · Pa' Bailar" description="Este evento ya pasó o no existe." noindex>

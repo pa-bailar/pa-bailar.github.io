@@ -1,7 +1,7 @@
 // UI state and the event filtering that depends on it.
 
 import type { AppState, DanceEvent, View } from "./types";
-import { addDays, currentMonth, daysOf, endOfWeek, lastDay, shownDay, startOn, todayIso, toIsoDate } from "./lib/dates";
+import { addDays, currentMonth, daysOf, endOfWeek, isUpcoming, nowInBogota, shownDay, startOn, todayIso, toIsoDate } from "./lib/dates";
 import { capitalize, formatMonthName } from "./lib/format";
 import { isSaved } from "./lib/saved";
 import { matchesQuery } from "./lib/search";
@@ -103,12 +103,12 @@ function byStartOn(events: DanceEvent[], day: string): DanceEvent[] {
     .map(({ event }) => event);
 }
 
-/** Events the current view can show before filtering: upcoming ones (until their last day), or the displayed
- * month's (any of their days in it). */
+/** Events the current view can show before filtering: upcoming ones (until their last day; a night past midnight
+ * until its end time: isUpcoming), or the displayed month's (any of their days in it). */
 export function eventsInView(events: DanceEvent[], state: AppState): DanceEvent[] {
   if (state.view === "upcoming") {
-    const today = todayIso();
-    return events.filter((event) => lastDay(event) >= today);
+    const now = nowInBogota();
+    return events.filter((event) => isUpcoming(event, now));
   }
   const prefix = monthPrefix(state.month);
   return events.filter((event) => inMonth(event, prefix));
@@ -258,9 +258,10 @@ export function periodDays(key: string, today = todayIso()): [string, string] | 
 }
 
 /** The days the event is on from today: an event over several days counts in every period it runs through, a series in
- * every period with a session to come. */
+ * every period with a session to come; last night's social still on after midnight, today. */
 function daysFrom(event: DanceEvent, today: string): string[] {
-  return daysOf(event).filter((day) => day >= today);
+  const days = daysOf(event).filter((day) => day >= today);
+  return days.length || !isUpcoming(event, today) ? days : [today];
 }
 
 /** The first day (from today) the event is on within the chosen periods, or null if it's on during none. */

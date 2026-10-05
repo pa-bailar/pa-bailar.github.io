@@ -5,7 +5,7 @@
 
 import type { DanceEvent } from "./types";
 import { initClickTracking } from "./lib/analytics";
-import { isSeries, lastDay, todayIso } from "./lib/dates";
+import { isSeries, isUpcoming } from "./lib/dates";
 import { byId } from "./lib/dom";
 import { cardWhenLabel } from "./lib/format";
 import { initThemeToggle } from "./theme";
@@ -41,6 +41,6 @@ export function initEventPage() {
     if (when) when.textContent = cardWhenLabel(event);
     watchClips(container);
   }
-  byId("event-past").hidden = lastDay(event) >= todayIso();
+  byId("event-past").hidden = isUpcoming(event); // a night past midnight: not before its end time
   container.addEventListener("click", (domEvent) => handleDetailClick(container, domEvent, event, render));
 }

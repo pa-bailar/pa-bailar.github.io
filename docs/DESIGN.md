@@ -571,7 +571,7 @@ puts the address back to the home page's.
   drawer.
 - **The event's page** is what a shared link points to, for link previews (see "Link previews"), search engines
   (schema.org `Event` data) and browsers without scripts. Its header links "← Ver próximos eventos"; a past event says
-  "Este evento ya pasó."
+  "Este evento ya pasó." (a night past midnight only once its end time has passed, the morning after).
 - **Panel sheets** (filters, an event's posts, a post, the install steps) share one base: `.sheet-panel` (`sheet.css`, attached to the bottom on phones, a centered window on wide screens) and `initPanelSheet` / `openPanelSheet` (`lib/sheet.ts`: ×, backdrop, drag down, Escape). Each gets its own history entry, so the phone's back button closes only the sheet on top: a post, then the details, then the list. A sheet opened in another's place (a post chosen among the posts) takes over its entry.
 - **Bottom sheets** (the panel sheets; `lib/sheet.ts`, `sheet.css`) behave like native ones, with values from Material/iOS sheets, the same as the drawer:
   - **Opening:** they rise in 320ms (Material's emphasized-decelerate curve) while the backdrop fades in.

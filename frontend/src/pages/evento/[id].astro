@@ -12,7 +12,7 @@ import Stripes from "../../components/Stripes.astro";
 import ThemeToggle from "../../components/ThemeToggle.astro";
 import { allowInlineScript, jsValue } from "../../csp";
 import { accounts, events } from "../../data";
-import { isMultiDay, isSeries, lastDay, todayIso } from "../../scripts/lib/dates";
+import { endsAt, isMultiDay, isSeries, isUpcoming, lastDay, todayIso } from "../../scripts/lib/dates";
 import type { DanceEvent } from "../../scripts/types";
 import {
   PREVIEW_HEIGHT,
@@ -46,7 +46,7 @@ interface Props {
 const { event } = Astro.props;
 const home = BASE_URL;
 const today = todayIso();
-const isPast = lastDay(event) < today; // over several days: once its last day has passed
+const isPast = !isUpcoming(event, today); // over several days: once its last day has passed (set again by eventPage.ts)
 
 // The link preview: "Intensivo Ritmos Cubanos — dom 4 oct, 9:00 a. m.", "Taller de salsa cubana · Cra 16 #52-46 ·
 // Desde $ 35.000 · Pa' Bailar", and the image with its version (it changes when the image does).
@@ -131,7 +131,8 @@ const structuredData = {
 // A shared link lands in the app: the list at this event's card, with its details open over it (main.ts,
 // openSharedEvent), as if the visitor had tapped it. This page stays for link previews and search engines (they
 // read it, they don't run it), for browsers without scripts, and for an event that already passed (it's not in the
-// list): the date is checked here, in Bogotá, since the page was built earlier. `?pagina` (the app sending a
+// list): the time is checked here, in Bogotá (UTC−5 all year), since the page was built earlier: past once it's over
+// (endsAt: the end of its last day, or a night past midnight's end time the morning after). `?pagina` (the app sending a
 // visitor back here) also stays. Replacing it in the history means "back" never comes here to bounce again.
 // Inline, allowed by its hash (csp.ts).
 const redirectScript = allowInlineScript(
@@ -139,8 +140,8 @@ const redirectScript = allowInlineScript(
   `(function () {
   var params = new URLSearchParams(location.search);
   if (/bot|crawl|spider|slurp|facebookexternalhit|preview/i.test(navigator.userAgent) || params.has("pagina")) return;
-  var today = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Bogota" }).format(new Date());
-  if (today > ${jsValue(lastDay(event))}) return;
+  var now = new Date(Date.now() - 5 * 3600000).toISOString().slice(0, 16).replace("T", " ");
+  if (now >= ${jsValue(endsAt(event))}) return;
   params.set("evento", ${jsValue(event.id)});
   location.replace(${jsValue(home)} + "?" + params.toString());
 })();`,

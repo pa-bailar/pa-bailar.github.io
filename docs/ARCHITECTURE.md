@@ -601,6 +601,13 @@ Every browser on an iPhone is Safari's engine (WebKit), with its own limits:
   after the last, as the format's end is exclusive (13–15 November: `DTSTART;VALUE=DATE:20261113`,
   `DTEND;VALUE=DATE:20261116`); schema.org's `endDate` is the last day (for one day, the post's end time, or none:
   the calendars' 4 hours are a guess).
+- **When an event is over** is one rule, `isUpcoming` in `lib/dates.ts` (before `endsAt`, compared with Bogotá's
+  `nowInBogota`, "YYYY-MM-DD HH:MM"): at the end of its last day, except a **night past midnight** (a one-day event,
+  or a series' last session, whose end time is before its start: 21:00–03:00, `end_date` null as `DATA.md` says),
+  which is on until its end time the morning after. The list, "Guardados", the "Cuándo" options, a shared link (the
+  event page's forward and the app), the event page's "Este evento ya pasó" and the 404 page's list all use it. At
+  1 a. m. last night's social is still listed, under "Hoy" (`shownDay`), and leaves at 3:00. Over several days the
+  times are the first day's start and the last day's end, so they never make a night past midnight.
 - **Workshop series** (`sessions`, `docs/DATA.md`): `isSeries`, `nextSession` (the first on or after today),
   `shownSession` (the next, or the last once all passed), and `daysOf` (its sessions' days, not those between) in
   `lib/dates.ts`. `isMultiDay` is false for a series. The card and the details show the next session (`cardWhenLabel`,
