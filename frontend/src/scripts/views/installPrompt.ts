@@ -192,10 +192,48 @@ export function offerAfterSaving(savedCount: number) {
   window.setTimeout(() => (nudge.hidden = true), NUDGE_SECONDS * 1000);
 }
 
-/** The service worker: offline copies and installability (pages/sw.js.ts). Only in the built site. */
+/** At most this many flyers sent to the worker (pages/sw.js.ts, SHOWN_IMAGES_LIMIT). */
+const SHOWN_IMAGES_LIMIT = 60;
+
+/** The flyers and thumbnails this page already loaded (this site's, once each), for the worker to store. */
+export function shownImageUrls(
+  images: Iterable<Pick<HTMLImageElement, "currentSrc" | "src" | "complete" | "naturalWidth">>,
+  origin: string,
+): string[] {
+  const urls = new Set<string>();
+  for (const image of images) {
+    if (!image.complete || !image.naturalWidth) continue;
+    const url = new URL(image.currentSrc || image.src, origin);
+    if (url.origin === origin && /^\/(flyers|thumbs)\//.test(url.pathname)) urls.add(url.href);
+  }
+  return [...urls].slice(0, SHOWN_IMAGES_LIMIT);
+}
+
+/**
+ * The service worker: offline copies and installability (pages/sw.js.ts). Only in the built site. On a first visit the
+ * page loads before the worker controls it, so its flyers never go through it: once it takes over, it's sent them.
+ */
 export function registerServiceWorker() {
   if (!import.meta.env.PROD || !("serviceWorker" in navigator)) return;
-  navigator.serviceWorker.register(`${import.meta.env.BASE_URL.replace(/\/?$/, "/")}sw.js`).catch(() => {
+  const workers = navigator.serviceWorker;
+  if (!workers.controller) {
+    const send = (images: Iterable<HTMLImageElement>) => {
+      const urls = shownImageUrls(images, location.origin);
+      if (urls.length) workers.controller?.postMessage({ type: "cache-images", urls });
+    };
+    workers.addEventListener(
+      "controllerchange",
+      () => {
+        send(document.images);
+        // Those still loading came from before it took over, so they don't go through it either: sent once loaded.
+        for (const image of document.images) {
+          if (!image.complete) image.addEventListener("load", () => send([image]), { once: true });
+        }
+      },
+      { once: true },
+    );
+  }
+  workers.register(`${import.meta.env.BASE_URL.replace(/\/?$/, "/")}sw.js`).catch(() => {
     // Not installable or not offline-ready this time: the site itself works the same.
   });
 }

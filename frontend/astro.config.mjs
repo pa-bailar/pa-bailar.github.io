@@ -2,6 +2,7 @@ import sitemap from "@astrojs/sitemap";
 import { fileURLToPath } from "node:url";
 import { defineConfig } from "astro/config";
 import cspMeta from "./scripts/csp-meta.mjs";
+import modulePreload from "./scripts/module-preload.mjs";
 import ogCheck from "./scripts/og-check.mjs";
 import swPrecache from "./scripts/sw-precache.mjs";
 
@@ -25,11 +26,13 @@ export default defineConfig({
   // cspMeta: the policy below, moved to the top of each page and checked (scripts/csp-meta.mjs).
   // ogCheck: every event's link preview exists, is 1200×630 and light enough for WhatsApp (scripts/og-check.mjs).
   // swPrecache: the service worker gets the names of the build's files, to store them offline (scripts/sw-precache.mjs).
+  // modulePreload: each page's script and the chunks it imports, announced in <head> (scripts/module-preload.mjs).
   integrations: [
     sitemap({ filter: (page) => !page.includes("/404") }),
     cspMeta(),
     ogCheck({ eventsFile: new URL("../data/events.json", import.meta.url) }),
     swPrecache(),
+    modulePreload(),
   ],
   // No Markdown here; Shiki's highlighting needs style attributes, which the policy blocks.
   markdown: { syntaxHighlight: false },
