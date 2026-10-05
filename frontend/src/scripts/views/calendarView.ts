@@ -18,13 +18,14 @@ const MAX_PILLS_PER_DAY = 3;
 export const MAX_DOTS_PER_DAY = 6;
 
 /**
- * A day's dots on phones, one per event in its type's color. More than MAX_DOTS_PER_DAY: the first ones and "+N" in
- * the last place (as the wide screens' "+N" after three names); the exact count is in the day's label and heading.
+ * A day's dots on phones, one per event in its type's color. More than MAX_DOTS_PER_DAY: the first four and "+N" in the
+ * last two places (as the wide screens' "+N" after three names): on a 320 px phone a row holds three dots, and "+N"
+ * needs two dots' room ("+12" too). The exact count is in the day's label and heading.
  */
 export function dotsHtml(dayEvents: Pick<DanceEvent, "event_type">[]): string {
   const dot = (event: Pick<DanceEvent, "event_type">) => `<i class="cal-dot t-${escapeHtml(event.event_type)}"></i>`;
   if (dayEvents.length <= MAX_DOTS_PER_DAY) return dayEvents.map(dot).join("");
-  const shown = MAX_DOTS_PER_DAY - 1;
+  const shown = MAX_DOTS_PER_DAY - 2;
   return `${dayEvents.slice(0, shown).map(dot).join("")}<span class="cal-dots-more">+${dayEvents.length - shown}</span>`;
 }
 
