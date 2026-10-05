@@ -5,7 +5,7 @@
 //   - Square thumbnails (160 px files made at build time), marked like Instagram's grid: ▶ for a video,
 //     stacked squares for a carousel, a ring for a story. They wrap; nothing scrolls sideways.
 //   - Choosing one opens it in the media viewer, in the sheet's place (postViewer.ts); on an event's page it shows
-//     there instead (image, "Ver en Instagram" link and caption) and the sheet closes.
+//     there instead (its image, the Instagram quick action and its caption) and the sheet closes.
 
 import type { DanceEvent, EventMedia } from "../types";
 import { byId, escapeHtml } from "../lib/dom";

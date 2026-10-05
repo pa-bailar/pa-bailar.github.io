@@ -151,7 +151,7 @@ flowchart LR
     FL["data/flyers/*.webp"] -- "sharp: width × height" --> DT
     DT --> EV["events: DanceEvent[]<br/>(each flyer with its size)"]
     DT --> ME["meta: Meta"]
-    DT --> AC["accounts: academies with events"]
+    DT --> AC["accounts: every account the sweep reads"]
 ```
 
 - **Typed once:** the JSON is cast to the types in `src/scripts/types.ts`, which mirror the backend's
@@ -266,7 +266,7 @@ flowchart LR
     a soft shadow, draws the SVG on top and writes a JPEG (quality 84, full color resolution so the red and green
     text stays crisp; a busy flyer that would weigh more than 280 KB is written again at lower quality). A video's
     flyer is its frame, as everywhere. An event without a flyer gets the record of the app icon.
-  - **Cost:** about 0.12 s per event: with 77 events the build takes about 10 s more (15 s instead of 5 s), and the
+  - **Cost:** about 0.12 s per event: with 77 events (October 2026) the build takes about 10 s more (15 s instead of 5 s), and the
     images weigh about 115 KB each (9 MB in all, from 5 MB for the old 600 px flyers).
 - **Corrections reach the apps** (`?v=`): apps cache a preview by its URL, and GitHub Pages can't send cache headers
   (it serves everything with a 10-minute cache). So the image's URL carries a short hash of what it shows
@@ -432,7 +432,7 @@ stateDiagram-v2
 ```
 
 - **The drawer is one `<dialog>`** (`EventDrawer.astro`, `views/eventDrawer.ts`) with one event's details in it
-  (`eventDrawerHtml`: the head with when, the title, the type, the account (a link to its Instagram profile) and ×; then the quick actions and the
+  (`eventDrawerHtml`: the head with when, the title, the type, the account (its profile, opened inside the site: `lib/accountLink.ts`) and ×; then the quick actions and the
   details). No flyer: the card is right there. Two modes, chosen when it opens and switched if the window crosses
   900px while open (`show` / `swapMode`):
 
@@ -561,7 +561,7 @@ Every browser on an iPhone is Safari's engine (WebKit), with its own limits:
     every clip at once: about 190 MB decoded, which made iPhones close the page; then the current event and its
     neighbors, with their flyers again over the list.)
   - videos' clips (`views/clips.ts`), in the feed and on an event's page: `preload="none"`, muted, `playsinline`,
-    one playing at a time (≤ 1 clip decoding); a clip that leaves the screen pauses, goes silent and unloads (its
+    one playing at a time (≤ 1 clip decoding); a clip that leaves the screen pauses and unloads (its
     `src` set aside and the video reloaded empty, put back when it's seen again); a clip whose card is redrawn away is
     released. Something over the list holds them (`holdClips`): the full drawer covers them, and the media viewer
     plays the post with sound;
@@ -628,13 +628,13 @@ Every browser on an iPhone is Safari's engine (WebKit), with its own limits:
 | **GitHub Pages** | Hosting | | The site is down |
 | **GoatCounter** (`jzamora9.goatcounter.com`) | Visit statistics, without cookies or personal data, so no consent banner is needed | Page views. Each event opened in the details drawer, as a view of its page. Where details were opened from, as events: `detalles-tarjeta` (the card), `detalles-boton` (its "Detalles"), `detalles-enlace` (a shared link; `detailsEventName`); `detalles-linea` (the line that ended each card) is retired since October 2026. Clicks on elements with `data-track` (Instagram, the contact links, "Cómo llegar", sharing, including `compartir-tarjeta` from a card's row, saving, installing, reports). Local testing isn't counted. Its script (`count.js`) is a copy served from the site (`src/vendor/goatcounter-count.js`, ISC license), not loaded from `gc.zgo.at`: the policy (section 3.3) then allows no other script host, and GoatCounter keeps its `/count` endpoint compatible, so the copy needs no updates | Nothing breaks: the script is optional and wrapped in `try` (`lib/analytics.ts`) |
 | **Instagram embed** (`instagram.com/embed.js`) | Showing a post inside the site (the media viewer: the details' Instagram quick action, a post chosen among the event's posts, an event page's flyer; videos play, carousels swipe) | Loaded only on that tap, never with the page: the post's link; Instagram's player then runs as Meta's code (and cookies) inside its frame | Our copy of the flyer stays, with "Abrir en Instagram" (also when a post's link can't be read) |
-| **Instagram profile embed** (`instagram.com/<account>/embed/`, an iframe) | An account's profile inside the site (a card's or the details' @): its photo, counts and latest posts | Loaded only on that tap: the account's name; Instagram's page runs as Meta's code (and cookies) inside its frame | "El perfil no cargó aquí: ábrelo en Instagram.", and the bar's "Abrir en Instagram ↗" |
+| **Instagram profile embed** (`instagram.com/<account>/embed/`, an iframe) | An account's profile inside the site (any account's @: `lib/accountLink.ts`): its photo, counts and latest posts | Loaded only on that tap: the account's name; Instagram's page runs as Meta's code (and cookies) inside its frame | "El perfil no cargó aquí: ábrelo en Instagram.", and the bar's "Abrir en Instagram ↗" |
 | **Google Fonts** | Shrikhand, Bodoni Moda (italic) and Instrument Sans | The font request | System fonts are used |
 | **Instagram, WhatsApp, Google Maps** | Links the visitor chooses to open | Only what's in the link | |
 | **Google Forms** (the author's account) | Reports and ideas: "¿Algo está mal? Repórtalo" in each event's detail (the event filled in, `lib/links.ts`, `feedbackUrl`) and "Escríbenos" in the footer. No account needed; answers go to a Google Sheet and an email | What the visitor writes, and the event it's about | Nothing on the site: it's a link |
 
 Flyers are copies served from this repository, so the site never needs Instagram to show events. The
-only Instagram content it loads is a post's player, and only when a visitor taps a flyer to watch it.
+only Instagram content it loads is a post's player or an account's profile embed, and only when a visitor taps to open one.
 
 ---
 
@@ -646,7 +646,7 @@ only Instagram content it loads is a post's player, and only when a visitor taps
 | Types | `astro check`: strict TypeScript, including `noUncheckedIndexedAccess` | `tsconfig.json` |
 | Color contrast | Every color pair the site uses, in both themes, against WCAG 2.2 AA. It reads the tokens from `tokens.css`, so it can't drift from the design system | `frontend/scripts/check-contrast.mjs` |
 | CSS custom properties | Every `var(--name)` in the stylesheets, components and scripts has a definition; the few set from scripts (`style.setProperty`: the drawer's position, a flyer's shape, a sheet's drag) are listed, and each must still be set by one | `frontend/scripts/check-css-vars.mjs` |
-| Unit tests | Dates and Bogotá's "today", formatting, filtering (rhythms and dates, "Mañana", the options and their counts) and period grouping, holidays, the policy check, where the visitor can install from and its steps, the filter chips (`filterModel`: the bar's chips, "Cuándo" (its label with one or several dates, its options and counts, each period's days, the menu's radio items, where it hangs, its keys), dimmed vs hidden options, multiple types, removable chips, the badge, the line, the calendar's line; "Limpiar"'s scope; empty results), the drawer (`drawerSheet.ts`: its heights, scrim, where a drag ends and the ways it closes, keeping the tapped card in view), a shared link's entry (`sharedEventEntry`: the period to open, or the page for a past event), the details (the drawer's order, no image, its media links and price line), the history between screens and overlays (`screenHistory.ts` with the sheets, on a fake history: a period left from inside the Filtros sheet or next to the side panel, and the address after closing), the details' history (`drawerHistory.ts`: push or replace, closing through back, back and forward, a shared link's entries) and the drawer's numbers against the CSS (`--drawer-top-gap`, the 900px breakpoint) and the sheets, the images' version for the service worker, the build's files written into it, inline handlers in the policy check, the CSS custom properties check, the calendar feed's description and the report link for an event over several days, workshop series (`series.test.ts`: the next session before, between, on and after its sessions; where the list puts it; the date filters and "Cuándo"'s counts; the calendar's days; the card, its sticker and the details' sessions; the calendar feed's entries; link previews and shared texts; the data check's rules), the details' account opening its profile inside the site (`data-profile`), the analytics names for opened details, stories (the data check: a profile link only for a `STORY`; the "Historia" label, the line and "Ver perfil en Instagram", an event with only a story, a post's media before a story's), things shown once (`onceFlag`, with and without storage), link previews (their text, the image's version, one image drawn with and one without a flyer), the theme (the saved value, old ones, and the script before first paint), the motion tokens and the brand's hex colors against `tokens.css`, the release velocity, what each list's share button shares (`shareSources`), the short dates against Intl, the values read from the page (`isView`, `isFilterGroup`) and history entries (`historyState`), links that leave the site | `frontend/tests/*.test.ts` (Vitest) |
+| Unit tests | Dates and Bogotá's "today", formatting, filtering (rhythms and dates, "Mañana", the options and their counts) and period grouping, holidays, the policy check, where the visitor can install from and its steps, the filter chips (`filterModel`: the bar's chips, "Cuándo" (its label with one or several dates, its options and counts, each period's days, the menu's radio items, where it hangs, its keys), dimmed vs hidden options, multiple types, removable chips, the badge, the line, the calendar's line; "Limpiar"'s scope; empty results), the drawer (`drawerSheet.ts`: its heights, scrim, where a drag ends and the ways it closes, keeping the tapped card in view), a shared link's entry (`sharedEventEntry`: the period to open, or the page for a past event), the details (the drawer's order, no image, its media links and price line), the history between screens and overlays (`screenHistory.ts` with the sheets, on a fake history: a period left from inside the Filtros sheet or next to the side panel, and the address after closing), the details' history (`drawerHistory.ts`: push or replace, closing through back, back and forward, a shared link's entries) and the drawer's numbers against the CSS (`--drawer-top-gap`, the 900px breakpoint) and the sheets, the images' version for the service worker, the build's files written into it, inline handlers in the policy check, the CSS custom properties check, the calendar feed's description and the report link for an event over several days, workshop series (`series.test.ts`: the next session before, between, on and after its sessions; where the list puts it; the date filters and "Cuándo"'s counts; the calendar's days; the card, its sticker and the details' sessions; the calendar feed's entries; link previews and shared texts; the data check's rules), every @account as one shared link that opens the profile inside the site (`accountLink.test.ts`, which also fails on a hand-written profile link), the "Video" label on every video's card, the contact links, the media labels, search and saved events, which periods open, shared texts, versions and release notes, the analytics names for opened details, stories (the data check: a profile link only for a `STORY`; the "Historia" label, the line and "Ver perfil en Instagram", an event with only a story, a post's media before a story's), things shown once (`onceFlag`, with and without storage), link previews (their text, the image's version, one image drawn with and one without a flyer), the theme (the saved value, old ones, and the script before first paint), the motion tokens and the brand's hex colors against `tokens.css`, the release velocity, what each list's share button shares (`shareSources`), the short dates against Intl, the values read from the page (`isView`, `isFilterGroup`) and history entries (`historyState`), links that leave the site | `frontend/tests/*.test.ts` (Vitest) |
 | Build | Every page, image and feed is generated; every page's Content Security Policy allows its inline scripts and styles, and no page has a `style=""` attribute or an inline `on…=""` handler (section 3.3); every event's link preview has its tags and a 1200×630 JPEG under 280 KB (section 3.4) | `npm run build`, `frontend/scripts/csp-meta.mjs`, `frontend/scripts/og-check.mjs`, `frontend/scripts/sw-precache.mjs` (fails if `sw.js` has no list to fill in) |
 
 All six run in `ci` on every pull request, and the ruleset requires `ci` before merging.
@@ -705,11 +705,11 @@ frontend/
 
 | Module | Responsibility |
 |---|---|
-| `data.ts` | Reads `data/`, adds flyer sizes, lists the academies |
+| `data.ts` | Reads `data/`, adds flyer sizes, lists every account the sweep reads (`meta.accounts`, else the accounts with events) for the footer's sources |
 | `state.ts` | The UI state; filtering (AND across groups, OR within dates, types and rhythms); ⚙'s count; "Limpiar"; grouping by period; the date options |
 | `views/upcomingView.ts` | "Próximos"; where a shared link's event is (`sharedEventEntry`) |
 | `views/calendarView.ts` | "Calendario", with holidays |
-| `views/eventCard.ts` | A card: flyer at its shape (or a video's clip; a clip-less video's "Video" mark), date sticker, the posts' badge, the action row ("Detalles ›" with its offset, Compartir, Guardar), details |
+| `views/eventCard.ts` | A card: flyer at its shape (or a video's clip; every video's "Video" mark, clip or not), date sticker, the posts' badge, the action row ("Detalles ›" with its offset, Compartir, Guardar), details |
 | `views/detailsHint.ts`, `lib/onceFlag.ts` | The first visit's pulse on the first card's "Detalles"; things shown once per browser |
 | `views/eventDetail.ts` | An event's details (the drawer's, and the event page's with the flyer on top): head, quick actions, details, prices, media links. Pure HTML strings, imported at build time by the event pages |
 | `views/eventDetailActions.ts` | What the details' clicks open: the post in the media viewer, the event's posts (`openEventPosts`), a video in place on the event's page (`handleDetailClick`) |
@@ -724,15 +724,16 @@ frontend/
 | `views/viewSwitch.ts` | Phones: the floating calendar / list button |
 | `views/viewNavigation.ts` | Switching views, each back where it was left; the calendar's day list on screen (`revealDay`); the screens' history hooks (`currentScreen`, `applyScreen`) |
 | `lib/focus.ts` | Keeping the keyboard's focus through a redraw (`focusSelector`, `focusScope`), and after "Limpiar" |
-| `lib/links.ts` | Every URL built from an event: flyer, clip, page, link preview, Maps, the report form; calendar times (a series' per session) |
+| `lib/accountLink.ts` | Every @account's link (`accountLinkHtml`, `accountLinkAttrs`): the profile, opened inside the site (`data-profile`); `tests/accountLink.test.ts` fails on any other profile link |
+| `lib/links.ts` | Every URL built from an event: flyer, clip, page, link preview, Maps, the report form; an account's profile and its embed (`profileUrl`, `profileEmbedUrl`); calendar times (a series' per session) |
 | `lib/calendarFeed.ts` | The calendar feed's text (`/calendario.ics`): one VEVENT per event, or per session of a workshop series |
 | `lib/linkPreview.ts`, `linkPreviewImage.ts` | A shared link's preview: its title, description, the image's text and version; the image itself (build time) |
-| `lib/mediaLabel.ts` | What the label over a post's image says (Ver con sonido, Ver video, Ver las N, Historia), and which cards get a ▶; stories (`isStory`, `storySource`: "De una historia de @cuenta…") |
+| `lib/mediaLabel.ts` | What the label over a post's image says (Ver con sonido, Ver video, Ver las N, Historia), and which cards say "Video" (`isVideoCover`); stories (`isStory`, `storySource`: "De una historia de @cuenta…") |
 | `lib/sheet.ts`, `lib/sheetMotion.ts` | Bottom sheets that drag to dismiss; panel sheets with their own back-button step; the release and exit numbers they share with the drawer (`releaseVelocity`, the flick, the slops) |
 | `lib/motion.ts` | The motion tokens scripts use (durations, Material's curves), mirroring `tokens.css` |
 | `lib/brandColors.ts` | The palette as hex, for what can't read CSS (link previews, the share card, the app's icons, the favicon, `theme-color`), checked against `tokens.css` |
 | `lib/instagramEmbed.ts` | Instagram's player for a post, its script loaded on demand |
-| `views/postsSheet.ts`, `views/postViewer.ts` | An event's posts (Flyers / Videos); a post watched inside the site (the media viewer); an account's profile there (`openProfileViewer`: any `a[data-profile]`, the card's and the details' @) |
+| `views/postsSheet.ts`, `views/postViewer.ts` | An event's posts (Flyers / Videos); a post watched inside the site (the media viewer); an account's profile there (`openProfileViewer`: any `a[data-profile]`, every account's @) |
 | `views/inlinePlayer.ts` | A video tapped in the detail plays in the image's place (Instagram's player), removed when off screen |
 | `views/clips.ts` | Videos' clips in the feed and on an event's page: the one on screen plays, silent and looping, one at a time; held under the full drawer and the media viewer; unloaded off screen, released when they leave the page |
 | `lib/contact.ts` | The organizer's contact as a link: Instagram, WhatsApp, phone or website |
