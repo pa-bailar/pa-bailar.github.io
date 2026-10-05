@@ -29,7 +29,7 @@ export function mediaLabel(media: EventMedia): MediaLabel | null {
   return null;
 }
 
-/** The card shows a play mark when the event's image is a video. */
+/** The event's image is a video: its card says "Video", and the details' Instagram button plays it. */
 export const isVideoCover = (media: EventMedia): boolean =>
   !isStory(media) && (Boolean(media.preview) || media.media_type === "VIDEO");
 

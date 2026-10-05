@@ -192,9 +192,9 @@
 
   /* ---------- Layer 3: small parts ---------- */
   --tab-underline: 3px; /* the selected tab's line: Próximos / Calendario, Flyers / Videos */
-  --icon-sm: 16px; /* marks over flyers and thumbnails, a chip's ×, "× Limpiar", the sound button */
-  --icon-md: 20px; /* the cards' "Detalles", the drawer's ×, the details' media links */
-  --icon-lg: 24px; /* Guardar, Compartir, ▶ over a video's flyer, the details' quick actions, the floating button */
+  --icon-sm: 16px; /* marks over flyers and thumbnails, a chip's ×, "× Limpiar", a card's "Video" */
+  --icon-md: 20px; /* the cards' "Detalles" and Compartir, "Cuándo"'s clock, the drawer's ×, the details' media links */
+  --icon-lg: 24px; /* Guardar, the details' quick actions, the floating button */
   --handle-width: 40px; /* sheets' grab handle */
   --handle-height: 4px;
 
