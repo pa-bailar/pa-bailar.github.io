@@ -107,6 +107,7 @@ export function checkData(events, meta, fileExists) {
     check(event.is_recurring === false, at, "recurring events are never stored");
     check(isStringList(event.styles), at, "styles must be a list of strings");
     for (const style of event.styles ?? []) check(STYLES.includes(style), at, `unknown style "${style}"`);
+    check(event.bar === undefined || typeof event.bar === "boolean", at, "bar must be true or false");
     for (const field of ["organizer", "venue", "address", "area", "weekday", "contact"]) {
       check(isNullableString(event[field]), at, `${field} must be a string or null`);
     }

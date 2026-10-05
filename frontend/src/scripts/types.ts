@@ -66,6 +66,7 @@ export interface DanceEvent {
   doubts: string[];
   account: string;
   media: [EventMedia, ...EventMedia[]]; // main post first (the latest flyer; videos after flyers, stories last); always at least one
+  bar?: boolean; // its account is a bar or club, open every week (docs/DATA.md); absent in older data
 }
 
 /** data/meta.json */
