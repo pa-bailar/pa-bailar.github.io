@@ -23,6 +23,7 @@ export const ICONS = {
   phone: icon(`<rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/>`, false), // installing the app
   message: icon(`<path d="M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H9l-5 4V6a1 1 0 0 1 1-1z"/>`, false), // feedback
   calendar: icon(`<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>`, false),
+  clock: icon(`<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/>`, false), // "Cuándo": dates (the calendar is the floating button's)
   video: icon(`<rect x="2.5" y="6" width="13" height="12" rx="2"/><path d="m15.5 10.5 6-3.5v10l-6-3.5"/>`, false), // a video without a clip on a card
   list: icon(`<path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/>`, false),
   play: icon(`<path d="M8 5.5v13a.5.5 0 0 0 .77.42l10.2-6.5a.5.5 0 0 0 0-.84L8.77 5.08A.5.5 0 0 0 8 5.5z"/>`),

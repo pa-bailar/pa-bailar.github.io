@@ -396,6 +396,7 @@
 }
 
 .event-card__share {
+  isolation: isolate; /* the frame (z-index below 0) stays behind the icon, inside the button */
   display: inline-flex;
   flex: none;
   align-items: center;
@@ -408,9 +409,34 @@
   color: var(--text);
 }
 
+/* Compartir looks like a button too, next to "Detalles ›": the same ink frame, 36px square inside its 44px target,
+   without the colored offset (that one stays Detalles' alone). Pressed, it fills like Detalles. */
+.event-card__share::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: calc((var(--touch-target) - var(--details-height)) / 2);
+  border: var(--border-width) solid var(--details-ink);
+  border-radius: var(--radius-sm);
+  transition: background-color var(--duration);
+}
+
+.event-card__share:active::after {
+  background: var(--details-pressed);
+}
+
+.event-card__share:focus-visible {
+  outline: none;
+}
+
+.event-card__share:focus-visible::after {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
 .event-card__share .icon {
-  width: var(--icon-lg);
-  height: var(--icon-lg);
+  width: var(--icon-md);
+  height: var(--icon-md);
 }
 
 /* Guardar at the right end of the row. */

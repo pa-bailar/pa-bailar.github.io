@@ -76,8 +76,8 @@
 }
 
 /* ---------- "Cuándo" in the phone bar (filters.ts, whenMenu.ts) ----------
-   Not a chip like the rhythms: a calendar and a ▾ say it opens a menu of dates ("📅 ▾"). Once a date is chosen it
-   reads "📅 Finde" in the chosen colors, with × beside it: two buttons (open the menu, take the date away) drawn as
+   Not a chip like the rhythms: a clock and a ▾ say it opens a menu of dates ("🕒 ▾"). Once a date is chosen it
+   reads "🕒 Finde" in the chosen colors, with × beside it: two buttons (open the menu, take the date away) drawn as
    one piece, a line between them. */
 .when-chip {
   display: inline-flex;
@@ -94,7 +94,7 @@
   height: var(--icon-md);
 }
 
-/* The calendar in the accent's text color while nothing is chosen, so the control reads as dates at a glance. */
+/* The clock in the accent's text color while nothing is chosen, so the control reads as dates at a glance. */
 .when-chip:not(.is-chosen) .when-chip__open .icon:first-child {
   color: var(--accent-text);
 }
@@ -104,7 +104,7 @@
   height: var(--icon-sm);
 }
 
-/* The word "Cuándo" where there's room for it (phones show the calendar and ▾, so two rhythms fit). */
+/* The word "Cuándo" where there's room for it (phones show the clock and ▾, so two rhythms fit). */
 .when-chip__word {
   display: none;
 }

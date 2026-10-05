@@ -135,7 +135,7 @@ few set from scripts are listed there): an undefined `--text-base` once left the
   `--details-tuck` (how far the offset reaches under the frame's ink: one device pixel from 2x, half of one below; set
   per screen density in `tokens.css`).
 - The details: `--drawer-top-gap` 12px (phones: what's left above the drawer at full height), `--panel-width` 420px (wide screens: the side panel).
-- Small parts: `--tab-underline` 3px (the selected tab's line), `--icon-sm` 16px (marks over flyers and thumbnails, a chip's ×, "× Limpiar", a card's "Video"), `--icon-md` 20px ("Cuándo"'s calendar and check, the drawer's ×, the details' media links), `--icon-lg` 24px (Guardar, Compartir, the details' quick actions, the floating button), `--handle-width` × `--handle-height` 40×4px (every sheet's grab handle, `.sheet-handle`), `--fab-size` 44px.
+- Small parts: `--tab-underline` 3px (the selected tab's line), `--icon-sm` 16px (marks over flyers and thumbnails, a chip's ×, "× Limpiar", a card's "Video"), `--icon-md` 20px ("Cuándo"'s clock and check, the cards' Compartir, the drawer's ×, the details' media links), `--icon-lg` 24px (Guardar, the details' quick actions, the floating button), `--handle-width` × `--handle-height` 40×4px (every sheet's grab handle, `.sheet-handle`), `--fab-size` 44px.
 - Over photos: `--on-image` (white) with `--shadow-on-image`, the same in both themes, for marks that sit on any flyer (stacked squares); `--on-image-bg` (black at 60%) behind words and marks on a flyer (a card's "Video", "Historia").
 
 ## Signature motifs
@@ -332,10 +332,10 @@ the list stays short there and summarizes what's further away (`scripts/views/up
 ## Phones: feed, jump bar, view switch and filter sheet
 
 - **Feed like Instagram:** under 720px each event is a full-width post, the flyer edge to edge at full size and the details right below, separated by space instead of boxed cards. Nothing is shrunk into thumbnails.
-- **Jump bar** (`JumpBar.astro`, `scripts/views/jumpBar.ts`): one slim row (`--jump-bar-height`, 56px) pinned to the top, modeled on the filter bars of Google Maps and Airbnb: **[🔍] [🔖 3]**, then one row of chips that scrolls sideways: **[⚙ 3] [Social ×] [📅 ▾] | [Salsa] [Bachata] [Urbano] [Tango]** (search and "Guardados": see "Saving and searching"; "Cuándo" and the chips: see "Filters").
+- **Jump bar** (`JumpBar.astro`, `scripts/views/jumpBar.ts`): one slim row (`--jump-bar-height`, 56px) pinned to the top, modeled on the filter bars of Google Maps and Airbnb: **[🔍] [🔖 3]**, then one row of chips that scrolls sideways: **[⚙ 3] [Social ×] [🕒 ▾] | [Salsa] [Bachata] [Urbano] [Tango]** (search and "Guardados": see "Saving and searching"; "Cuándo" and the chips: see "Filters").
   - **Compact, so two rhythms show at 375px:** 🔍, 🔖 and ⚙ are 40px squares (44px to the finger: 2px past each side, in
-    the 8px gaps), and "Cuándo" is its calendar and ▾ ("📅 ▾"; the word "Cuándo" joins them from 480px). At 375px the row
-    shows ⚙, 📅 ▾, Salsa whole and Bachata to its last letter, under the fade.
+    the 8px gaps), and "Cuándo" is its clock and ▾ ("🕒 ▾"; the word "Cuándo" joins them from 480px). At 375px the row
+    shows ⚙, 🕒 ▾, Salsa whole and Bachata to its last letter, under the fade.
   - **The row runs to the screen's edge** and fades there (a mask), so the next chip peeks and it reads as a row that scrolls (Material's single-line chip group). It keeps where it was scrolled while choosing, unless a new choice would be out of sight (made in the sheet, or a chip further along): then it scrolls just enough to show the first one.
   - **⚙** opens the filter sheet; its badge counts every choice in use (two rhythms count two, like Airbnb's).
   - **The line under it** ("12 eventos · Finde, Salsa" and "× Limpiar"), only while filtering (`--filter-line-height`, 40px): see "Filters".
@@ -366,7 +366,7 @@ screens in the toolbar's chip rows:
 
 | Group | Choices | Options | In the phone bar |
 |---|---|---|---|
-| Fecha | several (the bar's "Cuándo": one) | each period of the list with something on ("Hoy", "Esta semana", "Este fin de semana", "Próxima semana", "Más adelante en octubre", each month, each year), and "Mañana" right after "Hoy" when something is on tomorrow | "📅 ▾" (Cuándo): a menu with every one |
+| Fecha | several (the bar's "Cuándo": one) | each period of the list with something on ("Hoy", "Esta semana", "Este fin de semana", "Próxima semana", "Más adelante en octubre", each month, each year), and "Mañana" right after "Hoy" when something is on tomorrow | "🕒 ▾" (Cuándo): a menu with every one |
 | Ritmo | several | each rhythm ("Salsa" includes its variants), "Otros ritmos" last | Salsa · Bachata · Urbano · Tango, always (the owner's choice) |
 | Tipo de evento | several | each event type | from the sheet |
 | Academia | one | set by tapping an academy on a card | "@academia ×" |
@@ -376,10 +376,11 @@ screens in the toolbar's chip rows:
   show right after ⚙ as removable chips: "Social ×", "Kizomba ×", "@academia ×" (never a date: "Cuándo" shows those).
 - **Dates look like what they are: "Cuándo" (`views/whenMenu.ts`).** Dates used to be chips like the rhythms, and read
   as the same kind of thing. In the bar they're one control instead, the pattern of Google Maps' chips with a ▾:
-  - **The chip:** a calendar (in `--accent-text`) and ▾, "📅 ▾", named "Cuándo: Cualquier fecha". Chosen, it reads
-    "📅 Finde" in the selected-chip colors, with **×** right beside it: a button of its own (not inside the chip's), the
+  - **The chip:** a clock (in `--accent-text`; not a calendar, which is the floating button's icon, the owner's call
+    of 4 October 2026) and ▾, "🕒 ▾", named "Cuándo: Cualquier fecha". Chosen, it reads
+    "🕒 Finde" in the selected-chip colors, with **×** right beside it: a button of its own (not inside the chip's), the
     two drawn as one piece with a thin line between them; × takes the date away in one tap and the focus goes back to
-    "Cuándo". Several dates chosen in the sheet read "📅 Hoy +1", and × takes them all away.
+    "Cuándo". Several dates chosen in the sheet read "🕒 Hoy +1", and × takes them all away.
   - **The menu** hangs from the chip (under it, its left edge with the chip's, never past the screen's sides; it scrolls
     when the screen is short, at least four options tall): "CUÁNDO", then **Cualquier fecha** and every period, each
     with the days it covers in muted text ("Hoy dom 4", "Este fin de semana 9–11 oct", "Resto de octubre 12–31 oct";
@@ -459,8 +460,9 @@ over the list, with what was new half a screen down, and it moved sideways betwe
 list. Now they open like Instagram's comments: a drawer rises over the list, and the list stays where it was.
 
 - **An action row under each card's flyer, like Instagram's** (`.event-card__actions`, `views/eventCard.ts`):
-  **Detalles ›** on the left, **Compartir** (the share icon: the event's link through the phone's menu) and **Guardar**
-  (the bookmark) on the right. Each is a 44px target (`--touch-target`) above the card's stretched link, and the gaps
+  **Detalles ›** on the left, then **Compartir** (the share icon in Detalles' ink frame, a 36px square, without the
+  colored offset, so it reads as a button too; pressed, it fills like Detalles: the event's link through the phone's
+  menu), and **Guardar** (the bookmark) on the right. Each is a 44px target (`--touch-target`) above the card's stretched link, and the gaps
   between them still open the card.
 - **"Detalles ›" is a printed label with an offset** (the owner's pick, "G2"): a closed ink frame (`--border-width`,
   `--details-ink`: wine in light, lilac-300 in dark) with no fill, so the page (and the dark theme's grain) shows
@@ -564,7 +566,7 @@ puts the address back to the home page's.
 - **"Cómo llegar"** after the venue opens Google Maps (only when there's a venue or address).
 - **Reporting an error:** the detail ends with a small "¿Algo está mal? Repórtalo" link to the Google Form, with the event filled in (`feedbackUrl`: its title, its day or days, its id); the footer has "Escríbenos" for anything else. Out of the way of the actions, because almost everyone just wants the event.
 - **The contact is a link** (`lib/contact.ts`): an @username opens its Instagram; a mobile number opens a WhatsApp chat (`wa.me/57…`, with the WhatsApp icon), not a call: that's how people reach academies; a landline (60X) is a call (`tel:`), since it has no WhatsApp; a website opens it. A number that isn't a full Colombian or international one stays plain text.
-- **Icons** (`scripts/lib/icons.ts`): Instagram and WhatsApp marks (Simple Icons, CC0) and drawn icons (calendar, a video camera, pin, ×, an arrow out, a story's dashed ring, and for the install steps Safari's ⋯, Compartir and Agregar a inicio, a link and an arrow), inline SVG in the text color, hidden from screen readers.
+- **Icons** (`scripts/lib/icons.ts`): Instagram and WhatsApp marks (Simple Icons, CC0) and drawn icons (calendar, a clock, a video camera, pin, ×, an arrow out, a story's dashed ring, and for the install steps Safari's ⋯, Compartir and Agregar a inicio, a link and an arrow), inline SVG in the text color, hidden from screen readers.
 
 ## Component rules
 
