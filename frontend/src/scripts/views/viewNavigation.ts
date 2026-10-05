@@ -1,9 +1,10 @@
-// Moving between the views (Próximos and Calendario) and the screens' history, keeping the visitor's place: each
-// view remembers where it was left, like switching tabs in Instagram, and in the calendar whatever changes the
-// day's list ends with its start on screen (revealDay). main.ts owns the state and draws it (`render`).
+// Moving between the views (Próximos, Calendario, Guardados) and the screens' history, keeping the visitor's place:
+// the list remembers where it was left, like switching tabs in Instagram; the calendar opens on its home, Guardados at
+// its top; and in the calendar whatever changes the day's list ends with its start on screen (revealDay). main.ts
+// owns the state and draws it (`render`).
 
 import type { AppState, View } from "../types";
-import { goTo, leave, sameScreen, type Screen, type ScreenData, type ScreenKind } from "../screenHistory";
+import { goTo, leave, replaceScreen, sameScreen, type Screen, type ScreenData } from "../screenHistory";
 import {
   captureListPosition,
   type ListAnchor,
@@ -21,21 +22,22 @@ const DAY_PEEK = 96;
 
 export interface ViewNavigation {
   /**
-   * The bar at the bottom (Eventos, Calendario) and the tabs: the calendar is a move of its own ("back" returns to
-   * the list). The view already on screen goes back to the top of the page, like Instagram's tabs.
+   * The bar at the bottom (Eventos, Calendario, Guardados) and the tabs: the calendar and Guardados are a move of
+   * their own ("back" returns to the list; from one to the other, still to the list). The view already on screen goes
+   * back to the top of the page, like Instagram's tabs.
    */
   navigateView(view: View): void;
   /** In the calendar: the start of the day's list on screen (see below). */
   revealDay(options?: { smooth?: boolean }): void;
   /**
-   * Search, "Guardados" or a view change made the list start over: back up to where it starts (the tabs on wide
+   * Search or a view change made the list start over: back up to where it starts (the tabs on wide
    * screens; on phones, the pinned bar where it sits before it's pinned) if the page is past it.
    */
   backToTop(): void;
   /** The screen on show, for its history entry. */
   currentScreen(): ScreenData;
-  /** Back (or forward) to `screen`: its view, saved events and opened periods, where it was scrolled. */
-  applyScreen(screen: Screen, undoing?: ScreenKind): void;
+  /** Back (or forward) to `screen`: its view and opened periods, where it was scrolled. */
+  applyScreen(screen: Screen): void;
   /** The page opened on the calendar (its own address, /calendario/): its home on screen once laid out. */
   openedOnCalendar(): void;
 }
@@ -51,7 +53,7 @@ export function viewNavigation(state: AppState, render: () => void): ViewNavigat
    * Shows `view` (no history entry of its own). The list comes back where it was left; the calendar always opens on
    * its home: the month and the start of the day's list on screen, never where it was scrolled before (its cards
    * look like the list's, and coming back deep in them, visitors lost track of where they were: the owner, 4 October
-   * 2026).
+   * 2026). Guardados opens at its top.
    */
   function showView(view: View) {
     if (view === state.view) return;
@@ -68,7 +70,8 @@ export function viewNavigation(state: AppState, render: () => void): ViewNavigat
       else if (leftList.anchor) restoreListPosition(leftList.anchor);
       return;
     }
-    calendarHome();
+    if (view === "calendar") calendarHome();
+    else backToTop();
   }
 
   /** The calendar's home: the month's title under the pinned bar if the page is past it, and the day's list on screen. */
@@ -83,7 +86,7 @@ export function viewNavigation(state: AppState, render: () => void): ViewNavigat
 
   /**
    * The calendar's one rule: whatever changes the day's list (opening the calendar, coming back to it, a day, the
-   * month's ‹ ›, "Hoy", a filter, a search, "Guardados", back), the start of that list ends up on screen. When its
+   * month's ‹ ›, "Hoy", a filter, a search, back), the start of that list ends up on screen. When its
    * heading and the top of what follows are below the fold, the page moves just that far (gliding after a tap, at
    * once otherwise); when they're on screen, or above it (the visitor is reading the cards), it doesn't move. On a
    * phone the list starts below the fold at the top of the page, and a tap there seemed to do nothing (the owner,
@@ -103,8 +106,10 @@ export function viewNavigation(state: AppState, render: () => void): ViewNavigat
       scrollPageTo(0, { smooth: true });
       return;
     }
-    if (view === "calendar") goTo("view", () => showView(view));
-    else leave("view", () => showView(view));
+    const move = () => showView(view);
+    if (view === "upcoming") leave("view", move);
+    else if (state.view === "upcoming") goTo("view", move);
+    else replaceScreen("view", move); // the calendar ⇄ Guardados: back still returns to the list
   }
 
   function backToTop() {
@@ -119,15 +124,12 @@ export function viewNavigation(state: AppState, render: () => void): ViewNavigat
 
   const currentScreen = (): ScreenData => ({
     view: state.view,
-    savedOnly: state.savedOnly,
     periods: wholePeriods(),
     scrollY: window.scrollY,
   });
 
-  function applyScreen(screen: Screen, undoing?: ScreenKind) {
+  function applyScreen(screen: Screen) {
     if (sameScreen(screen, currentScreen())) return; // e.g. back from an event or a sheet: the screen stays
-    // Leaving the calendar ("back" out of its move) keeps "Guardados" as it was set in it.
-    if (undoing !== "view") state.savedOnly = screen.savedOnly;
     setWholePeriods(screen.periods);
     if (screen.view !== state.view) {
       showView(screen.view); // it puts each view back where it was

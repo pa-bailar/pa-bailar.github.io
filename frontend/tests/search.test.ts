@@ -1,7 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { fold, matchesQuery } from "../src/scripts/lib/search";
 import { toggleSaved, isSaved } from "../src/scripts/lib/saved";
-import { createInitialState, matchesFilters } from "../src/scripts/state";
 import { event } from "./factories";
 
 const social = event({
@@ -34,14 +33,10 @@ describe("search", () => {
 });
 
 describe("saved events", () => {
-  it("only saved events pass the Guardados filter (saving works without storage, for the visit)", () => {
-    const state = { ...createInitialState(), savedOnly: true };
-    const other = event({ id: "otro" });
-    expect(matchesFilters(social, state)).toBe(false);
+  it("saving works without storage, for the visit", () => {
+    expect(isSaved(social.id)).toBe(false);
     toggleSaved(social.id);
     expect(isSaved(social.id)).toBe(true);
-    expect(matchesFilters(social, state)).toBe(true);
-    expect(matchesFilters(other, state)).toBe(false);
     toggleSaved(social.id);
     expect(isSaved(social.id)).toBe(false);
   });

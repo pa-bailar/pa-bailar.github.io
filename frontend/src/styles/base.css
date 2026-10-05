@@ -124,7 +124,7 @@ html:has(dialog:modal) {
   color: var(--period-title);
 }
 
-/* "Limpiar filtros", "Borrar la búsqueda", "Ver todos, no solo guardados". */
+/* "Limpiar filtros", "Borrar la búsqueda", Guardados' "Ver eventos". */
 .empty-state__actions {
   display: flex;
   flex-wrap: wrap;

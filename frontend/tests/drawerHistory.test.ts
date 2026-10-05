@@ -18,7 +18,7 @@ beforeEach(async () => {
   vi.resetModules();
   drawer = await import("../src/scripts/views/drawerHistory");
   screens = await import("../src/scripts/screenHistory");
-  const current = () => ({ view: "upcoming" as const, savedOnly: false, periods: [], scrollY: 0 });
+  const current = () => ({ view: "upcoming" as const, periods: [], scrollY: 0 });
   screens.initScreenHistory({ current, apply: () => {} });
 });
 
@@ -126,7 +126,7 @@ describe("a shared link (/?evento=<id>)", () => {
     const link = sharedEventLink(location)!;
     history.replaceState(null, "", link.address);
     screens.initScreenHistory({
-      current: () => ({ view: "upcoming", savedOnly: false, periods: [], scrollY: 0 }),
+      current: () => ({ view: "upcoming", periods: [], scrollY: 0 }),
       apply: () => {},
     });
     drawer.enterEvent(social, false);

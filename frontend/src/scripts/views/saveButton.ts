@@ -1,5 +1,5 @@
 // The bookmark that saves an event ("Guardar", like Instagram's), on every card and in the event's
-// detail, and the "Guardados" toggles that show only saved events (the phone bar and the toolbar).
+// detail, and the number of saved events on the way to Guardados (the bar at the bottom, the toolbar's tab).
 // Saved ids live in this browser (lib/saved.ts). The same event's bookmarks all change together.
 
 import type { DanceEvent } from "../types";
@@ -33,16 +33,10 @@ function syncSaveButtons(id?: string) {
   });
 }
 
-/**
- * "Guardados 3": the toggles that show only saved events (the bars', with their number), and how many upcoming ones
- * there are. Not the empty state's "Ver todos, no solo guardados": an action named by its own words, not a toggle.
- */
-export function renderSavedToggles(count: number, active: boolean) {
-  document.querySelectorAll<HTMLElement>("[data-saved-only]").forEach((toggle) => {
-    const badge = toggle.querySelector<HTMLElement>("[data-saved-count]");
-    if (!badge) return;
-    toggle.setAttribute("aria-pressed", String(active));
-    toggle.setAttribute("aria-label", count ? `Guardados, ${count}` : "Guardados");
+/** "Guardados 3": how many upcoming events are saved, on each way to Guardados (its badge, and its name). */
+export function renderSavedCount(count: number) {
+  document.querySelectorAll<HTMLElement>("[data-saved-count]").forEach((badge) => {
+    badge.closest("[data-view]")?.setAttribute("aria-label", count ? `Guardados, ${count}` : "Guardados");
     badge.textContent = count ? String(count) : "";
     badge.hidden = !count;
   });

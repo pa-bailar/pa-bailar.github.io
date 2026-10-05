@@ -36,15 +36,11 @@ import type { FamilyGroup } from "../lib/styleFamilies";
 import { activeFilterCount } from "../state";
 import { openPanelKey, panelId } from "./filterPanels";
 import { renderWhenMenu, whenMenuHtml } from "./whenMenu";
-/**
- * The ways out of an empty result, for what's narrowing it: "Limpiar filtros", "Borrar la búsqueda", "Ver todos,
- * no solo guardados".
- */
+/** The ways out of an empty result, for what's narrowing it: "Limpiar filtros", "Borrar la búsqueda". */
 export function emptyActionsHtml(state: AppState): string {
   return [
     activeFilterCount(state) ? `<button class="btn" type="button" data-clear-filters>Limpiar filtros</button>` : "",
     state.query.trim() ? `<button class="btn" type="button" data-clear-search>Borrar la búsqueda</button>` : "",
-    state.savedOnly ? `<button class="btn" type="button" data-saved-only>Ver todos, no solo guardados</button>` : "",
   ].join("");
 }
 
@@ -56,9 +52,7 @@ export function emptyResultsHtml(state: AppState): string | null {
     ? ["No encontramos eventos", `Nada coincide con «${escapeHtml(query)}».`]
     : filtering
       ? ["No hay eventos con estos filtros", "Prueba con otras fechas o ritmos."]
-      : state.savedOnly
-        ? ["Aún no tienes eventos guardados", "Toca el marcador de un evento para guardarlo aquí."]
-        : [null, null];
+      : [null, null];
   if (!title) return null;
   return `
     <div class="empty-state">

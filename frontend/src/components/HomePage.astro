@@ -1,7 +1,8 @@
 ---
-// The home page's body, for both of its addresses (pages/index.astro: the list, "Próximos"; pages/calendario/: the
-// calendar). One page, two views: `view` gives it its title and description; the view it opens on comes from the
-// address (main.ts, lib/links.ts viewOfPath), so reloading or sharing the calendar keeps it there. Switching views changes the address (views/viewNavigation.ts).
+// The home page's body, for each of its addresses (pages/index.astro: the list, "Próximos"; pages/calendario/: the
+// calendar; pages/guardados/: the saved events). One page, three views: `view` gives it its title and description;
+// the view it opens on comes from the address (main.ts, lib/links.ts viewOfPath), so reloading or sharing it keeps it
+// there. Switching views changes the address (views/viewNavigation.ts). Guardados isn't indexed: it's each visitor's.
 import type { View } from "../scripts/types";
 import { VIEW_TITLES } from "../scripts/lib/viewTitles";
 
@@ -42,6 +43,7 @@ const { view } = Astro.props;
 <BaseLayout
   title={VIEW_TITLES[view].title}
   description={VIEW_TITLES[view].description}
+  noindex={view === "saved"}
   image={{
     path: "og/sitio.jpg",
     width: 1200,
@@ -62,6 +64,7 @@ const { view } = Astro.props;
     <p class="visually-hidden" id="results-status" role="status"></p>
     <section id="view-upcoming" role="tabpanel" aria-labelledby="tab-upcoming"></section>
     <CalendarView />
+    <section id="view-saved" class="saved" role="tabpanel" aria-labelledby="tab-saved" hidden></section>
   </main>
 
   <SiteFooter accounts={accounts} />

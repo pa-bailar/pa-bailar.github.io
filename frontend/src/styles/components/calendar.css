@@ -44,6 +44,7 @@
 }
 
 .cal-day {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -70,11 +71,37 @@
 
 .calendar__legend {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: var(--space-2);
+  gap: var(--space-2) var(--space-4);
   margin-top: var(--space-2);
   font-size: var(--text-xs);
   color: var(--text-muted);
+}
+
+.calendar__legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* A day with an event the visitor saved: a small bookmark in its top right corner, in the accent (calendarView.ts). */
+.cal-day__saved,
+.calendar__legend-saved {
+  display: inline-flex;
+  color: var(--accent-text);
+}
+
+.cal-day__saved {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+}
+
+.cal-day__saved .icon,
+.calendar__legend-saved .icon {
+  width: 12px;
+  height: 12px;
 }
 
 .calendar__swatch {

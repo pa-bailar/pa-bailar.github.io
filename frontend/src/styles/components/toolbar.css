@@ -1,5 +1,5 @@
-/* Wide screens: the sticky toolbar with the view tabs, "Guardados", the search field, and under them the filters' pills
-   (their panels and the status row: filters.css). */
+/* Wide screens: the sticky toolbar with the view tabs (Próximos, Calendario, Guardados), the search field, and under
+   them the filters' pills (their panels and the status row: filters.css), not in Guardados. */
 
 .toolbar {
   position: sticky;
@@ -40,18 +40,12 @@
   gap: var(--space-5);
 }
 
-/* "Guardados" and the search field at the end of the tabs' row. */
+/* The search field at the end of the tabs' row. */
 .toolbar__tools {
   display: flex;
   align-items: center;
   gap: var(--space-2);
   margin-left: auto;
-}
-
-.toolbar__saved {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-1);
 }
 
 .toolbar__search {
@@ -72,7 +66,30 @@
   border-bottom-color: var(--accent);
 }
 
-/* ---------- chips (the filters', "Guardados") ---------- */
+/* Guardados' number of saved events to come, after its name: "Guardados 3". */
+.tabs__count {
+  display: inline-block;
+  min-width: 20px;
+  margin-left: var(--space-1);
+  padding: 0 6px;
+  border-radius: 10px;
+  background: var(--chip-active-bg);
+  color: var(--chip-active-text);
+  font-size: var(--text-2xs);
+  line-height: 20px;
+  text-align: center;
+}
+
+.tabs__count[hidden] {
+  display: none;
+}
+
+/* Guardados has no filters (views/savedView.ts): no pills, no status row; on phones, no pinned bar (jump-bar.css). */
+body[data-view="saved"] :is(.filter-pills, .filter-status, .jump-bar) {
+  display: none;
+}
+
+/* ---------- chips (the filters') ---------- */
 
 .chip {
   flex: none;

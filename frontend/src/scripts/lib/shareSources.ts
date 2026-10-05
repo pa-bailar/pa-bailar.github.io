@@ -29,7 +29,7 @@ export function filtersLabel({ types, styles, query }: Filters): string {
 export interface ShareSourcesInput {
   /** The list's periods, as on screen. */
   groups: AgendaGroup[];
-  state: Filters & Pick<AppState, "dates" | "savedOnly">;
+  state: Filters & Pick<AppState, "dates" | "view">;
   /** The saved events still to come, in the list's order. */
   plans: DanceEvent[];
   /** Each plan's link in the message. */
@@ -55,7 +55,7 @@ export function shareSources({ groups, state, plans, planUrl }: ShareSourcesInpu
   }
   const [firstPlan] = plans;
   const lastPlanDay = plans.map(lastDay).sort().at(-1); // the plans' last day: an event over several days may end last
-  if (state.savedOnly && firstPlan && lastPlanDay) {
+  if (state.view === "saved" && firstPlan && lastPlanDay) {
     sources.set("planes", {
       title: "Mis planes para bailar",
       subtitle: dateRangeLabel(shownDay(firstPlan), lastPlanDay),

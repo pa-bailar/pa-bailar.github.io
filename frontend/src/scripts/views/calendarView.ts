@@ -4,6 +4,8 @@
 
 import type { AppState, DanceEvent } from "../types";
 import { byId, escapeHtml } from "../lib/dom";
+import { ICONS } from "../lib/icons";
+import { isSaved } from "../lib/saved";
 import { daysInMonth, mondayOffset, todayIso, toIsoDate } from "../lib/dates";
 import { isHoliday } from "../lib/holidays";
 import { eventCountLabel, formatDayHeading, formatLongDate, formatMonthTitle } from "../lib/format";
@@ -29,13 +31,19 @@ export function dotsHtml(dayEvents: Pick<DanceEvent, "event_type">[]): string {
   return `${dayEvents.slice(0, shown).map(dot).join("")}<span class="cal-dots-more">+${dayEvents.length - shown}</span>`;
 }
 
-/** What a day's cell says to screen readers after what it shows: "Viernes, 2 de octubre, festivo, 3 eventos". */
-export function dayCellLabel(iso: string, count: number): string {
-  return `${formatLongDate(iso)}${isHoliday(iso) ? ", festivo" : ""}${count ? `, ${eventCountLabel(count)}` : ""}`;
+/**
+ * What a day's cell says to screen readers after what it shows: "Viernes, 2 de octubre, festivo, 3 eventos, 1
+ * guardado".
+ */
+export function dayCellLabel(iso: string, count: number, saved = 0): string {
+  const savedLabel = saved ? `, ${saved} ${saved === 1 ? "guardado" : "guardados"}` : "";
+  return `${formatLongDate(iso)}${isHoliday(iso) ? ", festivo" : ""}${count ? `, ${eventCountLabel(count)}` : ""}${savedLabel}`;
 }
 
 /**
- * A day of the month: its number and, on wide screens, up to three of its events' names and "+N" (phones: dots).
+ * A day of the month: its number and, on wide screens, up to three of its events' names and "+N" (phones: dots). A
+ * day with an event the visitor saved has a small bookmark in its corner (Guardados is a place of its own; the
+ * calendar shows where those plans fall).
  * Named by its content (no aria-label), so its name starts with the words it shows (label in name, WCAG 2.5.3: a voice
  * command can say the day or an event's name), then the date and count, for screen readers only: "2 Salsa al parque
  * Taller de bachata +1, Viernes, 2 de octubre, 3 eventos". On phones the names aren't drawn, nor said.
@@ -55,13 +63,15 @@ export function dayCellHtml(iso: string, dayNumber: number, dayEvents: DanceEven
   const hidden = dayEvents.length - MAX_PILLS_PER_DAY;
   const more = hidden > 0 ? ` <span class="cal-more">+${hidden}</span>` : "";
   const dots = dotsHtml(dayEvents);
+  const saved = dayEvents.filter((event) => isSaved(event.id)).length;
+  const mark = saved ? `<span class="cal-day__saved" aria-hidden="true">${ICONS.bookmarkFilled}</span>` : "";
 
   return `
     <button class="cal-day ${modifiers.join(" ")}" data-day="${iso}" aria-pressed="${iso === state.selectedDay}">
-      <span class="cal-day__number">${dayNumber}</span>
+      <span class="cal-day__number">${dayNumber}</span>${mark}
       <span class="cal-day__pills">${pills}${more}</span>
       <span class="cal-day__dots" aria-hidden="true">${dots}</span>
-      <span class="visually-hidden">, ${dayCellLabel(iso, dayEvents.length)}</span>
+      <span class="visually-hidden">, ${dayCellLabel(iso, dayEvents.length, saved)}</span>
     </button>`;
 }
 

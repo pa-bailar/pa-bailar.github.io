@@ -1,11 +1,13 @@
 // The phone's "back" between the app's own screens, not only the event details and the sheets (eventDrawer.ts,
 // lib/sheet.ts).
 //
-// Moves that feel like going somewhere get a history entry: a period opened whole ("Ver los 23 eventos"), the calendar, "Guardados". Without one, "back" right after them
-// had nothing to go back to and left the site, which closes an installed app. Each entry holds the screen it
+// Moves that feel like going somewhere get a history entry: a period opened whole ("Ver los 23 eventos"), another view
+// (the calendar, Guardados). Without one, "back" right after them had nothing to go back to and left the site, which
+// closes an installed app. Between the calendar and Guardados the entry is replaced (`replaceScreen`): back from either
+// returns to the list, like Instagram's tabs. Each entry holds the screen it
 // shows (`Screen`); "back" (or forward) puts that screen back, at the scroll position it had.
 //
-// Undoing a move from the page itself (Eventos in the bar at the bottom, "Guardados" again) goes back
+// Undoing a move from the page itself (Eventos in the bar at the bottom) goes back
 // in history when the current entry is that move, so the history never piles up screens to step through.
 //
 // Overlays (a sheet, the event details) get history entries of their own on top of the screen's
@@ -17,7 +19,7 @@
 
 import type { View } from "./types";
 
-export type ScreenKind = "period" | "view" | "saved";
+export type ScreenKind = "period" | "view";
 
 /** A screen entry: `kind` is the move that led to it (absent: the start). */
 export interface Step {
@@ -27,7 +29,6 @@ export interface Step {
 
 export interface Screen {
   view: View;
-  savedOnly: boolean;
   periods: string[]; // periods shown whole
   scrollY: number;
   steps?: Step[]; // the screen entries up to this one, from the start: the last is this one
@@ -57,8 +58,8 @@ interface Hooks {
   /** The screen on show now. */
   current: () => ScreenData;
   /**
-   * Put `screen` back (back or forward). `undoing`: the move a `leave` stepped back out of (its other changes since,
-   * e.g. "Guardados" turned off in the calendar, stay as they are).
+   * Put `screen` back (back or forward). `undoing`: the move a `leave` stepped back out of (its other changes since
+   * stay as they are).
    */
   apply: (screen: Screen, undoing?: ScreenKind) => void;
   /** The address of a screen (each view has its own: lib/links.ts viewPath), kept with its history entry. */
@@ -116,7 +117,7 @@ export function initScreenHistory(screenHooks: Hooks) {
     const jumpedBack = location.hash !== shownHash;
     shownHash = location.hash;
     if (state.screen) screenHooks.apply(state.screen, from);
-    if (from) remember(); // that entry now holds the screen as it is (e.g. "Guardados" off)
+    if (from) remember(); // that entry now holds the screen as it is
     // Back from an in-page jump ("Info", #info): the same screen, so apply leaves the scroll alone; put it back here.
     if (jumpedBack && state.screen && !state.overlay) window.scrollTo({ top: state.screen.scrollY, behavior: "auto" });
   });
@@ -142,6 +143,20 @@ export function goTo(kind: ScreenKind, move: () => void) {
     const screen: Screen = { ...hooks.current(), steps: [...steps, { id: newId(), kind }] };
     history.pushState({ screen } satisfies AppHistoryState, "", addressOf(screen, {}));
   }
+}
+
+/**
+ * A move from one screen to another of the same rank (the calendar and Guardados): the current entry shows the new one,
+ * so back still leads where it did (the list). It gets an entry of its own (`goTo`) when the current one isn't such a
+ * move (the page opened on /guardados/: back returns there, not out of the site), and under an overlay: the overlay's
+ * entry, and the screen's under it, must stay as they are.
+ */
+export function replaceScreen(kind: ScreenKind, move: () => void) {
+  const state = historyState();
+  const steps = stepsOf(state);
+  if (state.overlay || steps.length < 2 || steps.at(-1)?.kind !== kind) return goTo(kind, move);
+  move();
+  remember();
 }
 
 /**
@@ -181,7 +196,6 @@ export function overlayState(extra: Omit<AppHistoryState, "screen" | "overlay">)
 export function sameScreen(a: Omit<ScreenData, "scrollY">, b: Omit<ScreenData, "scrollY">): boolean {
   return (
     a.view === b.view &&
-    a.savedOnly === b.savedOnly &&
     a.periods.length === b.periods.length &&
     a.periods.every((key) => b.periods.includes(key))
   );
