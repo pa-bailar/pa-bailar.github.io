@@ -56,6 +56,9 @@ import { isSaved, keepOnly } from "./lib/saved";
 
 const state = createInitialState();
 let events: DanceEvent[] = [];
+/** The events by id, built once in start(): the data never changes while the page is open. */
+let eventById = new Map<string, DanceEvent>();
+const findEvent = (id: string): DanceEvent | undefined => eventById.get(id);
 
 /**
  * The control that had the focus, as a selector for the same control once it's drawn again: a filter chip, a
@@ -368,14 +371,14 @@ function handleClick(domEvent: MouseEvent) {
     return;
   }
   if (cardPosts) {
-    const event = events.find((item) => item.id === cardPosts);
+    const event = findEvent(cardPosts);
     if (event) openEventPosts(event);
     return;
   }
   if (eventId) {
     // The card's title is a link: let the browser handle new-tab clicks; a plain click opens the details.
     if (!isPlainClick(domEvent)) return;
-    const event = events.find((item) => item.id === eventId);
+    const event = findEvent(eventId);
     if (!event) return;
     domEvent.preventDefault();
     // Counted by where it was opened: the card itself or its "Detalles".
@@ -426,7 +429,7 @@ function openSharedEvent() {
   if (!link) return;
   const { id, params } = link;
   history.replaceState(null, "", link.address); // the list's entry, under the drawer's (pushed once it opens)
-  const event = events.find((item) => item.id === id);
+  const event = findEvent(id);
   if (!event) return;
   const entry = sharedEventEntry(groupByPeriod(visibleEvents(events, state), todayIso(), state.dates), id);
   if (!entry.listed) {
@@ -443,12 +446,13 @@ function openSharedEvent() {
 
 export function start() {
   events = JSON.parse(byId("events-data").textContent || "[]");
-  keepOnly(new Set(events.map((event) => event.id))); // saved events no longer in the data are forgotten
+  eventById = new Map(events.map((event) => [event.id, event]));
+  keepOnly(new Set(eventById.keys())); // saved events no longer in the data are forgotten
   initThemeToggle();
-  initEventDrawer((id) => events.find((event) => event.id === id));
+  initEventDrawer(findEvent);
   initPostsSheet();
   initPostViewer();
-  initSharing((id) => events.find((event) => event.id === id));
+  initSharing(findEvent);
   initInstallPrompt();
   registerServiceWorker();
   initJumpBar();
