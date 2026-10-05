@@ -131,7 +131,9 @@ few set from scripts are listed there): an undefined `--text-base` once left the
 - The phone bar: `--jump-bar-height` 56px, `--filter-line-height` 40px (the line under it while filtering);
   `--pinned-height`, what's pinned to the top (the bar, plus the line while filtering: 56 or 96px), which jumps and
   the keyboard's focus land under (`scroll-margin-top`, `scroll-padding-top`); `--menu-width` 304px ("Cuándo"'s menu).
-- The cards' "Detalles ›": `--details-height` 36px (its frame; the button is 44px), `--details-offset` 2px.
+- The cards' "Detalles ›": `--details-height` 36px (its frame; the button is 44px), `--details-offset` 2px,
+  `--details-tuck` (how far the offset reaches under the frame's ink: one device pixel from 2x, half of one below; set
+  per screen density in `tokens.css`).
 - The details: `--drawer-top-gap` 12px (phones: what's left above the drawer at full height), `--panel-width` 420px (wide screens: the side panel).
 - Small parts: `--tab-underline` 3px (the selected tab's line), `--icon-sm` 16px (marks over flyers and thumbnails, a chip's ×, "× Limpiar", the sound button), `--icon-md` 20px ("Cuándo"'s calendar and check, the drawer's ×, the details' media links), `--icon-lg` 24px (Guardar, Compartir, ▶ over a video's flyer, the details' quick actions, the floating button), `--handle-width` × `--handle-height` 40×4px (every sheet's grab handle, `.sheet-handle`), `--fab-size` 44px.
 - Over photos: `--on-image` (white) with `--shadow-on-image`, the same in both themes, for marks that sit on any flyer (▶, stacked squares); `--on-image-bg` (black at 60%) behind words and marks on a flyer ("Sin sonido", ▶).
@@ -451,19 +453,24 @@ list. Now they open like Instagram's comments: a drawer rises over the list, and
   offset layer**, `--details-offset` (2px) down and to the right, filled with a smooth left-to-right gradient of the
   period rule's three colors (`--stripe-1..3`: tomato → orange → marigold; in dark magenta → coral → gold), like a
   misregistered print. It's found at a glance without competing with the one primary button.
-  - **Built:** the button is the frame (36px, `--details-height`; an `::after` makes the target 44px), and the offset is
-    its `::before` behind it (`isolation: isolate`, `z-index: -1`): the frame's own box with the same corners, placed
-    2px down and right, cut (`clip-path`) to an L that starts in the middle of the frame's ink line. The opaque ink
-    covers the band's edge, so ink and band meet with no line of page between them at any pixel density, and the band
-    never shows inside the frame (the cut stays half the ink's width short of its inner edge). The cut's corner falls
-    within the ink of the frame's rounded corner, so the band fills that corner too: no notch. It reads as a hard copy
-    of the box, and fits in the gap before Compartir, which doesn't move.
+  - **Built:** the button is the 44px target with no border of its own; the frame is its `::after` (36px,
+    `--details-height`, the ink border) and the offset its `::before` (`isolation: isolate`; both behind the label).
+    The two are placed the same way inside the button, so they land on the screen's pixels the same way (the browser
+    rounds a 1.5px border to whole device pixels, 1px at 1x; a band placed from the button's own border drifted by
+    that rounding). The offset is the frame's box with the same corners, 2px further down and right, cut
+    (`clip-path`) to an L that starts `--details-tuck` inside the frame's outer edge: the frame's outermost row of ink
+    covers the band's edge, so ink and band meet with no line of page between them, and the band stays clear of the
+    ink's inner pixels, so the bottom and right lines are as thick as the top and left ones. At the rounded corner the
+    cut steps in diagonally, within the ink, so the band fills it. It fits in the gap before Compartir, which doesn't
+    move. The keyboard's ring goes around the frame.
   - **Hard edges:** it's placed and moved with insets and `top`/`left`, never a `transform`: layout positions snap to
-    the screen's pixels like the frame's border, while a transform drew the band antialiased, blending into the ink.
-    Two earlier builds got it wrong: the first cut the band at the ink's inner edge and moved it with a transform (a
-    smear at 3x); the second cut it at the ink's outer edge, where the 1.5px line's antialiased pixels left a thin line
-    of page between ink and band (cream in light, blue in dark; the mockup has it too). Checked at 1x, 2x, 2.625x, 3x
-    and 3.5x, in both themes, at rest and pressed.
+    the screen's pixels like the frame's border, while a transform drew the band antialiased.
+  - **What earlier builds got wrong** (each measured on screenshots at 1x, 2x, 2.625x, 3x and 3.5x, in both themes, at
+    rest and pressed): cut at the ink's inner edge and moved with a transform, the band smeared over the line at 3x;
+    cut at its outer edge, a thin line of page showed between ink and band (cream in light, blue in dark; the mockup
+    has it too); cut in the middle of the line, the band tinted its inner pixels, so the bottom line looked thinner,
+    with the band climbing over it. Now: the same number of ink pixels on all four sides, no page between ink and
+    band (edges and corner), and no band inside the frame.
   - **Pressed:** the frame sinks 1px onto the offset (half of it still shows) and fills with `--details-pressed`
     (cream-250; indigo-800).
   - **Contrast:** the frame (≥3:1) and the label (≥4.5:1) against the page and a card, and the label on its pressed fill,

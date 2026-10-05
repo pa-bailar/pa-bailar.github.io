@@ -331,28 +331,29 @@
 
 /* "Detalles ›": a closed ink frame with no fill (the dark theme's grain shows through), and one printer's offset
    2px down and to the right, a smooth gradient of the period rule's three colors (light: tomato, orange, marigold;
-   dark: magenta, coral, gold): a copy of the box, misregistered. The button is the frame (36px); its ::after makes
-   the target 44px. Pressed, the frame sinks 1px onto the offset and fills. */
+   dark: magenta, coral, gold): a copy of the box, misregistered. Pressed, the frame sinks 1px onto the offset and
+   fills.
+   The button is the 44px target, with no border of its own. The frame (::after) and the offset (::before) are two
+   boxes placed the same way inside it, so they land on the screen's pixels the same way: the browser rounds a 1.5px
+   border to whole device pixels (1px at 1x), and a band placed from the button's own border drifted by that rounding.
+   Everything moves with insets and top/left, never a transform (a transform drew them antialiased: a smear). */
 .event-card__details {
   --details-press: 0px; /* how far the frame has sunk */
-  isolation: isolate; /* the offset (z-index: -1) goes behind the frame, not behind the card */
+  --details-inset: calc((var(--touch-target) - var(--details-height)) / 2); /* the frame within the 44px */
+  isolation: isolate; /* the frame and the offset (z-index below 0) stay behind the label, inside the button */
   display: inline-flex;
   flex: none;
   align-items: center;
   gap: var(--space-1);
-  min-height: var(--details-height);
+  min-height: var(--touch-target);
   padding: 0 var(--space-2) 0 var(--space-3);
-  border: var(--border-width) solid var(--details-ink);
-  border-radius: var(--radius-sm);
-  background: transparent;
+  border: 0;
+  background: none;
   color: var(--text);
   font-size: var(--text-md);
   font-weight: var(--weight-bold);
-  /* Sinking moves it with top/left, not a transform: layout positions are snapped to the screen's pixels, so the
-     frame and its offset keep hard edges (a transform drew them antialiased: a smear). */
   top: var(--details-press);
   left: var(--details-press);
-  transition: background-color var(--duration);
 }
 
 .event-card__details .icon {
@@ -361,36 +362,63 @@
   stroke-width: 2.4;
 }
 
-/* 44px to the finger on the 36px frame. */
+/* The frame: 36px tall (--details-height), the button's width. */
 .event-card__details::after {
   content: "";
   position: absolute;
-  inset: calc((var(--details-height) - var(--touch-target)) / 2 - var(--border-width)) calc(var(--border-width) * -1);
+  z-index: -1;
+  inset: var(--details-inset) 0;
+  border: var(--border-width) solid var(--details-ink);
+  border-radius: var(--radius-sm);
+  transition: background-color var(--duration);
 }
 
-/* The offset: the frame's own box (same rounded corners), placed --details-offset down and to the right with insets
-   (snapped like the frame, never a transform), and cut to an L that starts in the middle of the frame's ink line: the
-   opaque ink covers the band's edge, so no sliver of the page shows between them at any pixel density (cut at the
-   ink's outer edge, the antialiased pixels left a thin line of page there), and nothing shows inside the frame (the
-   cut is half the ink's width short of its inner edge). The cut's corner lies within the ink of the frame's rounded
-   corner, so the band fills that corner too. */
+/* The keyboard's ring goes around the frame, not the 44px target. */
+.event-card__details:focus-visible {
+  outline: none;
+}
+
+.event-card__details:focus-visible::after {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* The offset: the frame's box (same rounded corners), --details-offset further down and to the right, cut to an L that
+   starts just inside the frame's outer edge (--details-tuck: one device pixel from 2x, half of one below). The
+   frame's outermost row (column) of ink covers the band's edge: no line of the page between them at any density
+   (cut at the outer edge, antialiasing left one); and the band stays clear of the ink's inner pixels, so the bottom
+   and right lines look as thick as the top and left ones (cut at the middle of the line, the band tinted them and
+   seemed to climb over the bottom one). At the rounded corner the cut steps in diagonally (--details-step), within the ink, so the
+   band fills that corner too. */
 .event-card__details::before {
   --details-gap: calc(var(--details-offset) - var(--details-press)); /* what shows past the frame */
-  --details-cut: calc(100% - var(--details-gap) - var(--border-width) / 2);
+  --details-cut: calc(100% - var(--details-gap) - var(--details-tuck));
+  --details-step: calc(var(--radius-sm) - 2 * var(--details-tuck));
   content: "";
   position: absolute;
-  z-index: -1;
-  top: calc(var(--details-gap) - var(--border-width));
-  left: calc(var(--details-gap) - var(--border-width));
-  width: calc(100% + 2 * var(--border-width));
-  height: calc(100% + 2 * var(--border-width));
+  z-index: -2;
+  top: calc(var(--details-inset) + var(--details-gap));
+  bottom: calc(var(--details-inset) - var(--details-gap));
+  left: var(--details-gap);
+  right: calc(var(--details-gap) * -1);
   border-radius: var(--radius-sm);
   background: linear-gradient(to right, var(--stripe-1), var(--stripe-2), var(--stripe-3));
-  clip-path: polygon(var(--details-cut) 0, 100% 0, 100% 100%, 0 100%, 0 var(--details-cut), var(--details-cut) var(--details-cut));
+  clip-path: polygon(
+    var(--details-cut) 0,
+    100% 0,
+    100% 100%,
+    0 100%,
+    0 var(--details-cut),
+    calc(var(--details-cut) - var(--details-step)) var(--details-cut),
+    var(--details-cut) calc(var(--details-cut) - var(--details-step))
+  );
 }
 
 .event-card__details:active {
   --details-press: 1px;
+}
+
+.event-card__details:active::after {
   background: var(--details-pressed);
 }
 
@@ -419,21 +447,29 @@
   margin: 0 0 0 auto;
 }
 
-/* First visit: the first card's "Detalles" pulses once (views/detailsHint.ts): its frame swells with a ring. */
+/* First visit: the first card's "Detalles" pulses once (views/detailsHint.ts): it swells, and a ring leaves its frame. */
 .event-card__details.is-pulsing {
-  animation: details-pulse 1600ms cubic-bezier(0.2, 0, 0, 1) 300ms;
+  animation: details-swell 1600ms cubic-bezier(0.2, 0, 0, 1) 300ms;
 }
 
-@keyframes details-pulse {
-  0% {
-    box-shadow: 0 0 0 0 var(--pulse);
+.event-card__details.is-pulsing::after {
+  animation: details-ring 1600ms cubic-bezier(0.2, 0, 0, 1) 300ms;
+}
+
+@keyframes details-swell {
+  0%,
+  50%,
+  100% {
     transform: scale(1);
   }
   25% {
     transform: scale(1.06);
   }
-  50% {
-    transform: scale(1);
+}
+
+@keyframes details-ring {
+  0% {
+    box-shadow: 0 0 0 0 var(--pulse);
   }
   100% {
     box-shadow: 0 0 0 14px transparent;
@@ -582,7 +618,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .event-card__details.is-pulsing {
+  .event-card__details.is-pulsing,
+  .event-card__details.is-pulsing::after {
     animation: none;
   }
 }

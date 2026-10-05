@@ -161,6 +161,7 @@
   --control-height: 40px; /* buttons, icon buttons, theme toggle */
   --details-height: 36px; /* the cards' "Detalles ›" frame (its target is 44px) */
   --details-offset: 2px; /* …and its offset in the three colors, down and to the right */
+  --details-tuck: 0.5px; /* how far its offset reaches under the frame's ink: half a device pixel at 1x (set by density below) */
   --fab-size: 44px; /* phones: the floating calendar / list button (the smallest comfortable tap) */
   --chip-height: 32px;
   --touch-target: 44px; /* the filter chips, the cards' action row, the drawer's buttons */
@@ -205,6 +206,40 @@
      720px  phones vs. wider: the feed, the jump bar and the filter sheet
      900px  the details: a drawer over the list below it, a side panel from it
      960px  wide: more card columns */
+}
+
+/* "Detalles"'s offset reaches under the frame's ink by one device pixel where the ink is at least two thick (2x and
+   up), half of one below 2x (a 1px line has no room for the frame and the band to round differently). Values for the
+   usual densities; one in between gets the next lower one's. A browser without these queries keeps 0.5px, which
+   still stays under the ink at any density. */
+@media (min-resolution: 1.5dppx) {
+  :root {
+    --details-tuck: calc(0.5px / 1.5);
+  }
+}
+
+@media (min-resolution: 2dppx) {
+  :root {
+    --details-tuck: 0.5px;
+  }
+}
+
+@media (min-resolution: 2.625dppx) {
+  :root {
+    --details-tuck: calc(1px / 2.625);
+  }
+}
+
+@media (min-resolution: 3dppx) {
+  :root {
+    --details-tuck: calc(1px / 3);
+  }
+}
+
+@media (min-resolution: 3.5dppx) {
+  :root {
+    --details-tuck: calc(1px / 3.5);
+  }
 }
 
 :root[data-theme="dark"] {
