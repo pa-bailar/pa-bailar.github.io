@@ -1,5 +1,5 @@
 /* An event's details (components/EventDrawer.astro, scripts/views/eventDrawer.ts).
-   Phones and tablets (under 900px): a drawer that rises over the list, like Instagram's comments. The dialog
+   Phones and tablets (under 900px wide, or 600px tall: a phone in landscape): a drawer that rises over the list, like Instagram's comments. The dialog
    covers the screen; its scrim (32% at half height, 55% at full: --scrim-opacity, set by the script) lets the
    list show through, and the panel moves with --drawer-y (its offset below full height). Wide screens: a side
    panel next to the list, not modal. Its content's parts: event-detail.css. */
@@ -117,7 +117,7 @@
 
 /* ---------- phones and tablets: a drawer over the list ---------- */
 
-@media (max-width: 899px) {
+@media (max-width: 899px), (max-height: 599px) {
   .drawer {
     position: fixed;
     inset: 0;
@@ -171,8 +171,8 @@
   }
 }
 
-/* Tablets: a readable width, centered. */
-@media (min-width: 720px) and (max-width: 899px) {
+/* Tablets and phones in landscape: a readable width, centered. */
+@media (min-width: 720px) and (max-width: 899px), (min-width: 720px) and (max-height: 599px) {
   .drawer__panel {
     width: min(100%, 640px);
     border-inline: var(--border-width) solid var(--border);
@@ -180,10 +180,10 @@
 }
 
 /* ---------- wide screens: a side panel next to the list ----------
-   Not modal: the list stays usable, its cards open their event here, and the page leaves the panel's width free
-   (.has-side-panel). The card is in the list: no flyer here either. */
+   Not modal: the list stays usable, its cards open their event here; the panel lies over the page's right side and the
+   page never moves. The card is in the list: no flyer here either. */
 
-@media (min-width: 900px) {
+@media (min-width: 900px) and (min-height: 600px) {
   .drawer {
     position: fixed;
     inset: 0 0 0 auto;
@@ -231,10 +231,9 @@
     overflow-y: auto;
   }
 
-  /* The list moves over: nothing of it hides under the panel. */
-  .has-side-panel body {
-    padding-right: var(--panel-width);
-  }
+  /* The page never moves when the panel opens or closes (the owner, 5 Oct 2026: moving it felt shaky): the panel lies
+     over the page's right side, like Gmail's or Maps'. On a narrower screen it covers part of the rightmost cards while
+     it's open; nothing reflows. */
 }
 
 @media (prefers-reduced-motion: reduce) {

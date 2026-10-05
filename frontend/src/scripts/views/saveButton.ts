@@ -33,16 +33,18 @@ function syncSaveButtons(id?: string) {
   });
 }
 
-/** "Guardados 3": the toggles that show only saved events, with how many upcoming ones there are. */
+/**
+ * "Guardados 3": the toggles that show only saved events (the bars', with their number), and how many upcoming ones
+ * there are. Not the empty state's "Ver todos, no solo guardados": an action named by its own words, not a toggle.
+ */
 export function renderSavedToggles(count: number, active: boolean) {
   document.querySelectorAll<HTMLElement>("[data-saved-only]").forEach((toggle) => {
+    const badge = toggle.querySelector<HTMLElement>("[data-saved-count]");
+    if (!badge) return;
     toggle.setAttribute("aria-pressed", String(active));
     toggle.setAttribute("aria-label", count ? `Guardados, ${count}` : "Guardados");
-    const badge = toggle.querySelector<HTMLElement>("[data-saved-count]");
-    if (badge) {
-      badge.textContent = count ? String(count) : "";
-      badge.hidden = !count;
-    }
+    badge.textContent = count ? String(count) : "";
+    badge.hidden = !count;
   });
 }
 

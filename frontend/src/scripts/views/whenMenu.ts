@@ -5,8 +5,9 @@
 //     history entry of its own, as an overlay (screenHistory.ts), like the sheets.
 //   - Keyboard: the menu pattern of the ARIA practices (menuitemradio): ↓ on the chip opens it, ↑ ↓ Home End move,
 //     Enter or Space choose; the focus goes back to the chip when it closes.
-//   - Placed under its chip inside the pinned bar (so it moves with it), never past the screen's edges; it
-//     scrolls when the screen is short.
+//   - Placed under its chip inside the pinned bar (so it moves with it), never past the screen's edges nor under the
+//     bar at the bottom; it scrolls when the screen is short. Too little room below (a phone in landscape, the bar
+//     not pinned yet), and more above: it opens upward instead, as native menus do.
 
 import { byId, escapeHtml } from "../lib/dom";
 import type { WhenModel, WhenOption } from "../lib/filterModel";
@@ -19,7 +20,7 @@ const MENU = "when";
 const GAP = 4; // px between the chip and the menu
 const EDGE = 8; // px kept from the screen's sides
 const BOTTOM = 12; // px kept from the screen's bottom
-const MIN_HEIGHT = 176; // px: about four options, even on a short screen
+const MIN_HEIGHT = 176; // px: about four options; with less room below than this, above if there's more room there
 
 const menu = () => byId("when-menu");
 const opener = () => document.getElementById("when-open");
@@ -39,16 +40,22 @@ interface Box {
 }
 
 /**
- * Where the menu goes, in the bar's coordinates: under its chip, its left edge with the chip's, but never past the
- * screen's sides; as tall as the screen leaves below the chip (it scrolls inside), at least about four options.
+ * Where the menu goes, in the bar's coordinates: under its chip (`top`), its left edge with the chip's, but never past
+ * the screen's sides; as tall as the screen leaves below the chip (`screenHeight`: down to the bar at the bottom), and
+ * it scrolls inside. With room for fewer than about four options below and more above, it hangs above the chip
+ * instead (`bottom`: from the bar's bottom edge), as tall as the room there.
  */
-export function menuPlacement(chip: Box, bar: Box, menuWidth: number, screenHeight: number) {
+export function menuPlacement(
+  chip: Box,
+  bar: Box,
+  menuWidth: number,
+  screenHeight: number,
+): { left: number; top?: number; bottom?: number; maxHeight: number } {
   const left = Math.max(Math.min(chip.left - bar.left, bar.width - menuWidth - EDGE), EDGE);
-  return {
-    left,
-    top: chip.bottom - bar.top + GAP,
-    maxHeight: Math.max(screenHeight - chip.bottom - GAP - BOTTOM, MIN_HEIGHT),
-  };
+  const below = screenHeight - chip.bottom - GAP - BOTTOM;
+  const above = chip.top - GAP - EDGE;
+  if (below >= MIN_HEIGHT || below >= above) return { left, top: chip.bottom - bar.top + GAP, maxHeight: Math.max(below, 0) };
+  return { left, bottom: bar.bottom - chip.top + GAP, maxHeight: above };
 }
 
 /** The option a key moves the focus to (ARIA menu pattern: ↓ ↑ wrap around, Home, End), or null for other keys. */
@@ -74,14 +81,24 @@ function place() {
   const chip = opener()?.closest<HTMLElement>(".when-chip");
   if (!chip) return;
   const element = menu();
+  // The menu is placed from the bar's padding box (its containing block): inside its border (the line at its foot).
+  const bar = byId("jump-bar");
+  const box = bar.getBoundingClientRect();
+  const padding = {
+    left: box.left + bar.clientLeft,
+    top: box.top + bar.clientTop,
+    bottom: box.top + bar.clientTop + bar.clientHeight,
+    width: bar.clientWidth,
+  };
   const where = menuPlacement(
     chip.getBoundingClientRect(),
-    byId("jump-bar").getBoundingClientRect(),
+    padding,
     element.offsetWidth,
     window.innerHeight - bottomInset(), // the bar at the bottom covers the rest
   );
   element.style.left = `${where.left}px`;
-  element.style.top = `${where.top}px`;
+  element.style.top = where.top === undefined ? "auto" : `${where.top}px`;
+  element.style.bottom = where.bottom === undefined ? "auto" : `${where.bottom}px`;
   element.style.maxHeight = `${where.maxHeight}px`;
 }
 

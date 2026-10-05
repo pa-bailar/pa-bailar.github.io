@@ -2,7 +2,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { readFileSync } from "node:fs";
 import { sharedEventLink } from "../src/scripts/lib/links";
 import { CLOSE_DISTANCE, CLOSE_FRACTION, FLICK, exitDurationFor } from "../src/scripts/lib/sheetMotion";
-import { PANEL_MIN_WIDTH, TOP_GAP, exitDuration, offsetFor } from "../src/scripts/views/drawerSheet";
+import { PANEL_MIN_HEIGHT, PANEL_MIN_WIDTH, TOP_GAP, exitDuration, offsetFor } from "../src/scripts/views/drawerSheet";
 import { event } from "./factories";
 import { installFakeHistory, settle, type FakeHistory } from "./fakeHistory";
 
@@ -150,8 +150,9 @@ describe("the drawer's numbers agree with the CSS and the sheets", () => {
 
   it("the side panel starts where drawer.css's breakpoints say", () => {
     const drawerCss = css("components/drawer.css");
-    expect(drawerCss).toContain(`(min-width: ${PANEL_MIN_WIDTH}px)`);
-    expect(drawerCss).toContain(`(max-width: ${PANEL_MIN_WIDTH - 1}px)`);
+    const [width, height] = [PANEL_MIN_WIDTH, PANEL_MIN_HEIGHT];
+    expect(drawerCss).toContain(`@media (min-width: ${width}px) and (min-height: ${height}px) {`);
+    expect(drawerCss).toContain(`@media (max-width: ${width - 1}px), (max-height: ${height - 1}px) {`);
     expect(css("tokens.css")).toContain(`${PANEL_MIN_WIDTH}px  the details`);
   });
 

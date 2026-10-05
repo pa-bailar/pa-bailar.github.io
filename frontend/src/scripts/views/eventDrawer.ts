@@ -1,12 +1,12 @@
 // An event's details, in a drawer over the list (components/EventDrawer.astro), like Instagram's comments.
-//   - Phones and tablets (under 900 px): tapping a card or its "Detalles" raises the drawer to half height (the lower
+//   - Phones and tablets (under 900 px wide, or 600 px tall: a phone in landscape): tapping a card or its "Detalles" raises the drawer to half height (the lower
 //     55% of the screen) over the list, which stays where it was, visible above it under a light scrim. The list
 //     only moves when the card would be mostly hidden: then its image goes right under the bar. Pulled up, or
 //     scrolled, the drawer covers the screen (12 px from the top) and its content scrolls; pulled down from its bar,
 //     or from the top of its content, it goes back to half height, and once more it closes. The handle switches
 //     between the two heights. The drawer is modal: the page behind doesn't scroll, focus goes to the title and
 //     back to what opened it. The geometry and where a drag ends: drawerSheet.ts; the gestures: drawerGestures.ts.
-//   - Wide screens: a side panel on the right, not modal, so the list stays usable: another card shows its event
+//   - Wide screens (900 × 600 and up): a side panel on the right, not modal, so the list stays usable: another card shows its event
 //     in the panel, and its card is outlined in the list.
 //   - The drawer has no flyer: the visitor is looking at the card. Only one event's details are rendered, and
 //     nothing stays once it closes (the iPhone's memory: ARCHITECTURE.md, section 5.7).
@@ -24,6 +24,7 @@ import { afterClosing, backOutOfEvent, enterEvent, historyMove } from "./drawerH
 import {
   type Detent,
   MEDIUM_SHARE,
+  PANEL_MIN_HEIGHT,
   PANEL_MIN_WIDTH,
   cardScrollDelta,
   exitDuration,
@@ -35,7 +36,8 @@ import { eventDrawerHtml } from "./eventDetail";
 import { handleMediaLinkClick } from "./eventDetailActions";
 import { scrollPageTo, stickyOffset } from "./jumpBar";
 
-const PANEL_QUERY = `(min-width: ${PANEL_MIN_WIDTH}px)`; // wide enough for the list and a side panel (--panel-width)
+// Wide enough for the list and a side panel (--panel-width), and tall enough to have no bar at the bottom.
+const PANEL_QUERY = `(min-width: ${PANEL_MIN_WIDTH}px) and (min-height: ${PANEL_MIN_HEIGHT}px)`;
 const TITLE_ID = "drawer-title";
 const UNDER_BAR = 8; // px left between the bar and the card brought into view
 
@@ -255,7 +257,7 @@ function cleanUpAfterClose(element: HTMLDialogElement) {
   afterClosing();
 }
 
-/** The window crossed 900 px while open: reopen in the other mode, on the same event. */
+/** The window crossed 900 px wide (or 600 px tall) while open: reopen in the other mode, on the same event. */
 function swapMode() {
   const element = drawer();
   if (!state.current) return;

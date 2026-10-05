@@ -361,11 +361,11 @@ the list stays short there and summarizes what's further away (`scripts/views/up
 ## Phones: feed, jump bar, the bar at the bottom and filter sheet
 
 - **Feed like Instagram:** under 720px each event is a full-width post, the flyer edge to edge at full size and the details right below, separated by space instead of boxed cards. Nothing is shrunk into thumbnails.
-- **Jump bar** (`JumpBar.astro`, `scripts/views/jumpBar.ts`): one slim row (`--jump-bar-height`, 56px) pinned to the top, modeled on the filter bars of Google Maps and Airbnb: one row of chips that scrolls sideways: **[Sin bares ×] [Social ×] [🕒 ▾] | [Salsa] [Bachata] [Urbano] [Tango]** ("Cuándo" and the chips: see "Filters"). Search, "Guardados" and ⚙ used to start it; they're in the bar at the bottom since 5 October 2026 (the owner: the filters' count scrolled sideways with the chips).
+- **Jump bar** (`JumpBar.astro`, `scripts/views/jumpBar.ts`): one slim row (`--jump-bar-height`, 56px) pinned to the top, modeled on the filter bars of Google Maps and Airbnb: one row of chips that scrolls sideways: **[Social ×] [Sin bares ×] [🕒 ▾] | [Salsa] [Bachata] [Urbano] [Tango]** ("Cuándo" and the chips: see "Filters"). Search, "Guardados" and ⚙ used to start it; they're in the bar at the bottom since 5 October 2026 (the owner: the filters' count scrolled sideways with the chips).
   - **Compact:** "Cuándo" is its clock and ▾ ("🕒 ▾"; the word "Cuándo" joins them from 480px). At 375px the row shows
     🕒 ▾ and the four rhythms, Tango under the fade.
   - **The row runs to the screen's edge** and fades there (a mask), so the next chip peeks and it reads as a row that scrolls (Material's single-line chip group). It keeps where it was scrolled while choosing, unless a new choice would be out of sight (made in the sheet, or a chip further along): then it scrolls just enough to show the first one.
-  - **The choices made in the sheet** that have no chip of their own come first, removable ("Sin bares ×", "Social ×"),
+  - **The choices made in the sheet** that have no chip of their own come first, removable ("Social ×", then "Sin bares ×"),
     so what's on stays in sight; the fixed count is Filtros' badge in the bar at the bottom.
   - **The line under it** ("12 eventos · Finde, Salsa" and "× Limpiar"), only while filtering (`--filter-line-height`, 40px): see "Filters".
   - **Keeping your place:** when a filter changes while you're inside the list, the period you were reading stays right under the bar; if the filter removed it, the next period (else the previous one) takes its place. The period being read is the lowest one crossing a band under the bar (`captureListPosition`).
@@ -402,7 +402,9 @@ the list stays short there and summarizes what's further away (`scripts/views/up
     the view on screen as before. It has a history entry, an overlay like the sheets: **× and back close it and clear
     the search** (as × did in the old bar); Escape too on a keyboard. **The keyboard's "Buscar" (Enter)** closes the
     keyboard and the field and keeps the search: Buscar shows it's on (its pill, named "Buscar: «salsa»"), and a tap
-    opens the field again with the words. A field left empty closes when the keyboard does. **Android's back** with the
+    opens the field again with the words. A field left empty closes when the keyboard does; when what took the focus
+    opened over it (a card's details, "Cuándo"), it stays under that one and closes when that one does, if still
+    empty. A screen wide enough to lose the bar closes it too, keeping the search. **Android's back** with the
     keyboard up only hides the keyboard (the page isn't told: the platform's rule, as in native apps), so the search
     reacts to the keyboard leaving while the field keeps the focus (`keyboardJustHid`): empty, it closes; with words,
     it's kept, as with "Buscar" (the owner, 5 Oct 2026). **Above the keyboard:**
@@ -427,7 +429,7 @@ the list stays short there and summarizes what's further away (`scripts/views/up
 - **Filter sheet** (`FilterSheet.astro`, `filter-sheet.css`), from Filtros in the bar at the bottom:
   - **Head:** "Filtros", "Limpiar" (in `--accent-text`, only enabled with something to clear) and ×.
   - **Groups**, in a body that scrolls between the head and the button: **Fecha** · *elige una o varias* (every period and month), **Ritmo** · *elige uno o varios* (every rhythm, the bar's four first, "Otros ritmos" last), **Tipo de evento** (several too). Each option with its count ("Noviembre 2"); the ones with nothing to show dimmed. Chips wrap, `--control-height` tall with a 44px target.
-  - **"Ocultar eventos de bares"**, last, under a `--divider` line: a switch (see "Filters", "Hiding the bars").
+  - **"Ocultar eventos de bares"**, first, above a `--divider` line: a switch (see "Filters", "Hiding the bars").
   - **"Ver 12 eventos"** stays at the bottom (the primary button): "Ver 1 evento", or "Sin eventos: cambia los filtros", disabled. It closes the sheet; choices apply at once, there's no apply step.
   - **Closing:** ×, a drag down (from the head, or from the groups scrolled to the top), the backdrop, Escape, back. The focus goes back to Filtros.
   - **In the calendar:** Fecha says "En el calendario eliges el día en el mes."
@@ -453,8 +455,9 @@ screens in the toolbar's chip rows:
     "🕒 Finde" in the selected-chip colors, with **×** right beside it: a button of its own (not inside the chip's), the
     two drawn as one piece with a thin line between them; × takes the date away in one tap and the focus goes back to
     "Cuándo". Several dates chosen in the sheet read "🕒 Hoy +1", and × takes them all away.
-  - **The menu** hangs from the chip (under it, its left edge with the chip's, never past the screen's sides; it scrolls
-    when the screen is short, at least four options tall): "CUÁNDO", then **Cualquier fecha** and every period, each
+  - **The menu** hangs from the chip (under it, its left edge with the chip's, never past the screen's sides nor under
+    the bar at the bottom; it scrolls when the screen is short; with room for fewer than four options below and more
+    above, as on a phone in landscape before the bar pins, it opens upward): "CUÁNDO", then **Cualquier fecha** and every period, each
     with the days it covers in muted text ("Hoy dom 4", "Este fin de semana 9–11 oct", "Resto de octubre 12–31 oct";
     none for a month or a year) and its count on the right; the date chosen has a check (`--accent-text`) and a sunken
     row (`--surface-sunken`). "Mañana" only when something is on tomorrow; an option with nothing to show is dimmed and a
@@ -516,7 +519,7 @@ screens in the toolbar's chip rows:
 - **Semantics:** filter chips are toggle buttons (`aria-pressed`), short names carry the full one ("Finde": "Este fin de
   semana", "Próx. semana": "Próxima semana"); removable chips are named "Quitar Social"; "Cuándo"'s × is "Quitar Este
   fin de semana"; Filtros is "Filtros, 3 activos"; the bars' switch is a `role="switch"`. Focus stays on the chip chosen; after "Limpiar" (which hides or disables itself),
-  focus goes to Filtros (or the sheet's first chip, or the toolbar's first chip on wide screens).
+  focus goes to Filtros (in the sheet, to its first control, the bars' switch; on wide screens, the toolbar's first chip).
 - **Wide screens:** the toolbar keeps its chip rows (dates with the bar's short names, types and "Ocultar bares", rhythms), chosen chips
   with ×, the same dimming, and a status row: "12 eventos" and a
   "Limpiar filtros" chip. Rows that don't fit wrap instead of cutting a chip.
@@ -594,7 +597,7 @@ list. Now they open like Instagram's comments: a drawer rises over the list, and
   localStorage, `lib/onceFlag.ts`), and not at all once the visitor has opened any details. No hint bubble over the
   list. Nothing moves with reduced motion.
 
-**The drawer** (phones and tablets, under 900px; `EventDrawer.astro`, `drawer.css`, `scripts/views/eventDrawer.ts`):
+**The drawer** (phones and tablets, under 900px wide, or under 600px tall: a phone in landscape keeps it, with the bar at the bottom; `EventDrawer.astro`, `drawer.css`, `scripts/views/eventDrawer.ts`):
 
 - **Over the list:** it rises from the bottom to half height (the lower 55% of the screen) in 320ms (Material's
   emphasized-decelerate curve). The list doesn't change or navigate: it stays visible above, under a light scrim
@@ -625,8 +628,10 @@ list. Now they open like Instagram's comments: a drawer rises over the list, and
   between posts).
 - **The list's clips** keep playing above the half drawer and pause under the full one.
 
-**The side panel** (900px and wider): the same content, in a panel on the right (`--panel-width`, 420px), not modal, so
-the list stays usable next to it: the page leaves room for it, another card shows its event in the panel (the address
+**The side panel** (900px and wider, 600px and taller): the same content, in a panel on the right (`--panel-width`, 420px), not modal, so
+the list stays usable next to it. **The page never moves** when it opens or closes (the owner, 5 Oct 2026: the list
+shifting left felt shaky): the panel lies over the page's right side, like Gmail's or Maps', and on a narrower screen
+covers part of the rightmost cards while it's open; the page's scroll isn't locked, so the scrollbar stays. Another card shows its event in the panel (the address
 changes without adding to the history), and the open event's card is outlined in the accent color. × and Escape close
 it; it slides in from the right, and the focus goes back to the last card opened. The list next to it can move to
 another screen (a period opened whole, the calendar): another card then gets its own history entry, and closing the panel there
