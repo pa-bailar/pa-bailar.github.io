@@ -161,3 +161,16 @@ describe("the account in the details' head", () => {
     expect(eventDetailHtml(event({ account: "academia" }), 0)).toContain('href="https://www.instagram.com/academia/"');
   });
 });
+
+describe("a video's card", () => {
+  it('says "Video" whether it plays its clip or not; a photo doesn\'t', async () => {
+    const { eventCardGridHtml } = await import("../src/scripts/views/eventCard");
+    const [post] = event().media;
+    const withClip = { ...post, post_id: "v1", media_type: "VIDEO" as const, preview: "previews/v1.mp4" };
+    const withoutClip = { ...post, post_id: "v2", media_type: "VIDEO" as const, preview: null };
+    expect(eventCardGridHtml([event({ media: [withClip] })])).toContain('class="video-mark"');
+    expect(eventCardGridHtml([event({ media: [withClip] })])).toContain("<video");
+    expect(eventCardGridHtml([event({ media: [withoutClip] })])).toContain('class="video-mark"');
+    expect(eventCardGridHtml([event()])).not.toContain('class="video-mark"');
+  });
+});

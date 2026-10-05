@@ -202,8 +202,9 @@
   left: var(--space-3);
 }
 
-/* The event's image is a video with no clip: "Video" at the lower left (the sticker is on the right). Not a ▶ in the
-   middle: that promised it would play here, but a tap opens the details (where "Ver el video" plays it). */
+/* The event's image is a video (playing its clip or not): "Video" at the lower left (the sticker is on the right).
+   Not a ▶ in the middle: that promised it would play here, but a tap opens the details (whose Instagram button
+   plays it). */
 .video-mark {
   position: absolute;
   left: var(--space-3);
