@@ -6,7 +6,7 @@
 // right, Guardar. The buttons sit above the stretched link; "Detalles" opens the drawer like the card does, but
 // is counted apart (data-source, lib/analytics.ts).
 // A video's flyer with a clip plays it, silent, like a feed (clips.ts): the clips have no sound, so a tap there opens
-// the details like the rest of the card. A video without a clip says "Video" in a corner (the details play it). The
+// the details like the rest of the card. Every video says "Video" in a corner, clip or not (the details play it). The
 // posts' badge ("▦ 3") opens every post announcing the event.
 
 import type { DanceEvent, EventMedia } from "../types";
@@ -60,7 +60,10 @@ function flyerHtml(media: EventMedia, flyer: string, clip: string | null, title:
     </div>`;
 }
 
-/** A video without a clip: a label, not a ▶ (a tap opens the details, where "Ver el video" plays it). */
+/**
+ * Every video's card, playing its clip or not: a label, not a ▶ (a tap opens the details, whose Instagram button plays
+ * it). The owner's call of 4 October 2026: on some videos and not others, it was confusing.
+ */
 const VIDEO_MARK = `<span class="video-mark" aria-hidden="true">${ICONS.video}<span>Video</span></span>`;
 
 /** "Detalles ›" · Compartir · · · Guardar, under the flyer. */
@@ -103,7 +106,7 @@ function eventCardHtml(event: DanceEvent): string {
         ${image}
         <span class="tag-type t-${escapeHtml(event.event_type)}">${typeLabel(event.event_type)}</span>
         ${postCount}
-        ${!clip && isVideoCover(media) ? VIDEO_MARK : ""}
+        ${isVideoCover(media) ? VIDEO_MARK : ""}
         <span class="date-sticker${sticker.range ? " date-sticker--range" : ""}" aria-hidden="true"><b>${sticker.day}</b><small>${sticker.month}</small></span>
       </div>
       ${actionsHtml(event)}
