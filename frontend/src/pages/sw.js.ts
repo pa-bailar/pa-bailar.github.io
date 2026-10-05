@@ -31,7 +31,8 @@ self.addEventListener("install", (event) => {
   event.waitUntil(
     (async () => {
       // This build's home page, not the browser's cached copy of an older one (its files could be gone).
-      await (await caches.open(PAGES)).add(new Request("/", { cache: "reload" }));
+      // …and the calendar's own address (pages/calendario/): the same page opening on the calendar.
+      await (await caches.open(PAGES)).addAll(["/", "/calendario/"].map((url) => new Request(url, { cache: "reload" })));
       await (await caches.open(BUILD_FILES)).addAll(BUILD_FILE_LIST);
     })(),
   );

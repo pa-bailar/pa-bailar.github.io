@@ -6,7 +6,7 @@ import { byId, isPlainClick } from "./lib/dom";
 import { focusAfterClearing, focusScope, focusSelector } from "./lib/focus";
 import { eventCountLabel, formatLongDate } from "./lib/format";
 import { addMonths, currentMonth, lastDay, todayIso } from "./lib/dates";
-import { eventPath, sharedEventLink } from "./lib/links";
+import { eventPath, sharedEventLink, viewOfPath, viewPath } from "./lib/links";
 import { shareSources } from "./lib/shareSources";
 import {
   clearFilters,
@@ -54,7 +54,9 @@ let events: DanceEvent[] = [];
 let eventById = new Map<string, DanceEvent>();
 const findEvent = (id: string): DanceEvent | undefined => eventById.get(id);
 
-const { navigateView, revealDay, backToTop, currentScreen, applyScreen } = viewNavigation(state, () => render());
+const { navigateView, revealDay, backToTop, currentScreen, applyScreen, openedOnCalendar } = viewNavigation(state, () =>
+  render(),
+);
 
 /** The number of events, said politely to screen readers after each change. */
 function announce(count: number) {
@@ -350,7 +352,11 @@ export function start() {
     render();
     returnToScroll(scrollY);
   });
+  // The page's own address picks the view it opens on: /calendario/ is the calendar (HomePage.astro data-start-view).
+  const opensOnCalendar = viewOfPath(location.pathname) === "calendar";
+  if (opensOnCalendar) state.view = "calendar";
   render();
+  if (opensOnCalendar) openedOnCalendar();
   openSharedEvent();
-  initScreenHistory({ current: currentScreen, apply: applyScreen });
+  initScreenHistory({ current: currentScreen, apply: applyScreen, address: (screen) => viewPath(screen.view) });
 }

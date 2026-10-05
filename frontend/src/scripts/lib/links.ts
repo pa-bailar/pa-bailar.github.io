@@ -1,6 +1,6 @@
 // URLs built from an event: flyer image, its own page, Google Maps, the report form, and calendar times.
 
-import type { DanceEvent, EventMedia, Session } from "../types";
+import type { DanceEvent, EventMedia, Session, View } from "../types";
 import { addDays, isMultiDay, isSeries, lastDay } from "./dates";
 import { eventDaysLabel, formatTime, priceSummary } from "./format";
 
@@ -79,8 +79,25 @@ export function eventPath(event: DanceEvent): string {
  * The details closed, the address bar should no longer show an event: the home page's address (keeping `search`
  * and `hash`) when `path` is still an event's page, else null (it's already right).
  */
-export function addressAfterClosing({ pathname, search, hash }: Pick<Location, "pathname" | "search" | "hash">): string | null {
-  return pathname.startsWith(`${BASE_URL}evento/`) ? `${BASE_URL}${search}${hash}` : null;
+/** Each view's own address: the list is the home page, the calendar /calendario/ (a reload or a shared link stays). */
+export function viewPath(view: View): string {
+  return view === "calendar" ? `${BASE_URL}calendario/` : BASE_URL;
+}
+
+/** The view an address opens on: /calendario/ (with or without its slash) is the calendar, anything else the list. */
+export function viewOfPath(pathname: string): View {
+  return pathname.replace(/\/?$/, "/") === `${BASE_URL}calendario/` ? "calendar" : "upcoming";
+}
+
+/**
+ * The address to go back to when the details close on an event's own address: the view's (the list's, the
+ * calendar's), keeping the query and the hash. Null when the address is already a view's.
+ */
+export function addressAfterClosing(
+  { pathname, search, hash }: Pick<Location, "pathname" | "search" | "hash">,
+  view: View = "upcoming",
+): string | null {
+  return pathname.startsWith(`${BASE_URL}evento/`) ? `${viewPath(view)}${search}${hash}` : null;
 }
 
 /**

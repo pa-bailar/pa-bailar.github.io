@@ -178,3 +178,65 @@ describe("historyState", () => {
     expect(screens.historyState("left by another page")).toEqual({});
   });
 });
+
+describe("each view's own address (/calendario/)", () => {
+  type Shown = { view: "upcoming" | "calendar"; savedOnly: boolean };
+  let shown: Shown;
+  let applied: { undoing?: string }[];
+
+  beforeEach(async () => {
+    fake = installFakeHistory();
+    vi.resetModules();
+    screens = await import("../src/scripts/screenHistory");
+    const { viewPath } = await import("../src/scripts/lib/links");
+    shown = { view: "upcoming", savedOnly: false };
+    applied = [];
+    const current = () => ({ view: shown.view, savedOnly: shown.savedOnly, periods: [], scrollY: 0 });
+    screens.initScreenHistory({
+      current,
+      // As viewNavigation does: leaving the calendar keeps "Guardados" as set in it.
+      apply: (screen, undoing) => {
+        applied.push({ undoing });
+        shown.view = screen.view;
+        if (undoing !== "view") shown.savedOnly = screen.savedOnly;
+      },
+      address: (screen) => viewPath(screen.view),
+    });
+  });
+
+  it("the calendar's move pushes /calendario/; back returns to /", async () => {
+    screens.goTo("view", () => (shown.view = "calendar"));
+    expect(fake.path).toBe("/calendario/");
+    history.back();
+    await settle();
+    expect(fake.path).toBe("/");
+    expect(shown.view).toBe("upcoming");
+  });
+
+  it('"Guardados" turned off in the calendar stays off when the list comes back', async () => {
+    screens.goTo("saved", () => (shown.savedOnly = true));
+    screens.goTo("view", () => (shown.view = "calendar"));
+    screens.leave("saved", () => (shown.savedOnly = false)); // in the calendar: undone in place
+    screens.leave("view", () => (shown.view = "upcoming")); // back out of the calendar
+    await settle();
+    expect(shown).toEqual({ view: "upcoming", savedOnly: false });
+    expect(applied.at(-1)?.undoing).toBe("view");
+    expect(fake.path).toBe("/");
+  });
+});
+
+describe("addresses per view", () => {
+  it("the calendar is /calendario/, with or without its slash; anything else is the list", async () => {
+    const { viewOfPath, viewPath } = await import("../src/scripts/lib/links");
+    expect(viewPath("calendar")).toBe("/calendario/");
+    expect(viewPath("upcoming")).toBe("/");
+    expect(viewOfPath("/calendario/")).toBe("calendar");
+    expect(viewOfPath("/calendario")).toBe("calendar");
+    expect(viewOfPath("/")).toBe("upcoming");
+    expect(viewOfPath("/evento/x/")).toBe("upcoming");
+  });
+
+  it("closing an event opened from the calendar goes back to /calendario/", () => {
+    expect(addressAfterClosing({ pathname: "/evento/social-1/", search: "", hash: "" }, "calendar")).toBe("/calendario/");
+  });
+});
