@@ -12,7 +12,6 @@ export function createInitialState(): AppState {
     types: [],
     styles: [],
     dates: [],
-    accountFilter: null,
     query: "",
     savedOnly: false,
     month: currentMonth(),
@@ -49,15 +48,14 @@ export function matchesFilters(event: DanceEvent, state: AppState, except?: Filt
   const typeOk = except === "types" || !state.types.length || state.types.includes(event.event_type);
   const stylesOk = except === "styles" || matchesStyles(event, state.styles);
   const datesOk = except === "dates" || !datesApply(state) || matchesDates(event, state.dates);
-  const accountOk = !state.accountFilter || event.account === state.accountFilter;
   const savedOk = !state.savedOnly || isSaved(event.id);
-  return typeOk && stylesOk && datesOk && accountOk && savedOk && matchesQuery(event, state.query);
+  return typeOk && stylesOk && datesOk && savedOk && matchesQuery(event, state.query);
 }
 
-/** Every choice in use, for the ⚙ badge: each date (in the list), rhythm and type, and the academy. */
+/** Every choice in use, for the ⚙ badge: each date (in the list), rhythm and type. */
 export function activeFilterCount(state: AppState): number {
   const dates = state.view === "upcoming" ? state.dates.length : 0; // the calendar has its own days
-  return dates + state.styles.length + state.types.length + (state.accountFilter ? 1 : 0);
+  return dates + state.styles.length + state.types.length;
 }
 
 /** Anything narrowing the list: the filters, a search, or "Guardados". */
@@ -70,12 +68,11 @@ export function toggled(values: string[], value: string): string[] {
   return values.includes(value) ? values.filter((item) => item !== value) : [...values, value];
 }
 
-/** "Limpiar": the dates, rhythms, types and academy. Not the search nor "Guardados", which have their own way out. */
+/** "Limpiar": the dates, rhythms and types. Not the search nor "Guardados", which have their own way out. */
 export function clearFilters(state: AppState) {
   state.types = [];
   state.styles = [];
   state.dates = [];
-  state.accountFilter = null;
 }
 
 function monthPrefix(month: Date): string {

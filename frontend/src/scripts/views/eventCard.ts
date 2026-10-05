@@ -22,7 +22,7 @@ import {
   stylesLabel,
   typeLabel,
 } from "../lib/format";
-import { eventPath, flyerUrl, mainMedia, previewUrl } from "../lib/links";
+import { eventPath, flyerUrl, mainMedia, previewUrl, profileUrl } from "../lib/links";
 import { saveButtonHtml } from "./saveButton";
 
 const MAX_STYLES_ON_CARD = 3;
@@ -112,7 +112,7 @@ function eventCardHtml(event: DanceEvent): string {
           <a class="event-card__hit" href="${escapeHtml(eventPath(event))}" data-event="${escapeHtml(event.id)}">${escapeHtml(event.title)}</a>
         </h3>
         <p class="event-card__meta">
-          <button class="event-card__account" data-account="${escapeHtml(event.account)}" aria-label="Ver solo eventos de @${escapeHtml(event.account)}">@${escapeHtml(event.account)}</button>
+          <a class="event-card__account" href="${escapeHtml(profileUrl(event.account))}" target="_blank" rel="noopener" data-profile="${escapeHtml(event.account)}" data-track="perfil-tarjeta" aria-label="Ver el perfil de @${escapeHtml(event.account)}">@${escapeHtml(event.account)}</a>
         </p>
         ${place ? `<p class="event-card__meta">${escapeHtml(place)}</p>` : ""}
         ${

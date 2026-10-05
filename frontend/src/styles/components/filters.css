@@ -300,7 +300,7 @@
 
 /* ---------- wide screens: the toolbar's status row ---------- */
 
-/* "Solo eventos de @academia · Ver todas las academias", "12 eventos", "× Limpiar filtros". */
+/* "12 eventos", "× Limpiar filtros". */
 .filter-status {
   display: flex;
   flex-wrap: wrap;

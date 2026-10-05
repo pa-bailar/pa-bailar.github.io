@@ -18,7 +18,7 @@ beforeEach(async () => {
   vi.resetModules();
   drawer = await import("../src/scripts/views/drawerHistory");
   screens = await import("../src/scripts/screenHistory");
-  const current = () => ({ view: "upcoming" as const, account: null, savedOnly: false, periods: [], scrollY: 0 });
+  const current = () => ({ view: "upcoming" as const, savedOnly: false, periods: [], scrollY: 0 });
   screens.initScreenHistory({ current, apply: () => {} });
 });
 
@@ -47,7 +47,7 @@ describe("opening the details", () => {
 
   it("…unless the list moved to another screen meanwhile: that one keeps its entry", () => {
     drawer.enterEvent(social, false);
-    screens.goTo("account", () => {});
+    screens.goTo("period", () => {});
     drawer.enterEvent(salsa, true);
     expect(fake.entries).toHaveLength(4);
     expect(fake.entries[2]!.state).not.toHaveProperty("eventId");
@@ -121,7 +121,7 @@ describe("a shared link (/?evento=<id>)", () => {
     const link = sharedEventLink(location)!;
     history.replaceState(null, "", link.address);
     screens.initScreenHistory({
-      current: () => ({ view: "upcoming", account: null, savedOnly: false, periods: [], scrollY: 0 }),
+      current: () => ({ view: "upcoming", savedOnly: false, periods: [], scrollY: 0 }),
       apply: () => {},
     });
     drawer.enterEvent(social, false);

@@ -4,7 +4,7 @@
 // still.
 //   - The clips have no sound (the backend cuts them with none), so they're always muted and offer no sound
 //     button: a tap on a card's clip opens the details like the rest of the card. The full video, with its sound,
-//     plays in the details ("Ver el video con sonido") through Instagram's player.
+//     plays in the details (their Instagram button) through Instagram's player.
 //   - Something over the list can hold them (`holdClips`): the details drawer at full height covers them, and
 //     the media viewer plays the post with sound. They pause, and the one on screen plays again once nothing
 //     holds them.

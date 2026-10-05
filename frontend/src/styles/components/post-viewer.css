@@ -68,3 +68,40 @@
 .post-viewer__embed .instagram-media {
   margin: 0 auto !important;
 }
+
+/* An account's profile (Instagram's profile embed): its photo, counts and latest posts. Edge to edge (Instagram's
+   layout needs the sheet's whole width on a phone), as tall as its head and two rows of posts. "Cargando el perfil…" covers it on the sheet's own color until it has drawn (postViewer.ts). */
+.post-viewer__body--profile {
+  margin-inline: calc(var(--space-4) * -1);
+}
+
+.post-viewer__body--profile .post-viewer__embed {
+  position: static;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.post-viewer__body--profile .post-viewer__placeholder {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  background: var(--surface);
+}
+
+.post-viewer__body--profile .post-viewer__status {
+  margin: 0;
+}
+
+.post-viewer__embed--profile {
+  container-type: inline-size;
+}
+
+/* Instagram's head (photo, name, counts: ~150px) and two rows of three square posts: two thirds of its width. */
+.post-viewer__embed--profile iframe {
+  display: block;
+  width: 100%;
+  height: min(calc(150px + 66.7cqi), 75dvh);
+  border: 0;
+}

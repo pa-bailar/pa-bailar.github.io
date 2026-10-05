@@ -1,23 +1,22 @@
 // The phone's "back" between the app's own screens, not only the event details and the sheets (eventDrawer.ts,
 // lib/sheet.ts).
 //
-// Moves that feel like going somewhere get a history entry: an academy's events (tapping its @ on a card), a
-// period opened whole ("Ver los 23 eventos"), the calendar, "Guardados". Without one, "back" right after them
+// Moves that feel like going somewhere get a history entry: a period opened whole ("Ver los 23 eventos"), the calendar, "Guardados". Without one, "back" right after them
 // had nothing to go back to and left the site, which closes an installed app. Each entry holds the screen it
 // shows (`Screen`); "back" (or forward) puts that screen back, at the scroll position it had.
 //
-// Undoing a move from the page itself ("ver todas las academias", the list button, "Guardados" again) goes back
+// Undoing a move from the page itself (the list button, "Guardados" again) goes back
 // in history when the current entry is that move, so the history never piles up screens to step through.
 //
 // Overlays (a sheet, the event details) get history entries of their own on top of the screen's
 // (`overlayState`): they carry the screen under them, marked as an overlay. Undoing a move from inside one
-// (the "Filtros" sheet's "Quitar @academia" or "Limpiar", the list next to the side panel) can't go back in
+// (the "Filtros" sheet's "Limpiar", the list next to the side panel) can't go back in
 // history: that would close the overlay instead. The move is undone right there, the overlay stays, and the
 // screen's entry is skipped when "back" (or closing the overlay) reaches it later.
 
 import type { View } from "./types";
 
-export type ScreenKind = "account" | "period" | "view" | "saved";
+export type ScreenKind = "period" | "view" | "saved";
 
 /** A screen entry: `kind` is the move that led to it (absent: the start). */
 export interface Step {
@@ -27,7 +26,6 @@ export interface Step {
 
 export interface Screen {
   view: View;
-  account: string | null;
   savedOnly: boolean;
   periods: string[]; // periods shown whole
   scrollY: number;
@@ -125,7 +123,6 @@ export function overlayState<T extends object>(extra: T): T & ScreenHistoryState
 export function sameScreen(a: Omit<ScreenData, "scrollY">, b: Omit<ScreenData, "scrollY">): boolean {
   return (
     a.view === b.view &&
-    a.account === b.account &&
     a.savedOnly === b.savedOnly &&
     a.periods.length === b.periods.length &&
     a.periods.every((key) => b.periods.includes(key))

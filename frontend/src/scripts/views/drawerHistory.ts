@@ -18,8 +18,8 @@ export const onEventEntry = (): boolean => Boolean(eventIdOf(history.state));
 
 /**
  * `event`'s details opened: its entry, over the screen's. Another card while the side panel is open (`wasOpen`)
- * replaces it (the address changes, and back still closes), unless the list moved to another screen meanwhile (an
- * academy, the calendar): that screen keeps its entry, and the event gets one over it.
+ * replaces it (the address changes, and back still closes), unless the list moved to another screen meanwhile (a
+ * period opened whole, the calendar): that screen keeps its entry, and the event gets one over it.
  */
 export function enterEvent(event: DanceEvent, wasOpen: boolean) {
   if (wasOpen && onEventEntry()) history.replaceState({ ...history.state, eventId: event.id }, "", eventPath(event));

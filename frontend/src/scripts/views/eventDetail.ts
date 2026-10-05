@@ -22,7 +22,7 @@ import {
 import { isSeries, nextSession, todayIso } from "../lib/dates";
 import { contactLink, type ContactKind } from "../lib/contact";
 import { ICONS } from "../lib/icons";
-import { feedbackUrl, flyerUrl, mapsUrl, previewUrl } from "../lib/links";
+import { feedbackUrl, flyerUrl, mapsUrl, previewUrl, profileUrl } from "../lib/links";
 import { isStory, isVideoCover, mediaLabel, storySource } from "../lib/mediaLabel";
 import { playInline } from "./inlinePlayer";
 import { openPostViewer } from "./postViewer";
@@ -182,11 +182,6 @@ function mediaHtml(event: DanceEvent, media: EventMedia, selected: number): stri
     </div>`;
 }
 
-/** The account's Instagram profile ("https://www.instagram.com/academia/"). */
-export function profileUrl(account: string): string {
-  return `https://www.instagram.com/${encodeURIComponent(account)}/`;
-}
-
 /**
  * When, the title, the type tag and the account: the head of the drawer, and of the page under the flyer. The account
  * opens its Instagram profile (on a card, it filters the list to it instead).
@@ -196,36 +191,49 @@ function headHtml(event: DanceEvent, { heading, titleId }: { heading: "h1" | "h2
   return `
     <p class="event-detail__when">${escapeHtml(cardWhenLabel(event))}</p>
     <${heading} class="event-detail__title" id="${titleId}" tabindex="-1">${escapeHtml(event.title)}</${heading}>
-    <p class="event-detail__by"><span class="tag-type t-${escapeHtml(event.event_type)}">${typeLabel(event.event_type)}</span><a class="event-detail__account" href="${escapeHtml(profileUrl(event.account))}" target="_blank" rel="noopener" data-track="instagram-cuenta" aria-label="Abrir @${account} en Instagram">@${account}<span aria-hidden="true">↗</span></a></p>`;
+    <p class="event-detail__by"><span class="tag-type t-${escapeHtml(event.event_type)}">${typeLabel(event.event_type)}</span><a class="event-detail__account" href="${escapeHtml(profileUrl(event.account))}" target="_blank" rel="noopener" data-profile="${account}" data-track="perfil-detalle" aria-label="Ver el perfil de @${account}">@${account}</a></p>`;
 }
 
 /**
- * Beyond the text: the post's video with sound, a carousel's images, the event's other posts. Each opens in the
- * full-screen media viewer (postViewer.ts) or the sheet of posts (postsSheet.ts): the details never show the
- * flyer again (the visitor is looking at it, on the card).
+ * Beyond the text: the event's other posts, in the sheet of posts (postsSheet.ts). The details never show the flyer
+ * again (the visitor is looking at it, on the card); the post itself is the main button (`postButtonHtml`).
  */
 function mediaLinksHtml(event: DanceEvent, selected: number): string {
-  const media = event.media[selected] ?? event.media[0];
-  const link = (kind: string, icon: string, text: string) =>
-    `<button class="media-link" type="button" data-media-link="${kind}" data-post="${selected}" data-track="ver-${kind}">${icon}<span>${text}</span></button>`;
-  const label = mediaLabel(media);
-  const links = [
-    isVideoCover(media) ? link("video", ICONS.play, "Ver el video con sonido") : "",
-    !isVideoCover(media) && label?.icon === "carousel" ? link("carrusel", ICONS.carousel, `Ver las ${media.slides} imágenes`) : "",
-    event.media.length > 1 ? link("publicaciones", ICONS.gallery, `Ver las ${event.media.length} publicaciones`) : "",
-  ].filter(Boolean);
-  return links.length ? `<div class="media-links">${links.join("")}</div>` : "";
+  if (event.media.length < 2) return "";
+  return `<div class="media-links"><button class="media-link" type="button" data-media-link="publicaciones" data-post="${selected}"
+    data-track="ver-publicaciones">${ICONS.gallery}<span>Ver las ${event.media.length} publicaciones</span></button></div>`;
 }
 
 /**
- * Everything after the head, in the order people look for it: Cómo llegar · Compartir · Guardar; the stripes;
- * when, where, the price (one line) and who organizes, then the rest; the prices; the rhythms; the media; "Ver en
- * Instagram" (a story: where it came from, and "Ver perfil en Instagram"); the post's text; "¿Algo está mal?
- * Repórtalo". At the drawer's half height, when, where and the price are on screen.
+ * "Instagram", first of the quick actions: the post, watched inside the site (the media viewer, Instagram's player:
+ * a video plays there with sound, a carousel swipes). The owner's call of 4 October 2026: Instagram itself leaves
+ * the site and its back button doesn't come back, and one way in, at the top, instead of "Ver el video con sonido"
+ * and "Ver en Instagram" both. "Abrir en Instagram ↗" stays in the viewer's bar, and the button is a link to the post
+ * underneath, for a new tab. A story has no post: its account's profile, in the same viewer (`data-profile`,
+ * postViewer.ts).
+ */
+function instagramButtonHtml(event: DanceEvent, media: EventMedia, selected: number): string {
+  const href = escapeHtml(media.permalink);
+  const account = escapeHtml(event.account);
+  const label = `${ICONS.instagram}<span>Instagram</span>`;
+  if (isStory(media)) {
+    return `<a class="btn" href="${href}" target="_blank" rel="noopener" data-profile="${account}" data-track="perfil-historia"
+      aria-label="Ver el perfil de @${account}">${label}</a>`;
+  }
+  const kind = isVideoCover(media) ? "video" : mediaLabel(media)?.icon === "carousel" ? "carrusel" : "publicacion";
+  const spoken = { video: "Ver el video con sonido", carrusel: `Ver las ${media.slides} imágenes`, publicacion: "Ver la publicación" }[kind];
+  return `<a class="btn" href="${href}" target="_blank" rel="noopener" data-media-link="${kind}" data-post="${selected}"
+    data-track="ver-${kind}" aria-label="${spoken} de Instagram">${label}</a>`;
+}
+
+/**
+ * Everything after the head, in the order people look for it: Instagram · Compartir · Guardar; the stripes; when,
+ * where (with its "Cómo llegar"), the price (one line) and who organizes, then the rest; the prices; the rhythms; the
+ * other posts (a story: where it came from); the post's text; "¿Algo está mal? Repórtalo". At the drawer's half
+ * height, when, where and the price are on screen.
  */
 function bodyHtml(event: DanceEvent, selected: number): string {
   const media = event.media[selected] ?? event.media[0];
-  const maps = mapsUrl(event);
   const rows = detailRows(event)
     .map(([term, value]) => `<dt>${term}</dt><dd>${value}</dd>`)
     .join("");
@@ -237,7 +245,7 @@ function bodyHtml(event: DanceEvent, selected: number): string {
       : "";
   return `
     <div class="quick-actions">
-      ${maps ? `<a class="btn" href="${escapeHtml(maps)}" target="_blank" rel="noopener" data-track="como-llegar">${ICONS.pin}<span>Cómo llegar</span></a>` : ""}
+      ${instagramButtonHtml(event, media, selected)}
       <button class="btn" type="button" data-share-event="${escapeHtml(event.id)}" data-track="compartir-evento">${ICONS.share}<span>Compartir</span></button>
       ${saveButtonHtml(event, { labeled: true, className: "btn" })}
     </div>
@@ -249,13 +257,6 @@ function bodyHtml(event: DanceEvent, selected: number): string {
     ${lowConfidence}
     ${mediaLinksHtml(event, selected)}
     ${story ? `<p class="event-detail__source">${ICONS.story}<span>${escapeHtml(storySource(event, media))}</span></p>` : ""}
-    <div class="event-detail__actions">
-      ${
-        story
-          ? `<a class="btn btn--primary" href="${escapeHtml(media.permalink)}" target="_blank" rel="noopener" data-track="instagram-perfil">${ICONS.instagram}Ver perfil en Instagram ↗</a>`
-          : `<a class="btn btn--primary" href="${escapeHtml(media.permalink)}" target="_blank" rel="noopener" data-track="instagram">${ICONS.instagram}Ver en Instagram ↗</a>`
-      }
-    </div>
     ${media.caption ? `<details class="event-detail__caption"><summary>Texto de la publicación</summary><p>${escapeHtml(media.caption)}</p></details>` : ""}
     <p class="event-detail__report"><a class="inline-link" href="${escapeHtml(feedbackUrl(event))}" target="_blank" rel="noopener" data-track="reportar-error">¿Algo está mal? Repórtalo</a></p>`;
 }
@@ -299,12 +300,15 @@ export function openEventPosts(event: DanceEvent, selected = 0) {
 }
 
 /**
- * A media link of the details (`[data-media-link]`): the video (or the carousel) in the media viewer, or the
- * event's posts. False for any other click.
+ * A media link of the details (`[data-media-link]`): the post (its video, its images) in the media viewer, or the
+ * event's posts. False for any other click, and for a new-tab click on the main button (it follows its link).
  */
 export function handleMediaLinkClick(domEvent: MouseEvent, event: DanceEvent): boolean {
   const link = (domEvent.target as HTMLElement).closest<HTMLElement>("[data-media-link]");
   if (!link) return false;
+  const newTab = domEvent.button !== 0 || domEvent.metaKey || domEvent.ctrlKey || domEvent.shiftKey || domEvent.altKey;
+  if (link instanceof HTMLAnchorElement && newTab) return false;
+  domEvent.preventDefault();
   const selected = Number(link.dataset.post ?? 0);
   if (link.dataset.mediaLink === "publicaciones") openEventPosts(event, selected);
   else openPostViewer(event, event.media[selected] ?? event.media[0]);

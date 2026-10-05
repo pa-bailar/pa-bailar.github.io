@@ -29,9 +29,10 @@ describe("the details drawer", () => {
       "@latopa",
       "data-close-drawer",
       "quick-actions",
+      "<span>Instagram</span>",
+      "<span>Compartir</span>",
       "stripes",
       "detail-list",
-      "Ver en Instagram",
       "Repórtalo",
     ];
     const positions = order.map((part) => drawer.indexOf(part));
@@ -46,9 +47,11 @@ describe("the details drawer", () => {
     expect(eventDetailHtml(event(), 0)).toContain("<img"); // the event's own page keeps the flyer on top
   });
 
-  it("offers Cómo llegar only when there's a place to go", () => {
-    expect(html({ venue: "La Topa" })).toContain("<span>Cómo llegar</span>");
-    expect(html()).not.toContain("<span>Cómo llegar</span>");
+  it("quick actions: Instagram, Compartir, Guardar; Cómo llegar is in the place's row, only with a place", () => {
+    expect(html({ venue: "La Topa" })).not.toContain("<span>Cómo llegar</span>");
+    expect(html({ venue: "La Topa" })).toContain('data-track="como-llegar"');
+    expect(html()).not.toContain('data-track="como-llegar"');
+    expect(html()).toContain("<span>Instagram</span>");
     expect(html()).toContain("<span>Compartir</span>");
     expect(html()).toContain("<span>Guardar</span>");
   });
@@ -60,30 +63,40 @@ describe("the details drawer", () => {
     expect([...terms].sort((a, b) => a - b)).toEqual(terms);
   });
 
-  it("links to the video with sound and to the other posts, only when there are", () => {
+  it("Instagram watches the post inside the site (named for what it shows); a link to it for a new tab", () => {
     const [post] = event().media;
     const video = { ...post, post_id: "v", media_type: "VIDEO" as const, preview: "previews/v.mp4" };
-    expect(html()).not.toContain("data-media-link");
-    expect(html({ media: [video] })).toContain("Ver el video con sonido");
-    expect(html({ media: [post, video, { ...post, post_id: "p3" }] })).toContain("Ver las 3 publicaciones");
+    const carousel = { ...post, post_id: "c", media_type: "CAROUSEL_ALBUM" as const, slides: 4 };
+    const button = (drawer: string) => /<a class="btn"[^>]*>(?:(?!<\/a>).)*Instagram<\/span><\/a>/s.exec(drawer)?.[0] ?? "";
+    expect(button(html())).toContain('data-media-link="publicacion"');
+    expect(button(html())).toContain('aria-label="Ver la publicación de Instagram"');
+    expect(button(html())).toContain('href="https://www.instagram.com/p/p1/"');
+    expect(button(html({ media: [video] }))).toContain('aria-label="Ver el video con sonido de Instagram"');
+    expect(button(html({ media: [carousel] }))).toContain('aria-label="Ver las 4 imágenes de Instagram"');
+    expect(html()).not.toContain("btn--primary"); // one way in, at the top
+    expect(html({ media: [video] }).match(/data-media-link="video"/g)).toHaveLength(1); // not twice
+  });
+
+  it("links to the other posts only when there are", () => {
+    const [post] = event().media;
+    expect(html()).not.toContain('data-media-link="publicaciones"');
+    expect(html({ media: [post, { ...post, post_id: "p2" }, { ...post, post_id: "p3" }] })).toContain("Ver las 3 publicaciones");
   });
 
   it("a story-only event: where it came from, and its account's profile instead of the post", () => {
     const drawer = html({ media: [storyMedia()] });
     expect(drawer).toContain("De una historia de @academia · las historias duran 24 horas");
-    expect(drawer).toContain(
-      `<a class="btn btn--primary" href="https://www.instagram.com/academia/" target="_blank" rel="noopener" data-track="instagram-perfil">`,
-    );
-    expect(drawer).toContain("Ver perfil en Instagram ↗");
-    expect(drawer).not.toContain("Ver en Instagram ↗");
+    expect(drawer).toContain(`href="https://www.instagram.com/academia/" target="_blank" rel="noopener" data-profile="academia"`);
+    expect(drawer).toContain('aria-label="Ver el perfil de @academia"');
+    expect(drawer).not.toContain("Ver la publicación");
     expect(drawer).not.toContain("Texto de la publicación"); // a story has no caption
     expect(drawer).not.toContain("data-media-link"); // nothing to play
-    expect(drawer.indexOf("De una historia")).toBeLessThan(drawer.indexOf("Ver perfil en Instagram"));
+    expect(drawer.indexOf('data-track="perfil-historia"')).toBeLessThan(drawer.indexOf("De una historia")); // the profile is a quick action
   });
 
   it("an event with a post and a story shows the post first, as it comes", () => {
     const drawer = html({ media: [event().media[0], storyMedia()] });
-    expect(drawer).toContain("Ver en Instagram ↗");
+    expect(drawer).toContain('aria-label="Ver la publicación de Instagram"');
     expect(drawer).toContain(`href="https://www.instagram.com/p/p1/"`);
     expect(drawer).not.toContain("De una historia");
     expect(drawer).toContain("Ver las 2 publicaciones");
@@ -114,7 +127,7 @@ describe("an event's page, with a story", () => {
     expect(page).not.toContain("data-view-post"); // neither the media viewer nor the inline player
     expect(page).not.toContain("Ver la publicación");
     expect(page).toContain("De una historia de @academia");
-    expect(page).toContain("Ver perfil en Instagram ↗");
+    expect(page).toContain('data-track="perfil-historia"');
   });
 
   it("a post's flyer still opens the post; choosing the story shows it instead", () => {
@@ -125,7 +138,7 @@ describe("an event's page, with a story", () => {
     const story = eventDetailHtml(both, 1);
     expect(story).not.toContain("data-view-post");
     expect(story).toContain("Historia</span>");
-    expect(story).toContain("Ver perfil en Instagram ↗");
+    expect(story).toContain('data-track="perfil-historia"');
     expect(story).toContain(`data-open-posts data-selected="1"`);
   });
 
@@ -136,13 +149,14 @@ describe("an event's page, with a story", () => {
 });
 
 describe("the account in the details' head", () => {
-  it("opens its Instagram profile in a new tab, named for screen readers (a card's still filters the list)", () => {
+  it("opens its profile inside the site (data-profile, postViewer.ts); the link is Instagram's for a new tab", () => {
     const drawer = eventDrawerHtml(event({ account: "la.topa_bogota" }), { titleId: "t" });
     const link = /<a class="event-detail__account"[^>]*>.*?<\/a>/.exec(drawer)?.[0] ?? "";
     expect(link).toContain('href="https://www.instagram.com/la.topa_bogota/"');
     expect(link).toContain('target="_blank" rel="noopener"');
-    expect(link).toContain('aria-label="Abrir @la.topa_bogota en Instagram"');
-    expect(link).toContain('data-track="instagram-cuenta"');
+    expect(link).toContain('data-profile="la.topa_bogota"');
+    expect(link).toContain('aria-label="Ver el perfil de @la.topa_bogota"');
+    expect(link).toContain('data-track="perfil-detalle"');
     expect(link).toContain("@la.topa_bogota");
     expect(eventDetailHtml(event({ account: "academia" }), 0)).toContain('href="https://www.instagram.com/academia/"');
   });

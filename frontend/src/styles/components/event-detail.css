@@ -72,7 +72,7 @@
   color: var(--accent);
 }
 
-/* ---------- the media: "Ver el video con sonido", "Ver las 3 publicaciones" (the media viewer, the posts) ---------- */
+/* ---------- the media: "Ver las 3 publicaciones" (the posts sheet) ---------- */
 
 .media-links {
   display: grid;
@@ -232,14 +232,7 @@
   color: var(--text-italic);
 }
 
-.event-detail__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-  margin-top: var(--space-1);
-}
-
-/* A story's "De una historia de @academia · las historias duran 24 horas", right over its "Ver perfil en Instagram". */
+/* A story's "De una historia de @academia · las historias duran 24 horas" (its profile is the Instagram quick action). */
 .event-detail__source {
   display: flex;
   align-items: flex-start;

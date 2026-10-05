@@ -66,8 +66,8 @@ backend reads it. Most such events never get a post, so a story can be an event'
 - Everything else as for `IMAGE`.
 
 On the site a story's flyer is a plain image labeled "Historia" (no Instagram player: there's no post to show),
-with "De una historia de @cuenta · las historias duran 24 horas" and "Ver perfil en Instagram ↗" opening the
-profile. `check-data.mjs` accepts a `STORY` only with a profile link, and a post only with a post link.
+with "De una historia de @cuenta · las historias duran 24 horas", and the details' Instagram button opens the
+profile (inside the site). `check-data.mjs` accepts a `STORY` only with a profile link, and a post only with a post link.
 
 ### Workshop series
 
