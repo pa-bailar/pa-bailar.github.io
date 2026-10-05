@@ -190,7 +190,7 @@ function mediaHtml(event: DanceEvent, media: EventMedia, selected: number): stri
 
 /**
  * When, the title, the type tag and the account: the head of the drawer, and of the page under the flyer. The account
- * opens its Instagram profile (on a card, it filters the list to it instead).
+ * opens its Instagram profile inside the site, as every @ does (lib/accountLink.ts).
  */
 function headHtml(event: DanceEvent, { heading, titleId }: { heading: "h1" | "h2"; titleId: string }): string {
   return `

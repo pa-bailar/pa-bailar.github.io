@@ -503,13 +503,12 @@
   color: var(--text-muted);
 }
 
-/* The academy: filters the list by it. Above the stretched title button, so it gets its own taps. */
+/* The account: opens its profile inside the site (lib/accountLink.ts). Above the stretched title button, so it gets
+   its own taps. */
 .event-card__account {
   position: relative;
   z-index: var(--z-raised);
   padding: var(--space-1) 0;
-  border: 0;
-  background: none;
   color: inherit;
   text-decoration: underline;
   text-decoration-color: var(--divider);
