@@ -97,3 +97,84 @@
   color: var(--dimmed);
   cursor: default;
 }
+
+/* "Ocultar eventos de bares" (views/filters.ts, barsSwitchHtml): after the groups, under a line. One row the width of
+   the sheet: the name and its hint on the left, the switch on the right; the whole row is the target. Square corners,
+   like the chips (printed labels). */
+.filter-sheet__switch {
+  margin-top: var(--space-4);
+  padding-top: var(--space-2);
+  border-top: var(--border-width) solid var(--divider);
+}
+
+.filter-switch {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  min-height: var(--touch-target);
+  padding: var(--space-2) 0;
+  border: 0;
+  background: none;
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.filter-switch__text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.filter-switch__name {
+  font-size: var(--text-md);
+  font-weight: var(--weight-bold);
+}
+
+.filter-switch__hint {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+/* Off: an outlined track, the thumb on the left in muted ink. On: filled in the selected chip's color, the thumb on the
+   right in its text color. */
+.filter-switch__track {
+  flex: none;
+  position: relative;
+  width: var(--switch-width);
+  height: var(--switch-height);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: background-color var(--duration) var(--ease-standard), border-color var(--duration) var(--ease-standard);
+}
+
+.filter-switch__thumb {
+  position: absolute;
+  top: calc(var(--space-1) / 2);
+  left: calc(var(--space-1) / 2);
+  width: calc(var(--switch-height) - 2 * var(--border-width) - var(--space-1));
+  height: calc(var(--switch-height) - 2 * var(--border-width) - var(--space-1));
+  border-radius: var(--radius-sm);
+  background: var(--text-muted);
+  transition: transform var(--duration) var(--ease-standard), background-color var(--duration) var(--ease-standard);
+}
+
+.filter-switch[aria-checked="true"] .filter-switch__track {
+  background: var(--chip-active-bg);
+  border-color: var(--chip-active-bg);
+}
+
+.filter-switch[aria-checked="true"] .filter-switch__thumb {
+  background: var(--chip-active-text);
+  transform: translateX(calc(var(--switch-width) - var(--switch-height)));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .filter-switch__track,
+  .filter-switch__thumb {
+    transition: none;
+  }
+}

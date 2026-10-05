@@ -325,3 +325,8 @@
   width: var(--icon-sm);
   height: var(--icon-sm);
 }
+
+/* Wide screens: "Ocultar bares" ends the types' row, set a little apart (it isn't a type). */
+.filter-chip--bars {
+  margin-left: var(--space-3);
+}

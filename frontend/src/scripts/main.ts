@@ -1,6 +1,6 @@
 // Entry point: load the events embedded in the page, wire up interactions and render.
 
-import type { DanceEvent, EventType } from "./types";
+import type { AppState, DanceEvent, EventType } from "./types";
 import { initClickTracking } from "./lib/analytics";
 import { byId, isPlainClick } from "./lib/dom";
 import { focusAfterClearing, focusScope, focusSelector } from "./lib/focus";
@@ -9,6 +9,7 @@ import { addMonths, currentMonth, isUpcoming, nowInBogota, todayIso } from "./li
 import { eventPath, sharedEventLink, viewOfPath, viewPath } from "./lib/links";
 import { shareSources } from "./lib/shareSources";
 import {
+  HIDE_BARS_KEY,
   clearFilters,
   createInitialState,
   defaultDayForMonth,
@@ -25,7 +26,8 @@ import { watchClips } from "./views/clips";
 import { highlightCurrentCard, initEventDrawer, openEventDrawer } from "./views/eventDrawer";
 import { openEventPosts } from "./views/eventDetailActions";
 import { armDetailsHint, markDetailsHintSeen } from "./views/detailsHint";
-import { filterModel, staleDates } from "./lib/filterModel";
+import { HIDE_BARS_FILTER, filterModel, staleDates } from "./lib/filterModel";
+import { storedSwitch } from "./lib/storedSwitch";
 import { renderFilters } from "./views/filters";
 import {
   captureListPosition,
@@ -49,7 +51,9 @@ import { initInstallPrompt, offerAfterSaving, registerServiceWorker } from "./vi
 import { initSharing, plansEventUrl, setShareSources } from "./views/sharing";
 import { isSaved, keepOnly } from "./lib/saved";
 
-const state = createInitialState();
+/** "Ocultar eventos de bares", remembered in this browser (blocked storage: for this visit). */
+const hideBarsSetting = storedSwitch(HIDE_BARS_KEY);
+const state = createInitialState({ hideBars: hideBarsSetting.on() });
 let events: DanceEvent[] = [];
 /** The events by id, built once in start(): the data never changes while the page is open. */
 let eventById = new Map<string, DanceEvent>();
@@ -234,18 +238,27 @@ const chooseView: ControlHandler = (view) => {
   if (isView(view)) navigateView(view);
 };
 
-/** A filter chip: one tap chooses, another unchooses; a dimmed option (nothing to show with the others) does nothing. */
+/**
+ * A filter chip: one tap chooses, another unchooses; a dimmed option (nothing to show with the others) does nothing.
+ * "Ocultar eventos de bares" (the sheet's switch, the toolbar's chip, "Sin bares ×") turns on or off, and is remembered.
+ */
 const toggleFilter: ControlHandler = (group, control) => {
   const { value } = control.dataset;
+  if (group === HIDE_BARS_FILTER.group) {
+    state.hideBars = !state.hideBars;
+    hideBarsSetting.set(state.hideBars);
+    return redraw(control, { filtered: true });
+  }
   if (value === undefined || isDisabled(control) || !isFilterGroup(group)) return;
   if (group === "types") state.types = toggled(state.types, value) as EventType[];
   else state[group] = toggled(state[group], value);
   redraw(control, { filtered: true });
 };
 
-/** "Limpiar": dates, rhythms and types. Not the search nor "Guardados". */
+/** "Limpiar": dates, rhythms and types, and the bars shown again (forgotten in storage too). Not the search nor "Guardados". */
 const clearAllFilters: ControlHandler = (_, control) => {
   clearFilters(state);
+  hideBarsSetting.set(state.hideBars);
   redraw(control, { filtered: true, cleared: true });
 };
 
@@ -306,7 +319,8 @@ function handleClick(domEvent: MouseEvent) {
  * A shared link (/evento/<id>/, which forwards here as ?evento=<id>): the list opens at that event's card (its
  * period opened whole if it was summarized), with its details drawer at half height over it. The address goes
  * back to the home page first, so × or "back" leave the visitor on the list instead of leaving the site. An event
- * that isn't in the list (it already passed) goes back to its own page, which says so.
+ * that isn't in the list (it already passed) goes back to its own page, which says so; a bar's, hidden by "Ocultar
+ * eventos de bares", opens its details over the list all the same.
  */
 function openSharedEvent() {
   const link = sharedEventLink(location);
@@ -315,16 +329,20 @@ function openSharedEvent() {
   history.replaceState(null, "", link.address); // the list's entry, under the drawer's (pushed once it opens)
   const event = findEvent(id);
   if (!event) return;
-  const entry = sharedEventEntry(groupByPeriod(visibleEvents(events, state), todayIso(), state.dates), id);
-  if (!entry.listed) {
+  const entryWith = (shown: AppState) => sharedEventEntry(groupByPeriod(visibleEvents(events, shown), todayIso(), shown.dates), id);
+  const entry = entryWith(state);
+  // A bar's event while the bars are hidden (remembered from an earlier visit): its details open all the same, over
+  // the list without its card, as for any filter; the setting stays as the visitor left it.
+  const hiddenBar = !entry.listed && entryWith({ ...state, hideBars: false }).listed;
+  if (!entry.listed && !hiddenBar) {
     params.set("pagina", "1"); // its page stays (it would forward here again otherwise)
     location.replace(`${eventPath(event)}?${params}`);
     return;
   }
-  if (entry.open && showWholePeriod(entry.open)) render();
+  if (entry.listed && entry.open && showWholePeriod(entry.open)) render();
   // Once the page has settled (fonts in, layout measured): the card is found where it will stay.
   void document.fonts.ready.then(() =>
-    requestAnimationFrame(() => requestAnimationFrame(() => openEventDrawer(event, { source: "enlace", shared: true }))),
+    requestAnimationFrame(() => requestAnimationFrame(() => openEventDrawer(event, { source: "enlace", shared: entry.listed }))),
   );
 }
 

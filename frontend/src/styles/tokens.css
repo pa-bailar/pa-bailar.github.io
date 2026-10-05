@@ -169,6 +169,8 @@
   --filter-line-height: 40px; /* phones: "12 eventos · Finde, Salsa · × Limpiar" under the bar, while filtering */
   --pinned-height: var(--jump-bar-height); /* phones: all that's pinned to the top (jump-bar.css adds the line) */
   --menu-width: 304px; /* the "Cuándo" menu under its chip (narrower on a narrower screen) */
+  --switch-width: 44px; /* the filter sheet's switch ("Ocultar eventos de bares"): its track */
+  --switch-height: 24px;
   --sticker-size: 60px;
   --drawer-top-gap: 12px; /* phones: what's left above the details drawer at full height */
   --panel-width: 420px; /* wide screens: the details as a side panel */
