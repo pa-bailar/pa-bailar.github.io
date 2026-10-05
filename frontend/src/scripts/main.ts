@@ -103,8 +103,9 @@ function render({ keepPlace = false } = {}) {
   }
   renderFilters(model, state);
   for (const [view, id] of Object.entries(VIEW_IDS)) byId(id).hidden = view !== state.view;
-  // Guardados has no filters: the pinned bar and the toolbar's pills hide (CSS), their menus close.
-  document.body.dataset.view = state.view;
+  // Guardados has no filters: the pinned bar and the toolbar's pills hide (CSS), their menus close. `data-screen`, never
+  // `data-view`: that's a control's attribute (Eventos, the tabs), and every click inside the body would find it.
+  document.body.dataset.screen = state.view;
   if (state.view === "saved") {
     closeWhenMenu();
     closePanel();
