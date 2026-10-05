@@ -19,12 +19,16 @@
 
 import { byId } from "../lib/dom";
 import { installGuide, installPlace } from "../lib/installPlace";
+import { storedSwitch } from "../lib/storedSwitch";
+import { storedValue } from "../lib/storedValue";
 import { BASE_URL } from "../lib/links";
 import { dismissSheet, initPanelSheet, openPanelSheet } from "../lib/sheet";
 
-const DISMISS_KEY = "install-dismissed-at";
-const INSTALLED_KEY = "installed";
-const NUDGED_KEY = "install-nudged";
+// Kept in this browser (blocked storage: for this visit, or not at all): when the banner was dismissed, whether the
+// app is installed ("1"), when the reminder after saving was shown.
+const dismissedAt = storedValue("install-dismissed-at");
+const installedHere = storedSwitch("installed");
+const nudgedAt = storedValue("install-nudged");
 const NUDGE_SECONDS = 10;
 const DISMISS_DAYS = 30;
 
@@ -35,7 +39,7 @@ interface BeforeInstallPromptEvent extends Event {
 }
 
 let installEvent: BeforeInstallPromptEvent | null = null;
-let installedHere = false; // Chrome on Android says the app is installed
+let relatedInstalled = false; // Chrome on Android says the app is installed
 
 /** Running as the installed app (not in a browser tab). */
 function isApp(): boolean {
@@ -46,16 +50,7 @@ function isApp(): boolean {
 }
 
 function isInstalled(): boolean {
-  return isApp() || installedHere || stored(INSTALLED_KEY) === "1";
-}
-
-function remember(key: string, value: string | null) {
-  try {
-    if (value === null) localStorage.removeItem(key);
-    else localStorage.setItem(key, value);
-  } catch {
-    // Storage unavailable: the page just can't remember it.
-  }
+  return isApp() || relatedInstalled || installedHere.on();
 }
 
 /** Ask Chrome on Android whether the app is installed (other browsers can't tell). */
@@ -64,7 +59,7 @@ async function checkInstalled() {
     .getInstalledRelatedApps;
   if (!getRelated) return;
   try {
-    installedHere = (await getRelated.call(navigator)).length > 0;
+    relatedInstalled = (await getRelated.call(navigator)).length > 0;
   } catch {
     // Not allowed here: keep what's known.
   }
@@ -75,16 +70,8 @@ const NOTE = "Pa' Bailar queda en tu pantalla de inicio y se abre como una app."
 const place = () => installPlace(navigator.userAgent, navigator);
 const guide = () => installGuide(place());
 
-function stored(key: string): string | null {
-  try {
-    return localStorage.getItem(key);
-  } catch {
-    return null;
-  }
-}
-
 function dismissedRecently(): boolean {
-  const at = Number(stored(DISMISS_KEY) ?? 0);
+  const at = Number(dismissedAt.get() ?? 0);
   return Date.now() - at < DISMISS_DAYS * 24 * 60 * 60 * 1000;
 }
 
@@ -137,20 +124,20 @@ async function install() {
 
 export function initInstallPrompt() {
   if (isApp()) {
-    remember(INSTALLED_KEY, "1"); // the browser on the same phone (Android) will know
+    installedHere.set(true); // the browser on the same phone (Android) will know
     return;
   }
   window.addEventListener("beforeinstallprompt", (event) => {
     event.preventDefault(); // our own offer instead of the browser's mini bar
     installEvent = event as BeforeInstallPromptEvent;
     // Chrome only offers this when the app isn't installed: if it was, it's been uninstalled.
-    remember(INSTALLED_KEY, null);
-    installedHere = false;
+    installedHere.set(false);
+    relatedInstalled = false;
     render();
   });
   window.addEventListener("appinstalled", () => {
     installEvent = null;
-    remember(INSTALLED_KEY, "1");
+    installedHere.set(true);
     render();
   });
   document.addEventListener("click", (domEvent) => {
@@ -158,13 +145,13 @@ export function initInstallPrompt() {
     if (target.closest("[data-install]")) void install().then(render);
     else if (target.closest("[data-install-copy]")) void copyLink();
     else if (target.closest("[data-install-done]")) {
-      remember(INSTALLED_KEY, "1"); // iPhone can't tell: the visitor says so
+      installedHere.set(true); // iPhone can't tell: the visitor says so
       dismissSheet(byId<HTMLDialogElement>("install-sheet"));
       render();
     }
     else if (target.closest("[data-nudge-close]")) byId("install-nudge").hidden = true;
     else if (target.closest("[data-install-dismiss]")) {
-      remember(DISMISS_KEY, String(Date.now()));
+      dismissedAt.set(String(Date.now()));
       render();
     }
   });
@@ -172,7 +159,7 @@ export function initInstallPrompt() {
   initPanelSheet(sheet);
   // Having seen the steps counts as an answer: the banner rests like after ×, and the footer's link stays.
   sheet.addEventListener("close", () => {
-    remember(DISMISS_KEY, String(Date.now()));
+    dismissedAt.set(String(Date.now()));
     render();
   });
   render();
@@ -185,8 +172,8 @@ export function initInstallPrompt() {
  * NUDGE_SECONDS.
  */
 export function offerAfterSaving(savedCount: number) {
-  if (!canOffer() || savedCount < 2 || !dismissedRecently() || stored(NUDGED_KEY)) return;
-  remember(NUDGED_KEY, String(Date.now()));
+  if (!canOffer() || savedCount < 2 || !dismissedRecently() || nudgedAt.get()) return;
+  nudgedAt.set(String(Date.now()));
   const nudge = byId("install-nudge");
   nudge.hidden = false;
   window.setTimeout(() => (nudge.hidden = true), NUDGE_SECONDS * 1000);
