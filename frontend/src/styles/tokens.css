@@ -217,7 +217,8 @@
   /* Breakpoints (media queries can't read custom properties, so they're written as numbers):
      720px  phones vs. wider: the feed, the jump bar, the bar at the bottom and the filter sheet (and 600px tall:
             a phone in landscape keeps the phone's bars)
-     900px  the details: a drawer over the list below it, a side panel from it
+     900px  the details: a drawer over the list below it, a side panel from it (and 600px tall: a phone in
+            landscape keeps the drawer, and its bar at the bottom)
      960px  wide: more card columns */
 }
 

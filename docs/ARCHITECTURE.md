@@ -472,16 +472,17 @@ stateDiagram-v2
 - **The drawer is one `<dialog>`** (`EventDrawer.astro`, `views/eventDrawer.ts`) with one event's details in it
   (`eventDrawerHtml`: the head with when, the title, the type, the account (its profile, opened inside the site: `lib/accountLink.ts`) and ×; then the quick actions and the
   details). No flyer: the card is right there. Two modes, chosen when it opens and switched if the window crosses
-  900px while open (`show` / `swapMode`):
+  900 × 600px while open (`show` / `swapMode`; a phone in landscape, 932 × 430, keeps the drawer and the bar at the
+  bottom, which a side panel would cover):
 
   ```mermaid
   stateDiagram-v2
-      state "Drawer (phones, under 900px; modal)" as Sheet {
+      state "Drawer (phones, under 900px wide or 600px tall; modal)" as Sheet {
           [*] --> Medium
           Medium --> Full: pull up, scroll the content, wheel, the handle, keyboard focus below the fold
           Full --> Medium: pull down from the bar or the content's top, wheel up at the top, the handle
       }
-      state "Side panel (900px and wider; not modal)" as Panel
+      state "Side panel (900 × 600px and up; not modal)" as Panel
       [*] --> Sheet: showModal()
       [*] --> Panel: show(), html.has-side-panel
       Sheet --> [*]: ×, scrim, Escape, back, drag down from Medium
@@ -584,9 +585,13 @@ stateDiagram-v2
   (`lib/onceFlag.ts`, e.g. `details-hint-seen`) and the install offer's `install-dismissed-at`.
 - **Search** (`lib/search.ts`) runs on the events already in the page, accent-insensitive, every word anywhere in the event.
   On phones its field is the bar at the bottom (`views/bottomNav.ts`): Buscar opens it with a history entry of its
-  own, an overlay (`{ search: true, overlay: true }` over the screen's state, the same address; `searchHistory`): back
-  or × leaves it and clears the search, the keyboard's Enter leaves it and keeps the search, and forward onto it once
-  closed goes back over it, like the sheets' entries. Typing goes through the same `[data-search]` input handler as the
+  own, an overlay (`{ search: <this opening's id>, overlay: true }` over the screen's state, the same address;
+  `searchHistory`): back or × leaves it and clears the search, the keyboard's Enter leaves it and keeps the search, and
+  forward onto it once closed goes back over it, like the sheets' entries. An overlay opened over it (the details, the
+  "Cuándo" menu) carries only the screen and the open event (`overlayState`), never another overlay's mark, so the
+  field steps back only when its own entry is on top: an empty field left for one of them waits, and closes when that
+  one does (`leftEmpty`). A reload drops any overlay mark from the entry it lands on (`initScreenHistory`), and a wider
+  screen (`WIDE_QUERY`, the bar's own media query) closes the field, keeping the search. Typing goes through the same `[data-search]` input handler as the
   toolbar's field (`main.ts`).
 - **Sharing** (`views/sharing.ts`) goes through the phone's share menu: an event (its link, whose preview shows the flyer, date, title, place and price: section 3.4), a near period or the visitor's plans (an image drawn in the browser, `lib/shareCard.ts`, and a list for WhatsApp).
 

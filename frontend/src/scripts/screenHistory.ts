@@ -5,11 +5,12 @@
 // had nothing to go back to and left the site, which closes an installed app. Each entry holds the screen it
 // shows (`Screen`); "back" (or forward) puts that screen back, at the scroll position it had.
 //
-// Undoing a move from the page itself (the list button, "Guardados" again) goes back
+// Undoing a move from the page itself (Eventos in the bar at the bottom, "Guardados" again) goes back
 // in history when the current entry is that move, so the history never piles up screens to step through.
 //
 // Overlays (a sheet, the event details) get history entries of their own on top of the screen's
-// (`overlayState`): they carry the screen under them, marked as an overlay. Undoing a move from inside one
+// (`overlayState`): they carry the screen under them (and the open event's id), marked as an overlay, and nothing of
+// the overlay below theirs: an entry is the search field's or the menu's only while that one is on top. Undoing a move from inside one
 // (the "Filtros" sheet's "Limpiar", the list next to the side panel) can't go back in
 // history: that would close the overlay instead. The move is undone right there, the overlay stays, and the
 // screen's entry is skipped when "back" (or closing the overlay) reaches it later.
@@ -41,7 +42,7 @@ export interface AppHistoryState {
   eventId?: string; // the event details' entry (views/drawerHistory.ts)
   sheet?: string; // a panel sheet's entry: the sheet's id (lib/sheet.ts)
   menu?: string; // the "Cuándo" menu's entry (views/whenMenu.ts)
-  search?: boolean; // the search field docked at the bottom (views/bottomNav.ts)
+  search?: string; // the search field docked at the bottom: this opening's id (views/bottomNav.ts)
 }
 
 /**
@@ -97,6 +98,10 @@ export function initScreenHistory(screenHooks: Hooks) {
   // entry's position when the next one is pushed, after the move already scrolled.
   history.scrollRestoration = "manual";
   shownHash = location.hash;
+  // A reload shows no overlay: an entry left marked as one (the search field, a menu or a sheet open when the page
+  // was reloaded) would be stepped back over later, as a dead step, along with the entry under it.
+  const { screen } = historyState();
+  history.replaceState(screen ? ({ screen } satisfies AppHistoryState) : null, "");
   remember();
   window.addEventListener("popstate", (domEvent) => {
     const state = historyState(domEvent.state);
@@ -163,11 +168,13 @@ export function leave(kind: ScreenKind, move: () => void) {
 }
 
 /**
- * The history state of an overlay (a sheet, the event details) opened over the current entry: it carries the
- * screen under it (and whatever else that entry holds, like the open event), plus `extra`.
+ * The history state of an overlay (a sheet, the event details, the menu, the search field) opened over the current
+ * entry: it carries the screen under it and the open event (a sheet over the details), plus `extra`. Not the other
+ * overlays' marks (`search`, `menu`, `sheet`): each is on its own entry only, so closing one checks it's on top.
  */
 export function overlayState(extra: Omit<AppHistoryState, "screen" | "overlay">): AppHistoryState {
-  return { ...historyState(), ...extra, overlay: true };
+  const { screen, eventId } = historyState();
+  return { ...(screen && { screen }), ...(eventId && { eventId }), ...extra, overlay: true };
 }
 
 export function sameScreen(a: Omit<ScreenData, "scrollY">, b: Omit<ScreenData, "scrollY">): boolean {

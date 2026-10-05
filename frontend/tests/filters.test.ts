@@ -346,15 +346,31 @@ describe("the \"Cuándo\" menu", () => {
     expect(html).toContain("<small>19–31 oct</small>");
   });
 
-  it("hangs under its chip, never past the screen's sides, as tall as the screen allows", () => {
+  it("hangs under its chip, never past the screen's sides nor the bar at the bottom, as tall as the screen allows", () => {
     const bar = { left: 0, top: 0, bottom: 56, width: 375 };
     const chip = { left: 164, top: 8, bottom: 48, width: 58 };
     expect(menuPlacement(chip, bar, 304, 812)).toEqual({ left: 63, top: 52, maxHeight: 748 });
     expect(menuPlacement({ ...chip, left: 20 }, bar, 304, 812).left).toBe(20);
-    // The bar further down the page (not pinned yet): the menu is shorter, but keeps about four options.
+    // The bar further down the page (not pinned yet): the menu is shorter.
     const lower = { top: 400, bottom: 456 };
     expect(menuPlacement({ ...chip, top: 408, bottom: 448 }, { ...bar, ...lower }, 304, 812)).toEqual({ left: 63, top: 52, maxHeight: 348 });
-    expect(menuPlacement({ ...chip, bottom: 700 }, bar, 304, 812).maxHeight).toBe(176);
+  });
+
+  it("a phone in landscape (932 × 430, the bar at the bottom from 369): never under that bar; upward when there's more room", () => {
+    const screen = 369; // window.innerHeight minus the bar at the bottom
+    const bar = { left: 0, top: 223.5, bottom: 279.5, width: 932 };
+    const chip = { left: 164, top: 231.5, bottom: 271.5, width: 58 };
+    // 81 px below, 219.5 above: it opens upward, its bottom 4 px over the chip, and scrolls inside.
+    const up = menuPlacement(chip, bar, 304, screen);
+    expect(up).toEqual({ left: 164, bottom: 52, maxHeight: 219.5 });
+    expect(chip.top - (bar.bottom - up.bottom!)).toBe(4);
+    // Scrolled so the bar is higher: down again, clamped to the room above the bottom bar (not the four options).
+    const higher = { top: 143.5, bottom: 199.5 };
+    const down = menuPlacement({ ...chip, top: 151.5, bottom: 191.5 }, { ...bar, ...higher }, 304, screen);
+    expect(down).toEqual({ left: 164, top: 52, maxHeight: 161.5 });
+    expect(191.5 + 4 + down.maxHeight).toBeLessThanOrEqual(screen);
+    // Little room either way: the side with more, never past it.
+    expect(menuPlacement({ ...chip, top: 100, bottom: 300 }, bar, 304, screen).maxHeight).toBe(88);
   });
 
   it("the keyboard: ↓ ↑ wrap around, Home and End; other keys aren't moves", () => {

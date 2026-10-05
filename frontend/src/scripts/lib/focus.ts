@@ -25,8 +25,8 @@ export function focusScope(previous: Element | null): ParentNode {
 
 /**
  * After "Limpiar": the control is gone (a chip, the empty list's button), hidden (the line under the bar, the
- * toolbar's status row) or disabled (the sheet's). The focus goes to the sheet's first chip, Filtros (in the bar at
- * the bottom), or the toolbar's first chip: controls that render() puts the focus back on when it draws them again
+ * toolbar's status row) or disabled (the sheet's). The focus goes to the sheet's first control (the bars' switch),
+ * Filtros (in the bar at the bottom), or the toolbar's first chip: controls that render() puts the focus back on when it draws them again
  * (focusSelector). The first one on screen: getClientRects, since the bar is fixed (no offsetParent).
  */
 export function focusAfterClearing(control: HTMLElement) {

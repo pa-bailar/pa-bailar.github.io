@@ -18,10 +18,13 @@ export const MEDIUM_SHARE = 0.55;
  */
 export const TOP_GAP = 12;
 /**
- * From this width (px) the details are a side panel next to the list, not a drawer over it: eventDrawer.ts's media
- * query, and drawer.css's breakpoints (899 / 900 px; a test checks they agree).
+ * From this width and this height (px) the details are a side panel next to the list, not a drawer over it:
+ * eventDrawer.ts's media query, and drawer.css's breakpoints (899 / 900 px wide, 599 / 600 px tall; a test checks they
+ * agree). A phone in landscape (932 × 430) keeps the drawer: it keeps the bar at the bottom too (bottom-nav.css), which
+ * a side panel would cover.
  */
 export const PANEL_MIN_WIDTH = 900;
+export const PANEL_MIN_HEIGHT = 600;
 /** The scrim's opacity at each height: light at half (the card above stays readable), darker at full. */
 export const SCRIM_MEDIUM = 0.32;
 export const SCRIM_FULL = 0.55;

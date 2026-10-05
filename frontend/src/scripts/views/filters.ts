@@ -1,13 +1,13 @@
 // The filters: what's chosen and what can be chosen, and where they're drawn.
-//   - Phones, the bar (JumpBar.astro), pinned to the top: [Social ×] [🕒 ▾] | [Salsa] [Bachata] [Urbano] [Tango],
+//   - Phones, the bar (JumpBar.astro), pinned to the top: [Social ×] [Sin bares ×] [🕒 ▾] | [Salsa] [Bachata] [Urbano] [Tango],
 //     one row that scrolls sideways. "🕒 ▾" ("Cuándo") opens a short menu with one choice of date (whenMenu.ts);
 //     once chosen it reads "🕒 Finde" with its own × beside it. A rhythm chip is chosen with one tap (dark, with ×),
 //     unchosen with another. A choice made in the "Filtros" sheet (Filtros in the bar at the bottom, BottomNav.astro,
 //     with the number of choices in use) that has no chip of its own in the row shows first, as a removable chip
 //     ("Social ×", "Sin bares ×").
 //   - Under the bar, only while filtering: "12 eventos · Finde, Salsa" and "× Limpiar".
-//   - The sheet (FilterSheet.astro): every date, rhythm and type with its count, the switch "Ocultar eventos de
-//     bares" (remembered; while on, "Sin bares ×" in the row), "Limpiar" and "Ver 12 eventos".
+//   - The sheet (FilterSheet.astro): the switch "Ocultar eventos de bares" first (remembered; while on, "Sin bares ×"
+//     in the row), every date, rhythm and type with its count, "Limpiar" and "Ver 12 eventos".
 //   - Wide screens: the toolbar's chip rows (dates, types and "Ocultar bares", rhythms) and a status row ("12 eventos ·
 //     Limpiar filtros").
 // What each shows, and how options are counted and dimmed, is the model (lib/filterModel.ts, pure and tested); the

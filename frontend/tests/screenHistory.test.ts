@@ -48,6 +48,28 @@ function openFilterSheet() {
   return sheet;
 }
 
+describe("a reload", () => {
+  it("leaves no overlay marked on the entry it reloaded (the search field, a menu, a sheet were open)", async () => {
+    fake = installFakeHistory();
+    vi.resetModules();
+    history.replaceState({ screen: { view: "upcoming", savedOnly: false, periods: [], scrollY: 0 }, search: "x", menu: "when", sheet: "filter-sheet", overlay: true }, "");
+    screens = await import("../src/scripts/screenHistory");
+    screens.initScreenHistory({ current: () => ({ view: "upcoming", savedOnly: false, periods: [], scrollY: 0 }), apply: () => {} });
+    expect(fake.state).toEqual({ screen: expect.objectContaining({ view: "upcoming" }) });
+  });
+});
+
+describe("an overlay's entry", () => {
+  it("carries the screen and the open event, not the other overlays' marks", () => {
+    history.pushState(screens.overlayState({ eventId: "uno" }), "", "/evento/uno/");
+    history.pushState(screens.overlayState({ sheet: "posts-sheet" }), "");
+    expect(screens.overlayState({ menu: "when" })).toEqual({ screen: expect.any(Object), eventId: "uno", menu: "when", overlay: true });
+    history.replaceState({ ...history.state, search: "x" }, "");
+    expect(screens.overlayState({ eventId: "dos" })).not.toHaveProperty("search");
+    expect(screens.overlayState({ eventId: "dos" })).not.toHaveProperty("sheet");
+  });
+});
+
 describe("moves between screens", () => {
   it("a period opened whole gets a history entry; back puts the list back", async () => {
     openPeriod();

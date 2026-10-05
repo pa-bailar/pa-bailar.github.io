@@ -8,6 +8,8 @@
 //     numbers, keyboardInset), with × to close it. Typing filters the view on screen (main.ts). It has a history
 //     entry of its own, an overlay like the sheets: back closes it, as × does (both clear the search). The
 //     keyboard's "Buscar" (Enter) closes the keyboard and the field, keeping the search: Buscar then shows it's on.
+//     A field left empty closes, unless what took the focus is over it (the details, the "Cuándo" menu): then it
+//     closes when that one does, if still empty. The bar's place going away (a wider screen) closes it too.
 // Sheets and the details drawer are modal dialogs, in the browser's top layer: they cover the bar, nothing to hide.
 
 import type { View } from "../types";
@@ -59,6 +61,17 @@ export function keyboardInset(layoutHeight: number, viewport: { height: number; 
   return Math.min(Math.max(inset, 0), Math.max(layoutHeight, 0));
 }
 
+/** Where the bar isn't shown (bottom-nav.css): the toolbar and the header have its actions. */
+export const WIDE_QUERY = "(min-width: 720px) and (min-height: 600px)";
+
+/**
+ * Whether the open field closes for being left empty: no words in it, the focus elsewhere, and nothing over it (the
+ * details or the "Cuándo" menu opened from it: it waits for that one to close).
+ */
+export function leftEmpty({ query, focused, covered }: { query: string; focused: boolean; covered: boolean }): boolean {
+  return !query.trim() && !focused && !covered;
+}
+
 /** A keyboard at least this tall was on screen (px): smaller changes are toolbars collapsing, not a keyboard. */
 const KEYBOARD_MIN = 120;
 
@@ -71,24 +84,35 @@ export function keyboardJustHid(before: number, after: number): boolean {
   return before >= KEYBOARD_MIN && after < KEYBOARD_MIN / 3;
 }
 
+let openings = 0;
+
 /**
- * The search field's history entry (an overlay over the screen, like the sheets'): `open` pushes it; `close` leaves
- * it as back would (if it's the current one); back from it calls `onBack`; forward onto it once the field is closed
- * goes back over it (it showed nothing anymore). The DOM is the caller's (`show`, `hide`), so this is tested on a
- * fake history.
+ * The search field's history entry (an overlay over the screen, like the sheets'), marked with this opening's id:
+ * `open` pushes it; `close` leaves it as back would, only if it's the current entry (not with the details or a menu
+ * over it); back from it calls `onBack`; back onto it from an overlay over it calls `onReturn`. Forward onto a closed
+ * field's entry (this one's, or one left from before) goes back over it: it shows nothing anymore. `covered`: another
+ * overlay's entry is over the field's. The DOM is the caller's, so this is tested on a fake history.
  */
-export function searchHistory({ isOpen, onBack }: { isOpen: () => boolean; onBack: () => void }) {
+export function searchHistory({ isOpen, onBack, onReturn = () => {} }: { isOpen: () => boolean; onBack: () => void; onReturn?: () => void }) {
+  let id = "";
   window.addEventListener("popstate", (domEvent) => {
-    const onItsEntry = Boolean(historyState((domEvent as PopStateEvent).state).search);
-    if (isOpen() && !onItsEntry) onBack();
-    else if (!isOpen() && onItsEntry) history.back();
+    const { search, overlay } = historyState((domEvent as PopStateEvent).state);
+    if (isOpen() && id && search === id) onReturn();
+    else if (search) history.back();
+    else if (isOpen() && !overlay) onBack(); // an overlay is over the field (forward onto the details): it stays
   });
   return {
     open() {
-      history.pushState(overlayState({ search: true }), "");
+      id = `${Date.now().toString(36)}.${(openings++).toString(36)}.${Math.random().toString(36).slice(2, 6)}`;
+      history.pushState(overlayState({ search: id }), "");
     },
     close() {
-      if (historyState().search) history.back();
+      if (id && historyState().search === id) history.back();
+      id = "";
+    },
+    covered(): boolean {
+      const { search, overlay } = historyState();
+      return Boolean(overlay) && search !== id;
     },
   };
 }
@@ -100,13 +124,13 @@ const field = () => byId<HTMLInputElement>("bottom-search-input");
 let entry: ReturnType<typeof searchHistory> | null = null;
 
 export function isSearchOpen(): boolean {
-  return document.getElementById("bottom-nav")?.classList.contains("is-searching") ?? false;
+  return nav().classList.contains("is-searching");
 }
 
 /** The bar's height on screen (0 where it isn't shown): what's left of the screen above it, for revealDay and menus. */
 export function bottomInset(): number {
-  const bar = document.getElementById("bottom-nav");
-  if (!bar || bar.hidden || getComputedStyle(bar).display === "none") return 0;
+  const bar = nav();
+  if (bar.hidden || getComputedStyle(bar).display === "none") return 0;
   return bar.offsetHeight;
 }
 
@@ -186,7 +210,6 @@ export function closeSearchField() {
   byId("bottom-search-open").setAttribute("aria-expanded", "false");
   watchKeyboard(false);
   field().blur();
-  placeAboveKeyboard();
   settleKeyboard(); // iOS: the visual viewport may report the keyboard for a moment after it's gone
   entry?.close();
   if (hadFocus) byId("bottom-search-open").focus({ preventScroll: true });
@@ -201,15 +224,25 @@ export function closeSearchField() {
 export function initBottomNav({ dismiss }: { dismiss: () => void }) {
   // Until the owner picks (docs/DESIGN.md): ?barra=iconos shows the bar without its labels, for this visit.
   if (new URLSearchParams(location.search).get("barra") === "iconos") nav().dataset.labels = "off";
-  entry = searchHistory({ isOpen: isSearchOpen, onBack: dismiss });
+  const input = field();
+  const form = byId<HTMLFormElement>("bottom-search");
+  /**
+   * The field closes if it was left empty (`leftEmpty`). Covered: another overlay's entry is over the field's, or the
+   * focus is in one (a dialog, the menu); `returning` (back from that overlay, its entry gone): the details may still
+   * be sliding away with the focus in them, and that doesn't count.
+   */
+  const closeIfLeftEmpty = ({ returning = false } = {}) => {
+    const inOverlay = !returning && Boolean(document.activeElement?.closest("dialog[open], [role='menu']"));
+    const covered = Boolean(entry?.covered()) || inOverlay;
+    if (isSearchOpen() && leftEmpty({ query: input.value, focused: form.contains(document.activeElement), covered })) dismiss();
+  };
+  entry = searchHistory({ isOpen: isSearchOpen, onBack: dismiss, onReturn: () => closeIfLeftEmpty({ returning: true }) });
   onKeyboardHidden = () => {
     if (!isSearchOpen()) return;
     if (field().value.trim()) closeSearchField();
     else dismiss();
   };
   byId("bottom-search-open").addEventListener("click", openSearchField);
-  const form = byId<HTMLFormElement>("bottom-search");
-  const input = field();
   form.addEventListener("submit", (submit) => {
     submit.preventDefault();
     if (!input.value.trim()) return dismiss();
@@ -227,9 +260,16 @@ export function initBottomNav({ dismiss }: { dismiss: () => void }) {
   input.addEventListener("blur", () => {
     watchKeyboard(false);
     settleKeyboard(); // back down at once, and again once the keyboard has gone (iOS's stale offsetTop)
-    // A field left empty closes; after a moment, so a tap on × (which takes the focus first) still lands on it.
-    window.setTimeout(() => {
-      if (isSearchOpen() && !input.value.trim() && !form.contains(document.activeElement)) dismiss();
-    }, 200);
+    // A field left empty closes; after a moment, so a tap on × (which takes the focus first) still lands on it, and
+    // a tap that opens something over it (a card's details, "Cuándo") has opened it: the field waits for it to close.
+    window.setTimeout(() => closeIfLeftEmpty(), 200);
+  });
+  // The other search field (the toolbar's) emptied while this one is open but not in use.
+  document.addEventListener("input", (domEvent) => {
+    if ((domEvent.target as Element).matches?.("[data-search]") && domEvent.target !== input) closeIfLeftEmpty();
+  });
+  // A wider screen (a turned tablet, a resized window): the bar goes, and the field with it; the search stays.
+  window.matchMedia(WIDE_QUERY).addEventListener("change", (change) => {
+    if (change.matches) closeSearchField();
   });
 }

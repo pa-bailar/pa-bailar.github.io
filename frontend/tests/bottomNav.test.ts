@@ -72,18 +72,33 @@ describe("rising above the keyboard (keyboardInset)", async () => {
   });
 });
 
+describe("a field left empty (leftEmpty)", async () => {
+  const { leftEmpty } = await import("../src/scripts/views/bottomNav");
+
+  it("closes when nothing's typed, the focus is elsewhere and nothing is over it", () => {
+    expect(leftEmpty({ query: "  ", focused: false, covered: false })).toBe(true);
+    expect(leftEmpty({ query: "", focused: true, covered: false })).toBe(false); // still typing
+    expect(leftEmpty({ query: "salsa", focused: false, covered: false })).toBe(false); // a search kept
+    expect(leftEmpty({ query: "", focused: false, covered: true })).toBe(false); // the details or "Cuándo" over it
+  });
+});
+
 describe("the search field's history entry", () => {
   let fake: FakeHistory;
   let nav: BottomNav;
+  let screens: typeof import("../src/scripts/screenHistory");
   let open = false;
   let backs = 0;
+  let returns = 0;
 
   beforeEach(async () => {
     fake = installFakeHistory();
     vi.resetModules();
     nav = await import("../src/scripts/views/bottomNav");
+    screens = await import("../src/scripts/screenHistory");
     open = false;
     backs = 0;
+    returns = 0;
   });
 
   afterEach(() => vi.unstubAllGlobals());
@@ -95,15 +110,80 @@ describe("the search field's history entry", () => {
         open = false;
         backs++;
       },
+      onReturn: () => returns++,
     });
 
-  it("opening pushes an overlay entry over the screen's, same address", () => {
+  /** What the details (drawerHistory.ts) and the "Cuándo" menu (whenMenu.ts) push over the current entry. */
+  const openDetails = () => history.pushState(screens.overlayState({ eventId: "uno" }), "", "/evento/uno/");
+  const openWhenMenu = () => history.pushState(screens.overlayState({ menu: "when" }), "");
+
+  it("opening pushes an overlay entry over the screen's, same address, marked with this opening", () => {
     const entry = setUp();
     open = true;
     entry.open();
     expect(fake.entries).toHaveLength(2);
-    expect(fake.state).toMatchObject({ search: true, overlay: true });
+    expect(fake.state).toMatchObject({ search: expect.any(String), overlay: true });
     expect(fake.path).toBe("/");
+  });
+
+  it("an overlay opened over it doesn't carry its mark, so the field closing leaves that one open", async () => {
+    for (const openOver of [openDetails, openWhenMenu]) {
+      const entry = setUp();
+      open = true;
+      entry.open();
+      openOver();
+      expect(fake.state).not.toHaveProperty("search");
+      expect(entry.covered()).toBe(true);
+      open = false; // the field closed under it (e.g. the screen got wider)
+      entry.close();
+      await settle();
+      expect(fake.index).toBe(2); // the details (or the menu) still on top
+      // Their own close later steps back over the field's dead entry, onto the screen.
+      history.back();
+      await settle();
+      expect(fake.index).toBe(0);
+      expect(backs).toBe(0);
+      fake.entries.splice(1);
+    }
+  });
+
+  it("back from an overlay over it returns to the field (onReturn), not ending the search", async () => {
+    const entry = setUp();
+    open = true;
+    entry.open();
+    expect(entry.covered()).toBe(false);
+    openWhenMenu();
+    history.back();
+    await settle();
+    expect([returns, backs, fake.index]).toEqual([1, 0, 1]);
+    expect(open).toBe(true);
+  });
+
+  it("forward onto the details over the open field leaves it open", async () => {
+    const entry = setUp();
+    open = true;
+    entry.open();
+    openDetails();
+    history.back();
+    await settle();
+    history.forward();
+    await settle();
+    expect([backs, fake.index, open]).toEqual([0, 2, true]);
+  });
+
+  it("an entry left by another opening (a reload) is a dead step, not this field's", async () => {
+    history.replaceState({ search: "before-the-reload", overlay: true }, "");
+    history.pushState({}, "");
+    const entry = setUp();
+    open = true;
+    entry.open();
+    open = false;
+    entry.close(); // ×: one step back, onto the screen
+    await settle();
+    expect(fake.index).toBe(1);
+    history.back(); // onto the stale entry: over it, and off the start of the fake history
+    await settle();
+    expect(fake.index).toBe(0);
   });
 
   it("back closes it (onBack: the search ends)", async () => {
@@ -151,6 +231,33 @@ describe("the search field's history entry", () => {
   });
 });
 
+describe("Guardados' toggles (renderSavedToggles)", () => {
+  afterEach(() => vi.unstubAllGlobals());
+
+  /** A [data-saved-only] button: its attributes, and its number's badge if it has one. */
+  const button = (withBadge: boolean) => {
+    const attributes = new Map<string, string>();
+    const badge = { textContent: "", hidden: true };
+    return {
+      attributes,
+      badge,
+      setAttribute: (name: string, value: string) => attributes.set(name, value),
+      querySelector: () => (withBadge ? badge : null),
+    };
+  };
+
+  it("names and presses the bars' toggles only, not the empty state's \"Ver todos, no solo guardados\"", async () => {
+    const bar = button(true);
+    const emptyState = button(false);
+    vi.stubGlobal("document", { querySelectorAll: () => [bar, emptyState] });
+    const { renderSavedToggles } = await import("../src/scripts/views/saveButton");
+    renderSavedToggles(3, true);
+    expect(Object.fromEntries(bar.attributes)).toEqual({ "aria-pressed": "true", "aria-label": "Guardados, 3" });
+    expect(bar.badge).toEqual({ textContent: "3", hidden: false });
+    expect(emptyState.attributes.size).toBe(0); // its own words name it
+  });
+});
+
 describe("the page: the bar replaced the floating button", () => {
   const home = source("components/HomePage.astro");
   const bar = source("components/BottomNav.astro");
@@ -183,6 +290,13 @@ describe("the page: the bar replaced the floating button", () => {
     expect(css).toContain(phones);
     expect(source("styles/components/jump-bar.css")).toContain(phones);
     expect(css).toMatch(/@media \(min-width: 720px\) and \(min-height: 600px\) \{\s*\.bottom-nav \{\s*display: none;/);
+  });
+
+  it("the search field closes where the bar goes away: the script watches the CSS's own query", async () => {
+    const { WIDE_QUERY } = await import("../src/scripts/views/bottomNav");
+    const css = readFileSync(new URL("../src/styles/components/bottom-nav.css", import.meta.url), "utf8");
+    expect(css).toContain(`@media ${WIDE_QUERY} {`);
+    expect(css).toContain(`@media not (${WIDE_QUERY}) {`);
   });
 
   it("Info left the tabs for an (i) in the header, still a link to the footer", () => {

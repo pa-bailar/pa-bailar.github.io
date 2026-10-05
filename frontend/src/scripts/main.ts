@@ -264,8 +264,9 @@ const toggleFilter: ControlHandler = (group, control) => {
 
 /** "Limpiar": dates, rhythms and types, and the bars shown again (forgotten in storage too). Not the search nor "Guardados". */
 const clearAllFilters: ControlHandler = (_, control) => {
+  const hidingBars = state.hideBars;
   clearFilters(state);
-  hideBarsSetting.set(state.hideBars);
+  if (hidingBars) hideBarsSetting.set(false); // only when it was on: storage is left alone otherwise
   redraw(control, { filtered: true, cleared: true });
 };
 
