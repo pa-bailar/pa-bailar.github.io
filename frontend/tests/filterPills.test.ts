@@ -4,8 +4,8 @@ import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { addDays, todayIso } from "../src/scripts/lib/dates";
 import { TOMORROW, createInitialState } from "../src/scripts/state";
-import { filterModel } from "../src/scripts/lib/filterModel";
-import { panelHtml, pillHtml, pillsRowHtml, statusHtml } from "../src/scripts/views/filters";
+import { filterModel, whenButtonName } from "../src/scripts/lib/filterModel";
+import { barsChipHtml, panelHtml, pillHtml, pillsRowHtml, statusHtml } from "../src/scripts/views/filters";
 import { arrowKey, panelId } from "../src/scripts/views/filterPanels";
 import { event } from "./factories";
 
@@ -38,8 +38,23 @@ describe("the toolbar's pills", () => {
   });
 
   it("Cuándo says the date chosen, as the phone bar's does", () => {
-    expect(model({ dates: [TOMORROW] }).pills[0]).toMatchObject({ label: "Mañana", name: "Cuándo: Mañana", count: 1 });
+    expect(model({ dates: [TOMORROW] }).pills[0]).toMatchObject({ label: "Mañana", name: "Mañana, Cuándo: Mañana", count: 1 });
     expect(model({ dates: ["hoy", TOMORROW] }).pills[0]).toMatchObject({ label: "Hoy +1", count: 2 });
+  });
+
+  it("their names start with the words they show (WCAG 2.5.3, label in name)", () => {
+    // Punctuation and symbols aside ("Ritmo · 2" is said "Ritmo 2"), as WCAG's understanding of 2.5.3 allows.
+    const words = (text: string) => text.replace(/[^\p{L}\p{N}]+/gu, " ").trim();
+    const shown = (html: string) => words(html.replace(/<[^>]+>/g, ""));
+    const named = (html: string) => words(html.match(/aria-label="([^"]+)"/)?.[1] ?? shown(html));
+    for (const changes of [{}, { dates: [TOMORROW] }, { dates: ["hoy", TOMORROW] }, { styles: ["salsa"] }]) {
+      for (const pill of model(changes).pills) {
+        const html = pillHtml(pill, false);
+        expect(named(html).startsWith(shown(html))).toBe(true);
+      }
+    }
+    expect(whenButtonName({ label: "Finde", name: "Este fin de semana", chosen: true })).toBe("Finde, Cuándo: Este fin de semana");
+    for (const on of [false, true]) expect(named(barsChipHtml(on)).startsWith("Ocultar bares")).toBe(true);
   });
 
   it("the counts are the phone sheet's: the same chosen options", () => {
@@ -99,7 +114,7 @@ describe("the status row under the pills", () => {
     expect(statusHtml(model(), list)).toBe("");
     const state = { ...list, dates: ["hoy"], styles: ["salsa"], types: ["social" as const], hideBars: true };
     const html = statusHtml(filterModel(events, state, today), state);
-    expect(html).toContain("<b>1 evento</b>");
+    expect(html).toContain("<b>1 evento</b> · Sin bares</p>"); // the count says the bars are hidden (DESIGN.md)
     const chips = [...html.matchAll(/aria-label="(Quitar [^"]+|Mostrar[^"]+)"/g)].map((match) => match[1]);
     // The bars: no chip here, their "Ocultar bares" pill shows it's on (the owner, 5 Oct 2026).
     expect(chips).toEqual(["Quitar Hoy", "Quitar Salsa", "Quitar Social"]);
@@ -109,7 +124,7 @@ describe("the status row under the pills", () => {
   it("in the calendar it says the month, and no date", () => {
     const state = { ...calendar, styles: ["salsa"], dates: ["hoy"] };
     const html = statusHtml(filterModel(events, state, today), state);
-    expect(html).toMatch(/<b>\d+ eventos?<\/b> en [a-z]+/);
+    expect(html).toMatch(/<b>\d+ eventos?<\/b> en [a-z]+<\/p>/);
     expect(html).not.toContain('data-filter="dates"');
   });
 });
@@ -128,5 +143,9 @@ describe("the toolbar on wide screens (ViewToolbar.astro)", () => {
     expect(source).toMatch(/id="pill-panel-when" role="menu" aria-label="Cuándo"/);
     expect(source).toMatch(/id="pill-panel-styles" role="dialog" aria-label="Ritmo"/);
     expect(source).toContain('id="filter-status"');
+  });
+
+  it("a click on a panel's background keeps the focus in it (tabindex=\"-1\"), so Escape and the arrows still work", () => {
+    for (const key of ["when", "styles", "types"] as const) expect(source).toMatch(new RegExp(`id="${panelId(key)}"[^>]*tabindex="-1"`));
   });
 });

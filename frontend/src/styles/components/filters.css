@@ -43,7 +43,7 @@
   height: var(--icon-sm);
 }
 
-/* The sheet's counts: "Noviembre 2". */
+/* The counts in the sheet and the toolbar's Ritmo and Tipo panels: "Noviembre 2". */
 .filter-chip__count {
   font-weight: var(--weight-regular);
   font-variant-numeric: tabular-nums;
