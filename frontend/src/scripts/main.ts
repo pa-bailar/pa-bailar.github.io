@@ -4,7 +4,7 @@ import type { DanceEvent, EventType, View } from "./types";
 import type { AgendaGroup, FilterGroup } from "./state";
 import { initClickTracking } from "./lib/analytics";
 import { byId } from "./lib/dom";
-import { eventCountLabel } from "./lib/format";
+import { eventCountLabel, formatLongDate } from "./lib/format";
 import { addMonths, currentMonth, lastDay, shownDay, todayIso } from "./lib/dates";
 import { eventPath, sharedEventLink } from "./lib/links";
 import {
@@ -33,6 +33,7 @@ import {
   renderJumpBar,
   restoreListPosition,
   returnToScroll,
+  stickyOffset,
 } from "./views/jumpBar";
 import {
   renderUpcomingView,
@@ -73,7 +74,8 @@ function focusSelector(element: Element | null): string | null {
 /** The number of events, said politely to screen readers after each change. */
 function announce(count: number) {
   const label = eventCountLabel(count);
-  byId("results-status").textContent = state.view === "upcoming" ? `${label} próximos` : `${label} este día`;
+  byId("results-status").textContent =
+    state.view === "upcoming" ? `${label} próximos` : `${formatLongDate(state.selectedDay)}: ${label}`;
 }
 
 /** Containers whose controls are re-rendered: focus goes back to the same control in the same one. */
@@ -150,8 +152,23 @@ function showView(view: View) {
     returnToScroll(leftCalendar);
     return;
   }
-  // The first time, if the page was scrolled past the tabs: back up to them, so the calendar is seen whole.
-  backToTop();
+  // The first time: the month and the start of its day's list together on screen.
+  settleCalendar();
+}
+
+/**
+ * The calendar's first opening: the month's title right under the pinned bar, so the grid and the top of the selected
+ * day's list share the screen (on a phone the list started below the fold, and tapping a day seemed to do nothing).
+ * Only when the list's start isn't on screen, or the page is already past the month; at once, with no animation.
+ */
+function settleCalendar() {
+  const head = document.querySelector<HTMLElement>(".calendar__head");
+  const day = document.querySelector<HTMLElement>(".calendar__day-heading");
+  if (!head || !day) return;
+  const offset = stickyOffset() + 8;
+  const headTop = head.getBoundingClientRect().top;
+  if (headTop >= offset && day.getBoundingClientRect().top < window.innerHeight - 160) return;
+  window.scrollTo({ top: headTop + window.scrollY - offset, behavior: "auto" });
 }
 
 /** The tabs and the floating button: the calendar is a move of its own ("back" returns to the list). */

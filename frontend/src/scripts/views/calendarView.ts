@@ -1,4 +1,6 @@
 // "Calendario": month grid plus the selected day's events.
+// A tap on a day changes the list under the grid, so the change shows where the eye is: the day's heading says how
+// many events it has and lights up briefly when the day changes (not on other redraws; no flash with reduced motion).
 
 import type { AppState, DanceEvent } from "../types";
 import { byId, escapeHtml } from "../lib/dom";
@@ -10,6 +12,7 @@ import { applyFlyerRatios, eventCardGridHtml } from "./eventCard";
 import { emptyActionsHtml } from "./filters";
 
 const WEEKDAY_INITIALS = ["L", "M", "M", "J", "V", "S", "D"];
+let shownDay: string | null = null; // the day the list last showed: a different one lights its heading up
 const MAX_PILLS_PER_DAY = 3;
 
 function dayCellHtml(iso: string, dayNumber: number, dayEvents: DanceEvent[], state: AppState): string {
@@ -63,8 +66,13 @@ export function renderCalendarView(events: DanceEvent[], state: AppState): numbe
   byId("cal-grid").innerHTML = cells.join("");
 
   const selectedEvents = byDay.get(state.selectedDay) ?? [];
+  const changed = shownDay !== null && shownDay !== state.selectedDay;
+  shownDay = state.selectedDay;
+  const count = selectedEvents.length
+    ? `<span class="day-heading__count">${escapeHtml(eventCountLabel(selectedEvents.length))}</span>`
+    : "";
   byId("cal-selected-day").innerHTML = `
-    <h2 class="day-heading">${escapeHtml(formatDayHeading(state.selectedDay))}</h2>
+    <h2 class="day-heading calendar__day-heading${changed ? " is-new" : ""}">${escapeHtml(formatDayHeading(state.selectedDay))}${count}</h2>
     ${selectedEvents.length ? eventCardGridHtml(selectedEvents) : emptyDayHtml(state)}`;
   applyFlyerRatios(byId("cal-selected-day"));
   return selectedEvents.length;
