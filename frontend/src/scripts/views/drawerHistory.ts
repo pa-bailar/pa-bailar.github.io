@@ -42,7 +42,8 @@ export type HistoryMove = { kind: "stay" } | { kind: "open"; eventId: string } |
 
 /**
  * Back or forward landed on an entry with `state`: what the details do. The same event, open (back from a sheet over
- * it: the posts, a post): it stays. Another event that exists: it opens. No event: the open details close.
+ * it: the posts, a post): it stays. Another event that exists: it opens, unless the details are closing (then
+ * nothing: see below). No event: the open details close.
  */
 export function historyMove(
   state: unknown,
@@ -51,6 +52,9 @@ export function historyMove(
 ): HistoryMove {
   const { eventId } = historyState(state);
   if (eventId && drawer.open && !drawer.leaving && drawer.currentId === eventId) return { kind: "stay" };
+  // Closing, a "back" passed over a screen undone from inside the side panel and landed on an earlier event's entry:
+  // that's not a request to open it. The close goes on, and afterClosing steps back out of that entry too.
+  if (eventId && drawer.leaving && drawer.currentId !== eventId) return { kind: "none" };
   if (eventId && exists(eventId)) return { kind: "open", eventId };
   return drawer.open ? { kind: "close" } : { kind: "none" };
 }
