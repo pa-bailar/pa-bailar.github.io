@@ -390,7 +390,8 @@ the list stays short there and summarizes what's further away (`scripts/views/up
     nothing else: no transform on it, and no `overflow: hidden` on html or body (iOS Safari's sticky breaks under one).
     Jumps (a filter change keeping your place, the keyboard's focus, a period's heading) land below it and its line
     (`--pinned-height`).
-  - **Where it shows:** wherever the full toolbar isn't sticky (phones, short windows), in both views. There the
+  - **Where it shows:** wherever the full toolbar isn't sticky (phones, short windows), in the list and the calendar
+    (not in Guardados, which has no filters). There the
     toolbar isn't shown at all.
 - **The bar at the bottom** (`BottomNav.astro`, `scripts/views/bottomNav.ts`, `bottom-nav.css`), like Instagram's (the
   owner, 5 October 2026; it replaced the floating calendar button and the tabs on phones): **Eventos** (the list, `/`) ·
@@ -535,7 +536,7 @@ screens in the toolbar's pills and their panels:
   - **While on**, the bars' events are gone wherever the filters apply: the list, the calendar (dots, names, a day's
     label, heading, count and list), search, every option's count and "Ver 12 eventos" (not Guardados, which has no
     filters). It **counts one** on
-    Filtros' badge (in both views), shows as **"Sin bares ×"** in the row (a tap shows them again; named "Mostrar los eventos de
+    Filtros' badge (in every view), shows as **"Sin bares ×"** in the row (a tap shows them again; named "Mostrar los eventos de
     bares") and in the line under the bar ("37 eventos · Sin bares"). Off, nothing shows anywhere but the switch.
   - **Remembered** on that device (`localStorage`, key `hide-bars`, `1` while on; nothing while off). Where storage is
     blocked it works for the visit. The only filter that is remembered: it's a preference about what the visitor wants
