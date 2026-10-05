@@ -5,16 +5,10 @@
 
 import type { DanceEvent } from "../types";
 import { addressAfterClosing, eventPath } from "../lib/links";
-import { overlayState } from "../screenHistory";
-
-export interface DrawerHistoryState {
-  eventId?: string;
-}
-
-const eventIdOf = (state: unknown) => (state as DrawerHistoryState | null)?.eventId;
+import { historyState, overlayState } from "../screenHistory";
 
 /** Whether the current entry is an event's details. */
-const onEventEntry = (): boolean => Boolean(eventIdOf(history.state));
+const onEventEntry = (): boolean => Boolean(historyState().eventId);
 
 /**
  * `event`'s details opened: its entry, over the screen's. Another card while the side panel is open (`wasOpen`)
@@ -22,8 +16,8 @@ const onEventEntry = (): boolean => Boolean(eventIdOf(history.state));
  * period opened whole, the calendar): that screen keeps its entry, and the event gets one over it.
  */
 export function enterEvent(event: DanceEvent, wasOpen: boolean) {
-  if (wasOpen && onEventEntry()) history.replaceState({ ...history.state, eventId: event.id }, "", eventPath(event));
-  else history.pushState(overlayState({ eventId: event.id } satisfies DrawerHistoryState), "", eventPath(event));
+  if (wasOpen && onEventEntry()) history.replaceState({ ...historyState(), eventId: event.id }, "", eventPath(event));
+  else history.pushState(overlayState({ eventId: event.id }), "", eventPath(event));
 }
 
 /** A way of closing: back, when the current entry is the event's (its popstate then closes it): true. */
@@ -55,7 +49,7 @@ export function historyMove(
   drawer: { open: boolean; leaving: boolean; currentId: string | null },
   exists: (id: string) => boolean,
 ): HistoryMove {
-  const eventId = eventIdOf(state);
+  const { eventId } = historyState(state);
   if (eventId && drawer.open && !drawer.leaving && drawer.currentId === eventId) return { kind: "stay" };
   if (eventId && exists(eventId)) return { kind: "open", eventId };
   return drawer.open ? { kind: "close" } : { kind: "none" };

@@ -55,7 +55,7 @@ export function captureListPosition(): ListAnchor | null {
   const list = byId("view-upcoming");
   if (list.hidden || list.getBoundingClientRect().top > stickyOffset()) return null;
   const key = periodOnScreen();
-  return key ? { key, order: sections().map((section) => section.dataset.period!) } : null;
+  return key ? { key, order: sections().flatMap((section) => section.dataset.period ?? []) } : null;
 }
 
 /** Scroll the page to `top`, on purpose. */

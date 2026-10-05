@@ -6,6 +6,7 @@
 import type { View } from "../types";
 import { byId } from "../lib/dom";
 import { ICONS } from "../lib/icons";
+import { isView } from "../state";
 
 const TARGET: Record<View, { view: View; label: string; icon: string }> = {
   upcoming: { view: "calendar", label: "Ver calendario", icon: ICONS.calendar },
@@ -24,7 +25,10 @@ export function renderViewSwitch(current: View) {
 
 export function initViewSwitch(show: (view: View) => void) {
   const button = byId("view-switch");
-  button.addEventListener("click", () => show(button.dataset.switchTo as View));
+  button.addEventListener("click", () => {
+    const view = button.dataset.switchTo;
+    if (isView(view)) show(view);
+  });
   const tabs = document.querySelector(".toolbar .tabs");
   if (!tabs || !("IntersectionObserver" in window)) {
     button.classList.remove("is-away"); // it arrives away (ViewSwitch.astro)

@@ -6,6 +6,8 @@ import {
   eventsInView,
   groupByDay,
   groupByPeriod,
+  isFilterGroup,
+  isView,
   styleMatches,
   visibleEvents,
 } from "../src/scripts/state";
@@ -129,5 +131,12 @@ describe("events over several days", () => {
     expect([isMultiDay(old), lastDay(old), daysOf(old)]).toEqual([false, "2026-10-24", ["2026-10-24"]]);
     expect(shownDay(congress, "2026-11-14")).toBe("2026-11-14");
     expect(shownDay(congress, "2026-11-10")).toBe("2026-11-13");
+  });
+});
+
+describe("values read from the page", () => {
+  it("are a view or a filter group only when they name one", () => {
+    expect(["upcoming", "calendar", "agenda", undefined].map(isView)).toEqual([true, true, false, false]);
+    expect(["dates", "styles", "types", "account", undefined].map(isFilterGroup)).toEqual([true, true, true, false, false]);
   });
 });

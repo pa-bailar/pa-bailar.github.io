@@ -16,7 +16,7 @@ import {
   exitDurationFor,
   releaseVelocity,
 } from "./sheetMotion";
-import { overlayState } from "../screenHistory";
+import { historyState, overlayState } from "../screenHistory";
 
 // A flick down (FLICK) closes however short; past closeDistance() it closes unless flicked back up (FLICK_UP).
 const FLICK_UP = -0.3; // px/ms: a flick back up cancels, however far it was dragged
@@ -129,10 +129,6 @@ function initSheet(sheet: HTMLDialogElement, canStartDrag: (target: HTMLElement)
   });
 }
 
-interface SheetHistoryState {
-  sheet?: string; // the id of the panel sheet this history entry belongs to
-}
-
 /**
  * Open a panel sheet with its own history entry (same URL), like the event drawer's: the phone's back
  * button closes this sheet only, and the next back what was under it (the drawer, then the list).
@@ -140,11 +136,11 @@ interface SheetHistoryState {
  * this one takes over its history entry, so back doesn't step through a sheet that's gone.
  */
 export function openPanelSheet(sheet: HTMLDialogElement, { replacing }: { replacing?: HTMLDialogElement } = {}) {
-  const takeOver = replacing?.open && (history.state as SheetHistoryState | null)?.sheet === replacing.id;
+  const takeOver = replacing?.open && historyState().sheet === replacing.id;
   sheet.showModal();
   // Over the entry it opens on (the screen, or the event details under it), marked as an overlay: undoing a screen
   // move from inside it doesn't go back through it (screenHistory.ts, `leave`).
-  const state = overlayState({ sheet: sheet.id } satisfies SheetHistoryState);
+  const state = overlayState({ sheet: sheet.id });
   if (takeOver) history.replaceState(state, ""); // before it closes: its close then leaves the history alone
   else history.pushState(state, "");
   if (replacing) dismissSheet(replacing);
@@ -170,10 +166,10 @@ export function initPanelSheet(
   initSheet(sheet, (target) => Boolean(target.closest(".sheet-panel__head")) || scroller.scrollTop <= 0);
   // Closed by ×, backdrop, Escape or a drag: leave its history entry the way back would.
   sheet.addEventListener("close", () => {
-    if ((history.state as SheetHistoryState | null)?.sheet === sheet.id) history.back();
+    if (historyState().sheet === sheet.id) history.back();
   });
   // Back: the entry under this sheet's is now current, so the sheet goes.
   window.addEventListener("popstate", (domEvent) => {
-    if (sheet.open && (domEvent.state as SheetHistoryState | null)?.sheet !== sheet.id) dismissSheet(sheet);
+    if (sheet.open && historyState(domEvent.state).sheet !== sheet.id) dismissSheet(sheet);
   });
 }

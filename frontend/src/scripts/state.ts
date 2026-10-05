@@ -1,10 +1,15 @@
 // UI state and the event filtering that depends on it.
 
-import type { AppState, DanceEvent } from "./types";
+import type { AppState, DanceEvent, View } from "./types";
 import { addDays, currentMonth, daysOf, endOfWeek, lastDay, shownDay, startOn, todayIso, toIsoDate } from "./lib/dates";
 import { capitalize, formatMonthName } from "./lib/format";
 import { isSaved } from "./lib/saved";
 import { matchesQuery } from "./lib/search";
+
+/** Whether a value read from the page (a `data-view`) is one of the views. */
+export function isView(value: string | undefined): value is View {
+  return value === "upcoming" || value === "calendar";
+}
 
 export function createInitialState(): AppState {
   return {
@@ -36,11 +41,16 @@ function datesApply(state: AppState): boolean {
   return state.view === "upcoming" && state.dates.length > 0;
 }
 
-/** The groups of choices in the filters (the academy is set from a card, the search and Guardados apart). */
+/** The groups of choices in the filters (the search and Guardados apart). */
 export type FilterGroup = "dates" | "styles" | "types";
 
+/** Whether a value read from the page (a chip's `data-filter`) is one of the groups. */
+export function isFilterGroup(value: string | undefined): value is FilterGroup {
+  return value === "dates" || value === "styles" || value === "types";
+}
+
 /**
- * Whether the event passes every filter: AND across them (types, rhythms, dates, academy, Guardados, search),
+ * Whether the event passes every filter: AND across them (types, rhythms, dates, Guardados, search),
  * OR within each group of choices. `except` leaves one group out: the options of that group are counted against
  * the others (filterModel, views/filters.ts).
  */

@@ -27,6 +27,8 @@ const POST_BADGES: Partial<Record<EventMedia["media_type"], string>> = {
   STORY: ICONS.story,
 };
 
+const isPostKind = (value: string | undefined): value is PostKind => POST_KINDS.some(({ kind }) => kind === value);
+
 function postKind(media: EventMedia): PostKind {
   return media.media_type === "VIDEO" ? "videos" : "flyers";
 }
@@ -92,7 +94,8 @@ export function initPostsSheet() {
     const tab = target.closest<HTMLElement>("[data-post-kind]");
     const thumb = target.closest<HTMLElement>("[data-post-index]");
     if (tab && current) {
-      current.kind = tab.dataset.postKind as PostKind;
+      const kind = tab.dataset.postKind;
+      if (isPostKind(kind)) current.kind = kind;
       render();
       element.querySelector<HTMLElement>(`[data-post-kind="${current.kind}"]`)?.focus();
     } else if (thumb && current) {

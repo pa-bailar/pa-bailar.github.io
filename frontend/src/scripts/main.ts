@@ -1,7 +1,7 @@
 // Entry point: load the events embedded in the page, wire up interactions and render.
 
 import type { DanceEvent, EventType, View } from "./types";
-import type { AgendaGroup, FilterGroup } from "./state";
+import type { AgendaGroup } from "./state";
 import { initClickTracking } from "./lib/analytics";
 import { byId, isPlainClick } from "./lib/dom";
 import { dateRangeLabel, eventCountLabel, formatLongDate, styleLabel, typeLabel } from "./lib/format";
@@ -12,6 +12,8 @@ import {
   createInitialState,
   defaultDayForMonth,
   groupByPeriod,
+  isFilterGroup,
+  isView,
   listedDay,
   listOrder,
   toggled,
@@ -388,15 +390,14 @@ function handleClick(domEvent: MouseEvent) {
     return;
   }
   if (view) {
-    navigateView(view as View);
+    if (isView(view)) navigateView(view);
     return;
   }
   if (filter && value !== undefined) {
     // One tap chooses, another unchooses; a dimmed option (nothing to show with the other filters) does nothing.
-    if (control.getAttribute("aria-disabled") === "true") return;
-    const group = filter as FilterGroup;
-    if (group === "types") state.types = toggled(state.types, value) as EventType[];
-    else state[group] = toggled(state[group], value);
+    if (control.getAttribute("aria-disabled") === "true" || !isFilterGroup(filter)) return;
+    if (filter === "types") state.types = toggled(state.types, value) as EventType[];
+    else state[filter] = toggled(state[filter], value);
   } else if ("clearFilters" in control.dataset) {
     // "Limpiar": dates, rhythms and types. Not the search nor "Guardados".
     clearFilters(state);

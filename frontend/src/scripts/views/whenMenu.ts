@@ -9,11 +9,7 @@
 //     scrolls when the screen is short.
 
 import { byId } from "../lib/dom";
-import { overlayState } from "../screenHistory";
-
-interface MenuHistoryState {
-  menu?: string;
-}
+import { historyState, overlayState } from "../screenHistory";
 
 const MENU = "when";
 const GAP = 4; // px between the chip and the menu
@@ -103,7 +99,7 @@ export function openWhenMenu({ last = false } = {}) {
   menu().hidden = false;
   button.setAttribute("aria-expanded", "true");
   place();
-  history.pushState(overlayState({ menu: MENU } satisfies MenuHistoryState), "");
+  history.pushState(overlayState({ menu: MENU }), "");
   const options = items();
   focusItem(last ? options.at(-1) : (options.find((item) => item.getAttribute("aria-checked") === "true") ?? options[0]));
 }
@@ -121,7 +117,7 @@ function hide({ focusChip = false } = {}) {
 export function closeWhenMenu({ focusChip = false } = {}) {
   if (!isWhenMenuOpen()) return;
   hide({ focusChip });
-  if ((history.state as MenuHistoryState | null)?.menu === MENU) history.back();
+  if (historyState().menu === MENU) history.back();
 }
 
 /** After a redraw (the chip is drawn again): still marked open and in place, or closed if the chip is gone. */
@@ -200,6 +196,6 @@ export function initWhenMenu() {
   byId("jump-chips").addEventListener("scroll", follow, { passive: true });
   // Back: the entry under the menu's is now current.
   window.addEventListener("popstate", (event) => {
-    if ((event.state as MenuHistoryState | null)?.menu !== MENU) hide();
+    if (historyState(event.state).menu !== MENU) hide();
   });
 }

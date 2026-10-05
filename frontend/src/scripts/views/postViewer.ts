@@ -104,9 +104,10 @@ export function initPostViewer() {
   // A tap on an account's @ opens its profile here; a new tab or window (a modifier key) still gets Instagram.
   document.addEventListener("click", (domEvent) => {
     const link = (domEvent.target as HTMLElement).closest<HTMLAnchorElement>("a[data-profile]");
-    if (!link || domEvent.defaultPrevented || !isPlainClick(domEvent)) return;
+    const account = link?.dataset.profile;
+    if (account === undefined || domEvent.defaultPrevented || !isPlainClick(domEvent)) return;
     domEvent.preventDefault();
-    openProfileViewer(link.dataset.profile!);
+    openProfileViewer(account);
   });
   element.addEventListener("close", () => {
     request++;

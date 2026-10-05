@@ -54,7 +54,10 @@ export function setShareSources(next: Map<string, ShareSource>) {
   observer?.disconnect();
   observer = new IntersectionObserver(
     (entries) =>
-      entries.forEach((entry) => entry.isIntersecting && prepare((entry.target as HTMLElement).dataset.share!)),
+      entries.forEach((entry) => {
+        const key = (entry.target as HTMLElement).dataset.share;
+        if (entry.isIntersecting && key !== undefined) prepare(key);
+      }),
     { rootMargin: "300px" },
   );
   document.querySelectorAll<HTMLElement>("[data-share]").forEach((button) => observer!.observe(button));
@@ -79,11 +82,11 @@ function shareEvent(event: DanceEvent) {
 export function initSharing(findEvent: (id: string) => DanceEvent | undefined) {
   document.addEventListener("click", (domEvent) => {
     const target = domEvent.target as HTMLElement;
-    const list = target.closest<HTMLElement>("[data-share]");
-    const single = target.closest<HTMLElement>("[data-share-event]");
-    if (list) shareSource(list.dataset.share!);
-    else if (single) {
-      const event = findEvent(single.dataset.shareEvent!);
+    const list = target.closest<HTMLElement>("[data-share]")?.dataset.share;
+    const single = target.closest<HTMLElement>("[data-share-event]")?.dataset.shareEvent;
+    if (list !== undefined) shareSource(list);
+    else if (single !== undefined) {
+      const event = findEvent(single);
       if (event) shareEvent(event);
     }
   });
