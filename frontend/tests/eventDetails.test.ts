@@ -142,6 +142,14 @@ describe("an event's page, with a story", () => {
     expect(story).toContain(`data-open-posts data-selected="1"`);
   });
 
+  it("the flyer's link is named starting with the words on it (label in name): \"Ver las 19\"", () => {
+    const [post] = event().media;
+    const name = (media: typeof post) => /class="event-detail__media"[^>]*aria-label="([^"]+)"/.exec(eventDetailHtml(event({ media: [media] }), 0))?.[1];
+    expect(name({ ...post, media_type: "CAROUSEL_ALBUM", slides: 19 })).toBe("Ver las 19, publicación de Instagram");
+    expect(name({ ...post, media_type: "VIDEO", preview: "previews/v.mp4" })).toMatch(/^Ver con sonido, publicación de Instagram$/);
+    expect(name(post)).toBe("Ver la publicación"); // a photo: nothing written on it
+  });
+
   it("says to check low-confidence details with the account, not a post", () => {
     expect(eventDetailHtml(storyEvent({ confidence: "low" }), 0)).toContain("confírmalos con la cuenta.");
     expect(eventDetailHtml(event({ confidence: "low" }), 0)).toContain("confírmalos en la publicación.");

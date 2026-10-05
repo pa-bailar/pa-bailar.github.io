@@ -76,6 +76,7 @@ const PAIRS = [
   ["Logo on page (large)", "logo", "bg", "large"],
   ["Logo on page, 404 (large)", "logo", "bg", "large"],
   ["Accent text on cards (event time, 13px bold)", "accent", "surface", "text"],
+  ["Accent text on the page: a card's time in the phones' feed (no card fill there, 13px bold)", "accent-text", "bg", "text"],
   ["Primary button text", "on-action", "action", "text"],
   ["\"Gratis\" price tag", "on-free", "free", "text"],
   ["Selected chip text", "chip-active-text", "chip-active-bg", "text"],

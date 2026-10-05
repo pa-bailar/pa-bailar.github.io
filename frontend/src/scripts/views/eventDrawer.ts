@@ -133,10 +133,10 @@ function render(event: DanceEvent) {
     // One bad event never breaks the drawer: a way to its page instead.
     console.error(error);
     content.innerHTML = `
-      <header class="drawer__head">
+      <div class="drawer__head">
         <div class="drawer__heading"><h2 class="event-detail__title" id="${TITLE_ID}" tabindex="-1">${escapeHtml(event.title)}</h2></div>
         <button class="drawer__close" type="button" data-close-drawer aria-label="Cerrar">${ICONS.close}</button>
-      </header>
+      </div>
       <div class="drawer__body event-detail__info">
         <p>No pudimos mostrar este evento aquí.</p>
         <p><a class="btn" href="${escapeHtml(eventPath(event))}">Abrir su página</a></p>
