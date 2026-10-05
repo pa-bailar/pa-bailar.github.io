@@ -146,6 +146,14 @@
   gap: 3px;
 }
 
+/* "+N" in the last place of the second row when a day has more events than dots (calendarView.ts dotsHtml). */
+.cal-dots-more {
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-bold);
+  line-height: 7px;
+  color: var(--text-muted);
+}
+
 .cal-dot {
   width: 7px;
   height: 7px;

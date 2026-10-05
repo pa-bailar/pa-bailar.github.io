@@ -14,6 +14,19 @@ import { emptyActionsHtml } from "./filters";
 const WEEKDAY_INITIALS = ["L", "M", "M", "J", "V", "S", "D"];
 let shownDay: string | null = null; // the day the list last showed: a different one lights its heading up
 const MAX_PILLS_PER_DAY = 3;
+/** Phones: at most two rows of dots (three to a row), so a busy day never makes its week taller than the others. */
+export const MAX_DOTS_PER_DAY = 6;
+
+/**
+ * A day's dots on phones, one per event in its type's color. More than MAX_DOTS_PER_DAY: the first ones and "+N" in
+ * the last place (as the wide screens' "+N" after three names); the exact count is in the day's label and heading.
+ */
+export function dotsHtml(dayEvents: Pick<DanceEvent, "event_type">[]): string {
+  const dot = (event: Pick<DanceEvent, "event_type">) => `<i class="cal-dot t-${escapeHtml(event.event_type)}"></i>`;
+  if (dayEvents.length <= MAX_DOTS_PER_DAY) return dayEvents.map(dot).join("");
+  const shown = MAX_DOTS_PER_DAY - 1;
+  return `${dayEvents.slice(0, shown).map(dot).join("")}<span class="cal-dots-more">+${dayEvents.length - shown}</span>`;
+}
 
 function dayCellHtml(iso: string, dayNumber: number, dayEvents: DanceEvent[], state: AppState): string {
   const today = todayIso();
@@ -28,7 +41,7 @@ function dayCellHtml(iso: string, dayNumber: number, dayEvents: DanceEvent[], st
     .map((event) => `<span class="cal-pill t-${escapeHtml(event.event_type)}">${escapeHtml(event.title)}</span>`)
     .join("");
   const more = dayEvents.length > MAX_PILLS_PER_DAY ? `<span class="cal-more">+${dayEvents.length - MAX_PILLS_PER_DAY}</span>` : "";
-  const dots = dayEvents.map((event) => `<i class="cal-dot t-${escapeHtml(event.event_type)}"></i>`).join("");
+  const dots = dotsHtml(dayEvents);
   const count = dayEvents.length;
   const holiday = isHoliday(iso) ? ", festivo" : "";
   const label = `${formatLongDate(iso)}${holiday}${count ? `, ${eventCountLabel(count)}` : ""}`;
