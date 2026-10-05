@@ -24,7 +24,7 @@ import {
 import type { DanceEvent } from "../src/scripts/types";
 import { eventCardGridHtml } from "../src/scripts/views/eventCard";
 import { eventDrawerHtml, sessionsHtml } from "../src/scripts/views/eventDetail";
-import { filterModel } from "../src/scripts/views/filters";
+import { filterModel } from "../src/scripts/lib/filterModel";
 import { event, seriesEvent, sessionsOn } from "./factories";
 
 // Sessions on Sundays 8, 22 and 29 November and 6 December 2026, 2:00 to 5:00 p. m.

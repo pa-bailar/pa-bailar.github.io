@@ -11,7 +11,7 @@ import {
   styleMatches,
   visibleEvents,
 } from "../src/scripts/state";
-import { rankedStyles } from "../src/scripts/views/filters";
+import { rankedStyles } from "../src/scripts/lib/filterModel";
 import { event } from "./factories";
 
 describe("groupByPeriod (today: Wednesday 2026-10-07)", () => {

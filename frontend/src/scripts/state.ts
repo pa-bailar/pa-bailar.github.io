@@ -52,7 +52,7 @@ export function isFilterGroup(value: string | undefined): value is FilterGroup {
 /**
  * Whether the event passes every filter: AND across them (types, rhythms, dates, Guardados, search),
  * OR within each group of choices. `except` leaves one group out: the options of that group are counted against
- * the others (filterModel, views/filters.ts).
+ * the others (filterModel, lib/filterModel.ts).
  */
 export function matchesFilters(event: DanceEvent, state: AppState, except?: FilterGroup): boolean {
   const typeOk = except === "types" || !state.types.length || state.types.includes(event.event_type);

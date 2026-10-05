@@ -15,17 +15,16 @@ import {
   toggled,
 } from "../src/scripts/state";
 import { spanLabel } from "../src/scripts/lib/format";
-import { menuPlacement, nextOption } from "../src/scripts/views/whenMenu";
+import { menuPlacement, nextOption, whenMenuHtml } from "../src/scripts/views/whenMenu";
 import {
   QUICK_STYLES,
-  emptyResultsHtml,
   filterModel,
   rankedStyles,
   resultsButtonLabel,
   summaryLine,
-  whenMenuHtml,
   whenModel,
-} from "../src/scripts/views/filters";
+} from "../src/scripts/lib/filterModel";
+import { emptyResultsHtml } from "../src/scripts/views/filters";
 import { event } from "./factories";
 
 // Wednesday 2026-10-07: tomorrow is Thursday (in "Esta semana"), the weekend is 9–11, next week 12–18.
