@@ -1,4 +1,5 @@
-/* Wide screens: the sticky toolbar with the view tabs, "Guardados", the search field and the filter chips. */
+/* Wide screens: the sticky toolbar with the view tabs, "Guardados", the search field, and under them the filters' pills
+   (their panels and the status row: filters.css). */
 
 .toolbar {
   position: sticky;
@@ -10,8 +11,8 @@
 }
 
 /* Phones (and phones in landscape) have it all in the bar pinned to the top (the chips, jump-bar.css) and the bar at
-   the bottom (the views, search, Guardados, Filtros: bottom-nav.css). A sticky toolbar with its chip rows would cover
-   a quarter of the screen there. */
+   the bottom (the views, search, Guardados, Filtros: bottom-nav.css). A sticky toolbar there would cover a good part of
+   the screen. */
 @media not ((min-width: 720px) and (min-height: 600px)) {
   .toolbar {
     display: none;
@@ -71,24 +72,7 @@
   border-bottom-color: var(--accent);
 }
 
-/* ---------- filter chips ---------- */
-
-.chip-row {
-  display: flex;
-  gap: var(--space-2);
-  margin: 0 calc(var(--space-4) * -1); /* scroll edge to edge on phones */
-  padding: 0 var(--space-4);
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-
-.chip-row::-webkit-scrollbar {
-  display: none;
-}
-
-.chip-row[hidden] {
-  display: none;
-}
+/* ---------- chips (the filters', "Guardados") ---------- */
 
 .chip {
   flex: none;
@@ -121,13 +105,5 @@
     flex-wrap: wrap;
     align-items: center;
     column-gap: var(--space-5);
-  }
-
-  /* A long row (the dates, with their months) wraps instead of cutting a chip at the edge. */
-  .toolbar .chip-row {
-    flex-wrap: wrap;
-    margin: 0;
-    padding: 0;
-    overflow: visible;
   }
 }

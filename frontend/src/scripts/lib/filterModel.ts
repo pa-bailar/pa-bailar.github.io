@@ -7,9 +7,10 @@
 import type { AppState, DanceEvent, EventType } from "../types";
 import { OTHER_STYLE, eventCountLabel, formatMonthName, spanLabel, styleLabel, typeLabel } from "./format";
 import { todayIso, toIsoDate } from "./dates";
+import { type FamilyGroup, groupByFamily } from "./styleFamilies";
 import {
   type FilterGroup,
-  STYLE_FAMILIES,
+  STYLES_WITH_VARIANTS,
   activeFilterCount,
   dateOptions,
   eventsInView,
@@ -69,12 +70,24 @@ export interface WhenModel {
   options: WhenOption[]; // "Cualquier fecha", then every period with something on
 }
 
+/** Wide screens: the toolbar's dropdown pills, each opening its panel (views/filterPanels.ts). */
+export type PillKey = "when" | "styles" | "types";
+
+export interface FilterPill {
+  key: PillKey;
+  label: string; // "Ritmo", "Ritmo · 2"; "Cuándo", "Finde", "Hoy +1"
+  name: string; // for screen readers: "Ritmo, 2 elegidos", "Cuándo: Este fin de semana"
+  count: number; // choices in use in it
+}
+
 export interface FilterModel {
   dates: FilterOption[]; // every period with something on (none in the calendar), in order
-  styles: FilterOption[]; // most frequent first, "Otros ritmos" last
+  styles: FilterOption[]; // the bar's four first, then most frequent first, "Otros ritmos" last
+  styleGroups: FamilyGroup<FilterOption>[]; // the same rhythms under their families (the sheet, the Ritmo panel)
   types: FilterOption[]; // most frequent first
   when: WhenModel | null; // the bar's "Cuándo" (null in the calendar)
   quickStyles: FilterOption[]; // the bar's rhythm chips
+  pills: FilterPill[]; // wide screens: Cuándo (the list, with dates), Ritmo, Tipo
   hideBars: boolean; // "Ocultar eventos de bares" is on (the sheet's switch, the toolbar's chip)
   applied: AppliedFilter[]; // every choice: dates, rhythms, types, and "Sin bares" while the bars are hidden
   extra: AppliedFilter[]; // those without a chip of their own in the bar
@@ -91,11 +104,11 @@ const option = (
   chosen: boolean,
 ): FilterOption => ({ group, value, label, short, count, chosen, dimmed: !chosen && count === 0 });
 
-/** Styles present, plus the family ("Salsa", "Bachata") whenever one of its variants is present. */
+/** Styles present, plus "Salsa" or "Bachata" whenever one of its variants is present. */
 function presentStyles(events: DanceEvent[]): Set<string> {
   const present = new Set(events.flatMap((event) => event.styles));
-  for (const family of STYLE_FAMILIES) {
-    if ([...present].some((style) => style.startsWith(`${family} `))) present.add(family);
+  for (const parent of STYLES_WITH_VARIANTS) {
+    if ([...present].some((style) => style.startsWith(`${parent} `))) present.add(parent);
   }
   return present;
 }
@@ -151,18 +164,45 @@ export function filterModel(events: DanceEvent[], state: AppState, today = today
   // Every date shows on "Cuándo", every bar rhythm on its chip.
   const hasChip = (item: AppliedFilter) => item.group === "dates" || (item.group === "styles" && QUICK_STYLES.includes(item.value));
 
+  const when = state.view === "upcoming" ? whenModel(dates, without("dates").length, today) : null;
   return {
     dates,
     styles,
+    styleGroups: groupByFamily(styles),
     types,
-    when: state.view === "upcoming" ? whenModel(dates, without("dates").length, today) : null,
+    when,
     quickStyles,
+    pills: filterPills(when && dates.length ? when : null, styles, types),
     hideBars: state.hideBars,
     applied,
     extra: applied.filter((item) => !hasChip(item)),
     active: activeFilterCount(state),
     shown: inView.filter((event) => matchesFilters(event, state)).length,
   };
+}
+
+const chosenLabel = (count: number) => `${count} ${count === 1 ? "elegido" : "elegidos"}`;
+
+/**
+ * The toolbar's pills (wide screens): "Cuándo" (only in the list, with dates to choose) says the date chosen as the
+ * phone bar's does; Ritmo and Tipo say how many are chosen ("Ritmo · 2", named "Ritmo, 2 elegidos").
+ */
+export function filterPills(when: WhenModel | null, styles: FilterOption[], types: FilterOption[]): FilterPill[] {
+  const counted = (key: PillKey, word: string, options: FilterOption[]): FilterPill => {
+    const count = options.filter((item) => item.chosen).length;
+    return {
+      key,
+      label: count ? `${word} · ${count}` : word,
+      name: count ? `${word}, ${chosenLabel(count)}` : word,
+      count,
+    };
+  };
+  const dates = when ? when.options.filter((item) => item.value && item.chosen).length : 0;
+  return [
+    ...(when ? [{ key: "when" as const, label: when.chosen ? when.label : "Cuándo", name: `Cuándo: ${when.name}`, count: dates }] : []),
+    counted("styles", "Ritmo", styles),
+    counted("types", "Tipo", types),
+  ];
 }
 
 /** "Cuándo": the chip says what's chosen; the menu lists "Cualquier fecha" and every period, with its days. */

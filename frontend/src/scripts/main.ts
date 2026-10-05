@@ -44,6 +44,7 @@ import { initPostsSheet } from "./views/postsSheet";
 import { closeSearchField, initBottomNav, renderBottomNav } from "./views/bottomNav";
 import { viewNavigation } from "./views/viewNavigation";
 import { closeWhenMenu, isWhenMenuOpen, openWhenMenu, syncWhenMenu } from "./views/whenMenu";
+import { closePanel, initFilterPanels, syncPanels, togglePanel } from "./views/filterPanels";
 import { initSaveButtons, renderSavedToggles } from "./views/saveButton";
 import { watchDayChange } from "./views/dayChange";
 import { initInstallPrompt, offerAfterSaving, registerServiceWorker } from "./views/installPrompt";
@@ -104,10 +105,12 @@ function render({ keepPlace = false } = {}) {
   announce(shown);
   setShareSources(shareSources({ groups, state, plans: upcomingSaved(), planUrl: plansEventUrl }));
   syncWhenMenu(); // "Cuándo" was drawn again: its menu, if open, stays under it
+  syncPanels(); // the same for the toolbar's pills and their panels (wide screens)
   highlightCurrentCard(); // the side panel's event, outlined again among the new cards
   armDetailsHint();
 
-  if (focused) scope.querySelector<HTMLElement>(focused)?.focus();
+  // The first one on screen: the same choice can be in a closed panel and among the removable chips.
+  if (focused) [...scope.querySelectorAll<HTMLElement>(focused)].find((element) => element.getClientRects().length)?.focus();
 }
 
 /** The saved events still to come, in the list's order (a series by its next session). */
@@ -171,12 +174,16 @@ const toggleWhenMenu: ControlHandler = () => {
   else openWhenMenu();
 };
 
-/** An option of "Cuándo": that one date (or any, ""), then the menu closes; one with nothing to show does nothing. */
+/**
+ * An option of "Cuándo" (the phone bar's menu, or the toolbar's on wide screens): that one date (or any, ""), then the
+ * menu closes; one with nothing to show does nothing.
+ */
 const chooseWhen: ControlHandler = (when, control) => {
   if (isDisabled(control)) return;
   state.dates = when ? [when] : [];
   render({ keepPlace: true });
   closeWhenMenu({ focusChip: true });
+  closePanel({ focusPill: true });
 };
 
 /** "Cuándo"'s ×: no date; the focus goes to the chip, drawn again. */
@@ -295,6 +302,7 @@ const CONTROLS: [attribute: string, handler: ControlHandler][] = [
   ["whenOpen", toggleWhenMenu],
   ["when", chooseWhen],
   ["whenClear", clearWhen],
+  ["pill", (key) => togglePanel(key)],
   ["savedOnly", toggleSavedOnly],
   ["closeSearch", endSearch],
   ["clearSearch", endSearch],
@@ -366,6 +374,7 @@ export function start() {
   initInstallPrompt();
   registerServiceWorker();
   initJumpBar();
+  initFilterPanels();
   // × and back end the search (and Escape on a keyboard): cleared, the view drawn again.
   initBottomNav({
     dismiss: () => {

@@ -32,7 +32,8 @@ frontend/src/styles/
    ├─ drawer.css         ← the details drawer over the list (phones), the side panel (wide screens)
    ├─ sheet.css          ← bottom sheets: rise, drag to dismiss (with scripts/lib/sheet.ts)
    ├─ jump-bar.css       ← phones: the pinned bar, its row of chips and the line under it
-   ├─ filters.css        ← the filter chips (bar, sheet, toolbar), "Cuándo" and its menu, the line and the toolbar's status row
+   ├─ filters.css        ← the filter chips (bar, sheet, toolbar), "Cuándo" and its menu, the rhythms' families, the line;
+   │                        wide screens: the toolbar's pills, their panels and the status row
    ├─ bottom-nav.css     ← phones: the bar at the bottom (Eventos, Calendario, Buscar, Guardados, Filtros)
    ├─ posts-sheet.css    ← every post announcing an event
    ├─ post-viewer.css    ← a post with Instagram's player
@@ -133,7 +134,7 @@ few set from scripts are listed there): an undefined `--text-base` once left the
   `--bottom-nav-space` (what it covers: its height plus the home indicator's inset on phones, 0 elsewhere; the footer,
   the install reminder and `scroll-padding-bottom` make room for it), `--nav-indicator-width` 48px (an item's pill);
   `--pinned-height`, what's pinned to the top (the bar, plus the line while filtering: 56 or 96px), which jumps and
-  the keyboard's focus land under (`scroll-margin-top`, `scroll-padding-top`); `--menu-width` 304px ("Cuándo"'s menu).
+  the keyboard's focus land under (`scroll-margin-top`, `scroll-padding-top`); `--menu-width` 304px ("Cuándo"'s menu); `--pill-panel-width` 456px (wide screens: the Ritmo and Tipo panels).
 - The cards' "Detalles ›": `--details-height` 36px (its frame; the button is 44px), `--details-offset` 2px,
   `--details-tuck` (how far the offset reaches under the frame's ink: one device pixel from 2x, half of one below; set
   per screen density in `tokens.css`).
@@ -414,8 +415,8 @@ the list stays short there and summarizes what's further away (`scripts/views/up
     put under them (no hiding, nothing to animate). The "Cuándo" menu stops above it.
   - **Room:** the footer's bottom padding and the install reminder add `--bottom-nav-space`; `scroll-padding-bottom`
     keeps the keyboard's focus above it; the calendar's day list counts the screen as ending at it (`revealDay`).
-  - **Wide screens** don't show it: the tabs, "Guardados", the search field and the chip rows in the toolbar, as
-    before, and Info in the header.
+  - **Wide screens** don't show it: the tabs, "Guardados", the search field and the filters' pills in the toolbar
+    (see "Filters"), and Info in the header.
   - **Each view has its own address:** the list is `/`, the calendar `/calendario/` (`pages/calendario/`, the same page
     opening on the calendar: `components/HomePage.astro`), so reloading or sharing the calendar keeps it; the bar's
     Eventos and Calendario (links to the two addresses), the tabs on wide screens and back move between them, the tab's title follows (`lib/viewTitles.ts`), and
@@ -428,7 +429,7 @@ the list stays short there and summarizes what's further away (`scripts/views/up
   - **A day tapped in the calendar says so where the list starts:** its heading ("Miércoles, 14 de octubre") has the count under it ("3 eventos", `--accent-text`, bold; none on an empty day, which says "No hay eventos este día.") and glows briefly in the accent when the day changes (`.calendar__day-heading.is-new`, 900ms; not on other redraws, and not with reduced motion). A tap moves the page only to bring the list's start on screen (the rule above), never otherwise. Screen readers hear "Miércoles, 14 de octubre: 3 eventos" (`#results-status`). If a filter changed meanwhile, the list comes back at the same period instead, as with any filter change. The tabs behave the same.
 - **Filter sheet** (`FilterSheet.astro`, `filter-sheet.css`), from Filtros in the bar at the bottom:
   - **Head:** "Filtros", "Limpiar" (in `--accent-text`, only enabled with something to clear) and ×.
-  - **Groups**, in a body that scrolls between the head and the button: **Fecha** · *elige una o varias* (every period and month), **Ritmo** · *elige uno o varios* (every rhythm, the bar's four first, "Otros ritmos" last), **Tipo de evento** (several too). Each option with its count ("Noviembre 2"); the ones with nothing to show dimmed. Chips wrap, `--control-height` tall with a 44px target.
+  - **Groups**, in a body that scrolls between the head and the button: **Fecha** · *elige una o varias* (every period and month), **Ritmo** · *elige uno o varios* (every rhythm under its family, see "Filters"), **Tipo de evento** (several too). Each option with its count ("Noviembre 2"); the ones with nothing to show dimmed. Chips wrap, `--control-height` tall with a 44px target.
   - **"Ocultar eventos de bares"**, first, above a `--divider` line: a switch (see "Filters", "Hiding the bars").
   - **"Ver 12 eventos"** stays at the bottom (the primary button): "Ver 1 evento", or "Sin eventos: cambia los filtros", disabled. It closes the sheet; choices apply at once, there's no apply step.
   - **Closing:** ×, a drag down (from the head, or from the groups scrolled to the top), the backdrop, Escape, back. The focus goes back to Filtros.
@@ -437,12 +438,12 @@ the list stays short there and summarizes what's further away (`scripts/views/up
 ## Filters
 
 What narrows the list (`scripts/views/filters.ts`, the model in `lib/filterModel.ts`, the logic in `state.ts`), in the phone bar and its sheet, and on wide
-screens in the toolbar's chip rows:
+screens in the toolbar's pills and their panels:
 
 | Group | Choices | Options | In the phone bar |
 |---|---|---|---|
 | Fecha | several (the bar's "Cuándo": one) | each period of the list with something on ("Hoy", "Esta semana", "Este fin de semana", "Próxima semana", "Más adelante en octubre", each month, each year), and "Mañana" right after "Hoy" when something is on tomorrow | "🕒 ▾" (Cuándo): a menu with every one |
-| Ritmo | several | each rhythm ("Salsa" includes its variants), "Otros ritmos" last | Salsa · Bachata · Urbano · Tango, always (the owner's choice) |
+| Ritmo | several | each rhythm ("Salsa" includes its variants), under its family | Salsa · Bachata · Urbano · Tango, always (the owner's choice) |
 | Tipo de evento | several | each event type | from the sheet |
 
 - **One tap chooses, another unchooses.** A chosen chip takes the selected-chip colors (`--chip-active-*`) with an ×;
@@ -461,7 +462,9 @@ screens in the toolbar's chip rows:
     with the days it covers in muted text ("Hoy dom 4", "Este fin de semana 9–11 oct", "Resto de octubre 12–31 oct";
     none for a month or a year) and its count on the right; the date chosen has a check (`--accent-text`) and a sunken
     row (`--surface-sunken`). "Mañana" only when something is on tomorrow; an option with nothing to show is dimmed and a
-    tap on it does nothing. 44px rows, `--surface`, `--shadow-menu`, the grain in dark.
+    tap on it does nothing. 44px rows on touch screens; with a mouse (`hover: hover` and `pointer: fine`, the
+    desktop toolbar's Cuándo pill) compact 32px rows in `--text-sm` (the owner: the tall rows looked odd on desktop).
+    `--surface`, `--shadow-menu`, the grain in dark.
   - **One tap applies it and closes the menu** (no "Listo"): it replaces whatever dates were chosen, and "Cualquier
     fecha" clears them. Several dates at once are chosen in the sheet.
   - **Closing:** Escape, a tap outside (that tap does nothing else: it could open an event behind it), the chip again,
@@ -470,6 +473,19 @@ screens in the toolbar's chip rows:
     with `menuitemradio` options (`aria-checked`; dimmed ones `aria-disabled`), each named with its days and count
     ("Hoy (dom 4), 3 eventos"). Opening puts the focus on the date chosen (else "Cualquier fecha"); ↓ ↑ (around), Home
     and End move; ↓ or ↑ on the chip opens it.
+- **Rhythms by family** (the owner, 5 October 2026; `lib/styleFamilies.ts`, one list for every place). The sheet's
+  Ritmo and the toolbar's Ritmo panel show the rhythms under four small headings (`--text-xs`, bold, uppercase,
+  `--text-muted`), in this order:
+  - **Salsa:** salsa, salsa en línea, salsa caleña, salsa cubana, cha cha chá
+  - **Bachata:** bachata, bachata sensual, bachata dominicana
+  - **Urbanos:** urbano, dancehall, afro, heels
+  - **Otros:** merengue, son, champeta, tango, swing, kizomba, zouk, "Otros ritmos"
+
+  Within a family the rhythms keep the filters' order (the bar's four first, then by how many events in view have
+  them, "Otros ritmos" last). A family with nothing to list isn't shown; options are dimmed as everywhere. Every rhythm
+  of the data contract is in exactly one family (`tests/styleFamilies.test.ts`); one the list doesn't know yet goes
+  with Otros. The owner turned down "Otros de pareja" and "Latinos y caribe" (salsa and bachata are Latin too). It's
+  only how they're shown: "Salsa" still includes its variants, and **the phone bar's quick chips stay one flat row**.
 - **Dimmed, never hidden:** an option that would show nothing with the other filters stays in place, dimmed (dashed,
   in `--dimmed`; `aria-disabled`, still focusable, a tap does nothing), so the row never jumps while choosing. A chosen
   option is never dimmed, so it can always be removed. Each option's count is how many events it would show with the
@@ -496,7 +512,7 @@ screens in the toolbar's chip rows:
     chips): off, outlined in `--border` with the thumb on the left in `--text-muted`; on, filled in `--chip-active-bg`
     with the thumb on the right in `--chip-active-text` (it slides in `--duration`; at once with reduced motion).
     `role="switch"`, `aria-checked`, named by its words and described by the hint (`barsSwitchHtml`).
-  - **Wide screens:** "Ocultar bares" at the end of the types' row, a little apart (a toggle chip, with × while on).
+  - **Wide screens:** "Ocultar bares" at the end of the pills' row, a little apart (a toggle chip, with × while on).
   - **While on**, the bars' events are gone wherever the filters apply: the list, the calendar (dots, names, a day's
     label, heading, count and list), search, Guardados, every option's count and "Ver 12 eventos". It **counts one** on
     Filtros' badge (in both views), shows as **"Sin bares ×"** in the row (a tap shows them again; named "Mostrar los eventos de
@@ -506,11 +522,11 @@ screens in the toolbar's chip rows:
     to see at all, where dates and rhythms are what they look for today.
   - **A shared link to a bar's event** still opens it while they're hidden: its details over the list (its card isn't
     there), and the switch stays as it was.
-- **Clearing:** "× Limpiar", the sheet's "Limpiar", the toolbar's "Limpiar filtros" and an empty result's "Limpiar
+- **Clearing:** "× Limpiar" (under the phone bar and in the toolbar's status row), the sheet's "Limpiar" and an empty result's "Limpiar
   filtros" clear the dates, rhythms and types, and **show the bars again** (and forget it on the device): it counts on
   the badge, so "Limpiar" leaves nothing counted there. Not the search nor "Guardados" (they have their own way out).
   Nothing else is remembered between visits, and filters aren't in the address.
-- **Dates are the list's:** the calendar has its own days, so there the date chips hide (rhythms stay), the dates chosen
+- **Dates are the list's:** the calendar has its own days, so there "Cuándo" hides (rhythms stay), the dates chosen
   are ignored (and kept for the list) and the badge doesn't count them.
 - **Searching:** the bar at the bottom becomes the search field; the line under the pinned bar stays while filtering.
 - **Empty results always offer a way out:** with filters, "No hay eventos con estos filtros" · "Prueba con otras fechas
@@ -519,10 +535,37 @@ screens in the toolbar's chip rows:
 - **Semantics:** filter chips are toggle buttons (`aria-pressed`), short names carry the full one ("Finde": "Este fin de
   semana", "Próx. semana": "Próxima semana"); removable chips are named "Quitar Social"; "Cuándo"'s × is "Quitar Este
   fin de semana"; Filtros is "Filtros, 3 activos"; the bars' switch is a `role="switch"`. Focus stays on the chip chosen; after "Limpiar" (which hides or disables itself),
-  focus goes to Filtros (in the sheet, to its first control, the bars' switch; on wide screens, the toolbar's first chip).
-- **Wide screens:** the toolbar keeps its chip rows (dates with the bar's short names, types and "Ocultar bares", rhythms), chosen chips
-  with ×, the same dimming, and a status row: "12 eventos" and a
-  "Limpiar filtros" chip. Rows that don't fit wrap instead of cutting a chip.
+  focus goes to Filtros (in the sheet, to its first control, the bars' switch; on wide screens, the toolbar's first pill).
+- **Wide screens (the toolbar, from 720px wide and 600px tall, tablets included): dropdown pills** (the owner, 5 October
+  2026). The toolbar used to show dates, types and rhythms as three or four unlabeled rows of identical chips, and the
+  kinds read as one. Now, as on Meetup, Google Flights and Airbnb (Baymard: a horizontal bar of dropdowns suits a
+  handful of filter kinds), the tabs, "Guardados" and the search field keep their row, and under it **one row of
+  pills**: **[🕒 Cuándo ▾]** (the list only; the calendar keeps its month) **[Ritmo ▾] [Tipo ▾]** and the toggle chip
+  **"Ocultar bares"**, a little apart (`views/filters.ts` draws them, `views/filterPanels.ts` opens their panels).
+  - **A pill** is a compact chip with ▾ (which turns while its panel is open). With something chosen in it, it takes
+    the selected-chip colors and says how many: "Ritmo · 2", "Tipo · 1"; Cuándo says the date, as the phone bar's
+    ("🕒 Finde", "🕒 Hoy +1"). Open with nothing chosen, it's outlined in `--text` on `--surface-sunken`.
+  - **Its panel** hangs from it (`--surface`, `--shadow-menu`, the grain in dark): **Cuándo** is the phone's menu, one
+    date per tap (it closes); **Ritmo** ("Ritmo · *elige uno o varios*") has the rhythms under their families, **Tipo**
+    ("Tipo de evento") the types, as chips with their counts (`--pill-panel-width`, narrower on a narrower screen).
+    Choices apply at once and the panel stays open for more; the pill's count follows.
+  - **One panel at a time:** another pill opens its own in its place. **Closing:** Escape, the pill again, a click
+    outside (outside the toolbar that click does nothing else: it could open an event; in the toolbar, a tab, the
+    search or a removable chip does its job), or back (one history entry, as an overlay, like "Cuándo"'s menu). The
+    focus goes back to the pill.
+  - **Placed** under its pill, its left edge with the pill's, never past the screen's sides nor under the details'
+    side panel (at 1024px with the side panel open, the pills and the panels stay left of it); it scrolls when the
+    screen is short. Absolute, so nothing moves when it opens.
+  - **Under the row, while filtering:** "**12 eventos**" (in the calendar "15 eventos en octubre"), every choice as a
+    removable chip ("Finde ×", "Salsa ×", "Social ×") and "× Limpiar" (`--accent-text`, named "Limpiar filtros"). No
+    "Sin bares ×" here: the "Ocultar bares" pill already shows it's on and turns it off (the owner, 5 Oct 2026); the
+    count line still says "· Sin bares". It wraps at narrow widths (768px) instead of scrolling.
+  - **Semantics:** each pill is a button with `aria-haspopup` (`menu` for Cuándo, `dialog` for Ritmo and Tipo),
+    `aria-expanded` and `aria-controls`, named with what's chosen ("Ritmo, 2 elegidos", "Tipo, 1 elegido", "Cuándo:
+    Este fin de semana"). Ritmo's and Tipo's panels are non-modal dialogs labelled "Ritmo" and "Tipo de evento", their
+    families `role="group"` labelled by their headings; the chips are toggle buttons with their counts in their names
+    ("Salsa, 14 eventos"). Opening puts the focus on what's chosen (else the first option); ↓ ↑ → ← Home End move
+    between options; Tab goes around inside a dialog (and leaves Cuándo's menu, closing it); ↓ or ↑ on a pill opens it.
 
 ## Events with several posts
 

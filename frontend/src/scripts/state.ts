@@ -29,11 +29,11 @@ export function createInitialState(remembered: Partial<Pick<AppState, "hideBars"
   };
 }
 
-/** Styles with variants: filtering by the family ("salsa") also matches its variants ("salsa caleña"). */
-export const STYLE_FAMILIES = ["salsa", "bachata"];
+/** Rhythms with variants: filtering by "salsa" also matches its variants ("salsa caleña"). */
+export const STYLES_WITH_VARIANTS = ["salsa", "bachata"];
 
 export function styleMatches(eventStyle: string, filter: string): boolean {
-  return eventStyle === filter || (STYLE_FAMILIES.includes(filter) && eventStyle.startsWith(`${filter} `));
+  return eventStyle === filter || (STYLES_WITH_VARIANTS.includes(filter) && eventStyle.startsWith(`${filter} `));
 }
 
 /** Any of the rhythms chosen (none chosen: every event). */

@@ -129,7 +129,9 @@ Salsa and bachata have one level of specificity. The plain name is used when the
 | `afro` | afro, afrobeat, rumba cubana |
 | `otro` | anything else |
 
-On the site, filtering by **Salsa** or **Bachata** also shows their variants.
+On the site, filtering by **Salsa** or **Bachata** also shows their variants. The filters group the styles in four
+families (Salsa, Bachata, Urbanos, Otros: `frontend/src/scripts/lib/styleFamilies.ts`); a new style needs a family
+there too (`tests/styleFamilies.test.ts` checks every style of `scripts/check-data.mjs` is in one).
 
 ## Rules
 

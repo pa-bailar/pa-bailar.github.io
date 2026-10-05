@@ -1,5 +1,6 @@
-/* The filter chips (scripts/views/filters.ts), in the phone bar, the "Filtros" sheet and the toolbar, and what
-   tells what's chosen: the line under the bar and the toolbar's status row. The chip's base: toolbar.css. */
+/* The filter chips (scripts/views/filters.ts), in the phone bar, the "Filtros" sheet and the toolbar's panels, the
+   rhythms' families, the toolbar's pills and their panels (views/filterPanels.ts), and what tells what's chosen: the
+   line under the bar and the toolbar's status row. The chip's base: toolbar.css. */
 
 /* One tap chooses (the selected chip's colors, with ×), another unchooses. 44 px to the finger. */
 .filter-chip {
@@ -186,6 +187,14 @@
   cursor: pointer;
 }
 
+/* With a mouse (wide screens, a fine pointer): compact rows; touch screens keep the 44px target. */
+@media (hover: hover) and (pointer: fine) {
+  .when-menu__item {
+    min-height: 32px;
+    font-size: var(--text-sm);
+  }
+}
+
 .when-menu__item:focus-visible {
   outline-offset: -3px;
 }
@@ -284,14 +293,142 @@
   height: var(--icon-sm);
 }
 
-/* ---------- wide screens: the toolbar's status row ---------- */
+/* ---------- the rhythms' families (lib/styleFamilies.ts): the sheet's Ritmo and the Ritmo panel ----------
+   A small heading over each family's chips, compact: Salsa, Bachata, Urbanos, Otros. */
 
-/* "12 eventos", "× Limpiar filtros". */
-.filter-status {
+.filter-family + .filter-family {
+  margin-top: var(--space-3);
+}
+
+.filter-family__name {
+  margin: 0 0 var(--space-1);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.filter-family__chips {
   display: flex;
   flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+/* ---------- wide screens: the toolbar's pills (filters.ts) ----------
+   [🕒 Cuándo ▾] [Ritmo · 2 ▾] [Tipo ▾]   [Ocultar bares]: one row, each pill opening its panel. */
+
+.filter-pills {
+  display: flex;
+  flex: 1 0 100%;
+  flex-wrap: wrap;
   align-items: center;
-  gap: var(--space-2) var(--space-3);
+  gap: var(--space-2);
+}
+
+.filter-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding-right: var(--space-2);
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.filter-pill .icon {
+  width: var(--icon-sm);
+  height: var(--icon-sm);
+}
+
+/* Cuándo's clock, in the accent's text color while no date is chosen (as in the phone bar). */
+.filter-pill:not(.is-chosen) .icon:first-child:not(:last-child) {
+  color: var(--accent-text);
+}
+
+/* ▾ turns while its panel is open (at once with reduced motion). */
+.filter-pill .icon:last-child {
+  transition: transform var(--duration) var(--ease-standard);
+}
+
+.filter-pill[aria-expanded="true"] .icon:last-child {
+  transform: rotate(180deg);
+}
+
+/* Open with nothing chosen: outlined in the text's color on the sunken surface, so it reads as the one open. */
+.filter-pill[aria-expanded="true"]:not(.is-chosen) {
+  border-color: var(--text);
+  background: var(--surface-sunken);
+}
+
+/* Something chosen in it: "Ritmo · 2", the selected-chip colors. */
+.filter-pill.is-chosen {
+  background: var(--chip-active-bg);
+  border-color: var(--chip-active-bg);
+  color: var(--chip-active-text);
+}
+
+/* "Ocultar bares" ends the row, set a little apart (it isn't a pill: one tap turns it on or off). */
+.filter-chip--bars {
+  margin-left: var(--space-3);
+}
+
+/* ---------- wide screens: the pills' panels (views/filterPanels.ts) ----------
+   Hang from their pill like "Cuándo"'s menu (which the Cuándo pill opens: .when-menu above). Ritmo and Tipo: their
+   chips with counts, the rhythms under their families; choices apply at once, the panel stays. */
+
+.pill-panel {
+  position: absolute;
+  z-index: var(--z-sticky);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--surface);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-menu);
+}
+
+.pill-panel:not(.pill-panel--menu) {
+  width: min(var(--pill-panel-width), calc(100vw - var(--space-4) * 2));
+  padding: var(--space-3) var(--space-4) var(--space-4);
+}
+
+:root[data-theme="dark"] .pill-panel {
+  background-image: var(--grain);
+}
+
+.pill-panel[hidden] {
+  display: none;
+}
+
+.pill-panel__head {
+  margin: 0 0 var(--space-3);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  color: var(--text);
+}
+
+.pill-panel__head small {
+  margin-left: var(--space-1);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-regular);
+  color: var(--text-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .filter-pill .icon:last-child {
+    transition: none;
+  }
+}
+
+/* ---------- wide screens: the toolbar's status row ---------- */
+
+/* "12 eventos", the choices as removable chips ("Salsa ×", "Sin bares ×") and "× Limpiar". */
+.filter-status {
+  display: flex;
+  flex: 1 0 100%;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
   font-size: var(--text-sm);
 }
 
@@ -300,6 +437,7 @@
 }
 
 .filter-status__count {
+  margin: 0 var(--space-1) 0 0;
   color: var(--text-muted);
 }
 
@@ -307,12 +445,6 @@
   color: var(--text);
 }
 
-.filter-status__clear .icon {
-  width: var(--icon-sm);
-  height: var(--icon-sm);
-}
-
-/* Wide screens: "Ocultar bares" ends the types' row, set a little apart (it isn't a type). */
-.filter-chip--bars {
-  margin-left: var(--space-3);
+.filter-status__clear {
+  min-height: var(--chip-height);
 }

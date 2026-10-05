@@ -10,8 +10,9 @@ import { fileURLToPath } from "node:url";
 const EVENT_TYPES = ["social", "workshop", "concert", "festival", "congress", "competition", "show", "other"];
 const MEDIA_TYPES = ["IMAGE", "CAROUSEL_ALBUM", "VIDEO", "STORY"];
 const CONFIDENCE = ["high", "medium", "low"];
-// The backend's style list (pa_bailar/models.py Style). A new style needs a change here too.
-const STYLES = [
+// The backend's style list (pa_bailar/models.py Style). A new style needs a change here too, and a family in
+// src/scripts/lib/styleFamilies.ts (tests/styleFamilies.test.ts checks it).
+export const STYLES = [
   "salsa", "salsa cubana", "salsa en línea", "salsa caleña", "bachata", "bachata sensual",
   "bachata dominicana", "merengue", "cha cha chá", "son", "kizomba", "zouk", "champeta", "urbano",
   "afro", "dancehall", "heels", "tango", "swing", "otro",
