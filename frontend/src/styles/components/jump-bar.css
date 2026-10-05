@@ -1,5 +1,5 @@
 /* Phones: the slim bar pinned to the top (components/JumpBar.astro, scripts/views/jumpBar.ts):
-   [🔍] [🔖 3] [⚙ 2 · Social × · 📅 ▾ | Salsa · Bachata · Urbano · Tango →]
+   [🔍] [🔖 3] [⚙ 2 · Social × · 🕒 ▾ | Salsa · Bachata · Urbano · Tango →]
    and, while filtering, "12 eventos · Finde, Salsa · × Limpiar" under it. It never hides: the filters are at hand
    anywhere in the list. The chips themselves and the "Cuándo" menu: filters.css.
    iOS Safari: sticky needs no overflow other than `clip`/visible on its ancestors (html, body), and no transform
