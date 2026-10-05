@@ -4513,6 +4513,80 @@
     ]
   },
   {
+    "title": "Intensivo 2026 4.0 - Salsa en línea",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa en línea"
+    ],
+    "organizer": "Salseros OCS",
+    "venue": "Ilé Danza",
+    "address": null,
+    "area": null,
+    "date": "2026-11-08",
+    "end_date": "2026-12-06",
+    "sessions": [
+      {
+        "date": "2026-11-08",
+        "start_time": null,
+        "end_time": null
+      },
+      {
+        "date": "2026-11-22",
+        "start_time": null,
+        "end_time": null
+      },
+      {
+        "date": "2026-11-29",
+        "start_time": null,
+        "end_time": null
+      },
+      {
+        "date": "2026-12-06",
+        "start_time": null,
+        "end_time": null
+      }
+    ],
+    "weekday": "domingo",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "persona",
+        "amount_cop": 160000,
+        "condition": null
+      },
+      {
+        "label": "parejas",
+        "amount_cop": 280000,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "intensivo salsa en línea on1 en parejas"
+    ],
+    "contact": "301 625 6707",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio"
+    ],
+    "id": "intensivo-2026-4-0-salsa-en-linea-8-nov",
+    "account": "frank.de.latorre",
+    "media": [
+      {
+        "post_id": "story-8ccbeb9e2cbbba06",
+        "permalink": "https://www.instagram.com/frank.de.latorre/",
+        "media_type": "STORY",
+        "published": "2026-10-04T19:24:18+0000",
+        "flyer": "flyers/story-8ccbeb9e2cbbba06-0.webp",
+        "caption": null,
+        "preview": null,
+        "slides": null
+      }
+    ]
+  },
+  {
     "title": "Bailatón Los Morochos",
     "event_type": "social",
     "is_recurring": false,
