@@ -1,4 +1,5 @@
-// A browser's session history for unit tests (Vitest runs in Node): history, location and window's popstate.
+// A browser's session history for unit tests (Vitest runs in Node): history, location and window's popstate, and the
+// document's focus (`document.activeElement`, moved by `fakeFocusable`'s focus()).
 // Like the browser's, back() and go() are asynchronous: popstate arrives on a later task (`settle` waits for it).
 
 import { vi } from "vitest";
@@ -84,10 +85,24 @@ export function installFakeHistory(start = "https://pa-bailar.github.io/"): Fake
     setTimeout,
     clearTimeout,
   };
+  const body = fakeFocusable("body");
   vi.stubGlobal("history", history);
   vi.stubGlobal("location", location);
   vi.stubGlobal("window", window);
+  vi.stubGlobal("document", { body, activeElement: body });
   return fake;
+}
+
+/** An element that takes the focus (a button), as `document.activeElement` (after installFakeHistory). */
+export function fakeFocusable(name: string) {
+  const element = {
+    name,
+    isConnected: true,
+    focus() {
+      Object.assign(document, { activeElement: element });
+    },
+  };
+  return element as unknown as HTMLElement;
 }
 
 /** A <dialog> as lib/sheet.ts uses it: showModal, close (its "close" event on a later task), open, id. */
