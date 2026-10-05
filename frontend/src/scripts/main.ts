@@ -44,6 +44,7 @@ import { initViewSwitch, renderViewSwitch } from "./views/viewSwitch";
 import { viewNavigation } from "./views/viewNavigation";
 import { closeWhenMenu, isWhenMenuOpen, openWhenMenu, syncWhenMenu } from "./views/whenMenu";
 import { initSaveButtons, renderSavedToggles } from "./views/saveButton";
+import { watchDayChange } from "./views/dayChange";
 import { initInstallPrompt, offerAfterSaving, registerServiceWorker } from "./views/installPrompt";
 import { initSharing, plansEventUrl, setShareSources } from "./views/sharing";
 import { isSaved, keepOnly } from "./lib/saved";
@@ -353,4 +354,5 @@ export function start() {
   render();
   openSharedEvent();
   initScreenHistory({ current: currentScreen, apply: applyScreen });
+  watchDayChange(state, () => render()); // shown again on another day: today's events, or the latest ones
 }
