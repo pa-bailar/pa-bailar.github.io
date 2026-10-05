@@ -3,5 +3,5 @@ node_modules/
 dist/
 .astro/
 
-# Local settings (frontend/.env.example lists them)
+# Local settings, if ever needed (never committed)
 .env
