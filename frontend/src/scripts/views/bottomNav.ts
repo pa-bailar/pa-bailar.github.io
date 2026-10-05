@@ -59,6 +59,18 @@ export function keyboardInset(layoutHeight: number, viewport: { height: number; 
   return Math.min(Math.max(inset, 0), Math.max(layoutHeight, 0));
 }
 
+/** A keyboard at least this tall was on screen (px): smaller changes are toolbars collapsing, not a keyboard. */
+const KEYBOARD_MIN = 120;
+
+/**
+ * Whether the on-screen keyboard just went away while the field kept the focus: Android's back button (and its
+ * keyboard's own "hide" key) closes the keyboard without a `blur` or a history step (the page isn't told about that
+ * first back), so the search reacts to the keyboard leaving instead, as native apps do (owner, 5 Oct 2026).
+ */
+export function keyboardJustHid(before: number, after: number): boolean {
+  return before >= KEYBOARD_MIN && after < KEYBOARD_MIN / 3;
+}
+
 /**
  * The search field's history entry (an overlay over the screen, like the sheets'): `open` pushes it; `close` leaves
  * it as back would (if it's the current one); back from it calls `onBack`; forward onto it once the field is closed
@@ -120,6 +132,8 @@ export function renderBottomNav(state: NavState) {
 // ---------- the search field and the keyboard ----------
 
 let watching = false;
+let lastInset = 0;
+let onKeyboardHidden: () => void = () => {};
 
 /** Puts the bar right above the keyboard while the field has the focus (none otherwise). */
 function placeAboveKeyboard() {
@@ -128,6 +142,9 @@ function placeAboveKeyboard() {
   const inset = focused ? keyboardInset(document.documentElement.clientHeight, window.visualViewport) : 0;
   bar.style.setProperty("--keyboard-inset", `${inset}px`);
   bar.classList.toggle("is-lifted", inset > 0);
+  const hid = focused && keyboardJustHid(lastInset, inset);
+  lastInset = inset;
+  if (hid) onKeyboardHidden();
 }
 
 function watchKeyboard(on: boolean) {
@@ -178,12 +195,18 @@ export function closeSearchField() {
 /**
  * `dismiss`: the search ends (× and back clear it, main.ts). Escape does the same on a keyboard; the keyboard's
  * "Buscar" (Enter) closes the field and keeps the search; leaving an empty field (the keyboard closed without typing)
- * closes it.
+ * closes it. The keyboard going away with the field still focused (Android's back) does the same: empty, the search
+ * ends; with words, it's kept, as with "Buscar".
  */
 export function initBottomNav({ dismiss }: { dismiss: () => void }) {
   // Until the owner picks (docs/DESIGN.md): ?barra=iconos shows the bar without its labels, for this visit.
   if (new URLSearchParams(location.search).get("barra") === "iconos") nav().dataset.labels = "off";
   entry = searchHistory({ isOpen: isSearchOpen, onBack: dismiss });
+  onKeyboardHidden = () => {
+    if (!isSearchOpen()) return;
+    if (field().value.trim()) closeSearchField();
+    else dismiss();
+  };
   byId("bottom-search-open").addEventListener("click", openSearchField);
   const form = byId<HTMLFormElement>("bottom-search");
   const input = field();

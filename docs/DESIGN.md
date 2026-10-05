@@ -402,7 +402,10 @@ the list stays short there and summarizes what's further away (`scripts/views/up
     the view on screen as before. It has a history entry, an overlay like the sheets: **× and back close it and clear
     the search** (as × did in the old bar); Escape too on a keyboard. **The keyboard's "Buscar" (Enter)** closes the
     keyboard and the field and keeps the search: Buscar shows it's on (its pill, named "Buscar: «salsa»"), and a tap
-    opens the field again with the words. A field left empty closes when the keyboard does. **Above the keyboard:**
+    opens the field again with the words. A field left empty closes when the keyboard does. **Android's back** with the
+    keyboard up only hides the keyboard (the page isn't told: the platform's rule, as in native apps), so the search
+    reacts to the keyboard leaving while the field keeps the focus (`keyboardJustHid`): empty, it closes; with words,
+    it's kept, as with "Buscar" (the owner, 5 Oct 2026). **Above the keyboard:**
     while the field has the focus, the bar rises by the keyboard's height, read from the visual viewport (`bottom:
     var(--keyboard-inset)`, the home indicator's inset dropped); see `ARCHITECTURE.md`, section 5.7.
   - **Sheets and the details drawer** are modal dialogs in the browser's top layer: they cover the bar, which stays
