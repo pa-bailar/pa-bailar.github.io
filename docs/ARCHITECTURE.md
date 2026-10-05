@@ -170,7 +170,8 @@ flowchart LR
 
 | Output | Source | What it is |
 |---|---|---|
-| `/` (`index.html`) | `pages/index.astro` | The app: header, toolbar, jump bar, both views, details drawer, filter sheet. Every event is embedded as JSON (`<script type="application/json" id="events-data">`), and the browser renders the cards and calendar from it. The preview image is the brand's own (`/og/sitio.jpg`), not an event's flyer |
+| `/calendario/` | `pages/calendario/index.astro` | The same app opening on the calendar (`HomePage.astro` with `view="calendar"`; `main.ts` reads the address with `viewOfPath`), so a reload or a shared link stays on it. Its title and description: `lib/viewTitles.ts` |
+| `/` (`index.html`) | `pages/index.astro` (its body: `components/HomePage.astro`) | The app: header, toolbar, jump bar, both views, details drawer, filter sheet. Every event is embedded as JSON (`<script type="application/json" id="events-data">`), and the browser renders the cards and calendar from it. The preview image is the brand's own (`/og/sitio.jpg`), not an event's flyer |
 | `/evento/<id>/` | `pages/evento/[id].astro` | One page per event: where a shared link points. A browser is forwarded to the home page with the event open over the list, unless it's past (section 5.3). Rendered at build time: the flyer, then the same details as the drawer. Includes the link preview's tags (section 3.4) and schema.org `Event` data for search engines (a workshop series: from its first session to its last, each session a `subEvent`, section 6) |
 | `/og/<id>.jpg` | `pages/og/[id].jpg.ts` | Each event's link-preview image: 1200×630, the flyer with the date, title, place and price (section 3.4) |
 | `/og/sitio.jpg` | `pages/og/sitio.jpg.ts` | The home page's link preview (1200×630): stripes, "Pa' Bailar", the tagline and the record. Drawn once with the site's fonts by `scripts/og-site.html` and stored as `src/assets/og-site.jpg` |
@@ -189,6 +190,7 @@ flowchart TD
     D["src/data.ts<br/>(events + flyer sizes and versions)"] --> IDX["index.astro → /"]
     D --> EVT["evento/[id].astro → /evento/&lt;id&gt;/"]
     D --> OG["og/[id].jpg.ts → /og/&lt;id&gt;.jpg<br/>(linkPreviewImage.ts, section 3.4)"]
+    D --> CAL["calendario/index.astro → /calendario/<br/>(the same app, on the calendar)"]
     D --> ICS["calendario.ics.ts → /calendario.ics"]
     D --> TH["thumbs/[name].webp.ts → /thumbs/&lt;flyer&gt;.webp"]
     IDX --> SM["sitemap-index.xml"]
@@ -748,10 +750,10 @@ frontend/
 | `views/whenMenu.ts` | Phones: the "Cuándo" menu under its chip: its items (`whenMenuHtml`), opening (its own history entry, as an overlay), where it hangs (`menuPlacement`), the keys (`nextOption`), closing (Escape, a tap outside that does nothing else, Tab, back) and the focus |
 | `views/viewSwitch.ts` | Phones: the floating calendar / list button |
 | `views/dayChange.ts` | The page shown again on another day: the calendar's day and month to today, drawn again; hours later and online, loaded again |
-| `views/viewNavigation.ts` | Switching views, each back where it was left; the calendar's day list on screen (`revealDay`); the screens' history hooks (`currentScreen`, `applyScreen`) |
+| `views/viewNavigation.ts` | Switching views (the list back where it was left, the calendar on its home), the tab's title; the calendar's day list on screen (`revealDay`); the screens' history hooks (`currentScreen`, `applyScreen`) |
 | `lib/focus.ts` | Keeping the keyboard's focus through a redraw (`focusSelector`, `focusScope`), and after "Limpiar" |
 | `lib/accountLink.ts` | Every @account's link (`accountLinkHtml`, `accountLinkAttrs`): the profile, opened inside the site (`data-profile`); `tests/accountLink.test.ts` fails on any other profile link |
-| `lib/links.ts` | Every URL built from an event: flyer, clip, page, link preview, Maps, the report form; an account's profile and its embed (`profileUrl`, `profileEmbedUrl`); calendar times (a series' per session) |
+| `lib/links.ts` | Every URL built from an event: flyer, clip, page, link preview, Maps, the report form; an account's profile and its embed (`profileUrl`, `profileEmbedUrl`); each view's address (`viewPath`, `viewOfPath`) and where closing an event returns (`addressAfterClosing`); calendar times (a series' per session) |
 | `lib/calendarFeed.ts` | The calendar feed's text (`/calendario.ics`): one VEVENT per event, or per session of a workshop series |
 | `lib/linkPreview.ts`, `linkPreviewImage.ts` | A shared link's preview: its title, description, the image's text and version; the image itself (build time) |
 | `lib/mediaLabel.ts` | What the label over a post's image says (Ver con sonido, Ver video, Ver las N, Historia), and which cards say "Video" (`isVideoCover`); stories (`isStory`, `storySource`: "De una historia de @cuenta…") |

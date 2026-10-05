@@ -54,8 +54,13 @@ export function historyState(state: unknown = history.state): AppHistoryState {
 interface Hooks {
   /** The screen on show now. */
   current: () => ScreenData;
-  /** Put `screen` back (back or forward). */
-  apply: (screen: Screen) => void;
+  /**
+   * Put `screen` back (back or forward). `undoing`: the move a `leave` stepped back out of (its other changes since,
+   * e.g. "Guardados" turned off in the calendar, stay as they are).
+   */
+  apply: (screen: Screen, undoing?: ScreenKind) => void;
+  /** The address of a screen (each view has its own: lib/links.ts viewPath), kept with its history entry. */
+  address?: (screen: ScreenData) => string;
 }
 
 let hooks: Hooks | null = null;
@@ -69,14 +74,28 @@ const stepsOf = (state: AppHistoryState): Step[] => state.screen?.steps ?? [{ id
 /** The current entry remembers the screen as it is now (above all, how far down it was). */
 function remember(steps = stepsOf(historyState())) {
   if (!hooks) return;
-  history.replaceState({ ...historyState(), screen: { ...hooks.current(), steps } } satisfies AppHistoryState, "");
+  const state = historyState();
+  const screen = hooks.current();
+  history.replaceState({ ...state, screen: { ...screen, steps } } satisfies AppHistoryState, "", addressOf(screen, state));
 }
+
+/** The screen's own address, with the query and the hash; none for an overlay (it keeps its own, e.g. an event's). */
+function addressOf(screen: ScreenData, state: AppHistoryState): string | undefined {
+  if (!hooks?.address || state.overlay) return undefined;
+  return `${hooks.address(screen)}${location.search}${location.hash}`;
+}
+
+/** The move a `leave` stepped back out of, until its popstate lands. */
+let undoing: ScreenKind | undefined;
+/** The hash of the entry on show: back from an in-page jump (#info) puts the scroll back, as the browser won't. */
+let shownHash = "";
 
 export function initScreenHistory(screenHooks: Hooks) {
   hooks = screenHooks;
   // The screens put their own scroll back (`apply`). The browser's own restoring would undo it: it saves an
   // entry's position when the next one is pushed, after the move already scrolled.
   history.scrollRestoration = "manual";
+  shownHash = location.hash;
   remember();
   window.addEventListener("popstate", (domEvent) => {
     const state = historyState(domEvent.state);
@@ -86,8 +105,26 @@ export function initScreenHistory(screenHooks: Hooks) {
       history.back();
       return;
     }
-    if (state.screen) screenHooks.apply(state.screen);
+    const from = undoing;
+    undoing = undefined;
+    const jumpedBack = location.hash !== shownHash;
+    shownHash = location.hash;
+    if (state.screen) screenHooks.apply(state.screen, from);
+    if (from) remember(); // that entry now holds the screen as it is (e.g. "Guardados" off)
+    // Back from an in-page jump ("Info", #info): the same screen, so apply leaves the scroll alone; put it back here.
+    if (jumpedBack && state.screen && !state.overlay) window.scrollTo({ top: state.screen.scrollY, behavior: "auto" });
   });
+  // Before an in-page jump: this entry remembers where the page was, for back to return there.
+  if (typeof document?.addEventListener !== "function") return; // unit tests: a fake history, no real page
+  document.addEventListener(
+    "click",
+    (domEvent) => {
+      const link = (domEvent.target as Element | null)?.closest?.("a[href^='#']");
+      if (link && link.getAttribute("href") !== "#") remember();
+    },
+    true,
+  );
+  window.addEventListener("hashchange", () => (shownHash = location.hash));
 }
 
 /** A move to another screen: `move` changes and draws it; then it gets its own history entry. */
@@ -97,7 +134,7 @@ export function goTo(kind: ScreenKind, move: () => void) {
   move();
   if (hooks) {
     const screen: Screen = { ...hooks.current(), steps: [...steps, { id: newId(), kind }] };
-    history.pushState({ screen } satisfies AppHistoryState, "");
+    history.pushState({ screen } satisfies AppHistoryState, "", addressOf(screen, {}));
   }
 }
 
@@ -111,6 +148,7 @@ export function leave(kind: ScreenKind, move: () => void) {
   const last = steps.at(-1);
   if (last?.kind === kind && steps.length > 1) {
     if (!state.overlay) {
+      undoing = kind;
       history.back();
       return;
     }

@@ -1,0 +1,74 @@
+---
+// The home page's body, for both of its addresses (pages/index.astro: the list, "Próximos"; pages/calendario/: the
+// calendar). One page, two views: `view` is the one it opens on, so reloading or sharing the calendar keeps it there
+// (main.ts reads data-start-view). Switching views changes the address (views/viewNavigation.ts).
+import type { View } from "../scripts/types";
+import { VIEW_TITLES } from "../scripts/lib/viewTitles";
+
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CalendarView from "./CalendarView.astro";
+import EventDrawer from "./EventDrawer.astro";
+import SiteFooter from "./SiteFooter.astro";
+import SiteHeader from "./SiteHeader.astro";
+import ViewToolbar from "./ViewToolbar.astro";
+import JumpBar from "./JumpBar.astro";
+import FilterSheet from "./FilterSheet.astro";
+import InstallOffer from "./InstallOffer.astro";
+import PostViewer from "./PostViewer.astro";
+import PostsSheet from "./PostsSheet.astro";
+import ViewSwitch from "./ViewSwitch.astro";
+import { accounts, events, meta } from "../data";
+import { LOCALE } from "../scripts/lib/format";
+
+// Escape "<" so a caption can never end the inline JSON script block early.
+const eventsJson = JSON.stringify(events).replace(/</g, "\\u003c");
+// When the data was last checked: the backend's sweep passes PUBLIC_CHECKED_AT to the build; otherwise
+// (local builds, code deploys) the time of the last data change recorded in meta.json.
+const checkedAt = import.meta.env.PUBLIC_CHECKED_AT || meta.generated_at;
+const updatedLabel = new Date(checkedAt).toLocaleDateString(LOCALE, {
+  day: "numeric",
+  month: "long",
+  timeZone: "America/Bogota",
+});
+
+interface Props {
+  view: View;
+}
+const { view } = Astro.props;
+---
+
+
+<BaseLayout
+  title={VIEW_TITLES[view].title}
+  description={VIEW_TITLES[view].description}
+  image={{
+    path: "og/sitio.jpg",
+    width: 1200,
+    height: 630,
+    type: "image/jpeg",
+    alt: "Pa' Bailar: sociales y talleres de baile en Bogotá",
+  }}
+>
+  <SiteHeader updatedLabel={updatedLabel} />
+  <InstallOffer />
+  <ViewToolbar />
+  <JumpBar />
+
+  <main class="container page-main" data-start-view={view}>
+    <section id="view-upcoming" role="tabpanel" aria-labelledby="tab-upcoming"></section>
+    <CalendarView />
+  </main>
+
+  <SiteFooter accounts={accounts} />
+  <EventDrawer />
+  <PostsSheet />
+  <PostViewer />
+  <FilterSheet />
+  <ViewSwitch />
+
+  <script type="application/json" id="events-data" set:html={eventsJson} />
+  <script>
+    import { start } from "../scripts/main";
+    start();
+  </script>
+</BaseLayout>

@@ -3,7 +3,7 @@
 // day's list ends with its start on screen (revealDay). main.ts owns the state and draws it (`render`).
 
 import type { AppState, View } from "../types";
-import { goTo, leave, sameScreen, type Screen, type ScreenData } from "../screenHistory";
+import { goTo, leave, sameScreen, type Screen, type ScreenData, type ScreenKind } from "../screenHistory";
 import {
   captureListPosition,
   type ListAnchor,
@@ -13,6 +13,7 @@ import {
   stickyOffset,
 } from "./jumpBar";
 import { setWholePeriods, wholePeriods } from "./upcomingView";
+import { VIEW_TITLES } from "../lib/viewTitles";
 
 /** How much of the day's list shows under its heading once it's revealed: the start of the first card. */
 const DAY_PEEK = 96;
@@ -27,24 +28,31 @@ export interface ViewNavigation {
   /** The screen on show, for its history entry. */
   currentScreen(): ScreenData;
   /** Back (or forward) to `screen`: its view, saved events and opened periods, where it was scrolled. */
-  applyScreen(screen: Screen): void;
+  applyScreen(screen: Screen, undoing?: ScreenKind): void;
+  /** The page opened on the calendar (its own address, /calendario/): its home on screen once laid out. */
+  openedOnCalendar(): void;
 }
 
 /** The views of `state`, drawn by `render`. */
 export function viewNavigation(state: AppState, render: () => void): ViewNavigation {
-  /** Where each view was left: coming back to it lands there. */
+  /** Where the list was left: coming back to it lands there. */
   let leftList: { scrollY: number; filters: string; anchor: ListAnchor | null } | null = null;
-  let leftCalendar: number | null = null;
 
   const filtersKey = () => JSON.stringify([state.types, state.styles, state.dates]);
 
-  /** Shows `view` (no history entry of its own), each view back where it was left. */
+  /**
+   * Shows `view` (no history entry of its own). The list comes back where it was left; the calendar always opens on
+   * its home: the month and the start of the day's list on screen, never where it was scrolled before (its cards
+   * look like the list's, and coming back deep in them, visitors lost track of where they were: the owner, 4 October
+   * 2026).
+   */
   function showView(view: View) {
     if (view === state.view) return;
     if (state.view === "upcoming") {
       leftList = { scrollY: window.scrollY, filters: filtersKey(), anchor: captureListPosition() };
-    } else leftCalendar = window.scrollY;
+    }
     state.view = view;
+    document.title = VIEW_TITLES[view].title;
     render();
     if (view === "upcoming") {
       if (!leftList) return;
@@ -53,14 +61,15 @@ export function viewNavigation(state: AppState, render: () => void): ViewNavigat
       else if (leftList.anchor) restoreListPosition(leftList.anchor);
       return;
     }
-    if (leftCalendar !== null) returnToScroll(leftCalendar);
-    else {
-      // The first time, from anywhere in the list: the month's title under the pinned bar if the page is past it.
-      const head = document.querySelector<HTMLElement>(".calendar__head");
-      const offset = stickyOffset() + 8;
-      if (head && head.getBoundingClientRect().top < offset) {
-        window.scrollTo({ top: head.getBoundingClientRect().top + window.scrollY - offset, behavior: "auto" });
-      }
+    calendarHome();
+  }
+
+  /** The calendar's home: the month's title under the pinned bar if the page is past it, and the day's list on screen. */
+  function calendarHome() {
+    const head = document.querySelector<HTMLElement>(".calendar__head");
+    const offset = stickyOffset() + 8;
+    if (head && head.getBoundingClientRect().top < offset) {
+      window.scrollTo({ top: head.getBoundingClientRect().top + window.scrollY - offset, behavior: "auto" });
     }
     revealDay();
   }
@@ -101,9 +110,10 @@ export function viewNavigation(state: AppState, render: () => void): ViewNavigat
     scrollY: window.scrollY,
   });
 
-  function applyScreen(screen: Screen) {
+  function applyScreen(screen: Screen, undoing?: ScreenKind) {
     if (sameScreen(screen, currentScreen())) return; // e.g. back from an event or a sheet: the screen stays
-    state.savedOnly = screen.savedOnly;
+    // Leaving the calendar ("back" out of its move) keeps "Guardados" as it was set in it.
+    if (undoing !== "view") state.savedOnly = screen.savedOnly;
     setWholePeriods(screen.periods);
     if (screen.view !== state.view) {
       showView(screen.view); // it puts each view back where it was
@@ -114,5 +124,9 @@ export function viewNavigation(state: AppState, render: () => void): ViewNavigat
     revealDay();
   }
 
-  return { navigateView, revealDay, backToTop, currentScreen, applyScreen };
+  function openedOnCalendar() {
+    void document.fonts.ready.then(() => requestAnimationFrame(calendarHome));
+  }
+
+  return { navigateView, revealDay, backToTop, currentScreen, applyScreen, openedOnCalendar };
 }

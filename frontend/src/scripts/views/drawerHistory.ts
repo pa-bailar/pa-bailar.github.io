@@ -34,7 +34,7 @@ export function backOutOfEvent(): boolean {
  */
 export function afterClosing() {
   if (backOutOfEvent()) return;
-  const address = addressAfterClosing(location);
+  const address = addressAfterClosing(location, historyState().screen?.view);
   if (address) history.replaceState(history.state, "", address);
 }
 
