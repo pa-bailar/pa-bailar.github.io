@@ -2,7 +2,7 @@
 // filter bars of Google Maps or Airbnb: [🔍] [🔖 3] and a row of chips that scrolls sideways (filters.ts draws
 // them, main.ts handles their taps). Under it, while filtering, "12 eventos · Finde, Salsa · × Limpiar".
 //   - 🔍 turns the row into the search field; × clears the search and turns it back.
-//   - ⚙ opens the "Filtros" sheet; "📅 ▾" the "Cuándo" menu (whenMenu.ts).
+//   - ⚙ opens the "Filtros" sheet; "🕒 ▾" the "Cuándo" menu (whenMenu.ts).
 // It never hides, so the filters are at hand anywhere in the list (it used to hide while scrolling down, like
 // Instagram's header). It also keeps the visitor's place when a filter changes (captureListPosition /
 // restoreListPosition).
