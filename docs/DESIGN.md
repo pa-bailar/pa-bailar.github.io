@@ -484,9 +484,9 @@ screens in the toolbar's chip rows:
   (`#results-status`). In the calendar it reads "5 eventos en octubre · Salsa".
 - **Hiding the bars** (the owner, 5 October 2026). Bars and clubs open every week; the site lists only their special
   nights (`bar: true`, `DATA.md`), and **shows them by default**. Visitors who only want academies' events can hide them:
-  - **In the sheet:** a switch after the groups, under a line, the whole row its target: **Ocultar eventos de bares**
-    (`--text-md`, bold) and under it, muted (`--text-xs`), *Noches especiales de bares y discotecas: orquestas,
-    invitados, fiestas.* The track is on the right (`--switch-width` × `--switch-height`, square corners like the
+  - **In the sheet:** a switch **first**, one compact row above a line (the owner: near the top, taking little room),
+    the whole row its target (`--touch-target` high): **Ocultar eventos de bares** (`--text-sm`, bold); its hint,
+    *Noches especiales de bares y discotecas: orquestas, invitados, fiestas.*, only for screen readers. The track is on the right (`--switch-width` × `--switch-height`, square corners like the
     chips): off, outlined in `--border` with the thumb on the left in `--text-muted`; on, filled in `--chip-active-bg`
     with the thumb on the right in `--chip-active-text` (it slides in `--duration`; at once with reduced motion).
     `role="switch"`, `aria-checked`, named by its words and described by the hint (`barsSwitchHtml`).

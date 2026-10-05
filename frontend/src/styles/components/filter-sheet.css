@@ -98,13 +98,12 @@
   cursor: default;
 }
 
-/* "Ocultar eventos de bares" (views/filters.ts, barsSwitchHtml): after the groups, under a line. One row the width of
-   the sheet: the name and its hint on the left, the switch on the right; the whole row is the target. Square corners,
-   like the chips (printed labels). */
+/* "Ocultar eventos de bares" (views/filters.ts, barsSwitchHtml): first in the sheet, one compact row above a line (the
+   owner, 5 Oct 2026: near the top, taking little room): the name on the left, the switch on the right; the whole row is
+   the target. Its hint is for screen readers only. Square corners, like the chips (printed labels). */
 .filter-sheet__switch {
-  margin-top: var(--space-4);
-  padding-top: var(--space-2);
-  border-top: var(--border-width) solid var(--divider);
+  margin-bottom: var(--space-2);
+  border-bottom: var(--border-width) solid var(--divider);
 }
 
 .filter-switch {
@@ -113,7 +112,7 @@
   gap: var(--space-3);
   width: 100%;
   min-height: var(--touch-target);
-  padding: var(--space-2) 0;
+  padding: 0;
   border: 0;
   background: none;
   color: var(--text);
@@ -130,13 +129,8 @@
 }
 
 .filter-switch__name {
-  font-size: var(--text-md);
+  font-size: var(--text-sm);
   font-weight: var(--weight-bold);
-}
-
-.filter-switch__hint {
-  font-size: var(--text-xs);
-  color: var(--text-muted);
 }
 
 /* Off: an outlined track, the thumb on the left in muted ink. On: filled in the selected chip's color, the thumb on the

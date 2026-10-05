@@ -94,7 +94,7 @@ export function barsSwitchHtml(on: boolean): string {
     aria-labelledby="filter-bars-name" aria-describedby="filter-bars-hint">
       <span class="filter-switch__text">
         <span class="filter-switch__name" id="filter-bars-name">Ocultar eventos de bares</span>
-        <span class="filter-switch__hint" id="filter-bars-hint">Noches especiales de bares y discotecas: orquestas, invitados, fiestas.</span>
+        <span class="visually-hidden" id="filter-bars-hint">Noches especiales de bares y discotecas: orquestas, invitados, fiestas.</span>
       </span>
       <span class="filter-switch__track" aria-hidden="true"><span class="filter-switch__thumb"></span></span>
     </button>`;
@@ -186,10 +186,10 @@ function renderSheet(model: FilterModel, state: AppState) {
   const body = byId("filter-sheet-body");
   const scrolled = body.scrollTop;
   body.innerHTML = [
+    `<div class="filter-sheet__switch">${barsSwitchHtml(model.hideBars)}</div>`,
     dates,
     group("Ritmo", "elige uno o varios", model.styles, "Ritmo"),
     group("Tipo de evento", "", model.types, "Tipo de evento"),
-    `<div class="filter-sheet__switch">${barsSwitchHtml(model.hideBars)}</div>`,
   ].join("");
   body.scrollTop = scrolled;
   byId<HTMLButtonElement>("filter-sheet-clear").disabled = model.active === 0;
