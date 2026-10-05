@@ -4,11 +4,7 @@
 
 import type { APIRoute, GetStaticPaths } from "astro";
 import sharp from "sharp";
-
-const WINE = "#2A0F14"; // --wine-900
-const RECORD = "#1E0A0E"; // --wine-950
-const MARIGOLD = "#F2C12E"; // the app icon's marigold
-const TOMATO = "#C8321C"; // --tomato-600
+import { BRAND, ICON_MARIGOLD } from "../../scripts/lib/brandColors";
 
 /**
  * `recordShare`: the record's diameter as a share of the icon. "maskable" icons are cut to any shape by
@@ -20,11 +16,11 @@ function iconSvg(recordShare: number): string {
     .map((k) => `<circle cx="256" cy="256" r="${r * k}" fill="none" stroke="#fff" stroke-opacity="0.07" stroke-width="4"/>`)
     .join("");
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-    <rect width="512" height="512" fill="${TOMATO}"/>
-    <circle cx="256" cy="256" r="${r}" fill="${RECORD}"/>
+    <rect width="512" height="512" fill="${BRAND.tomato600}"/>
+    <circle cx="256" cy="256" r="${r}" fill="${BRAND.wine950}"/>
     ${grooves}
-    <circle cx="256" cy="256" r="${r * 0.42}" fill="${MARIGOLD}"/>
-    <circle cx="256" cy="256" r="${r * 0.1}" fill="${WINE}"/>
+    <circle cx="256" cy="256" r="${r * 0.42}" fill="${ICON_MARIGOLD}"/>
+    <circle cx="256" cy="256" r="${r * 0.1}" fill="${BRAND.wine900}"/>
   </svg>`;
 }
 

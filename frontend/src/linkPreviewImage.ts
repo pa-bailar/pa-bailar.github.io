@@ -14,6 +14,7 @@ import sharp, { type OverlayOptions } from "sharp";
 import { DATA_DIR } from "./data";
 import { PREVIEW_HEIGHT, PREVIEW_MAX_BYTES, PREVIEW_WIDTH, previewCard, type PreviewCard } from "./scripts/lib/linkPreview";
 import type { DanceEvent } from "./scripts/types";
+import { BRAND, ICON_MARIGOLD } from "./scripts/lib/brandColors";
 
 const W = PREVIEW_WIDTH;
 const H = PREVIEW_HEIGHT;
@@ -26,17 +27,17 @@ const TEXT_RIGHT = 52;
 
 // The day theme (styles/tokens.css): previews are seen in chat apps of either theme, and the paper reads in both.
 const COLOR = {
-  paper: "#ecddc6", // --bg: cream-150
-  ink: "#2a0f14", // --text: wine-900
-  muted: "#6e4a44", // --text-muted: cocoa-500
-  italic: "#6e2a33", // --text-italic: wine-500
-  accent: "#c8321c", // --accent, --logo, --sticker-bg: tomato-600
-  stickerText: "#fff8ec", // --sticker-text: cream-50
-  free: "#1f7a4a", // --free: palm-600
-  onFree: "#ffffff", // --on-free
-  stripes: ["#c8321c", "#e8791c", "#e9b021"], // --stripe-1..3
-  record: "#1e0a0e", // wine-950, the record of the home page's preview and the app icon
-  label: "#f2c12e", // the app icon's marigold
+  paper: BRAND.cream150, // --bg
+  ink: BRAND.wine900, // --text
+  muted: BRAND.cocoa500, // --text-muted
+  italic: BRAND.wine500, // --text-italic
+  accent: BRAND.tomato600, // --accent, --logo, --sticker-bg
+  stickerText: BRAND.cream50, // --sticker-text
+  free: BRAND.palm600, // --free
+  onFree: BRAND.white, // --on-free
+  stripes: [BRAND.tomato600, BRAND.orange600, BRAND.marigold600], // --stripe-1..3
+  record: BRAND.wine950, // the record of the home page's preview and the app icon
+  label: ICON_MARIGOLD,
 };
 
 const FONT_DIR = path.join(import.meta.env.ASSETS_DIR, "fonts", "og");

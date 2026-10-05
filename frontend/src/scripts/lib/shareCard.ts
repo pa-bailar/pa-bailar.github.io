@@ -17,6 +17,7 @@ import type { DanceEvent } from "../types";
 import { formatTime } from "./format";
 import { mainMedia, thumbUrl } from "./links";
 import { shortDayLabel } from "./shareText";
+import { BRAND } from "./brandColors";
 
 const WIDTH = 1080;
 const HEIGHT = 1350;
@@ -27,12 +28,12 @@ const ROW_GAP = 26;
 
 // The light theme's palette (styles/tokens.css): a canvas can't read CSS variables.
 const PALETTE = {
-  paper: "#ECDDC6", // --cream-150
-  card: "#F7EDDC", // --cream-75
-  ink: "#2A0F14", // --wine-900
-  muted: "#6E4A44", // --cocoa-500
-  logo: "#C8321C", // --tomato-600
-  stripes: ["#C8321C", "#E8791C", "#E9B021"], // --stripe-1..3
+  paper: BRAND.cream150,
+  card: BRAND.cream75,
+  ink: BRAND.wine900,
+  muted: BRAND.cocoa500,
+  logo: BRAND.tomato600,
+  stripes: [BRAND.tomato600, BRAND.orange600, BRAND.marigold600], // --stripe-1..3
 };
 
 const FONTS = {
