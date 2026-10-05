@@ -322,8 +322,8 @@ export function handleMediaLinkClick(domEvent: MouseEvent, event: DanceEvent): b
  * Clicks on an event's page that open something, false for any other:
  *   - the flyer: watch the post here (a video in place, inlinePlayer.ts; else the media viewer, postViewer.ts).
  *     A new-tab click follows the link to Instagram. A story's flyer is a plain image, not a link: nothing happens;
- *   - the posts badge: every post in a sheet; choosing one shows it on the page (its image, "Ver en Instagram"
- *     link and caption);
+ *   - the posts badge: every post in a sheet; choosing one shows it on the page (its image, the Instagram quick
+ *     action and its caption);
  *   - the media links, as in the drawer.
  */
 export function handleDetailClick(
