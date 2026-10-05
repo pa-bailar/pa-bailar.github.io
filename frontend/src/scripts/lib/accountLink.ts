@@ -5,6 +5,7 @@
 // tests/accountLink.test.ts fails on one that doesn't go through here.
 
 import { escapeHtml } from "./dom";
+import { attributesHtml } from "./externalLink";
 import { profileUrl } from "./links";
 
 export interface AccountLinkOptions {
@@ -29,8 +30,5 @@ export function accountLinkAttrs(account: string, { className, track, label }: O
 
 /** The same link as HTML, for the views. */
 export function accountLinkHtml(account: string, { content, ...options }: AccountLinkOptions = {}): string {
-  const attributes = Object.entries(accountLinkAttrs(account, options))
-    .map(([name, value]) => `${name}="${escapeHtml(value)}"`)
-    .join(" ");
-  return `<a ${attributes}>${content ?? `@${escapeHtml(account)}`}</a>`;
+  return `<a ${attributesHtml(accountLinkAttrs(account, options))}>${content ?? `@${escapeHtml(account)}`}</a>`;
 }

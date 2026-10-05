@@ -23,7 +23,7 @@ import { initThemeToggle } from "./theme";
 import { renderCalendarView } from "./views/calendarView";
 import { watchClips } from "./views/clips";
 import { highlightCurrentCard, initEventDrawer, openEventDrawer } from "./views/eventDrawer";
-import { openEventPosts } from "./views/eventDetail";
+import { openEventPosts } from "./views/eventDetailActions";
 import { armDetailsHint, markDetailsHintSeen } from "./views/detailsHint";
 import { filterModel, renderFilters, staleDates } from "./views/filters";
 import {

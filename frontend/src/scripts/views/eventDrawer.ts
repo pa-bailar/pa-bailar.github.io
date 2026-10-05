@@ -31,7 +31,8 @@ import {
   otherDetent,
   scrimAt,
 } from "./drawerSheet";
-import { eventDrawerHtml, handleMediaLinkClick } from "./eventDetail";
+import { eventDrawerHtml } from "./eventDetail";
+import { handleMediaLinkClick } from "./eventDetailActions";
 import { scrollPageTo, stickyOffset } from "./jumpBar";
 
 const PANEL_QUERY = `(min-width: ${PANEL_MIN_WIDTH}px)`; // wide enough for the list and a side panel (--panel-width)
