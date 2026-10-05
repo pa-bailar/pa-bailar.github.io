@@ -12,8 +12,16 @@ const DEFAULT_DURATION_HOURS = 4; // socials often run past midnight
 const FEEDBACK_FORM = "https://docs.google.com/forms/d/e/1FAIpQLScMjLlDsXBdgqNGjs3MIBhuMKQhG7xZpdAyzlA5lHxH7OiXtw/viewform";
 const FEEDBACK_EVENT_FIELD = "entry.1000168347";
 
+/** The thumbnails' size and quality (pages/thumbs/[name].webp.ts): square, sharp on 2× and 3× screens at the ~60 px
+ * they're shown. Part of their URL's version, so new settings reach returning visitors. */
+export const THUMB_SIZE = 160;
+export const THUMB_QUALITY = 70;
+
+/** `?v=<version>`: a short hash of the flyer's file (src/images.ts), so one made again under its name gets a new URL. */
+const versioned = (path: string, version: string | undefined) => (version ? `${path}?v=${version}` : path);
+
 export function flyerUrl(media: EventMedia): string | null {
-  return media.flyer ? `${BASE_URL}${media.flyer}` : null;
+  return media.flyer ? versioned(`${BASE_URL}${media.flyer}`, media.version) : null;
 }
 
 /** "flyers/123-0.webp" → "123-0": the name of its small thumbnail, made by pages/thumbs/[name].webp.ts. */
@@ -21,9 +29,12 @@ export function thumbName(flyer: string): string {
   return flyer.replace(/^.*\//, "").replace(/\.webp$/, "");
 }
 
-/** The flyer's small square thumbnail (160 px), for the row of an event's posts. */
+/** The flyer's small square thumbnail (160 px), for the row of an event's posts; its version is the flyer's and the
+ * thumbnails' settings. */
 export function thumbUrl(media: EventMedia): string | null {
-  return media.flyer ? `${BASE_URL}thumbs/${thumbName(media.flyer)}.webp` : null;
+  if (!media.flyer) return null;
+  const version = media.version && `${media.version}.${THUMB_SIZE}.${THUMB_QUALITY}`;
+  return versioned(`${BASE_URL}thumbs/${thumbName(media.flyer)}.webp`, version);
 }
 
 /** A video's short silent clip (the backend's previews/), played in the detail; null without one. */
