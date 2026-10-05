@@ -3,7 +3,7 @@
 import type { DanceEvent, EventType, View } from "./types";
 import type { AgendaGroup, FilterGroup } from "./state";
 import { initClickTracking } from "./lib/analytics";
-import { byId } from "./lib/dom";
+import { byId, isPlainClick } from "./lib/dom";
 import { dateRangeLabel, eventCountLabel, formatLongDate, styleLabel, typeLabel } from "./lib/format";
 import { addMonths, currentMonth, lastDay, shownDay, todayIso } from "./lib/dates";
 import { eventPath, sharedEventLink } from "./lib/links";
@@ -374,7 +374,7 @@ function handleClick(domEvent: MouseEvent) {
   }
   if (eventId) {
     // The card's title is a link: let the browser handle new-tab clicks; a plain click opens the details.
-    if (domEvent.button !== 0 || domEvent.metaKey || domEvent.ctrlKey || domEvent.shiftKey || domEvent.altKey) return;
+    if (!isPlainClick(domEvent)) return;
     const event = events.find((item) => item.id === eventId);
     if (!event) return;
     domEvent.preventDefault();

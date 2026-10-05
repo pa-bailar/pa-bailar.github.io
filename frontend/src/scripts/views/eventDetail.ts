@@ -3,7 +3,7 @@
 // (pages/evento/[id].astro, at build time), which also shows the flyer on top, like the card.
 
 import type { DanceEvent, EventMedia } from "../types";
-import { byId, escapeHtml } from "../lib/dom";
+import { byId, escapeHtml, isPlainClick } from "../lib/dom";
 import {
   capitalize,
   cardWhenLabel,
@@ -309,8 +309,7 @@ export function openEventPosts(event: DanceEvent, selected = 0) {
 export function handleMediaLinkClick(domEvent: MouseEvent, event: DanceEvent): boolean {
   const link = (domEvent.target as HTMLElement).closest<HTMLElement>("[data-media-link]");
   if (!link) return false;
-  const newTab = domEvent.button !== 0 || domEvent.metaKey || domEvent.ctrlKey || domEvent.shiftKey || domEvent.altKey;
-  if (link instanceof HTMLAnchorElement && newTab) return false;
+  if (link instanceof HTMLAnchorElement && !isPlainClick(domEvent)) return false;
   domEvent.preventDefault();
   const selected = Number(link.dataset.post ?? 0);
   if (link.dataset.mediaLink === "publicaciones") openEventPosts(event, selected);
@@ -336,8 +335,7 @@ export function handleDetailClick(
   const flyer = target.closest<HTMLElement>("[data-view-post]");
   if (flyer) {
     const media = event.media[Number(flyer.dataset.viewPost)];
-    const newTab = domEvent.button !== 0 || domEvent.metaKey || domEvent.ctrlKey || domEvent.shiftKey || domEvent.altKey;
-    if (!media || newTab) return false;
+    if (!media || !isPlainClick(domEvent)) return false;
     domEvent.preventDefault();
     const frame = flyer.closest<HTMLElement>(".event-detail__frame");
     if (isVideoCover(media) && frame) playInline(frame, media.permalink);
