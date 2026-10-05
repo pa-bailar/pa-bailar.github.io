@@ -610,6 +610,12 @@
     padding: var(--space-3) var(--space-4) 0;
   }
 
+  /* No card fill here: the time sits on the page, where the accent is below 4.5:1 in the light theme. Its text
+     shade (scripts/check-contrast.mjs, "a card's time in the phones' feed"). */
+  .event-card__time {
+    color: var(--accent-text);
+  }
+
   /* "Detalles" lines up with the text below; Guardar's icon with the text's right edge. */
   .event-card__actions {
     padding: var(--space-2) var(--space-1) 0 var(--space-4);

@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { STALE_AFTER_MS, moveToToday, resumeAction, watchDayChange } from "../src/scripts/views/dayChange";
+import { STALE_AFTER_MS, moveToToday, resumeAction, untilNextDay, watchDayChange } from "../src/scripts/views/dayChange";
 import { createInitialState } from "../src/scripts/state";
 
 const HOUR = 3600_000;
@@ -114,6 +114,25 @@ describe("watchDayChange", () => {
     at("2026-10-05T00:10");
     window.dispatchEvent(Object.assign(new Event("pageshow"), { persisted: true }));
     expect(page.render).toHaveBeenCalledTimes(1);
+  });
+
+  it("on screen across midnight, it draws today's events at midnight, and again the next night", () => {
+    vi.useFakeTimers();
+    at("2026-10-09T23:58");
+    const page = install(); // online and loaded minutes ago: never a reload under the visitor's eyes
+    vi.advanceTimersByTime(2 * 60 * 1000 - 2000);
+    expect(page.render).not.toHaveBeenCalled(); // 23:59:58
+    vi.advanceTimersByTime(4000);
+    expect(page.render).toHaveBeenCalledTimes(1); // 00:00:02 on Saturday the 10th
+    vi.advanceTimersByTime(24 * HOUR);
+    expect(page.render).toHaveBeenCalledTimes(2);
+    expect(page.reload).not.toHaveBeenCalled();
+  });
+
+  it("a timer for the next midnight in Bogotá, whatever the device's time zone", () => {
+    expect(untilNextDay(new Date("2026-10-09T23:58:00-05:00").getTime())).toBe(2 * 60 * 1000 + 1000);
+    expect(untilNextDay(new Date("2026-10-10T00:00:00-05:00").getTime())).toBe(24 * HOUR + 1000);
+    expect(untilNextDay(new Date("2026-10-10T04:59:00Z").getTime())).toBe(60 * 1000 + 1000); // 23:59 in Bogotá
   });
 
   it("hidden, it does nothing yet", () => {

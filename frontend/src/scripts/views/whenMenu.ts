@@ -13,6 +13,7 @@ import { byId, escapeHtml } from "../lib/dom";
 import type { WhenModel, WhenOption } from "../lib/filterModel";
 import { eventCountLabel } from "../lib/format";
 import { ICONS } from "../lib/icons";
+import { pressedClick } from "../lib/outsideClick";
 import { historyState, overlayState } from "../screenHistory";
 import { bottomInset } from "./bottomNav";
 
@@ -26,7 +27,7 @@ const menu = () => byId("when-menu");
 const opener = () => document.getElementById("when-open");
 const items = () => [...menu().querySelectorAll<HTMLElement>("[data-when]")];
 
-let swallowClick = false; // the tap outside that closed the menu: it does nothing else
+const swallowed = pressedClick(); // the tap outside that closed the menu: it does nothing else
 
 export function isWhenMenuOpen(): boolean {
   return !menu().hidden;
@@ -181,23 +182,25 @@ export function initWhenMenu() {
     event.preventDefault();
     openWhenMenu({ last: event.key === "ArrowUp" });
   });
-  // A tap outside closes it, and that tap does nothing else (it could open an event or a sheet behind it).
+  // A tap outside closes it, and that tap does nothing else (it could open an event or a sheet behind it): its own
+  // click only (lib/outsideClick.ts), never a later one.
   document.addEventListener(
     "pointerdown",
     (event) => {
-      swallowClick = false;
       const target = event.target as Node;
       if (!isWhenMenuOpen() || element.contains(target) || opener()?.contains(target)) return;
-      swallowClick = true;
+      swallowed.arm(target);
       closeWhenMenu();
     },
     true,
   );
+  const release = (event: PointerEvent) => swallowed.release(event.pointerType);
+  document.addEventListener("pointerup", release, true);
+  document.addEventListener("pointercancel", release, true);
   document.addEventListener(
     "click",
     (event) => {
-      if (!swallowClick) return;
-      swallowClick = false;
+      if (!swallowed.take(event.target)) return;
       event.preventDefault();
       event.stopPropagation();
     },

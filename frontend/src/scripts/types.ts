@@ -63,7 +63,7 @@ export interface DanceEvent {
   activities: string[];
   contact: string | null;
   confidence: "high" | "medium" | "low";
-  doubts: string[];
+  doubts: string[]; // build time only: the home page's JSON leaves them out (src/pageData.ts); no script reads them
   account: string;
   media: [EventMedia, ...EventMedia[]]; // main post first (the latest flyer; videos after flyers, stories last); always at least one
   bar?: boolean; // its account is a bar or club, open every week (docs/DATA.md); absent in older data

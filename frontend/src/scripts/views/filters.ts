@@ -11,8 +11,8 @@
 //     "Limpiar" and "Ver 12 eventos".
 //   - Wide screens (ViewToolbar.astro): one row of dropdown pills, [🕒 Cuándo ▾] (the list only) [Ritmo · 2 ▾] [Tipo ▾],
 //     and the toggle chip "Ocultar bares"; each pill opens its panel (filterPanels.ts): Cuándo's menu, the rhythms
-//     under their families, the types. Under the row, while filtering: "12 eventos", every choice as a removable chip
-//     ("Finde ×", "Salsa ×", "Sin bares ×") and "× Limpiar".
+//     under their families, the types. Under the row, while filtering: "12 eventos" ("40 eventos · Sin bares" while the
+//     bars are hidden), every other choice as a removable chip ("Finde ×", "Salsa ×") and "× Limpiar".
 // What each shows, and how options are counted and dimmed, is the model (lib/filterModel.ts, pure and tested); the
 // "Cuándo" menu draws itself (whenMenu.ts).
 
@@ -30,6 +30,7 @@ import {
   HIDE_BARS_FILTER,
   resultsButtonLabel,
   summaryLine,
+  whenButtonName,
 } from "../lib/filterModel";
 import type { FamilyGroup } from "../lib/styleFamilies";
 import { activeFilterCount } from "../state";
@@ -107,10 +108,12 @@ export function barsSwitchHtml(on: boolean): string {
     </button>`;
 }
 
-/** Wide screens: the same choice as a toggle chip at the end of the pills' row, "Ocultar bares" (with × while on). */
+/**
+ * Wide screens: the same choice as a toggle chip at the end of the pills' row, "Ocultar bares" (with × while on), named
+ * by its own words (label in name), pressed while on.
+ */
 export function barsChipHtml(on: boolean): string {
-  return `<button class="chip filter-chip filter-chip--bars" type="button" ${BARS_DATA} aria-pressed="${on}"
-    aria-label="Ocultar eventos de bares">Ocultar bares${on ? X : ""}</button>`;
+  return `<button class="chip filter-chip filter-chip--bars" type="button" ${BARS_DATA} aria-pressed="${on}">Ocultar bares${on ? X : ""}</button>`;
 }
 
 const FADE = 32; // px: the row fades out at its right edge (jump-bar.css, --space-6)
@@ -158,7 +161,7 @@ function renderBarChips(model: FilterModel) {
  */
 function whenChipHtml(when: WhenModel): string {
   const open = `<button class="chip filter-chip when-chip__open" type="button" id="when-open" data-when-open
-    aria-haspopup="menu" aria-expanded="false" aria-controls="when-menu" aria-label="Cuándo: ${escapeHtml(when.name)}">${
+    aria-haspopup="menu" aria-expanded="false" aria-controls="when-menu" aria-label="${escapeHtml(whenButtonName(when))}">${
       ICONS.clock
     }${when.chosen ? `<span>${escapeHtml(when.label)}</span>` : `<span class="when-chip__word">Cuándo</span>${ICONS.chevronDown}`}</button>`;
   const clear = when.chosen
@@ -255,14 +258,16 @@ export function panelHtml(key: PillKey, model: FilterModel): string {
 
 /**
  * Under the pills, only while filtering: "12 eventos" (in the calendar "5 eventos en octubre"), every choice as a
- * removable chip ("Finde ×", "Salsa ×", "Social ×") and "× Limpiar". Not the bars: their "Ocultar bares" pill already
- * shows it's on, and turns it off (the owner, 5 Oct 2026).
+ * removable chip ("Finde ×", "Salsa ×", "Social ×") and "× Limpiar". Not the bars as a chip: their "Ocultar bares" pill
+ * already shows it's on, and turns it off (the owner, 5 Oct 2026); the count says it: "40 eventos · Sin bares".
  */
 export function statusHtml(model: FilterModel, state: AppState): string {
   if (!model.active) return "";
   const { count, where } = summaryLine(model, state);
-  const chips = model.applied.filter((item) => item.group !== HIDE_BARS_FILTER.group);
-  return `<p class="filter-status__count"><b>${count}</b>${escapeHtml(where)}</p>
+  const isBars = (item: AppliedFilter) => item.group === HIDE_BARS_FILTER.group;
+  const chips = model.applied.filter((item) => !isBars(item));
+  const bars = model.applied.find(isBars);
+  return `<p class="filter-status__count"><b>${count}</b>${escapeHtml(where)}${bars ? ` · ${escapeHtml(bars.label)}` : ""}</p>
     ${chips.map(removableHtml).join("")}
     <button class="filter-summary__clear filter-status__clear" type="button" data-clear-filters aria-label="Limpiar filtros">${ICONS.close}Limpiar</button>`;
 }

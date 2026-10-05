@@ -187,7 +187,11 @@ function mediaHtml(event: DanceEvent, media: EventMedia, selected: number): stri
     : externalLinkHtml(media.permalink, `${picture}${labelHtml}`, {
         className: "event-detail__media",
         track: "ver-publicacion",
-        attributes: { "data-view-post": String(selected), "aria-label": "Ver la publicación" },
+        // Named starting with the words it shows ("Ver las 19", "Ver con sonido": label in name, WCAG 2.5.3).
+        attributes: {
+          "data-view-post": String(selected),
+          "aria-label": label ? `${label.text}, publicación de Instagram` : "Ver la publicación",
+        },
       });
   return `
     <div class="event-detail__frame">
@@ -298,9 +302,9 @@ export function eventDetailHtml(event: DanceEvent, selected: number, { titleId =
  */
 export function eventDrawerHtml(event: DanceEvent, { titleId }: { titleId: string }): string {
   return `
-    <header class="drawer__head">
+    <div class="drawer__head">
       <div class="drawer__heading">${headHtml(event, { heading: "h2", titleId })}</div>
       <button class="drawer__close" type="button" data-close-drawer aria-label="Cerrar">${ICONS.close}</button>
-    </header>
+    </div>
     <div class="drawer__body event-detail__info">${bodyHtml(event, 0)}</div>`;
 }

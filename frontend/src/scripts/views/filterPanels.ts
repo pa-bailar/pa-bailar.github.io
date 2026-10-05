@@ -4,20 +4,29 @@
 //   - **Cuándo** opens the same menu as on phones (menuitemradio): a tap applies one date and closes it (main.ts).
 //   - **Ritmo** and **Tipo** open a panel (a non-modal dialog) with their chips and counts, the rhythms under their
 //     families; choices apply at once and the panel stays open for more.
-//   - One panel at a time: another pill opens its own in its place. Closes with Escape, the pill again, a click
-//     outside (one outside the toolbar does nothing else: it could open an event behind it), or back: it has a history
-//     entry of its own, as an overlay, like the "Cuándo" menu. The focus goes back to the pill.
-//   - Keyboard: ↓ or ↑ on a pill opens it; in a panel the arrows (and Home, End) move between its options; Tab stays
-//     inside a Ritmo or Tipo panel (it's a dialog), and leaves Cuándo's menu (closing it), as on phones.
+//   - One panel at a time: another pill opens its own in its place. Closes with Escape (wherever the focus is), the
+//     pill again, Tab out of it, a click outside, back (it has a history entry of its own, as an overlay, like the
+//     "Cuándo" menu), or the screen getting too small for the toolbar. The focus goes back to the pill.
+//   - A click outside: outside the toolbar and the details' side panel it does nothing else (it could open an event
+//     behind it); in them (a tab, "Guardados", the search, a removable chip, the side panel's ×, Instagram or Guardar)
+//     it does its job once the panel's history entry is gone, so a button that writes its own entry writes it on the
+//     screen's, not on the panel's (lib/outsideClick.ts).
+//   - Keyboard: ↓ or ↑ on a pill opens it; in a panel the arrows (and Home, End) move between its options; Tab leaves
+//     it (closing it: Tab goes on from its pill, Shift+Tab lands on its pill). A click on the panel's own background
+//     keeps the focus in it (tabindex="-1"), so its keys still work.
 //   - Placed under its pill (absolute, so nothing moves when it opens), never past the screen's sides nor under the
 //     details' side panel; it scrolls when the screen is short.
 
+import { isPlainClick } from "../lib/dom";
 import type { PillKey } from "../lib/filterModel";
+import { pressedClick } from "../lib/outsideClick";
 import { historyState, overlayState } from "../screenHistory";
+import { WIDE_QUERY } from "./bottomNav";
 import { menuPlacement, nextOption } from "./whenMenu";
 
 const KEYS: readonly PillKey[] = ["when", "styles", "types"];
 const PREFIX = "panel-"; // the history entry's `menu`: "panel-styles"
+const HOLD_LIMIT_MS = 1000; // a held click goes on by then, even if the panel's back never landed
 
 /** The panel's element id, for the pill's `aria-controls`. */
 export function panelId(key: PillKey): string {
@@ -30,7 +39,11 @@ export function arrowKey(key: string): string {
 }
 
 let openKey: PillKey | null = null;
-let swallowClick = false; // the click outside the toolbar that closed a panel: it does nothing else
+const swallowed = pressedClick(); // a click outside the toolbar and the side panel that closed a panel: nothing else
+const deferred = pressedClick(); // a click in them that closed a panel: it waits for the panel's entry to go
+let leaving = false; // the panel's back is on its way (its popstate hasn't landed)
+let held: { target: EventTarget; init: MouseEventInit } | null = null; // the click waiting for it
+let holdTimer = 0;
 
 /** The pill whose panel is open (filters.ts draws it with aria-expanded="true"). */
 export function openPanelKey(): PillKey | null {
@@ -130,11 +143,17 @@ export function openPanel(key: PillKey, { last = false } = {}) {
   focusOption(firstFocus(key, last));
 }
 
-/** Closes the panel open, leaving its history entry as back would. `focusPill`: the focus goes back to its pill. */
-export function closePanel({ focusPill = false } = {}) {
-  if (!openKey) return;
+/**
+ * Closes the panel open, leaving its history entry as back would. `focusPill`: the focus goes back to its pill.
+ * Whether it went back (its popstate is on its way).
+ */
+export function closePanel({ focusPill = false } = {}): boolean {
+  if (!openKey) return false;
   hide({ focusPill });
-  if (historyState().menu?.startsWith(PREFIX)) history.back();
+  if (!historyState().menu?.startsWith(PREFIX)) return false;
+  leaving = true;
+  history.back();
+  return true;
 }
 
 /** A pill's click: opens its panel, or closes it if it's the one open. */
@@ -155,6 +174,14 @@ export function syncPanels() {
   place();
 }
 
+/** The click held while the panel's back was on its way, now on the screen's entry. */
+function releaseHeld() {
+  window.clearTimeout(holdTimer);
+  const click = held;
+  held = null;
+  if (click) click.target.dispatchEvent(new MouseEvent("click", click.init));
+}
+
 function onKeydown(event: KeyboardEvent) {
   if (!openKey) return;
   const key = openKey;
@@ -166,27 +193,29 @@ function onKeydown(event: KeyboardEvent) {
     focusOption(all[next]);
     return;
   }
-  if (event.key === "Escape") {
-    event.preventDefault();
-    event.stopPropagation(); // not the side panel's Escape too
-    closePanel({ focusPill: true });
-    return;
-  }
   if (event.key !== "Tab") return;
-  if (key === "when") {
-    closePanel(); // the focus moves on as usual, as in the phone's menu
-    return;
-  }
-  // A dialog: Tab goes around its options.
-  if (!all.length) return;
-  event.preventDefault();
-  focusOption(all[event.shiftKey ? (index <= 0 ? all.length - 1 : index - 1) : (index + 1) % all.length]);
+  // Not modal: Tab leaves it, closed. Forward it goes on from its pill (the focus is put there first, then moves on);
+  // back it lands on the pill.
+  if (event.shiftKey) event.preventDefault();
+  closePanel({ focusPill: true });
 }
 
 export function initFilterPanels() {
   const toolbar = document.querySelector<HTMLElement>(".toolbar");
   if (!toolbar) return;
   for (const key of KEYS) panel(key)?.addEventListener("keydown", onKeydown);
+  // Escape closes it wherever the focus is (also on the page, after a click on nothing), and only it: not the side
+  // panel too.
+  document.addEventListener(
+    "keydown",
+    (event) => {
+      if (!openKey || event.key !== "Escape") return;
+      event.preventDefault();
+      event.stopPropagation();
+      closePanel({ focusPill: true });
+    },
+    true,
+  );
   // ↓ or ↑ on a pill opens it (Enter and Space click it).
   toolbar.addEventListener("keydown", (event) => {
     const button = (event.target as HTMLElement).closest<HTMLElement>("[data-pill]");
@@ -197,26 +226,47 @@ export function initFilterPanels() {
     if (openKey === key) focusOption(firstFocus(key, event.key === "ArrowUp"));
     else openPanel(key, { last: event.key === "ArrowUp" });
   });
-  // A click outside closes it. Outside the toolbar that click does nothing else (it could open an event behind it);
-  // in the toolbar (a tab, the search, a removable chip) it does what it does. Another pill opens its own panel.
+  // A click outside closes it. Outside the toolbar and the side panel that click does nothing else (it could open an
+  // event behind it); in them (a tab, the search, a removable chip, the side panel's buttons) it does what it does,
+  // once the panel's entry is gone. Another pill opens its own panel.
+  const side = () => document.getElementById("event-drawer");
   document.addEventListener(
     "pointerdown",
     (event) => {
-      swallowClick = false;
       const target = event.target as HTMLElement;
       if (!openKey || panel(openKey)?.contains(target) || target.closest?.("[data-pill]")) return;
-      swallowClick = !toolbar.contains(target);
-      closePanel();
+      const inside = toolbar.contains(target) || Boolean(side()?.contains(target));
+      const wentBack = closePanel();
+      if (!inside) swallowed.arm(target);
+      else if (wentBack) deferred.arm(target);
     },
     true,
   );
+  const release = (event: PointerEvent) => {
+    swallowed.release(event.pointerType);
+    deferred.release(event.pointerType);
+  };
+  document.addEventListener("pointerup", release, true);
+  document.addEventListener("pointercancel", release, true);
   document.addEventListener(
     "click",
     (event) => {
-      if (!swallowClick) return;
-      swallowClick = false;
+      if (swallowed.take(event.target)) {
+        event.preventDefault();
+        event.stopPropagation();
+        return;
+      }
+      // Its job would land on the panel's entry, about to go: it waits for the popstate. A click asking for a new
+      // tab touches no history: it goes now.
+      if (!deferred.take(event.target) || !leaving || !isPlainClick(event) || !event.target) return;
       event.preventDefault();
-      event.stopPropagation();
+      event.stopImmediatePropagation();
+      const init = { bubbles: true, cancelable: true, composed: true, button: 0, detail: event.detail, view: window };
+      held = { target: event.target, init };
+      holdTimer = window.setTimeout(() => {
+        leaving = false;
+        releaseHeld();
+      }, HOLD_LIMIT_MS);
     },
     true,
   );
@@ -231,11 +281,22 @@ export function initFilterPanels() {
   };
   window.addEventListener("scroll", follow, { passive: true });
   window.addEventListener("resize", follow);
+  // Too small for the toolbar (a window resized, a tablet turned): the pills are gone, so is their panel, and its
+  // history entry with it (an invisible panel would swallow taps and back).
+  window.matchMedia(WIDE_QUERY).addEventListener("change", (change) => {
+    if (!change.matches) syncPanels();
+  });
   // Back: the entry under the panel's is now current. Forward onto a panel's entry once it's closed: a dead step,
   // back over it (as the "Cuándo" menu does).
   window.addEventListener("popstate", (event) => {
     const menu = historyState(event.state).menu;
-    if (!menu?.startsWith(PREFIX)) hide();
-    else if (!openKey) history.back();
+    if (!menu?.startsWith(PREFIX)) {
+      hide();
+      if (leaving) {
+        leaving = false;
+        // After every other popstate listener (the screens' puts its screen back): then the held click does its job.
+        window.setTimeout(releaseHeld, 0);
+      }
+    } else if (!openKey) history.back();
   });
 }

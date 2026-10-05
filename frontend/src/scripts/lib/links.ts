@@ -86,10 +86,6 @@ export function eventPath(event: DanceEvent): string {
   return `${BASE_URL}evento/${encodeURIComponent(event.id)}/`;
 }
 
-/**
- * The details closed, the address bar should no longer show an event: the home page's address (keeping `search`
- * and `hash`) when `path` is still an event's page, else null (it's already right).
- */
 /** Each view's own address: the list is the home page, the calendar /calendario/ (a reload or a shared link stays). */
 export function viewPath(view: View): string {
   return view === "calendar" ? `${BASE_URL}calendario/` : BASE_URL;

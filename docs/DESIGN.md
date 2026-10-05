@@ -67,7 +67,7 @@ Themes switch through CSS `color-scheme`: `light` at `:root`, `dark` only under 
 | `--logo` | tomato-600 | gold-300 `#f4c542` | The wordmark |
 | `--accent` | tomato-600 | pink-400 `#ff7eb9` | Event time, active tab, selected day |
 | `--action` / `--on-action` | deep orange / white | gold / ink `#1c1033` | A primary button ("Ver eventos" in the Filtros sheet, "Instalar", the 404's), shaped like the WhatsApp one |
-| `--accent-text` | tomato-700 | pink-400 | The accent as a word on the page: "× Limpiar" (4.93:1; `--accent` is 4.0:1 on the page) |
+| `--accent-text` | tomato-700 | pink-400 | The accent as a word on the page: "× Limpiar", a card's time in the phones' feed (no card fill there) (4.93:1; `--accent` is 4.0:1 on the page) |
 | `--chip-active-*` | wine / cream | pink-300 `#ff9fcb` / ink | Selected filter chip, an item that's on in the bar at the bottom (its pill), the badges on Filtros and Guardados |
 | `--dimmed` | cocoa-200 | indigo-400 | A filter option with nothing to show: its label and dashed outline (inactive, exempt from contrast) |
 | `--details-ink` | wine-900 | lilac-300 `#c3b7db` | The cards' "Detalles ›": its frame (13.4:1 and 9.62:1 on the page; 8.54:1 on a dark card); the label is `--text` |
@@ -453,7 +453,8 @@ screens in the toolbar's pills and their panels:
   as the same kind of thing. In the bar they're one control instead, the pattern of Google Maps' chips with a ▾:
   - **The chip:** a clock (in `--accent-text`; not a calendar, which is Calendario's icon in the bar at the bottom, the owner's call
     of 4 October 2026) and ▾, "🕒 ▾", named "Cuándo: Cualquier fecha". Chosen, it reads
-    "🕒 Finde" in the selected-chip colors, with **×** right beside it: a button of its own (not inside the chip's), the
+    "🕒 Finde" (named "Finde, Cuándo: Este fin de semana": a name starts with the words shown, WCAG 2.5.3) in the
+    selected-chip colors, with **×** right beside it: a button of its own (not inside the chip's), the
     two drawn as one piece with a thin line between them; × takes the date away in one tap and the focus goes back to
     "Cuándo". Several dates chosen in the sheet read "🕒 Hoy +1", and × takes them all away.
   - **The menu** hangs from the chip (under it, its left edge with the chip's, never past the screen's sides nor under
@@ -512,7 +513,8 @@ screens in the toolbar's pills and their panels:
     chips): off, outlined in `--border` with the thumb on the left in `--text-muted`; on, filled in `--chip-active-bg`
     with the thumb on the right in `--chip-active-text` (it slides in `--duration`; at once with reduced motion).
     `role="switch"`, `aria-checked`, named by its words and described by the hint (`barsSwitchHtml`).
-  - **Wide screens:** "Ocultar bares" at the end of the pills' row, a little apart (a toggle chip, with × while on).
+  - **Wide screens:** "Ocultar bares" at the end of the pills' row, a little apart (a toggle chip, with × while on,
+    named by its words: "Ocultar bares", pressed or not).
   - **While on**, the bars' events are gone wherever the filters apply: the list, the calendar (dots, names, a day's
     label, heading, count and list), search, Guardados, every option's count and "Ver 12 eventos". It **counts one** on
     Filtros' badge (in both views), shows as **"Sin bares ×"** in the row (a tap shows them again; named "Mostrar los eventos de
@@ -549,10 +551,13 @@ screens in the toolbar's pills and their panels:
     date per tap (it closes); **Ritmo** ("Ritmo · *elige uno o varios*") has the rhythms under their families, **Tipo**
     ("Tipo de evento") the types, as chips with their counts (`--pill-panel-width`, narrower on a narrower screen).
     Choices apply at once and the panel stays open for more; the pill's count follows.
-  - **One panel at a time:** another pill opens its own in its place. **Closing:** Escape, the pill again, a click
-    outside (outside the toolbar that click does nothing else: it could open an event; in the toolbar, a tab, the
-    search or a removable chip does its job), or back (one history entry, as an overlay, like "Cuándo"'s menu). The
-    focus goes back to the pill.
+  - **One panel at a time:** another pill opens its own in its place. **Closing:** Escape (wherever the focus is:
+    a click on the panel's background keeps it in the panel), the pill again, Tab out of it, a click outside, back
+    (one history entry, as an overlay, like "Cuándo"'s menu), or the window getting too small for the toolbar (its
+    entry goes too: nothing invisible is left to catch taps or back). A click outside the toolbar and the side panel
+    does nothing else (it could open an event); in them (a tab, "Guardados", the search, a removable chip, the side
+    panel's ×, Instagram or Guardar) it does its job, once the panel's history entry is gone. The focus goes back to
+    the pill.
   - **Placed** under its pill, its left edge with the pill's, never past the screen's sides nor under the details'
     side panel (at 1024px with the side panel open, the pills and the panels stay left of it); it scrolls when the
     screen is short. Absolute, so nothing moves when it opens.
@@ -561,11 +566,12 @@ screens in the toolbar's pills and their panels:
     "Sin bares ×" here: the "Ocultar bares" pill already shows it's on and turns it off (the owner, 5 Oct 2026); the
     count line still says "· Sin bares". It wraps at narrow widths (768px) instead of scrolling.
   - **Semantics:** each pill is a button with `aria-haspopup` (`menu` for Cuándo, `dialog` for Ritmo and Tipo),
-    `aria-expanded` and `aria-controls`, named with what's chosen ("Ritmo, 2 elegidos", "Tipo, 1 elegido", "Cuándo:
-    Este fin de semana"). Ritmo's and Tipo's panels are non-modal dialogs labelled "Ritmo" and "Tipo de evento", their
+    `aria-expanded` and `aria-controls`, named with what's chosen, starting with the words shown ("Ritmo, 2
+    elegidos", "Tipo, 1 elegido", "Finde, Cuándo: Este fin de semana"). Ritmo's and Tipo's panels are non-modal dialogs labelled "Ritmo" and "Tipo de evento", their
     families `role="group"` labelled by their headings; the chips are toggle buttons with their counts in their names
     ("Salsa, 14 eventos"). Opening puts the focus on what's chosen (else the first option); ↓ ↑ → ← Home End move
-    between options; Tab goes around inside a dialog (and leaves Cuándo's menu, closing it); ↓ or ↑ on a pill opens it.
+    between options; Tab leaves a panel and closes it (they're not modal: forward it goes on from the pill, back it
+    lands on the pill); ↓ or ↑ on a pill opens it.
 
 ## Events with several posts
 
@@ -725,6 +731,15 @@ screen undone from inside the panel and lands on another event's entry is ignore
   - Contrast meets WCAG 2.2 AA in both themes: ≥ 4.5:1 for text, ≥ 3:1 for large text and for the outlines and indicators people need to see (borders, focus ring, selected states).
   - `npm run check` runs `scripts/check-contrast.mjs`, which reads `tokens.css` and checks every pair the components use; CI fails if one drops below AA. New color pairs go in its `PAIRS` list.
   - Don't dim text with `opacity`: use `--text-muted`. Colored marks that aren't text (calendar dots) get a `--border` outline.
+  - **Accent words on the page use `--accent-text`**, not `--accent` (4.0:1 on the page in light): "× Limpiar", and a
+    card's time in the phones' feed, where cards have no fill (4.93:1 light, 7.73:1 dark).
+  - **A name starts with the words shown** (WCAG 2.5.3, label in name: a voice command says what it sees): "Finde,
+    Cuándo: Este fin de semana", "Ocultar bares", the event page's flyer "Ver las 19, publicación de Instagram". A
+    calendar day is named by its content: its number, the names it shows (wide screens), then, for screen readers
+    only, its date, "festivo" and count ("2 Salsa al parque +1, Viernes, 2 de octubre, 4 eventos").
+  - Everything is inside a landmark: the header, the install banner, the toolbar and the jump bar (labelled regions),
+    `main` (with the results' count), the bar at the bottom (`nav`), the footer. The drawer's head is a `<div>`, not a
+    second banner.
   - **A calendar day never grows its week:** on phones at most two rows of dots (six; past that, four and a muted "+N"
     in the last two places, which fits a 320 px phone's three-dot rows even as "+12", `.cal-dots-more`; `dotsHtml` and `MAX_DOTS_PER_DAY` in `views/calendarView.ts`), on wide
     screens three names and "+N". The exact count is in the day's

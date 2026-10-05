@@ -38,10 +38,10 @@ export type ScreenData = Omit<Screen, "steps">;
 /** What any of the app's history entries may hold: the screen, and the overlay over it, if any. */
 export interface AppHistoryState {
   screen?: Screen;
-  overlay?: boolean; // a sheet, the event details, the "Cuándo" menu or the search field, over the screen in `screen`
+  overlay?: boolean; // a sheet, the details, the "Cuándo" menu, a pill's panel or the search field, over `screen`
   eventId?: string; // the event details' entry (views/drawerHistory.ts)
   sheet?: string; // a panel sheet's entry: the sheet's id (lib/sheet.ts)
-  menu?: string; // the "Cuándo" menu's entry (views/whenMenu.ts)
+  menu?: string; // the "Cuándo" menu's entry, "when" (views/whenMenu.ts), or a pill's panel's, "panel-…" (filterPanels.ts)
   search?: string; // the search field docked at the bottom: this opening's id (views/bottomNav.ts)
 }
 
@@ -168,9 +168,10 @@ export function leave(kind: ScreenKind, move: () => void) {
 }
 
 /**
- * The history state of an overlay (a sheet, the event details, the menu, the search field) opened over the current
- * entry: it carries the screen under it and the open event (a sheet over the details), plus `extra`. Not the other
- * overlays' marks (`search`, `menu`, `sheet`): each is on its own entry only, so closing one checks it's on top.
+ * The history state of an overlay (a sheet, the event details, a menu or a pill's panel, the search field) opened over
+ * the current entry: it carries the screen under it and the open event (a sheet over the details), plus `extra`. Not
+ * the other overlays' marks (`search`, `menu`, `sheet`): each is on its own entry only, so closing one checks it's on
+ * top.
  */
 export function overlayState(extra: Omit<AppHistoryState, "screen" | "overlay">): AppHistoryState {
   const { screen, eventId } = historyState();

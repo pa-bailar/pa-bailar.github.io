@@ -19,9 +19,10 @@ import PostsSheet from "./PostsSheet.astro";
 import BottomNav from "./BottomNav.astro";
 import { accounts, events, meta } from "../data";
 import { LOCALE } from "../scripts/lib/format";
+import { pageEventsJson } from "../pageData";
 
-// Escape "<" so a caption can never end the inline JSON script block early.
-const eventsJson = JSON.stringify(events).replace(/</g, "\\u003c");
+// The events for main.ts: without what the site never shows, "<" escaped (src/pageData.ts).
+const eventsJson = pageEventsJson(events);
 // When the data was last checked: the backend's sweep passes PUBLIC_CHECKED_AT to the build; otherwise
 // (local builds, code deploys) the time of the last data change recorded in meta.json.
 const checkedAt = import.meta.env.PUBLIC_CHECKED_AT || meta.generated_at;
@@ -55,9 +56,10 @@ const { view } = Astro.props;
   <JumpBar />
   <!-- Phones: the bar at the bottom of the screen. Here in the page's order, so the keyboard reaches it before the list. -->
   <BottomNav />
-  <p class="visually-hidden" id="results-status" role="status"></p>
 
   <main class="container page-main">
+    <!-- The count after each change, said politely; inside the main landmark, like everything a screen reader reads. -->
+    <p class="visually-hidden" id="results-status" role="status"></p>
     <section id="view-upcoming" role="tabpanel" aria-labelledby="tab-upcoming"></section>
     <CalendarView />
   </main>

@@ -74,13 +74,13 @@ const clearCurrentCard = () =>
 
 // ---------- the drawer's height (phones) ----------
 
-/** Puts the drawer `next` px below its full height, the scrim following; `duration` animates it (CSS). */
 /** How the drawer moves to a height: for how long (ms; 0 at once) and along which curve. */
 interface Motion {
   duration?: number;
   easing?: string;
 }
 
+/** Puts the drawer `next` px below its full height, the scrim following; `duration` animates it (CSS). */
 function place(next: number, { duration = 0, easing = EASE.standard }: Motion = {}) {
   state.offset = next;
   const element = drawer();
@@ -133,10 +133,10 @@ function render(event: DanceEvent) {
     // One bad event never breaks the drawer: a way to its page instead.
     console.error(error);
     content.innerHTML = `
-      <header class="drawer__head">
+      <div class="drawer__head">
         <div class="drawer__heading"><h2 class="event-detail__title" id="${TITLE_ID}" tabindex="-1">${escapeHtml(event.title)}</h2></div>
         <button class="drawer__close" type="button" data-close-drawer aria-label="Cerrar">${ICONS.close}</button>
-      </header>
+      </div>
       <div class="drawer__body event-detail__info">
         <p>No pudimos mostrar este evento aquí.</p>
         <p><a class="btn" href="${escapeHtml(eventPath(event))}">Abrir su página</a></p>
@@ -159,7 +159,6 @@ function show(event: DanceEvent, shared: boolean) {
   state.mode = window.matchMedia(PANEL_QUERY).matches ? "panel" : "sheet";
   element.dataset.mode = state.mode;
   if (state.mode === "panel") {
-    document.documentElement.classList.add("has-side-panel");
     element.show();
     holdClips("drawer", false);
     highlightCurrentCard({ reveal: shared });
@@ -252,7 +251,6 @@ function cleanUpAfterClose(element: HTMLDialogElement) {
   byId("drawer-content").replaceChildren(); // nothing of it stays in memory while it's closed
   state.current = null;
   holdClips("drawer", false);
-  document.documentElement.classList.remove("has-side-panel");
   clearCurrentCard();
   afterClosing();
 }
@@ -262,7 +260,6 @@ function swapMode() {
   const element = drawer();
   if (!state.current) return;
   element.close(); // its "close" finds it open again and cleans nothing
-  document.documentElement.classList.remove("has-side-panel");
   show(state.current, false);
   focusTitle();
 }

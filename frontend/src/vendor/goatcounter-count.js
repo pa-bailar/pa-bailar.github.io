@@ -1,5 +1,6 @@
-// Copied unchanged (below these two lines) from https://gc.zgo.at/count.js on 2026-10-03; layouts/BaseLayout.astro
-// loads it. GoatCounter keeps its /count endpoint compatible, so this copy keeps working without updates.
+// Copied from https://gc.zgo.at/count.js on 2026-10-03, unchanged but for the check marked "Pa' Bailar";
+// layouts/BaseLayout.astro loads it. GoatCounter keeps its /count endpoint compatible, so this copy keeps working
+// without updates.
 // GoatCounter: https://www.goatcounter.com
 // This file is released under the ISC license: https://opensource.org/licenses/ISC
 ;(function() {
@@ -119,8 +120,12 @@
 			return 'localhost'
 		if (!goatcounter.allow_local && location.protocol === 'file:')
 			return 'localfile'
-		if (localStorage && localStorage.getItem('skipgc') === 't')
-			return 'disabled with #toggle-goatcounter'
+		// Pa' Bailar: inside try. Where storage is blocked (private mode, blocked cookies), reading localStorage
+		// throws: the page logged an error and the visit wasn't counted.
+		try {
+			if (localStorage && localStorage.getItem('skipgc') === 't')
+				return 'disabled with #toggle-goatcounter'
+		} catch (e) {}
 		return false
 	}
 

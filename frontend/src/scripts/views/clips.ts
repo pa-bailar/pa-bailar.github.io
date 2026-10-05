@@ -17,11 +17,12 @@
 //     again), and one that leaves the page (the list redrawn) is released: unwatched, its source removed,
 //     which frees its decoder and buffers.
 
+import { prefersReducedMotion } from "../lib/dom";
+
 const VISIBLE = 0.6; // share of the clip on screen to play it
 
 const holdBack = () =>
-  window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
-  Boolean((navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData);
+  prefersReducedMotion() || Boolean((navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData);
 
 let observer: IntersectionObserver | null = null;
 const watched = new Set<HTMLVideoElement>();

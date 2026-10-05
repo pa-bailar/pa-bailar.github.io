@@ -76,7 +76,7 @@ export type PillKey = "when" | "styles" | "types";
 export interface FilterPill {
   key: PillKey;
   label: string; // "Ritmo", "Ritmo · 2"; "Cuándo", "Finde", "Hoy +1"
-  name: string; // for screen readers: "Ritmo, 2 elegidos", "Cuándo: Este fin de semana"
+  name: string; // for screen readers, starting with what it shows: "Ritmo, 2 elegidos", "Finde, Cuándo: Este fin de semana"
   count: number; // choices in use in it
 }
 
@@ -199,10 +199,19 @@ export function filterPills(when: WhenModel | null, styles: FilterOption[], type
   };
   const dates = when ? when.options.filter((item) => item.value && item.chosen).length : 0;
   return [
-    ...(when ? [{ key: "when" as const, label: when.chosen ? when.label : "Cuándo", name: `Cuándo: ${when.name}`, count: dates }] : []),
+    ...(when ? [{ key: "when" as const, label: when.chosen ? when.label : "Cuándo", name: whenButtonName(when), count: dates }] : []),
     counted("styles", "Ritmo", styles),
     counted("types", "Tipo", types),
   ];
+}
+
+/**
+ * The name of the button that opens "Cuándo" (the phone bar's chip, the toolbar's pill), starting with the words it
+ * shows (WCAG 2.5.3, label in name: a voice command says what it sees): "Cuándo: Cualquier fecha" with nothing chosen,
+ * "Finde, Cuándo: Este fin de semana" with a date.
+ */
+export function whenButtonName(when: Pick<WhenModel, "label" | "name" | "chosen">): string {
+  return when.chosen ? `${when.label}, Cuándo: ${when.name}` : `Cuándo: ${when.name}`;
 }
 
 /** "Cuándo": the chip says what's chosen; the menu lists "Cualquier fecha" and every period, with its days. */
