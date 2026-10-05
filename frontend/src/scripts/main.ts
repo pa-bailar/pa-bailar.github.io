@@ -4,7 +4,7 @@ import type { DanceEvent, EventType, View } from "./types";
 import type { AgendaGroup, FilterGroup } from "./state";
 import { initClickTracking } from "./lib/analytics";
 import { byId } from "./lib/dom";
-import { eventCountLabel, formatLongDate } from "./lib/format";
+import { dateRangeLabel, eventCountLabel, formatLongDate, styleLabel, typeLabel } from "./lib/format";
 import { addMonths, currentMonth, lastDay, shownDay, todayIso } from "./lib/dates";
 import { eventPath, sharedEventLink } from "./lib/links";
 import {
@@ -52,7 +52,6 @@ import { initSaveButtons, renderSavedToggles } from "./views/saveButton";
 import { initInstallPrompt, offerAfterSaving, registerServiceWorker } from "./views/installPrompt";
 import { initSharing, plansEventUrl, setShareSources, type ShareSource } from "./views/sharing";
 import { PERIOD_SHARE_TITLES, periodShareText, plansShareText } from "./lib/shareText";
-import { dateRangeLabel, styleLabel, typeLabel } from "./lib/format";
 import { isSaved, keepOnly } from "./lib/saved";
 
 const state = createInitialState();
