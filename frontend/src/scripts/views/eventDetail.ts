@@ -22,7 +22,7 @@ import {
 import { isSeries, nextSession, todayIso } from "../lib/dates";
 import { contactLink, type ContactKind } from "../lib/contact";
 import { ICONS } from "../lib/icons";
-import { feedbackUrl, flyerUrl, mapsUrl, previewUrl } from "../lib/links";
+import { feedbackUrl, flyerUrl, mapsUrl, previewUrl, profileUrl } from "../lib/links";
 import { isStory, isVideoCover, mediaLabel, storySource } from "../lib/mediaLabel";
 import { playInline } from "./inlinePlayer";
 import { openPostViewer } from "./postViewer";
@@ -182,11 +182,6 @@ function mediaHtml(event: DanceEvent, media: EventMedia, selected: number): stri
     </div>`;
 }
 
-/** The account's Instagram profile ("https://www.instagram.com/academia/"). */
-export function profileUrl(account: string): string {
-  return `https://www.instagram.com/${encodeURIComponent(account)}/`;
-}
-
 /**
  * When, the title, the type tag and the account: the head of the drawer, and of the page under the flyer. The account
  * opens its Instagram profile (on a card, it filters the list to it instead).
@@ -196,7 +191,7 @@ function headHtml(event: DanceEvent, { heading, titleId }: { heading: "h1" | "h2
   return `
     <p class="event-detail__when">${escapeHtml(cardWhenLabel(event))}</p>
     <${heading} class="event-detail__title" id="${titleId}" tabindex="-1">${escapeHtml(event.title)}</${heading}>
-    <p class="event-detail__by"><span class="tag-type t-${escapeHtml(event.event_type)}">${typeLabel(event.event_type)}</span><a class="event-detail__account" href="${escapeHtml(profileUrl(event.account))}" target="_blank" rel="noopener" data-track="instagram-cuenta" aria-label="Abrir @${account} en Instagram">@${account}<span aria-hidden="true">↗</span></a></p>`;
+    <p class="event-detail__by"><span class="tag-type t-${escapeHtml(event.event_type)}">${typeLabel(event.event_type)}</span><a class="event-detail__account" href="${escapeHtml(profileUrl(event.account))}" target="_blank" rel="noopener" data-profile="${account}" data-track="perfil-detalle" aria-label="Ver el perfil de @${account}">@${account}</a></p>`;
 }
 
 /**

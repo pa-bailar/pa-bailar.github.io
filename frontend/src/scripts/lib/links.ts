@@ -48,6 +48,16 @@ export function feedbackUrl(event?: DanceEvent): string {
 }
 
 /** The main post: the one shown on the card and shared by default. */
+/** The account's Instagram profile ("https://www.instagram.com/academia/"). */
+export function profileUrl(account: string): string {
+  return `https://www.instagram.com/${encodeURIComponent(account)}/`;
+}
+
+/** Instagram's embed of that profile (its photo, counts and latest posts), shown inside the site (postViewer.ts). */
+export function profileEmbedUrl(account: string): string {
+  return `https://www.instagram.com/${encodeURIComponent(account)}/embed/`;
+}
+
 export function mainMedia(event: DanceEvent): EventMedia {
   return event.media[0];
 }

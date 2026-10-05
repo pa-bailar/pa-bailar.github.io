@@ -129,7 +129,7 @@ function render({ keepPlace = false } = {}) {
 let leftList: { scrollY: number; filters: string; anchor: ListAnchor | null } | null = null;
 let leftCalendar: number | null = null;
 
-const filtersKey = () => JSON.stringify([state.types, state.styles, state.dates, state.accountFilter]);
+const filtersKey = () => JSON.stringify([state.types, state.styles, state.dates]);
 
 /** The tabs and the floating button. Each view keeps its place. */
 function showView(view: View) {
@@ -163,16 +163,14 @@ function navigateView(view: View) {
 
 const currentScreen = (): Omit<Screen, "kind"> => ({
   view: state.view,
-  account: state.accountFilter,
   savedOnly: state.savedOnly,
   periods: wholePeriods(),
   scrollY: window.scrollY,
 });
 
-/** Back (or forward) to `screen`: its view, academy, saved events and opened periods, where it was scrolled. */
+/** Back (or forward) to `screen`: its view, saved events and opened periods, where it was scrolled. */
 function applyScreen(screen: Screen) {
   if (sameScreen(screen, currentScreen())) return; // e.g. back from an event or a sheet: the screen stays
-  state.accountFilter = screen.account;
   state.savedOnly = screen.savedOnly;
   setWholePeriods(screen.periods);
   if (screen.view !== state.view) {
@@ -194,13 +192,12 @@ function renderSavedCount() {
   renderSavedToggles(upcomingSaved().length, state.savedOnly);
 }
 
-/** What narrows the list, for a shared image's subtitle: "Salsa, Bachata", "Talleres", "@academia", «búsqueda».
+/** What narrows the list, for a shared image's subtitle: "Salsa, Bachata", "Talleres", «búsqueda».
  * (The period is the title.) */
 function filtersLabel(): string {
   return [
     state.types.map(typeLabel).join(", "),
     state.styles.map(styleLabel).join(", "),
-    state.accountFilter ? `@${state.accountFilter}` : "",
     state.query.trim() ? `«${state.query.trim()}»` : "",
   ]
     .filter(Boolean)
@@ -269,17 +266,10 @@ function clearSearch() {
   closeBarSearch();
 }
 
-/** After filtering by academy from a card far down the list: focus its chip ("@academia ×"), where it can be undone. */
-function focusAccountFilter() {
-  const chips = [...document.querySelectorAll<HTMLElement>('#jump-chips [data-account], #filter-status [data-account]')];
-  chips.find((chip) => chip.offsetParent !== null)?.focus();
-}
-
 /**
  * After "Limpiar": the control is gone (a chip, the empty list's button), hidden (the line under the bar, the
  * toolbar's status row) or disabled (the sheet's). The focus goes to the sheet's first chip, ⚙, or the toolbar's
- * first chip: controls that render() puts the focus back on when it draws them again (focusSelector), also after
- * the academy's screen is left through the history.
+ * first chip: controls that render() puts the focus back on when it draws them again (focusSelector).
  */
 function focusAfterClearing(control: HTMLElement) {
   const sheet = control.closest("#filter-sheet");
@@ -292,10 +282,10 @@ function focusAfterClearing(control: HTMLElement) {
 /** One delegated listener for every data-* control rendered by the views. */
 function handleClick(domEvent: MouseEvent) {
   const control = (domEvent.target as HTMLElement).closest<HTMLElement>(
-    "[data-when-open],[data-when-clear],[data-when],[data-view],[data-filter],[data-account],[data-clear-filters],[data-clear-search],[data-open-filters],[data-day],[data-event],[data-card-posts],[data-month-step],[data-today],[data-show-period],[data-saved-only],[data-close-search]",
+    "[data-when-open],[data-when-clear],[data-when],[data-view],[data-filter],[data-clear-filters],[data-clear-search],[data-open-filters],[data-day],[data-event],[data-card-posts],[data-month-step],[data-today],[data-show-period],[data-saved-only],[data-close-search]",
   );
   if (!control) return;
-  const { view, filter, value, account, day, event: eventId, cardPosts, monthStep, showPeriod, when } = control.dataset;
+  const { view, filter, value, day, event: eventId, cardPosts, monthStep, showPeriod, when } = control.dataset;
 
   // "Cuándo" (phones): its chip opens the menu (or closes it), an option applies one date and closes it, × takes the
   // date away. The focus stays on (or goes back to) the chip, drawn again.
@@ -371,24 +361,6 @@ function handleClick(domEvent: MouseEvent) {
     navigateView(view as View);
     return;
   }
-  if (account !== undefined) {
-    // An academy's events (its @ on a card), or all of them again ("" from its chip or the notice's button).
-    if (account) {
-      goTo("account", () => {
-        state.accountFilter = account;
-        render();
-        focusAccountFilter();
-      });
-    } else {
-      leave("account", () => {
-        state.accountFilter = null;
-        render({ keepPlace: true });
-      });
-      // Its chip ("@academia ×", in the bar or the sheet) or the toolbar's button goes away with it.
-      if (document.activeElement === document.body || document.activeElement === control) focusAfterClearing(control);
-    }
-    return;
-  }
   if (filter && value !== undefined) {
     // One tap chooses, another unchooses; a dimmed option (nothing to show with the other filters) does nothing.
     if (control.getAttribute("aria-disabled") === "true") return;
@@ -396,17 +368,8 @@ function handleClick(domEvent: MouseEvent) {
     if (group === "types") state.types = toggled(state.types, value) as EventType[];
     else state[group] = toggled(state[group], value);
   } else if ("clearFilters" in control.dataset) {
-    // "Limpiar": dates, rhythms, types and the academy (its screen is left as "back" would). Not the search
-    // nor "Guardados".
-    const account = state.accountFilter;
+    // "Limpiar": dates, rhythms and types. Not the search nor "Guardados".
     clearFilters(state);
-    if (account) {
-      state.accountFilter = account; // `leave` takes it away, through the history when it came from a card
-      leave("account", () => {
-        state.accountFilter = null;
-        render({ keepPlace: true });
-      });
-    }
   } else if (day) state.selectedDay = day;
   else if (monthStep) {
     state.month = addMonths(state.month, Number(monthStep));

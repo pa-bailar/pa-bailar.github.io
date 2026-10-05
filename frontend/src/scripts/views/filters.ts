@@ -3,12 +3,12 @@
 //     one row that scrolls sideways. "📅 ▾" ("Cuándo") opens a short menu with one choice of date (whenMenu.ts);
 //     once chosen it reads "📅 Finde" with its own × beside it. A rhythm chip is chosen with one tap (dark, with ×),
 //     unchosen with another. ⚙ opens the "Filtros" sheet with every option (several dates too); a choice made
-//     there that has no chip of its own in the row shows as a removable chip after ⚙ ("Social ×", "@academia ×").
+//     there that has no chip of its own in the row shows as a removable chip after ⚙ ("Social ×").
 //   - Under the bar, only while filtering: "12 eventos · Finde, Salsa" and "× Limpiar".
-//   - The sheet (FilterSheet.astro): every date, rhythm and type with its count, the academy, "Limpiar" and
+//   - The sheet (FilterSheet.astro): every date, rhythm and type with its count, "Limpiar" and
 //     "Ver 12 eventos".
 //   - Wide screens: the toolbar's chip rows (dates, types, rhythms) and a status row ("12 eventos · Limpiar
-//     filtros", the academy).
+//     filtros").
 // An option that would show nothing with the other filters is dimmed in place, never hidden, so the chips don't
 // move while choosing; a chosen one can always be removed. The logic (`filterModel`) is pure and tested.
 
@@ -42,9 +42,9 @@ export interface FilterOption {
 
 /** A choice in use, as a removable chip and in the line under the bar. */
 export interface AppliedFilter {
-  group: FilterGroup | "account";
+  group: FilterGroup;
   value: string;
-  label: string; // "Finde", "Salsa", "@academia"
+  label: string; // "Finde", "Salsa", "Social"
   name: string; // for screen readers: "Este fin de semana"
 }
 
@@ -72,7 +72,7 @@ export interface FilterModel {
   types: FilterOption[]; // most frequent first
   when: WhenModel | null; // the bar's "Cuándo" (null in the calendar)
   quickStyles: FilterOption[]; // the bar's rhythm chips
-  applied: AppliedFilter[]; // every choice: dates, rhythms, types, academy
+  applied: AppliedFilter[]; // every choice: dates, rhythms, types
   extra: AppliedFilter[]; // those without a chip of their own in the bar
   active: number; // ⚙'s badge: every choice
   shown: number; // events the view shows with every filter on (the list, or the calendar's month)
@@ -141,10 +141,6 @@ export function filterModel(events: DanceEvent[], state: AppState, today = today
 
   const asApplied = (item: FilterOption): AppliedFilter => ({ group: item.group, value: item.value, label: item.short, name: item.label });
   const applied = [...dates, ...styles, ...types].filter((item) => item.chosen).map(asApplied);
-  if (state.accountFilter) {
-    const name = `@${state.accountFilter}`;
-    applied.push({ group: "account", value: state.accountFilter, label: name, name });
-  }
   // Every date shows on "Cuándo", every bar rhythm on its chip.
   const hasChip = (item: AppliedFilter) => item.group === "dates" || (item.group === "styles" && QUICK_STYLES.includes(item.value));
 
@@ -256,9 +252,9 @@ function chipHtml(item: FilterOption, { short = false, counts = false } = {}): s
     aria-pressed="${item.chosen}"${item.dimmed ? ` aria-disabled="true"` : ""}${spoken !== label ? ` aria-label="${escapeHtml(spoken)}"` : ""}>${escapeHtml(label)}${count}${item.chosen ? X : ""}</button>`;
 }
 
-/** A choice made elsewhere (the sheet, a card's academy), as a chip that removes it: "Social ×". */
+/** A choice made elsewhere (the sheet), as a chip that removes it: "Social ×". */
 function removableHtml(item: AppliedFilter): string {
-  const data = item.group === "account" ? `data-account=""` : `data-filter="${item.group}" data-value="${escapeHtml(item.value)}"`;
+  const data = `data-filter="${item.group}" data-value="${escapeHtml(item.value)}"`;
   return `<button class="chip filter-chip is-chosen" type="button" ${data} aria-label="Quitar ${escapeHtml(item.name)}">${escapeHtml(item.label)}${X}</button>`;
 }
 
@@ -287,7 +283,7 @@ function revealChip(row: HTMLElement, chip: HTMLElement) {
  * The phone bar's row of chips. It keeps where it was scrolled to, unless a new choice would be out of sight
  * (chosen in the sheet, or a chip further along): then the row scrolls to the first one.
  */
-function renderBarChips(model: FilterModel, state: AppState) {
+function renderBarChips(model: FilterModel) {
   const row = byId("jump-chips");
   const scrolled = row.scrollLeft;
   const when = model.when && model.dates.length ? model.when : null;
@@ -304,8 +300,7 @@ function renderBarChips(model: FilterModel, state: AppState) {
   if (!fresh.size) return;
   const chosen = [...row.querySelectorAll<HTMLElement>('[aria-pressed="true"], .is-chosen')].find((chip) => {
     if (chip.classList.contains("when-chip")) return [...fresh].some((key) => key.startsWith("dates:"));
-    const key = chip.dataset.account !== undefined ? `account:${state.accountFilter}` : `${chip.dataset.filter}:${chip.dataset.value}`;
-    return fresh.has(key);
+    return fresh.has(`${chip.dataset.filter}:${chip.dataset.value}`);
   });
   if (chosen) revealChip(row, chosen);
 }
@@ -382,16 +377,12 @@ function renderSheet(model: FilterModel, state: AppState) {
     state.view === "upcoming"
       ? group("Fecha", "elige una o varias", model.dates, "Fecha")
       : `<h3 class="filter-sheet__label">Fecha</h3><p class="filter-sheet__note">En el calendario eliges el día en el mes.</p>`;
-  const account = model.applied.find((item) => item.group === "account");
   const body = byId("filter-sheet-body");
   const scrolled = body.scrollTop;
   body.innerHTML = [
     dates,
     group("Ritmo", "elige uno o varios", model.styles, "Ritmo"),
     group("Tipo de evento", "", model.types, "Tipo de evento"),
-    account
-      ? `<h3 class="filter-sheet__label">Academia</h3><div class="filter-sheet__chips">${removableHtml(account)}</div>`
-      : "",
   ].join("");
   body.scrollTop = scrolled;
   byId<HTMLButtonElement>("filter-sheet-clear").disabled = model.active === 0;
@@ -410,21 +401,17 @@ function renderToolbar(model: FilterModel, state: AppState) {
   fill("date-filters", model.dates.map((item) => chipHtml(item, { short: true })).join(""), state.view !== "upcoming");
   fill("type-filters", model.types.map((item) => chipHtml(item)).join(""));
   fill("style-filters", model.styles.map((item) => chipHtml(item)).join(""));
-  const account = state.accountFilter
-    ? `<span>Solo eventos de <b>@${escapeHtml(state.accountFilter)}</b></span>
-       <button class="chip" type="button" data-account="">Ver todas las academias</button>`
-    : "";
   const { count, where } = summaryLine(model, state);
   const clear = model.active
     ? `<span class="filter-status__count"><b>${count}</b>${escapeHtml(where)}</span>
        <button class="chip filter-chip filter-status__clear" type="button" data-clear-filters>${ICONS.close}Limpiar filtros</button>`
     : "";
-  fill("filter-status", `${account}${clear}`, !account && !clear);
+  fill("filter-status", clear, !clear);
 }
 
 /** Draws every place the filters show: the phone bar and its line, the sheet, the toolbar. */
 export function renderFilters(model: FilterModel, state: AppState) {
-  renderBarChips(model, state);
+  renderBarChips(model);
   renderWhenMenu(model);
   renderSummary(model, state);
   renderSheet(model, state);

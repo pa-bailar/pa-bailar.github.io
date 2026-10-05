@@ -168,24 +168,23 @@ describe("filters together: AND across groups", () => {
     expect(activeFilterCount({ ...state, view: "calendar", dates: ["hoy"] })).toBe(0);
   });
 
-  it("⚙'s badge counts every choice: each date, rhythm and type, and the academy", () => {
+  it("⚙'s badge counts every choice: each date, rhythm and type", () => {
     expect(activeFilterCount({ ...state, dates: ["hoy"], styles: ["salsa", "bachata"] })).toBe(3);
-    expect(activeFilterCount({ ...state, dates: ["hoy", TOMORROW], types: ["social"], accountFilter: "academia" })).toBe(4);
+    expect(activeFilterCount({ ...state, dates: ["hoy", TOMORROW], types: ["social"] })).toBe(3);
     expect(activeFilterCount(state)).toBe(0);
   });
 
-  it("Limpiar clears dates, rhythms, types and the academy, not the search nor Guardados", () => {
+  it("Limpiar clears dates, rhythms and types, not the search nor Guardados", () => {
     const cleared = {
       ...state,
       styles: ["salsa"],
       dates: ["hoy"],
       types: ["social" as const],
-      accountFilter: "academia",
       query: "topa",
       savedOnly: true,
     };
     clearFilters(cleared);
-    expect([cleared.styles, cleared.dates, cleared.types, cleared.accountFilter]).toEqual([[], [], [], null]);
+    expect([cleared.styles, cleared.dates, cleared.types]).toEqual([[], [], []]);
     expect([cleared.query, cleared.savedOnly]).toEqual(["topa", true]);
   });
 });
@@ -265,10 +264,10 @@ describe("the filter chips (filterModel)", () => {
   });
 
   it("choices without a chip of their own in the bar show as removable chips after ⚙", () => {
-    const chosen = model({ dates: ["hoy"], styles: ["salsa", "kizomba"], types: ["social"], accountFilter: "academia" });
-    expect(chosen.applied.map((item) => item.label)).toEqual(["Hoy", "Salsa", "Kizomba", "Social", "@academia"]);
-    expect(chosen.extra.map((item) => item.label)).toEqual(["Kizomba", "Social", "@academia"]);
-    expect(chosen.active).toBe(5);
+    const chosen = model({ dates: ["hoy"], styles: ["salsa", "kizomba"], types: ["social"] });
+    expect(chosen.applied.map((item) => item.label)).toEqual(["Hoy", "Salsa", "Kizomba", "Social"]);
+    expect(chosen.extra.map((item) => item.label)).toEqual(["Kizomba", "Social"]);
+    expect(chosen.active).toBe(4);
   });
 
   it("the line under the bar: how many, and what's chosen", () => {

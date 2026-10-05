@@ -68,3 +68,14 @@
 .post-viewer__embed .instagram-media {
   margin: 0 auto !important;
 }
+
+/* An account's profile (Instagram's profile embed): its photo, counts and latest posts, at the sheet's width. Tall
+   enough for two rows of posts on a phone; the embed scrolls inside if it has more. */
+.post-viewer__embed--profile iframe {
+  display: block;
+  width: 100%;
+  height: min(560px, 70dvh);
+  border: 0;
+  background: #fff; /* Instagram's own page is white, in both themes */
+}
+
