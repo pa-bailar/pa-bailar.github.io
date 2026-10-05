@@ -33,8 +33,6 @@
   --orange-800: #b85410; /* deep enough for white text (4.87:1): the light primary button */
   --orange-600: #e8791c;
   --marigold-600: #e9b021;
-  --marigold-200: #efd082; /* "Detalles": the app icon's marigold (#f2c12e) at 45% over the page, a soft tonal fill */
-  --marigold-250: #f0cb63; /* …pressed: 65% */
   --rose-300: #e9b8a0;
   --palm-600: #1f7a4a;
   --white: #ffffff;
@@ -63,8 +61,6 @@
   --coral-400: #f2785c;
   --gold-300: #f4c542; /* the stage's lettering: logo, buttons, sticker, today */
   --plum-700: #3e1f4a; /* holidays */
-  --gold-900: #3e322f; /* "Detalles": gold-300 at 18% over the page, a deep gold tint */
-  --gold-850: #544432; /* …pressed: 28% */
 
   /* ---------- Layer 2: semantic colors (light, dark) ---------- */
   /* Surfaces */
@@ -95,11 +91,10 @@
   --free: var(--palm-600); /* the "Gratis" price tag */
   --pulse: light-dark(rgb(200 50 28 / 0.45), rgb(255 126 185 / 0.5)); /* the accent's ring: "Detalles" on a first visit */
   --on-free: var(--white);
-  /* "Detalles" on each card: a soft tonal fill (Material's filled-tonal, medium emphasis), no outline. */
-  --details-bg: light-dark(var(--marigold-200), var(--gold-900));
-  --details-bg-pressed: light-dark(var(--marigold-250), var(--gold-850));
-  --details-text: light-dark(var(--wine-900), var(--gold-300));
-  --details-icon: light-dark(var(--tomato-700), var(--gold-300));
+  /* "Detalles ›" on each card: a closed ink frame on the page (no fill), with one printer's offset under it in the
+     period rule's three colors (event-card.css); pressed, the frame sinks onto it and fills. */
+  --details-ink: light-dark(var(--wine-900), var(--lilac-300)); /* its frame (the label is --text) */
+  --details-pressed: light-dark(var(--cream-250), var(--indigo-800));
   /* A filter option with nothing to show with the other filters: dimmed in place (inactive: exempt from contrast). */
   --dimmed: light-dark(var(--cocoa-200), var(--indigo-400));
 
@@ -164,11 +159,16 @@
   --stripe-height: 5px;
   --period-rule-height: 3px; /* the tri-color lines around period headings */
   --control-height: 40px; /* buttons, icon buttons, theme toggle */
+  --details-height: 36px; /* the cards' "Detalles ›" frame (its target is 44px) */
+  --details-offset: 2px; /* …and its offset in the three colors, down and to the right */
+  --details-tuck: 0.5px; /* how far its offset reaches under the frame's ink: half a device pixel at 1x (set by density below) */
   --fab-size: 44px; /* phones: the floating calendar / list button (the smallest comfortable tap) */
   --chip-height: 32px;
   --touch-target: 44px; /* the filter chips, the cards' action row, the drawer's buttons */
-  --jump-bar-height: 56px; /* phones: sticky bar with search, Guardados and the filter chips */
+  --jump-bar-height: 56px; /* phones: the pinned bar with search, Guardados and the filter chips */
   --filter-line-height: 40px; /* phones: "12 eventos · Finde, Salsa · × Limpiar" under the bar, while filtering */
+  --pinned-height: var(--jump-bar-height); /* phones: all that's pinned to the top (jump-bar.css adds the line) */
+  --menu-width: 304px; /* the "Cuándo" menu under its chip (narrower on a narrower screen) */
   --sticker-size: 60px;
   --drawer-top-gap: 12px; /* phones: what's left above the details drawer at full height */
   --panel-width: 420px; /* wide screens: the details as a side panel */
@@ -200,12 +200,46 @@
 
   /* ---------- Layer 3: motion ---------- */
   --duration: 150ms; /* hovers, small state changes */
-  --duration-bar: 250ms; /* the jump bar hiding/showing */
+  --duration-bar: 250ms; /* the floating view switch fading in and out */
 
   /* Breakpoints (media queries can't read custom properties, so they're written as numbers):
      720px  phones vs. wider: the feed, the jump bar and the filter sheet
      900px  the details: a drawer over the list below it, a side panel from it
      960px  wide: more card columns */
+}
+
+/* "Detalles"'s offset reaches under the frame's ink by one device pixel where the ink is at least two thick (2x and
+   up), half of one below 2x (a 1px line has no room for the frame and the band to round differently). Values for the
+   usual densities; one in between gets the next lower one's. A browser without these queries keeps 0.5px, which
+   still stays under the ink at any density. */
+@media (min-resolution: 1.5dppx) {
+  :root {
+    --details-tuck: calc(0.5px / 1.5);
+  }
+}
+
+@media (min-resolution: 2dppx) {
+  :root {
+    --details-tuck: 0.5px;
+  }
+}
+
+@media (min-resolution: 2.625dppx) {
+  :root {
+    --details-tuck: calc(1px / 2.625);
+  }
+}
+
+@media (min-resolution: 3dppx) {
+  :root {
+    --details-tuck: calc(1px / 3);
+  }
+}
+
+@media (min-resolution: 3.5dppx) {
+  :root {
+    --details-tuck: calc(1px / 3.5);
+  }
 }
 
 :root[data-theme="dark"] {

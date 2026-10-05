@@ -120,6 +120,17 @@ export function shortRangeLabel(start: string, end: string, withMonth = true): s
   return capitalize(`${day(start, !sameMonth)} – ${day(end, withMonth || !sameMonth)}`);
 }
 
+/**
+ * The days a period covers, as the "Cuándo" menu's hint: "mié 7" (one day), "9–11 oct", "30 oct – 1 nov".
+ */
+export function spanLabel(start: string, end: string): string {
+  const first = parseIsoDate(start);
+  const last = parseIsoDate(end);
+  if (start === end) return `${shortWeekday.format(first).replace(".", "")} ${first.getDate()}`;
+  if (start.slice(0, 7) === end.slice(0, 7)) return `${first.getDate()}–${last.getDate()} ${shortMonthName(end)}`;
+  return `${first.getDate()} ${shortMonthName(start)} – ${last.getDate()} ${shortMonthName(end)}`;
+}
+
 /** "viernes 2 de octubre" (Intl puts a comma after the weekday; this doesn't). */
 function dayName(iso: string, withMonth: boolean): string {
   const date = parseIsoDate(iso);

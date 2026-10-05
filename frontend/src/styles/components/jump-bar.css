@@ -1,7 +1,9 @@
-/* Phones: the slim bar stuck to the top (components/JumpBar.astro, scripts/views/jumpBar.ts):
-   [🔍] [🔖 3] [⚙ 2 · Noviembre × · Hoy · Mañana · Finde · Próx. semana | Salsa · Bachata · Urbano · Tango →]
-   and, while filtering, "12 eventos · Finde, Salsa · × Limpiar" under it. Hides while scrolling down, comes
-   back on scroll up. The chips themselves: filters.css. */
+/* Phones: the slim bar pinned to the top (components/JumpBar.astro, scripts/views/jumpBar.ts):
+   [🔍] [🔖 3] [⚙ 2 · Social × · 📅 ▾ | Salsa · Bachata · Urbano · Tango →]
+   and, while filtering, "12 eventos · Finde, Salsa · × Limpiar" under it. It never hides: the filters are at hand
+   anywhere in the list. The chips themselves and the "Cuándo" menu: filters.css.
+   iOS Safari: sticky needs no overflow other than `clip`/visible on its ancestors (html, body), and no transform
+   on the bar itself (it used to slide away with one). */
 
 .jump-bar {
   position: sticky;
@@ -9,15 +11,17 @@
   z-index: var(--z-sticky);
   background: var(--bg);
   border-bottom: var(--border-width) solid var(--divider);
-  transition: transform var(--duration-bar) ease;
 }
 
 .jump-bar[hidden] {
   display: none;
 }
 
-.jump-bar.is-hidden {
-  transform: translateY(-100%);
+/* What's pinned: the bar, and the line under it while filtering. Jumps (scroll-margin, scroll-padding) land below. */
+@media not ((min-width: 720px) and (min-height: 600px)) {
+  :root:has(#jump-summary:not([hidden])) {
+    --pinned-height: calc(var(--jump-bar-height) + var(--filter-line-height));
+  }
 }
 
 .jump-bar__inner {
@@ -35,23 +39,23 @@
   white-space: nowrap;
 }
 
-/* 🔍 and 🔖: square buttons of a fixed size; a number on the corner (like a notification badge) never changes
-   their size. */
+/* 🔍 and 🔖: 40 px squares (like ⚙); a number on the corner (like a notification badge) never changes their
+   size. */
 .jump-bar__icon {
   position: relative;
   flex: none;
   justify-content: center;
-  width: var(--touch-target);
+  width: var(--control-height);
   min-height: var(--control-height);
   padding: 0;
   color: var(--text);
 }
 
-/* 44 px to the finger on a 40 px button, like the chips (filters.css): the bar is 56 px, so it fits. */
+/* 44 px to the finger on a 40 px square, 2 px past each side (the gaps are 8 px): the bar is 56 px, so it fits. */
 .jump-bar__icon::after {
   content: "";
   position: absolute;
-  inset: calc((var(--control-height) - var(--touch-target)) / 2 - var(--border-width)) calc(var(--border-width) * -1);
+  inset: calc((var(--control-height) - var(--touch-target)) / 2 - var(--border-width));
 }
 
 .jump-bar__icon[aria-pressed="true"] {
@@ -132,9 +136,9 @@
   color: var(--chip-active-bg);
 }
 
-/* A filter change lands the period's heading just below the bar. */
+/* A jump or a filter change lands the period's heading just below the pinned bar (and its line). */
 .agenda-group {
-  scroll-margin-top: calc(var(--jump-bar-height) + var(--space-3));
+  scroll-margin-top: calc(var(--pinned-height) + var(--space-3));
 }
 
 /* Where the whole toolbar is sticky (wide screens), it already does this job. */

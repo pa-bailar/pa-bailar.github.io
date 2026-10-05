@@ -31,8 +31,8 @@ frontend/src/styles/
    ├─ event-detail.css   ← an event's details: the parts shared by the drawer and the event's page
    ├─ drawer.css         ← the details drawer over the list (phones), the side panel (wide screens)
    ├─ sheet.css          ← bottom sheets: rise, drag to dismiss (with scripts/lib/sheet.ts)
-   ├─ jump-bar.css       ← phones: the sticky bar, its row of chips and the line under it
-   ├─ filters.css        ← the filter chips (bar, sheet, toolbar), the line and the toolbar's status row
+   ├─ jump-bar.css       ← phones: the pinned bar, its row of chips and the line under it
+   ├─ filters.css        ← the filter chips (bar, sheet, toolbar), "Cuándo" and its menu, the line and the toolbar's status row
    ├─ view-switch.css    ← phones: the floating calendar / list button
    ├─ posts-sheet.css    ← every post announcing an event
    ├─ post-viewer.css    ← a post with Instagram's player
@@ -69,12 +69,12 @@ Themes switch through CSS `color-scheme`: `light` at `:root`, `dark` only under 
 | `--accent-text` | tomato-700 | pink-400 | The accent as a word on the page: "× Limpiar" (4.93:1; `--accent` is 4.0:1 on the page) |
 | `--chip-active-*` | wine / cream | pink-300 `#ff9fcb` / ink | Selected filter chip, the badges on ⚙ and 🔖 |
 | `--dimmed` | cocoa-200 | indigo-400 | A filter option with nothing to show: its label and dashed outline (inactive, exempt from contrast) |
-| `--details-bg` / `-pressed` | marigold-200 `#efd082` / `#f0cb63` | gold-900 `#3e322f` / `#544432` | The cards' "Detalles", a tonal fill |
-| `--details-text` / `--details-icon` | wine / tomato-700 | gold-300 / gold-300 | Its label (11.9:1, 7.6:1) and icon (4.4:1, 7.6:1) |
+| `--details-ink` | wine-900 | lilac-300 `#c3b7db` | The cards' "Detalles ›": its frame (13.4:1 and 9.62:1 on the page; 8.54:1 on a dark card); the label is `--text` |
+| `--details-pressed` | cream-250 | indigo-800 | "Detalles ›" pressed: the frame's fill |
 | `--scrim` | wine-950 | indigo-975 | Under the details drawer: 32% at half height, 55% at full |
 | `--backdrop` | wine at 60% | indigo-black at 78% | Behind the bottom sheets (the filters, the posts, the media viewer, the install steps) |
 | `--focus` | tomato-600 | gold-300 | The keyboard's focus ring |
-| `--stripe-1..3` | tomato, orange, marigold | magenta `#e0438f`, coral `#f2785c`, gold | 70s stripes |
+| `--stripe-1..3` | tomato, orange, marigold | magenta `#e0438f`, coral `#f2785c`, gold | 70s stripes, the period rule, the offset under "Detalles ›" |
 | `--period-title` / `--period-shadow` | deep tomato / sand | pink-200 `#f7b0d4` / indigo-975 | Period headings |
 | `--sticker-*` | tomato / cream | gold / ink | Round date sticker |
 | `--today-*` | marigold / wine | gold / ink | Today's number in the calendar |
@@ -92,7 +92,7 @@ The dark theme isn't a flat color: the page is lit like the ballroom of a late-n
 - **The grain** (`--grain`): a fine film noise (an SVG `feTurbulence` as a `data:` image, which the CSP's
   `img-src` allows) at 5%, over the page, the details drawer and the bottom sheets, so they read as the same air.
 - **Phones:** the toolbar (tabs and chips) isn't sticky there, so it's transparent in dark and lets the light
-  through instead of cutting it with a flat band. The sticky jump bar keeps `--bg`.
+  through instead of cutting it with a flat band. The pinned jump bar keeps `--bg`.
 - **The browser bar** (`theme-color`) is the page's indigo, `#16122B` (`scripts/themeConfig.ts`).
 
 The calendar uses the same theme as the rest of the page (an earlier version gave it its own palette;
@@ -128,14 +128,19 @@ few set from scripts are listed there): an undefined `--text-base` once left the
 - `--border-width` 1.5px everywhere.
 - Controls: `--control-height` 40px (buttons, toggle), `--chip-height` 32px, `--sticker-size` 60px.
 - Touch: `--touch-target` 44px (the filter chips, the bar's 🔍 and 🔖, the cards' action row, the drawer's buttons and handle). A control drawn smaller (a 40px chip, the 32px handle) gets an invisible `::after` that makes up the difference above and below, so the bar stays 56px.
-- The phone bar: `--jump-bar-height` 56px, `--filter-line-height` 40px (the line under it while filtering).
+- The phone bar: `--jump-bar-height` 56px, `--filter-line-height` 40px (the line under it while filtering);
+  `--pinned-height`, what's pinned to the top (the bar, plus the line while filtering: 56 or 96px), which jumps and
+  the keyboard's focus land under (`scroll-margin-top`, `scroll-padding-top`); `--menu-width` 304px ("Cuándo"'s menu).
+- The cards' "Detalles ›": `--details-height` 36px (its frame; the button is 44px), `--details-offset` 2px,
+  `--details-tuck` (how far the offset reaches under the frame's ink: one device pixel from 2x, half of one below; set
+  per screen density in `tokens.css`).
 - The details: `--drawer-top-gap` 12px (phones: what's left above the drawer at full height), `--panel-width` 420px (wide screens: the side panel).
-- Small parts: `--tab-underline` 3px (the selected tab's line), `--icon-sm` 16px (marks over flyers and thumbnails, a chip's ×, "× Limpiar", the sound button), `--icon-md` 20px (the cards' "Detalles", the drawer's ×, the details' media links), `--icon-lg` 24px (Guardar, Compartir, ▶ over a video's flyer, the details' quick actions, the floating button), `--handle-width` × `--handle-height` 40×4px (every sheet's grab handle, `.sheet-handle`), `--fab-size` 44px.
+- Small parts: `--tab-underline` 3px (the selected tab's line), `--icon-sm` 16px (marks over flyers and thumbnails, a chip's ×, "× Limpiar", the sound button), `--icon-md` 20px ("Cuándo"'s calendar and check, the drawer's ×, the details' media links), `--icon-lg` 24px (Guardar, Compartir, ▶ over a video's flyer, the details' quick actions, the floating button), `--handle-width` × `--handle-height` 40×4px (every sheet's grab handle, `.sheet-handle`), `--fab-size` 44px.
 - Over photos: `--on-image` (white) with `--shadow-on-image`, the same in both themes, for marks that sit on any flyer (▶, stacked squares); `--on-image-bg` (black at 60%) behind words and marks on a flyer ("Sin sonido", ▶).
 
 ## Signature motifs
 
-- **70s stripes** (`<Stripes />`): three bands (tomato, orange, marigold). Used in the page headers (home, event page, 404), the event detail and the footer; the period headings use the same three colors as one thin line. Don't use them anywhere else; they lose meaning if repeated.
+- **70s stripes** (`<Stripes />`): three bands (tomato, orange, marigold). Used in the page headers (home, event page, 404), the event detail and the footer; the period headings use the same three colors as one thin line. Don't use them anywhere else; they lose meaning if repeated. The one exception: the cards' "Detalles ›" has a printer's offset under its frame in the same three colors, as a smooth gradient (the owner's choice; see "Opening an event").
 - **Date sticker:** a round "record label" with the day and month, inside the bottom-right corner of each flyer, on cards and in the event detail. Two events sharing one flyer (a monthly schedule) are told apart by it while swiping. An event over several days within one month shows its days, "13–15 / NOV", a size smaller (`--text-sm`, `.date-sticker--range`) to fit the 60 px circle; across months it keeps the first day ("31 / OCT"), and the card's line gives the range.
 - **Italic headings:** group, day and month headings in Bodoni italic, like a handwritten setlist.
 
@@ -314,12 +319,19 @@ the list stays short there and summarizes what's further away (`scripts/views/up
 ## Phones: feed, jump bar, view switch and filter sheet
 
 - **Feed like Instagram:** under 720px each event is a full-width post, the flyer edge to edge at full size and the details right below, separated by space instead of boxed cards. Nothing is shrunk into thumbnails.
-- **Jump bar** (`JumpBar.astro`, `scripts/views/jumpBar.ts`): one slim row (`--jump-bar-height`, 56px) stuck to the top, modeled on the filter bars of Google Maps and Airbnb: **[🔍] [🔖 3]**, then one row of chips that scrolls sideways: **[⚙ 3] [Noviembre ×] [Hoy] [Mañana] [Finde] [Próx. semana] | [Salsa] [Bachata] [Urbano] [Tango]** (search and "Guardados": see "Saving and searching"; the chips: see "Filters").
+- **Jump bar** (`JumpBar.astro`, `scripts/views/jumpBar.ts`): one slim row (`--jump-bar-height`, 56px) pinned to the top, modeled on the filter bars of Google Maps and Airbnb: **[🔍] [🔖 3]**, then one row of chips that scrolls sideways: **[⚙ 3] [Social ×] [📅 ▾] | [Salsa] [Bachata] [Urbano] [Tango]** (search and "Guardados": see "Saving and searching"; "Cuándo" and the chips: see "Filters").
+  - **Compact, so two rhythms show at 375px:** 🔍, 🔖 and ⚙ are 40px squares (44px to the finger: 2px past each side, in
+    the 8px gaps), and "Cuándo" is its calendar and ▾ ("📅 ▾"; the word "Cuándo" joins them from 480px). At 375px the row
+    shows ⚙, 📅 ▾, Salsa whole and Bachata to its last letter, under the fade.
   - **The row runs to the screen's edge** and fades there (a mask), so the next chip peeks and it reads as a row that scrolls (Material's single-line chip group). It keeps where it was scrolled while choosing, unless a new choice would be out of sight (made in the sheet, or a chip further along): then it scrolls just enough to show the first one.
   - **⚙** opens the filter sheet; its badge counts every choice in use (two rhythms count two, like Airbnb's).
   - **The line under it** ("12 eventos · Finde, Salsa" and "× Limpiar"), only while filtering (`--filter-line-height`, 40px): see "Filters".
   - **Keeping your place:** when a filter changes while you're inside the list, the period you were reading stays right under the bar; if the filter removed it, the next period (else the previous one) takes its place. The period being read is the lowest one crossing a band under the bar (`captureListPosition`).
-  - **Hides like Instagram's header:** it hides while scrolling down and returns on any scroll up. It never hides near the top of the page, during a jump, while the keyboard's focus is in it, or while typing a search (a chip tapped keeps the focus, but not the bar).
+  - **Pinned, never hidden:** the filters are at hand anywhere in the list. (It used to hide while scrolling down, like
+    Instagram's header; the owner found the filters out of reach mid-list.) Opaque (`--bg`) with its line under it, and
+    nothing else: no transform on it, and no `overflow: hidden` on html or body (iOS Safari's sticky breaks under one).
+    Jumps (a filter change keeping your place, the keyboard's focus, a period's heading) land below it and its line
+    (`--pinned-height`).
   - **Where it shows:** wherever the full toolbar isn't sticky (phones, short windows), in both views.
 - **View switch** (`ViewSwitch.astro`, `scripts/views/viewSwitch.ts`): the tabs scroll away on phones, so an icon button (`--fab-size`, 44px) floats at the bottom right. It offers the other view: a calendar icon in the list, a list icon in the calendar (named for screen readers).
   - **Look:** the action color (`--action` / `--on-action`), ringed with the page color and a shadow, so it stands out even over a flyer of the same colors.
@@ -341,14 +353,34 @@ screens in the toolbar's chip rows:
 
 | Group | Choices | Options | In the phone bar |
 |---|---|---|---|
-| Fecha | several | each period of the list with something on ("Hoy", "Esta semana", "Este fin de semana", "Próxima semana", "Más adelante en octubre", each month, each year), and "Mañana" right after "Hoy" when something is on tomorrow | Hoy · Mañana · Finde · Próx. semana, when there's something on then |
+| Fecha | several (the bar's "Cuándo": one) | each period of the list with something on ("Hoy", "Esta semana", "Este fin de semana", "Próxima semana", "Más adelante en octubre", each month, each year), and "Mañana" right after "Hoy" when something is on tomorrow | "📅 ▾" (Cuándo): a menu with every one |
 | Ritmo | several | each rhythm ("Salsa" includes its variants), "Otros ritmos" last | Salsa · Bachata · Urbano · Tango, always (the owner's choice) |
 | Tipo de evento | several | each event type | from the sheet |
 | Academia | one | set by tapping an academy on a card | "@academia ×" |
 
 - **One tap chooses, another unchooses.** A chosen chip takes the selected-chip colors (`--chip-active-*`) with an ×;
   tapping it again (or its × anywhere) removes it. Choices made in the sheet that have no chip of their own in the bar
-  show right after ⚙ as removable chips: "Noviembre ×", "Social ×", "@academia ×".
+  show right after ⚙ as removable chips: "Social ×", "Kizomba ×", "@academia ×" (never a date: "Cuándo" shows those).
+- **Dates look like what they are: "Cuándo" (`views/whenMenu.ts`).** Dates used to be chips like the rhythms, and read
+  as the same kind of thing. In the bar they're one control instead, the pattern of Google Maps' chips with a ▾:
+  - **The chip:** a calendar (in `--accent-text`) and ▾, "📅 ▾", named "Cuándo: Cualquier fecha". Chosen, it reads
+    "📅 Finde" in the selected-chip colors, with **×** right beside it: a button of its own (not inside the chip's), the
+    two drawn as one piece with a thin line between them; × takes the date away in one tap and the focus goes back to
+    "Cuándo". Several dates chosen in the sheet read "📅 Hoy +1", and × takes them all away.
+  - **The menu** hangs from the chip (under it, its left edge with the chip's, never past the screen's sides; it scrolls
+    when the screen is short, at least four options tall): "CUÁNDO", then **Cualquier fecha** and every period, each
+    with the days it covers in muted text ("Hoy dom 4", "Este fin de semana 9–11 oct", "Resto de octubre 12–31 oct";
+    none for a month or a year) and its count on the right; the date chosen has a check (`--accent-text`) and a sunken
+    row (`--surface-sunken`). "Mañana" only when something is on tomorrow; an option with nothing to show is dimmed and a
+    tap on it does nothing. 44px rows, `--surface`, `--shadow-menu`, the grain in dark.
+  - **One tap applies it and closes the menu** (no "Listo"): it replaces whatever dates were chosen, and "Cualquier
+    fecha" clears them. Several dates at once are chosen in the sheet.
+  - **Closing:** Escape, a tap outside (that tap does nothing else: it could open an event behind it), the chip again,
+    Tab, or back (it has a history entry of its own, as an overlay, like the sheets). The focus goes back to the chip.
+  - **Semantics:** the chip has `aria-haspopup="menu"`, `aria-expanded` and `aria-controls`; the menu is `role="menu"`
+    with `menuitemradio` options (`aria-checked`; dimmed ones `aria-disabled`), each named with its days and count
+    ("Hoy (dom 4), 3 eventos"). Opening puts the focus on the date chosen (else "Cualquier fecha"); ↓ ↑ (around), Home
+    and End move; ↓ or ↑ on the chip opens it.
 - **Dimmed, never hidden:** an option that would show nothing with the other filters stays in place, dimmed (dashed,
   in `--dimmed`; `aria-disabled`, still focusable, a tap does nothing), so the row never jumps while choosing. A chosen
   option is never dimmed, so it can always be removed. Each option's count is how many events it would show with the
@@ -375,8 +407,8 @@ screens in the toolbar's chip rows:
   o ritmos." · "Limpiar filtros"; with a search, "No encontramos eventos" · "Nada coincide con «…»." · "Borrar la
   búsqueda"; in Guardados also "Ver todos, no solo guardados".
 - **Semantics:** filter chips are toggle buttons (`aria-pressed`), short names carry the full one ("Finde": "Este fin de
-  semana", "Próx. semana": "Próxima semana"); removable chips are named "Quitar Noviembre"; ⚙ is "Todos los filtros,
-  3 activos". Focus stays on the chip chosen; after "Limpiar" (which hides or disables itself) or removing the academy,
+  semana", "Próx. semana": "Próxima semana"); removable chips are named "Quitar Social"; "Cuándo"'s × is "Quitar Este
+  fin de semana"; ⚙ is "Todos los filtros, 3 activos". Focus stays on the chip chosen; after "Limpiar" (which hides or disables itself) or removing the academy,
   focus goes to ⚙ (or the sheet's first chip, or the toolbar's first chip on wide screens).
 - **Wide screens:** the toolbar keeps its chip rows (dates with the bar's short names, types, rhythms), chosen chips
   with ×, the same dimming, and a status row: "Solo eventos de @academia · Ver todas las academias", "12 eventos" and a
@@ -412,19 +444,44 @@ over the list, with what was new half a screen down, and it moved sideways betwe
 list. Now they open like Instagram's comments: a drawer rises over the list, and the list stays where it was.
 
 - **An action row under each card's flyer, like Instagram's** (`.event-card__actions`, `views/eventCard.ts`):
-  **ⓘ Detalles** on the left, **Compartir** (the share icon: the event's link through the phone's menu) and **Guardar**
+  **Detalles ›** on the left, **Compartir** (the share icon: the event's link through the phone's menu) and **Guardar**
   (the bookmark) on the right. Each is a 44px target (`--touch-target`) above the card's stretched link, and the gaps
   between them still open the card.
-- **"Detalles" is a soft tonal fill** (Material's filled-tonal: medium emphasis, no outline), so it's found at a glance
-  without competing with the one primary button: `--details-bg` (light: marigold at 45% over the page, `#efd082`;
-  dark: gold at 18% over the page, `#3e322f`), its label in `--details-text` (wine, 11.9:1; gold, 7.6:1) and its icon in
-  `--details-icon` (tomato-700, 4.4:1; gold). Pressed: `--details-bg-pressed`.
+- **"Detalles ›" is a printed label with an offset** (the owner's pick, "G2"): a closed ink frame (`--border-width`,
+  `--details-ink`: wine in light, lilac-300 in dark) with no fill, so the page (and the dark theme's grain) shows
+  through; the label "Detalles" (`--text-md`, bold, `--text`) and a trailing chevron (no ⓘ). Under it, **one
+  offset layer**, `--details-offset` (2px) down and to the right, filled with a smooth left-to-right gradient of the
+  period rule's three colors (`--stripe-1..3`: tomato → orange → marigold; in dark magenta → coral → gold), like a
+  misregistered print. It's found at a glance without competing with the one primary button.
+  - **Built:** the button is the 44px target with no border of its own; the frame is its `::after` (36px,
+    `--details-height`, the ink border) and the offset its `::before` (`isolation: isolate`; both behind the label).
+    The two are placed the same way inside the button, so they land on the screen's pixels the same way (the browser
+    rounds a 1.5px border to whole device pixels, 1px at 1x; a band placed from the button's own border drifted by
+    that rounding). The offset is the frame's box with the same corners, 2px further down and right, cut
+    (`clip-path`) to an L that starts `--details-tuck` inside the frame's outer edge: the frame's outermost row of ink
+    covers the band's edge, so ink and band meet with no line of page between them, and the band stays clear of the
+    ink's inner pixels, so the bottom and right lines are as thick as the top and left ones. At the rounded corner the
+    cut steps in diagonally, within the ink, so the band fills it. It fits in the gap before Compartir, which doesn't
+    move. The keyboard's ring goes around the frame.
+  - **Hard edges:** it's placed and moved with insets and `top`/`left`, never a `transform`: layout positions snap to
+    the screen's pixels like the frame's border, while a transform drew the band antialiased.
+  - **What earlier builds got wrong** (each measured on screenshots at 1x, 2x, 2.625x, 3x and 3.5x, in both themes, at
+    rest and pressed): cut at the ink's inner edge and moved with a transform, the band smeared over the line at 3x;
+    cut at its outer edge, a thin line of page showed between ink and band (cream in light, blue in dark; the mockup
+    has it too); cut in the middle of the line, the band tinted its inner pixels, so the bottom line looked thinner,
+    with the band climbing over it. Now: the same number of ink pixels on all four sides, no page between ink and
+    band (edges and corner), and no band inside the frame.
+  - **Pressed:** the frame sinks 1px onto the offset (half of it still shows) and fills with `--details-pressed`
+    (cream-250; indigo-800).
+  - **Contrast:** the frame (≥3:1) and the label (≥4.5:1) against the page and a card, and the label on its pressed fill,
+    are in `check-contrast.mjs`; the offset is decorative, like the stripes.
 - **No line at the card's foot:** a muted "Ver horario, precios y cómo llegar" used to end each card; "Detalles" on
   every card already says it, so the card ends with its price and rhythms.
 - **The whole card opens the details**, its photo flyer included: card, flyer and "Detalles" open the same drawer (a
   video's clip toggles its sound instead, and the posts' badge opens the posts).
 - **The date sticker sits inside the flyer's bottom-right corner** on cards too.
-- **First visit:** the first card's "Detalles" pulses gently once (a ring in `--pulse` and a slight swell, 1.6s) when
+- **First visit:** the first card's "Detalles" pulses gently once (its frame: a ring in `--pulse` and a slight swell,
+  1.6s; kept with the new button, which is still the way in to learn) when
   its row is fully on screen (`views/detailsHint.ts`), never again in this browser (`details-hint-seen` in
   localStorage, `lib/onceFlag.ts`), and not at all once the visitor has opened any details. No hint bubble over the
   list. Nothing moves with reduced motion.

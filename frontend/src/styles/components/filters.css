@@ -62,12 +62,192 @@
   color: inherit;
 }
 
-/* ⚙: a square, with the number of choices on its corner. */
+/* ⚙: a 40 px square like 🔍 and 🔖, with the number of choices on its corner; 44 px to the finger, 2 px past each
+   side (the row's gaps are 8 px). */
 .filter-chip--icon {
   flex: none;
   justify-content: center;
-  width: var(--touch-target);
+  width: var(--control-height);
   padding: 0;
+}
+
+.filter-chip--icon::after {
+  inset: calc((var(--control-height) - var(--touch-target)) / 2 - var(--border-width));
+}
+
+/* ---------- "Cuándo" in the phone bar (filters.ts, whenMenu.ts) ----------
+   Not a chip like the rhythms: a calendar and a ▾ say it opens a menu of dates ("📅 ▾"). Once a date is chosen it
+   reads "📅 Finde" in the chosen colors, with × beside it: two buttons (open the menu, take the date away) drawn as
+   one piece, a line between them. */
+.when-chip {
+  display: inline-flex;
+  flex: none;
+}
+
+.jump-bar .when-chip__open {
+  gap: var(--space-1);
+  padding: 0 var(--space-2);
+}
+
+.when-chip__open .icon {
+  width: var(--icon-md);
+  height: var(--icon-md);
+}
+
+/* The calendar in the accent's text color while nothing is chosen, so the control reads as dates at a glance. */
+.when-chip:not(.is-chosen) .when-chip__open .icon:first-child {
+  color: var(--accent-text);
+}
+
+.when-chip__open .icon:last-child:not(:first-child) {
+  width: var(--icon-sm);
+  height: var(--icon-sm);
+}
+
+/* The word "Cuándo" where there's room for it (phones show the calendar and ▾, so two rhythms fit). */
+.when-chip__word {
+  display: none;
+}
+
+@media (min-width: 480px) {
+  .when-chip__word {
+    display: inline;
+  }
+}
+
+.when-chip.is-chosen .filter-chip {
+  background: var(--chip-active-bg);
+  border-color: var(--chip-active-bg);
+  color: var(--chip-active-text);
+}
+
+.when-chip.is-chosen .when-chip__open {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* ×: a 40 px square joined to the chip, a line in the chip's text color between them; to the finger 44 px, the
+   extra 4 px on its right (the row's gap), so the two targets never overlap. */
+.jump-bar .when-chip__clear {
+  justify-content: center;
+  width: var(--control-height);
+  padding: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.when-chip.is-chosen .when-chip__clear {
+  border-left-color: color-mix(in srgb, var(--chip-active-text) 45%, var(--chip-active-bg));
+}
+
+.when-chip__clear::after {
+  inset: calc((var(--control-height) - var(--touch-target)) / 2 - var(--border-width))
+    calc((var(--control-height) - var(--touch-target)) - var(--border-width)) calc((var(--control-height) - var(--touch-target)) / 2 - var(--border-width))
+    0;
+}
+
+.when-chip__clear .icon {
+  width: var(--icon-sm);
+  height: var(--icon-sm);
+}
+
+/* The menu: hangs from its chip inside the pinned bar (whenMenu.ts places it), a single choice per tap. */
+.when-menu {
+  position: absolute;
+  z-index: var(--z-sticky);
+  width: min(var(--menu-width), calc(100vw - var(--space-4)));
+  padding: var(--space-1) 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--surface);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-menu);
+}
+
+:root[data-theme="dark"] .when-menu {
+  background-image: var(--grain);
+}
+
+.when-menu[hidden] {
+  display: none;
+}
+
+.when-menu__head {
+  margin: 0;
+  padding: var(--space-2) var(--space-4) var(--space-1);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.when-menu__item {
+  display: grid;
+  grid-template-columns: var(--icon-md) 1fr auto;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+  min-height: var(--touch-target);
+  padding: 0 var(--space-4) 0 var(--space-3);
+  border: 0;
+  background: none;
+  color: var(--text);
+  font: inherit;
+  font-size: var(--text-md);
+  text-align: left;
+  cursor: pointer;
+}
+
+.when-menu__item:focus-visible {
+  outline-offset: -3px;
+}
+
+.when-menu__item[aria-checked="true"] {
+  background: var(--surface-sunken);
+}
+
+.when-menu__label {
+  font-weight: var(--weight-bold);
+}
+
+.when-menu__label small {
+  margin-left: var(--space-1);
+  white-space: nowrap;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-regular);
+  color: var(--text-muted);
+}
+
+.when-menu__count {
+  font-size: var(--text-sm);
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+}
+
+.when-menu__tick {
+  display: inline-flex;
+  color: var(--accent-text);
+}
+
+.when-menu__tick .icon {
+  width: var(--icon-md);
+  height: var(--icon-md);
+}
+
+/* Nothing to show with the other filters: dimmed, a tap does nothing (the menu stays). */
+.when-menu__item[aria-disabled="true"],
+.when-menu__item[aria-disabled="true"] small,
+.when-menu__item[aria-disabled="true"] .when-menu__count {
+  color: var(--dimmed);
+  cursor: default;
+}
+
+.when-menu__separator {
+  height: var(--border-width);
+  margin: var(--space-1) 0;
+  background: var(--divider);
 }
 
 /* ---------- the line under the phone bar, while filtering ---------- */

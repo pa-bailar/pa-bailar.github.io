@@ -1,8 +1,9 @@
 // The filters: what's chosen and what can be chosen, and where they're drawn.
-//   - Phones, the bar (JumpBar.astro): [⚙ 3] [Noviembre ×] [Hoy] [Mañana] [Finde] [Próx. semana] | [Salsa] [Bachata]
-//     [Urbano] [Tango], one row that scrolls sideways. One tap chooses a chip (dark, with ×), another unchooses it.
-//     ⚙ opens the "Filtros" sheet with every option; a choice made there that has no chip of its own in the row
-//     shows as a removable chip after ⚙ ("Noviembre ×", "Social ×", "@academia ×").
+//   - Phones, the bar (JumpBar.astro), pinned to the top: [⚙ 3] [Social ×] [📅 ▾] | [Salsa] [Bachata] [Urbano] [Tango],
+//     one row that scrolls sideways. "📅 ▾" ("Cuándo") opens a short menu with one choice of date (whenMenu.ts);
+//     once chosen it reads "📅 Finde" with its own × beside it. A rhythm chip is chosen with one tap (dark, with ×),
+//     unchosen with another. ⚙ opens the "Filtros" sheet with every option (several dates too); a choice made
+//     there that has no chip of its own in the row shows as a removable chip after ⚙ ("Social ×", "@academia ×").
 //   - Under the bar, only while filtering: "12 eventos · Finde, Salsa" and "× Limpiar".
 //   - The sheet (FilterSheet.astro): every date, rhythm and type with its count, the academy, "Limpiar" and
 //     "Ver 12 eventos".
@@ -13,22 +14,19 @@
 
 import type { AppState, DanceEvent, EventType } from "../types";
 import { byId, escapeHtml, prefersReducedMotion } from "../lib/dom";
-import { OTHER_STYLE, eventCountLabel, formatMonthName, styleLabel, typeLabel } from "../lib/format";
+import { OTHER_STYLE, eventCountLabel, formatMonthName, spanLabel, styleLabel, typeLabel } from "../lib/format";
 import { todayIso, toIsoDate } from "../lib/dates";
 import { ICONS } from "../lib/icons";
 import {
   type FilterGroup,
   STYLE_FAMILIES,
-  TOMORROW,
   activeFilterCount,
   dateOptions,
   eventsInView,
   matchesFilters,
+  periodDays,
   styleMatches,
 } from "../state";
-
-/** The date chips in the bar, when there's something on then: what people look for (Eventbrite's quick dates). */
-export const QUICK_DATES = ["hoy", TOMORROW, "fin-de-semana", "proxima-semana"];
 /** The rhythm chips in the bar: always these four, in this order (the owner's choice), dimmed when there's none. */
 export const QUICK_STYLES = ["salsa", "bachata", "urbano", "tango"];
 
@@ -50,11 +48,29 @@ export interface AppliedFilter {
   name: string; // for screen readers: "Este fin de semana"
 }
 
+/** An option of the bar's "Cuándo" menu: one date at a time. */
+export interface WhenOption {
+  value: string; // "" is "Cualquier fecha"
+  label: string; // "Este fin de semana"
+  hint: string; // the days it covers: "9–11 oct" (none for a month or a year)
+  count: number; // events it would show with the other filters on
+  chosen: boolean;
+  dimmed: boolean;
+}
+
+/** The bar's "Cuándo": its chip and its menu (list only; the calendar has its own days). */
+export interface WhenModel {
+  label: string; // the chip's: "" (nothing chosen: "📅 ▾"), "Finde", "Finde +1" (several, from the sheet)
+  name: string; // for screen readers: "Cualquier fecha", "Este fin de semana", "Este fin de semana y Noviembre"
+  chosen: boolean;
+  options: WhenOption[]; // "Cualquier fecha", then every period with something on
+}
+
 export interface FilterModel {
   dates: FilterOption[]; // every period with something on (none in the calendar), in order
   styles: FilterOption[]; // most frequent first, "Otros ritmos" last
   types: FilterOption[]; // most frequent first
-  quickDates: FilterOption[]; // the bar's date chips
+  when: WhenModel | null; // the bar's "Cuándo" (null in the calendar)
   quickStyles: FilterOption[]; // the bar's rhythm chips
   applied: AppliedFilter[]; // every choice: dates, rhythms, types, academy
   extra: AppliedFilter[]; // those without a chip of their own in the bar
@@ -121,7 +137,6 @@ export function filterModel(events: DanceEvent[], state: AppState, today = today
         )
       : [];
 
-  const quickDates = QUICK_DATES.flatMap((key) => dates.filter((item) => item.value === key));
   const quickStyles = QUICK_STYLES.flatMap((style) => styles.filter((item) => item.value === style));
 
   const asApplied = (item: FilterOption): AppliedFilter => ({ group: item.group, value: item.value, label: item.short, name: item.label });
@@ -130,19 +145,45 @@ export function filterModel(events: DanceEvent[], state: AppState, today = today
     const name = `@${state.accountFilter}`;
     applied.push({ group: "account", value: state.accountFilter, label: name, name });
   }
-  const hasChip = (item: AppliedFilter) =>
-    (item.group === "dates" && QUICK_DATES.includes(item.value)) || (item.group === "styles" && QUICK_STYLES.includes(item.value));
+  // Every date shows on "Cuándo", every bar rhythm on its chip.
+  const hasChip = (item: AppliedFilter) => item.group === "dates" || (item.group === "styles" && QUICK_STYLES.includes(item.value));
 
   return {
     dates,
     styles,
     types,
-    quickDates,
+    when: state.view === "upcoming" ? whenModel(dates, without("dates").length, today) : null,
     quickStyles,
     applied,
     extra: applied.filter((item) => !hasChip(item)),
     active: activeFilterCount(state),
     shown: inView.filter((event) => matchesFilters(event, state)).length,
+  };
+}
+
+/** "Cuándo": the chip says what's chosen; the menu lists "Cualquier fecha" and every period, with its days. */
+export function whenModel(dates: FilterOption[], anyCount: number, today = todayIso()): WhenModel {
+  const chosen = dates.filter((item) => item.chosen);
+  const [first] = chosen;
+  const hint = (key: string) => {
+    const days = periodDays(key, today);
+    return days ? spanLabel(...days) : "";
+  };
+  return {
+    label: first ? `${first.short}${chosen.length > 1 ? ` +${chosen.length - 1}` : ""}` : "",
+    name: first ? chosen.map((item) => item.label).join(" y ") : "Cualquier fecha",
+    chosen: Boolean(first),
+    options: [
+      { value: "", label: "Cualquier fecha", hint: "", count: anyCount, chosen: !first, dimmed: false },
+      ...dates.map((item) => ({
+        value: item.value,
+        label: item.label.startsWith("Más adelante") ? item.short : item.label, // "Resto de octubre": one line
+        hint: hint(item.value),
+        count: item.count,
+        chosen: item.chosen,
+        dimmed: item.dimmed,
+      })),
+    ],
   };
 }
 
@@ -215,7 +256,7 @@ function chipHtml(item: FilterOption, { short = false, counts = false } = {}): s
     aria-pressed="${item.chosen}"${item.dimmed ? ` aria-disabled="true"` : ""}${spoken !== label ? ` aria-label="${escapeHtml(spoken)}"` : ""}>${escapeHtml(label)}${count}${item.chosen ? X : ""}</button>`;
 }
 
-/** A choice made elsewhere (the sheet, a card's academy), as a chip that removes it: "Noviembre ×". */
+/** A choice made elsewhere (the sheet, a card's academy), as a chip that removes it: "Social ×". */
 function removableHtml(item: AppliedFilter): string {
   const data = item.group === "account" ? `data-account=""` : `data-filter="${item.group}" data-value="${escapeHtml(item.value)}"`;
   return `<button class="chip filter-chip is-chosen" type="button" ${data} aria-label="Quitar ${escapeHtml(item.name)}">${escapeHtml(item.label)}${X}</button>`;
@@ -249,12 +290,12 @@ function revealChip(row: HTMLElement, chip: HTMLElement) {
 function renderBarChips(model: FilterModel, state: AppState) {
   const row = byId("jump-chips");
   const scrolled = row.scrollLeft;
-  const dates = state.view === "upcoming" && model.quickDates.length;
+  const when = model.when && model.dates.length ? model.when : null;
   row.innerHTML = [
     sheetButtonHtml(model.active),
     ...model.extra.map(removableHtml),
-    ...(dates ? model.quickDates.map((item) => chipHtml(item, { short: true })) : []),
-    dates ? `<span class="jump-bar__divider" aria-hidden="true"></span>` : "",
+    when ? whenChipHtml(when) : "",
+    when ? `<span class="jump-bar__divider" aria-hidden="true"></span>` : "",
     ...model.quickStyles.map((item) => chipHtml(item, { short: true })),
   ].join("");
   row.scrollLeft = scrolled;
@@ -262,10 +303,61 @@ function renderBarChips(model: FilterModel, state: AppState) {
   barChoices = new Set(model.applied.map(choiceKey));
   if (!fresh.size) return;
   const chosen = [...row.querySelectorAll<HTMLElement>('[aria-pressed="true"], .is-chosen')].find((chip) => {
+    if (chip.classList.contains("when-chip")) return [...fresh].some((key) => key.startsWith("dates:"));
     const key = chip.dataset.account !== undefined ? `account:${state.accountFilter}` : `${chip.dataset.filter}:${chip.dataset.value}`;
     return fresh.has(key);
   });
   if (chosen) revealChip(row, chosen);
+}
+
+/**
+ * "Cuándo" in the bar: a button that opens its menu ("📅 ▾", or "📅 Finde" once a date is chosen) and, beside it
+ * (not inside: two targets), × to take the date away. One piece to the eye: the chosen colors, a line between.
+ */
+function whenChipHtml(when: WhenModel): string {
+  const open = `<button class="chip filter-chip when-chip__open" type="button" id="when-open" data-when-open
+    aria-haspopup="menu" aria-expanded="false" aria-controls="when-menu" aria-label="Cuándo: ${escapeHtml(when.name)}">${
+      ICONS.calendar
+    }${when.chosen ? `<span>${escapeHtml(when.label)}</span>` : `<span class="when-chip__word">Cuándo</span>${ICONS.chevronDown}`}</button>`;
+  const clear = when.chosen
+    ? `<button class="chip filter-chip when-chip__clear" type="button" data-when-clear
+        aria-label="Quitar ${escapeHtml(when.name)}">${ICONS.close}</button>`
+    : "";
+  return `<span class="when-chip${when.chosen ? " is-chosen" : ""}">${open}${clear}</span>`;
+}
+
+/**
+ * The "Cuándo" menu (JumpBar.astro's #when-menu, opened by whenMenu.ts): one date at a time, each with its days
+ * and how many events. A tap applies it and closes the menu; one with nothing to show is dimmed.
+ */
+export function whenMenuHtml(when: WhenModel): string {
+  const item = (option: WhenOption) => {
+    const spoken = `${option.label}${option.hint ? ` (${option.hint})` : ""}, ${eventCountLabel(option.count)}`;
+    return `<button class="when-menu__item" type="button" role="menuitemradio" tabindex="-1" data-when="${escapeHtml(option.value)}"
+      aria-checked="${option.chosen}"${option.dimmed ? ` aria-disabled="true"` : ""} aria-label="${escapeHtml(spoken)}">
+      <span class="when-menu__tick" aria-hidden="true">${option.chosen ? ICONS.check : ""}</span>
+      <span class="when-menu__label">${escapeHtml(option.label)}${option.hint ? ` <small>${escapeHtml(option.hint)}</small>` : ""}</span>
+      <span class="when-menu__count" aria-hidden="true">${option.count}</span></button>`;
+  };
+  const [any, ...periods] = when.options;
+  return [
+    `<p class="when-menu__head" aria-hidden="true">Cuándo</p>`,
+    any ? item(any) : "",
+    `<div class="when-menu__separator" role="separator"></div>`,
+    ...periods.map(item),
+  ].join("");
+}
+
+/** The menu's content follows the filters, also while it's open (the counts). */
+function renderWhenMenu(model: FilterModel) {
+  const menu = byId("when-menu");
+  if (!model.when) {
+    menu.innerHTML = "";
+    return;
+  }
+  const focused = (document.activeElement as HTMLElement | null)?.closest<HTMLElement>("#when-menu [data-when]")?.dataset.when;
+  menu.innerHTML = whenMenuHtml(model.when);
+  if (focused !== undefined) menu.querySelector<HTMLElement>(`[data-when="${CSS.escape(focused)}"]`)?.focus();
 }
 
 /** Under the bar, only while filtering: "12 eventos · Finde, Salsa" and "× Limpiar". */
@@ -333,6 +425,7 @@ function renderToolbar(model: FilterModel, state: AppState) {
 /** Draws every place the filters show: the phone bar and its line, the sheet, the toolbar. */
 export function renderFilters(model: FilterModel, state: AppState) {
   renderBarChips(model, state);
+  renderWhenMenu(model);
   renderSummary(model, state);
   renderSheet(model, state);
   renderToolbar(model, state);

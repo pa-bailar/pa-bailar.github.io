@@ -11,8 +11,11 @@ import {
   matchesDates,
   matchesFilters,
   matchesStyles,
+  periodDays,
   toggled,
 } from "../src/scripts/state";
+import { spanLabel } from "../src/scripts/lib/format";
+import { menuPlacement, nextOption } from "../src/scripts/views/whenMenu";
 import {
   QUICK_STYLES,
   emptyResultsHtml,
@@ -20,6 +23,8 @@ import {
   rankedStyles,
   resultsButtonLabel,
   summaryLine,
+  whenMenuHtml,
+  whenModel,
 } from "../src/scripts/views/filters";
 import { event } from "./factories";
 
@@ -202,9 +207,36 @@ describe("the filter chips (filterModel)", () => {
     expect(pick(model().quickStyles, "urbano")).toMatchObject({ count: 0, dimmed: true });
   });
 
-  it("the bar's dates: Hoy and Mañana first, Mañana only with something on tomorrow", () => {
-    expect(model().quickDates.map((option) => option.value).slice(0, 2)).toEqual(["hoy", TOMORROW]);
-    expect(filterModel([tonight], list, today).quickDates.map((option) => option.value)).not.toContain(TOMORROW);
+  it("the bar's dates are one control, \"Cuándo\": Cualquier fecha, then Hoy and Mañana first (Mañana only with something on tomorrow)", () => {
+    const when = model().when!;
+    expect(when).toMatchObject({ label: "", name: "Cualquier fecha", chosen: false });
+    expect(when.options.map((option) => option.value).slice(0, 3)).toEqual(["", "hoy", TOMORROW]);
+    expect(when.options[0]).toMatchObject({ label: "Cualquier fecha", count: 3, chosen: true, dimmed: false });
+    expect(filterModel([tonight], list, today).when!.options.map((option) => option.value)).not.toContain(TOMORROW);
+  });
+
+  it("\"Cuándo\" says the date chosen; several (chosen in the sheet) as the first and how many more", () => {
+    const one = model({ dates: [TOMORROW] }).when!;
+    expect(one).toMatchObject({ label: "Mañana", name: "Mañana", chosen: true });
+    expect(one.options.find((option) => option.chosen)?.value).toBe(TOMORROW);
+    expect(one.options[0]).toMatchObject({ chosen: false, count: 3 }); // "Cualquier fecha": every event again
+    const two = model({ dates: ["hoy", TOMORROW] }).when!;
+    expect(two).toMatchObject({ label: "Hoy +1", name: "Hoy y Mañana", chosen: true });
+  });
+
+  it("\"Cuándo\"'s options: counted with the other filters, dimmed when nothing's left, a period's days as a hint", () => {
+    const bachata = model({ styles: ["bachata"] }).when!;
+    expect(bachata.options.find((option) => option.value === "hoy")).toMatchObject({ count: 0, dimmed: true });
+    expect(bachata.options.find((option) => option.value === TOMORROW)).toMatchObject({ count: 1, dimmed: false });
+    expect(bachata.options[0]).toMatchObject({ count: 1, dimmed: false });
+    const hoy = bachata.options.find((option) => option.value === "hoy")!;
+    expect(hoy.hint).toMatch(/^[a-zé]{3} \d{1,2}$/); // "dom 4"
+  });
+
+  it("no date has a removable chip of its own: \"Cuándo\" shows every one", () => {
+    const later40 = model({ dates: [later.date.slice(0, 7)], styles: ["kizomba"] });
+    expect(later40.applied.map((item) => item.group)).toEqual(["dates", "styles"]);
+    expect(later40.extra.map((item) => item.label)).toEqual(["Kizomba"]);
   });
 
   it("an option nothing would add is dimmed, not hidden; a chosen one stays removable", () => {
@@ -249,6 +281,7 @@ describe("the filter chips (filterModel)", () => {
     const calendar = { ...list, view: "calendar" as const, month, styles: ["salsa"], dates: ["hoy"] };
     const inCalendar = filterModel(all, calendar, today);
     expect(inCalendar.dates).toEqual([]);
+    expect(inCalendar.when).toBeNull();
     expect(inCalendar.quickStyles).toHaveLength(4);
     expect(inCalendar.active).toBe(1);
     const line = summaryLine(inCalendar, calendar);
@@ -273,5 +306,66 @@ describe("the filter chips (filterModel)", () => {
     expect(searched).not.toContain("Limpiar filtros");
     expect(emptyResultsHtml({ ...list, savedOnly: true, styles: ["tango"] })).toContain("Ver todos, no solo guardados");
     expect(emptyResultsHtml(list)).toBeNull();
+  });
+});
+
+describe("the \"Cuándo\" menu", () => {
+  it("each near period's days, as its hint: \"mié 7\", \"9–11 oct\"; none for a month", () => {
+    const hint = (key: string, today = TODAY) => {
+      const days = periodDays(key, today);
+      return days ? spanLabel(...days) : null;
+    };
+    expect(hint("hoy")).toBe("mié 7");
+    expect(hint(TOMORROW)).toBe("jue 8");
+    expect(hint("esta-semana")).toBe("jue 8");
+    expect(hint("fin-de-semana")).toBe("9–11 oct");
+    expect(hint("proxima-semana")).toBe("12–18 oct");
+    expect(hint("resto-del-mes")).toBe("19–31 oct");
+    expect(hint("2026-11")).toBeNull();
+    // Across months; and on Saturday the weekend left is from tomorrow.
+    expect(hint("fin-de-semana", "2026-10-28")).toBe("30 oct – 1 nov");
+    expect(hint("fin-de-semana", "2026-10-10")).toBe("dom 11");
+  });
+
+  it("is a menu of radio items: Cualquier fecha first, the chosen one checked, a dimmed one aria-disabled", () => {
+    const dates = [
+      { group: "dates" as const, value: "hoy", label: "Hoy", short: "Hoy", count: 2, chosen: false, dimmed: false },
+      { group: "dates" as const, value: "resto-del-mes", label: "Más adelante en octubre", short: "Resto de octubre", count: 0, chosen: false, dimmed: true },
+      { group: "dates" as const, value: "2026-11", label: "Noviembre", short: "Noviembre", count: 5, chosen: true, dimmed: false },
+    ];
+    const when = whenModel(dates, 9, TODAY);
+    expect(when.options.map((option) => option.label)).toEqual(["Cualquier fecha", "Hoy", "Resto de octubre", "Noviembre"]);
+    const html = whenMenuHtml(when);
+    const items = [...html.matchAll(/<button[^>]*>/g)].map(([tag]) => tag);
+    expect(items).toHaveLength(4);
+    expect(items.every((tag) => tag.includes('role="menuitemradio"') && tag.includes('tabindex="-1"'))).toBe(true);
+    expect(items[0]).toContain('data-when=""');
+    expect(items[0]).toContain('aria-checked="false"');
+    expect(items[3]).toContain('aria-checked="true"');
+    expect(items[2]).toContain('aria-disabled="true"');
+    expect(items[1]).toContain('aria-label="Hoy (mié 7), 2 eventos"');
+    expect(html).toContain("<small>19–31 oct</small>");
+  });
+
+  it("hangs under its chip, never past the screen's sides, as tall as the screen allows", () => {
+    const bar = { left: 0, top: 0, bottom: 56, width: 375 };
+    const chip = { left: 164, top: 8, bottom: 48, width: 58 };
+    expect(menuPlacement(chip, bar, 304, 812)).toEqual({ left: 63, top: 52, maxHeight: 748 });
+    expect(menuPlacement({ ...chip, left: 20 }, bar, 304, 812).left).toBe(20);
+    // The bar further down the page (not pinned yet): the menu is shorter, but keeps about four options.
+    const lower = { top: 400, bottom: 456 };
+    expect(menuPlacement({ ...chip, top: 408, bottom: 448 }, { ...bar, ...lower }, 304, 812)).toEqual({ left: 63, top: 52, maxHeight: 348 });
+    expect(menuPlacement({ ...chip, bottom: 700 }, bar, 304, 812).maxHeight).toBe(176);
+  });
+
+  it("the keyboard: ↓ ↑ wrap around, Home and End; other keys aren't moves", () => {
+    expect(nextOption("ArrowDown", 0, 5)).toBe(1);
+    expect(nextOption("ArrowDown", 4, 5)).toBe(0);
+    expect(nextOption("ArrowUp", 0, 5)).toBe(4);
+    expect(nextOption("ArrowUp", -1, 5)).toBe(4);
+    expect(nextOption("Home", 3, 5)).toBe(0);
+    expect(nextOption("End", 0, 5)).toBe(4);
+    expect(nextOption("Enter", 0, 5)).toBeNull();
+    expect(nextOption("ArrowDown", 0, 0)).toBeNull();
   });
 });

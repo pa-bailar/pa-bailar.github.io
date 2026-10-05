@@ -44,6 +44,7 @@ import { goTo, initScreenHistory, leave, sameScreen, type Screen } from "./scree
 import { initPostViewer } from "./views/postViewer";
 import { initPostsSheet } from "./views/postsSheet";
 import { initViewSwitch, renderViewSwitch } from "./views/viewSwitch";
+import { closeWhenMenu, isWhenMenuOpen, openWhenMenu, syncWhenMenu } from "./views/whenMenu";
 import { initSaveButtons, renderSavedToggles } from "./views/saveButton";
 import { initInstallPrompt, offerAfterSaving, registerServiceWorker } from "./views/installPrompt";
 import { initSharing, plansEventUrl, setShareSources, type ShareSource } from "./views/sharing";
@@ -64,6 +65,7 @@ function focusSelector(element: Element | null): string | null {
   if (filter && value !== undefined) return `[data-filter="${CSS.escape(filter)}"][data-value="${CSS.escape(value)}"]`;
   if (day) return `[data-day="${CSS.escape(day)}"]`;
   if (element.matches("[data-open-filters]")) return "[data-open-filters]";
+  if (element.matches("[data-when-open]")) return "[data-when-open]";
   return null;
 }
 
@@ -115,6 +117,7 @@ function render({ keepPlace = false } = {}) {
   if (anchor) restoreListPosition(anchor);
   announce(shown);
   setShareSources(shareSources(groups));
+  syncWhenMenu(); // "Cuándo" was drawn again: its menu, if open, stays under it
   highlightCurrentCard(); // the side panel's event, outlined again among the new cards
   armDetailsHint();
 
@@ -288,10 +291,31 @@ function focusAfterClearing(control: HTMLElement) {
 /** One delegated listener for every data-* control rendered by the views. */
 function handleClick(domEvent: MouseEvent) {
   const control = (domEvent.target as HTMLElement).closest<HTMLElement>(
-    "[data-view],[data-filter],[data-account],[data-clear-filters],[data-clear-search],[data-open-filters],[data-day],[data-event],[data-card-posts],[data-month-step],[data-today],[data-show-period],[data-saved-only],[data-close-search]",
+    "[data-when-open],[data-when-clear],[data-when],[data-view],[data-filter],[data-account],[data-clear-filters],[data-clear-search],[data-open-filters],[data-day],[data-event],[data-card-posts],[data-month-step],[data-today],[data-show-period],[data-saved-only],[data-close-search]",
   );
   if (!control) return;
-  const { view, filter, value, account, day, event: eventId, cardPosts, monthStep, showPeriod } = control.dataset;
+  const { view, filter, value, account, day, event: eventId, cardPosts, monthStep, showPeriod, when } = control.dataset;
+
+  // "Cuándo" (phones): its chip opens the menu (or closes it), an option applies one date and closes it, × takes the
+  // date away. The focus stays on (or goes back to) the chip, drawn again.
+  if ("whenOpen" in control.dataset) {
+    if (isWhenMenuOpen()) closeWhenMenu({ focusChip: true });
+    else openWhenMenu();
+    return;
+  }
+  if (when !== undefined) {
+    if (control.getAttribute("aria-disabled") === "true") return; // nothing to show then: the menu stays
+    state.dates = when ? [when] : [];
+    render({ keepPlace: true });
+    closeWhenMenu({ focusChip: true });
+    return;
+  }
+  if ("whenClear" in control.dataset) {
+    state.dates = [];
+    render({ keepPlace: true });
+    document.querySelector<HTMLElement>("#jump-chips [data-when-open]")?.focus({ preventScroll: true });
+    return;
+  }
 
   if ("savedOnly" in control.dataset) {
     const showSaved = () => {

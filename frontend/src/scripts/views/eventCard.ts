@@ -2,7 +2,7 @@
 // The title is a link to the event's page (open in a new tab, share, crawl); a plain click opens the details
 // drawer instead (main.ts). Its ::after stretches over the whole card, so the card is one big target, its photo
 // flyer included.
-// Under the flyer, a row of actions like Instagram's says that it opens: "ⓘ Detalles", Compartir and, on the
+// Under the flyer, a row of actions like Instagram's says that it opens: "Detalles ›", Compartir and, on the
 // right, Guardar. The buttons sit above the stretched link; "Detalles" opens the drawer like the card does, but
 // is counted apart (data-source, lib/analytics.ts).
 // A video's flyer with a clip plays it, silent, like a feed (clips.ts); a tap there turns its sound on or off
@@ -62,14 +62,14 @@ function flyerHtml(media: EventMedia, flyer: string, clip: string | null, title:
 const SOUND_BUTTON = `<button class="event-card__sound" type="button" data-sound aria-pressed="false"
   aria-label="Activar el sonido">${ICONS.soundOff}<span>Sin sonido</span></button>`;
 
-/** "ⓘ Detalles" · Compartir · · · Guardar, under the flyer. */
+/** "Detalles ›" · Compartir · · · Guardar, under the flyer. */
 function actionsHtml(event: DanceEvent): string {
   const id = escapeHtml(event.id);
   const title = escapeHtml(event.title);
   return `
     <div class="event-card__actions">
       <button class="event-card__details" type="button" data-event="${id}" data-source="boton"
-        aria-label="Detalles: ${title}">${ICONS.info}<span>Detalles</span></button>
+        aria-label="Detalles: ${title}">Detalles${ICONS.chevronRight}</button>
       <button class="event-card__share" type="button" data-share-event="${id}" data-track="compartir-tarjeta"
         aria-label="Compartir: ${title}">${ICONS.share}</button>
       ${saveButtonHtml(event)}
