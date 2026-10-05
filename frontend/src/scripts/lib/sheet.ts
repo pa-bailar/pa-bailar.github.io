@@ -186,8 +186,12 @@ export function initPanelSheet(
     tookPlace.delete(sheet);
     openers.delete(sheet);
   });
-  // Back: the entry under this sheet's is now current, so the sheet goes.
+  // Back: the entry under this sheet's is now current, so the sheet goes. Forward onto its entry once it's closed: its
+  // content is gone (a post, a profile), so that entry is a dead step: back over it. Otherwise the details under it
+  // would need two ×, the first only leaving this entry.
   window.addEventListener("popstate", (domEvent) => {
-    if (sheet.open && historyState(domEvent.state).sheet !== sheet.id) dismissSheet(sheet);
+    const onItsEntry = historyState(domEvent.state).sheet === sheet.id;
+    if (sheet.open && !onItsEntry) dismissSheet(sheet);
+    else if (!sheet.open && onItsEntry) history.back();
   });
 }

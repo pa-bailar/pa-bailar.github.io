@@ -80,3 +80,57 @@ describe("a sheet that took another's place (a post chosen among the event's pos
     expect(document.activeElement).toBe(elsewhere);
   });
 });
+
+describe("forward onto a closed sheet's entry", () => {
+  it("goes back over it: the sheet is gone, so the drawer's × closes it at once", async () => {
+    openDetails(); // 1
+    const viewer = panelSheet("post-viewer");
+    sheets.openPanelSheet(viewer); // 2: an @'s profile over the details
+    history.back();
+    await settle();
+    expect(viewer.open).toBe(false);
+    history.back(); // the list
+    await settle();
+    history.forward(); // the details again
+    await settle();
+    expect(fake.index).toBe(1);
+    history.forward(); // the profile's entry: its sheet isn't open, so back to the details'
+    await settle();
+    expect(viewer.open).toBe(false);
+    expect(fake.index).toBe(1);
+    expect(fake.state).toMatchObject({ eventId: "social-1" });
+    expect(fake.state).not.toHaveProperty("sheet");
+  });
+
+  it("the Cuándo menu's entry, once it closed, too", async () => {
+    // Just what whenMenu.ts touches: the menu, its chip and the bar's row of chips.
+    const element = (extra: object) => Object.assign(new EventTarget(), { contains: () => false, ...extra });
+    const menu = element({ hidden: true, querySelectorAll: () => [] });
+    const chip = element({ setAttribute() {}, focus() {}, closest: () => null });
+    const elements: Record<string, unknown> = { "when-menu": menu, "when-open": chip, "jump-chips": element({}) };
+    const page = Object.assign(new EventTarget(), document, { getElementById: (id: string) => elements[id] ?? null });
+    vi.stubGlobal("document", page);
+    const when = await import("../src/scripts/views/whenMenu");
+    when.initWhenMenu();
+
+    when.openWhenMenu(); // 1
+    expect(when.isWhenMenuOpen()).toBe(true);
+    history.back();
+    await settle();
+    expect(when.isWhenMenuOpen()).toBe(false);
+    history.forward(); // its entry: the menu isn't open, so back to the list's
+    await settle();
+    expect(when.isWhenMenuOpen()).toBe(false);
+    expect(fake.index).toBe(0);
+  });
+
+  it("back onto an open sheet's entry keeps it (the sheet over it closed)", async () => {
+    const filters = panelSheet("filter-sheet");
+    sheets.openPanelSheet(filters);
+    history.pushState(screens.overlayState({ menu: "other" }), "");
+    history.back();
+    await settle();
+    expect(filters.open).toBe(true);
+    expect(fake.index).toBe(1);
+  });
+});
