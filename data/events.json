@@ -12,6 +12,7 @@
     "area": null,
     "date": "2026-09-05",
     "end_date": null,
+    "sessions": null,
     "weekday": "sábado",
     "start_time": "15:00",
     "end_time": "22:00",
@@ -63,6 +64,7 @@
     "area": "Galerías",
     "date": "2026-09-05",
     "end_date": null,
+    "sessions": null,
     "weekday": "sábado",
     "start_time": "20:00",
     "end_time": "01:00",
@@ -129,6 +131,7 @@
     "area": null,
     "date": "2026-09-07",
     "end_date": "2026-09-11",
+    "sessions": null,
     "weekday": "lunes",
     "start_time": null,
     "end_time": null,
@@ -196,6 +199,7 @@
     "area": "Sede 109",
     "date": "2026-09-09",
     "end_date": null,
+    "sessions": null,
     "weekday": "miércoles",
     "start_time": "20:00",
     "end_time": null,
@@ -250,6 +254,7 @@
     "area": null,
     "date": "2026-09-10",
     "end_date": null,
+    "sessions": null,
     "weekday": "jueves",
     "start_time": "18:00",
     "end_time": null,
@@ -301,6 +306,7 @@
     "area": "Bogotá",
     "date": "2026-09-12",
     "end_date": null,
+    "sessions": null,
     "weekday": "sábado",
     "start_time": null,
     "end_time": null,
@@ -344,6 +350,7 @@
     "area": null,
     "date": "2026-09-12",
     "end_date": null,
+    "sessions": null,
     "weekday": "sábado",
     "start_time": "15:00",
     "end_time": "22:00",
@@ -419,6 +426,7 @@
     "area": null,
     "date": "2026-09-12",
     "end_date": null,
+    "sessions": null,
     "weekday": "sábado",
     "start_time": "19:00",
     "end_time": "01:00",
@@ -473,6 +481,7 @@
     "area": null,
     "date": "2026-09-13",
     "end_date": null,
+    "sessions": null,
     "weekday": "domingo",
     "start_time": "13:00",
     "end_time": null,
@@ -517,6 +526,7 @@
     "area": null,
     "date": "2026-09-13",
     "end_date": null,
+    "sessions": null,
     "weekday": "domingo",
     "start_time": "15:00",
     "end_time": null,
@@ -596,6 +606,7 @@
     "area": null,
     "date": "2026-09-13",
     "end_date": null,
+    "sessions": null,
     "weekday": "domingo",
     "start_time": "15:30",
     "end_time": "18:00",
@@ -638,6 +649,52 @@
     ]
   },
   {
+    "title": "TARDEO DE AMOR Y AMISTAD",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [],
+    "organizer": "dlivingstudio",
+    "venue": "Dliving Studio",
+    "address": "Av. cll 25 # 27b-83",
+    "area": null,
+    "date": "2026-09-13",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "16:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Entrada libre",
+        "amount_cop": 10000,
+        "condition": "10k"
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "baile",
+      "Amigo secreto sorpresa",
+      "Cumpleaños de abril a septiembre"
+    ],
+    "contact": "@dlivingstudio",
+    "confidence": "high",
+    "doubts": [],
+    "id": "tardeo-de-amor-y-amistad-13-sep",
+    "account": "dlivingstudio",
+    "media": [
+      {
+        "post_id": "17888929371612645",
+        "permalink": "https://www.instagram.com/reel/DdDNn3YPL-7/",
+        "media_type": "VIDEO",
+        "published": "2026-09-09T02:45:31+0000",
+        "flyer": "flyers/17888929371612645-0.webp",
+        "caption": "Este domingo se viene un tardeo de esos que terminan siendo el plan que no querías que se acabara. 🪩✨\n\n🎁 Amigo secreto sorpresa (trae tu regalo de 20-30k)\n🎂 Cumpleaños de abril a septiembre para estudiantes (Ven por tu sorpresa)\n💃 Mucho baile, música y ganas de pasarla bueno\n🥳 Y, sobre todo, un domingo para encontrarnos, celebrar y disfrutar juntos.\n\n¿Ya tienes tu plan? Porque este domingo… el plan es en dlivingstudio 🫶🏻\n\nNos vemos para bailar, celebrar y pasarla bueno. 🔥",
+        "preview": null,
+        "slides": null
+      }
+    ]
+  },
+  {
     "title": "Workshop Kirsten Dodgen - Etapa Bogotá",
     "event_type": "workshop",
     "is_recurring": false,
@@ -650,6 +707,7 @@
     "area": null,
     "date": "2026-09-14",
     "end_date": null,
+    "sessions": null,
     "weekday": "lunes",
     "start_time": "10:00",
     "end_time": null,
@@ -700,6 +758,7 @@
     "area": null,
     "date": "2026-09-14",
     "end_date": null,
+    "sessions": null,
     "weekday": "lunes",
     "start_time": "18:00",
     "end_time": null,
@@ -744,6 +803,7 @@
     "area": null,
     "date": "2026-09-17",
     "end_date": null,
+    "sessions": null,
     "weekday": "jueves",
     "start_time": null,
     "end_time": null,
@@ -790,6 +850,122 @@
     ]
   },
   {
+    "title": "La-33 en vivo - Tour 25 Años",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "@la33orquesta",
+    "venue": "Grand Forum",
+    "address": "Cerro del músico 22, Campestre Churubusco, Coyoacán",
+    "area": "Coyoacán",
+    "date": "2026-09-18",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "20:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "VIP",
+        "amount_cop": 0,
+        "condition": "1,000.00 MXN"
+      },
+      {
+        "label": "Preventa General",
+        "amount_cop": 0,
+        "condition": "600.00 MXN"
+      }
+    ],
+    "artists": [
+      "La-33",
+      "La Máxima 79",
+      "La Soulución Latin Soul Orchestra",
+      "Grupo Contraste",
+      "El Vikingo de la Salsa"
+    ],
+    "activities": [
+      "concierto"
+    ],
+    "contact": "WhatsApp 5562024664",
+    "confidence": "high",
+    "doubts": [
+      "Moneda extranjera (MXN) para los precios"
+    ],
+    "id": "la-33-en-vivo-tour-25-anos-18-sep",
+    "account": "la33orquesta",
+    "media": [
+      {
+        "post_id": "18016192184942271",
+        "permalink": "https://www.instagram.com/p/DdXyUm2DdhF/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-09-17T02:27:23+0000",
+        "flyer": "flyers/18016192184942271-1.webp",
+        "caption": "LA-33 EN VIVO\r\nTOUR 25 AÑOS 🥳🔥\n\r\n𝗠É𝗫𝗜𝗖𝗢 🇲🇽\r\n• Septiembre 18 \rLugar: Grand Forum, CDMX\n📍 Cerro del músico 22, Campestre Churubusco, Coyoacán, 04200 CDMX\r\nCerca del metro taxqueña \r\n🎟️📲 Entradas al WhatsApp: 5562024664\r\n\r\n• Septiembre 19\r\nLugar: clubhavanaveracruz - Veracruz\r\n🎟️📲 Entradas al: 2294362482\n\r\n𝗖𝗢𝗟𝗢𝗠𝗕𝗜𝗔 🇨🇴\r\n• Noviembre 21 \r\nLos 25 de la-33\r\nLugar royalbogota - Bogotá\r\n🎟️ Entradas: royalcenter.com.co (link en bio)\r\n\r\n𝗨𝗦𝗔 🇺🇸 - pronto más información\r\n\r\nLa celebración continua. ¡Salsa es lo que hay! 🔥🥳💃🕺\n.\n.\n.\n⭐️🌟 Arte Flyer Tour: sebastianbravoguerrero",
+        "preview": null,
+        "slides": 4
+      }
+    ]
+  },
+  {
+    "title": "2 Continentes Un Mismo Escenario - La-33 y La Máxima 79",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Mr. Champs Producciones",
+    "venue": "Club Havana",
+    "address": null,
+    "area": null,
+    "date": "2026-09-19",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "VIP",
+        "amount_cop": 0,
+        "condition": "600.00 MXN"
+      },
+      {
+        "label": "General",
+        "amount_cop": 0,
+        "condition": "400.00 MXN"
+      }
+    ],
+    "artists": [
+      "La-33",
+      "La Máxima 79",
+      "Orquesta Con Lo Bueno"
+    ],
+    "activities": [
+      "concierto"
+    ],
+    "contact": "2294362482",
+    "confidence": "high",
+    "doubts": [
+      "Moneda extranjera (MXN) para los precios"
+    ],
+    "id": "2-continentes-un-mismo-escenario-la-33-y-la-maxima-19-sep",
+    "account": "la33orquesta",
+    "media": [
+      {
+        "post_id": "18016192184942271",
+        "permalink": "https://www.instagram.com/p/DdXyUm2DdhF/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-09-17T02:27:23+0000",
+        "flyer": "flyers/18016192184942271-2.webp",
+        "caption": "LA-33 EN VIVO\r\nTOUR 25 AÑOS 🥳🔥\n\r\n𝗠É𝗫𝗜𝗖𝗢 🇲🇽\r\n• Septiembre 18 \rLugar: Grand Forum, CDMX\n📍 Cerro del músico 22, Campestre Churubusco, Coyoacán, 04200 CDMX\r\nCerca del metro taxqueña \r\n🎟️📲 Entradas al WhatsApp: 5562024664\r\n\r\n• Septiembre 19\r\nLugar: clubhavanaveracruz - Veracruz\r\n🎟️📲 Entradas al: 2294362482\n\r\n𝗖𝗢𝗟𝗢𝗠𝗕𝗜𝗔 🇨🇴\r\n• Noviembre 21 \r\nLos 25 de la-33\r\nLugar royalbogota - Bogotá\r\n🎟️ Entradas: royalcenter.com.co (link en bio)\r\n\r\n𝗨𝗦𝗔 🇺🇸 - pronto más información\r\n\r\nLa celebración continua. ¡Salsa es lo que hay! 🔥🥳💃🕺\n.\n.\n.\n⭐️🌟 Arte Flyer Tour: sebastianbravoguerrero",
+        "preview": null,
+        "slides": 4
+      }
+    ]
+  },
+  {
     "title": "Taller de Arte Postal",
     "event_type": "workshop",
     "is_recurring": false,
@@ -802,6 +978,7 @@
     "area": null,
     "date": "2026-09-19",
     "end_date": null,
+    "sessions": null,
     "weekday": "sábado",
     "start_time": "10:00",
     "end_time": null,
@@ -847,6 +1024,7 @@
     "area": "Bogotá",
     "date": "2026-09-19",
     "end_date": null,
+    "sessions": null,
     "weekday": "sábado",
     "start_time": "16:00",
     "end_time": null,
@@ -917,6 +1095,7 @@
     "area": "Madelena",
     "date": "2026-09-19",
     "end_date": null,
+    "sessions": null,
     "weekday": "sábado",
     "start_time": "18:00",
     "end_time": "19:30",
@@ -960,6 +1139,7 @@
     "area": null,
     "date": "2026-09-19",
     "end_date": null,
+    "sessions": null,
     "weekday": "sábado",
     "start_time": "19:00",
     "end_time": null,
@@ -1003,6 +1183,7 @@
     "area": null,
     "date": "2026-09-19",
     "end_date": null,
+    "sessions": null,
     "weekday": "sábado",
     "start_time": "20:30",
     "end_time": null,
@@ -1047,6 +1228,7 @@
     "area": null,
     "date": "2026-09-19",
     "end_date": null,
+    "sessions": null,
     "weekday": "sábado",
     "start_time": "20:30",
     "end_time": null,
@@ -1102,6 +1284,7 @@
     "area": null,
     "date": "2026-09-20",
     "end_date": null,
+    "sessions": null,
     "weekday": "domingo",
     "start_time": "16:00",
     "end_time": null,
@@ -1146,6 +1329,7 @@
     "area": "Sede 127",
     "date": "2026-09-22",
     "end_date": null,
+    "sessions": null,
     "weekday": "martes",
     "start_time": "17:00",
     "end_time": "19:00",
@@ -1199,6 +1383,7 @@
     "area": "Cajicá",
     "date": "2026-09-23",
     "end_date": null,
+    "sessions": null,
     "weekday": "miércoles",
     "start_time": "17:00",
     "end_time": "19:00",
@@ -1252,6 +1437,7 @@
     "area": "Sede 109",
     "date": "2026-09-24",
     "end_date": null,
+    "sessions": null,
     "weekday": "jueves",
     "start_time": "17:00",
     "end_time": "19:00",
@@ -1304,6 +1490,7 @@
     "area": null,
     "date": "2026-09-25",
     "end_date": null,
+    "sessions": null,
     "weekday": "viernes",
     "start_time": null,
     "end_time": null,
@@ -1335,6 +1522,72 @@
     ]
   },
   {
+    "title": "Viernes para Bailadores - Edición 2: Amor + Amistad",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "salsa en línea",
+      "salsa cubana"
+    ],
+    "organizer": "Son de Habana",
+    "venue": "Son de Habana Academia de Baile",
+    "address": null,
+    "area": null,
+    "date": "2026-09-25",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "20:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Preventa Individual",
+        "amount_cop": 30000,
+        "condition": null
+      },
+      {
+        "label": "Preventa Pareja",
+        "amount_cop": 50000,
+        "condition": null
+      },
+      {
+        "label": "Taquilla Individual",
+        "amount_cop": 35000,
+        "condition": null
+      },
+      {
+        "label": "Taquilla Pareja",
+        "amount_cop": 60000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Jepherson Macsene",
+      "Paula Popayán"
+    ],
+    "activities": [
+      "taller de 1 hora y media",
+      "práctica social de 1 hora y media"
+    ],
+    "contact": "WhatsApp 3176610567",
+    "confidence": "high",
+    "doubts": [],
+    "id": "viernes-para-bailadores-edicion-2-amor-amistad-25-sep",
+    "account": "sondehabana",
+    "media": [
+      {
+        "post_id": "18044150648816300",
+        "permalink": "https://www.instagram.com/p/DdZ3-nYKaFT/",
+        "media_type": "IMAGE",
+        "published": "2026-09-17T23:00:06+0000",
+        "flyer": "flyers/18044150648816300-0.webp",
+        "caption": "ESTE VIERNES 25 DE SEPTIEMBRE 🚨 taller de 1 hora y media más práctica social de 1 hora y media junto a los maestros paulapopayancortes y jepherson_mc 😍\n\nPodrás aprender diferentes pasos de salsa en línea y salsa cubana y cómo aplicarlos al social 🔥 te esperamos 8pm aquí en nuestra sede sondehabana \n\n#salsa #estilocubano #baile #parches #amoryamistad",
+        "preview": null,
+        "slides": null
+      }
+    ]
+  },
+  {
     "title": "Social Amor y Amistad",
     "event_type": "social",
     "is_recurring": false,
@@ -1348,6 +1601,7 @@
     "area": null,
     "date": "2026-09-25",
     "end_date": null,
+    "sessions": null,
     "weekday": "viernes",
     "start_time": "21:00",
     "end_time": null,
@@ -1408,6 +1662,7 @@
     "area": "Bogotá",
     "date": "2026-09-26",
     "end_date": null,
+    "sessions": null,
     "weekday": "sábado",
     "start_time": null,
     "end_time": null,
@@ -1453,6 +1708,7 @@
     "area": null,
     "date": "2026-09-26",
     "end_date": null,
+    "sessions": null,
     "weekday": "sábado",
     "start_time": null,
     "end_time": null,
@@ -1484,6 +1740,71 @@
     ]
   },
   {
+    "title": "Fiesta Profana: Los Titanes de la Salsa",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Bar Profano",
+    "venue": "Bar Profano, Teatro Libre",
+    "address": "Cra. 11 #61-80",
+    "area": "Chapinero",
+    "date": "2026-09-26",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Preventa",
+        "amount_cop": 20000,
+        "condition": null
+      },
+      {
+        "label": "Cover",
+        "amount_cop": 25000,
+        "condition": "incluye una cerveza"
+      }
+    ],
+    "artists": [
+      "DJ Nando",
+      "Chepe",
+      "Fernando España"
+    ],
+    "activities": [
+      "clase previa"
+    ],
+    "contact": "WhatsApp 3237992727",
+    "confidence": "high",
+    "doubts": [],
+    "id": "fiesta-profana-los-titanes-de-la-salsa-26-sep",
+    "account": "fernandoespanadj",
+    "media": [
+      {
+        "post_id": "18021687374713134",
+        "permalink": "https://www.instagram.com/reel/DdlpnUIMUwO/",
+        "media_type": "VIDEO",
+        "published": "2026-09-22T11:40:44+0000",
+        "flyer": "flyers/18021687374713134-0.webp",
+        "caption": "Este sábado venidero, en el Teatro Libre de Chapinero. Esa música cubana y salsa que no se escucha y baila en ningún otro evento, ni lugar. Rompiendo la rutina. Les esperamos.",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18155959315512366",
+        "permalink": "https://www.instagram.com/reel/DdSnDTKCPsP/",
+        "media_type": "VIDEO",
+        "published": "2026-09-15T02:12:54+0000",
+        "flyer": "flyers/18155959315512366-0.webp",
+        "caption": null,
+        "preview": null,
+        "slides": null
+      }
+    ]
+  },
+  {
     "title": "Tardeo Parche Bailador",
     "event_type": "social",
     "is_recurring": false,
@@ -1498,6 +1819,7 @@
     "area": null,
     "date": "2026-09-26",
     "end_date": null,
+    "sessions": null,
     "weekday": "sábado",
     "start_time": "15:00",
     "end_time": "22:00",
@@ -1562,6 +1884,7 @@
     "area": "Madelena",
     "date": "2026-09-26",
     "end_date": null,
+    "sessions": null,
     "weekday": "sábado",
     "start_time": "18:00",
     "end_time": "19:30",
@@ -1607,6 +1930,7 @@
     "area": null,
     "date": "2026-09-26",
     "end_date": null,
+    "sessions": null,
     "weekday": "sábado",
     "start_time": "19:00",
     "end_time": null,
@@ -1651,6 +1975,7 @@
     "area": null,
     "date": "2026-09-26",
     "end_date": null,
+    "sessions": null,
     "weekday": "sábado",
     "start_time": "20:30",
     "end_time": "02:30",
@@ -1708,6 +2033,7 @@
     "area": "Modelia",
     "date": "2026-09-26",
     "end_date": null,
+    "sessions": null,
     "weekday": "sábado",
     "start_time": "23:30",
     "end_time": null,
@@ -1785,6 +2111,7 @@
     "area": "Galerías",
     "date": "2026-09-27",
     "end_date": null,
+    "sessions": null,
     "weekday": "domingo",
     "start_time": "10:00",
     "end_time": null,
@@ -1842,6 +2169,7 @@
     "area": null,
     "date": "2026-10-02",
     "end_date": null,
+    "sessions": null,
     "weekday": "viernes",
     "start_time": "20:30",
     "end_time": null,
@@ -1905,6 +2233,7 @@
     "area": null,
     "date": "2026-10-02",
     "end_date": null,
+    "sessions": null,
     "weekday": "viernes",
     "start_time": "21:30",
     "end_time": null,
@@ -1968,6 +2297,7 @@
     "area": null,
     "date": "2026-10-03",
     "end_date": null,
+    "sessions": null,
     "weekday": "sábado",
     "start_time": "15:00",
     "end_time": "22:00",
@@ -1987,7 +2317,7 @@
     "activities": [
       "clase de pre fiesta de salsa"
     ],
-    "contact": null,
+    "contact": "@bogotadanceclub",
     "confidence": "high",
     "doubts": [
       "sin precio",
@@ -2029,6 +2359,73 @@
     ]
   },
   {
+    "title": "Iniciación a la Salsa en Línea",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa en línea"
+    ],
+    "organizer": "frank.de.latorre",
+    "venue": "Academia EFA Danza",
+    "address": "Cra 19 #51-76",
+    "area": null,
+    "date": "2026-10-03",
+    "end_date": "2026-10-24",
+    "sessions": [
+      {
+        "date": "2026-10-03",
+        "start_time": "17:00",
+        "end_time": "18:00"
+      },
+      {
+        "date": "2026-10-10",
+        "start_time": "17:00",
+        "end_time": "18:00"
+      },
+      {
+        "date": "2026-10-17",
+        "start_time": "17:00",
+        "end_time": "18:00"
+      },
+      {
+        "date": "2026-10-24",
+        "start_time": "17:00",
+        "end_time": "18:00"
+      }
+    ],
+    "weekday": "sábado",
+    "start_time": "17:00",
+    "end_time": "18:00",
+    "prices": [
+      {
+        "label": "Valor del paquete por persona",
+        "amount_cop": 150000,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "curso de iniciación"
+    ],
+    "contact": "WhatsApp 3016256707",
+    "confidence": "high",
+    "doubts": [],
+    "id": "iniciacion-a-la-salsa-en-linea-3-oct",
+    "account": "frank.de.latorre",
+    "media": [
+      {
+        "post_id": "18137899501621419",
+        "permalink": "https://www.instagram.com/reel/DdIYEktxrHo/",
+        "media_type": "VIDEO",
+        "published": "2026-09-11T02:50:52+0000",
+        "flyer": "flyers/18137899501621419-0.webp",
+        "caption": "🙌Esta es tu señal para aprender a bailar el estilo internacional!… 🙌\n\nSi quieres aprender desde ceros y entender las bases del baile social (línea on1 en parejas) esta curso de iniciación es para ti! 🏁\n\n📔4 Sabados 3, 10, 17 y 24 de octubre\n\n⏰Hora de 5pm a 6pm\n💵Valor del paquete por persona 150k\n📍Academia de baile Efa Danza; Cra 19 #51 76, Bogotá\nefadanza \n\nPara más información deja tu mensaje al interno! 💬",
+        "preview": null,
+        "slides": null
+      }
+    ]
+  },
+  {
     "title": "Salsa Freestyle con Renato Palacios",
     "event_type": "workshop",
     "is_recurring": false,
@@ -2042,6 +2439,7 @@
     "area": "Madelena",
     "date": "2026-10-03",
     "end_date": null,
+    "sessions": null,
     "weekday": "sábado",
     "start_time": "18:00",
     "end_time": "19:30",
@@ -2090,6 +2488,7 @@
     "area": "Galerías",
     "date": "2026-10-03",
     "end_date": null,
+    "sessions": null,
     "weekday": "sábado",
     "start_time": "20:00",
     "end_time": "01:00",
@@ -2148,6 +2547,7 @@
     "area": null,
     "date": "2026-10-04",
     "end_date": null,
+    "sessions": null,
     "weekday": "domingo",
     "start_time": null,
     "end_time": null,
@@ -2194,6 +2594,7 @@
     "area": null,
     "date": "2026-10-04",
     "end_date": null,
+    "sessions": null,
     "weekday": "domingo",
     "start_time": "09:00",
     "end_time": "12:00",
@@ -2255,6 +2656,7 @@
     "area": "La Candelaria",
     "date": "2026-10-04",
     "end_date": null,
+    "sessions": null,
     "weekday": "domingo",
     "start_time": "14:00",
     "end_time": "22:00",
@@ -2312,6 +2714,53 @@
     ]
   },
   {
+    "title": "Clase de salsa caleña",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa caleña"
+    ],
+    "organizer": "teffa_mg",
+    "venue": "Almacol",
+    "address": "Calle 52 #17-07",
+    "area": null,
+    "date": "2026-10-04",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "16:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "General",
+        "amount_cop": 40000,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "clase de salsa caleña",
+      "sorteo de boletas"
+    ],
+    "contact": "WhatsApp 3041127724",
+    "confidence": "high",
+    "doubts": [],
+    "id": "clase-de-salsa-calena-4-oct",
+    "account": "teffa_mg",
+    "media": [
+      {
+        "post_id": "18118088512937767",
+        "permalink": "https://www.instagram.com/reel/DdRarGwuTwn/",
+        "media_type": "VIDEO",
+        "published": "2026-09-14T15:11:14+0000",
+        "flyer": "flyers/18118088512937767-0.webp",
+        "caption": "SALSA PARA BAILADORES! \n\nClase de salsa caleña + sorteo de boletas para el 'Primer Festival Salsero' 🔥 \n\n🗓️ 04 OCT - 04:00PM \n📍 Almacol - Calle 52 #17-07 \n💵 $40.000",
+        "preview": null,
+        "slides": null
+      }
+    ]
+  },
+  {
     "title": "Taller Expandiendo el Movimiento",
     "event_type": "workshop",
     "is_recurring": false,
@@ -2324,6 +2773,7 @@
     "area": null,
     "date": "2026-10-07",
     "end_date": "2026-10-08",
+    "sessions": null,
     "weekday": "miércoles",
     "start_time": "10:00",
     "end_time": "12:00",
@@ -2335,8 +2785,7 @@
     "contact": "www.danzaenlaciudad.gov.co",
     "confidence": "high",
     "doubts": [
-      "sin precio",
-      "requiere inscripción previa"
+      "sin precio explícito"
     ],
     "id": "taller-expandiendo-el-movimiento-7-oct",
     "account": "danzaenlaciudad",
@@ -2366,6 +2815,18 @@
     "area": null,
     "date": "2026-10-07",
     "end_date": "2026-10-09",
+    "sessions": [
+      {
+        "date": "2026-10-07",
+        "start_time": "10:00",
+        "end_time": "12:00"
+      },
+      {
+        "date": "2026-10-09",
+        "start_time": "10:00",
+        "end_time": "12:00"
+      }
+    ],
     "weekday": "miércoles",
     "start_time": "10:00",
     "end_time": "12:00",
@@ -2377,8 +2838,7 @@
     "contact": "www.danzaenlaciudad.gov.co",
     "confidence": "high",
     "doubts": [
-      "sin precio",
-      "requiere inscripción previa"
+      "sin precio explícito"
     ],
     "id": "taller-habitar-nos-un-recorrido-de-conexion-de-7-oct",
     "account": "danzaenlaciudad",
@@ -2408,6 +2868,7 @@
     "area": null,
     "date": "2026-10-08",
     "end_date": null,
+    "sessions": null,
     "weekday": "jueves",
     "start_time": "10:00",
     "end_time": "13:00",
@@ -2419,8 +2880,7 @@
     "contact": "www.danzaenlaciudad.gov.co",
     "confidence": "high",
     "doubts": [
-      "sin precio",
-      "requiere inscripción previa"
+      "sin precio explícito"
     ],
     "id": "taller-bogota-cultura-mas-consciente-cuerpo-8-oct",
     "account": "danzaenlaciudad",
@@ -2452,6 +2912,7 @@
     "area": "Santa Isabel",
     "date": "2026-10-10",
     "end_date": null,
+    "sessions": null,
     "weekday": "sábado",
     "start_time": "20:00",
     "end_time": null,
@@ -2496,6 +2957,143 @@
     ]
   },
   {
+    "title": "Social Pal Parche",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "bachata",
+      "urbano",
+      "dancehall"
+    ],
+    "organizer": "Jaleo",
+    "venue": "Algarete",
+    "address": "CRA 14A # 83 - 77",
+    "area": "Zona Rosa",
+    "date": "2026-10-10",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "20:40",
+    "end_time": "05:00",
+    "prices": [
+      {
+        "label": "Fieles",
+        "amount_cop": 20000,
+        "condition": "solo 50 cupos"
+      },
+      {
+        "label": "Preventa",
+        "amount_cop": 30000,
+        "condition": null
+      },
+      {
+        "label": "Taquilla",
+        "amount_cop": 40000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Camilo Barretto",
+      "Frank De La Torre",
+      "Giova Breakill",
+      "DJ Feyder"
+    ],
+    "activities": [
+      "taller de dancehall y reggaeton",
+      "taller de salsa y bachata",
+      "batallas de urbano open style dúos 2 vs 2"
+    ],
+    "contact": "@jaleocompetencia_",
+    "confidence": "high",
+    "doubts": [],
+    "id": "social-pal-parche-10-oct",
+    "account": "jaleocompetencia_",
+    "media": [
+      {
+        "post_id": "17981434907897551",
+        "permalink": "https://www.instagram.com/p/Ddm0adCCstp/",
+        "media_type": "IMAGE",
+        "published": "2026-09-22T22:46:07+0000",
+        "flyer": "flyers/17981434907897551-0.webp",
+        "caption": "EL PARCHE DONDE EL BAILE SE VIVE\n\nEste 10 de octubre nos vemos en Jaleo Social Pal’Parche.\n\nTaller de dancehall y reggaeton - 8:40 pm\n\ntaller de  salsa y bachata - 9:20 pm\n\nCon la mejor música 🎧 \nSalsa • Bachata • Urbano\n\nBatallas de Urbano open style dúos  2 🆚 2 con premiación en efectivo 🤑🤑\nEl público es jurado👩‍⚖️👨‍⚖️ !! Así que dalo todo en la pista !\n\nSet de dj’s camilo_barretto frank.de.latorre 🥁\n\ngiovabreakill djfeyder 🍑\n\n📍 algarete.oficial - Zona T, Bogotá\n\nHasta las 5:00 a.m.\nFieles 20K | Preventa 30K | Taquilla 40K\n\n“Salsa Bachata y Urbano muestra mezcla”\n\nLas preventas son limitadas y el aforo también. \n\nNo esperes a ver las historias de otros... \n\nArma tu dupla, invita a tu parche y asegura tu entrada. ¡Nos\nvemos en la pista!\n-\n-\n-\n#eventosbogota #fiesta #socialdancing #rumba",
+        "preview": null,
+        "slides": null
+      }
+    ]
+  },
+  {
+    "title": "Jazz Through Time - Capítulo 1: Back to the Roots",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "swing",
+      "afro",
+      "otro"
+    ],
+    "organizer": null,
+    "venue": null,
+    "address": null,
+    "area": "Bogotá",
+    "date": "2026-10-11",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "One Chapter",
+        "amount_cop": 260000,
+        "condition": "Main set 16-27 sept"
+      },
+      {
+        "label": "Two Chapters",
+        "amount_cop": 450000,
+        "condition": "Main set 16-27 sept"
+      },
+      {
+        "label": "One Chapter",
+        "amount_cop": 330000,
+        "condition": "Last call 28 sept - 11 oct"
+      },
+      {
+        "label": "Two Chapters",
+        "amount_cop": 601000,
+        "condition": "Last call 28 sept - 11 oct"
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "training de jazz dance",
+      "charleston",
+      "lindy hop",
+      "swing",
+      "improvisation"
+    ],
+    "contact": "@zaimora24",
+    "confidence": "high",
+    "doubts": [
+      "No especifica la hora exacta del evento",
+      "No especifica la dirección exacta del lugar",
+      "dura más de una semana: revisar fechas"
+    ],
+    "id": "jazz-through-time-capitulo-1-back-to-the-roots-11-oct",
+    "account": "zaimora24",
+    "media": [
+      {
+        "post_id": "17954021634253041",
+        "permalink": "https://www.instagram.com/p/DdUlBUfHXRj/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-09-15T20:33:26+0000",
+        "flyer": "flyers/17954021634253041-2.webp",
+        "caption": "¿Cuánto de Jazz Dance conoces realmente?\n\nJAZZ THROUGH TIME es un training presencial para recorrer su historia y evolución a través del cuerpo.\n\n4 capítulos.\n4 momentos.\nUna historia que probablemente es mucho más grande de lo que imaginabas.\n\nROOTS · THEATRICAL · THE TECHNIQUE · THE INDUSTRY\n\nPuedes elegir un capítulo o comenzar el journey con dos.\n\n📍 Bogotá\n📅 ROOTS · 11 OCT — 01 NOV 2026\n👥 Cupo máximo: 25 personas\n\nINSCRIPCIONES ABIERTAS.\n\nAre you ready to go deeper? 🎷\n\n#bogota #arte #danza #history",
+        "preview": null,
+        "slides": 11
+      }
+    ]
+  },
+  {
     "title": "Workshops Pro Fondos",
     "event_type": "workshop",
     "is_recurring": false,
@@ -2509,6 +3107,7 @@
     "area": "Galerías",
     "date": "2026-10-11",
     "end_date": null,
+    "sessions": null,
     "weekday": "domingo",
     "start_time": "15:00",
     "end_time": "16:00",
@@ -2585,6 +3184,7 @@
     "area": "Galerías",
     "date": "2026-10-11",
     "end_date": null,
+    "sessions": null,
     "weekday": "domingo",
     "start_time": "16:00",
     "end_time": "17:00",
@@ -2658,6 +3258,7 @@
     "area": "Galerías",
     "date": "2026-10-11",
     "end_date": null,
+    "sessions": null,
     "weekday": "domingo",
     "start_time": "17:00",
     "end_time": "18:00",
@@ -2731,6 +3332,7 @@
     "area": "Bogotá",
     "date": "2026-10-11",
     "end_date": null,
+    "sessions": null,
     "weekday": "domingo",
     "start_time": "19:00",
     "end_time": null,
@@ -2809,7 +3411,19 @@
     "address": "Cra 1 No. 17-01",
     "area": null,
     "date": "2026-10-14",
-    "end_date": null,
+    "end_date": "2026-10-21",
+    "sessions": [
+      {
+        "date": "2026-10-14",
+        "start_time": "16:00",
+        "end_time": "18:00"
+      },
+      {
+        "date": "2026-10-21",
+        "start_time": "16:00",
+        "end_time": "18:00"
+      }
+    ],
     "weekday": "miércoles",
     "start_time": "16:00",
     "end_time": "18:00",
@@ -2821,9 +3435,7 @@
     "contact": "www.danzaenlaciudad.gov.co",
     "confidence": "high",
     "doubts": [
-      "sin precio",
-      "requiere inscripción previa",
-      "dura más de una semana: revisar fechas"
+      "sin precio explícito"
     ],
     "id": "taller-breakin-con-rudolf-laban-14-oct",
     "account": "danzaenlaciudad",
@@ -2848,11 +3460,12 @@
       "otro"
     ],
     "organizer": "La Casona de la Danza",
-    "venue": "Museo Nacional",
+    "venue": "Museo Nacional de Colombia",
     "address": "Carrera 7 No. 28-66",
     "area": null,
     "date": "2026-10-16",
     "end_date": null,
+    "sessions": null,
     "weekday": "viernes",
     "start_time": "17:00",
     "end_time": "18:30",
@@ -2898,6 +3511,7 @@
     "area": null,
     "date": "2026-10-17",
     "end_date": null,
+    "sessions": null,
     "weekday": "sábado",
     "start_time": "14:30",
     "end_time": "16:30",
@@ -2940,6 +3554,58 @@
     ]
   },
   {
+    "title": "Video Class Survivor",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Salsa en Bogota",
+    "venue": "Ile Danza",
+    "address": null,
+    "area": null,
+    "date": "2026-10-17",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "16:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Pre-venta",
+        "amount_cop": 30000,
+        "condition": "hasta el 30 de septiembre"
+      },
+      {
+        "label": "General",
+        "amount_cop": 40000,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "video class",
+      "rutina de salsa"
+    ],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [],
+    "id": "video-class-survivor-17-oct",
+    "account": "and1erita",
+    "media": [
+      {
+        "post_id": "17901537792596657",
+        "permalink": "https://www.instagram.com/p/DdZk7xEizo9/",
+        "media_type": "IMAGE",
+        "published": "2026-09-17T19:09:00+0000",
+        "flyer": "flyers/17901537792596657-0.webp",
+        "caption": "Quieres tener un video profesional bailando una rutina de Salsa? \nÉste 17 de octubre. Te invito a grabarlo conmigo y el teso de masky_______ \n\nSurvivor no es una canción… es un llamado a ser Resilientes y mostrarle el mundo que detrás de cada paso, hay sacrificios y Pruebas, dudas, ansiedad, miedo… pero la Danza nos hace tan fuertes en el espíritu !! al final, cuando la música nos toca, somos plenos y dejamos salir todo ese amor por lo que hacemos!! \nTe espero!!\n\nPd. Tenemos Pre-venta hasta el 30 de septiembre a 30K. \nSepárame el cupo 🫶🏾",
+        "preview": null,
+        "slides": null
+      }
+    ]
+  },
+  {
     "title": "Bachatamania Social",
     "event_type": "social",
     "is_recurring": false,
@@ -2952,6 +3618,7 @@
     "area": null,
     "date": "2026-10-17",
     "end_date": null,
+    "sessions": null,
     "weekday": "sábado",
     "start_time": "20:30",
     "end_time": null,
@@ -2999,51 +3666,6 @@
     ]
   },
   {
-    "title": "Yoga Dinámico Calmarte. Yoga en el Museo Nacional",
-    "event_type": "workshop",
-    "is_recurring": false,
-    "styles": [
-      "otro"
-    ],
-    "organizer": "La Casona de la Danza",
-    "venue": "Museo Nacional",
-    "address": "Carrera 7 No. 28-66",
-    "area": null,
-    "date": "2026-10-18",
-    "end_date": null,
-    "weekday": "domingo",
-    "start_time": "10:00",
-    "end_time": null,
-    "prices": [
-      {
-        "label": "Entrada libre",
-        "amount_cop": 0,
-        "condition": "hasta completar aforo"
-      }
-    ],
-    "artists": [],
-    "activities": [
-      "yoga dinámico"
-    ],
-    "contact": "www.danzaenlaciudad.gov.co",
-    "confidence": "high",
-    "doubts": [],
-    "id": "yoga-dinamico-calmarte-yoga-en-el-museo-nacional-18-oct",
-    "account": "danzaenlaciudad",
-    "media": [
-      {
-        "post_id": "18380887969228934",
-        "permalink": "https://www.instagram.com/p/Dd92TeoCUUO/",
-        "media_type": "CAROUSEL_ALBUM",
-        "published": "2026-10-01T21:13:19+0000",
-        "flyer": "flyers/18380887969228934-6.webp",
-        "caption": "Octubre trae nuevas formas de moverse, sentir y crear. ✨\r\n\r\nEn La Casona de la Danza, el cuerpo es la puerta de entrada a experiencias que invitan a explorar el movimiento, despertar la imaginación y encontrarse con otras personas a través de la danza. 💫\r\n\r\nEste mes, déjese sorprender por una programación pensada para experimentar, aprender y disfrutar el movimiento desde diferentes perspectivas. Talleres, encuentros y experiencias donde cada paso puede convertirse en una nueva manera de expresarse. 🌿\r\n\r\nHaga una pausa, escuche su cuerpo y anímese a descubrir todo lo que puede pasar cuando el movimiento toma el espacio. 💃🕺\r\n\r\n📍 Deslice y explore la programación de octubre.\r\n\r\n#CasonaDeLaDanza #BogotáMiCiudadMiCasa",
-        "preview": null,
-        "slides": 19
-      }
-    ]
-  },
-  {
     "title": "Taller Female Dancehall: La feminidad en lo urbano",
     "event_type": "workshop",
     "is_recurring": false,
@@ -3057,6 +3679,7 @@
     "area": null,
     "date": "2026-10-19",
     "end_date": "2026-10-21",
+    "sessions": null,
     "weekday": "lunes",
     "start_time": "14:00",
     "end_time": "16:00",
@@ -3068,8 +3691,7 @@
     "contact": "www.danzaenlaciudad.gov.co",
     "confidence": "high",
     "doubts": [
-      "sin precio",
-      "requiere inscripción previa"
+      "sin precio explícito"
     ],
     "id": "taller-female-dancehall-la-feminidad-en-lo-urbano-19-oct",
     "account": "danzaenlaciudad",
@@ -3099,6 +3721,7 @@
     "area": null,
     "date": "2026-10-20",
     "end_date": null,
+    "sessions": null,
     "weekday": "martes",
     "start_time": null,
     "end_time": null,
@@ -3143,6 +3766,18 @@
     "area": null,
     "date": "2026-10-20",
     "end_date": "2026-10-22",
+    "sessions": [
+      {
+        "date": "2026-10-20",
+        "start_time": "14:00",
+        "end_time": "16:00"
+      },
+      {
+        "date": "2026-10-22",
+        "start_time": "14:00",
+        "end_time": "16:00"
+      }
+    ],
     "weekday": "martes",
     "start_time": "14:00",
     "end_time": "16:00",
@@ -3154,10 +3789,9 @@
     "contact": "www.danzaenlaciudad.gov.co",
     "confidence": "high",
     "doubts": [
-      "sin precio",
-      "requiere inscripción previa"
+      "sin precio explícito"
     ],
-    "id": "taller-acrobalance-desde-el-acroyoga-20-oct",
+    "id": "taller-fenomenologia-sueno-y-luego-produzco-20-oct",
     "account": "danzaenlaciudad",
     "media": [
       {
@@ -3185,6 +3819,23 @@
     "area": null,
     "date": "2026-10-20",
     "end_date": "2026-10-24",
+    "sessions": [
+      {
+        "date": "2026-10-20",
+        "start_time": "16:00",
+        "end_time": "18:00"
+      },
+      {
+        "date": "2026-10-22",
+        "start_time": "16:00",
+        "end_time": "18:00"
+      },
+      {
+        "date": "2026-10-24",
+        "start_time": "14:00",
+        "end_time": "16:00"
+      }
+    ],
     "weekday": "martes",
     "start_time": "16:00",
     "end_time": "18:00",
@@ -3196,10 +3847,9 @@
     "contact": "www.danzaenlaciudad.gov.co",
     "confidence": "high",
     "doubts": [
-      "sin precio",
-      "requiere inscripción previa"
+      "sin precio explícito"
     ],
-    "id": "taller-fenomenologia-sueno-y-luego-produzco-20-oct",
+    "id": "taller-acrobalance-desde-el-acroyoga-20-oct",
     "account": "danzaenlaciudad",
     "media": [
       {
@@ -3225,6 +3875,7 @@
     "area": null,
     "date": "2026-10-21",
     "end_date": null,
+    "sessions": null,
     "weekday": "miércoles",
     "start_time": null,
     "end_time": null,
@@ -3268,6 +3919,7 @@
     "area": null,
     "date": "2026-10-24",
     "end_date": null,
+    "sessions": null,
     "weekday": "viernes",
     "start_time": null,
     "end_time": null,
@@ -3310,6 +3962,7 @@
     "area": "Galerías",
     "date": "2026-10-24",
     "end_date": null,
+    "sessions": null,
     "weekday": "sábado",
     "start_time": "20:00",
     "end_time": null,
@@ -3351,6 +4004,7 @@
     "area": null,
     "date": "2026-10-30",
     "end_date": null,
+    "sessions": null,
     "weekday": "viernes",
     "start_time": null,
     "end_time": null,
@@ -3394,6 +4048,7 @@
     "area": null,
     "date": "2026-10-31",
     "end_date": "2026-11-02",
+    "sessions": null,
     "weekday": "sábado",
     "start_time": "20:00",
     "end_time": null,
@@ -3603,6 +4258,59 @@
     ]
   },
   {
+    "title": "Halloween Social",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [],
+    "organizer": "d'Living",
+    "venue": "Torre de las Américas",
+    "address": "Cll 25 #27B-83",
+    "area": null,
+    "date": "2026-10-31",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "21:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Preventa",
+        "amount_cop": 15000,
+        "condition": null
+      },
+      {
+        "label": "Taquilla",
+        "amount_cop": 20000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "camilo_barretto",
+      "frank.de.latorre"
+    ],
+    "activities": [
+      "clases abiertas",
+      "concurso de disfraces"
+    ],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [],
+    "id": "halloween-social-31-oct",
+    "account": "dlivingstudio",
+    "media": [
+      {
+        "post_id": "17904095547356280",
+        "permalink": "https://www.instagram.com/p/DeFXmqxPo-A/",
+        "media_type": "IMAGE",
+        "published": "2026-10-04T19:22:29+0000",
+        "flyer": "flyers/17904095547356280-0.webp",
+        "caption": "🎃 Este Halloween, es en d’Living 👻\n\nPrepárate para nuestro social de Halloween: una noche llena de música, baile y sorpresas, con camilo_barretto y frank.de.latorre poniendo el ambiente para que no pares de bailar. 🕺🏻💃🏻\n\nY porque en D’Living nos gusta que el baile también sea una experiencia, tendremos clases abiertas incluidas con tu entrada 😏 para aprender, compartir y llegar al social con toda la actitud. 🔥\n\nAdemás, 👻 CONCURSO DE DISFRACES\nPrepara tu mejor personaje porque tendremos varios premios para los mejores 🎭🏆\n\n📅 31 de octubre\n🕘 9:00 p. m.\n📍 Cll 25 #27B-83 — Torre de las Américas\n🎟️ Preventa $15K | Taquilla $20K\n\n¿Ya tienes tu disfraz? Porque nosotros ya tenemos la fiesta. 🧟‍♀️🎃",
+        "preview": null,
+        "slides": null
+      }
+    ]
+  },
+  {
     "title": "Entre Ritmos y Latidos — The Musical",
     "event_type": "show",
     "is_recurring": false,
@@ -3615,6 +4323,7 @@
     "area": "Chapinero",
     "date": "2026-11-01",
     "end_date": null,
+    "sessions": null,
     "weekday": "domingo",
     "start_time": null,
     "end_time": null,
@@ -3667,6 +4376,7 @@
     "area": null,
     "date": "2026-11-06",
     "end_date": null,
+    "sessions": null,
     "weekday": "viernes",
     "start_time": "20:00",
     "end_time": null,
@@ -3716,6 +4426,7 @@
     "area": null,
     "date": "2026-11-07",
     "end_date": null,
+    "sessions": null,
     "weekday": "sábado",
     "start_time": "18:00",
     "end_time": null,
@@ -3764,6 +4475,7 @@
     "area": null,
     "date": "2026-11-07",
     "end_date": null,
+    "sessions": null,
     "weekday": "sábado",
     "start_time": "21:00",
     "end_time": null,
@@ -3801,6 +4513,62 @@
     ]
   },
   {
+    "title": "Bailatón Los Morochos",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "urbano"
+    ],
+    "organizer": "morochos_rsc",
+    "venue": "mmamazonia_",
+    "address": "Carrera 13 # 82 - 37",
+    "area": null,
+    "date": "2026-11-08",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "09:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Los Morochos"
+    ],
+    "activities": [
+      "Bailatón"
+    ],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [
+      "Evento fuera de Bogotá",
+      "Sin precio",
+      "Sin horario"
+    ],
+    "id": "bailaton-los-morochos-4-oct",
+    "account": "soywiwioficial",
+    "media": [
+      {
+        "post_id": "18122042672487029",
+        "permalink": "https://www.instagram.com/reel/DeCqdfwtX8u/",
+        "media_type": "VIDEO",
+        "published": "2026-10-03T18:09:06+0000",
+        "flyer": "flyers/18122042672487029-0.webp",
+        "caption": "Próxima Bailatón con Los Morochos 🍫❤️‍🔥\n\n🔗en nuestro perfil encuentras el link para asegurar tu cupo ( AFORO LIMITADO ‼️)\n\nDomingo 8 Noviembre \n⏰ 9 AM\n\nBULEVAR ROOFTOP\n📍Carrera 13 # 82 - 37",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18229425175325979",
+        "permalink": "https://www.instagram.com/reel/Dd4Oicvxb4z/",
+        "media_type": "VIDEO",
+        "published": "2026-09-29T16:51:34+0000",
+        "flyer": "flyers/18229425175325979-0.webp",
+        "caption": "Los Morochos en Florencia, Caquetá 🍫❤️‍🔥✨\nNos vemos este domingo 4 de octubre en la mmamazonia_ para vivir una Bailatón con morochos_rsc ✨🖤",
+        "preview": "previews/18229425175325979-0.mp4",
+        "slides": null
+      }
+    ]
+  },
+  {
     "title": "Level Up Bachata Fusion Congress",
     "event_type": "congress",
     "is_recurring": false,
@@ -3814,6 +4582,7 @@
     "area": "Bogotá",
     "date": "2026-11-13",
     "end_date": "2026-11-15",
+    "sessions": null,
     "weekday": "viernes",
     "start_time": null,
     "end_time": null,
@@ -3861,9 +4630,10 @@
     "organizer": "Festival Internacional Casinea",
     "venue": null,
     "address": null,
-    "area": null,
+    "area": "Bogotá",
     "date": "2026-11-13",
     "end_date": "2026-11-16",
+    "sessions": null,
     "weekday": "viernes",
     "start_time": null,
     "end_time": null,
@@ -3894,6 +4664,16 @@
     "account": "casineafest",
     "media": [
       {
+        "post_id": "18188499625395008",
+        "permalink": "https://www.instagram.com/p/DdmtW8iR4qm/",
+        "media_type": "IMAGE",
+        "published": "2026-09-22T21:32:40+0000",
+        "flyer": "flyers/18188499625395008-0.webp",
+        "caption": "🔥 ¡YA ESTÁ ABIERTO EL FORMULARIO DE INSCRIPCIÓN PARA CASINEA 2026!\n\nSi vas a ser parte de la competencia de la décima edición del Festival Internacional Casinea, este es el momento de elegir la modalidad y categoría en la que vas a participar, preparar tu información y enviar tu pista musical.\n\nEl proceso de inscripción incluye el registro mediante el formulario oficial, el pago del pase correspondiente y, en las modalidades que lo requieren, el envío de la música de competencia. \n\n📅 FECHA LÍMITE: 1 DE NOVIEMBRE DE 2026\n⏰ 11:59 p. m. — hora Colombia 🇨🇴\n\n⚠️ IMPORTANTE PARA PAREJAS, DÚOS Y RUEDAS\n\nNo es necesario que todos los integrantes diligencien el formulario.\n\nEn las participaciones conformadas por más de una persona —parejas, dúos y ruedas— deben seleccionar un solo representante para realizar la inscripción y subir la pista musical correspondiente.\n\nEsto es importante porque el formulario incluye el envío del archivo de audio. Si cada integrante diligencia el formulario por separado, la misma pista podría ser enviada varias veces y generar duplicidad de información.\n\n👉 Un representante por pareja, dúo o rueda. Una sola inscripción. Una sola pista.\n\nRecomendamos no esperar hasta el último día. Haz tu inscripción con anticipación, verifica que estés seleccionando correctamente tu modalidad y categoría y ten lista la pista con la que competirás.\n\n📲 Accede al formulario desde el enlace en la descripción de nuestro perfil de Instagram, en nuestras historias o directamente en:\nwww.festivalcasinea.com\n\n🔥 La pista está lista. Ahora falta la tuya.\n\n📅 13 al 16 de noviembre de 2026\n📍 Bogotá, Colombia\n\n#FestivalCasinea #Casinea2026 #CompetenciaCasinea #SalsaCasino #CasinoColombia",
+        "preview": null,
+        "slides": null
+      },
+      {
         "post_id": "18102247549996700",
         "permalink": "https://www.instagram.com/p/DdTMWLvRmdd/",
         "media_type": "IMAGE",
@@ -3901,6 +4681,307 @@
         "flyer": "flyers/18102247549996700-0.webp",
         "caption": "10 EDICIONES. UNA HISTORIA QUE SE SIGUE BAILANDO.\n\nDiez ediciones construyendo un espacio para encontrarnos alrededor del casino, la música y las expresiones de la cultura cubana. Diez ediciones conectando bailarines, maestros, academias y comunidades de diferentes lugares en una misma pista.\n\nY para celebrar esta DÉCIMA EDICIÓN, Casinea reúne una programación de talleristas que representa la diversidad, trayectoria y evolución de nuestra comunidad.\n\nArtistas, bailarines, maestros y coreógrafos que llegan desde diferentes escenas para compartir sus conocimientos, sus estilos y sus maneras de entender el baile.\n\nDesde el casino y la rueda, hasta el son, mambo, chachachá, timba, reparto, estilo masculino y femenino, musicalidad, interpretación y trabajo corporal, cada taller será una oportunidad para aprender de quienes han hecho de la danza parte de su camino.\n\nCasinea 2026 no es solo una nueva edición. Es la celebración de diez ediciones de encuentros, aprendizaje, competencia, música y comunidad.\n\n🔥 10.ª EDICIÓN DEL FESTIVAL INTERNACIONAL CASINEA\n\n📅 13 al 16 de noviembre de 2026\n\n📍 Bogotá, Colombia\n\nUna década bailando juntos.\n\nY esto apenas sigue comenzando.\n\n#FestivalCasinea #Casinea2026 #DécimaEdición #SalsaCasino #CulturaCubana",
         "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18141240823586989",
+        "permalink": "https://www.instagram.com/p/DdLG9bzxyiL/",
+        "media_type": "IMAGE",
+        "published": "2026-09-12T04:17:38+0000",
+        "flyer": "flyers/18141240823586989-0.webp",
+        "caption": "🇨🇴🔥 JESÚS Y MILENA: ANFITRIONES DE CASINEA 2026\n\nCada edición de Casinea es posible gracias a una comunidad de artistas, maestros, bailarines y gestores que hacen de este festival un punto de encuentro para la cultura cubana y la danza social. Y entre quienes han construido este camino desde sus inicios están Jesús y Milena.\n\nJesús y Milena, directores de Ilé Danza y fundadores del Festival Internacional Casinea, serán también parte de nuestro equipo de talleristas en esta décima edición.\n\nDesde Bogotá, llevan más de 15 años dedicados a la formación, creación y circulación de la danza, construyendo una trayectoria especialmente ligada al desarrollo de la danza social y las expresiones de la cultura cubana en la ciudad.\n\nSu trayectoria también se ha construido sobre la pista: han participado en diferentes competencias y cuentan con múltiples podios a nivel latinoamericano.\n\nComo bailarines y maestros, su trabajo abarca el son, mambo, chachachá, casino y rueda de casino, lenguajes que hacen parte del universo artístico y formativo que han desarrollado durante estos años.\n\nPero esta vez no solo estarán detrás de la organización. Jesús y Milena también salen a la pista como maestros de Casinea 2026, para compartir parte de aquello que han aprendido, investigado y construido durante todos estos años.\n\nPorque Casinea también es esto: un festival que nace de una comunidad y que crece gracias a quienes han dedicado su vida a mantenerla bailando. 🔥\n\n📅 13 al 16 de noviembre de 2026\n📍 Bogotá, Colombia\n\nLos anfitriones también bailan. Nos vemos en Casinea.\n\n#FestivalCasinea #Casinea2026 #IléDanza #Casino #RuedaDeCasino",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "17930434554401238",
+        "permalink": "https://www.instagram.com/p/DdBAGNqR2_h/",
+        "media_type": "IMAGE",
+        "published": "2026-09-08T06:05:15+0000",
+        "flyer": "flyers/17930434554401238-0.webp",
+        "caption": "🇲🇽🔥 MARLY Y ALEXIS LLEGAN DESDE MÉXICO A CASINEA 2026\n\nDesde la Ciudad de México, Marly y Alexis llegan a Casinea para compartir una trayectoria construida desde la pista, la formación y la competencia.\n\nDirectores de BrotherSon México, son bailarines, maestros y coreógrafos, y hoy se consolidan como reconocidos exponentes del casino en México. Su experiencia como talleristas en eventos dentro y fuera de su país, así como sus títulos en diferentes competencias, hacen parte de un recorrido que los ha convertido en referentes para nuevas generaciones de bailarines.\n\nEn su trabajo hay una especialidad que los distingue: los trucos en pareja para bailar casino, llevados a la pista con técnica, creatividad y dominio corporal. A esto se suma su trabajo en el estilo masculino y femenino, explorando las posibilidades individuales de cada intérprete dentro del lenguaje del casino.\n\nMarly y Alexis representan una escena mexicana que ha hecho crecer el casino, llevándolo a nuevos espacios, públicos y escenarios.\n\nSu llegada a Casinea representa un nuevo encuentro entre México y Colombia, y una oportunidad para aprender de dos grandes referentes que han llevado el casino a nuevos escenarios dentro y fuera de su país. 🇲🇽🇨🇴🇨🇺\n\n📅 13 al 16 de noviembre de 2026\n📍 Bogotá, Colombia\n\nMéxico llega a Casinea. Nos vemos en la pista.\n\n#FestivalCasinea #Casinea2026 #BrotherSonMexico #Casino #SalsaCasino",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "17970372216139158",
+        "permalink": "https://www.instagram.com/p/Dc-e3doRJ4V/",
+        "media_type": "IMAGE",
+        "published": "2026-09-07T06:36:24+0000",
+        "flyer": "flyers/17970372216139158-0.webp",
+        "caption": "🔥 SEBASTIÁN Y KAREN LLEGAN DESDE CALI A CASINEA 2026\n\nDesde la capital mundial de la salsa, Sebastián y Karen vienen construyendo un espacio para que la cultura cubana también tenga un lugar protagonista en la pista.\n\nAl frente de Melao Dance, anteriormente Elegua Dance, academia especializada en casino y timba, han acompañado a múltiples bailarines en sus procesos de formación y han contribuido a fortalecer la presencia de la cultura cubana en Cali.\n\nSu trabajo se destaca especialmente en la rueda de casino, el casino y el son, combinando formación, musicalidad y una profunda conexión con las raíces de estos géneros.\n\nAhora, Sebastián y Karen —Sebastián Muñoz y Karen Jara— llegan a Bogotá como talleristas de Casinea 2026, trayendo consigo la experiencia de una escena que ha sabido hacer de la salsa un punto de encuentro entre Colombia y Cuba.\n\nUna oportunidad para encontrarnos con dos artistas que han hecho del casino y la timba una forma de conectar a Cali con Cuba. 🇨🇴🇨🇺\n\n📅 13 al 16 de noviembre de 2026\n📍 Bogotá, Colombia\n\n¡Cali llega a Casinea! Nos vemos en la pista.\n\n#FestivalCasinea #Casinea2026 #MelaoDance #Casino #SonCubano",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18073448372447981",
+        "permalink": "https://www.instagram.com/p/Dc5YeAlRQxD/",
+        "media_type": "IMAGE",
+        "published": "2026-09-05T07:04:18+0000",
+        "flyer": "flyers/18073448372447981-0.webp",
+        "caption": "🔥 JESÚS CASTILLO LLEGA A CASINEA 2026\n\nDesde Venezuela hasta Colombia, Jesús Castillo ha construido una trayectoria como instructor, coreógrafo y bailarín, convirtiéndose en un explorador constante de las nuevas expresiones del movimiento cubano. 🇻🇪🇨🇴\n\nSu fortaleza está en la capacidad de interpretar y desarrollar diferentes lenguajes de la música cubana, con especial dominio del reparto cubano, el cubatón y los ritmos urbanos, sin dejar de lado la riqueza del folclor afrocubano.\n\nJesús es de esos artistas que no se quedan quietos: investiga, explora y transforma lo que escucha en movimiento, buscando nuevas maneras de interpretar los ritmos que hacen parte de la Cuba contemporánea.\n\nY antes de estar del otro lado como instructor y coreógrafo, también conoció de cerca la competencia. 🏆\n\nDurante sus años como competidor, Jesús alcanzó múltiples podios en el Festival Internacional Casinea y en otras competencias de Colombia y Venezuela, construyendo una experiencia que hoy reúne el conocimiento técnico, la experiencia escénica y la mirada del competidor.\n\nEn Casinea 2026, tendremos la oportunidad de aprender de un artista que entiende el movimiento desde diferentes lugares: la competencia, la creación, la enseñanza, el folclor y la exploración de los ritmos urbanos cubanos. 🔥\n\n📅 13 al 16 de noviembre de 2026\n📍 Bogotá, Colombia\n\nJesús Castillo, nos vemos en Casinea.\n\n#FestivalCasinea #Casinea2026 #RepartoCubano #Cubatón #IléDanza",
+        "preview": null,
+        "slides": null
+      }
+    ]
+  },
+  {
+    "title": "Jack and Jill",
+    "event_type": "congress",
+    "is_recurring": false,
+    "styles": [
+      "bachata"
+    ],
+    "organizer": "Latin Fusion",
+    "venue": "Danceholic",
+    "address": "Cll 57 # 13 -76",
+    "area": null,
+    "date": "2026-11-20",
+    "end_date": "2026-11-21",
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Full Pass 6 talleres + social",
+        "amount_cop": 190000,
+        "condition": null
+      },
+      {
+        "label": "Social tarde",
+        "amount_cop": 25000,
+        "condition": null
+      },
+      {
+        "label": "Social noche",
+        "amount_cop": 30000,
+        "condition": null
+      },
+      {
+        "label": "Bootcamp Con derecho a social",
+        "amount_cop": 120000,
+        "condition": null
+      },
+      {
+        "label": "Paquete de 6 talleres Por persona Precio base",
+        "amount_cop": 160000,
+        "condition": null
+      },
+      {
+        "label": "Paquete de 6 talleres en pareja Dos personas",
+        "amount_cop": 280000,
+        "condition": null
+      },
+      {
+        "label": "Taller suelto Por persona Una sesión",
+        "amount_cop": 35000,
+        "condition": null
+      },
+      {
+        "label": "Taller suelto en pareja Dos personas Una sesión",
+        "amount_cop": 60000,
+        "condition": null
+      },
+      {
+        "label": "Inscripciones Juvenil",
+        "amount_cop": 60000,
+        "condition": null
+      },
+      {
+        "label": "Inscripciones Semipro",
+        "amount_cop": 70000,
+        "condition": null
+      },
+      {
+        "label": "Inscripciones Pro",
+        "amount_cop": 80000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Romina Velarde",
+      "Adriana Tibaduiza",
+      "Ivonne Pulido",
+      "Caterin Estrada",
+      "Paula Popayán",
+      "Mancho Osorio",
+      "Nicolás Carreño",
+      "Mateo Popayán",
+      "Jomber Chinchilla",
+      "Jesús Cabezas",
+      "Daniel Tello",
+      "Frank Torres",
+      "Andrea Pinto",
+      "Camilo Barreto",
+      "Fredy & Sara"
+    ],
+    "activities": [
+      "competencia",
+      "talleres",
+      "social"
+    ],
+    "contact": "WhatsApp 3144180389",
+    "confidence": "high",
+    "doubts": [
+      "sin precios"
+    ],
+    "id": "jack-and-jill-20-nov",
+    "account": "jackandjilloficial",
+    "media": [
+      {
+        "post_id": "17919923508443102",
+        "permalink": "https://www.instagram.com/p/DeC-KLsSZ1h/",
+        "media_type": "IMAGE",
+        "published": "2026-10-03T21:00:11+0000",
+        "flyer": "flyers/17919923508443102-0.webp",
+        "caption": "CATERINE ESTRADA✨\n\n✨ Elegancia, experiencia y sensualidad ✨\n\nNuestra maestra llegará a esta edición para regalarnos todo eso y mucho más. 💃🏻🔥\n\nUna artista que, con su talento y trayectoria, promete dejarnos inspirados y llenos de ganas de bailar.",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18079883642369358",
+        "permalink": "https://www.instagram.com/p/Dd_ptwaSyGw/",
+        "media_type": "IMAGE",
+        "published": "2026-10-02T14:03:16+0000",
+        "flyer": "flyers/18079883642369358-0.webp",
+        "caption": "🔥 ¡Ya tenemos nuestra lista de precios! 🔥\n\n¿Quieres conocer nuestros precios y opciones? 👀✨\n\n📩 Escríbenos por interno y te enviamos toda la información.\n\n¡Estamos listos para atenderte! 💬❤️",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18183172054424844",
+        "permalink": "https://www.instagram.com/p/Dd7CpHQJxFR/",
+        "media_type": "IMAGE",
+        "published": "2026-09-30T19:04:51+0000",
+        "flyer": "flyers/18183172054424844-0.webp",
+        "caption": "MATEO POPAYAN ✨\n\n🏆 ¡Nuestro campeón de la última edición regresa! 🏆\n\nEn esta ocasión, estará acompañándonos con un increíble taller y haciendo parte de nuestro panel de jueces.",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "17901976053669117",
+        "permalink": "https://www.instagram.com/p/Dd4N_wJS-VZ/",
+        "media_type": "IMAGE",
+        "published": "2026-09-29T16:46:43+0000",
+        "flyer": "flyers/17901976053669117-0.webp",
+        "caption": "✨ ¡Llega un bootcamp imperdible! ✨\nNos complace presentar el gran Bootcamp de Romina Velarde, quien llega desde Perú para deleitarnos con todo su talento, carisma y pasión por la danza.\n¡Llegó la gran oportunidad de aprender, disfrutar y bailar junto a ella! 🇵🇪🔥\n¡No te lo puedes perder! ❤",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18024003998870639",
+        "permalink": "https://www.instagram.com/p/Dd147QjybOV/",
+        "media_type": "IMAGE",
+        "published": "2026-09-28T19:04:31+0000",
+        "flyer": "flyers/18024003998870639-0.webp",
+        "caption": "✨JESUS CABEZAS✨\n\nEs un honor contar en esta edición con el gran maestro y exponente de la Salsa Casino.\n\nBienvenido 🎉",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18368394184212470",
+        "permalink": "https://www.instagram.com/p/DdzGJwsybk9/",
+        "media_type": "IMAGE",
+        "published": "2026-09-27T17:00:34+0000",
+        "flyer": "flyers/18368394184212470-0.webp",
+        "caption": "✨ ¡ADRIANA TIBADUIZA! ✨\n\nNos complace anunciar la participación de Adriana Tibaduiza, la reina de la bachata tradicional en Colombia, quien hará parte de nuestro line up 2026.\n\n¡Es un honor contar con su talento, trayectoria y pasión por la bachata en esta edición!\n\n❤️ ¡Bienvenida a nuestra familia J&J 2026!",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18114256535107383",
+        "permalink": "https://www.instagram.com/p/DdhvRlQygAH/",
+        "media_type": "IMAGE",
+        "published": "2026-09-20T23:16:54+0000",
+        "flyer": "flyers/18114256535107383-0.webp",
+        "caption": "NUESTRO LINE UP OFICIAL 2026 ✨\n\nrominavelarde.c \ncaterine.pasolatino \nnicolasc.pasolatino \nmanchoosorio \nbom_dance \ndanitello22 \npaulapopayancortes \nmateopopayancortes \njomberc \njhezua2 \ntibaduiza__ \nfredyysaraoficial \nandree.pintoo \nfrank.de.latorre \ncamilo_barretto",
+        "preview": null,
+        "slides": null
+      }
+    ]
+  },
+  {
+    "title": "Los 25 de la-33",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "La-33",
+    "venue": "Centro de Eventos Royal Center",
+    "address": "Cra 13 # 66 - 80",
+    "area": "Chapinero",
+    "date": "2026-11-21",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "2da etapa",
+        "amount_cop": 135000,
+        "condition": "hasta el 5 de octubre"
+      }
+    ],
+    "artists": [
+      "La-33",
+      "Los Corraleros de Majagual",
+      "Loa Malbec",
+      "Santiago Rivas"
+    ],
+    "activities": [
+      "concierto en vivo",
+      "celebración de 25 años"
+    ],
+    "contact": "WhatsApp 3173313956",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio",
+      "sin precios"
+    ],
+    "id": "los-25-de-la-33-21-nov",
+    "account": "la33orquesta",
+    "media": [
+      {
+        "post_id": "18016192184942271",
+        "permalink": "https://www.instagram.com/p/DdXyUm2DdhF/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-09-17T02:27:23+0000",
+        "flyer": "flyers/18016192184942271-3.webp",
+        "caption": "LA-33 EN VIVO\r\nTOUR 25 AÑOS 🥳🔥\n\r\n𝗠É𝗫𝗜𝗖𝗢 🇲🇽\r\n• Septiembre 18 \rLugar: Grand Forum, CDMX\n📍 Cerro del músico 22, Campestre Churubusco, Coyoacán, 04200 CDMX\r\nCerca del metro taxqueña \r\n🎟️📲 Entradas al WhatsApp: 5562024664\r\n\r\n• Septiembre 19\r\nLugar: clubhavanaveracruz - Veracruz\r\n🎟️📲 Entradas al: 2294362482\n\r\n𝗖𝗢𝗟𝗢𝗠𝗕𝗜𝗔 🇨🇴\r\n• Noviembre 21 \r\nLos 25 de la-33\r\nLugar royalbogota - Bogotá\r\n🎟️ Entradas: royalcenter.com.co (link en bio)\r\n\r\n𝗨𝗦𝗔 🇺🇸 - pronto más información\r\n\r\nLa celebración continua. ¡Salsa es lo que hay! 🔥🥳💃🕺\n.\n.\n.\n⭐️🌟 Arte Flyer Tour: sebastianbravoguerrero",
+        "preview": null,
+        "slides": 4
+      },
+      {
+        "post_id": "18001960326003074",
+        "permalink": "https://www.instagram.com/p/DdU8ly0DcLn/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-09-15T23:59:23+0000",
+        "flyer": "flyers/18001960326003074-1.webp",
+        "caption": "BOGOTÁ, nos vemos en el royalbogota \r𝗟𝗼𝘀 𝟮𝟱 𝗱𝗲 𝗹𝗮-𝟯𝟯, se celebran a lo grande 🎉🇨🇴🔥\r\n\r\nEste 21 de noviembre nos encontramos para celebrar 25 años de historia, música y salsa. LA-33 EN VIVO + invitados especiales\r\n\r\nY la celebración se prende aún más con loscorralerosdemajagual_ una de las agrupaciones más emblemáticas de la música tropical colombiana 🥳🔥🔥\r\n\r\n🗓️ Fecha: Sábado 21 de noviembre de 2026\r\n📍Lugar: royalbogota (Cra 13 # 66-80 Bogotá) 🇨🇴\r\n🔥 DJ´S: loa_malbec y rivas_santiago \r\n\r\n🎟️ Entradas en: royalcenter.com.co (el enlace en la bio)\r\n🎟️ 2da etapa $135.000 + servicio, hasta el 5 de octubre\r\n*Aplican términos y condiciones*\r\n\r\nNo dejes que te lo cuenten. Ven a celebrar con nosotros. 🔥🥳💃🕺\r📲 Informes al: 317 331 3956 – 300 660 1156\n.\n.\n.\n🌟 Arte: sebastianbravoguerrero",
+        "preview": null,
+        "slides": 4
+      },
+      {
+        "post_id": "17981971556902899",
+        "permalink": "https://www.instagram.com/reel/Dd-CdxMxWbS/",
+        "media_type": "VIDEO",
+        "published": "2026-10-01T23:04:39+0000",
+        "flyer": "flyers/17981971556902899-0.webp",
+        "caption": "BOGOTÁ 🇨🇴🥳\n¡Últimos 5 días de segunda etapa! 🎟️🥳\n\r\n¡Los 25 de La-33 se celebran con toda! Nos espera una noche histórica, con invitados especiales y mucho sabor. 🥳🔥🔥\n\r\nAsegura tu entrada antes de que cambie la etapa. \n¡Nos vemos el 21 de noviembre en el royalbogota ! 💃🏽🕺🏽🥳\n\r\n🎟️ Entradas en: royalcenter.com.co (el enlace en la bio)\r\n2da etapa $135.000 + servicio, hasta el 5 de octubre\r\n*Aplican términos y condiciones*\r\n\r\n📲 Informes al: 317 331 3956 – 300 660 1156\n.\n.\n.\n#salsa #la33 #la33orquesta #concierto #bogota",
+        "preview": "previews/17981971556902899-0.mp4",
+        "slides": null
+      },
+      {
+        "post_id": "18143692393605612",
+        "permalink": "https://www.instagram.com/reel/DdjvxzFxF92/",
+        "media_type": "VIDEO",
+        "published": "2026-09-21T18:00:50+0000",
+        "flyer": "flyers/18143692393605612-0.webp",
+        "caption": "¿A quién tienes ganas de decirle: “Échate Pa’ Acá”? ❤️\r\nEsta canción nació de una historia de amor, de esas que dan ganas de tener a alguien cerquita. ❤️‍🔥🎶\r\n\r\n“Échate Pa Acá” (2023), canción compuesta por “Lencho” y Diego Sánchez. Dale play, conoce la historia de “Lencho” y Susana y dedícasela a esa persona que te da calorcito en la vida. ❤️‍🔥🥳🎧\r\n\r\nY seguimos calentando motores para nuestros 25 años. 21 de noviembre en el Royal Center, Bogotá 🥳🔥\r\n.\n.\n.\r\n✍️ Guion: Susana Silva\r\n🎥 Dirección y realización: bretonamadeus \r\n.\r\n#la33 #la33orquesta #salsa #cancion #amor",
+        "preview": "previews/18143692393605612-0.mp4",
         "slides": null
       }
     ]
@@ -3919,6 +5000,7 @@
     "area": null,
     "date": "2026-12-05",
     "end_date": null,
+    "sessions": null,
     "weekday": "sábado",
     "start_time": null,
     "end_time": null,
@@ -3963,6 +5045,7 @@
     "area": null,
     "date": "2026-12-13",
     "end_date": null,
+    "sessions": null,
     "weekday": "domingo",
     "start_time": "16:00",
     "end_time": null,
@@ -4007,6 +5090,7 @@
     "area": null,
     "date": "2027-02-18",
     "end_date": "2027-02-22",
+    "sessions": null,
     "weekday": null,
     "start_time": null,
     "end_time": null,
@@ -4055,6 +5139,7 @@
     "area": "Bogotá",
     "date": "2027-03-19",
     "end_date": "2027-03-21",
+    "sessions": null,
     "weekday": "viernes",
     "start_time": null,
     "end_time": null,
