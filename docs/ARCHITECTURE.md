@@ -416,7 +416,9 @@ flowchart TD
   its start time that day, `startOn`); once a session passes it moves to the following one.
   Long lists stay short where it matters: the near periods show their flyers in full (six, then "Ver N más"),
   and later periods start as a summary row ("Ver los 23 eventos"); `DESIGN.md`, "Long lists".
-- **"Calendario"** shows a month grid. Dots mark days with events, Colombian holidays are tinted, and
+- **"Calendario"** shows a month grid. Days with events show them as colored dots on phones (at most two rows: past
+  six, five dots and "+N", `dotsHtml`) and as up to three names and "+N" on wide screens, so a busy day never makes
+  its week taller. Colombian holidays are tinted, and
   the selected day's events are listed below, under its heading and count (which glows when the day changes).
   Whatever changes that list ends with its start on screen (`revealDay` in `views/viewNavigation.ts`: the page moves only when it's below
   the fold). An event over several days is on each of its days
