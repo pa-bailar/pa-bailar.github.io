@@ -36,6 +36,18 @@ describe("the items' states", async () => {
   });
 });
 
+describe("the keyboard leaving while the field keeps the focus (Android's back)", async () => {
+  const { keyboardJustHid } = await import("../src/scripts/views/bottomNav");
+
+  it("is a tall keyboard going away, not toolbars or a keyboard rising", () => {
+    expect(keyboardJustHid(300, 0)).toBe(true);
+    expect(keyboardJustHid(300, 10)).toBe(true);
+    expect(keyboardJustHid(0, 300)).toBe(false); // rising
+    expect(keyboardJustHid(60, 0)).toBe(false); // toolbars collapsing
+    expect(keyboardJustHid(300, 280)).toBe(false); // a keyboard changing height (suggestions bar)
+  });
+});
+
 describe("rising above the keyboard (keyboardInset)", async () => {
   const { keyboardInset } = await import("../src/scripts/views/bottomNav");
 
