@@ -1,6 +1,6 @@
 ---
-import { ICONS } from "../scripts/lib/icons";
-// Wide screens: the view tabs, "Guardados" and the search field; under them one row of dropdown pills, [🕒 Cuándo ▾]
+// Wide screens: the view tabs (Próximos, Calendario, Guardados) and the search field; under them (not in Guardados,
+// which has no filters) one row of dropdown pills, [🕒 Cuándo ▾]
 // (the list only) [Ritmo ▾] [Tipo ▾], and the toggle chip "Ocultar bares"; each pill opens its panel (Cuándo's menu, the
 // rhythms under their families, the types). Under the pills, while filtering: "12 eventos", the choices as removable
 // chips and "× Limpiar". Drawn by scripts/views/filters.ts, the panels opened by scripts/views/filterPanels.ts. Sticky
@@ -18,11 +18,11 @@ import { ICONS } from "../scripts/lib/icons";
         <button class="tabs__tab" id="tab-calendar" role="tab" aria-selected="false" aria-controls="view-calendar" data-view="calendar">
           Calendario
         </button>
+        <button class="tabs__tab" id="tab-saved" role="tab" aria-selected="false" aria-controls="view-saved" data-view="saved">
+          Guardados <span class="tabs__count" data-saved-count hidden></span>
+        </button>
       </div>
       <div class="toolbar__tools">
-        <button class="chip toolbar__saved" type="button" data-saved-only aria-pressed="false" aria-label="Guardados">
-          <Fragment set:html={ICONS.bookmark} />Guardados <span class="toolbar__saved-count" data-saved-count hidden></span>
-        </button>
         <input class="search-input toolbar__search" type="search" data-search placeholder="Buscar evento, academia, ritmo…"
           aria-label="Buscar eventos" autocomplete="off" />
       </div>

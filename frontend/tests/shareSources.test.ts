@@ -9,7 +9,7 @@ const social = event({ id: "social", title: "Social", date: "2030-10-06", start_
 const congress = event({ id: "congress", title: "Level Up", date: "2030-10-05", end_date: "2030-10-08", account: "levelupbfc" });
 
 const group = (key: string, events = [salsa, social]): AgendaGroup => ({ key, label: key, shortLabel: key, events });
-const noFilters = { types: [], styles: [], query: "", dates: [], savedOnly: false };
+const noFilters = { types: [], styles: [], query: "", dates: [], view: "upcoming" as const };
 const planUrl = (item: { id: string }) => `https://x/${item.id}`;
 
 describe("what the list's share buttons share", () => {
@@ -39,11 +39,11 @@ describe("what the list's share buttons share", () => {
   it("the plans in Guardados, through their last day", () => {
     const plans = [salsa, congress, social];
     expect(shareSources({ groups: [], state: noFilters, plans, planUrl }).has("planes")).toBe(false);
-    const sources = shareSources({ groups: [], state: { ...noFilters, savedOnly: true }, plans, planUrl });
+    const sources = shareSources({ groups: [], state: { ...noFilters, view: "saved" as const }, plans, planUrl });
     const source = sources.get("planes")!;
     expect(source.title).toBe("Mis planes para bailar");
     expect(source.subtitle).toBe("Viernes 4 al martes 8 de octubre"); // the congress ends last
     expect(source.text).toContain("  https://x/congress");
-    expect(shareSources({ groups: [], state: { ...noFilters, savedOnly: true }, plans: [], planUrl }).size).toBe(0);
+    expect(shareSources({ groups: [], state: { ...noFilters, view: "saved" as const }, plans: [], planUrl }).size).toBe(0);
   });
 });

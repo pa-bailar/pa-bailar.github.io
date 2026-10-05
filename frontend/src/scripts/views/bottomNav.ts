@@ -1,9 +1,10 @@
 // Phones only (CSS hides it where the toolbar is sticky): the bar at the bottom of the screen, like Instagram's
 // (components/BottomNav.astro): Eventos · Calendario · Buscar · Guardados · Filtros.
-//   - Eventos and Calendario are links to the views' addresses; main.ts moves between them with viewNavigation.ts
-//     (the same rules the tabs and the old floating button had). The view on screen is aria-current="page".
-//   - Guardados (data-saved-only) and Filtros (data-open-filters, the "Filtros" sheet) are handled by main.ts;
-//     Filtros carries the number of choices in use (filterModel's `active`, "Sin bares" included).
+//   - Eventos, Calendario and Guardados are links to the views' addresses; main.ts moves between them with
+//     viewNavigation.ts (the same rules as the tabs). The view on screen is aria-current="page". Guardados carries the
+//     number of saved events to come (saveButton.ts).
+//   - Filtros (data-open-filters, the "Filtros" sheet, main.ts) carries the number of choices in use (filterModel's
+//     `active`, "Sin bares" included). Off in Guardados (aria-disabled), which has no filters.
 //   - Buscar turns the bar into the search field, docked at the bottom above the keyboard (the visualViewport's
 //     numbers, keyboardInset), with × to close it. Typing filters the view on screen (main.ts). It has a history
 //     entry of its own, an overlay like the sheets: back closes it, as × does (both clear the search). The
@@ -16,8 +17,9 @@ import type { View } from "../types";
 import { byId } from "../lib/dom";
 import { historyState, overlayState } from "../screenHistory";
 
-/** Filtros' name for screen readers, with its badge's number: "Filtros, 2 activos". */
-export function filtersLabel(active: number): string {
+/** Filtros' name for screen readers, with its badge's number: "Filtros, 2 activos"; off, why. */
+export function filtersLabel(active: number, off = false): string {
+  if (off) return "Filtros: no se usan en Guardados";
   return active ? `Filtros, ${active} ${active === 1 ? "activo" : "activos"}` : "Filtros";
 }
 
@@ -27,22 +29,22 @@ export function searchLabel(query: string): string {
   return text ? `Buscar: «${text}»` : "Buscar";
 }
 
-/** What the bar shows: the view on screen, and whether Guardados and Buscar are on. */
+/** What the bar shows: the view on screen, and whether Buscar is on. */
 export interface NavState {
   view: View;
-  savedOnly: boolean;
   query: string;
   active: number; // filters in use (the badge)
 }
 
 /** The items' states, from the app's state (pure, tested). */
-export function navItems({ view, savedOnly, query, active }: NavState) {
+export function navItems({ view, query, active }: NavState) {
+  const filtersOff = view === "saved";
   return {
     current: view,
-    saved: savedOnly,
     searching: query.trim() !== "",
     badge: active ? String(active) : "",
-    filtersLabel: filtersLabel(active),
+    filtersOff,
+    filtersLabel: filtersLabel(active, filtersOff),
     searchLabel: searchLabel(query),
   };
 }
@@ -148,6 +150,8 @@ export function renderBottomNav(state: NavState) {
   search.setAttribute("aria-label", items.searchLabel);
   const filters = byId("bottom-filters");
   filters.setAttribute("aria-label", items.filtersLabel);
+  if (items.filtersOff) filters.setAttribute("aria-disabled", "true");
+  else filters.removeAttribute("aria-disabled");
   const badge = byId("bottom-filters-count");
   badge.textContent = items.badge;
   badge.hidden = !items.badge;

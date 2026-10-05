@@ -67,22 +67,95 @@
   height: var(--icon-lg);
 }
 
-/* Guardados: "Tus 3 eventos guardados · Compartir mis planes" over the list. */
+/* ---------- Guardados (views/savedView.ts) ---------- */
+
+/* "Tus 3 eventos guardados [Compartir]": one light row over the saved events, the button small at its end (the owner,
+   5 Oct 2026: the boxed bar with a full-size button took too much of the screen). */
 .plans-bar {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-3);
-  margin-bottom: var(--space-5);
-  padding: var(--space-3) var(--space-4);
-  border: var(--border-width) solid var(--border);
-  border-radius: var(--radius-md);
-  background: var(--surface);
+  margin-bottom: var(--space-4);
 }
 
 .plans-bar__count {
   font-weight: var(--weight-bold);
+}
+
+.plans-bar__share {
+  flex: none;
+  min-height: var(--chip-height);
+  padding: var(--space-1) var(--space-3);
+}
+
+/* Finger-sized on touch screens, as the chips. */
+@media (pointer: coarse) {
+  .plans-bar__share {
+    min-height: var(--control-height);
+  }
+}
+
+/* None of the saved events is still to come: said, with "Ver eventos". */
+.saved-note {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+  color: var(--text-muted);
+}
+
+/* Nothing saved yet: a big bookmark over how to save. */
+.saved-empty__icon .icon {
+  width: 40px;
+  height: 40px;
+  color: var(--accent-text);
+}
+
+.saved-empty .icon {
+  vertical-align: -0.2em;
+}
+
+/* "Ya pasaron (2)": the past saved events, folded at the end. */
+.saved-past {
+  margin-top: var(--space-6);
+  border-top: var(--border-width) solid var(--divider);
+}
+
+.saved-past__summary {
+  display: flex;
+  align-items: center;
+  min-height: var(--control-height);
+  padding: var(--space-3) 0;
+  font-weight: var(--weight-bold);
+  cursor: pointer;
+}
+
+.saved-past__count {
+  margin-left: var(--space-1);
+  color: var(--text-muted);
+}
+
+/* The flex row drops the browser's marker: a chevron after the count instead, turned up while open. */
+.saved-past__summary::-webkit-details-marker {
+  display: none;
+}
+
+.saved-past__summary {
+  list-style: none;
+}
+
+.saved-past__summary .icon {
+  margin-left: var(--space-2);
+  transition: rotate var(--duration) ease;
+}
+
+.saved-past[open] .saved-past__summary .icon {
+  rotate: 180deg;
+}
+
+.saved-past[open] .saved-past__summary {
+  margin-bottom: var(--space-3);
 }
 
 /* "Ver 7 más" under a busy period's first events. */

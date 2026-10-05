@@ -86,14 +86,18 @@ export function eventPath(event: DanceEvent): string {
   return `${BASE_URL}evento/${encodeURIComponent(event.id)}/`;
 }
 
-/** Each view's own address: the list is the home page, the calendar /calendario/ (a reload or a shared link stays). */
+/** Each view's address under the site's root: a reload or a shared link stays on it. */
+const VIEW_PATHS: Record<View, string> = { upcoming: "", calendar: "calendario/", saved: "guardados/" };
+
+/** Each view's own address: the list is the home page, the calendar /calendario/, Guardados /guardados/. */
 export function viewPath(view: View): string {
-  return view === "calendar" ? `${BASE_URL}calendario/` : BASE_URL;
+  return `${BASE_URL}${VIEW_PATHS[view]}`;
 }
 
-/** The view an address opens on: /calendario/ (with or without its slash) is the calendar, anything else the list. */
+/** The view an address opens on: /calendario/ and /guardados/ (with or without their slash), anything else the list. */
 export function viewOfPath(pathname: string): View {
-  return pathname.replace(/\/?$/, "/") === `${BASE_URL}calendario/` ? "calendar" : "upcoming";
+  const path = pathname.replace(/\/?$/, "/");
+  return (Object.keys(VIEW_PATHS) as View[]).find((view) => VIEW_PATHS[view] && path === viewPath(view)) ?? "upcoming";
 }
 
 /**

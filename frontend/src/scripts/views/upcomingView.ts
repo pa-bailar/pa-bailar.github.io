@@ -105,17 +105,6 @@ function shareIconHtml(group: AgendaGroup): string {
       aria-label="Compartir: ${escapeHtml(group.label)}">${ICONS.share}</button>`;
 }
 
-/** Guardados: "Compartir mis planes" over the saved events. */
-function plansBarHtml(count: number): string {
-  return `
-    <div class="plans-bar">
-      <p class="plans-bar__count">${count === 1 ? "Tu evento guardado" : `Tus ${count} eventos guardados`}</p>
-      <button class="btn btn--primary" type="button" data-share="planes" data-track="compartir-planes">
-        ${ICONS.share}Compartir mis planes
-      </button>
-    </div>`;
-}
-
 /** Renders the list; returns how many events it shows and their periods (for the jump bar). */
 export function renderUpcomingView(
   container: HTMLElement,
@@ -133,7 +122,7 @@ export function renderUpcomingView(
         <p>Las academias publican casi a diario: vuelve en unos días.</p>
       </div>`;
   } else {
-    container.innerHTML = (state.savedOnly ? plansBarHtml(upcoming.length) : "") + groups
+    container.innerHTML = groups
       .map((group, position) => {
         const open = isPeriodOpen(groups, position);
         return `

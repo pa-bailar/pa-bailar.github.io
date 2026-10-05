@@ -11,4 +11,8 @@ export const VIEW_TITLES: Record<View, { title: string; description: string }> =
     title: "Calendario · Pa' Bailar · Bogotá",
     description: "El calendario de los sociales y talleres de baile en Bogotá: salsa, bachata, mambo y más, día por día.",
   },
+  saved: {
+    title: "Guardados · Pa' Bailar · Bogotá",
+    description: "Tus planes para bailar en Bogotá: los eventos que guardaste en Pa' Bailar.",
+  },
 };

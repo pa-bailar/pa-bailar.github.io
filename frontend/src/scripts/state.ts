@@ -3,12 +3,11 @@
 import type { AppState, DanceEvent, View } from "./types";
 import { addDays, currentMonth, daysOf, endOfWeek, isUpcoming, nowInBogota, shownDay, startOn, todayIso, toIsoDate } from "./lib/dates";
 import { capitalize, formatMonthName } from "./lib/format";
-import { isSaved } from "./lib/saved";
 import { matchesQuery } from "./lib/search";
 
 /** Whether a value read from the page (a `data-view`) is one of the views. */
 export function isView(value: string | undefined): value is View {
-  return value === "upcoming" || value === "calendar";
+  return value === "upcoming" || value === "calendar" || value === "saved";
 }
 
 /** Where "Ocultar eventos de bares" is remembered in this browser (lib/storedSwitch.ts: "1" while on). */
@@ -22,7 +21,6 @@ export function createInitialState(remembered: Partial<Pick<AppState, "hideBars"
     styles: [],
     dates: [],
     query: "",
-    savedOnly: false,
     hideBars: remembered.hideBars ?? false,
     month: currentMonth(),
     selectedDay: todayIso(),
@@ -56,7 +54,7 @@ function datesApply(state: AppState): boolean {
   return state.view === "upcoming" && state.dates.length > 0;
 }
 
-/** The groups of choices in the filters (the search and Guardados apart). */
+/** The groups of choices in the filters (the search apart). */
 export type FilterGroup = "dates" | "styles" | "types";
 
 /** Whether a value read from the page (a chip's `data-filter`) is one of the groups. */
@@ -65,7 +63,7 @@ export function isFilterGroup(value: string | undefined): value is FilterGroup {
 }
 
 /**
- * Whether the event passes every filter: AND across them (types, rhythms, dates, bars, Guardados, search),
+ * Whether the event passes every filter: AND across them (types, rhythms, dates, bars, search),
  * OR within each group of choices. `except` leaves one group out: the options of that group are counted against
  * the others (filterModel, lib/filterModel.ts). Every path that shows events goes through here (the list, the
  * calendar, the counts), so hiding the bars applies everywhere at once.
@@ -75,19 +73,21 @@ export function matchesFilters(event: DanceEvent, state: AppState, except?: Filt
   const stylesOk = except === "styles" || matchesStyles(event, state.styles);
   const datesOk = except === "dates" || !datesApply(state) || matchesDates(event, state.dates);
   const barsOk = matchesBars(event, state.hideBars);
-  const savedOk = !state.savedOnly || isSaved(event.id);
-  return typeOk && stylesOk && datesOk && barsOk && savedOk && matchesQuery(event, state.query);
+  return typeOk && stylesOk && datesOk && barsOk && matchesQuery(event, state.query);
 }
 
-/** Every choice in use, for Filtros' badge: each date (in the list), rhythm and type, and hiding the bars (one). */
+/**
+ * Every choice in use, for Filtros' badge: each date (not in the calendar, which has its own days), rhythm and type, and
+ * hiding the bars (one). Guardados doesn't use them, but they're still there for the list: the badge stays.
+ */
 export function activeFilterCount(state: AppState): number {
-  const dates = state.view === "upcoming" ? state.dates.length : 0; // the calendar has its own days
+  const dates = state.view !== "calendar" ? state.dates.length : 0;
   return dates + state.styles.length + state.types.length + (state.hideBars ? 1 : 0);
 }
 
-/** Anything narrowing the list: the filters, a search, or "Guardados". */
+/** Anything narrowing the list: the filters or a search. */
 export function hasActiveFilters(state: AppState): boolean {
-  return activeFilterCount(state) > 0 || state.query.trim() !== "" || state.savedOnly;
+  return activeFilterCount(state) > 0 || state.query.trim() !== "";
 }
 
 /** A rhythm or a period chosen again is unchosen; otherwise it's added. */
@@ -97,7 +97,7 @@ export function toggled(values: string[], value: string): string[] {
 
 /**
  * "Limpiar": the dates, rhythms and types, and the bars shown again (hiding them counts on the badge, so it goes with
- * the rest; main.ts forgets it in storage too). Not the search nor "Guardados", which have their own way out.
+ * the rest; main.ts forgets it in storage too). Not the search, which has its own way out.
  */
 export function clearFilters(state: AppState) {
   state.types = [];
@@ -125,9 +125,10 @@ function byStartOn(events: DanceEvent[], day: string): DanceEvent[] {
 }
 
 /** Events the current view can show before filtering: upcoming ones (until their last day; a night past midnight
- * until its end time: isUpcoming), or the displayed month's (any of their days in it). */
+ * until its end time: isUpcoming), or the displayed month's (any of their days in it). Guardados picks its own
+ * (views/savedView.ts); the filters' model counts it as the list. */
 export function eventsInView(events: DanceEvent[], state: AppState): DanceEvent[] {
-  if (state.view === "upcoming") {
+  if (state.view !== "calendar") {
     const now = nowInBogota();
     return events.filter((event) => isUpcoming(event, now));
   }
@@ -139,7 +140,7 @@ export function eventsInView(events: DanceEvent[], state: AppState): DanceEvent[
  * for its event here: main.ts, openSharedEvent). */
 export function visibleEvents(events: DanceEvent[], state: AppState): DanceEvent[] {
   const shown = eventsInView(events, state).filter((event) => matchesFilters(event, state));
-  if (state.view === "upcoming") return listOrder(shown, todayIso(), state.dates);
+  if (state.view !== "calendar") return listOrder(shown, todayIso(), state.dates);
   return byStartOn(
     shown.filter((event) => daysOf(event).includes(state.selectedDay)),
     state.selectedDay,

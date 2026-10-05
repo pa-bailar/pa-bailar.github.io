@@ -1,6 +1,6 @@
 // Entry point: load the events embedded in the page, wire up interactions and render.
 
-import type { AppState, DanceEvent, EventType } from "./types";
+import type { AppState, DanceEvent, EventType, View } from "./types";
 import { initClickTracking } from "./lib/analytics";
 import { byId, isPlainClick } from "./lib/dom";
 import { focusAfterClearing, focusScope, focusSelector } from "./lib/focus";
@@ -19,6 +19,7 @@ import {
   listOrder,
   toggled,
   visibleEvents,
+  type AgendaGroup,
 } from "./state";
 import { initThemeToggle } from "./theme";
 import { renderCalendarView } from "./views/calendarView";
@@ -38,14 +39,15 @@ import {
   returnToScroll,
 } from "./views/jumpBar";
 import { renderUpcomingView, sharedEventEntry, showWholePeriod } from "./views/upcomingView";
-import { goTo, initScreenHistory, leave } from "./screenHistory";
+import { goTo, initScreenHistory } from "./screenHistory";
 import { initPostViewer } from "./views/postViewer";
 import { initPostsSheet } from "./views/postsSheet";
 import { closeSearchField, initBottomNav, renderBottomNav } from "./views/bottomNav";
 import { viewNavigation } from "./views/viewNavigation";
 import { closeWhenMenu, isWhenMenuOpen, openWhenMenu, syncWhenMenu } from "./views/whenMenu";
 import { closePanel, initFilterPanels, syncPanels, togglePanel } from "./views/filterPanels";
-import { initSaveButtons, renderSavedToggles } from "./views/saveButton";
+import { initSaveButtons, renderSavedCount as drawSavedCount } from "./views/saveButton";
+import { renderSavedView } from "./views/savedView";
 import { watchDayChange } from "./views/dayChange";
 import { initInstallPrompt, offerAfterSaving, registerServiceWorker } from "./views/installPrompt";
 import { initSharing, plansEventUrl, setShareSources } from "./views/sharing";
@@ -63,11 +65,26 @@ const { navigateView, revealDay, backToTop, currentScreen, applyScreen, openedOn
   render(),
 );
 
+/** Each view's section in the page (components/HomePage.astro). */
+const VIEW_IDS: Record<View, string> = { upcoming: "view-upcoming", calendar: "view-calendar", saved: "view-saved" };
+
 /** The number of events, said politely to screen readers after each change. */
 function announce(count: number) {
   const label = eventCountLabel(count);
-  byId("results-status").textContent =
-    state.view === "upcoming" ? `${label} próximos` : `${formatLongDate(state.selectedDay)}: ${label}`;
+  const said: Record<View, string> = {
+    upcoming: `${label} próximos`,
+    calendar: `${formatLongDate(state.selectedDay)}: ${label}`,
+    saved: `${label} guardados por venir`,
+  };
+  byId("results-status").textContent = said[state.view];
+}
+
+/** What the view on screen shows: how many events, and the list's periods (for the share buttons). */
+function renderView(): { shown: number; groups: AgendaGroup[] } {
+  const container = byId(VIEW_IDS[state.view]);
+  if (state.view === "upcoming") return renderUpcomingView(container, events, state);
+  if (state.view === "calendar") return { shown: renderCalendarView(events, state), groups: [] }; // no periods
+  return { shown: renderSavedView(container, events, state), groups: [] }; // its plans are shared whole
 }
 
 /** `keepPlace`: a filter changed; keep the period being read under the bar (see restoreListPosition). */
@@ -85,22 +102,22 @@ function render({ keepPlace = false } = {}) {
     model = filterModel(events, state);
   }
   renderFilters(model, state);
-  const upcoming = byId("view-upcoming");
-  const calendar = byId("view-calendar");
-  upcoming.hidden = state.view !== "upcoming";
-  calendar.hidden = state.view !== "calendar";
+  for (const [view, id] of Object.entries(VIEW_IDS)) byId(id).hidden = view !== state.view;
+  // Guardados has no filters: the pinned bar and the toolbar's pills hide (CSS), their menus close.
+  document.body.dataset.view = state.view;
+  if (state.view === "saved") {
+    closeWhenMenu();
+    closePanel();
+  }
   document.querySelectorAll<HTMLElement>('[role="tab"][data-view]').forEach((tab) => {
     tab.setAttribute("aria-selected", String(tab.dataset.view === state.view));
   });
-  renderBottomNav({ view: state.view, savedOnly: state.savedOnly, query: state.query, active: model.active });
+  renderBottomNav({ view: state.view, query: state.query, active: model.active });
 
-  const { shown, groups } =
-    state.view === "upcoming"
-      ? renderUpcomingView(upcoming, events, state)
-      : { shown: renderCalendarView(events, state), groups: [] }; // the calendar has no periods
+  const { shown, groups } = renderView();
   renderJumpBar();
   renderSavedCount();
-  watchClips(byId(state.view === "upcoming" ? "view-upcoming" : "view-calendar")); // the videos' clips, as a feed
+  watchClips(byId(VIEW_IDS[state.view])); // the videos' clips, as a feed
   if (anchor) restoreListPosition(anchor);
   announce(shown);
   setShareSources(shareSources({ groups, state, plans: upcomingSaved(), planUrl: plansEventUrl }));
@@ -119,9 +136,9 @@ function upcomingSaved(): DanceEvent[] {
   return listOrder(events.filter((event) => isUpcoming(event, now) && isSaved(event.id)), todayIso());
 }
 
-/** "Guardados 3": how many upcoming events are saved, on the toggles. */
+/** "Guardados 3": how many upcoming events are saved, on the bar's Guardados and the toolbar's tab. */
 function renderSavedCount() {
-  renderSavedToggles(upcomingSaved().length, state.savedOnly);
+  drawSavedCount(upcomingSaved().length);
 }
 
 let searchTimer = 0;
@@ -193,17 +210,6 @@ const clearWhen: ControlHandler = () => {
   document.querySelector<HTMLElement>("#jump-chips [data-when-open]")?.focus({ preventScroll: true });
 };
 
-/** "Guardados": a screen of its own (back leaves it). */
-const toggleSavedOnly: ControlHandler = () => {
-  const showSaved = () => {
-    state.savedOnly = !state.savedOnly;
-    render();
-    backToTop();
-  };
-  if (state.savedOnly) leave("saved", showSaved);
-  else goTo("saved", showSaved);
-};
-
 const endSearch: ControlHandler = () => {
   clearSearch();
   render();
@@ -241,8 +247,8 @@ const openCardEvent: ControlHandler = (id, control, domEvent) => {
 };
 
 /**
- * The bar's Eventos and Calendario (links to the views' addresses: a new-tab click is the browser's), and the tabs
- * (Próximos, Calendario) on wide screens.
+ * The bar's Eventos, Calendario and Guardados (links to the views' addresses: a new-tab click is the browser's), the
+ * tabs (Próximos, Calendario, Guardados) on wide screens, and Guardados' "Ver eventos".
  */
 const chooseView: ControlHandler = (view, control, domEvent) => {
   if (control instanceof HTMLAnchorElement) {
@@ -269,7 +275,7 @@ const toggleFilter: ControlHandler = (group, control) => {
   redraw(control, { filtered: true });
 };
 
-/** "Limpiar": dates, rhythms and types, and the bars shown again (forgotten in storage too). Not the search nor "Guardados". */
+/** "Limpiar": dates, rhythms and types, and the bars shown again (forgotten in storage too). Not the search. */
 const clearAllFilters: ControlHandler = (_, control) => {
   const hidingBars = state.hideBars;
   clearFilters(state);
@@ -303,10 +309,9 @@ const CONTROLS: [attribute: string, handler: ControlHandler][] = [
   ["when", chooseWhen],
   ["whenClear", clearWhen],
   ["pill", (key) => togglePanel(key)],
-  ["savedOnly", toggleSavedOnly],
   ["closeSearch", endSearch],
   ["clearSearch", endSearch],
-  ["openFilters", () => openFilterSheet()],
+  ["openFilters", (_, control) => !isDisabled(control) && openFilterSheet()], // off in Guardados
   ["showPeriod", showPeriod],
   ["cardPosts", openCardPosts],
   ["event", openCardEvent],
@@ -385,20 +390,19 @@ export function start() {
   initClickTracking();
   document.addEventListener("click", handleClick);
   document.addEventListener("input", handleSearchInput);
-  // Saving changes the "Guardados" count. The list itself only changes while it shows just the saved events:
-  // then it's redrawn right where the visitor was (never jumping, e.g. to a period's heading).
+  // Saving changes the "Guardados" count. Guardados itself is drawn again right where the visitor was (never
+  // jumping, e.g. to a period's heading): an event unsaved there leaves it.
   initSaveButtons(() => {
     offerAfterSaving(upcomingSaved().length);
-    if (!state.savedOnly) return renderSavedCount();
+    if (state.view !== "saved") return renderSavedCount();
     const scrollY = window.scrollY;
     render();
     returnToScroll(scrollY);
   });
-  // The page's own address picks the view it opens on: /calendario/ is the calendar (lib/links.ts viewOfPath).
-  const opensOnCalendar = viewOfPath(location.pathname) === "calendar";
-  if (opensOnCalendar) state.view = "calendar";
+  // The page's own address picks the view it opens on: /calendario/, /guardados/ (lib/links.ts viewOfPath).
+  state.view = viewOfPath(location.pathname);
   render();
-  if (opensOnCalendar) openedOnCalendar();
+  if (state.view === "calendar") openedOnCalendar();
   openSharedEvent();
   initScreenHistory({ current: currentScreen, apply: applyScreen, address: (screen) => viewPath(screen.view) });
   watchDayChange(state, () => render()); // shown again on another day: today's events, or the latest ones

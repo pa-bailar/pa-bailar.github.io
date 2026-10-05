@@ -2,8 +2,8 @@
    [Eventos] [Calendario] [Buscar] [Guardados 3] [Filtros 2], five equal items, 24 px icons with their labels under
    them (60 px), or icons only (data-labels="off", 52 px: the owner hasn't chosen yet), plus the home indicator's inset.
    - The view on screen (aria-current): the accent's color and a line on its top edge, like a tab's.
-   - On (Guardados showing only saved events, a search kept): the pill behind the icon in the selected chip's colors,
-     like the old toggle in the pinned bar.
+   - On (a search kept): the pill behind the icon in the selected chip's colors, like the old toggle in the pinned bar.
+   - Off (Filtros in Guardados, which has no filters: aria-disabled): faded.
    - Searching: the bar is the search field and its ×, lifted right above the keyboard (--keyboard-inset, set from
      the visualViewport by the script).
    Sheets and the details drawer are modal dialogs in the top layer: they cover it. Opaque (--bg), with a line on
@@ -135,14 +135,12 @@
   translate: -50% 0;
 }
 
-/* On: Guardados showing only saved events, a search kept while the field is closed. */
-.bottom-nav__item[aria-pressed="true"] .bottom-nav__icon,
+/* On: a search kept while the field is closed. */
 .bottom-nav__item.is-on .bottom-nav__icon {
   background: var(--chip-active-bg);
   color: var(--chip-active-text);
 }
 
-.bottom-nav__item[aria-pressed="true"] .bottom-nav__label,
 .bottom-nav__item.is-on .bottom-nav__label {
   color: var(--text);
 }
@@ -169,11 +167,16 @@
 }
 
 /* On the pill (it has the badge's colors): the badge inverts, with a ring of the page so it stays apart. */
-.bottom-nav__item[aria-pressed="true"] .bottom-nav__badge,
 .bottom-nav__item.is-on .bottom-nav__badge {
   background: var(--chip-active-text);
   color: var(--chip-active-bg);
   box-shadow: 0 0 0 var(--border-width) var(--chip-active-bg);
+}
+
+/* Off: Filtros in Guardados (no filters there). Still focusable, named with why (bottomNav.ts filtersLabel). */
+.bottom-nav__item[aria-disabled="true"] {
+  opacity: 0.4;
+  cursor: default;
 }
 
 /* ---------- searching: the field docked at the bottom ---------- */

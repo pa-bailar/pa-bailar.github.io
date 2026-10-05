@@ -1,5 +1,7 @@
 ---
-// Calendar shell. The grid and the selected day are rendered by scripts/views/calendarView.ts.
+// Calendar shell. The grid and the selected day are rendered by scripts/views/calendarView.ts. The legend: a holiday's
+// tint, and the bookmark on days with a saved event.
+import { ICONS } from "../scripts/lib/icons";
 ---
 
 <section id="view-calendar" class="calendar" role="tabpanel" aria-labelledby="tab-calendar" hidden>
@@ -10,6 +12,9 @@
     <button class="btn" data-today>Hoy</button>
   </div>
   <div class="calendar__grid" id="cal-grid"></div>
-  <p class="calendar__legend"><span class="calendar__swatch" aria-hidden="true"></span>Festivo</p>
+  <p class="calendar__legend">
+    <span class="calendar__legend-item"><span class="calendar__swatch" aria-hidden="true"></span>Festivo</span>
+    <span class="calendar__legend-item"><span class="calendar__legend-saved" aria-hidden="true"><Fragment set:html={ICONS.bookmarkFilled} /></span>Guardado</span>
+  </p>
   <div class="calendar__selected" id="cal-selected-day"></div>
 </section>

@@ -1,6 +1,6 @@
 // The service worker (/sw.js): phones only offer to install a site that has one, and it lets the
 // installed app open without a connection, with the events from the last visit.
-//   - Installing it stores both views' pages (/ and /calendario/) and the build's files (/_astro/: the styles and the
+//   - Installing it stores the views' pages (/, /calendario/ and /guardados/) and the build's files (/_astro/: the styles and the
 //     scripts that draw the events), so the app opens offline from the first visit and after each deploy. (Stored only as pages asked for
 //     them, they missed the first visit, which loads before the worker controls it, and each new build's worker
 //     dropped them.) Their names exist only after the build: scripts/sw-precache.mjs writes them in.
@@ -51,8 +51,9 @@ self.addEventListener("install", (event) => {
   event.waitUntil(
     (async () => {
       // This build's home page, not the browser's cached copy of an older one (its files could be gone).
-      // …and the calendar's own address (pages/calendario/): the same page opening on the calendar.
-      await (await caches.open(PAGES)).addAll(["/", "/calendario/"].map((url) => new Request(url, { cache: "reload" })));
+      // …and the calendar's and Guardados' own addresses (pages/calendario/, pages/guardados/): the same page.
+      const views = ["/", "/calendario/", "/guardados/"];
+      await (await caches.open(PAGES)).addAll(views.map((url) => new Request(url, { cache: "reload" })));
       // Only the build files not stored yet (all of them after a code change; none after a data-only deploy).
       const build = await caches.open(BUILD_FILES);
       const missing = [];

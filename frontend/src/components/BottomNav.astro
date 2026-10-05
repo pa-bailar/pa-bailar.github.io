@@ -1,8 +1,8 @@
 ---
 // Phones: the bar at the bottom of the screen, like Instagram's (scripts/views/bottomNav.ts, bottom-nav.css):
-// Eventos (the list, /) · Calendario (/calendario/) · Buscar · Guardados · Filtros. The views are links to their
-// addresses (main.ts moves between them through views/viewNavigation.ts); Guardados and Filtros are the same
-// controls as before (data-saved-only, data-open-filters), with their numbers on the icon's corner. Buscar turns the
+// Eventos (the list, /) · Calendario (/calendario/) · Buscar · Guardados (/guardados/) · Filtros. The views are links
+// to their addresses (main.ts moves between them through views/viewNavigation.ts); Guardados and Filtros have their
+// numbers on the icon's corner (saved events to come, filters in use); Filtros is off in Guardados. Buscar turns the
 // bar into the search field, docked at the bottom above the keyboard. Wide screens don't show it: the toolbar and
 // the header have the same actions. Hidden until the script draws it (no bar without JavaScript, where nothing works).
 // The labels under the icons can be turned off (data-labels="off"): the owner hasn't chosen yet (docs/DESIGN.md).
@@ -25,10 +25,10 @@ import { viewPath } from "../scripts/lib/links";
       <span class="bottom-nav__icon"><Fragment set:html={ICONS.search} /></span>
       <span class="bottom-nav__label">Buscar</span>
     </button>
-    <button class="bottom-nav__item" type="button" data-saved-only aria-pressed="false" data-track="barra-guardados">
+    <a class="bottom-nav__item" href={viewPath("saved")} data-view="saved" data-track="barra-guardados">
       <span class="bottom-nav__icon"><Fragment set:html={ICONS.bookmark} /><span class="bottom-nav__badge" data-saved-count hidden></span></span>
       <span class="bottom-nav__label">Guardados</span>
-    </button>
+    </a>
     <button class="bottom-nav__item" id="bottom-filters" type="button" data-open-filters aria-haspopup="dialog" data-track="barra-filtros">
       <span class="bottom-nav__icon"><Fragment set:html={ICONS.sliders} /><span class="bottom-nav__badge" id="bottom-filters-count" hidden></span></span>
       <span class="bottom-nav__label">Filtros</span>

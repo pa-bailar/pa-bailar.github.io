@@ -14,7 +14,7 @@ const source = (path: string) => readFileSync(new URL(`../src/${path}`, import.m
 
 describe("the items' states", async () => {
   const { filtersLabel, navItems, searchLabel } = await import("../src/scripts/views/bottomNav");
-  const base = { view: "upcoming" as const, savedOnly: false, query: "", active: 0 };
+  const base = { view: "upcoming" as const, query: "", active: 0 };
 
   it("Filtros: the badge is the filters in use, \"Sin bares\" included, and its name says it", () => {
     const today = todayIso();
@@ -27,12 +27,21 @@ describe("the items' states", async () => {
     expect(navItems(base)).toMatchObject({ badge: "", filtersLabel: "Filtros" });
   });
 
-  it("the view on screen is the current one; Guardados and a kept search are on", () => {
-    expect(navItems(base)).toMatchObject({ current: "upcoming", saved: false, searching: false });
-    expect(navItems({ ...base, view: "calendar", savedOnly: true })).toMatchObject({ current: "calendar", saved: true });
+  it("the view on screen is the current one; a kept search is on", () => {
+    expect(navItems(base)).toMatchObject({ current: "upcoming", searching: false, filtersOff: false });
+    expect(navItems({ ...base, view: "calendar" })).toMatchObject({ current: "calendar", filtersOff: false });
     expect(navItems({ ...base, query: "  salsa " })).toMatchObject({ searching: true, searchLabel: "Buscar: «salsa»" });
     expect(navItems({ ...base, query: "   " }).searching).toBe(false);
     expect(searchLabel("")).toBe("Buscar");
+  });
+
+  it("Guardados is a view of its own, where Filtros is off and says why (its badge stays: the list still uses them)", () => {
+    expect(navItems({ ...base, view: "saved", active: 2 })).toMatchObject({
+      current: "saved",
+      filtersOff: true,
+      badge: "2",
+      filtersLabel: "Filtros: no se usan en Guardados",
+    });
   });
 });
 
@@ -231,30 +240,30 @@ describe("the search field's history entry", () => {
   });
 });
 
-describe("Guardados' toggles (renderSavedToggles)", () => {
+describe("Guardados' number (renderSavedCount)", () => {
   afterEach(() => vi.unstubAllGlobals());
 
-  /** A [data-saved-only] button: its attributes, and its number's badge if it has one. */
-  const button = (withBadge: boolean) => {
+  /** A [data-saved-count] badge, inside its way to Guardados (the bar's link, the toolbar's tab). */
+  const badge = () => {
     const attributes = new Map<string, string>();
-    const badge = { textContent: "", hidden: true };
     return {
       attributes,
-      badge,
-      setAttribute: (name: string, value: string) => attributes.set(name, value),
-      querySelector: () => (withBadge ? badge : null),
+      textContent: "",
+      hidden: true,
+      closest: () => ({ setAttribute: (name: string, value: string) => attributes.set(name, value) }),
     };
   };
 
-  it("names and presses the bars' toggles only, not the empty state's \"Ver todos, no solo guardados\"", async () => {
-    const bar = button(true);
-    const emptyState = button(false);
-    vi.stubGlobal("document", { querySelectorAll: () => [bar, emptyState] });
-    const { renderSavedToggles } = await import("../src/scripts/views/saveButton");
-    renderSavedToggles(3, true);
-    expect(Object.fromEntries(bar.attributes)).toEqual({ "aria-pressed": "true", "aria-label": "Guardados, 3" });
-    expect(bar.badge).toEqual({ textContent: "3", hidden: false });
-    expect(emptyState.attributes.size).toBe(0); // its own words name it
+  it("shows the number of saved events to come on each, and names them with it; none: no badge", async () => {
+    const bar = badge();
+    const tab = badge();
+    vi.stubGlobal("document", { querySelectorAll: () => [bar, tab] });
+    const { renderSavedCount } = await import("../src/scripts/views/saveButton");
+    renderSavedCount(3);
+    expect([bar.textContent, bar.hidden, bar.attributes.get("aria-label")]).toEqual(["3", false, "Guardados, 3"]);
+    expect([tab.textContent, tab.hidden]).toEqual(["3", false]);
+    renderSavedCount(0);
+    expect([bar.textContent, bar.hidden, bar.attributes.get("aria-label")]).toEqual(["", true, "Guardados"]);
   });
 });
 
@@ -276,10 +285,11 @@ describe("the page: the bar replaced the floating button", () => {
     expect(labels).toEqual(["Eventos", "Calendario", "Buscar", "Guardados", "Filtros"]);
   });
 
-  it("the views are links to their addresses; Guardados and Filtros the same controls as before", () => {
+  it("the views are links to their addresses, Guardados one of them; Filtros opens its sheet", () => {
     expect(bar).toMatch(/<a class="bottom-nav__item" href=\{viewPath\("upcoming"\)\} data-view="upcoming"/);
     expect(bar).toMatch(/<a class="bottom-nav__item" href=\{viewPath\("calendar"\)\} data-view="calendar"/);
-    expect(bar).toMatch(/<button[^>]*data-saved-only aria-pressed="false"/);
+    expect(bar).toMatch(/<a class="bottom-nav__item" href=\{viewPath\("saved"\)\} data-view="saved"/);
+    expect(bar).not.toContain("data-saved-only");
     expect(bar).toMatch(/<button[^>]*data-open-filters aria-haspopup="dialog"/);
     expect(bar).toMatch(/<button[^>]*aria-expanded="false" aria-controls="bottom-search"/);
   });

@@ -1,5 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { addressAfterClosing } from "../src/scripts/lib/links";
+import type { View } from "../src/scripts/types";
 import { fakeDialog, installFakeHistory, settle, type FakeHistory } from "./fakeHistory";
 
 type ScreenHistory = typeof import("../src/scripts/screenHistory");
@@ -8,7 +9,7 @@ type Sheets = typeof import("../src/scripts/lib/sheet");
 /** The page's screen, as main.ts keeps it: what `current` reads and `apply` puts back. */
 interface App {
   period: string | null; // a period opened whole
-  savedOnly: boolean;
+  view: View;
 }
 
 let fake: FakeHistory;
@@ -21,14 +22,14 @@ beforeEach(async () => {
   vi.resetModules(); // each test starts with fresh module state and listeners
   screens = await import("../src/scripts/screenHistory");
   sheets = await import("../src/scripts/lib/sheet");
-  app = { period: null, savedOnly: false };
-  const current = () => ({ view: "upcoming" as const, savedOnly: app.savedOnly, periods: app.period ? [app.period] : [], scrollY: 0 });
+  app = { period: null, view: "upcoming" };
+  const current = () => ({ view: app.view, periods: app.period ? [app.period] : [], scrollY: 0 });
   screens.initScreenHistory({
     current,
     apply: (screen) => {
       if (screens.sameScreen(screen, current())) return;
       app.period = screen.periods[0] ?? null;
-      app.savedOnly = screen.savedOnly;
+      app.view = screen.view;
     },
   });
 });
@@ -52,9 +53,9 @@ describe("a reload", () => {
   it("leaves no overlay marked on the entry it reloaded (the search field, a menu, a sheet were open)", async () => {
     fake = installFakeHistory();
     vi.resetModules();
-    history.replaceState({ screen: { view: "upcoming", savedOnly: false, periods: [], scrollY: 0 }, search: "x", menu: "when", sheet: "filter-sheet", overlay: true }, "");
+    history.replaceState({ screen: { view: "upcoming", periods: [], scrollY: 0 }, search: "x", menu: "when", sheet: "filter-sheet", overlay: true }, "");
     screens = await import("../src/scripts/screenHistory");
-    screens.initScreenHistory({ current: () => ({ view: "upcoming", savedOnly: false, periods: [], scrollY: 0 }), apply: () => {} });
+    screens.initScreenHistory({ current: () => ({ view: "upcoming", periods: [], scrollY: 0 }), apply: () => {} });
     expect(fake.state).toEqual({ screen: expect.objectContaining({ view: "upcoming" }) });
   });
 });
@@ -90,7 +91,7 @@ describe("moves between screens", () => {
 
   it("undoing a move that isn't the current entry happens in place", () => {
     openPeriod();
-    screens.leave("saved", () => (app.savedOnly = false));
+    screens.leave("view", () => (app.view = "upcoming"));
     expect(fake.index).toBe(1);
     expect(app.period).toBe("hoy");
   });
@@ -145,14 +146,14 @@ describe("the Filtros sheet over a period opened whole", () => {
   });
 
   it("two screens left from inside it are both skipped", async () => {
-    screens.goTo("saved", () => (app.savedOnly = true));
+    screens.goTo("view", () => (app.view = "saved"));
     openPeriod();
     const sheet = openFilterSheet();
     leavePeriod();
-    screens.leave("saved", () => (app.savedOnly = false));
+    screens.leave("view", () => (app.view = "upcoming"));
     sheets.dismissSheet(sheet);
     await settle(10);
-    expect(app).toEqual({ period: null, savedOnly: false });
+    expect(app).toEqual({ period: null, view: "upcoming" });
     expect(fake.index).toBe(0);
   });
 });
@@ -201,27 +202,18 @@ describe("historyState", () => {
   });
 });
 
-describe("each view's own address (/calendario/)", () => {
-  type Shown = { view: "upcoming" | "calendar"; savedOnly: boolean };
-  let shown: Shown;
-  let applied: { undoing?: string }[];
+describe("each view's own address (/calendario/, /guardados/)", () => {
+  let shown: { view: View };
 
   beforeEach(async () => {
     fake = installFakeHistory();
     vi.resetModules();
     screens = await import("../src/scripts/screenHistory");
     const { viewPath } = await import("../src/scripts/lib/links");
-    shown = { view: "upcoming", savedOnly: false };
-    applied = [];
-    const current = () => ({ view: shown.view, savedOnly: shown.savedOnly, periods: [], scrollY: 0 });
+    shown = { view: "upcoming" };
     screens.initScreenHistory({
-      current,
-      // As viewNavigation does: leaving the calendar keeps "Guardados" as set in it.
-      apply: (screen, undoing) => {
-        applied.push({ undoing });
-        shown.view = screen.view;
-        if (undoing !== "view") shown.savedOnly = screen.savedOnly;
-      },
+      current: () => ({ view: shown.view, periods: [], scrollY: 0 }),
+      apply: (screen) => (shown.view = screen.view),
       address: (screen) => viewPath(screen.view),
     });
   });
@@ -235,23 +227,41 @@ describe("each view's own address (/calendario/)", () => {
     expect(shown.view).toBe("upcoming");
   });
 
-  it('"Guardados" turned off in the calendar stays off when the list comes back', async () => {
-    screens.goTo("saved", () => (shown.savedOnly = true));
+  it("from the calendar to Guardados the entry is replaced: /guardados/, and back still returns to the list", async () => {
     screens.goTo("view", () => (shown.view = "calendar"));
-    screens.leave("saved", () => (shown.savedOnly = false)); // in the calendar: undone in place
-    screens.leave("view", () => (shown.view = "upcoming")); // back out of the calendar
+    screens.replaceScreen("view", () => (shown.view = "saved"));
+    expect([fake.path, fake.index]).toEqual(["/guardados/", 1]);
+    history.back();
     await settle();
-    expect(shown).toEqual({ view: "upcoming", savedOnly: false });
-    expect(applied.at(-1)?.undoing).toBe("view");
-    expect(fake.path).toBe("/");
+    expect([fake.path, shown.view]).toEqual(["/", "upcoming"]);
+  });
+
+  it("opened on Guardados (/guardados/), the calendar gets an entry of its own: back returns to Guardados", async () => {
+    shown.view = "saved";
+    screens.replaceScreen("view", () => (shown.view = "calendar"));
+    expect([fake.path, fake.index]).toEqual(["/calendario/", 1]);
+    history.back();
+    await settle();
+    expect(shown.view).toBe("saved");
+  });
+
+  it("under an overlay (the side panel), the move gets an entry of its own: the overlay's stays as it was", () => {
+    screens.goTo("view", () => (shown.view = "calendar"));
+    history.pushState(screens.overlayState({ eventId: "social-1" }), "");
+    screens.replaceScreen("view", () => (shown.view = "saved"));
+    expect(fake.index).toBe(3);
+    expect(fake.state).toMatchObject({ screen: { view: "saved" } });
   });
 });
 
 describe("addresses per view", () => {
-  it("the calendar is /calendario/, with or without its slash; anything else is the list", async () => {
+  it("the calendar is /calendario/, Guardados /guardados/, with or without their slash; anything else is the list", async () => {
     const { viewOfPath, viewPath } = await import("../src/scripts/lib/links");
     expect(viewPath("calendar")).toBe("/calendario/");
     expect(viewPath("upcoming")).toBe("/");
+    expect(viewPath("saved")).toBe("/guardados/");
+    expect(viewOfPath("/guardados")).toBe("saved");
+    expect(viewOfPath("/guardados/")).toBe("saved");
     expect(viewOfPath("/calendario/")).toBe("calendar");
     expect(viewOfPath("/calendario")).toBe("calendar");
     expect(viewOfPath("/")).toBe("upcoming");

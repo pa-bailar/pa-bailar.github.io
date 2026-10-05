@@ -36,5 +36,7 @@ describe("a day's name", () => {
   it("the date and count alone, for screen readers", () => {
     expect(dayCellLabel("2026-10-02", 0)).toBe("Viernes, 2 de octubre");
     expect(dayCellLabel("2026-10-02", 1)).toBe("Viernes, 2 de octubre, 1 evento");
+    expect(dayCellLabel("2026-10-02", 3, 1)).toBe("Viernes, 2 de octubre, 3 eventos, 1 guardado");
+    expect(dayCellLabel("2026-10-02", 3, 2)).toBe("Viernes, 2 de octubre, 3 eventos, 2 guardados");
   });
 });

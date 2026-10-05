@@ -28,7 +28,7 @@ export default defineConfig({
   // swPrecache: the service worker gets the names of the build's files, to store them offline (scripts/sw-precache.mjs).
   // modulePreload: each page's script and the chunks it imports, announced in <head> (scripts/module-preload.mjs).
   integrations: [
-    sitemap({ filter: (page) => !page.includes("/404") }),
+    sitemap({ filter: (page) => !page.includes("/404") && !page.includes("/guardados/") }), // Guardados: each visitor's
     cspMeta(),
     ogCheck({ eventsFile: new URL("../data/events.json", import.meta.url) }),
     swPrecache(),
