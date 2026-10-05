@@ -1,5 +1,6 @@
-// The filters' model: every option of the current view (dates, rhythms, types), how each is chosen, counted against the
-// other filters, and what the bar, its line, the "Filtros" sheet and the toolbar say about them. Pure, so it's tested
+// The filters' model: every option of the current view (dates, rhythms, types; and whether the bars are hidden), how each
+// is chosen, counted against the other filters, and what the bar, its line, the "Filtros" sheet and the toolbar say
+// about them. Pure, so it's tested
 // (tests/filters.test.ts); views/filters.ts draws it. An option that would show nothing with the other filters is
 // dimmed in place, never hidden, so the chips don't move while choosing; a chosen one can always be removed.
 
@@ -30,13 +31,25 @@ export interface FilterOption {
   dimmed: boolean; // nothing to show with the other filters, and not chosen: dimmed in place
 }
 
+/** "Ocultar eventos de bares" as a choice in use: its chip's `data-filter` and `data-value` (main.ts toggles it). */
+export const HIDE_BARS_FILTER = { group: "bars", value: "ocultar" } as const;
+
 /** A choice in use, as a removable chip and in the line under the bar. */
 export interface AppliedFilter {
-  group: FilterGroup;
+  group: FilterGroup | typeof HIDE_BARS_FILTER.group;
   value: string;
-  label: string; // "Finde", "Salsa", "Social"
+  label: string; // "Finde", "Salsa", "Social", "Sin bares"
   name: string; // for screen readers: "Este fin de semana"
+  removeName?: string; // its removable chip's name, when "Quitar <name>" wouldn't read well: "Mostrar los bares"
 }
+
+/** Hiding the bars, among the choices in use: last, as "Sin bares". */
+export const HIDDEN_BARS: AppliedFilter = {
+  ...HIDE_BARS_FILTER,
+  label: "Sin bares",
+  name: "Sin eventos de bares",
+  removeName: "Mostrar los eventos de bares",
+};
 
 /** An option of the bar's "Cuándo" menu: one date at a time. */
 export interface WhenOption {
@@ -62,9 +75,10 @@ export interface FilterModel {
   types: FilterOption[]; // most frequent first
   when: WhenModel | null; // the bar's "Cuándo" (null in the calendar)
   quickStyles: FilterOption[]; // the bar's rhythm chips
-  applied: AppliedFilter[]; // every choice: dates, rhythms, types
+  hideBars: boolean; // "Ocultar eventos de bares" is on (the sheet's switch, the toolbar's chip)
+  applied: AppliedFilter[]; // every choice: dates, rhythms, types, and "Sin bares" while the bars are hidden
   extra: AppliedFilter[]; // those without a chip of their own in the bar
-  active: number; // ⚙'s badge: every choice
+  active: number; // ⚙'s badge: every choice (hiding the bars counts one)
   shown: number; // events the view shows with every filter on (the list, or the calendar's month)
 }
 
@@ -130,7 +144,10 @@ export function filterModel(events: DanceEvent[], state: AppState, today = today
   const quickStyles = QUICK_STYLES.flatMap((style) => styles.filter((item) => item.value === style));
 
   const asApplied = (item: FilterOption): AppliedFilter => ({ group: item.group, value: item.value, label: item.short, name: item.label });
-  const applied = [...dates, ...styles, ...types].filter((item) => item.chosen).map(asApplied);
+  const applied = [
+    ...[...dates, ...styles, ...types].filter((item) => item.chosen).map(asApplied),
+    ...(state.hideBars ? [HIDDEN_BARS] : []),
+  ];
   // Every date shows on "Cuándo", every bar rhythm on its chip.
   const hasChip = (item: AppliedFilter) => item.group === "dates" || (item.group === "styles" && QUICK_STYLES.includes(item.value));
 
@@ -140,6 +157,7 @@ export function filterModel(events: DanceEvent[], state: AppState, today = today
     types,
     when: state.view === "upcoming" ? whenModel(dates, without("dates").length, today) : null,
     quickStyles,
+    hideBars: state.hideBars,
     applied,
     extra: applied.filter((item) => !hasChip(item)),
     active: activeFilterCount(state),

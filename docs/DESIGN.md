@@ -360,7 +360,7 @@ the list stays short there and summarizes what's further away (`scripts/views/up
     the 8px gaps), and "Cuándo" is its clock and ▾ ("🕒 ▾"; the word "Cuándo" joins them from 480px). At 375px the row
     shows ⚙, 🕒 ▾, Salsa whole and Bachata to its last letter, under the fade.
   - **The row runs to the screen's edge** and fades there (a mask), so the next chip peeks and it reads as a row that scrolls (Material's single-line chip group). It keeps where it was scrolled while choosing, unless a new choice would be out of sight (made in the sheet, or a chip further along): then it scrolls just enough to show the first one.
-  - **⚙** opens the filter sheet; its badge counts every choice in use (two rhythms count two, like Airbnb's).
+  - **⚙** opens the filter sheet; its badge counts every choice in use (two rhythms count two, like Airbnb's; hiding the bars counts one).
   - **The line under it** ("12 eventos · Finde, Salsa" and "× Limpiar"), only while filtering (`--filter-line-height`, 40px): see "Filters".
   - **Keeping your place:** when a filter changes while you're inside the list, the period you were reading stays right under the bar; if the filter removed it, the next period (else the previous one) takes its place. The period being read is the lowest one crossing a band under the bar (`captureListPosition`).
   - **Pinned, never hidden:** the filters are at hand anywhere in the list. (It used to hide while scrolling down, like
@@ -386,6 +386,7 @@ the list stays short there and summarizes what's further away (`scripts/views/up
 - **Filter sheet** (`FilterSheet.astro`, `filter-sheet.css`), from ⚙:
   - **Head:** "Filtros", "Limpiar" (in `--accent-text`, only enabled with something to clear) and ×.
   - **Groups**, in a body that scrolls between the head and the button: **Fecha** · *elige una o varias* (every period and month), **Ritmo** · *elige uno o varios* (every rhythm, the bar's four first, "Otros ritmos" last), **Tipo de evento** (several too). Each option with its count ("Noviembre 2"); the ones with nothing to show dimmed. Chips wrap, `--control-height` tall with a 44px target.
+  - **"Ocultar eventos de bares"**, last, under a `--divider` line: a switch (see "Filters", "Hiding the bars").
   - **"Ver 12 eventos"** stays at the bottom (the primary button): "Ver 1 evento", or "Sin eventos: cambia los filtros", disabled. It closes the sheet; choices apply at once, there's no apply step.
   - **Closing:** ×, a drag down (from the head, or from the groups scrolled to the top), the backdrop, Escape, back. The focus goes back to ⚙ (the new one, when a choice drew the row again).
   - **In the calendar:** Fecha says "En el calendario eliges el día en el mes."
@@ -443,9 +444,28 @@ screens in the toolbar's chip rows:
   count in `--text`, the names in `--text-muted`, cut with "…" when long) and "× Limpiar" on the right (`--accent-text`,
   named "Limpiar filtros" for screen readers). The count is also said politely to screen readers after each change
   (`#results-status`). In the calendar it reads "5 eventos en octubre · Salsa".
+- **Hiding the bars** (the owner, 5 October 2026). Bars and clubs open every week; the site lists only their special
+  nights (`bar: true`, `DATA.md`), and **shows them by default**. Visitors who only want academies' events can hide them:
+  - **In the sheet:** a switch after the groups, under a line, the whole row its target: **Ocultar eventos de bares**
+    (`--text-md`, bold) and under it, muted (`--text-xs`), *Noches especiales de bares y discotecas: orquestas,
+    invitados, fiestas.* The track is on the right (`--switch-width` × `--switch-height`, square corners like the
+    chips): off, outlined in `--border` with the thumb on the left in `--text-muted`; on, filled in `--chip-active-bg`
+    with the thumb on the right in `--chip-active-text` (it slides in `--duration`; at once with reduced motion).
+    `role="switch"`, `aria-checked`, named by its words and described by the hint (`barsSwitchHtml`).
+  - **Wide screens:** "Ocultar bares" at the end of the types' row, a little apart (a toggle chip, with × while on).
+  - **While on**, the bars' events are gone wherever the filters apply: the list, the calendar (dots, names, a day's
+    label, heading, count and list), search, Guardados, every option's count and "Ver 12 eventos". It **counts one** on
+    ⚙'s badge (in both views), shows as **"Sin bares ×"** after ⚙ (a tap shows them again; named "Mostrar los eventos de
+    bares") and in the line under the bar ("37 eventos · Sin bares"). Off, nothing shows anywhere but the switch.
+  - **Remembered** on that device (`localStorage`, key `hide-bars`, `1` while on; nothing while off). Where storage is
+    blocked it works for the visit. The only filter that is remembered: it's a preference about what the visitor wants
+    to see at all, where dates and rhythms are what they look for today.
+  - **A shared link to a bar's event** still opens it while they're hidden: its details over the list (its card isn't
+    there), and the switch stays as it was.
 - **Clearing:** "× Limpiar", the sheet's "Limpiar", the toolbar's "Limpiar filtros" and an empty result's "Limpiar
-  filtros" clear the dates, rhythms and types, not the search nor "Guardados" (they have their own way out).
-  Nothing is remembered between visits, and filters aren't in the address.
+  filtros" clear the dates, rhythms and types, and **show the bars again** (and forget it on the device): it counts on
+  the badge, so "Limpiar" leaves nothing counted there. Not the search nor "Guardados" (they have their own way out).
+  Nothing else is remembered between visits, and filters aren't in the address.
 - **Dates are the list's:** the calendar has its own days, so there the date chips hide (rhythms stay), the dates chosen
   are ignored (and kept for the list) and the badge doesn't count them.
 - **Searching:** the bar becomes the search field, as before; the line under it stays while filtering.
@@ -454,9 +474,9 @@ screens in the toolbar's chip rows:
   búsqueda"; in Guardados also "Ver todos, no solo guardados".
 - **Semantics:** filter chips are toggle buttons (`aria-pressed`), short names carry the full one ("Finde": "Este fin de
   semana", "Próx. semana": "Próxima semana"); removable chips are named "Quitar Social"; "Cuándo"'s × is "Quitar Este
-  fin de semana"; ⚙ is "Todos los filtros, 3 activos". Focus stays on the chip chosen; after "Limpiar" (which hides or disables itself),
+  fin de semana"; ⚙ is "Todos los filtros, 3 activos"; the bars' switch is a `role="switch"`. Focus stays on the chip chosen; after "Limpiar" (which hides or disables itself),
   focus goes to ⚙ (or the sheet's first chip, or the toolbar's first chip on wide screens).
-- **Wide screens:** the toolbar keeps its chip rows (dates with the bar's short names, types, rhythms), chosen chips
+- **Wide screens:** the toolbar keeps its chip rows (dates with the bar's short names, types and "Ocultar bares", rhythms), chosen chips
   with ×, the same dimming, and a status row: "12 eventos" and a
   "Limpiar filtros" chip. Rows that don't fit wrap instead of cutting a chip.
 

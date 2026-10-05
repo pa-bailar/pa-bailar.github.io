@@ -5,10 +5,10 @@
 //     unchosen with another. ⚙ opens the "Filtros" sheet with every option (several dates too); a choice made
 //     there that has no chip of its own in the row shows as a removable chip after ⚙ ("Social ×").
 //   - Under the bar, only while filtering: "12 eventos · Finde, Salsa" and "× Limpiar".
-//   - The sheet (FilterSheet.astro): every date, rhythm and type with its count, "Limpiar" and
-//     "Ver 12 eventos".
-//   - Wide screens: the toolbar's chip rows (dates, types, rhythms) and a status row ("12 eventos · Limpiar
-//     filtros").
+//   - The sheet (FilterSheet.astro): every date, rhythm and type with its count, the switch "Ocultar eventos de
+//     bares" (remembered; while on, "Sin bares ×" after ⚙), "Limpiar" and "Ver 12 eventos".
+//   - Wide screens: the toolbar's chip rows (dates, types and "Ocultar bares", rhythms) and a status row ("12 eventos ·
+//     Limpiar filtros").
 // What each shows, and how options are counted and dimmed, is the model (lib/filterModel.ts, pure and tested); the
 // "Cuándo" menu draws itself (whenMenu.ts).
 
@@ -21,6 +21,7 @@ import {
   type FilterModel,
   type FilterOption,
   type WhenModel,
+  HIDE_BARS_FILTER,
   resultsButtonLabel,
   summaryLine,
 } from "../lib/filterModel";
@@ -77,7 +78,31 @@ function chipHtml(item: FilterOption, { short = false, counts = false } = {}): s
 /** A choice made elsewhere (the sheet), as a chip that removes it: "Social ×". */
 function removableHtml(item: AppliedFilter): string {
   const data = `data-filter="${item.group}" data-value="${escapeHtml(item.value)}"`;
-  return `<button class="chip filter-chip is-chosen" type="button" ${data} aria-label="Quitar ${escapeHtml(item.name)}">${escapeHtml(item.label)}${X}</button>`;
+  const name = item.removeName ?? `Quitar ${item.name}`;
+  return `<button class="chip filter-chip is-chosen" type="button" ${data} aria-label="${escapeHtml(name)}">${escapeHtml(item.label)}${X}</button>`;
+}
+
+const BARS_DATA = `data-filter="${HIDE_BARS_FILTER.group}" data-value="${HIDE_BARS_FILTER.value}"`;
+
+/**
+ * The sheet's "Ocultar eventos de bares": a switch (role="switch", aria-checked), its words on the left and the track on
+ * the right, the hint under the name. Off by default; main.ts toggles it and remembers it.
+ */
+export function barsSwitchHtml(on: boolean): string {
+  return `<button class="filter-switch" type="button" role="switch" aria-checked="${on}" ${BARS_DATA}
+    aria-labelledby="filter-bars-name" aria-describedby="filter-bars-hint">
+      <span class="filter-switch__text">
+        <span class="filter-switch__name" id="filter-bars-name">Ocultar eventos de bares</span>
+        <span class="filter-switch__hint" id="filter-bars-hint">Noches especiales de bares y discotecas: orquestas, invitados, fiestas.</span>
+      </span>
+      <span class="filter-switch__track" aria-hidden="true"><span class="filter-switch__thumb"></span></span>
+    </button>`;
+}
+
+/** Wide screens: the same choice as a chip at the end of the types' row, "Ocultar bares" (with × while on). */
+function barsChipHtml(on: boolean): string {
+  return `<button class="chip filter-chip filter-chip--bars" type="button" ${BARS_DATA} aria-pressed="${on}"
+    aria-label="Ocultar eventos de bares">Ocultar bares${on ? X : ""}</button>`;
 }
 
 /** ⚙, first in the bar's row: the sheet, with how many choices are in use on its corner. */
@@ -172,6 +197,7 @@ function renderSheet(model: FilterModel, state: AppState) {
     dates,
     group("Ritmo", "elige uno o varios", model.styles, "Ritmo"),
     group("Tipo de evento", "", model.types, "Tipo de evento"),
+    `<div class="filter-sheet__switch">${barsSwitchHtml(model.hideBars)}</div>`,
   ].join("");
   body.scrollTop = scrolled;
   byId<HTMLButtonElement>("filter-sheet-clear").disabled = model.active === 0;
@@ -188,7 +214,7 @@ function renderToolbar(model: FilterModel, state: AppState) {
     container.hidden = hidden;
   };
   fill("date-filters", model.dates.map((item) => chipHtml(item, { short: true })).join(""), state.view !== "upcoming");
-  fill("type-filters", model.types.map((item) => chipHtml(item)).join(""));
+  fill("type-filters", [...model.types.map((item) => chipHtml(item)), barsChipHtml(model.hideBars)].join(""));
   fill("style-filters", model.styles.map((item) => chipHtml(item)).join(""));
   const { count, where } = summaryLine(model, state);
   const clear = model.active

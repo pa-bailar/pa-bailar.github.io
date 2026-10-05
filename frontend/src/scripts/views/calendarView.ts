@@ -64,10 +64,15 @@ function emptyDayHtml(state: AppState): string {
     </div>`;
 }
 
+/** Each day's events with the filters on (hidden bars included): its dots, names, label, heading and list. */
+export function calendarDays(events: DanceEvent[], state: AppState): Map<string, DanceEvent[]> {
+  return groupByDay(events.filter((event) => matchesFilters(event, state)));
+}
+
 /** Renders the month and returns how many events the selected day shows. */
 export function renderCalendarView(events: DanceEvent[], state: AppState): number {
   const { month } = state;
-  const byDay = groupByDay(events.filter((event) => matchesFilters(event, state)));
+  const byDay = calendarDays(events, state);
 
   const cells = WEEKDAY_INITIALS.map((initial) => `<div class="cal-weekday" aria-hidden="true">${initial}</div>`);
   for (let i = 0; i < mondayOffset(month); i++) cells.push(`<div class="cal-day cal-day--blank"></div>`);

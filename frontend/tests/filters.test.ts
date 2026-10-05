@@ -173,17 +173,18 @@ describe("filters together: AND across groups", () => {
     expect(activeFilterCount(state)).toBe(0);
   });
 
-  it("Limpiar clears dates, rhythms and types, not the search nor Guardados", () => {
+  it("Limpiar clears dates, rhythms and types and shows the bars again, not the search nor Guardados", () => {
     const cleared = {
       ...state,
       styles: ["salsa"],
       dates: ["hoy"],
       types: ["social" as const],
+      hideBars: true,
       query: "topa",
       savedOnly: true,
     };
     clearFilters(cleared);
-    expect([cleared.styles, cleared.dates, cleared.types]).toEqual([[], [], []]);
+    expect([cleared.styles, cleared.dates, cleared.types, cleared.hideBars]).toEqual([[], [], [], false]);
     expect([cleared.query, cleared.savedOnly]).toEqual(["topa", true]);
   });
 });

@@ -86,6 +86,7 @@ export interface AppState {
   dates: string[]; // periods chosen in the list ("hoy", "manana", "fin-de-semana", "2026-11"…; none = every date)
   query: string; // search text ("" = no search)
   savedOnly: boolean; // only the events the visitor saved ("Guardados")
+  hideBars: boolean; // "Ocultar eventos de bares": no event with `bar: true` (remembered in this browser: state.ts, HIDE_BARS_KEY)
   month: Date; // first day of the month shown in the calendar
   selectedDay: string; // YYYY-MM-DD
 }

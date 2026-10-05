@@ -38,7 +38,7 @@ export function viewNavigation(state: AppState, render: () => void): ViewNavigat
   /** Where the list was left: coming back to it lands there. */
   let leftList: { scrollY: number; filters: string; anchor: ListAnchor | null } | null = null;
 
-  const filtersKey = () => JSON.stringify([state.types, state.styles, state.dates]);
+  const filtersKey = () => JSON.stringify([state.types, state.styles, state.dates, state.hideBars]);
 
   /**
    * Shows `view` (no history entry of its own). The list comes back where it was left; the calendar always opens on

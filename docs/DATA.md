@@ -39,7 +39,7 @@ repositories (backend first, behind the new version).
 | `confidence` | `high` · `medium` · `low` | Gemini's own estimate |
 | `doubts` | string[] | Missing or assumed details, in Spanish |
 | `account` | string | Instagram username of the organizer: letters, digits, `.` and `_`, up to 30 |
-| `bar` | boolean (optional) | `true` when its account is a bar or club, open every week (the backend's `accounts.txt` marks it `bar`): only its special occasions are extracted (a live band, a guest artist, an anniversary, a holiday party, a workshop), and the site can set these events apart. Follows `accounts.txt` on every sweep; absent in data written before it existed (read as `false`) |
+| `bar` | boolean (optional) | `true` when its account is a bar or club, open every week (the backend's `accounts.txt` marks it `bar`): only its special occasions are extracted (a live band, a guest artist, an anniversary, a holiday party, a workshop), and the site shows them like any other event unless the visitor turns on "Ocultar eventos de bares" in Filtros (`DESIGN.md`, "Filters"; `isBar` in `state.ts`). Follows `accounts.txt` on every sweep; absent in data written before it existed (read as `false`) |
 | `media` | `EventMedia[]` | Every post (or story) announcing the event. Main post first: flyers (images and carousels) before videos, newest first within each, so the latest flyer is the cover; stories last, so a post's flyer is the cover once there is one. The site keeps this order. At least one; it can be a single story. |
 
 ### EventMedia
