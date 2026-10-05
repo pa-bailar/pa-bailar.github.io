@@ -5,8 +5,9 @@
 // Under the flyer, a row of actions like Instagram's says that it opens: "Detalles ›", Compartir and, on the
 // right, Guardar. The buttons sit above the stretched link; "Detalles" opens the drawer like the card does, but
 // is counted apart (data-source, lib/analytics.ts).
-// A video's flyer with a clip plays it, silent, like a feed (clips.ts); a tap there turns its sound on or off
-// instead of opening the details. The posts' badge ("▦ 3") opens every post announcing the event.
+// A video's flyer with a clip plays it, silent, like a feed (clips.ts): the clips have no sound, so a tap there opens
+// the details like the rest of the card. A video without a clip says "Video" in a corner (the details play it). The
+// posts' badge ("▦ 3") opens every post announcing the event.
 
 import type { DanceEvent, EventMedia } from "../types";
 import { isVideoCover } from "../lib/mediaLabel";
@@ -58,9 +59,8 @@ function flyerHtml(media: EventMedia, flyer: string, clip: string | null, title:
     </div>`;
 }
 
-/** A clip's sound, off until tapped (clips.ts). */
-const SOUND_BUTTON = `<button class="event-card__sound" type="button" data-sound aria-pressed="false"
-  aria-label="Activar el sonido">${ICONS.soundOff}<span>Sin sonido</span></button>`;
+/** A video without a clip: a label, not a ▶ (a tap opens the details, where "Ver el video" plays it). */
+const VIDEO_MARK = `<span class="video-mark" aria-hidden="true">${ICONS.video}<span>Video</span></span>`;
 
 /** "Detalles ›" · Compartir · · · Guardar, under the flyer. */
 function actionsHtml(event: DanceEvent): string {
@@ -98,11 +98,11 @@ function eventCardHtml(event: DanceEvent): string {
 
   return `
     <article class="event-card" data-event-card="${escapeHtml(event.id)}">
-      <div class="event-card__media${clip ? " event-card__media--clip" : ""}"${ratio ? ` data-flyer-ratio="${ratio.toFixed(4)}"` : ""}>
+      <div class="event-card__media"${ratio ? ` data-flyer-ratio="${ratio.toFixed(4)}"` : ""}>
         ${image}
         <span class="tag-type t-${escapeHtml(event.event_type)}">${typeLabel(event.event_type)}</span>
         ${postCount}
-        ${clip ? SOUND_BUTTON : isVideoCover(media) ? `<span class="play-mark" aria-hidden="true">${ICONS.play}</span>` : ""}
+        ${!clip && isVideoCover(media) ? VIDEO_MARK : ""}
         <span class="date-sticker${sticker.range ? " date-sticker--range" : ""}" aria-hidden="true"><b>${sticker.day}</b><small>${sticker.month}</small></span>
       </div>
       ${actionsHtml(event)}

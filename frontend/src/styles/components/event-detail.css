@@ -157,7 +157,7 @@
 }
 
 /* A story's flyer isn't a link (nothing more to see): "Historia" only says where it came from, so it's a caption on
-   the image in its top-left corner (where a story shows its account), like a card's "Sin sonido", not the
+   the image in its top-left corner (where a story shows its account), like a card's "Video", not the
    action-colored button the others are. */
 .event-detail__play--story {
   left: var(--space-3);

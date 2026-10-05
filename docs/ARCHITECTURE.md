@@ -335,7 +335,7 @@ sequenceDiagram
     I->>I: theme: dark if saved, else light
     H->>M: module script after parsing
     M->>M: events = JSON from #events-data
-    M->>M: theme toggle, details drawer, posts sheet, media viewer, clips' sound, sharing, install offer, service worker, jump bar, view switch, click tracking, save buttons
+    M->>M: theme toggle, details drawer, posts sheet, media viewer, sharing, install offer, service worker, jump bar, view switch, click tracking, save buttons
     M->>V: render(): filters, Próximos or Calendario, jump bar, view switch
     M->>M: a shared link's event (openSharedEvent), then the screens' history (initScreenHistory)
 ```
@@ -519,7 +519,8 @@ stateDiagram-v2
   blurred copy of itself.
 - **Lazy loading:** every card image uses `loading="lazy"` and `decoding="async"` (a shared link's card loads at once).
 - **Videos' clips in the feed:** a card whose image is a video with a clip shows a `<video data-clip>` with the flyer as
-  its poster, played silent by `views/clips.ts` (section 5.7); a tap there toggles its sound (`initClipSound`).
+  its poster, played silent by `views/clips.ts` (section 5.7). The clips have no sound track, so a tap there opens the details
+  like the rest of the card.
 
 ### 5.5 Installing, saving and searching
 
@@ -704,7 +705,7 @@ frontend/
 | `state.ts` | The UI state; filtering (AND across groups, OR within dates, types and rhythms); ⚙'s count; "Limpiar"; grouping by period; the date options |
 | `views/upcomingView.ts` | "Próximos"; where a shared link's event is (`sharedEventEntry`) |
 | `views/calendarView.ts` | "Calendario", with holidays |
-| `views/eventCard.ts` | A card: flyer at its shape (or a video's clip, with its sound button), date sticker, the posts' badge, the action row ("Detalles ›" with its offset, Compartir, Guardar), details |
+| `views/eventCard.ts` | A card: flyer at its shape (or a video's clip; a clip-less video's "Video" mark), date sticker, the posts' badge, the action row ("Detalles ›" with its offset, Compartir, Guardar), details |
 | `views/detailsHint.ts`, `lib/onceFlag.ts` | The first visit's pulse on the first card's "Detalles"; things shown once per browser |
 | `views/eventDetail.ts` | An event's details (the drawer's, and the event page's with the flyer on top): head, quick actions, details, prices, media links; their clicks |
 | `views/eventDrawer.ts`, `views/drawerSheet.ts` | The details: a drawer over the list on phones (half / full height, scrim, keeping the card in view) and a side panel on wide screens; opening and closing; the geometry and where a drag ends (pure, tested) |
@@ -723,7 +724,7 @@ frontend/
 | `lib/instagramEmbed.ts` | Instagram's player for a post, its script loaded on demand |
 | `views/postsSheet.ts`, `views/postViewer.ts` | An event's posts (Flyers / Videos); a post watched inside the site (the media viewer); an account's profile there (`openProfileViewer`: any `a[data-profile]`, the card's and the details' @) |
 | `views/inlinePlayer.ts` | A video tapped in the detail plays in the image's place (Instagram's player), removed when off screen |
-| `views/clips.ts` | Videos' clips in the feed and on an event's page: the one on screen plays, silent and looping, one at a time; a tap toggles a card's sound; held under the full drawer and the media viewer; unloaded off screen, released when they leave the page |
+| `views/clips.ts` | Videos' clips in the feed and on an event's page: the one on screen plays, silent and looping, one at a time; held under the full drawer and the media viewer; unloaded off screen, released when they leave the page |
 | `lib/contact.ts` | The organizer's contact as a link: Instagram, WhatsApp, phone or website |
 | `lib/search.ts` | Search over the events in the page |
 | `lib/saved.ts`, `views/saveButton.ts` | Saved events ("Guardados"): the ids in this browser; the bookmarks and toggles |
