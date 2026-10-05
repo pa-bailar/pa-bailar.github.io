@@ -14,7 +14,7 @@ export interface DrawerHistoryState {
 const eventIdOf = (state: unknown) => (state as DrawerHistoryState | null)?.eventId;
 
 /** Whether the current entry is an event's details. */
-export const onEventEntry = (): boolean => Boolean(eventIdOf(history.state));
+const onEventEntry = (): boolean => Boolean(eventIdOf(history.state));
 
 /**
  * `event`'s details opened: its entry, over the screen's. Another card while the side panel is open (`wasOpen`)

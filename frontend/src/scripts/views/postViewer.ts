@@ -65,7 +65,7 @@ export function openPostViewer(event: DanceEvent, media: EventMedia, { replacing
 }
 
 /** An account's profile in the sheet. */
-export function openProfileViewer(account: string) {
+function openProfileViewer(account: string) {
   byId("post-viewer-title").textContent = `@${account}`;
   const open = byId<HTMLAnchorElement>("post-viewer-open");
   open.href = profileUrl(account);

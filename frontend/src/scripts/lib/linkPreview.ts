@@ -30,7 +30,7 @@ const SITE_NAME = "Pa' Bailar";
  * Bump when the image's design changes: every event's image gets a new version, so apps fetch the new
  * design instead of the one they cached.
  */
-export const PREVIEW_DESIGN_VERSION = 1;
+const PREVIEW_DESIGN_VERSION = 1;
 
 const styleList = new Intl.ListFormat("es", { type: "conjunction" });
 
@@ -76,7 +76,7 @@ export function whatLabel(event: DanceEvent): string {
 }
 
 /** Where, for a preview: venue, address and area ("Distrito Social · Cra 29 #68-18 · Chapinero"). */
-export function previewPlace(event: DanceEvent): string {
+function previewPlace(event: DanceEvent): string {
   return [...new Set([event.venue, event.address, event.area].map((part) => part?.trim()).filter(Boolean))].join(" · ");
 }
 
