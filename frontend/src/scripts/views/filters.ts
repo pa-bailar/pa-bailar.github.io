@@ -255,13 +255,15 @@ export function panelHtml(key: PillKey, model: FilterModel): string {
 
 /**
  * Under the pills, only while filtering: "12 eventos" (in the calendar "5 eventos en octubre"), every choice as a
- * removable chip ("Finde ×", "Salsa ×", "Social ×", "Sin bares ×") and "× Limpiar".
+ * removable chip ("Finde ×", "Salsa ×", "Social ×") and "× Limpiar". Not the bars: their "Ocultar bares" pill already
+ * shows it's on, and turns it off (the owner, 5 Oct 2026).
  */
 export function statusHtml(model: FilterModel, state: AppState): string {
   if (!model.active) return "";
   const { count, where } = summaryLine(model, state);
+  const chips = model.applied.filter((item) => item.group !== HIDE_BARS_FILTER.group);
   return `<p class="filter-status__count"><b>${count}</b>${escapeHtml(where)}</p>
-    ${model.applied.map(removableHtml).join("")}
+    ${chips.map(removableHtml).join("")}
     <button class="filter-summary__clear filter-status__clear" type="button" data-clear-filters aria-label="Limpiar filtros">${ICONS.close}Limpiar</button>`;
 }
 

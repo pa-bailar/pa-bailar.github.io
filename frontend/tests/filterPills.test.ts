@@ -101,7 +101,8 @@ describe("the status row under the pills", () => {
     const html = statusHtml(filterModel(events, state, today), state);
     expect(html).toContain("<b>1 evento</b>");
     const chips = [...html.matchAll(/aria-label="(Quitar [^"]+|Mostrar[^"]+)"/g)].map((match) => match[1]);
-    expect(chips).toEqual(["Quitar Hoy", "Quitar Salsa", "Quitar Social", "Mostrar los eventos de bares"]);
+    // The bars: no chip here, their "Ocultar bares" pill shows it's on (the owner, 5 Oct 2026).
+    expect(chips).toEqual(["Quitar Hoy", "Quitar Salsa", "Quitar Social"]);
     expect(html).toContain('data-clear-filters aria-label="Limpiar filtros"');
   });
 

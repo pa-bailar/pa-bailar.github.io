@@ -462,7 +462,9 @@ screens in the toolbar's pills and their panels:
     with the days it covers in muted text ("Hoy dom 4", "Este fin de semana 9–11 oct", "Resto de octubre 12–31 oct";
     none for a month or a year) and its count on the right; the date chosen has a check (`--accent-text`) and a sunken
     row (`--surface-sunken`). "Mañana" only when something is on tomorrow; an option with nothing to show is dimmed and a
-    tap on it does nothing. 44px rows, `--surface`, `--shadow-menu`, the grain in dark.
+    tap on it does nothing. 44px rows on touch screens; with a mouse (`hover: hover` and `pointer: fine`, the
+    desktop toolbar's Cuándo pill) compact 32px rows in `--text-sm` (the owner: the tall rows looked odd on desktop).
+    `--surface`, `--shadow-menu`, the grain in dark.
   - **One tap applies it and closes the menu** (no "Listo"): it replaces whatever dates were chosen, and "Cualquier
     fecha" clears them. Several dates at once are chosen in the sheet.
   - **Closing:** Escape, a tap outside (that tap does nothing else: it could open an event behind it), the chip again,
@@ -555,8 +557,9 @@ screens in the toolbar's pills and their panels:
     side panel (at 1024px with the side panel open, the pills and the panels stay left of it); it scrolls when the
     screen is short. Absolute, so nothing moves when it opens.
   - **Under the row, while filtering:** "**12 eventos**" (in the calendar "15 eventos en octubre"), every choice as a
-    removable chip ("Finde ×", "Salsa ×", "Social ×", "Sin bares ×") and "× Limpiar" (`--accent-text`, named "Limpiar
-    filtros"). It wraps at narrow widths (768px) instead of scrolling.
+    removable chip ("Finde ×", "Salsa ×", "Social ×") and "× Limpiar" (`--accent-text`, named "Limpiar filtros"). No
+    "Sin bares ×" here: the "Ocultar bares" pill already shows it's on and turns it off (the owner, 5 Oct 2026); the
+    count line still says "· Sin bares". It wraps at narrow widths (768px) instead of scrolling.
   - **Semantics:** each pill is a button with `aria-haspopup` (`menu` for Cuándo, `dialog` for Ritmo and Tipo),
     `aria-expanded` and `aria-controls`, named with what's chosen ("Ritmo, 2 elegidos", "Tipo, 1 elegido", "Cuándo:
     Este fin de semana"). Ritmo's and Tipo's panels are non-modal dialogs labelled "Ritmo" and "Tipo de evento", their

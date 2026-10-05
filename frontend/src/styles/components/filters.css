@@ -187,6 +187,14 @@
   cursor: pointer;
 }
 
+/* With a mouse (wide screens, a fine pointer): compact rows; touch screens keep the 44px target. */
+@media (hover: hover) and (pointer: fine) {
+  .when-menu__item {
+    min-height: 32px;
+    font-size: var(--text-sm);
+  }
+}
+
 .when-menu__item:focus-visible {
   outline-offset: -3px;
 }
