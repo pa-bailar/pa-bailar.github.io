@@ -13,6 +13,7 @@ import type { WhenModel, WhenOption } from "../lib/filterModel";
 import { eventCountLabel } from "../lib/format";
 import { ICONS } from "../lib/icons";
 import { historyState, overlayState } from "../screenHistory";
+import { bottomInset } from "./bottomNav";
 
 const MENU = "when";
 const GAP = 4; // px between the chip and the menu
@@ -77,7 +78,7 @@ function place() {
     chip.getBoundingClientRect(),
     byId("jump-bar").getBoundingClientRect(),
     element.offsetWidth,
-    window.innerHeight,
+    window.innerHeight - bottomInset(), // the bar at the bottom covers the rest
   );
   element.style.left = `${where.left}px`;
   element.style.top = `${where.top}px`;

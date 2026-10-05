@@ -31,7 +31,6 @@ import { storedSwitch } from "./lib/storedSwitch";
 import { renderFilters } from "./views/filters";
 import {
   captureListPosition,
-  closeBarSearch,
   initJumpBar,
   openFilterSheet,
   renderJumpBar,
@@ -42,7 +41,7 @@ import { renderUpcomingView, sharedEventEntry, showWholePeriod } from "./views/u
 import { goTo, initScreenHistory, leave } from "./screenHistory";
 import { initPostViewer } from "./views/postViewer";
 import { initPostsSheet } from "./views/postsSheet";
-import { initViewSwitch, renderViewSwitch } from "./views/viewSwitch";
+import { closeSearchField, initBottomNav, renderBottomNav } from "./views/bottomNav";
 import { viewNavigation } from "./views/viewNavigation";
 import { closeWhenMenu, isWhenMenuOpen, openWhenMenu, syncWhenMenu } from "./views/whenMenu";
 import { initSaveButtons, renderSavedToggles } from "./views/saveButton";
@@ -89,16 +88,16 @@ function render({ keepPlace = false } = {}) {
   const calendar = byId("view-calendar");
   upcoming.hidden = state.view !== "upcoming";
   calendar.hidden = state.view !== "calendar";
-  document.querySelectorAll<HTMLElement>("[data-view]").forEach((tab) => {
+  document.querySelectorAll<HTMLElement>('[role="tab"][data-view]').forEach((tab) => {
     tab.setAttribute("aria-selected", String(tab.dataset.view === state.view));
   });
-  renderViewSwitch(state.view);
+  renderBottomNav({ view: state.view, savedOnly: state.savedOnly, query: state.query, active: model.active });
 
   const { shown, groups } =
     state.view === "upcoming"
       ? renderUpcomingView(upcoming, events, state)
       : { shown: renderCalendarView(events, state), groups: [] }; // the calendar has no periods
-  renderJumpBar({ searching: state.query !== "" });
+  renderJumpBar();
   renderSavedCount();
   watchClips(byId(state.view === "upcoming" ? "view-upcoming" : "view-calendar")); // the videos' clips, as a feed
   if (anchor) restoreListPosition(anchor);
@@ -139,11 +138,12 @@ function handleSearchInput(domEvent: Event) {
   }, 150);
 }
 
-/** No search anymore: the fields empty, the bar back to its chips. */
+/** No search anymore: the fields empty, the field at the bottom back into the bar. */
 function clearSearch() {
+  clearTimeout(searchTimer);
   state.query = "";
   document.querySelectorAll<HTMLInputElement>("[data-search]").forEach((field) => (field.value = ""));
-  closeBarSearch();
+  closeSearchField();
 }
 
 // ---------- the views' controls ----------
@@ -233,8 +233,15 @@ const openCardEvent: ControlHandler = (id, control, domEvent) => {
   openEventDrawer(event, { source });
 };
 
-/** The tabs: Próximos or Calendario. */
-const chooseView: ControlHandler = (view) => {
+/**
+ * The bar's Eventos and Calendario (links to the views' addresses: a new-tab click is the browser's), and the tabs
+ * (Próximos, Calendario) on wide screens.
+ */
+const chooseView: ControlHandler = (view, control, domEvent) => {
+  if (control instanceof HTMLAnchorElement) {
+    if (!isPlainClick(domEvent)) return;
+    domEvent.preventDefault();
+  }
   if (isView(view)) navigateView(view);
 };
 
@@ -358,7 +365,13 @@ export function start() {
   initInstallPrompt();
   registerServiceWorker();
   initJumpBar();
-  initViewSwitch(navigateView);
+  // × and back end the search (and Escape on a keyboard): cleared, the view drawn again.
+  initBottomNav({
+    dismiss: () => {
+      clearSearch();
+      render();
+    },
+  });
   initClickTracking();
   document.addEventListener("click", handleClick);
   document.addEventListener("input", handleSearchInput);

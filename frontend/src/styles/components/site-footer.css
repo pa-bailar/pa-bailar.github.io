@@ -1,17 +1,11 @@
 /* Site footer: disclaimer, source accounts, install, feedback, author and version. */
 
+/* Phones: room under the footer for the bar at the bottom (--bottom-nav-space, 0 elsewhere), so it never covers the
+   last line (the version, bottom right). */
 .site-footer {
-  padding-bottom: var(--space-6);
+  padding-bottom: calc(var(--space-6) + var(--bottom-nav-space));
   font-size: var(--text-sm);
   color: var(--text-muted);
-}
-
-/* Phones: room under the footer, so the floating calendar button (view-switch.css) never covers its last
-   line (the version, bottom right). Here, after the rule above, so it wins. */
-@media (max-width: 719px), (max-height: 599px) {
-  .site-footer {
-    padding-bottom: calc(var(--fab-size) + var(--space-4) * 2 + env(safe-area-inset-bottom));
-  }
 }
 
 .site-footer .container {

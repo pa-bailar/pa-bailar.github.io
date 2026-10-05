@@ -1,12 +1,13 @@
 // The filters: what's chosen and what can be chosen, and where they're drawn.
-//   - Phones, the bar (JumpBar.astro), pinned to the top: [⚙ 3] [Social ×] [🕒 ▾] | [Salsa] [Bachata] [Urbano] [Tango],
+//   - Phones, the bar (JumpBar.astro), pinned to the top: [Social ×] [🕒 ▾] | [Salsa] [Bachata] [Urbano] [Tango],
 //     one row that scrolls sideways. "🕒 ▾" ("Cuándo") opens a short menu with one choice of date (whenMenu.ts);
 //     once chosen it reads "🕒 Finde" with its own × beside it. A rhythm chip is chosen with one tap (dark, with ×),
-//     unchosen with another. ⚙ opens the "Filtros" sheet with every option (several dates too); a choice made
-//     there that has no chip of its own in the row shows as a removable chip after ⚙ ("Social ×").
+//     unchosen with another. A choice made in the "Filtros" sheet (Filtros in the bar at the bottom, BottomNav.astro,
+//     with the number of choices in use) that has no chip of its own in the row shows first, as a removable chip
+//     ("Social ×", "Sin bares ×").
 //   - Under the bar, only while filtering: "12 eventos · Finde, Salsa" and "× Limpiar".
 //   - The sheet (FilterSheet.astro): every date, rhythm and type with its count, the switch "Ocultar eventos de
-//     bares" (remembered; while on, "Sin bares ×" after ⚙), "Limpiar" and "Ver 12 eventos".
+//     bares" (remembered; while on, "Sin bares ×" in the row), "Limpiar" and "Ver 12 eventos".
 //   - Wide screens: the toolbar's chip rows (dates, types and "Ocultar bares", rhythms) and a status row ("12 eventos ·
 //     Limpiar filtros").
 // What each shows, and how options are counted and dimmed, is the model (lib/filterModel.ts, pure and tested); the
@@ -93,7 +94,7 @@ export function barsSwitchHtml(on: boolean): string {
     aria-labelledby="filter-bars-name" aria-describedby="filter-bars-hint">
       <span class="filter-switch__text">
         <span class="filter-switch__name" id="filter-bars-name">Ocultar eventos de bares</span>
-        <span class="filter-switch__hint" id="filter-bars-hint">Noches especiales de bares y discotecas: orquestas, invitados, fiestas.</span>
+        <span class="visually-hidden" id="filter-bars-hint">Noches especiales de bares y discotecas: orquestas, invitados, fiestas.</span>
       </span>
       <span class="filter-switch__track" aria-hidden="true"><span class="filter-switch__thumb"></span></span>
     </button>`;
@@ -103,14 +104,6 @@ export function barsSwitchHtml(on: boolean): string {
 function barsChipHtml(on: boolean): string {
   return `<button class="chip filter-chip filter-chip--bars" type="button" ${BARS_DATA} aria-pressed="${on}"
     aria-label="Ocultar eventos de bares">Ocultar bares${on ? X : ""}</button>`;
-}
-
-/** ⚙, first in the bar's row: the sheet, with how many choices are in use on its corner. */
-function sheetButtonHtml(active: number): string {
-  return `<button class="chip filter-chip filter-chip--icon" type="button" data-open-filters aria-haspopup="dialog"
-    aria-label="Todos los filtros${active ? `, ${active} ${active === 1 ? "activo" : "activos"}` : ""}">${ICONS.sliders}${
-      active ? `<span class="jump-bar__badge" aria-hidden="true">${active}</span>` : ""
-    }</button>`;
 }
 
 const FADE = 32; // px: the row fades out at its right edge (jump-bar.css, --space-6)
@@ -135,7 +128,6 @@ function renderBarChips(model: FilterModel) {
   const scrolled = row.scrollLeft;
   const when = model.when && model.dates.length ? model.when : null;
   row.innerHTML = [
-    sheetButtonHtml(model.active),
     ...model.extra.map(removableHtml),
     when ? whenChipHtml(when) : "",
     when ? `<span class="jump-bar__divider" aria-hidden="true"></span>` : "",
@@ -154,7 +146,7 @@ function renderBarChips(model: FilterModel) {
 
 /**
  * "Cuándo" in the bar: a button that opens its menu ("🕒 ▾", or "🕒 Finde" once a date is chosen; a clock, so it
- * doesn't look like the floating calendar button) and, beside it
+ * doesn't look like the calendar in the bar at the bottom) and, beside it
  * (not inside: two targets), × to take the date away. One piece to the eye: the chosen colors, a line between.
  */
 function whenChipHtml(when: WhenModel): string {
@@ -194,10 +186,10 @@ function renderSheet(model: FilterModel, state: AppState) {
   const body = byId("filter-sheet-body");
   const scrolled = body.scrollTop;
   body.innerHTML = [
+    `<div class="filter-sheet__switch">${barsSwitchHtml(model.hideBars)}</div>`,
     dates,
     group("Ritmo", "elige uno o varios", model.styles, "Ritmo"),
     group("Tipo de evento", "", model.types, "Tipo de evento"),
-    `<div class="filter-sheet__switch">${barsSwitchHtml(model.hideBars)}</div>`,
   ].join("");
   body.scrollTop = scrolled;
   byId<HTMLButtonElement>("filter-sheet-clear").disabled = model.active === 0;

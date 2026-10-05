@@ -1,23 +1,15 @@
 ---
-// Phones: the slim bar pinned to the top (it never hides). 🔍 and 🔖, then one row of chips that scrolls sideways:
-// ⚙ (the "Filtros" sheet), the choices made there, "🕒 ▾" (Cuándo: a menu with one date at a time) and four
-// rhythms, each chosen with one tap (scripts/views/filters.ts fills it, whenMenu.ts opens the menu). Under it,
-// only while filtering, "12 eventos · Finde, Salsa" and "× Limpiar". Searching turns the row into the search
-// field (scripts/views/jumpBar.ts).
-import { ICONS } from "../scripts/lib/icons";
+// Phones: the slim bar pinned to the top (it never hides): one row of chips that scrolls sideways, the choices made
+// in the "Filtros" sheet that have no chip of their own ("Sin bares ×", "Social ×"), "🕒 ▾" (Cuándo: a menu with one
+// date at a time) and four rhythms, each chosen with one tap (scripts/views/filters.ts fills it, whenMenu.ts opens
+// the menu). Under it, only while filtering, "12 eventos · Finde, Salsa" and "× Limpiar". Search, Guardados and the
+// "Filtros" sheet are in the bar at the bottom (BottomNav.astro).
 ---
 
-<nav class="jump-bar" id="jump-bar" aria-label="Filtros" hidden>
+<div class="jump-bar" id="jump-bar" hidden>
   <div class="container jump-bar__inner">
-    <button class="chip jump-bar__icon" id="jump-search-open" type="button" aria-label="Buscar"><Fragment set:html={ICONS.search} /></button>
-    <button class="chip jump-bar__icon" type="button" data-saved-only aria-pressed="false" aria-label="Guardados"><Fragment set:html={ICONS.bookmark} /><span class="jump-bar__badge" data-saved-count hidden></span></button>
     <div class="jump-bar__chips" id="jump-chips" role="group" aria-label="Filtros rápidos"></div>
-    <div class="jump-bar__search">
-      <input class="search-input" id="jump-search" type="search" data-search placeholder="Buscar evento, academia, ritmo…"
-        aria-label="Buscar eventos" enterkeyhint="search" autocomplete="off" />
-      <button class="chip jump-bar__icon" type="button" data-close-search aria-label="Cerrar la búsqueda">×</button>
-    </div>
   </div>
   <div class="when-menu" id="when-menu" role="menu" aria-label="Cuándo" hidden></div>
   <div class="container filter-summary" id="jump-summary" hidden></div>
-</nav>
+</div>

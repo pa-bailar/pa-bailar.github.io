@@ -46,13 +46,14 @@
   flex: none;
 }
 
-/* The one-time reminder after a second save: at the bottom, in the floating button's row, to its left. */
+/* The one-time reminder after a second save: at the bottom, just above the bar there (phones), or above the home
+   indicator. */
 .install-nudge {
   position: fixed;
-  right: calc(var(--fab-size) + var(--space-4) + var(--space-3)); /* the button's width and a gap */
-  bottom: calc(var(--space-4) + env(safe-area-inset-bottom)); /* level with the floating button */
+  right: var(--space-4);
+  bottom: calc(var(--space-3) + max(var(--bottom-nav-space), env(safe-area-inset-bottom)));
   left: var(--space-4);
-  min-height: var(--fab-size);
+  min-height: var(--touch-target);
   z-index: var(--z-sticky);
   display: flex;
   align-items: center;

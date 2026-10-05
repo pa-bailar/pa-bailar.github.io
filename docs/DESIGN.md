@@ -33,7 +33,7 @@ frontend/src/styles/
    ├─ sheet.css          ← bottom sheets: rise, drag to dismiss (with scripts/lib/sheet.ts)
    ├─ jump-bar.css       ← phones: the pinned bar, its row of chips and the line under it
    ├─ filters.css        ← the filter chips (bar, sheet, toolbar), "Cuándo" and its menu, the line and the toolbar's status row
-   ├─ view-switch.css    ← phones: the floating calendar / list button
+   ├─ bottom-nav.css     ← phones: the bar at the bottom (Eventos, Calendario, Buscar, Guardados, Filtros)
    ├─ posts-sheet.css    ← every post announcing an event
    ├─ post-viewer.css    ← a post with Instagram's player
    ├─ filter-sheet.css
@@ -67,7 +67,7 @@ Themes switch through CSS `color-scheme`: `light` at `:root`, `dark` only under 
 | `--accent` | tomato-600 | pink-400 `#ff7eb9` | Event time, active tab, selected day |
 | `--action` / `--on-action` | deep orange / white | gold / ink `#1c1033` | A primary button ("Ver eventos" in the Filtros sheet, "Instalar", the 404's), shaped like the WhatsApp one |
 | `--accent-text` | tomato-700 | pink-400 | The accent as a word on the page: "× Limpiar" (4.93:1; `--accent` is 4.0:1 on the page) |
-| `--chip-active-*` | wine / cream | pink-300 `#ff9fcb` / ink | Selected filter chip, the badges on ⚙ and 🔖 |
+| `--chip-active-*` | wine / cream | pink-300 `#ff9fcb` / ink | Selected filter chip, an item that's on in the bar at the bottom (its pill), the badges on Filtros and Guardados |
 | `--dimmed` | cocoa-200 | indigo-400 | A filter option with nothing to show: its label and dashed outline (inactive, exempt from contrast) |
 | `--details-ink` | wine-900 | lilac-300 `#c3b7db` | The cards' "Detalles ›": its frame (13.4:1 and 9.62:1 on the page; 8.54:1 on a dark card); the label is `--text` |
 | `--details-pressed` | cream-250 | indigo-800 | "Detalles ›" pressed: the frame's fill |
@@ -91,8 +91,8 @@ The dark theme isn't a flat color: the page is lit like the ballroom of a late-n
   and fades before the first cards.
 - **The grain** (`--grain`): a fine film noise (an SVG `feTurbulence` as a `data:` image, which the CSP's
   `img-src` allows) at 5%, over the page, the details drawer and the bottom sheets, so they read as the same air.
-- **Phones:** the toolbar (tabs and chips) isn't sticky there, so it's transparent in dark and lets the light
-  through instead of cutting it with a flat band. The pinned jump bar keeps `--bg`.
+- **Phones:** no toolbar there (the bar pinned to the top and the bar at the bottom have it all), so nothing cuts
+  the light under the header. The two bars keep `--bg`.
 - **The browser bar** (`theme-color`) is the page's indigo, `#16122B` (`scripts/themeConfig.ts`, from `lib/brandColors.ts`).
 
 The calendar uses the same theme as the rest of the page (an earlier version gave it its own palette;
@@ -102,7 +102,7 @@ the owner preferred one look throughout).
 - Luz de escenario: body text 15.97:1 on the page, 14.18:1 on cards; muted 9.62:1; the lowest text pair is
   "Gratis" (5.33:1, white on green, as in light), then the pink time on cards (6.87:1); outlines ≥ 4.12:1.
 - **Over the light**, measured on rendered pixels (the brightest background pixel behind each text, at 375 and
-  1280px): logo ≥ 7.73:1, tagline ≥ 7.72:1, "Actualizado" ≥ 7.89:1, tabs ≥ 8.69:1, the switch's outline
+  1280px): logo ≥ 7.73:1, tagline ≥ 7.72:1, "Actualizado" ≥ 7.89:1, tabs ≥ 8.69:1 (1280px: phones have no tabs), the switch's outline
   ≥ 3.15:1; in the calendar, the month ≥ 11.16:1 and the weekdays ≥ 8.04:1.
 
 ### Typography
@@ -127,15 +127,18 @@ few set from scripts are listed there): an undefined `--text-base` once left the
   - `--radius-round`: **only** the date sticker and calendar day numbers
 - `--border-width` 1.5px everywhere.
 - Controls: `--control-height` 40px (buttons, toggle), `--chip-height` 32px, `--sticker-size` 60px.
-- Touch: `--touch-target` 44px (the filter chips, the bar's 🔍 and 🔖, the cards' action row, the drawer's buttons and handle). A control drawn smaller (a 40px chip, the 32px handle) gets an invisible `::after` that makes up the difference above and below, so the bar stays 56px.
+- Touch: `--touch-target` 44px (the filter chips, the header's Info and the search's ×, the cards' action row, the drawer's buttons and handle; the bar at the bottom's items are bigger). A control drawn smaller (a 40px chip, the 32px handle) gets an invisible `::after` that makes up the difference above and below, so the bar stays 56px.
 - The phone bar: `--jump-bar-height` 56px, `--filter-line-height` 40px (the line under it while filtering);
+  `--bottom-nav-height` 60px (the bar at the bottom with labels; `--bottom-nav-icons-height` 52px without),
+  `--bottom-nav-space` (what it covers: its height plus the home indicator's inset on phones, 0 elsewhere; the footer,
+  the install reminder and `scroll-padding-bottom` make room for it), `--nav-indicator-width` 48px (an item's pill);
   `--pinned-height`, what's pinned to the top (the bar, plus the line while filtering: 56 or 96px), which jumps and
   the keyboard's focus land under (`scroll-margin-top`, `scroll-padding-top`); `--menu-width` 304px ("Cuándo"'s menu).
 - The cards' "Detalles ›": `--details-height` 36px (its frame; the button is 44px), `--details-offset` 2px,
   `--details-tuck` (how far the offset reaches under the frame's ink: one device pixel from 2x, half of one below; set
   per screen density in `tokens.css`).
 - The details: `--drawer-top-gap` 12px (phones: what's left above the drawer at full height), `--panel-width` 420px (wide screens: the side panel).
-- Small parts: `--tab-underline` 3px (the selected tab's line), `--icon-sm` 16px (marks over flyers and thumbnails, a chip's ×, "× Limpiar", a card's "Video"), `--icon-md` 20px ("Cuándo"'s clock and check, the cards' Compartir, the drawer's ×, the details' media links), `--icon-lg` 24px (Guardar, the details' quick actions, the floating button), `--handle-width` × `--handle-height` 40×4px (every sheet's grab handle, `.sheet-handle`), `--fab-size` 44px.
+- Small parts: `--tab-underline` 3px (the selected tab's line), `--icon-sm` 16px (marks over flyers and thumbnails, a chip's ×, "× Limpiar", a card's "Video"), `--icon-md` 20px ("Cuándo"'s clock and check, the cards' Compartir, the drawer's ×, the details' media links), `--icon-lg` 24px (Guardar, the details' quick actions, the bar at the bottom), `--handle-width` × `--handle-height` 40×4px (every sheet's grab handle, `.sheet-handle`).
 - Over photos: `--on-image` (white) with `--shadow-on-image`, the same in both themes, for marks that sit on any flyer (stacked squares); `--on-image-bg` (black at 60%) behind words and marks on a flyer (a card's "Video", "Historia").
 
 ### Motion
@@ -147,7 +150,6 @@ writes a curve itself. With reduced motion nothing animates (`base.css`).
 | Token | Value | Use |
 |---|---|---|
 | `--duration` | 150ms | Hovers, small state changes |
-| `--duration-bar` | 250ms | The floating view switch fading in and out |
 | `--duration-enter` | 320ms | A bottom sheet rising, the details drawer rising to half height |
 | `--duration-settle` | 300ms | A sheet or the drawer settling: between heights, springing back after a drag |
 | `--duration-panel-in` / `--duration-panel-out` | 280ms / 200ms | The side panel sliding in and out (wide screens) |
@@ -220,7 +222,10 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves. The pa
 
 ## Info and footer
 
-- **"Info"** sits after the view tabs and looks like one, but it's a link to the footer (`#info`), never selected and outside the tab list for screen readers.
+- **Info** is an (i) in the header, between the stripes and the theme switch (`.site-header__info`: a 40px square like
+  the switch, 44px to the finger, named "Info: sobre Pa' Bailar"): a link to the footer (`#info`), and back returns to
+  where the page was. It used to be a tab after Próximos and Calendario; with the views in the bar at the bottom, phones
+  have no tabs (the owner, 5 October 2026).
 - **The footer is "Sobre Pa' Bailar"**: a heading in Bodoni italic, a one-line description, the disclaimer, the sources (every Instagram account the sweep reads, from `meta.json`), installing the app, "Escríbenos" (the report form), and at the bottom "Hecho por @jzamora5" (GitHub) with the version on the right. Each line has its icon.
 
 ## Sharing
@@ -312,7 +317,7 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
   On iPhone the page can't tell whether it was added, so the sheet ends with "Ya la agregué" (hides the offer
   for good), and closing the steps rests the banner for 30 days like ×; the footer's link stays.
 - **A reminder:** whoever dismissed the banner gets one small reminder, once, when they save their second
-  event ("Tus guardados a un toque: instala Pa' Bailar", `.install-nudge`, at the bottom to the left of the floating button, gone after
+  event ("Tus guardados a un toque: instala Pa' Bailar", `.install-nudge`, at the bottom, just above the bar there, gone after
   10 seconds). Offering again at a moment the app clearly helps, instead of nagging, is Google's advice.
 - **Knowing it's installed:** opened as the app; or this browser saw it installed (on Android the app shares the
   browser's storage, so opening the app once is enough); or Chrome on Android says so (`getInstalledRelatedApps`,
@@ -327,14 +332,15 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
   "Guardado") (`.save-button`, `scripts/views/saveButton.ts`). Filled in the accent color
   when saved. Saved events live in this browser (`lib/saved.ts`, localStorage): no account, nothing
   sent anywhere. Events no longer in the data are forgotten.
-- **"Guardados"** shows only saved events, in the list and the calendar: 🔖 in the phone bar (with the
-  number of upcoming saved events on its corner) and a "Guardados" chip in the toolbar on wide screens.
+- **"Guardados"** shows only saved events, in the list and the calendar: Guardados in the bar at the bottom on
+  phones (with the number of upcoming saved events on its corner; on, its pill in the selected-chip colors) and a
+  "Guardados" chip in the toolbar on wide screens.
   With none saved it says how to save one.
 - **Search** (`lib/search.ts`) runs on the events already in the page: accent- and case-insensitive,
   every word must appear somewhere in the event (title, academy, organizer, venue, area, artists,
-  rhythms, activities, type). On phones 🔍 turns the whole bar into the field (× closes it and clears the
-  search); on wide screens the field sits at the end of the tabs' row. Results show after a short pause
-  in typing, from the top of the list. Text is 16px so phones don't zoom in.
+  rhythms, activities, type). On phones Buscar turns the bar at the bottom into the field (see "The bar at the
+  bottom"); on wide screens the field sits at the end of the tabs' row. Results show after a short pause in typing,
+  from the top of the list (in the calendar, the day's list). Text is 16px so phones don't zoom in.
 
 ## Long lists
 
@@ -352,15 +358,15 @@ the list stays short there and summarizes what's further away (`scripts/views/up
 - What the visitor opens stays open while filtering or switching views, and focus moves to the first
   newly shown event.
 
-## Phones: feed, jump bar, view switch and filter sheet
+## Phones: feed, jump bar, the bar at the bottom and filter sheet
 
 - **Feed like Instagram:** under 720px each event is a full-width post, the flyer edge to edge at full size and the details right below, separated by space instead of boxed cards. Nothing is shrunk into thumbnails.
-- **Jump bar** (`JumpBar.astro`, `scripts/views/jumpBar.ts`): one slim row (`--jump-bar-height`, 56px) pinned to the top, modeled on the filter bars of Google Maps and Airbnb: **[🔍] [🔖 3]**, then one row of chips that scrolls sideways: **[⚙ 3] [Social ×] [🕒 ▾] | [Salsa] [Bachata] [Urbano] [Tango]** (search and "Guardados": see "Saving and searching"; "Cuándo" and the chips: see "Filters").
-  - **Compact, so two rhythms show at 375px:** 🔍, 🔖 and ⚙ are 40px squares (44px to the finger: 2px past each side, in
-    the 8px gaps), and "Cuándo" is its clock and ▾ ("🕒 ▾"; the word "Cuándo" joins them from 480px). At 375px the row
-    shows ⚙, 🕒 ▾, Salsa whole and Bachata to its last letter, under the fade.
+- **Jump bar** (`JumpBar.astro`, `scripts/views/jumpBar.ts`): one slim row (`--jump-bar-height`, 56px) pinned to the top, modeled on the filter bars of Google Maps and Airbnb: one row of chips that scrolls sideways: **[Sin bares ×] [Social ×] [🕒 ▾] | [Salsa] [Bachata] [Urbano] [Tango]** ("Cuándo" and the chips: see "Filters"). Search, "Guardados" and ⚙ used to start it; they're in the bar at the bottom since 5 October 2026 (the owner: the filters' count scrolled sideways with the chips).
+  - **Compact:** "Cuándo" is its clock and ▾ ("🕒 ▾"; the word "Cuándo" joins them from 480px). At 375px the row shows
+    🕒 ▾ and the four rhythms, Tango under the fade.
   - **The row runs to the screen's edge** and fades there (a mask), so the next chip peeks and it reads as a row that scrolls (Material's single-line chip group). It keeps where it was scrolled while choosing, unless a new choice would be out of sight (made in the sheet, or a chip further along): then it scrolls just enough to show the first one.
-  - **⚙** opens the filter sheet; its badge counts every choice in use (two rhythms count two, like Airbnb's; hiding the bars counts one).
+  - **The choices made in the sheet** that have no chip of their own come first, removable ("Sin bares ×", "Social ×"),
+    so what's on stays in sight; the fixed count is Filtros' badge in the bar at the bottom.
   - **The line under it** ("12 eventos · Finde, Salsa" and "× Limpiar"), only while filtering (`--filter-line-height`, 40px): see "Filters".
   - **Keeping your place:** when a filter changes while you're inside the list, the period you were reading stays right under the bar; if the filter removed it, the next period (else the previous one) takes its place. The period being read is the lowest one crossing a band under the bar (`captureListPosition`).
   - **Pinned, never hidden:** the filters are at hand anywhere in the list. (It used to hide while scrolling down, like
@@ -368,12 +374,46 @@ the list stays short there and summarizes what's further away (`scripts/views/up
     nothing else: no transform on it, and no `overflow: hidden` on html or body (iOS Safari's sticky breaks under one).
     Jumps (a filter change keeping your place, the keyboard's focus, a period's heading) land below it and its line
     (`--pinned-height`).
-  - **Where it shows:** wherever the full toolbar isn't sticky (phones, short windows), in both views.
-- **View switch** (`ViewSwitch.astro`, `scripts/views/viewSwitch.ts`): the tabs scroll away on phones, so an icon button (`--fab-size`, 44px) floats at the bottom right. It offers the other view: a calendar icon in the list, a list icon in the calendar (named for screen readers).
-  - **Look:** the action color (`--action` / `--on-action`), ringed with the page color and a shadow, so it stands out even over a flyer of the same colors.
+  - **Where it shows:** wherever the full toolbar isn't sticky (phones, short windows), in both views. There the
+    toolbar isn't shown at all.
+- **The bar at the bottom** (`BottomNav.astro`, `scripts/views/bottomNav.ts`, `bottom-nav.css`), like Instagram's (the
+  owner, 5 October 2026; it replaced the floating calendar button and the tabs on phones): **Eventos** (the list, `/`) ·
+  **Calendario** (`/calendario/`) · **Buscar** · **Guardados** · **Filtros**, five equal items fixed at the bottom of the
+  screen, wherever the jump bar shows (phones, short windows).
+  - **Size:** 60px with labels (`--bottom-nav-height`; 61.5px with its line on top), 52px with icons only
+    (`--bottom-nav-icons-height`), plus the home indicator's inset (`env(safe-area-inset-bottom)`; 0 while the page
+    has no `viewport-fit=cover`, and iOS keeps the bar above the indicator itself). 24px icons (`--icon-lg`); each
+    item is a fifth of the width (75px at 375px, 64px at 320px) and the bar's whole height: targets of 60 × 64px and
+    more. Opaque (`--bg`) with a `--divider` line on top, like the jump bar.
+  - **Labels: not decided yet.** The owner will choose after seeing both ("depends on size"): icons with their labels
+    under them (`--text-2xs`, 11px bold, `--text-muted`; the default, Material 3's advice for five destinations, and
+    two items, Buscar and Filtros, aren't destinations an icon alone says) or icons only (`data-labels="off"` on the
+    bar; the labels stay for screen readers). `?barra=iconos` shows the second for a visit, until the choice is made.
+  - **The view on screen** (`aria-current="page"`): its icon and label in `--accent-text`, and a 3px `--accent` line on
+    the bar's top edge over it (the tabs' underline, upside down). Tapping it again goes back to the top of the page,
+    like Instagram's tabs.
+  - **On:** Guardados showing only saved events (`aria-pressed`), and Buscar with a search kept: the icon sits in a
+    pill (`--nav-indicator-width` × `--chip-height`) in the selected-chip colors, like the toggle it replaced.
+  - **Badges:** the number of upcoming saved events on Guardados, and on Filtros every choice in use (two rhythms count
+    two, like Airbnb's; hiding the bars counts one): the fixed place for it, where the chips scrolled it sideways.
+    Filtros is named "Filtros, 2 activos"; Guardados "Guardados, 3".
+  - **Buscar:** the bar becomes the search field, docked at the bottom (iOS 26's search, Instagram's place), with the
+    focus and the keyboard, and × beside it (the browser's own clear button is hidden: one way out). Typing filters
+    the view on screen as before. It has a history entry, an overlay like the sheets: **× and back close it and clear
+    the search** (as × did in the old bar); Escape too on a keyboard. **The keyboard's "Buscar" (Enter)** closes the
+    keyboard and the field and keeps the search: Buscar shows it's on (its pill, named "Buscar: «salsa»"), and a tap
+    opens the field again with the words. A field left empty closes when the keyboard does. **Above the keyboard:**
+    while the field has the focus, the bar rises by the keyboard's height, read from the visual viewport (`bottom:
+    var(--keyboard-inset)`, the home indicator's inset dropped); see `ARCHITECTURE.md`, section 5.7.
+  - **Sheets and the details drawer** are modal dialogs in the browser's top layer: they cover the bar, which stays
+    put under them (no hiding, nothing to animate). The "Cuándo" menu stops above it.
+  - **Room:** the footer's bottom padding and the install reminder add `--bottom-nav-space`; `scroll-padding-bottom`
+    keeps the keyboard's focus above it; the calendar's day list counts the screen as ending at it (`revealDay`).
+  - **Wide screens** don't show it: the tabs, "Guardados", the search field and the chip rows in the toolbar, as
+    before, and Info in the header.
   - **Each view has its own address:** the list is `/`, the calendar `/calendario/` (`pages/calendario/`, the same page
-    opening on the calendar: `components/HomePage.astro`), so reloading or sharing the calendar keeps it; the tabs,
-    the floating button and back move between the two addresses, the tab's title follows (`lib/viewTitles.ts`), and
+    opening on the calendar: `components/HomePage.astro`), so reloading or sharing the calendar keeps it; the bar's
+    Eventos and Calendario (links to the two addresses), the tabs on wide screens and back move between them, the tab's title follows (`lib/viewTitles.ts`), and
     closing an event goes back to its view's address. Opened straight on `/calendario/`, the list isn't under it in
     the history: switching to it happens in place, and back leaves, as from any shared link (the owner, 4 October 2026).
   - **The list keeps its place, like Instagram's tabs:** coming back to it lands exactly where it was left. **The
@@ -381,14 +421,12 @@ the list stays short there and summarizes what's further away (`scripts/views/up
     day's list on screen, never where it was scrolled before (its cards look like the list's, and visitors coming back
     deep in them lost track of which view they were in: the owner, 4 October 2026). In it the calendar keeps one rule (`revealDay` in `views/viewNavigation.ts`): **whatever changes the day's list ends with its start on screen**: opening the calendar (from the top or from deep in the list; the first time, the month's title lands under the pinned bar if the page was past it), coming back to it, a day, the month's ‹ ›, "Hoy", a filter, a search, "Guardados", back and forward. When the day's heading and the top of what follows (`DAY_PEEK`, 96px) are below the fold, the page moves just that far: gliding after a tap (at once with reduced motion), at once otherwise. When they're on screen, or above it (the visitor is reading the cards), it doesn't move, so trying days one after another never shakes the grid. On a phone the list started below the fold, and a tap there seemed to do nothing (the owner, 4 October 2026; a first-visit-only fix wasn't enough: after scrolling back up it happened again).
   - **A day tapped in the calendar says so where the list starts:** its heading ("Miércoles, 14 de octubre") has the count under it ("3 eventos", `--accent-text`, bold; none on an empty day, which says "No hay eventos este día.") and glows briefly in the accent when the day changes (`.calendar__day-heading.is-new`, 900ms; not on other redraws, and not with reduced motion). A tap moves the page only to bring the list's start on screen (the rule above), never otherwise. Screen readers hear "Miércoles, 14 de octubre: 3 eventos" (`#results-status`). If a filter changed meanwhile, the list comes back at the same period instead, as with any filter change. The tabs behave the same.
-  - **Room:** the footer gets extra bottom padding so the button never covers its last line. Hidden wherever the toolbar is sticky.
-  - **Away while the tabs are on screen** (`.is-away`, an IntersectionObserver on the tabs): they do the same, and on a first visit it would sit on the first card's date sticker. It fades in once the tabs scroll under the bar.
-- **Filter sheet** (`FilterSheet.astro`, `filter-sheet.css`), from ⚙:
+- **Filter sheet** (`FilterSheet.astro`, `filter-sheet.css`), from Filtros in the bar at the bottom:
   - **Head:** "Filtros", "Limpiar" (in `--accent-text`, only enabled with something to clear) and ×.
   - **Groups**, in a body that scrolls between the head and the button: **Fecha** · *elige una o varias* (every period and month), **Ritmo** · *elige uno o varios* (every rhythm, the bar's four first, "Otros ritmos" last), **Tipo de evento** (several too). Each option with its count ("Noviembre 2"); the ones with nothing to show dimmed. Chips wrap, `--control-height` tall with a 44px target.
   - **"Ocultar eventos de bares"**, last, under a `--divider` line: a switch (see "Filters", "Hiding the bars").
   - **"Ver 12 eventos"** stays at the bottom (the primary button): "Ver 1 evento", or "Sin eventos: cambia los filtros", disabled. It closes the sheet; choices apply at once, there's no apply step.
-  - **Closing:** ×, a drag down (from the head, or from the groups scrolled to the top), the backdrop, Escape, back. The focus goes back to ⚙ (the new one, when a choice drew the row again).
+  - **Closing:** ×, a drag down (from the head, or from the groups scrolled to the top), the backdrop, Escape, back. The focus goes back to Filtros.
   - **In the calendar:** Fecha says "En el calendario eliges el día en el mes."
 
 ## Filters
@@ -404,10 +442,10 @@ screens in the toolbar's chip rows:
 
 - **One tap chooses, another unchooses.** A chosen chip takes the selected-chip colors (`--chip-active-*`) with an ×;
   tapping it again (or its × anywhere) removes it. Choices made in the sheet that have no chip of their own in the bar
-  show right after ⚙ as removable chips: "Social ×", "Kizomba ×" (never a date: "Cuándo" shows those).
+  show first in the row as removable chips: "Social ×", "Kizomba ×" (never a date: "Cuándo" shows those).
 - **Dates look like what they are: "Cuándo" (`views/whenMenu.ts`).** Dates used to be chips like the rhythms, and read
   as the same kind of thing. In the bar they're one control instead, the pattern of Google Maps' chips with a ▾:
-  - **The chip:** a clock (in `--accent-text`; not a calendar, which is the floating button's icon, the owner's call
+  - **The chip:** a clock (in `--accent-text`; not a calendar, which is Calendario's icon in the bar at the bottom, the owner's call
     of 4 October 2026) and ▾, "🕒 ▾", named "Cuándo: Cualquier fecha". Chosen, it reads
     "🕒 Finde" in the selected-chip colors, with **×** right beside it: a button of its own (not inside the chip's), the
     two drawn as one piece with a thin line between them; × takes the date away in one tap and the focus goes back to
@@ -446,16 +484,16 @@ screens in the toolbar's chip rows:
   (`#results-status`). In the calendar it reads "5 eventos en octubre · Salsa".
 - **Hiding the bars** (the owner, 5 October 2026). Bars and clubs open every week; the site lists only their special
   nights (`bar: true`, `DATA.md`), and **shows them by default**. Visitors who only want academies' events can hide them:
-  - **In the sheet:** a switch after the groups, under a line, the whole row its target: **Ocultar eventos de bares**
-    (`--text-md`, bold) and under it, muted (`--text-xs`), *Noches especiales de bares y discotecas: orquestas,
-    invitados, fiestas.* The track is on the right (`--switch-width` × `--switch-height`, square corners like the
+  - **In the sheet:** a switch **first**, one compact row above a line (the owner: near the top, taking little room),
+    the whole row its target (`--touch-target` high): **Ocultar eventos de bares** (`--text-sm`, bold); its hint,
+    *Noches especiales de bares y discotecas: orquestas, invitados, fiestas.*, only for screen readers. The track is on the right (`--switch-width` × `--switch-height`, square corners like the
     chips): off, outlined in `--border` with the thumb on the left in `--text-muted`; on, filled in `--chip-active-bg`
     with the thumb on the right in `--chip-active-text` (it slides in `--duration`; at once with reduced motion).
     `role="switch"`, `aria-checked`, named by its words and described by the hint (`barsSwitchHtml`).
   - **Wide screens:** "Ocultar bares" at the end of the types' row, a little apart (a toggle chip, with × while on).
   - **While on**, the bars' events are gone wherever the filters apply: the list, the calendar (dots, names, a day's
     label, heading, count and list), search, Guardados, every option's count and "Ver 12 eventos". It **counts one** on
-    ⚙'s badge (in both views), shows as **"Sin bares ×"** after ⚙ (a tap shows them again; named "Mostrar los eventos de
+    Filtros' badge (in both views), shows as **"Sin bares ×"** in the row (a tap shows them again; named "Mostrar los eventos de
     bares") and in the line under the bar ("37 eventos · Sin bares"). Off, nothing shows anywhere but the switch.
   - **Remembered** on that device (`localStorage`, key `hide-bars`, `1` while on; nothing while off). Where storage is
     blocked it works for the visit. The only filter that is remembered: it's a preference about what the visitor wants
@@ -468,14 +506,14 @@ screens in the toolbar's chip rows:
   Nothing else is remembered between visits, and filters aren't in the address.
 - **Dates are the list's:** the calendar has its own days, so there the date chips hide (rhythms stay), the dates chosen
   are ignored (and kept for the list) and the badge doesn't count them.
-- **Searching:** the bar becomes the search field, as before; the line under it stays while filtering.
+- **Searching:** the bar at the bottom becomes the search field; the line under the pinned bar stays while filtering.
 - **Empty results always offer a way out:** with filters, "No hay eventos con estos filtros" · "Prueba con otras fechas
   o ritmos." · "Limpiar filtros"; with a search, "No encontramos eventos" · "Nada coincide con «…»." · "Borrar la
   búsqueda"; in Guardados also "Ver todos, no solo guardados".
 - **Semantics:** filter chips are toggle buttons (`aria-pressed`), short names carry the full one ("Finde": "Este fin de
   semana", "Próx. semana": "Próxima semana"); removable chips are named "Quitar Social"; "Cuándo"'s × is "Quitar Este
-  fin de semana"; ⚙ is "Todos los filtros, 3 activos"; the bars' switch is a `role="switch"`. Focus stays on the chip chosen; after "Limpiar" (which hides or disables itself),
-  focus goes to ⚙ (or the sheet's first chip, or the toolbar's first chip on wide screens).
+  fin de semana"; Filtros is "Filtros, 3 activos"; the bars' switch is a `role="switch"`. Focus stays on the chip chosen; after "Limpiar" (which hides or disables itself),
+  focus goes to Filtros (or the sheet's first chip, or the toolbar's first chip on wide screens).
 - **Wide screens:** the toolbar keeps its chip rows (dates with the bar's short names, types and "Ocultar bares", rhythms), chosen chips
   with ×, the same dimming, and a status row: "12 eventos" and a
   "Limpiar filtros" chip. Rows that don't fit wrap instead of cutting a chip.
@@ -611,7 +649,7 @@ screen undone from inside the panel and lands on another event's entry is ignore
   - **Reduced motion:** no rise and no slide.
 - **Back moves between the app's screens** (`screenHistory.ts`): a period opened whole, the calendar and "Guardados" each get a history entry, so the phone's back button returns to the previous screen where it was scrolled, instead of leaving the site (which closes the installed app). Undoing one from the page (the list button, "Guardados" again) steps back, so history never piles up; stepping back
   out of the calendar keeps "Guardados" as it was set in it (`apply(screen, undoing)`). Back from an in-page jump
-  ("Info", `#info`) puts the scroll back where it was (the entry remembers it just before the jump). The app restores scrolling itself (`history.scrollRestoration = "manual"`).
+  (Info, `#info`) puts the scroll back where it was (the entry remembers it just before the jump). The app restores scrolling itself (`history.scrollRestoration = "manual"`).
   - **Overlays** (the sheets and the details) get entries on top of the screen's, marked as overlays (`overlayState`). Undoing a move from inside one (the "Filtros" sheet's "Limpiar", the list next to the side panel) can't step back without closing it: the move is undone right there, the overlay stays, and its screen's entry is skipped when back (or closing the overlay) reaches it.
 - **The details have a URL:** opening pushes `/evento/<id>/`, so the phone's back button closes them. A copied link opens that event's page.
 - **Shared links open the app.** An event's link (`/evento/<id>/`) forwards a browser to the home page (`?evento=<id>`), which shows the list scrolled to that event's card (its period opened whole if it was summarized or past "Ver N más") with its drawer open at half height over it (`main.ts`, `openSharedEvent`): × or back leave the visitor on the list, not off the site. A past event (checked in Bogotá's time when the page opens) or one no longer in the list stays on its page.

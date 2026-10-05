@@ -13,17 +13,24 @@ import {
   stickyOffset,
 } from "./jumpBar";
 import { setWholePeriods, wholePeriods } from "./upcomingView";
+import { bottomInset } from "./bottomNav";
 import { VIEW_TITLES } from "../lib/viewTitles";
 
 /** How much of the day's list shows under its heading once it's revealed: the start of the first card. */
 const DAY_PEEK = 96;
 
 export interface ViewNavigation {
-  /** The tabs and the floating button: the calendar is a move of its own ("back" returns to the list). */
+  /**
+   * The bar at the bottom (Eventos, Calendario) and the tabs: the calendar is a move of its own ("back" returns to
+   * the list). The view already on screen goes back to the top of the page, like Instagram's tabs.
+   */
   navigateView(view: View): void;
   /** In the calendar: the start of the day's list on screen (see below). */
   revealDay(options?: { smooth?: boolean }): void;
-  /** Search, "Guardados" or a view change made the list start over: back up to the tabs if the page is past them. */
+  /**
+   * Search, "Guardados" or a view change made the list start over: back up to where it starts (the tabs on wide
+   * screens; on phones, the pinned bar where it sits before it's pinned) if the page is past it.
+   */
   backToTop(): void;
   /** The screen on show, for its history entry. */
   currentScreen(): ScreenData;
@@ -86,19 +93,26 @@ export function viewNavigation(state: AppState, render: () => void): ViewNavigat
     if (state.view !== "calendar") return;
     const day = document.querySelector<HTMLElement>(".calendar__day-heading");
     if (!day) return;
-    const below = day.getBoundingClientRect().bottom + DAY_PEEK - window.innerHeight;
+    // What's on screen ends at the bar at the bottom (phones).
+    const below = day.getBoundingClientRect().bottom + DAY_PEEK - (window.innerHeight - bottomInset());
     if (below > 0) scrollPageTo(window.scrollY + below, { smooth });
   }
 
   function navigateView(view: View) {
-    if (view === state.view) return;
+    if (view === state.view) {
+      scrollPageTo(0, { smooth: true });
+      return;
+    }
     if (view === "calendar") goTo("view", () => showView(view));
     else leave("view", () => showView(view));
   }
 
   function backToTop() {
+    // Wide screens: the toolbar (the tabs). Phones hide it: the content's top, under the pinned bar.
     const toolbar = document.querySelector<HTMLElement>(".toolbar");
-    const top = toolbar?.getBoundingClientRect().top ?? 0;
+    const shown = toolbar && toolbar.getClientRects().length > 0;
+    const anchor = shown ? toolbar : document.querySelector<HTMLElement>("main");
+    const top = (anchor?.getBoundingClientRect().top ?? 0) - (shown ? 0 : stickyOffset());
     if (top < 0) window.scrollTo({ top: top + window.scrollY, behavior: "auto" });
     revealDay(); // in the calendar, the day's list still starts on screen
   }

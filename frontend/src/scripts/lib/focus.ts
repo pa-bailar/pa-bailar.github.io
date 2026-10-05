@@ -3,7 +3,7 @@
 
 /**
  * The control that had the focus, as a selector for the same control once it's drawn again: a filter chip, a
- * calendar day, ⚙, "Cuándo".
+ * calendar day, Filtros, "Cuándo".
  */
 export function focusSelector(element: Element | null): string | null {
   if (!(element instanceof HTMLElement)) return null;
@@ -25,13 +25,14 @@ export function focusScope(previous: Element | null): ParentNode {
 
 /**
  * After "Limpiar": the control is gone (a chip, the empty list's button), hidden (the line under the bar, the
- * toolbar's status row) or disabled (the sheet's). The focus goes to the sheet's first chip, ⚙, or the toolbar's
- * first chip: controls that render() puts the focus back on when it draws them again (focusSelector).
+ * toolbar's status row) or disabled (the sheet's). The focus goes to the sheet's first chip, Filtros (in the bar at
+ * the bottom), or the toolbar's first chip: controls that render() puts the focus back on when it draws them again
+ * (focusSelector). The first one on screen: getClientRects, since the bar is fixed (no offsetParent).
  */
 export function focusAfterClearing(control: HTMLElement) {
   const sheet = control.closest("#filter-sheet");
   const candidates = sheet
     ? [...sheet.querySelectorAll<HTMLElement>("[data-filter]")]
     : [...document.querySelectorAll<HTMLElement>("[data-open-filters], #date-filters [data-filter], #type-filters [data-filter]")];
-  candidates.find((candidate) => candidate.offsetParent !== null)?.focus({ preventScroll: true });
+  candidates.find((candidate) => candidate.getClientRects().length > 0)?.focus({ preventScroll: true });
 }

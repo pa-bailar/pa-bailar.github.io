@@ -97,7 +97,14 @@ const PAIRS = [
   // The filters (docs/DESIGN.md, "Filters"). Dimmed options (--dimmed) are inactive controls: exempt.
   ["Filter chip label and outline on the page (phone bar)", "text", "bg", "text"],
   ["Filter chip count in the sheet", "text-muted", "surface", "text"],
-  ["Badge on ⚙ / 🔖 (11px bold)", "chip-active-text", "chip-active-bg", "text"],
+  ["Badge on Filtros / Guardados in the bar at the bottom (11px bold)", "chip-active-text", "chip-active-bg", "text"],
+  // The bar at the bottom (docs/DESIGN.md, "The bar at the bottom").
+  ["Bottom bar: an item's icon on the page", "text", "bg", "ui"],
+  ["Bottom bar: an item's label on the page (11px bold)", "text-muted", "bg", "text"],
+  ["Bottom bar: the view on screen, its icon and label (11px bold)", "accent-text", "bg", "text"],
+  ["Bottom bar: the view on screen, the line on its top edge", "accent", "bg", "ui"],
+  ["Bottom bar: an item that's on, its pill on the page", "chip-active-bg", "bg", "ui"],
+  ["Bottom bar: an item that's on, its icon on the pill", "chip-active-text", "chip-active-bg", "ui"],
   ["Filter line: \"× Limpiar\" on the page (13px bold)", "accent-text", "bg", "text"],
   ["Filter sheet: \"Limpiar\" on the sheet (13px bold)", "accent-text", "surface", "text"],
   ["\"Cuándo\": its calendar on the page (phone bar)", "accent-text", "bg", "ui"],

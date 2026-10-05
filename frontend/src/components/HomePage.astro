@@ -16,7 +16,7 @@ import FilterSheet from "./FilterSheet.astro";
 import InstallOffer from "./InstallOffer.astro";
 import PostViewer from "./PostViewer.astro";
 import PostsSheet from "./PostsSheet.astro";
-import ViewSwitch from "./ViewSwitch.astro";
+import BottomNav from "./BottomNav.astro";
 import { accounts, events, meta } from "../data";
 import { LOCALE } from "../scripts/lib/format";
 
@@ -53,6 +53,9 @@ const { view } = Astro.props;
   <InstallOffer />
   <ViewToolbar />
   <JumpBar />
+  <!-- Phones: the bar at the bottom of the screen. Here in the page's order, so the keyboard reaches it before the list. -->
+  <BottomNav />
+  <p class="visually-hidden" id="results-status" role="status"></p>
 
   <main class="container page-main">
     <section id="view-upcoming" role="tabpanel" aria-labelledby="tab-upcoming"></section>
@@ -64,7 +67,6 @@ const { view } = Astro.props;
   <PostsSheet />
   <PostViewer />
   <FilterSheet />
-  <ViewSwitch />
 
   <script type="application/json" id="events-data" set:html={eventsJson} />
   <script>
