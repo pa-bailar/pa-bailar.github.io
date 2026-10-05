@@ -22,8 +22,9 @@ import {
 import { isSeries, nextSession, todayIso } from "../lib/dates";
 import { contactLink, type ContactKind } from "../lib/contact";
 import { ICONS } from "../lib/icons";
-import { feedbackUrl, flyerUrl, mapsUrl, previewUrl, profileUrl } from "../lib/links";
-import { isStory, isVideoCover, mediaLabel, storySource } from "../lib/mediaLabel";
+import { accountLinkHtml } from "../lib/accountLink";
+import { feedbackUrl, flyerUrl, mapsUrl, previewUrl } from "../lib/links";
+import { isStory, isVideoCover, mediaLabel, storyAccount, storySource } from "../lib/mediaLabel";
 import { playInline } from "./inlinePlayer";
 import { openPostViewer } from "./postViewer";
 import { saveButtonHtml } from "./saveButton";
@@ -40,6 +41,10 @@ const CONTACT_ICONS: Record<ContactKind, string> = {
 function contactHtml(contact: string): string {
   const link = contactLink(contact);
   if (!link) return escapeHtml(contact);
+  if (link.kind === "instagram") {
+    const content = `${CONTACT_ICONS.instagram}${escapeHtml(link.label)}`;
+    return accountLinkHtml(link.label.slice(1), { className: "inline-link contact-link", track: "contacto-instagram", content });
+  }
   const external = link.kind === "phone" ? "" : ` target="_blank" rel="noopener"`;
   return `<a class="inline-link contact-link" href="${escapeHtml(link.href)}"${external} data-track="contacto-${link.kind}">${CONTACT_ICONS[link.kind]}${escapeHtml(link.label)}</a>`;
 }
@@ -68,10 +73,11 @@ function detailRows(event: DanceEvent): [string, string][] {
   const directions = maps
     ? ` <a class="inline-link" href="${escapeHtml(maps)}" target="_blank" rel="noopener" data-track="como-llegar">${ICONS.pin}Cómo llegar</a>`
     : "";
+  // The organizer is often the account itself ("@academia"): said once. The @ is the account's link, as everywhere.
+  const named = event.organizer && event.organizer !== `@${event.account}` ? `${escapeHtml(event.organizer)} · ` : "";
   const organizer: [string, string] = [
     "Organiza",
-    // The organizer is often the account itself ("@academia"): said once.
-    escapeHtml([...new Set([event.organizer, `@${event.account}`].filter(Boolean))].join(" · ")),
+    `${named}${accountLinkHtml(event.account, { className: "inline-link", track: "perfil-organiza" })}`,
   ];
   const where: [string, string] = ["Lugar", place ? `${escapeHtml(place)}${directions}` : toConfirm()];
 
@@ -187,11 +193,10 @@ function mediaHtml(event: DanceEvent, media: EventMedia, selected: number): stri
  * opens its Instagram profile (on a card, it filters the list to it instead).
  */
 function headHtml(event: DanceEvent, { heading, titleId }: { heading: "h1" | "h2"; titleId: string }): string {
-  const account = escapeHtml(event.account);
   return `
     <p class="event-detail__when">${escapeHtml(cardWhenLabel(event))}</p>
     <${heading} class="event-detail__title" id="${titleId}" tabindex="-1">${escapeHtml(event.title)}</${heading}>
-    <p class="event-detail__by"><span class="tag-type t-${escapeHtml(event.event_type)}">${typeLabel(event.event_type)}</span><a class="event-detail__account" href="${escapeHtml(profileUrl(event.account))}" target="_blank" rel="noopener" data-profile="${account}" data-track="perfil-detalle" aria-label="Ver el perfil de @${account}">@${account}</a></p>`;
+    <p class="event-detail__by"><span class="tag-type t-${escapeHtml(event.event_type)}">${typeLabel(event.event_type)}</span>${accountLinkHtml(event.account, { className: "event-detail__account", track: "perfil-detalle" })}</p>`;
 }
 
 /**
@@ -214,11 +219,9 @@ function mediaLinksHtml(event: DanceEvent, selected: number): string {
  */
 function instagramButtonHtml(event: DanceEvent, media: EventMedia, selected: number): string {
   const href = escapeHtml(media.permalink);
-  const account = escapeHtml(event.account);
   const label = `${ICONS.instagram}<span>Instagram</span>`;
   if (isStory(media)) {
-    return `<a class="btn" href="${href}" target="_blank" rel="noopener" data-profile="${account}" data-track="perfil-historia"
-      aria-label="Ver el perfil de @${account}">${label}</a>`;
+    return accountLinkHtml(storyAccount(media) ?? event.account, { className: "btn", track: "perfil-historia", content: label });
   }
   const kind = isVideoCover(media) ? "video" : mediaLabel(media)?.icon === "carousel" ? "carrusel" : "publicacion";
   const spoken = { video: "Ver el video con sonido", carrusel: `Ver las ${media.slides} imágenes`, publicacion: "Ver la publicación" }[kind];
