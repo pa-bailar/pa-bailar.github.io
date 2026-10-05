@@ -1279,7 +1279,7 @@
       "bachata dominicana"
     ],
     "organizer": "Distrito Social",
-    "venue": null,
+    "venue": "Distrito Social",
     "address": null,
     "area": null,
     "date": "2026-09-20",
@@ -1288,14 +1288,30 @@
     "weekday": "domingo",
     "start_time": "16:00",
     "end_time": null,
-    "prices": [],
+    "prices": [
+      {
+        "label": "Especial",
+        "amount_cop": 60000,
+        "condition": "si asistes a Bachatamania – Jack & Jill el 19 de septiembre"
+      },
+      {
+        "label": "En puerta individual",
+        "amount_cop": 80000,
+        "condition": null
+      },
+      {
+        "label": "En puerta pareja",
+        "amount_cop": 100000,
+        "condition": null
+      }
+    ],
     "artists": [
       "Adriana Tibaduiza"
     ],
     "activities": [
       "clase intensiva de bachata tradicional"
     ],
-    "contact": null,
+    "contact": "@tibaduiza__",
     "confidence": "high",
     "doubts": [
       "sin precio"
@@ -1311,6 +1327,16 @@
         "flyer": "flyers/18409856125080489-0.webp",
         "caption": "Septiembre ✨\n\nTe dejamos nuestra programación de eventos del mes de Septiembre dónde tendrás mucho baile, aprendizaje y gozadera 🥳🥳🥳\n\n🔸 Domingo 13: Iniciamos a la 1PM con un Intensivo de Salsa Caleña dictada por Jenssy Gonzáles y Felipe Romero\n\n🔸Domingo 13: Seguimos ese mismo día a las 3:30 PM con un Intensivo de Jack & Jill Bachata dictado por Angel y Melanny \n\n🔸 Sábado 19: Iniciamos a las 7 PM con nuestra clasificatoria de Bachatamania Master League dónde pondrán a prueba todas sus habilidades \n\n🔸Sábado 19: Seguimos este día desde las 8:30 PM con clase de Bachata y social 100% Bachatero\n\n🔸Domingo 20: Como nunca es suficiente Bachata nos vamos a partir de las 4 PM a una clase Intensiva de Bachata Dominicana dictada por Adriana Tibaduiza\n\n🔸Sábado 26: El último sábado del mes es para bailar y nos vamos con SBK (Salsa, Bachata, Kizomba) desde las 7 PM con doble clase y un social increíble \n\n🔸 Miércoles 30: Cerramos el mes con la culminación de l segundo corte de nuestro aniversario que será el mes de Noviembre 🤩🤩🤩\n\nNo dejes que te lo cuenten reserva en nuestras Webs:\n\ndistrito-social-academy.com/eventos\nappdanza.com",
         "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18074575166426657",
+        "permalink": "https://www.instagram.com/reel/DdPDHFLBSXK/",
+        "media_type": "VIDEO",
+        "published": "2026-09-13T17:00:06+0000",
+        "flyer": "flyers/18074575166426657-0.webp",
+        "caption": "🚨 ¡ATENCIÓN, BACHATEROS! 🇩🇴🇨🇴\n\nSE ACERCA EL 1.er INTENSIVO DE BACHATA ESTILO CARRANDALES 🔥\n\n✨ ¡APROVECHA ESTA OFERTA ESPECIAL! ✨\n\nSi asistes a BACHATAMANIA – JACK & JILL este 19 de septiembre en Distrito Social, disfruta de nuestro precio especial. 🫶🏽\n\n🔥 INTENSIVO DE BACHATA EN PAREJA – ESTILO CARRANDALES\n\n💥 $60.000 POR PERSONA\n\n📍 BOGOTÁ – DISTRITO SOCIAL\n📅 Próximo domingo 20 de septiembre\n\nAprende la rapidez de la bachata dominicana, la creatividad EN PAREJA, la soltura y el fuego del Carrandales. 💃🏻🕺🏻🇩🇴\n\n🎟️ EN PUERTA:\n$80.000 individual | $100.000 pareja\n\n🔥 ¡Aprovecha el precio especial y nos vemos en la pista!",
+        "preview": "previews/18074575166426657-0.mp4",
         "slides": null
       }
     ]
@@ -4035,6 +4061,71 @@
     ]
   },
   {
+    "title": "La Guillaera",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "urbano"
+    ],
+    "organizer": "@valkandela",
+    "venue": "el_bochinche_cafe_",
+    "address": "Calle 22 #1-26",
+    "area": "Centro",
+    "date": "2026-10-31",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "preventa",
+        "amount_cop": 20000,
+        "condition": null
+      },
+      {
+        "label": "taquilla",
+        "amount_cop": 30000,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "concurso"
+    ],
+    "contact": "WhatsApp 3170857229",
+    "confidence": "high",
+    "doubts": [
+      "sin precio",
+      "sin hora de inicio",
+      "estilos de baile no especificados"
+    ],
+    "id": "la-guillaera-31-oct",
+    "account": "valkandela",
+    "media": [
+      {
+        "post_id": "18106590419580056",
+        "permalink": "https://www.instagram.com/reel/Ddr2p6AuB2s/",
+        "media_type": "VIDEO",
+        "published": "2026-09-24T21:36:54+0000",
+        "flyer": "flyers/18106590419580056-0.webp",
+        "caption": "El señor, por ejemplo, va a ir a La Guillaera, DEFINITIVAMENTE😂.\nEste 31 de octubre, El Bochinche se prende y abre sus puertas a una noche de SÓLO clásicos del Reggaetón \nLlega desde Medellín 💎 La Guillaera 💎, a calentar la fría. \n\nAdquiere tus entradas 🎫\n⭐️20K preventa\n⭐️30K taquilla\n🎟️ 317 085 7229\n\nCÓDIGO DE VESTIMENTA: \nReggaetón dosmilero. 🪩\n🏆Premio al mejor disfraz. \n\nPura rozaera’ de cuerpo y más na’ 😮‍💨\n🗓️ 31 de octubre \n📍 El Bochinche Café Bar — Calle 22 #1-26, Centro",
+        "preview": "previews/18106590419580056-0.mp4",
+        "slides": null
+      },
+      {
+        "post_id": "18112997326873834",
+        "permalink": "https://www.instagram.com/reel/DdR9EPSs1Kg/",
+        "media_type": "VIDEO",
+        "published": "2026-09-14T20:08:18+0000",
+        "flyer": "flyers/18112997326873834-0.webp",
+        "caption": "Por allá te espero, mi Bby wow 🪩💅🏽. Muero por bailar contigo como pa’ que nos ganemos el concurso 😮‍💨\nEste 31 de octubre, el_bochinche_cafe_  se prende con La Guillaera💿\n\nAdquiere tu entrada:\n🎫3170857229",
+        "preview": "previews/18112997326873834-0.mp4",
+        "slides": null
+      }
+    ]
+  },
+  {
     "title": "Distrito Social Aniversario",
     "event_type": "festival",
     "is_recurring": false,
@@ -4049,7 +4140,7 @@
     "date": "2026-10-31",
     "end_date": "2026-11-02",
     "sessions": null,
-    "weekday": "sábado",
+    "weekday": "viernes",
     "start_time": "20:00",
     "end_time": null,
     "prices": [
@@ -4183,6 +4274,26 @@
         "flyer": "flyers/18018174977930391-0.webp",
         "caption": "Ricardo y Laura ✨\n\nLos reyes del BachaTango dicen presente en nuestro aniversario 🥳🥳🥳🥳 prepárate para compartir y aprender mucho de esta pareja y de todos los artistas invitados\n\n¿Ya tienes tu boleta? No dejes que te lo cuenten\n\nReserva en nuestras Webs:\ndistrito-social-academy.com/eventos\nappdanza.com",
         "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "17888736804618261",
+        "permalink": "https://www.instagram.com/reel/DeFeOshJcZW/",
+        "media_type": "VIDEO",
+        "published": "2026-10-04T20:19:22+0000",
+        "flyer": "flyers/17888736804618261-0.webp",
+        "caption": "Adriana Tibaduiza ✨\n\nSeguimos alistando motores para nuestro aniversario 🥳🥳🥳\n\nNo dejes pasar la oportunidad de aprender y bailar hasta que el cuerpo no de más 🤩\n\n17 horas de Talleres\n12 horas de Social\n\nLos mejores artistas de Bogotá y a nivel nacional 🤯\n\nNo dejes que te lo cuenten reserva en nuestras Webs:\n\ndistrito-social-academy.com/eventos\nappdanza.com",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18035194370814740",
+        "permalink": "https://www.instagram.com/reel/DeE-FWPxaB-/",
+        "media_type": "VIDEO",
+        "published": "2026-10-04T15:38:24+0000",
+        "flyer": "flyers/18035194370814740-0.webp",
+        "caption": "Jay D Real ✨\n\nSeguimos afinando todo para nuestro aniversario 🥳\n\n17 horas de Talleres\n12 horas de Social\n\nSalsa - Bachata - Kizomba - Urbano\n\nNo puedes perderte este evento de 3 días de mucho baile y aprendizaje 🤩\n\nReserva en nuestras Webs:\ndistrito-social-academy.com/eventos\nappdanza.com",
+        "preview": "previews/18035194370814740-0.mp4",
         "slides": null
       },
       {
