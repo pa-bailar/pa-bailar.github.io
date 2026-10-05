@@ -5,8 +5,18 @@
 // Pure functions, tested in tests/linkPreview.test.ts.
 
 import type { DanceEvent } from "../types";
-import { isMultiDay, isSeries, lastDay, parseIsoDate, todayIso } from "./dates";
-import { capitalize, dateRangeLabel, formatLongDate, formatTime, priceSummary, stickerDate, typeLabel } from "./format";
+import { isMultiDay, isSeries, lastDay, parseIsoDate, sameMonth, todayIso } from "./dates";
+import {
+  capitalize,
+  dateRangeLabel,
+  formatLongDate,
+  formatTime,
+  priceSummary,
+  shortMonthName,
+  shortWeekdayAndDay,
+  stickerDate,
+  typeLabel,
+} from "./format";
 
 /** The image's size: 1.91:1, what WhatsApp, Instagram, iMessage, Telegram and Facebook show whole. */
 export const PREVIEW_WIDTH = 1200;
@@ -14,7 +24,6 @@ export const PREVIEW_HEIGHT = 630;
 /** WhatsApp skips preview images over about 300 KB; the build fails above this (scripts/og-check.mjs). */
 export const PREVIEW_MAX_BYTES = 280 * 1024;
 
-const LOCALE = "es-CO";
 const SITE_NAME = "Pa' Bailar";
 
 /**
@@ -23,14 +32,7 @@ const SITE_NAME = "Pa' Bailar";
  */
 export const PREVIEW_DESIGN_VERSION = 1;
 
-const shortWeekday = new Intl.DateTimeFormat(LOCALE, { weekday: "short" });
-const shortMonth = new Intl.DateTimeFormat(LOCALE, { month: "short" });
 const styleList = new Intl.ListFormat("es", { type: "conjunction" });
-
-/** "oct" (Intl writes "oct."). */
-function monthShort(iso: string): string {
-  return shortMonth.format(parseIsoDate(iso)).replace(".", "");
-}
 
 /** " 2027" when the event isn't in the current year (Bogotá), else "". */
 function otherYear(iso: string, today: string): string {
@@ -46,17 +48,15 @@ function otherYear(iso: string, today: string): string {
 export function shortWhen(event: DanceEvent, today = todayIso()): string {
   const day = (iso: string) => parseIsoDate(iso).getDate();
   const oneDay = (iso: string, time: string | null) => {
-    const weekday = shortWeekday.format(parseIsoDate(iso)).replace(".", "");
-    const date = `${weekday} ${day(iso)} ${monthShort(iso)}${otherYear(iso, today)}`;
+    const date = `${shortWeekdayAndDay(iso)} ${shortMonthName(iso)}${otherYear(iso, today)}`;
     return time ? `${date}, ${formatTime(time)}` : date;
   };
   if (isSeries(event)) return `${event.sessions.length} sesiones desde ${oneDay(event.date, event.start_time)}`;
   if (isMultiDay(event)) {
     const end = lastDay(event);
-    const sameMonth = end.slice(0, 7) === event.date.slice(0, 7);
-    const days = sameMonth
-      ? `${day(event.date)}–${day(end)} ${monthShort(end)}`
-      : `${day(event.date)} ${monthShort(event.date)} – ${day(end)} ${monthShort(end)}`;
+    const days = sameMonth(end, event.date)
+      ? `${day(event.date)}–${day(end)} ${shortMonthName(end)}`
+      : `${day(event.date)} ${shortMonthName(event.date)} – ${day(end)} ${shortMonthName(end)}`;
     return days + otherYear(end, today);
   }
   return oneDay(event.date, event.start_time);
