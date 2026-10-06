@@ -13,8 +13,9 @@ const data = fileURLToPath(new URL("../../data/", import.meta.url));
 if (existsSync(clone)) execFileSync("git", ["-C", clone, "pull", "-q", "--ff-only"], { stdio: "inherit" });
 else execFileSync("git", ["clone", "-q", "--depth", "1", "https://github.com/pa-bailar/media.git", clone], { stdio: "inherit" });
 
+// A folder can be missing: git keeps no empty folder (no clips left once the last video's event is past).
 for (const folder of ["flyers", "previews"]) {
   mkdirSync(`${data}${folder}`, { recursive: true });
-  cpSync(`${clone}${folder}`, `${data}${folder}`, { recursive: true });
+  if (existsSync(`${clone}${folder}`)) cpSync(`${clone}${folder}`, `${data}${folder}`, { recursive: true });
   console.log(`${folder}: ${readdirSync(`${data}${folder}`).length} files in data/${folder}`);
 }

@@ -14,7 +14,7 @@ repositories (backend first, behind the new version).
 |---|---|---|---|
 | `data/events.json` | backend | frontend (build) | Array of events, sorted by date (an event over several days: its first day; a workshop series: its first session) and start time |
 | `data/meta.json` | backend | frontend (build) | `schema_version`, `generated_at` (Bogotá time), `accounts` (every Instagram account the sweep reads, sorted; the footer's sources, including those without upcoming events; optional for older data) and stats of the last sweep that changed data. Only committed with a real change; the site's "Actualizado el" uses the time of the last check, passed by the deploy, falling back to `generated_at`. |
-| `data/flyers/*.webp` | backend | frontend (static files) | Flyer copies, max 1080×1350, WebP q80. Stored in `pa-bailar/media`, not here: copied into `data/` before every build and check (`npm run media` locally) |
+| `data/flyers/*.webp` | backend | frontend (static files) | Flyer copies, max 1080×1350, WebP q75. Stored in `pa-bailar/media`, not here: copied into `data/` before every build and check (`npm run media` locally) |
 | `data/previews/*.mp4` | backend | frontend (static files) | Clips of videos: 6 silent seconds, 480 px, H.264 (`EventMedia.preview`). Stored in `pa-bailar/media`, like the flyers |
 | `data/archive/<year>.json` | backend | nothing yet | Past events, archived 60 days after their last day instead of deleted: the same records as `events.json`, by the year of their last day, each flyer pointing to a small copy (`archive/flyers/…`, kept in `pa-bailar/media` only, never published) and no clip |
 
