@@ -65,3 +65,16 @@ describe("a summarized period's block among the cards (the owner, 6 Oct 2026)", 
     expect(neighbor(list, 5, "up")).toBe(4); // the middle (410) is closest to the card at 280
   });
 });
+
+describe("a short button just above the next period's cards (bug, 6 Oct 2026)", () => {
+  // The weekend's last row, its "Ver 10 más" (44 px tall, centered), and next week's first row 168 px below it.
+  const button = { left: 590, top: 1272, width: 100, height: 44 };
+  const list = [box(0, 640), box(280, 640), button, box(0, 1440), box(280, 1440)];
+
+  it("↓ from a card stops on the button, not on the card closer to its middle below it", () => {
+    expect(neighbor(list, 0, "down")).toBe(2);
+    expect(neighbor(list, 2, "down")).toBe(4); // the card closest to its middle
+    expect(neighbor(list, 3, "up")).toBe(2);
+    expect(neighbor(list, 2, "up")).toBe(1); // the middle (640) is closest to the card at 280
+  });
+});

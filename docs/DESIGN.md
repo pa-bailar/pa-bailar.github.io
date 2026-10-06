@@ -542,7 +542,10 @@ An event can be announced by several Instagram posts (a flyer, then a video, a r
   scroll); with the details open, from their event. A summarized period ("Ver los 23 eventos") and "Ver 7 más" are
   stops in the grid too: Enter opens the period, the focus lands on its first new event, and the arrows go on, so the
   whole list can be walked without the mouse (the owner, 6 Oct 2026). The details open: ← → the event before or after in the
-  list, ↑ ↓ the one in the row above or below; the list follows (its card outlined, brought into view); Escape leaves the focus on that card, and back still
+  list, ↑ ↓ the one in the row above or below; with the image beside them, ← → go through its photos first, then on
+  to the next event (going back, the previous one's last photo), like one stream; a block on the way opens by itself
+  and the details show its first new event (its last, going back), so the image never stays still (the owner, 6 Oct
+  2026); the list follows (its card outlined, brought into view); Escape leaves the focus on that card, and back still
   returns to the list (the panel swaps events in place). **While the side panel is open it shows the card in focus**,
   like an inbox's reading pane: the arrows on the list carry it along (the focus stays in the list), and closing a
   card's lightbox switches it to that event (the owner, 5 Oct 2026: after a look at another card's image, the arrows
