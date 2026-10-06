@@ -336,7 +336,7 @@ the list stays short there and summarizes what's further away (`scripts/views/up
 - **Later periods summarized:** "Más adelante en <mes>" and each later month start as one row with their
   first five flyers as small squares and "Ver los 23 eventos ›" (`.period-summary`); tapping it shows
   them in full. Choosing that period in the date filter opens it too.
-- **Busy periods capped:** an open period shows six events, then "Ver 7 más ⌄" (`.period-more`): a full-width button in the accent's color, taller than a control, with no flyers, so it isn't missed and isn't taken for a month's block (the owner, 6 Oct 2026: the small button went unnoticed).
+- **Busy periods capped:** an open period shows six events, then "Ver 7 más ⌄" (`.period-more`): a full-width button framed thick in the action color (the primary buttons'), its label in the text color, taller than a control, with no flyers, so it isn't missed and isn't taken for a month's block (the owner, 6 Oct 2026: the small button went unnoticed).
 - **Short lists whole:** with 12 events or fewer (for example once filtered) nothing is summarized. With
   nothing in the near periods, the first period opens.
 - What the visitor opens stays open while filtering or switching views, and focus moves to the first

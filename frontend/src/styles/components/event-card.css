@@ -169,10 +169,10 @@
   min-height: calc(var(--touch-target) + var(--space-3));
   margin-top: var(--space-5);
   padding: var(--space-3) var(--space-4);
-  border: var(--border-width) solid var(--accent-text);
+  border: calc(var(--border-width) * 2) solid var(--action); /* the primary buttons' color: something to press */
   border-radius: var(--radius-md);
-  background: transparent;
-  color: var(--accent-text);
+  background: var(--surface);
+  color: var(--text);
   font-size: var(--text-base);
   font-weight: var(--weight-bold);
 }
@@ -180,11 +180,12 @@
 .period-more .icon {
   width: var(--icon-lg);
   height: var(--icon-lg);
+  color: var(--action);
 }
 
 @media (hover: hover) {
   .period-more:hover {
-    background: var(--surface);
+    background: var(--surface-sunken);
   }
 }
 
