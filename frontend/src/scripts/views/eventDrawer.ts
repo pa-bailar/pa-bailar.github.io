@@ -17,6 +17,7 @@ import { byId, escapeHtml, prefersReducedMotion } from "../lib/dom";
 import { detailsEventName, type DetailsSource, trackEvent, trackPageview } from "../lib/analytics";
 import { ICONS } from "../lib/icons";
 import { eventPath } from "../lib/links";
+import { glideFrom } from "../lib/glide";
 import { DURATION, EASE } from "../lib/motion";
 import { holdClips } from "./clips";
 import { initDrawerGestures } from "./drawerGestures";
@@ -171,32 +172,57 @@ export function highlightCurrentCard({ reveal = false } = {}) {
   if (reveal) card?.scrollIntoView({ block: "center" });
 }
 
-/** What may still overlap before the list makes room: a card's gap, not a card (px). */
-const ROOM_SLACK = 16;
-
 /**
- * Laptops: the side panel lies over the page's right side, and there it covered the list's last column; a card the
- * keyboard moved to could be fully hidden under it (WCAG 2.2, 2.4.11; the owner, 6 Oct 2026: "make room when open").
- * While the panel is open, where it would cover the list, the list narrows beside it (base.css, .panel-room), at once,
- * and `keep` (the card shown) stays where it was on screen: the page scrolls by what the new layout moved it, so the
- * list doesn't jump (scrolling it into view jumped a tall card's whole height). Where it covers nothing, nothing moves.
+ * Windows up to ~1970 px wide: the side panel lies over the page's right side, and there it covered the list's last
+ * column (the focused card among them: WCAG 2.2, 2.4.11), the header's buttons and the search field. While it's open,
+ * where it would cover the page, the whole page (header, filters, list, footer: its containers) lives beside it,
+ * against its edge (base.css, .panel-room), and the list keeps the columns that still fit: the owner, 6 Oct 2026,
+ * like IBM Carbon's and Fluent's panels beside the content, Gmail's or Drive's. The page moves only as far as it must,
+ * and not at all where the panel covers nothing. `keep` (the card shown) stays at its height on screen: the page
+ * scrolls by what the new layout moved it. What moved glides to its new place, with the panel (`glide`), unless the
+ * room changed with no one looking: a resized window, a shared link opening the page.
  */
-function makeRoom(open: boolean, keep?: Element | null) {
+function makeRoom(open: boolean, { keep, glide = true }: { keep?: Element | null; glide?: boolean } = {}) {
   const root = document.documentElement;
   const had = root.classList.contains("panel-room");
-  const before = keep?.getBoundingClientRect().top;
+  const needed = open && state.mode === "panel" && panelCoversPage();
+  if (needed === had) return;
+  const top = keep?.getBoundingClientRect().top;
+  const play = glide ? glideFrom(movingParts(), { duration: DURATION.panelIn, easing: EASE.emphasizedDecelerate }) : null;
+  root.classList.toggle("panel-room", needed);
+  if (keep && top !== undefined) window.scrollBy({ top: keep.getBoundingClientRect().top - top, behavior: "instant" });
+  play?.();
+}
+
+/** Whether the panel, once in, lies over the page as it is with no room made (its gutter counts: a card's outline). */
+function panelCoversPage(): boolean {
+  const root = document.documentElement;
+  const page = document.querySelector(".page-main");
+  if (!page) return false;
+  const had = root.classList.contains("panel-room");
   root.classList.remove("panel-room");
-  if (open && state.mode === "panel") {
-    const list = document.querySelector(".page-main");
-    // Where the panel ends up, not where it is: it slides in from the right (drawer.css).
-    const panelLeft = root.clientWidth - parseFloat(getComputedStyle(root).getPropertyValue("--panel-width"));
-    if (list) {
-      const right = list.getBoundingClientRect().right - parseFloat(getComputedStyle(list).paddingRight || "0");
-      if (right - panelLeft > ROOM_SLACK) root.classList.add("panel-room");
-    }
-  }
-  if (had === root.classList.contains("panel-room") || !keep || before === undefined) return;
-  window.scrollBy({ top: keep.getBoundingClientRect().top - before, behavior: "instant" });
+  // Where the panel ends up, not where it is: it slides in from the right (drawer.css).
+  const panelLeft = root.clientWidth - parseFloat(getComputedStyle(root).getPropertyValue("--panel-width"));
+  const covers = page.getBoundingClientRect().right > panelLeft + 0.5;
+  root.classList.toggle("panel-room", had);
+  return covers;
+}
+
+/**
+ * What making room moves, near the screen: the page's rows (its containers but the list), and the list's cards and
+ * the blocks around them (headings, the calendar, notes), each as one piece: a card grid gives its cards, which change
+ * rows; anything holding a grid gives its own pieces.
+ */
+function movingParts(): HTMLElement[] {
+  const pieces = (block: Element): Element[] =>
+    [...block.children].flatMap((child) => {
+      if (child.matches(".card-grid")) return [...child.children];
+      return child.querySelector(".card-grid") ? pieces(child) : [child];
+    });
+  const view = document.querySelector('[role="tabpanel"]:not([hidden])');
+  const parts = [...document.querySelectorAll(".container:not(.page-main)"), ...(view ? pieces(view) : [])];
+  const near = (box: DOMRect) => box.width > 0 && box.bottom > -window.innerHeight && box.top < 2 * window.innerHeight;
+  return parts.filter((part): part is HTMLElement => part instanceof HTMLElement && near(part.getBoundingClientRect()));
 }
 
 /** As a modal drawer over the list (phones), or as a side panel next to it (wide screens). */
@@ -208,7 +234,7 @@ function show(event: DanceEvent, shared: boolean) {
     element.show();
     holdClips("drawer", false);
     highlightCurrentCard({ reveal: shared });
-    makeRoom(true, document.querySelector(".event-card.is-current"));
+    makeRoom(true, { keep: document.querySelector(".event-card.is-current"), glide: !shared });
     return;
   }
   state.viewport = window.innerHeight;
@@ -322,7 +348,7 @@ function cleanUpAfterClose(element: HTMLDialogElement) {
   if (state.opener?.isConnected && (!focus || focus === document.body || ours)) {
     state.opener.focus({ preventScroll: true });
   }
-  makeRoom(false, state.opener?.closest("[data-event-card]"));
+  makeRoom(false, { keep: state.opener?.closest("[data-event-card]") });
   state.opener = null;
   byId("drawer-content").replaceChildren(); // nothing of it stays in memory while it's closed
   state.current = null;
@@ -350,7 +376,9 @@ export function initEventDrawer(find: (id: string) => DanceEvent | undefined) {
   let resizing = 0;
   window.addEventListener("resize", () => {
     cancelAnimationFrame(resizing);
-    resizing = requestAnimationFrame(() => element.open && makeRoom(true, document.querySelector(".event-card.is-current")));
+    resizing = requestAnimationFrame(
+      () => element.open && makeRoom(true, { keep: document.querySelector(".event-card.is-current"), glide: false }),
+    );
   });
   const panel = byId("drawer-panel");
 

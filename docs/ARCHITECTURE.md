@@ -469,7 +469,12 @@ stateDiagram-v2
     `autofocus`, so opening focuses the dialog itself, not its handle (focusing the handle, still off screen,
     scrolled the list). Closing gives the focus back to what opened it (read before `close()`).
   - **Side panel:** fixed on the right, opened with `show()` so the page stays usable; the open event's card is
-    outlined (`highlightCurrentCard`), and Escape is handled by the page (a non-modal dialog doesn't get it). A card
+    outlined (`highlightCurrentCard`), and Escape is handled by the page (a non-modal dialog doesn't get it). Where it
+    would lie over the page, `makeRoom` sets `.panel-room` on `<html>` while it's open: every `.container` (header,
+    filters, list, footer) gets the panel's width as its right margin, so the page sits against the panel and the
+    list's grid keeps the columns that fit. The card shown keeps its height on screen (the page scrolls by what the new
+    layout moved it), and what moved glides there (`lib/glide.ts`), except on a resize or a shared link; an arrow
+    pressed mid-glide settles it first (`settleGlides`), so it finds the next card from the cards' places. A card
     tapped while it's open shows its event there and replaces the URL, unless the list moved to another screen
     meanwhile: that screen keeps its entry and the event gets one over it. Closing puts the address back to its
     view's (`addressAfterClosing`, `lib/links.ts`). Closing never reopens an earlier event: a back that lands on
@@ -748,6 +753,7 @@ from under one gets its entry when the overlay closes (pushed over the overlay's
 | `lib/mediaLabel.ts` | What the label over a post's image says, and which cards say "Video" (`isVideoCover`); stories (`isStory`, `storySource`) |
 | `lib/sheet.ts`, `lib/sheetMotion.ts` | Bottom sheets that drag to dismiss; panel sheets with their own back-button step; the release and exit numbers they share with the drawer (`releaseVelocity`, the flick, the slops) |
 | `lib/motion.ts` | The motion tokens scripts use (durations, Material's curves), mirroring `tokens.css` |
+| `lib/glide.ts` | What a layout change moved glides to its new place (FLIP, transforms only; none with reduced motion): the page making room beside the side panel |
 | `lib/brandColors.ts` | The palette as hex, for what can't read CSS (link previews, the share card, icons, `theme-color`), checked against `tokens.css` |
 | `lib/instagramEmbed.ts` | Instagram's player for a post, its script loaded on demand |
 | `views/postsSheet.ts`, `views/postViewer.ts` | An event's posts; a post watched inside the site (the media viewer); an account's profile there (`openProfileViewer`: any `a[data-profile]`) |

@@ -33,6 +33,7 @@
 // Never while typing (the search), in a menu (Cuándo, a pill's panel) or over something else (a sheet, the post viewer,
 // the lightbox, which has ← → of its own). A card's ‹ › stay the mouse's and Tab's: ← → never mean two things.
 
+import { settleGlides } from "../lib/glide";
 import type { DanceEvent } from "../types";
 
 type Box = { left: number; top: number; width: number; height: number };
@@ -275,6 +276,8 @@ export function initKeyboardNav(hooks: Hooks) {
     if (domEvent.key === "Enter") return onEnter(domEvent, target);
     const direction = STEPS[domEvent.key];
     if (!direction || busy(target)) return;
+    // The page still gliding aside for the panel (its first arrow opened it): the cards' places, not their way there.
+    settleGlides();
     const list = stops();
     const openId = hooks.openEventId();
     const at = openId ? list.findIndex((stop) => stop.dataset.eventCard === openId) : -1;

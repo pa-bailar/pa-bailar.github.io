@@ -7,6 +7,8 @@ export const DURATION = {
   enter: 320,
   /** A sheet or the drawer settling: between heights, springing back after a drag (--duration-settle). */
   settle: 300,
+  /** The side panel sliding in (--duration-panel-in); the page gliding aside for it (lib/glide.ts). */
+  panelIn: 280,
   /** The side panel sliding out (--duration-panel-out). */
   panelOut: 200,
 } as const;

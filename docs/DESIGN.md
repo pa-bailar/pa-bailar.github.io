@@ -631,11 +631,16 @@ On phones the details open like Instagram's comments: a drawer rises over the li
 - **The list's clips** keep playing above the half drawer and pause under the full one.
 
 **The side panel** (900px and wider, 600px and taller): the same content, in a panel on the right, not modal, so the
-list stays usable next to it. **The page never moves** when it opens or closes (the owner, 5 Oct 2026: the list
-shifting left felt shaky): the panel lies over the page's right side, like Gmail's or Maps'. **Except where it would
-cover cards** (laptops, below about 1,900 px wide): there the list narrows beside it while it's open, at once, the
-event shown kept at its place on screen (the owner, 6 Oct 2026: at 1,280–1,366 px a focused card in the last column
-was fully hidden under the panel; WCAG 2.2, 2.4.11). Wide screens are unchanged. Another card shows its
+list stays usable next to it. **Where it would lie over the page** (windows up to about 1,970 px wide), **the whole
+page moves beside it** while it's open: the header, the filters, the list and the footer, against the panel's edge,
+moving only as far as they must; the list keeps the columns that still fit (4 → 3 at 1,280–1,440 px, 2 at about
+1,000), and the search field narrows. What moved **glides** there in 280 ms with the panel (none with "reduce motion",
+nor on a resize or a shared link opening the page), and the event shown keeps its height on screen. Wider screens:
+nothing moves. History: on 5 Oct 2026 the owner chose a page that never moves (the list shifting left felt shaky),
+the panel over the page's right side; on 6 Oct, after #142 had moved only the list where it hid cards, the owner
+chose this instead: covering a whole column, the selected card among them, was worse than things moving (WCAG 2.2,
+2.4.11; IBM Carbon, Fluent and Material 3 put a panel beside the content and reflow it, as Gmail, Drive and Spotify
+do). Another card shows its
 event in the panel (the address changes without adding to the history), and the open event's card is outlined (`--card-current`: amber in light, pink in dark; never the focus ring's color, red in light and gold in dark, so with the keyboard elsewhere both show). × and
 Escape close it, and the focus goes back to the last card opened. If the list next to it moves to another view (the
 calendar), another card gets its own history entry. A period opened whole meanwhile (a click on "Ver 3 más", or the
