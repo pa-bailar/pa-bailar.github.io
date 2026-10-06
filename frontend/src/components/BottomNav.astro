@@ -5,12 +5,11 @@
 // numbers on the icon's corner (saved events to come, filters in use); Filtros is off in Guardados. Buscar turns the
 // bar into the search field, docked at the bottom above the keyboard. Wide screens don't show it: the toolbar and
 // the header have the same actions. Hidden until the script draws it (no bar without JavaScript, where nothing works).
-// The labels under the icons can be turned off (data-labels="off"): the owner hasn't chosen yet (docs/DESIGN.md).
 import { ICONS } from "../scripts/lib/icons";
 import { viewPath } from "../scripts/lib/links";
 ---
 
-<nav class="bottom-nav" id="bottom-nav" aria-label="Menú principal" data-labels="on" hidden>
+<nav class="bottom-nav" id="bottom-nav" aria-label="Menú principal" hidden>
   <div class="bottom-nav__items">
     <a class="bottom-nav__item" href={viewPath("upcoming")} data-view="upcoming" data-track="barra-eventos">
       <span class="bottom-nav__icon"><Fragment set:html={ICONS.list} /></span>
