@@ -27,7 +27,7 @@ import { watchClips } from "./views/clips";
 import { closeEventDrawer, highlightCurrentCard, initEventDrawer, openEventDrawer, openEventId } from "./views/eventDrawer";
 import { carouselSlide, initCarousels } from "./views/carousel";
 import { initKeyboardNav } from "./views/keyboardNav";
-import { followStage, initLightbox, lightboxMode, showStage } from "./views/lightbox";
+import { followStage, initLightbox, lightboxMode, showStage, stepStage } from "./views/lightbox";
 import { armDetailsHint, markDetailsHintSeen } from "./views/detailsHint";
 import { HIDE_BARS_FILTER, filterModel, staleDates } from "./lib/filterModel";
 import { storedSwitch } from "./lib/storedSwitch";
@@ -401,12 +401,13 @@ export function start() {
   initKeyboardNav({
     findEvent,
     openEventId,
-    showEvent: (event, card, stayInList) => {
+    showEvent: (event, card, stayInList, backward) => {
       openEventDrawer(event, { opener: card, focus: !stayInList });
-      followStage(event); // the image beside the panel, if on show, changes with it
+      followStage(event, backward ? "last" : "first"); // the image beside the panel, if on show, changes with it
       highlightCurrentCard({ reveal: !stayInList }); // the list follows (a card in focus is already in view)
     },
     showImage: showWithImage,
+    stepPhoto: stepStage,
   });
   // × and back end the search (and Escape on a keyboard): cleared, the view drawn again.
   initBottomNav({

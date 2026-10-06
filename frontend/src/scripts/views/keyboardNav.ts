@@ -7,6 +7,8 @@
 //   - Nothing has the focus yet: any arrow puts it on the first card on screen, the first whose top shows below the
 //     pinned bars (the owner, 6 Oct 2026: ↑ ↓ too; Page Up/Down, space and the wheel still scroll). With the details
 //     open, it moves from their event instead, as in the details (a click on the page's margin drops the focus).
+//   - The image beside the details shows several photos: ← → go through them first, then on to the event before or
+//     after (its last photo, going back), like one stream (the owner, 6 Oct 2026; lightbox.ts stepStage).
 //   - The details are open (the side panel, or the drawer): ← → show the event before or after in the list on screen,
 //     ↑ ↓ the one in the row above or below (the grid's, as from a card; the owner, 6 Oct 2026),
 //     the list following (its card outlined and brought into view); Escape then leaves the focus on that card. The
@@ -17,6 +19,8 @@
 //   - A summarized period ("Ver los 23 eventos") and a busy one's "Ver 7 más" are stops too, in the grid's order (the
 //     owner, 6 Oct 2026: the arrows go on through the whole list instead of scrolling past its end). Enter opens the
 //     period whole and puts the focus on its first new event (main.ts showPeriod), and the arrows go on from there.
+//     With the details open the block opens by itself, and the details show its first new event (its last, going
+//     back): moving onto a block that the details can't show left the image unchanged (the owner, 6 Oct 2026).
 // Never while typing (the search), in a menu (Cuándo, a pill's panel) or over something else (a sheet, the post viewer,
 // the lightbox, which has ← → of its own). A card's ‹ › stay the mouse's and Tab's: ← → never mean two things.
 
@@ -47,7 +51,10 @@ export function neighbor(boxes: Box[], from: number, direction: "left" | "right"
     .filter(({ box }) => (below ? box.top > here.top + here.height / 2 : box.top + box.height / 2 < here.top));
   if (!candidates.length) return null;
   const rowTop = below ? Math.min(...candidates.map(({ box }) => box.top)) : Math.max(...candidates.map(({ box }) => box.top));
-  const row = candidates.filter(({ box }) => Math.abs(box.top - rowTop) < here.height / 2);
+  // The row is told by its own first box's height, not this one's: a short "Ver 10 más" just above the next period's
+  // cards is a row of its own (measured by a 620-px card, it was grouped with them and skipped).
+  const nearest = candidates.find(({ box }) => box.top === rowTop)!.box;
+  const row = candidates.filter(({ box }) => Math.abs(box.top - rowTop) < Math.min(here.height, nearest.height) / 2);
   row.sort((a, b) => Math.abs(a.box.left + a.box.width / 2 - middle) - Math.abs(b.box.left + b.box.width / 2 - middle));
   return row[0]?.index ?? null;
 }
@@ -85,6 +92,19 @@ function stops(): HTMLElement[] {
 
 const linkOf = (card: Element | undefined) => card?.querySelector<HTMLAnchorElement>("a.event-card__hit") ?? null;
 
+/**
+ * Opens a period's block from the details (its button's own click: main.ts showPeriod, with its history entry) and
+ * returns the first card it added, or the last one going back.
+ */
+function openPeriod(button: HTMLElement, backward: boolean): HTMLElement | undefined {
+  const key = button.dataset.showPeriod ?? "";
+  const section = () => document.querySelector(`${VIEW} [data-period="${CSS.escape(key)}"]`);
+  const before = section()?.querySelectorAll("[data-event-card]").length ?? 0;
+  button.click();
+  const added = [...(section()?.querySelectorAll<HTMLElement>("[data-event-card]") ?? [])].slice(before);
+  return backward ? added.at(-1) : added[0];
+}
+
 /** What gets the focus at a stop: a card's link, or the period's button itself. */
 const focusOf = (stop: HTMLElement | undefined): HTMLElement | null =>
   stop?.matches("[data-show-period]") ? stop : linkOf(stop);
@@ -109,7 +129,9 @@ interface Hooks {
    * Show `event` in the open details; `card` gets the focus back when they close. `stayInList`: the focus stays on the
    * card (the panel follows it) instead of going to the details.
    */
-  showEvent: (event: DanceEvent, card: HTMLAnchorElement, stayInList: boolean) => void;
+  showEvent: (event: DanceEvent, card: HTMLAnchorElement, stayInList: boolean, backward?: boolean) => void;
+  /** One photo on or back in the image beside the details, if there's one that way: whether it moved. */
+  stepPhoto: (step: 1 | -1) => boolean;
   /**
    * Enter on a card (`card`) or in the open details (`card` null: the open event): the details with the image beside
    * them, where that works (true); false: nothing done (on a card, its link then opens the details).
@@ -149,14 +171,23 @@ export function initKeyboardNav(hooks: Hooks) {
     // button that way gets the focus (the panel keeps its event until a card has it).
     const at = openId ? list.findIndex((stop) => stop.dataset.eventCard === openId) : -1;
     if (openId && (inDetails(target) || (target === document.body && at >= 0))) {
+      const backward = direction === "left" || direction === "up";
+      // Several photos beside the details: ← → show them first.
+      if ((direction === "left" || direction === "right") && hooks.stepPhoto(backward ? -1 : 1)) {
+        domEvent.preventDefault();
+        return;
+      }
       const to = at < 0 ? null : neighbor(boxes(), at, direction);
-      const next = to === null ? undefined : list[to];
+      let next = to === null ? undefined : list[to];
+      if (next?.dataset.showPeriod) {
+        domEvent.preventDefault();
+        next = openPeriod(next, backward); // a block: opened, on to its first new event (its last, going back)
+      }
       const event = next?.dataset.eventCard ? hooks.findEvent(next.dataset.eventCard) : undefined;
-      const focus = focusOf(next);
-      if (!focus || (!event && next?.dataset.eventCard)) return;
+      const link = linkOf(next);
+      if (!event || !link) return;
       domEvent.preventDefault();
-      if (event) hooks.showEvent(event, focus as HTMLAnchorElement, false);
-      else focus.focus();
+      hooks.showEvent(event, link, false, direction === "left");
       return;
     }
 

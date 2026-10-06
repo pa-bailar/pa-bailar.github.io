@@ -4,7 +4,9 @@
 // isn't modal and stops where the panel starts.
 //   - Opened together with the panel by a click on a card's image or Enter on a focused card, and next to an open panel
 //     by Enter in it (main.ts, keyboardNav.ts): to press Enter, an event was almost always just clicked.
-//   - Its event is the panel's: ← → change both (keyboardNav.ts); ‹ › its photos, "1/6".
+//   - Its event is the panel's. ← → go through its photos ("1/6"), then on to the event before or after, both changing
+//     (keyboardNav.ts; the owner, 6 Oct 2026: with several photos, the arrows are expected to show them first); ↑ ↓ change
+//     the event; ‹ › the photos with the mouse.
 //   - It closes with the panel (Escape, back, the panel's ×, its own ×, a click on the dark area), whose history entry it
 //     shares: no entry of its own. The focus goes back to the card, as when the panel closes.
 // Phones and narrower screens never show it: the image opens the details, as before.
@@ -59,9 +61,21 @@ export function showStage(event: DanceEvent, index = 0) {
   if (active instanceof HTMLElement && active !== document.body) active.focus({ preventScroll: true });
 }
 
-/** The panel moved to another event (← →): the stage, if open, shows its image. */
-export function followStage(event: DanceEvent) {
-  if (stage().open && current?.event.id !== event.id) showStage(event, 0);
+/**
+ * One photo on (`step` 1) or back (-1) on the stage, if it's open and has one that way: whether it moved. At the ends
+ * the arrows go on to the next or previous event instead (keyboardNav.ts).
+ */
+export function stepStage(step: 1 | -1): boolean {
+  if (!stage().open || !current) return false;
+  const to = current.index + step;
+  if (to < 0 || to >= current.slides.length) return false;
+  showSlide(to);
+  return true;
+}
+
+/** The panel moved to another event: the stage, if open, shows its image, its last photo when going back (←). */
+export function followStage(event: DanceEvent, at: "first" | "last" = "first") {
+  if (stage().open && current?.event.id !== event.id) showStage(event, at === "last" ? event.media.length - 1 : 0);
 }
 
 function closeStage() {
