@@ -68,9 +68,10 @@ img {
   min-height: 50vh;
 }
 
-/* While the side panel is open where it would cover the list (laptops: eventDrawer.ts makeRoom), the list narrows
-   beside it, at once: no card, focused or not, is ever under the panel. */
-:root.panel-room .page-main {
+/* While the side panel is open where it would cover the page (eventDrawer.ts makeRoom), the whole page (header,
+   filters, list, footer) lives beside it, against its edge: nothing of it, a card or a control, is ever under the
+   panel, and the page moves only as far as it must. */
+:root.panel-room .container {
   margin-right: var(--panel-width);
 }
 

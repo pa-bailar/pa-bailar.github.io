@@ -180,8 +180,9 @@
 }
 
 /* ---------- wide screens: a side panel next to the list ----------
-   Not modal: the list stays usable, its cards open their event here; the panel lies over the page's right side and the
-   page never moves. The card is in the list: no flyer here either. */
+   Not modal: the list stays usable, its cards open their event here. Where the panel would lie over the page, the page
+   moves beside it while it's open (base.css, .panel-room; eventDrawer.ts makeRoom). The card is in the list: no flyer
+   here either. */
 
 @media (min-width: 900px) and (min-height: 600px) {
   .drawer {
