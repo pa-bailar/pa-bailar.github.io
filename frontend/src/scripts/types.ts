@@ -2,6 +2,7 @@
 
 export type EventType =
   | "social"
+  | "party" // "Rumba": a bar's or a general party, not a dancers' social (docs/DATA.md)
   | "workshop"
   | "concert"
   | "festival"

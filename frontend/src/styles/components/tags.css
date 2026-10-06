@@ -2,6 +2,7 @@
 
 /* Each .t-<type> class exposes its color as --type for any component to use. */
 .t-social { --type: var(--type-social); }
+.t-party { --type: var(--type-party); }
 .t-workshop { --type: var(--type-workshop); }
 .t-concert { --type: var(--type-concert); }
 .t-festival { --type: var(--type-festival); }

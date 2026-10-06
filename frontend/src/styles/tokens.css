@@ -60,6 +60,7 @@
   --coral-300: #f59a7c;
   --coral-400: #f2785c;
   --gold-300: #f4c542; /* the stage's lettering: logo, buttons, sticker, today */
+  --mint-300: #7fdcb8; /* "Rumba" in the dark theme: the one hue no other type uses there */
   --plum-700: #3e1f4a; /* holidays */
 
   /* ---------- Layer 2: semantic colors (light, dark) ---------- */
@@ -113,6 +114,7 @@
 
   /* Event types (background of tags, pills and dots; text on them is --on-type) */
   --type-social: light-dark(var(--marigold-600), var(--pink-350));
+  --type-party: light-dark(var(--pink-250), var(--mint-300)); /* "Rumba": a night out, not a dancers' social */
   --type-workshop: light-dark(var(--orange-600), var(--gold-300));
   --type-concert: light-dark(var(--tomato-350), var(--coral-300));
   --type-festival: light-dark(var(--rose-300), var(--lavender-300));
