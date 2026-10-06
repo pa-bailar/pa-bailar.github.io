@@ -75,6 +75,7 @@ export function stepStage(step: 1 | -1): boolean {
 
 /** The panel moved to another event: the stage, if open, shows its image, its last photo when going back (←). */
 export function followStage(event: DanceEvent, at: "first" | "last" = "first") {
+  // The last of its media: showSlide keeps the index within the ones with a flyer.
   if (stage().open && current?.event.id !== event.id) showStage(event, at === "last" ? event.media.length - 1 : 0);
 }
 

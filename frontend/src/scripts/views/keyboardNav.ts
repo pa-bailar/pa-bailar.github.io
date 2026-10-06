@@ -2,33 +2,33 @@
 //   - A card has the focus: ↑ ↓ ← → move it to the card above, below, before or after (the grid's rows on wide screens,
 //     the feed's single column on phones). Enter opens its details, with its image big beside them where that works
 //     (lightbox.ts); elsewhere the card's own link opens the details.
-//   - The details open: Enter (on the panel itself, not on one of its buttons or links) shows the image beside them:
-//     to press Enter an event was almost always just clicked (the owner, 6 Oct 2026).
-//   - Nothing has the focus yet: any arrow puts it on the first card on screen, the first whose top shows below the
-//     pinned bars (the owner, 6 Oct 2026: ↑ ↓ too; Page Up/Down, space and the wheel still scroll). With the details
-//     open, it moves from their event instead, as in the details (a click on the page's margin drops the focus).
-//   - The image beside the details shows several photos: ← → go through them first, then on to the event before or
-//     after (its last photo, going back), like one stream (the owner, 6 Oct 2026; lightbox.ts stepStage).
-//   - The details are open (the side panel, or the drawer): ← → show the event before or after in the list on screen,
-//     ↑ ↓ the one in the row above or below (the grid's, as from a card; the owner, 6 Oct 2026),
-//     the list following (its card outlined and brought into view); Escape then leaves the focus on that card. The
-//     panel swaps events in place (drawerHistory.ts), so back still returns to the list.
-//   - While the side panel is open it shows the card the arrows move to, like an inbox's reading pane: the focus stays
-//     in the list (so ↑ ↓ keep working there). Before, after a look at another card's image (the lightbox) or Escape
-//     from it, the arrows moved through the list and the panel stayed on the first event (the owner, 5 Oct 2026).
 //   - A summarized period ("Ver los 23 eventos") and a busy one's "Ver 7 más" are stops too, in the grid's order (the
 //     owner, 6 Oct 2026: the arrows go on through the whole list instead of scrolling past its end). Enter opens the
 //     period whole and puts the focus on its first new event (main.ts showPeriod), and the arrows go on from there.
-//     With the details open the block opens by itself, and the details show its first new event (its last, going
-//     back): moving onto a block that the details can't show left the image unchanged (the owner, 6 Oct 2026).
+//   - Nothing has the focus yet: any arrow puts it on the first stop on screen, the first whose top shows below the
+//     pinned bars (the owner, 6 Oct 2026: ↑ ↓ too; Page Up/Down, space and the wheel still scroll). With the details
+//     open, it moves from their event instead, as in the details (a click on the page's margin drops the focus).
+//   - The details are open (the side panel, or the drawer): ← → show the event before or after in the list on screen,
+//     ↑ ↓ the one in the row above or below (the grid's, as from a card; the owner, 6 Oct 2026), the list following
+//     (its card outlined and brought into view); Escape then leaves the focus on that card. The panel swaps events in
+//     place (drawerHistory.ts), so back still returns to the list. Enter (on the panel itself, not on one of its
+//     buttons or links) shows the image beside them: to press Enter an event was almost always just clicked.
+//   - With the image beside the details, ← → go through its photos first, then on to the event before or after (its
+//     last photo, going back), like one stream (the owner, 6 Oct 2026; lightbox.ts stepStage).
+//   - From the details, a period's block on the way opens by itself and the details show its first new event (its
+//     last, going back): moving onto a block the details can't show left the image unchanged (the owner, 6 Oct 2026).
+//   - While the side panel is open it shows the card the arrows move to, like an inbox's reading pane: the focus stays
+//     in the list (so ↑ ↓ keep working there). Before, after a look at another card's image (the lightbox) or Escape
+//     from it, the arrows moved through the list and the panel stayed on the first event (the owner, 5 Oct 2026).
 // Never while typing (the search), in a menu (Cuándo, a pill's panel) or over something else (a sheet, the post viewer,
 // the lightbox, which has ← → of its own). A card's ‹ › stay the mouse's and Tab's: ← → never mean two things.
 
 import type { DanceEvent } from "../types";
 
 type Box = { left: number; top: number; width: number; height: number };
+type Direction = "left" | "right" | "up" | "down";
 
-const STEPS: Record<string, "left" | "right" | "up" | "down"> = {
+const STEPS: Record<string, Direction> = {
   ArrowLeft: "left",
   ArrowRight: "right",
   ArrowUp: "up",
@@ -36,10 +36,10 @@ const STEPS: Record<string, "left" | "right" | "up" | "down"> = {
 };
 
 /**
- * The card a key moves to from card `from` (null: none that way). ← → go by reading order (the page's); ↑ ↓ to the
- * nearest row above or below, the card there closest to this one's middle. Pure, on the cards' boxes (tested).
+ * The stop a key moves to from stop `from` (null: none that way). ← → go by reading order (the page's); ↑ ↓ to the
+ * nearest row above or below, the stop there closest to this one's middle. Pure, on the stops' boxes (tested).
  */
-export function neighbor(boxes: Box[], from: number, direction: "left" | "right" | "up" | "down"): number | null {
+export function neighbor(boxes: Box[], from: number, direction: Direction): number | null {
   if (direction === "left") return from > 0 ? from - 1 : null;
   if (direction === "right") return from < boxes.length - 1 ? from + 1 : null;
   const here = boxes[from];
@@ -52,7 +52,8 @@ export function neighbor(boxes: Box[], from: number, direction: "left" | "right"
   if (!candidates.length) return null;
   const rowTop = below ? Math.min(...candidates.map(({ box }) => box.top)) : Math.max(...candidates.map(({ box }) => box.top));
   // The row is told by its own first box's height, not this one's: a short "Ver 10 más" just above the next period's
-  // cards is a row of its own (measured by a 620-px card, it was grouped with them and skipped).
+  // cards is a row of its own (measured by a 620-px card, it was grouped with them and skipped). rowTop is a
+  // candidate's own top, so one is found.
   const nearest = candidates.find(({ box }) => box.top === rowTop)!.box;
   const row = candidates.filter(({ box }) => Math.abs(box.top - rowTop) < Math.min(here.height, nearest.height) / 2);
   row.sort((a, b) => Math.abs(a.box.left + a.box.width / 2 - middle) - Math.abs(b.box.left + b.box.width / 2 - middle));
@@ -60,9 +61,9 @@ export function neighbor(boxes: Box[], from: number, direction: "left" | "right"
 }
 
 /**
- * The card to start on when nothing has the focus: the first (reading order) whose top shows between `top` (below the
- * pinned bars) and `bottom`; else the first still partly below `top` (a card taller than the room); null: no cards.
- * Pure, on the cards' boxes (tested). Before, a card scrolled almost out above, under the pinned bar, got the focus.
+ * The stop to start on when nothing has the focus: the first (reading order) whose top shows between `top` (below the
+ * pinned bars) and `bottom`; else the first still partly below `top` (one taller than the room); null: no stops.
+ * Pure, on the stops' boxes (tested). Before, a card scrolled almost out above, under the pinned bar, got the focus.
  */
 export function firstInView(boxes: Box[], top: number, bottom: number): number | null {
   const shown = boxes.findIndex((box) => box.top >= top && box.top < bottom);
@@ -92,9 +93,13 @@ function stops(): HTMLElement[] {
 
 const linkOf = (card: Element | undefined) => card?.querySelector<HTMLAnchorElement>("a.event-card__hit") ?? null;
 
+/** What gets the focus at a stop: a card's link, or the period's button itself. */
+const focusOf = (stop: HTMLElement | undefined): HTMLElement | null =>
+  stop?.matches("[data-show-period]") ? stop : linkOf(stop);
+
 /**
- * Opens a period's block from the details (its button's own click: main.ts showPeriod, with its history entry) and
- * returns the first card it added, or the last one going back.
+ * Opens a period's block from the details (its button's own click: main.ts showPeriod) and returns the first card it
+ * added, or the last one going back.
  */
 function openPeriod(button: HTMLElement, backward: boolean): HTMLElement | undefined {
   const key = button.dataset.showPeriod ?? "";
@@ -104,10 +109,6 @@ function openPeriod(button: HTMLElement, backward: boolean): HTMLElement | undef
   const added = [...(section()?.querySelectorAll<HTMLElement>("[data-event-card]") ?? [])].slice(before);
   return backward ? added.at(-1) : added[0];
 }
-
-/** What gets the focus at a stop: a card's link, or the period's button itself. */
-const focusOf = (stop: HTMLElement | undefined): HTMLElement | null =>
-  stop?.matches("[data-show-period]") ? stop : linkOf(stop);
 
 /** Whether the keys belong to something else: typing, a menu, a dialog over the page other than the details. */
 function busy(target: Element): boolean {
@@ -121,15 +122,22 @@ function busy(target: Element): boolean {
 /** In the details or the image beside them. */
 const inDetails = (target: Element) => Boolean(target.closest("#event-drawer, #lightbox"));
 
+/** A key pressed with a modifier is the browser's or the system's (Alt+← is back, Shift+↓ selects). */
+const modified = (domEvent: KeyboardEvent) => domEvent.altKey || domEvent.ctrlKey || domEvent.metaKey || domEvent.shiftKey;
+
+interface ShowOptions {
+  /** The focus stays on the card (the panel follows it) instead of going to the details. */
+  stayInList: boolean;
+  /** The image beside the details shows the event's last photo (← from the next event's first). */
+  lastPhoto?: boolean;
+}
+
 interface Hooks {
   findEvent: (id: string) => DanceEvent | undefined;
   /** The event the details show, if they're open. */
   openEventId: () => string | null;
-  /**
-   * Show `event` in the open details; `card` gets the focus back when they close. `stayInList`: the focus stays on the
-   * card (the panel follows it) instead of going to the details.
-   */
-  showEvent: (event: DanceEvent, card: HTMLAnchorElement, stayInList: boolean, backward?: boolean) => void;
+  /** Show `event` in the open details; `card` gets the focus back when they close. */
+  showEvent: (event: DanceEvent, card: HTMLAnchorElement, options: ShowOptions) => void;
   /** One photo on or back in the image beside the details, if there's one that way: whether it moved. */
   stepPhoto: (step: 1 | -1) => boolean;
   /**
@@ -140,85 +148,85 @@ interface Hooks {
 }
 
 export function initKeyboardNav(hooks: Hooks) {
-  document.addEventListener("keydown", (domEvent) => {
-    if (domEvent.key === "Enter" && !domEvent.defaultPrevented && !domEvent.altKey && !domEvent.ctrlKey && !domEvent.metaKey && !domEvent.shiftKey) {
-      const target = domEvent.target instanceof Element ? domEvent.target : document.body;
-      const link = target.closest<HTMLAnchorElement>("a.event-card__hit");
-      const openId = hooks.openEventId();
-      // On a card; or on the open details themselves (their title, their text), not one of their buttons or links.
-      const onDetails = !link && openId && inDetails(target) && !target.closest("a, button, input, select, textarea, summary");
-      const event = link ? hooks.findEvent(link.dataset.event ?? "") : onDetails ? hooks.findEvent(openId) : undefined;
-      if (event && hooks.showImage(event, link)) domEvent.preventDefault(); // otherwise a card's link opens the details
-      // A period's button: it opens the period and focuses its first new event without scrolling (main.ts showPeriod,
-      // so a click doesn't jump); from the keyboard that card must come into view, or the next arrow starts off screen.
-      if (target.closest("[data-show-period]")) {
-        requestAnimationFrame(() => document.activeElement?.closest("[data-event-card]")?.scrollIntoView({ block: "nearest" }));
-      }
-      return;
-    }
-    const direction = STEPS[domEvent.key];
-    if (!direction || domEvent.defaultPrevented || domEvent.altKey || domEvent.ctrlKey || domEvent.metaKey || domEvent.shiftKey) {
-      return;
-    }
-    const target = domEvent.target instanceof Element ? domEvent.target : document.body;
-    if (busy(target)) return;
-    const list = stops();
-    const boxes = () => list.map((item) => item.getBoundingClientRect());
+  /** Enter on a card, on the open details, or on a period's button. */
+  function onEnter(domEvent: KeyboardEvent, target: Element) {
+    const link = target.closest<HTMLAnchorElement>("a.event-card__hit");
     const openId = hooks.openEventId();
+    // On a card; or on the open details themselves (their title, their text), not one of their buttons or links.
+    const onDetails = !link && openId && inDetails(target) && !target.closest("a, button, input, select, textarea, summary");
+    const event = link ? hooks.findEvent(link.dataset.event ?? "") : onDetails ? hooks.findEvent(openId) : undefined;
+    if (event && hooks.showImage(event, link)) domEvent.preventDefault(); // otherwise a card's link opens the details
+    // A period's button: it opens the period and focuses its first new event without scrolling (main.ts showPeriod,
+    // so a click doesn't jump); from the keyboard that card must come into view, or the next arrow starts off screen.
+    if (target.closest("[data-show-period]")) {
+      requestAnimationFrame(() => document.activeElement?.closest("[data-event-card]")?.scrollIntoView({ block: "nearest" }));
+    }
+  }
 
-    // The details: the event that way in the list (before or after; the row above or below). Also with nothing focused
-    // while they're open (a click on the page's margin): from their event, not from the top of the screen. A period's
-    // button that way gets the focus (the panel keeps its event until a card has it).
+  /** From the details (`at`: their event's stop): a photo, or the event that way, opening a block on the way. */
+  function fromDetails(domEvent: KeyboardEvent, direction: Direction, list: HTMLElement[], at: number) {
+    const backward = direction === "left" || direction === "up";
+    if ((direction === "left" || direction === "right") && hooks.stepPhoto(backward ? -1 : 1)) {
+      domEvent.preventDefault();
+      return;
+    }
+    const to = at < 0 ? null : neighbor(list.map((item) => item.getBoundingClientRect()), at, direction);
+    let next = to === null ? undefined : list[to];
+    if (next?.dataset.showPeriod) {
+      domEvent.preventDefault(); // even if it adds nothing to go to: no scrolling instead
+      next = openPeriod(next, backward);
+    }
+    const event = next?.dataset.eventCard ? hooks.findEvent(next.dataset.eventCard) : undefined;
+    const link = linkOf(next);
+    if (!event || !link) return;
+    domEvent.preventDefault();
+    hooks.showEvent(event, link, { stayInList: false, lastPhoto: direction === "left" });
+  }
+
+  /** From a card or a period's button: the stop that way; the open side panel follows a card. */
+  function fromStop(domEvent: KeyboardEvent, direction: Direction, list: HTMLElement[], stop: HTMLElement) {
+    const from = list.indexOf(stop);
+    if (from < 0) return;
+    const to = neighbor(list.map((item) => item.getBoundingClientRect()), from, direction);
+    const next = to === null ? undefined : list[to];
+    const focus = focusOf(next);
+    if (!focus) return;
+    domEvent.preventDefault();
+    focus.focus(); // the browser brings it into view (scroll-padding keeps it clear of the pinned bars)
+    const event = hooks.openEventId() && next?.dataset.eventCard ? hooks.findEvent(next.dataset.eventCard) : undefined;
+    const link = linkOf(next);
+    if (event && link) hooks.showEvent(event, link, { stayInList: true });
+  }
+
+  /** Nothing focused: the first stop on screen. */
+  function fromNothing(domEvent: KeyboardEvent, list: HTMLElement[]) {
+    const { top, bottom } = room();
+    const boxes = list.map((item) => item.getBoundingClientRect());
+    const first = firstInView(boxes, top, bottom);
+    const box = first === null ? undefined : boxes[first];
+    const focus = first === null ? null : focusOf(list[first]);
+    if (!box || !focus) return;
+    domEvent.preventDefault();
+    // Already on screen: no scroll (the browser would push a tall card under the bar). Below the screen (the top of the
+    // page, the header taking the room): the browser brings it in.
+    focus.focus({ preventScroll: box.top >= top && box.top < bottom });
+  }
+
+  document.addEventListener("keydown", (domEvent) => {
+    if (domEvent.defaultPrevented || modified(domEvent)) return;
+    const target = domEvent.target instanceof Element ? domEvent.target : document.body;
+    if (domEvent.key === "Enter") return onEnter(domEvent, target);
+    const direction = STEPS[domEvent.key];
+    if (!direction || busy(target)) return;
+    const list = stops();
+    const openId = hooks.openEventId();
     const at = openId ? list.findIndex((stop) => stop.dataset.eventCard === openId) : -1;
+    // The details, or nothing focused while they're open (a click on the page's margin): from their event.
     if (openId && (inDetails(target) || (target === document.body && at >= 0))) {
-      const backward = direction === "left" || direction === "up";
-      // Several photos beside the details: ← → show them first.
-      if ((direction === "left" || direction === "right") && hooks.stepPhoto(backward ? -1 : 1)) {
-        domEvent.preventDefault();
-        return;
-      }
-      const to = at < 0 ? null : neighbor(boxes(), at, direction);
-      let next = to === null ? undefined : list[to];
-      if (next?.dataset.showPeriod) {
-        domEvent.preventDefault();
-        next = openPeriod(next, backward); // a block: opened, on to its first new event (its last, going back)
-      }
-      const event = next?.dataset.eventCard ? hooks.findEvent(next.dataset.eventCard) : undefined;
-      const link = linkOf(next);
-      if (!event || !link) return;
-      domEvent.preventDefault();
-      hooks.showEvent(event, link, false, direction === "left");
-      return;
+      return fromDetails(domEvent, direction, list, at);
     }
-
-    // A card or a period's button: the stop that way.
     const stop = target.closest<HTMLElement>("[data-event-card], [data-show-period]");
-    if (stop) {
-      const from = list.indexOf(stop);
-      if (from < 0) return;
-      const to = neighbor(boxes(), from, direction);
-      const next = to === null ? undefined : list[to];
-      const focus = focusOf(next);
-      if (!focus) return;
-      domEvent.preventDefault();
-      focus.focus(); // the browser brings it into view (scroll-padding keeps it clear of the pinned bars)
-      const event = openId && next?.dataset.eventCard ? hooks.findEvent(next.dataset.eventCard) : undefined;
-      if (event) hooks.showEvent(event, focus as HTMLAnchorElement, true); // the open panel follows the card
-      return;
-    }
-
-    // Nothing focused yet: any arrow starts on the first stop on screen.
-    if (target === document.body) {
-      const { top, bottom } = room();
-      const all = boxes();
-      const first = firstInView(all, top, bottom);
-      const focus = first === null ? null : focusOf(list[first]);
-      if (!focus) return;
-      domEvent.preventDefault();
-      // Already on screen: no scroll (the browser would push a tall card under the bar). Below the screen (the top of
-      // the page, the header taking the room): the browser brings it in.
-      const shown = all[first!]!.top >= top && all[first!]!.top < bottom;
-      focus.focus({ preventScroll: shown });
-    }
+    if (stop) return fromStop(domEvent, direction, list, stop);
+    if (target === document.body) fromNothing(domEvent, list);
   });
 }

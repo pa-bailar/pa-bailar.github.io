@@ -401,9 +401,9 @@ export function start() {
   initKeyboardNav({
     findEvent,
     openEventId,
-    showEvent: (event, card, stayInList, backward) => {
+    showEvent: (event, card, { stayInList, lastPhoto }) => {
       openEventDrawer(event, { opener: card, focus: !stayInList });
-      followStage(event, backward ? "last" : "first"); // the image beside the panel, if on show, changes with it
+      followStage(event, lastPhoto ? "last" : "first"); // the image beside the panel, if on show, changes with it
       highlightCurrentCard({ reveal: !stayInList }); // the list follows (a card in focus is already in view)
     },
     showImage: showWithImage,
