@@ -5,6 +5,9 @@
 //   - The details are open (the side panel, or the drawer): ← → show the event before or after in the list on screen,
 //     the list following (its card outlined and brought into view); Escape then leaves the focus on that card. The
 //     panel swaps events in place (drawerHistory.ts), so back still returns to the list.
+//   - While the side panel is open it shows the card the arrows move to, like an inbox's reading pane: the focus stays
+//     in the list (so ↑ ↓ keep working there). Before, after a look at another card's image (the lightbox) or Escape
+//     from it, the arrows moved through the list and the panel stayed on the first event (the owner, 5 Oct 2026).
 // Never while typing (the search), in a menu (Cuándo, a pill's panel) or over something else (a sheet, the post viewer,
 // the lightbox, which has ← → of its own). A card's ‹ › stay the mouse's and Tab's: ← → never mean two things.
 
@@ -61,8 +64,11 @@ interface Hooks {
   findEvent: (id: string) => DanceEvent | undefined;
   /** The event the details show, if they're open. */
   openEventId: () => string | null;
-  /** Show `event` in the open details; `card` gets the focus back when they close. */
-  showEvent: (event: DanceEvent, card: HTMLAnchorElement) => void;
+  /**
+   * Show `event` in the open details; `card` gets the focus back when they close. `stayInList`: the focus stays on the
+   * card (the panel follows it) instead of going to the details.
+   */
+  showEvent: (event: DanceEvent, card: HTMLAnchorElement, stayInList: boolean) => void;
 }
 
 export function initKeyboardNav(hooks: Hooks) {
@@ -84,7 +90,7 @@ export function initKeyboardNav(hooks: Hooks) {
       const link = linkOf(next ?? undefined);
       if (!event || !link) return;
       domEvent.preventDefault();
-      hooks.showEvent(event, link);
+      hooks.showEvent(event, link, false);
       return;
     }
 
@@ -98,6 +104,8 @@ export function initKeyboardNav(hooks: Hooks) {
       if (!link) return;
       domEvent.preventDefault();
       link.focus(); // the browser brings it into view (scroll-padding keeps it clear of the pinned bars)
+      const event = openId && hooks.findEvent(list[to!]?.dataset.eventCard ?? "");
+      if (event) hooks.showEvent(event, link, true); // the open panel follows the card
       return;
     }
 
