@@ -133,3 +133,11 @@ describe("events over several days", () => {
     });
   });
 });
+
+describe("event types", () => {
+  it('a party is "Rumba", apart from a social (the owner, 6 Oct 2026)', async () => {
+    const { typeLabel } = await import("../src/scripts/lib/format");
+    expect(typeLabel("party")).toBe("Rumba");
+    expect(typeLabel("social")).toBe("Social");
+  });
+});

@@ -20,6 +20,7 @@ export const LOCALE = "es-CO";
 
 const TYPE_LABELS: Record<EventType, string> = {
   social: "Social",
+  party: "Rumba",
   workshop: "Taller",
   concert: "Concierto",
   festival: "Festival",

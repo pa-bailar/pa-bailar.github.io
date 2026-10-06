@@ -7,7 +7,7 @@ import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-const EVENT_TYPES = ["social", "workshop", "concert", "festival", "congress", "competition", "show", "other"];
+const EVENT_TYPES = ["social", "party", "workshop", "concert", "festival", "congress", "competition", "show", "other"];
 const MEDIA_TYPES = ["IMAGE", "CAROUSEL_ALBUM", "VIDEO", "STORY"];
 const CONFIDENCE = ["high", "medium", "low"];
 // The backend's style list (pa_bailar/models.py Style). A new style needs a change here too, and a family in

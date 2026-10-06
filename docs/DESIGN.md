@@ -81,7 +81,7 @@ Themes switch through CSS `color-scheme`: `light` at `:root`, `dark` only under 
 | `--today-*` | marigold / wine | gold / ink | Today's number in the calendar |
 | `--holiday-bg` | a tomato tint | plum-700 `#3e1f4a` | Calendar: public holidays |
 | `--pulse` | tomato, translucent | pink, translucent | The first visit's pulse on "Detalles" (decorative) |
-| `--type-*` / `--on-type` | per event type | pink (social), gold (workshop), coral (concert), lavender `#c9adf7` (festival, congress, show), lilac (competition, other) / ink | Type tag, calendar pills and dots |
+| `--type-*` / `--on-type` | per event type | pink (social), mint (party, "Rumba": the one hue no other type uses), gold (workshop), coral (concert), lavender `#c9adf7` (festival, congress, show), lilac (competition, other) / ink | Type tag, calendar pills and dots |
 
 ### Luz de escenario: the dark theme's lighting
 
