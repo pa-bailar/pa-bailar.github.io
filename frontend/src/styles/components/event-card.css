@@ -158,10 +158,34 @@
   margin-bottom: var(--space-3);
 }
 
-/* "Ver 7 más" under a busy period's first events. */
+/* "Ver 7 más ⌄" under a busy period's first events: the rest unfolds here. As wide as the grid and taller than a
+   control, so it isn't missed (the owner, 6 Oct 2026), but no flyers and no card: a month's block looks different. */
 .period-more {
   display: flex;
-  margin: var(--space-5) auto 0;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  width: 100%;
+  min-height: calc(var(--touch-target) + var(--space-3));
+  margin-top: var(--space-5);
+  padding: var(--space-3) var(--space-4);
+  border: var(--border-width) solid var(--accent-text);
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--accent-text);
+  font-size: var(--text-base);
+  font-weight: var(--weight-bold);
+}
+
+.period-more .icon {
+  width: var(--icon-lg);
+  height: var(--icon-lg);
+}
+
+@media (hover: hover) {
+  .period-more:hover {
+    background: var(--surface);
+  }
 }
 
 /* Period header, in the lettering of Izzy Sanabria's Fania covers: the title in the display face with a

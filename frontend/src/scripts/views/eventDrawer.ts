@@ -39,6 +39,9 @@ import { scrollPageTo, stickyOffset } from "./jumpBar";
 // Wide enough for the list and a side panel (--panel-width), and tall enough to have no bar at the bottom.
 const PANEL_QUERY = `(min-width: ${PANEL_MIN_WIDTH}px) and (min-height: ${PANEL_MIN_HEIGHT}px)`;
 const TITLE_ID = "drawer-title";
+
+/** Whether the details open as the side panel beside the list (not the phones' drawer over it). */
+export const sidePanelFits = (): boolean => window.matchMedia(PANEL_QUERY).matches;
 const UNDER_BAR = 8; // px left between the bar and the card brought into view
 
 /** The drawer's state while the page is open. */
@@ -151,6 +154,11 @@ export function closeEventDrawer() {
 }
 
 /** The event the details show, while they're open (keyboardNav.ts). */
+/** The focus into the open details (their title): Enter on a card whose details the reading pane already shows. */
+export function focusEventDetails() {
+  if (drawer().open) focusTitle();
+}
+
 export function openEventId(): string | null {
   return drawer().open && !state.leaving ? (state.current?.id ?? null) : null;
 }
@@ -217,8 +225,18 @@ export function openEventDrawer(
   if (opener) state.opener = opener; // ← → in the details, the lightbox's "Detalles": the card of the event shown
   state.current = event;
   render(event, selected); // `selected`: the post a card's carousel showed (its Instagram button opens that one)
+  // Opening the side panel (dialog.show()) moves the focus into it, and Safari scrolls the page doing it. With the focus
+  // to stay where it is (the card in focus, for the reading pane: keyboardNav.ts), the panel is inert while it opens,
+  // so nothing in it takes the focus and Safari doesn't scroll; Chrome then drops the focus to the page, so it's handed
+  // back to the card, without scrolling.
+  const keepFocus = !focus && !wasOpen && active instanceof HTMLElement && active !== document.body;
+  if (keepFocus) element.inert = true;
   if (wasOpen) highlightCurrentCard();
   else show(event, shared);
+  if (keepFocus) {
+    element.inert = false;
+    if (document.activeElement !== active) active.focus({ preventScroll: true });
+  }
   if (focus) focusTitle();
   if (pushHistory) enterEvent(event, wasOpen);
   trackPageview(eventPath(event), event.title); // which events people look at

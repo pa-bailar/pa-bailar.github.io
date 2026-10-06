@@ -336,7 +336,7 @@ the list stays short there and summarizes what's further away (`scripts/views/up
 - **Later periods summarized:** "Más adelante en <mes>" and each later month start as one row with their
   first five flyers as small squares and "Ver los 23 eventos ›" (`.period-summary`); tapping it shows
   them in full. Choosing that period in the date filter opens it too.
-- **Busy periods capped:** an open period shows six events, then "Ver 7 más" (`.period-more`).
+- **Busy periods capped:** an open period shows six events, then "Ver 7 más ⌄" (`.period-more`): a full-width button in the accent's color, taller than a control, with no flyers, so it isn't missed and isn't taken for a month's block (the owner, 6 Oct 2026: the small button went unnoticed).
 - **Short lists whole:** with 12 events or fewer (for example once filtered) nothing is summarized. With
   nothing in the near periods, the first period opens.
 - What the visitor opens stays open while filtering or switching views, and focus moves to the first
@@ -544,8 +544,11 @@ An event can be announced by several Instagram posts (a flyer, then a video, a r
   to the next event (going back, the previous one's last photo), like one stream; a block on the way opens by itself
   and the details show its first new event (its last, going back), so the image never stays still (the owner, 6 Oct
   2026); the list follows (its card outlined, brought into view); Escape leaves the focus on that card, and back still
-  returns to the list (the panel swaps events in place). **While the side panel is open it shows the card in focus**,
-  like an inbox's reading pane: the arrows on the list carry it along (the focus stays in the list), and closing a
+  returns to the list (the panel swaps events in place). **Where the side panel fits, it shows the card in focus**,
+  like an inbox's reading pane: an arrow onto a card opens it, from a fresh page too (the owner, 6 Oct 2026; not where
+  the details are the phones' drawer), and the arrows carry it along (the focus stays in the list, the card whole in
+  view); Enter then moves the focus into it, with the image beside it; Escape closes it until the next arrow. Scrolled
+  away from its card, an arrow starts from the first card on screen. Closing a
   card's lightbox switches it to that event (the owner, 5 Oct 2026: after a look at another card's image, the arrows
   moved through the list while the panel stayed on the first event). Never while typing, in a menu or under another
   dialog; a card's ‹ › stay the mouse's and Tab's, so ← → never mean two things.
