@@ -158,35 +158,21 @@
   margin-bottom: var(--space-3);
 }
 
-/* "Ver 7 más ⌄" under a busy period's first events: the rest unfolds here. As wide as the grid and taller than a
-   control, so it isn't missed (the owner, 6 Oct 2026), but no flyers and no card: a month's block looks different. */
+/* "Ver 7 más ⌄" under a busy period's first events: the rest unfolds here. A month's block (.period-summary) without
+   its flyers: one row, its label and ⌄ (the owner, 6 Oct 2026: a small button went unnoticed). */
 .period-more {
-  display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
   gap: var(--space-2);
-  width: 100%;
-  min-height: calc(var(--touch-target) + var(--space-3));
+  min-height: var(--touch-target);
   margin-top: var(--space-5);
-  padding: var(--space-3) var(--space-4);
-  border: calc(var(--border-width) * 2) solid var(--action); /* the primary buttons' color: something to press */
-  border-radius: var(--radius-md);
-  background: var(--surface);
-  color: var(--text);
-  font-size: var(--text-base);
+  font-size: var(--text-sm);
   font-weight: var(--weight-bold);
 }
 
 .period-more .icon {
-  width: var(--icon-lg);
-  height: var(--icon-lg);
-  color: var(--action);
-}
-
-@media (hover: hover) {
-  .period-more:hover {
-    background: var(--surface-sunken);
-  }
+  width: var(--icon-md);
+  height: var(--icon-md);
 }
 
 /* Period header, in the lettering of Izzy Sanabria's Fania covers: the title in the display face with a
