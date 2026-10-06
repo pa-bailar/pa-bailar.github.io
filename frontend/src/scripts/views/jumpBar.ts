@@ -113,8 +113,28 @@ export function openFilterSheet() {
   openPanelSheet(byId<HTMLDialogElement>("filter-sheet"));
 }
 
+/**
+ * Wide screens: --pinned-height (what scroll-padding keeps focused and jumped-to things clear of, base.css) is the
+ * sticky toolbar's real height, which changes with the filters' status row and in Guardados. Its CSS value is the
+ * phones' bar: on wide screens, 68 px against a toolbar over 100 px tall, the arrows put a calendar card's top under
+ * it (found by the site-checks toolkit, 6 Oct 2026). Phones keep the CSS value (the toolbar isn't shown there).
+ */
+function trackPinnedHeight() {
+  const toolbar = document.querySelector<HTMLElement>(".toolbar");
+  if (!toolbar || typeof ResizeObserver === "undefined") return;
+  const root = document.documentElement.style;
+  new ResizeObserver(() => {
+    if (getComputedStyle(toolbar).position === "sticky" && toolbar.offsetHeight > 0) {
+      root.setProperty("--pinned-height", `${toolbar.offsetHeight}px`);
+    } else {
+      root.removeProperty("--pinned-height");
+    }
+  }).observe(toolbar);
+}
+
 export function initJumpBar() {
   initWhenMenu();
+  trackPinnedHeight();
   // The chips inside are handled by main.ts; "Ver 12 eventos" closes it like ×. Its groups scroll between the
   // head and that button, so a drag down starts from the head or the groups' top.
   const sheet = byId<HTMLDialogElement>("filter-sheet");
