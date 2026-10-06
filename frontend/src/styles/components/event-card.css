@@ -685,7 +685,7 @@
 
 /* Wide screens: the event open in the side panel (drawer.css) is outlined in the list. */
 .event-card.is-current {
-  outline: 3px solid var(--accent);
+  outline: 3px solid var(--card-current);
   outline-offset: 2px;
 }
 

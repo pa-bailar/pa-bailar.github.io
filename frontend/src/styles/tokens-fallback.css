@@ -18,6 +18,7 @@
     --accent: var(--tomato-600);
     --accent-text: var(--tomato-700);
     --focus: var(--tomato-600);
+    --card-current: var(--wine-900);
     --action: var(--orange-800);
     --on-action: var(--white);
     --chip-active-bg: var(--wine-900);
@@ -64,6 +65,7 @@
     --accent: var(--pink-400);
     --accent-text: var(--pink-400);
     --focus: var(--gold-300);
+    --card-current: var(--pink-400);
     --action: var(--gold-300);
     --on-action: var(--ink-900);
     --chip-active-bg: var(--pink-300);
