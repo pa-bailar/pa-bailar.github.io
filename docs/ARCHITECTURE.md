@@ -63,7 +63,7 @@ flowchart LR
 
 | Folder | What | Who writes it |
 |---|---|---|
-| `data/` | `events.json`, `meta.json`, `flyers/*.webp`, `previews/*.mp4` (videos' clips). Also the site's public folder: flyers and clips are served as-is | The backend, only through data PRs |
+| `data/` | `events.json`, `meta.json`, `archive/<year>.json` (past events, read by no page). Also the site's public folder: the flyers (`flyers/*.webp`) and videos' clips (`previews/*.mp4`) are served from it as-is, but **they aren't in this repository**: they live in `pa-bailar/media` and are copied in before every build and check (`.gitignore`; the backend's ARCHITECTURE §10.2). Images in this repository grew its history by hundreds of MB a year, and data PRs keep every old image alive (5 Oct 2026) | The backend: the data through data PRs, the images straight to `pa-bailar/media` |
 | `frontend/` | The Astro site: pages, components, scripts, styles, tests | People, through PRs |
 | `docs/` | Architecture (this file), data contract, design system | People |
 | `.github/workflows/` | `ci` and `deploy` | People |
@@ -86,8 +86,9 @@ sequenceDiagram
     participant P as GitHub Pages
 
     B->>R: check out main (anonymous: the repository is public)
-    B->>B: write data/events.json, data/meta.json, data/flyers/, data/previews/
-    alt events.json or flyers changed
+    B->>B: copy pa-bailar/media's images in; write data/events.json, data/meta.json, data/flyers/, data/previews/
+    B->>B: push new and changed images to pa-bailar/media (no PR)
+    alt events.json or the archive changed
         B->>R: push branch data/sweep-<day>-<run> (as pa-bailar-bot)
         B->>R: open PR "chore(data): daily sweep <day>", label data, enable auto-merge
         R->>CI: pull_request
@@ -114,8 +115,8 @@ Notes:
   - on days without changes, the backend starts the deploy with `checked_at`, which reaches the build as
     `PUBLIC_CHECKED_AT`;
   - otherwise, the build uses `meta.json`'s `generated_at`.
-- **Old events leave on their own:** the backend deletes events dated more than 60 days ago, together
-  with their flyers. Past events still in the data aren't shown in "Próximos", but their pages and the
+- **Old events leave on their own:** the backend archives events dated more than 60 days ago
+  (`data/archive/<year>.json`, read by no page) and deletes their full flyers and clips. Past events still in the data aren't shown in "Próximos", but their pages and the
   calendar keep them.
 
 ---
@@ -286,8 +287,8 @@ flowchart LR
 
 | Workflow | Trigger | Steps | Permissions |
 |---|---|---|---|
-| `ci` | Every pull request (including data PRs, and title edits); manual | The PR title (Conventional Commits, `release.mjs check`). `npm ci`, `npm run check` (section 8), `npm test`, `npm run build` | `contents: read` |
-| `deploy` | Push to `main` (every merged PR); manual; the backend's sweep on days without changes (with `checked_at`) | **version**: the version from the commits since the last tag (`release.mjs plan`) and its release notes. **build**: `npm ci`, `npm run check`, `npm run build` (with `PUBLIC_CHECKED_AT` and `PUBLIC_VERSION`), upload the Pages artifact. **deploy**: publish to GitHub Pages. **release**, only after a successful deploy and when the commits change the site: tag the version and publish its GitHub Release. A failed build or deploy tags nothing | Version and build: `contents: read` (the build runs npm's install scripts). Deploy: `pages: write`, `id-token: write`. Release: `contents: write` (it runs no npm package, only `gh`) |
+| `ci` | Every pull request (including data PRs, and title edits); manual | The PR title (Conventional Commits, `release.mjs check`). The images from `pa-bailar/media` copied into `data/` (its latest version). `npm ci`, `npm run check` (section 8), `npm test`, `npm run build` | `contents: read` |
+| `deploy` | Push to `main` (every merged PR); manual; the backend's sweep on days without changes (with `checked_at`) | **version**: the version from the commits since the last tag (`release.mjs plan`) and its release notes. **build**: the images from `pa-bailar/media` copied into `data/`; `npm ci`, `npm run check`, `npm run build` (with `PUBLIC_CHECKED_AT` and `PUBLIC_VERSION`), upload the Pages artifact. **deploy**: publish to GitHub Pages. **release**, only after a successful deploy and when the commits change the site: tag the version and publish its GitHub Release. A failed build or deploy tags nothing | Version and build: `contents: read` (the build runs npm's install scripts). Deploy: `pages: write`, `id-token: write`. Release: `contents: write` (it runs no npm package, only `gh`) |
 
 - **One deploy at a time:** `concurrency: pages` without cancelling, so two merges in a row publish one
   after the other.

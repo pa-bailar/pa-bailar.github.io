@@ -23,6 +23,7 @@ passes it the version and the last check time, `PUBLIC_VERSION` and `PUBLIC_CHEC
 
 ```bash
 npm ci          # first time
+npm run media   # the flyers and clips (they live in pa-bailar/media): clones or pulls it, copies them into data/
 npm run dev     # local preview at http://localhost:4321
 npm run check   # data format + type check + color contrast (WCAG AA) + CSS custom properties
 npm test        # unit tests (Vitest)

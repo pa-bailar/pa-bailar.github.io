@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
+    "media": "node scripts/media.mjs",
     "build": "astro build",
     "preview": "astro preview",
     "check": "npm run check:data && astro check && npm run check:contrast && npm run check:css",
