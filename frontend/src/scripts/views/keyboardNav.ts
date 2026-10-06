@@ -14,6 +14,9 @@
 //   - While the side panel is open it shows the card the arrows move to, like an inbox's reading pane: the focus stays
 //     in the list (so ↑ ↓ keep working there). Before, after a look at another card's image (the lightbox) or Escape
 //     from it, the arrows moved through the list and the panel stayed on the first event (the owner, 5 Oct 2026).
+//   - A summarized period ("Ver los 23 eventos") and a busy one's "Ver 7 más" are stops too, in the grid's order (the
+//     owner, 6 Oct 2026: the arrows go on through the whole list instead of scrolling past its end). Enter opens the
+//     period whole and puts the focus on its first new event (main.ts showPeriod), and the arrows go on from there.
 // Never while typing (the search), in a menu (Cuándo, a pill's panel) or over something else (a sheet, the post viewer,
 // the lightbox, which has ← → of its own). A card's ‹ › stay the mouse's and Tab's: ← → never mean two things.
 
@@ -68,14 +71,23 @@ function room(): { top: number; bottom: number } {
   return { top: pad(style.scrollPaddingTop), bottom: innerHeight - pad(style.scrollPaddingBottom) };
 }
 
-/** The cards of the view on screen, in reading order, that are laid out (a summarized period has none). */
-function cards(): HTMLElement[] {
-  return [...document.querySelectorAll<HTMLElement>('[role="tabpanel"]:not([hidden]) [data-event-card]')].filter(
-    (card) => card.getClientRects().length > 0,
+const VIEW = '[role="tabpanel"]:not([hidden])';
+
+/**
+ * Where the arrows stop in the view on screen, in reading order, laid out: its cards, and the buttons that open a
+ * period whole (a summarized period's "Ver los 23 eventos", a busy one's "Ver 7 más").
+ */
+function stops(): HTMLElement[] {
+  return [...document.querySelectorAll<HTMLElement>(`${VIEW} [data-event-card], ${VIEW} [data-show-period]`)].filter(
+    (stop) => stop.getClientRects().length > 0,
   );
 }
 
 const linkOf = (card: Element | undefined) => card?.querySelector<HTMLAnchorElement>("a.event-card__hit") ?? null;
+
+/** What gets the focus at a stop: a card's link, or the period's button itself. */
+const focusOf = (stop: HTMLElement | undefined): HTMLElement | null =>
+  stop?.matches("[data-show-period]") ? stop : linkOf(stop);
 
 /** Whether the keys belong to something else: typing, a menu, a dialog over the page other than the details. */
 function busy(target: Element): boolean {
@@ -115,6 +127,11 @@ export function initKeyboardNav(hooks: Hooks) {
       const onDetails = !link && openId && inDetails(target) && !target.closest("a, button, input, select, textarea, summary");
       const event = link ? hooks.findEvent(link.dataset.event ?? "") : onDetails ? hooks.findEvent(openId) : undefined;
       if (event && hooks.showImage(event, link)) domEvent.preventDefault(); // otherwise a card's link opens the details
+      // A period's button: it opens the period and focuses its first new event without scrolling (main.ts showPeriod,
+      // so a click doesn't jump); from the keyboard that card must come into view, or the next arrow starts off screen.
+      if (target.closest("[data-show-period]")) {
+        requestAnimationFrame(() => document.activeElement?.closest("[data-event-card]")?.scrollIntoView({ block: "nearest" }));
+      }
       return;
     }
     const direction = STEPS[domEvent.key];
@@ -123,46 +140,54 @@ export function initKeyboardNav(hooks: Hooks) {
     }
     const target = domEvent.target instanceof Element ? domEvent.target : document.body;
     if (busy(target)) return;
-    const list = cards();
+    const list = stops();
+    const boxes = () => list.map((item) => item.getBoundingClientRect());
     const openId = hooks.openEventId();
 
     // The details: the event that way in the list (before or after; the row above or below). Also with nothing focused
-    // while they're open (a click on the page's margin): from their event, not from the top of the screen.
-    const at = openId ? list.findIndex((card) => card.dataset.eventCard === openId) : -1;
+    // while they're open (a click on the page's margin): from their event, not from the top of the screen. A period's
+    // button that way gets the focus (the panel keeps its event until a card has it).
+    const at = openId ? list.findIndex((stop) => stop.dataset.eventCard === openId) : -1;
     if (openId && (inDetails(target) || (target === document.body && at >= 0))) {
-      const to = at < 0 ? null : neighbor(list.map((item) => item.getBoundingClientRect()), at, direction);
-      const next = to === null ? null : list[to];
-      const event = next && hooks.findEvent(next.dataset.eventCard ?? "");
-      const link = linkOf(next ?? undefined);
-      if (!event || !link) return;
+      const to = at < 0 ? null : neighbor(boxes(), at, direction);
+      const next = to === null ? undefined : list[to];
+      const event = next?.dataset.eventCard ? hooks.findEvent(next.dataset.eventCard) : undefined;
+      const focus = focusOf(next);
+      if (!focus || (!event && next?.dataset.eventCard)) return;
       domEvent.preventDefault();
-      hooks.showEvent(event, link, false);
+      if (event) hooks.showEvent(event, focus as HTMLAnchorElement, false);
+      else focus.focus();
       return;
     }
 
-    // A card: the one that way.
-    const card = target.closest<HTMLElement>("[data-event-card]");
-    if (card) {
-      const from = list.indexOf(card);
+    // A card or a period's button: the stop that way.
+    const stop = target.closest<HTMLElement>("[data-event-card], [data-show-period]");
+    if (stop) {
+      const from = list.indexOf(stop);
       if (from < 0) return;
-      const to = neighbor(list.map((item) => item.getBoundingClientRect()), from, direction);
-      const link = to === null ? null : linkOf(list[to]);
-      if (!link) return;
+      const to = neighbor(boxes(), from, direction);
+      const next = to === null ? undefined : list[to];
+      const focus = focusOf(next);
+      if (!focus) return;
       domEvent.preventDefault();
-      link.focus(); // the browser brings it into view (scroll-padding keeps it clear of the pinned bars)
-      const event = openId && hooks.findEvent(list[to!]?.dataset.eventCard ?? "");
-      if (event) hooks.showEvent(event, link, true); // the open panel follows the card
+      focus.focus(); // the browser brings it into view (scroll-padding keeps it clear of the pinned bars)
+      const event = openId && next?.dataset.eventCard ? hooks.findEvent(next.dataset.eventCard) : undefined;
+      if (event) hooks.showEvent(event, focus as HTMLAnchorElement, true); // the open panel follows the card
       return;
     }
 
-    // Nothing focused yet: any arrow starts on the first card on screen.
+    // Nothing focused yet: any arrow starts on the first stop on screen.
     if (target === document.body) {
       const { top, bottom } = room();
-      const first = firstInView(list.map((item) => item.getBoundingClientRect()), top, bottom);
-      const link = first === null ? null : linkOf(list[first]);
-      if (!link) return;
+      const all = boxes();
+      const first = firstInView(all, top, bottom);
+      const focus = first === null ? null : focusOf(list[first]);
+      if (!focus) return;
       domEvent.preventDefault();
-      link.focus({ preventScroll: true }); // already on screen: the browser would push a tall card under the bar
+      // Already on screen: no scroll (the browser would push a tall card under the bar). Below the screen (the top of
+      // the page, the header taking the room): the browser brings it in.
+      const shown = all[first!]!.top >= top && all[first!]!.top < bottom;
+      focus.focus({ preventScroll: shown });
     }
   });
 }
