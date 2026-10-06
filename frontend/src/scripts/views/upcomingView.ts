@@ -64,12 +64,12 @@ function summaryHtml(group: AgendaGroup): string {
 }
 
 /**
- * "Ver 10 más ⌄" under a busy period's first events: the rest of this list unfolds here. A wide button of its own,
- * not a month's block (the owner, 6 Oct 2026: a small button went unnoticed, and a block would read as a month).
+ * "Ver 10 más ⌄" under a busy period's first events: the rest of this list unfolds here. The month blocks' look
+ * (.period-summary), without their flyers (the owner, 6 Oct 2026: a small button went unnoticed).
  */
 function moreHtml(group: AgendaGroup, rest: number): string {
   return `
-    <button class="period-more" type="button" data-show-period="${escapeHtml(group.key)}">
+    <button class="period-summary period-more" type="button" data-show-period="${escapeHtml(group.key)}">
       <span>Ver ${rest} más</span>${ICONS.chevronDown}
     </button>`;
 }
