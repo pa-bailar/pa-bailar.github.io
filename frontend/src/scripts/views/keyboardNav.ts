@@ -4,8 +4,10 @@
 //     (lightbox.ts); elsewhere the card's own link opens the details.
 //   - The details open: Enter (on the panel itself, not on one of its buttons or links) shows the image beside them:
 //     to press Enter an event was almost always just clicked (the owner, 6 Oct 2026).
-//   - Nothing has the focus yet: ← → put it on the first card on screen (↑ ↓ still scroll the page).
+//   - Nothing has the focus yet: any arrow puts it on the first card on screen (the owner, 6 Oct 2026: ↑ ↓ too; Page
+//     Up/Down, space and the wheel still scroll).
 //   - The details are open (the side panel, or the drawer): ← → show the event before or after in the list on screen,
+//     ↑ ↓ the one in the row above or below (the grid's, as from a card; the owner, 6 Oct 2026),
 //     the list following (its card outlined and brought into view); Escape then leaves the focus on that card. The
 //     panel swaps events in place (drawerHistory.ts), so back still returns to the list.
 //   - While the side panel is open it shows the card the arrows move to, like an inbox's reading pane: the focus stays
@@ -104,10 +106,11 @@ export function initKeyboardNav(hooks: Hooks) {
     const list = cards();
     const openId = hooks.openEventId();
 
-    // The details: the event before or after, in the list's order.
-    if (openId && inDetails(target) && (direction === "left" || direction === "right")) {
+    // The details: the event that way in the list (before or after; the row above or below).
+    if (openId && inDetails(target)) {
       const at = list.findIndex((card) => card.dataset.eventCard === openId);
-      const next = at < 0 ? null : list[at + (direction === "left" ? -1 : 1)];
+      const to = at < 0 ? null : neighbor(list.map((item) => item.getBoundingClientRect()), at, direction);
+      const next = to === null ? null : list[to];
       const event = next && hooks.findEvent(next.dataset.eventCard ?? "");
       const link = linkOf(next ?? undefined);
       if (!event || !link) return;
@@ -131,8 +134,8 @@ export function initKeyboardNav(hooks: Hooks) {
       return;
     }
 
-    // Nothing focused yet: ← → start on the first card on screen.
-    if (target === document.body && (direction === "left" || direction === "right")) {
+    // Nothing focused yet: any arrow starts on the first card on screen.
+    if (target === document.body) {
       const first = list.find((item) => item.getBoundingClientRect().bottom > 0) ?? list[0];
       const link = linkOf(first);
       if (!link) return;
