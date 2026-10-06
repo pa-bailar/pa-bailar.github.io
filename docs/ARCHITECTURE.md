@@ -664,7 +664,8 @@ frontend/
   scripts/                check-data.mjs, check-contrast.mjs, check-css-vars.mjs (run by npm run check); release.mjs (versions);
                           og-site.html (draws the home page's link preview); csp-meta.mjs (the policy, after
                           the build); og-check.mjs (the events' link previews, after the build); sw-precache.mjs (the build's
-                          files, written into sw.js); module-preload.mjs (each page's script and its chunks, preloaded)
+                          files, written into sw.js); module-preload.mjs (each page's script and its chunks, preloaded);
+                          light-dark-fallback.mjs (writes styles/tokens-fallback.css: the colors for iOS 16's Safari)
   tests/                  Vitest tests, factories.ts (test events, a story-only one, a workshop series), checkData.test.ts (the data contract), fakeHistory.ts (history and popstate in Node)
   src/
     data.ts               the data, typed, with flyer sizes and versions (build time only)
