@@ -145,6 +145,11 @@ function render(event: DanceEvent, selected = 0) {
 }
 
 /** Side panel: the open event's card is outlined in the list (also after the list is drawn again: main.ts). */
+/** Close the details as their × does (through the history): the image stage's × and dark area (lightbox.ts). */
+export function closeEventDrawer() {
+  requestClose();
+}
+
 /** The event the details show, while they're open (keyboardNav.ts). */
 export function openEventId(): string | null {
   return drawer().open && !state.leaving ? (state.current?.id ?? null) : null;
@@ -265,7 +270,9 @@ function cleanUpAfterClose(element: HTMLDialogElement) {
   // Focus back where it was (the last card opened, or its "Detalles"), unless the visitor already moved it elsewhere.
   const focus = state.focusBeforeClose === undefined ? document.activeElement : state.focusBeforeClose;
   state.focusBeforeClose = undefined;
-  if (state.opener?.isConnected && (!focus || focus === document.body || element.contains(focus))) {
+  // The image stage beside the side panel (lightbox.ts) goes with it: focus left there counts as the panel's.
+  const ours = focus && (element.contains(focus) || Boolean(focus.closest?.("#lightbox")));
+  if (state.opener?.isConnected && (!focus || focus === document.body || ours)) {
     state.opener.focus({ preventScroll: true });
   }
   state.opener = null;

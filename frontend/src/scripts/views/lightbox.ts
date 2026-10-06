@@ -1,26 +1,32 @@
-// A card's image, bigger (components/Lightbox.astro): only on wide screens with a mouse (`lightboxMode`), where a
-// click on a card's image opens it (main.ts); elsewhere that click opens the details, as before. The event's posts with
-// a flyer, one at a time: ‹ › and ← → between them, "1/6". "Detalles" opens the side panel on the post on screen. It's
-// a panel sheet for the history and the ways out (lib/sheet.ts): back, Escape, ×, a click outside the image; the page
-// stays where it was and the focus goes back to the card.
+// Wide screens with a mouse: a card's image big next to its details, like Instagram's desktop view of a post (the owner,
+// 5–6 October 2026: a flyer's fine print is too small on the card, and the details must stay usable beside it). The
+// image on a dark stage over the list (components/Lightbox.astro), the side panel on the right, both usable: the stage
+// isn't modal and stops where the panel starts.
+//   - Opened together with the panel by a click on a card's image or Enter on a focused card, and next to an open panel
+//     by Enter in it (main.ts, keyboardNav.ts): to press Enter, an event was almost always just clicked.
+//   - Its event is the panel's: ← → change both (keyboardNav.ts); ‹ › its photos, "1/6".
+//   - It closes with the panel (Escape, back, the panel's ×, its own ×, a click on the dark area), whose history entry it
+//     shares: no entry of its own. The focus goes back to the card, as when the panel closes.
+// Phones and narrower screens never show it: the image opens the details, as before.
 
 import type { DanceEvent, EventMedia } from "../types";
 import { byId } from "../lib/dom";
 import { flyerUrl } from "../lib/links";
-import { dismissSheet, initPanelSheet, openPanelSheet } from "../lib/sheet";
-import { historyState } from "../screenHistory";
 
-/** Where a click on a card's image opens the lightbox: a mouse (it can hover), and room for the side panel. */
+/** Where a card's image opens the stage: a mouse (it can hover), and room for the side panel beside it. */
 const LIGHTBOX_QUERY = "(hover: hover) and (pointer: fine) and (min-width: 900px) and (min-height: 600px)";
 
 export const lightboxMode = (): boolean => window.matchMedia(LIGHTBOX_QUERY).matches;
 
-const dialog = () => byId<HTMLDialogElement>("lightbox");
+const stage = () => byId<HTMLDialogElement>("lightbox");
 
-let current: { event: DanceEvent; slides: EventMedia[]; index: number; card: HTMLElement | null } | null = null;
+let current: { event: DanceEvent; slides: EventMedia[]; index: number } | null = null;
+
+/** Whether the image is on show (keyboardNav.ts: its keys are the panel's). */
+export const stageOpen = (): boolean => stage().open;
 
 /** Show slide `index` (kept within the slides): its image, "2/6", the arrows at the ends hidden. */
-function show(index: number) {
+function showSlide(index: number) {
   if (!current) return;
   const { event, slides } = current;
   current.index = Math.min(Math.max(index, 0), slides.length - 1);
@@ -29,70 +35,53 @@ function show(index: number) {
   image.src = flyerUrl(media) ?? "";
   image.alt = slides.length > 1 ? `${event.title}: publicación ${current.index + 1} de ${slides.length}` : event.title;
   byId("lightbox-count").textContent = slides.length > 1 ? `${current.index + 1}/${slides.length}` : "";
-  dialog().querySelectorAll<HTMLButtonElement>("[data-lightbox-step]").forEach((button) => {
-    const step = Number(button.dataset.lightboxStep);
-    button.hidden = slides.length < 2 || (step < 0 ? current!.index === 0 : current!.index === slides.length - 1);
-  });
-  // The next one is ready before it's asked for.
+  stage()
+    .querySelectorAll<HTMLButtonElement>("[data-lightbox-step]")
+    .forEach((button) => {
+      const step = Number(button.dataset.lightboxStep);
+      button.hidden = slides.length < 2 || (step < 0 ? current!.index === 0 : current!.index === slides.length - 1);
+    });
   const next = slides[current.index + 1];
-  if (next) new Image().src = flyerUrl(next) ?? "";
+  if (next) new Image().src = flyerUrl(next) ?? ""; // ready before it's asked for
 }
 
-/** Open `event`'s posts at slide `index` (the one its card showed). `card`: the focus goes back to it. */
-export function openLightbox(event: DanceEvent, index: number, card: HTMLElement | null) {
+/** Show `event`'s image at slide `index` (the one its card showed), opening the stage if it isn't. */
+export function showStage(event: DanceEvent, index = 0) {
   const slides = event.media.filter((media) => flyerUrl(media));
-  if (!slides.length) return;
-  current = { event, slides, index, card };
-  byId("lightbox-title").textContent = event.title;
-  show(index);
-  openPanelSheet(dialog());
+  if (!slides.length) return closeStage();
+  current = { event, slides, index };
+  showSlide(index);
+  if (stage().open) return;
+  // The focus stays in the panel (its keys work there, and closing gives it back to the card): show() would move it to
+  // the stage's first button.
+  const active = document.activeElement;
+  stage().show();
+  if (active instanceof HTMLElement && active !== document.body) active.focus({ preventScroll: true });
 }
 
-/**
- * `openDetails(event, selected, card)`: "Detalles" opens the side panel on the post on screen; it opens first, then the
- * lightbox closes at once (its entry stays under the details', a dead step that back passes over: lib/sheet.ts).
- * `afterClose(event, card)`: closed any other way (the side panel, if open, then follows that card: main.ts).
- */
-export function initLightbox(
-  openDetails: (event: DanceEvent, selected: number, card: HTMLElement | null) => void,
-  afterClose: (event: DanceEvent, card: HTMLElement | null) => void,
-) {
-  const element = dialog();
-  initPanelSheet(element, (target) => {
-    if (!current) return;
+/** The panel moved to another event (← →): the stage, if open, shows its image. */
+export function followStage(event: DanceEvent) {
+  if (stage().open && current?.event.id !== event.id) showStage(event, 0);
+}
+
+function closeStage() {
+  if (stage().open) stage().close();
+}
+
+/** `closeDetails`: the stage's × and its dark area close the panel, which closes the stage (one view, one way out). */
+export function initLightbox(closeDetails: () => void) {
+  const element = stage();
+  element.addEventListener("click", (domEvent) => {
+    const target = domEvent.target as HTMLElement;
     const step = target.closest<HTMLElement>("[data-lightbox-step]");
-    if (step) return show(current.index + Number(step.dataset.lightboxStep));
-    if (target.closest("[data-lightbox-details]")) {
-      const { event, slides, index, card } = current;
-      current = null; // the details took over: nothing to follow when it closes
-      openDetails(event, event.media.indexOf(slides[index]!), card);
-      dismissSheet(element, { instant: true });
-      return;
-    }
-    if (target.matches("[data-lightbox-stage]")) dismissSheet(element); // the dark area around the image
-  });
-  element.addEventListener("keydown", (domEvent) => {
-    if (!current || (domEvent.key !== "ArrowLeft" && domEvent.key !== "ArrowRight")) return;
-    domEvent.preventDefault();
-    show(current.index + (domEvent.key === "ArrowLeft" ? -1 : 1));
+    if (step && current) return showSlide(current.index + Number(step.dataset.lightboxStep));
+    if (target.closest("[data-lightbox-close]") || target.matches("[data-lightbox-stage]")) closeDetails();
   });
   element.addEventListener("close", () => {
-    const closed = current;
     current = null;
     byId<HTMLImageElement>("lightbox-image").removeAttribute("src"); // nothing of it stays in memory
-    const settle = () =>
-      // After the browser's own focus handling: the focus is then nowhere, or still on a button of the closed lightbox.
-      requestAnimationFrame(() => {
-        const card = closed?.card;
-        const active = document.activeElement;
-        if (card?.isConnected && (!active || active === document.body || element.contains(active))) {
-          card.focus({ preventScroll: true });
-        }
-        if (closed) afterClose(closed.event, card ?? null);
-      });
-    // Closed by ×, Escape or a click outside: lib/sheet.ts steps back over its history entry, and that lands after
-    // this (on the details' entry when the side panel is open, which shows its event again): follow once it has.
-    if (historyState().sheet === element.id) window.addEventListener("popstate", settle, { once: true });
-    else settle();
   });
+  // The panel closed (any way at all, or reopened as the phones' drawer on a narrower window): the stage goes with it.
+  byId<HTMLDialogElement>("event-drawer").addEventListener("close", closeStage);
+  window.matchMedia(LIGHTBOX_QUERY).addEventListener("change", (change) => !change.matches && closeStage());
 }

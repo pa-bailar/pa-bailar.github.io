@@ -1,6 +1,9 @@
 // Moving through the events with the keyboard, without clicking card after card (the owner, 5 October 2026):
 //   - A card has the focus: ↑ ↓ ← → move it to the card above, below, before or after (the grid's rows on wide screens,
-//     the feed's single column on phones); Enter opens its details (the card's own link).
+//     the feed's single column on phones). Enter opens its details, with its image big beside them where that works
+//     (lightbox.ts); elsewhere the card's own link opens the details.
+//   - The details open: Enter (on the panel itself, not on one of its buttons or links) shows the image beside them:
+//     to press Enter an event was almost always just clicked (the owner, 6 Oct 2026).
 //   - Nothing has the focus yet: ← → put it on the first card on screen (↑ ↓ still scroll the page).
 //   - The details are open (the side panel, or the drawer): ← → show the event before or after in the list on screen,
 //     the list following (its card outlined and brought into view); Escape then leaves the focus on that card. The
@@ -57,8 +60,12 @@ function busy(target: Element): boolean {
   if (target.closest('input, textarea, select, [contenteditable="true"], [role="menu"], [role="dialog"]:not(#event-drawer)')) {
     return true;
   }
-  return Boolean(document.querySelector("dialog[open]:not(#event-drawer)"));
+  // The image stage (lightbox.ts) goes with the panel: its keys are the panel's.
+  return Boolean(document.querySelector("dialog[open]:not(#event-drawer):not(#lightbox)"));
 }
+
+/** In the details or the image beside them. */
+const inDetails = (target: Element) => Boolean(target.closest("#event-drawer, #lightbox"));
 
 interface Hooks {
   findEvent: (id: string) => DanceEvent | undefined;
@@ -69,10 +76,25 @@ interface Hooks {
    * card (the panel follows it) instead of going to the details.
    */
   showEvent: (event: DanceEvent, card: HTMLAnchorElement, stayInList: boolean) => void;
+  /**
+   * Enter on a card (`card`) or in the open details (`card` null: the open event): the details with the image beside
+   * them, where that works (true); false: nothing done (on a card, its link then opens the details).
+   */
+  showImage: (event: DanceEvent, card: HTMLAnchorElement | null) => boolean;
 }
 
 export function initKeyboardNav(hooks: Hooks) {
   document.addEventListener("keydown", (domEvent) => {
+    if (domEvent.key === "Enter" && !domEvent.defaultPrevented && !domEvent.altKey && !domEvent.ctrlKey && !domEvent.metaKey && !domEvent.shiftKey) {
+      const target = domEvent.target instanceof Element ? domEvent.target : document.body;
+      const link = target.closest<HTMLAnchorElement>("a.event-card__hit");
+      const openId = hooks.openEventId();
+      // On a card; or on the open details themselves (their title, their text), not one of their buttons or links.
+      const onDetails = !link && openId && inDetails(target) && !target.closest("a, button, input, select, textarea, summary");
+      const event = link ? hooks.findEvent(link.dataset.event ?? "") : onDetails ? hooks.findEvent(openId) : undefined;
+      if (event && hooks.showImage(event, link)) domEvent.preventDefault(); // otherwise a card's link opens the details
+      return;
+    }
     const direction = STEPS[domEvent.key];
     if (!direction || domEvent.defaultPrevented || domEvent.altKey || domEvent.ctrlKey || domEvent.metaKey || domEvent.shiftKey) {
       return;
@@ -83,7 +105,7 @@ export function initKeyboardNav(hooks: Hooks) {
     const openId = hooks.openEventId();
 
     // The details: the event before or after, in the list's order.
-    if (openId && target.closest("#event-drawer") && (direction === "left" || direction === "right")) {
+    if (openId && inDetails(target) && (direction === "left" || direction === "right")) {
       const at = list.findIndex((card) => card.dataset.eventCard === openId);
       const next = at < 0 ? null : list[at + (direction === "left" ? -1 : 1)];
       const event = next && hooks.findEvent(next.dataset.eventCard ?? "");
