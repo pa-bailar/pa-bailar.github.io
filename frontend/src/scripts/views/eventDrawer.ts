@@ -171,6 +171,34 @@ export function highlightCurrentCard({ reveal = false } = {}) {
   if (reveal) card?.scrollIntoView({ block: "center" });
 }
 
+/** What may still overlap before the list makes room: a card's gap, not a card (px). */
+const ROOM_SLACK = 16;
+
+/**
+ * Laptops: the side panel lies over the page's right side, and there it covered the list's last column; a card the
+ * keyboard moved to could be fully hidden under it (WCAG 2.2, 2.4.11; the owner, 6 Oct 2026: "make room when open").
+ * While the panel is open, where it would cover the list, the list narrows beside it (base.css, .panel-room), at once,
+ * and `keep` (the card shown) stays where it was on screen: the page scrolls by what the new layout moved it, so the
+ * list doesn't jump (scrolling it into view jumped a tall card's whole height). Where it covers nothing, nothing moves.
+ */
+function makeRoom(open: boolean, keep?: Element | null) {
+  const root = document.documentElement;
+  const had = root.classList.contains("panel-room");
+  const before = keep?.getBoundingClientRect().top;
+  root.classList.remove("panel-room");
+  if (open && state.mode === "panel") {
+    const list = document.querySelector(".page-main");
+    // Where the panel ends up, not where it is: it slides in from the right (drawer.css).
+    const panelLeft = root.clientWidth - parseFloat(getComputedStyle(root).getPropertyValue("--panel-width"));
+    if (list) {
+      const right = list.getBoundingClientRect().right - parseFloat(getComputedStyle(list).paddingRight || "0");
+      if (right - panelLeft > ROOM_SLACK) root.classList.add("panel-room");
+    }
+  }
+  if (had === root.classList.contains("panel-room") || !keep || before === undefined) return;
+  window.scrollBy({ top: keep.getBoundingClientRect().top - before, behavior: "instant" });
+}
+
 /** As a modal drawer over the list (phones), or as a side panel next to it (wide screens). */
 function show(event: DanceEvent, shared: boolean) {
   const element = drawer();
@@ -180,6 +208,7 @@ function show(event: DanceEvent, shared: boolean) {
     element.show();
     holdClips("drawer", false);
     highlightCurrentCard({ reveal: shared });
+    makeRoom(true, document.querySelector(".event-card.is-current"));
     return;
   }
   state.viewport = window.innerHeight;
@@ -293,6 +322,7 @@ function cleanUpAfterClose(element: HTMLDialogElement) {
   if (state.opener?.isConnected && (!focus || focus === document.body || ours)) {
     state.opener.focus({ preventScroll: true });
   }
+  makeRoom(false, state.opener?.closest("[data-event-card]"));
   state.opener = null;
   byId("drawer-content").replaceChildren(); // nothing of it stays in memory while it's closed
   state.current = null;
@@ -316,6 +346,12 @@ function swapMode() {
 export function initEventDrawer(find: (id: string) => DanceEvent | undefined) {
   state.findEvent = find;
   const element = drawer();
+  // A window resized with the panel open: room again, or none, for the new width.
+  let resizing = 0;
+  window.addEventListener("resize", () => {
+    cancelAnimationFrame(resizing);
+    resizing = requestAnimationFrame(() => element.open && makeRoom(true, document.querySelector(".event-card.is-current")));
+  });
   const panel = byId("drawer-panel");
 
   element.addEventListener("click", (domEvent) => {
