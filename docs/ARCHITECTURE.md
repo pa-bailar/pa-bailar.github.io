@@ -287,7 +287,7 @@ flowchart LR
 
 | Workflow | Trigger | Steps | Permissions |
 |---|---|---|---|
-| `ci` | Every pull request (including data PRs, and title edits); manual | The PR title (Conventional Commits, `release.mjs check`). The images from `pa-bailar/media` copied into `data/` (its latest version). `npm ci`, `npm run check` (section 8), `npm test`, `npm run build` | `contents: read` |
+| `ci` | Every pull request (including data PRs, and title edits); manual | The PR title (Conventional Commits, `release.mjs check`). The images from `pa-bailar/media` copied into `data/` (its latest version, `flyers/` and `previews/` only; a missing folder is fine: git keeps no empty one). `npm ci`, `npm run check` (section 8), `npm test`, `npm run build` | `contents: read` |
 | `deploy` | Push to `main` (every merged PR); manual; the backend's sweep on days without changes (with `checked_at`) | **version**: the version from the commits since the last tag (`release.mjs plan`) and its release notes. **build**: the images from `pa-bailar/media` copied into `data/`; `npm ci`, `npm run check`, `npm run build` (with `PUBLIC_CHECKED_AT` and `PUBLIC_VERSION`), upload the Pages artifact. **deploy**: publish to GitHub Pages. **release**, only after a successful deploy and when the commits change the site: tag the version and publish its GitHub Release. A failed build or deploy tags nothing | Version and build: `contents: read` (the build runs npm's install scripts). Deploy: `pages: write`, `id-token: write`. Release: `contents: write` (it runs no npm package, only `gh`) |
 
 - **One deploy at a time:** `concurrency: pages` without cancelling, so two merges in a row publish one

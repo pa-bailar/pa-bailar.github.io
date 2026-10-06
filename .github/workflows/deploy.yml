@@ -71,9 +71,17 @@ jobs:
           repository: pa-bailar/media
           path: .media
           persist-credentials: false
+          sparse-checkout: | # not archive/: it grows for good and the site never publishes it
+            flyers
+            previews
+      # A folder can be missing (git keeps no empty folder: no clips left once the last video's event is past).
       - name: Copy the images into data/
         working-directory: .
-        run: cp -r .media/flyers .media/previews data/
+        run: |
+          for folder in flyers previews; do
+            mkdir -p "data/$folder"
+            if [ -d ".media/$folder" ]; then cp -r ".media/$folder/." "data/$folder/"; fi
+          done
       - run: npm ci
       - name: Data format, type check, color contrast and CSS properties
         run: npm run check
