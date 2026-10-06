@@ -34,7 +34,7 @@ import {
   sidePanelFits,
 } from "./views/eventDrawer";
 import { carouselSlide, initCarousels } from "./views/carousel";
-import { initKeyboardNav } from "./views/keyboardNav";
+import { initKeyboardNav, initRovingTab } from "./views/keyboardNav";
 import { followStage, initLightbox, lightboxMode, showStage, stepStage } from "./views/lightbox";
 import { armDetailsHint, markDetailsHintSeen } from "./views/detailsHint";
 import { HIDE_BARS_FILTER, filterModel, staleDates } from "./lib/filterModel";
@@ -409,6 +409,7 @@ export function start() {
   initFilterPanels();
   initCarousels();
   initLightbox(closeEventDrawer);
+  initRovingTab({ openEventId, focusDetails: focusEventDetails });
   initKeyboardNav({
     findEvent,
     openEventId,
