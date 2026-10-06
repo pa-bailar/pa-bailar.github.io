@@ -473,7 +473,8 @@ stateDiagram-v2
     would lie over the page, `makeRoom` sets `.panel-room` on `<html>` while it's open: every `.container` (header,
     filters, list, footer) gets the panel's width as its right margin, so the page sits against the panel and the
     list's grid keeps the columns that fit. The card shown keeps its height on screen (the page scrolls by what the new
-    layout moved it), and what moved glides there (`lib/glide.ts`), except on a resize or a shared link. A card
+    layout moved it), and what moved glides there (`lib/glide.ts`), except on a resize or a shared link; an arrow
+    pressed mid-glide settles it first (`settleGlides`), so it finds the next card from the cards' places. A card
     tapped while it's open shows its event there and replaces the URL, unless the list moved to another screen
     meanwhile: that screen keeps its entry and the event gets one over it. Closing puts the address back to its
     view's (`addressAfterClosing`, `lib/links.ts`). Closing never reopens an earlier event: a back that lands on

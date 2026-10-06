@@ -8,6 +8,15 @@ import { prefersReducedMotion } from "./dom";
 let running: Animation[] = [];
 
 /**
+ * Ends the glides still running at once, everything in its new place: for what reads where things are on screen (the
+ * arrows finding the next card), which a glide would answer with a place on the way.
+ */
+export function settleGlides() {
+  for (const animation of running) animation.finish();
+  running = [];
+}
+
+/**
  * Takes where `elements` are on screen now. The function it returns, called once the layout changed, makes each one
  * that moved glide from there to its new place in `duration` ms. Nothing glides with "reduce motion" on, nor where
  * the browser can't animate (it then just jumps, as without this).

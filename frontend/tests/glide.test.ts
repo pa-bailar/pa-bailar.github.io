@@ -1,8 +1,9 @@
 // What a layout change moved glides to its new place (lib/glide.ts, the page making room beside the side panel): each
 // piece starts where it was and slides to where it is; what didn't move stays still; with "reduce motion" on, nothing
-// glides; a new change stops the glides still running, and the next starts from where they were.
+// glides; a new change stops the glides still running, and the next starts from where they were; the arrows settle
+// them at once before finding the next card (pressed fast, mid-glide, they measured cards on their way).
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { glideFrom } from "../src/scripts/lib/glide";
+import { glideFrom, settleGlides } from "../src/scripts/lib/glide";
 
 const MOTION = { duration: 280, easing: "ease-out" };
 
@@ -10,10 +11,10 @@ const MOTION = { duration: 280, easing: "ease-out" };
 function piece(box: { left: number; top: number }) {
   const element = {
     box,
-    glides: [] as { cancel: ReturnType<typeof vi.fn> }[],
+    glides: [] as { cancel: ReturnType<typeof vi.fn>; finish: ReturnType<typeof vi.fn> }[],
     getBoundingClientRect: () => ({ left: element.box.left, top: element.box.top }),
     animate: vi.fn(() => {
-      const glide = { cancel: vi.fn() };
+      const glide = { cancel: vi.fn(), finish: vi.fn() };
       element.glides.push(glide);
       return glide;
     }),
@@ -67,5 +68,14 @@ describe("pieces moved by a layout change (glideFrom)", () => {
     close();
     expect(card.glides[0].cancel).toHaveBeenCalled();
     expect(card.animate).toHaveBeenCalledTimes(2);
+  });
+
+  it("settle at once where something reads their place (the arrows finding the next card)", () => {
+    const card = piece({ left: 860, top: 225 });
+    const play = glideFrom(asElements([card]), MOTION);
+    card.box = { left: 16, top: 225 };
+    play();
+    settleGlides();
+    expect(card.glides[0].finish).toHaveBeenCalled();
   });
 });
