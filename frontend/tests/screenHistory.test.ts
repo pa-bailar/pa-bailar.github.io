@@ -173,12 +173,39 @@ describe("the side panel (an overlay with the event's address)", () => {
     expect(fake.path).toBe("/");
   });
 
-  it("a move while it's open gets an entry without the event: closing then fixes the address", () => {
+  it("a period opened while it's open gets no entry: the panel's entry records it (review, 6 Oct 2026)", () => {
+    openPanel("social-1");
+    const at = fake.index;
+    openPeriod();
+    expect(fake.index).toBe(at);
+    expect(fake.state).toMatchObject({ eventId: "social-1", overlay: true, screen: { periods: ["hoy"] } });
+    expect(fake.path).toBe("/evento/social-1/");
+  });
+
+  it("closing the panel keeps the period, which gets its entry then: back folds it, never reopening the event", async () => {
     openPanel("social-1");
     openPeriod();
+    history.back(); // closing the panel goes through the history
+    await settle();
+    expect(app.period).toBe("hoy");
+    expect(fake.state).toMatchObject({ screen: { periods: ["hoy"] } });
     expect(fake.state).not.toHaveProperty("eventId");
-    expect(fake.path).toBe("/evento/social-1/"); // pushState keeps the address…
-    expect(addressAfterClosing(location)).toBe("/"); // …which the drawer's close puts back to the home page
+    expect(fake.path).toBe("/");
+    history.back(); // the period's entry, like any period opened whole: back folds it
+    await settle();
+    expect(app.period).toBeNull();
+    expect(fake.state?.eventId).toBeUndefined();
+    history.forward(); // the panel's entry is gone: forward is the period again, not the event
+    await settle();
+    expect(app.period).toBe("hoy");
+    expect(fake.state?.eventId).toBeUndefined();
+  });
+
+  it("a view moved to while it's open still gets its own entry", () => {
+    openPanel("social-1");
+    screens.goTo("view", () => (app.view = "calendar"));
+    expect(fake.state).not.toHaveProperty("eventId");
+    expect(addressAfterClosing(location)).toBe("/"); // the drawer's close puts the address back to the home page
   });
 });
 

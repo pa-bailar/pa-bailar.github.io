@@ -45,13 +45,21 @@ describe("opening the details", () => {
     expect(fake.state).toMatchObject({ eventId: "salsa-2", overlay: true });
   });
 
-  it("…unless the list moved to another screen meanwhile: that one keeps its entry", () => {
+  it("…unless the list moved to another view meanwhile: that one keeps its entry", () => {
     drawer.enterEvent(social, false);
-    screens.goTo("period", () => {});
+    screens.goTo("view", () => {});
     drawer.enterEvent(salsa, true);
     expect(fake.entries).toHaveLength(4);
     expect(fake.entries[2]!.state).not.toHaveProperty("eventId");
     expect(fake.state).toMatchObject({ eventId: "salsa-2" });
+  });
+
+  it("a period opened meanwhile has no entry: the next event replaces the details' entry (review, 6 Oct 2026)", () => {
+    drawer.enterEvent(social, false);
+    screens.goTo("period", () => {});
+    drawer.enterEvent(salsa, true);
+    expect(fake.entries).toHaveLength(2);
+    expect(fake.state).toMatchObject({ eventId: "salsa-2", overlay: true });
   });
 });
 
