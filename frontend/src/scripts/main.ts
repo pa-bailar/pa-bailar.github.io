@@ -419,6 +419,16 @@ export function start() {
   initClickTracking();
   document.addEventListener("click", handleClick);
   document.addEventListener("input", handleSearchInput);
+  // Escape in the toolbar's search field (wide screens) ends the search in every browser: Chrome clears a search field
+  // by itself, WebKit as the site-checks toolkit runs it didn't (6 Oct 2026). The bar's field has its own (bottomNav.ts).
+  document.addEventListener("keydown", (domEvent) => {
+    const field = domEvent.target;
+    if (domEvent.key !== "Escape" || !(field instanceof HTMLInputElement) || !field.matches(".toolbar [data-search]")) return;
+    if (!field.value) return;
+    domEvent.preventDefault();
+    clearSearch();
+    render();
+  });
   // Saving changes the "Guardados" count. Guardados itself is drawn again right where the visitor was (never
   // jumping, e.g. to a period's heading): an event unsaved there leaves it.
   initSaveButtons(() => {
