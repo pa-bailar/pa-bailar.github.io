@@ -562,7 +562,9 @@ An event can be announced by several Instagram posts (a flyer, then a video, a r
   control of every card (about 124 stops, out of step with the arrows) and the list as one stop (a roving tabindex:
   Tab skipped every other event, straight to the footer). Safari's plain Tab skips links (the cards are links) unless
   its "Press Tab to highlight each item" is on: its usual behavior, left as it is. Screen readers' own reading still
-  reaches every button.
+  reaches every button. A card's link says its title first, then
+  when, what, where and how much (`cardLabel`), since it's the card's only Tab stop. **"Saltar a los eventos"**, the
+  page's first stop, shown only while focused, skips the header and the toolbar (11 stops) to the list.
 - **Every post, in a sheet** (`PostsSheet.astro`, `scripts/views/postsSheet.ts`): from the card's "▦ 3", the details' "Ver las 3 publicaciones", or the event page's `.posts-badge`. Tabs Flyers and Videos when the event has both, and square thumbnails like Instagram's grid, made at build time (`pages/thumbs/[name].webp.ts`). Choosing one opens it in the media viewer, which takes over the sheet's history entry (back returns to the list or the details, not to a sheet that's gone); on an event's page it shows that post on the page instead.
 - **The media viewer** (`PostViewer.astro`, `scripts/views/postViewer.ts`): the post inside the site, in a sheet over everything, with Instagram's own player (`lib/instagramEmbed.ts`): videos with sound, carousels with all their slides. Opening the Instagram app would leave the site, and the app's back button doesn't come back; the sheet's bar keeps "Abrir en Instagram ↗". Our copy of the flyer shows at once and the player replaces it when ready; if it can't load, the flyer stays with "Esta publicación solo se puede ver en Instagram." Instagram's script loads on the first tap only, never with the page. Closing it removes the player, so a video stops.
 - **Videos play in the feed.** When the backend made a video's clip (`preview`), the card plays it: silent, looping, about 6 seconds, like Instagram's feed (`views/clips.ts`). No sound control: a tap opens the details, where the full video plays with sound (the owner, 4 October 2026, after a "Sin sonido / Con sonido" toggle that did nothing, since the clips have no sound). Only the clip on screen plays; one that leaves the screen unloads. No autoplay with reduced motion or the data saver. The service worker doesn't cache clips.
@@ -630,7 +632,10 @@ On phones the details open like Instagram's comments: a drawer rises over the li
 
 **The side panel** (900px and wider, 600px and taller): the same content, in a panel on the right, not modal, so the
 list stays usable next to it. **The page never moves** when it opens or closes (the owner, 5 Oct 2026: the list
-shifting left felt shaky): the panel lies over the page's right side, like Gmail's or Maps'. Another card shows its
+shifting left felt shaky): the panel lies over the page's right side, like Gmail's or Maps'. **Except where it would
+cover cards** (laptops, below about 1,900 px wide): there the list narrows beside it while it's open, at once, the
+event shown kept at its place on screen (the owner, 6 Oct 2026: at 1,280–1,366 px a focused card in the last column
+was fully hidden under the panel; WCAG 2.2, 2.4.11). Wide screens are unchanged. Another card shows its
 event in the panel (the address changes without adding to the history), and the open event's card is outlined (`--card-current`: amber in light, pink in dark; never the focus ring's color, red in light and gold in dark, so with the keyboard elsewhere both show). × and
 Escape close it, and the focus goes back to the last card opened. If the list next to it moves to another view (the
 calendar), another card gets its own history entry. A period opened whole meanwhile (a click on "Ver 3 más", or the

@@ -132,6 +132,15 @@ function actionsHtml(event: DanceEvent, slides: number): string {
     </div>`;
 }
 
+/**
+ * What a card's link says to a screen reader when Tab reaches it: its title first (the words on screen, which voice
+ * control users say), then when, what, where and how much. The title alone left all of that out, and each card is a
+ * single Tab stop (keyboardNav.ts).
+ */
+export function cardLabel(event: DanceEvent, when: string, place: string | null, price: string | null): string {
+  return [event.title, when, typeLabel(event.event_type), place, price].filter(Boolean).join(", ");
+}
+
 function eventCardHtml(event: DanceEvent): string {
   const media = mainMedia(event);
   const flyer = flyerUrl(media);
@@ -162,7 +171,7 @@ function eventCardHtml(event: DanceEvent): string {
       <div class="event-card__body">
         <p class="event-card__time">${escapeHtml(when)}</p>
         <h3 class="event-card__title">
-          <a class="event-card__hit" href="${escapeHtml(eventPath(event))}" data-event="${escapeHtml(event.id)}">${escapeHtml(event.title)}</a>
+          <a class="event-card__hit" href="${escapeHtml(eventPath(event))}" data-event="${escapeHtml(event.id)}" aria-label="${escapeHtml(cardLabel(event, when, place, price))}">${escapeHtml(event.title)}</a>
         </h3>
         <p class="event-card__meta">
           ${accountLinkHtml(event.account, { className: "event-card__account", track: "perfil-tarjeta" })}
