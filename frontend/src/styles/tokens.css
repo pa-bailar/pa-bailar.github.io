@@ -32,6 +32,7 @@
   --tomato-350: #e8553b; /* type tags: light enough for wine text (≥4.5:1) */
   --orange-800: #b85410; /* deep enough for white text (4.87:1): the light primary button */
   --orange-600: #e8791c;
+  --amber-700: #ad6800; /* the stripes' orange, deep enough for an outline on the page (3.31:1); hue 36°, apart from the red */
   --marigold-600: #e9b021;
   --rose-300: #e9b8a0;
   --palm-600: #1f7a4a;
@@ -84,8 +85,9 @@
   --accent-text: light-dark(var(--tomato-700), var(--pink-400)); /* the accent as a word on the page ("× Limpiar"): ≥4.5:1 */
   --focus: light-dark(var(--tomato-600), var(--gold-300));
   /* The card shown in the side panel, outlined in the list: never the focus ring's color, so with the keyboard on
-     another stop both show (light used the accent, the same tomato as the focus ring; the owner, 6 Oct 2026). */
-  --card-current: light-dark(var(--wine-900), var(--pink-400));
+     another stop both show: red and orange in light, gold and pink in dark (the owner, 6 Oct 2026; light first used
+     the accent, the focus ring's tomato, then wine, too close to the cards' own border). */
+  --card-current: light-dark(var(--amber-700), var(--pink-400));
 
   /* Controls */
   --action: light-dark(var(--orange-800), var(--gold-300)); /* primary button: deep orange / gold */

@@ -22,12 +22,14 @@
 //     ↑ ↓ keep working there). Escape closes it; the next arrow opens it again. Not where the details are the phones'
 //     drawer over the list. Before, after a look at another card's image (the lightbox) or Escape from it, the arrows
 //     moved through the list and the panel stayed on the first event (the owner, 5 Oct 2026).
-//   - Tab (initRovingTab): the list is one Tab stop, the selected card (the last one the arrows or a click left, else
-//     the first). On it, Tab goes through that card's own controls (the card, Detalles, Compartir, Guardar, ‹ ›, the
-//     profile), then into the side panel if it's open, then on out of the list; Shift+Tab walks back the same way.
-//     Of the periods' headings, only the selected card's keeps its Compartir in the Tab order (just before it).
-//     Every other card is out of the Tab order (tabindex -1; screen readers' reading still reaches them). Before, each
-//     card was 5 to 7 stops (251 on the page) and Tab disagreed with the arrows and the panel (the owner, 6 Oct 2026).
+//   - Tab: one stop per event (the owner, 6 Oct 2026). Tab walks the list in its reading order, the same as →: each
+//     card once (the card itself), the periods' Compartir and "Ver N más" / month blocks where they are; Shift+Tab goes
+//     back like ←. A card's own controls (Detalles, Compartir, Guardar, ‹ ›, its photos' strip, the profile) are out
+//     of the Tab order: all of them are in the details, which Enter opens. The side panel follows the card Tab lands
+//     on, as with the arrows; in it, Tab goes through its controls, and past the last one on to the next stop in the
+//     list; Shift+Tab from its start goes back to the card it shows. Tried first and dropped: the list as one Tab stop
+//     (a roving tabindex: Tab skipped every other event, straight to the footer) and every control of every card
+//     (about 124 stops, and Tab disagreed with the arrows).
 // Never while typing (the search), in a menu (Cuándo, a pill's panel) or over something else (a sheet, the post viewer,
 // the lightbox, which has ← → of its own). A card's ‹ › stay the mouse's and Tab's: ← → never mean two things.
 
@@ -175,132 +177,21 @@ interface Hooks {
   showImage: (event: DanceEvent, card: HTMLAnchorElement | null) => boolean;
 }
 
-/** A stop's identity across redraws: its event, or its period's button. */
-const keyOf = (stop: HTMLElement): string => stop.dataset.eventCard ?? `period:${stop.dataset.showPeriod ?? ""}`;
-
 /**
- * What in a card can take the focus besides its link, in the page's order: a carousel's strip and ‹ ›, Detalles,
- * Compartir, Guardar, the profile. The strip has no tabindex, but Chrome lets Tab reach any box that scrolls: it's
- * named here so it gets one (-1) like the rest.
+ * What in a card can take the focus besides its link: its photos' strip, ‹ ›, Detalles, Compartir, Guardar, the
+ * profile. The strip has no tabindex, but Chrome lets Tab reach any box that scrolls: it's named here so it gets one.
  */
 const controlsOf = (card: HTMLElement): HTMLElement[] =>
   [...card.querySelectorAll<HTMLElement>("button, a[href], [tabindex], [data-carousel]")].filter(
-    (control) => !control.matches("a.event-card__hit") && control.getClientRects().length > 0,
+    (control) => !control.matches("a.event-card__hit"),
   );
 
-/** The Tab order inside the selected card: the card (its link) first, then its controls. */
-const tabOrderOf = (card: HTMLElement): HTMLElement[] => {
-  const link = linkOf(card);
-  return [...(link ? [link] : []), ...controlsOf(card)];
-};
-
-/** What can take the focus in `root`, in the page's order. */
+/** What Tab can reach in `root`, in the page's order (a <details>' <summary> too: the caption's "Texto de la publicación"). */
+const FOCUSABLE = "a[href], area[href], button, input, select, textarea, summary, iframe, audio[controls], video[controls], [contenteditable='true'], [tabindex]";
 const focusables = (root: Element): HTMLElement[] =>
-  [...root.querySelectorAll<HTMLElement>("a[href], button, input, select, textarea, [tabindex]")].filter(
+  [...root.querySelectorAll<HTMLElement>(FOCUSABLE)].filter(
     (element) => element.tabIndex >= 0 && !element.matches(":disabled") && element.getClientRects().length > 0,
   );
-
-interface TabHooks {
-  /** The event the details show, if they're open. */
-  openEventId: () => string | null;
-  /** The focus into the open details (their title). */
-  focusDetails: () => void;
-}
-
-/**
- * The list as one Tab stop (a "roving tabindex"): see the header. The selected stop is kept by its key, so a redraw
- * (filters, a period opened) keeps it when it's still there.
- */
-export function initRovingTab(hooks: TabHooks) {
-  let selected: string | null = null;
-
-  /** Only the selected stop can be reached with Tab; every other stop and every card's own controls can't. */
-  function apply() {
-    const list = stops();
-    if (!list.length) return;
-    const active = list.find((stop) => keyOf(stop) === selected) ?? list[0]!;
-    selected = keyOf(active);
-    for (const stop of list) {
-      const focus = focusOf(stop);
-      if (focus) focus.tabIndex = stop === active ? 0 : -1;
-      if (stop.dataset.eventCard) for (const control of controlsOf(stop)) control.tabIndex = -1;
-    }
-    // The periods' own buttons (their heading's Compartir) belong to the list too: only the selected stop's period
-    // keeps its in the Tab order, right before it. Each one left in made Tab jump down the page, period by period,
-    // past the selected card (the owner, 6 Oct 2026).
-    const period = active.closest("[data-period]");
-    for (const section of document.querySelectorAll(`${VIEW} [data-period]`)) {
-      for (const button of section.querySelectorAll<HTMLElement>(".agenda-group__header button, .agenda-group__header a[href]")) {
-        button.tabIndex = section === period ? 0 : -1;
-      }
-    }
-  }
-
-  let pending = 0;
-  const applySoon = () => {
-    cancelAnimationFrame(pending);
-    pending = requestAnimationFrame(apply);
-  };
-
-  // The selection follows the focus: the arrows, a click, Tab inside the selected card.
-  document.addEventListener("focusin", (domEvent) => {
-    const target = domEvent.target instanceof Element ? domEvent.target : null;
-    const stop = target?.closest<HTMLElement>(`${VIEW} [data-event-card], ${VIEW} [data-show-period]`);
-    if (!stop || keyOf(stop) === selected) return;
-    selected = keyOf(stop);
-    apply();
-  });
-
-  document.addEventListener("keydown", (domEvent) => {
-    if (domEvent.key !== "Tab" || domEvent.altKey || domEvent.ctrlKey || domEvent.metaKey) return;
-    const target = domEvent.target instanceof HTMLElement ? domEvent.target : null;
-    if (!target) return;
-    const back = domEvent.shiftKey;
-    const panel = document.getElementById("event-drawer") as HTMLDialogElement | null;
-
-    // Back out of the side panel from its start (its title, or its first control): to the last control of the card it
-    // shows, which the arrows inside it may have changed since (the panel follows the list).
-    const first = panel?.open ? focusables(panel)[0] : undefined;
-    const atStart =
-      first === target || (first && first.compareDocumentPosition(target) & Node.DOCUMENT_POSITION_PRECEDING);
-    if (back && panel?.open && panel.contains(target) && atStart) {
-      const shown = hooks.openEventId() ?? selected ?? "";
-      const card = document.querySelector<HTMLElement>(`${VIEW} [data-event-card="${CSS.escape(shown)}"]`);
-      const last = card ? tabOrderOf(card).at(-1) : undefined;
-      if (card && last) {
-        domEvent.preventDefault();
-        selected = keyOf(card);
-        apply();
-        last.focus();
-      }
-      return;
-    }
-
-    const card = target.closest<HTMLElement>(`${VIEW} [data-event-card]`);
-    if (!card || keyOf(card) !== selected) return;
-    const order = tabOrderOf(card);
-    const at = order.indexOf(target);
-    if (at < 0) return;
-    const next = order[at + (back ? -1 : 1)];
-    if (next) {
-      domEvent.preventDefault();
-      next.focus();
-      return;
-    }
-    // Past the card's last control: into the open side panel; else the browser goes on (the rest of the list is out
-    // of the Tab order). Back from the card itself: the browser goes on, out of the list.
-    if (!back && hooks.openEventId() && panel?.open) {
-      domEvent.preventDefault();
-      hooks.focusDetails();
-    }
-  });
-
-  // Every redraw of a view (filters, a period opened, another view) brings new cards: they get the same rules.
-  const observer = new MutationObserver(applySoon);
-  document.querySelectorAll('[role="tabpanel"]').forEach((view) => observer.observe(view, { childList: true, subtree: true }));
-  new MutationObserver(applySoon).observe(document.body, { attributes: true, attributeFilter: ["data-screen"] });
-  apply();
-}
 
 export function initKeyboardNav(hooks: Hooks) {
   /** Enter on a card, on the open details, or on a period's button. */
@@ -346,7 +237,8 @@ export function initKeyboardNav(hooks: Hooks) {
   function showInPane(card: HTMLElement | undefined) {
     const event = card?.dataset.eventCard ? hooks.findEvent(card.dataset.eventCard) : undefined;
     const link = linkOf(card);
-    if (event && link && (hooks.openEventId() || hooks.readingPane())) hooks.showEvent(event, link, { stayInList: true });
+    if (!event || !link || hooks.openEventId() === event.id) return;
+    if (hooks.openEventId() || hooks.readingPane()) hooks.showEvent(event, link, { stayInList: true });
   }
 
   /** From a card or a period's button: the stop that way; the side panel follows a card. */
@@ -394,5 +286,86 @@ export function initKeyboardNav(hooks: Hooks) {
     const stop = target.closest<HTMLElement>("[data-event-card], [data-show-period]");
     if (stop) return fromStop(domEvent, direction, list, stop);
     if (target === document.body) fromNothing(domEvent, list);
+  });
+
+  // ---------- Tab: one stop per event (see the header) ----------
+
+  /** Each card is one Tab stop: its own controls leave the Tab order. Again after every redraw (new cards). */
+  function applyTabOrder() {
+    for (const card of document.querySelectorAll<HTMLElement>(`${VIEW} [data-event-card]`)) {
+      for (const control of controlsOf(card)) control.tabIndex = -1;
+    }
+  }
+  let pending = 0;
+  const applySoon = () => {
+    cancelAnimationFrame(pending);
+    pending = requestAnimationFrame(applyTabOrder);
+  };
+  const redraws = new MutationObserver(applySoon);
+  document.querySelectorAll('[role="tabpanel"]').forEach((view) => redraws.observe(view, { childList: true, subtree: true }));
+  applyTabOrder();
+
+  // The side panel follows the card Tab lands on (a click doesn't count: its card was just opened anyway).
+  let tabbing = false;
+  document.addEventListener("keydown", (domEvent) => (tabbing = domEvent.key === "Tab"), true);
+  document.addEventListener("pointerdown", () => (tabbing = false), true);
+  document.addEventListener("focusin", (domEvent) => {
+    if (!tabbing) return;
+    tabbing = false;
+    const link = domEvent.target instanceof Element ? domEvent.target.closest("a.event-card__hit") : null;
+    const card = link?.closest<HTMLElement>(`${VIEW} [data-event-card]`);
+    if (card) showInPane(card);
+  });
+
+  // The side panel and the image beside it sit at the page's end: from outside them, Tab never walks into them (Enter
+  // is the way in), or after the footer Tab went into the panel, back into the list, and round again. Their controls
+  // leave the Tab order for this one press (the browser picks the next stop after the keydown).
+  document.addEventListener(
+    "keydown",
+    (domEvent) => {
+      if (domEvent.key !== "Tab" || !hooks.readingPane()) return;
+      const target = domEvent.target instanceof Element ? domEvent.target : null;
+      const asides = [...document.querySelectorAll<HTMLDialogElement>("#event-drawer[open], #lightbox[open]")];
+      if (!asides.length || asides.some((aside) => target && aside.contains(target))) return;
+      const skipped = asides.flatMap((aside) => focusables(aside)).map((element) => [element, element.getAttribute("tabindex")] as const);
+      for (const [element] of skipped) element.tabIndex = -1;
+      setTimeout(() => {
+        for (const [element, tabindex] of skipped) {
+          if (tabindex === null) element.removeAttribute("tabindex");
+          else element.setAttribute("tabindex", tabindex);
+        }
+      });
+    },
+    true,
+  );
+
+  // In the side panel: past its last control, on to the next stop in the list (the panel sits at the page's end);
+  // Shift+Tab from its start, back to the card it shows.
+  // Option+Tab counts as Tab: it's how Safari on a Mac reaches links (its plain Tab skips them, the cards included,
+  // unless "Press Tab to highlight each item" is on). On Windows, Alt+Tab never reaches the page.
+  document.addEventListener("keydown", (domEvent) => {
+    if (domEvent.key !== "Tab" || domEvent.ctrlKey || domEvent.metaKey) return;
+    const panel = document.getElementById("event-drawer") as HTMLDialogElement | null;
+    const target = domEvent.target instanceof HTMLElement ? domEvent.target : null;
+    if (!panel?.open || !target || !panel.contains(target) || !hooks.readingPane()) return;
+    const shown = document.querySelector<HTMLElement>(`${VIEW} [data-event-card="${CSS.escape(hooks.openEventId() ?? "")}"]`);
+    const link = linkOf(shown ?? undefined);
+    if (!link) return;
+    const inPanel = focusables(panel);
+    if (domEvent.shiftKey) {
+      const first = inPanel[0];
+      const atStart = !first || first === target || Boolean(first.compareDocumentPosition(target) & Node.DOCUMENT_POSITION_PRECEDING);
+      if (!atStart) return;
+      domEvent.preventDefault();
+      link.focus();
+      return;
+    }
+    if (target !== inPanel.at(-1)) return;
+    const view = document.querySelector(VIEW);
+    const inList = view ? focusables(view) : [];
+    const next = inList[inList.indexOf(link) + 1] ?? focusables(document.querySelector("footer") ?? document.body)[0];
+    if (!next) return;
+    domEvent.preventDefault();
+    next.focus();
   });
 }

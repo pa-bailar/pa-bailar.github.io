@@ -552,13 +552,17 @@ An event can be announced by several Instagram posts (a flyer, then a video, a r
   away from its card, an arrow starts from the first card on screen. Closing a
   card's lightbox switches it to that event (the owner, 5 Oct 2026: after a look at another card's image, the arrows
   moved through the list while the panel stayed on the first event). Never while typing, in a menu or under another
-  dialog; a card's ‹ › stay the mouse's and Tab's, so ← → never mean two things. **Tab: the list is one stop** (a
-  roving tabindex, `initRovingTab`): Tab lands on the selected card (the last one the arrows or a click left, else the
-  first), then goes through that card's own controls (the card, ‹ ›, Detalles, Compartir, Guardar, the profile), then
-  into the side panel if it's open, then out of the list; Shift+Tab walks back, from the panel's start to the card it
-  shows. Every other card is out of the Tab order, and of the periods' headings only the selected card's keeps its
-  Compartir (just before it), so Tab never jumps down the page and Tab and the arrows never disagree (the owner, 6 Oct 2026: each
-  card was 5 to 7 stops, 251 on the page; now about 20). Screen readers' own reading still reaches every card.
+  dialog; a card's ‹ › stay the mouse's and Tab's, so ← → never mean two things. **Tab: one stop per event** (the owner, 6 Oct 2026): Tab
+  walks the list in its reading order, the same as →, each event once (the card itself), with the periods' Compartir
+  and the "Ver N más" / month blocks where they are, then the footer, then out of the page; Shift+Tab goes back like
+  ←. An event's own buttons (Detalles, Compartir, Guardar, ‹ ›, the profile) are out of the Tab order: all of them are
+  in the details, which Enter opens. The side panel follows the event Tab lands on; in it, Tab goes through its
+  controls and past the last one on to the next event, Shift+Tab from its start back to the event it shows; from
+  outside, Tab never walks into it (it sits at the page's end). About 41 stops on the page. Dropped on the way: every
+  control of every card (about 124 stops, out of step with the arrows) and the list as one stop (a roving tabindex:
+  Tab skipped every other event, straight to the footer). Safari's plain Tab skips links (the cards are links) unless
+  its "Press Tab to highlight each item" is on: its usual behavior, left as it is. Screen readers' own reading still
+  reaches every button.
 - **Every post, in a sheet** (`PostsSheet.astro`, `scripts/views/postsSheet.ts`): from the card's "▦ 3", the details' "Ver las 3 publicaciones", or the event page's `.posts-badge`. Tabs Flyers and Videos when the event has both, and square thumbnails like Instagram's grid, made at build time (`pages/thumbs/[name].webp.ts`). Choosing one opens it in the media viewer, which takes over the sheet's history entry (back returns to the list or the details, not to a sheet that's gone); on an event's page it shows that post on the page instead.
 - **The media viewer** (`PostViewer.astro`, `scripts/views/postViewer.ts`): the post inside the site, in a sheet over everything, with Instagram's own player (`lib/instagramEmbed.ts`): videos with sound, carousels with all their slides. Opening the Instagram app would leave the site, and the app's back button doesn't come back; the sheet's bar keeps "Abrir en Instagram ↗". Our copy of the flyer shows at once and the player replaces it when ready; if it can't load, the flyer stays with "Esta publicación solo se puede ver en Instagram." Instagram's script loads on the first tap only, never with the page. Closing it removes the player, so a video stops.
 - **Videos play in the feed.** When the backend made a video's clip (`preview`), the card plays it: silent, looping, about 6 seconds, like Instagram's feed (`views/clips.ts`). No sound control: a tap opens the details, where the full video plays with sound (the owner, 4 October 2026, after a "Sin sonido / Con sonido" toggle that did nothing, since the clips have no sound). Only the clip on screen plays; one that leaves the screen unloads. No autoplay with reduced motion or the data saver. The service worker doesn't cache clips.
@@ -627,7 +631,7 @@ On phones the details open like Instagram's comments: a drawer rises over the li
 **The side panel** (900px and wider, 600px and taller): the same content, in a panel on the right, not modal, so the
 list stays usable next to it. **The page never moves** when it opens or closes (the owner, 5 Oct 2026: the list
 shifting left felt shaky): the panel lies over the page's right side, like Gmail's or Maps'. Another card shows its
-event in the panel (the address changes without adding to the history), and the open event's card is outlined (`--card-current`: dark wine in light, pink in dark; never the focus ring's color, so with the keyboard elsewhere both show). × and
+event in the panel (the address changes without adding to the history), and the open event's card is outlined (`--card-current`: amber in light, pink in dark; never the focus ring's color, red in light and gold in dark, so with the keyboard elsewhere both show). × and
 Escape close it, and the focus goes back to the last card opened. If the list next to it moves to another view (the
 calendar), another card gets its own history entry. A period opened whole meanwhile (a click on "Ver 3 más", or the
 arrows from the details) gets its entry when the panel closes, so back then folds it and never reopens an event
