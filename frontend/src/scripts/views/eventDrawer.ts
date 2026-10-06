@@ -14,7 +14,7 @@
 
 import type { DanceEvent } from "../types";
 import { byId, escapeHtml, prefersReducedMotion } from "../lib/dom";
-import { detailsEventName, type DetailsSource, trackEvent, trackPageview } from "../lib/analytics";
+import { detailsEventName, type DetailsSource, seenCounter, trackEvent, trackPageview } from "../lib/analytics";
 import { ICONS } from "../lib/icons";
 import { eventPath } from "../lib/links";
 import { glideFrom } from "../lib/glide";
@@ -247,6 +247,9 @@ function show(event: DanceEvent, shared: boolean) {
 
 const focusTitle = () => document.getElementById(TITLE_ID)?.focus({ preventScroll: true });
 
+/** Each event the details show counts as a visit to its page (GoatCounter), once while they stay open. */
+const seen = seenCounter<DanceEvent>((event) => trackPageview(eventPath(event), event.title));
+
 /**
  * Opens `event`'s details. `source` says what opened them (a card, its "Detalles", a shared link), counted as a
  * GoatCounter event. `shared`: the list was just scrolled to its card (a shared link).
@@ -294,7 +297,9 @@ export function openEventDrawer(
   }
   if (focus) focusTitle();
   if (pushHistory) enterEvent(event, wasOpen);
-  trackPageview(eventPath(event), event.title); // which events people look at
+  // Which events people look at. The side panel following the keyboard shows every event the arrows or Tab pass:
+  // those count once read (the owner's console, 6 Oct 2026: a row walked with the arrows counted all its events).
+  seen.show(event, { passing: !focus });
   if (source) trackEvent(detailsEventName(source));
 }
 
@@ -352,6 +357,7 @@ function cleanUpAfterClose(element: HTMLDialogElement) {
   state.opener = null;
   byId("drawer-content").replaceChildren(); // nothing of it stays in memory while it's closed
   state.current = null;
+  seen.hide();
   holdClips("drawer", false);
   clearCurrentCard();
   afterClosing();
