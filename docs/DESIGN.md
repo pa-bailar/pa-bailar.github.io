@@ -620,7 +620,7 @@ On phones the details open like Instagram's comments: a drawer rises over the li
 **The side panel** (900px and wider, 600px and taller): the same content, in a panel on the right, not modal, so the
 list stays usable next to it. **The page never moves** when it opens or closes (the owner, 5 Oct 2026: the list
 shifting left felt shaky): the panel lies over the page's right side, like Gmail's or Maps'. Another card shows its
-event in the panel (the address changes without adding to the history), and the open event's card is outlined. × and
+event in the panel (the address changes without adding to the history), and the open event's card is outlined (`--card-current`: dark wine in light, pink in dark; never the focus ring's color, so with the keyboard elsewhere both show). × and
 Escape close it, and the focus goes back to the last card opened. If the list next to it moves to another view (the
 calendar), another card gets its own history entry. A period opened whole meanwhile (a click on "Ver 3 más", or the
 arrows from the details) gets its entry when the panel closes, so back then folds it and never reopens an event

@@ -91,6 +91,7 @@ const PAIRS = [
   ["Card outline on card surface edge", "border", "surface", "ui"],
   ["Focus ring on page", "focus", "bg", "ui"],
   ["Focus ring on cards", "focus", "surface", "ui"],
+  ["The card in the side panel: its outline on the page", "card-current", "bg", "ui"],
   ["Active tab underline on page", "accent", "bg", "ui"],
   ["Selected calendar day border on cell", "accent", "surface", "ui"],
   ["Selected chip fill on page", "chip-active-bg", "bg", "ui"],

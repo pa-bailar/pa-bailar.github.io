@@ -83,6 +83,9 @@
   --accent: light-dark(var(--tomato-600), var(--pink-400)); /* time, active tab, selection */
   --accent-text: light-dark(var(--tomato-700), var(--pink-400)); /* the accent as a word on the page ("× Limpiar"): ≥4.5:1 */
   --focus: light-dark(var(--tomato-600), var(--gold-300));
+  /* The card shown in the side panel, outlined in the list: never the focus ring's color, so with the keyboard on
+     another stop both show (light used the accent, the same tomato as the focus ring; the owner, 6 Oct 2026). */
+  --card-current: light-dark(var(--wine-900), var(--pink-400));
 
   /* Controls */
   --action: light-dark(var(--orange-800), var(--gold-300)); /* primary button: deep orange / gold */
