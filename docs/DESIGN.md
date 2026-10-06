@@ -538,7 +538,8 @@ An event can be announced by several Instagram posts (a flyer, then a video, a r
   card was tiresome). A card focused: ↑ ↓ ← → to the card above, below, before or after; Enter opens its details with
   the image big beside them where that works, the details alone elsewhere. The details open: Enter on them shows the
   image beside them (to press Enter an event was almost always just clicked: the owner, 6 Oct 2026). Nothing focused:
-  any arrow starts on the first card on screen (Page Up/Down, space and the wheel still scroll). The details open: ← → the event before or after in the
+  any arrow starts on the first card whose top shows below the pinned bars (Page Up/Down, space and the wheel still
+  scroll); with the details open, from their event. The details open: ← → the event before or after in the
   list, ↑ ↓ the one in the row above or below; the list follows (its card outlined, brought into view); Escape leaves the focus on that card, and back still
   returns to the list (the panel swaps events in place). **While the side panel is open it shows the card in focus**,
   like an inbox's reading pane: the arrows on the list carry it along (the focus stays in the list), and closing a
