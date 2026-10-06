@@ -75,11 +75,6 @@ export function eventCountLabel(count: number): string {
   return `${count} ${count === 1 ? "evento" : "eventos"}`;
 }
 
-/** "1 publicación" / "2 publicaciones" */
-export function postCountLabel(count: number): string {
-  return `${count} ${count === 1 ? "publicación" : "publicaciones"}`;
-}
-
 export function formatMoney(amountCop: number): string {
   return amountCop === 0 ? "Gratis" : money.format(amountCop);
 }

@@ -300,11 +300,11 @@ export function eventDetailHtml(event: DanceEvent, selected: number, { titleId =
  * body scrolls. No flyer and no thumbnail: the card is right there (above it on phones, in the list on wide
  * screens). Only the main post: the others are a link away ("Ver las 3 publicaciones").
  */
-export function eventDrawerHtml(event: DanceEvent, { titleId }: { titleId: string }): string {
+export function eventDrawerHtml(event: DanceEvent, { titleId, selected = 0 }: { titleId: string; selected?: number }): string {
   return `
     <div class="drawer__head">
       <div class="drawer__heading">${headHtml(event, { heading: "h2", titleId })}</div>
       <button class="drawer__close" type="button" data-close-drawer aria-label="Cerrar">${ICONS.close}</button>
     </div>
-    <div class="drawer__body event-detail__info">${bodyHtml(event, 0)}</div>`;
+    <div class="drawer__body event-detail__info">${bodyHtml(event, selected)}</div>`;
 }
