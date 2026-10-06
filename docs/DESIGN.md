@@ -91,7 +91,7 @@ The dark theme isn't a flat color: the page is lit like the ballroom of a late-n
   fades before the first cards.
 - **The grain** (`--grain`): a fine film noise (an SVG `feTurbulence` as a `data:` image, which the CSP's `img-src`
   allows) over the page, the details drawer and the bottom sheets, so they read as the same air.
-- **The bars pinned to the top** (the wide screens' toolbar, the phones' pinned bar): clear while they sit under the header, so the light goes on through them; pinned, 80% of the page's color and frosted (`backdrop-filter`) over what scrolls under them. A solid `--bg` cut the light in a flat band (the owner, 6 Oct 2026). The bar at the bottom keeps `--bg`.
+- **The bars pinned to the top** (the wide screens' toolbar, the phones' pinned bar): clear while they sit under the header, so the light goes on through them; pinned, solid `--bg` again (the light has scrolled away behind them by then; a frosted bar read muddy over the flyers). A solid `--bg` all along cut the light in a flat band (the owner, 6 Oct 2026). The bar at the bottom keeps `--bg`.
 - **The browser bar** (`theme-color`) is the page's indigo (`scripts/themeConfig.ts`, from `lib/brandColors.ts`).
 
 The calendar uses the same theme as the rest of the page: the owner preferred one look throughout over a palette of its own.
@@ -166,6 +166,7 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves: the pa
 
 ## Upcoming list
 
+- **The logo** links home on every page, the home page too, with a page load: the list comes back fresh, at its top, no panel open, nothing selected (the owner, 6 Oct 2026). A plain link, so the page's own click handling leaves it to the browser.
 - **Period headers** (Izzy Sanabria's Fania lettering): the title in Shrikhand with an offset shadow, between two thin lines in the three Fania colors, and the event count ("5 eventos"). Page colors only, calmer than the logo, so it never reads as a post.
 - **Grouped by period, not by day** (`groupByPeriod` in `scripts/state.ts`). Days with one or two events share rows instead of each leaving a mostly empty row. The buckets don't overlap, follow the usual calendar "date range" grouping, and split out the weekend because that's when most socials happen:
 
@@ -555,7 +556,8 @@ An event can be announced by several Instagram posts (a flyer, then a video, a r
   roving tabindex, `initRovingTab`): Tab lands on the selected card (the last one the arrows or a click left, else the
   first), then goes through that card's own controls (the card, ‹ ›, Detalles, Compartir, Guardar, the profile), then
   into the side panel if it's open, then out of the list; Shift+Tab walks back, from the panel's start to the card it
-  shows. Every other card is out of the Tab order, so Tab and the arrows never disagree (the owner, 6 Oct 2026: each
+  shows. Every other card is out of the Tab order, and of the periods' headings only the selected card's keeps its
+  Compartir (just before it), so Tab never jumps down the page and Tab and the arrows never disagree (the owner, 6 Oct 2026: each
   card was 5 to 7 stops, 251 on the page; now about 20). Screen readers' own reading still reaches every card.
 - **Every post, in a sheet** (`PostsSheet.astro`, `scripts/views/postsSheet.ts`): from the card's "▦ 3", the details' "Ver las 3 publicaciones", or the event page's `.posts-badge`. Tabs Flyers and Videos when the event has both, and square thumbnails like Instagram's grid, made at build time (`pages/thumbs/[name].webp.ts`). Choosing one opens it in the media viewer, which takes over the sheet's history entry (back returns to the list or the details, not to a sheet that's gone); on an event's page it shows that post on the page instead.
 - **The media viewer** (`PostViewer.astro`, `scripts/views/postViewer.ts`): the post inside the site, in a sheet over everything, with Instagram's own player (`lib/instagramEmbed.ts`): videos with sound, carousels with all their slides. Opening the Instagram app would leave the site, and the app's back button doesn't come back; the sheet's bar keeps "Abrir en Instagram ↗". Our copy of the flyer shows at once and the player replaces it when ready; if it can't load, the flyer stays with "Esta publicación solo se puede ver en Instagram." Instagram's script loads on the first tap only, never with the page. Closing it removes the player, so a video stops.

@@ -25,6 +25,7 @@
 //   - Tab (initRovingTab): the list is one Tab stop, the selected card (the last one the arrows or a click left, else
 //     the first). On it, Tab goes through that card's own controls (the card, Detalles, Compartir, Guardar, ‹ ›, the
 //     profile), then into the side panel if it's open, then on out of the list; Shift+Tab walks back the same way.
+//     Of the periods' headings, only the selected card's keeps its Compartir in the Tab order (just before it).
 //     Every other card is out of the Tab order (tabindex -1; screen readers' reading still reaches them). Before, each
 //     card was 5 to 7 stops (251 on the page) and Tab disagreed with the arrows and the panel (the owner, 6 Oct 2026).
 // Never while typing (the search), in a menu (Cuándo, a pill's panel) or over something else (a sheet, the post viewer,
@@ -223,6 +224,15 @@ export function initRovingTab(hooks: TabHooks) {
       const focus = focusOf(stop);
       if (focus) focus.tabIndex = stop === active ? 0 : -1;
       if (stop.dataset.eventCard) for (const control of controlsOf(stop)) control.tabIndex = -1;
+    }
+    // The periods' own buttons (their heading's Compartir) belong to the list too: only the selected stop's period
+    // keeps its in the Tab order, right before it. Each one left in made Tab jump down the page, period by period,
+    // past the selected card (the owner, 6 Oct 2026).
+    const period = active.closest("[data-period]");
+    for (const section of document.querySelectorAll(`${VIEW} [data-period]`)) {
+      for (const button of section.querySelectorAll<HTMLElement>(".agenda-group__header button, .agenda-group__header a[href]")) {
+        button.tabIndex = section === period ? 0 : -1;
+      }
     }
   }
 

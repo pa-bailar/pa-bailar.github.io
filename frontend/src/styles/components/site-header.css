@@ -24,6 +24,11 @@
   letter-spacing: 0.01em;
 }
 
+.site-header__logo a {
+  color: inherit;
+  text-decoration: none;
+}
+
 .site-header__tagline {
   margin-top: var(--space-2);
   font-family: var(--font-serif);
