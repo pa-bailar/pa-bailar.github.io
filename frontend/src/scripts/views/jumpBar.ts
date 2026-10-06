@@ -132,9 +132,26 @@ function trackPinnedHeight() {
   }).observe(toolbar);
 }
 
+/**
+ * Marks `bar` (sticky at the top) data-pinned="false" while it's still in its place under the header, "true" once pinned:
+ * the dark theme's lighting shows through it there (base.css). A line right above it says which: on screen, not pinned.
+ */
+function trackPinned(bar: HTMLElement | null) {
+  if (!bar || typeof IntersectionObserver === "undefined") return;
+  const sentinel = document.createElement("div");
+  sentinel.className = "pin-sentinel";
+  sentinel.setAttribute("aria-hidden", "true");
+  bar.before(sentinel);
+  new IntersectionObserver(([entry]) => {
+    bar.dataset.pinned = String(!entry?.isIntersecting);
+  }).observe(sentinel);
+}
+
 export function initJumpBar() {
   initWhenMenu();
   trackPinnedHeight();
+  trackPinned(document.querySelector<HTMLElement>(".toolbar"));
+  trackPinned(byId("jump-bar"));
   // The chips inside are handled by main.ts; "Ver 12 eventos" closes it like ×. Its groups scroll between the
   // head and that button, so a drag down starts from the head or the groups' top.
   const sheet = byId<HTMLDialogElement>("filter-sheet");

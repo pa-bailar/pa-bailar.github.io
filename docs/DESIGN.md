@@ -91,7 +91,7 @@ The dark theme isn't a flat color: the page is lit like the ballroom of a late-n
   fades before the first cards.
 - **The grain** (`--grain`): a fine film noise (an SVG `feTurbulence` as a `data:` image, which the CSP's `img-src`
   allows) over the page, the details drawer and the bottom sheets, so they read as the same air.
-- **Phones:** no toolbar, so nothing cuts the light under the header. The two pinned bars keep `--bg`.
+- **The bars pinned to the top** (the wide screens' toolbar, the phones' pinned bar): clear while they sit under the header, so the light goes on through them; pinned, 80% of the page's color and frosted (`backdrop-filter`) over what scrolls under them. A solid `--bg` cut the light in a flat band (the owner, 6 Oct 2026). The bar at the bottom keeps `--bg`.
 - **The browser bar** (`theme-color`) is the page's indigo (`scripts/themeConfig.ts`, from `lib/brandColors.ts`).
 
 The calendar uses the same theme as the rest of the page: the owner preferred one look throughout over a palette of its own.
