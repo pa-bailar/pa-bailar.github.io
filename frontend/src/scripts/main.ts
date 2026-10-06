@@ -24,7 +24,15 @@ import {
 import { initThemeToggle } from "./theme";
 import { renderCalendarView } from "./views/calendarView";
 import { watchClips } from "./views/clips";
-import { closeEventDrawer, highlightCurrentCard, initEventDrawer, openEventDrawer, openEventId } from "./views/eventDrawer";
+import {
+  closeEventDrawer,
+  highlightCurrentCard,
+  initEventDrawer,
+  openEventDrawer,
+  focusEventDetails,
+  openEventId,
+  sidePanelFits,
+} from "./views/eventDrawer";
 import { carouselSlide, initCarousels } from "./views/carousel";
 import { initKeyboardNav } from "./views/keyboardNav";
 import { followStage, initLightbox, lightboxMode, showStage, stepStage } from "./views/lightbox";
@@ -243,6 +251,9 @@ function showWithImage(event: DanceEvent, card: HTMLElement | null): boolean {
   const opener = card ?? cardLink(document.querySelector(`[data-event-card="${CSS.escape(event.id)}"]`) ?? document.body);
   const slide = opener ? carouselSlide(opener) : 0;
   if (openEventId() !== event.id) openEventDrawer(event, { selected: slide, opener: opener ?? undefined, source: "tarjeta" });
+  // Already shown by the reading pane (keyboardNav.ts) with the focus left on the card: into the details now, so ← →
+  // go through the photos.
+  else focusEventDetails();
   showStage(event, slide);
   return true;
 }
@@ -408,6 +419,7 @@ export function start() {
     },
     showImage: showWithImage,
     stepPhoto: stepStage,
+    readingPane: sidePanelFits,
   });
   // × and back end the search (and Escape on a keyboard): cleared, the view drawn again.
   initBottomNav({

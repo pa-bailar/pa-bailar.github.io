@@ -63,6 +63,17 @@ function summaryHtml(group: AgendaGroup): string {
     </button>`;
 }
 
+/**
+ * "Ver 10 más ⌄" under a busy period's first events: the rest of this list unfolds here. A wide button of its own,
+ * not a month's block (the owner, 6 Oct 2026: a small button went unnoticed, and a block would read as a month).
+ */
+function moreHtml(group: AgendaGroup, rest: number): string {
+  return `
+    <button class="period-more" type="button" data-show-period="${escapeHtml(group.key)}">
+      <span>Ver ${rest} más</span>${ICONS.chevronDown}
+    </button>`;
+}
+
 /** Whether the period at `position` shows its events, or starts as a summary row. */
 export function isPeriodOpen(groups: AgendaGroup[], position: number): boolean {
   const group = groups[position];
@@ -92,10 +103,9 @@ function groupBodyHtml(group: AgendaGroup, open: boolean, whole: boolean): strin
   if (whole) return eventCardGridHtml(group.events);
   if (!open) return summaryHtml(group);
   if (shownWhole.has(group.key) || group.events.length <= PERIOD_LIMIT) return eventCardGridHtml(group.events);
-  const rest = group.events.length - PERIOD_LIMIT;
   return `
     ${eventCardGridHtml(group.events.slice(0, PERIOD_LIMIT))}
-    <button class="btn period-more" type="button" data-show-period="${escapeHtml(group.key)}">Ver ${rest} más</button>`;
+    ${moreHtml(group, group.events.length - PERIOD_LIMIT)}`;
 }
 
 /** The share icon on a near period's heading (views/sharing.ts shares it). */
