@@ -226,8 +226,6 @@ export function closeSearchField() {
  * ends; with words, it's kept, as with "Buscar".
  */
 export function initBottomNav({ dismiss }: { dismiss: () => void }) {
-  // Until the owner picks (docs/DESIGN.md): ?barra=iconos shows the bar without its labels, for this visit.
-  if (new URLSearchParams(location.search).get("barra") === "iconos") nav().dataset.labels = "off";
   const input = field();
   const form = byId<HTMLFormElement>("bottom-search");
   /**

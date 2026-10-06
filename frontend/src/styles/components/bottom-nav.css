@@ -1,6 +1,6 @@
 /* Phones: the bar at the bottom of the screen, like Instagram's (components/BottomNav.astro, scripts/views/bottomNav.ts):
    [Eventos] [Calendario] [Buscar] [Guardados 3] [Filtros 2], five equal items, 24 px icons with their labels under
-   them (60 px), or icons only (data-labels="off", 52 px: the owner hasn't chosen yet), plus the home indicator's inset.
+   them (60 px; the owner kept the labels, 6 Oct 2026), plus the home indicator's inset.
    - The view on screen (aria-current): the accent's color and a line on its top edge, like a tab's.
    - On (a search kept): the pill behind the icon in the selected chip's colors, like the old toggle in the pinned bar.
    - Off (Filtros in Guardados, which has no filters: aria-disabled): faded.
@@ -27,11 +27,6 @@
 /* Above the keyboard, the home indicator is under it: no inset. */
 .bottom-nav.is-lifted {
   padding-bottom: 0;
-}
-
-/* Icons only: the labels stay for screen readers. */
-:root:has(#bottom-nav[data-labels="off"]) {
-  --bottom-nav-height: var(--bottom-nav-icons-height);
 }
 
 /* What it covers, for the footer, the install reminder and the keyboard's focus (scroll-padding-bottom): only where
@@ -107,15 +102,6 @@
   color: var(--text-muted);
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-
-.bottom-nav[data-labels="off"] .bottom-nav__label {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  clip-path: inset(50%);
 }
 
 /* The view on screen: the accent, and a line on the bar's top edge (the tabs' underline, upside down). */

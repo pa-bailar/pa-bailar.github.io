@@ -169,8 +169,7 @@
   --jump-bar-height: 56px; /* phones: the pinned bar with the filter chips ("Cuándo", the rhythms) */
   --filter-line-height: 40px; /* phones: "12 eventos · Finde, Salsa · × Limpiar" under the bar, while filtering */
   --pinned-height: var(--jump-bar-height); /* phones: all that's pinned to the top (jump-bar.css adds the line) */
-  --bottom-nav-height: 60px; /* phones: the bar at the bottom, icons with their labels (bottom-nav.css: 52px without) */
-  --bottom-nav-icons-height: 52px; /* …the same bar with icons only (data-labels="off"; the owner hasn't chosen yet) */
+  --bottom-nav-height: 60px; /* phones: the bar at the bottom, icons with their labels */
   --bottom-nav-space: 0px; /* what the bar at the bottom covers, its height and the home indicator's inset (phones: bottom-nav.css) */
   --nav-indicator-width: 48px; /* the bar's item that's on (Guardados, a search): the pill behind its icon, --chip-height tall */
   --menu-width: 304px; /* the "Cuándo" menu under its chip (narrower on a narrower screen) */

@@ -125,7 +125,7 @@ few set from scripts are listed there).
 - Touch: `--touch-target` 44px for every control. A control drawn smaller gets an invisible `::after` that makes up the
   difference, so the target is met without making its row taller.
 - The phone bars: `--jump-bar-height` 56px, `--filter-line-height` 40px (the line under it while filtering);
-  `--bottom-nav-height` 60px (with labels; `--bottom-nav-icons-height` 52px without); `--bottom-nav-space` (what that
+  `--bottom-nav-height` 60px (with labels); `--bottom-nav-space` (what that
   bar covers, 0 where it isn't shown); `--nav-indicator-width` 48px; `--pinned-height` (what's pinned to the top, which
   jumps and the keyboard's focus land under); `--menu-width` 304px ("Cuándo"'s menu); `--pill-panel-width` 456px.
 - The cards' "Detalles ›": `--details-height` 36px (its frame), `--details-offset` 2px, `--details-tuck` (how far the
@@ -361,10 +361,8 @@ the list stays short there and summarizes what's further away (`scripts/views/up
   **Calendario** (`/calendario/`) · **Buscar** · **Guardados** · **Filtros**, five equal items fixed at the bottom of the
   screen, wherever the jump bar shows (phones, short windows).
   - **It sits above the home indicator** (`env(safe-area-inset-bottom)`); each item's target is its full height.
-  - **Labels: not decided yet.** The owner will choose after seeing both ("depends on size"): icons with their labels
-    (the default: Material 3's advice for five destinations, and Buscar and Filtros aren't destinations an icon alone
-    says) or icons only (`data-labels="off"`; the labels stay for screen readers). `?barra=iconos` shows the second for
-    a visit.
+  - **Icons with their labels** (the owner, 6 Oct 2026, after seeing both): Material 3's advice for five destinations,
+    and Buscar and Filtros aren't destinations an icon alone says.
   - **The view on screen** (`aria-current="page"`) is marked; tapping it again goes back to the top of the page, like
     Instagram's tabs. Buscar with a search kept shows it's on; Filtros is off in Guardados (`aria-disabled`, still
     focusable).
