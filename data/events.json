@@ -4414,6 +4414,56 @@
     "bar": false
   },
   {
+    "title": "Taller Especial de Salsa",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Imperio Latino Dance Studio",
+    "venue": "Imperio Latino Dance Studio",
+    "address": "Cll 72 No. 80-23, Segundo Piso",
+    "area": null,
+    "date": "2026-10-17",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "16:30",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Valor",
+        "amount_cop": 20000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Mateo Popayán"
+    ],
+    "activities": [
+      "taller de salsa",
+      "clase especial"
+    ],
+    "contact": "WhatsApp 3164501010",
+    "confidence": "high",
+    "doubts": [],
+    "id": "taller-especial-de-salsa-17-oct",
+    "account": "imperiolatino",
+    "media": [
+      {
+        "post_id": "18116044484470489",
+        "permalink": "https://www.instagram.com/p/DeH-WKEP5bT/",
+        "media_type": "IMAGE",
+        "published": "2026-10-05T19:37:19+0000",
+        "flyer": "flyers/18116044484470489-0.webp",
+        "caption": "🔥💃 ¡IMPERIO LATINO PRESENTA: TALLER ESPECIAL DE SALSA! 💃🔥\n\nPrepárate para vivir una experiencia llena de técnica, musicalidad, estilo y mucha energía. 🕺✨\n\n⭐ INVITADO ESPECIAL: Mateo Popayán\n📅 Sábado 17 de octubre de 2026\n⏰ 4:30 P. M.\n💰 Valor: $20.000\n📍 Cll 72 No. 80-23, Segundo Piso\n\n🚨 Cupos limitados 🚨\nNo te quedes por fuera de este taller especial y ven a llevar tu salsa a otro nivel. 🔥\n\n📲 Reservas e información: 316 450 1010\n\nImperio Latino Dance Studio\nDonde el ritmo se convierte en pasión. 💛🖤❤️\n\n#ImperioLatino #TallerDeSalsa #Salsa #SalsaColombia #clasedesalsa",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Bachatamania Social",
     "event_type": "social",
     "is_recurring": false,
@@ -5052,6 +5102,68 @@
     "bar": true
   },
   {
+    "title": "Taller de bachata para las fiestas",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "bachata"
+    ],
+    "organizer": "Clandisfrute",
+    "venue": "Zafra",
+    "address": "Cra 27a #52-31",
+    "area": "Galerías",
+    "date": "2026-10-24",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "19:00",
+    "end_time": "21:00",
+    "prices": [
+      {
+        "label": "Preventa",
+        "amount_cop": 40000,
+        "condition": null
+      },
+      {
+        "label": "Precio de evento",
+        "amount_cop": 50000,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "taller de bachata"
+    ],
+    "contact": "WhatsApp 3108519066",
+    "confidence": "high",
+    "doubts": [],
+    "id": "taller-de-bachata-para-las-fiestas-24-oct",
+    "account": "clandisfrute",
+    "media": [
+      {
+        "post_id": "18445356367126431",
+        "permalink": "https://www.instagram.com/reel/DeH7l9xv5xd/",
+        "media_type": "VIDEO",
+        "published": "2026-10-05T19:12:09+0000",
+        "flyer": "flyers/18445356367126431-0.webp",
+        "caption": "PENNYWISE SABE COSAS😈\n\nEl Claaan del disfrute convoca a toda persona que quiera aprender truquitos de bachata que le sirvan para los bares.\n\nEsta vez, convoca a todo aquel que quiera hacer un plancito de Halloween sorpresa jeje🌝.\n\nReservamos tu cupo desde hoy yyyyy dejaremos cupos limitados, tú sabes por qué 🙂‍↔️🤌🏽\n\nNOS FUIMOSSS🎃👻💀\n\n#bogotá #plan #planbogota #baile",
+        "preview": "previews/18445356367126431-0.mp4",
+        "slides": null
+      },
+      {
+        "post_id": "18116548465972121",
+        "permalink": "https://www.instagram.com/reel/DeH7cjuvN-x/",
+        "media_type": "VIDEO",
+        "published": "2026-10-05T19:10:57+0000",
+        "flyer": "flyers/18116548465972121-0.webp",
+        "caption": "PENNYWISE SABE COSAS😈\n\nEl Claaan del disfrute convoca a toda persona que quiera aprender truquitos de bachata que le sirvan para los bares.\n\nEsta vez, convoca a todo aquel que quiera hacer un plancito de Halloween sorpresa jeje🌝.\n\nReservamos tu cupo desde hoy yyyyy dejaremos cupos limitados, tú sabes por qué 🙂‍↔️🤌🏽\n\nNOS FUIMOSSS🎃👻💀\n\n#bogotá #plan #planbogota #baile",
+        "preview": "previews/18116548465972121-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Social de Halloween",
     "event_type": "social",
     "is_recurring": false,
@@ -5576,6 +5688,16 @@
         "flyer": "flyers/18018174977930391-0.webp",
         "caption": "Ricardo y Laura ✨\n\nLos reyes del BachaTango dicen presente en nuestro aniversario 🥳🥳🥳🥳 prepárate para compartir y aprender mucho de esta pareja y de todos los artistas invitados\n\n¿Ya tienes tu boleta? No dejes que te lo cuenten\n\nReserva en nuestras Webs:\ndistrito-social-academy.com/eventos\nappdanza.com",
         "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18156569245510997",
+        "permalink": "https://www.instagram.com/reel/DeHiXPGx9dU/",
+        "media_type": "VIDEO",
+        "published": "2026-10-05T15:33:52+0000",
+        "flyer": "flyers/18156569245510997-0.webp",
+        "caption": "Diego y Heidy ✨\n\nSeguimos alistando motores para nuestro aniversario 🤩\n\n17 horas de Talleres\n12 horas de Social\n\nLos mejores profes de Bogotá y de Colombia 🤯\n\nNo te lo puedes perder, reserva en nuestras Webs:\n\ndistrito-social-academy.com/eventos\nappdanza.com",
+        "preview": "previews/18156569245510997-0.mp4",
         "slides": null
       },
       {
