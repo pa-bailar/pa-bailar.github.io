@@ -6,8 +6,10 @@
 // right, Guardar. The buttons sit above the stretched link; "Detalles" opens the drawer like the card does, but
 // is counted apart (data-source, lib/analytics.ts).
 // A video's flyer with a clip plays it, silent, like a feed (clips.ts): the clips have no sound, so a tap there opens
-// the details like the rest of the card. Every video says "Video" in a corner, clip or not (the details play it). The
-// posts' badge ("▦ 3") opens every post announcing the event.
+// the details like the rest of the card. Every video says "Video" in a corner, clip or not (the details play it).
+// An event announced by several posts shows them as a carousel: swiped on phones, ‹ › with a mouse, "1/6" on the image
+// and dots in the action row (carousel.ts). Its strip sits above the stretched link (a swipe must reach it) and opens
+// the details itself (`data-event`).
 
 import type { DanceEvent, EventMedia } from "../types";
 import { isVideoCover } from "../lib/mediaLabel";
@@ -16,7 +18,6 @@ import { escapeHtml } from "../lib/dom";
 import {
   cardWhenLabel,
   placeLabel,
-  postCountLabel,
   priceSummary,
   stickerDate,
   stylesLabel,
@@ -25,6 +26,7 @@ import {
 import { accountLinkHtml } from "../lib/accountLink";
 import { eventPath, flyerUrl, mainMedia, previewUrl } from "../lib/links";
 import { saveButtonHtml } from "./saveButton";
+import { dotStates } from "./carousel";
 
 const MAX_STYLES_ON_CARD = 3;
 
@@ -44,20 +46,67 @@ function frameRatio(media: EventMedia): number | null {
   return Math.min(Math.max(media.width / media.height, TALLEST), WIDEST);
 }
 
-/** The flyer, or a video's clip over its frame (`clip`: silent, looping, loaded only when it plays: clips.ts). */
-function flyerHtml(media: EventMedia, flyer: string, clip: string | null, title: string): string {
+/** Whether the flyer is exactly 4:5: it fills every frame, so no blurred copy is needed around it. */
+function fillsFrame(media: EventMedia): boolean {
+  return Boolean(media.width && media.height && Math.abs(media.width / media.height - TALLEST) < 0.01);
+}
+
+/** The flyer, or a video's clip, over its blurred copy (`clip`: silent, looping, loaded only when it plays: clips.ts). */
+function pictureHtml(flyer: string, clip: string | null, title: string, backdrop: boolean): string {
   const src = escapeHtml(flyer);
-  // Exactly 4:5 fills every frame: no blurred copy needed.
-  const fillsFrame = media.width && media.height && Math.abs(media.width / media.height - TALLEST) < 0.01;
   const picture = clip
     ? `<video class="event-card__flyer" src="${escapeHtml(clip)}" poster="${src}" muted loop playsinline preload="none"
         data-clip aria-label="Video de ${escapeHtml(title)}"></video>`
     : `<img class="event-card__flyer" src="${src}" alt="" loading="lazy" decoding="async" />`;
+  return `${backdrop ? `<img class="event-card__backdrop" src="${src}" alt="" loading="lazy" decoding="async" />` : ""}${picture}`;
+}
+
+function flyerHtml(media: EventMedia, flyer: string, clip: string | null, title: string): string {
+  return `<div class="event-card__frame">${pictureHtml(flyer, clip, title, !fillsFrame(media))}</div>`;
+}
+
+/** The event's posts that have a flyer: the carousel's slides, in the data's order (the main post first). */
+function slidesOf(event: DanceEvent): { media: EventMedia; flyer: string }[] {
+  return event.media.flatMap((media) => {
+    const flyer = flyerUrl(media);
+    return flyer ? [{ media, flyer }] : [];
+  });
+}
+
+/**
+ * Several posts: a strip of slides that scrolls sideways (carousel.ts), each with its blurred copy unless it fills the
+ * frame (a frame of the main post's shape on phones, 4:5 on wider screens: only a 4:5 flyer fills both), and its own
+ * "Video" label. The strip opens the details (`data-event`); ‹ › for mice, "1/6" over the image.
+ */
+function carouselHtml(event: DanceEvent, slides: { media: EventMedia; flyer: string }[]): string {
+  const id = escapeHtml(event.id);
+  const title = escapeHtml(event.title);
+  const count = slides.length;
+  const items = slides
+    .map(({ media, flyer }, index) => {
+      const backdrop = !fillsFrame(media) || !fillsFrame(slides[0]!.media);
+      return `<div class="carousel__slide" role="group" aria-roledescription="diapositiva" aria-label="${index + 1} de ${count}">
+          ${pictureHtml(flyer, previewUrl(media), event.title, backdrop)}
+          ${isVideoCover(media) ? VIDEO_MARK : ""}
+        </div>`;
+    })
+    .join("");
   return `
-    <div class="event-card__frame">
-      ${fillsFrame ? "" : `<img class="event-card__backdrop" src="${src}" alt="" loading="lazy" decoding="async" />`}
-      ${picture}
-    </div>`;
+    <div class="event-card__frame carousel" data-carousel data-count="${count}" data-index="0" data-event="${id}"
+      role="group" aria-roledescription="carrusel" aria-label="${count} publicaciones de ${title}">${items}</div>
+    <span class="carousel__count" data-carousel-count aria-hidden="true">1/${count}</span>
+    <button class="carousel__step carousel__step--prev" type="button" data-carousel-step="-1" data-track="carrusel"
+      aria-label="Publicación anterior" hidden>${ICONS.chevronLeft}</button>
+    <button class="carousel__step carousel__step--next" type="button" data-carousel-step="1" data-track="carrusel"
+      aria-label="Publicación siguiente">${ICONS.chevronRight}</button>`;
+}
+
+/** The dots in the action row: which slide is on screen (carousel.ts moves them). */
+function dotsHtml(count: number): string {
+  const dots = dotStates(count, 0)
+    .map((state) => `<i${state === "normal" ? "" : ` class="is-${state}"`}></i>`)
+    .join("");
+  return `<span class="carousel__dots" data-carousel-dots aria-hidden="true">${dots}</span>`;
 }
 
 /**
@@ -66,8 +115,8 @@ function flyerHtml(media: EventMedia, flyer: string, clip: string | null, title:
  */
 const VIDEO_MARK = `<span class="video-mark" aria-hidden="true">${ICONS.video}<span>Video</span></span>`;
 
-/** "Detalles ›" · Compartir · · · Guardar, under the flyer. */
-function actionsHtml(event: DanceEvent): string {
+/** "Detalles ›" · Compartir · (the carousel's dots) · Guardar, under the flyer. */
+function actionsHtml(event: DanceEvent, slides: number): string {
   const id = escapeHtml(event.id);
   const title = escapeHtml(event.title);
   return `
@@ -76,6 +125,7 @@ function actionsHtml(event: DanceEvent): string {
         aria-label="Detalles: ${title}">Detalles${ICONS.chevronRight}</button>
       <button class="event-card__share" type="button" data-share-event="${id}" data-track="compartir-tarjeta"
         aria-label="Compartir: ${title}">${ICONS.share}</button>
+      ${slides > 1 ? dotsHtml(slides) : ""}
       ${saveButtonHtml(event)}
     </div>`;
 }
@@ -85,15 +135,13 @@ function eventCardHtml(event: DanceEvent): string {
   const flyer = flyerUrl(media);
   const ratio = flyer ? frameRatio(media) : null;
   const clip = flyer ? previewUrl(media) : null;
-  const count = event.media.length;
-  const postCount =
-    count > 1
-      ? `<button class="media-count" type="button" data-card-posts="${escapeHtml(event.id)}"
-          aria-label="Ver las ${postCountLabel(count)} de este evento">${ICONS.gallery}<span>${count}</span></button>`
-      : "";
-  const image = flyer
-    ? flyerHtml(media, flyer, clip, event.title)
-    : `<div class="no-flyer" aria-hidden="true">Pa'</div>`;
+  const slides = flyer ? slidesOf(event) : [];
+  const image =
+    slides.length > 1
+      ? carouselHtml(event, slides)
+      : flyer
+        ? flyerHtml(media, flyer, clip, event.title)
+        : `<div class="no-flyer" aria-hidden="true">Pa'</div>`;
   const sticker = stickerDate(event);
   const when = cardWhenLabel(event);
   const place = placeLabel(event);
@@ -105,11 +153,10 @@ function eventCardHtml(event: DanceEvent): string {
       <div class="event-card__media"${ratio ? ` data-flyer-ratio="${ratio.toFixed(4)}"` : ""}>
         ${image}
         <span class="tag-type t-${escapeHtml(event.event_type)}">${typeLabel(event.event_type)}</span>
-        ${postCount}
-        ${isVideoCover(media) ? VIDEO_MARK : ""}
+        ${slides.length <= 1 && isVideoCover(media) ? VIDEO_MARK : ""}
         <span class="date-sticker${sticker.range ? " date-sticker--range" : ""}" aria-hidden="true"><b>${sticker.day}</b><small>${sticker.month}</small></span>
       </div>
-      ${actionsHtml(event)}
+      ${actionsHtml(event, slides.length)}
       <div class="event-card__body">
         <p class="event-card__time">${escapeHtml(when)}</p>
         <h3 class="event-card__title">

@@ -300,35 +300,144 @@
   height: var(--icon-sm);
 }
 
-/* "▦ 3": the event was announced by several posts (flyer, video...); a tap shows them all (postsSheet.ts).
-   Above the card's stretched link, with a 44 px target around the label. */
-.media-count {
+/* ---------- several posts: a carousel, like Instagram's (eventCard.ts, carousel.ts) ----------
+   The strip holds one slide per post and scrolls sideways, snapping to each (the browser's own scrolling: no
+   gestures of ours). It sits above the card's stretched link, so a swipe reaches it; a tap on it opens the details
+   (`data-event`). The marks over the image come after it at the same level, and let taps through to it. */
+.carousel {
+  z-index: var(--z-raised);
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain; /* a swipe at the last slide doesn't go back a page */
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  cursor: pointer;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel__slide {
+  position: relative;
+  flex: 0 0 100%;
+  overflow: hidden; /* each slide clips its own blurred copy */
+  scroll-snap-align: start;
+  scroll-snap-stop: always; /* one slide per swipe, as on Instagram */
+}
+
+.event-card__media:has(.carousel) :is(.tag-type, .date-sticker) {
+  z-index: var(--z-raised);
+  pointer-events: none;
+}
+
+/* "1/6", at the image's top right: where the carousel is, out of how many. */
+.carousel__count {
   position: absolute;
   top: var(--space-3);
   right: var(--space-3);
   z-index: var(--z-raised);
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-1);
   padding: 2px var(--space-2);
-  border: var(--border-width) solid var(--border);
-  border-radius: var(--radius-sm);
-  background: var(--surface);
-  color: var(--text);
+  border-radius: var(--control-height);
+  background: var(--on-image-bg);
+  color: var(--on-image);
   font-size: var(--text-xs);
   font-weight: var(--weight-bold);
   font-variant-numeric: tabular-nums;
+  pointer-events: none;
 }
 
-.media-count::after {
-  content: "";
+/* ‹ ›: only with a mouse (phones swipe), on the card's hover or keyboard focus. */
+.carousel__step {
   position: absolute;
-  inset: calc(var(--space-3) * -1);
+  top: 50%;
+  z-index: var(--z-raised);
+  display: none;
+  place-items: center;
+  width: var(--control-height);
+  height: var(--control-height);
+  border: 0;
+  border-radius: var(--radius-round);
+  background: var(--on-image-bg);
+  color: var(--on-image);
+  translate: 0 -50%;
 }
 
-.media-count .icon {
-  width: var(--icon-sm);
-  height: var(--icon-sm);
+.carousel__step--prev {
+  left: var(--space-2);
+}
+
+.carousel__step--next {
+  right: var(--space-2);
+}
+
+.carousel__step .icon {
+  width: var(--icon-md);
+  height: var(--icon-md);
+}
+
+/* Mice: drawn but invisible until the card is hovered or has the focus, so Tab still reaches them. */
+@media (hover: hover) and (pointer: fine) {
+  .carousel__step:not([hidden]) {
+    display: grid;
+    opacity: 0;
+    transition: opacity var(--duration) ease;
+  }
+
+  .event-card:is(:hover, :focus-within) .carousel__step:not([hidden]) {
+    opacity: 1;
+  }
+}
+
+.carousel__step:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* The dots, centered in the action row like Instagram's: at most five, the edge ones smaller while there are more
+   (carousel.ts dotStates). Decorative: "1 de 6" is said by the slides. */
+.carousel__dots {
+  position: absolute;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  translate: -50% 0;
+  pointer-events: none;
+}
+
+.carousel__dots i {
+  width: calc(var(--space-1) * 1.5);
+  height: calc(var(--space-1) * 1.5);
+  border-radius: var(--radius-round);
+  background: var(--text-muted);
+  opacity: 0.4;
+  transition: scale var(--duration) ease, opacity var(--duration) ease;
+}
+
+.carousel__dots i.is-active {
+  background: var(--accent-text);
+  opacity: 1;
+}
+
+.carousel__dots i.is-small {
+  scale: 0.66;
+}
+
+.carousel__dots i.is-hidden {
+  display: none;
+}
+
+/* Wide screens: the cards are narrow, and the card's center falls on Compartir. The dots take the room between it and
+   Guardar instead. */
+@media (min-width: 720px) {
+  .carousel__dots {
+    position: static;
+    flex: 1;
+    justify-content: center;
+    translate: none;
+  }
 }
 
 .no-flyer {
@@ -363,6 +472,7 @@
    It says the card opens (the whole card still does). Each button sits above the card's stretched link, with a
    44px target; the gaps between them still open the card. */
 .event-card__actions {
+  position: relative; /* the carousel's dots center on it */
   display: flex;
   align-items: center;
   gap: var(--space-1);

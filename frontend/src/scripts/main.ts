@@ -25,7 +25,7 @@ import { initThemeToggle } from "./theme";
 import { renderCalendarView } from "./views/calendarView";
 import { watchClips } from "./views/clips";
 import { highlightCurrentCard, initEventDrawer, openEventDrawer } from "./views/eventDrawer";
-import { openEventPosts } from "./views/eventDetailActions";
+import { carouselSlide, initCarousels } from "./views/carousel";
 import { armDetailsHint, markDetailsHintSeen } from "./views/detailsHint";
 import { HIDE_BARS_FILTER, filterModel, staleDates } from "./lib/filterModel";
 import { storedSwitch } from "./lib/storedSwitch";
@@ -229,12 +229,6 @@ const showPeriod: ControlHandler = (key, control) => {
   cards?.[before]?.focus({ preventScroll: true });
 };
 
-/** A card's "▦ 3": the event's posts. */
-const openCardPosts: ControlHandler = (id) => {
-  const event = findEvent(id);
-  if (event) openEventPosts(event);
-};
-
 /** A card (its title is a link: the browser handles new-tab clicks; a plain click opens the details). */
 const openCardEvent: ControlHandler = (id, control, domEvent) => {
   if (!isPlainClick(domEvent)) return;
@@ -244,7 +238,7 @@ const openCardEvent: ControlHandler = (id, control, domEvent) => {
   // Counted by where it was opened: the card itself or its "Detalles".
   const source = control.dataset.source === "boton" ? "boton" : "tarjeta";
   markDetailsHintSeen();
-  openEventDrawer(event, { source });
+  openEventDrawer(event, { source, selected: carouselSlide(control) }); // a carousel's slide on screen
 };
 
 /**
@@ -314,7 +308,6 @@ const CONTROLS: [attribute: string, handler: ControlHandler][] = [
   ["clearSearch", endSearch],
   ["openFilters", (_, control) => !isDisabled(control) && openFilterSheet()], // off in Guardados
   ["showPeriod", showPeriod],
-  ["cardPosts", openCardPosts],
   ["event", openCardEvent],
   ["view", chooseView],
   ["filter", toggleFilter],
@@ -381,6 +374,7 @@ export function start() {
   registerServiceWorker();
   initJumpBar();
   initFilterPanels();
+  initCarousels();
   // × and back end the search (and Escape on a keyboard): cleared, the view drawn again.
   initBottomNav({
     dismiss: () => {

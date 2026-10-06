@@ -349,7 +349,7 @@ sequenceDiagram
   again then too (`untilNextDay`; never a reload under the visitor's eyes).
 - **One delegated click listener** in `main.ts` handles every control marked with a `data-*` attribute (`CONTROLS`:
   each attribute with its named handler, tried in order: `data-when-open`, `data-pill`, `data-open-filters`,
-  `data-show-period`, `data-card-posts`, `data-event`, `data-view`, `data-filter` + `data-value`, `data-month-step`,
+  `data-show-period`, `data-event` (a card's title, its "Detalles" and a carousel's strip), `data-view`, `data-filter` + `data-value`, `data-month-step`,
   `data-today`…). It finds the control with `closest()`, so **no page-level element may carry one of these
   attributes**: the view on screen is marked on `<body>` as `data-screen`, never `data-view`, which made every click
   without a control of its own a tap on the current tab (5 Oct 2026; `savedView.test.ts` guards it).
@@ -714,7 +714,8 @@ frontend/
 | `state.ts` | The UI state; filtering (AND across groups, OR within dates, types and rhythms; hiding the bars: `isBar`, `matchesBars`, `HIDE_BARS_KEY`); Filtros' count (the badge); "Limpiar"; grouping by period; the date options |
 | `views/upcomingView.ts` | "Próximos"; where a shared link's event is (`sharedEventEntry`) |
 | `views/calendarView.ts` | "Calendario", with holidays; each day's events with the filters on (`calendarDays`); a day's dots on phones (`dotsHtml`, `MAX_DOTS_PER_DAY`); the selected day's heading |
-| `views/eventCard.ts` | A card: flyer at its shape (or a video's clip), date sticker, the posts' badge, the action row (Detalles, Compartir, Guardar) |
+| `views/eventCard.ts` | A card: flyer at its shape (or a video's clip), or a carousel of the event's posts; date sticker; the action row (Detalles, Compartir, the carousel's dots, Guardar) |
+| `views/carousel.ts` | A card's carousel: the slide on screen (`slideIndex`), "1/6" and the dots (`dotStates`), ‹ ›, the slide the details open on (`carouselSlide`) |
 | `views/detailsHint.ts`, `lib/onceFlag.ts` | The first visit's hint on the first card's "Detalles"; things shown once per browser |
 | `lib/storedSwitch.ts`, `lib/storedValue.ts` | An on/off setting remembered in this browser (hiding the bars, the app installed); a value kept there (the install offer's dates). Both hold for the visit when storage is blocked |
 | `views/eventDetail.ts` | An event's details (the drawer's, and the event page's with the flyer on top): head, quick actions, details, prices, media links. Pure HTML strings, imported at build time by the event pages |

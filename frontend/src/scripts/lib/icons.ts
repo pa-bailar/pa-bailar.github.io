@@ -43,6 +43,7 @@ export const ICONS = {
   external: icon(`<path d="M14 4h6v6M20 4l-9 9"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/>`, false),
   pin: icon(`<path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>`, false),
   chevronDown: icon(`<path d="m6 9 6 6 6-6"/>`, false), // "Cuándo ▾": opens a menu
-  chevronRight: icon(`<path d="m9 5.5 6.5 6.5L9 18.5"/>`, false), // "Detalles ›"
+  chevronRight: icon(`<path d="m9 5.5 6.5 6.5L9 18.5"/>`, false), // "Detalles ›", a carousel's next
+  chevronLeft: icon(`<path d="M15 5.5 8.5 12l6.5 6.5"/>`, false), // a carousel's previous
   check: icon(`<path d="m5 12.5 4.5 4.5L19 7.5"/>`, false), // the date chosen in "Cuándo"
 } as const;

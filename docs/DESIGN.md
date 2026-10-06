@@ -515,7 +515,17 @@ screens in the toolbar's pills and their panels:
 ## Events with several posts
 
 An event can be announced by several Instagram posts (a flyer, then a video, a reminder). It's still **one** card:
-- **Card:** shows the main post's flyer (images come before videos). A `.media-count` button ("▦ 3") on the flyer opens every post (above the card's stretched link).
+- **Card: a carousel, like Instagram's** (`views/carousel.ts`; the owner, 5 October 2026: one flyer and a "▦ 6" grid
+  whose posts opened Instagram's embed left no way to just flip through them). One slide per post with a flyer, the
+  main post first; the frame keeps the main flyer's shape and the others fit inside it on their blurred copy.
+  - **Phones swipe it** (the browser's own snapping scroll; vertical scrolling over it still scrolls the page).
+    **Mice** get ‹ › on the card's hover (Tab reaches them too); trackpads swipe.
+  - **"1/6"** at the image's top right, and **dots in the action row** (centered like Instagram's on phones; between
+    Compartir and Guardar on wide screens, where the cards are narrow): at most five, the edge ones smaller while
+    there are more.
+  - **A tap on the image opens the details**, with the slide on screen selected: their Instagram button opens that
+    post. Ctrl or middle click opens the event's page in a new tab. A video slide plays its clip while on screen.
+  - Every post is still a link away: the details' "Ver las 6 publicaciones" (the posts sheet).
 - **Every post, in a sheet** (`PostsSheet.astro`, `scripts/views/postsSheet.ts`): from the card's "▦ 3", the details' "Ver las 3 publicaciones", or the event page's `.posts-badge`. Tabs Flyers and Videos when the event has both, and square thumbnails like Instagram's grid, made at build time (`pages/thumbs/[name].webp.ts`). Choosing one opens it in the media viewer, which takes over the sheet's history entry (back returns to the list or the details, not to a sheet that's gone); on an event's page it shows that post on the page instead.
 - **The media viewer** (`PostViewer.astro`, `scripts/views/postViewer.ts`): the post inside the site, in a sheet over everything, with Instagram's own player (`lib/instagramEmbed.ts`): videos with sound, carousels with all their slides. Opening the Instagram app would leave the site, and the app's back button doesn't come back; the sheet's bar keeps "Abrir en Instagram ↗". Our copy of the flyer shows at once and the player replaces it when ready; if it can't load, the flyer stays with "Esta publicación solo se puede ver en Instagram." Instagram's script loads on the first tap only, never with the page. Closing it removes the player, so a video stops.
 - **Videos play in the feed.** When the backend made a video's clip (`preview`), the card plays it: silent, looping, about 6 seconds, like Instagram's feed (`views/clips.ts`). No sound control: a tap opens the details, where the full video plays with sound (the owner, 4 October 2026, after a "Sin sonido / Con sonido" toggle that did nothing, since the clips have no sound). Only the clip on screen plays; one that leaves the screen unloads. No autoplay with reduced motion or the data saver. The service worker doesn't cache clips.

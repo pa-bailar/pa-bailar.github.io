@@ -125,10 +125,10 @@ function bringCardIntoView(id: string, force: boolean) {
 
 // ---------- open ----------
 
-function render(event: DanceEvent) {
+function render(event: DanceEvent, selected = 0) {
   const content = byId("drawer-content");
   try {
-    content.innerHTML = eventDrawerHtml(event, { titleId: TITLE_ID });
+    content.innerHTML = eventDrawerHtml(event, { titleId: TITLE_ID, selected });
   } catch (error) {
     // One bad event never breaks the drawer: a way to its page instead.
     console.error(error);
@@ -180,7 +180,12 @@ const focusTitle = () => document.getElementById(TITLE_ID)?.focus({ preventScrol
  */
 export function openEventDrawer(
   event: DanceEvent,
-  { source, pushHistory = true, shared = false }: { source?: DetailsSource; pushHistory?: boolean; shared?: boolean } = {},
+  {
+    source,
+    pushHistory = true,
+    shared = false,
+    selected = 0,
+  }: { source?: DetailsSource; pushHistory?: boolean; shared?: boolean; selected?: number } = {},
 ) {
   const element = drawer();
   if (state.leaving) finishClose(); // tapped while the panel was sliding out: start over
@@ -190,7 +195,7 @@ export function openEventDrawer(
   if (active instanceof HTMLElement && active !== document.body && !element.contains(active)) state.opener = active;
   else if (!wasOpen) state.opener = null;
   state.current = event;
-  render(event);
+  render(event, selected); // `selected`: the post a card's carousel showed (its Instagram button opens that one)
   if (wasOpen) highlightCurrentCard();
   else show(event, shared);
   focusTitle();

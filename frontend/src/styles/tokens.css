@@ -154,7 +154,7 @@
   /* ---------- Layer 3: shape and sizes ---------- */
   --radius-sm: 2px; /* tags, chips, buttons: printed-label corners */
   --radius-md: 4px; /* cards, dialog, calendar cells */
-  --radius-round: 50%; /* only the date sticker and calendar day numbers */
+  --radius-round: 50%; /* only the date sticker, calendar day numbers and a carousel's dots and ‹ › */
   --border-width: 1.5px;
   --stripe-height: 5px;
   --period-rule-height: 3px; /* the tri-color lines around period headings */
