@@ -5,6 +5,7 @@
 // Styles are imported one by one (not chained with CSS @import) so the dev server reloads each file
 // when it changes. Order matters: tokens → base → components.
 import "../styles/tokens.css";
+import "../styles/tokens-fallback.css"; // light-dark() for Safari before 17.5 (iOS 16)
 import "../styles/base.css";
 import "../styles/components/stripes.css";
 import "../styles/components/buttons.css";

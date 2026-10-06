@@ -47,7 +47,7 @@ frontend/src/styles/
 `tokens.css` has three layers:
 
 1. **Palette:** raw named colors (`--wine-900`, `--tomato-600`, `--marigold-600`…). **Components never use these.**
-2. **Semantic colors:** what a color is *for* (`--bg`, `--surface`, `--text-muted`, `--accent`, `--action`…). Each is `light-dark(<Fania de día>, <Luz de escenario>)`. **Components only use these.**
+2. **Semantic colors:** what a color is *for* (`--bg`, `--surface`, `--text-muted`, `--accent`, `--action`…). Each is `light-dark(<Fania de día>, <Luz de escenario>)`. **Components only use these.** Browsers without `light-dark()` (Safari before 17.5: iPhones on iOS 16) would drop them all and show no colors: `tokens-fallback.css`, generated from `tokens.css` by `scripts/light-dark-fallback.mjs` (a test fails while it's stale), gives them the same values inside `@supports not (light-dark())`, which every other browser skips (the owner, 6 Oct 2026).
 3. **Scales:** type sizes, spacing, radii, control sizes, motion.
 
 Themes switch through CSS `color-scheme`: `light` at `:root`, `dark` only under `html[data-theme="dark"]`. An inline script in `<head>` (`src/themeScript.ts`, put in every page by `BaseLayout.astro`) sets `data-theme` from the saved choice before first paint, so Oscuro never flashes Claro, and sets the `theme-color` meta. The Content Security Policy allows it by its hash (`ARCHITECTURE.md`, section 3.3). `scripts/theme.ts` runs the switch; its icon and label follow `data-theme` through CSS. Both share their rule (only a saved `dark` is dark) and colors through `scripts/themeConfig.ts`. The installed app's manifest uses the light theme's paper for its splash screen and bar.
