@@ -145,21 +145,11 @@ html:has(dialog:modal) {
 
 /* The bars pinned to the top (the wide screens' toolbar, the phones' bar) and the lighting: a solid page color cut the
    glow behind the header in a flat band (the owner, 6 Oct 2026). In their place under the header they're clear, the
-   glow goes on through them (data-pinned="false", jumpBar.ts trackPinned); pinned, mostly the page's color and the
-   rest frosted: what scrolls under them blurs. Without the script, frosted all along. Light has no lighting: solid. */
-:root[data-theme="dark"] .toolbar,
-:root[data-theme="dark"] .jump-bar {
-  background: color-mix(in srgb, var(--bg) 80%, transparent);
-  -webkit-backdrop-filter: blur(16px);
-  backdrop-filter: blur(16px);
-  transition: background-color var(--duration) ease-out;
-}
-
+   glow goes on through them (data-pinned="false", jumpBar.ts trackPinned); pinned, solid again (frosted, the flyers
+   scrolling under them read muddy: the owner, the same day), the glow then scrolled away behind them. Light: solid. */
 :root[data-theme="dark"] .toolbar[data-pinned="false"],
 :root[data-theme="dark"] .jump-bar[data-pinned="false"] {
   background-color: transparent;
-  -webkit-backdrop-filter: none;
-  backdrop-filter: none;
 }
 
 /* What tells a bar is pinned (jumpBar.ts): a line right above it, out of the layout's way. */

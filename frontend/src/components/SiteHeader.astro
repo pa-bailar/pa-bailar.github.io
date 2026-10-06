@@ -2,12 +2,16 @@
 import Stripes from "./Stripes.astro";
 import ThemeToggle from "./ThemeToggle.astro";
 import { ICONS } from "../scripts/lib/icons";
+import { BASE_URL } from "../scripts/lib/links";
 
 interface Props {
   updatedLabel: string;
 }
 
 const { updatedLabel } = Astro.props;
+// The logo goes home with a page load, as on the event pages: the list fresh, no panel, nothing selected (the owner,
+// 6 Oct 2026). A plain link: no data-* attribute, so main.ts's clicks leave it to the browser.
+const home = BASE_URL;
 ---
 
 <header class="site-header">
@@ -18,7 +22,7 @@ const { updatedLabel } = Astro.props;
       <a class="icon-btn site-header__info" href="#info" aria-label="Info: sobre Pa' Bailar" title="Sobre Pa' Bailar"><Fragment set:html={ICONS.info} /></a>
       <ThemeToggle />
     </div>
-    <h1 class="site-header__logo">Pa' Bailar</h1>
+    <h1 class="site-header__logo"><a href={home}>Pa' Bailar</a></h1>
     <p class="site-header__tagline">Sociales y Talleres de Baile en Bogotá</p>
     <p class="site-header__updated">Actualizado el {updatedLabel}</p>
   </div>
