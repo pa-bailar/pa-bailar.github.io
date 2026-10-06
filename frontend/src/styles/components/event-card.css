@@ -312,7 +312,6 @@
   overscroll-behavior-x: contain; /* a swipe at the last slide doesn't go back a page */
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
-  cursor: pointer;
 }
 
 .carousel::-webkit-scrollbar {
@@ -327,9 +326,23 @@
   scroll-snap-stop: always; /* one slide per swipe, as on Instagram */
 }
 
-.event-card__media:has(.carousel) :is(.tag-type, .date-sticker) {
+/* The image is a target of its own (eventCard.ts `data-card-image`): above the card's stretched link. The marks over
+   it come after it at the same level, and let clicks through to it. */
+.event-card__frame[data-card-image] {
+  z-index: var(--z-raised);
+  cursor: pointer;
+}
+
+.event-card__media :is(.tag-type, .date-sticker, .video-mark) {
   z-index: var(--z-raised);
   pointer-events: none;
+}
+
+/* With a mouse on a wide screen, the image opens the lightbox (lightbox.ts LIGHTBOX_QUERY). */
+@media (hover: hover) and (pointer: fine) and (min-width: 900px) and (min-height: 600px) {
+  .event-card__frame[data-card-image] {
+    cursor: zoom-in;
+  }
 }
 
 /* "1/6", at the image's top right: where the carousel is, out of how many. */

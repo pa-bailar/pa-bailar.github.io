@@ -526,6 +526,18 @@ An event can be announced by several Instagram posts (a flyer, then a video, a r
   - **A tap on the image opens the details**, with the slide on screen selected: their Instagram button opens that
     post. Ctrl or middle click opens the event's page in a new tab. A video slide plays its clip while on screen.
   - Every post is still a link away: the details' "Ver las 6 publicaciones" (the posts sheet).
+- **Wide screens with a mouse: a click on a card's image shows it bigger** (`Lightbox.astro`, `views/lightbox.ts`; the
+  owner, 5 October 2026: a flyer's fine print is often too small on the card). The flyer whole on a dark stage, ‹ › and
+  ← → between the event's posts, "1/6", and "Detalles ›" to the side panel on that post. It closes like a sheet (×,
+  Escape, back, a click outside the image), the page where it was and the focus back on the card; the address doesn't
+  change. The title, "Detalles" and the text still open the side panel. Phones and tablets: a tap on the image opens
+  the details, as before.
+- **The keyboard moves through the events** (`views/keyboardNav.ts`; the owner, 5 October 2026: clicking card after
+  card was tiresome). A card focused: ↑ ↓ ← → to the card above, below, before or after; Enter opens it. Nothing focused:
+  ← → start on the first card on screen (↑ ↓ still scroll). The details open: ← → the event before or after in the
+  list, which follows (its card outlined, brought into view); Escape leaves the focus on that card, and back still
+  returns to the list (the panel swaps events in place). Never while typing, in a menu or under another dialog; a
+  card's ‹ › stay the mouse's and Tab's, so ← → never mean two things.
 - **Every post, in a sheet** (`PostsSheet.astro`, `scripts/views/postsSheet.ts`): from the card's "▦ 3", the details' "Ver las 3 publicaciones", or the event page's `.posts-badge`. Tabs Flyers and Videos when the event has both, and square thumbnails like Instagram's grid, made at build time (`pages/thumbs/[name].webp.ts`). Choosing one opens it in the media viewer, which takes over the sheet's history entry (back returns to the list or the details, not to a sheet that's gone); on an event's page it shows that post on the page instead.
 - **The media viewer** (`PostViewer.astro`, `scripts/views/postViewer.ts`): the post inside the site, in a sheet over everything, with Instagram's own player (`lib/instagramEmbed.ts`): videos with sound, carousels with all their slides. Opening the Instagram app would leave the site, and the app's back button doesn't come back; the sheet's bar keeps "Abrir en Instagram ↗". Our copy of the flyer shows at once and the player replaces it when ready; if it can't load, the flyer stays with "Esta publicación solo se puede ver en Instagram." Instagram's script loads on the first tap only, never with the page. Closing it removes the player, so a video stops.
 - **Videos play in the feed.** When the backend made a video's clip (`preview`), the card plays it: silent, looping, about 6 seconds, like Instagram's feed (`views/clips.ts`). No sound control: a tap opens the details, where the full video plays with sound (the owner, 4 October 2026, after a "Sin sonido / Con sonido" toggle that did nothing, since the clips have no sound). Only the clip on screen plays; one that leaves the screen unloads. No autoplay with reduced motion or the data saver. The service worker doesn't cache clips.

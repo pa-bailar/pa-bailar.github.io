@@ -74,11 +74,11 @@ function onScroll(domEvent: Event) {
 }
 
 /**
- * A Ctrl, ⌘ or middle click on the image opens the event's page in a new tab, as it did when the image was part of the
- * card's link (the strip now sits above it).
+ * A Ctrl, ⌘ or middle click on a card's image opens the event's page in a new tab, as it did when the image was part of
+ * the card's link (it now sits above it).
  */
 function openInNewTab(domEvent: MouseEvent) {
-  const strip = (domEvent.target as Element | null)?.closest("[data-carousel]");
+  const strip = (domEvent.target as Element | null)?.closest("[data-card-image]");
   if (!strip || isPlainClick(domEvent)) return;
   const link = strip.closest("[data-event-card]")?.querySelector<HTMLAnchorElement>("a.event-card__hit");
   if (!link) return;

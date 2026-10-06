@@ -8,8 +8,9 @@
 // A video's flyer with a clip plays it, silent, like a feed (clips.ts): the clips have no sound, so a tap there opens
 // the details like the rest of the card. Every video says "Video" in a corner, clip or not (the details play it).
 // An event announced by several posts shows them as a carousel: swiped on phones, ‹ › with a mouse, "1/6" on the image
-// and dots in the action row (carousel.ts). Its strip sits above the stretched link (a swipe must reach it) and opens
-// the details itself (`data-event`).
+// and dots in the action row (carousel.ts). The image (the strip, or the one flyer) sits above the stretched link (a
+// swipe must reach it) and is a target of its own (`data-card-image`, `data-event`): the details, or with a mouse on a
+// wide screen the lightbox (lightbox.ts).
 
 import type { DanceEvent, EventMedia } from "../types";
 import { isVideoCover } from "../lib/mediaLabel";
@@ -61,8 +62,9 @@ function pictureHtml(flyer: string, clip: string | null, title: string, backdrop
   return `${backdrop ? `<img class="event-card__backdrop" src="${src}" alt="" loading="lazy" decoding="async" />` : ""}${picture}`;
 }
 
-function flyerHtml(media: EventMedia, flyer: string, clip: string | null, title: string): string {
-  return `<div class="event-card__frame">${pictureHtml(flyer, clip, title, !fillsFrame(media))}</div>`;
+/** One flyer: its own target over the card's link (`data-card-image`): the details, or the lightbox with a mouse. */
+function flyerHtml(event: DanceEvent, media: EventMedia, flyer: string, clip: string | null): string {
+  return `<div class="event-card__frame" data-card-image data-event="${escapeHtml(event.id)}">${pictureHtml(flyer, clip, event.title, !fillsFrame(media))}</div>`;
 }
 
 /** The event's posts that have a flyer: the carousel's slides, in the data's order (the main post first). */
@@ -92,7 +94,7 @@ function carouselHtml(event: DanceEvent, slides: { media: EventMedia; flyer: str
     })
     .join("");
   return `
-    <div class="event-card__frame carousel" data-carousel data-count="${count}" data-index="0" data-event="${id}"
+    <div class="event-card__frame carousel" data-carousel data-card-image data-count="${count}" data-index="0" data-event="${id}"
       role="group" aria-roledescription="carrusel" aria-label="${count} publicaciones de ${title}">${items}</div>
     <span class="carousel__count" data-carousel-count aria-hidden="true">1/${count}</span>
     <button class="carousel__step carousel__step--prev" type="button" data-carousel-step="-1" data-track="carrusel"
@@ -140,7 +142,7 @@ function eventCardHtml(event: DanceEvent): string {
     slides.length > 1
       ? carouselHtml(event, slides)
       : flyer
-        ? flyerHtml(media, flyer, clip, event.title)
+        ? flyerHtml(event, media, flyer, clip)
         : `<div class="no-flyer" aria-hidden="true">Pa'</div>`;
   const sticker = stickerDate(event);
   const when = cardWhenLabel(event);
