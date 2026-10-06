@@ -14,8 +14,9 @@ repositories (backend first, behind the new version).
 |---|---|---|---|
 | `data/events.json` | backend | frontend (build) | Array of events, sorted by date (an event over several days: its first day; a workshop series: its first session) and start time |
 | `data/meta.json` | backend | frontend (build) | `schema_version`, `generated_at` (Bogotá time), `accounts` (every Instagram account the sweep reads, sorted; the footer's sources, including those without upcoming events; optional for older data) and stats of the last sweep that changed data. Only committed with a real change; the site's "Actualizado el" uses the time of the last check, passed by the deploy, falling back to `generated_at`. |
-| `data/flyers/*.webp` | backend | frontend (static files) | Flyer copies, max 1080×1350, WebP q80 |
-| `data/previews/*.mp4` | backend | frontend (static files) | Clips of videos: 6 silent seconds, 480 px, H.264 (`EventMedia.preview`) |
+| `data/flyers/*.webp` | backend | frontend (static files) | Flyer copies, max 1080×1350, WebP q80. Stored in `pa-bailar/media`, not here: copied into `data/` before every build and check (`npm run media` locally) |
+| `data/previews/*.mp4` | backend | frontend (static files) | Clips of videos: 6 silent seconds, 480 px, H.264 (`EventMedia.preview`). Stored in `pa-bailar/media`, like the flyers |
+| `data/archive/<year>.json` | backend | nothing yet | Past events, archived 60 days after their last day instead of deleted: the same records as `events.json`, by the year of their last day, each flyer pointing to a small copy (`archive/flyers/…`, kept in `pa-bailar/media` only, never published) and no clip |
 
 
 ## Event (`events.json` item)
@@ -143,4 +144,4 @@ there too (`tests/styleFamilies.test.ts` checks every style of `scripts/check-da
 - **Re-analyzing a post** first removes what it contributed, so nothing is duplicated.
 - **Writes are atomic** (temp file + rename) and every load/save is validated against the models.
 - **Line endings are LF**, so files are identical on Windows and on the Linux CI runner.
-- **Retention:** every sweep deletes events whose last day (`end_date`, or `date`; a series: its last session) was more than 60 days ago and their flyers, and forgets analyzed posts older than 45 days (in the backend).
+- **Retention:** every sweep moves events whose last day (`end_date`, or `date`; a series: its last session) was more than 60 days ago to `data/archive/<year>.json` (their full flyers and clips are deleted, a small copy of each flyer kept in `pa-bailar/media`), and forgets analyzed posts older than 45 days (in the backend).

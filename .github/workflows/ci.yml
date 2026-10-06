@@ -36,6 +36,16 @@ jobs:
         env:
           TITLE: ${{ github.event.pull_request.title }}
         run: node scripts/release.mjs check "$TITLE"
+      # The images live in their own repository (pa-bailar/media): copied into data/ before anything reads it.
+      - name: Check out the images
+        uses: actions/checkout@v7
+        with:
+          repository: pa-bailar/media
+          path: .media
+          persist-credentials: false
+      - name: Copy the images into data/
+        working-directory: .
+        run: cp -r .media/flyers .media/previews data/
       - run: npm ci
       - name: Data format, type check, color contrast and CSS properties
         run: npm run check

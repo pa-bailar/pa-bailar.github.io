@@ -5,3 +5,9 @@ dist/
 
 # Local settings, if ever needed (never committed)
 .env
+
+# The images live in their own repository, pa-bailar/media (the backend's docs/ARCHITECTURE.md, §10.2): the
+# workflows copy them in before building, `npm run media` locally. The archive's records (data/archive/*.json) stay.
+data/flyers/
+data/previews/
+data/archive/flyers/
