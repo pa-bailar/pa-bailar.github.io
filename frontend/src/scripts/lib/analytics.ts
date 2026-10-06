@@ -1,7 +1,8 @@
 // Visit statistics with GoatCounter (https://www.goatcounter.com): no cookies and no personal data, so
 // no consent banner is needed. Page loads are counted by its script (layouts/BaseLayout.astro); this
 // adds what a static page can't see on its own:
-//   - each event opened in the details drawer, as a visit to that event's page;
+//   - each event opened in the details drawer, as a visit to that event's page (`seenCounter`: once while it stays
+//     open; one the side panel only passes, following the keyboard, once it stayed on for 2 s);
 //   - clicks on the actions marked with data-track="<name>" (Instagram, WhatsApp, sharing…);
 //   - an event's details opened, by where they were opened from ("detalles-tarjeta"…, `detailsEventName`).
 // GoatCounter ignores localhost, so local testing isn't counted. If its script is blocked, nothing breaks.
@@ -27,6 +28,40 @@ function count(vars: { path: string; title?: string; event?: boolean }) {
 /** A page seen without a page load (the details drawer changes the URL itself). */
 export function trackPageview(path: string, title: string) {
   count({ path, title });
+}
+
+/** How long something shown in passing has to stay on screen to count as seen (ms). */
+export const SEEN_AFTER_MS = 2000;
+
+/**
+ * Counts what a visitor looks at, once while it stays shown. Opened on purpose (a tap, Enter, a link), it counts at
+ * once. Shown in passing (the side panel following the keyboard's arrows or Tab through the list), it counts only if
+ * it's still the one shown after `seenAfterMs`: read, not walked past. `hide()` when nothing is shown any more.
+ */
+export function seenCounter<T extends { id: string }>(onSeen: (item: T) => void, seenAfterMs = SEEN_AFTER_MS) {
+  let shown: string | null = null;
+  let counted: string | null = null; // shown again (Enter on the event the panel already shows): not twice
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  const seen = (item: T) => {
+    counted = item.id;
+    onSeen(item);
+  };
+  return {
+    show(item: T, { passing }: { passing: boolean }) {
+      clearTimeout(timer);
+      shown = item.id;
+      if (counted === item.id) return;
+      if (!passing) return seen(item);
+      timer = setTimeout(() => {
+        if (shown === item.id) seen(item);
+      }, seenAfterMs);
+    },
+    hide() {
+      clearTimeout(timer);
+      shown = null;
+      counted = null;
+    },
+  };
 }
 
 /**
