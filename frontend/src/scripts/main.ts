@@ -387,13 +387,17 @@ export function start() {
   initJumpBar();
   initFilterPanels();
   initCarousels();
-  initLightbox((event, selected, card) => openEventDrawer(event, { selected, opener: card ?? undefined }));
+  // While the side panel is open, it shows the card in focus (keyboardNav.ts): after the lightbox, its event.
+  const followInPanel = (event: DanceEvent, card: HTMLElement | null) => {
+    if (openEventId() && openEventId() !== event.id) openEventDrawer(event, { opener: card ?? undefined, focus: false });
+  };
+  initLightbox((event, selected, card) => openEventDrawer(event, { selected, opener: card ?? undefined }), followInPanel);
   initKeyboardNav({
     findEvent,
     openEventId,
-    showEvent: (event, card) => {
-      openEventDrawer(event, { opener: card });
-      highlightCurrentCard({ reveal: true }); // the list follows
+    showEvent: (event, card, stayInList) => {
+      openEventDrawer(event, { opener: card, focus: !stayInList });
+      highlightCurrentCard({ reveal: !stayInList }); // the list follows (a card in focus is already in view)
     },
   });
   // × and back end the search (and Escape on a keyboard): cleared, the view drawn again.

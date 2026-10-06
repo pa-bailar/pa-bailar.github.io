@@ -191,7 +191,16 @@ export function openEventDrawer(
     shared = false,
     selected = 0,
     opener,
-  }: { source?: DetailsSource; pushHistory?: boolean; shared?: boolean; selected?: number; opener?: HTMLElement } = {},
+    focus = true,
+  }: {
+    source?: DetailsSource;
+    pushHistory?: boolean;
+    shared?: boolean;
+    selected?: number;
+    opener?: HTMLElement;
+    /** False: the focus stays where it is (the side panel following the card in focus: keyboardNav.ts). */
+    focus?: boolean;
+  } = {},
 ) {
   const element = drawer();
   if (state.leaving) finishClose(); // tapped while the panel was sliding out: start over
@@ -205,7 +214,7 @@ export function openEventDrawer(
   render(event, selected); // `selected`: the post a card's carousel showed (its Instagram button opens that one)
   if (wasOpen) highlightCurrentCard();
   else show(event, shared);
-  focusTitle();
+  if (focus) focusTitle();
   if (pushHistory) enterEvent(event, wasOpen);
   trackPageview(eventPath(event), event.title); // which events people look at
   if (source) trackEvent(detailsEventName(source));
