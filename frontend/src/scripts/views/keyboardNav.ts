@@ -4,8 +4,9 @@
 //     (lightbox.ts); elsewhere the card's own link opens the details.
 //   - The details open: Enter (on the panel itself, not on one of its buttons or links) shows the image beside them:
 //     to press Enter an event was almost always just clicked (the owner, 6 Oct 2026).
-//   - Nothing has the focus yet: any arrow puts it on the first card on screen (the owner, 6 Oct 2026: ↑ ↓ too; Page
-//     Up/Down, space and the wheel still scroll).
+//   - Nothing has the focus yet: any arrow puts it on the first card on screen, the first whose top shows below the
+//     pinned bars (the owner, 6 Oct 2026: ↑ ↓ too; Page Up/Down, space and the wheel still scroll). With the details
+//     open, it moves from their event instead, as in the details (a click on the page's margin drops the focus).
 //   - The details are open (the side panel, or the drawer): ← → show the event before or after in the list on screen,
 //     ↑ ↓ the one in the row above or below (the grid's, as from a card; the owner, 6 Oct 2026),
 //     the list following (its card outlined and brought into view); Escape then leaves the focus on that card. The
@@ -46,6 +47,25 @@ export function neighbor(boxes: Box[], from: number, direction: "left" | "right"
   const row = candidates.filter(({ box }) => Math.abs(box.top - rowTop) < here.height / 2);
   row.sort((a, b) => Math.abs(a.box.left + a.box.width / 2 - middle) - Math.abs(b.box.left + b.box.width / 2 - middle));
   return row[0]?.index ?? null;
+}
+
+/**
+ * The card to start on when nothing has the focus: the first (reading order) whose top shows between `top` (below the
+ * pinned bars) and `bottom`; else the first still partly below `top` (a card taller than the room); null: no cards.
+ * Pure, on the cards' boxes (tested). Before, a card scrolled almost out above, under the pinned bar, got the focus.
+ */
+export function firstInView(boxes: Box[], top: number, bottom: number): number | null {
+  const shown = boxes.findIndex((box) => box.top >= top && box.top < bottom);
+  if (shown >= 0) return shown;
+  const partly = boxes.findIndex((box) => box.top + box.height > top);
+  return partly >= 0 ? partly : boxes.length ? 0 : null;
+}
+
+/** The room the pinned bars leave on screen: scroll-padding (base.css) is what they cover. */
+function room(): { top: number; bottom: number } {
+  const style = getComputedStyle(document.documentElement);
+  const pad = (value: string) => parseFloat(value) || 0;
+  return { top: pad(style.scrollPaddingTop), bottom: innerHeight - pad(style.scrollPaddingBottom) };
 }
 
 /** The cards of the view on screen, in reading order, that are laid out (a summarized period has none). */
@@ -106,9 +126,10 @@ export function initKeyboardNav(hooks: Hooks) {
     const list = cards();
     const openId = hooks.openEventId();
 
-    // The details: the event that way in the list (before or after; the row above or below).
-    if (openId && inDetails(target)) {
-      const at = list.findIndex((card) => card.dataset.eventCard === openId);
+    // The details: the event that way in the list (before or after; the row above or below). Also with nothing focused
+    // while they're open (a click on the page's margin): from their event, not from the top of the screen.
+    const at = openId ? list.findIndex((card) => card.dataset.eventCard === openId) : -1;
+    if (openId && (inDetails(target) || (target === document.body && at >= 0))) {
       const to = at < 0 ? null : neighbor(list.map((item) => item.getBoundingClientRect()), at, direction);
       const next = to === null ? null : list[to];
       const event = next && hooks.findEvent(next.dataset.eventCard ?? "");
@@ -136,11 +157,12 @@ export function initKeyboardNav(hooks: Hooks) {
 
     // Nothing focused yet: any arrow starts on the first card on screen.
     if (target === document.body) {
-      const first = list.find((item) => item.getBoundingClientRect().bottom > 0) ?? list[0];
-      const link = linkOf(first);
+      const { top, bottom } = room();
+      const first = firstInView(list.map((item) => item.getBoundingClientRect()), top, bottom);
+      const link = first === null ? null : linkOf(list[first]);
       if (!link) return;
       domEvent.preventDefault();
-      link.focus();
+      link.focus({ preventScroll: true }); // already on screen: the browser would push a tall card under the bar
     }
   });
 }
