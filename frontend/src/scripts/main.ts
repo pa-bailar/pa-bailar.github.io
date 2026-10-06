@@ -24,10 +24,10 @@ import {
 import { initThemeToggle } from "./theme";
 import { renderCalendarView } from "./views/calendarView";
 import { watchClips } from "./views/clips";
-import { highlightCurrentCard, initEventDrawer, openEventDrawer, openEventId } from "./views/eventDrawer";
+import { closeEventDrawer, highlightCurrentCard, initEventDrawer, openEventDrawer, openEventId } from "./views/eventDrawer";
 import { carouselSlide, initCarousels } from "./views/carousel";
 import { initKeyboardNav } from "./views/keyboardNav";
-import { initLightbox, lightboxMode, openLightbox } from "./views/lightbox";
+import { followStage, initLightbox, lightboxMode, showStage } from "./views/lightbox";
 import { armDetailsHint, markDetailsHintSeen } from "./views/detailsHint";
 import { HIDE_BARS_FILTER, filterModel, staleDates } from "./lib/filterModel";
 import { storedSwitch } from "./lib/storedSwitch";
@@ -235,18 +235,28 @@ const showPeriod: ControlHandler = (key, control) => {
 const cardLink = (element: Element) => element.closest("[data-event-card]")?.querySelector<HTMLElement>("a.event-card__hit") ?? null;
 
 /**
+ * The details of `event` with its image big beside them (lightbox.ts), on the slide its card showed: a click on a card's
+ * image, Enter on a card or in the open details. Only where that works (a mouse, room for the panel): false otherwise.
+ */
+function showWithImage(event: DanceEvent, card: HTMLElement | null): boolean {
+  if (!lightboxMode()) return false;
+  const opener = card ?? cardLink(document.querySelector(`[data-event-card="${CSS.escape(event.id)}"]`) ?? document.body);
+  const slide = opener ? carouselSlide(opener) : 0;
+  if (openEventId() !== event.id) openEventDrawer(event, { selected: slide, opener: opener ?? undefined, source: "tarjeta" });
+  showStage(event, slide);
+  return true;
+}
+
+/**
  * A card (its title is a link: the browser handles new-tab clicks; a plain click opens the details). Its image, with a
- * mouse on a wide screen, opens the lightbox instead (lightbox.ts), on the slide the card showed.
+ * mouse on a wide screen, opens the details with the image big beside them (showWithImage).
  */
 const openCardEvent: ControlHandler = (id, control, domEvent) => {
   if (!isPlainClick(domEvent)) return;
   const event = findEvent(id);
   if (!event) return;
   domEvent.preventDefault();
-  if (control.matches("[data-card-image]") && lightboxMode()) {
-    openLightbox(event, carouselSlide(control), cardLink(control));
-    return;
-  }
+  if (control.matches("[data-card-image]") && showWithImage(event, cardLink(control))) return;
   // Counted by where it was opened: the card itself or its "Detalles".
   const source = control.dataset.source === "boton" ? "boton" : "tarjeta";
   markDetailsHintSeen();
@@ -387,18 +397,16 @@ export function start() {
   initJumpBar();
   initFilterPanels();
   initCarousels();
-  // While the side panel is open, it shows the card in focus (keyboardNav.ts): after the lightbox, its event.
-  const followInPanel = (event: DanceEvent, card: HTMLElement | null) => {
-    if (openEventId() && openEventId() !== event.id) openEventDrawer(event, { opener: card ?? undefined, focus: false });
-  };
-  initLightbox((event, selected, card) => openEventDrawer(event, { selected, opener: card ?? undefined }), followInPanel);
+  initLightbox(closeEventDrawer);
   initKeyboardNav({
     findEvent,
     openEventId,
     showEvent: (event, card, stayInList) => {
       openEventDrawer(event, { opener: card, focus: !stayInList });
+      followStage(event); // the image beside the panel, if on show, changes with it
       highlightCurrentCard({ reveal: !stayInList }); // the list follows (a card in focus is already in view)
     },
+    showImage: showWithImage,
   });
   // × and back end the search (and Escape on a keyboard): cleared, the view drawn again.
   initBottomNav({

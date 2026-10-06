@@ -526,14 +526,18 @@ An event can be announced by several Instagram posts (a flyer, then a video, a r
   - **A tap on the image opens the details**, with the slide on screen selected: their Instagram button opens that
     post. Ctrl or middle click opens the event's page in a new tab. A video slide plays its clip while on screen.
   - Every post is still a link away: the details' "Ver las 6 publicaciones" (the posts sheet).
-- **Wide screens with a mouse: a click on a card's image shows it bigger** (`Lightbox.astro`, `views/lightbox.ts`; the
-  owner, 5 October 2026: a flyer's fine print is often too small on the card). The flyer whole on a dark stage, ‹ › and
-  ← → between the event's posts, "1/6", and "Detalles ›" to the side panel on that post. It closes like a sheet (×,
-  Escape, back, a click outside the image), the page where it was and the focus back on the card; the address doesn't
-  change. The title, "Detalles" and the text still open the side panel. Phones and tablets: a tap on the image opens
-  the details, as before.
+- **Wide screens with a mouse: a card's image big beside its details**, like Instagram's desktop view of a post
+  (`Lightbox.astro`, `views/lightbox.ts`; the owner, 5–6 October 2026: a flyer's fine print is too small on the card,
+  and the details must stay usable). A click on a card's image, or Enter, opens the side panel and the flyer whole on a
+  dark stage over the list, which stops where the panel starts: Instagram, Compartir and Guardar stay reachable. ‹ › its
+  photos, "1/6"; ← → the event before or after (image and panel together). One view with one history entry (the
+  event's address): Escape, back, the panel's ×, the stage's × or a click on the dark area close both, and the focus goes
+  back to the card. The title and "Detalles" open the panel alone. Phones and tablets: a tap on the image opens the
+  details, as before.
 - **The keyboard moves through the events** (`views/keyboardNav.ts`; the owner, 5 October 2026: clicking card after
-  card was tiresome). A card focused: ↑ ↓ ← → to the card above, below, before or after; Enter opens it. Nothing focused:
+  card was tiresome). A card focused: ↑ ↓ ← → to the card above, below, before or after; Enter opens its details with
+  the image big beside them where that works, the details alone elsewhere. The details open: Enter on them shows the
+  image beside them (to press Enter an event was almost always just clicked: the owner, 6 Oct 2026). Nothing focused:
   ← → start on the first card on screen (↑ ↓ still scroll). The details open: ← → the event before or after in the
   list, which follows (its card outlined, brought into view); Escape leaves the focus on that card, and back still
   returns to the list (the panel swaps events in place). **While the side panel is open it shows the card in focus**,

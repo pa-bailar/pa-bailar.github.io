@@ -715,7 +715,7 @@ frontend/
 | `views/upcomingView.ts` | "Próximos"; where a shared link's event is (`sharedEventEntry`) |
 | `views/calendarView.ts` | "Calendario", with holidays; each day's events with the filters on (`calendarDays`); a day's dots on phones (`dotsHtml`, `MAX_DOTS_PER_DAY`); the selected day's heading |
 | `views/eventCard.ts` | A card: flyer at its shape (or a video's clip), or a carousel of the event's posts; date sticker; the action row (Detalles, Compartir, the carousel's dots, Guardar) |
-| `views/lightbox.ts`, `components/Lightbox.astro` | A card's image, bigger (wide screens with a mouse): the event's posts one at a time, ‹ › and ← →, "Detalles" to the side panel. A panel sheet for its history and ways out (`lib/sheet.ts`) |
+| `views/lightbox.ts`, `components/Lightbox.astro` | A card's image big beside the side panel (wide screens with a mouse): a non-modal stage over the list up to the panel; its event is the panel's, it closes with it and shares its history entry |
 | `views/keyboardNav.ts` | The arrows between cards (`neighbor`, on the cards' boxes) and between events in the open details |
 | `views/carousel.ts` | A card's carousel: the slide on screen (`slideIndex`), "1/6" and the dots (`dotStates`), ‹ ›, the slide the details open on (`carouselSlide`) |
 | `views/detailsHint.ts`, `lib/onceFlag.ts` | The first visit's hint on the first card's "Detalles"; things shown once per browser |
