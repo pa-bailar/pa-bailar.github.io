@@ -47,3 +47,21 @@ describe("the card an arrow starts on, nothing focused", () => {
     expect(firstInView([], 132, 800)).toBeNull();
   });
 });
+
+describe("a summarized period's block among the cards (the owner, 6 Oct 2026)", () => {
+  // Two rows of cards, then November's "Ver los 23 eventos" (the grid's whole width), then December's.
+  const wide = (top: number) => ({ left: 0, top, width: 820, height: 160 });
+  const list = [box(0, 0), box(280, 0), box(560, 0), box(0, 640), box(280, 640), wide(1300), wide(1500)];
+
+  it("↓ from any card of the last row, and → from the last card, reach the block", () => {
+    expect(neighbor(list, 3, "down")).toBe(5);
+    expect(neighbor(list, 4, "down")).toBe(5);
+    expect(neighbor(list, 4, "right")).toBe(5);
+  });
+
+  it("from one block the next is below, and ↑ goes back to the card closest to the middle", () => {
+    expect(neighbor(list, 5, "down")).toBe(6);
+    expect(neighbor(list, 6, "up")).toBe(5);
+    expect(neighbor(list, 5, "up")).toBe(4); // the middle (410) is closest to the card at 280
+  });
+});
