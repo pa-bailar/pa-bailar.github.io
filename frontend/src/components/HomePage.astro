@@ -17,6 +17,7 @@ import FilterSheet from "./FilterSheet.astro";
 import InstallOffer from "./InstallOffer.astro";
 import PostViewer from "./PostViewer.astro";
 import PostsSheet from "./PostsSheet.astro";
+import Lightbox from "./Lightbox.astro";
 import BottomNav from "./BottomNav.astro";
 import { accounts, events, meta } from "../data";
 import { LOCALE } from "../scripts/lib/format";
@@ -71,6 +72,7 @@ const { view } = Astro.props;
   <EventDrawer />
   <PostsSheet />
   <PostViewer />
+  <Lightbox />
   <FilterSheet />
 
   <script type="application/json" id="events-data" set:html={eventsJson} />

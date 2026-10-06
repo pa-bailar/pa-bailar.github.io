@@ -1,0 +1,23 @@
+---
+// Wide screens with a mouse: a card's image, bigger (the owner, 5 October 2026: on desktop a click on a flyer should
+// show it larger; its fine print is often too small on the card). The event's posts one at a time, ‹ › and ← → between
+// them, "1/6", and "Detalles" to the side panel. Filled and opened by scripts/views/lightbox.ts; it closes like a
+// sheet (×, Escape, back, a click outside the image: lib/sheet.ts).
+import { ICONS } from "../scripts/lib/icons";
+---
+
+<dialog class="lightbox" id="lightbox" aria-labelledby="lightbox-title">
+  <div class="lightbox__stage" data-lightbox-stage>
+    <img class="lightbox__image" id="lightbox-image" alt="" decoding="async" />
+  </div>
+  <button class="lightbox__button lightbox__close" type="button" data-close-sheet aria-label="Cerrar"><Fragment set:html={ICONS.close} /></button>
+  <button class="lightbox__button lightbox__step lightbox__step--prev" type="button" data-lightbox-step="-1"
+    aria-label="Publicación anterior"><Fragment set:html={ICONS.chevronLeft} /></button>
+  <button class="lightbox__button lightbox__step lightbox__step--next" type="button" data-lightbox-step="1"
+    aria-label="Publicación siguiente"><Fragment set:html={ICONS.chevronRight} /></button>
+  <div class="lightbox__bar">
+    <p class="lightbox__title" id="lightbox-title"></p>
+    <span class="lightbox__count" id="lightbox-count" aria-live="polite"></span>
+    <button class="btn lightbox__details" type="button" data-lightbox-details data-track="lightbox-detalles">Detalles<Fragment set:html={ICONS.chevronRight} /></button>
+  </div>
+</dialog>

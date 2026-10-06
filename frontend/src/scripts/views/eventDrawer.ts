@@ -145,6 +145,11 @@ function render(event: DanceEvent, selected = 0) {
 }
 
 /** Side panel: the open event's card is outlined in the list (also after the list is drawn again: main.ts). */
+/** The event the details show, while they're open (keyboardNav.ts). */
+export function openEventId(): string | null {
+  return drawer().open && !state.leaving ? (state.current?.id ?? null) : null;
+}
+
 export function highlightCurrentCard({ reveal = false } = {}) {
   clearCurrentCard();
   if (!drawer().open || state.leaving || state.mode !== "panel" || !state.current) return;
@@ -185,7 +190,8 @@ export function openEventDrawer(
     pushHistory = true,
     shared = false,
     selected = 0,
-  }: { source?: DetailsSource; pushHistory?: boolean; shared?: boolean; selected?: number } = {},
+    opener,
+  }: { source?: DetailsSource; pushHistory?: boolean; shared?: boolean; selected?: number; opener?: HTMLElement } = {},
 ) {
   const element = drawer();
   if (state.leaving) finishClose(); // tapped while the panel was sliding out: start over
@@ -194,6 +200,7 @@ export function openEventDrawer(
   const active = document.activeElement;
   if (active instanceof HTMLElement && active !== document.body && !element.contains(active)) state.opener = active;
   else if (!wasOpen) state.opener = null;
+  if (opener) state.opener = opener; // ← → in the details, the lightbox's "Detalles": the card of the event shown
   state.current = event;
   render(event, selected); // `selected`: the post a card's carousel showed (its Instagram button opens that one)
   if (wasOpen) highlightCurrentCard();

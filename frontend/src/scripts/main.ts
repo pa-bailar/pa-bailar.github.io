@@ -24,8 +24,10 @@ import {
 import { initThemeToggle } from "./theme";
 import { renderCalendarView } from "./views/calendarView";
 import { watchClips } from "./views/clips";
-import { highlightCurrentCard, initEventDrawer, openEventDrawer } from "./views/eventDrawer";
+import { highlightCurrentCard, initEventDrawer, openEventDrawer, openEventId } from "./views/eventDrawer";
 import { carouselSlide, initCarousels } from "./views/carousel";
+import { initKeyboardNav } from "./views/keyboardNav";
+import { initLightbox, lightboxMode, openLightbox } from "./views/lightbox";
 import { armDetailsHint, markDetailsHintSeen } from "./views/detailsHint";
 import { HIDE_BARS_FILTER, filterModel, staleDates } from "./lib/filterModel";
 import { storedSwitch } from "./lib/storedSwitch";
@@ -229,12 +231,22 @@ const showPeriod: ControlHandler = (key, control) => {
   cards?.[before]?.focus({ preventScroll: true });
 };
 
-/** A card (its title is a link: the browser handles new-tab clicks; a plain click opens the details). */
+/** The link inside a card: what gets the focus back when the details or the lightbox close. */
+const cardLink = (element: Element) => element.closest("[data-event-card]")?.querySelector<HTMLElement>("a.event-card__hit") ?? null;
+
+/**
+ * A card (its title is a link: the browser handles new-tab clicks; a plain click opens the details). Its image, with a
+ * mouse on a wide screen, opens the lightbox instead (lightbox.ts), on the slide the card showed.
+ */
 const openCardEvent: ControlHandler = (id, control, domEvent) => {
   if (!isPlainClick(domEvent)) return;
   const event = findEvent(id);
   if (!event) return;
   domEvent.preventDefault();
+  if (control.matches("[data-card-image]") && lightboxMode()) {
+    openLightbox(event, carouselSlide(control), cardLink(control));
+    return;
+  }
   // Counted by where it was opened: the card itself or its "Detalles".
   const source = control.dataset.source === "boton" ? "boton" : "tarjeta";
   markDetailsHintSeen();
@@ -375,6 +387,15 @@ export function start() {
   initJumpBar();
   initFilterPanels();
   initCarousels();
+  initLightbox((event, selected, card) => openEventDrawer(event, { selected, opener: card ?? undefined }));
+  initKeyboardNav({
+    findEvent,
+    openEventId,
+    showEvent: (event, card) => {
+      openEventDrawer(event, { opener: card });
+      highlightCurrentCard({ reveal: true }); // the list follows
+    },
+  });
   // × and back end the search (and Escape on a keyboard): cleared, the view drawn again.
   initBottomNav({
     dismiss: () => {
