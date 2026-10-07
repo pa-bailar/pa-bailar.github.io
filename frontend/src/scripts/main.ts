@@ -495,7 +495,7 @@ export function start() {
   // visitor was (never jumping, e.g. to a period's heading): an event unsaved there leaves it.
   initSaveButtons((id, saved) => {
     const inSaved = state.view === "saved";
-    tellSaveChange(saved, { inSaved, seeSaved: () => navigateView("saved"), undo: () => toggleSave(id) });
+    tellSaveChange(id, saved, { inSaved, seeSaved: () => navigateView("saved"), undo: () => toggleSave(id) });
     if (saved) offerAfterSaving(upcomingSaved().length);
     if (!inSaved) return renderSavedCount();
     const scrollY = window.scrollY;

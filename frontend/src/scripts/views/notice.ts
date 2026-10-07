@@ -28,12 +28,17 @@ let action: NoticeAction | undefined;
 let seconds = NOTICE_SECONDS;
 let timer = 0;
 let mouseOn = false; // a finger's tap leaves no hover behind, so only the mouse holds the notice
+let shown = 0; // the notice on screen, by number (0: none)
+let count = 0;
 
 const notice = () => byId("notice");
 
-export function hideNotice() {
+/** Hides the notice; given `which` (what showNotice returned), only if that one is still on screen. */
+export function hideNotice(which?: number) {
+  if (which !== undefined && which !== shown) return;
   window.clearTimeout(timer);
   action = undefined;
+  shown = 0;
   notice().replaceChildren();
 }
 
@@ -41,7 +46,7 @@ export function hideNotice() {
 function countDown() {
   window.clearTimeout(timer);
   if (mouseOn || notice().contains(document.activeElement)) return;
-  timer = window.setTimeout(hideNotice, seconds * 1000);
+  timer = window.setTimeout(() => hideNotice(), seconds * 1000);
 }
 
 function button(className: string, label: string, track?: string): HTMLButtonElement {
@@ -53,9 +58,9 @@ function button(className: string, label: string, track?: string): HTMLButtonEle
   return element;
 }
 
-/** Says `text`, with `next` as its button. Returns whether it shows: not over a modal. */
-export function showNotice(text: string, next?: NoticeAction, options: NoticeOptions = {}): boolean {
-  if (document.querySelector("dialog:modal")) return false;
+/** Says `text`, with `next` as its button. Returns its number (for hideNotice), or 0 if it can't show: over a modal. */
+export function showNotice(text: string, next?: NoticeAction, options: NoticeOptions = {}): number {
+  if (document.querySelector("dialog:modal")) return 0;
   const words = document.createElement("span");
   words.className = "notice__text";
   words.textContent = text;
@@ -68,16 +73,17 @@ export function showNotice(text: string, next?: NoticeAction, options: NoticeOpt
   }
   action = next;
   seconds = options.seconds ?? NOTICE_SECONDS;
+  shown = ++count;
   notice().replaceChildren(...parts);
   countDown();
-  return true;
+  return shown;
 }
 
 export function initNotice() {
   const element = notice();
   element.addEventListener("click", (domEvent) => {
     const target = domEvent.target as HTMLElement;
-    if (target.closest(".notice__close")) return hideNotice();
+    if (target.closest(".notice__close")) return void hideNotice();
     if (!target.closest(".notice__action")) return;
     const chosen = action;
     hideNotice();

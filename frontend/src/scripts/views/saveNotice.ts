@@ -4,9 +4,10 @@
 
 import { SAVE_NOTICES, saveNotice } from "../lib/saveNotice";
 import { inAppBrowser, showInstallSteps } from "./installPrompt";
-import { showNotice } from "./notice";
+import { hideNotice, showNotice } from "./notice";
 
 let toldInApp = false; // inside an app's browser, said once a visit
+let told: { event: string; notice: number } | null = null; // the last notice about a save, and its event
 
 interface SaveContext {
   /** Guardados is on screen. */
@@ -17,10 +18,17 @@ interface SaveContext {
   undo: () => void;
 }
 
-export function tellSaveChange(saved: boolean, { inSaved, seeSaved, undo }: SaveContext) {
+/** After the event `id` was saved or unsaved: its notice, if any; one about it said before goes, no longer true. */
+export function tellSaveChange(id: string, saved: boolean, { inSaved, seeSaved, undo }: SaveContext) {
   const kind = saveNotice(saved, { inSaved, inAppFirst: !toldInApp && inAppBrowser() });
-  if (!kind) return;
+  if (!kind) {
+    if (told?.event === id) hideNotice(told.notice); // "Guardado", then unsaved at once
+    return;
+  }
   const { text, action, track } = SAVE_NOTICES[kind];
   const run = { saved: seeSaved, "saved-here-only": showInstallSteps, unsaved: undo }[kind];
-  if (showNotice(text, { label: action, run, track }) && kind === "saved-here-only") toldInApp = true;
+  const notice = showNotice(text, { label: action, run, track });
+  if (!notice) return;
+  told = { event: id, notice };
+  if (kind === "saved-here-only") toldInApp = true;
 }
