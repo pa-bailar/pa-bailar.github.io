@@ -334,8 +334,9 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
   - **Empty:** a big bookmark, "Aún no tienes eventos guardados", "Toca 🔖 en un evento para tenerlo aquí, a la mano. Se
     quedan en este navegador, sin crear cuenta." and "Ver eventos".
   - **Unsaving there** takes the card away at once, the page staying where it was.
-  - **The calendar marks the days** holding a saved event (as filtered on screen) with a small bookmark, and says it to
-    screen readers ("…, 3 eventos, 1 guardado"); the legend under the grid has "Festivo" and "Guardado".
+  - **The calendar marks the days** holding a saved event (as filtered on screen; at once as an event is saved or unsaved
+    there) with a small bookmark, and says it to screen readers ("…, 3 eventos, 1 guardado"); the legend under the
+    grid has "Festivo" and "Guardado".
 - **Search** (`lib/search.ts`) runs on the events already in the page: accent- and case-insensitive,
   every word must be found in the event (title, academy, organizer, venue, area, artists, rhythms, activities, type,
   as the site shows them: "Otros ritmos"). A word is found **at the start of one of the event's words**, so a search
