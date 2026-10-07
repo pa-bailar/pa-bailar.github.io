@@ -2867,9 +2867,11 @@
       "homenaje a Héctor Lavoe y Marc Anthony",
       "música en vivo"
     ],
-    "contact": null,
+    "contact": "@bilongocolombia",
     "confidence": "medium",
-    "doubts": [],
+    "doubts": [
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
     "id": "homenaje-a-hector-lavoe-y-marc-anthony-7-oct",
     "account": "bilongocolombia",
     "media": [
@@ -2882,6 +2884,16 @@
         "caption": "Acá uno viene a escuchar salsa y termina cantando como si le pagaran. 😂\n\nCaé este miércoles a nuestro homenaje a Héctor Lavoe y Marc Anthony. 💃🏽🎺\n\nCover 25k\nReservas por DM 📩\n\n#LatinSessions #SalsaBogotá #SalsaEnVivo #Bilongo",
         "preview": null,
         "slides": 3
+      },
+      {
+        "post_id": "18017006084939293",
+        "permalink": "https://www.instagram.com/reel/DeKad7nhdGw/",
+        "media_type": "VIDEO",
+        "published": "2026-10-06T18:21:34+0000",
+        "flyer": "flyers/18017006084939293-0.webp",
+        "caption": "Por fortuna acá tenemos salsa pa’ rato y razones de sobra pa’ cantarla.\n\nCaé miércoles, jueves o sábado a Bilongo: Hector Lavoe y Marc Anthony / Feria de Cali / Latin Sessions. ❤️‍🔥🎶\n\nCover 25k\nReservas por DM 📩\n\n#SalsaBogotá #SalsaEnVivo #SalsaColombiana #Bilongo",
+        "preview": "previews/18017006084939293-0.mp4",
+        "slides": null
       }
     ],
     "bar": true
@@ -2985,7 +2997,7 @@
   },
   {
     "title": "NOCHE DE SALSA Y BACHATA EN A SEIS MANOS",
-    "event_type": "social",
+    "event_type": "party",
     "is_recurring": false,
     "styles": [
       "salsa",
@@ -3044,6 +3056,105 @@
         "flyer": "flyers/18106951804945310-0.webp",
         "caption": "💃🔥 ¡MIÉRCOLES 07 de octubre • 7:00 P.M.\nNOCHE DE SALSA Y BACHATA EN A SEIS MANOS! \n\n¿Mitad de semana? ¡Perfecta excusa para bailar! Con el mejor profe esteban_1024\n\nVen a aprender, practicar y disfrutar una noche llena de salsa, bachata, buena música y mucho sabor. No importa si estás empezando o ya tienes tus pasos: aquí vienes a bailar, soltar el cuerpo y pasarla bueno. \n\n📅 Miércoles 7 de octubre\n⏰ 7:00 p. m.\n💃 Clase de Salsa + Bachata\n\n🎟️$25.000 por persona ($5.000 consumibles)\n👫 Promo pareja: $30.000 (Sin consumibles)\n🍹 Happy hour para participantes toda la noche \n📞Reservas 313 3682909\n\nY después de la clase… ¡que siga la rumba! 🎶🍸\n\n📍 A Seis Manos \nCalle 22 # 8-60 • Bogotá Centro\n\nVen solo, con tu parche o con tu pareja. Aquí siempre hay con quién bailar. 💃🕺",
         "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Jueves de Salsa con Los Ángeles de Charlie",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Galería Café Libro",
+    "venue": "Galería Café Libro - Parque 93",
+    "address": "Cra. 11A # 93-42",
+    "area": "Parque 93",
+    "date": "2026-10-08",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "jueves",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 20000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Los Ángeles de Charlie"
+    ],
+    "activities": [
+      "música en vivo",
+      "concierto de salsa"
+    ],
+    "contact": "3176608742",
+    "confidence": "high",
+    "doubts": [],
+    "id": "jueves-de-salsa-con-los-angeles-de-charlie-8-oct",
+    "account": "galeriacafelibro",
+    "media": [
+      {
+        "post_id": "18110935439161762",
+        "permalink": "https://www.instagram.com/p/DeKZq_oDJ4_/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-06T18:13:15+0000",
+        "flyer": "flyers/18110935439161762-5.webp",
+        "caption": "🌟 Una nueva semana para bailarnos la vida a ritmo de SALSA 🔥💥 Y viene larga y contundente con salsa, Caribe, orquestas en vivo, regalitos para celebrar tu cumpleaños 🎂 y clásicos del repertorio de martes a domingo 😮‍💨\n\nEsta semana en vivo: lacharanganewyork la orquesta insignia de la salsa bogotana ✨; Los Ángeles de Charlie de garciabone01 🎺 ; orquestasoncapital con su noche brava 🌶️; ns.orquesta con lo mejor de la salsa + la música Caribe 🌴 \n\n💿 En el tornamesa suenan los discos de nuestra colección en manos de los djs estrella: johanancines elgordocastillo y Eduardo Moya\n\n¡Nos vemos en todas las sedes de Galeria Café Libro!",
+        "preview": null,
+        "slides": 13
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Feria de Cali",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Bilongo",
+    "venue": "Bilongo",
+    "address": null,
+    "area": null,
+    "date": "2026-10-08",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "jueves",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 25000,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "fiesta temática"
+    ],
+    "contact": "@bilongocolombia",
+    "confidence": "high",
+    "doubts": [
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "feria-de-cali-8-oct",
+    "account": "bilongocolombia",
+    "media": [
+      {
+        "post_id": "18017006084939293",
+        "permalink": "https://www.instagram.com/reel/DeKad7nhdGw/",
+        "media_type": "VIDEO",
+        "published": "2026-10-06T18:21:34+0000",
+        "flyer": "flyers/18017006084939293-0.webp",
+        "caption": "Por fortuna acá tenemos salsa pa’ rato y razones de sobra pa’ cantarla.\n\nCaé miércoles, jueves o sábado a Bilongo: Hector Lavoe y Marc Anthony / Feria de Cali / Latin Sessions. ❤️‍🔥🎶\n\nCover 25k\nReservas por DM 📩\n\n#SalsaBogotá #SalsaEnVivo #SalsaColombiana #Bilongo",
+        "preview": "previews/18017006084939293-0.mp4",
         "slides": null
       }
     ],
@@ -3141,6 +3252,51 @@
         "caption": "Conoce nuestro repertorio salsero de este fin de semana\n\n📆 Jueves 08 de Octubre\n🎺 Orlando y su sonora\n🎟️ Aporte cultural: 15K\n\n📆 Sábado 10 de Octubre\n🎺 Zafra Son\n🎟️ Aporte cultural: 20K\n\n⏳ Desde las 4 PM\n📍 Carrera 11 #70A-22\n📲 Reserva por WhatsApp: 313 830 8844",
         "preview": null,
         "slides": 4
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Latin Jazz: Grandes Clásicos de Ayer y Hoy con Alejandro Castro",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Tributo. Salsa y Jazz",
+    "venue": "Tributo. Salsa y Jazz",
+    "address": "Av. Boyacá #64c 97",
+    "area": "Zona 6",
+    "date": "2026-10-08",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "jueves",
+    "start_time": "20:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Alejandro Castro"
+    ],
+    "activities": [
+      "música en vivo"
+    ],
+    "contact": "WhatsApp 310 5714824",
+    "confidence": "high",
+    "doubts": [
+      "sin precio de entrada especificado"
+    ],
+    "id": "latin-jazz-grandes-clasicos-de-ayer-y-hoy-con-8-oct",
+    "account": "tributo.salsayjazz",
+    "media": [
+      {
+        "post_id": "18134469379672915",
+        "permalink": "https://www.instagram.com/p/DeKf0BQlNCh/",
+        "media_type": "IMAGE",
+        "published": "2026-10-06T19:06:54+0000",
+        "flyer": "flyers/18134469379672915-0.webp",
+        "caption": "¡LLEGÓ EL JUEVES PARA VIVIR LOS GRANDES CLÁSICOS DEL LATIN JAZZ! 🪈🎶 Porque el fin de semana se empieza a gozar desde hoy, te esperamos en tu casa: ¡Tributo Salsa y Jazz! Este jueves 08 de octubre prepárate para un viaje musical único a través de los grandes clásicos de ayer y hoy. Ven a disfrutar de un buen trago con tus amigos, contágiate de la mejor atmósfera y alístate para dejarte llevar por el virtuosismo y la elegancia del solista Alejandro Castro en vivo. ¡Puro sabor para el alma melómana! 🥂🎷🔥 📍 Lugar: Av. Boyacá #64c 97 (Zona 6) ⏰ Apertura: 6:00 PM | Música en vivo: 8:00 PM 📲 Reservas: 310 5714824 ¡Asegura tu mesa antes de que se llene! RESERVA, arma tu parche melómano y nos vemos para disfrutar de la buena música. 👇✨https://wa.me/573105714824",
+        "preview": null,
+        "slides": null
       }
     ],
     "bar": true
@@ -3248,6 +3404,221 @@
     "bar": true
   },
   {
+    "title": "Música en vivo con Grupo Pa los Santos",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Galería Café Libro",
+    "venue": "Galería Café Libro - Parque 93",
+    "address": "Cra. 11A # 93-42",
+    "area": "Parque 93",
+    "date": "2026-10-09",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "17:00",
+    "end_time": "20:00",
+    "prices": [
+      {
+        "label": "Entrada libre",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Grupo Pa los Santos"
+    ],
+    "activities": [
+      "música en vivo"
+    ],
+    "contact": "3176608742",
+    "confidence": "high",
+    "doubts": [],
+    "id": "musica-en-vivo-con-grupo-pa-los-santos-9-oct",
+    "account": "galeriacafelibro",
+    "media": [
+      {
+        "post_id": "18110935439161762",
+        "permalink": "https://www.instagram.com/p/DeKZq_oDJ4_/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-06T18:13:15+0000",
+        "flyer": "flyers/18110935439161762-0.webp",
+        "caption": "🌟 Una nueva semana para bailarnos la vida a ritmo de SALSA 🔥💥 Y viene larga y contundente con salsa, Caribe, orquestas en vivo, regalitos para celebrar tu cumpleaños 🎂 y clásicos del repertorio de martes a domingo 😮‍💨\n\nEsta semana en vivo: lacharanganewyork la orquesta insignia de la salsa bogotana ✨; Los Ángeles de Charlie de garciabone01 🎺 ; orquestasoncapital con su noche brava 🌶️; ns.orquesta con lo mejor de la salsa + la música Caribe 🌴 \n\n💿 En el tornamesa suenan los discos de nuestra colección en manos de los djs estrella: johanancines elgordocastillo y Eduardo Moya\n\n¡Nos vemos en todas las sedes de Galeria Café Libro!",
+        "preview": null,
+        "slides": 13
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Párchese La Salsa - Salsa Pa' Entucar",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Parche Bogotá",
+    "venue": "Viajero Bogotá",
+    "address": "Cra. 3 #20-35",
+    "area": null,
+    "date": "2026-10-09",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "19:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Preventa individual",
+        "amount_cop": 25000,
+        "condition": "incluye coctel"
+      },
+      {
+        "label": "Preventa pareja",
+        "amount_cop": 40000,
+        "condition": "incluye coctel"
+      },
+      {
+        "label": "Taquilla individual",
+        "amount_cop": 30000,
+        "condition": null
+      },
+      {
+        "label": "Taquilla pareja",
+        "amount_cop": 50000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "DJ German Ortiz",
+      "Juancho Salsita"
+    ],
+    "activities": [
+      "torneo de beer pong",
+      "clase de salsa",
+      "fiesta"
+    ],
+    "contact": "@parchexbogota",
+    "confidence": "high",
+    "doubts": [],
+    "id": "parchese-la-salsa-salsa-pa-entucar-9-oct",
+    "account": "parchexbogota",
+    "media": [
+      {
+        "post_id": "18106363337210678",
+        "permalink": "https://www.instagram.com/p/DeKPqqXhLTg/",
+        "media_type": "IMAGE",
+        "published": "2026-10-06T16:52:31+0000",
+        "flyer": "flyers/18106363337210678-0.webp",
+        "caption": "Quién dice que la salsa no entuca 😏❣️\n\nUna noche pa’ soltar la pena, aprender unos pasos y conocer gente nuevas personas. \n\nArrancamos desde las 7:00 PM. con un torneo de beer pong para calentar, luego la clase y por último un cierre pa celebrar. 🍾 \n\nCupos limitados y bebida de bienvenida incluida. 🍹\n\nPreventa: $25K individual / $40K pareja\nTaquilla: $30K individual / $50K pareja\n📍Viajero Bogotá - Cra 3 #20-35\n\nReserva tu cupo por DM a parchexbogota 💬",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Cumbia vs. Salsa",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "otro"
+    ],
+    "organizer": "Casa Van Der",
+    "venue": "Casa Van Der",
+    "address": "Cra 16 #35-08",
+    "area": "Teusaquillo",
+    "date": "2026-10-09",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "20:30",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "La Citrika Band"
+    ],
+    "activities": [
+      "orquesta en vivo",
+      "baile"
+    ],
+    "contact": "3011620492",
+    "confidence": "high",
+    "doubts": [
+      "sin información de precio de entrada"
+    ],
+    "id": "cumbia-vs-salsa-9-oct",
+    "account": "casavander_",
+    "media": [
+      {
+        "post_id": "18091170308199633",
+        "permalink": "https://www.instagram.com/p/DeLN0dTsw2O/",
+        "media_type": "IMAGE",
+        "published": "2026-10-07T02:11:30+0000",
+        "flyer": "flyers/18091170308199633-0.webp",
+        "caption": "EL VERDADERO VERSUS. \nEste viernes Orquesta de Salsa en vivo con lacitrikaband este 9 de Octubre con una orquesta que pone a bailar a todo el salón. \n\nSi Ud es de los amantes de las buenas escenas y de la buena música este viernes es el suyo. \n\nCaiga a bailar, a gozar y a cantar. \nOrquesta en vivo. \nReservas en el link de la bio.",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Noche de Boleros con Jhon Álvaro Cardona",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "Casa de Citas Restaurante y Centro Cultural",
+    "venue": "Casa de Citas",
+    "address": "Cra 3 #12B - 35",
+    "area": "La Candelaria",
+    "date": "2026-10-09",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "20:30",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "No Cover",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Jhon Álvaro Cardona",
+      "DJ Carlos"
+    ],
+    "activities": [
+      "música en vivo",
+      "boleros",
+      "fiesta"
+    ],
+    "contact": "315 212 5733",
+    "confidence": "high",
+    "doubts": [],
+    "id": "noche-de-boleros-con-jhon-alvaro-cardona-9-oct",
+    "account": "restaurantecasadecitas",
+    "media": [
+      {
+        "post_id": "18056050244572672",
+        "permalink": "https://www.instagram.com/p/DeLDkFDvCNG/",
+        "media_type": "IMAGE",
+        "published": "2026-10-07T00:19:21+0000",
+        "flyer": "flyers/18056050244572672-0.webp",
+        "caption": "NOCHE DE BOLEROS ✨🍷\n🎤🎼 Jhon Álvaro Cardona en vivo.\n🗓️ Viernes 9 de Octubre.\n🎚️💃🏽 DJ Carlos - Rumba Caribe\n🎟️ NO COVER\n.\n#Musicaenvivo #rumba #restaurante #lacandelaria #bogota",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Salsoteca DC - Acere",
     "event_type": "concert",
     "is_recurring": false,
@@ -3304,6 +3675,153 @@
     "bar": true
   },
   {
+    "title": "Charanga New York en vivo",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Galería Café Libro",
+    "venue": "Galería Café Libro - Parque 93",
+    "address": "Cra. 11A # 93-42",
+    "area": "Parque 93",
+    "date": "2026-10-10",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 25000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Charanga New York"
+    ],
+    "activities": [
+      "música en vivo",
+      "concierto de salsa"
+    ],
+    "contact": "3176608742",
+    "confidence": "high",
+    "doubts": [],
+    "id": "charanga-new-york-en-vivo-10-oct",
+    "account": "galeriacafelibro",
+    "media": [
+      {
+        "post_id": "18110935439161762",
+        "permalink": "https://www.instagram.com/p/DeKZq_oDJ4_/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-06T18:13:15+0000",
+        "flyer": "flyers/18110935439161762-7.webp",
+        "caption": "🌟 Una nueva semana para bailarnos la vida a ritmo de SALSA 🔥💥 Y viene larga y contundente con salsa, Caribe, orquestas en vivo, regalitos para celebrar tu cumpleaños 🎂 y clásicos del repertorio de martes a domingo 😮‍💨\n\nEsta semana en vivo: lacharanganewyork la orquesta insignia de la salsa bogotana ✨; Los Ángeles de Charlie de garciabone01 🎺 ; orquestasoncapital con su noche brava 🌶️; ns.orquesta con lo mejor de la salsa + la música Caribe 🌴 \n\n💿 En el tornamesa suenan los discos de nuestra colección en manos de los djs estrella: johanancines elgordocastillo y Eduardo Moya\n\n¡Nos vemos en todas las sedes de Galeria Café Libro!",
+        "preview": null,
+        "slides": 13
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Noche brava con Son Capital",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Galería Café Libro",
+    "venue": "Galería Café Libro - Palermo",
+    "address": "Transv. 15B # 46-38",
+    "area": "Palermo",
+    "date": "2026-10-10",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Son Capital"
+    ],
+    "activities": [
+      "música en vivo"
+    ],
+    "contact": "3176608742",
+    "confidence": "high",
+    "doubts": [
+      "sin precio especificado"
+    ],
+    "id": "noche-brava-con-son-capital-10-oct",
+    "account": "galeriacafelibro",
+    "media": [
+      {
+        "post_id": "18110935439161762",
+        "permalink": "https://www.instagram.com/p/DeKZq_oDJ4_/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-06T18:13:15+0000",
+        "flyer": "flyers/18110935439161762-1.webp",
+        "caption": "🌟 Una nueva semana para bailarnos la vida a ritmo de SALSA 🔥💥 Y viene larga y contundente con salsa, Caribe, orquestas en vivo, regalitos para celebrar tu cumpleaños 🎂 y clásicos del repertorio de martes a domingo 😮‍💨\n\nEsta semana en vivo: lacharanganewyork la orquesta insignia de la salsa bogotana ✨; Los Ángeles de Charlie de garciabone01 🎺 ; orquestasoncapital con su noche brava 🌶️; ns.orquesta con lo mejor de la salsa + la música Caribe 🌴 \n\n💿 En el tornamesa suenan los discos de nuestra colección en manos de los djs estrella: johanancines elgordocastillo y Eduardo Moya\n\n¡Nos vemos en todas las sedes de Galeria Café Libro!",
+        "preview": null,
+        "slides": 13
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Tardeo Latino - Edición: Ángeles",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Bogotá Dance Club",
+    "venue": "Bogotá Dance Club",
+    "address": "Calle 25F # 36-15",
+    "area": null,
+    "date": "2026-10-10",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "15:00",
+    "end_time": "22:00",
+    "prices": [
+      {
+        "label": "Preventa",
+        "amount_cop": 25000,
+        "condition": "limitada"
+      },
+      {
+        "label": "Puerta",
+        "amount_cop": 30000,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "clase de baile pre fiesta"
+    ],
+    "contact": "@bogotadanceclub",
+    "confidence": "high",
+    "doubts": [],
+    "id": "tardeo-latino-edicion-angeles-10-oct",
+    "account": "bogotadanceclub",
+    "media": [
+      {
+        "post_id": "18118799581975237",
+        "permalink": "https://www.instagram.com/reel/DeLJkAfOXKz/",
+        "media_type": "VIDEO",
+        "published": "2026-10-07T01:16:35+0000",
+        "flyer": "flyers/18118799581975237-0.webp",
+        "caption": "😇 Este sábado atrévete a conocer gente nueva en nuestra segunda fiesta temática de octubre: ANGELITOS 🪽\nUna noche para venir con tu parche o llegar solo y salir con amigos  nuevos 🔥\n\n📢 Comunidad bailadora de 18 a 45 años ✨\n🗓️ 10 de octubre | 🕒 3PM a 10PM\n📍 Calle 25F # 36-15 – Bogotá Dance Club\n\n🤓 Clase de baile pre fiesta (para romper el hielo 🧊)\n\n💵 Preventa: $25.000 *(limitada)\n💰 Puerta: $30.000\n(Incluye aureola + clase + 1 bebida)\n\nPrepárate para una noche de baile, gente nueva y mucha fiesta 💃🏻 Si no tenías plan, este sábado ya sabes dónde caer 😏\n\n#baile #planesenbogotá #bogota #salsa",
+        "preview": "previews/18118799581975237-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Sábado de Orquesta y Sabor con Zafra",
     "event_type": "concert",
     "is_recurring": false,
@@ -3352,6 +3870,53 @@
         "caption": "Conoce nuestro repertorio salsero de este fin de semana\n\n📆 Jueves 08 de Octubre\n🎺 Orlando y su sonora\n🎟️ Aporte cultural: 15K\n\n📆 Sábado 10 de Octubre\n🎺 Zafra Son\n🎟️ Aporte cultural: 20K\n\n⏳ Desde las 4 PM\n📍 Carrera 11 #70A-22\n📲 Reserva por WhatsApp: 313 830 8844",
         "preview": null,
         "slides": 4
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Noche con Sabor",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Tributo Salsa y Jazz",
+    "venue": "Tributo Salsa y Jazz",
+    "address": "Av. Boyacá #64c 97",
+    "area": "Zona 6",
+    "date": "2026-10-10",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "18:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Tributo Orquesta"
+    ],
+    "activities": [
+      "rumba",
+      "orquesta en vivo",
+      "azotar baldosa"
+    ],
+    "contact": "WhatsApp 3105714824",
+    "confidence": "high",
+    "doubts": [
+      "sin precio de entrada"
+    ],
+    "id": "noche-con-sabor-10-oct",
+    "account": "tributo.salsayjazz",
+    "media": [
+      {
+        "post_id": "18116534044809233",
+        "permalink": "https://www.instagram.com/p/DeKiyuQlBbO/",
+        "media_type": "IMAGE",
+        "published": "2026-10-06T19:32:57+0000",
+        "flyer": "flyers/18116534044809233-0.webp",
+        "caption": "¡LLEGÓ EL SÁBADO PARA VIVIR UNA VERDADERA NOCHE CON SABOR! 💃🕺🔥 Porque el fin de semana se goza como se debe, te esperamos en tu casa: ¡Tributo Salsa y Jazz! Este sábado 10 de octubre prepárate para una rumba cargada de buena clave, golpe y la mejor energía. Ven a disfrutar de un buen trago con tus amigos, alístate para azotar baldosa y déjate llevar por el talento y la potencia de Tributo Orquesta en vivo. ¡Puro sabor para encender la noche! 🥂🎺🔥 📍 Lugar: Av. Boyacá #64c 97 (Zona 6) ⏰ Apertura: 6:00 PM | Orquesta en vivo: 10:00 PM 📲 Reservas: 310 5714824 ¡Asegura tu mesa antes de que se llene! RESERVA, arma tu parche salsero y nos vemos en la pista para gozar. 👇✨https://wa.me/573105714824",
+        "preview": null,
+        "slides": null
       }
     ],
     "bar": true
@@ -3686,7 +4251,7 @@
   },
   {
     "title": "DJ set Salsa Culto",
-    "event_type": "social",
+    "event_type": "party",
     "is_recurring": false,
     "styles": [
       "salsa"
@@ -3740,7 +4305,7 @@
   },
   {
     "title": "El Golazo de Bulevar",
-    "event_type": "social",
+    "event_type": "party",
     "is_recurring": false,
     "styles": [
       "salsa"
@@ -3777,6 +4342,52 @@
         "caption": "El Golazo de Bulevar 🥳🥃❤️‍🔥\nPagas el cover y puedes ingresar todas las bebidas que quieras una única vez 🥃🥳\n\nDomingo 11 Octubre\nBULEVAR ROOFTOP\n📍 Calle 13 # 82 - 37",
         "preview": "previews/18130057825689666-0.mp4",
         "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Salsa y Caribe con Nick Salas (NS Orquesta)",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Galería Café Libro",
+    "venue": "Galería Café Libro - Parque 93",
+    "address": "Cra. 11A # 93-42",
+    "area": "Parque 93",
+    "date": "2026-10-11",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Nick Salas",
+      "NS Orquesta"
+    ],
+    "activities": [
+      "música en vivo"
+    ],
+    "contact": "3176608742",
+    "confidence": "high",
+    "doubts": [
+      "sin precio especificado"
+    ],
+    "id": "salsa-y-caribe-con-nick-salas-ns-orquesta-11-oct",
+    "account": "galeriacafelibro",
+    "media": [
+      {
+        "post_id": "18110935439161762",
+        "permalink": "https://www.instagram.com/p/DeKZq_oDJ4_/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-06T18:13:15+0000",
+        "flyer": "flyers/18110935439161762-0.webp",
+        "caption": "🌟 Una nueva semana para bailarnos la vida a ritmo de SALSA 🔥💥 Y viene larga y contundente con salsa, Caribe, orquestas en vivo, regalitos para celebrar tu cumpleaños 🎂 y clásicos del repertorio de martes a domingo 😮‍💨\n\nEsta semana en vivo: lacharanganewyork la orquesta insignia de la salsa bogotana ✨; Los Ángeles de Charlie de garciabone01 🎺 ; orquestasoncapital con su noche brava 🌶️; ns.orquesta con lo mejor de la salsa + la música Caribe 🌴 \n\n💿 En el tornamesa suenan los discos de nuestra colección en manos de los djs estrella: johanancines elgordocastillo y Eduardo Moya\n\n¡Nos vemos en todas las sedes de Galeria Café Libro!",
+        "preview": null,
+        "slides": 13
       }
     ],
     "bar": true
@@ -4536,7 +5147,7 @@
   },
   {
     "title": "Una Cita con la Salsa",
-    "event_type": "social",
+    "event_type": "party",
     "is_recurring": false,
     "styles": [
       "salsa"
@@ -5089,6 +5700,16 @@
         "slides": null
       },
       {
+        "post_id": "18029776727687077",
+        "permalink": "https://www.instagram.com/reel/DeIvIFXsVSm/",
+        "media_type": "VIDEO",
+        "published": "2026-10-06T02:42:38+0000",
+        "flyer": "flyers/18029776727687077-0.webp",
+        "caption": "🔥 ¡YA ESTÁN AVISADOS! 🔥\n\nCandelaria y Rocha ya lo dijeron… y este sábado 24 de octubre la cita es en Salsa y Son. 🕺💃\n\n🎤 ARGY GÓMEZ EN VIVO\n🎶 Interpretando “Sin Mentiras”\n❤️ Una noche de sabor, sentimiento y mucha salsa.\n\nSi ellos ya confirmaron la rumba… ¿tú qué estás esperando? 👀🔥\n\n📍 Salsa y Son\n🎟️ Cover: $20.000\n📲 Reservas: 322 728 3910\n\nEste sábado nos vemos en Salsa y Son.\n#SalsaYSon #ArgyGómez #SinMentiras #SalsaEnBogotá #BogotáDeNoche",
+        "preview": "previews/18029776727687077-0.mp4",
+        "slides": null
+      },
+      {
         "post_id": "18131404057600217",
         "permalink": "https://www.instagram.com/reel/DeIkOlaR0Kq/",
         "media_type": "VIDEO",
@@ -5096,6 +5717,58 @@
         "flyer": "flyers/18131404057600217-0.webp",
         "caption": "argygomezoficial 🔥 ¡BOGOTÁ, ESTE SÁBADO 24 DE OCTUBRE SE BAILA SALSA! 🔥Salsa y Son recibe en vivo a ARGY GÓMEZ 🎤✨\n\nPrepárate para cantar, bailar y disfrutar una noche cargada de sabor, sentimiento y buena salsa, con su gran éxito “Sin Mentiras”. ❤️‍🔥\n\n📍 Salsa y Son | Zona T, Bogotá\n🎟️ Cover: $20.000\n📲 Reservas: 322 728 3910",
         "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "La Noche de los Clásicos - Tributo a los Malos del Bronx Willie Colón & Héctor Lavoe",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "merengue"
+    ],
+    "organizer": "Pachanga & Pochola",
+    "venue": "Pachanga & Pochola",
+    "address": "Calle 73 #14-53",
+    "area": null,
+    "date": "2026-10-24",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Javier Guaneme",
+      "Franky Rodriguez",
+      "Jhonny Arredondo",
+      "Lore DJ",
+      "Andrés Party",
+      "Cristian CJ"
+    ],
+    "activities": [
+      "tributo a Willie Colón & Héctor Lavoe"
+    ],
+    "contact": "WhatsApp 3223763994",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio",
+      "sin precio explícito"
+    ],
+    "id": "la-noche-de-los-clasicos-tributo-a-los-malos-del-24-oct",
+    "account": "pachanga_y_pochola",
+    "media": [
+      {
+        "post_id": "18135151237576897",
+        "permalink": "https://www.instagram.com/reel/DeJ-f4uxBa7/",
+        "media_type": "VIDEO",
+        "published": "2026-10-06T14:25:19+0000",
+        "flyer": "flyers/18135151237576897-0.webp",
+        "caption": "🪩 LA NOCHE DE LOS CLÁSICOS\n\nSaca el cassette😅, prende la vieja radio, desempolva esos pasos que juraste que ya no sabías bailar… porque el sábado 24 de octubre los clásicos vuelven a apoderarse de \nPachanga & Pochola. 🔥\n\n¡TRIBUTO A LOS MALOS DEL BRONX\nWILLIE COLÓN & HÉCTOR LAVOE! 😬🔥🎙️\n\n🎟️ Boletas en BlastTickets. 👇🏿\n\nhttps://www.blasttickets.com/home/categorias/6658ee7ff7bebec1f461f169/eventos/6abd1b36e2573950761d4867\n 📲 Info: 3241770747\n📍 Pachanga & Pochola — Calle 73 #14-53 📅 Sábado 24 de octubre\n\nSi tu playlist todavía tiene clásicos… esta noche es tuya. 🪩🔥 \nTe esperamos. #pachanga #nochedeclasicos #tributoalosmalosdelbronx",
+        "preview": "previews/18135151237576897-0.mp4",
         "slides": null
       }
     ],
@@ -5203,6 +5876,59 @@
         "published": "2026-09-30T15:01:35+0000",
         "flyer": "flyers/18129749683771543.webp",
         "caption": "👻Este 24 de octubre prepárate para vivir nuestro SOCIAL DE HALLOWEEN en Bembé 🎃🔥\n\n✨ Show de bailarines\n👻 Premio al mejor disfraz\n🎶 Mucho baile, música y diversión\n\n¿Ya tienes tu disfraz listo? 😈🧛‍♀️🧟‍♂️",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "LATINHOLIC night",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "bachata"
+    ],
+    "organizer": "Latinfusion & Danceholic",
+    "venue": "Danceholic Project",
+    "address": null,
+    "area": null,
+    "date": "2026-10-24",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "21:00",
+    "end_time": "02:30",
+    "prices": [
+      {
+        "label": "Clase + Bebida",
+        "amount_cop": 30000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Frank de la torre",
+      "Camilo Barreto"
+    ],
+    "activities": [
+      "clase de salsa y bachata",
+      "social",
+      "showcases"
+    ],
+    "contact": "@danceholicproject",
+    "confidence": "high",
+    "doubts": [],
+    "id": "latinholic-night-24-oct",
+    "account": "danceholicproject",
+    "media": [
+      {
+        "post_id": "18383470903236364",
+        "permalink": "https://www.instagram.com/p/DeGOuqtRFo4/",
+        "media_type": "IMAGE",
+        "published": "2026-10-05T03:30:33+0000",
+        "flyer": "flyers/18383470903236364-0.webp",
+        "caption": "LATINHOLIC 🔥\n\n💃🏽🔥 UNA NOCHE PARA BAILAR, CONECTAR CON MÁS GENTE Y PASARLA BUENO.\n\nEsta vez cambiamos el salón de clases por una noche de SALSA & BACHATA en Danceholic. 🕺🏽❤️‍🔥\n\nNo importa si bailas hace años, si estás empezando o si simplemente quieres venir a disfrutar. Aquí vienes a bailar.\n\n🎶 Salsa\n🎶 Bachata\n🤝🏽 Social\n💫Showcases \n🔥 Buena música\n❤️‍🔥 Mucha energía\n\nVen con tu parche, con tu pareja… o ven solo/a. Seguro terminas bailando con alguien.\n\n📍: DANCEHOLIC PROJECT\n🗓️: SÁBADO 24 OCTUBRE \n⏰: 9:00PM \n💸: 30K ( Incluye bebida ) \n\nGuarda la fecha, invita a tu combo y nos vemos por la mansión 🕺🏽💃🏽 🚨 NO OLVIDES RESERVAR POR DM 🚨\n\n#DanceholicProject #Salsa #Bachata #SocialDance #bogota",
         "preview": null,
         "slides": null
       }
@@ -5431,7 +6157,7 @@
   },
   {
     "title": "Halloween en Pachanga & Pochola",
-    "event_type": "social",
+    "event_type": "party",
     "is_recurring": false,
     "styles": [
       "salsa"
@@ -5481,7 +6207,7 @@
   },
   {
     "title": "La fiesta de Halloween que estabas esperando",
-    "event_type": "social",
+    "event_type": "party",
     "is_recurring": false,
     "styles": [
       "salsa",
