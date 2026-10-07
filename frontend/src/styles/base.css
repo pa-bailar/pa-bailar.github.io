@@ -12,6 +12,10 @@ html {
   scroll-padding-top: calc(var(--pinned-height) + var(--space-3));
   scroll-padding-bottom: calc(var(--bottom-nav-space) + var(--space-3));
   -webkit-text-size-adjust: 100%;
+  /* No browser flash on a tap (Android Chrome's blue box, over a whole card and through the pinned bars: the owner,
+     7 Oct 2026), like an app; the controls show their own press or change instead (Detalles' print, a filled bookmark,
+     a chip turned on, a sheet opening). Inherited by every element. */
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
