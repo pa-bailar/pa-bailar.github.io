@@ -3922,6 +3922,53 @@
     "bar": true
   },
   {
+    "title": "Flamenco Gran Taller",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "Madyum",
+    "venue": null,
+    "address": null,
+    "area": "Madelena",
+    "date": "2026-10-10",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "18:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Adriana Montes"
+    ],
+    "activities": [
+      "taller de flamenco",
+      "coreografía"
+    ],
+    "contact": "@madyumdance",
+    "confidence": "medium",
+    "doubts": [
+      "sin precio",
+      "sin dirección exacta"
+    ],
+    "id": "flamenco-gran-taller-10-oct",
+    "account": "madyumdance",
+    "media": [
+      {
+        "post_id": "18033111722852845",
+        "permalink": "https://www.instagram.com/reel/DeLPyUkNrua/",
+        "media_type": "VIDEO",
+        "published": "2026-10-07T02:10:05+0000",
+        "flyer": "flyers/18033111722852845-0.webp",
+        "caption": "🇪🇸 FLAMENCO 🇪🇸\n\nY llega nuestro espectacular taller de escándalo al ritmo español del taconeo, el braceo, la conexión y el sentimiento a cargo de la gran maestra adri_famo\n\nNo importa si nunca has tomado una clase de Flamenco en tu vida, eres principiante o ya tienes idea de este espectacular ritmo. El taller se compondrá de fundamentos, bases, conceptos, pilares y por su puesto una exquisita coreografia. Los esperamos ❤️✍️✔️\n\nNivel: MULTINIVEL (apto para todo el público)\nHora: 6:00 pm\n\n#flamenco #aprendeabailar #escueladebaile #madelena #dancers",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Primer Aniversario LuDance - Fiesta Crossover",
     "event_type": "social",
     "is_recurring": false,
@@ -5261,7 +5308,18 @@
     "weekday": "martes",
     "start_time": null,
     "end_time": null,
-    "prices": [],
+    "prices": [
+      {
+        "label": "ESTUDIANTES ESFERA",
+        "amount_cop": 10000,
+        "condition": null
+      },
+      {
+        "label": "GENERAL",
+        "amount_cop": 20000,
+        "condition": null
+      }
+    ],
     "artists": [
       "Mancho Osorio",
       "Alex Salsita"
@@ -5277,6 +5335,16 @@
     "id": "ritmos-cruzados-20-oct",
     "account": "esferalatinaoficial",
     "media": [
+      {
+        "post_id": "18109663904592419",
+        "permalink": "https://www.instagram.com/p/Dd4hT0Rx8hD/",
+        "media_type": "IMAGE",
+        "published": "2026-10-06T18:00:06+0000",
+        "flyer": "flyers/18109663904592419-0.webp",
+        "caption": "🔥 MARTES 20 DE OCTUBRE - Dos estilos, una sola clase y mucha energía. 🔥\n\nPrepárate para una clase diferente junto a manchoosorio & alexsalsitaoficial 💥\n\nReserva tu cupo y nos vemos en la pista! 💃🏽🕺🏽",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18112581790860968",
         "permalink": "https://www.instagram.com/p/DdwoUWYDUwb/",
@@ -7389,6 +7457,16 @@
     "id": "elysium-madyum-gran-aniversario-2026-5-dic",
     "account": "madyumdance",
     "media": [
+      {
+        "post_id": "18384665383238268",
+        "permalink": "https://www.instagram.com/p/DeK9sm5tE4t/",
+        "media_type": "IMAGE",
+        "published": "2026-10-06T23:28:05+0000",
+        "flyer": "flyers/18384665383238268-0.webp",
+        "caption": "🥳 RUMBA MADYUM 🥳\n\nIr de fiesta AlumnosxProfesores es algo que se ve de veces cuando pero ir en una ruta exclusiva para todo nuestro equipo de la noche no tiene comparación. Sin duda alguna fue un rato de muchas risas, baile y cosas buenas. Ahora sabemos que los que no fueron no se perderán el próximo 😎\n\n¿Preparados para nuestro aniversario?\nNo te lo pierdas el 05 de diciembre ⏳️\n\n#fiesta #baile #bailando #aprendeabailar #escueladebaile",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18104347286615308",
         "permalink": "https://www.instagram.com/p/DdU3NdRNrXE/",
