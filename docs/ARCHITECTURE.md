@@ -709,7 +709,7 @@ frontend/
                           postViewer, inlinePlayer, clips, saveButton, sharing, installPrompt, detailsHint, dayChange (HTML strings +
                           their behavior)
       lib/                dates, holidays, format, links, linkPreview, calendarFeed, contact, mediaLabel, filterModel, styleFamilies, search,
-                          saved, share, shareText, shareSources, shareCard, analytics, dom, focus, icons, accountLink,
+                          saved, secondTap, share, shareText, shareSources, shareCard, analytics, dom, focus, icons, accountLink,
                           externalLink, sheet, sheetMotion, motion, brandColors, instagramEmbed, loader, installPlace, onceFlag, storedSwitch,
                           storedValue, outsideClick, viewTitles
     styles/               tokens.css (design tokens), base.css, components/*.css
@@ -766,6 +766,7 @@ from under one gets its entry when the overlay closes (pushed over the overlay's
 | `views/clips.ts` | Videos' clips in the feed and on an event's page: the one on screen plays, silent, one at a time; held under the full drawer and the media viewer; unloaded off screen (section 5.7) |
 | `lib/contact.ts` | The organizer's contact as a link: Instagram, WhatsApp, phone or website |
 | `lib/search.ts` | Search over the events in the page |
+| `lib/secondTap.ts` | A double-tap's second tap (the same spot, within 450 ms): `main.ts` drops it after a tap opened an event, so it doesn't land on the details rising under the finger |
 | `lib/saved.ts`, `views/saveButton.ts` | Saved events: the ids in this browser; the bookmarks, and Guardados' number on the bar and the tab (`renderSavedCount`) |
 | `lib/share.ts`, `lib/shareText.ts`, `lib/shareSources.ts`, `lib/shareCard.ts`, `views/sharing.ts` | Sharing through the phone's menu: the text, what each list's button shares (`shareSources`, pure), the image of a list, the buttons |
 | `views/installPrompt.ts`, `lib/installPlace.ts` | Installing the site like an app: the offer, and the steps for each browser; registers the service worker |
