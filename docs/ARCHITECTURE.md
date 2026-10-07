@@ -535,7 +535,7 @@ stateDiagram-v2
 - **What's kept in this browser** (localStorage, each read and written inside `try`, so blocked storage only means it
   lasts for the visit): `theme`, `saved-events`, `hide-bars`, things shown once (`lib/onceFlag.ts`) and the install
   offer's state (`lib/storedValue.ts`, `lib/storedSwitch.ts`).
-- **Search** (`lib/search.ts`) runs on the events already in the page, accent-insensitive, every word anywhere in the event.
+- **Search** (`lib/search.ts`) runs on the events already in the page, accent-insensitive: every word found at the start of one of the event's words (or inside its handle), plurals finding their singular, and a visitor's Spanish finding the site's words (`lib/searchWords.ts`: "clase" → the workshops, "milonga" → tango, "sin costo" → free).
   On phones its field is the bar at the bottom (`views/bottomNav.ts`): Buscar opens it with a history entry of its
   own, an overlay over the screen's state (`searchHistory`): back or × leaves it and clears the search, Enter leaves
   it and keeps the search, and forward onto it once closed goes back over it, like the sheets' entries. Android's
@@ -710,7 +710,7 @@ frontend/
                           drawerSheet, drawerGestures, drawerHistory, filters, filterPanels, jumpBar, whenMenu, bottomNav, postsSheet,
                           postViewer, inlinePlayer, clips, saveButton, saveNotice, notice, sharing, installPrompt, detailsHint, dayChange (HTML strings +
                           their behavior)
-      lib/                dates, holidays, format, links, linkPreview, calendarFeed, contact, mediaLabel, filterModel, styleFamilies, search,
+      lib/                dates, holidays, format, links, linkPreview, calendarFeed, contact, mediaLabel, filterModel, styleFamilies, search, searchWords,
                           saved, saveNotice, secondTap, share, shareText, shareSources, shareCard, analytics, dom, focus, icons, accountLink,
                           externalLink, sheet, sheetMotion, motion, brandColors, instagramEmbed, loader, installPlace, onceFlag, storedSwitch,
                           storedValue, outsideClick, viewTitles
@@ -767,7 +767,7 @@ from under one gets its entry when the overlay closes (pushed over the overlay's
 | `views/inlinePlayer.ts` | A video tapped in the detail plays in the image's place (Instagram's player), removed when off screen |
 | `views/clips.ts` | Videos' clips in the feed and on an event's page: the one on screen plays, silent, one at a time; held under the full drawer and the media viewer; unloaded off screen (section 5.7) |
 | `lib/contact.ts` | The organizer's contact as a link: Instagram, WhatsApp, phone or website |
-| `lib/search.ts` | Search over the events in the page |
+| `lib/search.ts`, `lib/searchWords.ts` | Search over the events in the page: words by their start, plurals, known phrases whole; the visitors' Spanish and the site's words it finds (one way) |
 | `lib/secondTap.ts` | A double-tap's second tap (the same spot, within 450 ms): `main.ts` drops it after a tap opened an event, so it doesn't land on the details rising under the finger |
 | `lib/saved.ts`, `views/saveButton.ts` | Saved events: the ids in this browser; the bookmarks, and Guardados' number on the bar and the tab (`renderSavedCount`) |
 | `views/notice.ts` | A short notice at the bottom (`#notice`, a live region): one at a time, gone after its seconds unless the mouse or the focus is on it; none over a modal |
