@@ -337,8 +337,22 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
   - **The calendar marks the days** holding a saved event (as filtered on screen) with a small bookmark, and says it to
     screen readers ("…, 3 eventos, 1 guardado"); the legend under the grid has "Festivo" and "Guardado".
 - **Search** (`lib/search.ts`) runs on the events already in the page: accent- and case-insensitive,
-  every word must appear somewhere in the event (title, academy, organizer, venue, area, artists,
-  rhythms, activities, type). **"Free" is one word however it's written** (the owner, 7 Oct 2026): "gratis", "gratuito", "sin costo", "entrada libre", "no cover", "free cover"… in the search or in the event (its own words, or "Gratis" on its card) all mean "gratis"; "libre" alone doesn't ("rumba libre"). On phones Buscar turns the bar at the bottom into the field (see "The bar at the
+  every word must be found in the event (title, academy, organizer, venue, area, artists, rhythms, activities, type,
+  as the site shows them: "Otros ritmos"). A word is found **at the start of one of the event's words**, so a search
+  typed halfway works ("bach") and "son" isn't found inside "Jason"; inside an academy's handle too ("jaguar").
+  **Plurals** find their singular ("talleres", "sociales").
+- **The search's Spanish** (`lib/searchWords.ts`; the owner, 7 Oct 2026: "list synonyms based on the Spanish
+  language"): a visitor's word also finds the site's word for it, **one way**: "clase", "curso", "workshop" find the
+  workshops (but "taller" doesn't find the socials that open with a class); "fiesta", "farra", "party" the parties
+  ("Rumba"); "en vivo", "orquesta" the concerts; "concurso", "campeonato" the competitions; "milonga" the tango;
+  "reggaeton", "perreo" urbano, and "urbano" every rhythm under "Urbanos"; "casino", "rueda" salsa cubana; "on1",
+  "on2", "mambo" salsa en línea; "caleño", "salsero", "lindy hop"…; "salsa" also finds cha cha chá (its heading).
+  Known phrases are searched whole ("cha cha cha", "sin costo"). **"Free" is one word however it's written**:
+  "gratis", "gratuito", "sin costo", "entrada libre", "no cover", "free cover"… in the search or in the event (its own
+  words, or "Gratis" on its card) all mean "gratis". Left out on purpose, as they'd find unrelated events: "libre"
+  alone ("rumba libre"), "parche" (academies), "noche", "feria", "cali", "práctica". A test checks that every word
+  the table finds is one the site shows.
+- **The field:** on phones Buscar turns the bar at the bottom into the field (see "The bar at the
   bottom"); on wide screens the field is in the tabs' row. Results show after a short pause in typing, from the top of
   the list (in the calendar, the day's list).
 
