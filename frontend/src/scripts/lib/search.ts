@@ -7,9 +7,13 @@
 // searchWords.ts: "clase" finds the workshops, "milonga" the tango, "sin costo" the free events: the owner, 7 Oct
 // 2026). "Free", however it's written, is "gratis", which an event whose card says "Gratis", or whose own words say
 // free ("entrada libre"), gets too.
+// Days are found by date, not in the words (lib/searchDays.ts: "hoy", "sábado", "este finde", "15 de octubre"…), and
+// the words that only join others ("el", "de", "con") are left out ("clase de salsa el sábado").
 
 import type { DanceEvent } from "../types";
+import { daysFrom, todayIso } from "./dates";
 import { FREE, priceSummary, styleLabel, typeLabel } from "./format";
+import { daysAt, type DayTest } from "./searchDays";
 import { alsoFinds, FREE_PHRASES, FREE_WORD, PHRASES } from "./searchWords";
 
 /** "Salsa Caleña" → "salsa calena": for comparing, never for showing. */
@@ -75,6 +79,16 @@ interface Term {
   phrases: string[];
 }
 
+/** A search, read: its parts (all needed) and the days it names (any of them). */
+interface Query {
+  terms: Term[];
+  days: DayTest[];
+}
+
+// Words that only join others, left out unless the search is nothing else ("la" typed alone still finds "La Casona").
+// And the words before a day: "este sábado", "el próximo viernes".
+const JOINING = new Set("de del el la los las y o en con para por un una al a este esta proximo proxima".split(" "));
+
 /** The known phrase starting at `words[at]`, longest first, and how many words it takes. */
 function phraseAt(words: string[], at: number): [string, number] | null {
   for (let length = Math.min(LONGEST_PHRASE, words.length - at); length >= 2; length--) {
@@ -84,23 +98,43 @@ function phraseAt(words: string[], at: number): [string, number] | null {
   return null;
 }
 
-/** The parts of a search: known phrases whole ("sin costo", "cha cha cha"), every other word on its own. */
-export function queryTerms(query: string): Term[] {
+const wordTerm = (word: string): Term => {
+  const forms = singulars(word);
+  return { starts: forms, phrases: forms.flatMap(alsoFinds) };
+};
+
+/** A search, read: the days it names, known phrases whole ("sin costo", "cha cha cha"), every other word on its own. */
+export function parseQuery(query: string, today: string): Query {
   const words = wordsOf(fold(query));
-  const terms: Term[] = [];
+  const read: Query = { terms: [], days: [] };
+  const joining: string[] = [];
   for (let at = 0; at < words.length; ) {
-    const phrase = phraseAt(words, at);
-    if (phrase) {
+    const days = daysAt(words, at, today);
+    const phrase = days ? null : phraseAt(words, at);
+    if (days) {
+      read.days.push(days[0]);
+      at += days[1];
+    } else if (phrase) {
       const [text, length] = phrase;
-      terms.push({ starts: [], phrases: [text, ...alsoFinds(text)] });
+      read.terms.push({ starts: [], phrases: [text, ...alsoFinds(text)] });
       at += length;
     } else {
-      const forms = singulars(words[at]!);
-      terms.push({ starts: forms, phrases: forms.flatMap(alsoFinds) });
+      const word = words[at]!;
+      if (JOINING.has(word)) joining.push(word);
+      else read.terms.push(wordTerm(word));
       at += 1;
     }
   }
-  return terms;
+  if (!read.terms.length && !read.days.length) read.terms = joining.map(wordTerm);
+  return read;
+}
+
+let lastQuery: { text: string; today: string; read: Query } | null = null;
+
+/** The search read once for all the events it's checked against. */
+function readQuery(query: string, today: string): Query {
+  if (lastQuery?.text !== query || lastQuery.today !== today) lastQuery = { text: query, today, read: parseQuery(query, today) };
+  return lastQuery.read;
 }
 
 function hasTerm(event: Searchable, term: Term): boolean {
@@ -110,9 +144,10 @@ function hasTerm(event: Searchable, term: Term): boolean {
   );
 }
 
-/** True when every part of `query` is found in the event ("" matches everything). */
-export function matchesQuery(event: DanceEvent, query: string): boolean {
-  const terms = queryTerms(query);
+/** True when every part of `query` is found in the event, on one of the days it names if any ("" matches everything). */
+export function matchesQuery(event: DanceEvent, query: string, today = todayIso()): boolean {
+  const { terms, days } = readQuery(query, today);
+  if (days.length && !daysFrom(event, today).some((day) => days.some((test) => test(day)))) return false;
   if (!terms.length) return true;
   const found = searchableOf(event);
   return terms.every((term) => hasTerm(found, term));

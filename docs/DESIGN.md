@@ -352,6 +352,15 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
   words, or "Gratis" on its card) all mean "gratis". Left out on purpose, as they'd find unrelated events: "libre"
   alone ("rumba libre"), "parche" (academies), "noche", "feria", "cali", "práctica". A test checks that every word
   the table finds is one the site shows.
+- **Days in the search** (`lib/searchDays.ts`; the owner, 7 Oct 2026): "hoy", "esta noche", "mañana", "pasado
+  mañana"; a weekday, every one to come ("sábado", "el próximo viernes"); "este finde" / "fin de semana" (Friday to
+  Sunday from today on: on a Saturday, Saturday and Sunday); "esta semana", "próxima semana", "la otra semana";
+  "este mes", a month, "15 de octubre"; "festivo". They find the events on those days by date, not in their words
+  ("de ayer y hoy" isn't today), with the same days as "Cuándo" (several days, a series' sessions, last night's
+  social still on); several days are any of them, the other words all apply ("salsa finde"). Calendar days, not
+  the menu's periods. Words that only join others ("el", "de", "con", "este") are left out, unless the search is
+  nothing else. **Places are searched only as the event says them** (venue, address, area): no table of
+  neighbourhoods (the owner, 7 Oct 2026: don't stretch the post's information).
 - **The field:** on phones Buscar turns the bar at the bottom into the field (see "The bar at the
   bottom"); on wide screens the field is in the tabs' row. Results show after a short pause in typing, from the top of
   the list (in the calendar, the day's list).
