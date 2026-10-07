@@ -46,34 +46,6 @@
   flex: none;
 }
 
-/* The one-time reminder after a second save: at the bottom, just above the bar there (phones), or above the home
-   indicator. */
-.install-nudge {
-  position: fixed;
-  right: var(--space-4);
-  bottom: calc(var(--space-3) + max(var(--bottom-nav-space), env(safe-area-inset-bottom)));
-  left: var(--space-4);
-  min-height: var(--touch-target);
-  z-index: var(--z-sticky);
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-2) var(--space-2) var(--space-2) var(--space-4);
-  border: var(--border-width) solid var(--border);
-  border-radius: var(--radius-md);
-  background: var(--surface);
-  box-shadow: var(--shadow-menu);
-  font-size: var(--text-sm);
-}
-
-.install-nudge[hidden] {
-  display: none;
-}
-
-.install-nudge span {
-  flex: 1;
-}
-
 /* The steps: big numbers, one short line each, the browser's buttons drawn as they look (.install-key). */
 .install-sheet__steps {
   display: grid;

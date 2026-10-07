@@ -57,7 +57,9 @@ import { closeSearchField, initBottomNav, renderBottomNav } from "./views/bottom
 import { viewNavigation } from "./views/viewNavigation";
 import { closeWhenMenu, isWhenMenuOpen, openWhenMenu, syncWhenMenu } from "./views/whenMenu";
 import { closePanel, initFilterPanels, syncPanels, togglePanel } from "./views/filterPanels";
-import { initSaveButtons, renderSavedCount as drawSavedCount } from "./views/saveButton";
+import { initSaveButtons, renderSavedCount as drawSavedCount, toggleSave } from "./views/saveButton";
+import { initNotice } from "./views/notice";
+import { tellSaveChange } from "./views/saveNotice";
 import { renderSavedView } from "./views/savedView";
 import { watchDayChange } from "./views/dayChange";
 import { initInstallPrompt, offerAfterSaving, registerServiceWorker } from "./views/installPrompt";
@@ -440,6 +442,7 @@ export function start() {
   initPostViewer();
   initSharing(findEvent);
   initInstallPrompt();
+  initNotice();
   registerServiceWorker();
   initJumpBar();
   initFilterPanels();
@@ -487,11 +490,14 @@ export function start() {
     },
     true,
   );
-  // Saving changes the "Guardados" count. Guardados itself is drawn again right where the visitor was (never
-  // jumping, e.g. to a period's heading): an event unsaved there leaves it.
-  initSaveButtons(() => {
-    offerAfterSaving(upcomingSaved().length);
-    if (state.view !== "saved") return renderSavedCount();
+  // Saving changes the "Guardados" count, and says so at the bottom ("Guardado · Ver guardados"; in Guardados,
+  // "Quitado de tus guardados · Deshacer"), or once offers to install. Guardados itself is drawn again right where the
+  // visitor was (never jumping, e.g. to a period's heading): an event unsaved there leaves it.
+  initSaveButtons((id, saved) => {
+    const inSaved = state.view === "saved";
+    tellSaveChange(saved, { inSaved, seeSaved: () => navigateView("saved"), undo: () => toggleSave(id) });
+    if (saved) offerAfterSaving(upcomingSaved().length);
+    if (!inSaved) return renderSavedCount();
     const scrollY = window.scrollY;
     render();
     returnToScroll(scrollY);

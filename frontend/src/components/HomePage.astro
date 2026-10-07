@@ -62,6 +62,9 @@ const { view } = Astro.props;
   <JumpBar />
   <!-- Phones: the bar at the bottom of the screen. Here in the page's order, so the keyboard reaches it before the list. -->
   <BottomNav />
+  <!-- A short notice after an action, over the page ("Guardado · Ver guardados": views/notice.ts). A live region, empty
+       between notices; here in the page's order, so the keyboard reaches its button before the list. -->
+  <div class="notice" id="notice" role="status"></div>
 
   <main class="container page-main" id="contenido">
     <!-- The count after each change, said politely; inside the main landmark, like everything a screen reader reads. -->

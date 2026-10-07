@@ -192,7 +192,7 @@
   --z-panel: 20; /* wide screens: the details as a side panel, over the sticky bars */
 
   /* ---------- Layer 3: elevation ---------- */
-  /* What floats: the drawer and the side panel, the posts badge, the install nudge, the "Cuándo" menu. */
+  /* What floats: the drawer and the side panel, the posts badge, the notices at the bottom, the "Cuándo" menu. */
   --shadow-menu: 0 8px 24px light-dark(rgb(42 15 20 / 0.18), rgb(0 0 0 / 0.45));
 
   /* ---------- Layer 3: over photos ---------- */
