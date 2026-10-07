@@ -92,4 +92,3 @@ describe("the list's container never takes the focus by a click", () => {
     expect(home).toMatch(/<a class="skip-link" href="#contenido" data-skip>/);
   });
 });
-

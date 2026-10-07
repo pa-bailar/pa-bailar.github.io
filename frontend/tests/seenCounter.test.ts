@@ -65,4 +65,3 @@ describe("an event counted as seen", () => {
     expect(counter.show(event("a"), { passing: false })).toBe(false); // already counted
   });
 });
-
