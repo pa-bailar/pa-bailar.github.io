@@ -1,30 +1,24 @@
-// Phones only (CSS hides it where the toolbar is sticky): one slim row pinned to the top of the screen, like the
-// filter bars of Google Maps or Airbnb: a row of chips that scrolls sideways (filters.ts draws them, main.ts handles
-// their taps). Under it, while filtering, "12 eventos · Finde, Salsa · × Limpiar".
+// The phones' jump bar (CSS hides it where the toolbar is sticky): one slim row pinned to the top of the screen, like
+// the filter bars of Google Maps or Airbnb: a row of chips that scrolls sideways (filters.ts draws them, main.ts
+// handles their taps). Under it, while filtering, "12 eventos · Finde, Salsa · × Limpiar".
 //   - "🕒 ▾" opens the "Cuándo" menu (whenMenu.ts); Filtros in the bar at the bottom (bottomNav.ts) the "Filtros"
 //     sheet, set up here.
 // It never hides, so the filters are at hand anywhere in the list (it used to hide while scrolling down, like
-// Instagram's header). It also keeps the visitor's place when a filter changes (captureListPosition /
-// restoreListPosition).
+// Instagram's header). Here too, for phones and wide screens alike: the visitor's place kept when a filter changes
+// (captureListPosition / restoreListPosition), and the page scrolled on purpose (scrollPageTo). The pinned bars'
+// heights and the room they leave: pinnedBars.ts.
 
 import { byId, prefersReducedMotion } from "../lib/dom";
+import { DURATION } from "../lib/motion";
 import { initPanelSheet, openPanelSheet } from "../lib/sheet";
+import { initPinnedBars, stickyOffset } from "./pinnedBars";
 import { initWhenMenu } from "./whenMenu";
 
 const READING_BAND = 0.35; // share of the screen, under the bar, where the period being read is
 const MARGIN = 8; // px left between the bar and what's put right under it
-const SCROLL_DURATION = 320; // ms: a scroll on purpose (bringing a card into view), like the drawer's rise
 
 export function renderJumpBar() {
   byId("jump-bar").hidden = false;
-}
-
-/** Height of what's stuck to the top of the screen (the bar and its line on phones, the toolbar on wide screens). */
-export function stickyOffset(): number {
-  const bar = byId("jump-bar");
-  if (!bar.hidden && getComputedStyle(bar).display !== "none") return bar.offsetHeight;
-  const toolbar = document.querySelector<HTMLElement>(".toolbar");
-  return toolbar && getComputedStyle(toolbar).position === "sticky" ? toolbar.offsetHeight : 0;
 }
 
 const sections = () => [...document.querySelectorAll<HTMLElement>("#view-upcoming .agenda-group")];
@@ -78,7 +72,7 @@ export function scrollPageTo(top: number, { smooth = false } = {}) {
     if (stopScrolling === stop) stopScrolling = null;
   };
   const step = (now: number) => {
-    const progress = Math.min((now - start) / SCROLL_DURATION, 1);
+    const progress = Math.min((now - start) / DURATION.enter, 1); // in step with the drawer rising
     const eased = 1 - (1 - progress) ** 3;
     window.scrollTo({ top: from + (target - from) * eased, behavior: "auto" });
     if (progress < 1) frame = requestAnimationFrame(step);
@@ -113,45 +107,9 @@ export function openFilterSheet() {
   openPanelSheet(byId<HTMLDialogElement>("filter-sheet"));
 }
 
-/**
- * Wide screens: --pinned-height (what scroll-padding keeps focused and jumped-to things clear of, base.css) is the
- * sticky toolbar's real height, which changes with the filters' status row and in Guardados. Its CSS value is the
- * phones' bar: on wide screens, 68 px against a toolbar over 100 px tall, the arrows put a calendar card's top under
- * it (found by the site-checks toolkit, 6 Oct 2026). Phones keep the CSS value (the toolbar isn't shown there).
- */
-function trackPinnedHeight() {
-  const toolbar = document.querySelector<HTMLElement>(".toolbar");
-  if (!toolbar || typeof ResizeObserver === "undefined") return;
-  const root = document.documentElement.style;
-  new ResizeObserver(() => {
-    if (getComputedStyle(toolbar).position === "sticky" && toolbar.offsetHeight > 0) {
-      root.setProperty("--pinned-height", `${toolbar.offsetHeight}px`);
-    } else {
-      root.removeProperty("--pinned-height");
-    }
-  }).observe(toolbar);
-}
-
-/**
- * Marks `bar` (sticky at the top) data-pinned="false" while it's still in its place under the header, "true" once pinned:
- * the dark theme's lighting shows through it there (base.css). A line right above it says which: on screen, not pinned.
- */
-function trackPinned(bar: HTMLElement | null) {
-  if (!bar || typeof IntersectionObserver === "undefined") return;
-  const sentinel = document.createElement("div");
-  sentinel.className = "pin-sentinel";
-  sentinel.setAttribute("aria-hidden", "true");
-  bar.before(sentinel);
-  new IntersectionObserver(([entry]) => {
-    bar.dataset.pinned = String(!entry?.isIntersecting);
-  }).observe(sentinel);
-}
-
 export function initJumpBar() {
   initWhenMenu();
-  trackPinnedHeight();
-  trackPinned(document.querySelector<HTMLElement>(".toolbar"));
-  trackPinned(byId("jump-bar"));
+  initPinnedBars();
   // The chips inside are handled by main.ts; "Ver 12 eventos" closes it like ×. Its groups scroll between the
   // head and that button, so a drag down starts from the head or the groups' top.
   const sheet = byId<HTMLDialogElement>("filter-sheet");

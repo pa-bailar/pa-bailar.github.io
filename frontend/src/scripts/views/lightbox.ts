@@ -14,9 +14,10 @@
 import type { DanceEvent, EventMedia } from "../types";
 import { byId } from "../lib/dom";
 import { flyerUrl } from "../lib/links";
+import { PANEL_MIN_HEIGHT, PANEL_MIN_WIDTH } from "./drawerSheet";
 
 /** Where a card's image opens the stage: a mouse (it can hover), and room for the side panel beside it. */
-const LIGHTBOX_QUERY = "(hover: hover) and (pointer: fine) and (min-width: 900px) and (min-height: 600px)";
+export const LIGHTBOX_QUERY = `(hover: hover) and (pointer: fine) and (min-width: ${PANEL_MIN_WIDTH}px) and (min-height: ${PANEL_MIN_HEIGHT}px)`;
 
 export const lightboxMode = (): boolean => window.matchMedia(LIGHTBOX_QUERY).matches;
 

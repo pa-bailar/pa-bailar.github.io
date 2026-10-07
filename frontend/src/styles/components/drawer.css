@@ -231,7 +231,6 @@
   .drawer__body {
     overflow-y: auto;
   }
-
 }
 
 @media (prefers-reduced-motion: reduce) {

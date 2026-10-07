@@ -9,6 +9,7 @@
 //     Instagram button opens that post.
 //   - A video's clip plays while its slide is the one on screen (clips.ts: off-screen slides aren't in view).
 
+import { cardLink } from "../lib/cards";
 import { isPlainClick, prefersReducedMotion } from "../lib/dom";
 
 /** Dots shown at once: a long carousel (an event with 20 posts) slides its window along. */
@@ -80,7 +81,7 @@ function onScroll(domEvent: Event) {
 function openInNewTab(domEvent: MouseEvent) {
   const strip = (domEvent.target as Element | null)?.closest("[data-card-image]");
   if (!strip || isPlainClick(domEvent)) return;
-  const link = strip.closest("[data-event-card]")?.querySelector<HTMLAnchorElement>("a.event-card__hit");
+  const link = cardLink(strip);
   if (!link) return;
   domEvent.preventDefault();
   window.open(link.href, "_blank", "noopener");

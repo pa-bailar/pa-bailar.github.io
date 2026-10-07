@@ -11,8 +11,8 @@ import {
   restoreListPosition,
   returnToScroll,
   scrollPageTo,
-  stickyOffset,
 } from "./jumpBar";
+import { stickyOffset } from "./pinnedBars";
 import { setWholePeriods, wholePeriods } from "./upcomingView";
 import { bottomInset } from "./bottomNav";
 import { VIEW_TITLES } from "../lib/viewTitles";

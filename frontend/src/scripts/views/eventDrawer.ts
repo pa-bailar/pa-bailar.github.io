@@ -7,7 +7,8 @@
 //     between the two heights. The drawer is modal: the page behind doesn't scroll, focus goes to the title and
 //     back to what opened it. The geometry and where a drag ends: drawerSheet.ts; the gestures: drawerGestures.ts.
 //   - Wide screens (900 × 600 and up): a side panel on the right, not modal, so the list stays usable: another card shows its event
-//     in the panel, and its card is outlined in the list.
+//     in the panel, and its card is outlined in the list. Where the panel would lie over the page, the page moves
+//     beside it while it's open, gliding there (makeRoom: base.css .panel-room, lib/glide.ts).
 //   - The drawer has no flyer: the visitor is looking at the card. Only one event's details are rendered, and
 //     nothing stays once it closes (the iPhone's memory: ARCHITECTURE.md, section 5.7).
 // The address bar shows the event's own URL, and every way of closing goes through "back" (drawerHistory.ts).
@@ -17,6 +18,7 @@ import { byId, escapeHtml, prefersReducedMotion } from "../lib/dom";
 import { detailsEventName, type DetailsSource, seenCounter, trackEvent, trackPageview } from "../lib/analytics";
 import { ICONS } from "../lib/icons";
 import { eventPath } from "../lib/links";
+import { cardOnScreen, VIEW_ON_SCREEN } from "../lib/cards";
 import { glideFrom } from "../lib/glide";
 import { DURATION, EASE } from "../lib/motion";
 import { holdClips } from "./clips";
@@ -35,7 +37,8 @@ import {
 } from "./drawerSheet";
 import { eventDrawerHtml } from "./eventDetail";
 import { handleMediaLinkClick } from "./eventDetailActions";
-import { scrollPageTo, stickyOffset } from "./jumpBar";
+import { scrollPageTo } from "./jumpBar";
+import { inSight, stickyOffset } from "./pinnedBars";
 
 // Wide enough for the list and a side panel (--panel-width), and tall enough to have no bar at the bottom.
 const PANEL_QUERY = `(min-width: ${PANEL_MIN_WIDTH}px) and (min-height: ${PANEL_MIN_HEIGHT}px)`;
@@ -64,13 +67,6 @@ const state = {
 
 const drawer = () => byId<HTMLDialogElement>("event-drawer");
 const body = () => drawer().querySelector<HTMLElement>(".drawer__body");
-
-/** The event's card on screen (the list's, or the calendar day's). */
-function cardOf(id: string): HTMLElement | undefined {
-  return [...document.querySelectorAll<HTMLElement>(`main .event-card[data-event-card="${CSS.escape(id)}"]`)].find(
-    (card) => card.offsetParent !== null,
-  );
-}
 
 /** No card outlined as the side panel's. */
 const clearCurrentCard = () =>
@@ -116,7 +112,7 @@ function setDetent(next: Detent, { duration = DURATION.settle, easing = EASE.sta
  * and then its image goes right under the bar. `force` (a shared link): always there, at once.
  */
 function bringCardIntoView(id: string, force: boolean) {
-  const card = cardOf(id);
+  const card = cardOnScreen(id);
   if (!card) return;
   // A shared link jumps straight to it: its flyer loads now, not when the lazy loading gets to it.
   if (force) card.querySelectorAll<HTMLImageElement>("img[loading=lazy]").forEach((image) => (image.loading = "eager"));
@@ -148,14 +144,11 @@ function render(event: DanceEvent, selected = 0) {
   }
 }
 
-/** Side panel: the open event's card is outlined in the list (also after the list is drawn again: main.ts). */
 /** Close the details as their × does (through the history): the image stage's × and dark area (lightbox.ts). */
 export function closeEventDrawer() {
   requestClose();
 }
 
-/** The event the details show, while they're open (keyboardNav.ts). */
-/** The focus into the open details (their title): Enter on a card whose details the reading pane already shows. */
 /**
  * Into the open details: Enter on the card the side panel shows, or its image clicked. That's opening it on purpose:
  * an event the reading pane only passed counts as seen now, and `source` says from where (once).
@@ -166,14 +159,16 @@ export function focusEventDetails(source?: DetailsSource) {
   if (state.current && seen.show(state.current, { passing: false }) && source) trackEvent(detailsEventName(source));
 }
 
+/** The event the details show, while they're open (keyboardNav.ts). */
 export function openEventId(): string | null {
   return drawer().open && !state.leaving ? (state.current?.id ?? null) : null;
 }
 
+/** Side panel: the open event's card is outlined in the list (also after the list is drawn again: main.ts). */
 export function highlightCurrentCard({ reveal = false } = {}) {
   clearCurrentCard();
   if (!drawer().open || state.leaving || state.mode !== "panel" || !state.current) return;
-  const card = cardOf(state.current.id);
+  const card = cardOnScreen(state.current.id);
   card?.classList.add("is-current");
   if (reveal) card?.scrollIntoView({ block: "center" });
 }
@@ -184,15 +179,16 @@ export function highlightCurrentCard({ reveal = false } = {}) {
  * where it would cover the page, the whole page (header, filters, list, footer: its containers) lives beside it,
  * against its edge (base.css, .panel-room), and the list keeps the columns that still fit: the owner, 6 Oct 2026,
  * like IBM Carbon's and Fluent's panels beside the content, Gmail's or Drive's. The page moves only as far as it must,
- * and not at all where the panel covers nothing. `keep` (the card shown) stays at its height on screen: the page
- * scrolls by what the new layout moved it. What moved glides to its new place, with the panel (`glide`), unless the
- * room changed with no one looking: a resized window, a shared link opening the page.
+ * and not at all where the panel covers nothing. What the visitor sees keeps its height on screen (anchorOnScreen):
+ * the page scrolls by what the new layout moved it. What moved glides to its new place, with the panel (`glide`),
+ * unless the room changed with no one looking: a resized window, a shared link opening the page.
  */
-function makeRoom(open: boolean, { keep, glide = true }: { keep?: Element | null; glide?: boolean } = {}) {
+function makeRoom(open: boolean, { glide = true } = {}) {
   const root = document.documentElement;
   const had = root.classList.contains("panel-room");
   const needed = open && state.mode === "panel" && panelCoversPage();
   if (needed === had) return;
+  const keep = anchorOnScreen(state.current ? cardOnScreen(state.current.id) : null);
   const top = keep?.getBoundingClientRect().top;
   const play = glide ? glideFrom(movingParts(), { duration: DURATION.panelIn, easing: EASE.emphasizedDecelerate }) : null;
   root.classList.toggle("panel-room", needed);
@@ -226,7 +222,7 @@ function movingParts(): HTMLElement[] {
 }
 
 /** The view on screen's pieces, in order: a card grid gives its cards; anything holding a grid, its own pieces. */
-function listPieces(block: Element | null = document.querySelector('[role="tabpanel"]:not([hidden])')): Element[] {
+function listPieces(block: Element | null = document.querySelector(VIEW_ON_SCREEN)): Element[] {
   return [...(block?.children ?? [])].flatMap((child) => {
     if (child.matches(".card-grid")) return [...child.children];
     return child.querySelector(".card-grid") ? listPieces(child) : [child];
@@ -239,13 +235,8 @@ function listPieces(block: Element | null = document.querySelector('[role="tabpa
  * doesn't focus the card), closing the panel moved the list they were looking at (the bug-squash pass, 6 Oct 2026).
  */
 function anchorOnScreen(preferred: Element | null | undefined): Element | null {
-  const top = stickyOffset();
-  const seen = (element: Element) => {
-    const box = element.getBoundingClientRect();
-    return box.height > 0 && box.bottom > top && box.top < window.innerHeight;
-  };
-  if (preferred && seen(preferred)) return preferred;
-  return listPieces().find(seen) ?? null;
+  if (preferred && inSight(preferred)) return preferred;
+  return listPieces().find(inSight) ?? null;
 }
 
 /**
@@ -254,13 +245,13 @@ function anchorOnScreen(preferred: Element | null | undefined): Element | null {
  */
 function show(event: DanceEvent, shared: boolean, glide = !shared) {
   const element = drawer();
-  state.mode = window.matchMedia(PANEL_QUERY).matches ? "panel" : "sheet";
+  state.mode = sidePanelFits() ? "panel" : "sheet";
   element.dataset.mode = state.mode;
   if (state.mode === "panel") {
     element.show();
     holdClips("drawer", false);
     highlightCurrentCard({ reveal: shared });
-    makeRoom(true, { keep: anchorOnScreen(document.querySelector(".event-card.is-current")), glide });
+    makeRoom(true, { glide });
     return;
   }
   state.viewport = window.innerHeight;
@@ -382,7 +373,7 @@ function cleanUpAfterClose(element: HTMLDialogElement) {
   if (state.opener?.isConnected && (!focus || focus === document.body || ours)) {
     state.opener.focus({ preventScroll: true });
   }
-  makeRoom(false, { keep: anchorOnScreen(state.current ? cardOf(state.current.id) : null) });
+  makeRoom(false); // before `state.current` goes: its card keeps its place, if it's in sight
   state.opener = null;
   byId("drawer-content").replaceChildren(); // nothing of it stays in memory while it's closed
   state.current = null;
@@ -408,14 +399,6 @@ function swapMode() {
 export function initEventDrawer(find: (id: string) => DanceEvent | undefined) {
   state.findEvent = find;
   const element = drawer();
-  // A window resized with the panel open: room again, or none, for the new width.
-  let resizing = 0;
-  window.addEventListener("resize", () => {
-    cancelAnimationFrame(resizing);
-    resizing = requestAnimationFrame(
-      () => element.open && makeRoom(true, { keep: anchorOnScreen(document.querySelector(".event-card.is-current")), glide: false }),
-    );
-  });
   const panel = byId("drawer-panel");
 
   element.addEventListener("click", (domEvent) => {
@@ -432,9 +415,8 @@ export function initEventDrawer(find: (id: string) => DanceEvent | undefined) {
     requestClose();
   });
   document.addEventListener("keydown", (key) => {
+    // The toolbar's search ends itself first and stops the key (main.ts): with its field empty, Escape is the panel's.
     if (key.key !== "Escape" || !element.open || state.mode !== "panel" || document.querySelector("dialog:modal")) return;
-    // Typing (the toolbar's search): Escape is the field's (it ends the search), not the panel's as well.
-    if (key.target instanceof Element && key.target.closest("input, textarea, select, [contenteditable='true']")) return;
     key.preventDefault();
     requestClose();
   });
@@ -447,14 +429,22 @@ export function initEventDrawer(find: (id: string) => DanceEvent | undefined) {
     }
   });
 
-  // A rotation, or the phone's address bar showing or hiding, changes the screen's height.
+  // A resize while open (a rotation, the phone's address bar showing or hiding, a window dragged): the mode that fits
+  // now (the side panel or the drawer), the drawer's height, and then, once per frame, the room beside the panel for
+  // the new width (none after a swap to the drawer).
+  let resizing = 0;
   window.addEventListener("resize", () => {
-    if (!element.open || state.leaving) return;
-    if (window.matchMedia(PANEL_QUERY).matches !== (state.mode === "panel")) swapMode();
-    else if (state.mode === "sheet") {
-      state.viewport = window.innerHeight;
-      place(offsetFor(state.detent, state.viewport));
+    if (element.open && !state.leaving) {
+      if (sidePanelFits() !== (state.mode === "panel")) swapMode();
+      else if (state.mode === "sheet") {
+        state.viewport = window.innerHeight;
+        place(offsetFor(state.detent, state.viewport));
+      }
     }
+    cancelAnimationFrame(resizing);
+    resizing = requestAnimationFrame(
+      () => element.open && makeRoom(true, { glide: false }),
+    );
   });
 
   // The "close" event comes after the dialog closed, as a separate task. If it was opened again meanwhile (in the
