@@ -267,8 +267,8 @@ function showWithImage(event: DanceEvent, card: HTMLElement | null): boolean {
   const slide = opener ? carouselSlide(opener) : 0;
   if (openEventId() !== event.id) openEventDrawer(event, { selected: slide, opener: opener ?? undefined, source: "tarjeta" });
   // Already shown by the reading pane (keyboardNav.ts) with the focus left on the card: into the details now, so ← →
-  // go through the photos.
-  else focusEventDetails();
+  // go through the photos. Opened on purpose: counted now, from the card.
+  else focusEventDetails("tarjeta");
   showStage(event, slide);
   return true;
 }
@@ -431,7 +431,7 @@ export function start() {
     findEvent,
     openEventId,
     showEvent: (event, card, { stayInList, lastPhoto }) => {
-      openEventDrawer(event, { opener: card, focus: !stayInList });
+      openEventDrawer(event, { opener: card, focus: !stayInList, passing: true }); // counted once read (analytics)
       followStage(event, lastPhoto ? "last" : "first"); // the image beside the panel, if on show, changes with it
       highlightCurrentCard({ reveal: !stayInList }); // the list follows (a card in focus is already in view)
     },

@@ -37,6 +37,7 @@ export const SEEN_AFTER_MS = 2000;
  * Counts what a visitor looks at, once while it stays shown. Opened on purpose (a tap, Enter, a link), it counts at
  * once. Shown in passing (the side panel following the keyboard's arrows or Tab through the list), it counts only if
  * it's still the one shown after `seenAfterMs`: read, not walked past. `hide()` when nothing is shown any more.
+ * `show` says whether it counted the item right then.
  */
 export function seenCounter<T extends { id: string }>(onSeen: (item: T) => void, seenAfterMs = SEEN_AFTER_MS) {
   let shown: string | null = null;
@@ -47,14 +48,18 @@ export function seenCounter<T extends { id: string }>(onSeen: (item: T) => void,
     onSeen(item);
   };
   return {
-    show(item: T, { passing }: { passing: boolean }) {
+    show(item: T, { passing }: { passing: boolean }): boolean {
       clearTimeout(timer);
       shown = item.id;
-      if (counted === item.id) return;
-      if (!passing) return seen(item);
+      if (counted === item.id) return false;
+      if (!passing) {
+        seen(item);
+        return true;
+      }
       timer = setTimeout(() => {
         if (shown === item.id) seen(item);
       }, seenAfterMs);
+      return false;
     },
     hide() {
       clearTimeout(timer);

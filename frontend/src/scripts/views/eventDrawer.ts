@@ -156,8 +156,14 @@ export function closeEventDrawer() {
 
 /** The event the details show, while they're open (keyboardNav.ts). */
 /** The focus into the open details (their title): Enter on a card whose details the reading pane already shows. */
-export function focusEventDetails() {
-  if (drawer().open) focusTitle();
+/**
+ * Into the open details: Enter on the card the side panel shows, or its image clicked. That's opening it on purpose:
+ * an event the reading pane only passed counts as seen now, and `source` says from where (once).
+ */
+export function focusEventDetails(source?: DetailsSource) {
+  if (!drawer().open) return;
+  focusTitle();
+  if (state.current && seen.show(state.current, { passing: false }) && source) trackEvent(detailsEventName(source));
 }
 
 export function openEventId(): string | null {
@@ -283,6 +289,7 @@ export function openEventDrawer(
     selected = 0,
     opener,
     focus = true,
+    passing = false,
   }: {
     source?: DetailsSource;
     pushHistory?: boolean;
@@ -291,6 +298,8 @@ export function openEventDrawer(
     opener?: HTMLElement;
     /** False: the focus stays where it is (the side panel following the card in focus: keyboardNav.ts). */
     focus?: boolean;
+    /** Shown in passing, the keyboard stepping through events (keyboardNav.ts): counted as seen once read. */
+    passing?: boolean;
   } = {},
 ) {
   const element = drawer();
@@ -319,7 +328,7 @@ export function openEventDrawer(
   if (pushHistory) enterEvent(event, wasOpen);
   // Which events people look at. The side panel following the keyboard shows every event the arrows or Tab pass:
   // those count once read (the owner's console, 6 Oct 2026: a row walked with the arrows counted all its events).
-  seen.show(event, { passing: !focus });
+  seen.show(event, { passing });
   if (source) trackEvent(detailsEventName(source));
 }
 
