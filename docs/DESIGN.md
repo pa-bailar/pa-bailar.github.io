@@ -325,7 +325,7 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
     screen readers ("…, 3 eventos, 1 guardado"); the legend under the grid has "Festivo" and "Guardado".
 - **Search** (`lib/search.ts`) runs on the events already in the page: accent- and case-insensitive,
   every word must appear somewhere in the event (title, academy, organizer, venue, area, artists,
-  rhythms, activities, type, and "gratis" or "gratuito" when its card says "Gratis"). On phones Buscar turns the bar at the bottom into the field (see "The bar at the
+  rhythms, activities, type). **"Free" is one word however it's written** (the owner, 7 Oct 2026): "gratis", "gratuito", "sin costo", "entrada libre", "no cover", "free cover"… in the search or in the event (its own words, or "Gratis" on its card) all mean "gratis"; "libre" alone doesn't ("rumba libre"). On phones Buscar turns the bar at the bottom into the field (see "The bar at the
   bottom"); on wide screens the field is in the tabs' row. Results show after a short pause in typing, from the top of
   the list (in the calendar, the day's list).
 
