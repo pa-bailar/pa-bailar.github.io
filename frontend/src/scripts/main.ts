@@ -23,7 +23,7 @@ import {
   type AgendaGroup,
 } from "./state";
 import { initThemeToggle } from "./theme";
-import { renderCalendarView } from "./views/calendarView";
+import { renderCalendarDays, renderCalendarView } from "./views/calendarView";
 import { watchClips } from "./views/clips";
 import {
   closeEventDrawer,
@@ -491,12 +491,14 @@ export function start() {
     true,
   );
   // Saving changes the "Guardados" count, and says so at the bottom ("Guardado · Ver guardados"; in Guardados,
-  // "Quitado de tus guardados · Deshacer"), or once offers to install. Guardados itself is drawn again right where the
-  // visitor was (never jumping, e.g. to a period's heading): an event unsaved there leaves it.
+  // "Quitado de tus guardados · Deshacer"), or once offers to install. The calendar marks the day again; Guardados
+  // itself is drawn again right where the visitor was (never jumping, e.g. to a period's heading): an event unsaved
+  // there leaves it.
   initSaveButtons((id, saved) => {
     const inSaved = state.view === "saved";
     tellSaveChange(id, saved, { inSaved, seeSaved: () => navigateView("saved"), undo: () => toggleSave(id) });
     if (saved) offerAfterSaving(upcomingSaved().length);
+    if (state.view === "calendar") renderCalendarDays(events, state); // the days' saved marks, at once
     if (!inSaved) return renderSavedCount();
     const scrollY = window.scrollY;
     render();

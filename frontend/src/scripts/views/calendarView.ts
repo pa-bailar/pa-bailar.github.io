@@ -89,20 +89,31 @@ export function calendarDays(events: DanceEvent[], state: AppState): Map<string,
   return groupByDay(events.filter((event) => matchesFilters(event, state)));
 }
 
-/** Renders the month and returns how many events the selected day shows. */
-export function renderCalendarView(events: DanceEvent[], state: AppState): number {
+/** The month's grid: its title and its days, each with its dots, names and saved mark. */
+function renderGrid(byDay: Map<string, DanceEvent[]>, state: AppState) {
   const { month } = state;
-  const byDay = calendarDays(events, state);
-
   const cells = WEEKDAY_INITIALS.map((initial) => `<div class="cal-weekday" aria-hidden="true">${initial}</div>`);
   for (let i = 0; i < mondayOffset(month); i++) cells.push(`<div class="cal-day cal-day--blank"></div>`);
   for (let day = 1; day <= daysInMonth(month); day++) {
     const iso = toIsoDate(new Date(month.getFullYear(), month.getMonth(), day));
     cells.push(dayCellHtml(iso, day, byDay.get(iso) ?? [], state));
   }
-
   byId("cal-title").textContent = formatMonthTitle(month);
   byId("cal-grid").innerHTML = cells.join("");
+}
+
+/**
+ * After a save: the days' saved marks drawn again, at once (the owner, 7 Oct 2026: the day's bookmark waited for
+ * another tap). Only the grid: the day's list keeps its cards, and the bookmark just tapped its focus.
+ */
+export function renderCalendarDays(events: DanceEvent[], state: AppState) {
+  renderGrid(calendarDays(events, state), state);
+}
+
+/** Renders the month and returns how many events the selected day shows. */
+export function renderCalendarView(events: DanceEvent[], state: AppState): number {
+  const byDay = calendarDays(events, state);
+  renderGrid(byDay, state);
 
   const selectedEvents = byDay.get(state.selectedDay) ?? [];
   const changed = shownDay !== null && shownDay !== state.selectedDay;
