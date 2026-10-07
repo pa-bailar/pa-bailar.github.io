@@ -1,7 +1,7 @@
 // Things a layout change moved glide to their new place instead of jumping there: FLIP ("first, last, invert, play",
 // aerotwist.com/blog/flip-your-animations). Where each one is on screen is taken before the change and after it; each
 // then starts at its old place (a transform) and slides to the new one. Only transforms: nothing is laid out again
-// while they move. Used by the list making room beside the side panel (eventDrawer.ts).
+// while they move. Used by the page making room beside the side panel (eventDrawer.ts makeRoom).
 import { prefersReducedMotion } from "./dom";
 
 /** The glides still running: a new change stops them where they are, and the next glide starts from there. */

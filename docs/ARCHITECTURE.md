@@ -723,7 +723,8 @@ frontend/
 | `views/calendarView.ts` | "Calendario", with holidays; each day's events with the filters on (`calendarDays`); a day's dots on phones (`dotsHtml`, `MAX_DOTS_PER_DAY`); the selected day's heading |
 | `views/eventCard.ts` | A card: flyer at its shape (or a video's clip), or a carousel of the event's posts; date sticker; the action row (Detalles, Compartir, the carousel's dots, Guardar) |
 | `views/lightbox.ts`, `components/Lightbox.astro` | A card's image big beside the side panel (wide screens with a mouse): a non-modal stage over the list up to the panel; its event is the panel's, it closes with it and shares its history entry |
-| `views/keyboardNav.ts` | The arrows between cards (`neighbor`, on the cards' boxes) and between events in the open details |
+| `views/keyboardNav.ts` | The arrows between cards (`neighbor`, on the cards' boxes) and between events in the open details; Enter |
+| `views/tabOrder.ts` | Tab: one stop per event (a card's own controls out of the Tab order), the side panel following it, never into the panel from outside, and out of it to the next event |
 | `views/carousel.ts` | A card's carousel: the slide on screen (`slideIndex`), "1/6" and the dots (`dotStates`), ‹ ›, the slide the details open on (`carouselSlide`) |
 | `views/detailsHint.ts`, `lib/onceFlag.ts` | The first visit's hint on the first card's "Detalles"; things shown once per browser |
 | `lib/storedSwitch.ts`, `lib/storedValue.ts` | An on/off setting remembered in this browser (hiding the bars, the app installed); a value kept there (the install offer's dates). Both hold for the visit when storage is blocked |
@@ -740,7 +741,8 @@ from under one gets its entry when the overlay closes (pushed over the overlay's
 | `views/filters.ts` | Drawing the model: the phone bar's chips and line, the filter sheet (Ritmo by family), the toolbar's pills, their panels' content and the status row (`pillHtml`, `panelHtml`, `statusHtml`); empty results |
 | `views/filterPanels.ts` | Wide screens: the toolbar's pills open their panels (Cuándo, Ritmo, Tipo): one at a time, each with its own history entry (an overlay, `menu: "panel-…"`), placed under its pill (`menuPlacement`), the keys (`nextOption`), closing (Escape, a click outside, back, a too-small screen) and the focus. A click outside is swallowed or held until the panel's back lands (`lib/outsideClick.ts`) |
 | `lib/styleFamilies.ts` | The rhythms' families (Salsa, Bachata, Urbanos, Otros): `STYLE_FAMILIES`, `familyOf`, `groupByFamily` (the sheet and the Ritmo panel); every rhythm of the data contract in one (`tests/styleFamilies.test.ts`) |
-| `views/jumpBar.ts` | Phones: the pinned bar (the chips; it never hides), the filter sheet's setup, keeping your place, scrolling on purpose. Wide screens: `--pinned-height` follows the sticky toolbar's real height (what `scroll-padding` keeps focused things clear of) |
+| `views/jumpBar.ts` | Phones: the pinned bar (the chips; it never hides), the filter sheet's setup; both: keeping your place when a filter changes, scrolling on purpose |
+| `views/pinnedBars.ts` | The bars pinned to the top: their height (`stickyOffset`; wide screens: `--pinned-height` follows the sticky toolbar's real height, what `scroll-padding` keeps focused things clear of), the room they leave (`room`, `inSight`) and `data-pinned` |
 | `views/whenMenu.ts` | Phones: the "Cuándo" menu under its chip: its items (`whenMenuHtml`), opening (its own history entry, as an overlay), where it hangs (`menuPlacement`), the keys (`nextOption`), closing and the focus |
 | `lib/outsideClick.ts` | A press outside an open menu or panel and the click it leads to (`pressedClick`): only that click is swallowed or held, never a later keyboard click |
 | `views/bottomNav.ts` | Phones: the bar at the bottom (Eventos, Calendario, Buscar, Guardados, Filtros): the view on screen, Filtros' badge and name (`navItems`, `filtersLabel`), the search field docked above the keyboard (`openSearchField`, `closeSearchField`, `keyboardInset`, `keyboardJustHid`) and its history entry (`searchHistory`), the bar's height for what must stay above it (`bottomInset`) |
@@ -755,6 +757,7 @@ from under one gets its entry when the overlay closes (pushed over the overlay's
 | `lib/sheet.ts`, `lib/sheetMotion.ts` | Bottom sheets that drag to dismiss; panel sheets with their own back-button step; the release and exit numbers they share with the drawer (`releaseVelocity`, the flick, the slops) |
 | `lib/motion.ts` | The motion tokens scripts use (durations, Material's curves), mirroring `tokens.css` |
 | `lib/glide.ts` | What a layout change moved glides to its new place (FLIP, transforms only; none with reduced motion): the page making room beside the side panel |
+| `lib/cards.ts` | Finding the cards: the view on screen (`VIEW_ON_SCREEN`; the hidden views keep their old cards), an event's card where it's seen (`cardOnScreen`), a card's link (`CARD_LINK`, `cardLink`) |
 | `lib/brandColors.ts` | The palette as hex, for what can't read CSS (link previews, the share card, icons, `theme-color`), checked against `tokens.css` |
 | `lib/instagramEmbed.ts` | Instagram's player for a post, its script loaded on demand |
 | `views/postsSheet.ts`, `views/postViewer.ts` | An event's posts; a post watched inside the site (the media viewer); an account's profile there (`openProfileViewer`: any `a[data-profile]`) |

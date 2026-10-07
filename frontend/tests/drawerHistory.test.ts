@@ -3,6 +3,7 @@ import { readFileSync } from "node:fs";
 import { sharedEventLink } from "../src/scripts/lib/links";
 import { CLOSE_DISTANCE, CLOSE_FRACTION, FLICK, exitDurationFor } from "../src/scripts/lib/sheetMotion";
 import { PANEL_MIN_HEIGHT, PANEL_MIN_WIDTH, TOP_GAP, exitDuration, offsetFor } from "../src/scripts/views/drawerSheet";
+import { LIGHTBOX_QUERY } from "../src/scripts/views/lightbox";
 import { event } from "./factories";
 import { installFakeHistory, settle, type FakeHistory } from "./fakeHistory";
 
@@ -162,6 +163,10 @@ describe("the drawer's numbers agree with the CSS and the sheets", () => {
     expect(drawerCss).toContain(`@media (min-width: ${width}px) and (min-height: ${height}px) {`);
     expect(drawerCss).toContain(`@media (max-width: ${width - 1}px), (max-height: ${height - 1}px) {`);
     expect(css("tokens.css")).toContain(`${PANEL_MIN_WIDTH}px  the details`);
+  });
+
+  it("the image stage needs the side panel's room and a mouse, as event-card.css says (lightbox.ts)", () => {
+    expect(css("components/event-card.css")).toContain(`@media ${LIGHTBOX_QUERY} {`);
   });
 
   it("the drawer leaves like the bottom sheets (lib/sheetMotion.ts)", () => {

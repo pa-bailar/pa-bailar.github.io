@@ -3,6 +3,7 @@
 import type { AppState, DanceEvent, EventType, View } from "./types";
 import { initClickTracking } from "./lib/analytics";
 import { byId, isPlainClick } from "./lib/dom";
+import { CARD_LINK, cardLink, cardOnScreen } from "./lib/cards";
 import { focusAfterClearing, focusScope, focusSelector } from "./lib/focus";
 import { eventCountLabel, formatLongDate } from "./lib/format";
 import { addMonths, currentMonth, isUpcoming, nowInBogota, todayIso } from "./lib/dates";
@@ -234,8 +235,8 @@ const showPeriod: ControlHandler = (key, control) => {
     if (showWholePeriod(key)) render();
   });
   const cards = section?.isConnected
-    ? section.querySelectorAll<HTMLElement>(".event-card__hit")
-    : document.querySelector(`[data-period="${CSS.escape(key)}"]`)?.querySelectorAll<HTMLElement>(".event-card__hit");
+    ? section.querySelectorAll<HTMLElement>(CARD_LINK)
+    : document.querySelector(`[data-period="${CSS.escape(key)}"]`)?.querySelectorAll<HTMLElement>(CARD_LINK);
   cards?.[before]?.focus({ preventScroll: true });
 };
 
@@ -254,8 +255,6 @@ const skipToList: ControlHandler = (_, __, domEvent) => {
   main.focus();
 };
 
-/** The link inside a card: what gets the focus back when the details or the lightbox close. */
-const cardLink = (element: Element) => element.closest("[data-event-card]")?.querySelector<HTMLElement>("a.event-card__hit") ?? null;
 
 /**
  * The details of `event` with its image big beside them (lightbox.ts), on the slide its card showed: a click on a card's
@@ -263,7 +262,9 @@ const cardLink = (element: Element) => element.closest("[data-event-card]")?.que
  */
 function showWithImage(event: DanceEvent, card: HTMLElement | null): boolean {
   if (!lightboxMode()) return false;
-  const opener = card ?? cardLink(document.querySelector(`[data-event-card="${CSS.escape(event.id)}"]`) ?? document.body);
+  // The card in the view on screen: the hidden views keep their old cards (in the calendar, the list's card's slide
+  // was read).
+  const opener = card ?? cardLink(cardOnScreen(event.id));
   const slide = opener ? carouselSlide(opener) : 0;
   if (openEventId() !== event.id) openEventDrawer(event, { selected: slide, opener: opener ?? undefined, source: "tarjeta" });
   // Already shown by the reading pane (keyboardNav.ts) with the focus left on the card: into the details now, so ← →
@@ -451,14 +452,23 @@ export function start() {
   document.addEventListener("input", handleSearchInput);
   // Escape in the toolbar's search field (wide screens) ends the search in every browser: Chrome clears a search field
   // by itself, WebKit as the site-checks toolkit runs it didn't (6 Oct 2026). The bar's field has its own (bottomNav.ts).
-  document.addEventListener("keydown", (domEvent) => {
-    const field = domEvent.target;
-    if (domEvent.key !== "Escape" || !(field instanceof HTMLInputElement) || !field.matches(".toolbar [data-search]")) return;
-    if (!field.value) return;
-    domEvent.preventDefault();
-    clearSearch();
-    render();
-  });
+  // Before anyone else, and only it: the side panel's Escape (eventDrawer.ts) is the next one, with the field empty,
+  // like the pill panels' (filterPanels.ts).
+  document.addEventListener(
+    "keydown",
+    (domEvent) => {
+      const field = domEvent.target;
+      if (domEvent.key !== "Escape" || !(field instanceof HTMLInputElement) || !field.matches(".toolbar [data-search]")) {
+        return;
+      }
+      if (!field.value) return;
+      domEvent.preventDefault();
+      domEvent.stopPropagation();
+      clearSearch();
+      render();
+    },
+    true,
+  );
   // Saving changes the "Guardados" count. Guardados itself is drawn again right where the visitor was (never
   // jumping, e.g. to a period's heading): an event unsaved there leaves it.
   initSaveButtons(() => {
