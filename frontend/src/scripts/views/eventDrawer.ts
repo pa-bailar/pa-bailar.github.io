@@ -423,6 +423,8 @@ export function initEventDrawer(find: (id: string) => DanceEvent | undefined) {
   });
   document.addEventListener("keydown", (key) => {
     if (key.key !== "Escape" || !element.open || state.mode !== "panel" || document.querySelector("dialog:modal")) return;
+    // Typing (the toolbar's search): Escape is the field's (it ends the search), not the panel's as well.
+    if (key.target instanceof Element && key.target.closest("input, textarea, select, [contenteditable='true']")) return;
     key.preventDefault();
     requestClose();
   });
