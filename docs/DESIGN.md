@@ -526,6 +526,11 @@ An event can be announced by several Instagram posts (a flyer, then a video, a r
     there are more.
   - **A tap on the image opens the details**, with the slide on screen selected: their Instagram button opens that
     post. Ctrl or middle click opens the event's page in a new tab. A video slide plays its clip while on screen.
+  - **A double-tap opens the details and leaves them open** (Instagram's "like", out of habit): the details rise
+    under the finger, and the second tap of a double-tap, the same spot within 450 ms, is dropped. Before, it
+    landed on them: Compartir, the account's profile, or the dim area that closed them again (20 of 20 emulated
+    double-taps, the audit of 7 Oct 2026). A desktop double-click likewise keeps the image and the details open.
+    (`lib/secondTap.ts`, `dropSecondTap` in `main.ts`.)
   - Every post is still a link away: the details' "Ver las 6 publicaciones" (the posts sheet).
 - **Wide screens with a mouse: a card's image big beside its details**, like Instagram's desktop view of a post
   (`Lightbox.astro`, `views/lightbox.ts`; the owner, 5–6 October 2026: a flyer's fine print is too small on the card,
