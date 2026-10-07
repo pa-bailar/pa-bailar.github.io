@@ -37,6 +37,7 @@ frontend/src/styles/
    ├─ bottom-nav.css     ← phones: the bar at the bottom (Eventos, Calendario, Buscar, Guardados, Filtros)
    ├─ posts-sheet.css    ← every post announcing an event
    ├─ post-viewer.css    ← a post with Instagram's player
+   ├─ loader.css         ← a ring turning while something loads (the player, a profile, a video)
    ├─ filter-sheet.css
    ├─ site-footer.css
    └─ install.css        ← installing the site: the banner and the steps sheet
@@ -146,6 +147,7 @@ writes a curve itself. With reduced motion nothing animates (`base.css`).
 | `--duration-enter` | 320ms | A bottom sheet rising, the details drawer rising to half height |
 | `--duration-settle` | 300ms | A sheet or the drawer settling: between heights, springing back after a drag |
 | `--duration-panel-in` / `--duration-panel-out` | 280ms / 200ms | The side panel sliding in and out (wide screens) |
+| `--duration-loop` | 800ms | A loader's turn (`loader.css`); with reduced motion it stays still |
 | `--ease-standard` | `cubic-bezier(0.2, 0, 0, 1)` | Settling, springing back, the first visit's pulse on "Detalles" |
 | `--ease-emphasized-decelerate` | `cubic-bezier(0.05, 0.7, 0.1, 1)` | Coming in: quick, with a soft landing |
 | `--ease-emphasized-accelerate` | `cubic-bezier(0.3, 0, 0.8, 0.15)` | Leaving: it goes and keeps going |
@@ -337,7 +339,7 @@ the list stays short there and summarizes what's further away (`scripts/views/up
 - **Later periods summarized:** "Más adelante en <mes>" and each later month start as one row with their
   first five flyers as small squares and "Ver los 23 eventos ›" (`.period-summary`); tapping it shows
   them in full. Choosing that period in the date filter opens it too.
-- **Busy periods capped:** an open period shows six events, then "Ver 7 más ⌄" (`.period-more`): the month blocks' look (`.period-summary`: the card's color, border and corners, a bold label) without their flyers, one row as wide as the grid (the owner, 6 Oct 2026: the small button went unnoticed).
+- **Busy periods capped:** an open period shows six events, then "Ver 7 más ⌄" (`.period-more`), one row as wide as the grid (the owner, 6 Oct 2026: the small button went unnoticed), printed like the cards' "Detalles ›": the same ink frame and offset in the three colors, sinking onto it when pressed (the owner, 7 Oct: more visible). It sits as far from its last card as from the next period, 32px each way (7 Oct: it looked low between them).
 - **Short lists whole:** with 12 events or fewer (for example once filtered) nothing is summarized. With
   nothing in the near periods, the first period opens.
 - What the visitor opens stays open while filtering or switching views, and focus moves to the first
@@ -568,7 +570,7 @@ An event can be announced by several Instagram posts (a flyer, then a video, a r
   takes the focus only then (a click in the list never gives it the focus), and the arrows start from there as from
   nothing focused. Escape in the toolbar's search ends the search only; a second one closes the side panel.
 - **Every post, in a sheet** (`PostsSheet.astro`, `scripts/views/postsSheet.ts`): from the card's "▦ 3", the details' "Ver las 3 publicaciones", or the event page's `.posts-badge`. Tabs Flyers and Videos when the event has both, and square thumbnails like Instagram's grid, made at build time (`pages/thumbs/[name].webp.ts`). Choosing one opens it in the media viewer, which takes over the sheet's history entry (back returns to the list or the details, not to a sheet that's gone); on an event's page it shows that post on the page instead.
-- **The media viewer** (`PostViewer.astro`, `scripts/views/postViewer.ts`): the post inside the site, in a sheet over everything, with Instagram's own player (`lib/instagramEmbed.ts`): videos with sound, carousels with all their slides. Opening the Instagram app would leave the site, and the app's back button doesn't come back; the sheet's bar keeps "Abrir en Instagram ↗". Our copy of the flyer shows at once and the player replaces it when ready; if it can't load, the flyer stays with "Esta publicación solo se puede ver en Instagram." Instagram's script loads on the first tap only, never with the page. Closing it removes the player, so a video stops.
+- **The media viewer** (`PostViewer.astro`, `scripts/views/postViewer.ts`): the post inside the site, in a sheet over everything, with Instagram's own player (`lib/instagramEmbed.ts`): videos with sound, carousels with all their slides. Opening the Instagram app would leave the site, and the app's back button doesn't come back; the sheet's bar keeps "Abrir en Instagram ↗". Our copy of the flyer shows at once, with a turning ring in its middle and "Cargando la publicación…" under it (the owner, 7 Oct 2026: the words alone didn't say something was coming), and the player replaces it when ready; if it can't load, the ring goes and the flyer stays with "Esta publicación solo se puede ver en Instagram." A profile and a video tapped on an event's page get the same ring before their "Cargando…" (`loader.css`, `lib/loader.ts`). Instagram's script loads on the first tap only, never with the page. Closing it removes the player, so a video stops.
 - **Videos play in the feed.** When the backend made a video's clip (`preview`), the card plays it: silent, looping, about 6 seconds, like Instagram's feed (`views/clips.ts`). No sound control: a tap opens the details, where the full video plays with sound (the owner, 4 October 2026, after a "Sin sonido / Con sonido" toggle that did nothing, since the clips have no sound). Only the clip on screen plays; one that leaves the screen unloads. No autoplay with reduced motion or the data saver. The service worker doesn't cache clips.
 - **Every video's card says "Video"** (`.video-mark`), whether it plays its clip or not (the owner, 4 October 2026: the label on some videos and not others was confusing). Not a ▶ in the middle: that promised it would play on the card.
 - **On an event's page** the flyer's clip plays, a label says what's behind it (`lib/mediaLabel.ts`: "▶ Ver con sonido", "▶ Ver video", "Ver las 4"), and a tapped video plays in place, with sound (`views/inlinePlayer.ts`; removed once it's out of view).

@@ -12,6 +12,7 @@
 // image, not a link (lib/mediaLabel.ts isStory; isVideoCover is false for it).
 
 import { renderInstagramPost } from "../lib/instagramEmbed";
+import { loaderElement } from "../lib/loader";
 import { releaseClips, watchClips } from "./clips";
 
 const GONE = 0.25; // share still on screen under which a player is removed
@@ -40,7 +41,7 @@ export function playInline(frame: HTMLElement, permalink: string) {
   if (!media) return;
   frame.dataset.inlineSaved = frame.innerHTML;
   frame.classList.add("is-loading");
-  media.querySelector(".event-detail__play")?.replaceChildren("Cargando el video…");
+  media.querySelector(".event-detail__play")?.replaceChildren(loaderElement(), "Cargando el video…");
   frame.querySelector<HTMLVideoElement>("video")?.pause();
 
   const holder = document.createElement("div");

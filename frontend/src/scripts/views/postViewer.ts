@@ -16,6 +16,7 @@ import type { DanceEvent, EventMedia } from "../types";
 import { byId, escapeHtml, isPlainClick } from "../lib/dom";
 import { renderInstagramPost } from "../lib/instagramEmbed";
 import { flyerUrl, profileEmbedUrl, profileUrl } from "../lib/links";
+import { LOADER_HTML, LOADER_OVER_IMAGE_HTML } from "../lib/loader";
 import { isStory, storySource } from "../lib/mediaLabel";
 import { initPanelSheet, openPanelSheet } from "../lib/sheet";
 import { holdClips } from "./clips";
@@ -47,10 +48,11 @@ export function openPostViewer(event: DanceEvent, media: EventMedia, { replacing
     sheet().scrollTop = 0;
     return;
   }
+  // While Instagram's player loads: a turning ring in the middle of our flyer (or before the words, with no flyer).
   body.innerHTML = `
     <div class="post-viewer__placeholder">
-      ${flyer ? `<img src="${escapeHtml(flyer)}"${size} alt="" />` : ""}
-      <p class="post-viewer__status" role="status">Cargando la publicación…</p>
+      ${flyer ? `<div class="post-viewer__flyer"><img src="${escapeHtml(flyer)}"${size} alt="" />${LOADER_OVER_IMAGE_HTML}</div>` : ""}
+      <p class="post-viewer__status" role="status">${flyer ? "" : LOADER_HTML}Cargando la publicación…</p>
     </div>
     <div class="post-viewer__embed"></div>`;
   openPanelSheet(sheet(), { replacing });
@@ -60,7 +62,10 @@ export function openPostViewer(event: DanceEvent, media: EventMedia, { replacing
   void renderInstagramPost(body.querySelector<HTMLElement>(".post-viewer__embed")!, media.permalink).then((shown) => {
     if (current !== request || !sheet().open) return;
     if (shown) body.classList.add("is-ready");
-    else body.querySelector(".post-viewer__status")!.textContent = "Esta publicación solo se puede ver en Instagram.";
+    else {
+      body.querySelector(".loader-disc")?.remove(); // nothing is loading anymore
+      body.querySelector(".post-viewer__status")!.textContent = "Esta publicación solo se puede ver en Instagram.";
+    }
   });
 }
 
@@ -77,7 +82,7 @@ function openProfileViewer(account: string) {
   const name = escapeHtml(account);
   body.innerHTML = `
     <div class="post-viewer__placeholder">
-      <p class="post-viewer__status" role="status">Cargando el perfil…</p>
+      <p class="post-viewer__status" role="status">${LOADER_HTML}Cargando el perfil…</p>
     </div>
     <div class="post-viewer__embed post-viewer__embed--profile">
       <iframe src="${escapeHtml(profileEmbedUrl(account))}" title="Perfil de @${name} en Instagram"></iframe>

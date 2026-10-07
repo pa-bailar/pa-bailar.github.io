@@ -1,0 +1,46 @@
+/* A loader (scripts/lib/loader.ts): a ring turning while something loads, Instagram's player for a post, a profile,
+   a video. Words next to it say what is loading ("Cargando la publicación…"): the ring only says it's on its way (the
+   owner, 7 Oct 2026: the words alone didn't). The ring is the text's color at a quarter, its turning arc at full.
+   With reduced motion it stays still. */
+.loader {
+  --loader-size: var(--icon-sm);
+  display: inline-block;
+  flex: none;
+  width: var(--loader-size);
+  height: var(--loader-size);
+  border: calc(var(--loader-size) / 8) solid color-mix(in srgb, currentColor 25%, transparent);
+  border-top-color: currentColor;
+  border-radius: 50%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .loader {
+    animation: loader-turn var(--duration-loop) linear infinite;
+  }
+}
+
+@keyframes loader-turn {
+  to {
+    rotate: 360deg;
+  }
+}
+
+/* Over an image (our copy of the flyer while Instagram's player loads): bigger, on a dark disc that reads over any
+   flyer, in its middle. */
+.loader-disc {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  display: grid;
+  place-items: center;
+  width: calc(var(--icon-lg) * 2);
+  height: calc(var(--icon-lg) * 2);
+  border-radius: 50%;
+  background: var(--on-image-bg);
+  color: var(--on-image);
+}
+
+.loader-disc .loader {
+  --loader-size: var(--icon-lg);
+}

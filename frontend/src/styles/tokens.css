@@ -216,6 +216,7 @@
   --duration-settle: 300ms; /* a sheet or the drawer settling: between heights, springing back after a drag */
   --duration-panel-in: 280ms; /* the side panel sliding in (wide screens) */
   --duration-panel-out: 200ms; /* the side panel sliding out */
+  --duration-loop: 800ms; /* a loader's turn (loader.css) */
   /* Material 3's curves. Scripts mirror these and the durations above in scripts/lib/motion.ts (tested). */
   --ease-standard: cubic-bezier(0.2, 0, 0, 1); /* settling, springing back, the first visit's pulse */
   --ease-emphasized-decelerate: cubic-bezier(0.05, 0.7, 0.1, 1); /* coming in: quick, with a soft landing */
