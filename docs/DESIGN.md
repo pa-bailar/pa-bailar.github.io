@@ -715,6 +715,9 @@ already left (the owner's review, 6 Oct 2026). Closing never reopens an earlier 
 - **One primary button per view** (`.btn--primary`). Everything else is the outlined `.btn`, including "Compartir" (it opens the phone's share menu, not only WhatsApp, so it doesn't wear WhatsApp's green).
 - **Event-type color** is applied with a `.t-<type>` class, which exposes `--type` for that element (tags, pills, dots).
 - **No emoji in the UI.** Use text or inline SVG icons.
+- **No browser flash on a tap** (`-webkit-tap-highlight-color: transparent` on `html`, inherited everywhere): Android
+  Chrome painted a blue box over a whole card, even through the pinned bars (the owner, 7 October 2026). A control
+  shows its own press or change instead: Detalles' print, a filled bookmark, a chip turned on, a sheet opening.
 - **No `style=""` attributes** in markup: the Content Security Policy blocks them and the build fails on them. Use a class, or set a value that depends on the data from a script (`element.style.setProperty`), like a card's `--flyer-ratio`.
 - **Flyers are never cropped** (`object-fit: contain`). Like Instagram's feed, phones show each flyer at its own shape, from 4:5 (portrait) to 1.91:1 (landscape); taller ones (stories), and every card on wider screens, get a 4:5 frame, filled around the flyer with a blurred copy of itself. The size comes from the file at build time (`src/data.ts`), so the page never jumps as images load.
 - **Accessibility:**

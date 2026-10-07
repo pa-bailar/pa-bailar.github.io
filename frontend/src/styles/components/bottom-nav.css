@@ -73,7 +73,6 @@
   font-weight: var(--weight-bold);
   line-height: 1.2;
   text-decoration: none;
-  -webkit-tap-highlight-color: transparent;
 }
 
 .bottom-nav__item:focus-visible {
