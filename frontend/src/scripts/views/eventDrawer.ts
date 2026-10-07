@@ -397,7 +397,8 @@ function swapMode() {
   const element = drawer();
   if (!state.current) return;
   element.close(); // its "close" finds it open again and cleans nothing
-  show(state.current, false);
+  show(state.current, false, false); // a resize: no glide
+  highlightCurrentCard(); // outlined beside the panel only, not under the phones' drawer
   focusTitle();
 }
 

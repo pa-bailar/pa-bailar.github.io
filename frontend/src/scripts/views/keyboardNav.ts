@@ -335,7 +335,14 @@ export function initKeyboardNav(hooks: Hooks) {
 
   // The side panel follows the card Tab lands on (a click doesn't count: its card was just opened anyway).
   let tabbing = false;
-  document.addEventListener("keydown", (domEvent) => (tabbing = domEvent.key === "Tab"), true);
+  document.addEventListener(
+    "keydown",
+    (domEvent) => {
+      tabbing = domEvent.key === "Tab";
+      if (tabbing) settleGlides(); // the browser brings the next stop into view from its place, not its way there
+    },
+    true,
+  );
   document.addEventListener("pointerdown", () => (tabbing = false), true);
   document.addEventListener("focusin", (domEvent) => {
     if (!tabbing) return;
