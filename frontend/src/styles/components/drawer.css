@@ -232,9 +232,6 @@
     overflow-y: auto;
   }
 
-  /* The page never moves when the panel opens or closes (the owner, 5 Oct 2026: moving it felt shaky): the panel lies
-     over the page's right side, like Gmail's or Maps'. On a narrower screen it covers part of the rightmost cards while
-     it's open; nothing reflows. */
 }
 
 @media (prefers-reduced-motion: reduce) {

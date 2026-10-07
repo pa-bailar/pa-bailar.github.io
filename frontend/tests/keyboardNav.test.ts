@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { firstInView, neighbor } from "../src/scripts/views/keyboardNav";
 
@@ -76,5 +77,18 @@ describe("a short button just above the next period's cards (bug, 6 Oct 2026)", 
     expect(neighbor(list, 2, "down")).toBe(4); // the card closest to its middle
     expect(neighbor(list, 3, "up")).toBe(2);
     expect(neighbor(list, 2, "up")).toBe(1); // the middle (640) is closest to the card at 280
+  });
+});
+
+describe("the list's container never takes the focus by a click", () => {
+  const home = readFileSync(new URL("../src/components/HomePage.astro", import.meta.url), "utf8");
+
+  it("<main> has no tabindex of its own: the skip link gives it one only while it has the focus (main.ts)", () => {
+    // With one for good, a click in the list's gaps (in Safari, on any card) focused <main>: the arrows then did
+    // nothing and Tab started over from the list's top (the bug-squash pass, 6 Oct 2026).
+    const main = home.match(/<main\s[^>]*>/)?.[0] ?? "";
+    expect(main).toContain('id="contenido"');
+    expect(main).not.toMatch(/tabindex/i);
+    expect(home).toMatch(/<a class="skip-link" href="#contenido" data-skip>/);
   });
 });

@@ -139,6 +139,13 @@ function onScreen(stop: HTMLElement | undefined): boolean {
   return middle > top && middle < bottom;
 }
 
+/** Whether any of `stop` shows in the room the pinned bars leave: a card in focus there is where the visitor is. */
+function inSight(stop: HTMLElement): boolean {
+  const { top, bottom } = room();
+  const box = stop.getBoundingClientRect();
+  return box.bottom > top && box.top < bottom;
+}
+
 /**
  * The focus on `focus` (a card's link, or a period's button), and its whole stop in view, clear of the pinned bars: a
  * card's link is its title, under the image, so focusing it alone could leave the image under the toolbar.
@@ -150,6 +157,16 @@ function focusStop(focus: HTMLElement) {
 
 /** In the details or the image beside them. */
 const inDetails = (target: Element) => Boolean(target.closest("#event-drawer, #lightbox"));
+
+/** What the keys can act on, when focused: anything else focused (a heading, <main>) is a place, not a control. */
+const CONTROL = "a[href], button, input, select, textarea, summary, [contenteditable='true'], [role='button'], [role='tab']";
+
+/**
+ * Nothing focused that the keys belong to: the page itself, or a place the focus was moved to that isn't a control
+ * (<main>, after "Saltar a los eventos"; a period's heading). The arrows then start where the visitor is looking, as
+ * from the page (the bug-squash pass, 6 Oct 2026: with <main> focused they did nothing).
+ */
+const onNothing = (target: Element) => target === document.body || !target.matches(CONTROL);
 
 /** A key pressed with a modifier is the browser's or the system's (Alt+← is back, Shift+↓ selects). */
 const modified = (domEvent: KeyboardEvent) => domEvent.altKey || domEvent.ctrlKey || domEvent.metaKey || domEvent.shiftKey;
@@ -205,8 +222,14 @@ export function initKeyboardNav(hooks: Hooks) {
     if (event && hooks.showImage(event, link)) domEvent.preventDefault(); // otherwise a card's link opens the details
     // A period's button: it opens the period and focuses its first new event without scrolling (main.ts showPeriod,
     // so a click doesn't jump); from the keyboard that card must come into view, or the next arrow starts off screen.
+    // The side panel follows it, as after an arrow: else it stayed on the event before, and the next → skipped the
+    // first new one.
     if (target.closest("[data-show-period]")) {
-      requestAnimationFrame(() => document.activeElement?.closest("[data-event-card]")?.scrollIntoView({ block: "nearest" }));
+      requestAnimationFrame(() => {
+        const card = document.activeElement?.closest<HTMLElement>("[data-event-card]") ?? undefined;
+        card?.scrollIntoView({ block: "nearest" });
+        showInPane(card);
+      });
     }
   }
 
@@ -283,12 +306,14 @@ export function initKeyboardNav(hooks: Hooks) {
     const at = openId ? list.findIndex((stop) => stop.dataset.eventCard === openId) : -1;
     // The details, or nothing focused while they're open (a click on the page's margin): from their event, if its card
     // is still on screen; scrolled away from it, from the first card where the visitor is looking (fromNothing).
-    if (openId && (inDetails(target) || (target === document.body && at >= 0 && onScreen(list[at])))) {
+    if (openId && (inDetails(target) || (onNothing(target) && at >= 0 && onScreen(list[at])))) {
       return fromDetails(domEvent, direction, list, at, inDetails(target));
     }
+    // A card or a block in focus: from it, while any of it is in sight; scrolled away from it (the wheel, Page Down),
+    // from the first one where the visitor is looking, as from the details (DESIGN.md, the keyboard).
     const stop = target.closest<HTMLElement>("[data-event-card], [data-show-period]");
-    if (stop) return fromStop(domEvent, direction, list, stop);
-    if (target === document.body) fromNothing(domEvent, list);
+    if (stop && inSight(stop)) return fromStop(domEvent, direction, list, stop);
+    if (stop || onNothing(target)) fromNothing(domEvent, list);
   });
 
   // ---------- Tab: one stop per event (see the header) ----------
@@ -310,7 +335,14 @@ export function initKeyboardNav(hooks: Hooks) {
 
   // The side panel follows the card Tab lands on (a click doesn't count: its card was just opened anyway).
   let tabbing = false;
-  document.addEventListener("keydown", (domEvent) => (tabbing = domEvent.key === "Tab"), true);
+  document.addEventListener(
+    "keydown",
+    (domEvent) => {
+      tabbing = domEvent.key === "Tab";
+      if (tabbing) settleGlides(); // the browser brings the next stop into view from its place, not its way there
+    },
+    true,
+  );
   document.addEventListener("pointerdown", () => (tabbing = false), true);
   document.addEventListener("focusin", (domEvent) => {
     if (!tabbing) return;

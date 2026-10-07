@@ -57,4 +57,11 @@ describe("an event counted as seen", () => {
     counter.show(event("a"), { passing: false });
     expect(seen.mock.calls.map(([item]) => item.id)).toEqual(["a", "b", "a", "a"]);
   });
+
+  it("says whether it counted right then (an opening on purpose counts its source once)", () => {
+    const counter = seenCounter(vi.fn());
+    expect(counter.show(event("a"), { passing: true })).toBe(false);
+    expect(counter.show(event("a"), { passing: false })).toBe(true); // Enter on what the pane showed
+    expect(counter.show(event("a"), { passing: false })).toBe(false); // already counted
+  });
 });

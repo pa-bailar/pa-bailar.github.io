@@ -142,7 +142,6 @@ const PAIRS = [
   ["Card: \"Detalles ›\" frame on a card (wide screens)", "details-ink", "surface", "ui"],
   ["Drawer: quick action and media link outline", "border", "surface", "ui"],
   ["Drawer: \"Guardado\" quick action (accent, 12px bold)", "accent", "surface", "text"],
-  ["Side panel: the open event's card outline on the page", "accent", "bg", "ui"],
 ];
 
 // ---------- run ----------

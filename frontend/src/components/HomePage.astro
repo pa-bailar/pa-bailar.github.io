@@ -53,8 +53,9 @@ const { view } = Astro.props;
     alt: "Pa' Bailar: sociales y talleres de baile en Bogotá",
   }}
 >
-  <!-- Keyboards: past the header and the toolbar (11 stops) straight to the list; shown only while it has the focus. -->
-  <a class="skip-link" href="#contenido">Saltar a los eventos</a>
+  <!-- Keyboards: past the header and the toolbar (11 stops) straight to the list; shown only while it has the focus.
+       Its click (main.ts skipToList) focuses <main> without "#contenido" in the address; without scripts, the link. -->
+  <a class="skip-link" href="#contenido" data-skip>Saltar a los eventos</a>
   <SiteHeader updatedLabel={updatedLabel} />
   <InstallOffer />
   <ViewToolbar />
@@ -62,7 +63,7 @@ const { view } = Astro.props;
   <!-- Phones: the bar at the bottom of the screen. Here in the page's order, so the keyboard reaches it before the list. -->
   <BottomNav />
 
-  <main class="container page-main" id="contenido" tabindex="-1">
+  <main class="container page-main" id="contenido">
     <!-- The count after each change, said politely; inside the main landmark, like everything a screen reader reads. -->
     <p class="visually-hidden" id="results-status" role="status"></p>
     <section id="view-upcoming" role="tabpanel" aria-labelledby="tab-upcoming"></section>

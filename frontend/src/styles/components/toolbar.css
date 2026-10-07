@@ -38,6 +38,7 @@
 
 .tabs {
   display: flex;
+  flex: none; /* the search field gives way, not the tabs: beside the side panel "Guardados 3" wrapped */
   gap: var(--space-5);
 }
 

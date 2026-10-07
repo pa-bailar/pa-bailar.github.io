@@ -564,7 +564,9 @@ An event can be announced by several Instagram posts (a flyer, then a video, a r
   its "Press Tab to highlight each item" is on: its usual behavior, left as it is. Screen readers' own reading still
   reaches every button. A card's link says its title first, then
   when, what, where and how much (`cardLabel`), since it's the card's only Tab stop. **"Saltar a los eventos"**, the
-  page's first stop, shown only while focused, skips the header and the toolbar (11 stops) to the list.
+  page's first stop, shown only while focused, skips the header and the toolbar (11 stops) to the list: `<main>`
+  takes the focus only then (a click in the list never gives it the focus), and the arrows start from there as from
+  nothing focused. Escape in the toolbar's search ends the search only; a second one closes the side panel.
 - **Every post, in a sheet** (`PostsSheet.astro`, `scripts/views/postsSheet.ts`): from the card's "▦ 3", the details' "Ver las 3 publicaciones", or the event page's `.posts-badge`. Tabs Flyers and Videos when the event has both, and square thumbnails like Instagram's grid, made at build time (`pages/thumbs/[name].webp.ts`). Choosing one opens it in the media viewer, which takes over the sheet's history entry (back returns to the list or the details, not to a sheet that's gone); on an event's page it shows that post on the page instead.
 - **The media viewer** (`PostViewer.astro`, `scripts/views/postViewer.ts`): the post inside the site, in a sheet over everything, with Instagram's own player (`lib/instagramEmbed.ts`): videos with sound, carousels with all their slides. Opening the Instagram app would leave the site, and the app's back button doesn't come back; the sheet's bar keeps "Abrir en Instagram ↗". Our copy of the flyer shows at once and the player replaces it when ready; if it can't load, the flyer stays with "Esta publicación solo se puede ver en Instagram." Instagram's script loads on the first tap only, never with the page. Closing it removes the player, so a video stops.
 - **Videos play in the feed.** When the backend made a video's clip (`preview`), the card plays it: silent, looping, about 6 seconds, like Instagram's feed (`views/clips.ts`). No sound control: a tap opens the details, where the full video plays with sound (the owner, 4 October 2026, after a "Sin sonido / Con sonido" toggle that did nothing, since the clips have no sound). Only the clip on screen plays; one that leaves the screen unloads. No autoplay with reduced motion or the data saver. The service worker doesn't cache clips.
@@ -635,7 +637,8 @@ list stays usable next to it. **Where it would lie over the page** (windows up t
 page moves beside it** while it's open: the header, the filters, the list and the footer, against the panel's edge,
 moving only as far as they must; the list keeps the columns that still fit (4 → 3 at 1,280–1,440 px, 2 at about
 1,000), and the search field narrows. What moved **glides** there in 280 ms with the panel (none with "reduce motion",
-nor on a resize or a shared link opening the page), and the event shown keeps its height on screen. Wider screens:
+nor on a resize or a shared link opening the page), and what the visitor sees keeps its height on screen (the
+event's card if it's in sight, else the first piece of the list in sight). Wider screens:
 nothing moves. History: on 5 Oct 2026 the owner chose a page that never moves (the list shifting left felt shaky),
 the panel over the page's right side; on 6 Oct, after #142 had moved only the list where it hid cards, the owner
 chose this instead: covering a whole column, the selected card among them, was worse than things moving (WCAG 2.2,
