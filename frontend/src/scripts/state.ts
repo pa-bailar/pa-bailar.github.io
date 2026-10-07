@@ -1,7 +1,7 @@
 // UI state and the event filtering that depends on it.
 
 import type { AppState, DanceEvent, View } from "./types";
-import { addDays, currentMonth, daysOf, endOfWeek, isUpcoming, nowInBogota, shownDay, startOn, todayIso, toIsoDate } from "./lib/dates";
+import { addDays, currentMonth, daysFrom, daysOf, endOfWeek, isUpcoming, nowInBogota, shownDay, startOn, todayIso, toIsoDate } from "./lib/dates";
 import { capitalize, formatMonthName } from "./lib/format";
 import { matchesQuery } from "./lib/search";
 
@@ -277,13 +277,6 @@ export function periodDays(key: string, today = todayIso()): [string, string] | 
     default:
       return null;
   }
-}
-
-/** The days the event is on from today: an event over several days counts in every period it runs through, a series in
- * every period with a session to come; last night's social still on after midnight, today. */
-function daysFrom(event: DanceEvent, today: string): string[] {
-  const days = daysOf(event).filter((day) => day >= today);
-  return days.length || !isUpcoming(event, today) ? days : [today];
 }
 
 /** The first day (from today) the event is on within the chosen periods, or null if it's on during none. */

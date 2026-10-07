@@ -149,6 +149,13 @@ export function isUpcoming(event: EventEnd, now = nowInBogota()): boolean {
   return now < endsAt(event);
 }
 
+/** The days the event is on from today: an event over several days counts on every day it runs through, a series on
+ * every session to come; last night's social still on after midnight, today. ("Cuándo" and the search's days.) */
+export function daysFrom(event: EventEnd & EventDays, today: string): string[] {
+  const days = daysOf(event).filter((day) => day >= today);
+  return days.length || !isUpcoming(event, today) ? days : [today];
+}
+
 /**
  * The day the list shows the event under: its date (a series: its next session's); today while it goes on after
  * starting on an earlier day (a congress since Friday is "Hoy", and so is last night's social still on at 1 a. m.).
