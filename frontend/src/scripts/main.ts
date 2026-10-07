@@ -239,6 +239,21 @@ const showPeriod: ControlHandler = (key, control) => {
   cards?.[before]?.focus({ preventScroll: true });
 };
 
+/**
+ * "Saltar a los eventos": the focus to the list, <main>, which takes it only then (a tabindex while it has it). With
+ * one for good, any click in the list's gaps (in Safari, on any card: it doesn't focus links on a click) gave <main>
+ * the focus, and Tab then started over from the list's top (the bug-squash pass, 6 Oct 2026). No "#contenido" in the
+ * address either: it followed every view's address.
+ */
+const skipToList: ControlHandler = (_, __, domEvent) => {
+  const main = document.getElementById("contenido");
+  if (!main || !isPlainClick(domEvent)) return;
+  domEvent.preventDefault();
+  main.tabIndex = -1;
+  main.addEventListener("blur", () => main.removeAttribute("tabindex"), { once: true });
+  main.focus();
+};
+
 /** The link inside a card: what gets the focus back when the details or the lightbox close. */
 const cardLink = (element: Element) => element.closest("[data-event-card]")?.querySelector<HTMLElement>("a.event-card__hit") ?? null;
 
@@ -271,7 +286,9 @@ const openCardEvent: ControlHandler = (id, control, domEvent) => {
   // Counted by where it was opened: the card itself or its "Detalles".
   const source = control.dataset.source === "boton" ? "boton" : "tarjeta";
   markDetailsHintSeen();
-  openEventDrawer(event, { source, selected: carouselSlide(control) }); // a carousel's slide on screen
+  // A carousel's slide on screen. The card's link gets the focus back on closing, even where a click doesn't focus it
+  // (Safari): the arrows then go on from there.
+  openEventDrawer(event, { source, selected: carouselSlide(control), opener: cardLink(control) ?? undefined });
 };
 
 /**
@@ -348,6 +365,7 @@ const CONTROLS: [attribute: string, handler: ControlHandler][] = [
   ["day", chooseDay],
   ["monthStep", stepMonth],
   ["today", showToday],
+  ["skip", skipToList],
 ];
 
 /** "monthStep" → "[data-month-step]" */
