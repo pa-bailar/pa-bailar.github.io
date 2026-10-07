@@ -710,7 +710,7 @@ frontend/
                           their behavior)
       lib/                dates, holidays, format, links, linkPreview, calendarFeed, contact, mediaLabel, filterModel, styleFamilies, search,
                           saved, share, shareText, shareSources, shareCard, analytics, dom, focus, icons, accountLink,
-                          externalLink, sheet, sheetMotion, motion, brandColors, instagramEmbed, installPlace, onceFlag, storedSwitch,
+                          externalLink, sheet, sheetMotion, motion, brandColors, instagramEmbed, loader, installPlace, onceFlag, storedSwitch,
                           storedValue, outsideClick, viewTitles
     styles/               tokens.css (design tokens), base.css, components/*.css
 ```
@@ -760,6 +760,7 @@ from under one gets its entry when the overlay closes (pushed over the overlay's
 | `lib/cards.ts` | Finding the cards: the view on screen (`VIEW_ON_SCREEN`; the hidden views keep their old cards), an event's card where it's seen (`cardOnScreen`), a card's link (`CARD_LINK`, `cardLink`) |
 | `lib/brandColors.ts` | The palette as hex, for what can't read CSS (link previews, the share card, icons, `theme-color`), checked against `tokens.css` |
 | `lib/instagramEmbed.ts` | Instagram's player for a post, its script loaded on demand |
+| `lib/loader.ts` | The loader's markup: a ring turning while the player, a profile or a video loads (`loader.css`) |
 | `views/postsSheet.ts`, `views/postViewer.ts` | An event's posts; a post watched inside the site (the media viewer); an account's profile there (`openProfileViewer`: any `a[data-profile]`) |
 | `views/inlinePlayer.ts` | A video tapped in the detail plays in the image's place (Instagram's player), removed when off screen |
 | `views/clips.ts` | Videos' clips in the feed and on an event's page: the one on screen plays, silent, one at a time; held under the full drawer and the media viewer; unloaded off screen (section 5.7) |

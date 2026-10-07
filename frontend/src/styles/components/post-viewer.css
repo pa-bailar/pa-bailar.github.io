@@ -39,7 +39,17 @@
   background: var(--surface-sunken);
 }
 
+/* Our flyer while Instagram's player loads, with the loader in its middle (loader.css). */
+.post-viewer__flyer {
+  position: relative;
+}
+
+/* "Cargando…" (with the loader before it when there's no flyer to put it on), or why it didn't load. */
 .post-viewer__status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
   margin-top: var(--space-3);
   font-size: var(--text-sm);
   text-align: center;

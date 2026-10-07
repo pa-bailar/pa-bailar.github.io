@@ -21,3 +21,15 @@ describe("the scripts' motion agrees with tokens.css", () => {
     for (const css of styles) expect(css).not.toContain("cubic-bezier(");
   });
 });
+
+describe("the loader (loader.css)", () => {
+  const loader = readFileSync(new URL("../src/styles/components/loader.css", import.meta.url), "utf8");
+
+  it("turns only for visitors who allow motion, at its token's pace", () => {
+    const allowed = loader.slice(loader.indexOf("@media (prefers-reduced-motion: no-preference)"));
+    const outside = loader.replace(allowed.slice(0, allowed.indexOf("}\n}") + 3), "");
+    expect(allowed).toContain("animation: loader-turn var(--duration-loop)");
+    expect(outside).not.toMatch(/animation:/);
+    expect(tokens).toMatch(/--duration-loop: \d+ms;/);
+  });
+});
