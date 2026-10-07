@@ -1,9 +1,10 @@
 // Search over the events already in the page (no server): accent- and case-insensitive, every word must
-// appear somewhere in the event (title, academy, organizer, venue, area, artists, rhythms, activities, type).
-// "juanita bachata" finds Juanita Quintero's bachata events; "halloween" every Halloween social.
+// appear somewhere in the event (title, academy, organizer, venue, area, artists, rhythms, activities, type, and
+// "gratis" when its card says so). "juanita bachata" finds Juanita Quintero's bachata events; "halloween" every
+// Halloween social; "gratis salsa" the free salsa ones.
 
 import type { DanceEvent } from "../types";
-import { typeLabel } from "./format";
+import { FREE, priceSummary, typeLabel } from "./format";
 
 /** "Salsa Caleña" → "salsa calena": for comparing, never for showing. */
 export function fold(text: string): string {
@@ -24,6 +25,8 @@ function searchText(event: DanceEvent): string {
         event.address,
         event.area,
         typeLabel(event.event_type),
+        // The card's "Gratis" (the lowest price free), with its other word: the Instagram audit, 7 Oct 2026.
+        priceSummary(event) === FREE && "gratis gratuito",
         ...event.styles,
         ...event.artists,
         ...event.activities,

@@ -76,8 +76,11 @@ export function eventCountLabel(count: number): string {
   return `${count} ${count === 1 ? "evento" : "eventos"}`;
 }
 
+/** A price of nothing, as the cards say it. */
+export const FREE = "Gratis";
+
 export function formatMoney(amountCop: number): string {
-  return amountCop === 0 ? "Gratis" : money.format(amountCop);
+  return amountCop === 0 ? FREE : money.format(amountCop);
 }
 
 /** "21:00" -> "9:00 p. m." */
