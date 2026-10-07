@@ -325,7 +325,7 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
     screen readers ("…, 3 eventos, 1 guardado"); the legend under the grid has "Festivo" and "Guardado".
 - **Search** (`lib/search.ts`) runs on the events already in the page: accent- and case-insensitive,
   every word must appear somewhere in the event (title, academy, organizer, venue, area, artists,
-  rhythms, activities, type). On phones Buscar turns the bar at the bottom into the field (see "The bar at the
+  rhythms, activities, type, and "gratis" or "gratuito" when its card says "Gratis"). On phones Buscar turns the bar at the bottom into the field (see "The bar at the
   bottom"); on wide screens the field is in the tabs' row. Results show after a short pause in typing, from the top of
   the list (in the calendar, the day's list).
 
