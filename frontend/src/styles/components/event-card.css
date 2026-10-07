@@ -173,11 +173,12 @@
   flex-direction: row;
   align-items: center;
   gap: var(--space-2);
-  min-height: var(--touch-target);
+  min-height: calc(var(--touch-target) + var(--space-2)); /* 52px: chunkier than a control, easier to see (7 Oct) */
   margin-top: var(--space-6);
+  padding-inline: var(--space-4);
   border: 0;
-  background: none;
-  font-size: var(--text-sm);
+  background: none; /* the fill is the frame's (::after), inside its ink */
+  font-size: var(--text-md);
   font-weight: var(--weight-bold);
 }
 
@@ -622,6 +623,16 @@
 .event-card__details:active::after,
 .period-more:active::after {
   background: var(--details-pressed);
+}
+
+/* "Ver N más" keeps the month blocks' fill (.period-summary's --surface) inside its frame (the owner, 7 Oct 2026).
+   Pressed, it sinks to the image wells' tone: Detalles' pressed fill is the cards' own in the dark theme. */
+.period-more::after {
+  background: var(--surface);
+}
+
+.period-more:active::after {
+  background: var(--surface-sunken);
 }
 
 .event-card__share {
