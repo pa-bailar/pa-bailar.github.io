@@ -1,6 +1,7 @@
 // The bookmark that saves an event ("Guardar", like Instagram's), on every card and in the event's
 // detail, and the number of saved events on the way to Guardados (the bar at the bottom, the toolbar's tab).
-// Saved ids live in this browser (lib/saved.ts). The same event's bookmarks all change together.
+// Saved ids live in this browser (lib/saved.ts). The same event's bookmarks all change together. What a save says
+// is up to the page (main.ts: views/saveNotice.ts).
 
 import type { DanceEvent } from "../types";
 import { escapeHtml } from "../lib/dom";
@@ -42,15 +43,25 @@ export function renderSavedCount(count: number) {
   });
 }
 
+type SaveChange = (id: string, saved: boolean) => void;
+
+let changed: SaveChange = () => {};
+
+/** Saves or unsaves the event `id` as its bookmark does ("Deshacer" too): all its bookmarks follow, then `onChange`. */
+export function toggleSave(id: string) {
+  const saved = toggleSaved(id);
+  syncSaveButtons(id);
+  changed(id, saved);
+}
+
 /** Bookmark clicks anywhere on the page; `onChange` runs after an event is saved or unsaved. */
-export function initSaveButtons(onChange: () => void = () => {}) {
+export function initSaveButtons(onChange: SaveChange = () => {}) {
+  changed = onChange;
   document.addEventListener("click", (domEvent) => {
     const id = (domEvent.target as HTMLElement).closest<HTMLElement>("[data-save]")?.dataset.save;
     if (id === undefined) return;
     domEvent.preventDefault();
-    toggleSaved(id);
-    syncSaveButtons(id);
-    onChange();
+    toggleSave(id);
   });
   syncSaveButtons();
 }

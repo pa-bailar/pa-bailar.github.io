@@ -1,0 +1,67 @@
+/* A short notice at the bottom of the screen (scripts/views/notice.ts): "Guardado · Ver guardados", the install
+   reminder. Just above the bar at the bottom (phones), or above the home indicator; on wide screens at the bottom
+   left, away from the side panel. Between notices it's empty: no room, no taps, but still a live region, so screen
+   readers hear the next one. */
+.notice {
+  position: fixed;
+  right: var(--space-4);
+  bottom: calc(var(--space-3) + max(var(--bottom-nav-space), env(safe-area-inset-bottom)));
+  left: var(--space-4);
+  z-index: var(--z-sticky);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--touch-target);
+  padding: var(--space-1) var(--space-1) var(--space-1) var(--space-4);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  box-shadow: var(--shadow-menu);
+  font-size: var(--text-sm);
+}
+
+.notice:empty {
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  box-shadow: none;
+  pointer-events: none;
+}
+
+.notice__text {
+  flex: 1;
+  padding-block: var(--space-2);
+}
+
+/* Its button: a link's look, a full touch target. */
+.notice__action {
+  flex: none;
+  min-height: var(--touch-target);
+  padding-inline: var(--space-3);
+}
+
+.notice__close {
+  flex: none;
+}
+
+@media (min-width: 720px) {
+  .notice {
+    right: auto;
+    left: var(--space-6);
+    max-width: calc(100vw - 2 * var(--space-6));
+  }
+}
+
+/* It rises a little as it comes, like the sheets; with reduced motion it just appears. */
+@media (prefers-reduced-motion: no-preference) {
+  .notice:not(:empty) {
+    animation: notice-in var(--duration-enter) var(--ease-emphasized-decelerate);
+  }
+}
+
+@keyframes notice-in {
+  from {
+    opacity: 0;
+    translate: 0 var(--space-3);
+  }
+}

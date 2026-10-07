@@ -23,6 +23,7 @@ import { storedSwitch } from "../lib/storedSwitch";
 import { storedValue } from "../lib/storedValue";
 import { BASE_URL } from "../lib/links";
 import { dismissSheet, initPanelSheet, openPanelSheet } from "../lib/sheet";
+import { showNotice } from "./notice";
 
 // Kept in this browser (blocked storage: for this visit, or not at all): when the banner was dismissed, whether the
 // app is installed ("1"), when the reminder after saving was shown.
@@ -70,6 +71,9 @@ const NOTE = "Pa' Bailar queda en tu pantalla de inicio y se abre como una app."
 const place = () => installPlace(navigator.userAgent, navigator);
 const guide = () => installGuide(place());
 
+/** Inside an app's own browser (Instagram, Facebook, TikTok…), where saved events stay apart from the phone's browser. */
+export const inAppBrowser = () => place().kind === "in-app";
+
 function dismissedRecently(): boolean {
   const at = Number(dismissedAt.get() ?? 0);
   return Date.now() - at < DISMISS_DAYS * 24 * 60 * 60 * 1000;
@@ -84,7 +88,8 @@ function render() {
   if (banner) banner.hidden = !offer || dismissedRecently();
 }
 
-function openSteps() {
+/** The sheet with the steps for where the visitor is (also "Ábrela en tu navegador" after a save: saveNotice.ts). */
+export function showInstallSteps() {
   const steps = guide();
   if (!steps) return;
   byId("install-sheet-title").textContent = steps.title;
@@ -115,7 +120,7 @@ async function copyLink() {
 }
 
 async function install() {
-  if (!installEvent) return openSteps();
+  if (!installEvent) return showInstallSteps();
   const event = installEvent;
   installEvent = null; // used once: Chrome sends a new one if it can offer again
   await event.prompt();
@@ -149,7 +154,6 @@ export function initInstallPrompt() {
       dismissSheet(byId<HTMLDialogElement>("install-sheet"));
       render();
     }
-    else if (target.closest("[data-nudge-close]")) byId("install-nudge").hidden = true;
     else if (target.closest("[data-install-dismiss]")) {
       dismissedAt.set(String(Date.now()));
       render();
@@ -168,15 +172,15 @@ export function initInstallPrompt() {
 
 /**
  * After a save: whoever dismissed the banner gets one reminder, once, when they have two saved events
- * (a moment the app clearly helps; Google's advice is to offer again then, not to nag). It goes after
- * NUDGE_SECONDS.
+ * (a moment the app clearly helps; Google's advice is to offer again then, not to nag). It takes the place of the
+ * save's own notice (views/notice.ts) for NUDGE_SECONDS.
  */
 export function offerAfterSaving(savedCount: number) {
   if (!canOffer() || savedCount < 2 || !dismissedRecently() || nudgedAt.get()) return;
-  nudgedAt.set(String(Date.now()));
-  const nudge = byId("install-nudge");
-  nudge.hidden = false;
-  window.setTimeout(() => (nudge.hidden = true), NUDGE_SECONDS * 1000);
+  const reminder = { label: "Instalar", run: () => void install().then(render), track: "instalar" };
+  if (showNotice("Tus guardados a un toque: instala Pa' Bailar.", reminder, { seconds: NUDGE_SECONDS, closable: true })) {
+    nudgedAt.set(String(Date.now()));
+  }
 }
 
 /** At most this many flyers sent to the worker (pages/sw.js.ts, SHOWN_IMAGES_LIMIT). */
