@@ -9,6 +9,7 @@ import { isMultiDay, isSeries, lastDay, parseIsoDate, sameMonth, todayIso } from
 import {
   capitalize,
   dateRangeLabel,
+  FREE,
   formatLongDate,
   formatTime,
   priceSummary,
@@ -116,7 +117,7 @@ export function previewCard(event: DanceEvent, today = todayIso()): PreviewCard 
     title: event.title.trim(),
     place: previewPlace(event),
     price,
-    free: price === "Gratis",
+    free: price === FREE,
     sticker: stickerDate(event, event.date),
   };
 }

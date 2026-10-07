@@ -9,6 +9,7 @@ import {
   capitalize,
   cardWhenLabel,
   eventDaysLabel,
+  FREE,
   formatMoney,
   formatTime,
   placeLabel,
@@ -103,7 +104,7 @@ export function sheetPrice(event: DanceEvent): string {
   if (!summary) return toConfirm();
   const free = event.prices.every((price) => price.amount_cop === 0);
   const options = event.prices.length > 1 ? ` ${detailNote(`· ${event.prices.length} opciones`)}` : "";
-  return `${free ? "Gratis" : escapeHtml(summary)}${options}`;
+  return `${free ? FREE : escapeHtml(summary)}${options}`;
 }
 
 /**
