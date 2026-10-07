@@ -529,7 +529,9 @@ stateDiagram-v2
 - **Install:** `views/installPrompt.ts` offers it: Chrome/Edge's own dialog, or a sheet with the steps for where the visitor is (`lib/installPlace.ts`, from the user agent; section 5.7). It also registers the service worker (built site only).
 - **Saved events** live in this browser (`lib/saved.ts`, localStorage); Guardados is a view of its own
   (`views/savedView.ts`: the ones to come by period, the past ones folded; the search applies, the filters don't), and
-  the calendar marks the days holding one.
+  the calendar marks the days holding one. A save or an unsave in Guardados says so in a notice at the bottom
+  (`views/notice.ts`, chosen by `lib/saveNotice.ts`): `main.ts` gives its button the way to Guardados (`navigateView`)
+  or the undo (`toggleSave`); the install reminder after a second save is the same notice (`offerAfterSaving`).
 - **What's kept in this browser** (localStorage, each read and written inside `try`, so blocked storage only means it
   lasts for the visit): `theme`, `saved-events`, `hide-bars`, things shown once (`lib/onceFlag.ts`) and the install
   offer's state (`lib/storedValue.ts`, `lib/storedSwitch.ts`).
@@ -706,10 +708,10 @@ frontend/
       theme.ts, themeConfig.ts   the Claro / Oscuro switch, its rule and colors
       views/              upcomingView, calendarView, viewNavigation, eventCard, eventDetail, eventDetailActions, eventDrawer,
                           drawerSheet, drawerGestures, drawerHistory, filters, filterPanels, jumpBar, whenMenu, bottomNav, postsSheet,
-                          postViewer, inlinePlayer, clips, saveButton, sharing, installPrompt, detailsHint, dayChange (HTML strings +
+                          postViewer, inlinePlayer, clips, saveButton, saveNotice, notice, sharing, installPrompt, detailsHint, dayChange (HTML strings +
                           their behavior)
       lib/                dates, holidays, format, links, linkPreview, calendarFeed, contact, mediaLabel, filterModel, styleFamilies, search,
-                          saved, secondTap, share, shareText, shareSources, shareCard, analytics, dom, focus, icons, accountLink,
+                          saved, saveNotice, secondTap, share, shareText, shareSources, shareCard, analytics, dom, focus, icons, accountLink,
                           externalLink, sheet, sheetMotion, motion, brandColors, instagramEmbed, loader, installPlace, onceFlag, storedSwitch,
                           storedValue, outsideClick, viewTitles
     styles/               tokens.css (design tokens), base.css, components/*.css
@@ -768,6 +770,8 @@ from under one gets its entry when the overlay closes (pushed over the overlay's
 | `lib/search.ts` | Search over the events in the page |
 | `lib/secondTap.ts` | A double-tap's second tap (the same spot, within 450 ms): `main.ts` drops it after a tap opened an event, so it doesn't land on the details rising under the finger |
 | `lib/saved.ts`, `views/saveButton.ts` | Saved events: the ids in this browser; the bookmarks, and Guardados' number on the bar and the tab (`renderSavedCount`) |
+| `views/notice.ts` | A short notice at the bottom (`#notice`, a live region): one at a time, gone after its seconds unless the mouse or the focus is on it; none over a modal |
+| `lib/saveNotice.ts`, `views/saveNotice.ts` | What a save says ("Guardado · Ver guardados", "Quitado de tus guardados · Deshacer", in an app's browser "Guardado solo en este navegador"), and its button's action |
 | `lib/share.ts`, `lib/shareText.ts`, `lib/shareSources.ts`, `lib/shareCard.ts`, `views/sharing.ts` | Sharing through the phone's menu: the text, what each list's button shares (`shareSources`, pure), the image of a list, the buttons |
 | `views/installPrompt.ts`, `lib/installPlace.ts` | Installing the site like an app: the offer, and the steps for each browser; registers the service worker |
 | `lib/analytics.ts` | GoatCounter events: page views of events, clicks (`data-track`), where details were opened from |

@@ -295,8 +295,9 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
   On iPhone the page can't tell whether it was added, so the sheet ends with "Ya la agregué" (hides the offer
   for good), and closing the steps rests the banner for 30 days like ×; the footer's link stays.
 - **A reminder:** whoever dismissed the banner gets one small reminder, once, when they save their second
-  event ("Tus guardados a un toque: instala Pa' Bailar", `.install-nudge`, just above the bar at the bottom, gone after
-  10 seconds). Offering again at a moment the app clearly helps, instead of nagging, is Google's advice.
+  event ("Tus guardados a un toque: instala Pa' Bailar · Instalar ×", a notice at the bottom: see "Saving and
+  searching", in place of the save's own, for 10 seconds). Offering again at a moment the app clearly helps, instead
+  of nagging, is Google's advice.
 - **Knowing it's installed:** opened as the app; or this browser saw it installed (on Android the app shares the
   browser's storage); or Chrome on Android says so (`getInstalledRelatedApps`). Chrome offering to install again
   means it was uninstalled, and the offer comes back. iPhone can't be asked: there, ×, the steps or "Ya la agregué"
@@ -307,6 +308,18 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
 - **Saving ("Guardar")** is a bookmark, like Instagram's: on each card, and among the quick actions of the details and
   of an event's page (`scripts/views/saveButton.ts`). Saved events live in this browser (`lib/saved.ts`,
   localStorage): no account, nothing sent anywhere. Events no longer in the data are forgotten.
+- **Saving says so** (the Instagram audit, 7 Oct 2026: the bookmark alone was easy to miss, and unsaving in Guardados
+  took the card away for good): a notice rises just above the bar at the bottom (bottom left on wide screens, away
+  from the side panel) for 4 seconds, like Instagram's and Material's snackbars: **"Guardado · Ver guardados"**; in
+  Guardados, **"Quitado de tus guardados · Deshacer"** (the card comes back where it was). Inside an app's own browser
+  (Instagram, Facebook…: where a Story's link opens) the visit's first save says **"Guardado solo en este navegador ·
+  Ábrela en tu navegador"**, whose button shows the install sheet's steps to open the site in the phone's browser.
+  Nothing where the change is already in sight (unsaving in the list), and nothing over the details on phones, a
+  modal: their Guardar turns "Guardado". (`scripts/views/notice.ts`, `saveNotice.ts`, `lib/saveNotice.ts`.)
+  - **The notice** (`notice.css`): the surface, a border and the menus' shadow; one at a time, a new one replacing the
+    last; held while the mouse or the keyboard's focus is on it (time to reach its button), not by a finger's tap;
+    it rises a little as it comes, and just appears with reduced motion. A live region always in the page, empty
+    between notices, so screen readers hear each one.
 - **Guardados is a place of its own** (`views/savedView.ts`, `/guardados/`), like Instagram's Saved and Airbnb's
   Wishlists. Not a toggle over the list and the calendar (it read as "the calendar without the calendar", and you could
   be in Eventos and Guardados at once): the owner, 5 October 2026. It's in the bar at the bottom and a third tab on
