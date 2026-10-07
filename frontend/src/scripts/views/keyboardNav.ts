@@ -222,8 +222,14 @@ export function initKeyboardNav(hooks: Hooks) {
     if (event && hooks.showImage(event, link)) domEvent.preventDefault(); // otherwise a card's link opens the details
     // A period's button: it opens the period and focuses its first new event without scrolling (main.ts showPeriod,
     // so a click doesn't jump); from the keyboard that card must come into view, or the next arrow starts off screen.
+    // The side panel follows it, as after an arrow: else it stayed on the event before, and the next → skipped the
+    // first new one.
     if (target.closest("[data-show-period]")) {
-      requestAnimationFrame(() => document.activeElement?.closest("[data-event-card]")?.scrollIntoView({ block: "nearest" }));
+      requestAnimationFrame(() => {
+        const card = document.activeElement?.closest<HTMLElement>("[data-event-card]") ?? undefined;
+        card?.scrollIntoView({ block: "nearest" });
+        showInPane(card);
+      });
     }
   }
 
