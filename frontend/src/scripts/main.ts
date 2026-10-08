@@ -103,8 +103,11 @@ function renderView(): { shown: number; groups: AgendaGroup[] } {
   return { shown: renderSavedView(container, events, state), groups: [] }; // its plans are shared whole
 }
 
-/** `keepPlace`: a filter changed; keep the period being read under the bar (see restoreListPosition). */
-function render({ keepPlace = false } = {}) {
+/**
+ * `keepPlace`: a filter changed; keep the period being read under the bar (see restoreListPosition). `quiet`: the count
+ * isn't said this time, a notice says what changed (savesChanged).
+ */
+function render({ keepPlace = false, quiet = false } = {}) {
   // Re-rendering replaces chips and calendar days; remember which one had focus, and where.
   const focused = focusSelector(document.activeElement);
   const scope = focusScope(document.activeElement);
@@ -136,7 +139,8 @@ function render({ keepPlace = false } = {}) {
   renderSavedCount();
   watchClips(byId(VIEW_IDS[state.view])); // the videos' clips, as a feed
   if (anchor) restoreListPosition(anchor);
-  announce(shown);
+  if (quiet) byId("results-status").textContent = ""; // the next count is said, even the same one
+  else announce(shown);
   setShareSources(shareSources({ groups, state, plans: upcomingSaved(), planUrl: plansEventUrl }));
   syncWhenMenu(); // "Cuándo" was drawn again: its menu, if open, stays under it
   syncPanels(); // the same for the toolbar's pills and their panels (wide screens)
@@ -497,11 +501,13 @@ export function start() {
   // "Quitado de tus guardados · Deshacer"), or once offers to install. The calendar marks the day again; Guardados
   // itself is drawn again right where the visitor was (never jumping, e.g. to a period's heading): an event unsaved
   // there leaves it. Another tab's saves change the same things here, without a notice (they weren't made here).
-  const savesChanged = () => {
+  // With a notice (`quiet`), screen readers hear it, not Guardados' new count too: two polite live regions changing at
+  // once, and some readers drop one, maybe the one with Deshacer (the bug hunt of 7 Oct 2026). The count is on screen.
+  const savesChanged = ({ quiet = false } = {}) => {
     if (state.view === "calendar") renderCalendarDays(events, state); // the days' saved marks, at once
     if (state.view !== "saved") return renderSavedCount();
     const scrollY = window.scrollY;
-    render();
+    render({ quiet });
     returnToScroll(scrollY);
   };
   initSaveButtons((id, saved) => {
@@ -509,8 +515,8 @@ export function start() {
     const seeSaved = () => navigateView("saved");
     const told = tellSaveChange(id, saved, { inSaved, seeSaved, undo: () => toggleSave(id) });
     if (reminderMayReplace(told)) offerAfterSaving(upcomingSaved().length); // a new save's "Guardado" only
-    savesChanged();
-  }, savesChanged);
+    savesChanged({ quiet: told !== null });
+  }, () => savesChanged());
   // The page's own address picks the view it opens on: /calendario/, /guardados/ (lib/links.ts viewOfPath).
   state.view = viewOfPath(location.pathname);
   render();

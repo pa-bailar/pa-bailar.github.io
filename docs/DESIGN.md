@@ -332,6 +332,9 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
     bug hunt of 7 Oct 2026); one at a time, a new one replacing the last; held while the mouse or the keyboard's
     focus is on it (time to reach its button), not by a finger's tap; it rises a little as it comes, and just appears
     with reduced motion. A live region always in the page, empty between notices, so screen readers hear each one.
+    Heard alone: unsaving in Guardados, the count under the list (`#results-status`, "2 eventos guardados por venir")
+    isn't said with it, since two polite regions changing at once can lose one, maybe the one with Deshacer (the bug
+    hunt of 7 Oct 2026); the count is on screen, and Deshacer says it again.
   - **Deshacer from the keyboard: Ctrl+Z** (⌘Z on a Mac) while its notice is up, as in Gmail or Drive (its button
     carries `aria-keyshortcuts`). The notice is far in Tab's order (from the details' Guardado, 14 Shift+Tabs, and gone
     after its 4 seconds: the bug hunt of 7 Oct 2026); taking the focus to it instead would pull the visitor away from

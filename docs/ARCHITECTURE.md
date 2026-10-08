@@ -543,7 +543,9 @@ stateDiagram-v2
   or the undo (`toggleSave`), which Ctrl+Z (⌘Z) also runs while it's up (`NoticeAction.undo`: the keyboard's way to
   it, through the button's own click); the install reminder after a second save is the same notice (`offerAfterSaving`),
   in place of a new save's "Guardado" only (`reminderMayReplace`, from what `tellSaveChange` showed) and only for a
-  banner dismissed on an earlier visit (`reminderDue`, pure and tested).
+  banner dismissed on an earlier visit (`reminderDue`, pure and tested). When a save's notice speaks, Guardados is
+  drawn again without saying its count (`savesChanged({ quiet })` → `render({ quiet })` empties `#results-status`):
+  two polite live regions changing at once can lose one.
 - **What's kept in this browser** (localStorage, each read and written inside `try`, so blocked storage only means it
   lasts for the visit): `theme`, `saved-events`, `hide-bars`, things shown once (`lib/onceFlag.ts`) and the install
   offer's state (`lib/storedValue.ts`, `lib/storedSwitch.ts`). What storage couldn't keep is held in memory for the
