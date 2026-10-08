@@ -1,17 +1,19 @@
 // The filters: what's chosen and what can be chosen, and where they're drawn.
-//   - Phones, the bar (JumpBar.astro), pinned to the top: [Social ×] [Sin bares ×] [🕒 ▾] | [Salsa] [Bachata] [Urbano] [Tango],
-//     one row that scrolls sideways. "🕒 ▾" ("Cuándo") opens a short menu with one choice of date (whenMenu.ts);
-//     once chosen it reads "🕒 Finde" with its own × beside it. A rhythm chip is chosen with one tap (dark, with ×),
-//     unchosen with another. A choice made in the "Filtros" sheet (Filtros in the bar at the bottom, BottomNav.astro,
-//     with the number of choices in use) that has no chip of its own in the row shows first, as a removable chip
-//     ("Social ×", "Sin bares ×").
+//   - Phones, the bar (JumpBar.astro), pinned to the top: [🕒 ▾] | [Social] [Rumba] [Taller] [Concierto]…, the view's
+//     types in the owner's order (8 Oct 2026; the rhythms are in the sheet), one row that scrolls sideways. "🕒 ▾"
+//     ("Cuándo") opens a short menu with one choice of date (whenMenu.ts); once chosen it reads "🕒 Finde" with its own
+//     × beside it. A type chip is chosen with one tap (dark, with ×), unchosen with another. The row is always these:
+//     a choice made in the "Filtros" sheet (Filtros in the bar at the bottom, BottomNav.astro, with the number of
+//     choices in use) without a chip of its own (a rhythm, "Sin bares") shows in the sheet and the line under the bar,
+//     never as a chip pushing the row's own aside (the owner, 8 Oct 2026: chosen types filled the row, Cuándo out of
+//     sight).
 //   - Under the bar, only while filtering: "12 eventos · Finde, Salsa" and "× Limpiar".
-//   - The sheet (FilterSheet.astro): the switch "Ocultar eventos de bares" first (remembered; while on, "Sin bares ×"
-//     in the row), every date, rhythm (under its family: Salsa, Bachata, Urbanos, Otros) and type with its count,
-//     "Limpiar" and "Ver 12 eventos".
-//   - Wide screens (ViewToolbar.astro): one row of dropdown pills, [🕒 Cuándo ▾] (the list only) [Ritmo · 2 ▾] [Tipo ▾],
-//     and the toggle chip "Ocultar bares"; each pill opens its panel (filterPanels.ts): Cuándo's menu, the rhythms
-//     under their families, the types. Under the row, while filtering: "12 eventos" ("40 eventos · Sin bares" while the
+//   - The sheet (FilterSheet.astro): the switch "Ocultar eventos de bares" first (remembered; while on, "Sin bares" in
+//     the line under the bar), every date, type and rhythm (under its family: Salsa, Bachata, Urbanos, Otros) with its
+//     count, "Limpiar" and "Ver 12 eventos".
+//   - Wide screens (ViewToolbar.astro): one row of dropdown pills, [🕒 Cuándo ▾] (the list only) [Tipo ▾] [Ritmo · 2 ▾],
+//     and the toggle chip "Ocultar bares"; each pill opens its panel (filterPanels.ts): Cuándo's menu, the types, the
+//     rhythms under their families. Under the row, while filtering: "12 eventos" ("40 eventos · Sin bares" while the
 //     bars are hidden), every other choice as a removable chip ("Finde ×", "Salsa ×") and "× Limpiar".
 // What each shows, and how options are counted and dimmed, is the model (lib/filterModel.ts, pure and tested); the
 // "Cuándo" menu draws itself (whenMenu.ts).
@@ -124,18 +126,17 @@ function revealChip(row: HTMLElement, chip: HTMLElement) {
 }
 
 /**
- * The phone bar's row of chips. It keeps where it was scrolled to, unless a new choice would be out of sight
- * (chosen in the sheet, or a chip further along): then the row scrolls to the first one.
+ * The phone bar's row of chips: Cuándo, then the types. It keeps where it was scrolled to, unless a new choice would be
+ * out of sight (a type chosen in the sheet, or a chip further along): then the row scrolls to the first one.
  */
 function renderBarChips(model: FilterModel) {
   const row = byId("jump-chips");
   const scrolled = row.scrollLeft;
   const when = model.when && model.dates.length ? model.when : null;
   row.innerHTML = [
-    ...model.extra.map(removableHtml),
     when ? whenChipHtml(when) : "",
     when ? `<span class="jump-bar__divider" aria-hidden="true"></span>` : "",
-    ...model.quickStyles.map((item) => chipHtml(item, { short: true })),
+    ...model.types.map((item) => chipHtml(item, { short: true })),
   ].join("");
   row.scrollLeft = scrolled;
   const fresh = new Set(model.applied.map(choiceKey).filter((key) => !barChoices.has(key)));
@@ -192,10 +193,10 @@ function renderSheet(model: FilterModel, state: AppState) {
   body.innerHTML = [
     `<div class="filter-sheet__switch">${barsSwitchHtml(model.hideBars)}</div>`,
     dates,
+    group("Tipo de evento", "", model.types, "Tipo de evento"),
     model.styles.length
       ? `<h3 class="filter-sheet__label">Ritmo <small>elige uno o varios</small></h3>${familiesHtml(model.styleGroups, "sheet")}`
       : "",
-    group("Tipo de evento", "", model.types, "Tipo de evento"),
   ].join("");
   body.scrollTop = scrolled;
   byId<HTMLButtonElement>("filter-sheet-clear").disabled = model.active === 0;
@@ -236,12 +237,12 @@ export function pillHtml(pill: FilterPill, open: boolean): string {
     }</button>`;
 }
 
-/** The pills' row: Cuándo (the list), Ritmo, Tipo, then "Ocultar bares" set a little apart. */
+/** The pills' row: Cuándo (the list), Tipo, Ritmo, then "Ocultar bares" set a little apart. */
 export function pillsRowHtml(model: FilterModel, open: PillKey | null): string {
   return [...model.pills.map((pill) => pillHtml(pill, open === pill.key)), barsChipHtml(model.hideBars)].join("");
 }
 
-/** A panel's content: Ritmo (its families) and Tipo (its chips), each option with its count; Cuándo is its menu. */
+/** A panel's content: Tipo (its chips) and Ritmo (its families), each option with its count; Cuándo is its menu. */
 export function panelHtml(key: PillKey, model: FilterModel): string {
   if (key === "when") return model.when ? whenMenuHtml(model.when) : "";
   const head = (title: string) =>

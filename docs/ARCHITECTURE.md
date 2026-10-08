@@ -400,8 +400,9 @@ flowchart TD
   The options (`filterModel` in `lib/filterModel.ts`, pure and tested; `dateOptions` in `state.ts`) exist by the events in
   view before any filter, in a stable order, so chips never move; each is counted against the other groups
   (`matchesFilters(event, state, except)`), and one with nothing to show is `dimmed` (unless chosen), not hidden. The
-  model also gives the bar's "Cuándo" (`whenModel`), its fixed rhythm chips (`quickStyles`), every choice in use
-  (`applied`) and those without a chip of their own (`extra`), Filtros' badge (`activeFilterCount`), the count shown
+  model also gives the bar's "Cuándo" (`whenModel`), its chips (the types in view, in `TYPE_ORDER`), every choice in use
+  (`applied`, named in the line under the bar; the bar never shows them as extra chips), Filtros' badge
+  (`activeFilterCount`), the count shown
   and the line under the bar (`summaryLine`). `clearFilters` ("Limpiar") clears dates, rhythms and types and shows the
   bars again, not the search nor Guardados. The other filters live only in memory, not in the URL or storage
   (`DESIGN.md`, "Filters"); hiding the bars is the one remembered.

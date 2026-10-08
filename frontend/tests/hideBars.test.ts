@@ -70,13 +70,12 @@ describe("⚙'s badge, the chips and Limpiar", () => {
     expect(hasActiveFilters({ ...list, hideBars: true })).toBe(true);
   });
 
-  it("shows as \"Sin bares\": last among the choices, removable after ⚙, in the line under the bar", () => {
+  it("shows as \"Sin bares\": last among the choices, in the line under the bar (not as a chip in the bar)", () => {
     const state = { ...list, hideBars: true, types: ["social" as const] };
     const model = filterModel(all, state, today);
     expect(model.hideBars).toBe(true);
     expect(model.active).toBe(2);
     expect(model.applied.at(-1)).toEqual(HIDDEN_BARS);
-    expect(model.extra.map((item) => item.label)).toEqual(["Social", "Sin bares"]);
     expect(summaryLine(model, state).names).toBe("Social, Sin bares");
     expect(filterModel(all, list, today).applied).toEqual([]);
   });

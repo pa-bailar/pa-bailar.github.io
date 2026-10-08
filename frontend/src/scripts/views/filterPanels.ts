@@ -24,7 +24,7 @@ import { historyState, overlayState } from "../screenHistory";
 import { WIDE_QUERY } from "./bottomNav";
 import { menuPlacement, nextOption } from "./whenMenu";
 
-const KEYS: readonly PillKey[] = ["when", "styles", "types"];
+const KEYS: readonly PillKey[] = ["when", "types", "styles"];
 const PREFIX = "panel-"; // the history entry's `menu`: "panel-styles"
 const HOLD_LIMIT_MS = 1000; // a held click goes on by then, even if the panel's back never landed
 
