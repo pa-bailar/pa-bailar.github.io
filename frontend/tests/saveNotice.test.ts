@@ -83,7 +83,7 @@ describe("the notice's element (notice.css, Notice.astro)", () => {
   );
 
   it("is a live region always in the page: empty between notices, never hidden (screen readers miss those)", () => {
-    expect(element).toMatch(/<div class="notice" id="notice" role="status"><\/div>/);
+    expect(element).toMatch(/<div class="notice" id="notice" role="status"[^>]*><\/div>/); // empty inside
     const empty = css.slice(css.indexOf(".notice:empty {"), css.indexOf("}", css.indexOf(".notice:empty {")));
     expect(empty).not.toMatch(/display:\s*none|visibility:\s*hidden/);
   });
@@ -110,11 +110,19 @@ describe("the notice's element (notice.css, Notice.astro)", () => {
   // Searching on an iPhone, a bookmark tapped in the results leaves the keyboard up (the button takes no focus), and the
   // notice sat behind it, at the bottom of the page under the keyboard (the bug hunt of 7 Oct 2026).
   it("rises with the bar over the keyboard while searching on a phone", () => {
-    const lifted = css.slice(css.indexOf(":root:has(.bottom-nav.is-lifted) .notice {"));
+    const lifted = css.slice(css.indexOf(".notice.is-lifted {"));
     expect(lifted.slice(0, lifted.indexOf("}"))).toMatch(/bottom:[^;]*var\(--keyboard-inset\)/);
-    // The page's inset, not only the bar's: the notice isn't inside the bar.
+    const notice = readFileSync(new URL("../src/components/Notice.astro", import.meta.url), "utf8");
+    expect(notice).toContain("data-rises-with-keyboard");
+  });
+
+  // Chrome on Android redraws its own navigation bar (back, home) when the page's root changes: the keyboard's inset
+  // written on <html> at every step of the keyboard, and a rule anchored on the root, made it flash (the owner, 8 Oct
+  // 2026). Nothing about the keyboard touches the root.
+  it("never writes the keyboard's inset on the page's root, nor styles the notice from it", () => {
     const bottomNav = readFileSync(new URL("../src/scripts/views/bottomNav.ts", import.meta.url), "utf8");
-    expect(bottomNav).toContain('document.documentElement.style.setProperty("--keyboard-inset"');
+    expect(bottomNav).not.toMatch(/documentElement\.style\.setProperty/);
+    expect(css.replace(/\/\*[\s\S]*?\*\//g, "")).not.toMatch(/:root:has\(/); // its rules, not its comments
   });
 
   it("rises only for visitors who allow motion", () => {
