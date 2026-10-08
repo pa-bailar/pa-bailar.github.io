@@ -7,6 +7,11 @@ export function byId<T extends HTMLElement = HTMLElement>(id: string): T {
 }
 
 /** True when the visitor asked for less motion: animations and smooth scrolling are skipped. */
+/** iOS Safari shows a control's :active look (its press, base.css) only where a touchstart listener exists. */
+export function allowPressedLook() {
+  document.addEventListener("touchstart", () => {}, { passive: true });
+}
+
 export function prefersReducedMotion(): boolean {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
