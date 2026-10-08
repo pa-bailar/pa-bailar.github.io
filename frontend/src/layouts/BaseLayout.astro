@@ -79,7 +79,9 @@ const themeScript = allowInlineScript(Astro, themePrePaintScript);
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- viewport-fit=cover: without it iOS reports every env(safe-area-inset-*) as 0, and in the home-screen app the
+         bar at the bottom sat under the home indicator (the iPhone audit, 8 Oct 2026). -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>{title}</title>
     <meta name="description" content={description} />
     {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={pageUrl} />}
