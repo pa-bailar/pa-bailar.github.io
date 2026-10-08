@@ -698,7 +698,7 @@ frontend/
       404.astro
     components/           HomePage (the app's body, for / and /calendario/), SiteHeader, ThemeToggle, Stripes,
                           ViewToolbar, JumpBar, BottomNav, FilterSheet, CalendarView, EventDrawer, PostsSheet,
-                          PostViewer, InstallOffer, SiteFooter
+                          PostViewer, InstallOffer, Notice, SiteFooter
     scripts/
       main.ts             entry point of the home page: state, render, the clicks' handlers
       eventPage.ts        entry point of an event's page
