@@ -268,6 +268,16 @@ export function resultsButtonLabel({ shown, searched }: Pick<FilterModel, "shown
   return searched ? "Sin eventos: cambia los filtros" : "Sin eventos: cambia la búsqueda";
 }
 
+/**
+ * Whether the search, not the filters, is why a view shows nothing: a search is on, and either no filter is or the
+ * search alone finds nothing there either (`searched`: what it finds alone, the model's `searched` or a calendar day's).
+ * What an empty list and an empty day of the calendar say (views/filters.ts emptyResultsHtml, views/calendarView.ts
+ * emptyDayHtml).
+ */
+export function searchIsWhy(state: AppState, searched: number): boolean {
+  return state.query.trim() !== "" && !(activeFilterCount(state) > 0 && searched > 0);
+}
+
 /** Whether a date was chosen that the list no longer has (the day changed while the page was open). */
 export function staleDates(model: FilterModel, state: AppState): string[] {
   return state.view === "upcoming" ? state.dates.filter((key) => !model.dates.some((item) => item.value === key)) : [];

@@ -19,6 +19,7 @@ import { detailsEventName, type DetailsSource, seenCounter, trackEvent, trackPag
 import { ICONS } from "../lib/icons";
 import { eventPath } from "../lib/links";
 import {
+  type CardGap,
   type CardPlace,
   cardLink,
   cardOnScreen,
@@ -203,7 +204,7 @@ const cardOf = (id: string | null) => (id ? cardOnScreen(id) : undefined);
  * while its card is there, or nothing's open. The arrows and Tab go on from there (keyboardNav.ts, tabOrder.ts): they
  * did nothing, and Tab left the page (the bug hunt of 7 Oct 2026).
  */
-export function openEventGap(): { before?: HTMLElement; after?: HTMLElement } | null {
+export function openEventGap(): CardGap | null {
   const id = openEventId();
   if (!id || cardOnScreen(id) || !state.place) return null;
   return { before: cardOf(state.place.before), after: cardOf(state.place.after) };

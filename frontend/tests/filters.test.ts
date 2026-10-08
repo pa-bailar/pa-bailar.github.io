@@ -20,6 +20,7 @@ import {
   filterModel,
   rankedStyles,
   resultsButtonLabel,
+  searchIsWhy,
   summaryLine,
   whenModel,
 } from "../src/scripts/lib/filterModel";
@@ -369,6 +370,13 @@ describe("the filter chips (filterModel)", () => {
     expect(emptyDayHtml(calendar, 0)).toContain("No hay eventos este día que coincidan con «salsa».");
     expect(emptyDayHtml({ ...calendar, types: [] }, 0)).toContain("que coincidan con «salsa»");
     expect(emptyDayHtml({ ...calendar, query: "", types: [] })).toContain("No hay eventos este día.");
+  });
+
+  it("both go by one rule: the search is why, unless a filter is on and the search alone finds events (searchIsWhy)", () => {
+    expect(searchIsWhy({ ...list, query: "zzqx" }, 0)).toBe(true);
+    expect(searchIsWhy({ ...list, query: "zzqx", dates: ["hoy"] }, 0)).toBe(true);
+    expect(searchIsWhy({ ...list, query: "sábado", dates: ["hoy"] }, 41)).toBe(false);
+    expect(searchIsWhy({ ...list, query: "  ", dates: ["hoy"] }, 0)).toBe(false); // no search
   });
 });
 
