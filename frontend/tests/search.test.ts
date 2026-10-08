@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { STYLES } from "../scripts/check-data.mjs";
+import { EVENT_TYPES, STYLES } from "../scripts/check-data.mjs";
 import { styleLabel, typeLabel } from "../src/scripts/lib/format";
 import { fold, matchesWords, singulars, wordsOf } from "../src/scripts/lib/search";
 import { ALL_TARGETS, FREE_WORD } from "../src/scripts/lib/searchWords";
@@ -191,9 +191,8 @@ describe("the search's Spanish", () => {
   });
 
   it("every word the table finds is one the site shows (a type, a rhythm, «gratis»)", () => {
-    const types: EventType[] = ["social", "party", "workshop", "concert", "festival", "congress", "competition", "show", "other"];
     const shown = new Set([
-      ...types.map((type) => fold(typeLabel(type))),
+      ...(EVENT_TYPES as EventType[]).map((type) => fold(typeLabel(type))),
       ...STYLES.map((style: string) => wordsOf(fold(styleLabel(style))).join(" ")),
       FREE_WORD,
     ]);
