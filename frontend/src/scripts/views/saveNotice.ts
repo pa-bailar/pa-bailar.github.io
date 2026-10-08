@@ -25,9 +25,9 @@ export function tellSaveChange(id: string, saved: boolean, { inSaved, seeSaved, 
     if (told?.event === id) hideNotice(told.notice); // "Guardado", then unsaved at once
     return;
   }
-  const { text, action, track } = SAVE_NOTICES[kind];
+  const { text, action, track, undo: undoes } = SAVE_NOTICES[kind];
   const run = { saved: seeSaved, "saved-here-only": showInstallSteps, unsaved: undo }[kind];
-  const notice = showNotice(text, { label: action, run, track });
+  const notice = showNotice(text, { label: action, run, track, undo: undoes });
   if (!notice) return;
   told = { event: id, notice };
   if (kind === "saved-here-only") toldInApp = true;

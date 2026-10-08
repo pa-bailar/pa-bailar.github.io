@@ -6,14 +6,15 @@
 
 export type SaveNotice = "saved" | "saved-here-only" | "unsaved";
 
-export const SAVE_NOTICES: Record<SaveNotice, { text: string; action: string; track: string }> = {
+/** `undo`: its button undoes, so Ctrl+Z (⌘Z) does it too (views/notice.ts). */
+export const SAVE_NOTICES: Record<SaveNotice, { text: string; action: string; track: string; undo?: boolean }> = {
   saved: { text: "Guardado", action: "Ver guardados", track: "aviso-ver-guardados" },
   "saved-here-only": {
     text: "Guardado solo en este navegador",
     action: "Ábrela en tu navegador",
     track: "aviso-abrir-navegador",
   },
-  unsaved: { text: "Quitado de tus guardados", action: "Deshacer", track: "aviso-deshacer" },
+  unsaved: { text: "Quitado de tus guardados", action: "Deshacer", track: "aviso-deshacer", undo: true },
 };
 
 interface Where {

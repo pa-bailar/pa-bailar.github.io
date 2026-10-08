@@ -18,6 +18,12 @@ class FakePart {
   closest(selector: string) {
     return this.className.split(" ").includes(selector.replace(/^\./, "")) ? this : null;
   }
+  /** Its click, as the browser sends it to the notice (the part as its target). */
+  click() {
+    const domEvent = new Event("click");
+    Object.defineProperty(domEvent, "target", { value: this });
+    element.dispatchEvent(domEvent);
+  }
 }
 
 /** The element #notice: its parts, and the events it listens to. */
@@ -34,6 +40,9 @@ class FakeNotice extends EventTarget {
   }
   closest() {
     return null;
+  }
+  querySelector(selector: string) {
+    return this.part(selector.replace(/^\./, "")) ?? null;
   }
   get text() {
     return this.parts.map((part) => part.textContent).join(" · ");
@@ -59,7 +68,8 @@ async function openPage(): Promise<Notice> {
     querySelector: (selector: string) => (selector === "dialog:modal" && page.modal ? {} : null),
   });
   vi.stubGlobal("document", page);
-  vi.stubGlobal("window", { setTimeout: (...args: Parameters<typeof setTimeout>) => setTimeout(...args), clearTimeout });
+  const timers = { setTimeout: (...args: Parameters<typeof setTimeout>) => setTimeout(...args), clearTimeout };
+  vi.stubGlobal("window", timers); // Vitest's fake timers, as they are when called
   vi.resetModules();
   const notice = await import("../src/scripts/views/notice");
   notice.initNotice();
@@ -70,14 +80,26 @@ async function openPage(): Promise<Notice> {
 const pointer = (type: "pointerenter" | "pointerleave", pointerType = "mouse") =>
   element.dispatchEvent(Object.assign(new Event(type), { pointerType }));
 
-/** A click on one of the notice's parts, as the browser sends it to the notice (its target, the part). */
+/** A click on one of the notice's parts. */
 function click(className: string) {
   const target = element.part(className);
   if (!target) throw new Error(`no .${className} in the notice`);
-  const domEvent = new Event("click");
-  Object.defineProperty(domEvent, "target", { value: target });
-  element.dispatchEvent(domEvent);
+  target.click();
 }
+
+type Modifiers = Partial<Record<"ctrlKey" | "metaKey" | "shiftKey" | "altKey", boolean>>;
+
+/** A key pressed on the page (`target`: what has the focus), with its modifiers; returns whether it was taken. */
+function press(key: string, modifiers: Modifiers = {}, target: object = page.body) {
+  const keys = { key, ctrlKey: false, metaKey: false, shiftKey: false, altKey: false, ...modifiers };
+  const domEvent = Object.assign(new Event("keydown", { cancelable: true }), keys);
+  Object.defineProperty(domEvent, "target", { value: target });
+  page.dispatchEvent(domEvent);
+  return domEvent.defaultPrevented;
+}
+
+/** The search field, with the focus. */
+const field = { closest: (selector: string) => (selector.includes("input") ? field : null) };
 
 beforeEach(() => {
   vi.useFakeTimers();
@@ -132,7 +154,7 @@ describe("the notice (views/notice.ts)", () => {
   // WebKit (Safari) sends no pointerleave when the button under the mouse goes away with the notice: the next notices
   // waited for the mouse to pass over them, and a "Deshacer" left there saved the event again whenever it was clicked
   // later (the bug hunt of 7 Oct 2026).
-  it("the next one still goes after its seconds when its button was clicked with the mouse (no pointerleave)", async () => {
+  it("the next one still goes in time after its button was clicked with the mouse (no pointerleave)", async () => {
     const { showNotice } = await openPage();
     showNotice("Quitado de tus guardados", { label: "Deshacer", run: () => {} });
     pointer("pointerenter");
@@ -147,5 +169,51 @@ describe("the notice (views/notice.ts)", () => {
     page.modal = true;
     expect(showNotice("Guardado", later)).toBe(0);
     expect(element.hasChildNodes()).toBe(false);
+  });
+});
+
+// The keyboard's way to "Deshacer": from the details' Guardado it was 14 Shift+Tabs away, and gone after its 4 seconds
+// (the bug hunt of 7 Oct 2026). Ctrl+Z (⌘Z on a Mac) undoes while it's up, as in Gmail or Drive.
+describe("Ctrl+Z, the undo's key (views/notice.ts)", () => {
+  const undoing = () => ({ label: "Deshacer", run: vi.fn(), undo: true });
+
+  it("does what Deshacer does while its notice is up, and says so to screen readers", async () => {
+    const { showNotice } = await openPage();
+    const undo = undoing();
+    showNotice("Quitado de tus guardados", undo);
+    expect(element.part("notice__action")?.attributes.get("aria-keyshortcuts")).toBe("Control+Z Meta+Z");
+    expect(press("z", { ctrlKey: true })).toBe(true);
+    expect(undo.run).toHaveBeenCalledOnce();
+    expect(element.hasChildNodes()).toBe(false);
+    expect(press("z", { ctrlKey: true })).toBe(false); // gone: nothing left to undo
+    expect(undo.run).toHaveBeenCalledOnce();
+  });
+
+  it("⌘Z on a Mac", async () => {
+    const { showNotice } = await openPage();
+    const undo = undoing();
+    showNotice("Quitado de tus guardados", undo);
+    press("z", { metaKey: true });
+    expect(undo.run).toHaveBeenCalledOnce();
+  });
+
+  it("only for an undo: another notice's button keeps to its own click", async () => {
+    const { showNotice } = await openPage();
+    const run = vi.fn();
+    showNotice("Guardado", { label: "Ver guardados", run });
+    expect(element.part("notice__action")?.attributes.has("aria-keyshortcuts")).toBe(false);
+    expect(press("z", { ctrlKey: true })).toBe(false);
+    expect(run).not.toHaveBeenCalled();
+  });
+
+  it("not while typing (the field's own undo), nor with Shift (redo), nor over a modal", async () => {
+    const { showNotice } = await openPage();
+    const undo = undoing();
+    showNotice("Quitado de tus guardados", undo);
+    expect(press("z", { ctrlKey: true }, field)).toBe(false);
+    expect(press("Z", { ctrlKey: true, shiftKey: true })).toBe(false);
+    page.modal = true;
+    expect(press("z", { ctrlKey: true })).toBe(false);
+    expect(undo.run).not.toHaveBeenCalled();
   });
 });

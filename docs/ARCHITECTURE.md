@@ -468,6 +468,12 @@ stateDiagram-v2
   - **Modal:** `showModal()` makes the list inert and `html:has(dialog:modal)` stops it scrolling. The dialog has
     `autofocus`, so opening focuses the dialog itself, not its handle (focusing the handle, still off screen,
     scrolled the list). Closing gives the focus back to what opened it (read before `close()`).
+  - **The opener drawn again:** the views draw new cards (a save in Guardados, a search), so the opener can be gone.
+    Closing then gives the focus to the same event's card as it is now (`openerNow`), and when the card left the list
+    (unsaved in Guardados from the details) to the one that took its place, or the one before it: the drawer notes its
+    event's place, by the events around it, on opening and after every redraw (`notePlace`, `lib/cards.ts`
+    `placeAmong`, `standIn`). The arrows and Tab in the side panel go on from that place too (`openEventGap`, a hook
+    of `keyboardNav.ts` and `tabOrder.ts`). Before, the focus fell to the page (the bug hunt of 7 Oct 2026).
   - **Side panel:** fixed on the right, opened with `show()` so the page stays usable; the open event's card is
     outlined (`highlightCurrentCard`), and Escape is handled by the page (a non-modal dialog doesn't get it). Where it
     would lie over the page, `makeRoom` sets `.panel-room` on `<html>` while it's open: every `.container` (header,
@@ -534,7 +540,8 @@ stateDiagram-v2
   (`views/savedView.ts`: the ones to come by period, the past ones folded; the search applies, the filters don't), and
   the calendar marks the days holding one. A save or an unsave in Guardados says so in a notice at the bottom
   (`views/notice.ts`, chosen by `lib/saveNotice.ts`): `main.ts` gives its button the way to Guardados (`navigateView`)
-  or the undo (`toggleSave`); the install reminder after a second save is the same notice (`offerAfterSaving`).
+  or the undo (`toggleSave`), which Ctrl+Z (⌘Z) also runs while it's up (`NoticeAction.undo`: the keyboard's way to
+  it, through the button's own click); the install reminder after a second save is the same notice (`offerAfterSaving`).
 - **What's kept in this browser** (localStorage, each read and written inside `try`, so blocked storage only means it
   lasts for the visit): `theme`, `saved-events`, `hide-bars`, things shown once (`lib/onceFlag.ts`) and the install
   offer's state (`lib/storedValue.ts`, `lib/storedSwitch.ts`).
@@ -762,7 +769,7 @@ from under one gets its entry when the overlay closes (pushed over the overlay's
 | `lib/sheet.ts`, `lib/sheetMotion.ts` | Bottom sheets that drag to dismiss; panel sheets with their own back-button step; the release and exit numbers they share with the drawer (`releaseVelocity`, the flick, the slops) |
 | `lib/motion.ts` | The motion tokens scripts use (durations, Material's curves), mirroring `tokens.css` |
 | `lib/glide.ts` | What a layout change moved glides to its new place (FLIP, transforms only; none with reduced motion): the page making room beside the side panel |
-| `lib/cards.ts` | Finding the cards: the view on screen (`VIEW_ON_SCREEN`; the hidden views keep their old cards), an event's card where it's seen (`cardOnScreen`), a card's link (`CARD_LINK`, `cardLink`) |
+| `lib/cards.ts` | Finding the cards: the view on screen (`VIEW_ON_SCREEN`; the hidden views keep their old cards), an event's card where it's seen (`cardOnScreen`), a card's link (`CARD_LINK`, `cardLink`), and where a card was once a redraw took it away (`placeAmong`, `standIn`) |
 | `lib/brandColors.ts` | The palette as hex, for what can't read CSS (link previews, the share card, icons, `theme-color`), checked against `tokens.css` |
 | `lib/instagramEmbed.ts` | Instagram's player for a post, its script loaded on demand |
 | `lib/loader.ts` | The loader's markup: a ring turning while the player, a profile or a video loads (`loader.css`) |
@@ -773,7 +780,7 @@ from under one gets its entry when the overlay closes (pushed over the overlay's
 | `lib/search.ts`, `lib/searchWords.ts`, `lib/searchDays.ts` | Search over the events in the page: words by their start, plurals, known phrases whole, joining words left out; the visitors' Spanish and the site's words it finds (one way); the days a search names, found by date |
 | `lib/secondTap.ts` | A double-tap's second tap (the same spot, within 450 ms): `main.ts` drops it after a tap opened an event, so it doesn't land on the details rising under the finger |
 | `lib/saved.ts`, `views/saveButton.ts` | Saved events: the ids in this browser; the bookmarks, and Guardados' number on the bar and the tab (`renderSavedCount`) |
-| `views/notice.ts` | A short notice at the bottom (`#notice`, a live region in `components/Notice.astro`): one at a time, gone after its seconds unless the mouse or the focus is on it; none over a modal (`canShowNotice`) |
+| `views/notice.ts` | A short notice at the bottom (`#notice`, a live region in `components/Notice.astro`): one at a time, gone after its seconds unless the mouse or the focus is on it; an undo also Ctrl+Z (⌘Z); none over a modal (`canShowNotice`) |
 | `lib/saveNotice.ts`, `views/saveNotice.ts` | What a save says ("Guardado · Ver guardados", "Quitado de tus guardados · Deshacer", in an app's browser "Guardado solo en este navegador"), and its button's action |
 | `lib/share.ts`, `lib/shareText.ts`, `lib/shareSources.ts`, `lib/shareCard.ts`, `views/sharing.ts` | Sharing through the phone's menu: the text, what each list's button shares (`shareSources`, pure), the image of a list, the buttons |
 | `views/installPrompt.ts`, `lib/installPlace.ts` | Installing the site like an app: the offer, and the steps for each browser; registers the service worker |

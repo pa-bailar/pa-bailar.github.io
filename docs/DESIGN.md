@@ -328,6 +328,11 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
     last; held while the mouse or the keyboard's focus is on it (time to reach its button), not by a finger's tap;
     it rises a little as it comes, and just appears with reduced motion. A live region always in the page, empty
     between notices, so screen readers hear each one.
+  - **Deshacer from the keyboard: Ctrl+Z** (⌘Z on a Mac) while its notice is up, as in Gmail or Drive (its button
+    carries `aria-keyshortcuts`). The notice is far in Tab's order (from the details' Guardado, 14 Shift+Tabs, and gone
+    after its 4 seconds: the bug hunt of 7 Oct 2026); taking the focus to it instead would pull the visitor away from
+    where they are, and Enter there would undo. Not while typing in a field (its own undo), nor under a modal. In the
+    details, Guardar itself also saves the event again.
 - **Guardados is a place of its own** (`views/savedView.ts`, `/guardados/`), like Instagram's Saved and Airbnb's
   Wishlists. Not a toggle over the list and the calendar (it read as "the calendar without the calendar", and you could
   be in Eventos and Guardados at once): the owner, 5 October 2026. It's in the bar at the bottom and a third tab on
@@ -341,7 +346,11 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
     que guardaste coincide con «…»." · "Borrar la búsqueda".
   - **Empty:** a big bookmark, "Aún no tienes eventos guardados", "Toca 🔖 en un evento para tenerlo aquí, a la mano. Se
     quedan en este navegador, sin crear cuenta." and "Ver eventos".
-  - **Unsaving there** takes the card away at once, the page staying where it was.
+  - **Unsaving there** takes the card away at once, the page staying where it was. Unsaved from the details, they stay
+    on the event, and the keyboard goes on from where its card was: → ↓ and Tab to the card that took its place, ← ↑
+    and Shift+Tab to the one before it; Escape gives the focus to the card that took its place (the one before it, at
+    the list's end). Saved again, its card gets the focus back. Before, the arrows did nothing and the focus fell to
+    the page (the bug hunt of 7 Oct 2026).
   - **The calendar marks the days** holding a saved event (as filtered on screen; at once as an event is saved or unsaved
     there) with a small bookmark, and says it to screen readers ("…, 3 eventos, 1 guardado"); the legend under the
     grid has "Festivo" and "Guardado".

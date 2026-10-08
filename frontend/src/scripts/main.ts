@@ -31,6 +31,7 @@ import {
   initEventDrawer,
   openEventDrawer,
   focusEventDetails,
+  openEventGap,
   openEventId,
   sidePanelFits,
 } from "./views/eventDrawer";
@@ -451,6 +452,7 @@ export function start() {
   initKeyboardNav({
     findEvent,
     openEventId,
+    openEventGap,
     showEvent: (event, card, { stayInList, lastPhoto }) => {
       openEventDrawer(event, { opener: card, focus: !stayInList, passing: true }); // counted once read (analytics)
       followStage(event, lastPhoto ? "last" : "first"); // the image beside the panel, if on show, changes with it

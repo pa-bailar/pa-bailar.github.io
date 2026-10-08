@@ -18,7 +18,15 @@ import { byId, escapeHtml, prefersReducedMotion } from "../lib/dom";
 import { detailsEventName, type DetailsSource, seenCounter, trackEvent, trackPageview } from "../lib/analytics";
 import { ICONS } from "../lib/icons";
 import { eventPath } from "../lib/links";
-import { cardOnScreen, VIEW_ON_SCREEN } from "../lib/cards";
+import {
+  type CardPlace,
+  cardLink,
+  cardOnScreen,
+  cardsOnScreen,
+  placeAmong,
+  standIn,
+  VIEW_ON_SCREEN,
+} from "../lib/cards";
 import { glideFrom } from "../lib/glide";
 import { DURATION, EASE } from "../lib/motion";
 import { holdClips } from "./clips";
@@ -57,6 +65,7 @@ const state = {
   offset: 0, // px the drawer sits below its full height (phones)
   viewport: 0, // the screen's height when it opened (or last resized)
   opener: null as HTMLElement | null, // what had the focus when it opened: it gets it back
+  place: null as CardPlace | null, // where the event's card is in the list, as last seen (it can leave: notePlace)
   leaving: false, // sliding away
   pendingExit: null as { from: number; velocity: number } | null, // a close waiting for its "back"
   exitTimer: 0,
@@ -167,10 +176,37 @@ export function openEventId(): string | null {
 /** Side panel: the open event's card is outlined in the list (also after the list is drawn again: main.ts). */
 export function highlightCurrentCard({ reveal = false } = {}) {
   clearCurrentCard();
-  if (!drawer().open || state.leaving || state.mode !== "panel" || !state.current) return;
+  if (!drawer().open || state.leaving || !state.current) return;
+  notePlace();
+  if (state.mode !== "panel") return;
   const card = cardOnScreen(state.current.id);
   card?.classList.add("is-current");
   if (reveal) card?.scrollIntoView({ block: "center" });
+}
+
+/**
+ * Where the open event's card is in the list, by the events around it, while it's there: on opening and after every
+ * redraw (highlightCurrentCard). Kept once a redraw takes the card away (unsaved in Guardados from the details), so the
+ * card that took its place stands in for it (openEventGap, openerNow).
+ */
+function notePlace() {
+  const id = state.current?.id;
+  const place = id ? placeAmong(cardsOnScreen().map((card) => card.dataset.eventCard ?? ""), id) : null;
+  if (place) state.place = place;
+}
+
+/** The event's card in the view on screen, if `id` is given and it's there. */
+const cardOf = (id: string | null) => (id ? cardOnScreen(id) : undefined);
+
+/**
+ * The open event's card left the list with a redraw (unsaved in Guardados): the cards that were around it, now. Null
+ * while its card is there, or nothing's open. The arrows and Tab go on from there (keyboardNav.ts, tabOrder.ts): they
+ * did nothing, and Tab left the page (the bug hunt of 7 Oct 2026).
+ */
+export function openEventGap(): { before?: HTMLElement; after?: HTMLElement } | null {
+  const id = openEventId();
+  if (!id || cardOnScreen(id) || !state.place) return null;
+  return { before: cardOf(state.place.before), after: cardOf(state.place.after) };
 }
 
 /**
@@ -301,7 +337,9 @@ export function openEventDrawer(
   if (active instanceof HTMLElement && active !== document.body && !element.contains(active)) state.opener = active;
   else if (!wasOpen) state.opener = null;
   if (opener) state.opener = opener; // ← → in the details, the lightbox's "Detalles": the card of the event shown
+  if (state.current?.id !== event.id) state.place = null;
   state.current = event;
+  notePlace();
   render(event, selected); // `selected`: the post a card's carousel showed (its Instagram button opens that one)
   // Opening the side panel (dialog.show()) moves the focus into it, and Safari scrolls the page doing it. With the focus
   // to stay where it is (the card in focus, for the reading pane: keyboardNav.ts), the panel is inert while it opens,
@@ -361,6 +399,21 @@ function finishClose() {
   if (element.open) element.close(); // → "close": the rest of the cleanup
 }
 
+/**
+ * What gets the focus back on closing: what opened the details. A card drawn again since (a save in Guardados, a
+ * search: the views draw new cards) gives it to the same event's card as it is now; one gone from the list (unsaved
+ * in Guardados) to the card that took its place, or the one before it at the end. Before, the focus fell to the page
+ * and Tab started over from the top (the bug hunt of 7 Oct 2026).
+ */
+function openerNow(): HTMLElement | null {
+  const opener = state.opener;
+  if (!opener || opener.isConnected) return opener;
+  const id = opener.closest<HTMLElement>("[data-event-card]")?.dataset.eventCard;
+  if (!id) return null;
+  const leftList = id === state.current?.id ? standIn(state.place, (other) => Boolean(cardOnScreen(other))) : null;
+  return cardLink(cardOnScreen(id) ?? cardOf(leftList));
+}
+
 /** Everything closing leaves behind: the focus back, the content gone, the address. */
 function cleanUpAfterClose(element: HTMLDialogElement) {
   window.clearTimeout(state.exitTimer);
@@ -370,11 +423,11 @@ function cleanUpAfterClose(element: HTMLDialogElement) {
   state.focusBeforeClose = undefined;
   // The image stage beside the side panel (lightbox.ts) goes with it: focus left there counts as the panel's.
   const ours = focus && (element.contains(focus) || Boolean(focus.closest?.("#lightbox")));
-  if (state.opener?.isConnected && (!focus || focus === document.body || ours)) {
-    state.opener.focus({ preventScroll: true });
-  }
+  const opener = openerNow();
+  if (opener && (!focus || focus === document.body || ours)) opener.focus({ preventScroll: true });
   makeRoom(false); // before `state.current` goes: its card keeps its place, if it's in sight
   state.opener = null;
+  state.place = null;
   byId("drawer-content").replaceChildren(); // nothing of it stays in memory while it's closed
   state.current = null;
   seen.hide();

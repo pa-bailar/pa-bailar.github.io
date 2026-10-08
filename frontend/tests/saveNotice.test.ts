@@ -13,9 +13,11 @@ describe("the notice after saving (lib/saveNotice.ts)", () => {
     expect(SAVE_NOTICES.saved).toMatchObject({ text: "Guardado", action: "Ver guardados" });
   });
 
-  it("unsaving in Guardados, where the card goes away, can be undone", () => {
+  it("unsaving in Guardados, where the card goes away, can be undone; Ctrl+Z too (the keyboard's way)", () => {
     expect(saveNotice(false, saved)).toBe("unsaved");
     expect(SAVE_NOTICES.unsaved.action).toBe("Deshacer");
+    expect(SAVE_NOTICES.unsaved.undo).toBe(true);
+    expect(SAVE_NOTICES.saved.undo).toBeUndefined(); // "Ver guardados" undoes nothing
   });
 
   it("says nothing where the change is in sight: unsaving in the list, Deshacer bringing the card back", () => {
