@@ -10,10 +10,11 @@
 
 import type { DanceEvent } from "../types";
 import { eventPageUrl, BASE_URL } from "../lib/links";
-import { shareContent } from "../lib/share";
+import { shareContent, type ShareContent, whatsAppUrl } from "../lib/share";
 import { drawShareCard } from "../lib/shareCard";
 import type { ShareSource } from "../lib/shareSources";
 import { eventShareText } from "../lib/shareText";
+import { canShowNotice, showNotice } from "./notice";
 
 // Tagged so visits from shared links count as such (messaging apps hide where a visit came from).
 const shareUrl = (url: string) => `${url}${url.includes("?") ? "&" : "?"}utm_source=compartido`;
@@ -57,10 +58,18 @@ export function setShareSources(next: Map<string, ShareSource>) {
   document.querySelectorAll<HTMLElement>("[data-share]").forEach((button) => observer!.observe(button));
 }
 
+/** Shares; where the link was copied instead (no share menu), says so, with WhatsApp a tap away. Over a modal (the
+ * details on a phone) no notice can say it, so the link isn't copied there: WhatsApp opens, as it did before. */
+async function share(content: ShareContent) {
+  if ((await shareContent(content, canShowNotice())) !== "copied") return;
+  const sendIt = () => window.open(whatsAppUrl(content.text, content.url), "_blank", "noopener");
+  showNotice("Enlace copiado", { label: "Enviar por WhatsApp", run: sendIt, track: "aviso-whatsapp" });
+}
+
 function shareSource(key: string) {
   const source = sources.get(key);
   if (!source) return;
-  void shareContent({
+  void share({
     title: source.title,
     text: source.text,
     url: shareUrl(SITE_URL),
@@ -69,7 +78,7 @@ function shareSource(key: string) {
 }
 
 function shareEvent(event: DanceEvent) {
-  void shareContent({ title: event.title, text: eventShareText(event), url: shareUrl(eventPageUrl(event)) });
+  void share({ title: event.title, text: eventShareText(event), url: shareUrl(eventPageUrl(event)) });
 }
 
 /** Share buttons anywhere on the page: lists (data-share) and events (data-share-event, found by id). */

@@ -17,6 +17,7 @@ import { initPostsSheet } from "./views/postsSheet";
 import { initSaveButtons } from "./views/saveButton";
 import { initSharing } from "./views/sharing";
 import { initInstallPrompt, registerServiceWorker } from "./views/installPrompt";
+import { initNotice } from "./views/notice";
 
 export function initEventPage() {
   initThemeToggle();
@@ -25,6 +26,7 @@ export function initEventPage() {
   initPostViewer();
   initSaveButtons();
   initSharing((id) => (id === event.id ? event : undefined));
+  initNotice(); // "Enlace copiado" where there's no share menu
   initInstallPrompt();
   registerServiceWorker();
   const event: DanceEvent = JSON.parse(byId("event-data").textContent || "null");

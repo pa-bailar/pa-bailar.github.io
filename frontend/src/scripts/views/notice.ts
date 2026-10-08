@@ -3,9 +3,9 @@
 // install reminder: installPrompt.ts). One at a time, a new one replacing the last. It goes after its seconds, but
 // not while the mouse or the focus is on it (time to reach its button: WCAG 2.2.1), and at once when its button is
 // used.
-// The element (#notice, HomePage.astro) is a live region, always in the page and empty between notices, so screen
-// readers hear each one. None over a modal (the details on phones, a sheet): the page under it is inert, so the
-// notice couldn't be used, and it would sit behind them.
+// The element (#notice, Notice.astro: the home page and an event's own page) is a live region, always in the page
+// and empty between notices, so screen readers hear each one. None over a modal (the details on phones, a sheet):
+// the page under it is inert, so the notice couldn't be used, and it would sit behind them.
 
 import { byId } from "../lib/dom";
 
@@ -58,9 +58,12 @@ function button(className: string, label: string, track?: string): HTMLButtonEle
   return element;
 }
 
+/** Whether a notice can show now: not over a modal, whose page underneath is inert. */
+export const canShowNotice = () => !document.querySelector("dialog:modal");
+
 /** Says `text`, with `next` as its button. Returns its number (for hideNotice), or 0 if it can't show: over a modal. */
 export function showNotice(text: string, next?: NoticeAction, options: NoticeOptions = {}): number {
-  if (document.querySelector("dialog:modal")) return 0;
+  if (!canShowNotice()) return 0;
   const words = document.createElement("span");
   words.className = "notice__text";
   words.textContent = text;

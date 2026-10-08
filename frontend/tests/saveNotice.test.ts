@@ -35,14 +35,21 @@ describe("the notice after saving (lib/saveNotice.ts)", () => {
   });
 });
 
-describe("the notice's element (notice.css, HomePage.astro)", () => {
+describe("the notice's element (notice.css, Notice.astro)", () => {
   const css = readFileSync(new URL("../src/styles/components/notice.css", import.meta.url), "utf8");
-  const page = readFileSync(new URL("../src/components/HomePage.astro", import.meta.url), "utf8");
+  const element = readFileSync(new URL("../src/components/Notice.astro", import.meta.url), "utf8");
+  const pages = ["../src/components/HomePage.astro", "../src/pages/evento/[id].astro"].map((path) =>
+    readFileSync(new URL(path, import.meta.url), "utf8"),
+  );
 
   it("is a live region always in the page: empty between notices, never hidden (screen readers miss those)", () => {
-    expect(page).toMatch(/<div class="notice" id="notice" role="status"><\/div>/);
+    expect(element).toMatch(/<div class="notice" id="notice" role="status"><\/div>/);
     const empty = css.slice(css.indexOf(".notice:empty {"), css.indexOf("}", css.indexOf(".notice:empty {")));
     expect(empty).not.toMatch(/display:\s*none|visibility:\s*hidden/);
+  });
+
+  it("is on both pages that show a notice: the home page and an event's own page (\"Enlace copiado\")", () => {
+    for (const page of pages) expect(page).toContain("<Notice />");
   });
 
   it("rises only for visitors who allow motion", () => {
