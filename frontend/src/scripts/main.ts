@@ -64,7 +64,7 @@ import { renderSavedView } from "./views/savedView";
 import { watchDayChange } from "./views/dayChange";
 import { initInstallPrompt, offerAfterSaving, registerServiceWorker } from "./views/installPrompt";
 import { initSharing, plansEventUrl, setShareSources } from "./views/sharing";
-import { isSaved, keepOnly } from "./lib/saved";
+import { isSaved, trimSaved } from "./lib/saved";
 import { isPointerClick, isSecondTap, tapOf, type Tap } from "./lib/secondTap";
 
 /** "Ocultar eventos de bares", remembered in this browser (blocked storage: for this visit). */
@@ -435,7 +435,7 @@ function openSharedEvent() {
 export function start() {
   events = JSON.parse(byId("events-data").textContent || "[]");
   eventById = new Map(events.map((event) => [event.id, event]));
-  keepOnly(new Set(eventById.keys())); // saved events no longer in the data are forgotten
+  trimSaved(new Set(eventById.keys())); // past many, the oldest saved events no longer in the data are forgotten
   initThemeToggle();
   initEventDrawer(findEvent);
   initPostsSheet();
@@ -493,17 +493,20 @@ export function start() {
   // Saving changes the "Guardados" count, and says so at the bottom ("Guardado · Ver guardados"; in Guardados,
   // "Quitado de tus guardados · Deshacer"), or once offers to install. The calendar marks the day again; Guardados
   // itself is drawn again right where the visitor was (never jumping, e.g. to a period's heading): an event unsaved
-  // there leaves it.
+  // there leaves it. Another tab's saves change the same things here, without a notice (they weren't made here).
+  const savesChanged = () => {
+    if (state.view === "calendar") renderCalendarDays(events, state); // the days' saved marks, at once
+    if (state.view !== "saved") return renderSavedCount();
+    const scrollY = window.scrollY;
+    render();
+    returnToScroll(scrollY);
+  };
   initSaveButtons((id, saved) => {
     const inSaved = state.view === "saved";
     tellSaveChange(id, saved, { inSaved, seeSaved: () => navigateView("saved"), undo: () => toggleSave(id) });
     if (saved) offerAfterSaving(upcomingSaved().length);
-    if (state.view === "calendar") renderCalendarDays(events, state); // the days' saved marks, at once
-    if (!inSaved) return renderSavedCount();
-    const scrollY = window.scrollY;
-    render();
-    returnToScroll(scrollY);
-  });
+    savesChanged();
+  }, savesChanged);
   // The page's own address picks the view it opens on: /calendario/, /guardados/ (lib/links.ts viewOfPath).
   state.view = viewOfPath(location.pathname);
   render();
