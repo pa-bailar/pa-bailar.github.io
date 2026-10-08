@@ -627,9 +627,10 @@ Every browser on an iPhone is Safari's engine (WebKit), with its own limits:
   page and the 404 page. Over several days the times are the first day's start and the last day's end, so they never
   make a night past midnight.
 - **Workshop series** (`sessions`, `docs/DATA.md`): `isSeries`, `nextSession` (the first on or after today),
-  `shownSession` (the next, or the last once all passed), and `daysOf` (its sessions' days, not those between) in
-  `lib/dates.ts`. `isMultiDay` is false for a series. The card and the details show the next session, as of today in
-  the browser. Calendars get one VEVENT per session with its own times (`sessionTimes`, `lib/calendarFeed.ts`; not
+  `shownSession` (the next, or the last once all passed; or the one it's `listed` under), and `daysOf` (its sessions'
+  days, not those between) in `lib/dates.ts`. `isMultiDay` is false for a series. The card and the details show the
+  next session, as of today in the browser; a card listed under a later session (a day searched, a date chosen, the
+  calendar's day) shows that one. Calendars get one VEVENT per session with its own times (`sessionTimes`, `lib/calendarFeed.ts`; not
   RDATE, which can't give each session its own times). schema.org gets one `Event` from the first session to the
   last, with each session as a `subEvent`.
 - **Adding days** (`addDays`) moves the calendar date, not 24-hour steps, so "Mañana" and "Próxima
