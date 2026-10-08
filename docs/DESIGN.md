@@ -372,10 +372,22 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
   keeps its own days** (the same hunt): the list from today (on a Saturday, "finde" lists Saturday and Sunday), the
   calendar its month, past days too, and Guardados its past plans too ("sábado" keeps last Saturday's in "Ya
   pasaron"). So a date without its year is every year's: "3 de octubre" is the one just past in Guardados, the next
-  in the list (it was next year's everywhere, and Guardados lost the plan). Words that only join others ("el", "de",
-  "con", "este") are left out, unless the search is nothing else. **Places are searched only as the event says
-  them** (venue, address, area): no table of neighbourhoods (the owner, 7 Oct 2026: don't stretch the post's
-  information).
+  in the list (it was next year's everywhere, and Guardados lost the plan).
+  - **With words around them** (the same hunt: "sábado en la mañana" was tomorrow, "sábado 10" every Saturday, "el
+    otro finde", "17 de oct" and "qué hay hoy" found nothing): a part of the day keeps the day, as the search has no
+    hours ("sábado en la noche", "mañana por la tarde", "viernes noche"; "esta mañana" is today; alone, "en la
+    mañana" is no day, never tomorrow, and is left out). A weekday with a number is that day: "sábado 10" a Saturday
+    the 10th (none near: nothing, rather than every Saturday), "sábado 10 de octubre" the date. "Que viene" or
+    "entrante" after a day is "próximo" before it ("el sábado que viene"; "la semana entrante", "el mes que viene":
+    the next ones). "El otro sábado" and "el otro finde" are the ones after the coming one (next week's). A month
+    written short counts right after a number ("17 de oct", "3 nov"; alone, "mar" is the sea), a month may come
+    first ("octubre 17"), and a year after it ("octubre de 2026").
+  - **Words left out** unless the search is nothing else (`LEFT_OUT` in `lib/searchWords.ts`): those that only join
+    others ("el", "de", "con"), the words before a day ("este", "próximo"), and those of a question or a wish around
+    what's looked for ("qué hay hoy", "dónde bailar salsa", "quiero ir a bailar", "eventos de bachata"). Not "baile",
+    part of academies' names.
+- **Places are searched only as the event says them** (venue, address, area): no table of neighbourhoods (the owner,
+  7 Oct 2026: don't stretch the post's information).
 - **The field:** on phones Buscar turns the bar at the bottom into the field (see "The bar at the
   bottom"); on wide screens the field is in the tabs' row. Results show after a short pause in typing, from the top of
   the list (in the calendar, the day's list).

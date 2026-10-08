@@ -171,3 +171,79 @@ describe("the days named, whole: each view shows its own", () => {
     expect(finds("esta semana", on("2026-10-05"), "2026-10-10")).toBe(false);
   });
 });
+
+// Days with words around them (the bug hunt of 7 Oct 2026): "mañana en la noche" found nothing, "sábado en la mañana"
+// was read as tomorrow, "sábado 10" was every Saturday, "el otro finde", "17 de oct" and "qué hay hoy" found nothing.
+describe("days with words around them", () => {
+  const social = (date: string) => on(date, { title: "Social", styles: ["salsa"] });
+
+  it("a time of day means the day: the search has no hours", () => {
+    for (const query of ["mañana en la noche", "mañana por la noche", "mañana noche", "mañana en la mañana", "mañana por la tarde"]) {
+      expect(finds(query, social("2026-10-08")), query).toBe(true);
+      expect(finds(query, social("2026-10-07")), query).toBe(false);
+    }
+    for (const query of ["sábado en la noche", "sábado en la mañana", "el sábado por la tarde", "sábado de noche", "sábado noche"]) {
+      expect(finds(query, social("2026-10-10")), query).toBe(true);
+      expect(finds(query, social("2026-10-08")), query).toBe(false); // not tomorrow
+    }
+    expect(finds("hoy en la noche", social("2026-10-07"))).toBe(true);
+    expect(finds("esta mañana", social("2026-10-07"))).toBe(true); // this morning: today
+    expect(finds("esta tarde", social("2026-10-08"))).toBe(false);
+  });
+
+  it("alone, a time of day is no day (\"en la mañana\" isn't tomorrow), and left out", () => {
+    const workshop = on("2026-10-10", { title: "Clase de salsa", event_type: "workshop" });
+    expect(finds("clases en la mañana", workshop)).toBe(true);
+    expect(finds("salsa por la noche", social("2026-10-20"))).toBe(true);
+    expect(finds("noche de salsa", social("2026-10-10"))).toBe(false); // "noche" is a word here: the title has none
+  });
+
+  it("a weekday with a number is that day: a Saturday the 10th; with a month, the date", () => {
+    for (const query of ["sábado 10", "el sábado 10", "sábado 10 de octubre", "sábado, 10 de oct"]) {
+      expect(finds(query, social("2026-10-10")), query).toBe(true);
+      expect(finds(query, social("2026-10-17")), query).toBe(false);
+    }
+    expect(finds("viernes 9", social("2026-10-09"))).toBe(true);
+    expect(finds("viernes 9", social("2026-10-16"))).toBe(false);
+    expect(finds("viernes 13", social("2026-11-13"))).toBe(true);
+    expect(finds("sábado 11", social("2026-10-10"))).toBe(false); // no Saturday the 11th soon: nothing, honestly
+    expect(finds("viernes 10 de octubre", social("2026-10-10"))).toBe(true); // a date: its weekday is only said
+  });
+
+  it("\"el otro\" is the one after the coming one; \"que viene\" or \"entrante\" after a day is \"próximo\" before it", () => {
+    expect(finds("el otro finde", social("2026-10-17"))).toBe(true);
+    expect(finds("el otro fin de semana", social("2026-10-16"))).toBe(true);
+    expect(finds("el otro finde", social("2026-10-10"))).toBe(false);
+    expect(finds("el otro sábado", social("2026-10-17"))).toBe(true);
+    expect(finds("el otro sábado", social("2026-10-10"))).toBe(false);
+    expect(finds("el otro sábado", social("2026-10-24"))).toBe(false);
+    expect(finds("el otro sábado", social("2026-10-17"), "2026-10-10")).toBe(true); // on a Saturday: next week's
+    expect(finds("el finde que viene", social("2026-10-10"))).toBe(true);
+    expect(finds("el sábado que viene", social("2026-10-10"))).toBe(true);
+    expect(finds("la semana entrante", social("2026-10-14"))).toBe(true);
+    expect(finds("el mes que viene", social("2026-11-05"))).toBe(true);
+    expect(finds("el próximo mes", social("2026-10-20"))).toBe(false);
+  });
+
+  it("a month written short, beside a number; the month first; a year", () => {
+    for (const query of ["17 de oct", "17 oct", "17 de oct.", "octubre 17"]) {
+      expect(finds(query, social("2026-10-17")), query).toBe(true);
+      expect(finds(query, social("2026-10-18")), query).toBe(false);
+    }
+    expect(finds("3 de nov", social("2026-11-03"))).toBe(true);
+    expect(finds("mar", on("2027-03-05", { title: "Social" }))).toBe(false); // alone, "mar" is the sea, not March
+    expect(finds("octubre de 2026", social("2026-10-20"))).toBe(true);
+    expect(finds("octubre de 2027", social("2026-10-20"))).toBe(false);
+    expect(finds("15 de octubre de 2026", social("2026-10-15"))).toBe(true);
+  });
+
+  it("the words of a question or a wish are left out: \"qué hay hoy\", \"dónde bailar salsa\"", () => {
+    expect(finds("qué hay hoy", social("2026-10-07"))).toBe(true);
+    expect(finds("bailar salsa", social("2026-10-20"))).toBe(true);
+    expect(finds("dónde bailar salsa el sábado", social("2026-10-10"))).toBe(true);
+    expect(finds("quiero ir a bailar salsa", social("2026-10-20"))).toBe(true);
+    expect(finds("eventos de salsa", social("2026-10-20"))).toBe(true);
+    expect(finds("planes para el finde", social("2026-10-10"))).toBe(true);
+    expect(finds("qué", on("2026-10-20", { title: "Calor que enamora" }))).toBe(true); // alone, still a word
+  });
+});

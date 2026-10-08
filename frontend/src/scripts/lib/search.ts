@@ -14,8 +14,8 @@
 import type { DanceEvent } from "../types";
 import { todayIso } from "./dates";
 import { FREE, priceSummary, styleLabel, typeLabel } from "./format";
-import { daysAt, type DayTest } from "./searchDays";
-import { alsoFinds, FREE_PHRASES, FREE_WORD, PHRASES } from "./searchWords";
+import { daysAt, type DayTest, timeOfDayAt } from "./searchDays";
+import { alsoFinds, FREE_PHRASES, FREE_WORD, LEFT_OUT, PHRASES } from "./searchWords";
 
 /** "Salsa Caleña" → "salsa calena": for comparing, never for showing. */
 export function fold(text: string): string {
@@ -86,10 +86,6 @@ interface Query {
   days: DayTest[];
 }
 
-// Words that only join others, left out unless the search is nothing else ("la" typed alone still finds "La Casona").
-// And the words before a day: "este sábado", "el próximo viernes".
-const JOINING = new Set("de del el la los las y o en con para por un una al a este esta proximo proxima".split(" "));
-
 /** The known phrase starting at `words[at]`, longest first, and how many words it takes. */
 function phraseAt(words: string[], at: number): [string, number] | null {
   for (let length = Math.min(LONGEST_PHRASE, words.length - at); length >= 2; length--) {
@@ -104,29 +100,37 @@ const wordTerm = (word: string): Term => {
   return { starts: forms, phrases: forms.flatMap(alsoFinds) };
 };
 
-/** A search, read: the days it names, known phrases whole ("sin costo", "cha cha cha"), every other word on its own. */
+/**
+ * A search, read: the days it names, known phrases whole ("sin costo", "cha cha cha"), every other word on its own. A
+ * part of the day said alone ("clases en la mañana": no hours here) and the words left out (searchWords.ts LEFT_OUT:
+ * "de", "el próximo", "qué hay") count only when the search is nothing else ("la" alone still finds "La Casona").
+ */
 export function parseQuery(query: string, today: string): Query {
   const words = wordsOf(fold(query));
   const read: Query = { terms: [], days: [] };
-  const joining: string[] = [];
+  const leftOut: string[] = [];
   for (let at = 0; at < words.length; ) {
     const days = daysAt(words, at, today);
-    const phrase = days ? null : phraseAt(words, at);
+    const time = days ? 0 : timeOfDayAt(words, at);
+    const phrase = days || time ? null : phraseAt(words, at);
     if (days) {
       read.days.push(days[0]);
       at += days[1];
+    } else if (time) {
+      leftOut.push(...words.slice(at, at + time));
+      at += time;
     } else if (phrase) {
       const [text, length] = phrase;
       read.terms.push({ starts: [], phrases: [text, ...alsoFinds(text)] });
       at += length;
     } else {
       const word = words[at]!;
-      if (JOINING.has(word)) joining.push(word);
+      if (LEFT_OUT.has(word)) leftOut.push(word);
       else read.terms.push(wordTerm(word));
       at += 1;
     }
   }
-  if (!read.terms.length && !read.days.length) read.terms = joining.map(wordTerm);
+  if (!read.terms.length && !read.days.length) read.terms = leftOut.map(wordTerm);
   return read;
 }
 

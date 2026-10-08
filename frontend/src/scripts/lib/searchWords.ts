@@ -84,6 +84,19 @@ export function alsoFinds(typed: string): string[] {
 export const ALL_TARGETS = [...new Set(ALSO.flatMap(([, finds]) => finds))];
 
 /**
+ * Words left out of a search unless it's nothing else ("la" alone still finds "La Casona"): the ones that only join
+ * others ("clase de salsa el sábado"), the words before a day ("este sábado", "el próximo viernes"), and those of a
+ * question or a wish around what's looked for ("qué hay hoy", "dónde bailar salsa", "quiero ir a bailar": the bug hunt
+ * of 7 Oct 2026; in the data that day only "que", in 3 titles, and "eventos", in 1, are an event's words). Not "baile":
+ * academies' names ("Academia de Baile", 14 events).
+ */
+export const LEFT_OUT = new Set([
+  ..."de del el la los las y o en con para por un una al a".split(" "),
+  ..."este esta proximo proxima".split(" "),
+  ..."que hay donde quiero ir bailar algo evento eventos plan planes".split(" "),
+]);
+
+/**
  * The phrases searched whole, not word by word: the table's own, and the site's labels of more than one word (so
  * "cha cha cha" isn't three "cha"s, each starting "champeta" or "chapinero").
  */
