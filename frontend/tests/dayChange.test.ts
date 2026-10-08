@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { STALE_AFTER_MS, moveToToday, resumeAction, untilNextDay, watchDayChange } from "../src/scripts/views/dayChange";
+import { REDRAW_AFTER_MS, STALE_AFTER_MS, moveToToday, resumeAction, untilNextDay, watchDayChange } from "../src/scripts/views/dayChange";
 import { createInitialState } from "../src/scripts/state";
 
 const HOUR = 3600_000;
@@ -41,10 +41,18 @@ describe("the calendar's day and month after the day changed (moveToToday)", () 
 
 describe("what a resumed page does (resumeAction)", () => {
   const resume = (overrides: Partial<Parameters<typeof resumeAction>[0]>) =>
-    resumeAction({ loadedAt: 0, now: HOUR, online: true, renderedDay: "2026-10-04", today: "2026-10-04", ...overrides });
+    resumeAction({ loadedAt: 0, now: 10 * 60_000, online: true, renderedDay: "2026-10-04", today: "2026-10-04", ...overrides });
 
-  it("nothing the same day, within a few hours", () => {
+  it("nothing the same day, soon after", () => {
     expect(resume({})).toBe("none");
+  });
+
+  // The iPhone audit, 8 Oct 2026: the installed app opened at 7 p.m., shown again at 11 p.m., still listed a 7–10 p.m.
+  // social under Hoy.
+  it("the same day, a while later: draws again, so the events that ended go", () => {
+    expect(resume({ now: REDRAW_AFTER_MS + 1 })).toBe("render");
+    expect(resume({ now: 4 * HOUR })).toBe("render");
+    expect(resume({ now: 4 * HOUR, renderedAt: 4 * HOUR - 60_000 })).toBe("none"); // drawn a minute ago
   });
 
   it("draws again on another day", () => {
@@ -58,7 +66,7 @@ describe("what a resumed page does (resumeAction)", () => {
 
   it("offline it only draws again (the events it has)", () => {
     expect(resume({ now: STALE_AFTER_MS + 1, online: false, today: "2026-10-05" })).toBe("render");
-    expect(resume({ now: STALE_AFTER_MS + 1, online: false })).toBe("none");
+    expect(resume({ now: STALE_AFTER_MS + 1, online: false })).toBe("render");
   });
 });
 

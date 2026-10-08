@@ -244,7 +244,9 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves: the pa
 ## Info and footer
 
 - **Info** is an (i) in the header, by the theme switch (`.site-header__info`, named "Info: sobre Pa' Bailar"): a link
-  to the footer (`#info`), and back returns to where the page was. Not a tab: with the views in the bar at the bottom,
+  to the footer (`#info`), and back returns to where the page was. The jump's history entry is the same screen
+  (`afterJump` in `screenHistory.ts`): leaving the calendar or Guardados after it steps back over it too, so back never
+  brings a view already left (the iPhone audit, 8 Oct 2026). Not a tab: with the views in the bar at the bottom,
   phones have no tabs (the owner, 5 October 2026).
 - **The footer is "Sobre Pa' Bailar"**: a heading in Bodoni italic, a one-line description, the disclaimer, the sources (every Instagram account the sweep reads, from `meta.json`), installing the app, "Escríbenos" (the report form), and at the bottom "Hecho por @jzamora5" (GitHub) with the version.
 

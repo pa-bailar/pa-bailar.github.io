@@ -354,8 +354,9 @@ sequenceDiagram
   The flyers load lazily as they come into view.
 - **Shown again on another day** (`views/dayChange.ts`, `watchDayChange`): an installed app left open overnight, or a
   tab from yesterday. When the page is shown again on another Bogotá day, the calendar moves to today if it was on
-  that day, and everything is drawn again ("Hoy", past events). Hours after it loaded (`STALE_AFTER_MS`) and online,
-  it reloads instead, since the events are embedded at build time. A page on screen across Bogotá's midnight is drawn
+  that day, and everything is drawn again ("Hoy", past events). Shown again the same day half an hour or more after it
+  was drawn (`REDRAW_AFTER_MS`), it's drawn again too, so events that ended meanwhile go (the iPhone audit, 8 Oct
+  2026). Hours after it loaded (`STALE_AFTER_MS`) and online, it reloads instead, since the events are embedded at build time. A page on screen across Bogotá's midnight is drawn
   again then too (`untilNextDay`; never a reload under the visitor's eyes).
 - **One delegated click listener** in `main.ts` handles every control marked with a `data-*` attribute (`CONTROLS`:
   each attribute with its named handler, tried in order: `data-when-open`, `data-pill`, `data-open-filters`,
@@ -437,7 +438,8 @@ flowchart TD
   summary row (`DESIGN.md`, "Long lists").
 - **"Calendario"** shows a month grid: days with events show dots on phones (`dotsHtml`) and names on wide screens,
   capped so a busy day never makes its week taller. Colombian holidays are tinted, and the selected day's events are
-  listed below; whatever changes that list ends with its start on screen (`revealDay` in `views/viewNavigation.ts`).
+  listed below; whatever changes that list ends with its start on screen (`revealDay` in `views/viewNavigation.ts`),
+  above the keyboard while searching (`visibleBottom`: iOS doesn't shrink `innerHeight` for it).
   An event over several days is on each of its days (`groupByDay`), across months too; a workshop series only on its
   sessions' days. A day's events go by type in the owner's order, then by start time that day (`dayOrderKey` in
   `state.ts`, shared with the list's `listOrder`; `DESIGN.md`, "Upcoming list").
@@ -586,7 +588,9 @@ stateDiagram-v2
   own, an overlay over the screen's state (`searchHistory`): back or × leaves it and clears the search, Enter leaves
   it and keeps the search, and forward onto it once closed goes back over it, like the sheets' entries. Android's
   back only hides the keyboard, with no history step, so the keyboard leaving while the field has the focus
-  (`keyboardJustHid`) closes the field too. An overlay opened over it carries only the screen and the open event
+  (`keyboardJustHid`) closes the field too. That's read from the height the keyboard takes (`keyboardHeight`), not the
+  bar's lift: iOS pans the visual viewport when the page scrolls with the keyboard up, the lift drops toward 0, and
+  that closed the field (the iPhone audit, 8 Oct 2026). An overlay opened over it carries only the screen and the open event
   (`overlayState`), never another overlay's mark, so the field steps back only when its own entry is on top
   (`leftEmpty`). A reload drops any overlay mark from the entry it lands on (`initScreenHistory`). Typing goes
   through the same `[data-search]` input handler as the toolbar's field (`main.ts`).
@@ -640,7 +644,10 @@ Every browser on an iPhone is Safari's engine (WebKit), with its own limits:
   Chrome on Android redraw its own navigation bar, which flashed (the owner, 8 Oct 2026). It's read again on the viewport's
   events and a few times after focus and blur, since the keyboard animates without always telling; on blur it drops
   to 0 at once (iOS can leave `offsetTop` stale). Without `visualViewport` the inset is 0 and the browser places the
-  bar. The page has no `viewport-fit=cover`, so iOS keeps the bar above the home indicator. Untested on a real iPhone yet: Safari 26's floating toolbar may sit over the bar.
+  bar. The viewport has `viewport-fit=cover` (`BaseLayout.astro`): without it iOS reports every
+  `env(safe-area-inset-*)` as 0, and in the home-screen app the bar sat under the home indicator (seen in the iOS 27
+  Simulator, 8 Oct 2026; `tests/viewport.test.ts`). In Safari 26 and 27's compact layout the bar shows above Safari's
+  floating toolbar (Simulator). Untested on a real iPhone.
 - **Head tags:** `apple-touch-icon` and `apple-mobile-web-app-title` (`BaseLayout.astro`); iOS takes the rest from
   the manifest.
 

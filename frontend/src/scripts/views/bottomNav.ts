@@ -63,6 +63,21 @@ export function keyboardInset(layoutHeight: number, viewport: { height: number; 
   return Math.min(Math.max(inset, 0), Math.max(layoutHeight, 0));
 }
 
+/**
+ * Where what the visitor can see ends, in the page's coordinates (getBoundingClientRect's): the bottom of the visual
+ * viewport, above the keyboard when it's up, less the bar there (`bar`: its height, lifted above the keyboard while
+ * searching). iOS keeps `innerHeight` the same when the keyboard opens, so `innerHeight - bar` put a day's list behind
+ * the keyboard and called it on screen (the iPhone audit, 8 Oct 2026). No visualViewport: the window's height.
+ */
+export function visibleBottom(
+  layoutHeight: number,
+  viewport: { height: number; offsetTop: number } | null | undefined,
+  bar: number,
+): number {
+  const bottom = viewport ? Math.min(layoutHeight, viewport.offsetTop + viewport.height) : layoutHeight;
+  return bottom - bar;
+}
+
 /** Where the bar isn't shown (bottom-nav.css): the toolbar and the header have its actions. */
 export const WIDE_QUERY = "(min-width: 720px) and (min-height: 600px)";
 
@@ -84,6 +99,16 @@ const KEYBOARD_MIN = 120;
  */
 export function keyboardJustHid(before: number, after: number): boolean {
   return before >= KEYBOARD_MIN && after < KEYBOARD_MIN / 3;
+}
+
+/**
+ * The height the keyboard takes from the screen: the layout viewport less the visual one's height. Not the bar's lift
+ * (keyboardInset), which also counts where iOS panned the visual viewport: scrolling the page with the keyboard up
+ * pans it, the lift drops toward 0, and that read as the keyboard leaving and closed the field (the iPhone audit,
+ * 8 Oct 2026). A keyboard that really leaves gives the visual viewport its height back.
+ */
+export function keyboardHeight(layoutHeight: number, viewport: { height: number } | null | undefined): number {
+  return viewport ? Math.max(Math.round(layoutHeight - viewport.height), 0) : 0;
 }
 
 let openings = 0;
@@ -160,7 +185,7 @@ export function renderBottomNav(state: NavState) {
 // ---------- the search field and the keyboard ----------
 
 let watching = false;
-let lastInset = 0;
+let lastKeyboard = 0; // keyboardHeight, at the last look
 let placedInset: number | null = null; // the inset last written on what rises with the keyboard
 let onKeyboardHidden: () => void = () => {};
 
@@ -181,8 +206,9 @@ function placeAboveKeyboard() {
       element.classList.toggle("is-lifted", inset > 0);
     });
   }
-  const hid = focused && keyboardJustHid(lastInset, inset);
-  lastInset = inset;
+  const keyboard = focused ? keyboardHeight(document.documentElement.clientHeight, window.visualViewport) : 0;
+  const hid = focused && keyboardJustHid(lastKeyboard, keyboard);
+  lastKeyboard = keyboard;
   if (hid) onKeyboardHidden();
 }
 

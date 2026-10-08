@@ -24,10 +24,13 @@ import type { View } from "./types";
 
 export type ScreenKind = "period" | "view";
 
-/** A screen entry: `kind` is the move that led to it (absent: the start). */
+/**
+ * A screen entry: `kind` is the move that led to it (absent: the start). "jump": an in-page jump ("Info", #info), the
+ * same screen in an entry the browser made; leaving a screen steps back over those too (`leave`).
+ */
 export interface Step {
   id: string;
-  kind?: ScreenKind;
+  kind?: ScreenKind | "jump";
 }
 
 export interface Screen {
@@ -96,6 +99,28 @@ function addressOf(screen: ScreenData, state: AppHistoryState): string | undefin
   return `${hooks.address(screen)}${location.search}${location.hash}`;
 }
 
+/** The screen's chain where an in-page jump started (`beforeJump`), for the entry the browser makes for it. */
+let jumpFrom: Step[] | null = null;
+
+/** Before an in-page jump (#info): this entry remembers where the page was, for back to return there. */
+export function beforeJump() {
+  jumpFrom = stepsOf(historyState());
+  remember(jumpFrom);
+}
+
+/**
+ * After it: the browser's new entry (no state) gets the screen and its chain, plus a "jump" step. Without it the chain
+ * started over there, so Eventos from the calendar after "Info" couldn't step back over the calendar's entry, and back
+ * brought the calendar back (the iPhone audit, 8 Oct 2026). Back or forward onto an entry that has its state: nothing.
+ */
+export function afterJump() {
+  const from = jumpFrom;
+  jumpFrom = null;
+  if (!hooks || historyState().screen || !from) return;
+  const screen = hooks.current();
+  history.replaceState({ screen: { ...screen, steps: [...from, { id: newId(), kind: "jump" }] } } satisfies AppHistoryState, "");
+}
+
 /** The move a `leave` stepped back out of, until its popstate lands. */
 let undoing: ScreenKind | undefined;
 /** The hash of the entry on show: back from an in-page jump (#info) puts the scroll back, as the browser won't. */
@@ -149,11 +174,14 @@ export function initScreenHistory(screenHooks: Hooks) {
     "click",
     (domEvent) => {
       const link = (domEvent.target as Element | null)?.closest?.("a[href^='#']");
-      if (link && link.getAttribute("href") !== "#") remember();
+      if (link && link.getAttribute("href") !== "#") beforeJump();
     },
     true,
   );
-  window.addEventListener("hashchange", () => (shownHash = location.hash));
+  window.addEventListener("hashchange", () => {
+    shownHash = location.hash;
+    afterJump();
+  });
 }
 
 /** A move to another screen: `move` changes and draws it; then it gets its own history entry. */
@@ -182,7 +210,8 @@ export function goTo(kind: ScreenKind, move: () => void) {
 export function replaceScreen(kind: ScreenKind, move: () => void) {
   const state = historyState();
   const steps = stepsOf(state);
-  if (state.overlay || steps.length < 2 || steps.at(-1)?.kind !== kind) return goTo(kind, move);
+  const moved = steps.findLast((step) => step.kind !== "jump"); // past in-page jumps: the same screen
+  if (state.overlay || steps.length < 2 || moved === steps[0] || moved?.kind !== kind) return goTo(kind, move);
   move();
   remember();
 }
@@ -194,11 +223,15 @@ export function replaceScreen(kind: ScreenKind, move: () => void) {
 export function leave(kind: ScreenKind, move: () => void) {
   const state = historyState();
   const steps = stepsOf(state);
-  const last = steps.at(-1);
-  if (last?.kind === kind && steps.length > 1) {
+  // In-page jumps since that move (#info) are the same screen: back over them too.
+  let at = steps.length - 1;
+  while (at > 0 && steps[at]?.kind === "jump") at--;
+  const jumps = steps.length - 1 - at;
+  const last = steps[at];
+  if (last?.kind === kind && at > 0 && !(jumps && state.overlay)) {
     if (!state.overlay) {
       undoing = kind;
-      history.back();
+      history.go(-(jumps + 1));
       return;
     }
     skipped.add(last.id);
