@@ -120,7 +120,8 @@ few set from scripts are listed there).
 - Corners:
   - `--radius-sm` (2px): tags, chips, buttons, like printed labels
   - `--radius-md` (4px): cards, dialog, calendar cells
-  - `--radius-round`: **only** the date sticker and calendar day numbers
+  - `--radius-round`: **only** what's round by nature: the date sticker, calendar day numbers, a carousel's dots and
+    ‹ ›, the install steps' numbers, a loader
 - `--border-width` 1.5px everywhere.
 - Controls: `--control-height` 40px (buttons, toggle), `--chip-height` 32px, `--sticker-size` 60px.
 - Touch: `--touch-target` 44px for every control. A control drawn smaller gets an invisible `::after` that makes up the
@@ -566,8 +567,7 @@ screens in the toolbar's pills and their panels:
   Within a family the rhythms keep the filters' order (the main four first: Salsa, Bachata, Urbano, Tango; then by how many events in view have
   them, "Otros ritmos" last); an empty family isn't shown. Every rhythm of the data contract is in exactly one family
   (`tests/styleFamilies.test.ts`); an unknown one goes with Otros. The owner turned down "Otros de pareja" and
-  "Latinos y caribe" (salsa and bachata are Latin too). "Salsa" still includes its variants, and **the phone bar's
-  quick chips stay one flat row**.
+  "Latinos y caribe" (salsa and bachata are Latin too). "Salsa" still includes its variants.
 - **Dimmed, never hidden:** an option that would show nothing with the other filters stays in place, dimmed
   (`aria-disabled`, still focusable, a tap does nothing), so the row never jumps while choosing. A chosen option is
   never dimmed. Each option's count is how many events it would show with the other filters on.
