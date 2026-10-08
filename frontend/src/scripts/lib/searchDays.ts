@@ -10,13 +10,28 @@
 // a time of day keeps the day, the search has no hours ("sábado en la noche", "mañana por la tarde"); a weekday with a
 // number is that day ("sábado 10": a Saturday the 10th; with a month, the date); "que viene" or "entrante" after a day
 // is "próximo" before it; "el otro sábado", "el otro finde" are the ones after the coming one; a month written short
-// counts beside a number ("17 de oct"), and a year after a month ("octubre de 2026").
+// counts beside a number ("17 de oct"), and a year after a month ("octubre de 2026"). A day said with another that
+// narrows it is the days both name (the bug-squash pass of 8 Oct 2026: "hoy viernes" was every Friday to come too):
+// a weekday right after one day says the same day ("hoy viernes", "mañana sábado"); a weekday and "festivo" together
+// are the holidays on that weekday ("lunes festivo"); a weekday or "festivo" "de" a month, a week or this month, the
+// ones in it ("sábados de octubre", "el viernes de la próxima semana", "festivos de noviembre"). Said apart they're
+// still any of them ("viernes sábado", "hoy y mañana").
 
 import { addDays, addMonths, endOfWeek, parseIsoDate, toIsoDate } from "./dates";
 import { isHoliday } from "./holidays";
 
 /** Whether a day ("2026-10-10") is one the search names. */
 export type DayTest = (day: string) => boolean;
+
+/**
+ * What a day phrase names, for what may narrow it (daysAt): a day by its name ("hoy", "mañana", "esta noche"), a date
+ * ("15 de octubre", "sábado 10", "el otro sábado"), every one of a weekday, the holidays, a month, or a stretch of days
+ * ("finde", "próxima semana", "este mes").
+ */
+type DayKind = "day" | "date" | "weekday" | "holiday" | "month" | "stretch";
+
+/** A day phrase read: its test, how many words it takes, and what it names. */
+type DayPhrase = [test: DayTest, length: number, kind: DayKind];
 
 const WEEKDAYS = new Map(
   Object.entries({ domingo: 0, domingos: 0, lunes: 1, martes: 2, miercoles: 3, jueves: 4, viernes: 5, sabado: 6, sabados: 6 }),
@@ -87,36 +102,39 @@ function nthWeekday(today: string, weekday: number, n: number): string {
   return addDays(today, ((weekday - parseIsoDate(today).getDay() + 7) % 7) + 7 * (n - 1));
 }
 
-/** The phrases that name a stretch of days around `today`, as [words, test]. Whole: the views keep their own days. */
-function stretches(today: string): [string, DayTest][] {
+/**
+ * The phrases that name days around `today` (a stretch of them, one day, the holidays), as [words, test, kind]. Whole:
+ * the views keep their own days.
+ */
+function stretches(today: string): [string, DayTest, DayKind][] {
   const sunday = endOfWeek(today);
   const weekend = between(addDays(sunday, -2), sunday); // Friday to Sunday
   const nextWeek = between(addDays(sunday, 1), addDays(sunday, 7));
   const nextMonth = startsWith(toIsoDate(addMonths(parseIsoDate(today), 1)).slice(0, 7));
   return [
-    ["otro fin de semana", between(addDays(sunday, 5), addDays(sunday, 7))], // the weekend after the coming one
-    ["otro finde", between(addDays(sunday, 5), addDays(sunday, 7))],
-    ["fin de semana", weekend],
-    ["finde", weekend],
-    ["weekend", weekend],
-    ["pasado manana", on(addDays(today, 2))],
-    ["esta noche", on(today)],
-    ["esta tarde", on(today)],
-    ["esta manana", on(today)], // this morning
-    ["hoy", on(today)],
-    ["manana", on(addDays(today, 1))],
-    ["esta semana", between(addDays(sunday, -6), sunday)], // Monday to Sunday
-    ["proxima semana", nextWeek],
-    ["semana que viene", nextWeek],
-    ["semana entrante", nextWeek],
-    ["otra semana", nextWeek], // "la otra semana", in Colombia
-    ["este mes", startsWith(today.slice(0, 7))],
-    ["proximo mes", nextMonth],
-    ["mes que viene", nextMonth],
-    ["mes entrante", nextMonth],
-    ["otro mes", nextMonth],
-    ["festivo", isHoliday],
-    ["festivos", isHoliday],
+    ["otro fin de semana", between(addDays(sunday, 5), addDays(sunday, 7)), "stretch"], // after the coming one
+    ["otro finde", between(addDays(sunday, 5), addDays(sunday, 7)), "stretch"],
+    ["fin de semana", weekend, "stretch"],
+    ["finde", weekend, "stretch"],
+    ["weekend", weekend, "stretch"],
+    ["pasado manana", on(addDays(today, 2)), "day"],
+    ["esta noche", on(today), "day"],
+    ["esta tarde", on(today), "day"],
+    ["esta manana", on(today), "day"], // this morning
+    ["hoy", on(today), "day"],
+    ["manana", on(addDays(today, 1)), "day"],
+    ["esta semana", between(addDays(sunday, -6), sunday), "stretch"], // Monday to Sunday
+    ["proxima semana", nextWeek, "stretch"],
+    ["semana que viene", nextWeek, "stretch"],
+    ["semana entrante", nextWeek, "stretch"],
+    ["otra semana", nextWeek, "stretch"], // "la otra semana", in Colombia
+    ["este mes", startsWith(today.slice(0, 7)), "stretch"],
+    ["proximo mes", nextMonth, "stretch"],
+    ["mes que viene", nextMonth, "stretch"],
+    ["mes entrante", nextMonth, "stretch"],
+    ["otro mes", nextMonth, "stretch"],
+    ["festivo", isHoliday, "holiday"],
+    ["festivos", isHoliday, "holiday"],
   ];
 }
 
@@ -151,27 +169,54 @@ function dateAt(words: string[], at: number): [DayTest, number] | null {
 }
 
 /** The day phrase at `at`, without what may follow it (daysAt). */
-function dayAt(words: string[], at: number, today: string): [DayTest, number] | null {
+function dayAt(words: string[], at: number, today: string): DayPhrase | null {
+  const word = words[at];
+  if (word === undefined) return null;
   const stretch = stretches(today).find(([phrase]) => saysAt(words, at, phrase));
-  if (stretch) return [stretch[1], stretch[0].split(" ").length];
+  if (stretch) return [stretch[1], stretch[0].split(" ").length, stretch[2]];
   const date = dateAt(words, at);
-  if (date) return date;
-  const word = words[at]!;
+  if (date) return [...date, "date"];
   const next = WEEKDAYS.get(words[at + 1] ?? "");
-  if ((word === "otro" || word === "otra") && next !== undefined) return [on(nthWeekday(today, next, 2)), 2];
+  if ((word === "otro" || word === "otra") && next !== undefined) return [on(nthWeekday(today, next, 2)), 2, "date"];
   const weekday = WEEKDAYS.get(word);
   if (weekday !== undefined) {
     const dated = dateAt(words, at + 1); // "sábado 10 de octubre": the date, its weekday only said
-    if (dated) return [dated[0], 1 + dated[1]];
+    if (dated) return [dated[0], 1 + dated[1], "date"];
     const number = dayNumber(words[at + 1]); // "sábado 10": a Saturday the 10th
-    if (number) return [both(onWeekday(weekday), (day) => Number(day.slice(8)) === number), 2];
-    return [onWeekday(weekday), 1];
+    if (number) return [both(onWeekday(weekday), (day) => Number(day.slice(8)) === number), 2, "date"];
+    return [onWeekday(weekday), 1, "weekday"];
   }
   const month = MONTHS.get(word);
   if (month === undefined) return null;
   const inMonth: DayTest = (day) => Number(day.slice(5, 7)) === month;
   const year = yearAt(words, at + 1);
-  return year ? [both(inMonth, startsWith(year[0])), 1 + year[1]] : [inMonth, 1];
+  return year ? [both(inMonth, startsWith(year[0])), 1 + year[1], "month"] : [inMonth, 1, "month"];
+}
+
+/** What may stand between a day and what narrows it: "de" ("sábados de octubre"), then an article ("de la", "del"). */
+const JOINS = ["de", "del"];
+const ARTICLES = ["el", "la", "los", "las", "este", "esta"];
+
+/**
+ * The day phrase at `at` that narrows the one before it (of `kind`), with the words joining them; null when none does.
+ * After one day, a weekday says it again ("hoy viernes", "mañana sábado 10"); a weekday and "festivo", either way, are
+ * the holidays on it ("lunes festivo"); after either, "de" (or nothing) and a month, a week or this month: the ones in
+ * it ("sábados de octubre", "el viernes de la próxima semana", "festivos de noviembre"). Anything else is a day of its
+ * own, any of them ("viernes sábado", "hoy mañana", "sábado 10 domingo 11").
+ */
+function narrowerAt(words: string[], at: number, kind: DayKind, today: string): DayPhrase | null {
+  const said = (word: string | undefined) => WEEKDAYS.has(word ?? "");
+  if (kind === "day") return said(words[at]) ? dayAt(words, at, today) : null;
+  if (kind !== "weekday" && kind !== "holiday") return null;
+  const next = dayAt(words, at, today);
+  if (next && (kind === "weekday" ? next[2] === "holiday" : said(words[at]))) return next;
+  const join = JOINS.includes(words[at] ?? "") ? 1 : 0;
+  const article = ARTICLES.includes(words[at + join] ?? "") ? 1 : 0;
+  for (const skip of new Set([join, join + article])) {
+    const phrase = dayAt(words, at + skip, today);
+    if (phrase && (phrase[2] === "month" || phrase[2] === "stretch")) return [phrase[0], skip + phrase[1], phrase[2]];
+  }
+  return null;
 }
 
 /**
@@ -189,14 +234,22 @@ export function timeOfDayAt(words: string[], at: number, { afterDay = false } = 
 }
 
 /**
- * The days named by `words` (folded) from `at`: their test and how many words they take, with what keeps them ("que
- * viene", a part of the day), or null when they don't name days. Longest first: "fin de semana" before a word alone.
+ * The days named by `words` (folded) from `at`: their test and how many words they take, with what narrows them
+ * (narrowerAt: "hoy viernes", "sábados de octubre") and what keeps them ("que viene", a part of the day), or null when
+ * they don't name days. Longest first: "fin de semana" before a word alone.
  */
 export function daysAt(words: string[], at: number, today: string): [DayTest, number] | null {
   const day = dayAt(words, at, today);
   if (!day) return null;
-  let length = day[1];
+  let [test, length, kind] = day;
+  let narrower = narrowerAt(words, at + length, kind, today);
+  while (narrower) {
+    test = both(test, narrower[0]);
+    length += narrower[1];
+    kind = narrower[2];
+    narrower = narrowerAt(words, at + length, kind, today);
+  }
   const coming = COMING.find((phrase) => saysAt(words, at + length, phrase));
   if (coming) length += coming.split(" ").length;
-  return [day[0], length + timeOfDayAt(words, at + length, { afterDay: true })];
+  return [test, length + timeOfDayAt(words, at + length, { afterDay: true })];
 }

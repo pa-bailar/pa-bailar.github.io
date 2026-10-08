@@ -139,6 +139,11 @@ export function clearFilters(state: AppState) {
   state.hideBars = false;
 }
 
+/** The same view with the search alone: no filter (what an empty result says is why: the search or the filters). */
+export function withoutFilters(state: AppState): AppState {
+  return { ...state, types: [], styles: [], dates: [], hideBars: false };
+}
+
 function monthPrefix(month: Date): string {
   return toIsoDate(month).slice(0, 7); // "YYYY-MM"
 }

@@ -248,6 +248,76 @@ describe("days with words around them", () => {
   });
 });
 
+// A day said with another that narrows it (the bug-squash pass of 8 Oct 2026): "hoy viernes" listed every Friday to
+// come, "sábados de octubre" every October day and every Saturday after it, "lunes festivo" every Monday and every
+// holiday. Several days apart ("viernes sábado", "hoy y mañana") are still any of them.
+describe("a day narrowed by the next one", () => {
+  const social = (date: string) => on(date, { title: "Social", styles: ["salsa"] });
+  const FRIDAY = "2026-10-09";
+
+  it("a weekday right after today, tomorrow or the day after says the same day: that one only", () => {
+    expect(finds("hoy viernes", social(FRIDAY), FRIDAY)).toBe(true);
+    expect(finds("hoy viernes", social("2026-10-16"), FRIDAY)).toBe(false); // next Friday
+    expect(finds("mañana sábado", social("2026-10-10"), FRIDAY)).toBe(true);
+    expect(finds("mañana sábado", social("2026-10-17"), FRIDAY)).toBe(false);
+    expect(finds("mañana sábado en la noche", social("2026-10-10"), FRIDAY)).toBe(true);
+    expect(finds("pasado mañana domingo", social("2026-10-11"), FRIDAY)).toBe(true);
+    expect(finds("pasado mañana domingo", social("2026-10-18"), FRIDAY)).toBe(false);
+    // Not that weekday: nothing, honestly (as "sábado 11"), rather than every Saturday.
+    expect(finds("hoy sábado", social(FRIDAY), FRIDAY)).toBe(false);
+    expect(finds("hoy sábado", social("2026-10-10"), FRIDAY)).toBe(false);
+  });
+
+  it("a weekday or a holiday «de» a month, a week or this month: the ones in it", () => {
+    for (const query of ["sábados de octubre", "los sábados de octubre", "sábado octubre"]) {
+      expect(finds(query, social("2026-10-10")), query).toBe(true);
+      expect(finds(query, social("2026-10-17")), query).toBe(true);
+      expect(finds(query, social("2026-10-14")), query).toBe(false); // a Wednesday in October
+      expect(finds(query, social("2026-11-07")), query).toBe(false); // a Saturday in November
+    }
+    expect(finds("los viernes de noviembre", social("2026-11-06"))).toBe(true);
+    expect(finds("los viernes de noviembre", social("2026-10-09"))).toBe(false);
+    const nextWeek = ["el viernes de la próxima semana", "el viernes de la semana que viene", "viernes de la otra semana"];
+    for (const query of nextWeek) {
+      expect(finds(query, social("2026-10-16")), query).toBe(true);
+      expect(finds(query, social("2026-10-09")), query).toBe(false); // this week's
+      expect(finds(query, social("2026-10-23")), query).toBe(false);
+      expect(finds(query, social("2026-10-14")), query).toBe(false); // next week's Wednesday
+    }
+    expect(finds("el sábado de esta semana", social("2026-10-10"))).toBe(true);
+    expect(finds("el sábado de esta semana", social("2026-10-17"))).toBe(false);
+    expect(finds("los domingos de este mes", social("2026-10-25"))).toBe(true);
+    expect(finds("los domingos de este mes", social("2026-11-01"))).toBe(false);
+    expect(finds("festivos de noviembre", social("2026-11-02"))).toBe(true); // Todos los Santos, moved to Monday
+    expect(finds("festivos de noviembre", social("2026-11-16"))).toBe(true);
+    expect(finds("festivos de noviembre", social("2026-11-05"))).toBe(false);
+    expect(finds("festivos de noviembre", social("2026-10-12"))).toBe(false); // a holiday in October
+  });
+
+  it("«lunes festivo»: the Mondays that are holidays", () => {
+    for (const query of ["lunes festivo", "el lunes festivo", "festivo lunes"]) {
+      expect(finds(query, social("2026-10-12")), query).toBe(true); // Día de la Raza
+      expect(finds(query, social("2026-11-02")), query).toBe(true);
+      expect(finds(query, social("2026-10-19")), query).toBe(false); // a Monday, no holiday
+      expect(finds(query, social("2026-12-08")), query).toBe(false); // a holiday, a Tuesday
+    }
+    expect(finds("el lunes festivo de noviembre", social("2026-11-02"))).toBe(true);
+    expect(finds("el lunes festivo de noviembre", social("2026-10-12"))).toBe(false);
+  });
+
+  it("days said apart are still any of them; a day's own words are no narrowing", () => {
+    expect(finds("viernes sábado", social("2026-10-09"))).toBe(true);
+    expect(finds("viernes sábado", social("2026-10-17"))).toBe(true);
+    expect(finds("hoy y mañana", social("2026-10-08"))).toBe(true);
+    expect(finds("hoy mañana", social("2026-10-08"))).toBe(true);
+    expect(finds("sábado 10 domingo 11", social("2026-10-11"))).toBe(true);
+    expect(finds("octubre noviembre", social("2026-11-20"))).toBe(true);
+    expect(finds("sábado de noche", social("2026-10-17"))).toBe(true); // a time of day, not a narrowing
+    expect(finds("sábado de salsa", social("2026-10-17"))).toBe(true); // "de salsa": the event's words
+    expect(finds("sábado de salsa", on("2026-10-17", { title: "Social", styles: ["bachata"] }))).toBe(false);
+  });
+});
+
 // Day words that are also first names (the bug hunt of 7 Oct 2026: none in the data that day, but "julio" found only
 // July, and "domingo quiñones" only Sundays).
 describe("a day word that's also a name", () => {

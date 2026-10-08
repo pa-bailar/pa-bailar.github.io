@@ -13,6 +13,7 @@ import { byId, escapeHtml } from "../lib/dom";
 import type { WhenModel, WhenOption } from "../lib/filterModel";
 import { eventCountLabel } from "../lib/format";
 import { ICONS } from "../lib/icons";
+import { refocus } from "../lib/focus";
 import { pressedClick } from "../lib/outsideClick";
 import { historyState, overlayState } from "../screenHistory";
 import { bottomInset } from "./bottomNav";
@@ -259,5 +260,5 @@ export function renderWhenMenu(when: WhenModel | null) {
   }
   const focused = (document.activeElement as HTMLElement | null)?.closest<HTMLElement>("#when-menu [data-when]")?.dataset.when;
   element.innerHTML = whenMenuHtml(when);
-  if (focused !== undefined) element.querySelector<HTMLElement>(`[data-when="${CSS.escape(focused)}"]`)?.focus();
+  refocus(focused === undefined ? null : `[data-when="${CSS.escape(focused)}"]`, element); // it hangs from the pinned bar
 }

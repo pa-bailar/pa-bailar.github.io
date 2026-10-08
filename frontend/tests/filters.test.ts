@@ -24,6 +24,7 @@ import {
   whenModel,
 } from "../src/scripts/lib/filterModel";
 import { emptyResultsHtml } from "../src/scripts/views/filters";
+import { emptyDayHtml } from "../src/scripts/views/calendarView";
 import { TYPE_ORDER } from "../src/scripts/lib/format";
 import { event } from "./factories";
 
@@ -213,6 +214,20 @@ describe("the filter chips (filterModel)", () => {
     ]);
   });
 
+  // The bug-squash pass of 8 Oct 2026: paging the calendar to a month without events (January 2027), the phone's bar
+  // was an empty band pinned at the top, its chips the month's types: none.
+  it("a view without events (an empty month in the calendar) keeps the main types in the bar, dimmed", () => {
+    const empty = { ...list, view: "calendar" as const, month: new Date(2027, 0, 1) };
+    const types = filterModel(all, empty, today).types;
+    expect(types.map((option) => [option.value, option.count, option.dimmed])).toEqual([
+      ["social", 0, true],
+      ["party", 0, true],
+      ["workshop", 0, true],
+    ]);
+    // With one chosen, that one (to be removed), as in any view.
+    expect(filterModel(all, { ...empty, types: ["concert"] }, today).types.map((option) => option.value)).toEqual(["concert"]);
+  });
+
   it("a type the other filters leave nothing of is dimmed in place, never hidden", () => {
     const bachata = model({ styles: ["bachata"] });
     expect(pick(bachata.types, "social")).toMatchObject({ count: 0, dimmed: true });
@@ -332,6 +347,28 @@ describe("the filter chips (filterModel)", () => {
     expect(searched).toContain("Borrar la búsqueda");
     expect(searched).not.toContain("Limpiar filtros");
     expect(emptyResultsHtml(list)).toBeNull();
+  });
+
+  // The bug-squash pass of 8 Oct 2026: "sábado" searched with "Hoy" chosen, on a Friday, the list said "Nada coincide
+  // con «sábado»", though the search alone found 41 events: the date chosen left none (the sheet's button had it right).
+  it("nothing because of the filters, the search finding events alone: the list names the filters", () => {
+    const both = emptyResultsHtml({ ...list, query: "sábado", dates: ["hoy"] }, 41)!;
+    expect(both).toContain("No hay eventos con estos filtros");
+    expect(both).not.toContain("Nada coincide");
+    expect(both).toContain("Limpiar filtros");
+    expect(both).toContain("Borrar la búsqueda");
+    const neither = emptyResultsHtml({ ...list, query: "zzqx", dates: ["hoy"] }, 0)!;
+    expect(neither).toContain("Nada coincide con «zzqx».");
+  });
+
+  // The same pass: the calendar's Saturday 10 with "salsa" searched and "Show" chosen said "No hay eventos este día que
+  // coincidan con «salsa»", though the search alone finds that day's salsa events.
+  it("an empty day in the calendar names the filters when the search alone finds that day's events", () => {
+    const calendar = { ...list, view: "calendar" as const, query: "salsa", types: ["show" as const] };
+    expect(emptyDayHtml(calendar, 10)).toContain("No hay eventos este día con estos filtros.");
+    expect(emptyDayHtml(calendar, 0)).toContain("No hay eventos este día que coincidan con «salsa».");
+    expect(emptyDayHtml({ ...calendar, types: [] }, 0)).toContain("que coincidan con «salsa»");
+    expect(emptyDayHtml({ ...calendar, query: "", types: [] })).toContain("No hay eventos este día.");
   });
 });
 

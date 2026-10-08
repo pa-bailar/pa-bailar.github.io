@@ -407,7 +407,7 @@ flowchart TD
   The options (`filterModel` in `lib/filterModel.ts`, pure and tested; `dateOptions` in `state.ts`) exist by the events in
   view before any filter, in a stable order, so chips never move; each is counted against the other groups
   (`matchesFilters(event, state, except)`), and one with nothing to show is `dimmed` (unless chosen), not hidden. The
-  model also gives the bar's "Cuándo" (`whenModel`), its chips (the types in view, in `TYPE_ORDER`), every choice in use
+  model also gives the bar's "Cuándo" (`whenModel`), its chips (the types in view, in `TYPE_ORDER`; a view with no event, such as an empty month in the calendar, the main three, dimmed: `MAIN_TYPES`), every choice in use
   (`applied`, named in the line under the bar; the bar never shows them as extra chips), Filtros' badge
   (`activeFilterCount`), the count shown and the line under the bar (`summaryLine`), and what the search alone finds
   (`searched`: with nothing shown, the sheet's button says whether to change the search or the filters,
@@ -418,9 +418,9 @@ flowchart TD
   of the month, then one group per month for the next six months, and one per year beyond that
   (`groupByPeriod`). An event over several days (`end_date`) is upcoming until its last day, and once it has
   started it's listed under "Hoy" every day it goes on (`shownDay` in `lib/dates.ts`). A workshop series (`sessions`)
-  is upcoming until its last session and listed under its next session's day (`listOrder`, `startOn`); listed under a
-  later one (a day searched, a date chosen, the calendar's day), its card says that session (`eventCardGridHtml`'s
-  `listedOn`, `shownSession`'s `listed`). Near periods show a few flyers, then "Ver N más"; later periods start as a
+  is upcoming until its last session and listed under its next session's day (`listOrder`, `startOn`); listed under
+  another one (a day searched, a date chosen, the calendar's day, a past one too), its card says that session
+  (`eventCardGridHtml`'s `listedOn`, `shownSession`'s `listed`). Near periods show a few flyers, then "Ver N más"; later periods start as a
   summary row (`DESIGN.md`, "Long lists").
 - **"Calendario"** shows a month grid: days with events show dots on phones (`dotsHtml`) and names on wide screens,
   capped so a busy day never makes its week taller. Colombian holidays are tinted, and the selected day's events are
@@ -433,7 +433,9 @@ flowchart TD
   sheet and the toolbar always agree.
 - **Keeping your place:**
   - when a filter changes while you're reading the list, the period you were in (the lowest one crossing a band
-    under the bar, measured just before: `captureListPosition`) stays under the bar;
+    under the bar, measured just before: `captureListPosition`) stays under the bar, and the chip that changed it
+    gets the focus back without moving the page (`refocus` in `lib/focus.ts`: on Android a tapped chip has the focus,
+    and putting it back with a scroll sent the page to the list's top; the bug-squash pass of 8 Oct 2026);
   - the list remembers where it was left, so switching to the calendar and back returns you to the same spot; to the
     same period if a filter changed meanwhile, to its start if the search did (`listComeback`). The calendar instead
     always opens on its home (`calendarHome` and `revealDay` in `views/viewNavigation.ts`; `DESIGN.md`, "Phones: feed,
@@ -553,7 +555,7 @@ stateDiagram-v2
   (`views/savedView.ts`: the ones to come by period, the past ones folded; the search applies, the filters don't), and
   the calendar marks the days holding one. A save or an unsave in Guardados says so in a notice at the bottom
   (`views/notice.ts`, chosen by `lib/saveNotice.ts`): `main.ts` gives its button the way to Guardados (`navigateView`)
-  or the undo (`toggleSave`), which Ctrl+Z (⌘Z) also runs while it's up (`NoticeAction.undo`: the keyboard's way to
+  or the undo (`saveAgain`: saved again from what's stored, never toggled, as another tab may have saved it meanwhile; the bug-squash pass of 8 Oct 2026), which Ctrl+Z (⌘Z) also runs while it's up (`NoticeAction.undo`: the keyboard's way to
   it, through the button's own click); the install reminder after a second save is the same notice (`offerAfterSaving`),
   in place of a new save's "Guardado" only (`reminderMayReplace`, from what `tellSaveChange` showed) and only for a
   banner dismissed on an earlier visit (`reminderDue`, pure and tested). When a save's notice speaks, Guardados is
@@ -564,7 +566,7 @@ stateDiagram-v2
   offer's state (`lib/storedValue.ts`, `lib/storedSwitch.ts`). What storage couldn't keep is held in memory for the
   rest of the visit (`storedValue`, the base of `storedSwitch`, and `onceFlag`): without it, the install banner's ×
   did nothing with storage blocked (the bug hunt of 7 Oct 2026).
-- **Search** (`lib/search.ts`) runs on the events already in the page, accent-insensitive: every word found at the start of one of the event's words (`wordsOf`: runs of letters, and of digits), or whole where a start finds too much (a number, a singular), a letter right after a word as the start of the word after it ("zona t"), or as a name of five letters or more inside its handle (not the search's own words, `OWN_WORDS`), plurals finding their singular, a visitor's Spanish finding the site's words (`lib/searchWords.ts`: "clase" → the workshops, "milonga" → tango, "sin costo" → free), and days found by date (`lib/searchDays.ts`: "hoy", "sábado", "este finde", "15 de octubre", "festivo"; `searchedDays`), which narrow the days an event is shown on as "Cuándo" does, through the filters' one model (`shownDays` in `state.ts`, section 5.2).
+- **Search** (`lib/search.ts`) runs on the events already in the page, accent-insensitive: every word found at the start of one of the event's words (`wordsOf`: runs of letters, and of digits), or whole where a start finds too much (a number, a singular), a letter right after a word as the start of the word after it ("zona t"), or as a name of five letters or more inside its handle (not the search's own words, `OWN_WORDS`), plurals finding their singular, a visitor's Spanish finding the site's words (`lib/searchWords.ts`: "clase" → the workshops, "milonga" → tango, "sin costo" → free), and days found by date (`lib/searchDays.ts`: "hoy", "sábado", "este finde", "15 de octubre", "festivo"; a day narrowed by the next one, "hoy viernes", "sábados de octubre", "lunes festivo": `narrowerAt`; `searchedDays`), which narrow the days an event is shown on as "Cuándo" does, through the filters' one model (`shownDays` in `state.ts`, section 5.2).
   On phones its field is the bar at the bottom (`views/bottomNav.ts`): Buscar opens it with a history entry of its
   own, an overlay over the screen's state (`searchHistory`): back or × leaves it and clears the search, Enter leaves
   it and keeps the search, and forward onto it once closed goes back over it, like the sheets' entries. Android's
@@ -648,8 +650,8 @@ Every browser on an iPhone is Safari's engine (WebKit), with its own limits:
 - **Workshop series** (`sessions`, `docs/DATA.md`): `isSeries`, `nextSession` (the first on or after today),
   `shownSession` (the next, or the last once all passed; or the one it's `listed` under), and `daysOf` (its sessions'
   days, not those between) in `lib/dates.ts`. `isMultiDay` is false for a series. The card and the details show the
-  next session, as of today in the browser; a card listed under a later session (a day searched, a date chosen, the
-  calendar's day) shows that one. Calendars get one VEVENT per session with its own times (`sessionTimes`, `lib/calendarFeed.ts`; not
+  next session, as of today in the browser; a card listed under another session (a day searched, a date chosen, the
+  calendar's day, a past one too) shows that one. Calendars get one VEVENT per session with its own times (`sessionTimes`, `lib/calendarFeed.ts`; not
   RDATE, which can't give each session its own times). schema.org gets one `Event` from the first session to the
   last, with each session as a `subEvent`.
 - **Adding days** (`addDays`) moves the calendar date, not 24-hour steps, so "Mañana" and "Próxima
@@ -756,7 +758,7 @@ frontend/
 | `data.ts` | Reads `data/`, adds flyer sizes and versions (`?v=`), lists every account the sweep reads (`meta.accounts`, else the accounts with events) for the footer's sources |
 | `state.ts` | The UI state; filtering (AND across groups, OR within dates, types and rhythms; hiding the bars: `isBar`, `matchesBars`, `HIDE_BARS_KEY`); Filtros' count (the badge); "Limpiar"; grouping by period; the date options |
 | `views/upcomingView.ts` | "Próximos"; where a shared link's event is (`sharedEventEntry`) |
-| `views/calendarView.ts` | "Calendario", with holidays; each day's events with the filters on (`calendarDays`); a day's dots on phones (`dotsHtml`, `MAX_DOTS_PER_DAY`); the selected day's heading |
+| `views/calendarView.ts` | "Calendario", with holidays; each day's events with the filters on (`calendarDays`); a day's dots on phones (`dotsHtml`, `MAX_DOTS_PER_DAY`); the selected day's heading; an empty day, and why (`emptyDayHtml`: the search, or the filters when the search alone finds that day's events) |
 | `views/eventCard.ts` | A card: flyer at its shape (or a video's clip), or a carousel of the event's posts; date sticker; the action row (Detalles, Compartir, the carousel's dots, Guardar) |
 | `views/lightbox.ts`, `components/Lightbox.astro` | A card's image big beside the side panel (wide screens with a mouse): a non-modal stage over the list up to the panel; its event is the panel's, it closes with it and shares its history entry |
 | `views/keyboardNav.ts` | The arrows between cards (`neighbor`, on the cards' boxes) and between events in the open details; Enter |
@@ -773,7 +775,7 @@ frontend/
 from under one gets its entry when the overlay closes (pushed over the overlay's entry, it left that entry behind). Every entry's state is one type (`AppHistoryState`), read with `historyState` |
 | `components/HomePage.astro`, `lib/viewTitles.ts` | The app's page, for each address (`/`, `/calendario/`, `/guardados/`, by its `view`); each view's title and description, for the page's head and the tab's title when the view changes |
 | `views/savedView.ts` | Guardados: the saved events to come by period, the past ones folded, the empty states (`savedLists`, `emptySavedHtml`, `renderSavedView`) |
-| `lib/filterModel.ts` | The filters' model, pure: options, counts, dimmed, the rhythms by family (`styleGroups`), the bar's chips, "Cuándo" (`whenModel`), the toolbar's pills (`filterPills`), what's applied, the badge, the line (`summaryLine`), the sheet's button (`resultsButtonLabel`, from what the search alone finds: `searched`), stale dates |
+| `lib/filterModel.ts` | The filters' model, pure: options, counts, dimmed, the rhythms by family (`styleGroups`), the bar's chips, "Cuándo" (`whenModel`), the toolbar's pills (`filterPills`), what's applied, the badge, the line (`summaryLine`), the sheet's button (`resultsButtonLabel`, from what the search alone finds: `searched`, also the empty list's words), stale dates; a view with no event shows the main types (`MAIN_TYPES`) |
 | `views/filters.ts` | Drawing the model: the phone bar's chips and line, the filter sheet (Ritmo by family), the toolbar's pills, their panels' content and the status row (`pillHtml`, `panelHtml`, `statusHtml`); empty results |
 | `views/filterPanels.ts` | Wide screens: the toolbar's pills open their panels (Cuándo, Ritmo, Tipo): one at a time, each with its own history entry (an overlay, `menu: "panel-…"`), placed under its pill (`menuPlacement`), the keys (`nextOption`), closing (Escape, a click outside, back, a too-small screen) and the focus. A click outside is swallowed or held until the panel's back lands (`lib/outsideClick.ts`) |
 | `lib/styleFamilies.ts` | The rhythms' families (Salsa, Bachata, Urbanos, Otros): `STYLE_FAMILIES`, `familyOf`, `groupByFamily` (the sheet and the Ritmo panel); every rhythm of the data contract in one (`tests/styleFamilies.test.ts`) |
@@ -784,7 +786,7 @@ from under one gets its entry when the overlay closes (pushed over the overlay's
 | `views/bottomNav.ts` | Phones: the bar at the bottom (Eventos, Calendario, Buscar, Guardados, Filtros): the view on screen, Filtros' badge and name (`navItems`, `filtersLabel`), the search field docked above the keyboard (`openSearchField`, `closeSearchField`, `keyboardInset`, `keyboardJustHid`) and its history entry (`searchHistory`), the bar's height for what must stay above it (`bottomInset`) |
 | `views/dayChange.ts` | The page shown again on another day, or on screen at midnight (`untilNextDay`): the calendar's day and month to today, drawn again; shown again hours later and online, loaded again |
 | `views/viewNavigation.ts` | Switching views (the list back where it was left, at its start after a search elsewhere: `listComeback`, or where its history entry says after a reload; the calendar on its home: `calendarHome`; Guardados at its top), the tab's title; the calendar's day list on screen (`revealDay`); back to the content's top, under whatever is pinned, after a search or a view change (`backToTop`: never measured on the sticky toolbar, which reads 0 once pinned); the screens' history hooks (`currentScreen`, `applyScreen`) |
-| `lib/focus.ts` | Keeping the keyboard's focus through a redraw (`focusSelector`, `focusScope`), and after "Limpiar" |
+| `lib/focus.ts` | Keeping the keyboard's focus through a redraw (`focusSelector`: a chip, a day, a pill, an event's card; `focusScope`; `refocus` puts it back without scrolling: a pinned bar's chip focused with a scroll sent the page to the list's top), and after "Limpiar" |
 | `lib/accountLink.ts` | Every @account's link (`accountLinkHtml`, `accountLinkAttrs`): the profile, opened inside the site (`data-profile`); `tests/accountLink.test.ts` fails on any other profile link |
 | `lib/links.ts` | Every URL built from an event: flyer, clip, page, link preview, Maps, the report form; an account's profile and its embed (`profileUrl`, `profileEmbedUrl`); each view's address (`viewPath`, `viewOfPath`) and where closing an event returns (`addressAfterClosing`); calendar times (a series' per session) |
 | `lib/calendarFeed.ts` | The calendar feed's text (`/calendario.ics`): one VEVENT per event, or per session of a workshop series |
@@ -801,9 +803,9 @@ from under one gets its entry when the overlay closes (pushed over the overlay's
 | `views/inlinePlayer.ts` | A video tapped in the detail plays in the image's place (Instagram's player), removed when off screen |
 | `views/clips.ts` | Videos' clips in the feed and on an event's page: the one on screen plays, silent, one at a time; held under the full drawer and the media viewer; unloaded off screen (section 5.7) |
 | `lib/contact.ts` | The organizer's contact as a link: Instagram, WhatsApp, phone or website |
-| `lib/search.ts`, `lib/searchWords.ts`, `lib/searchDays.ts` | Search over the events in the page: words by their start, plurals, known phrases whole (`matchesWords`); the visitors' Spanish and the site's words it finds (one way), and the words left out (`LEFT_OUT`: joining words, a question's); the days a search names, with the words around them (a part of the day, a weekday's number, "que viene", "el otro"), as a test of days (`searchedDays`, applied by `state.ts` `shownDays`) |
+| `lib/search.ts`, `lib/searchWords.ts`, `lib/searchDays.ts` | Search over the events in the page: words by their start, plurals, known phrases whole (`matchesWords`); the visitors' Spanish and the site's words it finds (one way), and the words left out (`LEFT_OUT`: joining words, a question's); the days a search names, with the words around them (a part of the day, a weekday's number, "que viene", "el otro", a day that narrows another: "hoy viernes", "sábados de octubre"), as a test of days (`searchedDays`, applied by `state.ts` `shownDays`) |
 | `lib/secondTap.ts`, `views/secondTaps.ts` | A double-tap's second tap (the same spot, within 450 ms): dropped, on the home page and an event's page, when it lands on another control than the first (on what the first opened or changed under the finger: the details, a sheet, a period's new cards, the view under a notice), and after a card's tap opened its event |
-| `lib/saved.ts`, `views/saveButton.ts` | Saved events: the ids in this browser; the bookmarks, and Guardados' number on the bar and the tab (`renderSavedCount`) |
+| `lib/saved.ts`, `views/saveButton.ts` | Saved events: the ids in this browser (`toggleSaved`, and `setSaved` for Deshacer's `saveAgain`, never a toggle); the bookmarks, and Guardados' number on the bar and the tab (`renderSavedCount`) |
 | `views/notice.ts` | A short notice at the bottom (`#notice`, a live region in `components/Notice.astro`): one at a time, gone after its seconds unless the mouse or the focus is on it; an undo also Ctrl+Z (⌘Z); none over a modal (`canShowNotice`) |
 | `lib/saveNotice.ts`, `views/saveNotice.ts` | What a save says ("Guardado · Ver guardados", "Quitado de tus guardados · Deshacer", in an app's browser "Guardado solo en este navegador"), and its button's action |
 | `lib/share.ts`, `lib/shareText.ts`, `lib/shareSources.ts`, `lib/shareCard.ts`, `views/sharing.ts` | Sharing through the phone's menu: the text, what each list's button shares (`shareSources`, pure), the image of a list, the buttons |

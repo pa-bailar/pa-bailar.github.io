@@ -118,11 +118,15 @@ function shareIconHtml(group: AgendaGroup): string {
       aria-label="Compartir: ${escapeHtml(group.label)}">${ICONS.share}</button>`;
 }
 
-/** Renders the list; returns how many events it shows and their periods (for the jump bar). */
+/**
+ * Renders the list; returns how many events it shows and their periods (for the jump bar). `searched`: the events the
+ * search alone finds (an empty list says whether the search or the filters are why).
+ */
 export function renderUpcomingView(
   container: HTMLElement,
   events: DanceEvent[],
   state: AppState,
+  searched = 0,
 ): { shown: number; groups: AgendaGroup[] } {
   const today = todayIso();
   const upcoming = eventsInView(events, state).filter((event) => matchesFilters(event, state, undefined, today));
@@ -131,7 +135,7 @@ export function renderUpcomingView(
   const datesChosen = state.dates.length > 0;
   if (!upcoming.length) {
     container.innerHTML =
-      emptyResultsHtml(state) ??
+      emptyResultsHtml(state, searched) ??
       `<div class="empty-state">
         <p>No hay eventos próximos por ahora.</p>
         <p>Las academias publican casi a diario: vuelve en unos días.</p>

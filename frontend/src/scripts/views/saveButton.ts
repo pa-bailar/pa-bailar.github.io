@@ -6,7 +6,7 @@
 import type { DanceEvent } from "../types";
 import { escapeHtml } from "../lib/dom";
 import { ICONS } from "../lib/icons";
-import { isSaved, onSavedElsewhere, toggleSaved } from "../lib/saved";
+import { isSaved, onSavedElsewhere, setSaved, toggleSaved } from "../lib/saved";
 
 function buttonInner(saved: boolean, labeled: boolean): string {
   const icon = saved ? ICONS.bookmarkFilled : ICONS.bookmark;
@@ -47,11 +47,18 @@ type SaveChange = (id: string, saved: boolean) => void;
 
 let changed: SaveChange = () => {};
 
-/** Saves or unsaves the event `id` as its bookmark does ("Deshacer" too): all its bookmarks follow, then `onChange`. */
-export function toggleSave(id: string) {
+/** Saves or unsaves the event `id` as its bookmark does: all its bookmarks follow, then `onChange`. */
+function toggleSave(id: string) {
   const saved = toggleSaved(id);
   syncSaveButtons(id);
   changed(id, saved);
+}
+
+/** "Deshacer": the event `id` saved again, as its bookmark would; nothing if it already is (another tab saved it). */
+export function saveAgain(id: string) {
+  if (!setSaved(id, true)) return;
+  syncSaveButtons(id);
+  changed(id, true);
 }
 
 /** Bookmark clicks anywhere on the page; `onChange` runs after an event is saved or unsaved here. When another tab

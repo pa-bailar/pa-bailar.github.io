@@ -212,10 +212,12 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves: the pa
   | further than a week | 4 sesiones · próxima: dom 22 nov |
   | within a week | Domingo · 2:00 p. m. · sesión 3 de 4 (Hoy, Mañana as for any event; the session's own time) |
   | after the last | 4 sesiones · 8 nov – 6 dic (only on its page) |
-  | listed under a later session | that session, like any event: Viernes · 10:00 a. m. · sesión 2 de 2 |
+  | listed under another session | that session, like any event: Viernes · 10:00 a. m. · sesión 2 de 2 |
 
-  Listed under a later session (a day searched, a date chosen in "Cuándo", the calendar's day), its card and sticker say
-  that one, not the next (the bug hunt of 7 Oct 2026: "Hoy · sesión 1 de 2" under "Este fin de semana").
+  Listed under another session (a day searched, a date chosen in "Cuándo", the calendar's day), its card and sticker say
+  that one, not the next (the bug hunt of 7 Oct 2026: "Hoy · sesión 1 de 2" under "Este fin de semana"); a past one
+  too, on the calendar's days gone by (the bug-squash pass of 8 Oct 2026: "Hoy · sesión 2 de 2" under Wednesday's
+  heading).
   The detail's "Cuándo" reads "4 sesiones: 8, 22, 29 nov y 6 dic · 2:00 p. m. – 5:00 p. m." ("horario de cada sesión
   abajo" when their times differ), and shared texts the same; a period's shared list gives its next session.
 - **Every @account is one link** (`lib/accountLink.ts`; `tests/accountLink.test.ts` fails on any other instagram.com profile link): wherever an account shows (card, details, Contacto, the footer's sources), it opens the profile inside the site, in the media viewer with Instagram's profile embed (`openProfileViewer` in `views/postViewer.ts`); a new tab still gets Instagram. Not a filter to the account: the owner dropped that on 4 October 2026 (an academy rarely has several events at once, and people expected its Instagram); not Instagram's app either, whose back button leaves the site.
@@ -347,7 +349,10 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
     carries `aria-keyshortcuts`). The notice is far in Tab's order (from the details' Guardado, 14 Shift+Tabs, and gone
     after its 4 seconds: the bug hunt of 7 Oct 2026); taking the focus to it instead would pull the visitor away from
     where they are, and Enter there would undo. Not while typing in a field (its own undo), nor under a modal. In the
-    details, Guardar itself also saves the event again.
+    details, Guardar itself also saves the event again. Deshacer only ever saves: saved again meanwhile in another
+    tab, it leaves it so (it toggled, and took the event away for good). Guardados drawn again (Deshacer, a save in
+    another tab) keeps the focus on the card that had it (after Escape from the details, the focus fell to the page
+    and Tab started over from the top). Both: the bug-squash pass of 8 Oct 2026.
 - **Guardados is a place of its own** (`views/savedView.ts`, `/guardados/`), like Instagram's Saved and Airbnb's
   Wishlists. Not a toggle over the list and the calendar (it read as "the calendar without the calendar", and you could
   be in Eventos and Guardados at once): the owner, 5 October 2026. It's in the bar at the bottom and a third tab on
@@ -417,6 +422,13 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
     the next ones). "El otro sábado" and "el otro finde" are the ones after the coming one (next week's). A month
     written short counts right after a number ("17 de oct", "3 nov"; alone, "mar" is the sea), a month may come
     first ("octubre 17"), and a year after it ("octubre de 2026").
+  - **A day narrowed by the next one** (the bug-squash pass of 8 Oct 2026: "hoy viernes" listed every Friday to come,
+    "sábados de octubre" every day of October and every Saturday after it): a weekday right after "hoy", "mañana" or
+    "pasado mañana" says the same day ("hoy viernes": today, if it's Friday; nothing otherwise, honestly); a weekday
+    and "festivo" are the holidays on it ("el lunes festivo"); a weekday or "festivo" with a month, a week or this
+    month, "de" between them or not, the ones in it ("sábados de octubre", "el viernes de la próxima semana",
+    "festivos de noviembre"). Said apart, days are still any of them ("viernes sábado", "hoy y mañana", "sábado 10
+    domingo 11").
   - **Names that are days** ("julio", "abril", "domingo": `DAY_NAMES`): said alone, they're also the name, so an
     event with it among its words is found on any of its days ("domingo quiñones": his concert on a Saturday; "julio
     sábado": Julio's Saturday). Others still find their days ("julio": July's events). None in the data on 7 Oct 2026;
@@ -450,7 +462,7 @@ the list stays short there and summarizes what's further away (`scripts/views/up
 ## Phones: feed, jump bar, the bar at the bottom and filter sheet
 
 - **Feed like Instagram:** under 720px each event is a full-width post, the flyer edge to edge at full size and the details right below, separated by space instead of boxed cards. Nothing is shrunk into thumbnails.
-- **Jump bar** (`JumpBar.astro`, `scripts/views/jumpBar.ts`): one slim row pinned to the top, modeled on the filter bars of Google Maps and Airbnb: one row of chips that scrolls sideways: **[🕒 ▾] | [Social] [Rumba] [Taller] [Concierto] …**, the types in view in the owner's order (8 October 2026; the rhythms are in the Filtros sheet) ("Cuándo" and the chips: see "Filters"). Search, Guardados and Filtros live in the bar at the bottom (the owner, 5 October 2026: in this row the filters' count scrolled sideways with the chips).
+- **Jump bar** (`JumpBar.astro`, `scripts/views/jumpBar.ts`): one slim row pinned to the top, modeled on the filter bars of Google Maps and Airbnb: one row of chips that scrolls sideways: **[🕒 ▾] | [Social] [Rumba] [Taller] [Concierto] …**, the types in view in the owner's order (8 October 2026; the rhythms are in the Filtros sheet); in a view with no event at all (a month without events in the calendar), Social, Rumba and Taller, dimmed, never an empty bar (the bug-squash pass of 8 Oct 2026) ("Cuándo" and the chips: see "Filters"). Search, Guardados and Filtros live in the bar at the bottom (the owner, 5 October 2026: in this row the filters' count scrolled sideways with the chips).
   - **The row runs to the screen's edge** and fades there, so the next chip peeks and it reads as a row that scrolls (Material's single-line chip group). It keeps where it was scrolled while choosing, unless a new choice would be out of sight: then it scrolls just enough to show it.
   - **The row is always the same controls:** Cuándo, then the types. A choice made in the sheet without a chip of
     its own (a rhythm, "Sin bares") shows in the sheet and in the line under the bar, never as a chip in the row: chosen
@@ -505,7 +517,7 @@ the list stays short there and summarizes what's further away (`scripts/views/up
   - **A day tapped in the calendar says so where the list starts:** its heading ("Miércoles, 14 de octubre") has the count under it ("3 eventos"; an empty day says "No hay eventos este día.") and glows briefly when the day changes (not with reduced motion). Screen readers hear "Miércoles, 14 de octubre: 3 eventos" (`#results-status`).
 - **Filter sheet** (`FilterSheet.astro`, `filter-sheet.css`), from Filtros in the bar at the bottom:
   - **Head:** "Filtros", "Limpiar" (only enabled with something to clear) and ×.
-  - **Groups:** **Fecha** · *elige una o varias* (every period and month), **Ritmo** · *elige uno o varios* (under their families, see "Filters"), **Tipo de evento** (several too). Each option with its count ("Noviembre 2"); the ones with nothing to show dimmed. First, above them, the "Ocultar eventos de bares" switch (see "Filters", "Hiding the bars").
+  - **Groups:** **Fecha** · *elige una o varias* (every period and month), **Tipo de evento** (several too), **Ritmo** · *elige uno o varios* (under their families, see "Filters"). Each option with its count ("Noviembre 2"); the ones with nothing to show dimmed. First, above them, the "Ocultar eventos de bares" switch (see "Filters", "Hiding the bars").
   - **"Ver 12 eventos"** stays at the bottom (the primary button): "Ver 1 evento", or, disabled, what to change:
     "Sin eventos: cambia los filtros", or "Sin eventos: cambia la búsqueda" when the search alone finds nothing (no
     filter would help; the bug hunt of 7 Oct 2026: it blamed the filters). It closes the sheet; choices apply at once,
@@ -595,7 +607,9 @@ screens in the toolbar's pills and their panels:
 - **Searching:** the bar at the bottom becomes the search field; the line under the pinned bar stays while filtering.
 - **Empty results always offer a way out:** with filters, "No hay eventos con estos filtros" · "Prueba con otras fechas
   o ritmos." · "Limpiar filtros"; with a search, "No encontramos eventos" · "Nada coincide con «…»." · "Borrar la
-  búsqueda" (Guardados has its own: see "Saving and searching").
+  búsqueda" (Guardados has its own: see "Saving and searching"). With both, the words name what emptied it, as the
+  sheet's button does: the filters when the search alone finds events ("sábado" with "Hoy" chosen on a Friday said
+  "Nada coincide con «sábado»": the bug-squash pass of 8 Oct 2026), else the search; both ways out stay.
 - **Semantics:** filter chips are toggle buttons (`aria-pressed`), short names carry the full one ("Finde": "Este fin de
   semana"); removable chips are named "Quitar Social". Focus stays on the chip chosen; after "Limpiar" (which hides or
   disables itself), focus goes to Filtros (in the sheet, to its first control; on wide screens, the first pill).

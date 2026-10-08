@@ -4,7 +4,7 @@ import type { AppState, DanceEvent, EventType, View } from "./types";
 import { initClickTracking } from "./lib/analytics";
 import { allowPressedLook, byId, isPlainClick } from "./lib/dom";
 import { CARD_LINK, cardLink, cardOnScreen } from "./lib/cards";
-import { focusAfterClearing, focusScope, focusSelector } from "./lib/focus";
+import { focusAfterClearing, focusScope, focusSelector, refocus } from "./lib/focus";
 import { eventCountLabel, formatLongDate } from "./lib/format";
 import { addMonths, currentMonth, isUpcoming, nowInBogota, todayIso } from "./lib/dates";
 import { eventPath, sharedEventLink, viewOfPath, viewPath } from "./lib/links";
@@ -58,7 +58,7 @@ import { closeSearchField, initBottomNav, renderBottomNav } from "./views/bottom
 import { viewNavigation } from "./views/viewNavigation";
 import { closeWhenMenu, isWhenMenuOpen, openWhenMenu, syncWhenMenu } from "./views/whenMenu";
 import { closePanel, initFilterPanels, syncPanels, togglePanel } from "./views/filterPanels";
-import { initSaveButtons, renderSavedCount as drawSavedCount, toggleSave } from "./views/saveButton";
+import { initSaveButtons, renderSavedCount as drawSavedCount, saveAgain } from "./views/saveButton";
 import { initNotice } from "./views/notice";
 import { tellSaveChange } from "./views/saveNotice";
 import { reminderMayReplace } from "./lib/saveNotice";
@@ -95,10 +95,13 @@ function announce(count: number) {
   byId("results-status").textContent = said[state.view];
 }
 
-/** What the view on screen shows: how many events, and the list's periods (for the share buttons). */
-function renderView(): { shown: number; groups: AgendaGroup[] } {
+/**
+ * What the view on screen shows: how many events, and the list's periods (for the share buttons). `searched`: what the
+ * search alone finds (the filters' model), for an empty list to say why.
+ */
+function renderView(searched: number): { shown: number; groups: AgendaGroup[] } {
   const container = byId(VIEW_IDS[state.view]);
-  if (state.view === "upcoming") return renderUpcomingView(container, events, state);
+  if (state.view === "upcoming") return renderUpcomingView(container, events, state, searched);
   if (state.view === "calendar") return { shown: renderCalendarView(events, state), groups: [] }; // no periods
   return { shown: renderSavedView(container, events, state), groups: [] }; // its plans are shared whole
 }
@@ -134,7 +137,7 @@ function render({ keepPlace = false, quiet = false } = {}) {
   });
   renderBottomNav({ view: state.view, query: state.query, active: model.active });
 
-  const { shown, groups } = renderView();
+  const { shown, groups } = renderView(model.searched);
   renderJumpBar();
   renderSavedCount();
   watchClips(byId(VIEW_IDS[state.view])); // the videos' clips, as a feed
@@ -147,8 +150,7 @@ function render({ keepPlace = false, quiet = false } = {}) {
   highlightCurrentCard(); // the side panel's event, outlined again among the new cards
   armDetailsHint();
 
-  // The first one on screen: the same choice can be in a closed panel and among the removable chips.
-  if (focused) [...scope.querySelectorAll<HTMLElement>(focused)].find((element) => element.getClientRects().length)?.focus();
+  refocus(focused, scope); // without scrolling: the place is kept above
 }
 
 /** The saved events still to come, in the list's order (a series by its next session). */
@@ -499,7 +501,7 @@ export function start() {
   initSaveButtons((id, saved) => {
     const inSaved = state.view === "saved";
     const seeSaved = () => navigateView("saved");
-    const told = tellSaveChange(id, saved, { inSaved, seeSaved, undo: () => toggleSave(id) });
+    const told = tellSaveChange(id, saved, { inSaved, seeSaved, undo: () => saveAgain(id) });
     if (reminderMayReplace(told)) offerAfterSaving(upcomingSaved().length); // a new save's "Guardado" only
     savesChanged({ quiet: told !== null });
   }, () => savesChanged());
