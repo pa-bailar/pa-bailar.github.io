@@ -89,6 +89,45 @@ describe("moves between screens", () => {
     expect(fake.index).toBe(0);
   });
 
+  // The iPhone audit, 8 Oct 2026: Calendario → "Info" (#info, an entry the browser makes) → Eventos left the calendar's
+  // entry behind it: back brought the calendar back, then the list again.
+  it("undoing a move after an in-page jump (Info) steps back over the jump too", async () => {
+    screens.goTo("view", () => (app.view = "calendar"));
+    screens.beforeJump();
+    history.pushState(null, "", "#info"); // what the browser does for the link
+    screens.afterJump();
+    expect(fake.entries).toHaveLength(3);
+    screens.leave("view", () => (app.view = "upcoming"));
+    await settle();
+    expect(app.view).toBe("upcoming");
+    expect(fake.index).toBe(0); // the list's own entry: one back from here leaves the site, nothing in between
+  });
+
+  it("the calendar, Info, then Guardados: still replaced, so Eventos returns to the list", async () => {
+    screens.goTo("view", () => (app.view = "calendar"));
+    screens.beforeJump();
+    history.pushState(null, "", "#info");
+    screens.afterJump();
+    screens.replaceScreen("view", () => (app.view = "saved"));
+    expect(fake.entries).toHaveLength(3);
+    screens.leave("view", () => (app.view = "upcoming"));
+    await settle();
+    expect(app.view).toBe("upcoming");
+    expect(fake.index).toBe(0);
+  });
+
+  it("back from the jump returns to the same screen's entry, and the jump keeps it", async () => {
+    screens.goTo("view", () => (app.view = "calendar"));
+    screens.beforeJump();
+    history.pushState(null, "", "#info");
+    screens.afterJump();
+    expect(screens.historyState().screen?.view).toBe("calendar");
+    history.back();
+    await settle();
+    expect(app.view).toBe("calendar");
+    expect(fake.index).toBe(1);
+  });
+
   it("undoing a move that isn't the current entry happens in place", () => {
     openPeriod();
     screens.leave("view", () => (app.view = "upcoming"));
