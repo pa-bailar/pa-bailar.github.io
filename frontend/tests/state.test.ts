@@ -1,7 +1,9 @@
 import { describe, expect, it } from "vitest";
+import type { DanceEvent } from "../src/scripts/types";
 import { addDays, daysOf, isMultiDay, lastDay, shownDay, todayIso } from "../src/scripts/lib/dates";
 import {
   createInitialState,
+  dayOrderKey,
   defaultDayForMonth,
   eventsInView,
   groupByDay,
@@ -89,18 +91,54 @@ describe("styles", () => {
   });
 });
 
+describe("a day's events: by type in the owner's order, then by time (the owner, 8 Oct 2026)", () => {
+  const day = "2026-11-14";
+  const at = (id: string, event_type: DanceEvent["event_type"], start_time: string | null) =>
+    event({ id, date: day, event_type, start_time });
+  const list = [
+    at("taller-10", "workshop", "10:00"),
+    at("concierto-sin-hora", "concert", null),
+    at("social-21", "social", "21:00"),
+    at("rumba-22", "party", "22:00"),
+    at("social-sin-hora", "social", null),
+    at("social-19", "social", "19:00"),
+    at("concierto-20", "concert", "20:00"),
+  ];
+
+  it("socials, then rumbas, then workshops, then concerts; within each by time, one with no time last", () => {
+    expect(groupByDay(list).get(day)?.map((item) => item.id)).toEqual([
+      "social-19",
+      "social-21",
+      "social-sin-hora",
+      "rumba-22",
+      "taller-10",
+      "concierto-20",
+      "concierto-sin-hora",
+    ]);
+    expect(dayOrderKey(list[0], day) < dayOrderKey(list[1], day)).toBe(true);
+  });
+
+  it("the list keeps the days in order, each ordered the same way", () => {
+    const friday = event({ id: "taller-viernes", date: "2026-11-13", event_type: "workshop", start_time: "09:00" });
+    const ids = groupByPeriod([...list, friday], "2026-11-12").flatMap((group) => group.events.map((item) => item.id));
+    expect(ids[0]).toBe("taller-viernes"); // Friday before Saturday, whatever its type
+    expect(ids.slice(1, 4)).toEqual(["social-19", "social-21", "social-sin-hora"]);
+  });
+});
+
 describe("events over several days", () => {
   // Level Up: Friday 13 to Sunday 15 November 2026.
   const congress = event({ id: "level-up", date: "2026-11-13", end_date: "2026-11-15", event_type: "congress" });
   const social = event({ id: "social", date: "2026-11-14" });
 
-  it("while it goes on, it's listed under Hoy, first", () => {
+  it("while it goes on, it's listed under Hoy (after the day's socials: the owner's order of types)", () => {
     for (const today of ["2026-11-13", "2026-11-14", "2026-11-15"]) {
       // The upcoming events, as the list gets them (on Sunday the social has passed).
       const groups = groupByPeriod([congress, social].filter((item) => lastDay(item) >= today), today);
       expect(groups[0]?.key).toBe("hoy");
-      expect(groups[0]?.events[0]?.id).toBe("level-up");
+      expect(groups[0]?.events.at(-1)?.id).toBe("level-up");
     }
+    expect(groupByPeriod([congress, social], "2026-11-14")[0]?.events.map((item) => item.id)).toEqual(["social", "level-up"]);
     expect(groupByPeriod([congress], "2026-11-12").map((group) => group.key)).toEqual(["fin-de-semana"]); // the day before: Friday
   });
 
@@ -108,7 +146,7 @@ describe("events over several days", () => {
     const festival = event({ id: "aniversario", date: "2026-10-31", end_date: "2026-11-02" });
     const byDay = groupByDay([festival, congress, social]);
     expect([...byDay.keys()]).toEqual(["2026-10-31", "2026-11-01", "2026-11-02", "2026-11-13", "2026-11-14", "2026-11-15"]);
-    expect(byDay.get("2026-11-14")?.map((e) => e.id)).toEqual(["level-up", "social"]);
+    expect(byDay.get("2026-11-14")?.map((e) => e.id)).toEqual(["social", "level-up"]); // a social before a congress
 
     const calendar = (month: Date, selectedDay: string) => ({ ...createInitialState(), view: "calendar" as const, month, selectedDay });
     const all = [festival, congress, social];

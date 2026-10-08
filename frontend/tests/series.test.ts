@@ -91,7 +91,7 @@ describe("a series in the upcoming list (groupByPeriod)", () => {
     // Wednesday 18 November: next session Sunday 22, at 2:00 p. m.
     expect(groups("2026-11-18")).toEqual([
       ["esta-semana", ["jueves"]],
-      ["fin-de-semana", ["domingo-temprano", series.id, "domingo-noche"]],
+      ["fin-de-semana", ["domingo-temprano", "domingo-noche", series.id]], // the day's socials, then the workshop
       ["2026-12", ["diciembre"]],
     ]);
   });
@@ -101,7 +101,7 @@ describe("a series in the upcoming list (groupByPeriod)", () => {
   });
 
   it("on a session's day: under Hoy", () => {
-    expect(groups("2026-11-22")[0]).toEqual(["hoy", ["domingo-temprano", series.id, "domingo-noche"]]);
+    expect(groups("2026-11-22")[0]).toEqual(["hoy", ["domingo-temprano", "domingo-noche", series.id]]);
   });
 
   it("once a session passes, it moves to the following one", () => {
@@ -190,9 +190,9 @@ describe("a series in the calendar", () => {
     expect(days.get("2026-11-15")).toBeUndefined();
   });
 
-  it("a selected session day shows it, by its time that day; a day between doesn't", () => {
-    const morning = event({ id: "manana-22", date: "2026-11-22", start_time: "10:00" });
-    const night = event({ id: "noche-22", date: "2026-11-22", start_time: "21:00" });
+  it("a selected session day shows it, by its time that day among the day's workshops; a day between doesn't", () => {
+    const morning = event({ id: "manana-22", date: "2026-11-22", start_time: "10:00", event_type: "workshop" });
+    const night = event({ id: "noche-22", date: "2026-11-22", start_time: "21:00", event_type: "workshop" });
     const ids = (day: string) => visibleEvents([series, morning, night], calendar("2026-11", day)).map((item) => item.id);
     expect(ids("2026-11-22")).toEqual(["manana-22", series.id, "noche-22"]);
     expect(groupByDay([series, morning, night]).get("2026-11-22")!.map((item) => item.id)).toEqual(ids("2026-11-22"));

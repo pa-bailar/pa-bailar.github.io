@@ -170,6 +170,11 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves: the pa
 
 - **The logo** links home on every page, the home page too, with a page load: the list comes back fresh, at its top, no panel open, nothing selected (the owner, 6 Oct 2026). A plain link, so the page's own click handling leaves it to the browser.
 - **Period headers** (Izzy Sanabria's Fania lettering): the title in Shrikhand with an offset shadow, between two thin lines in the three Fania colors, and the event count ("5 eventos"). Page colors only, calmer than the logo, so it never reads as a post.
+- **The order within a period: day by day, and within a day by type, then time** (the owner, 8 October 2026):
+  socials first, then rumbas, then workshops, then concerts, festivals, congresses, competitions, shows and other
+  (`TYPE_ORDER`, the same as the filters' chips); within a type, by start time, one with no known time (or that began
+  on an earlier day) last. Before, a day went by time alone, and the events with no time came first: three bars'
+  concerts above a day's social. The calendar's day list and Guardados follow it too (`dayOrderKey`).
 - **Grouped by period, not by day** (`groupByPeriod` in `scripts/state.ts`). Days with one or two events share rows instead of each leaving a mostly empty row. The buckets don't overlap, follow the usual calendar "date range" grouping, and split out the weekend because that's when most socials happen:
 
   | Group | Range |

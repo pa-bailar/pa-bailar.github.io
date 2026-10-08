@@ -17,7 +17,6 @@ import {
 import { spanLabel } from "../src/scripts/lib/format";
 import { menuPlacement, nextOption, whenMenuHtml } from "../src/scripts/views/whenMenu";
 import {
-  TYPE_ORDER,
   filterModel,
   rankedStyles,
   resultsButtonLabel,
@@ -25,6 +24,7 @@ import {
   whenModel,
 } from "../src/scripts/lib/filterModel";
 import { emptyResultsHtml } from "../src/scripts/views/filters";
+import { TYPE_ORDER } from "../src/scripts/lib/format";
 import { event } from "./factories";
 
 // Wednesday 2026-10-07: tomorrow is Thursday (in "Esta semana"), the weekend is 9–11, next week 12–18.
