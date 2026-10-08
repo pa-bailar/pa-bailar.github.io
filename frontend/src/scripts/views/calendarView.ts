@@ -128,7 +128,7 @@ export function renderCalendarView(events: DanceEvent[], state: AppState): numbe
     : "";
   byId("cal-selected-day").innerHTML = `
     <h2 class="day-heading calendar__day-heading${changed ? " is-new" : ""}">${escapeHtml(formatDayHeading(state.selectedDay))}${count}</h2>
-    ${selectedEvents.length ? eventCardGridHtml(selectedEvents) : emptyDayHtml(state)}`;
+    ${selectedEvents.length ? eventCardGridHtml(selectedEvents, () => state.selectedDay) : emptyDayHtml(state)}`;
   applyFlyerRatios(byId("cal-selected-day"));
   return selectedEvents.length;
 }

@@ -417,8 +417,10 @@ flowchart TD
   of the month, then one group per month for the next six months, and one per year beyond that
   (`groupByPeriod`). An event over several days (`end_date`) is upcoming until its last day, and once it has
   started it's listed under "Hoy" every day it goes on (`shownDay` in `lib/dates.ts`). A workshop series (`sessions`)
-  is upcoming until its last session and listed under its next session's day (`listOrder`, `startOn`).
-  Near periods show a few flyers, then "Ver N más"; later periods start as a summary row (`DESIGN.md`, "Long lists").
+  is upcoming until its last session and listed under its next session's day (`listOrder`, `startOn`); listed under a
+  later one (a day searched, a date chosen, the calendar's day), its card says that session (`eventCardGridHtml`'s
+  `listedOn`, `shownSession`'s `listed`). Near periods show a few flyers, then "Ver N más"; later periods start as a
+  summary row (`DESIGN.md`, "Long lists").
 - **"Calendario"** shows a month grid: days with events show dots on phones (`dotsHtml`) and names on wide screens,
   capped so a busy day never makes its week taller. Colombian holidays are tinted, and the selected day's events are
   listed below; whatever changes that list ends with its start on screen (`revealDay` in `views/viewNavigation.ts`).

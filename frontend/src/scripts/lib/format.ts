@@ -219,39 +219,44 @@ function multiDayWhenLabel(event: DanceEvent, today: string): string {
   return shortRangeLabel(event.date, end);
 }
 
+/** A day as a card says it: "Hoy", "Mañana", "Sábado" within a week, "Martes 20 oct." further away. */
+function cardDayLabel(iso: string, today: string): string {
+  const days = daysBetween(today, iso);
+  const date = parseIsoDate(iso);
+  if (days === 0) return "Hoy";
+  if (days === 1) return "Mañana";
+  if (days > 1 && days < 7) return capitalize(weekdayName.format(date));
+  return capitalize(dayAndMonth.format(date).replace(",", ""));
+}
+
 /**
  * A workshop series on its card, by its next session: within a week like any event, with which session it is ("Hoy ·
  * 2:00 p. m. · sesión 2 de 4", "Mañana · …", "Domingo · …"); further away, "4 sesiones · próxima: dom 22 nov"; once
- * every session has passed, "4 sesiones · 8 nov – 6 dic".
+ * every session has passed, "4 sesiones · 8 nov – 6 dic". Listed under a later session (`listed`: a day searched, a
+ * date chosen, the calendar's day), that one, like any event ("Domingo 29 nov. · 2:00 p. m. · sesión 3 de 4"): the
+ * bug hunt of 7 Oct 2026, a card under "Este fin de semana" said "Hoy · sesión 1 de 2".
  */
-function seriesWhenLabel(sessions: Session[], today: string): string {
-  const first = sessions[0]!;
-  const last = sessions.at(-1)!;
-  const next = nextSession({ date: first.date, end_date: last.date, sessions }, today);
+function seriesWhenLabel(event: DanceEvent & { sessions: Session[] }, today: string, listed?: string): string {
+  const { sessions } = event;
+  const next = nextSession(event, today);
   const count = `${sessions.length} sesiones`;
-  if (!next) return `${count} · ${spanLabel(first.date, last.date)}`;
-  const days = daysBetween(today, next.date);
-  if (days >= 7) return `${count} · próxima: ${sessionDayLabel(next.date)}`;
-  const day = days === 0 ? "Hoy" : days === 1 ? "Mañana" : capitalize(weekdayName.format(parseIsoDate(next.date)));
-  const which = `sesión ${sessions.indexOf(next) + 1} de ${sessions.length}`;
-  return [day, formatTime(next.start_time), which].filter(Boolean).join(" · ");
+  if (!next) return `${count} · ${spanLabel(sessions[0]!.date, sessions.at(-1)!.date)}`;
+  const shown = shownSession(event, today, listed);
+  if (shown === next && daysBetween(today, next.date) >= 7) return `${count} · próxima: ${sessionDayLabel(next.date)}`;
+  const which = `sesión ${sessions.indexOf(shown) + 1} de ${sessions.length}`;
+  return [cardDayLabel(shown.date, today), formatTime(shown.start_time), which].filter(Boolean).join(" · ");
 }
 
 /**
  * When an event happens, as shown on its card: "Hoy · 8:00 p. m.", "Mañana · 6:00 p. m.",
  * "Sábado · 8:00 p. m." within a week, "Martes 20 oct. · 7:00 p. m." further away. An event over several
- * days shows its days instead (multiDayWhenLabel); a workshop series, its next session (seriesWhenLabel).
+ * days shows its days instead (multiDayWhenLabel); a workshop series, its next session or the one it's `listed` under
+ * (seriesWhenLabel).
  */
-export function cardWhenLabel(event: DanceEvent, today = todayIso()): string {
-  if (isSeries(event)) return seriesWhenLabel(event.sessions, today);
+export function cardWhenLabel(event: DanceEvent, today = todayIso(), listed?: string): string {
+  if (isSeries(event)) return seriesWhenLabel(event, today, listed);
   if (isMultiDay(event)) return multiDayWhenLabel(event, today);
-  const days = daysBetween(today, event.date);
-  const date = parseIsoDate(event.date);
-  let day: string;
-  if (days === 0) day = "Hoy";
-  else if (days === 1) day = "Mañana";
-  else if (days > 1 && days < 7) day = capitalize(weekdayName.format(date));
-  else day = capitalize(dayAndMonth.format(date).replace(",", ""));
+  const day = cardDayLabel(event.date, today);
   const time = formatTime(event.start_time);
   return time ? `${day} · ${time}` : day;
 }
@@ -272,15 +277,16 @@ export function formatMonthTitle(month: Date): string {
 /**
  * Parts for the round date sticker: { day: "03", month: "OCT" }. An event over several days in one month
  * shows its days ("13–15", `range`); across months, its first day (the card's text gives the range). A workshop
- * series shows its next session as of `today` (the last once all have passed).
+ * series shows its next session as of `today` (the last once all have passed), or the one it's `listed` under.
  */
 export function stickerDate(
   event: Pick<DanceEvent, "date" | "end_date" | "sessions">,
   today = todayIso(),
+  listed?: string,
 ): { day: string; month: string; range: boolean } {
   const day = (iso: string) => String(parseIsoDate(iso).getDate()).padStart(2, "0");
   if (isSeries(event)) {
-    const shown = shownSession(event, today).date;
+    const shown = shownSession(event, today, listed).date;
     return { day: day(shown), month: shortMonthName(shown).toUpperCase(), range: false };
   }
   const end = lastDay(event);

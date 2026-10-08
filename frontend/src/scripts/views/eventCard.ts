@@ -141,7 +141,8 @@ export function cardLabel(event: DanceEvent, when: string, place: string | null,
   return [event.title, when, typeLabel(event.event_type), place, price].filter(Boolean).join(", ");
 }
 
-function eventCardHtml(event: DanceEvent): string {
+/** An event's card. `listed`: the day it's listed under, when a series' card should say that session (stickerDate). */
+function eventCardHtml(event: DanceEvent, listed?: string): string {
   const media = mainMedia(event);
   const flyer = flyerUrl(media);
   const ratio = flyer ? frameRatio(media) : null;
@@ -153,8 +154,8 @@ function eventCardHtml(event: DanceEvent): string {
       : flyer
         ? flyerHtml(event, media, flyer, clip)
         : `<div class="no-flyer" aria-hidden="true">Pa'</div>`;
-  const sticker = stickerDate(event);
-  const when = cardWhenLabel(event);
+  const sticker = stickerDate(event, undefined, listed);
+  const when = cardWhenLabel(event, undefined, listed);
   const place = placeLabel(event);
   const price = priceSummary(event);
   const styles = stylesLabel(event.styles, MAX_STYLES_ON_CARD);
@@ -189,8 +190,9 @@ function eventCardHtml(event: DanceEvent): string {
     </article>`;
 }
 
-export function eventCardGridHtml(events: DanceEvent[]): string {
-  return `<div class="card-grid">${events.map(eventCardHtml).join("")}</div>`;
+/** The cards of `events`; `listedOn`: the day each is listed under (a series' card then says that session). */
+export function eventCardGridHtml(events: DanceEvent[], listedOn?: (event: DanceEvent) => string): string {
+  return `<div class="card-grid">${events.map((event) => eventCardHtml(event, listedOn?.(event))).join("")}</div>`;
 }
 
 /**

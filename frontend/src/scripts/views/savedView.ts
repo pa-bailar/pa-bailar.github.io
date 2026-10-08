@@ -12,7 +12,7 @@ import { isUpcoming, lastDay, nowInBogota, todayIso } from "../lib/dates";
 import { viewPath } from "../lib/links";
 import { isSaved } from "../lib/saved";
 import { matchesWords } from "../lib/search";
-import { type AgendaGroup, groupByPeriod, shownDays } from "../state";
+import { type AgendaGroup, groupByPeriod, listedDay, shownDays } from "../state";
 import { applyFlyerRatios, eventCardGridHtml } from "./eventCard";
 
 /**
@@ -47,15 +47,15 @@ function plansBarHtml(count: number): string {
 }
 
 /** A period of the saved events: its heading and every card (no summaries: the list is short). No id: the list's
- * sections have them, and its stale copy stays in the page while Guardados shows. */
-function groupHtml(group: AgendaGroup): string {
+ * sections have them, and its stale copy stays in the page while Guardados shows. `listedOn`: each event's day. */
+function groupHtml(group: AgendaGroup, listedOn: (event: DanceEvent) => string): string {
   return `
     <section class="agenda-group">
       <header class="agenda-group__header">
         <h2 class="agenda-group__heading">${escapeHtml(group.label)}</h2>
         <span class="agenda-group__count">${eventCountLabel(group.events.length)}</span>
       </header>
-      ${eventCardGridHtml(group.events)}
+      ${eventCardGridHtml(group.events, listedOn)}
     </section>`;
 }
 
@@ -100,12 +100,15 @@ export function renderSavedView(container: HTMLElement, events: DanceEvent[], st
     container.innerHTML = emptySavedHtml(state.query);
     return 0;
   }
+  const today = todayIso();
+  const choices = { view: "saved" as const, query: state.query };
+  const listedOn = (event: DanceEvent) => listedDay(event, choices, today);
   const none = state.query.trim()
     ? `<p class="saved-note">Ningún evento por venir coincide con «${escapeHtml(state.query.trim())}».</p>`
     : `<div class="saved-note"><p>Ninguno de tus eventos guardados está por venir.</p>${SEE_EVENTS}</div>`;
   container.innerHTML = [
     upcoming.length ? plansBarHtml(upcoming.length) : none,
-    ...groupByPeriod(upcoming, todayIso(), { view: "saved", query: state.query }).map(groupHtml), // on a day searched
+    ...groupByPeriod(upcoming, today, choices).map((group) => groupHtml(group, listedOn)), // on a day searched
     past.length ? pastHtml(past, pastOpen) : "",
   ].join("");
   applyFlyerRatios(container);
