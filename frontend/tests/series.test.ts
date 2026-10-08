@@ -256,6 +256,21 @@ describe("a series on its card and in its details", () => {
     expect(card).toContain("Viernes · 10:00 a. m. · sesión 2 de 2");
   });
 
+  // The bug-squash pass of 8 Oct 2026: on Friday 9 October, the calendar's Wednesday 7 listed Habitar with "09 OCT" and
+  // "Hoy · 10:00 a. m. · sesión 2 de 2" under "Miércoles, 7 de octubre"; Saturday 3 listed "Iniciación a la Salsa en
+  // Línea" as "Mañana · sesión 2 de 4".
+  it("listed under a session already past (a past day in the calendar), its card says that one too", () => {
+    const habitar = seriesEvent({ sessions: sessionsOn(["2026-10-07", "2026-10-09"], { start_time: "10:00", end_time: "12:00" }) });
+    expect(cardWhenLabel(habitar, "2026-10-09", "2026-10-07")).toMatch(/^Miércoles 7 .*oct.* · 10:00 a\. m\. · sesión 1 de 2$/);
+    expect(stickerDate(habitar, "2026-10-09", "2026-10-07")).toEqual({ day: "07", month: "OCT", range: false });
+    expect(cardWhenLabel(habitar, "2026-10-09")).toBe("Hoy · 10:00 a. m. · sesión 2 de 2"); // not listed: its next
+    expect(stickerDate(series, "2026-12-07", "2026-11-22")).toEqual({ day: "22", month: "NOV", range: false }); // all past
+    on("2026-10-09");
+    const card = eventCardGridHtml([habitar], () => "2026-10-07");
+    expect(card).toContain("<b>07</b><small>OCT</small>");
+    expect(card).toContain("sesión 1 de 2");
+  });
+
   it("says its sessions in one line, with the years when they span two", () => {
     expect(sessionsLabel(series.sessions!)).toBe("4 sesiones: 8, 22, 29 nov y 6 dic");
     expect(sessionsLabel(sessionsOn(["2026-12-29", "2027-01-05"]))).toBe("2 sesiones: 29 dic 2026 y 5 ene 2027");

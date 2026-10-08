@@ -418,9 +418,9 @@ flowchart TD
   of the month, then one group per month for the next six months, and one per year beyond that
   (`groupByPeriod`). An event over several days (`end_date`) is upcoming until its last day, and once it has
   started it's listed under "Hoy" every day it goes on (`shownDay` in `lib/dates.ts`). A workshop series (`sessions`)
-  is upcoming until its last session and listed under its next session's day (`listOrder`, `startOn`); listed under a
-  later one (a day searched, a date chosen, the calendar's day), its card says that session (`eventCardGridHtml`'s
-  `listedOn`, `shownSession`'s `listed`). Near periods show a few flyers, then "Ver N más"; later periods start as a
+  is upcoming until its last session and listed under its next session's day (`listOrder`, `startOn`); listed under
+  another one (a day searched, a date chosen, the calendar's day, a past one too), its card says that session
+  (`eventCardGridHtml`'s `listedOn`, `shownSession`'s `listed`). Near periods show a few flyers, then "Ver N más"; later periods start as a
   summary row (`DESIGN.md`, "Long lists").
 - **"Calendario"** shows a month grid: days with events show dots on phones (`dotsHtml`) and names on wide screens,
   capped so a busy day never makes its week taller. Colombian holidays are tinted, and the selected day's events are
@@ -650,8 +650,8 @@ Every browser on an iPhone is Safari's engine (WebKit), with its own limits:
 - **Workshop series** (`sessions`, `docs/DATA.md`): `isSeries`, `nextSession` (the first on or after today),
   `shownSession` (the next, or the last once all passed; or the one it's `listed` under), and `daysOf` (its sessions'
   days, not those between) in `lib/dates.ts`. `isMultiDay` is false for a series. The card and the details show the
-  next session, as of today in the browser; a card listed under a later session (a day searched, a date chosen, the
-  calendar's day) shows that one. Calendars get one VEVENT per session with its own times (`sessionTimes`, `lib/calendarFeed.ts`; not
+  next session, as of today in the browser; a card listed under another session (a day searched, a date chosen, the
+  calendar's day, a past one too) shows that one. Calendars get one VEVENT per session with its own times (`sessionTimes`, `lib/calendarFeed.ts`; not
   RDATE, which can't give each session its own times). schema.org gets one `Event` from the first session to the
   last, with each session as a `subEvent`.
 - **Adding days** (`addDays`) moves the calendar date, not 24-hour steps, so "Mañana" and "Próxima

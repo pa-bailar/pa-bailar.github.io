@@ -246,9 +246,9 @@ function cardDayLabel(iso: string, today: string): string {
 /**
  * A workshop series on its card, by its next session: within a week like any event, with which session it is ("Hoy ·
  * 2:00 p. m. · sesión 2 de 4", "Mañana · …", "Domingo · …"); further away, "4 sesiones · próxima: dom 22 nov"; once
- * every session has passed, "4 sesiones · 8 nov – 6 dic". Listed under a later session (`listed`: a day searched, a
- * date chosen, the calendar's day), that one, like any event ("Domingo 29 nov. · 2:00 p. m. · sesión 3 de 4"): the
- * bug hunt of 7 Oct 2026, a card under "Este fin de semana" said "Hoy · sesión 1 de 2".
+ * every session has passed, "4 sesiones · 8 nov – 6 dic". Listed under another session (`listed`: a day searched, a
+ * date chosen, the calendar's day, a past one too), that one, like any event ("Domingo 29 nov. · 2:00 p. m. · sesión
+ * 3 de 4"): the bug hunt of 7 Oct 2026, a card under "Este fin de semana" said "Hoy · sesión 1 de 2".
  */
 function seriesWhenLabel(event: DanceEvent & { sessions: Session[] }, today: string, listed?: string): string {
   const { sessions } = event;

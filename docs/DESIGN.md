@@ -212,10 +212,12 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves: the pa
   | further than a week | 4 sesiones · próxima: dom 22 nov |
   | within a week | Domingo · 2:00 p. m. · sesión 3 de 4 (Hoy, Mañana as for any event; the session's own time) |
   | after the last | 4 sesiones · 8 nov – 6 dic (only on its page) |
-  | listed under a later session | that session, like any event: Viernes · 10:00 a. m. · sesión 2 de 2 |
+  | listed under another session | that session, like any event: Viernes · 10:00 a. m. · sesión 2 de 2 |
 
-  Listed under a later session (a day searched, a date chosen in "Cuándo", the calendar's day), its card and sticker say
-  that one, not the next (the bug hunt of 7 Oct 2026: "Hoy · sesión 1 de 2" under "Este fin de semana").
+  Listed under another session (a day searched, a date chosen in "Cuándo", the calendar's day), its card and sticker say
+  that one, not the next (the bug hunt of 7 Oct 2026: "Hoy · sesión 1 de 2" under "Este fin de semana"); a past one
+  too, on the calendar's days gone by (the bug-squash pass of 8 Oct 2026: "Hoy · sesión 2 de 2" under Wednesday's
+  heading).
   The detail's "Cuándo" reads "4 sesiones: 8, 22, 29 nov y 6 dic · 2:00 p. m. – 5:00 p. m." ("horario de cada sesión
   abajo" when their times differ), and shared texts the same; a period's shared list gives its next session.
 - **Every @account is one link** (`lib/accountLink.ts`; `tests/accountLink.test.ts` fails on any other instagram.com profile link): wherever an account shows (card, details, Contacto, the footer's sources), it opens the profile inside the site, in the media viewer with Instagram's profile embed (`openProfileViewer` in `views/postViewer.ts`); a new tab still gets Instagram. Not a filter to the account: the owner dropped that on 4 October 2026 (an academy rarely has several events at once, and people expected its Instagram); not Instagram's app either, whose back button leaves the site.
