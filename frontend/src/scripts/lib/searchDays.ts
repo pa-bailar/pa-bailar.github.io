@@ -1,8 +1,11 @@
 // Days in the search (the owner, 7 Oct 2026): "hoy", "mañana", "sábado", "este finde", "próxima semana", "octubre",
-// "15 de octubre", "festivo" find the events on those days, from today, in Bogotá (lib/search.ts). Several are any of
-// them ("viernes sábado"); the search's other words still all apply ("salsa sábado"). Calendar days, not the "Cuándo"
-// menu's periods (state.ts periodDays, where today is only "Hoy"): on a Saturday "finde" is Saturday and Sunday.
-// A weekday is every one to come ("sábado": this one first, as the list goes by date). Words folded (no accents).
+// "15 de octubre", "festivo" name days, in Bogotá (lib/search.ts), and the filters' model shows each event on the days
+// named, as "Cuándo" does (state.ts shownDays). Several are any of them ("viernes sábado"); the search's other words
+// still all apply ("salsa sábado"). Calendar days, not the "Cuándo" menu's periods (state.ts periodDays, where today is
+// only "Hoy"): "finde" is Friday to Sunday. What's named isn't only the days to come: each view shows its own (the
+// list from today, the calendar its month, Guardados the past too; the bug hunt of 7 Oct 2026). So a weekday is every
+// one ("sábado": in the list, this one first, as it goes by date), and a date without its year every year's ("3 de
+// octubre": in Guardados the one just past, in the list the next). Words folded (no accents).
 
 import { addDays, endOfWeek, parseIsoDate } from "./dates";
 import { isHoliday } from "./holidays";
@@ -43,11 +46,10 @@ const between =
   (day) =>
     day >= from && day <= to;
 
-/** The phrases that name a stretch of days from `today`, as [words, test]. */
+/** The phrases that name a stretch of days around `today`, as [words, test]. Whole: the views keep their own days. */
 function stretches(today: string): [string, DayTest][] {
   const sunday = endOfWeek(today);
-  const friday = addDays(sunday, -2);
-  const weekend = between(friday > today ? friday : today, sunday);
+  const weekend = between(addDays(sunday, -2), sunday); // Friday to Sunday
   const nextWeek = between(addDays(sunday, 1), addDays(sunday, 7));
   const on = (day: string) => between(day, day);
   return [
@@ -60,7 +62,7 @@ function stretches(today: string): [string, DayTest][] {
     ["esta noche", on(today)],
     ["hoy", on(today)],
     ["manana", on(addDays(today, 1))],
-    ["esta semana", between(today, sunday)],
+    ["esta semana", between(addDays(sunday, -6), sunday)], // Monday to Sunday
     ["proxima semana", nextWeek],
     ["semana que viene", nextWeek],
     ["otra semana", nextWeek], // "la otra semana", in Colombia
@@ -72,12 +74,11 @@ function stretches(today: string): [string, DayTest][] {
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
-/** The next "15 de octubre" from today (this year's, or next year's once it's past). */
-function nextDate(day: number, month: number, today: string): string {
-  const year = Number(today.slice(0, 4));
-  const thisYear = `${year}-${pad(month)}-${pad(day)}`;
-  return thisYear >= today ? thisYear : `${year + 1}-${pad(month)}-${pad(day)}`;
-}
+/** "15 de octubre", every year's: in the list the next one, in Guardados also the one just past. */
+const onDate =
+  (day: number, month: number): DayTest =>
+  (iso) =>
+    iso.slice(5) === `${pad(month)}-${pad(day)}`;
 
 /**
  * The days named by `words` (folded) from `at`: their test and how many words they take, or null when they don't name
@@ -93,10 +94,7 @@ export function daysAt(words: string[], at: number, today: string): [DayTest, nu
   if (number >= 1 && number <= 31) {
     const skip = words[at + 1] === "de" ? 1 : 0; // "15 de octubre" or "15 octubre"
     const month = MONTHS[words[at + 1 + skip] ?? ""];
-    if (month) {
-      const date = nextDate(number, month, today);
-      return [between(date, date), 2 + skip];
-    }
+    if (month) return [onDate(number, month), 2 + skip];
   }
   const weekday = WEEKDAYS[word];
   if (weekday !== undefined) return [(day) => parseIsoDate(day).getDay() === weekday, 1];

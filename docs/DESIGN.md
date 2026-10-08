@@ -335,8 +335,9 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
     Saved but none to come: "Ninguno de tus eventos guardados está por venir" and "Ver eventos".
   - **No filters there:** a short, personal list. Filtros is off in the bar (named "Filtros: no se usan en Guardados";
     its badge stays), and the pinned bar and the toolbar's pills are hidden (`body[data-screen="saved"]`). The filters
-    stay set for the list. **The search applies**, as in every view: "No encontramos eventos guardados" · "Nada de lo
-    que guardaste coincide con «…»." · "Borrar la búsqueda".
+    stay set for the list. **The search applies**, as in every view, past plans included (a day searched finds them
+    by their own days: "sábado", "3 de octubre"): "No encontramos eventos guardados" · "Nada de lo que guardaste
+    coincide con «…»." · "Borrar la búsqueda".
   - **Empty:** a big bookmark, "Aún no tienes eventos guardados", "Toca 🔖 en un evento para tenerlo aquí, a la mano. Se
     quedan en este navegador, sin crear cuenta." and "Ver eventos".
   - **Unsaving there** takes the card away at once, the page staying where it was.
@@ -360,17 +361,21 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
   alone ("rumba libre"), "parche" (academies), "noche", "feria", "cali", "práctica". A test checks that every word
   the table finds is one the site shows.
 - **Days in the search** (`lib/searchDays.ts`; the owner, 7 Oct 2026): "hoy", "esta noche", "mañana", "pasado
-  mañana"; a weekday, every one to come ("sábado", "el próximo viernes"); "este finde" / "fin de semana" (Friday to
-  Sunday from today on: on a Saturday, Saturday and Sunday); "esta semana", "próxima semana", "la otra semana";
-  "este mes", a month, "15 de octubre"; "festivo". They find the events on those days by date, not in their words
-  ("de ayer y hoy" isn't today), with the same days as "Cuándo" (several days, a series' sessions, last night's
-  social still on); several days are any of them, the other words all apply ("salsa finde"). Calendar days, not
-  the menu's periods. **A searched day narrows the days shown, as "Cuándo" does** (the bug hunt of 7 Oct 2026): the
-  list shows an event under the first day named ("viernes": a series under its Friday session, not under "Hoy" for
-  today's), the calendar marks only the days named, and with a date chosen in "Cuándo" an event needs a day both
-  name (its options are counted so). Words that only join others ("el", "de", "con", "este") are left out, unless
-  the search is nothing else. **Places are searched only as the event says them** (venue, address, area): no table of
-  neighbourhoods (the owner, 7 Oct 2026: don't stretch the post's information).
+  mañana"; a weekday, every one ("sábado", "el próximo viernes"); "este finde" / "fin de semana" (Friday to Sunday);
+  "esta semana" (Monday to Sunday), "próxima semana", "la otra semana"; "este mes", a month, "15 de octubre";
+  "festivo". They find the events on those days by date, not in their words ("de ayer y hoy" isn't today), with the
+  same days as "Cuándo" (several days, a series' sessions, last night's social still on); several days are any of
+  them, the other words all apply ("salsa finde"). Calendar days, not the menu's periods. **A searched day narrows
+  the days shown, as "Cuándo" does** (the bug hunt of 7 Oct 2026): the list shows an event under the first day named
+  ("viernes": a series under its Friday session, not under "Hoy" for today's), the calendar marks only the days
+  named, and with a date chosen in "Cuándo" an event needs a day both name (its options are counted so). **Each view
+  keeps its own days** (the same hunt): the list from today (on a Saturday, "finde" lists Saturday and Sunday), the
+  calendar its month, past days too, and Guardados its past plans too ("sábado" keeps last Saturday's in "Ya
+  pasaron"). So a date without its year is every year's: "3 de octubre" is the one just past in Guardados, the next
+  in the list (it was next year's everywhere, and Guardados lost the plan). Words that only join others ("el", "de",
+  "con", "este") are left out, unless the search is nothing else. **Places are searched only as the event says
+  them** (venue, address, area): no table of neighbourhoods (the owner, 7 Oct 2026: don't stretch the post's
+  information).
 - **The field:** on phones Buscar turns the bar at the bottom into the field (see "The bar at the
   bottom"); on wide screens the field is in the tabs' row. Results show after a short pause in typing, from the top of
   the list (in the calendar, the day's list).

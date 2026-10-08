@@ -59,7 +59,9 @@ describe("days in the search (lib/searchDays.ts)", () => {
     expect(finds("15 de octubre", on("2026-10-15"))).toBe(true);
     expect(finds("15 octubre", on("2026-10-15"))).toBe(true);
     expect(finds("15 de octubre", on("2026-10-16"))).toBe(false);
-    expect(finds("2 de enero", on("2027-01-02"))).toBe(true); // already past this year: next year's
+    expect(finds("2 de enero", on("2027-01-02"))).toBe(true); // already past this year: in the list, next year's
+    expect(finds("3 de octubre", on("2027-10-03"))).toBe(true);
+    expect(finds("3 de octubre", on("2026-10-03"))).toBe(false); // past: not in the list (Guardados has it)
     expect(finds("octubre", on("2026-10-20"))).toBe(true);
     expect(finds("octubre", on("2026-11-01"))).toBe(false);
     expect(finds("festivo", on("2026-10-12"))).toBe(true); // Día de la Raza, a Monday
@@ -146,5 +148,26 @@ describe("a searched day, in every view: the days shown are the ones named", () 
     expect(filterModel([festival], calendar("sábado", "2026-10"), TODAY).shown).toBe(1);
     expect([...calendarDays([festival], calendar("sábado", "2026-10")).keys()]).toEqual(["2026-10-31"]);
     expect(filterModel([festival], calendar("domingo", "2026-11"), TODAY).shown).toBe(1);
+  });
+});
+
+// What a search names isn't limited to the days to come: each view shows its own (the list from today, the calendar its
+// month, Guardados the past too). The bug hunt of 7 Oct 2026: "3 de octubre" meant 2027 in Guardados.
+describe("the days named, whole: each view shows its own", () => {
+  it("in the calendar, the weekend and the week searched keep their days already past", () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date("2026-10-10T17:00:00Z")); // Saturday 10 October
+    const month = new Date(2026, 9, 1);
+    const days = (query: string) =>
+      [...calendarDays([on("2026-10-05"), on("2026-10-09"), on("2026-10-10"), on("2026-10-12")], list(query, { view: "calendar", month }), "2026-10-10").keys()];
+    expect(days("este finde")).toEqual(["2026-10-09", "2026-10-10"]);
+    expect(days("esta semana")).toEqual(["2026-10-05", "2026-10-09", "2026-10-10"]);
+    expect(days("3 de octubre")).toEqual([]);
+    expect(days("5 de octubre")).toEqual(["2026-10-05"]);
+  });
+
+  it("in the list, still from today", () => {
+    expect(finds("este finde", on("2026-10-09"), "2026-10-10")).toBe(false); // yesterday, Friday
+    expect(finds("esta semana", on("2026-10-05"), "2026-10-10")).toBe(false);
   });
 });
