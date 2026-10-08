@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { EVENT_TYPES } from "../scripts/check-data.mjs";
 import { addDays, parseIsoDate, todayIso } from "../src/scripts/lib/dates";
 import {
   TOMORROW,
@@ -14,18 +15,18 @@ import {
   periodDays,
   toggled,
 } from "../src/scripts/state";
-import { spanLabel } from "../src/scripts/lib/format";
+import { TYPE_ORDER, spanLabel } from "../src/scripts/lib/format";
 import { menuPlacement, nextOption, whenMenuHtml } from "../src/scripts/views/whenMenu";
 import {
   filterModel,
   rankedStyles,
   resultsButtonLabel,
+  searchIsWhy,
   summaryLine,
   whenModel,
 } from "../src/scripts/lib/filterModel";
 import { emptyResultsHtml } from "../src/scripts/views/filters";
 import { emptyDayHtml } from "../src/scripts/views/calendarView";
-import { TYPE_ORDER } from "../src/scripts/lib/format";
 import { event } from "./factories";
 
 // Wednesday 2026-10-07: tomorrow is Thursday (in "Esta semana"), the weekend is 9–11, next week 12–18.
@@ -201,6 +202,11 @@ describe("the filter chips (filterModel)", () => {
   const model = (changes: Partial<typeof list> = {}) => filterModel(all, { ...list, ...changes }, today);
   const pick = (options: { value: string }[], value: string) => options.find((option) => option.value === value);
 
+  // A type missing from the order would have no chip at all, in the bar, the sheet or the Tipo panel.
+  it("the owner's order has every type of the data contract, once", () => {
+    expect([...TYPE_ORDER].sort()).toEqual([...(EVENT_TYPES as string[])].sort());
+  });
+
   it("the bar's chips are the view's types, in the owner's order: socials, rumbas, workshops, then the rest", () => {
     expect(TYPE_ORDER.slice(0, 3)).toEqual(["social", "party", "workshop"]);
     const mixed = [...all, event({ id: "rumba", date: today, event_type: "party" }), event({ id: "banda", date: today, event_type: "concert" })];
@@ -369,6 +375,13 @@ describe("the filter chips (filterModel)", () => {
     expect(emptyDayHtml(calendar, 0)).toContain("No hay eventos este día que coincidan con «salsa».");
     expect(emptyDayHtml({ ...calendar, types: [] }, 0)).toContain("que coincidan con «salsa»");
     expect(emptyDayHtml({ ...calendar, query: "", types: [] })).toContain("No hay eventos este día.");
+  });
+
+  it("both go by one rule: the search is why, unless a filter is on and the search alone finds events (searchIsWhy)", () => {
+    expect(searchIsWhy({ ...list, query: "zzqx" }, 0)).toBe(true);
+    expect(searchIsWhy({ ...list, query: "zzqx", dates: ["hoy"] }, 0)).toBe(true);
+    expect(searchIsWhy({ ...list, query: "sábado", dates: ["hoy"] }, 41)).toBe(false);
+    expect(searchIsWhy({ ...list, query: "  ", dates: ["hoy"] }, 0)).toBe(false); // no search
   });
 });
 

@@ -7,9 +7,11 @@
 // "parche" (academies named so), "noche", "presentacion", "encuentro", "feria" ("Feria de Cali" is a party), "cali"
 // ("Calixta"), "practica" (not a social), "toque".
 
+import { STYLE_FAMILIES } from "./styleFamilies";
+
 /** "Free", however it's written: in a search or in an event's own words, they all mean "gratis" (search.ts). */
 export const FREE_WORD = "gratis";
-export const FREE_PHRASES = [
+const FREE_PHRASES = [
   FREE_WORD,
   "gratuito",
   "gratuita",
@@ -40,7 +42,8 @@ const CONCERT = "concierto";
 const CONGRESS = "congreso";
 const COMPETITION = "competencia";
 const SHOW = "show";
-const URBAN_FAMILY = ["urbano", "dancehall", "afro", "heels"]; // the "Urbanos" heading (styleFamilies.ts)
+/** The "Urbanos" heading's rhythms (styleFamilies.ts), plain words already (tests/search.test.ts checks every target). */
+const URBAN_FAMILY = STYLE_FAMILIES.find((family) => family.key === "urbanos")?.styles ?? [];
 
 /** [what a visitor may type, what it also finds]. */
 const ALSO: [string[], string[]][] = [

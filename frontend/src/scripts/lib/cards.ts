@@ -31,6 +31,12 @@ export interface CardPlace {
   after: string | null;
 }
 
+/** The cards around where an event's card was, once a redraw took it from the list (views/eventDrawer.ts openEventGap). */
+export interface CardGap {
+  before?: HTMLElement;
+  after?: HTMLElement;
+}
+
 /** Where the event `id` is among the list's events `ids`, in order; null if it isn't there. Pure (tested). */
 export function placeAmong(ids: string[], id: string): CardPlace | null {
   const at = ids.indexOf(id);

@@ -22,16 +22,14 @@ import {
 
 /** The main rhythms: always in the sheet and the Ritmo panel, first in their families, dimmed when there's none. The
  * bar's chips until 8 Oct 2026, when the bar took the types (the owner: the rhythms stay in the Filtros menu). */
-export const MAIN_STYLES = ["salsa", "bachata", "urbano", "tango"];
+const MAIN_STYLES = ["salsa", "bachata", "urbano", "tango"];
 
 /**
  * The main types (the first in the owner's order): the bar's chips, dimmed, where the view has no event at all (a month
  * without events in the calendar), which left the phone's bar an empty band pinned at the top (the bug-squash pass of 8
  * Oct 2026).
  */
-export const MAIN_TYPES: EventType[] = ["social", "party", "workshop"];
-
-export { TYPE_ORDER }; // the bar's chips, the sheet's and the Tipo panel's order (lib/format.ts)
+const MAIN_TYPES: EventType[] = ["social", "party", "workshop"];
 
 export interface FilterOption {
   group: FilterGroup;
@@ -52,7 +50,6 @@ export interface AppliedFilter {
   value: string;
   label: string; // "Finde", "Salsa", "Social", "Sin bares"
   name: string; // for screen readers: "Este fin de semana"
-  removeName?: string; // its removable chip's name, when "Quitar <name>" wouldn't read well: "Mostrar los bares"
 }
 
 /** Hiding the bars, among the choices in use: last, as "Sin bares". */
@@ -60,7 +57,6 @@ export const HIDDEN_BARS: AppliedFilter = {
   ...HIDE_BARS_FILTER,
   label: "Sin bares",
   name: "Sin eventos de bares",
-  removeName: "Mostrar los eventos de bares",
 };
 
 /** An option of the bar's "Cuándo" menu: one date at a time. */
@@ -270,6 +266,16 @@ export function summaryLine(model: FilterModel, state: AppState): { count: strin
 export function resultsButtonLabel({ shown, searched }: Pick<FilterModel, "shown" | "searched">): string {
   if (shown) return `Ver ${eventCountLabel(shown)}`;
   return searched ? "Sin eventos: cambia los filtros" : "Sin eventos: cambia la búsqueda";
+}
+
+/**
+ * Whether the search, not the filters, is why a view shows nothing: a search is on, and either no filter is or the
+ * search alone finds nothing there either (`searched`: what it finds alone, the model's `searched` or a calendar day's).
+ * What an empty list and an empty day of the calendar say (views/filters.ts emptyResultsHtml, views/calendarView.ts
+ * emptyDayHtml).
+ */
+export function searchIsWhy(state: AppState, searched: number): boolean {
+  return state.query.trim() !== "" && !(activeFilterCount(state) > 0 && searched > 0);
 }
 
 /** Whether a date was chosen that the list no longer has (the day changed while the page was open). */

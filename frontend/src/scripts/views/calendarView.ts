@@ -9,7 +9,8 @@ import { isSaved } from "../lib/saved";
 import { daysInMonth, mondayOffset, todayIso, toIsoDate } from "../lib/dates";
 import { isHoliday } from "../lib/holidays";
 import { eventCountLabel, formatDayHeading, formatLongDate, formatMonthTitle } from "../lib/format";
-import { activeFilterCount, groupByDay, hasActiveFilters, matchesFilters, shownDays, withoutFilters } from "../state";
+import { searchIsWhy } from "../lib/filterModel";
+import { groupByDay, hasActiveFilters, matchesFilters, shownDays, withoutFilters } from "../state";
 import { applyFlyerRatios, eventCardGridHtml } from "./eventCard";
 import { emptyActionsHtml } from "./filters";
 
@@ -83,8 +84,7 @@ export function dayCellHtml(iso: string, dayNumber: number, dayEvents: DanceEven
 export function emptyDayHtml(state: AppState, searched = 0): string {
   if (!hasActiveFilters(state)) return `<p class="text-muted">No hay eventos este día.</p>`;
   const query = state.query.trim();
-  const searchIsWhy = query && !(activeFilterCount(state) && searched);
-  const why = searchIsWhy ? `que coincidan con «${escapeHtml(query)}»` : "con estos filtros";
+  const why = searchIsWhy(state, searched) ? `que coincidan con «${escapeHtml(query)}»` : "con estos filtros";
   return `<div class="empty-state">
       <p>No hay eventos este día ${why}.</p>
       <div class="empty-state__actions">${emptyActionsHtml(state)}</div>

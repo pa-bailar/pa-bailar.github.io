@@ -31,7 +31,7 @@
 // viewer); the image stage beside the details is theirs (its ← → go through the photos first). A card's ‹ › stay the
 // mouse's and Tab's: ← → never mean two things.
 
-import { CARD_LINK, cardLink, VIEW_ON_SCREEN } from "../lib/cards";
+import { CARD_LINK, type CardGap, cardLink, VIEW_ON_SCREEN } from "../lib/cards";
 import { settleGlides } from "../lib/glide";
 import { inSight, room } from "./pinnedBars";
 import { initTabOrder } from "./tabOrder";
@@ -166,7 +166,7 @@ interface Hooks {
   /** The event the details show, if they're open. */
   openEventId: () => string | null;
   /** Its card left the list with a redraw (unsaved in Guardados): the cards that were around it (eventDrawer.ts). */
-  openEventGap: () => { before?: HTMLElement; after?: HTMLElement } | null;
+  openEventGap: () => CardGap | null;
   /** Show `event` in the details, opening them if they're closed (the reading pane); `card` gets the focus back when they close. */
   showEvent: (event: DanceEvent, card: HTMLAnchorElement, options: ShowOptions) => void;
   /** One photo on or back in the image beside the details, if there's one that way: whether it moved. */
@@ -181,7 +181,7 @@ interface Hooks {
 }
 
 export function initKeyboardNav(hooks: Hooks) {
-  /** Enter on a card, on the open details, or on a period's button. */
+  /** Enter on a card or on the open details (a period's button is onPeriodKey's: its click). */
   function onEnter(domEvent: KeyboardEvent, target: Element) {
     const link = target.closest<HTMLAnchorElement>(CARD_LINK);
     const openId = hooks.openEventId();

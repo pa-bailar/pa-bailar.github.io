@@ -12,7 +12,7 @@
 // Tried first and dropped: the list as one Tab stop (a roving tabindex: Tab skipped every other event, straight to the
 // footer) and every control of every card (about 124 stops, and Tab disagreed with the arrows).
 
-import { CARD_LINK, cardLink, cardOnScreen, VIEW_ON_SCREEN } from "../lib/cards";
+import { CARD_LINK, type CardGap, cardLink, cardOnScreen, VIEW_ON_SCREEN } from "../lib/cards";
 import { settleGlides } from "../lib/glide";
 
 interface TabHooks {
@@ -21,7 +21,7 @@ interface TabHooks {
   /** The event the details show, if they're open. */
   openEventId: () => string | null;
   /** Its card left the list with a redraw (unsaved in Guardados): the cards that were around it (eventDrawer.ts). */
-  openEventGap: () => { before?: HTMLElement; after?: HTMLElement } | null;
+  openEventGap: () => CardGap | null;
   /** Whether the details open as the side panel beside the list (not the phones' drawer over it). */
   readingPane: () => boolean;
 }

@@ -165,7 +165,7 @@ export function dayOrderKey(event: DanceEvent, day: string): string {
 }
 
 /** The events on one day in their order (dayOrderKey), else as given. */
-function byStartOn(events: DanceEvent[], day: string): DanceEvent[] {
+function inDayOrder(events: DanceEvent[], day: string): DanceEvent[] {
   return events
     .map((event, index) => ({ event, index, key: dayOrderKey(event, day) }))
     .sort((a, b) => a.key.localeCompare(b.key) || a.index - b.index)
@@ -190,7 +190,7 @@ export function visibleEvents(events: DanceEvent[], state: AppState): DanceEvent
   const today = todayIso();
   const shown = eventsInView(events, state).filter((event) => matchesFilters(event, state, undefined, today));
   if (state.view !== "calendar") return listOrder(shown, today, state);
-  return byStartOn(
+  return inDayOrder(
     shown.filter((event) => shownDays(event, state, today).includes(state.selectedDay)),
     state.selectedDay,
   );
@@ -402,14 +402,14 @@ export function dateOptions(upcoming: DanceEvent[], counted: DanceEvent[], today
   return options.map((period) => ({ ...period, count: counted.filter((event) => onDuring(event, period.key)).length }));
 }
 
-/** Events grouped by date, each day's by start time (events.json is already sorted, so mostly its order). An event
- * over several days is in each of its days; a series in each of its sessions' days. `daysShown`: an event's days to
- * group it on (the calendar: those the filters let through, shownDays). */
+/** Events grouped by date, each day's in their order (dayOrderKey: by type, then start time). An event over several
+ * days is in each of its days; a series in each of its sessions' days. `daysShown`: an event's days to group it on (the
+ * calendar: those the filters let through, shownDays). */
 export function groupByDay(events: DanceEvent[], daysShown: (event: DanceEvent) => string[] = daysOf): Map<string, DanceEvent[]> {
   const groups = new Map<string, DanceEvent[]>();
   for (const event of events) {
     for (const day of daysShown(event)) groups.set(day, [...(groups.get(day) ?? []), event]);
   }
-  for (const [day, dayEvents] of groups) groups.set(day, byStartOn(dayEvents, day));
+  for (const [day, dayEvents] of groups) groups.set(day, inDayOrder(dayEvents, day));
   return groups;
 }

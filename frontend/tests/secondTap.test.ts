@@ -1,6 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { controlKey, isSecondTap, isStraySecondTap } from "../src/scripts/lib/secondTap";
-import { SECOND_TAP_MS, SECOND_TAP_SLOP } from "../src/scripts/lib/secondTap";
+import { SECOND_TAP_MS, SECOND_TAP_SLOP, controlKey, isSecondTap, isStraySecondTap } from "../src/scripts/lib/secondTap";
 
 // A double-tap on a flyer: its second tap landed on the details the first one opened (the audit of 7 Oct 2026).
 describe("the second tap of a double-tap (lib/secondTap.ts)", () => {

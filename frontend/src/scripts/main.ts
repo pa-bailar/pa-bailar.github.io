@@ -318,7 +318,7 @@ const chooseView: ControlHandler = (view, control, domEvent) => {
 
 /**
  * A filter chip: one tap chooses, another unchooses; a dimmed option (nothing to show with the others) does nothing.
- * "Ocultar eventos de bares" (the sheet's switch, the toolbar's chip, "Sin bares ×") turns on or off, and is remembered.
+ * "Ocultar eventos de bares" (the sheet's switch, the toolbar's chip) turns on or off, and is remembered.
  */
 const toggleFilter: ControlHandler = (group, control) => {
   const { value } = control.dataset;

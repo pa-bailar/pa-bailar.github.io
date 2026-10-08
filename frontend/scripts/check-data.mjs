@@ -7,7 +7,9 @@ import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-const EVENT_TYPES = ["social", "party", "workshop", "concert", "festival", "congress", "competition", "show", "other"];
+// The backend's event types (pa_bailar/models.py EventType). A new type needs a place in the owner's order too
+// (src/scripts/lib/format.ts TYPE_ORDER: tests/filters.test.ts checks it).
+export const EVENT_TYPES = ["social", "party", "workshop", "concert", "festival", "congress", "competition", "show", "other"];
 const MEDIA_TYPES = ["IMAGE", "CAROUSEL_ALBUM", "VIDEO", "STORY"];
 const CONFIDENCE = ["high", "medium", "low"];
 // The backend's style list (pa_bailar/models.py Style). A new style needs a change here too, and a family in

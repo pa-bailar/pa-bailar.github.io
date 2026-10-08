@@ -31,6 +31,7 @@ import {
   type WhenModel,
   HIDE_BARS_FILTER,
   resultsButtonLabel,
+  searchIsWhy,
   summaryLine,
   whenButtonName,
 } from "../lib/filterModel";
@@ -54,12 +55,11 @@ export function emptyActionsHtml(state: AppState): string {
 export function emptyResultsHtml(state: AppState, searched = 0): string | null {
   const query = state.query.trim();
   const filtering = activeFilterCount(state) > 0;
-  const [title, hint] =
-    query && !(filtering && searched)
-      ? ["No encontramos eventos", `Nada coincide con «${escapeHtml(query)}».`]
-      : filtering
-        ? ["No hay eventos con estos filtros", "Prueba con otras fechas o ritmos."]
-        : [null, null];
+  const [title, hint] = searchIsWhy(state, searched)
+    ? ["No encontramos eventos", `Nada coincide con «${escapeHtml(query)}».`]
+    : filtering
+      ? ["No hay eventos con estos filtros", "Prueba con otras fechas o ritmos."]
+      : [null, null];
   if (!title) return null;
   return `
     <div class="empty-state">
@@ -85,10 +85,10 @@ function chipHtml(item: FilterOption, { short = false, counts = false } = {}): s
     aria-pressed="${item.chosen}"${item.dimmed ? ` aria-disabled="true"` : ""}${spoken !== label ? ` aria-label="${escapeHtml(spoken)}"` : ""}>${escapeHtml(label)}${count}${item.chosen ? X : ""}</button>`;
 }
 
-/** A choice made elsewhere (the sheet), as a chip that removes it: "Social ×". */
+/** A choice, as a chip that removes it ("Social ×"): the toolbar's status row (wide screens, statusHtml). */
 function removableHtml(item: AppliedFilter): string {
   const data = `data-filter="${item.group}" data-value="${escapeHtml(item.value)}"`;
-  const name = item.removeName ?? `Quitar ${item.name}`;
+  const name = `Quitar ${item.name}`;
   return `<button class="chip filter-chip is-chosen" type="button" ${data} aria-label="${escapeHtml(name)}">${escapeHtml(item.label)}${X}</button>`;
 }
 

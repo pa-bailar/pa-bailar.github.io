@@ -422,7 +422,7 @@
 
 /* ---------- wide screens: the toolbar's status row ---------- */
 
-/* "12 eventos", the choices as removable chips ("Salsa ×", "Sin bares ×") and "× Limpiar". */
+/* "12 eventos", the choices as removable chips ("Finde ×", "Salsa ×") and "× Limpiar". */
 .filter-status {
   display: flex;
   flex: 1 0 100%;

@@ -157,7 +157,7 @@ export function isUpcoming(event: EventEnd, now = nowInBogota()): boolean {
 
 /** The days the event is on from today: an event over several days counts on every day it runs through, a series on
  * every session to come; last night's social still on after midnight, today. ("Cuándo" and the search's days.) */
-export function daysFrom(event: EventEnd & EventDays, today: string): string[] {
+export function daysFrom(event: EventEnd, today: string): string[] {
   const days = daysOf(event).filter((day) => day >= today);
   return days.length || !isUpcoming(event, today) ? days : [today];
 }
