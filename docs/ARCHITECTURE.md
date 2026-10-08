@@ -613,9 +613,11 @@ Every browser on an iPhone is Safari's engine (WebKit), with its own limits:
 - **The keyboard and the bar at the bottom** (`views/bottomNav.ts`). iOS doesn't shrink the layout viewport when the
   keyboard opens: a fixed bottom bar stays under the keyboard while the visual viewport shrinks and pans. While the
   search field has the focus, the bar rises by `keyboardInset` (pure, tested): the layout viewport's height minus the
-  visual viewport's `height + offsetTop`, never below 0, set as `--keyboard-inset` on the page's root, so a notice
-  rises with the bar (`notice.css`: a bookmark tapped in the results leaves the keyboard up, and "Guardado" sat behind
-  it; the bug hunt of 7 Oct 2026). It's read again on the viewport's
+  visual viewport's `height + offsetTop`, never below 0, set as `--keyboard-inset` (and `.is-lifted`) on the bar and
+  the notice (`data-rises-with-keyboard`), so a notice rises with the bar (`notice.css`: a bookmark tapped in the
+  results leaves the keyboard up, and "Guardado" sat behind it; the bug hunt of 7 Oct 2026). Only when it changes, and
+  never on the page's root: written there at every step of the keyboard (and a rule anchored on the root), it made
+  Chrome on Android redraw its own navigation bar, which flashed (the owner, 8 Oct 2026). It's read again on the viewport's
   events and a few times after focus and blur, since the keyboard animates without always telling; on blur it drops
   to 0 at once (iOS can leave `offsetTop` stale). Without `visualViewport` the inset is 0 and the browser places the
   bar. The page has no `viewport-fit=cover`, so iOS keeps the bar above the home indicator. Untested on a real iPhone yet: Safari 26's floating toolbar may sit over the bar.

@@ -161,19 +161,26 @@ export function renderBottomNav(state: NavState) {
 
 let watching = false;
 let lastInset = 0;
+let placedInset: number | null = null; // the inset last written on what rises with the keyboard
 let onKeyboardHidden: () => void = () => {};
 
 /**
- * Puts the bar right above the keyboard while the field has the focus (none otherwise). The inset is the page's, so a
- * notice rises with the bar (notice.css): an iPhone keeps the keyboard up when a bookmark is tapped in the results
- * (the tapped button doesn't take the focus), and "Guardado" sat behind it (the bug hunt of 7 Oct 2026).
+ * Puts the bar right above the keyboard while the field has the focus (none otherwise), and the notice with it
+ * (`data-rises-with-keyboard`, notice.css): an iPhone keeps the keyboard up when a bookmark is tapped in the results
+ * (the tapped button doesn't take the focus), and "Guardado" sat behind it (the bug hunt of 7 Oct 2026). Written on
+ * those two only, and only when it changes: never on the page's root. Rewritten there at every step of the keyboard,
+ * Chrome on Android redrew its own navigation bar (back, home) each time, which flashed (the owner, 8 Oct 2026).
  */
 function placeAboveKeyboard() {
-  const bar = nav();
   const focused = document.activeElement === field();
   const inset = focused ? keyboardInset(document.documentElement.clientHeight, window.visualViewport) : 0;
-  document.documentElement.style.setProperty("--keyboard-inset", `${inset}px`);
-  bar.classList.toggle("is-lifted", inset > 0);
+  if (inset !== placedInset) {
+    placedInset = inset;
+    document.querySelectorAll<HTMLElement>("[data-rises-with-keyboard]").forEach((element) => {
+      element.style.setProperty("--keyboard-inset", `${inset}px`);
+      element.classList.toggle("is-lifted", inset > 0);
+    });
+  }
   const hid = focused && keyboardJustHid(lastInset, inset);
   lastInset = inset;
   if (hid) onKeyboardHidden();
