@@ -6,7 +6,7 @@
 import type { DanceEvent } from "./types";
 import { initClickTracking } from "./lib/analytics";
 import { isSeries, isUpcoming } from "./lib/dates";
-import { byId } from "./lib/dom";
+import { allowPressedLook, byId } from "./lib/dom";
 import { cardWhenLabel } from "./lib/format";
 import { initThemeToggle } from "./theme";
 import { eventDetailHtml } from "./views/eventDetail";
@@ -20,6 +20,7 @@ import { initInstallPrompt, registerServiceWorker } from "./views/installPrompt"
 import { initNotice } from "./views/notice";
 
 export function initEventPage() {
+  allowPressedLook(); // a held button shows it, on iPhones too (base.css)
   initThemeToggle();
   initClickTracking();
   initPostsSheet();
