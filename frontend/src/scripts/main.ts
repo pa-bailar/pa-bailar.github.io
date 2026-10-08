@@ -415,7 +415,7 @@ function openSharedEvent() {
   history.replaceState(null, "", link.address); // the list's entry, under the drawer's (pushed once it opens)
   const event = findEvent(id);
   if (!event) return;
-  const entryWith = (shown: AppState) => sharedEventEntry(groupByPeriod(visibleEvents(events, shown), todayIso(), shown.dates), id);
+  const entryWith = (shown: AppState) => sharedEventEntry(groupByPeriod(visibleEvents(events, shown), todayIso(), shown), id);
   const entry = entryWith(state);
   // A bar's event while the bars are hidden (remembered from an earlier visit): its details open all the same, over
   // the list without its card, as for any filter; the setting stays as the visitor left it.

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { addDays, todayIso } from "../src/scripts/lib/dates";
+import { addDays, parseIsoDate, todayIso } from "../src/scripts/lib/dates";
 import {
   TOMORROW,
   activeFilterCount,
@@ -73,10 +73,10 @@ describe("dates: any of the chosen periods", () => {
   });
 
   it("the list shows each event on its first day within the chosen periods, Mañana as a group of its own", () => {
-    expect(listedDay(festival, ["proxima-semana"], TODAY)).toBe("2026-10-12");
-    expect(listedDay(festival, [], TODAY)).toBe("2026-10-11");
+    expect(listedDay(festival, { dates: ["proxima-semana"] }, TODAY)).toBe("2026-10-12");
+    expect(listedDay(festival, {}, TODAY)).toBe("2026-10-11");
     const groups = (dates: string[]) =>
-      groupByPeriod([congress, tomorrow, saturday, festival].filter((e) => matchesDates(e, dates, TODAY)), TODAY, dates).map(
+      groupByPeriod([congress, tomorrow, saturday, festival].filter((e) => matchesDates(e, dates, TODAY)), TODAY, { dates }).map(
         (group) => [group.key, group.events.map((e) => e.id)],
       );
     expect(groups([TOMORROW, "proxima-semana"])).toEqual([
@@ -163,7 +163,9 @@ describe("filters together: AND across groups", () => {
   });
 
   it("the calendar ignores the dates (it has its own days), and so does ⚙'s badge", () => {
-    expect(shown({ view: "calendar", dates: ["hoy"] })).toHaveLength(3);
+    const later = parseIsoDate(salsaLater.date);
+    const month = new Date(later.getFullYear(), later.getMonth(), 1); // its month: not today's, still shown
+    expect(shown({ view: "calendar", month, dates: ["hoy"] })).toEqual(["salsa-luego"]);
     expect(activeFilterCount({ ...state, view: "calendar", dates: ["hoy"] })).toBe(0);
   });
 

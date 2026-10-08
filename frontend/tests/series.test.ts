@@ -82,7 +82,7 @@ describe("a series in the upcoming list (groupByPeriod)", () => {
   // events.json order: by date, so the series (dated by its first session) comes first.
   const all = [series, festival, thursday, sundayMorning, sundayNight, december];
   const groups = (today: string, dates: string[] = []) =>
-    groupByPeriod(all.filter((item) => lastDay(item) >= today), today, dates).map((group) => [
+    groupByPeriod(all.filter((item) => lastDay(item) >= today), today, { dates }).map((group) => [
       group.key,
       group.events.map((item) => item.id),
     ]);
@@ -125,7 +125,7 @@ describe("a series in the upcoming list (groupByPeriod)", () => {
   });
 
   it("with dates chosen, it's listed on its first session in them", () => {
-    expect(listedDay(series, ["2026-12"], "2026-11-18")).toBe("2026-12-06");
+    expect(listedDay(series, { dates: ["2026-12"] }, "2026-11-18")).toBe("2026-12-06");
     expect(groups("2026-11-18", ["2026-12"]).find(([key]) => key === "2026-12")).toEqual(["2026-12", ["diciembre", series.id]]);
   });
 });

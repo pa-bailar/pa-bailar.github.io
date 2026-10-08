@@ -26,6 +26,14 @@ describe("Guardados: a place of its own", () => {
     expect(lists.past).toEqual([]);
   });
 
+  // The bug hunt of 7 Oct 2026: any day searched there hid every past saved event (the search's days were from today).
+  it("a day searched finds the saved events on it, past ones too (by all their days)", () => {
+    const saturdays = savedLists(events, { saved, query: "sábado", now }); // now: Saturday 10 October
+    expect(saturdays.upcoming.map((item) => item.id)).toEqual(["luego"]); // Saturday 24
+    expect(saturdays.past.map((item) => item.id)).toEqual(["pasado"]); // Saturday 3
+    expect(savedLists(events, { saved, query: "domingo", now }).past.map((item) => item.id)).toEqual(["viejo"]);
+  });
+
   it("the filters don't: a saved event is there whatever the list's filters are (they stay set for the list)", () => {
     const state = { ...createInitialState(), view: "saved" as const, styles: ["tango"], dates: ["hoy"] };
     expect(matchesFilters(soon, state)).toBe(false); // the filters themselves are unchanged…

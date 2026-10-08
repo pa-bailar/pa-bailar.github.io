@@ -3,7 +3,8 @@
 import type { AppState, DanceEvent, View } from "./types";
 import { addDays, currentMonth, daysFrom, daysOf, endOfWeek, isUpcoming, nowInBogota, shownDay, startOn, todayIso, toIsoDate } from "./lib/dates";
 import { capitalize, formatMonthName } from "./lib/format";
-import { matchesQuery } from "./lib/search";
+import { matchesWords, searchedDays } from "./lib/search";
+import type { DayTest } from "./lib/searchDays";
 
 /** Whether a value read from the page (a `data-view`) is one of the views. */
 export function isView(value: string | undefined): value is View {
@@ -50,8 +51,8 @@ export function matchesBars(event: Pick<DanceEvent, "bar">, hideBars: boolean): 
 }
 
 /** The date filter applies to the upcoming list only: the calendar has its own days. */
-function datesApply(state: AppState): boolean {
-  return state.view === "upcoming" && state.dates.length > 0;
+function datesApply({ view = "upcoming", dates = [] }: DayChoices): boolean {
+  return view === "upcoming" && dates.length > 0;
 }
 
 /** The groups of choices in the filters (the search apart). */
@@ -63,17 +64,49 @@ export function isFilterGroup(value: string | undefined): value is FilterGroup {
 }
 
 /**
- * Whether the event passes every filter: AND across them (types, rhythms, dates, bars, search),
- * OR within each group of choices. `except` leaves one group out: the options of that group are counted against
- * the others (filterModel, lib/filterModel.ts). Every path that shows events goes through here (the list, the
- * calendar, the counts), so hiding the bars applies everywhere at once.
+ * Whether the event passes every filter: AND across them (types, rhythms, bars, the search's words, and a day shown:
+ * shownDays, the dates and the search's days), OR within each group of choices. `except` leaves one group out: the
+ * options of that group are counted against the others (filterModel, lib/filterModel.ts). Every path that shows
+ * events goes through here (the list, the calendar, the counts), so hiding the bars applies everywhere at once.
  */
-export function matchesFilters(event: DanceEvent, state: AppState, except?: FilterGroup): boolean {
+export function matchesFilters(event: DanceEvent, state: AppState, except?: FilterGroup, today = todayIso()): boolean {
   const typeOk = except === "types" || !state.types.length || state.types.includes(event.event_type);
   const stylesOk = except === "styles" || matchesStyles(event, state.styles);
-  const datesOk = except === "dates" || !datesApply(state) || matchesDates(event, state.dates);
   const barsOk = matchesBars(event, state.hideBars);
-  return typeOk && stylesOk && datesOk && barsOk && matchesQuery(event, state.query);
+  return typeOk && stylesOk && barsOk && matchesWords(event, state.query, today) && shownDays(event, state, today, except).length > 0;
+}
+
+/**
+ * What decides which of an event's days are shown: the view (in the calendar, its month), the periods chosen in
+ * "Cuándo" and the search. Left out: the list, with nothing chosen.
+ */
+export type DayChoices = Partial<Pick<AppState, "view" | "month" | "dates" | "query">>;
+
+/** The days the view covers: the list's from today, the calendar's month, Guardados' to come or, once past, all. */
+function viewDays(event: DanceEvent, { view = "upcoming", month }: DayChoices, today: string): string[] {
+  if (view === "calendar") {
+    const prefix = month ? monthPrefix(month) : "";
+    return daysOf(event).filter((day) => day.startsWith(prefix));
+  }
+  const coming = daysFrom(event, today);
+  return view === "saved" && !coming.length ? daysOf(event) : coming;
+}
+
+/**
+ * The days the view shows the event on, as the filters let them through: of the days the view covers (the list's from
+ * today, `daysFrom`: every day of an event over several days, a series' sessions, last night's social still on today;
+ * the calendar's month; in Guardados the ones to come, or every one of a past event), those in the periods chosen in
+ * "Cuándo" (the list only; not when `except` is "dates", to count its options) and among the days the search names
+ * ("sábado", "este finde": lib/searchDays.ts), both. None: the event isn't shown. The one rule for whether an event is
+ * on, the day the list shows it under (the first), the calendar's days, "Cuándo"'s counts and Guardados: a searched
+ * day narrows the days as "Cuándo" does (the bug hunt of 7 Oct 2026: "viernes" listed a series under "Hoy", its next
+ * session, and dotted its other days in the calendar; "Cuándo" counted and showed days the search didn't name; a day
+ * searched in Guardados hid every past event).
+ */
+export function shownDays(event: DanceEvent, choices: DayChoices, today = todayIso(), except?: FilterGroup): string[] {
+  const periods = except !== "dates" && datesApply(choices) ? inPeriods(choices.dates ?? [], today) : null;
+  const searched = searchedDays(choices.query ?? "", today);
+  return viewDays(event, choices, today).filter((day) => (!periods || periods(day)) && (!searched || searched(day)));
 }
 
 /**
@@ -139,10 +172,11 @@ export function eventsInView(events: DanceEvent[], state: AppState): DanceEvent[
 /** The events on screen, in display order: the upcoming list, or the selected calendar day (a shared link looks
  * for its event here: main.ts, openSharedEvent). */
 export function visibleEvents(events: DanceEvent[], state: AppState): DanceEvent[] {
-  const shown = eventsInView(events, state).filter((event) => matchesFilters(event, state));
-  if (state.view !== "calendar") return listOrder(shown, todayIso(), state.dates);
+  const today = todayIso();
+  const shown = eventsInView(events, state).filter((event) => matchesFilters(event, state, undefined, today));
+  if (state.view !== "calendar") return listOrder(shown, today, state);
   return byStartOn(
-    shown.filter((event) => daysOf(event).includes(state.selectedDay)),
+    shown.filter((event) => shownDays(event, state, today).includes(state.selectedDay)),
     state.selectedDay,
   );
 }
@@ -197,7 +231,7 @@ export const TOMORROW = "manana";
  * Weeks run Monday to Sunday, as in Colombian calendars. "Mañana" is shown on each card.
  * An event over several days that has already started is listed under "Hoy" while it goes on (shownDay); a workshop
  * series under its next session's day, moving to the following one once a session passes.
- * With a date filter, each event is listed on its first day within the chosen periods (listedDay), and
+ * With a date filter or a searched day, each event is listed on its first day the choices name (listedDay), and
  * "Mañana", when chosen, is a group of its own.
  * Input must be sorted by date.
  */
@@ -279,24 +313,25 @@ export function periodDays(key: string, today = todayIso()): [string, string] | 
   }
 }
 
-/** The first day (from today) the event is on within the chosen periods, or null if it's on during none. */
-function dayInPeriods(event: DanceEvent, dates: string[], today: string): string | null {
+/** Whether a day is in one of the chosen periods (from today). */
+function inPeriods(dates: string[], today: string): DayTest {
   const keyOf = periodNamer(today);
   const tomorrow = addDays(today, 1);
-  const inChosen = (day: string) => (dates.includes(TOMORROW) && day === tomorrow) || dates.includes(keyOf(day).key);
-  return daysFrom(event, today).find(inChosen) ?? null;
+  return (day) => (dates.includes(TOMORROW) && day === tomorrow) || dates.includes(keyOf(day).key);
 }
 
 /** Whether the event is on during any of the chosen periods (none chosen: every event). */
 export function matchesDates(event: DanceEvent, dates: string[], today = todayIso()): boolean {
-  return !dates.length || dayInPeriods(event, dates, today) !== null;
+  return !dates.length || shownDays(event, { dates }, today).length > 0;
 }
 
-/** The day the list shows the event under: shownDay, or with a date filter its first day in the chosen periods
- * (a festival from Sunday to Tuesday, with only "Próxima semana" chosen, is listed on Monday). */
-export function listedDay(event: DanceEvent, dates: string[] = [], today = todayIso()): string {
-  const day = dates.length ? dayInPeriods(event, dates, today) : null;
-  return day ?? shownDay(event, today);
+/**
+ * The day the list shows the event under: shownDay, or with a date chosen or a day searched, its first day the
+ * choices name (shownDays: a festival from Sunday to Tuesday, with only "Próxima semana" chosen, is listed on Monday; a
+ * series searched by "viernes", on its Friday session).
+ */
+export function listedDay(event: DanceEvent, choices: DayChoices = {}, today = todayIso()): string {
+  return shownDays(event, choices, today)[0] ?? shownDay(event, today);
 }
 
 /**
@@ -304,21 +339,22 @@ export function listedDay(event: DanceEvent, dates: string[] = [], today = today
  * date and time (events.json), which this keeps for every event listed on its own date; it moves a series to its next
  * session, among that day's events.
  */
-export function listOrder(events: DanceEvent[], today = todayIso(), dates: string[] = []): DanceEvent[] {
+export function listOrder(events: DanceEvent[], today = todayIso(), choices: DayChoices = {}): DanceEvent[] {
   return events
     .map((event, index) => {
-      const day = listedDay(event, dates, today);
+      const day = listedDay(event, choices, today);
       return { event, index, key: `${day} ${startOn(event, day)}` };
     })
     .sort((a, b) => a.key.localeCompare(b.key) || a.index - b.index)
     .map(({ event }) => event);
 }
 
-export function groupByPeriod(events: DanceEvent[], today = todayIso(), dates: string[] = []): AgendaGroup[] {
-  const periodOf = periodNamer(today, { tomorrow: dates.includes(TOMORROW) });
+/** The list's periods, each with its events (see above). `choices`: the view, the dates chosen and the search. */
+export function groupByPeriod(events: DanceEvent[], today = todayIso(), choices: DayChoices = {}): AgendaGroup[] {
+  const periodOf = periodNamer(today, { tomorrow: datesApply(choices) && (choices.dates ?? []).includes(TOMORROW) });
   const groups = new Map<string, AgendaGroup>();
-  for (const event of listOrder(events, today, dates)) {
-    const period = periodOf(listedDay(event, dates, today));
+  for (const event of listOrder(events, today, choices)) {
+    const period = periodOf(listedDay(event, choices, today));
     const group = groups.get(period.key) ?? { ...period, events: [] };
     group.events.push(event);
     groups.set(period.key, group);
@@ -333,10 +369,10 @@ export interface DateOption extends Period {
 /**
  * The date filter's options, in order: every period with an upcoming event on (from today), with "Mañana"
  * after "Hoy" when something is on tomorrow. `upcoming`: the upcoming events before any filter (which periods
- * exist); `counted`: those passing the other filters (each option's count). An option nothing would add stays,
- * with 0: the filters dim it in place, so the chips never move.
+ * exist); `counted`: those passing the other filters (each option's count, on the days `query` names, if any). An
+ * option nothing would add stays, with 0: the filters dim it in place, so the chips never move.
  */
-export function dateOptions(upcoming: DanceEvent[], counted: DanceEvent[], today = todayIso()): DateOption[] {
+export function dateOptions(upcoming: DanceEvent[], counted: DanceEvent[], today = todayIso(), query = ""): DateOption[] {
   const days = [...new Set(upcoming.flatMap((event) => daysFrom(event, today)))].sort();
   const periodOf = periodNamer(today);
   const periods = new Map<string, Period>();
@@ -348,15 +384,17 @@ export function dateOptions(upcoming: DanceEvent[], counted: DanceEvent[], today
   if (days.includes(addDays(today, 1))) {
     options.splice(periods.has("hoy") ? 1 : 0, 0, { key: TOMORROW, label: "Mañana", shortLabel: "Mañana" });
   }
-  return options.map((period) => ({ ...period, count: counted.filter((event) => matchesDates(event, [period.key], today)).length }));
+  const onDuring = (event: DanceEvent, key: string) => shownDays(event, { dates: [key], query }, today).length > 0;
+  return options.map((period) => ({ ...period, count: counted.filter((event) => onDuring(event, period.key)).length }));
 }
 
 /** Events grouped by date, each day's by start time (events.json is already sorted, so mostly its order). An event
- * over several days is in each of its days; a series in each of its sessions' days. */
-export function groupByDay(events: DanceEvent[]): Map<string, DanceEvent[]> {
+ * over several days is in each of its days; a series in each of its sessions' days. `daysShown`: an event's days to
+ * group it on (the calendar: those the filters let through, shownDays). */
+export function groupByDay(events: DanceEvent[], daysShown: (event: DanceEvent) => string[] = daysOf): Map<string, DanceEvent[]> {
   const groups = new Map<string, DanceEvent[]>();
   for (const event of events) {
-    for (const day of daysOf(event)) groups.set(day, [...(groups.get(day) ?? []), event]);
+    for (const day of daysShown(event)) groups.set(day, [...(groups.get(day) ?? []), event]);
   }
   for (const [day, dayEvents] of groups) groups.set(day, byStartOn(dayEvents, day));
   return groups;

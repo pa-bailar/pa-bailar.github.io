@@ -129,7 +129,7 @@ export function rankedStyles(events: DanceEvent[]): StyleCount[] {
 /** Every option of the current view and how each is chosen, counted against the other filters. */
 export function filterModel(events: DanceEvent[], state: AppState, today = todayIso()): FilterModel {
   const inView = eventsInView(events, state);
-  const without = (group: FilterGroup) => inView.filter((event) => matchesFilters(event, state, group));
+  const without = (group: FilterGroup) => inView.filter((event) => matchesFilters(event, state, group, today));
 
   // Rhythms in a stable order, so they never jump while filtering: the bar's four first, then the others by how
   // many events in view have them (not counting the filters), "Otros ritmos" last.
@@ -150,7 +150,7 @@ export function filterModel(events: DanceEvent[], state: AppState, today = today
 
   const dates =
     state.view === "upcoming"
-      ? dateOptions(inView, without("dates"), today).map((period) =>
+      ? dateOptions(inView, without("dates"), today, state.query).map((period) =>
           option("dates", period.key, period.label, period.shortLabel, period.count, state.dates.includes(period.key)),
         )
       : [];
@@ -179,8 +179,8 @@ export function filterModel(events: DanceEvent[], state: AppState, today = today
     applied,
     extra: applied.filter((item) => !hasChip(item)),
     active: activeFilterCount(state),
-    shown: inView.filter((event) => matchesFilters(event, state)).length,
-    searched: inView.filter((event) => matchesFilters(event, searchAlone)).length,
+    shown: inView.filter((event) => matchesFilters(event, state, undefined, today)).length,
+    searched: inView.filter((event) => matchesFilters(event, searchAlone, undefined, today)).length,
   };
 }
 

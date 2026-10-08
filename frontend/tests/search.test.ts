@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { STYLES } from "../scripts/check-data.mjs";
 import { styleLabel, typeLabel } from "../src/scripts/lib/format";
-import { fold, matchesQuery, singulars, wordsOf } from "../src/scripts/lib/search";
+import { fold, matchesWords, singulars, wordsOf } from "../src/scripts/lib/search";
 import { ALL_TARGETS, FREE_WORD } from "../src/scripts/lib/searchWords";
 import type { EventType } from "../src/scripts/types";
 import { toggleSaved, isSaved } from "../src/scripts/lib/saved";
@@ -18,21 +18,21 @@ const social = event({
 describe("search", () => {
   it("ignores accents and case", () => {
     expect(fold("Salsa Caleña")).toBe("salsa calena");
-    expect(matchesQuery(event({ styles: ["salsa caleña"] }), "CALEÑA")).toBe(true);
+    expect(matchesWords(event({ styles: ["salsa caleña"] }), "CALEÑA")).toBe(true);
   });
 
   it("needs every word, anywhere in the event", () => {
-    expect(matchesQuery(social, "juanita bachata")).toBe(true);
-    expect(matchesQuery(social, "chapinero halloween")).toBe(true);
-    expect(matchesQuery(social, "juanita salsa")).toBe(false);
+    expect(matchesWords(social, "juanita bachata")).toBe(true);
+    expect(matchesWords(social, "chapinero halloween")).toBe(true);
+    expect(matchesWords(social, "juanita salsa")).toBe(false);
   });
 
   it("finds an academy written as a handle", () => {
-    expect(matchesQuery(social, "@esferalatina")).toBe(true);
+    expect(matchesWords(social, "@esferalatina")).toBe(true);
   });
 
   it("an empty search matches everything", () => {
-    expect(matchesQuery(social, "  ")).toBe(true);
+    expect(matchesWords(social, "  ")).toBe(true);
   });
 
   // The cards say "Gratis", yet searching it found nothing (the Instagram audit, 7 Oct 2026); and "free" is written
@@ -57,35 +57,35 @@ describe("search", () => {
       "cover free",
       "free",
     ])("«%s» finds a free event, never a paid one", (query) => {
-      expect(matchesQuery(free, query)).toBe(true);
-      expect(matchesQuery(paid, query)).toBe(false);
+      expect(matchesWords(free, query)).toBe(true);
+      expect(matchesWords(paid, query)).toBe(false);
     });
 
     it("with other words, all of them still needed", () => {
-      expect(matchesQuery(free, "sin costo salsa")).toBe(true);
-      expect(matchesQuery(free, "entrada libre bachata")).toBe(false);
+      expect(matchesWords(free, "sin costo salsa")).toBe(true);
+      expect(matchesWords(free, "entrada libre bachata")).toBe(false);
     });
 
     it("free on the card: the lowest price is nothing", () => {
-      expect(matchesQuery(event({ prices: [price(0), price(20000)] }), "gratis")).toBe(true); // "Gratis" on its card
-      expect(matchesQuery(event({ prices: [] }), "gratis")).toBe(false); // no price said: not known to be free
+      expect(matchesWords(event({ prices: [price(0), price(20000)] }), "gratis")).toBe(true); // "Gratis" on its card
+      expect(matchesWords(event({ prices: [] }), "gratis")).toBe(false); // no price said: not known to be free
     });
 
     it("free in the event's own words, with no price read", () => {
       const said = event({ title: "Social gratuito de bachata", prices: [] });
-      expect(matchesQuery(said, "gratis")).toBe(true);
-      expect(matchesQuery(said, "sin costo")).toBe(true);
-      expect(matchesQuery(said, "gratu")).toBe(true); // typed halfway: its own word
-      expect(matchesQuery(event({ activities: ["Clase con entrada libre"], prices: [] }), "gratis")).toBe(true);
+      expect(matchesWords(said, "gratis")).toBe(true);
+      expect(matchesWords(said, "sin costo")).toBe(true);
+      expect(matchesWords(said, "gratu")).toBe(true); // typed halfway: its own word
+      expect(matchesWords(event({ activities: ["Clase con entrada libre"], prices: [] }), "gratis")).toBe(true);
     });
 
     it("only whole ways of saying it: not «libre» alone, «cover» alone or «freestyle»", () => {
-      expect(matchesQuery(event({ title: "Rumba libre", prices: [price(20000)] }), "gratis")).toBe(false);
-      expect(matchesQuery(free, "libre")).toBe(false);
-      expect(matchesQuery(free, "cover")).toBe(false);
+      expect(matchesWords(event({ title: "Rumba libre", prices: [price(20000)] }), "gratis")).toBe(false);
+      expect(matchesWords(free, "libre")).toBe(false);
+      expect(matchesWords(free, "cover")).toBe(false);
       const freestyle = event({ title: "Freestyle night", prices: [price(20000)] });
-      expect(matchesQuery(freestyle, "freestyle")).toBe(true);
-      expect(matchesQuery(freestyle, "gratis")).toBe(false);
+      expect(matchesWords(freestyle, "freestyle")).toBe(true);
+      expect(matchesWords(freestyle, "gratis")).toBe(false);
     });
   });
 });
@@ -106,14 +106,14 @@ describe("the search's Spanish", () => {
   const other = event({ title: "Ritmos del Pacífico", styles: ["otro"] });
 
   it("matches at the start of a word: halfway typing works, the middle of a word doesn't", () => {
-    expect(matchesQuery(workshop, "tall")).toBe(true);
-    expect(matchesQuery(champeta, "chapi")).toBe(true);
-    expect(matchesQuery(son, "son")).toBe(true);
-    expect(matchesQuery(jason, "son")).toBe(false); // not inside "Jason" or "Casona"
+    expect(matchesWords(workshop, "tall")).toBe(true);
+    expect(matchesWords(champeta, "chapi")).toBe(true);
+    expect(matchesWords(son, "son")).toBe(true);
+    expect(matchesWords(jason, "son")).toBe(false); // not inside "Jason" or "Casona"
   });
 
   it("finds inside an academy's handle, as before", () => {
-    expect(matchesQuery(event({ account: "discojaguar.bta" }), "jaguar")).toBe(true);
+    expect(matchesWords(event({ account: "discojaguar.bta" }), "jaguar")).toBe(true);
   });
 
   it("finds the singular of a plural", () => {
@@ -121,23 +121,23 @@ describe("the search's Spanish", () => {
     expect(singulars("sociales")).toContain("social");
     expect(singulars("clases")).toEqual(["clases", "clase"]); // never "clas", which starts "clásica"
     expect(singulars("dos")).toEqual(["dos"]);
-    expect(matchesQuery(workshop, "talleres")).toBe(true);
-    expect(matchesQuery(socialWithClass, "sociales")).toBe(true);
-    expect(matchesQuery(party, "rumbas")).toBe(true);
+    expect(matchesWords(workshop, "talleres")).toBe(true);
+    expect(matchesWords(socialWithClass, "sociales")).toBe(true);
+    expect(matchesWords(party, "rumbas")).toBe(true);
   });
 
   it("the site's own words, as shown: «Otros ritmos», the type's label", () => {
-    expect(matchesQuery(other, "otros ritmos")).toBe(true);
-    expect(matchesQuery(workshop, "taller caleña")).toBe(true);
+    expect(matchesWords(other, "otros ritmos")).toBe(true);
+    expect(matchesWords(workshop, "taller caleña")).toBe(true);
   });
 
   it("a visitor's word finds the site's word, one way only", () => {
-    expect(matchesQuery(workshop, "clases")).toBe(true); // a workshop
-    expect(matchesQuery(socialWithClass, "clase")).toBe(true); // its own word
-    expect(matchesQuery(socialWithClass, "taller")).toBe(false); // a class first doesn't make it a workshop
-    expect(matchesQuery(party, "fiesta")).toBe(true); // "Rumba"
-    expect(matchesQuery(fiestaSocial, "fiesta")).toBe(true); // its own word
-    expect(matchesQuery(fiestaSocial, "rumba")).toBe(false);
+    expect(matchesWords(workshop, "clases")).toBe(true); // a workshop
+    expect(matchesWords(socialWithClass, "clase")).toBe(true); // its own word
+    expect(matchesWords(socialWithClass, "taller")).toBe(false); // a class first doesn't make it a workshop
+    expect(matchesWords(party, "fiesta")).toBe(true); // "Rumba"
+    expect(matchesWords(fiestaSocial, "fiesta")).toBe(true); // its own word
+    expect(matchesWords(fiestaSocial, "rumba")).toBe(false);
   });
 
   it.each([
@@ -153,14 +153,14 @@ describe("the search's Spanish", () => {
     ["concurso", event({ event_type: "competition" })],
     ["en vivo", event({ event_type: "concert" })],
   ])("«%s» finds the rhythm or type it means", (query, found) => {
-    expect(matchesQuery(found, query)).toBe(true);
+    expect(matchesWords(found, query)).toBe(true);
   });
 
   it("a phrase is found whole: «cha cha cha» isn't three words starting «cha»", () => {
-    expect(matchesQuery(chachacha, "cha cha cha")).toBe(true);
-    expect(matchesQuery(chachacha, "chachacha")).toBe(true);
-    expect(matchesQuery(champeta, "cha cha cha")).toBe(false);
-    expect(matchesQuery(chachacha, "salsa")).toBe(true); // the "Salsa" heading's rhythm
+    expect(matchesWords(chachacha, "cha cha cha")).toBe(true);
+    expect(matchesWords(chachacha, "chachacha")).toBe(true);
+    expect(matchesWords(champeta, "cha cha cha")).toBe(false);
+    expect(matchesWords(chachacha, "salsa")).toBe(true); // the "Salsa" heading's rhythm
   });
 
   it("every word the table finds is one the site shows (a type, a rhythm, «gratis»)", () => {

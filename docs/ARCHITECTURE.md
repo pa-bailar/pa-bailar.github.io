@@ -380,9 +380,9 @@ flowchart TD
 - **Filtering** (`matchesFilters`): an event must pass every group (AND), and within the dates, the types and the
   rhythms any choice will do (OR):
   - **Dates** (`dates`, several): periods of the list ("hoy", "fin-de-semana", "2026-11"…) plus "manana"
-    (`TOMORROW`). An event matches when any of its days from today falls in a chosen period (`matchesDates`; a
-    workshop series counts only its sessions' days, `daysOf`), and the list shows it on its first such day
-    (`listedDay`). Upcoming list only: the calendar ignores them.
+    (`TOMORROW`). An event matches when any of its days from today falls in a chosen period (a workshop series counts
+    only its sessions' days, `daysOf`), and the list shows it on its first such day (`listedDay`; see "The days
+    shown" below). Upcoming list only: the calendar ignores them.
   - **Types** (`types`, several): social, workshop…
   - **Rhythms** (`styles`, several): filtering by a parent rhythm ("salsa") also matches its variants ("salsa caleña").
   - **Bars** (`hideBars`, off by default): while on, no event with `bar: true` (`isBar`, `matchesBars`). Not a group of
@@ -391,11 +391,18 @@ flowchart TD
     `hide-bars`, `HIDE_BARS_KEY`, through `lib/storedSwitch.ts`), read once at start into
     `createInitialState({ hideBars })`. A shared link to a bar's event while they're hidden still opens its details
     (`openSharedEvent`).
-  - **Search** and **Guardados**.
+  - **Search** (`query`; section 5.5): its words (`matchesWords`) and the days it names (`searchedDays`).
+  - **The days shown** (`shownDays`, one rule for the dates and the search's days): of the days the view covers (the
+    list's from today, `daysFrom`; the calendar's month; in Guardados the ones to come, or every day of a past event),
+    those in a chosen period and among the days the search names, both. An event with none isn't shown; the list shows
+    it under the first (`listedDay`), the calendar on each (`calendarDays`), and "Cuándo" counts its options on them
+    (`dateOptions`). So a searched day narrows the days as "Cuándo" does: "viernes" shows a series on its Friday session
+    only, never under "Hoy" for its session today (the bug hunt of 7 Oct 2026).
 
   Every path that shows events goes through `matchesFilters`: the list (`renderUpcomingView`), the calendar
   (`calendarDays` in `calendarView.ts`), the options' counts and the line (`filterModel`); `tests/hideBars.test.ts`
-  guards it (no other script reads `bar` off an event).
+  guards it (no other script reads `bar` off an event). Guardados applies the search alone through the same
+  `shownDays` (`savedLists`).
 
   The options (`filterModel` in `lib/filterModel.ts`, pure and tested; `dateOptions` in `state.ts`) exist by the events in
   view before any filter, in a stable order, so chips never move; each is counted against the other groups
@@ -540,7 +547,7 @@ stateDiagram-v2
 - **What's kept in this browser** (localStorage, each read and written inside `try`, so blocked storage only means it
   lasts for the visit): `theme`, `saved-events`, `hide-bars`, things shown once (`lib/onceFlag.ts`) and the install
   offer's state (`lib/storedValue.ts`, `lib/storedSwitch.ts`).
-- **Search** (`lib/search.ts`) runs on the events already in the page, accent-insensitive: every word found at the start of one of the event's words (or inside its handle), plurals finding their singular, a visitor's Spanish finding the site's words (`lib/searchWords.ts`: "clase" → the workshops, "milonga" → tango, "sin costo" → free), and days found by date (`lib/searchDays.ts`: "hoy", "sábado", "este finde", "15 de octubre", "festivo"; an event's days from today are `lib/dates.ts` `daysFrom`, shared with "Cuándo").
+- **Search** (`lib/search.ts`) runs on the events already in the page, accent-insensitive: every word found at the start of one of the event's words (or inside its handle), plurals finding their singular, a visitor's Spanish finding the site's words (`lib/searchWords.ts`: "clase" → the workshops, "milonga" → tango, "sin costo" → free), and days found by date (`lib/searchDays.ts`: "hoy", "sábado", "este finde", "15 de octubre", "festivo"; `searchedDays`), which narrow the days an event is shown on as "Cuándo" does, through the filters' one model (`shownDays` in `state.ts`, section 5.2).
   On phones its field is the bar at the bottom (`views/bottomNav.ts`): Buscar opens it with a history entry of its
   own, an overlay over the screen's state (`searchHistory`): back or × leaves it and clears the search, Enter leaves
   it and keeps the search, and forward onto it once closed goes back over it, like the sheets' entries. Android's

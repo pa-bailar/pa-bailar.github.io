@@ -122,7 +122,7 @@ export function renderUpcomingView(
   state: AppState,
 ): { shown: number; groups: AgendaGroup[] } {
   const upcoming = eventsInView(events, state).filter((event) => matchesFilters(event, state));
-  const groups = groupByPeriod(upcoming, todayIso(), state.dates);
+  const groups = groupByPeriod(upcoming, todayIso(), state);
   const datesChosen = state.dates.length > 0;
   if (!upcoming.length) {
     container.innerHTML =

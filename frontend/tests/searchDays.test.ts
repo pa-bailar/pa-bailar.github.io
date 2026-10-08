@@ -1,11 +1,20 @@
-import { describe, expect, it } from "vitest";
-import { matchesQuery } from "../src/scripts/lib/search";
+import { afterEach, describe, expect, it, vi } from "vitest";
+import { filterModel } from "../src/scripts/lib/filterModel";
+import { createInitialState, dateOptions, groupByPeriod, listedDay, matchesFilters, visibleEvents } from "../src/scripts/state";
+import type { AppState, DanceEvent } from "../src/scripts/types";
+import { calendarDays } from "../src/scripts/views/calendarView";
 import { event, seriesEvent, sessionsOn } from "./factories";
 
 // Days in the search (the owner, 7 Oct 2026: "sábado", "hoy", "este finde" found nothing). Today: Wednesday 7 October.
 const TODAY = "2026-10-07";
 const on = (date: string, overrides = {}) => event({ id: `e-${date}`, date, ...overrides });
-const finds = (query: string, found: ReturnType<typeof event>, today = TODAY) => matchesQuery(found, query, today);
+const list = (query: string, more: Partial<AppState> = {}): AppState => ({ ...createInitialState(), query, ...more });
+/** Whether the list shows the event for `query` (its words and its days), as the filters' model decides. */
+const finds = (query: string, found: DanceEvent, today = TODAY) => matchesFilters(found, list(query), undefined, today);
+
+afterEach(() => {
+  vi.useRealTimers();
+});
 
 describe("days in the search (lib/searchDays.ts)", () => {
   it("hoy, mañana, pasado mañana, esta noche", () => {
@@ -84,5 +93,58 @@ describe("days in the search (lib/searchDays.ts)", () => {
     expect(finds("noche de salsa", on("2026-10-10", { title: "Noche salsera", styles: ["salsa"] }))).toBe(true);
     expect(finds("la", on("2026-10-10", { venue: "La Casona" }))).toBe(true);
     expect(finds("la", on("2026-10-10", { title: "Social", venue: null }))).toBe(false);
+  });
+});
+
+// A searched day narrows the days an event is shown on, as "Cuándo" does, through the filters' one model (state.ts
+// shownDays). The bug hunt of 7 Oct 2026: "viernes" listed a series under "Hoy" (its next session) and dotted its other
+// days in the calendar; "Cuándo" counted and showed days the search didn't name.
+describe("a searched day, in every view: the days shown are the ones named", () => {
+  // Sessions on Wednesday 7 (today) and Friday 9 October.
+  const habitar = seriesEvent({ id: "habitar", sessions: sessionsOn(["2026-10-07", "2026-10-09"]) });
+  // From today to tomorrow.
+  const twoDays = on("2026-10-07", { id: "dos-dias", end_date: "2026-10-08" });
+  // Sessions on Wednesday 7 (today) and Saturday 10 October.
+  const wedSat = seriesEvent({ id: "mie-sab", sessions: sessionsOn(["2026-10-07", "2026-10-10"]) });
+  const calendar = (query: string, month = "2026-10", selectedDay = TODAY) =>
+    list(query, { view: "calendar", month: new Date(Number(month.slice(0, 4)), Number(month.slice(5, 7)) - 1, 1), selectedDay });
+
+  it("the list shows an event under the first day the search names: not a series' other session, nor today", () => {
+    expect(listedDay(habitar, list("viernes"), TODAY)).toBe("2026-10-09");
+    expect(groupByPeriod([habitar], TODAY, list("viernes")).map((group) => group.key)).toEqual(["fin-de-semana"]);
+    expect(listedDay(twoDays, list("mañana"), TODAY)).toBe("2026-10-08");
+    expect(groupByPeriod([twoDays], TODAY, list("mañana")).map((group) => group.key)).toEqual(["esta-semana"]);
+    expect(listedDay(habitar, list(""), TODAY)).toBe(TODAY); // no day searched: its next session, as before
+  });
+
+  it("the calendar puts it on the days named only, and a day not named lists nothing", () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date(`${TODAY}T17:00:00Z`));
+    expect([...calendarDays([habitar], calendar("viernes")).keys()]).toEqual(["2026-10-09"]);
+    expect(visibleEvents([habitar], calendar("viernes", "2026-10", TODAY))).toEqual([]);
+    expect(visibleEvents([habitar], calendar("viernes", "2026-10", "2026-10-09"))).toEqual([habitar]);
+    expect([...calendarDays([habitar], calendar("")).keys()]).toEqual(["2026-10-07", "2026-10-09"]); // no day searched
+  });
+
+  it("with \"Cuándo\": a day both name, or nothing; its options counted on the days the search names", () => {
+    expect(matchesFilters(wedSat, list("sábado", { dates: ["hoy"] }), undefined, TODAY)).toBe(false);
+    expect(matchesFilters(wedSat, list("sábado", { dates: ["fin-de-semana"] }), undefined, TODAY)).toBe(true);
+    const counts = dateOptions([wedSat], [wedSat], TODAY, "sábado").map((option) => [option.key, option.count]);
+    expect(counts).toEqual([
+      ["hoy", 0],
+      ["fin-de-semana", 1],
+    ]);
+    const model = filterModel([wedSat], list("sábado", { dates: ["hoy"] }), TODAY);
+    expect([model.shown, model.when!.options[0]!.count]).toEqual([0, 1]); // "Cualquier fecha": the Saturday
+  });
+
+  it("an event across two months counts in a month only with a named day in it", () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date(`${TODAY}T17:00:00Z`));
+    const festival = on("2026-10-30", { id: "festival", end_date: "2026-11-02" }); // Friday to Monday
+    expect(filterModel([festival], calendar("sábado", "2026-11"), TODAY).shown).toBe(0); // its Saturday is 31 October
+    expect(filterModel([festival], calendar("sábado", "2026-10"), TODAY).shown).toBe(1);
+    expect([...calendarDays([festival], calendar("sábado", "2026-10")).keys()]).toEqual(["2026-10-31"]);
+    expect(filterModel([festival], calendar("domingo", "2026-11"), TODAY).shown).toBe(1);
   });
 });

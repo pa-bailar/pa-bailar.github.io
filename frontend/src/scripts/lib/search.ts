@@ -7,11 +7,12 @@
 // searchWords.ts: "clase" finds the workshops, "milonga" the tango, "sin costo" the free events: the owner, 7 Oct
 // 2026). "Free", however it's written, is "gratis", which an event whose card says "Gratis", or whose own words say
 // free ("entrada libre"), gets too.
-// Days are found by date, not in the words (lib/searchDays.ts: "hoy", "sábado", "este finde", "15 de octubre"…), and
-// the words that only join others ("el", "de", "con") are left out ("clase de salsa el sábado").
+// Days are found by date, not in the words (lib/searchDays.ts: "hoy", "sábado", "este finde", "15 de octubre"…): they
+// narrow the days an event is shown on, as "Cuándo" does (state.ts shownDays). The words that only join others ("el",
+// "de", "con") are left out ("clase de salsa el sábado").
 
 import type { DanceEvent } from "../types";
-import { daysFrom, todayIso } from "./dates";
+import { todayIso } from "./dates";
 import { FREE, priceSummary, styleLabel, typeLabel } from "./format";
 import { daysAt, type DayTest } from "./searchDays";
 import { alsoFinds, FREE_PHRASES, FREE_WORD, PHRASES } from "./searchWords";
@@ -144,11 +145,19 @@ function hasTerm(event: Searchable, term: Term): boolean {
   );
 }
 
-/** True when every part of `query` is found in the event, on one of the days it names if any ("" matches everything). */
-export function matchesQuery(event: DanceEvent, query: string, today = todayIso()): boolean {
-  const { terms, days } = readQuery(query, today);
-  if (days.length && !daysFrom(event, today).some((day) => days.some((test) => test(day)))) return false;
+/** True when every word of `query` is found in the event ("" matches everything). Its days apart: searchedDays. */
+export function matchesWords(event: DanceEvent, query: string, today = todayIso()): boolean {
+  const { terms } = readQuery(query, today);
   if (!terms.length) return true;
   const found = searchableOf(event);
   return terms.every((term) => hasTerm(found, term));
+}
+
+/**
+ * The days `query` names, any of them, as one test; null when it names none. Which of an event's days are shown is
+ * the filters' model's (state.ts shownDays), as for "Cuándo".
+ */
+export function searchedDays(query: string, today = todayIso()): DayTest | null {
+  const { days } = readQuery(query, today);
+  return days.length ? (day) => days.some((test) => test(day)) : null;
 }
