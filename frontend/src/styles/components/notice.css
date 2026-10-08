@@ -1,14 +1,15 @@
 /* A short notice at the bottom of the screen (scripts/views/notice.ts): "Guardado · Ver guardados", "Enlace copiado ·
    Enviar por WhatsApp", the install reminder. Just above the bar at the bottom (phones), or above the home indicator
    (an event's own page has no bar); on wide screens at the bottom
-   left, away from the side panel. Between notices it's empty: no room, no taps, but still a live region, so screen
-   readers hear the next one. */
+   left, away from the side panel. Over every layer of the page (--z-notice): under the image beside the details it
+   couldn't be clicked (the bug hunt of 7 Oct 2026). Between notices it's empty: no room, no taps, but still a live
+   region, so screen readers hear the next one. */
 .notice {
   position: fixed;
   right: var(--space-4);
   bottom: calc(var(--space-3) + max(var(--bottom-nav-space), env(safe-area-inset-bottom)));
   left: var(--space-4);
-  z-index: var(--z-sticky);
+  z-index: var(--z-notice);
   display: flex;
   align-items: center;
   gap: var(--space-2);
@@ -43,6 +44,13 @@
 
 .notice__close {
   flex: none;
+}
+
+/* Searching on a phone, the keyboard up: just above the bar, which rises over the keyboard (--keyboard-inset, from
+   bottomNav.ts; the home indicator is then under the keyboard). Before, it sat behind the keyboard on an iPhone, where
+   a bookmark tapped in the results leaves the keyboard up (the bug hunt of 7 Oct 2026). */
+:root:has(.bottom-nav.is-lifted) .notice {
+  bottom: calc(var(--space-3) + var(--keyboard-inset) + var(--bottom-nav-height));
 }
 
 @media (min-width: 720px) {

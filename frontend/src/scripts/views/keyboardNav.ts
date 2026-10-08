@@ -12,7 +12,9 @@
 //     ↑ ↓ the one in the row above or below (the grid's, as from a card; the owner, 6 Oct 2026), the list following
 //     (its card outlined and brought into view); Escape then leaves the focus on that card. The panel swaps events in
 //     place (drawerHistory.ts), so back still returns to the list. Enter (on the panel itself, not on one of its
-//     buttons or links) shows the image beside them: to press Enter an event was almost always just clicked.
+//     buttons or links) shows the image beside them: to press Enter an event was almost always just clicked. Their
+//     event's card gone from the list (unsaved in Guardados): from where it was, → ↓ to the card that took its place,
+//     ← ↑ to the one before it (eventDrawer.ts openEventGap).
 //   - With the image beside the details, ← → go through its photos first, then on to the event before or after (its
 //     last photo, going back), like one stream (the owner, 6 Oct 2026; lightbox.ts stepStage).
 //   - From the details, a period's block on the way opens by itself and the details show its first new event (its
@@ -163,6 +165,8 @@ interface Hooks {
   findEvent: (id: string) => DanceEvent | undefined;
   /** The event the details show, if they're open. */
   openEventId: () => string | null;
+  /** Its card left the list with a redraw (unsaved in Guardados): the cards that were around it (eventDrawer.ts). */
+  openEventGap: () => { before?: HTMLElement; after?: HTMLElement } | null;
   /** Show `event` in the details, opening them if they're closed (the reading pane); `card` gets the focus back when they close. */
   showEvent: (event: DanceEvent, card: HTMLAnchorElement, options: ShowOptions) => void;
   /** One photo on or back in the image beside the details, if there's one that way: whether it moved. */
@@ -215,7 +219,10 @@ export function initKeyboardNav(hooks: Hooks) {
       return;
     }
     const to = at < 0 ? null : neighbor(list.map((item) => item.getBoundingClientRect()), at, direction);
-    let next = to === null ? undefined : list[to];
+    // Its card left the list (unsaved in Guardados): on from where it was, to the card after it (now in its place) or
+    // before it (the bug hunt of 7 Oct 2026: the arrows did nothing).
+    const gap = at < 0 ? hooks.openEventGap() : null;
+    let next = to === null ? (backward ? gap?.before : gap?.after) : list[to];
     if (next?.dataset.showPeriod) {
       domEvent.preventDefault(); // even if it adds nothing to go to: no scrolling instead
       next = openPeriod(next, backward);
@@ -291,5 +298,6 @@ export function initKeyboardNav(hooks: Hooks) {
   });
 
   // Tab: one stop per event, the side panel following it (tabOrder.ts).
-  initTabOrder({ follow: showInPane, openEventId: hooks.openEventId, readingPane: hooks.readingPane });
+  const { openEventId, openEventGap, readingPane } = hooks;
+  initTabOrder({ follow: showInPane, openEventId, openEventGap, readingPane });
 }

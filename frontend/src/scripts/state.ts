@@ -2,7 +2,7 @@
 
 import type { AppState, DanceEvent, View } from "./types";
 import { addDays, currentMonth, daysFrom, daysOf, endOfWeek, isUpcoming, nowInBogota, shownDay, startOn, todayIso, toIsoDate } from "./lib/dates";
-import { capitalize, formatMonthName } from "./lib/format";
+import { TYPE_ORDER, capitalize, formatMonthName } from "./lib/format";
 import { matchesWords, searchedDays } from "./lib/search";
 import type { DayTest } from "./lib/searchDays";
 
@@ -149,10 +149,20 @@ function inMonth(event: DanceEvent, prefix: string): boolean {
   return daysOf(event).some((day) => day.startsWith(prefix));
 }
 
-/** The events on one day, by when they start that day (one that began on an earlier day first), else as given. */
+/**
+ * Where an event goes among a day's: by its type, in the owner's order (socials, then rumbas, then workshops, then the
+ * rest: TYPE_ORDER; 8 Oct 2026), then by when it starts that day; one with no known time, or that began on an earlier
+ * day, after the timed ones of its type (they came first, before a day's 10:00 workshop: the owner, 8 Oct 2026).
+ */
+export function dayOrderKey(event: DanceEvent, day: string): string {
+  const rank = TYPE_ORDER.indexOf(event.event_type);
+  return `${String(rank < 0 ? TYPE_ORDER.length : rank).padStart(2, "0")} ${startOn(event, day) || "99:99"}`;
+}
+
+/** The events on one day in their order (dayOrderKey), else as given. */
 function byStartOn(events: DanceEvent[], day: string): DanceEvent[] {
   return events
-    .map((event, index) => ({ event, index, key: startOn(event, day) }))
+    .map((event, index) => ({ event, index, key: dayOrderKey(event, day) }))
     .sort((a, b) => a.key.localeCompare(b.key) || a.index - b.index)
     .map(({ event }) => event);
 }
@@ -335,15 +345,14 @@ export function listedDay(event: DanceEvent, choices: DayChoices = {}, today = t
 }
 
 /**
- * The upcoming list's order: by the day each event is listed on, then its start time that day. Events come sorted by
- * date and time (events.json), which this keeps for every event listed on its own date; it moves a series to its next
- * session, among that day's events.
+ * The upcoming list's order: by the day each event is listed on, then within the day by type and start time
+ * (dayOrderKey). A series is listed on its next session, among that day's events.
  */
 export function listOrder(events: DanceEvent[], today = todayIso(), choices: DayChoices = {}): DanceEvent[] {
   return events
     .map((event, index) => {
       const day = listedDay(event, choices, today);
-      return { event, index, key: `${day} ${startOn(event, day)}` };
+      return { event, index, key: `${day} ${dayOrderKey(event, day)}` };
     })
     .sort((a, b) => a.key.localeCompare(b.key) || a.index - b.index)
     .map(({ event }) => event);

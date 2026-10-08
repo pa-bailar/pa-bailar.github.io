@@ -32,6 +32,9 @@ const installedHere = storedSwitch("installed");
 const nudgedAt = storedValue("install-nudged");
 const NUDGE_SECONDS = 10;
 const DISMISS_DAYS = 30;
+const DISMISS_MS = DISMISS_DAYS * 24 * 60 * 60 * 1000;
+/** When this page opened: an answer given since (the banner's ×, the steps closed) holds for the rest of the visit. */
+const OPENED_AT = Date.now();
 
 /** Chrome's install event (not in TypeScript's DOM types yet). */
 interface BeforeInstallPromptEvent extends Event {
@@ -74,10 +77,10 @@ const guide = () => installGuide(place());
 /** Inside an app's own browser (Instagram, Facebook, TikTok…), where saved events stay apart from the phone's browser. */
 export const inAppBrowser = () => place().kind === "in-app";
 
-function dismissedRecently(): boolean {
-  const at = Number(dismissedAt.get() ?? 0);
-  return Date.now() - at < DISMISS_DAYS * 24 * 60 * 60 * 1000;
-}
+/** When the banner was last dismissed (0: never, or unreadable). */
+const dismissedTime = () => Number(dismissedAt.get() ?? 0) || 0;
+
+const dismissedRecently = () => Date.now() - dismissedTime() < DISMISS_MS;
 
 const canOffer = () => !isInstalled() && (installEvent !== null || guide() !== null);
 
@@ -170,13 +173,35 @@ export function initInstallPrompt() {
   void checkInstalled().then(render);
 }
 
+interface ReminderMoment {
+  /** Saved events to come, this save included. */
+  savedCount: number;
+  /** When the banner was last dismissed (0: never). */
+  dismissedAt: number;
+  /** Reminded already. */
+  nudged: boolean;
+  /** When this page opened. */
+  openedAt: number;
+  now: number;
+}
+
 /**
- * After a save: whoever dismissed the banner gets one reminder, once, when they have two saved events
- * (a moment the app clearly helps; Google's advice is to offer again then, not to nag). It takes the place of the
- * save's own notice (views/notice.ts) for NUDGE_SECONDS.
+ * Whether a save brings the one reminder: two saved events or more, never reminded, and the banner dismissed (still
+ * resting: DISMISS_DAYS) on an earlier visit. Not in the visit it was dismissed or the steps were closed: that answer
+ * holds for the visit (the bug hunt of 7 Oct 2026: it came right after the steps were closed). Pure (tested).
+ */
+export function reminderDue({ savedCount, dismissedAt, nudged, openedAt, now }: ReminderMoment): boolean {
+  return savedCount >= 2 && !nudged && dismissedAt > 0 && dismissedAt < openedAt && now - dismissedAt < DISMISS_MS;
+}
+
+/**
+ * After a new save (its "Guardado": lib/saveNotice.ts reminderMayReplace): whoever dismissed the banner on an earlier
+ * visit gets one reminder, once, when they have two saved events (a moment the app clearly helps; Google's advice is to
+ * offer again then, not to nag). It takes the place of the save's own notice (views/notice.ts) for NUDGE_SECONDS.
  */
 export function offerAfterSaving(savedCount: number) {
-  if (!canOffer() || savedCount < 2 || !dismissedRecently() || nudgedAt.get()) return;
+  const moment = { savedCount, dismissedAt: dismissedTime(), nudged: Boolean(nudgedAt.get()), openedAt: OPENED_AT };
+  if (!canOffer() || !reminderDue({ ...moment, now: Date.now() })) return;
   const reminder = { label: "Instalar", run: () => void install().then(render), track: "instalar" };
   if (showNotice("Tus guardados a un toque: instala Pa' Bailar.", reminder, { seconds: NUDGE_SECONDS, closable: true })) {
     nudgedAt.set(String(Date.now()));

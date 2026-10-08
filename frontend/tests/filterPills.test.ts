@@ -1,4 +1,4 @@
-// Wide screens: the toolbar's dropdown pills (Cuándo, Ritmo, Tipo), their panels and the status row under them, and a
+// Wide screens: the toolbar's dropdown pills (Cuándo, Tipo, Ritmo), their panels and the status row under them, and a
 // guard that the old rows of chips (dates, types, rhythms) are gone.
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
@@ -23,17 +23,17 @@ const month = new Date(Number(today.slice(0, 4)), Number(today.slice(5, 7)) - 1,
 const calendar = { ...list, view: "calendar" as const, month };
 
 describe("the toolbar's pills", () => {
-  it("are Cuándo, Ritmo and Tipo in the list; the calendar keeps its month, so no Cuándo", () => {
-    expect(model().pills.map((pill) => pill.label)).toEqual(["Cuándo", "Ritmo", "Tipo"]);
-    expect(filterModel(events, calendar, today).pills.map((pill) => pill.key)).toEqual(["styles", "types"]);
+  it("are Cuándo, Tipo and Ritmo in the list (types first, as in the phone's bar); the calendar has no Cuándo", () => {
+    expect(model().pills.map((pill) => pill.label)).toEqual(["Cuándo", "Tipo", "Ritmo"]);
+    expect(filterModel(events, calendar, today).pills.map((pill) => pill.key)).toEqual(["types", "styles"]);
   });
 
   it("say how many are chosen, and their names say it in words", () => {
     const pills = model({ styles: ["salsa", "kizomba"], types: ["social"] }).pills;
     expect(pills.map((pill) => [pill.label, pill.name, pill.count])).toEqual([
       ["Cuándo", "Cuándo: Cualquier fecha", 0],
-      ["Ritmo · 2", "Ritmo, 2 elegidos", 2],
       ["Tipo · 1", "Tipo, 1 elegido", 1],
+      ["Ritmo · 2", "Ritmo, 2 elegidos", 2],
     ]);
   });
 
@@ -59,12 +59,14 @@ describe("the toolbar's pills", () => {
 
   it("the counts are the phone sheet's: the same chosen options", () => {
     const chosen = model({ styles: ["salsa", "bachata"], types: ["workshop"] });
-    expect(chosen.pills[1].count).toBe(chosen.styles.filter((item) => item.chosen).length);
-    expect(chosen.pills[2].count).toBe(chosen.types.filter((item) => item.chosen).length);
+    const pill = (key: string) => chosen.pills.find((item) => item.key === key)!;
+    expect(pill("styles").count).toBe(chosen.styles.filter((item) => item.chosen).length);
+    expect(pill("types").count).toBe(chosen.types.filter((item) => item.chosen).length);
   });
 
   it("are buttons that open their panel: aria-haspopup, aria-expanded, aria-controls, chosen colors when in use", () => {
-    const [when, styles] = model({ styles: ["salsa", "bachata"] }).pills;
+    const pills = model({ styles: ["salsa", "bachata"] }).pills;
+    const [when, styles] = [pills[0], pills.find((pill) => pill.key === "styles")!];
     const ritmo = pillHtml(styles, true);
     expect(ritmo).toContain('aria-haspopup="dialog"');
     expect(ritmo).toContain('aria-expanded="true"');

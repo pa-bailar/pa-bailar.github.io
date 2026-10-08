@@ -32,6 +32,34 @@ describe("storedValue", () => {
     expect(value.get()).toBeNull();
     expect(() => value.set("1")).not.toThrow();
   });
+
+  // With storage blocked, the install banner's × did nothing: the date it wrote was lost, and the banner read it as
+  // never dismissed (the bug hunt of 7 Oct 2026). Every stored setting holds for the visit.
+  it("with storage blocked: what's set holds for the rest of the visit", () => {
+    const value = storedValue("install-dismissed-at", blocked);
+    value.set("1759700000000");
+    expect(value.get()).toBe("1759700000000");
+    value.set(null);
+    expect(value.get()).toBeNull();
+  });
+
+  it("storage that reads but can't write (full; Safari's old private mode): what's set holds for the visit", () => {
+    const storage = { ...memory(), setItem: () => blocked() };
+    const value = storedValue("install-dismissed-at", () => storage);
+    value.set("1759700000000");
+    expect(value.get()).toBe("1759700000000");
+  });
+
+  it("once storage keeps a value again, what's stored is read (another tab may change it)", () => {
+    const storage = memory();
+    let full = true;
+    const value = storedValue("install-nudged", () => (full ? { ...storage, setItem: () => blocked() } : storage));
+    value.set("1");
+    full = false;
+    value.set("2");
+    storage.setItem("install-nudged", "3"); // another tab
+    expect(value.get()).toBe("3");
+  });
 });
 
 describe("the install offer", () => {

@@ -189,7 +189,8 @@
   /* ---------- Layer 3: layers (z-index) ---------- */
   --z-raised: 1; /* above a sibling's stretched click area */
   --z-sticky: 10; /* the sticky toolbar and jump bar */
-  --z-panel: 20; /* wide screens: the details as a side panel, over the sticky bars */
+  --z-panel: 20; /* wide screens: the details as a side panel, over the sticky bars; the image beside them */
+  --z-notice: 30; /* the notice at the bottom: over the side panel and the image beside it, its button usable there */
 
   /* ---------- Layer 3: elevation ---------- */
   /* What floats: the drawer and the side panel, the posts badge, the notices at the bottom, the "Cuándo" menu. */

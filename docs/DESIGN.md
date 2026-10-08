@@ -170,6 +170,11 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves: the pa
 
 - **The logo** links home on every page, the home page too, with a page load: the list comes back fresh, at its top, no panel open, nothing selected (the owner, 6 Oct 2026). A plain link, so the page's own click handling leaves it to the browser.
 - **Period headers** (Izzy Sanabria's Fania lettering): the title in Shrikhand with an offset shadow, between two thin lines in the three Fania colors, and the event count ("5 eventos"). Page colors only, calmer than the logo, so it never reads as a post.
+- **The order within a period: day by day, and within a day by type, then time** (the owner, 8 October 2026):
+  socials first, then rumbas, then workshops, then concerts, festivals, congresses, competitions, shows and other
+  (`TYPE_ORDER`, the same as the filters' chips); within a type, by start time, one with no known time (or that began
+  on an earlier day) last. Before, a day went by time alone, and the events with no time came first: three bars'
+  concerts above a day's social. The calendar's day list and Guardados follow it too (`dayOrderKey`).
 - **Grouped by period, not by day** (`groupByPeriod` in `scripts/state.ts`). Days with one or two events share rows instead of each leaving a mostly empty row. The buckets don't overlap, follow the usual calendar "date range" grouping, and split out the weekend because that's when most socials happen:
 
   | Group | Range |
@@ -300,10 +305,13 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
 
   On iPhone the page can't tell whether it was added, so the sheet ends with "Ya la agregué" (hides the offer
   for good), and closing the steps rests the banner for 30 days like ×; the footer's link stays.
-- **A reminder:** whoever dismissed the banner gets one small reminder, once, when they save their second
-  event ("Tus guardados a un toque: instala Pa' Bailar · Instalar ×", a notice at the bottom: see "Saving and
-  searching", in place of the save's own, for 10 seconds). Offering again at a moment the app clearly helps, instead
-  of nagging, is Google's advice.
+- **A reminder:** whoever dismissed the banner on an earlier visit gets one small reminder, once, when a new save
+  makes two saved events or more ("Tus guardados a un toque: instala Pa' Bailar · Instalar ×", a notice at the bottom:
+  see "Saving and searching", in place of that save's "Guardado · Ver guardados", for 10 seconds). Offering again at a
+  moment the app clearly helps, instead of nagging, is Google's advice. Never in place of the in-app note ("Guardado
+  solo en este navegador", which then never showed), nor after Deshacer (an event back in Guardados isn't a new save),
+  nor in the visit the banner was dismissed or the steps closed: that answer holds for the visit (the bug hunt of 7
+  Oct 2026: it came right after the steps were closed).
 - **Knowing it's installed:** opened as the app; or this browser saw it installed (on Android the app shares the
   browser's storage); or Chrome on Android says so (`getInstalledRelatedApps`). Chrome offering to install again
   means it was uninstalled, and the offer comes back. iPhone can't be asked: there, ×, the steps or "Ya la agregué"
@@ -325,10 +333,21 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
   Ábrela en tu navegador"**, whose button shows the install sheet's steps to open the site in the phone's browser.
   Nothing where the change is already in sight (unsaving in the list), and nothing over the details on phones, a
   modal: their Guardar turns "Guardado". (`scripts/views/notice.ts`, `saveNotice.ts`, `lib/saveNotice.ts`.)
-  - **The notice** (`notice.css`): the surface, a border and the menus' shadow; one at a time, a new one replacing the
-    last; held while the mouse or the keyboard's focus is on it (time to reach its button), not by a finger's tap;
-    it rises a little as it comes, and just appears with reduced motion. A live region always in the page, empty
-    between notices, so screen readers hear each one.
+  - **The notice** (`notice.css`): the surface, a border and the menus' shadow; over every layer of the page, the side
+    panel and the image beside it included (`--z-notice`; under the image its button couldn't be clicked: the bug hunt
+    of 7 Oct 2026), never over a modal; searching on a phone with the keyboard up, it rises with the bar, just above
+    the field (on an iPhone a bookmark tapped in the results leaves the keyboard up, and the notice sat behind it: the
+    bug hunt of 7 Oct 2026); one at a time, a new one replacing the last; held while the mouse or the keyboard's
+    focus is on it (time to reach its button), not by a finger's tap; it rises a little as it comes, and just appears
+    with reduced motion. A live region always in the page, empty between notices, so screen readers hear each one.
+    Heard alone: unsaving in Guardados, the count said after each change (`#results-status`, "2 eventos guardados por
+    venir") isn't said with it, since two polite regions changing at once can lose one, maybe the one with Deshacer
+    (the bug hunt of 7 Oct 2026); the count is on screen ("Tus 2 eventos guardados"), and Deshacer says it again.
+  - **Deshacer from the keyboard: Ctrl+Z** (⌘Z on a Mac) while its notice is up, as in Gmail or Drive (its button
+    carries `aria-keyshortcuts`). The notice is far in Tab's order (from the details' Guardado, 14 Shift+Tabs, and gone
+    after its 4 seconds: the bug hunt of 7 Oct 2026); taking the focus to it instead would pull the visitor away from
+    where they are, and Enter there would undo. Not while typing in a field (its own undo), nor under a modal. In the
+    details, Guardar itself also saves the event again.
 - **Guardados is a place of its own** (`views/savedView.ts`, `/guardados/`), like Instagram's Saved and Airbnb's
   Wishlists. Not a toggle over the list and the calendar (it read as "the calendar without the calendar", and you could
   be in Eventos and Guardados at once): the owner, 5 October 2026. It's in the bar at the bottom and a third tab on
@@ -343,7 +362,11 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
     coincide con «…»." · "Borrar la búsqueda".
   - **Empty:** a big bookmark, "Aún no tienes eventos guardados", "Toca 🔖 en un evento para tenerlo aquí, a la mano. Se
     quedan en este navegador, sin crear cuenta." and "Ver eventos".
-  - **Unsaving there** takes the card away at once, the page staying where it was.
+  - **Unsaving there** takes the card away at once, the page staying where it was. Unsaved from the details, they stay
+    on the event, and the keyboard goes on from where its card was: → ↓ and Tab to the card that took its place, ← ↑
+    and Shift+Tab to the one before it; Escape gives the focus to the card that took its place (the one before it, at
+    the list's end). Saved again, its card gets the focus back. Before, the arrows did nothing and the focus fell to
+    the page (the bug hunt of 7 Oct 2026).
   - **The calendar marks the days** holding a saved event (as filtered on screen; at once as an event is saved or unsaved
     there) with a small bookmark, and says it to screen readers ("…, 3 eventos, 1 guardado"); the legend under the
     grid has "Festivo" and "Guardado".
@@ -427,10 +450,11 @@ the list stays short there and summarizes what's further away (`scripts/views/up
 ## Phones: feed, jump bar, the bar at the bottom and filter sheet
 
 - **Feed like Instagram:** under 720px each event is a full-width post, the flyer edge to edge at full size and the details right below, separated by space instead of boxed cards. Nothing is shrunk into thumbnails.
-- **Jump bar** (`JumpBar.astro`, `scripts/views/jumpBar.ts`): one slim row pinned to the top, modeled on the filter bars of Google Maps and Airbnb: one row of chips that scrolls sideways: **[Social ×] [Sin bares ×] [🕒 ▾] | [Salsa] [Bachata] [Urbano] [Tango]** ("Cuándo" and the chips: see "Filters"). Search, Guardados and Filtros live in the bar at the bottom (the owner, 5 October 2026: in this row the filters' count scrolled sideways with the chips).
+- **Jump bar** (`JumpBar.astro`, `scripts/views/jumpBar.ts`): one slim row pinned to the top, modeled on the filter bars of Google Maps and Airbnb: one row of chips that scrolls sideways: **[🕒 ▾] | [Social] [Rumba] [Taller] [Concierto] …**, the types in view in the owner's order (8 October 2026; the rhythms are in the Filtros sheet) ("Cuándo" and the chips: see "Filters"). Search, Guardados and Filtros live in the bar at the bottom (the owner, 5 October 2026: in this row the filters' count scrolled sideways with the chips).
   - **The row runs to the screen's edge** and fades there, so the next chip peeks and it reads as a row that scrolls (Material's single-line chip group). It keeps where it was scrolled while choosing, unless a new choice would be out of sight: then it scrolls just enough to show it.
-  - **The choices made in the sheet** that have no chip of their own come first, removable ("Social ×", "Sin bares ×"),
-    so what's on stays in sight.
+  - **The row is always the same controls:** Cuándo, then the types. A choice made in the sheet without a chip of
+    its own (a rhythm, "Sin bares") shows in the sheet and in the line under the bar, never as a chip in the row: chosen
+    ones pushed Cuándo and the chips out of sight (the owner, 8 October 2026).
   - **The line under it** ("12 eventos · Finde, Salsa" and "× Limpiar"), only while filtering: see "Filters".
   - **Keeping your place:** when a filter changes while you're inside the list, the period you were reading stays right under the bar; if the filter removed it, the next period (else the previous one) takes its place (`captureListPosition`).
   - **Pinned, never hidden:** the filters are at hand anywhere in the list (not hidden while scrolling down: the owner
@@ -497,12 +521,12 @@ screens in the toolbar's pills and their panels:
 | Group | Choices | Options | In the phone bar |
 |---|---|---|---|
 | Fecha | several (the bar's "Cuándo": one) | each period of the list with something on ("Hoy", "Esta semana", "Este fin de semana", "Próxima semana", "Más adelante en octubre", each month, each year), and "Mañana" right after "Hoy" when something is on tomorrow | "🕒 ▾" (Cuándo): a menu with every one |
-| Ritmo | several | each rhythm ("Salsa" includes its variants), under its family | Salsa · Bachata · Urbano · Tango, always (the owner's choice) |
-| Tipo de evento | several | each event type | from the sheet |
+| Tipo de evento | several | each type in view, in the owner's order: Social, Rumba, Taller, then Concierto, Festival, Congreso, Competencia, Show, Otro | each type in view, the same order (the owner, 8 October 2026) |
+| Ritmo | several | each rhythm ("Salsa" includes its variants), under its family; Salsa, Bachata, Urbano and Tango always | from the sheet (in the bar until 8 October 2026) |
 
 - **One tap chooses, another unchooses.** A chosen chip takes the selected-chip colors with an ×; tapping it again (or
-  its × anywhere) removes it. Choices made in the sheet that have no chip of their own in the bar show first in the row
-  as removable chips: "Social ×", "Kizomba ×" (never a date: "Cuándo" shows those).
+  its × anywhere) removes it. Choices made in the sheet that have no chip of their own in the bar (a rhythm, "Sin
+  bares") show in the sheet and in the line under the bar ("12 eventos · Kizomba"), never as chips in the row.
 - **Dates look like what they are: "Cuándo" (`views/whenMenu.ts`).** Not chips like the rhythms (they read as the same
   kind of thing): in the bar dates are one control, the pattern of Google Maps' chips with a ▾:
   - **The chip:** "🕒 ▾", named "Cuándo: Cualquier fecha" (a clock, not a calendar, which is Calendario's icon: the
@@ -527,7 +551,7 @@ screens in the toolbar's pills and their panels:
   - **Urbanos:** urbano, dancehall, afro, heels
   - **Otros:** merengue, son, champeta, tango, swing, kizomba, zouk, "Otros ritmos"
 
-  Within a family the rhythms keep the filters' order (the bar's four first, then by how many events in view have
+  Within a family the rhythms keep the filters' order (the main four first: Salsa, Bachata, Urbano, Tango; then by how many events in view have
   them, "Otros ritmos" last); an empty family isn't shown. Every rhythm of the data contract is in exactly one family
   (`tests/styleFamilies.test.ts`); an unknown one goes with Otros. The owner turned down "Otros de pareja" and
   "Latinos y caribe" (salsa and bachata are Latin too). "Salsa" still includes its variants, and **the phone bar's
@@ -555,8 +579,8 @@ screens in the toolbar's pills and their panels:
     screen readers (`barsSwitchHtml`, `role="switch"`).
   - **Wide screens:** "Ocultar bares", a toggle chip at the end of the pills' row.
   - **While on**, the bars' events are gone wherever the filters apply: the list, the calendar, search, every option's
-    count and "Ver 12 eventos" (not Guardados, which has no filters). It **counts one** on Filtros' badge, shows as
-    **"Sin bares ×"** in the row (a tap shows them again) and in the line under the bar ("37 eventos · Sin bares").
+    count and "Ver 12 eventos" (not Guardados, which has no filters). It **counts one** on Filtros' badge and shows in
+    the line under the bar ("37 eventos · Sin bares"); the sheet's switch turns it off.
     Off, nothing shows anywhere but the switch.
   - **Remembered** on that device (`localStorage`, key `hide-bars`, `1` while on; nothing while off). Where storage is
     blocked it works for the visit. The only filter that is remembered: it's a preference about what the visitor wants
@@ -578,7 +602,8 @@ screens in the toolbar's pills and their panels:
 - **Wide screens (the toolbar, from 720px wide and 600px tall, tablets included): dropdown pills** (the owner, 5 October
   2026; rows of identical chips made the kinds read as one). As on Meetup, Google Flights and Airbnb, the tabs and the
   search field keep their row, and under it (not in Guardados) **one row of pills**: **[🕒 Cuándo ▾]** (the list only)
-  **[Ritmo ▾] [Tipo ▾]** and the toggle chip **"Ocultar bares"** (`views/filters.ts` draws them,
+  **[Tipo ▾] [Ritmo ▾]** (the types first, as in the phone's bar: the owner, 8 October 2026) and the toggle chip
+  **"Ocultar bares"** (`views/filters.ts` draws them,
   `views/filterPanels.ts` opens their panels).
   - **A pill** with something chosen says how many: "Ritmo · 2", "Tipo · 1"; Cuándo says the date, as the phone bar's
     ("🕒 Finde", "🕒 Hoy +1").

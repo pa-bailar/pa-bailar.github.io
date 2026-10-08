@@ -39,6 +39,20 @@ export function capitalize(text: string): string {
   return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
+/** The types in the owner's order (8 Oct 2026: socials, then rumbas, then workshops; the rest after): the filters'
+ * chips (lib/filterModel.ts) and the events of a day (state.ts, dayOrderKey). */
+export const TYPE_ORDER: EventType[] = [
+  "social",
+  "party",
+  "workshop",
+  "concert",
+  "festival",
+  "congress",
+  "competition",
+  "show",
+  "other",
+];
+
 export function typeLabel(type: EventType): string {
   return TYPE_LABELS[type] ?? type;
 }

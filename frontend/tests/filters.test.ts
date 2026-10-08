@@ -17,7 +17,6 @@ import {
 import { spanLabel } from "../src/scripts/lib/format";
 import { menuPlacement, nextOption, whenMenuHtml } from "../src/scripts/views/whenMenu";
 import {
-  QUICK_STYLES,
   filterModel,
   rankedStyles,
   resultsButtonLabel,
@@ -25,6 +24,7 @@ import {
   whenModel,
 } from "../src/scripts/lib/filterModel";
 import { emptyResultsHtml } from "../src/scripts/views/filters";
+import { TYPE_ORDER } from "../src/scripts/lib/format";
 import { event } from "./factories";
 
 // Wednesday 2026-10-07: tomorrow is Thursday (in "Esta semana"), the weekend is 9–11, next week 12–18.
@@ -200,11 +200,23 @@ describe("the filter chips (filterModel)", () => {
   const model = (changes: Partial<typeof list> = {}) => filterModel(all, { ...list, ...changes }, today);
   const pick = (options: { value: string }[], value: string) => options.find((option) => option.value === value);
 
-  it("the bar's rhythms are always Salsa, Bachata, Urbano and Tango, in that order", () => {
-    expect(model().quickStyles.map((option) => option.label)).toEqual(["Salsa", "Bachata", "Urbano", "Tango"]);
-    expect(QUICK_STYLES).toHaveLength(4);
-    // Nothing of Urbano here: dimmed in place, never hidden.
-    expect(pick(model().quickStyles, "urbano")).toMatchObject({ count: 0, dimmed: true });
+  it("the bar's chips are the view's types, in the owner's order: socials, rumbas, workshops, then the rest", () => {
+    expect(TYPE_ORDER.slice(0, 3)).toEqual(["social", "party", "workshop"]);
+    const mixed = [...all, event({ id: "rumba", date: today, event_type: "party" }), event({ id: "banda", date: today, event_type: "concert" })];
+    const types = filterModel(mixed, list, today).types;
+    expect(types.map((option) => option.label)).toEqual(["Social", "Rumba", "Taller", "Concierto"]);
+    // Chosen while there's none of it in view: it stays, to be removed. Others without events: not shown.
+    expect(filterModel(all, { ...list, types: ["show"] }, today).types.map((option) => option.value)).toEqual([
+      "social",
+      "workshop",
+      "show",
+    ]);
+  });
+
+  it("a type the other filters leave nothing of is dimmed in place, never hidden", () => {
+    const bachata = model({ styles: ["bachata"] });
+    expect(pick(bachata.types, "social")).toMatchObject({ count: 0, dimmed: true });
+    expect(pick(bachata.types, "workshop")).toMatchObject({ count: 1, dimmed: false });
   });
 
   it("the bar's dates are one control, \"Cuándo\": Cualquier fecha, then Hoy and Mañana first (Mañana only with something on tomorrow)", () => {
@@ -233,10 +245,9 @@ describe("the filter chips (filterModel)", () => {
     expect(hoy.hint).toMatch(/^[a-zé]{3} \d{1,2}$/); // "dom 4"
   });
 
-  it("no date has a removable chip of its own: \"Cuándo\" shows every one", () => {
+  it("every choice is in use: dates, then rhythms, then types (no date has a chip of its own: Cuándo shows them)", () => {
     const later40 = model({ dates: [later.date.slice(0, 7)], styles: ["kizomba"] });
     expect(later40.applied.map((item) => item.group)).toEqual(["dates", "styles"]);
-    expect(later40.extra.map((item) => item.label)).toEqual(["Kizomba"]);
   });
 
   it("an option nothing would add is dimmed, not hidden; a chosen one stays removable", () => {
@@ -259,16 +270,19 @@ describe("the filter chips (filterModel)", () => {
     const both = model({ types: ["social", "workshop"] });
     expect(both.shown).toBe(3);
     expect(both.types.map((option) => [option.value, option.count, option.chosen])).toEqual([
-      ["workshop", 2, true],
       ["social", 1, true],
+      ["workshop", 2, true],
     ]);
   });
 
-  it("choices without a chip of their own in the bar show as removable chips after ⚙", () => {
+  it("choices are named in the line under the bar, whatever chip they have", () => {
     const chosen = model({ dates: ["hoy"], styles: ["salsa", "kizomba"], types: ["social"] });
     expect(chosen.applied.map((item) => item.label)).toEqual(["Hoy", "Salsa", "Kizomba", "Social"]);
-    expect(chosen.extra.map((item) => item.label)).toEqual(["Kizomba", "Social"]);
     expect(chosen.active).toBe(4);
+  });
+
+  it("wide screens: the pills are Cuándo, Tipo, then Ritmo (the owner, 8 Oct 2026)", () => {
+    expect(model().pills.map((pill) => pill.key)).toEqual(["when", "types", "styles"]);
   });
 
   it("the line under the bar: how many, and what's chosen", () => {
@@ -282,7 +296,7 @@ describe("the filter chips (filterModel)", () => {
     const inCalendar = filterModel(all, calendar, today);
     expect(inCalendar.dates).toEqual([]);
     expect(inCalendar.when).toBeNull();
-    expect(inCalendar.quickStyles).toHaveLength(4);
+    expect(inCalendar.types.length).toBeGreaterThan(0);
     expect(inCalendar.active).toBe(1);
     const line = summaryLine(inCalendar, calendar);
     expect(`${line.count}${line.where} · ${line.names}`).toMatch(/^1 evento en [a-z]+ · Salsa$/);

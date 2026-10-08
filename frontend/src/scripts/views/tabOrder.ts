@@ -6,8 +6,9 @@
 //   - From outside the side panel and the image beside it, Tab never walks into them (Enter is the way in): they sit
 //     at the page's end, and after the footer Tab went into the panel, back into the list, and round again.
 //   - In the side panel: past its last control, on to the next stop in the list; Shift+Tab from its start, back to
-//     the card it shows. Option+Tab counts as Tab: it's how Safari on a Mac reaches links (its plain Tab skips them,
-//     the cards included, unless "Press Tab to highlight each item" is on). On Windows, Alt+Tab never reaches the page.
+//     the card it shows (gone from the list, unsaved in Guardados: from where it was). Option+Tab counts as Tab: it's
+//     how Safari on a Mac reaches links (its plain Tab skips them, the cards included, unless "Press Tab to highlight
+//     each item" is on). On Windows, Alt+Tab never reaches the page.
 // Tried first and dropped: the list as one Tab stop (a roving tabindex: Tab skipped every other event, straight to the
 // footer) and every control of every card (about 124 stops, and Tab disagreed with the arrows).
 
@@ -19,6 +20,8 @@ interface TabHooks {
   follow: (card: HTMLElement) => void;
   /** The event the details show, if they're open. */
   openEventId: () => string | null;
+  /** Its card left the list with a redraw (unsaved in Guardados): the cards that were around it (eventDrawer.ts). */
+  openEventGap: () => { before?: HTMLElement; after?: HTMLElement } | null;
   /** Whether the details open as the side panel beside the list (not the phones' drawer over it). */
   readingPane: () => boolean;
 }
@@ -99,30 +102,34 @@ export function initTabOrder(hooks: TabHooks) {
   );
 
   // In the side panel: past its last control, on to the next stop in the list (the panel sits at the page's end);
-  // Shift+Tab from its start, back to the card it shows.
+  // Shift+Tab from its start, back to the card it shows. Its card gone from the list (unsaved in Guardados), from
+  // where it was: on to the card that took its place, back to the stop before it (the bug hunt of 7 Oct 2026: Tab left
+  // the page, and Shift+Tab walked the footer).
   document.addEventListener("keydown", (domEvent) => {
     if (domEvent.key !== "Tab" || domEvent.ctrlKey || domEvent.metaKey) return;
     const panel = openPanel();
     const target = domEvent.target instanceof HTMLElement ? domEvent.target : null;
     if (!panel || !target || !panel.contains(target) || !hooks.readingPane()) return;
+    const inPanel = focusables(panel);
+    const first = inPanel[0];
+    const atStart = !first || first === target || Boolean(first.compareDocumentPosition(target) & Node.DOCUMENT_POSITION_PRECEDING);
+    if (domEvent.shiftKey ? !atStart : target !== inPanel.at(-1)) return;
     const openId = hooks.openEventId();
     const link = cardLink(openId ? cardOnScreen(openId) : null);
-    if (!link) return;
-    const inPanel = focusables(panel);
-    if (domEvent.shiftKey) {
-      const first = inPanel[0];
-      const atStart = !first || first === target || Boolean(first.compareDocumentPosition(target) & Node.DOCUMENT_POSITION_PRECEDING);
-      if (!atStart) return;
-      domEvent.preventDefault();
-      link.focus();
-      return;
-    }
-    if (target !== inPanel.at(-1)) return;
+    const gap = link ? null : hooks.openEventGap();
+    if (!link && !gap) return;
     const view = document.querySelector(VIEW_ON_SCREEN);
     const inList = view ? focusables(view) : [];
-    const next = inList[inList.indexOf(link) + 1] ?? focusables(document.querySelector("footer") ?? document.body)[0];
-    if (!next) return;
+    // Where the event is among the list's stops: its card's link, or (its card gone) where that was, before the card
+    // that took its place.
+    const after = cardLink(gap?.after);
+    const before = cardLink(gap?.before);
+    const at = link ? inList.indexOf(link) : after ? inList.indexOf(after) : before ? inList.indexOf(before) + 1 : 0;
+    const to = domEvent.shiftKey
+      ? (link ?? inList[at - 1])
+      : (inList[link ? at + 1 : at] ?? focusables(document.querySelector("footer") ?? document.body)[0]);
+    if (!to) return;
     domEvent.preventDefault();
-    next.focus();
+    to.focus();
   });
 }
