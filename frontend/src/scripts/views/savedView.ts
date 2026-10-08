@@ -11,17 +11,23 @@ import { eventCountLabel } from "../lib/format";
 import { isUpcoming, lastDay, nowInBogota, todayIso } from "../lib/dates";
 import { viewPath } from "../lib/links";
 import { isSaved } from "../lib/saved";
-import { matchesQuery } from "../lib/search";
-import { type AgendaGroup, groupByPeriod } from "../state";
+import { matchesWords } from "../lib/search";
+import { type AgendaGroup, groupByPeriod, listedDay, shownDays } from "../state";
 import { applyFlyerRatios, eventCardGridHtml } from "./eventCard";
 
-/** The saved events matching the search: still to come (the list's order comes with its periods), and past ones,
- * the latest first. Pure, so it's tested. */
+/**
+ * The saved events matching the search: still to come (the list's order comes with its periods), and past ones, the
+ * latest first. A day searched is found among their days as the filters' model shows them (shownDays): the days to
+ * come, or every day of a past one ("sábado" keeps last Saturday's plans in "Ya pasaron"). Pure, so it's tested.
+ */
 export function savedLists(
   events: DanceEvent[],
   { saved, query, now }: { saved: (id: string) => boolean; query: string; now: string },
 ): { upcoming: DanceEvent[]; past: DanceEvent[] } {
-  const mine = events.filter((event) => saved(event.id) && matchesQuery(event, query));
+  const today = now.slice(0, 10);
+  const searched = (event: DanceEvent) =>
+    matchesWords(event, query, today) && shownDays(event, { view: "saved", query }, today).length > 0;
+  const mine = events.filter((event) => saved(event.id) && searched(event));
   const upcoming = mine.filter((event) => isUpcoming(event, now));
   const past = mine.filter((event) => !isUpcoming(event, now)).sort((a, b) => lastDay(b).localeCompare(lastDay(a)));
   return { upcoming, past };
@@ -41,15 +47,15 @@ function plansBarHtml(count: number): string {
 }
 
 /** A period of the saved events: its heading and every card (no summaries: the list is short). No id: the list's
- * sections have them, and its stale copy stays in the page while Guardados shows. */
-function groupHtml(group: AgendaGroup): string {
+ * sections have them, and its stale copy stays in the page while Guardados shows. `listedOn`: each event's day. */
+function groupHtml(group: AgendaGroup, listedOn: (event: DanceEvent) => string): string {
   return `
     <section class="agenda-group">
       <header class="agenda-group__header">
         <h2 class="agenda-group__heading">${escapeHtml(group.label)}</h2>
         <span class="agenda-group__count">${eventCountLabel(group.events.length)}</span>
       </header>
-      ${eventCardGridHtml(group.events)}
+      ${eventCardGridHtml(group.events, listedOn)}
     </section>`;
 }
 
@@ -94,12 +100,15 @@ export function renderSavedView(container: HTMLElement, events: DanceEvent[], st
     container.innerHTML = emptySavedHtml(state.query);
     return 0;
   }
+  const today = todayIso();
+  const choices = { view: "saved" as const, query: state.query };
+  const listedOn = (event: DanceEvent) => listedDay(event, choices, today);
   const none = state.query.trim()
     ? `<p class="saved-note">Ningún evento por venir coincide con «${escapeHtml(state.query.trim())}».</p>`
     : `<div class="saved-note"><p>Ninguno de tus eventos guardados está por venir.</p>${SEE_EVENTS}</div>`;
   container.innerHTML = [
     upcoming.length ? plansBarHtml(upcoming.length) : none,
-    ...groupByPeriod(upcoming, todayIso()).map(groupHtml),
+    ...groupByPeriod(upcoming, today, choices).map((group) => groupHtml(group, listedOn)), // on a day searched
     past.length ? pastHtml(past, pastOpen) : "",
   ].join("");
   applyFlyerRatios(container);

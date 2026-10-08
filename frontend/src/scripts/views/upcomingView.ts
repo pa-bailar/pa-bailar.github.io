@@ -17,7 +17,7 @@ import { PERIOD_SHARE_TITLES } from "../lib/shareText";
 import { eventCountLabel } from "../lib/format";
 import { mainMedia, thumbUrl } from "../lib/links";
 import { todayIso } from "../lib/dates";
-import { eventsInView, groupByPeriod, matchesFilters, sectionId } from "../state";
+import { eventsInView, groupByPeriod, listedDay, matchesFilters, sectionId } from "../state";
 import { emptyResultsHtml } from "./filters";
 import { applyFlyerRatios, eventCardGridHtml } from "./eventCard";
 import type { AgendaGroup } from "../state";
@@ -98,13 +98,16 @@ export function sharedEventEntry(groups: AgendaGroup[], id: string): { listed: f
   return { listed: true, open: shown ? null : group.key };
 }
 
-/** `whole`: every event, without "Ver N más" (a period chosen in the date filter). */
-function groupBodyHtml(group: AgendaGroup, open: boolean, whole: boolean): string {
-  if (whole) return eventCardGridHtml(group.events);
+/**
+ * `whole`: every event, without "Ver N más" (a period chosen in the date filter). `listedOn`: the day each event is
+ * listed under (a series' card says that session).
+ */
+function groupBodyHtml(group: AgendaGroup, open: boolean, whole: boolean, listedOn: (event: DanceEvent) => string): string {
+  if (whole) return eventCardGridHtml(group.events, listedOn);
   if (!open) return summaryHtml(group);
-  if (shownWhole.has(group.key) || group.events.length <= PERIOD_LIMIT) return eventCardGridHtml(group.events);
+  if (shownWhole.has(group.key) || group.events.length <= PERIOD_LIMIT) return eventCardGridHtml(group.events, listedOn);
   return `
-    ${eventCardGridHtml(group.events.slice(0, PERIOD_LIMIT))}
+    ${eventCardGridHtml(group.events.slice(0, PERIOD_LIMIT), listedOn)}
     ${moreHtml(group, group.events.length - PERIOD_LIMIT)}`;
 }
 
@@ -121,8 +124,10 @@ export function renderUpcomingView(
   events: DanceEvent[],
   state: AppState,
 ): { shown: number; groups: AgendaGroup[] } {
-  const upcoming = eventsInView(events, state).filter((event) => matchesFilters(event, state));
-  const groups = groupByPeriod(upcoming, todayIso(), state.dates);
+  const today = todayIso();
+  const upcoming = eventsInView(events, state).filter((event) => matchesFilters(event, state, undefined, today));
+  const groups = groupByPeriod(upcoming, today, state);
+  const listedOn = (event: DanceEvent) => listedDay(event, state, today);
   const datesChosen = state.dates.length > 0;
   if (!upcoming.length) {
     container.innerHTML =
@@ -142,7 +147,7 @@ export function renderUpcomingView(
             <span class="agenda-group__count">${eventCountLabel(group.events.length)}</span>
             ${PERIOD_SHARE_TITLES[group.key] ? shareIconHtml(group) : ""}
           </header>
-          ${groupBodyHtml(group, open, datesChosen)}
+          ${groupBodyHtml(group, open, datesChosen, listedOn)}
         </section>`;
       })
       .join("");

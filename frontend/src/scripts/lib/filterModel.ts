@@ -94,6 +94,7 @@ export interface FilterModel {
   applied: AppliedFilter[]; // every choice: dates, rhythms, types, and "Sin bares" while the bars are hidden
   active: number; // Filtros' badge (the bar at the bottom): every choice (hiding the bars counts one)
   shown: number; // events the view shows with every filter on (the list, or the calendar's month)
+  searched: number; // events the view shows with the search alone, no filter (with none, every event in view)
 }
 
 const option = (
@@ -129,7 +130,7 @@ export function rankedStyles(events: DanceEvent[]): StyleCount[] {
 /** Every option of the current view and how each is chosen, counted against the other filters. */
 export function filterModel(events: DanceEvent[], state: AppState, today = todayIso()): FilterModel {
   const inView = eventsInView(events, state);
-  const without = (group: FilterGroup) => inView.filter((event) => matchesFilters(event, state, group));
+  const without = (group: FilterGroup) => inView.filter((event) => matchesFilters(event, state, group, today));
 
   // Rhythms in a stable order, so they never jump while filtering: the main four first, then the others by how many
   // events in view have them (not counting the filters), "Otros ritmos" last.
@@ -153,7 +154,7 @@ export function filterModel(events: DanceEvent[], state: AppState, today = today
 
   const dates =
     state.view === "upcoming"
-      ? dateOptions(inView, without("dates"), today).map((period) =>
+      ? dateOptions(inView, without("dates"), today, state.query).map((period) =>
           option("dates", period.key, period.label, period.shortLabel, period.count, state.dates.includes(period.key)),
         )
       : [];
@@ -165,6 +166,7 @@ export function filterModel(events: DanceEvent[], state: AppState, today = today
   ];
 
   const when = state.view === "upcoming" ? whenModel(dates, without("dates").length, today) : null;
+  const searchAlone: AppState = { ...state, types: [], styles: [], dates: [], hideBars: false };
   return {
     dates,
     styles,
@@ -175,7 +177,8 @@ export function filterModel(events: DanceEvent[], state: AppState, today = today
     hideBars: state.hideBars,
     applied,
     active: activeFilterCount(state),
-    shown: inView.filter((event) => matchesFilters(event, state)).length,
+    shown: inView.filter((event) => matchesFilters(event, state, undefined, today)).length,
+    searched: inView.filter((event) => matchesFilters(event, searchAlone, undefined, today)).length,
   };
 }
 
@@ -250,9 +253,14 @@ export function summaryLine(model: FilterModel, state: AppState): { count: strin
   };
 }
 
-/** The sheet's button: "Ver 12 eventos", "Ver 1 evento", or "Sin eventos: cambia los filtros" (disabled). */
-export function resultsButtonLabel(shown: number): string {
-  return shown ? `Ver ${eventCountLabel(shown)}` : "Sin eventos: cambia los filtros";
+/**
+ * The sheet's button: "Ver 12 eventos", "Ver 1 evento", or, disabled, what to change: "Sin eventos: cambia la
+ * búsqueda" when the search alone finds nothing (no filter would help: the bug hunt of 7 Oct 2026, the sheet blamed
+ * the filters), else "Sin eventos: cambia los filtros".
+ */
+export function resultsButtonLabel({ shown, searched }: Pick<FilterModel, "shown" | "searched">): string {
+  if (shown) return `Ver ${eventCountLabel(shown)}`;
+  return searched ? "Sin eventos: cambia los filtros" : "Sin eventos: cambia la búsqueda";
 }
 
 /** Whether a date was chosen that the list no longer has (the day changed while the page was open). */

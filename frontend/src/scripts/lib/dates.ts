@@ -119,9 +119,13 @@ export function nextSession(event: EventDays, today = todayIso()): Session | nul
   return isSeries(event) ? (event.sessions.find((session) => session.date >= today) ?? null) : null;
 }
 
-/** The session a series shows (its card's date, the list's day): the next one, or the last once all have passed. */
-export function shownSession(event: EventDays & { sessions: Session[] }, today = todayIso()): Session {
-  return nextSession(event, today) ?? event.sessions.at(-1)!;
+/**
+ * The session a series shows (its card's date, the list's day): the next one, or the last once all have passed. Listed
+ * under a later session (`listed`: a day searched, a date chosen, the calendar's day), that one.
+ */
+export function shownSession(event: EventDays & { sessions: Session[] }, today = todayIso(), listed?: string): Session {
+  const later = listed && listed >= today ? event.sessions.find((session) => session.date === listed) : undefined;
+  return later ?? nextSession(event, today) ?? event.sessions.at(-1)!;
 }
 
 /** What endsAt reads of an event. */

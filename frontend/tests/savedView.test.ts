@@ -26,6 +26,24 @@ describe("Guardados: a place of its own", () => {
     expect(lists.past).toEqual([]);
   });
 
+  // The bug hunt of 7 Oct 2026: any day searched there hid every past saved event (the search's days were from today).
+  it("a day searched finds the saved events on it, past ones too (by all their days)", () => {
+    const saturdays = savedLists(events, { saved, query: "sábado", now }); // now: Saturday 10 October
+    expect(saturdays.upcoming.map((item) => item.id)).toEqual(["luego"]); // Saturday 24
+    expect(saturdays.past.map((item) => item.id)).toEqual(["pasado"]); // Saturday 3
+    expect(savedLists(events, { saved, query: "domingo", now }).past.map((item) => item.id)).toEqual(["viejo"]);
+  });
+
+  // The bug hunt of 7 Oct 2026: "3 de octubre" was next year's there (only dates to come), so the plan just past was gone.
+  it("a date without its year is every year's: the one just past finds last week's plan", () => {
+    expect(savedLists(events, { saved, query: "3 de octubre", now }).past.map((item) => item.id)).toEqual(["pasado"]);
+    expect(savedLists(events, { saved, query: "20 de septiembre", now }).past.map((item) => item.id)).toEqual(["viejo"]);
+    const weekend = savedLists(events, { saved, query: "este finde", now: "2026-10-11 12:00" }); // Sunday 11
+    expect([weekend.upcoming.map((item) => item.id), weekend.past]).toEqual([["pronto"], []]);
+    const friday = event({ id: "viernes", date: "2026-10-09" });
+    expect(savedLists([friday], { saved, query: "este finde", now: "2026-10-11 12:00" }).past).toEqual([friday]);
+  });
+
   it("the filters don't: a saved event is there whatever the list's filters are (they stay set for the list)", () => {
     const state = { ...createInitialState(), view: "saved" as const, styles: ["tango"], dates: ["hoy"] };
     expect(matchesFilters(soon, state)).toBe(false); // the filters themselves are unchanged…

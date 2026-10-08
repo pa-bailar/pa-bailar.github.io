@@ -26,6 +26,12 @@ export const FREE_PHRASES = [
   "free",
 ];
 
+/**
+ * "Free" in an event's own words: every way but "free" alone, which there is a name more often than a price ("Free
+ * Style", "Sugar Free": the bug hunt of 7 Oct 2026, none in the data that day). Typed in a search, it still means free.
+ */
+export const FREE_SAID = FREE_PHRASES.filter((phrase) => phrase !== "free");
+
 /** The site's own words for the event types (format.ts TYPE_LABELS) and the rhythms (format.ts styleLabel), folded. */
 const SOCIAL = "social";
 const PARTY = "rumba";
@@ -51,7 +57,7 @@ const ALSO: [string[], string[]][] = [
   [["salsero", "salsera"], ["salsa"]],
   [["caleno", "estilo caleno"], ["salsa calena"]],
   [["cubano", "casino", "rueda", "rueda de casino", "timba"], ["salsa cubana"]],
-  [["en linea", "on1", "on2", "on 1", "on 2", "mambo", "la style", "ny style"], ["salsa en linea"]],
+  [["en linea", "on 1", "on 2", "mambo", "la style", "ny style"], ["salsa en linea"]], // "on1" is read "on 1"
   [["chachacha", "chacha", "cha cha"], ["cha cha cha"]],
   [["bachatero", "bachatera"], ["bachata"]],
   [["dominicano"], ["bachata dominicana"]],
@@ -82,6 +88,26 @@ export function alsoFinds(typed: string): string[] {
 
 /** Everything the table says a typed word finds, for its test (every target must be one of the site's own words). */
 export const ALL_TARGETS = [...new Set(ALSO.flatMap(([, finds]) => finds))];
+
+/**
+ * The search's own words (a type, a rhythm, a visitor's word for them): they find what they mean, never the inside of
+ * a handle (lib/search.ts; the bug hunt of 7 Oct 2026: "competencia" found @jaleocompetencia_'s social, "banda"
+ * @proyectourbandance's workshops).
+ */
+export const OWN_WORDS = new Set([...ALSO_FINDS.keys(), ...ALL_TARGETS].filter((word) => !word.includes(" ")));
+
+/**
+ * Words left out of a search unless it's nothing else ("la" alone still finds "La Casona"): the ones that only join
+ * others ("clase de salsa el sábado"), the words before a day ("este sábado", "el próximo viernes"), and those of a
+ * question or a wish around what's looked for ("qué hay hoy", "dónde bailar salsa", "quiero ir a bailar": the bug hunt
+ * of 7 Oct 2026; in the data that day only "que", in 3 titles, and "eventos", in 1, are an event's words). Not "baile":
+ * academies' names ("Academia de Baile", 14 events).
+ */
+export const LEFT_OUT = new Set([
+  ..."de del el la los las y o en con para por un una al a".split(" "),
+  ..."este esta proximo proxima".split(" "),
+  ..."que hay donde quiero ir bailar algo evento eventos plan planes".split(" "),
+]);
 
 /**
  * The phrases searched whole, not word by word: the table's own, and the site's labels of more than one word (so

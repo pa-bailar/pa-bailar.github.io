@@ -9,7 +9,7 @@ import { isSaved } from "../lib/saved";
 import { daysInMonth, mondayOffset, todayIso, toIsoDate } from "../lib/dates";
 import { isHoliday } from "../lib/holidays";
 import { eventCountLabel, formatDayHeading, formatLongDate, formatMonthTitle } from "../lib/format";
-import { groupByDay, hasActiveFilters, matchesFilters } from "../state";
+import { groupByDay, hasActiveFilters, matchesFilters, shownDays } from "../state";
 import { applyFlyerRatios, eventCardGridHtml } from "./eventCard";
 import { emptyActionsHtml } from "./filters";
 
@@ -84,9 +84,14 @@ function emptyDayHtml(state: AppState): string {
     </div>`;
 }
 
-/** Each day's events with the filters on (hidden bars included): its dots, names, label, heading and list. */
-export function calendarDays(events: DanceEvent[], state: AppState): Map<string, DanceEvent[]> {
-  return groupByDay(events.filter((event) => matchesFilters(event, state)));
+/**
+ * Each day's events with the filters on (hidden bars included): its dots, names, label, heading and list. An event is
+ * on the days the filters show it on (shownDays): with a day searched, only those ("viernes": not a series' other
+ * sessions).
+ */
+export function calendarDays(events: DanceEvent[], state: AppState, today = todayIso()): Map<string, DanceEvent[]> {
+  const shown = events.filter((event) => matchesFilters(event, state, undefined, today));
+  return groupByDay(shown, (event) => shownDays(event, state, today));
 }
 
 /** The month's grid: its title and its days, each with its dots, names and saved mark. */
@@ -123,7 +128,7 @@ export function renderCalendarView(events: DanceEvent[], state: AppState): numbe
     : "";
   byId("cal-selected-day").innerHTML = `
     <h2 class="day-heading calendar__day-heading${changed ? " is-new" : ""}">${escapeHtml(formatDayHeading(state.selectedDay))}${count}</h2>
-    ${selectedEvents.length ? eventCardGridHtml(selectedEvents) : emptyDayHtml(state)}`;
+    ${selectedEvents.length ? eventCardGridHtml(selectedEvents, () => state.selectedDay) : emptyDayHtml(state)}`;
   applyFlyerRatios(byId("cal-selected-day"));
   return selectedEvents.length;
 }

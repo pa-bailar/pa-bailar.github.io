@@ -42,7 +42,7 @@ export function shareSources({ groups, state, plans, planUrl }: ShareSourcesInpu
   const filters = filtersLabel(state);
   for (const group of groups) {
     const title = PERIOD_SHARE_TITLES[group.key];
-    const days = group.events.map((event) => listedDay(event, state.dates)); // as listed: an event under way is today's
+    const days = group.events.map((event) => listedDay(event, state)); // as listed: an event under way is today's
     const first = days[0];
     const last = days.at(-1);
     if (!title || !first || !last) continue;

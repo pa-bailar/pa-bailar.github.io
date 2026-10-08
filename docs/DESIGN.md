@@ -161,7 +161,7 @@ The palette's hex values for what can't read CSS (the link previews, the share c
 ## Signature motifs
 
 - **70s stripes** (`<Stripes />`): three bands (tomato, orange, marigold). Used in the page headers (home, event page, 404), the event detail and the footer; the period headings use the same three colors as one thin line. Don't use them anywhere else; they lose meaning if repeated. The one exception: the offset under the cards' "Detalles ›" (the owner's choice; see "Opening an event").
-- **Date sticker:** a round "record label" with the day and month, inside the bottom-right corner of each flyer, on cards and in the event detail. Two events sharing one flyer (a monthly schedule) are told apart by it while swiping. An event over several days within one month shows its days ("13–15 / NOV"); across months it keeps the first day ("31 / OCT"), and the card's line gives the range. A workshop series shows its next session ("29 / NOV"), the last once all have passed.
+- **Date sticker:** a round "record label" with the day and month, inside the bottom-right corner of each flyer, on cards and in the event detail. Two events sharing one flyer (a monthly schedule) are told apart by it while swiping. An event over several days within one month shows its days ("13–15 / NOV"); across months it keeps the first day ("31 / OCT"), and the card's line gives the range. A workshop series shows its next session ("29 / NOV"), or the one it is listed under, the last once all have passed.
 - **Italic headings:** group, day and month headings in Bodoni italic, like a handwritten setlist.
 
 The light theme's creams are the paper of 1970s salsa flyers and sleeves: the page uses an aged tone rather than near-white, so it isn't glaring, and cards sit one step lighter.
@@ -212,7 +212,10 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves: the pa
   | further than a week | 4 sesiones · próxima: dom 22 nov |
   | within a week | Domingo · 2:00 p. m. · sesión 3 de 4 (Hoy, Mañana as for any event; the session's own time) |
   | after the last | 4 sesiones · 8 nov – 6 dic (only on its page) |
+  | listed under a later session | that session, like any event: Viernes · 10:00 a. m. · sesión 2 de 2 |
 
+  Listed under a later session (a day searched, a date chosen in "Cuándo", the calendar's day), its card and sticker say
+  that one, not the next (the bug hunt of 7 Oct 2026: "Hoy · sesión 1 de 2" under "Este fin de semana").
   The detail's "Cuándo" reads "4 sesiones: 8, 22, 29 nov y 6 dic · 2:00 p. m. – 5:00 p. m." ("horario de cada sesión
   abajo" when their times differ), and shared texts the same; a period's shared list gives its next session.
 - **Every @account is one link** (`lib/accountLink.ts`; `tests/accountLink.test.ts` fails on any other instagram.com profile link): wherever an account shows (card, details, Contacto, the footer's sources), it opens the profile inside the site, in the media viewer with Instagram's profile embed (`openProfileViewer` in `views/postViewer.ts`); a new tab still gets Instagram. Not a filter to the account: the owner dropped that on 4 October 2026 (an academy rarely has several events at once, and people expected its Instagram); not Instagram's app either, whose back button leaves the site.
@@ -354,8 +357,9 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
     Saved but none to come: "Ninguno de tus eventos guardados está por venir" and "Ver eventos".
   - **No filters there:** a short, personal list. Filtros is off in the bar (named "Filtros: no se usan en Guardados";
     its badge stays), and the pinned bar and the toolbar's pills are hidden (`body[data-screen="saved"]`). The filters
-    stay set for the list. **The search applies**, as in every view: "No encontramos eventos guardados" · "Nada de lo
-    que guardaste coincide con «…»." · "Borrar la búsqueda".
+    stay set for the list. **The search applies**, as in every view, past plans included (a day searched finds them
+    by their own days: "sábado", "3 de octubre"): "No encontramos eventos guardados" · "Nada de lo que guardaste
+    coincide con «…»." · "Borrar la búsqueda".
   - **Empty:** a big bookmark, "Aún no tienes eventos guardados", "Toca 🔖 en un evento para tenerlo aquí, a la mano. Se
     quedan en este navegador, sin crear cuenta." and "Ver eventos".
   - **Unsaving there** takes the card away at once, the page staying where it was. Unsaved from the details, they stay
@@ -366,11 +370,16 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
   - **The calendar marks the days** holding a saved event (as filtered on screen; at once as an event is saved or unsaved
     there) with a small bookmark, and says it to screen readers ("…, 3 eventos, 1 guardado"); the legend under the
     grid has "Festivo" and "Guardado".
-- **Search** (`lib/search.ts`) runs on the events already in the page: accent- and case-insensitive,
-  every word must be found in the event (title, academy, organizer, venue, area, artists, rhythms, activities, type,
-  as the site shows them: "Otros ritmos"). A word is found **at the start of one of the event's words**, so a search
-  typed halfway works ("bach") and "son" isn't found inside "Jason"; inside an academy's handle too ("jaguar").
-  **Plurals** find their singular ("talleres", "sociales").
+- **Search** (`lib/search.ts`) runs on the events already in the page: accent- and case-insensitive, every word must be
+  found in the event (title, academy, organizer, venue, area, artists, rhythms, activities, type, as the site shows
+  them: "Otros ritmos"). A word is found **at the start of one of the event's words**, so a search typed halfway works
+  ("bach") and "son" isn't found inside "Jason". **Plurals** find their singular ("talleres", "sociales"). **Whole,
+  where a start would find too much** (the bug hunt of 7 Oct 2026): a number ("calle 7" isn't Calle 73; joined to
+  letters it's still one: "93" finds "#93A-36") and a singular ("andres" isn't Andrea); a letter right after a word
+  starts the event's word after that one ("zona t" is Zona T, not Zona 6 at Tributo; typing "bachata s" still shows
+  "Bachata sensual", the list never empty for a moment). **Inside an academy's handle**, where its words run together, a
+  name of five letters or more ("jaguar" in @discojaguar.bta, "torre" in @frank.de.latorre), never the search's own
+  words, which find what they mean ("banda" isn't @proyectourbandance, nor "competencia" @jaleocompetencia_'s social).
 - **The search's Spanish** (`lib/searchWords.ts`; the owner, 7 Oct 2026: "list synonyms based on the Spanish
   language"): a visitor's word also finds the site's word for it, **one way**: "clase", "curso", "workshop" find the
   workshops (but "taller" doesn't find the socials that open with a class); "fiesta", "farra", "party" the parties
@@ -379,18 +388,45 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
   "on2", "mambo" salsa en línea; "caleño", "salsero", "lindy hop"…; "salsa" also finds cha cha chá (its heading).
   Known phrases are searched whole ("cha cha cha", "sin costo"). **"Free" is one word however it's written**:
   "gratis", "gratuito", "sin costo", "entrada libre", "no cover", "free cover"… in the search or in the event (its own
-  words, or "Gratis" on its card) all mean "gratis". Left out on purpose, as they'd find unrelated events: "libre"
-  alone ("rumba libre"), "parche" (academies), "noche", "feria", "cali", "práctica". A test checks that every word
-  the table finds is one the site shows.
+  words, or "Gratis" on its card) all mean "gratis"; but not "free" alone in an event's words, a name there more often
+  than a price ("Free Style", "Sugar Free": the bug hunt of 7 Oct 2026). Left out on purpose, as they'd find unrelated
+  events: "libre" alone ("rumba libre"), "parche" (academies), "noche", "feria", "cali", "práctica". A test checks that
+  every word the table finds is one the site shows.
+- **Words joined by a hyphen or an apostrophe** (the same hunt): an event's are also one word ("kpop" finds "K-POP",
+  "quiebracanto" "Quiebra-Canto"), and an apostrophe between letters joins what's typed ("pa'lante" is "palante",
+  either way).
 - **Days in the search** (`lib/searchDays.ts`; the owner, 7 Oct 2026): "hoy", "esta noche", "mañana", "pasado
-  mañana"; a weekday, every one to come ("sábado", "el próximo viernes"); "este finde" / "fin de semana" (Friday to
-  Sunday from today on: on a Saturday, Saturday and Sunday); "esta semana", "próxima semana", "la otra semana";
-  "este mes", a month, "15 de octubre"; "festivo". They find the events on those days by date, not in their words
-  ("de ayer y hoy" isn't today), with the same days as "Cuándo" (several days, a series' sessions, last night's
-  social still on); several days are any of them, the other words all apply ("salsa finde"). Calendar days, not
-  the menu's periods. Words that only join others ("el", "de", "con", "este") are left out, unless the search is
-  nothing else. **Places are searched only as the event says them** (venue, address, area): no table of
-  neighbourhoods (the owner, 7 Oct 2026: don't stretch the post's information).
+  mañana"; a weekday, every one ("sábado", "el próximo viernes"); "este finde" / "fin de semana" (Friday to Sunday);
+  "esta semana" (Monday to Sunday), "próxima semana", "la otra semana"; "este mes", a month, "15 de octubre";
+  "festivo". They find the events on those days by date, not in their words ("de ayer y hoy" isn't today), with the
+  same days as "Cuándo" (several days, a series' sessions, last night's social still on); several days are any of
+  them, the other words all apply ("salsa finde"). Calendar days, not the menu's periods. **A searched day narrows
+  the days shown, as "Cuándo" does** (the bug hunt of 7 Oct 2026): the list shows an event under the first day named
+  ("viernes": a series under its Friday session, not under "Hoy" for today's), the calendar marks only the days
+  named, and with a date chosen in "Cuándo" an event needs a day both name (its options are counted so). **Each view
+  keeps its own days** (the same hunt): the list from today (on a Saturday, "finde" lists Saturday and Sunday), the
+  calendar its month, past days too, and Guardados its past plans too ("sábado" keeps last Saturday's in "Ya
+  pasaron"). So a date without its year is every year's: "3 de octubre" is the one just past in Guardados, the next
+  in the list (it was next year's everywhere, and Guardados lost the plan).
+  - **With words around them** (the same hunt: "sábado en la mañana" was tomorrow, "sábado 10" every Saturday, "el
+    otro finde", "17 de oct" and "qué hay hoy" found nothing): a part of the day keeps the day, as the search has no
+    hours ("sábado en la noche", "mañana por la tarde", "viernes noche"; "esta mañana" is today; alone, "en la
+    mañana" is no day, never tomorrow, and is left out). A weekday with a number is that day: "sábado 10" a Saturday
+    the 10th (none near: nothing, rather than every Saturday), "sábado 10 de octubre" the date. "Que viene" or
+    "entrante" after a day is "próximo" before it ("el sábado que viene"; "la semana entrante", "el mes que viene":
+    the next ones). "El otro sábado" and "el otro finde" are the ones after the coming one (next week's). A month
+    written short counts right after a number ("17 de oct", "3 nov"; alone, "mar" is the sea), a month may come
+    first ("octubre 17"), and a year after it ("octubre de 2026").
+  - **Names that are days** ("julio", "abril", "domingo": `DAY_NAMES`): said alone, they're also the name, so an
+    event with it among its words is found on any of its days ("domingo quiñones": his concert on a Saturday; "julio
+    sábado": Julio's Saturday). Others still find their days ("julio": July's events). None in the data on 7 Oct 2026;
+    without it, "julio" could only find July.
+  - **Words left out** unless the search is nothing else (`LEFT_OUT` in `lib/searchWords.ts`): those that only join
+    others ("el", "de", "con"), the words before a day ("este", "próximo"), and those of a question or a wish around
+    what's looked for ("qué hay hoy", "dónde bailar salsa", "quiero ir a bailar", "eventos de bachata"). Not "baile",
+    part of academies' names.
+- **Places are searched only as the event says them** (venue, address, area): no table of neighbourhoods (the owner,
+  7 Oct 2026: don't stretch the post's information).
 - **The field:** on phones Buscar turns the bar at the bottom into the field (see "The bar at the
   bottom"); on wide screens the field is in the tabs' row. Results show after a short pause in typing, from the top of
   the list (in the calendar, the day's list).
@@ -439,11 +475,11 @@ the list stays short there and summarizes what's further away (`scripts/views/up
   - **Badges:** the number of upcoming saved events on Guardados, and on Filtros every choice in use (two rhythms count
     two, like Airbnb's; hiding the bars counts one). Filtros is named "Filtros, 2 activos"; Guardados "Guardados, 3".
   - **Buscar:** the bar becomes the search field, docked at the bottom (iOS 26's search, Instagram's place), with the
-    focus, the keyboard and × (the browser's own clear button is hidden: one way out). It has a history entry, as an
-    overlay: **× and back close it and clear the search**; Escape too. **The keyboard's "Buscar" (Enter)** closes the
-    keyboard and the field and keeps the search (Buscar is named "Buscar: «salsa»"; a tap opens the field again). A
-    field left empty closes when the keyboard does (or when what opened over it closes). **Android's back** with the
-    keyboard up only hides the keyboard (the page isn't told), so the search reacts to the keyboard leaving
+    focus, the keyboard and × (the browser's own clear button is hidden, Safari's too: one way out). It has a history
+    entry, as an overlay: **× and back close it and clear the search**; Escape too. **The keyboard's "Buscar" (Enter)**
+    closes the keyboard and the field and keeps the search (Buscar is named "Buscar: «salsa»"; a tap opens the field
+    again). A field left empty closes when the keyboard does (or when what opened over it closes). **Android's back**
+    with the keyboard up only hides the keyboard (the page isn't told), so the search reacts to the keyboard leaving
     (`keyboardJustHid`): empty, it closes; with words, it's kept (the owner, 5 Oct 2026). The bar rides above the
     keyboard (`--keyboard-inset`; `ARCHITECTURE.md`, section 5.7).
   - **Sheets and the details drawer** are modal dialogs in the browser's top layer: they cover the bar, which stays
@@ -457,18 +493,23 @@ the list stays short there and summarizes what's further away (`scripts/views/up
     back move between them, the tab's title follows (`lib/viewTitles.ts`), and closing an event goes back to its view's
     address. `/guardados/` isn't indexed (it's each visitor's). Opened straight on `/calendario/` or `/guardados/`, the
     list isn't under it in the history: back leaves, as from any shared link (the owner, 4 October 2026).
-  - **The list keeps its place, like Instagram's tabs:** coming back to it lands where it was left. **The calendar
+  - **The list keeps its place, like Instagram's tabs:** coming back to it lands where it was left. If a filter changed
+    meanwhile, it comes back at the same period instead; if the search changed, at its start, as a search typed in it
+    (a new list: the bug hunt of 7 Oct 2026). The tabs behave the same. **The calendar
     always opens on its home** instead, with the day's list on screen (its cards look like the list's, and visitors
     coming back deep in them lost track of which view they were in: the owner, 4 October 2026). In it one rule holds
     (`revealDay` in `views/viewNavigation.ts`): **whatever changes the day's list ends with its start on screen** (a
     day, the month's ‹ ›, "Hoy", a filter, a search, back and forward). The page moves only when the list's start is
     below the fold, never when the visitor is reading the cards, so trying days never shakes the grid. Why: on a phone
     the list started below the fold, and a tap seemed to do nothing (the owner, 4 October 2026).
-  - **A day tapped in the calendar says so where the list starts:** its heading ("Miércoles, 14 de octubre") has the count under it ("3 eventos"; an empty day says "No hay eventos este día.") and glows briefly when the day changes (not with reduced motion). Screen readers hear "Miércoles, 14 de octubre: 3 eventos" (`#results-status`). If a filter changed meanwhile, the list comes back at the same period instead. The tabs behave the same.
+  - **A day tapped in the calendar says so where the list starts:** its heading ("Miércoles, 14 de octubre") has the count under it ("3 eventos"; an empty day says "No hay eventos este día.") and glows briefly when the day changes (not with reduced motion). Screen readers hear "Miércoles, 14 de octubre: 3 eventos" (`#results-status`).
 - **Filter sheet** (`FilterSheet.astro`, `filter-sheet.css`), from Filtros in the bar at the bottom:
   - **Head:** "Filtros", "Limpiar" (only enabled with something to clear) and ×.
   - **Groups:** **Fecha** · *elige una o varias* (every period and month), **Ritmo** · *elige uno o varios* (under their families, see "Filters"), **Tipo de evento** (several too). Each option with its count ("Noviembre 2"); the ones with nothing to show dimmed. First, above them, the "Ocultar eventos de bares" switch (see "Filters", "Hiding the bars").
-  - **"Ver 12 eventos"** stays at the bottom (the primary button): "Ver 1 evento", or "Sin eventos: cambia los filtros", disabled. It closes the sheet; choices apply at once, there's no apply step.
+  - **"Ver 12 eventos"** stays at the bottom (the primary button): "Ver 1 evento", or, disabled, what to change:
+    "Sin eventos: cambia los filtros", or "Sin eventos: cambia la búsqueda" when the search alone finds nothing (no
+    filter would help; the bug hunt of 7 Oct 2026: it blamed the filters). It closes the sheet; choices apply at once,
+    there's no apply step.
   - **Closing:** ×, a drag down, the backdrop, Escape, back. The focus goes back to Filtros.
   - **In the calendar:** Fecha says "En el calendario eliges el día en el mes."
 

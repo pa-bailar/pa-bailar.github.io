@@ -201,7 +201,7 @@ function renderSheet(model: FilterModel, state: AppState) {
   body.scrollTop = scrolled;
   byId<HTMLButtonElement>("filter-sheet-clear").disabled = model.active === 0;
   const results = byId<HTMLButtonElement>("filter-sheet-results");
-  results.textContent = resultsButtonLabel(model.shown);
+  results.textContent = resultsButtonLabel(model);
   results.disabled = model.shown === 0;
 }
 

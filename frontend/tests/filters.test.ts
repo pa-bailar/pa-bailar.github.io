@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { addDays, todayIso } from "../src/scripts/lib/dates";
+import { addDays, parseIsoDate, todayIso } from "../src/scripts/lib/dates";
 import {
   TOMORROW,
   activeFilterCount,
@@ -73,10 +73,10 @@ describe("dates: any of the chosen periods", () => {
   });
 
   it("the list shows each event on its first day within the chosen periods, Mañana as a group of its own", () => {
-    expect(listedDay(festival, ["proxima-semana"], TODAY)).toBe("2026-10-12");
-    expect(listedDay(festival, [], TODAY)).toBe("2026-10-11");
+    expect(listedDay(festival, { dates: ["proxima-semana"] }, TODAY)).toBe("2026-10-12");
+    expect(listedDay(festival, {}, TODAY)).toBe("2026-10-11");
     const groups = (dates: string[]) =>
-      groupByPeriod([congress, tomorrow, saturday, festival].filter((e) => matchesDates(e, dates, TODAY)), TODAY, dates).map(
+      groupByPeriod([congress, tomorrow, saturday, festival].filter((e) => matchesDates(e, dates, TODAY)), TODAY, { dates }).map(
         (group) => [group.key, group.events.map((e) => e.id)],
       );
     expect(groups([TOMORROW, "proxima-semana"])).toEqual([
@@ -163,7 +163,9 @@ describe("filters together: AND across groups", () => {
   });
 
   it("the calendar ignores the dates (it has its own days), and so does ⚙'s badge", () => {
-    expect(shown({ view: "calendar", dates: ["hoy"] })).toHaveLength(3);
+    const later = parseIsoDate(salsaLater.date);
+    const month = new Date(later.getFullYear(), later.getMonth(), 1); // its month: not today's, still shown
+    expect(shown({ view: "calendar", month, dates: ["hoy"] })).toEqual(["salsa-luego"]);
     expect(activeFilterCount({ ...state, view: "calendar", dates: ["hoy"] })).toBe(0);
   });
 
@@ -301,9 +303,22 @@ describe("the filter chips (filterModel)", () => {
   });
 
   it("the sheet's button says how many, or that there's nothing", () => {
-    expect(resultsButtonLabel(12)).toBe("Ver 12 eventos");
-    expect(resultsButtonLabel(1)).toBe("Ver 1 evento");
-    expect(resultsButtonLabel(0)).toBe("Sin eventos: cambia los filtros");
+    expect(resultsButtonLabel({ shown: 12, searched: 12 })).toBe("Ver 12 eventos");
+    expect(resultsButtonLabel({ shown: 1, searched: 3 })).toBe("Ver 1 evento");
+    expect(resultsButtonLabel({ shown: 0, searched: 3 })).toBe("Sin eventos: cambia los filtros");
+  });
+
+  // The bug hunt of 7 Oct 2026: with a search that finds nothing, the sheet said "cambia los filtros", though no
+  // filter was on.
+  it("nothing because of the search: the sheet's button names the search, not the filters", () => {
+    const nothing = model({ query: "zzqx" });
+    expect([nothing.shown, nothing.searched]).toEqual([0, 0]);
+    expect(resultsButtonLabel(nothing)).toBe("Sin eventos: cambia la búsqueda");
+    expect(resultsButtonLabel(model({ query: "zzqx", styles: ["salsa"] }))).toBe("Sin eventos: cambia la búsqueda");
+    const filtered = model({ query: "kizomba", styles: ["salsa"] }); // the search finds one; the filter leaves none
+    expect([filtered.shown, filtered.searched]).toEqual([0, 1]);
+    expect(resultsButtonLabel(filtered)).toBe("Sin eventos: cambia los filtros");
+    expect(model({ styles: ["salsa"], hideBars: true }).searched).toBe(3); // no search: every event in view
   });
 
   it("empty results say why and offer the ways out", () => {

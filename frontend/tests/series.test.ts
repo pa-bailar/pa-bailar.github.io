@@ -82,7 +82,7 @@ describe("a series in the upcoming list (groupByPeriod)", () => {
   // events.json order: by date, so the series (dated by its first session) comes first.
   const all = [series, festival, thursday, sundayMorning, sundayNight, december];
   const groups = (today: string, dates: string[] = []) =>
-    groupByPeriod(all.filter((item) => lastDay(item) >= today), today, dates).map((group) => [
+    groupByPeriod(all.filter((item) => lastDay(item) >= today), today, { dates }).map((group) => [
       group.key,
       group.events.map((item) => item.id),
     ]);
@@ -125,7 +125,7 @@ describe("a series in the upcoming list (groupByPeriod)", () => {
   });
 
   it("with dates chosen, it's listed on its first session in them", () => {
-    expect(listedDay(series, ["2026-12"], "2026-11-18")).toBe("2026-12-06");
+    expect(listedDay(series, { dates: ["2026-12"] }, "2026-11-18")).toBe("2026-12-06");
     expect(groups("2026-11-18", ["2026-12"]).find(([key]) => key === "2026-12")).toEqual(["2026-12", ["diciembre", series.id]]);
   });
 });
@@ -239,6 +239,21 @@ describe("a series on its card and in its details", () => {
     const card = eventCardGridHtml([series]);
     expect(card).toContain("<b>29</b><small>NOV</small>");
     expect(card).toContain("Domingo · 2:00 p. m. · sesión 3 de 4");
+  });
+
+  // The bug hunt of 7 Oct 2026: searched by "viernes" (or with a date chosen, or on the calendar's day), a series
+  // listed under a later session still said "Hoy · sesión 1 de 2" on its card.
+  it("listed under a later session (a day searched, a date chosen, the calendar's day), its card says that one", () => {
+    const habitar = seriesEvent({ sessions: sessionsOn(["2026-10-07", "2026-10-09"], { start_time: "10:00", end_time: "12:00" }) });
+    expect(cardWhenLabel(habitar, "2026-10-07")).toBe("Hoy · 10:00 a. m. · sesión 1 de 2"); // its next session
+    expect(cardWhenLabel(habitar, "2026-10-07", "2026-10-09")).toBe("Viernes · 10:00 a. m. · sesión 2 de 2");
+    expect(stickerDate(habitar, "2026-10-07", "2026-10-09")).toEqual({ day: "09", month: "OCT", range: false });
+    expect(cardWhenLabel(habitar, "2026-10-07", "2026-10-08")).toBe("Hoy · 10:00 a. m. · sesión 1 de 2"); // no session
+    expect(cardWhenLabel(series, "2026-11-22", "2026-12-06")).toMatch(/^Domingo 6 .*dic.* · 2:00 p\. m\. · sesión 4 de 4$/);
+    on("2026-10-07");
+    const card = eventCardGridHtml([habitar], () => "2026-10-09");
+    expect(card).toContain("<b>09</b><small>OCT</small>");
+    expect(card).toContain("Viernes · 10:00 a. m. · sesión 2 de 2");
   });
 
   it("says its sessions in one line, with the years when they span two", () => {
