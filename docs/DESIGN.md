@@ -433,14 +433,16 @@ the list stays short there and summarizes what's further away (`scripts/views/up
     back move between them, the tab's title follows (`lib/viewTitles.ts`), and closing an event goes back to its view's
     address. `/guardados/` isn't indexed (it's each visitor's). Opened straight on `/calendario/` or `/guardados/`, the
     list isn't under it in the history: back leaves, as from any shared link (the owner, 4 October 2026).
-  - **The list keeps its place, like Instagram's tabs:** coming back to it lands where it was left. **The calendar
+  - **The list keeps its place, like Instagram's tabs:** coming back to it lands where it was left. If a filter changed
+    meanwhile, it comes back at the same period instead; if the search changed, at its start, as a search typed in it
+    (a new list: the bug hunt of 7 Oct 2026). The tabs behave the same. **The calendar
     always opens on its home** instead, with the day's list on screen (its cards look like the list's, and visitors
     coming back deep in them lost track of which view they were in: the owner, 4 October 2026). In it one rule holds
     (`revealDay` in `views/viewNavigation.ts`): **whatever changes the day's list ends with its start on screen** (a
     day, the month's ‹ ›, "Hoy", a filter, a search, back and forward). The page moves only when the list's start is
     below the fold, never when the visitor is reading the cards, so trying days never shakes the grid. Why: on a phone
     the list started below the fold, and a tap seemed to do nothing (the owner, 4 October 2026).
-  - **A day tapped in the calendar says so where the list starts:** its heading ("Miércoles, 14 de octubre") has the count under it ("3 eventos"; an empty day says "No hay eventos este día.") and glows briefly when the day changes (not with reduced motion). Screen readers hear "Miércoles, 14 de octubre: 3 eventos" (`#results-status`). If a filter changed meanwhile, the list comes back at the same period instead. The tabs behave the same.
+  - **A day tapped in the calendar says so where the list starts:** its heading ("Miércoles, 14 de octubre") has the count under it ("3 eventos"; an empty day says "No hay eventos este día.") and glows briefly when the day changes (not with reduced motion). Screen readers hear "Miércoles, 14 de octubre: 3 eventos" (`#results-status`).
 - **Filter sheet** (`FilterSheet.astro`, `filter-sheet.css`), from Filtros in the bar at the bottom:
   - **Head:** "Filtros", "Limpiar" (only enabled with something to clear) and ×.
   - **Groups:** **Fecha** · *elige una o varias* (every period and month), **Ritmo** · *elige uno o varios* (under their families, see "Filters"), **Tipo de evento** (several too). Each option with its count ("Noviembre 2"); the ones with nothing to show dimmed. First, above them, the "Ocultar eventos de bares" switch (see "Filters", "Hiding the bars").

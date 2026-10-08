@@ -20,6 +20,27 @@ import { VIEW_TITLES } from "../lib/viewTitles";
 /** How much of the day's list shows under its heading once it's revealed: the start of the first card. */
 const DAY_PEEK = 96;
 
+/** What the list shows, besides the view: its filters and its search. */
+export interface ListChoices {
+  filters: string;
+  query: string;
+}
+
+export function listChoices(state: Pick<AppState, "types" | "styles" | "dates" | "hideBars" | "query">): ListChoices {
+  return { filters: JSON.stringify([state.types, state.styles, state.dates, state.hideBars]), query: state.query.trim() };
+}
+
+/**
+ * Where the list comes back after another view: the very same spot when nothing changed meanwhile; the same period
+ * when a filter changed, as for any filter change; its start when the search changed, as a search typed in the list
+ * does (a new list). The bug hunt of 7 Oct 2026: back from a search made in the calendar, the list stood where it was
+ * left, deep in other results, as if nothing had changed.
+ */
+export function listComeback(left: ListChoices, now: ListChoices): "spot" | "period" | "start" {
+  if (left.query !== now.query) return "start";
+  return left.filters === now.filters ? "spot" : "period";
+}
+
 export interface ViewNavigation {
   /**
    * The bar at the bottom (Eventos, Calendario, Guardados) and the tabs: the calendar and Guardados are a move of
@@ -45,28 +66,27 @@ export interface ViewNavigation {
 /** The views of `state`, drawn by `render`. */
 export function viewNavigation(state: AppState, render: () => void): ViewNavigation {
   /** Where the list was left: coming back to it lands there. */
-  let leftList: { scrollY: number; filters: string; anchor: ListAnchor | null } | null = null;
-
-  const filtersKey = () => JSON.stringify([state.types, state.styles, state.dates, state.hideBars]);
+  let leftList: { scrollY: number; choices: ListChoices; anchor: ListAnchor | null } | null = null;
 
   /**
-   * Shows `view` (no history entry of its own). The list comes back where it was left; the calendar always opens on
-   * its home: the month and the start of the day's list on screen, never where it was scrolled before (its cards
-   * look like the list's, and coming back deep in them, visitors lost track of where they were: the owner, 4 October
-   * 2026). Guardados opens at its top.
+   * Shows `view` (no history entry of its own). The list comes back where it was left (listComeback); the calendar
+   * always opens on its home: the month and the start of the day's list on screen, never where it was scrolled before
+   * (its cards look like the list's, and coming back deep in them, visitors lost track of where they were: the owner,
+   * 4 October 2026). Guardados opens at its top.
    */
   function showView(view: View) {
     if (view === state.view) return;
     if (state.view === "upcoming") {
-      leftList = { scrollY: window.scrollY, filters: filtersKey(), anchor: captureListPosition() };
+      leftList = { scrollY: window.scrollY, choices: listChoices(state), anchor: captureListPosition() };
     }
     state.view = view;
     document.title = VIEW_TITLES[view].title;
     render();
     if (view === "upcoming") {
       if (!leftList) return;
-      // Same filters: the very same spot. Filters changed in the calendar: the same period, as any filter change.
-      if (leftList.filters === filtersKey()) returnToScroll(leftList.scrollY);
+      const comeback = listComeback(leftList.choices, listChoices(state));
+      if (comeback === "spot") returnToScroll(leftList.scrollY);
+      else if (comeback === "start") backToTop();
       else if (leftList.anchor) restoreListPosition(leftList.anchor);
       return;
     }
