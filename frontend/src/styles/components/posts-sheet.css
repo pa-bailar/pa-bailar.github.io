@@ -30,7 +30,8 @@
   font-variant-numeric: tabular-nums;
 }
 
-/* Square thumbnails, like Instagram's grid; they wrap, nothing scrolls sideways. */
+/* 3:4 thumbnails, like Instagram's grid since 2025 (pages/thumbs/[name].webp.ts); they wrap, nothing scrolls
+   sideways. */
 .posts-sheet__grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -39,7 +40,7 @@
 
 .post-thumb {
   position: relative;
-  aspect-ratio: 1;
+  aspect-ratio: 3 / 4;
   padding: 0;
   overflow: hidden;
   border: var(--border-width) solid var(--divider);

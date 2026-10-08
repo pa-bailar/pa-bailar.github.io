@@ -22,7 +22,7 @@ describe("each flyer's version (its URL's ?v=)", () => {
   it("is in the flyer's and its thumbnail's URL; the thumbnail's also has its settings", () => {
     const media = { flyer: "flyers/123-0.webp", version: "3fa9c0e1b2" } as EventMedia;
     expect(flyerUrl(media)).toBe("/flyers/123-0.webp?v=3fa9c0e1b2");
-    expect(thumbUrl(media)).toBe("/thumbs/123-0.webp?v=3fa9c0e1b2.160.70");
+    expect(thumbUrl(media)).toBe("/thumbs/123-0.webp?v=3fa9c0e1b2.180x240.70");
     expect(flyerUrl({ ...media, version: undefined })).toBe("/flyers/123-0.webp");
   });
 
