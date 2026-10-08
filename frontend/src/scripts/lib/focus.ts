@@ -35,8 +35,11 @@ export function refocus(selector: string | null, scope: ParentNode) {
   control?.focus({ preventScroll: true });
 }
 
-/** Containers whose controls are re-rendered: focus goes back to the same control in the same one. */
-const FOCUS_SCOPES = "#filter-sheet, #jump-bar, .toolbar, main";
+/**
+ * Containers whose controls are re-rendered: focus goes back to the same control in the same one. A view is one (an
+ * event's card only gets the focus back in the view it was in: back or forward to another view leaves it).
+ */
+const FOCUS_SCOPES = '#filter-sheet, #jump-bar, .toolbar, [role="tabpanel"], main';
 
 /** Where to look for the re-rendered control: the open filter sheet, else where the focus was. */
 export function focusScope(previous: Element | null): ParentNode {
