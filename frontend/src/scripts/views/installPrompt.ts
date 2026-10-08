@@ -4,24 +4,37 @@
 //   - Chrome/Edge that announce it (beforeinstallprompt): "Instalar" opens the browser's own dialog.
 //   - Otherwise a sheet with the steps for where the visitor is (lib/installPlace.ts): iPhone, by browser
 //     and iOS version (Safari 27: the page's menu → Compartir; Safari 26: ⋯ → Compartir; earlier: Compartir; then
-//     Agregar a inicio),
+//     Agregar a Inicio, under Ver más on 26 and 27),
 //     with an arrow toward the browser's button; Android (menu ⋮ → Instalar aplicación); inside Instagram,
 //     Facebook, TikTok…, which can't install (open it in the browser, or copy the link to paste it there). Where an
 //     app lets a link do it, "Abrir en Safari" / "Abrir en el navegador" opens the page there in one tap, marked
 //     (ARRIVAL): the browser's page offers the install again, and on iPhone opens its steps by itself.
-//     The sheet stays open while the visitor taps the browser's buttons, so the steps are in view.
+//     The sheet stays open while the visitor taps the browser's buttons, so the steps are in view. Safari 26 and 27
+//     on iPhone get the steps as a clip, big, and the buttons to tap beside it, one per line, no written steps (the
+//     owner, 8 Oct 2026: visitors look, they don't read). The clip loads when the sheet opens and is dropped when it
+//     closes, never stored by the service worker; with reduced motion, its poster only.
 //   - On iPhone the page can't see the result: "Ya la agregué" hides the offer for good, and closing the
 //     steps rests the banner like × does (the footer's link stays).
 //   - The offer: a banner under the header on phones (× hides it for DISMISS_DAYS days) and a link in the
-//     footer. Nothing once installed, or on a computer whose browser can't install.
+//     footer. Nothing once installed, or on a computer whose browser can't install. On iPhone and iPad the footer's
+//     link is "Cómo instalar Pa' Bailar en tu iPhone" instead, always there (outside the installed app): the page can't
+//     tell it was added, so after "Ya la agregué" (by mistake, say) or the steps closed, the steps stay one tap away
+//     (the owner, 8 Oct 2026).
 //   - Installed, as far as the page can tell: opened as the app; or this browser saw it installed (the
 //     app on Android shares the browser's storage, so opening it once is remembered); or Chrome on Android
 //     says so (getInstalledRelatedApps, with the manifest's related_applications). Chrome offering to
 //     install again (beforeinstallprompt) means it was uninstalled. iPhone keeps the home-screen app's
 //     storage apart from Safari and has no way to ask, so there "×", the steps or "Ya la agregué" hide it.
 
-import { byId } from "../lib/dom";
-import { ARRIVAL, installGuide, installPlace, withoutArrival } from "../lib/installPlace";
+import { byId, prefersReducedMotion } from "../lib/dom";
+import {
+  ARRIVAL,
+  howToInstallLabel,
+  installGuide,
+  installPlace,
+  withoutArrival,
+  type InstallClip,
+} from "../lib/installPlace";
 import { storedSwitch } from "../lib/storedSwitch";
 import { storedValue } from "../lib/storedValue";
 import { BASE_URL } from "../lib/links";
@@ -92,7 +105,12 @@ const canOffer = () => !isInstalled() && (installEvent !== null || guide() !== n
 
 function render() {
   const offer = canOffer();
-  document.querySelectorAll<HTMLElement>("[data-install-offer]").forEach((element) => (element.hidden = !offer));
+  const howTo = howToInstallLabel(place());
+  document.querySelectorAll<HTMLElement>("[data-install-offer]").forEach((element) => (element.hidden = !offer || !!howTo));
+  document.querySelectorAll<HTMLElement>("[data-install-howto]").forEach((element) => {
+    element.hidden = !howTo;
+    if (howTo) element.querySelector("button")!.textContent = howTo;
+  });
   const banner = document.getElementById("install-banner");
   if (banner) banner.hidden = !offer || (dismissedRecently() && !arrived);
 }
@@ -102,7 +120,14 @@ export function showInstallSteps() {
   const steps = guide();
   if (!steps) return;
   byId("install-sheet-title").textContent = steps.title;
-  byId("install-steps").innerHTML = steps.steps.map((step) => `<li>${step}</li>`).join("");
+  const list = byId("install-steps");
+  list.innerHTML = steps.steps.map((step) => `<li>${step}</li>`).join("");
+  // With the clip: the clip and the taps beside it, then only "Ya la agregué" (under the clip, not beside the taps, so
+  // it isn't tapped by the way: the owner, 8 Oct 2026) and the arrow.
+  byId("install-sheet").classList.toggle("install-sheet--watch", Boolean(steps.taps));
+  byId("install-watch").hidden = !steps.taps;
+  byId("install-taps").innerHTML = (steps.taps ?? []).map((tap) => `<li>${tap}</li>`).join("");
+  list.hidden = steps.steps.length === 0;
   const pointer = byId("install-pointer");
   pointer.hidden = !steps.pointer;
   pointer.dataset.at = steps.pointer ?? "";
@@ -113,8 +138,32 @@ export function showInstallSteps() {
   byId("install-copy").hidden = !steps.copyLink;
   byId("install-done").hidden = place().kind !== "ios" || steps.copyLink; // only where it can be added here
   byId("install-status").textContent = "";
-  byId("install-note").textContent = steps.note ?? NOTE;
+  const note = byId("install-note");
+  note.textContent = steps.note ?? NOTE;
+  note.hidden = Boolean(steps.taps); // the clip ends on the home screen with the icon
+  showClip(steps.clip);
   openPanelSheet(byId<HTMLDialogElement>("install-sheet"));
+}
+
+/** The steps' clip (pages/install/[name].ts), or none. Its address is set only now, so it loads only when asked for;
+ * with reduced motion, the poster alone (a still of the step that differs: the menu with Compartir). */
+function showClip(clip: InstallClip | undefined) {
+  const video = byId<HTMLVideoElement>("install-clip");
+  video.hidden = !clip;
+  if (!clip) return dropClip();
+  video.poster = `${BASE_URL}install/${clip}.jpg`;
+  if (prefersReducedMotion()) return dropClip();
+  const src = `${BASE_URL}install/${clip}.mp4`;
+  if (video.getAttribute("src") !== src) video.src = src;
+}
+
+/** Stops the clip and its download (the sheet closed, or no clip to play). */
+function dropClip() {
+  const video = byId<HTMLVideoElement>("install-clip");
+  if (!video.hasAttribute("src")) return;
+  video.pause();
+  video.removeAttribute("src");
+  video.load();
 }
 
 /** The home page's address, for pasting it in the browser (apps' own browsers can't install). */
@@ -182,6 +231,7 @@ export function initInstallPrompt() {
   // Having seen the steps counts as an answer: the banner rests like after ×, and the footer's link stays.
   sheet.addEventListener("close", () => {
     dismissedAt.set(String(Date.now()));
+    dropClip();
     render();
   });
   render();

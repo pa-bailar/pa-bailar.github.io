@@ -306,25 +306,37 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
   visit: a banner under the header ("Pa' Bailar en tu celular" · Instalar · ×; × hides it for 30 days) and
   a link in the footer (also on computers whose browser can install). "Instalar" opens the browser's own
   install dialog when it has announced one (Chrome, Edge); otherwise a sheet with the steps for where the
-  visitor is (`scripts/lib/installPlace.ts`). Nothing once installed.
+  visitor is (`scripts/lib/installPlace.ts`). Nothing once installed, except on iPhone and iPad: there the footer's
+  link is "Cómo instalar Pa' Bailar en tu iPhone" (or iPad), always there outside the installed app, since the page
+  can't tell it was added; after "Ya la agregué" (by mistake, say) or the steps closed, the offer may never come back,
+  and the steps stay one tap away (the owner, 8 Oct 2026).
 - **The steps sheet:** three numbered steps, one short line each, with the browser's buttons drawn as they look on the
   phone. The sheet stays open while the visitor taps the browser's buttons. Where the button is in the browser's bar
-  right below the page, an arrow points to it. The texts, with iOS's own Spanish labels:
+  right below the page, an arrow points to it, centered on the button (its distance from the screen's edge, measured
+  in the Simulator). **Safari 26 and 27 on iPhone get no written steps:** a clip of the steps, big (most of the
+  sheet's height; the sheet may take 92% of the screen there, 85% elsewhere), and beside it the buttons to tap, top to
+  bottom with a ↓ between them; "Ya la agregué" a small link under the clip, then the arrow. Visitors look, they don't
+  read (the owner, 8 Oct 2026). The clips (`src/assets/install/`, served at `/install/safari-27.mp4` and `-26`, with a
+  poster each) were recorded in Xcode's iOS Simulator (iOS 27.0 and 26.5, Spanish, 8 Oct 2026), the taps marked, cut
+  to ~12 s, 480 px wide, ~300 KB, no sound. They load only when the sheet opens (no address before), stop when it
+  closes, are never stored by the service worker, and with reduced motion only the poster shows. The texts, with
+  iOS's own Spanish labels (seen on iOS 26 and 27; iOS 18 not checked in the Simulator):
 
   | Where | Title | Steps |
   |---|---|---|
-  | Safari 27 (iPhone) | Instálala en tu iPhone | Toca el botón de la página, a la izquierda de la dirección, y luego Compartir (¿No lo ves? Mantén presionada la dirección.) · Baja en el menú y elige Agregar a inicio. Si no está, toca Ver más. · Deja activado Abrir como app web y toca Agregar. No arrow: iOS 27 turned the bottom-right ⋯ into Tabs (8 Oct 2026, from Cult of Mac's description; to check in the iOS Simulator) |
-  | Safari 26 (iPhone) | Instálala en tu iPhone | Toca ⋯ abajo a la derecha y luego Compartir (¿Ya ves Compartir en la barra? Tócalo directo.) · Baja en el menú y elige Agregar a inicio. Si no está, toca Ver más. · Deja activado Abrir como app web y toca Agregar. Arrow: bottom right |
-  | Safari 18 and earlier | Instálala en tu iPhone | Toca Compartir en la barra de abajo, en el centro. · Baja en el menú y elige Agregar a inicio. · Toca Agregar (arriba a la derecha). Arrow: bottom middle |
-  | Safari on iPad | Instálala en tu iPad | Toca Compartir arriba a la derecha. · Elige Agregar a inicio. · Toca Agregar. No arrow |
-  | Chrome, Edge, Firefox on iPhone | Instálala en tu iPhone | Toca Compartir junto a la dirección (Chrome) or in the browser's menu · Agregar a inicio · Agregar |
+  | Safari 27 (iPhone) | Instálala en tu iPhone | The clip, and the taps: ≡ → Compartir → Ver más → Agregar a Inicio → Agregar. iOS 27 turned the compact bar's bottom-right ⋯ into Tabs; Compartir is in the page's menu (≡) at the left of the address, or holding the address. The share menu opens on a row of buttons: Agregar a Inicio is in the list under Ver más; Abrir como app web is already on; Agregar is at the top right. Arrow: bottom left, on ≡ |
+  | Safari 26 (iPhone) | Instálala en tu iPhone | The clip, and the taps: ⋯ → Compartir → Ver más → Agregar a Inicio → Agregar (the same share menu). Arrow: bottom right, on ⋯ |
+  | Safari 18 and earlier | Instálala en tu iPhone | Toca Compartir en la barra de abajo, en el centro. · Baja en el menú y elige Agregar a Inicio. · Toca Agregar (arriba a la derecha). Arrow: bottom middle |
+  | Safari on iPad | Instálala en tu iPad | Toca Compartir arriba a la derecha. · Elige Agregar a Inicio. · Toca Agregar. No arrow |
+  | Chrome, Edge, Firefox on iPhone | Instálala en tu iPhone | Toca Compartir junto a la dirección (Chrome) or in the browser's menu · Agregar a Inicio · Agregar |
   | Inside Instagram on iPhone, or any app on Android | Ábrela en tu navegador | Toca Abrir en Safari y acepta salir de Instagram (Android: Toca Abrir en el navegador). · ¿No se abrió? Toca ⋯ (⋮) arriba a la derecha y elige Abrir en el navegador, o copia el enlace y pégalo en Safari. · En Safari se abren solos los pasos para instalarla (Android: Ahí toca Instalar en Pa' Bailar). With the button and "Copiar enlace" |
   | Inside Facebook, TikTok, the Google app… on iPhone | Ábrela en tu navegador | Toca ⋯ o ⋮ arriba a la derecha y elige Abrir en el navegador (Safari). · ¿No aparece? Toca Copiar enlace y pégalo en Safari. · Ahí toca Instalar en Pa' Bailar. With "Copiar enlace" |
   | An iPhone browser before iOS 16.4 | Ábrela en Safari | Copy the link, open it in Safari, install there. With "Copiar enlace" |
   | Android | Instalar en tu celular | Toca el menú ⋮ · Instalar aplicación · Instalar |
 
-  On iPhone the page can't tell whether it was added, so the sheet ends with "Ya la agregué" (hides the offer
-  for good), and closing the steps rests the banner for 30 days like ×; the footer's link stays.
+  On iPhone the page can't tell whether it was added, so the sheet ends with "Ya la agregué" (hides the banner for
+  good; under the clip rather than beside the taps, so it isn't tapped by the way), and closing the steps rests the
+  banner for 30 days like ×; the footer's "Cómo instalar…" link stays.
 - **Out of an app's browser in one tap** (the owner, 8 Oct 2026: most visitors come from Instagram, whose browser
   can't install). iPhone has no install dialog nor any way for a page to start one; what a page can do is get the
   visitor to the browser that can. "Abrir en Safari" (Instagram on iPhone: its own `instagram://extbrowser` link,

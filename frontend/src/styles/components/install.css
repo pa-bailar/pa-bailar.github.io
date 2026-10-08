@@ -46,6 +46,81 @@
   flex: none;
 }
 
+/* Safari on iPhone: the steps done in a clip, big, and beside it the buttons to tap, one per line, no written steps
+   (the owner, 8 Oct 2026: visitors look, they don't read; InstallGuide.clip, .taps). The clip as tall as fits with
+   the link and the arrow in the sheet. */
+/* Taller than the other sheets (85dvh, sheet.css) for the clip: a strip of the page still shows above it. */
+.sheet-panel.install-sheet {
+  max-height: 92dvh;
+}
+
+.install-sheet__watch {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-2);
+}
+
+/* With the clip, only "Ya la agregué" and the arrow below it: tight rows, a smaller arrow, less padding. */
+.sheet-panel.install-sheet--watch {
+  padding-bottom: calc(var(--space-1) + env(safe-area-inset-bottom));
+}
+
+.install-sheet--watch .install-sheet__actions {
+  margin: var(--space-1) 0 0;
+}
+
+.install-sheet--watch .install-sheet__pointer {
+  margin-top: 0;
+  font-size: var(--text-2xl);
+}
+
+.install-sheet__watch[hidden] {
+  display: none;
+}
+
+.install-sheet__clip {
+  flex: none;
+  height: min(32rem, 64dvh);
+  aspect-ratio: 402 / 874; /* the recording's screen, in points */
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface-sunken);
+  object-fit: cover;
+}
+
+.install-sheet__clip[hidden] {
+  display: none;
+}
+
+/* The taps beside the clip: the buttons as they look, top to bottom, a ↓ between them (no numbers: their width would
+   push "Agregar a Inicio" onto two lines beside a big clip). */
+.install-sheet__taps {
+  flex: 1; /* the space the clip leaves, the taps centered in it */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--text-sm);
+}
+
+.install-sheet__taps li + li::before {
+  content: "↓";
+  display: block;
+  margin-bottom: var(--space-1);
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1;
+}
+
+.install-sheet__steps[hidden] {
+  display: none;
+}
+
 /* The steps: big numbers, one short line each, the browser's buttons drawn as they look (.install-key). */
 .install-sheet__steps {
   display: grid;
@@ -94,6 +169,7 @@
   white-space: nowrap;
   vertical-align: middle;
   line-height: 1.6;
+  min-height: 1.6em; /* an icon alone (≡, ⋯) as tall as the named ones */
 }
 
 .install-sheet__actions {
@@ -104,8 +180,17 @@
   margin-bottom: var(--space-3);
 }
 
-.install-sheet__actions .btn[hidden] {
+.install-sheet__actions .btn[hidden],
+.install-sheet__actions .link-button[hidden] {
   display: none;
+}
+
+/* "Ya la agregué": a quiet link, the steps being what matters; a finger's height to tap. */
+.install-sheet__done {
+  min-height: var(--control-height);
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-regular);
 }
 
 /* A side note under a step. */
@@ -131,8 +216,9 @@
   color: var(--text-muted);
 }
 
-/* The arrow toward the browser's button, in its bar right below the page: Safari 26's ⋯ (bottom right) or
-   Safari 18's Compartir (bottom middle). It bobs gently, like iOS's own hints. */
+/* The arrow toward the browser's button, in its bar right below the page: Safari 27's page menu (≡, bottom left,
+   right after the back button), Safari 26's ⋯ (bottom right) or Safari 18's Compartir (bottom middle). It bobs gently,
+   like iOS's own hints. */
 .install-sheet__pointer {
   display: flex;
   justify-content: center;
@@ -145,9 +231,18 @@
   display: none;
 }
 
+/* Centered on the button: its middle's distance from the screen's edge (the buttons are fixed sizes at the bar's ends,
+   whatever the screen's width), less the sheet's padding and half the arrow (.icon is 1.15em wide). Measured in the
+   Simulator on an iPhone 17 and 17 Pro, 8 Oct 2026: Safari 26's ⋯ 59 px from the right, Safari 27's ≡ 115 px from
+   the left (right after the back button). */
 .install-sheet__pointer[data-at="bottom-right"] {
   justify-content: flex-end;
-  padding-right: var(--space-2);
+  padding-right: calc(59px - var(--space-4) - 0.575em);
+}
+
+.install-sheet__pointer[data-at="bottom-left"] {
+  justify-content: flex-start;
+  padding-left: calc(115px - var(--space-4) - 0.575em);
 }
 
 .install-sheet__pointer .icon {
