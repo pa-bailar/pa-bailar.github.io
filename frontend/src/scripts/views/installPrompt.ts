@@ -3,9 +3,12 @@
 // first visit:
 //   - Chrome/Edge that announce it (beforeinstallprompt): "Instalar" opens the browser's own dialog.
 //   - Otherwise a sheet with the steps for where the visitor is (lib/installPlace.ts): iPhone, by browser
-//     and iOS version (Safari 26: ⋯ → Compartir → Agregar a inicio; earlier: Compartir → Agregar a inicio),
+//     and iOS version (Safari 27: the page's menu → Compartir; Safari 26: ⋯ → Compartir; earlier: Compartir; then
+//     Agregar a inicio),
 //     with an arrow toward the browser's button; Android (menu ⋮ → Instalar aplicación); inside Instagram,
-//     Facebook, TikTok…, which can't install (open it in the browser, or copy the link to paste it there).
+//     Facebook, TikTok…, which can't install (open it in the browser, or copy the link to paste it there). Where an
+//     app lets a link do it, "Abrir en Safari" / "Abrir en el navegador" opens the page there in one tap, marked
+//     (ARRIVAL): the browser's page offers the install again, and on iPhone opens its steps by itself.
 //     The sheet stays open while the visitor taps the browser's buttons, so the steps are in view.
 //   - On iPhone the page can't see the result: "Ya la agregué" hides the offer for good, and closing the
 //     steps rests the banner like × does (the footer's link stays).
@@ -18,7 +21,7 @@
 //     storage apart from Safari and has no way to ask, so there "×", the steps or "Ya la agregué" hide it.
 
 import { byId } from "../lib/dom";
-import { installGuide, installPlace } from "../lib/installPlace";
+import { ARRIVAL, installGuide, installPlace, withoutArrival } from "../lib/installPlace";
 import { storedSwitch } from "../lib/storedSwitch";
 import { storedValue } from "../lib/storedValue";
 import { BASE_URL } from "../lib/links";
@@ -44,6 +47,7 @@ interface BeforeInstallPromptEvent extends Event {
 
 let installEvent: BeforeInstallPromptEvent | null = null;
 let relatedInstalled = false; // Chrome on Android says the app is installed
+let arrived = false; // opened from an app's browser to install (ARRIVAL): the banner shows even if dismissed
 
 /** Running as the installed app (not in a browser tab). */
 function isApp(): boolean {
@@ -72,7 +76,9 @@ async function checkInstalled() {
 const NOTE = "Pa' Bailar queda en tu pantalla de inicio y se abre como una app.";
 
 const place = () => installPlace(navigator.userAgent, navigator);
-const guide = () => installGuide(place());
+/** The home page, marked, for an app's browser to open in the phone's browser (installPlace.ts openInBrowser). */
+const arrivalUrl = () => new URL(`${BASE_URL}?${ARRIVAL}`, location.origin);
+const guide = () => installGuide(place(), arrivalUrl());
 
 /** Inside an app's own browser (Instagram, Facebook, TikTok…), where saved events stay apart from the phone's browser. */
 export const inAppBrowser = () => place().kind === "in-app";
@@ -88,7 +94,7 @@ function render() {
   const offer = canOffer();
   document.querySelectorAll<HTMLElement>("[data-install-offer]").forEach((element) => (element.hidden = !offer));
   const banner = document.getElementById("install-banner");
-  if (banner) banner.hidden = !offer || dismissedRecently();
+  if (banner) banner.hidden = !offer || (dismissedRecently() && !arrived);
 }
 
 /** The sheet with the steps for where the visitor is (also "Ábrela en tu navegador" after a save: saveNotice.ts). */
@@ -100,6 +106,10 @@ export function showInstallSteps() {
   const pointer = byId("install-pointer");
   pointer.hidden = !steps.pointer;
   pointer.dataset.at = steps.pointer ?? "";
+  const open = byId<HTMLAnchorElement>("install-open");
+  open.hidden = !steps.open;
+  open.href = steps.open?.href ?? "";
+  open.textContent = steps.open?.label ?? "";
   byId("install-copy").hidden = !steps.copyLink;
   byId("install-done").hidden = place().kind !== "ios" || steps.copyLink; // only where it can be added here
   byId("install-status").textContent = "";
@@ -131,6 +141,11 @@ async function install() {
 }
 
 export function initInstallPrompt() {
+  const unmarked = withoutArrival(location.href);
+  if (unmarked !== null) {
+    arrived = true;
+    history.replaceState(history.state, "", unmarked); // not again on a reload, nor in a link shared from here
+  }
   if (isApp()) {
     installedHere.set(true); // the browser on the same phone (Android) will know
     return;
@@ -171,6 +186,15 @@ export function initInstallPrompt() {
   });
   render();
   void checkInstalled().then(render);
+}
+
+/**
+ * Once the page has started (main.ts, after the screens' history: the sheet takes a history entry), for whoever came
+ * from an app's browser to install: on iPhone the steps open by themselves; elsewhere the banner's "Instalar" is back
+ * (Chrome's own dialog wants a tap of the visitor's, so it can't open by itself).
+ */
+export function stepsOnArrival() {
+  if (arrived && canOffer() && place().kind === "ios") showInstallSteps();
 }
 
 interface ReminderMoment {

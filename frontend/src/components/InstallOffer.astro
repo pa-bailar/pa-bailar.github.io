@@ -21,6 +21,8 @@ import { ICONS } from "../scripts/lib/icons";
   </div>
   <ol class="install-sheet__steps" id="install-steps"></ol>
   <div class="install-sheet__actions">
+    <!-- An app's browser: out to the phone's browser in one tap, where the app lets a link do it (installPlace.ts). -->
+    <a class="btn btn--primary" id="install-open" data-track="instalar-abrir-navegador" hidden></a>
     <button class="btn" type="button" id="install-copy" data-install-copy data-track="instalar-copiar-enlace" hidden>
       <Fragment set:html={ICONS.link} />Copiar enlace
     </button>

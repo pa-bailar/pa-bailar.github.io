@@ -64,7 +64,7 @@ import { tellSaveChange } from "./views/saveNotice";
 import { reminderMayReplace } from "./lib/saveNotice";
 import { renderSavedView } from "./views/savedView";
 import { watchDayChange } from "./views/dayChange";
-import { initInstallPrompt, offerAfterSaving, registerServiceWorker } from "./views/installPrompt";
+import { initInstallPrompt, offerAfterSaving, registerServiceWorker, stepsOnArrival } from "./views/installPrompt";
 import { initSharing, plansEventUrl, setShareSources } from "./views/sharing";
 import { isSaved, trimSaved } from "./lib/saved";
 import { dropStraySecondTaps, markOpeningTap } from "./views/secondTaps";
@@ -511,5 +511,6 @@ export function start() {
   if (state.view === "calendar") openedOnCalendar();
   openSharedEvent();
   initScreenHistory({ current: currentScreen, apply: applyScreen, address: (screen) => viewPath(screen.view) });
+  stepsOnArrival(); // opened from an app's browser to install: on iPhone, the steps (installPrompt.ts)
   watchDayChange(state, () => render()); // shown again on another day: today's events, or the latest ones
 }
