@@ -4163,7 +4163,7 @@
       "otro"
     ],
     "organizer": "Madyum",
-    "venue": null,
+    "venue": "Madyum",
     "address": null,
     "area": "Madelena",
     "date": "2026-10-10",
@@ -4171,20 +4171,18 @@
     "sessions": null,
     "weekday": "sábado",
     "start_time": "18:00",
-    "end_time": null,
+    "end_time": "19:30",
     "prices": [],
     "artists": [
       "Adriana Montes"
     ],
     "activities": [
-      "taller de flamenco",
-      "coreografía"
+      "taller de flamenco"
     ],
     "contact": "@madyumdance",
     "confidence": "medium",
     "doubts": [
-      "sin precio",
-      "sin dirección exacta"
+      "sin precio"
     ],
     "id": "flamenco-gran-taller-10-oct",
     "account": "madyumdance",
@@ -5307,9 +5305,9 @@
     "styles": [
       "salsa"
     ],
-    "organizer": "Imperio Latino Dance Studio",
+    "organizer": "Academia de Baile Imperio Latino",
     "venue": "Imperio Latino Dance Studio",
-    "address": "Cll 72 No. 80-23, Segundo Piso",
+    "address": "Cll 72 No 80 23, Segundo Piso",
     "area": null,
     "date": "2026-10-17",
     "end_date": null,
@@ -5328,10 +5326,9 @@
       "Mateo Popayán"
     ],
     "activities": [
-      "taller de salsa",
-      "clase especial"
+      "taller de salsa"
     ],
-    "contact": "WhatsApp 3164501010",
+    "contact": "WhatsApp 316 450 1010",
     "confidence": "high",
     "doubts": [],
     "id": "taller-especial-de-salsa-17-oct",
@@ -5587,12 +5584,12 @@
     "end_time": null,
     "prices": [
       {
-        "label": "ESTUDIANTES ESFERA",
+        "label": "Estudiantes Esfera",
         "amount_cop": 10000,
         "condition": null
       },
       {
-        "label": "GENERAL",
+        "label": "General",
         "amount_cop": 20000,
         "condition": null
       }
@@ -6152,7 +6149,7 @@
     "activities": [
       "taller de bachata"
     ],
-    "contact": "WhatsApp 3108519066",
+    "contact": "3108519066",
     "confidence": "high",
     "doubts": [],
     "id": "taller-de-bachata-para-las-fiestas-24-oct",
@@ -6247,7 +6244,7 @@
     "end_time": "02:30",
     "prices": [
       {
-        "label": "Clase + Bebida",
+        "label": "General (incluye clase y bebida)",
         "amount_cop": 30000,
         "condition": null
       }
@@ -6257,7 +6254,7 @@
       "Camilo Barreto"
     ],
     "activities": [
-      "clase de salsa y bachata",
+      "clase",
       "social",
       "showcases"
     ],
@@ -6625,7 +6622,7 @@
     "date": "2026-10-31",
     "end_date": "2026-11-02",
     "sessions": null,
-    "weekday": "viernes",
+    "weekday": "sábado",
     "start_time": "20:00",
     "end_time": null,
     "prices": [
@@ -6758,6 +6755,16 @@
         "published": "2026-09-03T16:49:31+0000",
         "flyer": "flyers/18018174977930391-0.webp",
         "caption": "Ricardo y Laura ✨\n\nLos reyes del BachaTango dicen presente en nuestro aniversario 🥳🥳🥳🥳 prepárate para compartir y aprender mucho de esta pareja y de todos los artistas invitados\n\n¿Ya tienes tu boleta? No dejes que te lo cuenten\n\nReserva en nuestras Webs:\ndistrito-social-academy.com/eventos\nappdanza.com",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18345931348251438",
+        "permalink": "https://www.instagram.com/reel/DeM2yP5RILU/",
+        "media_type": "VIDEO",
+        "published": "2026-10-07T17:08:28+0000",
+        "flyer": "flyers/18345931348251438-0.webp",
+        "caption": "Duane y Aleja ✨\n\nSeguimos alistando motores para nuestro aniversario 🥳🥳🥳 prepárate para aprender y bailar sin parar un fin de semana entero 🔥\n\n17 horas de Talleres\n12 horas de Social\n\n🗓️ 31 Oct, 1 y 2 Nov\n📍 Distrito Social\n\nReserva en nuestras Webs:\n\ndistrito-social-academy.com\nappdanza.com",
         "preview": null,
         "slides": null
       },
