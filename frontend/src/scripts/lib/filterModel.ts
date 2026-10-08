@@ -23,6 +23,13 @@ import {
  * bar's chips until 8 Oct 2026, when the bar took the types (the owner: the rhythms stay in the Filtros menu). */
 export const MAIN_STYLES = ["salsa", "bachata", "urbano", "tango"];
 
+/**
+ * The main types (the first in the owner's order): the bar's chips, dimmed, where the view has no event at all (a month
+ * without events in the calendar), which left the phone's bar an empty band pinned at the top (the bug-squash pass of 8
+ * Oct 2026).
+ */
+export const MAIN_TYPES: EventType[] = ["social", "party", "workshop"];
+
 export { TYPE_ORDER }; // the bar's chips, the sheet's and the Tipo panel's order (lib/format.ts)
 
 export interface FilterOption {
@@ -144,10 +151,11 @@ export function filterModel(events: DanceEvent[], state: AppState, today = today
   });
 
   // Types in the owner's order, the view's own (before the filters, so none comes or goes while choosing) and any
-  // chosen; dimmed in place when the other filters leave none.
+  // chosen; dimmed in place when the other filters leave none. A view with none at all: the main ones, dimmed.
   const withoutTypes = without("types");
   const typeCount = (type: EventType, list: DanceEvent[]) => list.filter((event) => event.event_type === type).length;
   const present = new Set([...inView.map((event) => event.event_type), ...state.types]);
+  if (!present.size) MAIN_TYPES.forEach((type) => present.add(type));
   const types = TYPE_ORDER.filter((type) => present.has(type)).map((type) =>
     option("types", type, typeLabel(type), typeLabel(type), typeCount(type, withoutTypes), state.types.includes(type)),
   );

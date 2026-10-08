@@ -407,7 +407,7 @@ flowchart TD
   The options (`filterModel` in `lib/filterModel.ts`, pure and tested; `dateOptions` in `state.ts`) exist by the events in
   view before any filter, in a stable order, so chips never move; each is counted against the other groups
   (`matchesFilters(event, state, except)`), and one with nothing to show is `dimmed` (unless chosen), not hidden. The
-  model also gives the bar's "Cuándo" (`whenModel`), its chips (the types in view, in `TYPE_ORDER`), every choice in use
+  model also gives the bar's "Cuándo" (`whenModel`), its chips (the types in view, in `TYPE_ORDER`; a view with no event, such as an empty month in the calendar, the main three, dimmed: `MAIN_TYPES`), every choice in use
   (`applied`, named in the line under the bar; the bar never shows them as extra chips), Filtros' badge
   (`activeFilterCount`), the count shown and the line under the bar (`summaryLine`), and what the search alone finds
   (`searched`: with nothing shown, the sheet's button says whether to change the search or the filters,

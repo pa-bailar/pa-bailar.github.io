@@ -213,6 +213,20 @@ describe("the filter chips (filterModel)", () => {
     ]);
   });
 
+  // The bug-squash pass of 8 Oct 2026: paging the calendar to a month without events (January 2027), the phone's bar
+  // was an empty band pinned at the top, its chips the month's types: none.
+  it("a view without events (an empty month in the calendar) keeps the main types in the bar, dimmed", () => {
+    const empty = { ...list, view: "calendar" as const, month: new Date(2027, 0, 1) };
+    const types = filterModel(all, empty, today).types;
+    expect(types.map((option) => [option.value, option.count, option.dimmed])).toEqual([
+      ["social", 0, true],
+      ["party", 0, true],
+      ["workshop", 0, true],
+    ]);
+    // With one chosen, that one (to be removed), as in any view.
+    expect(filterModel(all, { ...empty, types: ["concert"] }, today).types.map((option) => option.value)).toEqual(["concert"]);
+  });
+
   it("a type the other filters leave nothing of is dimmed in place, never hidden", () => {
     const bachata = model({ styles: ["bachata"] });
     expect(pick(bachata.types, "social")).toMatchObject({ count: 0, dimmed: true });
