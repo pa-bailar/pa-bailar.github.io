@@ -417,6 +417,13 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
     the next ones). "El otro sábado" and "el otro finde" are the ones after the coming one (next week's). A month
     written short counts right after a number ("17 de oct", "3 nov"; alone, "mar" is the sea), a month may come
     first ("octubre 17"), and a year after it ("octubre de 2026").
+  - **A day narrowed by the next one** (the bug-squash pass of 8 Oct 2026: "hoy viernes" listed every Friday to come,
+    "sábados de octubre" every day of October and every Saturday after it): a weekday right after "hoy", "mañana" or
+    "pasado mañana" says the same day ("hoy viernes": today, if it's Friday; nothing otherwise, honestly); a weekday
+    and "festivo" are the holidays on it ("el lunes festivo"); a weekday or "festivo" with a month, a week or this
+    month, "de" between them or not, the ones in it ("sábados de octubre", "el viernes de la próxima semana",
+    "festivos de noviembre"). Said apart, days are still any of them ("viernes sábado", "hoy y mañana", "sábado 10
+    domingo 11").
   - **Names that are days** ("julio", "abril", "domingo": `DAY_NAMES`): said alone, they're also the name, so an
     event with it among its words is found on any of its days ("domingo quiñones": his concert on a Saturday; "julio
     sábado": Julio's Saturday). Others still find their days ("julio": July's events). None in the data on 7 Oct 2026;
