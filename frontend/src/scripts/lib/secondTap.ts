@@ -8,8 +8,11 @@
 // when it lands on another control than the first one did (views/secondTaps.ts); the same control twice (a month's
 // arrow, a carousel's) is two taps, as always. A tap anywhere else, or later, works as always.
 
-/** A double-tap's taps come within this many milliseconds (Android counts 300, iOS about 350)… */
-export const SECOND_TAP_MS = 450;
+/** A double-tap's clicks come within this many milliseconds (Android counts 300 between the taps, iOS about 350)…
+ * WebKit holds the second one back while it tells a double-tap from two taps: a 150 ms double-tap's clicks came 200–380
+ * ms apart in Playwright's WebKit, and past 450 under load, when the second opened the first new card under "Ver N
+ * más" (the code-quality pass of 8 Oct 2026). */
+export const SECOND_TAP_MS = 600;
 /** …and this many pixels apart (the finger moves a little between them). */
 export const SECOND_TAP_SLOP = 40;
 
