@@ -5,8 +5,9 @@ import { CARD_LINK } from "./cards";
 
 /**
  * The control that had the focus, as a selector for the same control once it's drawn again: a filter chip, a
- * calendar day, Filtros, "Cuándo" (and its options), a pill of the toolbar, an event's card (its link, the card's one
- * Tab stop: Ctrl+Z in Guardados drew the cards again, and the focus fell to the page; the bug-squash pass of 8 Oct 2026).
+ * calendar day, Filtros, "Cuándo" (and its options), a pill of the toolbar, an event's card (its link, the card's
+ * one Tab stop: Ctrl+Z in Guardados drew the cards again, and the focus fell to the page; the bug-squash pass of 8 Oct
+ * 2026).
  */
 export function focusSelector(element: Element | null): string | null {
   if (!(element instanceof HTMLElement)) return null;

@@ -29,7 +29,8 @@ describe("focusSelector (lib/focus.ts)", () => {
   };
 
   it("names the controls a redraw draws again", () => {
-    expect(selectorOf(new FakeElement({ filter: "types", value: "party" }))).toBe('[data-filter="types"][data-value="party"]');
+    const chip = new FakeElement({ filter: "types", value: "party" });
+    expect(selectorOf(chip)).toBe('[data-filter="types"][data-value="party"]');
     expect(selectorOf(new FakeElement({ day: "2026-10-10" }))).toBe('[data-day="2026-10-10"]');
     expect(selectorOf(new FakeElement({}))).toBeNull();
   });
