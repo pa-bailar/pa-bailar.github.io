@@ -2,7 +2,8 @@
 // snackbars: what just happened, and one thing to do about it ("Guardado · Ver guardados": views/saveNotice.ts; the
 // install reminder: installPrompt.ts). One at a time, a new one replacing the last. It goes after its seconds, but
 // not while the mouse or the focus is on it (time to reach its button: WCAG 2.2.1), and at once when its button is
-// used.
+// used. An undo ("Deshacer") is also Ctrl+Z (⌘Z), the keyboard's way to it: the notice is far in Tab's order, and the
+// focus stays where the visitor is (taking it to the notice would be a surprise, like Angular Material's advice).
 // The element (#notice, Notice.astro: the home page and an event's own page) is a live region, always in the page
 // and empty between notices, so screen readers hear each one. None over a modal (the details on phones, a sheet):
 // the page under it is inert, so the notice couldn't be used, and it would sit behind them.
@@ -14,6 +15,8 @@ export interface NoticeAction {
   run: () => void;
   /** Its clicks counted as "click-<track>" (lib/analytics.ts). */
   track?: string;
+  /** An undo ("Deshacer"): Ctrl+Z (⌘Z on a Mac) does it too, while the notice is up. */
+  undo?: boolean;
 }
 
 interface NoticeOptions {
@@ -23,6 +26,8 @@ interface NoticeOptions {
 }
 
 const NOTICE_SECONDS = 4;
+/** An undo's keys, as aria-keyshortcuts says them (Meta: ⌘ on a Mac). */
+const UNDO_KEYS = "Control+Z Meta+Z";
 
 let action: NoticeAction | undefined;
 let seconds = NOTICE_SECONDS;
@@ -39,6 +44,10 @@ export function hideNotice(which?: number) {
   window.clearTimeout(timer);
   action = undefined;
   shown = 0;
+  // Empty, nothing of it is under the mouse (no pointer events: notice.css). WebKit sends no pointerleave when the
+  // button under the mouse goes (its own click), and the next notices waited for the mouse forever (the bug hunt of 7
+  // Oct 2026).
+  mouseOn = false;
   notice().replaceChildren();
 }
 
@@ -68,7 +77,11 @@ export function showNotice(text: string, next?: NoticeAction, options: NoticeOpt
   words.className = "notice__text";
   words.textContent = text;
   const parts: HTMLElement[] = [words];
-  if (next) parts.push(button("link-button notice__action", next.label, next.track));
+  if (next) {
+    const use = button("link-button notice__action", next.label, next.track);
+    if (next.undo) use.setAttribute("aria-keyshortcuts", UNDO_KEYS);
+    parts.push(use);
+  }
   if (options.closable) {
     const close = button("icon-btn notice__close", "×");
     close.setAttribute("aria-label", "Cerrar");
@@ -105,5 +118,16 @@ export function initNotice() {
   element.addEventListener("focusin", () => window.clearTimeout(timer));
   element.addEventListener("focusout", (domEvent) => {
     if (element.hasChildNodes() && !element.contains(domEvent.relatedTarget as Node | null)) countDown();
+  });
+  // Ctrl+Z (⌘Z) while an undo is up, as in Gmail or Drive: from the details' Guardado its button was 14 Shift+Tabs
+  // away, and gone after 4 seconds (the bug hunt of 7 Oct 2026). As its click (counted, then gone). Not while typing
+  // (the field's own undo), nor under a modal.
+  document.addEventListener("keydown", (domEvent) => {
+    const { ctrlKey, metaKey, shiftKey, altKey, key } = domEvent;
+    const undoKeys = (ctrlKey || metaKey) && !shiftKey && !altKey && key.toLowerCase() === "z";
+    const typing = (domEvent.target as Element | null)?.closest?.("input, textarea, select, [contenteditable='true']");
+    if (!action?.undo || !undoKeys || typing || !canShowNotice()) return;
+    domEvent.preventDefault();
+    element.querySelector<HTMLButtonElement>(".notice__action")?.click();
   });
 }

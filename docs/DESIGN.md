@@ -302,10 +302,13 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
 
   On iPhone the page can't tell whether it was added, so the sheet ends with "Ya la agregué" (hides the offer
   for good), and closing the steps rests the banner for 30 days like ×; the footer's link stays.
-- **A reminder:** whoever dismissed the banner gets one small reminder, once, when they save their second
-  event ("Tus guardados a un toque: instala Pa' Bailar · Instalar ×", a notice at the bottom: see "Saving and
-  searching", in place of the save's own, for 10 seconds). Offering again at a moment the app clearly helps, instead
-  of nagging, is Google's advice.
+- **A reminder:** whoever dismissed the banner on an earlier visit gets one small reminder, once, when a new save
+  makes two saved events or more ("Tus guardados a un toque: instala Pa' Bailar · Instalar ×", a notice at the bottom:
+  see "Saving and searching", in place of that save's "Guardado · Ver guardados", for 10 seconds). Offering again at a
+  moment the app clearly helps, instead of nagging, is Google's advice. Never in place of the in-app note ("Guardado
+  solo en este navegador", which then never showed), nor after Deshacer (an event back in Guardados isn't a new save),
+  nor in the visit the banner was dismissed or the steps closed: that answer holds for the visit (the bug hunt of 7
+  Oct 2026: it came right after the steps were closed).
 - **Knowing it's installed:** opened as the app; or this browser saw it installed (on Android the app shares the
   browser's storage); or Chrome on Android says so (`getInstalledRelatedApps`). Chrome offering to install again
   means it was uninstalled, and the offer comes back. iPhone can't be asked: there, ×, the steps or "Ya la agregué"
@@ -327,10 +330,21 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
   Ábrela en tu navegador"**, whose button shows the install sheet's steps to open the site in the phone's browser.
   Nothing where the change is already in sight (unsaving in the list), and nothing over the details on phones, a
   modal: their Guardar turns "Guardado". (`scripts/views/notice.ts`, `saveNotice.ts`, `lib/saveNotice.ts`.)
-  - **The notice** (`notice.css`): the surface, a border and the menus' shadow; one at a time, a new one replacing the
-    last; held while the mouse or the keyboard's focus is on it (time to reach its button), not by a finger's tap;
-    it rises a little as it comes, and just appears with reduced motion. A live region always in the page, empty
-    between notices, so screen readers hear each one.
+  - **The notice** (`notice.css`): the surface, a border and the menus' shadow; over every layer of the page, the side
+    panel and the image beside it included (`--z-notice`; under the image its button couldn't be clicked: the bug hunt
+    of 7 Oct 2026), never over a modal; searching on a phone with the keyboard up, it rises with the bar, just above
+    the field (on an iPhone a bookmark tapped in the results leaves the keyboard up, and the notice sat behind it: the
+    bug hunt of 7 Oct 2026); one at a time, a new one replacing the last; held while the mouse or the keyboard's
+    focus is on it (time to reach its button), not by a finger's tap; it rises a little as it comes, and just appears
+    with reduced motion. A live region always in the page, empty between notices, so screen readers hear each one.
+    Heard alone: unsaving in Guardados, the count said after each change (`#results-status`, "2 eventos guardados por
+    venir") isn't said with it, since two polite regions changing at once can lose one, maybe the one with Deshacer
+    (the bug hunt of 7 Oct 2026); the count is on screen ("Tus 2 eventos guardados"), and Deshacer says it again.
+  - **Deshacer from the keyboard: Ctrl+Z** (⌘Z on a Mac) while its notice is up, as in Gmail or Drive (its button
+    carries `aria-keyshortcuts`). The notice is far in Tab's order (from the details' Guardado, 14 Shift+Tabs, and gone
+    after its 4 seconds: the bug hunt of 7 Oct 2026); taking the focus to it instead would pull the visitor away from
+    where they are, and Enter there would undo. Not while typing in a field (its own undo), nor under a modal. In the
+    details, Guardar itself also saves the event again.
 - **Guardados is a place of its own** (`views/savedView.ts`, `/guardados/`), like Instagram's Saved and Airbnb's
   Wishlists. Not a toggle over the list and the calendar (it read as "the calendar without the calendar", and you could
   be in Eventos and Guardados at once): the owner, 5 October 2026. It's in the bar at the bottom and a third tab on
@@ -344,7 +358,11 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
     que guardaste coincide con «…»." · "Borrar la búsqueda".
   - **Empty:** a big bookmark, "Aún no tienes eventos guardados", "Toca 🔖 en un evento para tenerlo aquí, a la mano. Se
     quedan en este navegador, sin crear cuenta." and "Ver eventos".
-  - **Unsaving there** takes the card away at once, the page staying where it was.
+  - **Unsaving there** takes the card away at once, the page staying where it was. Unsaved from the details, they stay
+    on the event, and the keyboard goes on from where its card was: → ↓ and Tab to the card that took its place, ← ↑
+    and Shift+Tab to the one before it; Escape gives the focus to the card that took its place (the one before it, at
+    the list's end). Saved again, its card gets the focus back. Before, the arrows did nothing and the focus fell to
+    the page (the bug hunt of 7 Oct 2026).
   - **The calendar marks the days** holding a saved event (as filtered on screen; at once as an event is saved or unsaved
     there) with a small bookmark, and says it to screen readers ("…, 3 eventos, 1 guardado"); the legend under the
     grid has "Festivo" and "Guardado".

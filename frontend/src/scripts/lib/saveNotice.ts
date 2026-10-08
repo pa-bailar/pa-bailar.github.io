@@ -6,14 +6,15 @@
 
 export type SaveNotice = "saved" | "saved-here-only" | "unsaved";
 
-export const SAVE_NOTICES: Record<SaveNotice, { text: string; action: string; track: string }> = {
+/** `undo`: its button undoes, so Ctrl+Z (⌘Z) does it too (views/notice.ts). */
+export const SAVE_NOTICES: Record<SaveNotice, { text: string; action: string; track: string; undo?: boolean }> = {
   saved: { text: "Guardado", action: "Ver guardados", track: "aviso-ver-guardados" },
   "saved-here-only": {
     text: "Guardado solo en este navegador",
     action: "Ábrela en tu navegador",
     track: "aviso-abrir-navegador",
   },
-  unsaved: { text: "Quitado de tus guardados", action: "Deshacer", track: "aviso-deshacer" },
+  unsaved: { text: "Quitado de tus guardados", action: "Deshacer", track: "aviso-deshacer", undo: true },
 };
 
 interface Where {
@@ -28,3 +29,11 @@ export function saveNotice(saved: boolean, { inSaved, inAppFirst }: Where): Save
   if (!saved) return null;
   return inAppFirst ? "saved-here-only" : "saved";
 }
+
+/**
+ * Whether the install reminder (views/installPrompt.ts) may take the place of the notice a save got: a new save's
+ * "Guardado" only. Not the in-app note, which matters more there (in its place, it never showed that visit), nor a save
+ * that brings an event back to Guardados (Deshacer: no notice of its own), which isn't a new save (the bug hunt of 7
+ * Oct 2026).
+ */
+export const reminderMayReplace = (kind: SaveNotice | null): boolean => kind === "saved";
