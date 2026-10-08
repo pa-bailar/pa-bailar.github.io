@@ -3310,7 +3310,7 @@
     "bar": true
   },
   {
-    "title": "Salsoteca DC - Cañamelao",
+    "title": "Cañamelao",
     "event_type": "concert",
     "is_recurring": false,
     "styles": [
@@ -3318,7 +3318,7 @@
     ],
     "organizer": "El Goce Pagano",
     "venue": "El Goce Pagano",
-    "address": "Diagonal 20A N.0-82",
+    "address": "Diagonal 20A N. 0-82",
     "area": null,
     "date": "2026-10-09",
     "end_date": null,
@@ -3336,8 +3336,8 @@
     "contact": "WhatsApp 3168710646",
     "confidence": "high",
     "doubts": [
-      "sin precio",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+      "sin hora",
+      "sin precio"
     ],
     "id": "salsoteca-dc-canamelao-9-oct",
     "account": "elgocepagano",
@@ -4944,6 +4944,16 @@
     "account": "salsaculto",
     "media": [
       {
+        "post_id": "17873536227593859",
+        "permalink": "https://www.instagram.com/p/Dd7mV70jn6J/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-01T00:15:22+0000",
+        "flyer": "flyers/17873536227593859-1.webp",
+        "caption": "🔥Concierto salsero, en elgocepagano 🔥\nSalsa bogotana, sabor, calle y goce en una sola noche\n\n🕔 Puertas: 6 pm | 🎶 Shows: 11 pm y 1 am\n📍 Diagonal 20A No. 82 – Bogotá\n\n✨🔥¡A bailar!🔥✨\nCover 20k\n#salsaenvivo #salsa\n#concierto #envivo\n#conciertobogota #salsaenbogotá",
+        "preview": null,
+        "slides": 2
+      },
+      {
         "post_id": "18110615609173199",
         "permalink": "https://www.instagram.com/p/Dd1WhaNEX8V/",
         "media_type": "CAROUSEL_ALBUM",
@@ -5031,7 +5041,7 @@
     "bar": false
   },
   {
-    "title": "Salsoteca DC - The Bambas",
+    "title": "The Bambas",
     "event_type": "concert",
     "is_recurring": false,
     "styles": [
@@ -5039,7 +5049,7 @@
     ],
     "organizer": "El Goce Pagano",
     "venue": "El Goce Pagano",
-    "address": "Diagonal 20A N.0-82",
+    "address": "Diagonal 20A N. 0-82",
     "area": null,
     "date": "2026-10-16",
     "end_date": null,
@@ -5057,8 +5067,8 @@
     "contact": "WhatsApp 3168710646",
     "confidence": "high",
     "doubts": [
-      "sin precio",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+      "sin hora",
+      "sin precio"
     ],
     "id": "salsoteca-dc-the-bambas-16-oct",
     "account": "elgocepagano",
@@ -5134,7 +5144,7 @@
     "bar": false
   },
   {
-    "title": "Salsoteca DC - Fidel Peña y su Tono Mayor",
+    "title": "Fidel peña y su Tono Mayor",
     "event_type": "concert",
     "is_recurring": false,
     "styles": [
@@ -5142,7 +5152,7 @@
     ],
     "organizer": "El Goce Pagano",
     "venue": "El Goce Pagano",
-    "address": "Diagonal 20A N.0-82",
+    "address": "Diagonal 20A N. 0-82",
     "area": null,
     "date": "2026-10-17",
     "end_date": null,
@@ -5152,7 +5162,7 @@
     "end_time": null,
     "prices": [],
     "artists": [
-      "Fidel Peña y su Tono Mayor"
+      "Fidel peña y su Tono Mayor"
     ],
     "activities": [
       "concierto salsero"
@@ -5160,8 +5170,8 @@
     "contact": "WhatsApp 3168710646",
     "confidence": "high",
     "doubts": [
-      "sin precio",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+      "sin hora",
+      "sin precio"
     ],
     "id": "salsoteca-dc-fidel-pena-y-su-tono-mayor-17-oct",
     "account": "elgocepagano",
@@ -5475,7 +5485,7 @@
     ],
     "organizer": "El Goce Pagano",
     "venue": "El Goce Pagano",
-    "address": "Diagonal 20A N.0-82",
+    "address": "Diagonal 20A N. 0-82",
     "area": null,
     "date": "2026-10-18",
     "end_date": null,
@@ -5492,8 +5502,8 @@
     "contact": "WhatsApp 3168710646",
     "confidence": "high",
     "doubts": [
-      "sin precio",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+      "sin hora",
+      "sin precio"
     ],
     "id": "una-cita-con-la-salsa-18-oct",
     "account": "elgocepagano",
@@ -5839,7 +5849,7 @@
     "bar": true
   },
   {
-    "title": "Salsoteca DC - Candombé",
+    "title": "Candombé",
     "event_type": "concert",
     "is_recurring": false,
     "styles": [
@@ -5847,7 +5857,7 @@
     ],
     "organizer": "El Goce Pagano",
     "venue": "El Goce Pagano",
-    "address": "Diagonal 20A N.0-82",
+    "address": "Diagonal 20A N. 0-82",
     "area": null,
     "date": "2026-10-23",
     "end_date": null,
@@ -5865,8 +5875,8 @@
     "contact": "WhatsApp 3168710646",
     "confidence": "high",
     "doubts": [
-      "sin precio",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+      "sin hora",
+      "sin precio"
     ],
     "id": "salsoteca-dc-candombe-23-oct",
     "account": "elgocepagano",
@@ -5938,7 +5948,7 @@
     "bar": false
   },
   {
-    "title": "Salsoteca DC - La Pambelé",
+    "title": "La Pambelé",
     "event_type": "concert",
     "is_recurring": false,
     "styles": [
@@ -5946,7 +5956,7 @@
     ],
     "organizer": "El Goce Pagano",
     "venue": "El Goce Pagano",
-    "address": "Diagonal 20A N.0-82",
+    "address": "Diagonal 20A N. 0-82",
     "area": null,
     "date": "2026-10-24",
     "end_date": null,
@@ -5964,8 +5974,8 @@
     "contact": "WhatsApp 3168710646",
     "confidence": "high",
     "doubts": [
-      "sin precio",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+      "sin hora",
+      "sin precio"
     ],
     "id": "salsoteca-dc-la-pambele-24-oct",
     "account": "elgocepagano",
@@ -6320,7 +6330,7 @@
     "bar": false
   },
   {
-    "title": "Salsoteca DC - Salsa Infierno",
+    "title": "Salsa Infierno",
     "event_type": "concert",
     "is_recurring": false,
     "styles": [
@@ -6328,7 +6338,7 @@
     ],
     "organizer": "El Goce Pagano",
     "venue": "El Goce Pagano",
-    "address": "Diagonal 20A N.0-82",
+    "address": "Diagonal 20A N. 0-82",
     "area": null,
     "date": "2026-10-30",
     "end_date": null,
@@ -6346,8 +6356,8 @@
     "contact": "WhatsApp 3168710646",
     "confidence": "high",
     "doubts": [
-      "sin precio",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+      "sin hora",
+      "sin precio"
     ],
     "id": "salsoteca-dc-salsa-infierno-30-oct",
     "account": "elgocepagano",
@@ -6442,7 +6452,7 @@
     "bar": false
   },
   {
-    "title": "Salsoteca DC - Bbyb",
+    "title": "Bbyb",
     "event_type": "concert",
     "is_recurring": false,
     "styles": [
@@ -6450,7 +6460,7 @@
     ],
     "organizer": "El Goce Pagano",
     "venue": "El Goce Pagano",
-    "address": "Diagonal 20A N.0-82",
+    "address": "Diagonal 20A N. 0-82",
     "area": null,
     "date": "2026-10-31",
     "end_date": null,
@@ -6468,8 +6478,8 @@
     "contact": "WhatsApp 3168710646",
     "confidence": "high",
     "doubts": [
-      "sin precio",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+      "sin hora",
+      "sin precio"
     ],
     "id": "salsoteca-dc-bbyb-31-oct",
     "account": "elgocepagano",
