@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { SAVE_NOTICES, saveNotice } from "../src/scripts/lib/saveNotice";
 
@@ -50,6 +50,21 @@ describe("the notice's element (notice.css, Notice.astro)", () => {
 
   it("is on both pages that show a notice: the home page and an event's own page (\"Enlace copiado\")", () => {
     for (const page of pages) expect(page).toContain("<Notice />");
+  });
+
+  // Under the image beside the details (wide screens), its button couldn't be clicked: the click went to the flyer, and
+  // the one install reminder was spent there unseen (the bug hunt of 7 Oct 2026).
+  it("is drawn over every other layer of the page: the side panel, the image beside it, the sticky bars", () => {
+    const tokens = readFileSync(new URL("../src/styles/tokens.css", import.meta.url), "utf8");
+    const layer = (name: string) => Number(new RegExp(`--${name}:\\s*(-?\\d+)`).exec(tokens)?.[1]);
+    const styles = new URL("../src/styles/", import.meta.url);
+    const others = readdirSync(styles, { recursive: true, encoding: "utf8" })
+      .filter((file) => file.endsWith(".css") && !file.endsWith("notice.css"))
+      .map((file) => readFileSync(new URL(file.replaceAll("\\", "/"), styles), "utf8"))
+      .flatMap((source) => [...source.matchAll(/z-index:\s*var\(--(z-[a-z]+)\)/g)].map((match) => match[1]!));
+    expect(css).toMatch(/z-index:\s*var\(--z-notice\)/);
+    expect(others).toContain("z-panel"); // the side panel and the image beside it
+    for (const other of others) expect(layer("z-notice")).toBeGreaterThan(layer(other));
   });
 
   it("rises only for visitors who allow motion", () => {

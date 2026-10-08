@@ -322,7 +322,9 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
   Ábrela en tu navegador"**, whose button shows the install sheet's steps to open the site in the phone's browser.
   Nothing where the change is already in sight (unsaving in the list), and nothing over the details on phones, a
   modal: their Guardar turns "Guardado". (`scripts/views/notice.ts`, `saveNotice.ts`, `lib/saveNotice.ts`.)
-  - **The notice** (`notice.css`): the surface, a border and the menus' shadow; one at a time, a new one replacing the
+  - **The notice** (`notice.css`): the surface, a border and the menus' shadow; over every layer of the page, the side
+    panel and the image beside it included (`--z-notice`; under the image its button couldn't be clicked: the bug hunt
+    of 7 Oct 2026), never over a modal; one at a time, a new one replacing the
     last; held while the mouse or the keyboard's focus is on it (time to reach its button), not by a finger's tap;
     it rises a little as it comes, and just appears with reduced motion. A live region always in the page, empty
     between notices, so screen readers hear each one.

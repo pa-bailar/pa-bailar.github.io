@@ -1,14 +1,15 @@
 /* A short notice at the bottom of the screen (scripts/views/notice.ts): "Guardado · Ver guardados", "Enlace copiado ·
    Enviar por WhatsApp", the install reminder. Just above the bar at the bottom (phones), or above the home indicator
    (an event's own page has no bar); on wide screens at the bottom
-   left, away from the side panel. Between notices it's empty: no room, no taps, but still a live region, so screen
-   readers hear the next one. */
+   left, away from the side panel. Over every layer of the page (--z-notice): under the image beside the details it
+   couldn't be clicked (the bug hunt of 7 Oct 2026). Between notices it's empty: no room, no taps, but still a live
+   region, so screen readers hear the next one. */
 .notice {
   position: fixed;
   right: var(--space-4);
   bottom: calc(var(--space-3) + max(var(--bottom-nav-space), env(safe-area-inset-bottom)));
   left: var(--space-4);
-  z-index: var(--z-sticky);
+  z-index: var(--z-notice);
   display: flex;
   align-items: center;
   gap: var(--space-2);
