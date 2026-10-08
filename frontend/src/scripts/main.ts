@@ -61,6 +61,7 @@ import { closePanel, initFilterPanels, syncPanels, togglePanel } from "./views/f
 import { initSaveButtons, renderSavedCount as drawSavedCount, toggleSave } from "./views/saveButton";
 import { initNotice } from "./views/notice";
 import { tellSaveChange } from "./views/saveNotice";
+import { reminderMayReplace } from "./lib/saveNotice";
 import { renderSavedView } from "./views/savedView";
 import { watchDayChange } from "./views/dayChange";
 import { initInstallPrompt, offerAfterSaving, registerServiceWorker } from "./views/installPrompt";
@@ -505,8 +506,9 @@ export function start() {
   };
   initSaveButtons((id, saved) => {
     const inSaved = state.view === "saved";
-    tellSaveChange(id, saved, { inSaved, seeSaved: () => navigateView("saved"), undo: () => toggleSave(id) });
-    if (saved) offerAfterSaving(upcomingSaved().length);
+    const seeSaved = () => navigateView("saved");
+    const told = tellSaveChange(id, saved, { inSaved, seeSaved, undo: () => toggleSave(id) });
+    if (reminderMayReplace(told)) offerAfterSaving(upcomingSaved().length); // a new save's "Guardado" only
     savesChanged();
   }, savesChanged);
   // The page's own address picks the view it opens on: /calendario/, /guardados/ (lib/links.ts viewOfPath).

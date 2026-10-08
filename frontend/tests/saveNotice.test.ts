@@ -1,6 +1,7 @@
 import { readdirSync, readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import { SAVE_NOTICES, saveNotice } from "../src/scripts/lib/saveNotice";
+import { SAVE_NOTICES, reminderMayReplace, saveNotice } from "../src/scripts/lib/saveNotice";
+import { reminderDue } from "../src/scripts/views/installPrompt";
 
 // What a save or an unsave says at the bottom of the screen (the Instagram audit of 7 Oct 2026: saving gave no sign
 // beyond the bookmark, and unsaving in Guardados took the card away with no way back).
@@ -34,6 +35,43 @@ describe("the notice after saving (lib/saveNotice.ts)", () => {
   it("each button is counted apart", () => {
     const tracks = Object.values(SAVE_NOTICES).map((notice) => notice.track);
     expect(new Set(tracks).size).toBe(tracks.length);
+  });
+});
+
+// The one install reminder came at the wrong moments (the bug hunt of 7 Oct 2026): after Deshacer in Guardados (not a
+// new save), in place of the in-app note (which then never showed that visit), and right after the visitor had closed
+// the install steps.
+describe("the install reminder after a save (installPrompt.ts)", () => {
+  const list = { inSaved: false, inAppFirst: false };
+  const DAY = 24 * 60 * 60 * 1000;
+  const openedAt = Date.UTC(2026, 9, 7, 20);
+  const moment = { savedCount: 2, dismissedAt: openedAt - DAY, nudged: false, openedAt, now: openedAt + 60_000 };
+  const due = (overrides: Partial<typeof moment> = {}) => reminderDue({ ...moment, ...overrides });
+
+  it("takes the place of a new save's own notice, \"Guardado\", only", () => {
+    expect(reminderMayReplace(saveNotice(true, list))).toBe(true);
+    expect(reminderMayReplace(saveNotice(true, { inSaved: false, inAppFirst: true }))).toBe(false); // the in-app note
+    expect(reminderMayReplace(saveNotice(true, { inSaved: true, inAppFirst: false }))).toBe(false); // Deshacer
+    expect(reminderMayReplace(saveNotice(false, { inSaved: true, inAppFirst: false }))).toBe(false);
+  });
+
+  it("is due with two saved events, the banner dismissed on an earlier visit, never reminded", () => {
+    expect(due()).toBe(true);
+    expect(due({ savedCount: 3 })).toBe(true);
+  });
+
+  it("not before the second saved event, nor twice", () => {
+    expect(due({ savedCount: 1 })).toBe(false);
+    expect(due({ nudged: true })).toBe(false);
+  });
+
+  it("not in the visit the banner was dismissed or the steps closed: that answer holds for the visit", () => {
+    expect(due({ dismissedAt: openedAt + 30_000 })).toBe(false);
+  });
+
+  it("not when the banner was never dismissed, or is back (30 days on): the banner itself offers it", () => {
+    expect(due({ dismissedAt: 0 })).toBe(false);
+    expect(due({ dismissedAt: openedAt - 31 * DAY })).toBe(false);
   });
 });
 

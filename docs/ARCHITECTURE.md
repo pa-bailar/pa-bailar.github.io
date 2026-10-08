@@ -541,7 +541,9 @@ stateDiagram-v2
   the calendar marks the days holding one. A save or an unsave in Guardados says so in a notice at the bottom
   (`views/notice.ts`, chosen by `lib/saveNotice.ts`): `main.ts` gives its button the way to Guardados (`navigateView`)
   or the undo (`toggleSave`), which Ctrl+Z (⌘Z) also runs while it's up (`NoticeAction.undo`: the keyboard's way to
-  it, through the button's own click); the install reminder after a second save is the same notice (`offerAfterSaving`).
+  it, through the button's own click); the install reminder after a second save is the same notice (`offerAfterSaving`),
+  in place of a new save's "Guardado" only (`reminderMayReplace`, from what `tellSaveChange` showed) and only for a
+  banner dismissed on an earlier visit (`reminderDue`, pure and tested).
 - **What's kept in this browser** (localStorage, each read and written inside `try`, so blocked storage only means it
   lasts for the visit): `theme`, `saved-events`, `hide-bars`, things shown once (`lib/onceFlag.ts`) and the install
   offer's state (`lib/storedValue.ts`, `lib/storedSwitch.ts`). What storage couldn't keep is held in memory for the

@@ -297,10 +297,13 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
 
   On iPhone the page can't tell whether it was added, so the sheet ends with "Ya la agregué" (hides the offer
   for good), and closing the steps rests the banner for 30 days like ×; the footer's link stays.
-- **A reminder:** whoever dismissed the banner gets one small reminder, once, when they save their second
-  event ("Tus guardados a un toque: instala Pa' Bailar · Instalar ×", a notice at the bottom: see "Saving and
-  searching", in place of the save's own, for 10 seconds). Offering again at a moment the app clearly helps, instead
-  of nagging, is Google's advice.
+- **A reminder:** whoever dismissed the banner on an earlier visit gets one small reminder, once, when a new save
+  makes two saved events or more ("Tus guardados a un toque: instala Pa' Bailar · Instalar ×", a notice at the bottom:
+  see "Saving and searching", in place of that save's "Guardado · Ver guardados", for 10 seconds). Offering again at a
+  moment the app clearly helps, instead of nagging, is Google's advice. Never in place of the in-app note ("Guardado
+  solo en este navegador", which then never showed), nor after Deshacer (an event back in Guardados isn't a new save),
+  nor in the visit the banner was dismissed or the steps closed: that answer holds for the visit (the bug hunt of 7
+  Oct 2026: it came right after the steps were closed).
 - **Knowing it's installed:** opened as the app; or this browser saw it installed (on Android the app shares the
   browser's storage); or Chrome on Android says so (`getInstalledRelatedApps`). Chrome offering to install again
   means it was uninstalled, and the offer comes back. iPhone can't be asked: there, ×, the steps or "Ya la agregué"
