@@ -664,7 +664,8 @@ An event can be announced by several Instagram posts (a flyer, then a video, a r
   - **A tap on the image opens the details**, with the slide on screen selected: their Instagram button opens that
     post. Ctrl or middle click opens the event's page in a new tab. A video slide plays its clip while on screen.
   - **A double-tap opens the details and leaves them open** (Instagram's "like", out of habit): the details rise
-    under the finger, and the second tap of a double-tap, the same spot within 450 ms, is dropped. Before, it
+    under the finger, and the second tap of a double-tap, the same spot within 600 ms, is dropped (450 until 8 Oct
+    2026: WebKit holds the second click back, and past 450 it opened what the first had drawn there). Before, it
     landed on them: Compartir, the account's profile, or the dim area that closed them again (20 of 20 emulated
     double-taps, the audit of 7 Oct 2026). A desktop double-click likewise keeps the image and the details open.
     The same holds for anything a tap opens or changes under the finger ("Ver N más", "Ver las 6 publicaciones", the
