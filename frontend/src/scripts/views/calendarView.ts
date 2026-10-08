@@ -9,7 +9,7 @@ import { isSaved } from "../lib/saved";
 import { daysInMonth, mondayOffset, todayIso, toIsoDate } from "../lib/dates";
 import { isHoliday } from "../lib/holidays";
 import { eventCountLabel, formatDayHeading, formatLongDate, formatMonthTitle } from "../lib/format";
-import { groupByDay, hasActiveFilters, matchesFilters, shownDays } from "../state";
+import { activeFilterCount, groupByDay, hasActiveFilters, matchesFilters, shownDays, withoutFilters } from "../state";
 import { applyFlyerRatios, eventCardGridHtml } from "./eventCard";
 import { emptyActionsHtml } from "./filters";
 
@@ -75,9 +75,16 @@ export function dayCellHtml(iso: string, dayNumber: number, dayEvents: DanceEven
     </button>`;
 }
 
-function emptyDayHtml(state: AppState): string {
+/**
+ * A day with nothing to show, and why: nothing on it, the search, or the filters. `searched`: that day's events with the
+ * search alone; with some, the filters are why (the bug-squash pass of 8 Oct 2026: "salsa" searched and "Show" chosen
+ * said "que coincidan con «salsa»", though the day had salsa events).
+ */
+export function emptyDayHtml(state: AppState, searched = 0): string {
   if (!hasActiveFilters(state)) return `<p class="text-muted">No hay eventos este día.</p>`;
-  const why = state.query.trim() ? `que coincidan con «${escapeHtml(state.query.trim())}»` : "con estos filtros";
+  const query = state.query.trim();
+  const searchIsWhy = query && !(activeFilterCount(state) && searched);
+  const why = searchIsWhy ? `que coincidan con «${escapeHtml(query)}»` : "con estos filtros";
   return `<div class="empty-state">
       <p>No hay eventos este día ${why}.</p>
       <div class="empty-state__actions">${emptyActionsHtml(state)}</div>
@@ -126,9 +133,10 @@ export function renderCalendarView(events: DanceEvent[], state: AppState): numbe
   const count = selectedEvents.length
     ? `<span class="day-heading__count">${escapeHtml(eventCountLabel(selectedEvents.length))}</span>`
     : "";
+  const searched = () => calendarDays(events, withoutFilters(state)).get(state.selectedDay)?.length ?? 0;
   byId("cal-selected-day").innerHTML = `
     <h2 class="day-heading calendar__day-heading${changed ? " is-new" : ""}">${escapeHtml(formatDayHeading(state.selectedDay))}${count}</h2>
-    ${selectedEvents.length ? eventCardGridHtml(selectedEvents, () => state.selectedDay) : emptyDayHtml(state)}`;
+    ${selectedEvents.length ? eventCardGridHtml(selectedEvents, () => state.selectedDay) : emptyDayHtml(state, searched())}`;
   applyFlyerRatios(byId("cal-selected-day"));
   return selectedEvents.length;
 }

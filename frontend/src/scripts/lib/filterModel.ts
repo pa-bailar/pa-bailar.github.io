@@ -17,6 +17,7 @@ import {
   matchesFilters,
   periodDays,
   styleMatches,
+  withoutFilters,
 } from "../state";
 
 /** The main rhythms: always in the sheet and the Ritmo panel, first in their families, dimmed when there's none. The
@@ -174,7 +175,7 @@ export function filterModel(events: DanceEvent[], state: AppState, today = today
   ];
 
   const when = state.view === "upcoming" ? whenModel(dates, without("dates").length, today) : null;
-  const searchAlone: AppState = { ...state, types: [], styles: [], dates: [], hideBars: false };
+  const searchAlone = withoutFilters(state);
   return {
     dates,
     styles,
