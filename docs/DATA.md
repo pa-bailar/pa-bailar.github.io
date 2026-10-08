@@ -1,7 +1,7 @@
 # Data contract
 
-The backend (a private repository, `pa-bailar/backend`) writes `data/` through a pull request
-after each sweep that changes it (it sweeps twice a day, at 9 AM and 9 PM Bogotá time); the frontend
+The backend (a separate repository, `pa-bailar/backend`) writes `data/` through a pull request
+after each sweep that changes it (it sweeps twice a day, at 6:30 AM and 9 PM Bogotá time); the frontend
 only reads it. The backend's Pydantic models are the source of truth;
 [`frontend/src/scripts/types.ts`](../frontend/src/scripts/types.ts) mirrors them, and
 [`frontend/scripts/check-data.mjs`](../frontend/scripts/check-data.mjs) checks every data PR against
