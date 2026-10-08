@@ -1,9 +1,9 @@
 ---
-// Phones: the slim bar pinned to the top (it never hides): one row of chips that scrolls sideways, the choices made
-// in the "Filtros" sheet that have no chip of their own ("Sin bares ×", "Social ×"), "🕒 ▾" (Cuándo: a menu with one
-// date at a time) and four rhythms, each chosen with one tap (scripts/views/filters.ts fills it, whenMenu.ts opens
-// the menu). Under it, only while filtering, "12 eventos · Finde, Salsa" and "× Limpiar". Search, Guardados and the
-// "Filtros" sheet are in the bar at the bottom (BottomNav.astro).
+// Phones: the slim bar pinned to the top (it never hides): one row of chips that scrolls sideways, "🕒 ▾" (Cuándo: a
+// menu with one date at a time) and the view's event types, each chosen with one tap (scripts/views/filters.ts fills
+// it, whenMenu.ts opens the menu). Under it, only while filtering, "12 eventos · Finde, Salsa" and "× Limpiar": what's
+// chosen in the "Filtros" sheet without a chip of its own (a rhythm, "Sin bares") is named there. Search, Guardados and
+// the "Filtros" sheet are in the bar at the bottom (BottomNav.astro).
 ---
 
 <div class="jump-bar" id="jump-bar" role="region" aria-label="Filtros" hidden>

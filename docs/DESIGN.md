@@ -516,7 +516,7 @@ the list stays short there and summarizes what's further away (`scripts/views/up
   - **A day tapped in the calendar says so where the list starts:** its heading ("Miércoles, 14 de octubre") has the count under it ("3 eventos"; an empty day says "No hay eventos este día.") and glows briefly when the day changes (not with reduced motion). Screen readers hear "Miércoles, 14 de octubre: 3 eventos" (`#results-status`).
 - **Filter sheet** (`FilterSheet.astro`, `filter-sheet.css`), from Filtros in the bar at the bottom:
   - **Head:** "Filtros", "Limpiar" (only enabled with something to clear) and ×.
-  - **Groups:** **Fecha** · *elige una o varias* (every period and month), **Ritmo** · *elige uno o varios* (under their families, see "Filters"), **Tipo de evento** (several too). Each option with its count ("Noviembre 2"); the ones with nothing to show dimmed. First, above them, the "Ocultar eventos de bares" switch (see "Filters", "Hiding the bars").
+  - **Groups:** **Fecha** · *elige una o varias* (every period and month), **Tipo de evento** (several too), **Ritmo** · *elige uno o varios* (under their families, see "Filters"). Each option with its count ("Noviembre 2"); the ones with nothing to show dimmed. First, above them, the "Ocultar eventos de bares" switch (see "Filters", "Hiding the bars").
   - **"Ver 12 eventos"** stays at the bottom (the primary button): "Ver 1 evento", or, disabled, what to change:
     "Sin eventos: cambia los filtros", or "Sin eventos: cambia la búsqueda" when the search alone finds nothing (no
     filter would help; the bug hunt of 7 Oct 2026: it blamed the filters). It closes the sheet; choices apply at once,
