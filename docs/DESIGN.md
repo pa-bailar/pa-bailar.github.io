@@ -573,7 +573,10 @@ An event can be announced by several Instagram posts (a flyer, then a video, a r
     under the finger, and the second tap of a double-tap, the same spot within 450 ms, is dropped. Before, it
     landed on them: Compartir, the account's profile, or the dim area that closed them again (20 of 20 emulated
     double-taps, the audit of 7 Oct 2026). A desktop double-click likewise keeps the image and the details open.
-    (`lib/secondTap.ts`, `dropSecondTap` in `main.ts`.)
+    The same holds for anything a tap opens or changes under the finger ("Ver N más", "Ver las 6 publicaciones", the
+    Instagram button, a notice's button, an event page's flyer): a second tap that lands on another control than the
+    first is dropped; the same control twice (a month's arrow, a carousel's) still counts twice (the bug hunt of 7 Oct
+    2026). (`lib/secondTap.ts`, `views/secondTaps.ts`.)
   - Every post is still a link away: the details' "Ver las 6 publicaciones" (the posts sheet).
 - **Wide screens with a mouse: a card's image big beside its details**, like Instagram's desktop view of a post
   (`Lightbox.astro`, `views/lightbox.ts`; the owner, 5–6 October 2026: a flyer's fine print is too small on the card,
@@ -711,7 +714,7 @@ already left (the owner's review, 6 Oct 2026). Closing never reopens an earlier 
 - **The event's page** is what a shared link points to, for link previews (see "Link previews"), search engines
   (schema.org `Event` data) and browsers without scripts. Its header links "← Ver próximos eventos"; a past event says
   "Este evento ya pasó." (a night past midnight only once its end time has passed, the morning after).
-- **Panel sheets** (filters, an event's posts, a post, the install steps) share one base: `.sheet-panel` (`sheet.css`, attached to the bottom on phones, a centered window on wide screens) and `initPanelSheet` / `openPanelSheet` (`lib/sheet.ts`: ×, backdrop, drag down, Escape). Each gets its own history entry, so the phone's back button closes only the sheet on top: a post, then the details, then the list; forward never reopens a closed one. A sheet opened in another's place (a post chosen among the posts) takes over its entry, and closing it gives the focus back to what opened the first one.
+- **Panel sheets** (filters, an event's posts, a post, the install steps) share one base: `.sheet-panel` (`sheet.css`, attached to the bottom on phones, a centered window on wide screens) and `initPanelSheet` / `openPanelSheet` (`lib/sheet.ts`: ×, backdrop, drag down, Escape). A tap on the backdrop closes one; a tap on its own edges (the gutters beside a flyer, the strip under the handle) doesn't (`isOnBackdrop`, the bug hunt of 7 Oct 2026). Each gets its own history entry, so the phone's back button closes only the sheet on top: a post, then the details, then the list; forward never reopens a closed one. A sheet opened in another's place (a post chosen among the posts) takes over its entry, and closing it gives the focus back to what opened the first one.
 - **Bottom sheets** behave like native ones, with values from Material/iOS sheets, the same as the drawer: they rise
   while the backdrop fades in; dragging down follows the finger 1:1 and dragging up rubber-bands; on release, a flick
   down (>0.5 px/ms) or a drag past max(110px, 22% of the screen) closes, otherwise it springs back; closing continues
