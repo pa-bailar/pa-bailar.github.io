@@ -590,10 +590,12 @@ An event can be announced by several Instagram posts (a flyer, then a video, a r
   card was tiresome). A card focused: ↑ ↓ ← → to the card above, below, before or after; Enter opens its details with
   the image big beside them where that works, the details alone elsewhere. The details open: Enter on them shows the
   image beside them (to press Enter an event was almost always just clicked: the owner, 6 Oct 2026). Nothing focused:
-  any arrow starts on the first card whose top shows below the pinned bars (Page Up/Down, space and the wheel still
-  scroll); with the details open, from their event. A summarized period ("Ver los 23 eventos") and "Ver 7 más" are
-  stops in the grid too: Enter opens the period, the focus lands on its first new event, and the arrows go on, so the
-  whole list can be walked without the mouse (the owner, 6 Oct 2026). The details open: ← → the event before or after in the
+  any arrow starts on the first card whose top shows below the pinned bars, or, when none does, the one straddling
+  them, brought whole into view (Page Up/Down, space and the wheel still scroll); with the details open, from their
+  event. A summarized period ("Ver los 23 eventos") and "Ver 7 más" are stops in the grid too: Enter or Space opens the
+  period, the focus lands on its first new event, on screen, the side panel following, and the arrows go on, so the
+  whole list can be walked without the mouse (the owner, 6 Oct 2026; Space and the straddling card: the bug hunt of
+  7 Oct 2026). The details open: ← → the event before or after in the
   list, ↑ ↓ the one in the row above or below; with the image beside them, ← → go through its photos first, then on
   to the next event (going back, the previous one's last photo), like one stream; a block on the way opens by itself
   and the details show its first new event (its last, going back), so the image never stays still (the owner, 6 Oct
