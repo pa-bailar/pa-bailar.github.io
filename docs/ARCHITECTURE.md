@@ -416,7 +416,8 @@ flowchart TD
   capped so a busy day never makes its week taller. Colombian holidays are tinted, and the selected day's events are
   listed below; whatever changes that list ends with its start on screen (`revealDay` in `views/viewNavigation.ts`).
   An event over several days is on each of its days (`groupByDay`), across months too; a workshop series only on its
-  sessions' days. A day's events go by their start time that day.
+  sessions' days. A day's events go by type in the owner's order, then by start time that day (`dayOrderKey` in
+  `state.ts`, shared with the list's `listOrder`; `DESIGN.md`, "Upcoming list").
 - **One date at a time in the bar:** an option of "Cuándo" sets `dates` to that one period (or none), its × empties
   them; the "Filtros" sheet still toggles several. Both read and write the same `dates`, so the bar, its line, the
   sheet and the toolbar always agree.

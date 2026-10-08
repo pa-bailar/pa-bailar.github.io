@@ -5,7 +5,7 @@
 // dimmed in place, never hidden, so the chips don't move while choosing; a chosen one can always be removed.
 
 import type { AppState, DanceEvent, EventType } from "../types";
-import { OTHER_STYLE, eventCountLabel, formatMonthName, spanLabel, styleLabel, typeLabel } from "./format";
+import { OTHER_STYLE, TYPE_ORDER, eventCountLabel, formatMonthName, spanLabel, styleLabel, typeLabel } from "./format";
 import { todayIso, toIsoDate } from "./dates";
 import { type FamilyGroup, groupByFamily } from "./styleFamilies";
 import {
@@ -23,19 +23,7 @@ import {
  * bar's chips until 8 Oct 2026, when the bar took the types (the owner: the rhythms stay in the Filtros menu). */
 export const MAIN_STYLES = ["salsa", "bachata", "urbano", "tango"];
 
-/** The types in the owner's order (8 Oct 2026: socials, then rumbas, then workshops; the rest after): the bar's
- * chips, the sheet's and the Tipo panel's. */
-export const TYPE_ORDER: EventType[] = [
-  "social",
-  "party",
-  "workshop",
-  "concert",
-  "festival",
-  "congress",
-  "competition",
-  "show",
-  "other",
-];
+export { TYPE_ORDER }; // the bar's chips, the sheet's and the Tipo panel's order (lib/format.ts)
 
 export interface FilterOption {
   group: FilterGroup;
