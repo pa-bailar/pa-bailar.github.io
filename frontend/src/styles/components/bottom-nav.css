@@ -185,9 +185,11 @@
   min-height: var(--control-height);
 }
 
-/* One way to close: our × beside it, not also the browser's inside the field. */
+/* One way to close: our × beside it, not also the browser's inside the field. Hidden, not only without its
+   appearance: WebKit (Safari) still drew its clear glyph with `appearance: none`, prefixed or not (the bug hunt of
+   7 Oct 2026). */
 .bottom-nav__search .search-input::-webkit-search-cancel-button {
-  appearance: none;
+  display: none;
 }
 
 /* ×: a 40 px square, 44 px to the finger. */

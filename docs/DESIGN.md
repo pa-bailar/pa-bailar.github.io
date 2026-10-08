@@ -415,11 +415,11 @@ the list stays short there and summarizes what's further away (`scripts/views/up
   - **Badges:** the number of upcoming saved events on Guardados, and on Filtros every choice in use (two rhythms count
     two, like Airbnb's; hiding the bars counts one). Filtros is named "Filtros, 2 activos"; Guardados "Guardados, 3".
   - **Buscar:** the bar becomes the search field, docked at the bottom (iOS 26's search, Instagram's place), with the
-    focus, the keyboard and × (the browser's own clear button is hidden: one way out). It has a history entry, as an
-    overlay: **× and back close it and clear the search**; Escape too. **The keyboard's "Buscar" (Enter)** closes the
-    keyboard and the field and keeps the search (Buscar is named "Buscar: «salsa»"; a tap opens the field again). A
-    field left empty closes when the keyboard does (or when what opened over it closes). **Android's back** with the
-    keyboard up only hides the keyboard (the page isn't told), so the search reacts to the keyboard leaving
+    focus, the keyboard and × (the browser's own clear button is hidden, Safari's too: one way out). It has a history
+    entry, as an overlay: **× and back close it and clear the search**; Escape too. **The keyboard's "Buscar" (Enter)**
+    closes the keyboard and the field and keeps the search (Buscar is named "Buscar: «salsa»"; a tap opens the field
+    again). A field left empty closes when the keyboard does (or when what opened over it closes). **Android's back**
+    with the keyboard up only hides the keyboard (the page isn't told), so the search reacts to the keyboard leaving
     (`keyboardJustHid`): empty, it closes; with words, it's kept (the owner, 5 Oct 2026). The bar rides above the
     keyboard (`--keyboard-inset`; `ARCHITECTURE.md`, section 5.7).
   - **Sheets and the details drawer** are modal dialogs in the browser's top layer: they cover the bar, which stays

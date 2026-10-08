@@ -302,6 +302,15 @@ describe("the page: the bar replaced the floating button", () => {
     expect(css).toMatch(/@media \(min-width: 720px\) and \(min-height: 600px\) \{\s*\.bottom-nav \{\s*display: none;/);
   });
 
+  // The bug hunt of 7 Oct 2026: WebKit drew its own clear glyph inside the field, beside the bar's ×, even with
+  // `appearance: none` (prefixed or not); only `display: none` hides it there and in Chrome.
+  it("the field has one × only, ours: the browser's clear button is hidden", () => {
+    const css = source("styles/components/bottom-nav.css");
+    const start = css.indexOf(".bottom-nav__search .search-input::-webkit-search-cancel-button {");
+    expect(start).toBeGreaterThan(-1);
+    expect(css.slice(start, css.indexOf("}", start))).toContain("display: none;");
+  });
+
   it("the search field closes where the bar goes away: the script watches the CSS's own query", async () => {
     const { WIDE_QUERY } = await import("../src/scripts/views/bottomNav");
     const css = readFileSync(new URL("../src/styles/components/bottom-nav.css", import.meta.url), "utf8");
