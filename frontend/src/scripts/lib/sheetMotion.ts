@@ -20,6 +20,13 @@ const EXIT_MIN = 160; // ms
 const EXIT_MAX = 280; // ms
 const EXIT_MIN_SPEED = 1.2; // px/ms: slow releases still leave briskly
 
+/** Whether a click at (x, y) on a dialog itself fell on its backdrop: outside its box. A click on the dialog's own
+ * padding (a sheet's gutters, the strip under its handle) has the dialog as its target too, and closed it (the bug hunt
+ * of 7 Oct 2026: a tap beside the flyer closed the viewer). */
+export function isOnBackdrop(box: { left: number; right: number; top: number; bottom: number }, x: number, y: number) {
+  return x < box.left || x > box.right || y < box.top || y > box.bottom;
+}
+
 /** How far a release must have dragged to close, on a screen `viewport` px tall. */
 export function closeDistance(viewport: number): number {
   return Math.max(CLOSE_DISTANCE, viewport * CLOSE_FRACTION);

@@ -18,8 +18,10 @@ import { initSaveButtons } from "./views/saveButton";
 import { initSharing } from "./views/sharing";
 import { initInstallPrompt, registerServiceWorker } from "./views/installPrompt";
 import { initNotice } from "./views/notice";
+import { dropStraySecondTaps } from "./views/secondTaps";
 
 export function initEventPage() {
+  dropStraySecondTaps(); // first: a double-tap on the flyer doesn't land on the viewer rising under it
   initThemeToggle();
   initClickTracking();
   initPostsSheet();

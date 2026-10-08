@@ -14,6 +14,7 @@ import {
   SHEET_DIRECTION_SLOP,
   closeDistance,
   exitDurationFor,
+  isOnBackdrop,
   releaseVelocity,
 } from "./sheetMotion";
 import { historyState, overlayState } from "../screenHistory";
@@ -173,7 +174,9 @@ export function initPanelSheet(
   sheet.addEventListener("click", (domEvent) => {
     const target = domEvent.target as HTMLElement;
     const close = target.closest<HTMLButtonElement>("[data-close-sheet]");
-    if (target === sheet || (close && !close.disabled)) dismissSheet(sheet);
+    const { clientX: x, clientY: y } = domEvent;
+    const backdrop = target === sheet && isOnBackdrop(sheet.getBoundingClientRect(), x, y); // not its own edges
+    if (backdrop || (close && !close.disabled)) dismissSheet(sheet);
     else onClick?.(target);
   });
   initSheet(sheet, (target) => Boolean(target.closest(".sheet-panel__head")) || scroller.scrollTop <= 0);

@@ -65,7 +65,7 @@ import { watchDayChange } from "./views/dayChange";
 import { initInstallPrompt, offerAfterSaving, registerServiceWorker } from "./views/installPrompt";
 import { initSharing, plansEventUrl, setShareSources } from "./views/sharing";
 import { isSaved, trimSaved } from "./lib/saved";
-import { isPointerClick, isSecondTap, tapOf, type Tap } from "./lib/secondTap";
+import { dropStraySecondTaps, markOpeningTap } from "./views/secondTaps";
 
 /** "Ocultar eventos de bares", remembered in this browser (blocked storage: for this visit). */
 const hideBarsSetting = storedSwitch(HIDE_BARS_KEY);
@@ -286,7 +286,7 @@ const openCardEvent: ControlHandler = (id, control, domEvent) => {
   const event = findEvent(id);
   if (!event) return;
   domEvent.preventDefault();
-  if (isPointerClick(domEvent)) openingTap = tapOf(domEvent); // its double-tap's second tap is dropped (dropSecondTap)
+  markOpeningTap(domEvent); // its double-tap's second tap is dropped (views/secondTaps.ts)
   if (control.matches("[data-card-image]") && showWithImage(event, cardLink(control))) return;
   // Counted by where it was opened: the card itself or its "Detalles".
   const source = control.dataset.source === "boton" ? "boton" : "tarjeta";
@@ -373,21 +373,6 @@ const CONTROLS: [attribute: string, handler: ControlHandler][] = [
   ["skip", skipToList],
 ];
 
-/** The tap that last opened an event from its card (openCardEvent), until the next click. */
-let openingTap: Tap | null = null;
-
-/**
- * Before any other listener (capture): the second tap of a double-tap on a card is dropped. The first one opened the
- * details, which rise under the finger, and the second landed on them (lib/secondTap.ts).
- */
-function dropSecondTap(domEvent: MouseEvent) {
-  const opening = openingTap;
-  openingTap = null;
-  if (!isPointerClick(domEvent) || !isSecondTap(opening, tapOf(domEvent))) return;
-  domEvent.preventDefault();
-  domEvent.stopImmediatePropagation();
-}
-
 /** "monthStep" → "[data-month-step]" */
 const CONTROLS_SELECTOR = CONTROLS.map(([attribute]) => `[data-${attribute.replace(/[A-Z]/g, (c) => `-${c.toLowerCase()}`)}]`).join(",");
 
@@ -468,7 +453,7 @@ export function start() {
     },
   });
   initClickTracking();
-  document.addEventListener("click", dropSecondTap, true);
+  dropStraySecondTaps(); // before any other listener: a double-tap's second tap on what the first opened
   document.addEventListener("click", handleClick);
   document.addEventListener("input", handleSearchInput);
   // Escape in the toolbar's search field (wide screens) ends the search in every browser: Chrome clears a search field
