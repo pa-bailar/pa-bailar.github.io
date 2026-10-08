@@ -40,6 +40,12 @@ const MONTHS = new Map(
   }),
 );
 
+/**
+ * Day words that are also first names (Julio, Abril, Domingo Quiñones): said alone, they're also a name, found in the
+ * events that have it (lib/search.ts searchedDays). The bug hunt of 7 Oct 2026; none in the data that day.
+ */
+export const DAY_NAMES = new Set(["julio", "abril", "domingo"]);
+
 /** Months written short, read only right after a day's number ("17 de oct", "3 nov"): alone, "mar" is the sea. */
 const SHORT_MONTHS = new Map(
   Object.entries({ ene: 1, feb: 2, mar: 3, abr: 4, may: 5, jun: 6, jul: 7, ago: 8, sep: 9, sept: 9, set: 9, oct: 10, nov: 11, dic: 12 }),

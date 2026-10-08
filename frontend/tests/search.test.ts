@@ -87,6 +87,33 @@ describe("search", () => {
       expect(matchesWords(freestyle, "freestyle")).toBe(true);
       expect(matchesWords(freestyle, "gratis")).toBe(false);
     });
+
+    // The bug hunt of 7 Oct 2026 (none in the data that day): "free" alone, in an event's words, is a name more often
+    // than a price.
+    it("not «free» alone in the event's words: «Free Style» isn't free", () => {
+      expect(matchesWords(event({ title: "Batalla de Free Style", prices: [] }), "gratis")).toBe(false);
+      expect(matchesWords(event({ title: "Sugar Free Social", prices: [price(25000)] }), "gratis")).toBe(false);
+      expect(matchesWords(event({ title: "Free cover hasta las 9", prices: [] }), "gratis")).toBe(true);
+      expect(matchesWords(free, "free")).toBe(true); // typed, it still means free
+    });
+  });
+});
+
+// Words joined by a hyphen or an apostrophe (the bug hunt of 7 Oct 2026: "kpop" didn't find "K-POP", "pa'lante" not
+// "Palante").
+describe("words joined by a hyphen or an apostrophe", () => {
+  it("an event's joined words are also one word: «kpop» finds K-POP, «quiebracanto» Quiebra-Canto", () => {
+    expect(matchesWords(event({ title: "Gala Premio Danza K-POP" }), "kpop")).toBe(true);
+    expect(matchesWords(event({ title: "Gala Premio Danza K-POP" }), "k-pop")).toBe(true);
+    expect(matchesWords(event({ venue: "Casa Quiebra-Canto", account: "casa" }), "quiebracanto")).toBe(true);
+    expect(matchesWords(event({ venue: "Casa Quiebra-Canto", account: "casa" }), "canto")).toBe(true);
+  });
+
+  it("an apostrophe joins what's typed: «pa'lante» is «palante», either way", () => {
+    expect(matchesWords(event({ title: "Palante Social" }), "pa'lante")).toBe(true);
+    expect(matchesWords(event({ title: "Pa'lante Social" }), "palante")).toBe(true);
+    expect(matchesWords(event({ title: "Pa’lante Social" }), "pa’lante")).toBe(true);
+    expect(matchesWords(event({ title: "Palante Social" }), "pa' lante")).toBe(false); // with a space, two words
   });
 });
 

@@ -362,9 +362,13 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
   "on2", "mambo" salsa en línea; "caleño", "salsero", "lindy hop"…; "salsa" also finds cha cha chá (its heading).
   Known phrases are searched whole ("cha cha cha", "sin costo"). **"Free" is one word however it's written**:
   "gratis", "gratuito", "sin costo", "entrada libre", "no cover", "free cover"… in the search or in the event (its own
-  words, or "Gratis" on its card) all mean "gratis". Left out on purpose, as they'd find unrelated events: "libre"
-  alone ("rumba libre"), "parche" (academies), "noche", "feria", "cali", "práctica". A test checks that every word
-  the table finds is one the site shows.
+  words, or "Gratis" on its card) all mean "gratis"; but not "free" alone in an event's words, a name there more often
+  than a price ("Free Style", "Sugar Free": the bug hunt of 7 Oct 2026). Left out on purpose, as they'd find unrelated
+  events: "libre" alone ("rumba libre"), "parche" (academies), "noche", "feria", "cali", "práctica". A test checks that
+  every word the table finds is one the site shows.
+- **Words joined by a hyphen or an apostrophe** (the same hunt): an event's are also one word ("kpop" finds "K-POP",
+  "quiebracanto" "Quiebra-Canto"), and an apostrophe between letters joins what's typed ("pa'lante" is "palante",
+  either way).
 - **Days in the search** (`lib/searchDays.ts`; the owner, 7 Oct 2026): "hoy", "esta noche", "mañana", "pasado
   mañana"; a weekday, every one ("sábado", "el próximo viernes"); "este finde" / "fin de semana" (Friday to Sunday);
   "esta semana" (Monday to Sunday), "próxima semana", "la otra semana"; "este mes", a month, "15 de octubre";
@@ -387,6 +391,10 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
     the next ones). "El otro sábado" and "el otro finde" are the ones after the coming one (next week's). A month
     written short counts right after a number ("17 de oct", "3 nov"; alone, "mar" is the sea), a month may come
     first ("octubre 17"), and a year after it ("octubre de 2026").
+  - **Names that are days** ("julio", "abril", "domingo": `DAY_NAMES`): said alone, they're also the name, so an
+    event with it among its words is found on any of its days ("domingo quiñones": his concert on a Saturday; "julio
+    sábado": Julio's Saturday). Others still find their days ("julio": July's events). None in the data on 7 Oct 2026;
+    without it, "julio" could only find July.
   - **Words left out** unless the search is nothing else (`LEFT_OUT` in `lib/searchWords.ts`): those that only join
     others ("el", "de", "con"), the words before a day ("este", "próximo"), and those of a question or a wish around
     what's looked for ("qué hay hoy", "dónde bailar salsa", "quiero ir a bailar", "eventos de bachata"). Not "baile",

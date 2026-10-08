@@ -247,3 +247,25 @@ describe("days with words around them", () => {
     expect(finds("qué", on("2026-10-20", { title: "Calor que enamora" }))).toBe(true); // alone, still a word
   });
 });
+
+// Day words that are also first names (the bug hunt of 7 Oct 2026: none in the data that day, but "julio" found only
+// July, and "domingo quiñones" only Sundays).
+describe("a day word that's also a name", () => {
+  const julio = on("2026-10-14", { title: "Taller con Julio Hernández", event_type: "workshop" }); // a Wednesday
+  const julioSaturday = on("2026-10-10", { title: "Social con Julio" });
+  const concert = on("2026-10-10", { title: "Domingo Quiñones en concierto", event_type: "concert" }); // a Saturday
+
+  it("finds the events with that name, on any of their days, and still the days it names", () => {
+    expect(finds("julio", julio)).toBe(true);
+    expect(finds("julio hernández", julio)).toBe(true);
+    expect(finds("julio", on("2027-07-03"))).toBe(true); // the month, as before
+    expect(finds("domingo quiñones", concert)).toBe(true);
+    expect(finds("abril", on("2026-10-10", { artists: ["Abril Rodríguez"] }))).toBe(true);
+    expect(finds("domingo", on("2026-10-10", { title: "Social" }))).toBe(false); // a Saturday, no name
+  });
+
+  it("with another day, that day still applies: «julio sábado» is Julio's Saturday", () => {
+    expect(finds("julio sábado", julioSaturday)).toBe(true);
+    expect(finds("julio sábado", julio)).toBe(false);
+  });
+});

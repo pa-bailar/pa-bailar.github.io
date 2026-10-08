@@ -26,6 +26,12 @@ export const FREE_PHRASES = [
   "free",
 ];
 
+/**
+ * "Free" in an event's own words: every way but "free" alone, which there is a name more often than a price ("Free
+ * Style", "Sugar Free": the bug hunt of 7 Oct 2026, none in the data that day). Typed in a search, it still means free.
+ */
+export const FREE_SAID = FREE_PHRASES.filter((phrase) => phrase !== "free");
+
 /** The site's own words for the event types (format.ts TYPE_LABELS) and the rhythms (format.ts styleLabel), folded. */
 const SOCIAL = "social";
 const PARTY = "rumba";

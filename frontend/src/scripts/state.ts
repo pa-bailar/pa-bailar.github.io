@@ -105,7 +105,7 @@ function viewDays(event: DanceEvent, { view = "upcoming", month }: DayChoices, t
  */
 export function shownDays(event: DanceEvent, choices: DayChoices, today = todayIso(), except?: FilterGroup): string[] {
   const periods = except !== "dates" && datesApply(choices) ? inPeriods(choices.dates ?? [], today) : null;
-  const searched = searchedDays(choices.query ?? "", today);
+  const searched = searchedDays(choices.query ?? "", today, event);
   return viewDays(event, choices, today).filter((day) => (!periods || periods(day)) && (!searched || searched(day)));
 }
 

@@ -18,8 +18,8 @@
 import type { DanceEvent } from "../types";
 import { todayIso } from "./dates";
 import { FREE, priceSummary, styleLabel, typeLabel } from "./format";
-import { daysAt, type DayTest, timeOfDayAt } from "./searchDays";
-import { alsoFinds, FREE_PHRASES, FREE_WORD, LEFT_OUT, OWN_WORDS, PHRASES } from "./searchWords";
+import { DAY_NAMES, daysAt, type DayTest, timeOfDayAt } from "./searchDays";
+import { alsoFinds, FREE_SAID, FREE_WORD, LEFT_OUT, OWN_WORDS, PHRASES } from "./searchWords";
 
 /** "Salsa Caleña" → "salsa calena": for comparing, never for showing. */
 export function fold(text: string): string {
@@ -73,10 +73,15 @@ function searchableOf(event: DanceEvent): Searchable {
       ...event.artists,
       ...event.activities,
     ];
-    let text = ` ${wordsOf(fold(shown.filter(Boolean).join(" "))).join(" ")} `;
-    const free = priceSummary(event) === FREE || FREE_PHRASES.some((phrase) => text.includes(` ${phrase} `));
-    if (free) text += `${FREE_WORD} `;
-    found = { words: text.trim().split(" "), text, account: fold(event.account) };
+    const folded = fold(shown.filter(Boolean).join(" "));
+    const words = wordsOf(folded);
+    const said = ` ${words.join(" ")} `;
+    const free = priceSummary(event) === FREE || FREE_SAID.some((phrase) => said.includes(` ${phrase} `));
+    // Words joined by a hyphen or an apostrophe are also one: "K-POP" is kpop, "Pa'lante" palante, "Quiebra-Canto"
+    // quiebracanto (the bug hunt of 7 Oct 2026). After the others, so no phrase runs into them.
+    const joined = (folded.match(/[a-z]+(?:['’-][a-z]+)+/g) ?? []).map((compound) => compound.replace(/['’-]/g, ""));
+    const all = [...words, ...joined, ...(free ? [FREE_WORD] : [])];
+    found = { words: all, text: ` ${all.join(" ")} `, account: fold(event.account) };
     searchable.set(event, found);
   }
   return found;
@@ -89,10 +94,16 @@ interface Term {
   handle?: string;
 }
 
+/** A day a search names; `name`: its word, when it's also a first name (searchDays.ts DAY_NAMES). */
+interface NamedDay {
+  test: DayTest;
+  name?: string;
+}
+
 /** A search, read: its parts (all needed) and the days it names (any of them). */
 interface Query {
   terms: Term[];
-  days: DayTest[];
+  days: NamedDay[];
 }
 
 /** The known phrase starting at `words[at]`, longest first, and how many words it takes. */
@@ -121,7 +132,8 @@ function wordTerm(word: string, { alone = false } = {}): Term {
  * "de", "el próximo", "qué hay") count only when the search is nothing else ("la" alone still finds "La Casona").
  */
 export function parseQuery(query: string, today: string): Query {
-  const words = wordsOf(fold(query));
+  // An apostrophe between letters joins them, as in the events ("pa'lante" is palante; "pa' bailar" stays two words).
+  const words = wordsOf(fold(query).replace(/(?<=[a-z])['’](?=[a-z])/g, ""));
   const read: Query = { terms: [], days: [] };
   const leftOut: string[] = [];
   for (let at = 0; at < words.length; ) {
@@ -129,8 +141,10 @@ export function parseQuery(query: string, today: string): Query {
     const time = days ? 0 : timeOfDayAt(words, at);
     const phrase = days || time ? null : phraseAt(words, at);
     if (days) {
-      read.days.push(days[0]);
-      at += days[1];
+      const [test, length] = days;
+      const word = words[at]!;
+      read.days.push(length === 1 && DAY_NAMES.has(word) ? { test, name: word } : { test });
+      at += length;
     } else if (time) {
       leftOut.push(...words.slice(at, at + time));
       at += time;
@@ -174,10 +188,13 @@ export function matchesWords(event: DanceEvent, query: string, today = todayIso(
 }
 
 /**
- * The days `query` names, any of them, as one test; null when it names none. Which of an event's days are shown is
- * the filters' model's (state.ts shownDays), as for "Cuándo".
+ * The days `query` names for `event`, any of them, as one test; null when it names none. A day word that's also a
+ * first name isn't a day for an event with that name among its words ("julio": Julio's workshop on any of its days;
+ * "julio sábado": on a Saturday). Which of an event's days are shown is the filters' model's (state.ts shownDays), as
+ * for "Cuándo".
  */
-export function searchedDays(query: string, today = todayIso()): DayTest | null {
+export function searchedDays(query: string, today = todayIso(), event?: DanceEvent): DayTest | null {
   const { days } = readQuery(query, today);
-  return days.length ? (day) => days.some((test) => test(day)) : null;
+  const named = event ? days.filter(({ name }) => name === undefined || !searchableOf(event).words.includes(name)) : days;
+  return named.length ? (day) => named.some(({ test }) => test(day)) : null;
 }
