@@ -6,6 +6,7 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import sharp from "sharp";
 import { fileVersion } from "./images";
+import { shownMedia } from "./pageData";
 import rawEvents from "../../data/events.json";
 import rawMeta from "../../data/meta.json";
 import type { DanceEvent, EventMedia, Meta } from "./scripts/types";
@@ -29,7 +30,7 @@ async function withFlyerFacts(media: EventMedia): Promise<EventMedia> {
 export const events: DanceEvent[] = await Promise.all(
   (rawEvents as unknown as DanceEvent[]).map(async (event) => ({
     ...event,
-    media: (await Promise.all(event.media.map(withFlyerFacts))) as DanceEvent["media"],
+    media: (await Promise.all(shownMedia(event.media).map(withFlyerFacts))) as DanceEvent["media"],
   })),
 );
 export const meta = rawMeta as Meta;

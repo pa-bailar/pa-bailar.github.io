@@ -67,7 +67,8 @@ backend reads it. Most such events never get a post, so a story can be an event'
 - `caption`: null (the owner's notes aren't published). `published`: when the screenshot was taken.
 - Everything else as for `IMAGE`.
 
-On the site a story's flyer is a plain image labeled "Historia" (no Instagram player: there's no post to show),
+Once an event has a post with a flyer, the site shows the post and not the story (the same flyer, as a screenshot);
+the data keeps both. While it doesn't, a story's flyer is a plain image labeled "Historia" (no Instagram player: there's no post to show),
 with "De una historia de @cuenta · las historias duran 24 horas", and the details' Instagram button opens the
 profile (inside the site). `check-data.mjs` accepts a `STORY` only with a profile link, and a post only with a post link.
 

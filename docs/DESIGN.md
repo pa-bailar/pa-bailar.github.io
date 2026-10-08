@@ -625,7 +625,10 @@ An event can be announced by several Instagram posts (a flyer, then a video, a r
   - In the posts sheet a story is among the Flyers ("Historia 2 de 2"); chosen, the media viewer shows only its flyer,
     and its bar says "Ver perfil en Instagram ↗".
   - A low-confidence note says "confírmalos con la cuenta" instead of "en la publicación".
-  - A post's media comes before a story's (the data's order), so a post's flyer is the cover once there is one.
+  - **A story steps aside once the event has a post with a flyer** (`src/pageData.ts` `shownMedia`, at build time):
+    the post's flyer is the event's image, and the story's screenshot, the same flyer cropped another way with
+    Instagram's stickers over it, isn't shown anymore (the owner, 7 October 2026: Frank de la Torre's intensive
+    showed its flyer twice). `data/events.json` keeps the story.
 
 ## Opening an event
 
