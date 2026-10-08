@@ -606,7 +606,9 @@ screens in the toolbar's pills and their panels:
 - **Searching:** the bar at the bottom becomes the search field; the line under the pinned bar stays while filtering.
 - **Empty results always offer a way out:** with filters, "No hay eventos con estos filtros" · "Prueba con otras fechas
   o ritmos." · "Limpiar filtros"; with a search, "No encontramos eventos" · "Nada coincide con «…»." · "Borrar la
-  búsqueda" (Guardados has its own: see "Saving and searching").
+  búsqueda" (Guardados has its own: see "Saving and searching"). With both, the words name what emptied it, as the
+  sheet's button does: the filters when the search alone finds events ("sábado" with "Hoy" chosen on a Friday said
+  "Nada coincide con «sábado»": the bug-squash pass of 8 Oct 2026), else the search; both ways out stay.
 - **Semantics:** filter chips are toggle buttons (`aria-pressed`), short names carry the full one ("Finde": "Este fin de
   semana"); removable chips are named "Quitar Social". Focus stays on the chip chosen; after "Limpiar" (which hides or
   disables itself), focus goes to Filtros (in the sheet, to its first control; on wide screens, the first pill).

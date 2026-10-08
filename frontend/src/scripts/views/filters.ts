@@ -46,15 +46,20 @@ export function emptyActionsHtml(state: AppState): string {
   ].join("");
 }
 
-/** An empty list: what's wrong, a hint, and the ways out. Null when nothing narrows it (there's just nothing). */
-export function emptyResultsHtml(state: AppState): string | null {
+/**
+ * An empty list: what's wrong, a hint, and the ways out. Null when nothing narrows it (there's just nothing).
+ * `searched`: the events the search alone finds (filterModel's `searched`): with some, the filters are why, as the
+ * sheet's button says (the bug-squash pass of 8 Oct 2026: "sábado" with "Hoy" chosen said "Nada coincide con «sábado»").
+ */
+export function emptyResultsHtml(state: AppState, searched = 0): string | null {
   const query = state.query.trim();
   const filtering = activeFilterCount(state) > 0;
-  const [title, hint] = query
-    ? ["No encontramos eventos", `Nada coincide con «${escapeHtml(query)}».`]
-    : filtering
-      ? ["No hay eventos con estos filtros", "Prueba con otras fechas o ritmos."]
-      : [null, null];
+  const [title, hint] =
+    query && !(filtering && searched)
+      ? ["No encontramos eventos", `Nada coincide con «${escapeHtml(query)}».`]
+      : filtering
+        ? ["No hay eventos con estos filtros", "Prueba con otras fechas o ritmos."]
+        : [null, null];
   if (!title) return null;
   return `
     <div class="empty-state">

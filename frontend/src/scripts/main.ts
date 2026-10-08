@@ -95,10 +95,13 @@ function announce(count: number) {
   byId("results-status").textContent = said[state.view];
 }
 
-/** What the view on screen shows: how many events, and the list's periods (for the share buttons). */
-function renderView(): { shown: number; groups: AgendaGroup[] } {
+/**
+ * What the view on screen shows: how many events, and the list's periods (for the share buttons). `searched`: what the
+ * search alone finds (the filters' model), for an empty list to say why.
+ */
+function renderView(searched: number): { shown: number; groups: AgendaGroup[] } {
   const container = byId(VIEW_IDS[state.view]);
-  if (state.view === "upcoming") return renderUpcomingView(container, events, state);
+  if (state.view === "upcoming") return renderUpcomingView(container, events, state, searched);
   if (state.view === "calendar") return { shown: renderCalendarView(events, state), groups: [] }; // no periods
   return { shown: renderSavedView(container, events, state), groups: [] }; // its plans are shared whole
 }
@@ -134,7 +137,7 @@ function render({ keepPlace = false, quiet = false } = {}) {
   });
   renderBottomNav({ view: state.view, query: state.query, active: model.active });
 
-  const { shown, groups } = renderView();
+  const { shown, groups } = renderView(model.searched);
   renderJumpBar();
   renderSavedCount();
   watchClips(byId(VIEW_IDS[state.view])); // the videos' clips, as a feed

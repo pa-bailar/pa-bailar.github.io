@@ -347,6 +347,18 @@ describe("the filter chips (filterModel)", () => {
     expect(searched).not.toContain("Limpiar filtros");
     expect(emptyResultsHtml(list)).toBeNull();
   });
+
+  // The bug-squash pass of 8 Oct 2026: "sábado" searched with "Hoy" chosen, on a Friday, the list said "Nada coincide
+  // con «sábado»", though the search alone found 41 events: the date chosen left none (the sheet's button had it right).
+  it("nothing because of the filters, the search finding events alone: the list names the filters", () => {
+    const both = emptyResultsHtml({ ...list, query: "sábado", dates: ["hoy"] }, 41)!;
+    expect(both).toContain("No hay eventos con estos filtros");
+    expect(both).not.toContain("Nada coincide");
+    expect(both).toContain("Limpiar filtros");
+    expect(both).toContain("Borrar la búsqueda");
+    const neither = emptyResultsHtml({ ...list, query: "zzqx", dates: ["hoy"] }, 0)!;
+    expect(neither).toContain("Nada coincide con «zzqx».");
+  });
 });
 
 describe("the \"Cuándo\" menu", () => {
