@@ -1,7 +1,7 @@
 // The rhythms' families (the owner's list, 5 Oct 2026): how the "Filtros" sheet and the toolbar's Ritmo panel group
 // the rhythms under small headings, so a long list reads at a glance. Every rhythm of the data contract
 // (scripts/check-data.mjs, STYLES) is in exactly one family (tests/styleFamilies.test.ts). Only for showing: choosing
-// "Salsa" still includes its variants (state.ts, styleMatches), and the phone bar's quick chips stay one flat row.
+// "Salsa" still includes its variants (state.ts, styleMatches).
 
 export interface StyleFamily {
   key: string;

@@ -85,10 +85,10 @@ function chipHtml(item: FilterOption, { short = false, counts = false } = {}): s
     aria-pressed="${item.chosen}"${item.dimmed ? ` aria-disabled="true"` : ""}${spoken !== label ? ` aria-label="${escapeHtml(spoken)}"` : ""}>${escapeHtml(label)}${count}${item.chosen ? X : ""}</button>`;
 }
 
-/** A choice made elsewhere (the sheet), as a chip that removes it: "Social ×". */
+/** A choice, as a chip that removes it ("Social ×"): the toolbar's status row (wide screens, statusHtml). */
 function removableHtml(item: AppliedFilter): string {
   const data = `data-filter="${item.group}" data-value="${escapeHtml(item.value)}"`;
-  const name = item.removeName ?? `Quitar ${item.name}`;
+  const name = `Quitar ${item.name}`;
   return `<button class="chip filter-chip is-chosen" type="button" ${data} aria-label="${escapeHtml(name)}">${escapeHtml(item.label)}${X}</button>`;
 }
 

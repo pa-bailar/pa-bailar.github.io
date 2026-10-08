@@ -31,8 +31,6 @@ export const MAIN_STYLES = ["salsa", "bachata", "urbano", "tango"];
  */
 export const MAIN_TYPES: EventType[] = ["social", "party", "workshop"];
 
-export { TYPE_ORDER }; // the bar's chips, the sheet's and the Tipo panel's order (lib/format.ts)
-
 export interface FilterOption {
   group: FilterGroup;
   value: string;
@@ -52,7 +50,6 @@ export interface AppliedFilter {
   value: string;
   label: string; // "Finde", "Salsa", "Social", "Sin bares"
   name: string; // for screen readers: "Este fin de semana"
-  removeName?: string; // its removable chip's name, when "Quitar <name>" wouldn't read well: "Mostrar los bares"
 }
 
 /** Hiding the bars, among the choices in use: last, as "Sin bares". */
@@ -60,7 +57,6 @@ export const HIDDEN_BARS: AppliedFilter = {
   ...HIDE_BARS_FILTER,
   label: "Sin bares",
   name: "Sin eventos de bares",
-  removeName: "Mostrar los eventos de bares",
 };
 
 /** An option of the bar's "Cuándo" menu: one date at a time. */
