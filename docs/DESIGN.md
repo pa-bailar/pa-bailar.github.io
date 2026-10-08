@@ -347,8 +347,13 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
 - **Search** (`lib/search.ts`) runs on the events already in the page: accent- and case-insensitive,
   every word must be found in the event (title, academy, organizer, venue, area, artists, rhythms, activities, type,
   as the site shows them: "Otros ritmos"). A word is found **at the start of one of the event's words**, so a search
-  typed halfway works ("bach") and "son" isn't found inside "Jason"; inside an academy's handle too ("jaguar").
-  **Plurals** find their singular ("talleres", "sociales").
+  typed halfway works ("bach") and "son" isn't found inside "Jason". **Plurals** find their singular ("talleres",
+  "sociales"). **Whole, where a start would find too much** (the bug hunt of 7 Oct 2026): a number ("calle 7" isn't
+  Calle 73; joined to letters it's still one: "93" finds "#93A-36"), a letter after other words ("zona t" is Zona T,
+  not Zona 6 at Tributo; alone, a search starting, it's a start), a singular ("andres" isn't Andrea). **Inside an
+  academy's handle**, where its words run together, a name of five letters or more ("jaguar" in @discojaguar.bta,
+  "torre" in @frank.de.latorre), never the search's own words, which find what they mean ("banda" isn't
+  @proyectourbandance, nor "competencia" @jaleocompetencia_'s social).
 - **The search's Spanish** (`lib/searchWords.ts`; the owner, 7 Oct 2026: "list synonyms based on the Spanish
   language"): a visitor's word also finds the site's word for it, **one way**: "clase", "curso", "workshop" find the
   workshops (but "taller" doesn't find the socials that open with a class); "fiesta", "farra", "party" the parties

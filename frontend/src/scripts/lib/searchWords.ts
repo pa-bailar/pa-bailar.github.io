@@ -51,7 +51,7 @@ const ALSO: [string[], string[]][] = [
   [["salsero", "salsera"], ["salsa"]],
   [["caleno", "estilo caleno"], ["salsa calena"]],
   [["cubano", "casino", "rueda", "rueda de casino", "timba"], ["salsa cubana"]],
-  [["en linea", "on1", "on2", "on 1", "on 2", "mambo", "la style", "ny style"], ["salsa en linea"]],
+  [["en linea", "on 1", "on 2", "mambo", "la style", "ny style"], ["salsa en linea"]], // "on1" is read "on 1"
   [["chachacha", "chacha", "cha cha"], ["cha cha cha"]],
   [["bachatero", "bachatera"], ["bachata"]],
   [["dominicano"], ["bachata dominicana"]],
@@ -82,6 +82,13 @@ export function alsoFinds(typed: string): string[] {
 
 /** Everything the table says a typed word finds, for its test (every target must be one of the site's own words). */
 export const ALL_TARGETS = [...new Set(ALSO.flatMap(([, finds]) => finds))];
+
+/**
+ * The search's own words (a type, a rhythm, a visitor's word for them): they find what they mean, never the inside of
+ * a handle (lib/search.ts; the bug hunt of 7 Oct 2026: "competencia" found @jaleocompetencia_'s social, "banda"
+ * @proyectourbandance's workshops).
+ */
+export const OWN_WORDS = new Set([...ALSO_FINDS.keys(), ...ALL_TARGETS].filter((word) => !word.includes(" ")));
 
 /**
  * Words left out of a search unless it's nothing else ("la" alone still finds "La Casona"): the ones that only join

@@ -183,3 +183,42 @@ describe("saved events", () => {
     expect(isSaved(social.id)).toBe(false);
   });
 });
+
+// Over-matching (the bug hunt of 7 Oct 2026): "calle 7" found Calle 73, "zona t" every word starting with t, "banda"
+// and "competencia" the handles they hide in (@proyectourbandance, @jaleocompetencia_), and "andres" found Andrea.
+describe("whole, where a word's start would find too much", () => {
+  it("a number is whole: «calle 7» isn't Calle 73; joined to letters it's still a number", () => {
+    const calle73 = event({ address: "Calle 73 # 14-53" });
+    expect(matchesWords(calle73, "calle 7")).toBe(false);
+    expect(matchesWords(calle73, "calle 73")).toBe(true);
+    expect(matchesWords(event({ address: "Cra. 15 #93A-36" }), "93")).toBe(true);
+    expect(matchesWords(event({ title: "Los 25 de la-33" }), "la 33")).toBe(true);
+    expect(matchesWords(event({ account: "la33orquesta" }), "33")).toBe(true);
+    expect(wordsOf("la33orquesta 93a")).toEqual(["la", "33", "orquesta", "93", "a"]);
+  });
+
+  it("a letter is whole, unless it's all that's typed yet: «zona t» is Zona T, not Zona 6 at Tributo", () => {
+    expect(matchesWords(event({ area: "Zona T" }), "zona t")).toBe(true);
+    expect(matchesWords(event({ area: "Zona 6", venue: "Tributo Salsa y Jazz" }), "zona t")).toBe(false);
+    expect(matchesWords(event({ title: "Tardeo" }), "t")).toBe(true); // a search starting
+  });
+
+  it("a singular is whole: «andres» isn't Andrea; «talleres» still finds Taller", () => {
+    expect(matchesWords(event({ artists: ["Andrea Gómez"] }), "andres")).toBe(false);
+    expect(matchesWords(event({ artists: ["Andrés Gómez"] }), "andres")).toBe(true);
+    expect(matchesWords(event({ title: "Taller de salsa" }), "talleres")).toBe(true);
+  });
+
+  it("inside a handle (its words run together): a name of five letters or more, never the search's own words", () => {
+    expect(matchesWords(event({ account: "discojaguar.bta" }), "jaguar")).toBe(true);
+    expect(matchesWords(event({ account: "latrinidaddelasalsa" }), "trinidad")).toBe(true);
+    expect(matchesWords(event({ account: "frank.de.latorre" }), "torre")).toBe(true);
+    expect(matchesWords(event({ account: "proyectourbandance", event_type: "workshop" }), "urban")).toBe(true);
+    expect(matchesWords(event({ account: "proyectourbandance", event_type: "workshop" }), "banda")).toBe(false);
+    expect(matchesWords(event({ account: "proyectourbandance", event_type: "workshop" }), "tour")).toBe(false);
+    expect(matchesWords(event({ account: "jaleocompetencia_" }), "competencia")).toBe(false);
+    expect(matchesWords(event({ account: "jaleocompetencia_" }), "competencias")).toBe(false);
+    expect(matchesWords(event({ account: "pachanga_y_pochola" }), "cha")).toBe(false);
+    expect(matchesWords(event({ account: "frank.de.latorre" }), "torres")).toBe(false); // its singular is whole
+  });
+});

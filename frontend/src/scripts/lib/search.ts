@@ -2,11 +2,15 @@
 // must be found in the event (title, academy, organizer, venue, area, artists, rhythms, activities, type, as the site
 // shows them). "juanita bachata" finds Juanita Quintero's bachata events; "halloween" every Halloween social.
 // A word is found at the start of one of the event's words, so a search typed halfway works ("bach") and "son" isn't
-// found inside "Jason" or "casona"; inside an academy's handle too ("jaguar" finds @discojaguar.bta). Plurals find
-// their singular ("talleres", "sociales"), and the Spanish a visitor may use finds the site's words for it (lib/
-// searchWords.ts: "clase" finds the workshops, "milonga" the tango, "sin costo" the free events: the owner, 7 Oct
-// 2026). "Free", however it's written, is "gratis", which an event whose card says "Gratis", or whose own words say
-// free ("entrada libre"), gets too.
+// found inside "Jason" or "casona"; inside an academy's handle too, where its words run together ("jaguar" finds
+// @discojaguar.bta). Plurals find their singular ("talleres", "sociales"), and the Spanish a visitor may use finds the
+// site's words for it (lib/searchWords.ts: "clase" finds the workshops, "milonga" the tango, "sin costo" the free
+// events: the owner, 7 Oct 2026). "Free", however it's written, is "gratis", which an event whose card says "Gratis",
+// or whose own words say free ("entrada libre"), gets too.
+// Whole, where a word's start would find too much (the bug hunt of 7 Oct 2026): a number ("calle 7" isn't Calle 73),
+// a letter after other words ("zona t" isn't Zona 6 at Tributo), a singular ("andres" isn't Andrea). Inside a handle,
+// only a name of five letters or more, never the search's own words ("banda" isn't @proyectourbandance, nor
+// "competencia" @jaleocompetencia_).
 // Days are found by date, not in the words (lib/searchDays.ts: "hoy", "sábado", "este finde", "15 de octubre"…): they
 // narrow the days an event is shown on, as "Cuándo" does (state.ts shownDays). The words that only join others ("el",
 // "de", "con") are left out ("clase de salsa el sábado").
@@ -15,20 +19,24 @@ import type { DanceEvent } from "../types";
 import { todayIso } from "./dates";
 import { FREE, priceSummary, styleLabel, typeLabel } from "./format";
 import { daysAt, type DayTest, timeOfDayAt } from "./searchDays";
-import { alsoFinds, FREE_PHRASES, FREE_WORD, LEFT_OUT, PHRASES } from "./searchWords";
+import { alsoFinds, FREE_PHRASES, FREE_WORD, LEFT_OUT, OWN_WORDS, PHRASES } from "./searchWords";
 
 /** "Salsa Caleña" → "salsa calena": for comparing, never for showing. */
 export function fold(text: string): string {
   return text.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase();
 }
 
-/** A folded text's words: letters and digits ("#12-34" → 12, 34; "@esfera" → esfera; "cha-cha" → cha, cha). */
+/**
+ * A folded text's words: runs of letters, and of digits, so a number is one even joined to letters ("#93A-36" → 93, a,
+ * 36; "la33orquesta" → la, 33, orquesta; "@esfera" → esfera; "cha-cha" → cha, cha).
+ */
 export function wordsOf(folded: string): string[] {
-  return folded.split(/[^a-z0-9]+/).filter(Boolean);
+  return folded.match(/[a-z]+|\d+/g) ?? [];
 }
 
 const LONGEST_PHRASE = Math.max(...[...PHRASES].map((phrase) => phrase.split(" ").length));
 const MIN_STEM = 4; // shorter singulars would start too many words ("dos" → "do")
+const MIN_IN_HANDLE = 5; // shorter words were found in the middle of others ("tour", "and" in @proyectourbandance)
 const ES_PLURAL = /[lrndzjy]$/; // Spanish adds "-es" after these: taller → talleres, social → sociales
 
 /** `word` and the singulars it may be the plural of: "talleres" → taller; "clases" → clase (not "clas"). */
@@ -44,7 +52,7 @@ interface Searchable {
   words: string[];
   /** " word word … ": a whole word or phrase is " it " in here. */
   text: string;
-  /** The handle, folded: also searched inside ("discojaguar.bta"). */
+  /** The handle, folded: names are also searched inside it ("discojaguar.bta"). */
   account: string;
 }
 
@@ -74,10 +82,11 @@ function searchableOf(event: DanceEvent): Searchable {
   return found;
 }
 
-/** One part of a search: a typed word (or its singular) starting one of the event's words, or a whole phrase. */
+/** One part of a search: a typed word starting one of the event's words, a whole word or phrase, a name in the handle. */
 interface Term {
   starts: string[];
   phrases: string[];
+  handle?: string;
 }
 
 /** A search, read: its parts (all needed) and the days it names (any of them). */
@@ -95,10 +104,16 @@ function phraseAt(words: string[], at: number): [string, number] | null {
   return null;
 }
 
-const wordTerm = (word: string): Term => {
+/**
+ * A typed word: found at the start of the event's words; whole when it's a number, a letter (unless it's `alone`: a
+ * search starting) or a singular; inside the handle when it's a name of five letters or more (not one of OWN_WORDS).
+ */
+function wordTerm(word: string, { alone = false } = {}): Term {
+  if (/^\d+$/.test(word) || (word.length === 1 && !alone)) return { starts: [], phrases: [word] };
   const forms = singulars(word);
-  return { starts: forms, phrases: forms.flatMap(alsoFinds) };
-};
+  const name = word.length >= MIN_IN_HANDLE && !forms.some((form) => OWN_WORDS.has(form));
+  return { starts: [word], phrases: [...forms.slice(1), ...forms.flatMap(alsoFinds)], ...(name && { handle: word }) };
+}
 
 /**
  * A search, read: the days it names, known phrases whole ("sin costo", "cha cha cha"), every other word on its own. A
@@ -126,11 +141,11 @@ export function parseQuery(query: string, today: string): Query {
     } else {
       const word = words[at]!;
       if (LEFT_OUT.has(word)) leftOut.push(word);
-      else read.terms.push(wordTerm(word));
+      else read.terms.push(wordTerm(word, { alone: words.length === 1 }));
       at += 1;
     }
   }
-  if (!read.terms.length && !read.days.length) read.terms = leftOut.map(wordTerm);
+  if (!read.terms.length && !read.days.length) read.terms = leftOut.map((word) => wordTerm(word, { alone: true }));
   return read;
 }
 
@@ -144,8 +159,9 @@ function readQuery(query: string, today: string): Query {
 
 function hasTerm(event: Searchable, term: Term): boolean {
   return (
-    term.starts.some((start) => event.account.includes(start) || event.words.some((word) => word.startsWith(start))) ||
-    term.phrases.some((phrase) => event.text.includes(` ${phrase} `))
+    term.starts.some((start) => event.words.some((word) => word.startsWith(start))) ||
+    term.phrases.some((phrase) => event.text.includes(` ${phrase} `)) ||
+    (term.handle !== undefined && event.account.includes(term.handle))
   );
 }
 
