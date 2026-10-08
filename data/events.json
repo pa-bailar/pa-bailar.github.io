@@ -2869,12 +2869,20 @@
     ],
     "contact": "@bilongocolombia",
     "confidence": "medium",
-    "doubts": [
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
+    "doubts": [],
     "id": "homenaje-a-hector-lavoe-y-marc-anthony-7-oct",
     "account": "bilongocolombia",
     "media": [
+      {
+        "post_id": "18115020491079924",
+        "permalink": "https://www.instagram.com/p/DeMu3cKB85M/",
+        "media_type": "IMAGE",
+        "published": "2026-10-07T15:59:40+0000",
+        "flyer": "flyers/18115020491079924-0.webp",
+        "caption": "👀 Que converse bueno, que sepa qué quiere y que no le dé miedo sacar a bailar. 😏\n\nCaé HOY MIÉRCOLES a nuestros tributo a Hector Lavoe y Marc Anthony. 💃🏽\n\nCover 25k\nReservas por DM 📩\n\n#SalsaBogotá #SalsaEnBogotá #SalsaEnVivo #Bilongo",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "17869041087658066",
         "permalink": "https://www.instagram.com/p/DeH3qgDFRMN/",
@@ -3391,6 +3399,16 @@
     "account": "pachanga_y_pochola",
     "media": [
       {
+        "post_id": "18415582924085513",
+        "permalink": "https://www.instagram.com/reel/DeNhvsYxgMx/",
+        "media_type": "VIDEO",
+        "published": "2026-10-07T23:24:45+0000",
+        "flyer": "flyers/18415582924085513-0.webp",
+        "caption": "En Pachanga & Pochola seguimos creando 🔥conexiones que hacen vibrar la pista. Y esta vez, nos unimos con la Academia ritmosacademiadebaile para celebrar una nueva alianza que llega con muchísimo sabor. 🕺🏾🔥\n\nY qué mejor manera de estrenarla que en una noche histórica con issacdelgadoofficial . 🎶🔥🇨🇺 #pachanga #pachangaypochola  #lasalsavuelveabrillar",
+        "preview": "previews/18415582924085513-0.mp4",
+        "slides": null
+      },
+      {
         "post_id": "18125251684893474",
         "permalink": "https://www.instagram.com/reel/DeHhXC1xF8F/",
         "media_type": "VIDEO",
@@ -3398,6 +3416,52 @@
         "flyer": "flyers/18125251684893474-0.webp",
         "caption": "El maestro issacdelgadoofficial tiene un mensaje para ti… ¿Ya lo viste? Este 9 de octubre la salsa se vive en Pachanga & Pochola. 🔥🔥🔥🕺🏾 #lasalsavuelveabrillar  #pachanga",
         "preview": "previews/18125251684893474-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Zafra Orquesta en Casa Quiebra-Canto",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Casa Quiebra-Canto",
+    "venue": "Casa Quiebra-Canto",
+    "address": null,
+    "area": null,
+    "date": "2026-10-09",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Zafra Orquesta"
+    ],
+    "activities": [
+      "concierto de salsa"
+    ],
+    "contact": "@casaquiebracanto",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio",
+      "sin precio"
+    ],
+    "id": "zafra-orquesta-en-casa-quiebra-canto-9-oct",
+    "account": "casaquiebracanto",
+    "media": [
+      {
+        "post_id": "18129257524809157",
+        "permalink": "https://www.instagram.com/p/DeMZyrHxkkY/",
+        "media_type": "IMAGE",
+        "published": "2026-10-07T12:52:50+0000",
+        "flyer": "flyers/18129257524809157-0.webp",
+        "caption": "Salsa es lo que vine para el bailador y el que no también",
+        "preview": null,
         "slides": null
       }
     ],
@@ -3448,6 +3512,52 @@
         "caption": "🌟 Una nueva semana para bailarnos la vida a ritmo de SALSA 🔥💥 Y viene larga y contundente con salsa, Caribe, orquestas en vivo, regalitos para celebrar tu cumpleaños 🎂 y clásicos del repertorio de martes a domingo 😮‍💨\n\nEsta semana en vivo: lacharanganewyork la orquesta insignia de la salsa bogotana ✨; Los Ángeles de Charlie de garciabone01 🎺 ; orquestasoncapital con su noche brava 🌶️; ns.orquesta con lo mejor de la salsa + la música Caribe 🌴 \n\n💿 En el tornamesa suenan los discos de nuestra colección en manos de los djs estrella: johanancines elgordocastillo y Eduardo Moya\n\n¡Nos vemos en todas las sedes de Galeria Café Libro!",
         "preview": null,
         "slides": 13
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Calor que Enamora con Kndela Orquesta",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Tributo Salsa y Jazz",
+    "venue": "Tributo Salsa y Jazz",
+    "address": "Av. Boyacá #64c 97",
+    "area": "Zona 6",
+    "date": "2026-10-09",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "18:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Kndela Orquesta"
+    ],
+    "activities": [
+      "orquesta en vivo",
+      "azotar baldosa"
+    ],
+    "contact": "WhatsApp 3105714824",
+    "confidence": "high",
+    "doubts": [
+      "sin precio"
+    ],
+    "id": "calor-que-enamora-con-kndela-orquesta-9-oct",
+    "account": "tributo.salsayjazz",
+    "media": [
+      {
+        "post_id": "18340245544274860",
+        "permalink": "https://www.instagram.com/p/DeMXoXkHMip/",
+        "media_type": "IMAGE",
+        "published": "2026-10-07T12:33:54+0000",
+        "flyer": "flyers/18340245544274860-0.webp",
+        "caption": "¡LLEGÓ EL VIERNES Y SE SIENTE ESE CALOR QUE ENAMORA! 💃🕺🔥 Porque el fin de semana arranca como se debe, te esperamos en tu casa: ¡Tributo Salsa y Jazz! Este viernes 09 de octubre prepárate para una noche llena de sabrosura, ritmo y buena clave. Ven a disfrutar de un buen trago con tus amigos, alístate para azotar baldosa y déjate encender por el talento y la energía de Kndela Orquesta en vivo. \n\n¡Pura candela para calentar la pista! 🥂🎺🔥 \n📍 Lugar: Av. Boyacá #64c 97 (Zona 6) ⏰ Apertura: 6:00 PM | Orquesta en vivo: 10:00 PM \n📲 Reservas: 310 5714824 \n\n¡Asegura tu mesa antes de que se llene! RESERVA, arma tu parche salsero y nos vemos en la pista para gozar. 👇✨https://wa.me/573105714824",
+        "preview": null,
+        "slides": null
       }
     ],
     "bar": true
@@ -3619,62 +3729,6 @@
     "bar": true
   },
   {
-    "title": "Salsoteca DC - Acere",
-    "event_type": "concert",
-    "is_recurring": false,
-    "styles": [
-      "salsa"
-    ],
-    "organizer": "El Goce Pagano",
-    "venue": "El Goce Pagano",
-    "address": "Diagonal 20A N.0-82",
-    "area": null,
-    "date": "2026-10-10",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "sábado",
-    "start_time": null,
-    "end_time": null,
-    "prices": [],
-    "artists": [
-      "Acere"
-    ],
-    "activities": [
-      "concierto salsero"
-    ],
-    "contact": "WhatsApp 3168710646",
-    "confidence": "high",
-    "doubts": [
-      "sin precio",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
-    "id": "salsoteca-dc-acere-10-oct",
-    "account": "elgocepagano",
-    "media": [
-      {
-        "post_id": "17873536227593859",
-        "permalink": "https://www.instagram.com/p/Dd7mV70jn6J/",
-        "media_type": "CAROUSEL_ALBUM",
-        "published": "2026-10-01T00:15:22+0000",
-        "flyer": "flyers/17873536227593859-1.webp",
-        "caption": "🔥Concierto salsero, en elgocepagano 🔥\nSalsa bogotana, sabor, calle y goce en una sola noche\n\n🕔 Puertas: 6 pm | 🎶 Shows: 11 pm y 1 am\n📍 Diagonal 20A No. 82 – Bogotá\n\n✨🔥¡A bailar!🔥✨\nCover 20k\n#salsaenvivo #salsa\n#concierto #envivo\n#conciertobogota #salsaenbogotá",
-        "preview": null,
-        "slides": 2
-      },
-      {
-        "post_id": "18079187786372305",
-        "permalink": "https://www.instagram.com/reel/Dd7pwCYOCNs/",
-        "media_type": "VIDEO",
-        "published": "2026-10-01T00:45:26+0000",
-        "flyer": "flyers/18079187786372305-0.webp",
-        "caption": "Un mes con eventos inolvidables!",
-        "preview": null,
-        "slides": null
-      }
-    ],
-    "bar": true
-  },
-  {
     "title": "Charanga New York en vivo",
     "event_type": "concert",
     "is_recurring": false,
@@ -3770,6 +3824,52 @@
     "bar": true
   },
   {
+    "title": "Azul Trabuco en Casa Quiebra-Canto",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Casa Quiebra-Canto",
+    "venue": "Casa Quiebra-Canto",
+    "address": null,
+    "area": null,
+    "date": "2026-10-10",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Azul Trabuco"
+    ],
+    "activities": [
+      "concierto de salsa"
+    ],
+    "contact": "@casaquiebracanto",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio",
+      "sin precio"
+    ],
+    "id": "azul-trabuco-en-casa-quiebra-canto-10-oct",
+    "account": "casaquiebracanto",
+    "media": [
+      {
+        "post_id": "18129257524809157",
+        "permalink": "https://www.instagram.com/p/DeMZyrHxkkY/",
+        "media_type": "IMAGE",
+        "published": "2026-10-07T12:52:50+0000",
+        "flyer": "flyers/18129257524809157-0.webp",
+        "caption": "Salsa es lo que vine para el bailador y el que no también",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Tardeo Latino - Edición: Ángeles",
     "event_type": "social",
     "is_recurring": false,
@@ -3788,17 +3888,19 @@
     "end_time": "22:00",
     "prices": [
       {
-        "label": "Preventa",
+        "label": "1ra etapa",
         "amount_cop": 25000,
-        "condition": "limitada"
+        "condition": null
       },
       {
-        "label": "Puerta",
+        "label": "2da etapa",
         "amount_cop": 30000,
         "condition": null
       }
     ],
-    "artists": [],
+    "artists": [
+      "Tumbaqué Orquesta"
+    ],
     "activities": [
       "clase de baile pre fiesta"
     ],
@@ -3808,6 +3910,16 @@
     "id": "tardeo-latino-edicion-angeles-10-oct",
     "account": "bogotadanceclub",
     "media": [
+      {
+        "post_id": "18049951595603676",
+        "permalink": "https://www.instagram.com/p/DeNh4_OOiCm/",
+        "media_type": "IMAGE",
+        "published": "2026-10-07T23:56:40+0000",
+        "flyer": "flyers/18049951595603676-0.webp",
+        "caption": "😇 Este sábado los angelitos también salen de fiesta… y vienen con ganas de conocer gente nueva 🪽🔥\n\nMúsica en vivo, baile y muchas sorpresas durante la noche 😏\n\nNuestra segunda fiesta temática de octubre llega para que vengas con tu parche, o llegues solo y termines haciendo nuevos amigos en la pista 👀 \n\n📢 Comunidad bailadora de 18 a 45 años ✨\n🗓️ Sábado 10 de octubre | 🕒 3PM a 10PM\n📍 Calle 25F # 36-15 – Bogotá Dance Club\n\n🤓 Clase de baile pre fiesta (para romper el hielo 🧊)\n\n💸 1ra etapa: $25.000 \n💵 2da etapa: $30.000\n💰 Taquilla: ???\n(Incluye aureola + clase + 1 bebida)\n\n🪽 Ponte tu aureola, trae tu mejor actitud y prepárate para bailar, conocer gente y vivir una fiesta diferente. Este sábado, nos vemos en la pista 😏💃🏻",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18118799581975237",
         "permalink": "https://www.instagram.com/reel/DeLJkAfOXKz/",
@@ -3870,6 +3982,128 @@
         "caption": "Conoce nuestro repertorio salsero de este fin de semana\n\n📆 Jueves 08 de Octubre\n🎺 Orlando y su sonora\n🎟️ Aporte cultural: 15K\n\n📆 Sábado 10 de Octubre\n🎺 Zafra Son\n🎟️ Aporte cultural: 20K\n\n⏳ Desde las 4 PM\n📍 Carrera 11 #70A-22\n📲 Reserva por WhatsApp: 313 830 8844",
         "preview": null,
         "slides": 4
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "El Tardeo con Banda en Vivo",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "El Ratón Salsa Club",
+    "venue": "El Ratón Salsa Club",
+    "address": "Cra. 14A # 82-14 3er piso",
+    "area": null,
+    "date": "2026-10-10",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "17:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "De 5:00 a 8:00 p. m.",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "tardeo",
+      "salsa en vivo"
+    ],
+    "contact": "@elratonsalsaclub",
+    "confidence": "medium",
+    "doubts": [
+      "no se especifica el nombre de la banda",
+      "no se especifica el precio del cover después de las 8:00 p. m."
+    ],
+    "id": "el-tardeo-con-banda-en-vivo-10-oct",
+    "account": "elratonsalsaclub",
+    "media": [
+      {
+        "post_id": "17969785191171311",
+        "permalink": "https://www.instagram.com/reel/DeMl-vPxxRH/",
+        "media_type": "VIDEO",
+        "published": "2026-10-07T14:40:30+0000",
+        "flyer": "flyers/17969785191171311-0.webp",
+        "caption": "Este sábado vuelve el tardeo. Y viene con ganas de quedarse. 🌇🎶🎺\n\nDe 5:00 a 8:00 p. m. → no cover.\nY a las 10:00 p. m., la banda sale a escena.\n\nSaber dónde empezar el sábado marca toda la diferencia. \n📍Cra. 14A # 82-14 3er piso🐭\n\nReserva en el link de la bio.\n\n#elratonsalsaclub #tardeobogota #salsa  #salsaenvivo #bogotá",
+        "preview": "previews/17969785191171311-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Salsoteca DC - Acere",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "El Goce Pagano",
+    "venue": "El Goce Pagano",
+    "address": "Diagonal 20A N.0-82",
+    "area": null,
+    "date": "2026-10-10",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "17:30",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 20000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Acere"
+    ],
+    "activities": [
+      "concierto salsero"
+    ],
+    "contact": "WhatsApp 3168710646",
+    "confidence": "high",
+    "doubts": [
+      "sin precio"
+    ],
+    "id": "salsoteca-dc-acere-10-oct",
+    "account": "elgocepagano",
+    "media": [
+      {
+        "post_id": "17999747108813618",
+        "permalink": "https://www.instagram.com/p/DeMxlbjDlRB/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-07T16:20:41+0000",
+        "flyer": "flyers/17999747108813618-0.webp",
+        "caption": "🔥Concierto salsero, en elgocepagano 🔥\nSalsa bogotana, sabor, calle y goce en una sola noche\n\n🕔 Puertas: 6 pm | 🎶 Shows: 11 pm y 1 am\n📍 Diagonal 20A No. 82 – Bogotá\n\n✨🔥¡A bailar!🔥✨\nCover 20k\n#salsaenvivo #salsa\n#concierto #envivo\n#conciertobogota #salsaenbogotá",
+        "preview": null,
+        "slides": 2
+      },
+      {
+        "post_id": "17873536227593859",
+        "permalink": "https://www.instagram.com/p/Dd7mV70jn6J/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-01T00:15:22+0000",
+        "flyer": "flyers/17873536227593859-1.webp",
+        "caption": "🔥Concierto salsero, en elgocepagano 🔥\nSalsa bogotana, sabor, calle y goce en una sola noche\n\n🕔 Puertas: 6 pm | 🎶 Shows: 11 pm y 1 am\n📍 Diagonal 20A No. 82 – Bogotá\n\n✨🔥¡A bailar!🔥✨\nCover 20k\n#salsaenvivo #salsa\n#concierto #envivo\n#conciertobogota #salsaenbogotá",
+        "preview": null,
+        "slides": 2
+      },
+      {
+        "post_id": "18079187786372305",
+        "permalink": "https://www.instagram.com/reel/Dd7pwCYOCNs/",
+        "media_type": "VIDEO",
+        "published": "2026-10-01T00:45:26+0000",
+        "flyer": "flyers/18079187786372305-0.webp",
+        "caption": "Un mes con eventos inolvidables!",
+        "preview": null,
+        "slides": null
       }
     ],
     "bar": true
@@ -4482,6 +4716,57 @@
     "bar": false
   },
   {
+    "title": "Zafra Son",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "son",
+      "salsa"
+    ],
+    "organizer": "Salsa Camará",
+    "venue": "Salsa Camará",
+    "address": "Carrera 11 #70A-22",
+    "area": null,
+    "date": "2026-10-11",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "16:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Aporte cultural",
+        "amount_cop": 15000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Zafra Son"
+    ],
+    "activities": [
+      "concierto",
+      "música en vivo"
+    ],
+    "contact": "WhatsApp 3138308844",
+    "confidence": "high",
+    "doubts": [],
+    "id": "zafra-son-11-oct",
+    "account": "salsacamaraoficial",
+    "media": [
+      {
+        "post_id": "18104064211998438",
+        "permalink": "https://www.instagram.com/p/DeNJNBImlj_/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-07T19:47:04+0000",
+        "flyer": "flyers/18104064211998438-0.webp",
+        "caption": "¡El lunes es feriado y el domingo se goza!\n\n📆 Domingo 11 de Octubre\n🎺 Zafra Son\n🎟️ Aporte cultural: 15K\n\n⏳ Desde las 4 PM\n📍 Carrera 11 #70A-22\n📲 Reserva por WhatsApp: 313 830 8844",
+        "preview": null,
+        "slides": 2
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Workshop Pro Fondos: Coreografía",
     "event_type": "workshop",
     "is_recurring": false,
@@ -4551,6 +4836,62 @@
         "flyer": "flyers/18010811948986920-0.webp",
         "caption": "Los invitamos a este plan espectacular, y de paso nos apoyan, se divierten y todos ganamos.",
         "preview": "previews/18010811948986920-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Tardeo ¡Viva Salsa! Social",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "salsa cubana"
+    ],
+    "organizer": "Pachanga y Pochola",
+    "venue": "Pachanga y Pochola",
+    "address": "Calle 73 # 14 / 53",
+    "area": null,
+    "date": "2026-10-11",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "17:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Pre-venta",
+        "amount_cop": 20000,
+        "condition": null
+      },
+      {
+        "label": "Taquilla",
+        "amount_cop": 30000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Fernando España",
+      "Miss Timba"
+    ],
+    "activities": [
+      "duelo de ruedas de casino",
+      "concurso de mejor pareja"
+    ],
+    "contact": "3004506002",
+    "confidence": "high",
+    "doubts": [],
+    "id": "tardeo-viva-salsa-social-11-oct",
+    "account": "fernandoespanadj",
+    "media": [
+      {
+        "post_id": "17905429290568646",
+        "permalink": "https://www.instagram.com/reel/DeMUZyERMsw/",
+        "media_type": "VIDEO",
+        "published": "2026-10-07T12:05:44+0000",
+        "flyer": "flyers/17905429290568646-0.webp",
+        "caption": "Este domingo 11 de Octubre en Pachanga y Pochola, una vez más Miss Timba y Fernando España. Tardeo de Puente y de Salsa Clásica y Contemporánea. Concurso de Ruedas de Casino y mucho amor. Entusiasmo!",
+        "preview": null,
         "slides": null
       }
     ],
@@ -5003,6 +5344,54 @@
         "published": "2026-10-05T19:37:19+0000",
         "flyer": "flyers/18116044484470489-0.webp",
         "caption": "🔥💃 ¡IMPERIO LATINO PRESENTA: TALLER ESPECIAL DE SALSA! 💃🔥\n\nPrepárate para vivir una experiencia llena de técnica, musicalidad, estilo y mucha energía. 🕺✨\n\n⭐ INVITADO ESPECIAL: Mateo Popayán\n📅 Sábado 17 de octubre de 2026\n⏰ 4:30 P. M.\n💰 Valor: $20.000\n📍 Cll 72 No. 80-23, Segundo Piso\n\n🚨 Cupos limitados 🚨\nNo te quedes por fuera de este taller especial y ven a llevar tu salsa a otro nivel. 🔥\n\n📲 Reservas e información: 316 450 1010\n\nImperio Latino Dance Studio\nDonde el ritmo se convierte en pasión. 💛🖤❤️\n\n#ImperioLatino #TallerDeSalsa #Salsa #SalsaColombia #clasedesalsa",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Bachatamania Master League - Competencia Jack & Jill Tercera Sesión",
+    "event_type": "competition",
+    "is_recurring": false,
+    "styles": [
+      "bachata"
+    ],
+    "organizer": "Bachatamania Bogotá",
+    "venue": "Distrito Social",
+    "address": "Cra 29 #68 -18",
+    "area": null,
+    "date": "2026-10-17",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "19:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Inscripción",
+        "amount_cop": 30000,
+        "condition": "hasta el 16 de octubre"
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "competencia Jack & Jill",
+      "clasificación a la final"
+    ],
+    "contact": "appdanza.com",
+    "confidence": "high",
+    "doubts": [],
+    "id": "bachatamania-master-league-competencia-jack-jill-17-oct",
+    "account": "bachatamania_bogota",
+    "media": [
+      {
+        "post_id": "18144786601596399",
+        "permalink": "https://www.instagram.com/p/DeMm9Mjg-DK/",
+        "media_type": "IMAGE",
+        "published": "2026-10-07T14:47:52+0000",
+        "flyer": "flyers/18144786601596399-0.webp",
+        "caption": "Master League 🔥\n\nÚltima sesión de nuestra competencia para clasificar a la final 🥳🥳🥳\n\nPon a prueba tus habilidades y destrezas en esta competencia Jack and Jill y asegura tu pase a la final que se realizará en el Aniversario de Distrito Social 🤩\n\nRecuerda todos nuestros premios, desde dinero acumulado hasta talleristas y pases a congresos 🤯\n\nInscríbete a la competencia hasta el 16 de Octubre\n\n🗓️ 17 de Octubre\n🕖 7 PM\n📍 Distrito Social\n\nReserva en nuestra web:\n\nAppdanza.com",
         "preview": null,
         "slides": null
       }
@@ -6584,6 +6973,58 @@
     "bar": false
   },
   {
+    "title": "La Miniteca de El Panteón de la Salsa Vol. 14",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "otro"
+    ],
+    "organizer": "El Panteón de la Salsa",
+    "venue": "El Panteón de la Salsa",
+    "address": "Carrera 71D No. 2A - 13 Sur, Piso 2",
+    "area": "Plaza de las Américas",
+    "date": "2026-11-01",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "20:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 10000,
+        "condition": "Consumo mínimo"
+      }
+    ],
+    "artists": [
+      "Oscar Cortes",
+      "Raul Cajiao"
+    ],
+    "activities": [
+      "Música de los años 70s, 80s y 90s",
+      "Show sorpresa"
+    ],
+    "contact": "@el_panteon_de_la_salsa",
+    "confidence": "high",
+    "doubts": [],
+    "id": "la-miniteca-de-el-panteon-de-la-salsa-vol-14-1-nov",
+    "account": "el_panteon_de_la_salsa",
+    "media": [
+      {
+        "post_id": "17894898411674762",
+        "permalink": "https://www.instagram.com/reel/DeM8T4HA5Xp/",
+        "media_type": "VIDEO",
+        "published": "2026-10-07T17:57:18+0000",
+        "flyer": "flyers/17894898411674762-0.webp",
+        "caption": "regresa la #miniteca de El Panteón de la Salsa\nRecordando las mejores rumbas de los #70s  #80s  y #90s \nProgramando  raulcajiao & oscar.j.cortes.3 \n#notelopuedesperder",
+        "preview": "previews/17894898411674762-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Concierto",
     "event_type": "concert",
     "is_recurring": false,
@@ -6775,12 +7216,12 @@
     "end_time": null,
     "prices": [
       {
-        "label": "persona",
+        "label": "Por persona",
         "amount_cop": 160000,
         "condition": null
       },
       {
-        "label": "parejas",
+        "label": "Parejas",
         "amount_cop": 280000,
         "condition": null
       }
@@ -6797,6 +7238,16 @@
     "id": "intensivo-2026-4-0-salsa-en-linea-8-nov",
     "account": "frank.de.latorre",
     "media": [
+      {
+        "post_id": "17947877313339984",
+        "permalink": "https://www.instagram.com/p/DeNasUDvTfG/",
+        "media_type": "IMAGE",
+        "published": "2026-10-07T22:21:31+0000",
+        "flyer": "flyers/17947877313339984-0.webp",
+        "caption": "🔥 ¡REGRESA NUESTRO INTENSIVO! 🔥\n\n4 sesiones para seguir desarrollando tu baile, conexión y trabajo en pareja. 🕺🏻💃🏻\n\nUna experiencia de Salsa en Línea ON1 en parejas, pensada para quienes quieren bailar, aprender y llevar su partnerwork a otro nivel.\n\n📅 8, 22 y 29 de noviembre + 6 de diciembre\n📍 ilé Danza\n💰 $160.000 por persona\n👫 $280.000 por pareja\n\nSon 4 encuentros para entrenar, compartir y disfrutar del proceso. ❤️‍🔥\n\n¿Vienes solo/a? ¡También puedes participar! La dinámica está pensada para que puedas bailar y aprovechar la experiencia.\n\n📲 Reserva tu cupo al 301 625 6707.\n\n⚠️ Cupos limitados.\n\nGuarda las fechas, arma tu pareja y nos vemos en la pista. 🔥\n\nY tú? Ya has estado en los anteriores?",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "story-8ccbeb9e2cbbba06",
         "permalink": "https://www.instagram.com/frank.de.latorre/",
@@ -7130,6 +7581,16 @@
     "id": "jack-and-jill-20-nov",
     "account": "jackandjilloficial",
     "media": [
+      {
+        "post_id": "18494005900106895",
+        "permalink": "https://www.instagram.com/p/DeMlmrgSxay/",
+        "media_type": "IMAGE",
+        "published": "2026-10-07T14:37:10+0000",
+        "flyer": "flyers/18494005900106895-0.webp",
+        "caption": "MANCHO OSORIO\n\nBailarín de urbano con amplia experiencia como juez en el campo de la improvisación. 🔥\n\nSu talento, energía y experiencia le pondrán el picante a nuestra edición 2026.",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18124635425491831",
         "permalink": "https://www.instagram.com/p/DeIY2bFyGXz/",
