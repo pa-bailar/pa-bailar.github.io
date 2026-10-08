@@ -327,10 +327,11 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
   modal: their Guardar turns "Guardado". (`scripts/views/notice.ts`, `saveNotice.ts`, `lib/saveNotice.ts`.)
   - **The notice** (`notice.css`): the surface, a border and the menus' shadow; over every layer of the page, the side
     panel and the image beside it included (`--z-notice`; under the image its button couldn't be clicked: the bug hunt
-    of 7 Oct 2026), never over a modal; one at a time, a new one replacing the
-    last; held while the mouse or the keyboard's focus is on it (time to reach its button), not by a finger's tap;
-    it rises a little as it comes, and just appears with reduced motion. A live region always in the page, empty
-    between notices, so screen readers hear each one.
+    of 7 Oct 2026), never over a modal; searching on a phone with the keyboard up, it rises with the bar, just above
+    the field (on an iPhone a bookmark tapped in the results leaves the keyboard up, and the notice sat behind it: the
+    bug hunt of 7 Oct 2026); one at a time, a new one replacing the last; held while the mouse or the keyboard's
+    focus is on it (time to reach its button), not by a finger's tap; it rises a little as it comes, and just appears
+    with reduced motion. A live region always in the page, empty between notices, so screen readers hear each one.
   - **Deshacer from the keyboard: Ctrl+Z** (⌘Z on a Mac) while its notice is up, as in Gmail or Drive (its button
     carries `aria-keyshortcuts`). The notice is far in Tab's order (from the details' Guardado, 14 Shift+Tabs, and gone
     after its 4 seconds: the bug hunt of 7 Oct 2026); taking the focus to it instead would pull the visitor away from

@@ -46,6 +46,13 @@
   flex: none;
 }
 
+/* Searching on a phone, the keyboard up: just above the bar, which rises over the keyboard (--keyboard-inset, from
+   bottomNav.ts; the home indicator is then under the keyboard). Before, it sat behind the keyboard on an iPhone, where
+   a bookmark tapped in the results leaves the keyboard up (the bug hunt of 7 Oct 2026). */
+:root:has(.bottom-nav.is-lifted) .notice {
+  bottom: calc(var(--space-3) + var(--keyboard-inset) + var(--bottom-nav-height));
+}
+
 @media (min-width: 720px) {
   .notice {
     right: auto;

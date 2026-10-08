@@ -107,6 +107,16 @@ describe("the notice's element (notice.css, Notice.astro)", () => {
     for (const other of others) expect(layer("z-notice")).toBeGreaterThan(layer(other));
   });
 
+  // Searching on an iPhone, a bookmark tapped in the results leaves the keyboard up (the button takes no focus), and the
+  // notice sat behind it, at the bottom of the page under the keyboard (the bug hunt of 7 Oct 2026).
+  it("rises with the bar over the keyboard while searching on a phone", () => {
+    const lifted = css.slice(css.indexOf(":root:has(.bottom-nav.is-lifted) .notice {"));
+    expect(lifted.slice(0, lifted.indexOf("}"))).toMatch(/bottom:[^;]*var\(--keyboard-inset\)/);
+    // The page's inset, not only the bar's: the notice isn't inside the bar.
+    const bottomNav = readFileSync(new URL("../src/scripts/views/bottomNav.ts", import.meta.url), "utf8");
+    expect(bottomNav).toContain('document.documentElement.style.setProperty("--keyboard-inset"');
+  });
+
   it("rises only for visitors who allow motion", () => {
     const allowed = css.slice(css.indexOf("@media (prefers-reduced-motion: no-preference)"));
     const outside = css.replace(allowed.slice(0, allowed.indexOf("}\n}") + 3), "");

@@ -163,12 +163,16 @@ let watching = false;
 let lastInset = 0;
 let onKeyboardHidden: () => void = () => {};
 
-/** Puts the bar right above the keyboard while the field has the focus (none otherwise). */
+/**
+ * Puts the bar right above the keyboard while the field has the focus (none otherwise). The inset is the page's, so a
+ * notice rises with the bar (notice.css): an iPhone keeps the keyboard up when a bookmark is tapped in the results
+ * (the tapped button doesn't take the focus), and "Guardado" sat behind it (the bug hunt of 7 Oct 2026).
+ */
 function placeAboveKeyboard() {
   const bar = nav();
   const focused = document.activeElement === field();
   const inset = focused ? keyboardInset(document.documentElement.clientHeight, window.visualViewport) : 0;
-  bar.style.setProperty("--keyboard-inset", `${inset}px`);
+  document.documentElement.style.setProperty("--keyboard-inset", `${inset}px`);
   bar.classList.toggle("is-lifted", inset > 0);
   const hid = focused && keyboardJustHid(lastInset, inset);
   lastInset = inset;
