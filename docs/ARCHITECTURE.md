@@ -544,7 +544,9 @@ stateDiagram-v2
   it, through the button's own click); the install reminder after a second save is the same notice (`offerAfterSaving`).
 - **What's kept in this browser** (localStorage, each read and written inside `try`, so blocked storage only means it
   lasts for the visit): `theme`, `saved-events`, `hide-bars`, things shown once (`lib/onceFlag.ts`) and the install
-  offer's state (`lib/storedValue.ts`, `lib/storedSwitch.ts`).
+  offer's state (`lib/storedValue.ts`, `lib/storedSwitch.ts`). What storage couldn't keep is held in memory for the
+  rest of the visit (`storedValue`, the base of `storedSwitch`, and `onceFlag`): without it, the install banner's ×
+  did nothing with storage blocked (the bug hunt of 7 Oct 2026).
 - **Search** (`lib/search.ts`) runs on the events already in the page, accent-insensitive: every word found at the start of one of the event's words (or inside its handle), plurals finding their singular, a visitor's Spanish finding the site's words (`lib/searchWords.ts`: "clase" → the workshops, "milonga" → tango, "sin costo" → free), and days found by date (`lib/searchDays.ts`: "hoy", "sábado", "este finde", "15 de octubre", "festivo"; an event's days from today are `lib/dates.ts` `daysFrom`, shared with "Cuándo").
   On phones its field is the bar at the bottom (`views/bottomNav.ts`): Buscar opens it with a history entry of its
   own, an overlay over the screen's state (`searchHistory`): back or × leaves it and clears the search, Enter leaves

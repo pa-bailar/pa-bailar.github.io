@@ -40,6 +40,14 @@ describe("something shown once (the first visit's pulse on Detalles)", () => {
     expect(() => flag.mark()).not.toThrow();
   });
 
+  it("storage that reads but can't write: once marked, it's seen for the rest of the visit", () => {
+    const storage = { ...memoryStorage(), setItem: () => broken.setItem() };
+    const flag = onceFlag("details-hint-seen", () => storage);
+    expect(flag.seen()).toBe(false);
+    flag.mark();
+    expect(flag.seen()).toBe(true);
+  });
+
   it("no localStorage at all (outside a browser) is the same", () => {
     const flag = onceFlag("details-hint-seen");
     expect(flag.seen()).toBe(true);
