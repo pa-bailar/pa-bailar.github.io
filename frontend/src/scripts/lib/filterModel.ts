@@ -259,13 +259,19 @@ export function summaryLine(model: FilterModel, state: AppState): { count: strin
 }
 
 /**
- * The sheet's button: "Ver 12 eventos", "Ver 1 evento", or, disabled, what to change: "Sin eventos: cambia la
- * búsqueda" when the search alone finds nothing (no filter would help: the bug hunt of 7 Oct 2026, the sheet blamed
- * the filters), else "Sin eventos: cambia los filtros".
+ * The sheet's button: "Ver 12 eventos", "Ver 1 evento", or, disabled, what to change: "Sin eventos: cambia los
+ * filtros" when the search alone finds some, "Sin eventos: cambia la búsqueda" when the `query` finds nothing (no
+ * filter would help: the bug hunt of 7 Oct 2026, the sheet blamed the filters), and just "Sin eventos" without a
+ * search, in a view with none at all (a month without events: the code-quality pass of 8 Oct 2026, the sheet blamed a
+ * search that wasn't there).
  */
-export function resultsButtonLabel({ shown, searched }: Pick<FilterModel, "shown" | "searched">): string {
+export function resultsButtonLabel(
+  { shown, searched }: Pick<FilterModel, "shown" | "searched">,
+  query: string,
+): string {
   if (shown) return `Ver ${eventCountLabel(shown)}`;
-  return searched ? "Sin eventos: cambia los filtros" : "Sin eventos: cambia la búsqueda";
+  if (searched) return "Sin eventos: cambia los filtros";
+  return query.trim() ? "Sin eventos: cambia la búsqueda" : "Sin eventos";
 }
 
 /**

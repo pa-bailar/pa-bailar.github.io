@@ -247,14 +247,16 @@ function cardDayLabel(iso: string, today: string): string {
  * A workshop series on its card, by its next session: within a week like any event, with which session it is ("Hoy ·
  * 2:00 p. m. · sesión 2 de 4", "Mañana · …", "Domingo · …"); further away, "4 sesiones · próxima: dom 22 nov"; once
  * every session has passed, "4 sesiones · 8 nov – 6 dic". Listed under another session (`listed`: a day searched, a
- * date chosen, the calendar's day, a past one too), that one, like any event ("Domingo 29 nov. · 2:00 p. m. · sesión
- * 3 de 4"): the bug hunt of 7 Oct 2026, a card under "Este fin de semana" said "Hoy · sesión 1 de 2".
+ * date chosen, the calendar's day, a past one too, even once all have passed), that one, like any event ("Domingo 29
+ * nov. · 2:00 p. m. · sesión 3 de 4"): the bug hunt of 7 Oct 2026, a card under "Este fin de semana" said "Hoy · sesión
+ * 1 de 2"; the code-quality pass of 8 Oct 2026, a finished series' card on its first day said its span by a "07 OCT".
  */
 function seriesWhenLabel(event: DanceEvent & { sessions: Session[] }, today: string, listed?: string): string {
   const { sessions } = event;
   const next = nextSession(event, today);
   const count = `${sessions.length} sesiones`;
-  if (!next) return `${count} · ${spanLabel(sessions[0]!.date, sessions.at(-1)!.date)}`;
+  const isListed = sessions.some((session) => session.date === listed);
+  if (!next && !isListed) return `${count} · ${spanLabel(sessions[0]!.date, sessions.at(-1)!.date)}`;
   const shown = shownSession(event, today, listed);
   if (shown === next && daysBetween(today, next.date) >= 7) return `${count} · próxima: ${sessionDayLabel(next.date)}`;
   const which = `sesión ${sessions.indexOf(shown) + 1} de ${sessions.length}`;

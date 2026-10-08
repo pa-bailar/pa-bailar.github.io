@@ -265,6 +265,11 @@ describe("a series on its card and in its details", () => {
     expect(stickerDate(habitar, "2026-10-09", "2026-10-07")).toEqual({ day: "07", month: "OCT", range: false });
     expect(cardWhenLabel(habitar, "2026-10-09")).toBe("Hoy · 10:00 a. m. · sesión 2 de 2"); // not listed: its next
     expect(stickerDate(series, "2026-12-07", "2026-11-22")).toEqual({ day: "22", month: "NOV", range: false }); // all past
+    // Once every session has passed too: the day's session, as its sticker says, not the span (the code-quality pass
+    // of 8 Oct 2026: "2 sesiones · 7–9 oct" by a "07 OCT").
+    expect(cardWhenLabel(habitar, "2026-10-10", "2026-10-07")).toMatch(/^Miércoles 7 .*oct.* · 10:00 a\. m\. · sesión 1 de 2$/);
+    expect(cardWhenLabel(series, "2026-12-07", "2026-11-22")).toMatch(/^Domingo 22 .*nov.* · 2:00 p\. m\. · sesión 2 de 4$/);
+    expect(cardWhenLabel(habitar, "2026-10-10")).toMatch(/^2 sesiones · /); // not listed: its span, as before
     on("2026-10-09");
     const card = eventCardGridHtml([habitar], () => "2026-10-07");
     expect(card).toContain("<b>07</b><small>OCT</small>");

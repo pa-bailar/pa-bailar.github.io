@@ -232,7 +232,8 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves: the pa
   Listed under another session (a day searched, a date chosen in "Cuándo", the calendar's day), its card and sticker say
   that one, not the next (the bug hunt of 7 Oct 2026: "Hoy · sesión 1 de 2" under "Este fin de semana"); a past one
   too, on the calendar's days gone by (the bug-squash pass of 8 Oct 2026: "Hoy · sesión 2 de 2" under Wednesday's
-  heading).
+  heading), even once every session has passed (the code-quality pass of 8 Oct 2026: "2 sesiones · 7–9 oct" by a
+  "07 OCT" sticker).
   The detail's "Cuándo" reads "4 sesiones: 8, 22, 29 nov y 6 dic · 2:00 p. m. – 5:00 p. m." ("horario de cada sesión
   abajo" when their times differ), and shared texts the same; a period's shared list gives its next session.
 - **Every @account is one link** (`lib/accountLink.ts`; `tests/accountLink.test.ts` fails on any other instagram.com profile link): wherever an account shows (card, details, Contacto, the footer's sources), it opens the profile inside the site, in the media viewer with Instagram's profile embed (`openProfileViewer` in `views/postViewer.ts`); a new tab still gets Instagram. Not a filter to the account: the owner dropped that on 4 October 2026 (an academy rarely has several events at once, and people expected its Instagram); not Instagram's app either, whose back button leaves the site.
@@ -535,8 +536,9 @@ the list stays short there and summarizes what's further away (`scripts/views/up
   - **Groups:** **Fecha** · *elige una o varias* (every period and month), **Tipo de evento** (several too), **Ritmo** · *elige uno o varios* (under their families, see "Filters"). Each option with its count ("Noviembre 2"); the ones with nothing to show dimmed. First, above them, the "Ocultar eventos de bares" switch (see "Filters", "Hiding the bars").
   - **"Ver 12 eventos"** stays at the bottom (the primary button): "Ver 1 evento", or, disabled, what to change:
     "Sin eventos: cambia los filtros", or "Sin eventos: cambia la búsqueda" when the search alone finds nothing (no
-    filter would help; the bug hunt of 7 Oct 2026: it blamed the filters). It closes the sheet; choices apply at once,
-    there's no apply step.
+    filter would help; the bug hunt of 7 Oct 2026: it blamed the filters), or just "Sin eventos" with no search in a
+    view with none at all, a month without events (the code-quality pass of 8 Oct 2026: it blamed a search that
+    wasn't there). It closes the sheet; choices apply at once, there's no apply step.
   - **Closing:** ×, a drag down, the backdrop, Escape, back. The focus goes back to Filtros.
   - **In the calendar:** Fecha says "En el calendario eliges el día en el mes."
 
