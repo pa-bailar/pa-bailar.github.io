@@ -1,17 +1,21 @@
 // Keeping the keyboard's focus through a redraw: the views draw their controls again as HTML strings (render() in
 // main.ts), so the control that had the focus is a new element afterwards. It's found again by what it is.
 
+import { CARD_LINK } from "./cards";
+
 /**
  * The control that had the focus, as a selector for the same control once it's drawn again: a filter chip, a
- * calendar day, Filtros, "Cuándo" (and its options), a pill of the toolbar.
+ * calendar day, Filtros, "Cuándo" (and its options), a pill of the toolbar, an event's card (its link, the card's one
+ * Tab stop: Ctrl+Z in Guardados drew the cards again, and the focus fell to the page; the bug-squash pass of 8 Oct 2026).
  */
 export function focusSelector(element: Element | null): string | null {
   if (!(element instanceof HTMLElement)) return null;
-  const { filter, value, day, pill, when } = element.dataset;
+  const { filter, value, day, pill, when, event } = element.dataset;
   if (filter && value !== undefined) return `[data-filter="${CSS.escape(filter)}"][data-value="${CSS.escape(value)}"]`;
   if (day) return `[data-day="${CSS.escape(day)}"]`;
   if (pill) return `[data-pill="${CSS.escape(pill)}"]`;
   if (when !== undefined) return `[data-when="${CSS.escape(when)}"]`;
+  if (event && element.matches(CARD_LINK)) return `${CARD_LINK}[data-event="${CSS.escape(event)}"]`;
   if (element.matches("[data-open-filters]")) return "[data-open-filters]";
   if (element.matches("[data-when-open]")) return "[data-when-open]";
   return null;

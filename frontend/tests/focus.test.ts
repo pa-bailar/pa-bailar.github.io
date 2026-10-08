@@ -1,10 +1,49 @@
 // Keeping the keyboard's focus through a redraw (lib/focus.ts).
 import { readFileSync } from "node:fs";
-import { describe, expect, it, vi } from "vitest";
-import { refocus } from "../src/scripts/lib/focus";
+import { afterEach, describe, expect, it, vi } from "vitest";
+import { focusSelector, refocus } from "../src/scripts/lib/focus";
 
 /** A control as refocus sees it: laid out or not (a closed panel's), and its focus. */
 const control = (laidOut: boolean) => ({ getClientRects: () => (laidOut ? [{}] : []), focus: vi.fn() });
+
+/** The page's elements, as focusSelector reads them: their data-* and what they match. */
+class FakeElement {
+  constructor(
+    readonly dataset: Record<string, string>,
+    private readonly selectors: string[] = [],
+  ) {}
+  matches(selector: string) {
+    return this.selectors.includes(selector);
+  }
+}
+
+afterEach(() => {
+  vi.unstubAllGlobals();
+});
+
+describe("focusSelector (lib/focus.ts)", () => {
+  const selectorOf = (element: FakeElement) => {
+    vi.stubGlobal("HTMLElement", FakeElement);
+    vi.stubGlobal("CSS", { escape: (text: string) => text });
+    return focusSelector(element as unknown as Element);
+  };
+
+  it("names the controls a redraw draws again", () => {
+    expect(selectorOf(new FakeElement({ filter: "types", value: "party" }))).toBe('[data-filter="types"][data-value="party"]');
+    expect(selectorOf(new FakeElement({ day: "2026-10-10" }))).toBe('[data-day="2026-10-10"]');
+    expect(selectorOf(new FakeElement({}))).toBeNull();
+  });
+
+  // The bug-squash pass of 8 Oct 2026: in Guardados, Escape after unsaving from the side panel left the focus on the
+  // card that took its place; Ctrl+Z (Deshacer) then drew Guardados again, and the focus fell to the page: the next Tab
+  // started over from the top.
+  it("an event's card (its link, the card's one Tab stop): the same event's card, drawn again", () => {
+    const link = new FakeElement({ event: "social-24-oct" }, ["a.event-card__hit"]);
+    expect(selectorOf(link)).toBe('a.event-card__hit[data-event="social-24-oct"]');
+    const details = new FakeElement({ event: "social-24-oct", source: "boton" }); // its "Detalles": no Tab stop
+    expect(selectorOf(details)).toBeNull();
+  });
+});
 
 describe("refocus (lib/focus.ts)", () => {
   // The bug-squash pass of 8 Oct 2026: a type chosen in the phone's pinned bar mid-list (Chrome focuses a tapped
