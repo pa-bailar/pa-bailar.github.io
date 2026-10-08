@@ -391,10 +391,11 @@ the list stays short there and summarizes what's further away (`scripts/views/up
 ## Phones: feed, jump bar, the bar at the bottom and filter sheet
 
 - **Feed like Instagram:** under 720px each event is a full-width post, the flyer edge to edge at full size and the details right below, separated by space instead of boxed cards. Nothing is shrunk into thumbnails.
-- **Jump bar** (`JumpBar.astro`, `scripts/views/jumpBar.ts`): one slim row pinned to the top, modeled on the filter bars of Google Maps and Airbnb: one row of chips that scrolls sideways: **[Social ×] [Sin bares ×] [🕒 ▾] | [Salsa] [Bachata] [Urbano] [Tango]** ("Cuándo" and the chips: see "Filters"). Search, Guardados and Filtros live in the bar at the bottom (the owner, 5 October 2026: in this row the filters' count scrolled sideways with the chips).
+- **Jump bar** (`JumpBar.astro`, `scripts/views/jumpBar.ts`): one slim row pinned to the top, modeled on the filter bars of Google Maps and Airbnb: one row of chips that scrolls sideways: **[🕒 ▾] | [Social] [Rumba] [Taller] [Concierto] …**, the types in view in the owner's order (8 October 2026; the rhythms are in the Filtros sheet) ("Cuándo" and the chips: see "Filters"). Search, Guardados and Filtros live in the bar at the bottom (the owner, 5 October 2026: in this row the filters' count scrolled sideways with the chips).
   - **The row runs to the screen's edge** and fades there, so the next chip peeks and it reads as a row that scrolls (Material's single-line chip group). It keeps where it was scrolled while choosing, unless a new choice would be out of sight: then it scrolls just enough to show it.
-  - **The choices made in the sheet** that have no chip of their own come first, removable ("Social ×", "Sin bares ×"),
-    so what's on stays in sight.
+  - **The row is always the same controls:** Cuándo, then the types. A choice made in the sheet without a chip of
+    its own (a rhythm, "Sin bares") shows in the sheet and in the line under the bar, never as a chip in the row: chosen
+    ones pushed Cuándo and the chips out of sight (the owner, 8 October 2026).
   - **The line under it** ("12 eventos · Finde, Salsa" and "× Limpiar"), only while filtering: see "Filters".
   - **Keeping your place:** when a filter changes while you're inside the list, the period you were reading stays right under the bar; if the filter removed it, the next period (else the previous one) takes its place (`captureListPosition`).
   - **Pinned, never hidden:** the filters are at hand anywhere in the list (not hidden while scrolling down: the owner
@@ -456,12 +457,12 @@ screens in the toolbar's pills and their panels:
 | Group | Choices | Options | In the phone bar |
 |---|---|---|---|
 | Fecha | several (the bar's "Cuándo": one) | each period of the list with something on ("Hoy", "Esta semana", "Este fin de semana", "Próxima semana", "Más adelante en octubre", each month, each year), and "Mañana" right after "Hoy" when something is on tomorrow | "🕒 ▾" (Cuándo): a menu with every one |
-| Ritmo | several | each rhythm ("Salsa" includes its variants), under its family | Salsa · Bachata · Urbano · Tango, always (the owner's choice) |
-| Tipo de evento | several | each event type | from the sheet |
+| Tipo de evento | several | each type in view, in the owner's order: Social, Rumba, Taller, then Concierto, Festival, Congreso, Competencia, Show, Otro | each type in view, the same order (the owner, 8 October 2026) |
+| Ritmo | several | each rhythm ("Salsa" includes its variants), under its family; Salsa, Bachata, Urbano and Tango always | from the sheet (in the bar until 8 October 2026) |
 
 - **One tap chooses, another unchooses.** A chosen chip takes the selected-chip colors with an ×; tapping it again (or
-  its × anywhere) removes it. Choices made in the sheet that have no chip of their own in the bar show first in the row
-  as removable chips: "Social ×", "Kizomba ×" (never a date: "Cuándo" shows those).
+  its × anywhere) removes it. Choices made in the sheet that have no chip of their own in the bar (a rhythm, "Sin
+  bares") show in the sheet and in the line under the bar ("12 eventos · Kizomba"), never as chips in the row.
 - **Dates look like what they are: "Cuándo" (`views/whenMenu.ts`).** Not chips like the rhythms (they read as the same
   kind of thing): in the bar dates are one control, the pattern of Google Maps' chips with a ▾:
   - **The chip:** "🕒 ▾", named "Cuándo: Cualquier fecha" (a clock, not a calendar, which is Calendario's icon: the
@@ -486,7 +487,7 @@ screens in the toolbar's pills and their panels:
   - **Urbanos:** urbano, dancehall, afro, heels
   - **Otros:** merengue, son, champeta, tango, swing, kizomba, zouk, "Otros ritmos"
 
-  Within a family the rhythms keep the filters' order (the bar's four first, then by how many events in view have
+  Within a family the rhythms keep the filters' order (the main four first: Salsa, Bachata, Urbano, Tango; then by how many events in view have
   them, "Otros ritmos" last); an empty family isn't shown. Every rhythm of the data contract is in exactly one family
   (`tests/styleFamilies.test.ts`); an unknown one goes with Otros. The owner turned down "Otros de pareja" and
   "Latinos y caribe" (salsa and bachata are Latin too). "Salsa" still includes its variants, and **the phone bar's
@@ -514,8 +515,8 @@ screens in the toolbar's pills and their panels:
     screen readers (`barsSwitchHtml`, `role="switch"`).
   - **Wide screens:** "Ocultar bares", a toggle chip at the end of the pills' row.
   - **While on**, the bars' events are gone wherever the filters apply: the list, the calendar, search, every option's
-    count and "Ver 12 eventos" (not Guardados, which has no filters). It **counts one** on Filtros' badge, shows as
-    **"Sin bares ×"** in the row (a tap shows them again) and in the line under the bar ("37 eventos · Sin bares").
+    count and "Ver 12 eventos" (not Guardados, which has no filters). It **counts one** on Filtros' badge and shows in
+    the line under the bar ("37 eventos · Sin bares"); the sheet's switch turns it off.
     Off, nothing shows anywhere but the switch.
   - **Remembered** on that device (`localStorage`, key `hide-bars`, `1` while on; nothing while off). Where storage is
     blocked it works for the visit. The only filter that is remembered: it's a preference about what the visitor wants
@@ -537,7 +538,8 @@ screens in the toolbar's pills and their panels:
 - **Wide screens (the toolbar, from 720px wide and 600px tall, tablets included): dropdown pills** (the owner, 5 October
   2026; rows of identical chips made the kinds read as one). As on Meetup, Google Flights and Airbnb, the tabs and the
   search field keep their row, and under it (not in Guardados) **one row of pills**: **[🕒 Cuándo ▾]** (the list only)
-  **[Ritmo ▾] [Tipo ▾]** and the toggle chip **"Ocultar bares"** (`views/filters.ts` draws them,
+  **[Tipo ▾] [Ritmo ▾]** (the types first, as in the phone's bar: the owner, 8 October 2026) and the toggle chip
+  **"Ocultar bares"** (`views/filters.ts` draws them,
   `views/filterPanels.ts` opens their panels).
   - **A pill** with something chosen says how many: "Ritmo · 2", "Tipo · 1"; Cuándo says the date, as the phone bar's
     ("🕒 Finde", "🕒 Hoy +1").

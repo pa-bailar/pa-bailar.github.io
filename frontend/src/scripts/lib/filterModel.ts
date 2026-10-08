@@ -19,8 +19,23 @@ import {
   styleMatches,
 } from "../state";
 
-/** The rhythm chips in the bar: always these four, in this order (the owner's choice), dimmed when there's none. */
-export const QUICK_STYLES = ["salsa", "bachata", "urbano", "tango"];
+/** The main rhythms: always in the sheet and the Ritmo panel, first in their families, dimmed when there's none. The
+ * bar's chips until 8 Oct 2026, when the bar took the types (the owner: the rhythms stay in the Filtros menu). */
+export const MAIN_STYLES = ["salsa", "bachata", "urbano", "tango"];
+
+/** The types in the owner's order (8 Oct 2026: socials, then rumbas, then workshops; the rest after): the bar's
+ * chips, the sheet's and the Tipo panel's. */
+export const TYPE_ORDER: EventType[] = [
+  "social",
+  "party",
+  "workshop",
+  "concert",
+  "festival",
+  "congress",
+  "competition",
+  "show",
+  "other",
+];
 
 export interface FilterOption {
   group: FilterGroup;
@@ -82,15 +97,13 @@ export interface FilterPill {
 
 export interface FilterModel {
   dates: FilterOption[]; // every period with something on (none in the calendar), in order
-  styles: FilterOption[]; // the bar's four first, then most frequent first, "Otros ritmos" last
+  styles: FilterOption[]; // the main four first, then most frequent first, "Otros ritmos" last
   styleGroups: FamilyGroup<FilterOption>[]; // the same rhythms under their families (the sheet, the Ritmo panel)
-  types: FilterOption[]; // most frequent first
+  types: FilterOption[]; // the view's types (and any chosen), in TYPE_ORDER: the bar's chips, the sheet's, the panel's
   when: WhenModel | null; // the bar's "Cuándo" (null in the calendar)
-  quickStyles: FilterOption[]; // the bar's rhythm chips
-  pills: FilterPill[]; // wide screens: Cuándo (the list, with dates), Ritmo, Tipo
+  pills: FilterPill[]; // wide screens: Cuándo (the list, with dates), Tipo, Ritmo
   hideBars: boolean; // "Ocultar eventos de bares" is on (the sheet's switch, the toolbar's chip)
   applied: AppliedFilter[]; // every choice: dates, rhythms, types, and "Sin bares" while the bars are hidden
-  extra: AppliedFilter[]; // those without a chip of their own in the bar
   active: number; // Filtros' badge (the bar at the bottom): every choice (hiding the bars counts one)
   shown: number; // events the view shows with every filter on (the list, or the calendar's month)
 }
@@ -130,22 +143,25 @@ export function filterModel(events: DanceEvent[], state: AppState, today = today
   const inView = eventsInView(events, state);
   const without = (group: FilterGroup) => inView.filter((event) => matchesFilters(event, state, group));
 
-  // Rhythms in a stable order, so they never jump while filtering: the bar's four first, then the others by how
-  // many events in view have them (not counting the filters), "Otros ritmos" last.
+  // Rhythms in a stable order, so they never jump while filtering: the main four first, then the others by how many
+  // events in view have them (not counting the filters), "Otros ritmos" last.
   const withoutStyles = without("styles");
   const styleValues = [
-    ...new Set([...QUICK_STYLES, ...rankedStyles(inView).map((item) => item.style), ...state.styles]),
+    ...new Set([...MAIN_STYLES, ...rankedStyles(inView).map((item) => item.style), ...state.styles]),
   ].sort((a, b) => Number(a === OTHER_STYLE) - Number(b === OTHER_STYLE));
   const styles = styleValues.map((style) => {
     const count = withoutStyles.filter((event) => event.styles.some((item) => styleMatches(item, style))).length;
     return option("styles", style, styleLabel(style), styleLabel(style), count, state.styles.includes(style));
   });
 
+  // Types in the owner's order, the view's own (before the filters, so none comes or goes while choosing) and any
+  // chosen; dimmed in place when the other filters leave none.
   const withoutTypes = without("types");
   const typeCount = (type: EventType, list: DanceEvent[]) => list.filter((event) => event.event_type === type).length;
-  const types = [...new Set([...inView.map((event) => event.event_type), ...state.types])]
-    .sort((a, b) => typeCount(b, inView) - typeCount(a, inView) || typeLabel(a).localeCompare(typeLabel(b), "es"))
-    .map((type) => option("types", type, typeLabel(type), typeLabel(type), typeCount(type, withoutTypes), state.types.includes(type)));
+  const present = new Set([...inView.map((event) => event.event_type), ...state.types]);
+  const types = TYPE_ORDER.filter((type) => present.has(type)).map((type) =>
+    option("types", type, typeLabel(type), typeLabel(type), typeCount(type, withoutTypes), state.types.includes(type)),
+  );
 
   const dates =
     state.view === "upcoming"
@@ -154,15 +170,11 @@ export function filterModel(events: DanceEvent[], state: AppState, today = today
         )
       : [];
 
-  const quickStyles = QUICK_STYLES.flatMap((style) => styles.filter((item) => item.value === style));
-
   const asApplied = (item: FilterOption): AppliedFilter => ({ group: item.group, value: item.value, label: item.short, name: item.label });
   const applied = [
     ...[...dates, ...styles, ...types].filter((item) => item.chosen).map(asApplied),
     ...(state.hideBars ? [HIDDEN_BARS] : []),
   ];
-  // Every date shows on "Cuándo", every bar rhythm on its chip.
-  const hasChip = (item: AppliedFilter) => item.group === "dates" || (item.group === "styles" && QUICK_STYLES.includes(item.value));
 
   const when = state.view === "upcoming" ? whenModel(dates, without("dates").length, today) : null;
   return {
@@ -171,11 +183,9 @@ export function filterModel(events: DanceEvent[], state: AppState, today = today
     styleGroups: groupByFamily(styles),
     types,
     when,
-    quickStyles,
     pills: filterPills(when && dates.length ? when : null, styles, types),
     hideBars: state.hideBars,
     applied,
-    extra: applied.filter((item) => !hasChip(item)),
     active: activeFilterCount(state),
     shown: inView.filter((event) => matchesFilters(event, state)).length,
   };
@@ -185,7 +195,8 @@ const chosenLabel = (count: number) => `${count} ${count === 1 ? "elegido" : "el
 
 /**
  * The toolbar's pills (wide screens): "Cuándo" (only in the list, with dates to choose) says the date chosen as the
- * phone bar's does; Ritmo and Tipo say how many are chosen ("Ritmo · 2", named "Ritmo, 2 elegidos").
+ * phone bar's does; Tipo, then Ritmo (the types first, as in the phone's bar: the owner, 8 Oct 2026), say how many are
+ * chosen ("Ritmo · 2", named "Ritmo, 2 elegidos").
  */
 export function filterPills(when: WhenModel | null, styles: FilterOption[], types: FilterOption[]): FilterPill[] {
   const counted = (key: PillKey, word: string, options: FilterOption[]): FilterPill => {
@@ -200,8 +211,8 @@ export function filterPills(when: WhenModel | null, styles: FilterOption[], type
   const dates = when ? when.options.filter((item) => item.value && item.chosen).length : 0;
   return [
     ...(when ? [{ key: "when" as const, label: when.chosen ? when.label : "Cuándo", name: whenButtonName(when), count: dates }] : []),
-    counted("styles", "Ritmo", styles),
     counted("types", "Tipo", types),
+    counted("styles", "Ritmo", styles),
   ];
 }
 
