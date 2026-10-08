@@ -189,7 +189,8 @@ flowchart LR
 | `/calendario.ics` | `pages/calendario.ics.ts` | A subscribable calendar feed (iCalendar) with every event, a workshop series as one entry per session (`lib/calendarFeed.ts`, section 6). Rebuilt with the site. Not linked anymore; kept so existing subscriptions keep working |
 | `/manifest.webmanifest` | `pages/manifest.webmanifest.ts` | What lets a phone install the site like an app: name, colors, icons, full screen |
 | `/icons/<name>.png` | `pages/icons/[name].png.ts` | The app icons (192, 512, maskable 512, Apple touch icon), made from SVG at build time |
-| `/sw.js` | `pages/sw.js.ts` | The service worker: makes the site installable and opens it offline with the last events. **Precache:** installing it stores the app's pages (`/`, `/calendario/`, `/guardados/`) and every build file (`/_astro/`, listed after the build by `scripts/sw-precache.mjs`), so it works offline from the first visit; offline, an address never stored gets the home page, and an unstored event page the app with that event open (`/?evento=<id>`). **Pages: network first**, the stored copy when offline or after a timeout (`NAVIGATION_TIMEOUT_MS`). **Build files: cache first**, in a cache named by a hash of their list, so a data-only deploy downloads none of them again. **Images:** flyers and thumbnails share one cache kept across builds (`images`, capped at `IMAGE_LIMIT`), keyed by their versioned URL (`?v=`, section 3.1): a remade flyer is a new URL that replaces its older copies. Never name this cache by a hash of the flyers: every sweep would then empty it. Copies are stored without holding back the response (`waitUntil`); the first visit's flyers are sent to the worker once it controls the page (`registerServiceWorker`, `views/installPrompt.ts`) |
+| `/install/<name>.mp4`, `.jpg` | `pages/install/[name].ts` | The install sheet's clips of adding the site in Safari on iPhone (`safari-27`, `safari-26`) and their posters, recorded in Xcode's iOS Simulator and stored in `src/assets/install/`. Loaded only when the sheet opens; the service worker doesn't store them |
+| `/sw.js` | `pages/sw.js.ts` | The service worker: makes the site installable and opens it offline with the last events. **Precache:** installing it stores the app's pages (`/`, `/calendario/`, `/guardados/`) and every build file (`/_astro/`, listed after the build by `scripts/sw-precache.mjs`), so it works offline from the first visit; offline, an address never stored gets the home page, and an unstored event page the app with that event open (`/?evento=<id>`). **Pages: network first**, the stored copy when offline or after a timeout (`NAVIGATION_TIMEOUT_MS`). **Build files: cache first**, in a cache named by a hash of their list, so a data-only deploy downloads none of them again. **Images:** flyers and thumbnails share one cache kept across builds (`images`, capped at `IMAGE_LIMIT`), keyed by their versioned URL (`?v=`, section 3.1): a remade flyer is a new URL that replaces its older copies. Never name this cache by a hash of the flyers: every sweep would then empty it. Copies are stored without holding back the response (`waitUntil`); the first visit's flyers are sent to the worker once it controls the page (`registerServiceWorker`, `views/installPrompt.ts`). Everything else (the install clips, `/install/`) goes to the network, never stored |
 | `/sitemap-index.xml` | `@astrojs/sitemap` | Home, the calendar and every event page, for search engines (the 404 page is excluded) |
 | `/404.html` | `pages/404.astro` | For an old event link: "Este evento ya pasó o no existe", the next upcoming events as of the build, and a link home. Any other address gets "Esta página no existe" (a small script reads the path) |
 | `/flyers/*.webp` | `data/flyers/` (public folder) | The flyers, copied as they are |
@@ -621,10 +622,13 @@ Every browser on an iPhone is Safari's engine (WebKit), with its own limits:
 - **One bad event can't break the drawer:** if its details fail to render, it shows a link to the event's page
   instead (`eventDrawer.ts`).
 - **Installing** has no browser dialog: the page is added from the share menu, whose place depends on the browser
-  and the version, so `lib/installPlace.ts` reads the user agent (Safari 26, which reports itself as iOS 18.6 but
-  says `Version/26`; earlier Safari; other iPhone browsers, from iOS 16.4; apps' own browsers, which can't install)
-  and the sheet shows the matching steps. The home-screen app keeps its storage apart from Safari, and Safari can't
-  ask whether it's installed, so "Ya la agregué" and closing the steps hide the offer. The app is recognized when it
+  and the version, so `lib/installPlace.ts` reads the user agent (Safari 26 and 27, which report themselves as iOS
+  18.x but say `Version/26` or `/27`; earlier Safari; other iPhone browsers, from iOS 16.4; apps' own browsers, which
+  can't install) and the sheet shows the matching steps. Safari 26 and 27 get a clip of the steps and the buttons to
+  tap instead of written steps (`InstallGuide.clip`, `.taps`); the clip's address is set only when the sheet opens and
+  removed when it closes, and with reduced motion only its poster shows. The home-screen app keeps its storage apart
+  from Safari, and Safari can't ask whether it's installed, so "Ya la agregué" and closing the steps hide the banner;
+  on iPhone and iPad the footer keeps a link to the steps anyway (`howToInstallLabel`). The app is recognized when it
   runs (`display-mode: standalone`, `navigator.standalone`), and shows no offer there.
 - **The keyboard and the bar at the bottom** (`views/bottomNav.ts`). iOS doesn't shrink the layout viewport when the
   keyboard opens: a fixed bottom bar stays under the keyboard while the visual viewport shrinks and pans. While the
@@ -747,6 +751,7 @@ frontend/
       og/[id].jpg.ts, og/sitio.jpg.ts   link previews
       thumbs/[name].webp.ts   flyer thumbnails
       icons/[name].png.ts, manifest.webmanifest.ts, sw.js.ts   installing (icons, manifest, service worker)
+      install/[name].ts   the install sheet's clips and posters (from src/assets/install/)
       calendario.ics.ts   the calendar feed (no longer linked; written by lib/calendarFeed.ts)
       404.astro
     components/           HomePage (the app's body, for /, /calendario/ and /guardados/), SiteHeader, ThemeToggle, Stripes,

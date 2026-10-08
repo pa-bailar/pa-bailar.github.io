@@ -37,6 +37,12 @@ const releaseUrl = version ? `https://github.com/pa-bailar/pa-bailar.github.io/r
       <button class="link-button" type="button" data-install data-track="instalar">Instala Pa' Bailar en tu celular</button>{" "}
       y ábrelo como una app.
     </p>
+    <!-- iPhone and iPad, in its place: always there, since the page can't tell it was added ("Ya la agregué" by mistake,
+         the steps closed): the steps again, whenever (views/installPrompt.ts). -->
+    <p class="site-footer__install" data-install-howto hidden>
+      <Fragment set:html={ICONS.phone} />
+      <button class="link-button" type="button" data-install data-track="instalar-como">Cómo instalar Pa' Bailar en tu iPhone</button>
+    </p>
     <p class="site-footer__feedback">
       <Fragment set:html={ICONS.message} /> ¿Un dato está mal o tienes una idea para la app?{" "}
       <a href={feedbackUrl()} target="_blank" rel="noopener" data-track="comentarios">Escríbenos</a>

@@ -35,7 +35,8 @@ export const ICONS = {
   search: icon(`<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>`, false),
   share: icon(`<path d="M12 3v12M8 7l4-4 4 4"/><path d="M6 11v9h12v-9"/>`, false), // iOS's Compartir
   more: icon(`<circle cx="6" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="18" cy="12" r="1.6"/>`), // Safari's ⋯ (Más)
-  addSquare: icon(`<rect x="4" y="4" width="16" height="16" rx="3.5"/><path d="M12 8.5v7M8.5 12h7"/>`, false), // Agregar a inicio
+  pageMenu: icon(`<path d="M4 7h16M4 12h13M4 17h9"/>`, false), // Safari 27's page menu (≡, left of the address)
+  addSquare: icon(`<rect x="4" y="4" width="16" height="16" rx="3.5"/><path d="M12 8.5v7M8.5 12h7"/>`, false), // Agregar a Inicio
   link: icon(`<path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1.5 1.5"/><path d="M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1.5-1.5"/>`, false),
   arrowDown: icon(`<path d="M12 4v15M6 13l6 6 6-6"/>`, false),
   info: icon(`<circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.5h.01"/>`, false), // the header's Info (the footer)
