@@ -433,7 +433,9 @@ flowchart TD
   sheet and the toolbar always agree.
 - **Keeping your place:**
   - when a filter changes while you're reading the list, the period you were in (the lowest one crossing a band
-    under the bar, measured just before: `captureListPosition`) stays under the bar;
+    under the bar, measured just before: `captureListPosition`) stays under the bar, and the chip that changed it
+    gets the focus back without moving the page (`refocus` in `lib/focus.ts`: on Android a tapped chip has the focus,
+    and putting it back with a scroll sent the page to the list's top; the bug-squash pass of 8 Oct 2026);
   - the list remembers where it was left, so switching to the calendar and back returns you to the same spot; to the
     same period if a filter changed meanwhile, to its start if the search did (`listComeback`). The calendar instead
     always opens on its home (`calendarHome` and `revealDay` in `views/viewNavigation.ts`; `DESIGN.md`, "Phones: feed,
@@ -784,7 +786,7 @@ from under one gets its entry when the overlay closes (pushed over the overlay's
 | `views/bottomNav.ts` | Phones: the bar at the bottom (Eventos, Calendario, Buscar, Guardados, Filtros): the view on screen, Filtros' badge and name (`navItems`, `filtersLabel`), the search field docked above the keyboard (`openSearchField`, `closeSearchField`, `keyboardInset`, `keyboardJustHid`) and its history entry (`searchHistory`), the bar's height for what must stay above it (`bottomInset`) |
 | `views/dayChange.ts` | The page shown again on another day, or on screen at midnight (`untilNextDay`): the calendar's day and month to today, drawn again; shown again hours later and online, loaded again |
 | `views/viewNavigation.ts` | Switching views (the list back where it was left, at its start after a search elsewhere: `listComeback`, or where its history entry says after a reload; the calendar on its home: `calendarHome`; Guardados at its top), the tab's title; the calendar's day list on screen (`revealDay`); back to the content's top, under whatever is pinned, after a search or a view change (`backToTop`: never measured on the sticky toolbar, which reads 0 once pinned); the screens' history hooks (`currentScreen`, `applyScreen`) |
-| `lib/focus.ts` | Keeping the keyboard's focus through a redraw (`focusSelector`, `focusScope`), and after "Limpiar" |
+| `lib/focus.ts` | Keeping the keyboard's focus through a redraw (`focusSelector`, `focusScope`; `refocus` puts it back without scrolling: a pinned bar's chip focused with a scroll sent the page to the list's top), and after "Limpiar" |
 | `lib/accountLink.ts` | Every @account's link (`accountLinkHtml`, `accountLinkAttrs`): the profile, opened inside the site (`data-profile`); `tests/accountLink.test.ts` fails on any other profile link |
 | `lib/links.ts` | Every URL built from an event: flyer, clip, page, link preview, Maps, the report form; an account's profile and its embed (`profileUrl`, `profileEmbedUrl`); each view's address (`viewPath`, `viewOfPath`) and where closing an event returns (`addressAfterClosing`); calendar times (a series' per session) |
 | `lib/calendarFeed.ts` | The calendar feed's text (`/calendario.ics`): one VEVENT per event, or per session of a workshop series |

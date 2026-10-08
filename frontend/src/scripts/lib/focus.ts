@@ -17,6 +17,19 @@ export function focusSelector(element: Element | null): string | null {
   return null;
 }
 
+/**
+ * The control `selector` names (focusSelector), drawn again: the focus back on the first one laid out in `scope` (the
+ * same choice can be in a closed panel and among the removable chips), without scrolling. Where the page stands is the
+ * views' to keep (restoreListPosition, revealDay): a chip in a pinned bar sits under the scroll padding the bar keeps,
+ * and focusing it scrolled the page up to the bar's own place, the list's top (the bug-squash pass of 8 Oct 2026: a
+ * type chosen in the phone's bar mid-list, on Android, where a tapped button takes the focus).
+ */
+export function refocus(selector: string | null, scope: ParentNode) {
+  if (!selector) return;
+  const control = [...scope.querySelectorAll<HTMLElement>(selector)].find((element) => element.getClientRects().length);
+  control?.focus({ preventScroll: true });
+}
+
 /** Containers whose controls are re-rendered: focus goes back to the same control in the same one. */
 const FOCUS_SCOPES = "#filter-sheet, #jump-bar, .toolbar, main";
 

@@ -4,7 +4,7 @@ import type { AppState, DanceEvent, EventType, View } from "./types";
 import { initClickTracking } from "./lib/analytics";
 import { allowPressedLook, byId, isPlainClick } from "./lib/dom";
 import { CARD_LINK, cardLink, cardOnScreen } from "./lib/cards";
-import { focusAfterClearing, focusScope, focusSelector } from "./lib/focus";
+import { focusAfterClearing, focusScope, focusSelector, refocus } from "./lib/focus";
 import { eventCountLabel, formatLongDate } from "./lib/format";
 import { addMonths, currentMonth, isUpcoming, nowInBogota, todayIso } from "./lib/dates";
 import { eventPath, sharedEventLink, viewOfPath, viewPath } from "./lib/links";
@@ -147,8 +147,7 @@ function render({ keepPlace = false, quiet = false } = {}) {
   highlightCurrentCard(); // the side panel's event, outlined again among the new cards
   armDetailsHint();
 
-  // The first one on screen: the same choice can be in a closed panel and among the removable chips.
-  if (focused) [...scope.querySelectorAll<HTMLElement>(focused)].find((element) => element.getClientRects().length)?.focus();
+  refocus(focused, scope); // without scrolling: the place is kept above
 }
 
 /** The saved events still to come, in the list's order (a series by its next session). */
