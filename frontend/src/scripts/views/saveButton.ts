@@ -6,7 +6,7 @@
 import type { DanceEvent } from "../types";
 import { escapeHtml } from "../lib/dom";
 import { ICONS } from "../lib/icons";
-import { isSaved, toggleSaved } from "../lib/saved";
+import { isSaved, onSavedElsewhere, toggleSaved } from "../lib/saved";
 
 function buttonInner(saved: boolean, labeled: boolean): string {
   const icon = saved ? ICONS.bookmarkFilled : ICONS.bookmark;
@@ -54,8 +54,9 @@ export function toggleSave(id: string) {
   changed(id, saved);
 }
 
-/** Bookmark clicks anywhere on the page; `onChange` runs after an event is saved or unsaved. */
-export function initSaveButtons(onChange: SaveChange = () => {}) {
+/** Bookmark clicks anywhere on the page; `onChange` runs after an event is saved or unsaved here. When another tab
+ * or window saves or unsaves, every bookmark here follows, then `onElsewhere`. */
+export function initSaveButtons(onChange: SaveChange = () => {}, onElsewhere: () => void = () => {}) {
   changed = onChange;
   document.addEventListener("click", (domEvent) => {
     const id = (domEvent.target as HTMLElement).closest<HTMLElement>("[data-save]")?.dataset.save;
@@ -64,4 +65,8 @@ export function initSaveButtons(onChange: SaveChange = () => {}) {
     toggleSave(id);
   });
   syncSaveButtons();
+  onSavedElsewhere(() => {
+    syncSaveButtons();
+    onElsewhere();
+  });
 }

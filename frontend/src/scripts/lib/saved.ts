@@ -1,20 +1,29 @@
 // Saved events ("Guardados"): the ids of the events a visitor bookmarked, kept in this browser
 // (localStorage). No account: they stay on this phone or computer. Past events simply stop showing in
-// "Próximos"; their ids are dropped once the event is no longer in the data.
+// "Próximos"; an id whose event is no longer in the data stays stored (an older copy of the page, offline, lacks
+// newer events), and only the oldest of those are forgotten once there are many (trimSaved).
+// Every tab and window of the site shares them: a save starts from what's stored at that moment, and the others
+// hear of it (onSavedElsewhere).
 // Storage can be unavailable (private mode, blocked): then saving lasts until the page is closed.
 
 const STORAGE_KEY = "saved-events";
+/** More stored ids than this, and the oldest whose events are no longer in the data are forgotten. */
+export const SAVED_LIMIT = 200;
 
 let saved: Set<string> | null = null;
 
-function load(): Set<string> {
-  if (saved) return saved;
+/** What's stored, oldest first; null when storage can't be read (blocked, or not a list we wrote). */
+function read(): Set<string> | null {
   try {
     const stored: unknown = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? "[]");
-    saved = new Set(Array.isArray(stored) ? stored.filter((id): id is string => typeof id === "string") : []);
+    return new Set(Array.isArray(stored) ? stored.filter((id): id is string => typeof id === "string") : []);
   } catch {
-    saved = new Set();
+    return null;
   }
+}
+
+function load(): Set<string> {
+  saved ??= read() ?? new Set();
   return saved;
 }
 
@@ -30,19 +39,38 @@ export function isSaved(id: string): boolean {
   return load().has(id);
 }
 
-/** Save or unsave; returns whether it's saved now. */
+/** Save or unsave; returns whether it's saved now. From what's stored now, not what the page read when it opened:
+ * another tab may have saved since (writing the page's old list back erased those, the bug hunt of 7 Oct 2026). */
 export function toggleSaved(id: string): boolean {
-  const ids = load();
-  if (ids.has(id)) ids.delete(id);
-  else ids.add(id);
+  saved = read() ?? load();
+  if (saved.has(id)) saved.delete(id);
+  else saved.add(id);
   persist();
-  return ids.has(id);
+  return saved.has(id);
 }
 
-/** Forget saved events that are no longer in the data (expired or removed), so the list doesn't grow forever. */
-export function keepOnly(existing: Set<string>) {
+/** Past SAVED_LIMIT ids, forgets the oldest whose events are no longer in the data (`existing`), so the list doesn't
+ * grow forever. Never all of them: an older copy of the page (stored for offline use) lacks the newest events, and
+ * dropping every id it didn't know lost those saves for good (the bug hunt of 7 Oct 2026). */
+export function trimSaved(existing: Set<string>) {
   const ids = load();
-  const before = ids.size;
-  for (const id of ids) if (!existing.has(id)) ids.delete(id);
-  if (ids.size !== before) persist();
+  let excess = ids.size - SAVED_LIMIT;
+  if (excess <= 0) return;
+  for (const id of ids) {
+    if (excess === 0) break;
+    if (existing.has(id)) continue;
+    ids.delete(id);
+    excess -= 1;
+  }
+  persist();
+}
+
+/** Another tab or window of the site saved or unsaved (or the browser's data was cleared): `onChange` runs once this
+ * page has read the saves again. */
+export function onSavedElsewhere(onChange: () => void) {
+  window.addEventListener("storage", (event) => {
+    if (event.key !== STORAGE_KEY && event.key !== null) return; // null: all of the site's storage was cleared
+    saved = read() ?? saved;
+    onChange();
+  });
 }

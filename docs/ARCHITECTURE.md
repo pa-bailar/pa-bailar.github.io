@@ -527,7 +527,10 @@ stateDiagram-v2
 ### 5.5 Installing, saving and searching
 
 - **Install:** `views/installPrompt.ts` offers it: Chrome/Edge's own dialog, or a sheet with the steps for where the visitor is (`lib/installPlace.ts`, from the user agent; section 5.7). It also registers the service worker (built site only).
-- **Saved events** live in this browser (`lib/saved.ts`, localStorage); Guardados is a view of its own
+- **Saved events** live in this browser (`lib/saved.ts`, localStorage), shared by its tabs: a save starts from
+  what's stored at that moment, and the other tabs follow (`onSavedElsewhere`, the `storage` event: their bookmarks,
+  counts, calendar marks and Guardados). An id whose event left the data stays (an older stored copy of a page lacks
+  the newest events): past `SAVED_LIMIT` (200), the oldest of those are forgotten (`trimSaved`). Guardados is a view of its own
   (`views/savedView.ts`: the ones to come by period, the past ones folded; the search applies, the filters don't), and
   the calendar marks the days holding one. A save or an unsave in Guardados says so in a notice at the bottom
   (`views/notice.ts`, chosen by `lib/saveNotice.ts`): `main.ts` gives its button the way to Guardados (`navigateView`)

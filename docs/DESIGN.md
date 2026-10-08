@@ -310,7 +310,10 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
 
 - **Saving ("Guardar")** is a bookmark, like Instagram's: on each card, and among the quick actions of the details and
   of an event's page (`scripts/views/saveButton.ts`). Saved events live in this browser (`lib/saved.ts`,
-  localStorage): no account, nothing sent anywhere. Events no longer in the data are forgotten.
+  localStorage): no account, nothing sent anywhere. Every tab and window of the site shares them (a save in one
+  shows in the others; the bug hunt of 7 Oct 2026: a second tab's saves were erased). A save outlives its event's
+  place in the data (an older copy of the page, offline, lacks the newest events): only past 200 saves are the oldest
+  of those forgotten.
 - **Saving says so** (the Instagram audit, 7 Oct 2026: the bookmark alone was easy to miss, and unsaving in Guardados
   took the card away for good): a notice rises just above the bar at the bottom (bottom left on wide screens, away
   from the side panel) for 4 seconds, like Instagram's and Material's snackbars: **"Guardado · Ver guardados"**; in
