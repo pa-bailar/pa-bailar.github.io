@@ -402,9 +402,10 @@ flowchart TD
   (`matchesFilters(event, state, except)`), and one with nothing to show is `dimmed` (unless chosen), not hidden. The
   model also gives the bar's "Cuándo" (`whenModel`), its fixed rhythm chips (`quickStyles`), every choice in use
   (`applied`) and those without a chip of their own (`extra`), Filtros' badge (`activeFilterCount`), the count shown
-  and the line under the bar (`summaryLine`). `clearFilters` ("Limpiar") clears dates, rhythms and types and shows the
-  bars again, not the search nor Guardados. The other filters live only in memory, not in the URL or storage
-  (`DESIGN.md`, "Filters"); hiding the bars is the one remembered.
+  and the line under the bar (`summaryLine`), and what the search alone finds (`searched`: with nothing shown, the
+  sheet's button says whether to change the search or the filters, `resultsButtonLabel`). `clearFilters` ("Limpiar")
+  clears dates, rhythms and types and shows the bars again, not the search nor Guardados. The other filters live only
+  in memory, not in the URL or storage (`DESIGN.md`, "Filters"); hiding the bars is the one remembered.
 - **"Próximos"** groups upcoming events by period: today, this week, this weekend, next week, the rest
   of the month, then one group per month for the next six months, and one per year beyond that
   (`groupByPeriod`). An event over several days (`end_date`) is upcoming until its last day, and once it has
@@ -743,7 +744,7 @@ frontend/
 from under one gets its entry when the overlay closes (pushed over the overlay's entry, it left that entry behind). Every entry's state is one type (`AppHistoryState`), read with `historyState` |
 | `components/HomePage.astro`, `lib/viewTitles.ts` | The app's page, for each address (`/`, `/calendario/`, `/guardados/`, by its `view`); each view's title and description, for the page's head and the tab's title when the view changes |
 | `views/savedView.ts` | Guardados: the saved events to come by period, the past ones folded, the empty states (`savedLists`, `emptySavedHtml`, `renderSavedView`) |
-| `lib/filterModel.ts` | The filters' model, pure: options, counts, dimmed, the rhythms by family (`styleGroups`), the bar's chips, "Cuándo" (`whenModel`), the toolbar's pills (`filterPills`), what's applied, the badge, the line (`summaryLine`), stale dates |
+| `lib/filterModel.ts` | The filters' model, pure: options, counts, dimmed, the rhythms by family (`styleGroups`), the bar's chips, "Cuándo" (`whenModel`), the toolbar's pills (`filterPills`), what's applied, the badge, the line (`summaryLine`), the sheet's button (`resultsButtonLabel`, from what the search alone finds: `searched`), stale dates |
 | `views/filters.ts` | Drawing the model: the phone bar's chips and line, the filter sheet (Ritmo by family), the toolbar's pills, their panels' content and the status row (`pillHtml`, `panelHtml`, `statusHtml`); empty results |
 | `views/filterPanels.ts` | Wide screens: the toolbar's pills open their panels (Cuándo, Ritmo, Tipo): one at a time, each with its own history entry (an overlay, `menu: "panel-…"`), placed under its pill (`menuPlacement`), the keys (`nextOption`), closing (Escape, a click outside, back, a too-small screen) and the focus. A click outside is swallowed or held until the panel's back lands (`lib/outsideClick.ts`) |
 | `lib/styleFamilies.ts` | The rhythms' families (Salsa, Bachata, Urbanos, Otros): `STYLE_FAMILIES`, `familyOf`, `groupByFamily` (the sheet and the Ritmo panel); every rhythm of the data contract in one (`tests/styleFamilies.test.ts`) |

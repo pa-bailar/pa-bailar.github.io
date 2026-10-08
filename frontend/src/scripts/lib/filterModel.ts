@@ -93,6 +93,7 @@ export interface FilterModel {
   extra: AppliedFilter[]; // those without a chip of their own in the bar
   active: number; // Filtros' badge (the bar at the bottom): every choice (hiding the bars counts one)
   shown: number; // events the view shows with every filter on (the list, or the calendar's month)
+  searched: number; // events the view shows with the search alone, no filter (with none, every event in view)
 }
 
 const option = (
@@ -165,6 +166,7 @@ export function filterModel(events: DanceEvent[], state: AppState, today = today
   const hasChip = (item: AppliedFilter) => item.group === "dates" || (item.group === "styles" && QUICK_STYLES.includes(item.value));
 
   const when = state.view === "upcoming" ? whenModel(dates, without("dates").length, today) : null;
+  const searchAlone: AppState = { ...state, types: [], styles: [], dates: [], hideBars: false };
   return {
     dates,
     styles,
@@ -178,6 +180,7 @@ export function filterModel(events: DanceEvent[], state: AppState, today = today
     extra: applied.filter((item) => !hasChip(item)),
     active: activeFilterCount(state),
     shown: inView.filter((event) => matchesFilters(event, state)).length,
+    searched: inView.filter((event) => matchesFilters(event, searchAlone)).length,
   };
 }
 
@@ -251,9 +254,14 @@ export function summaryLine(model: FilterModel, state: AppState): { count: strin
   };
 }
 
-/** The sheet's button: "Ver 12 eventos", "Ver 1 evento", or "Sin eventos: cambia los filtros" (disabled). */
-export function resultsButtonLabel(shown: number): string {
-  return shown ? `Ver ${eventCountLabel(shown)}` : "Sin eventos: cambia los filtros";
+/**
+ * The sheet's button: "Ver 12 eventos", "Ver 1 evento", or, disabled, what to change: "Sin eventos: cambia la
+ * búsqueda" when the search alone finds nothing (no filter would help: the bug hunt of 7 Oct 2026, the sheet blamed
+ * the filters), else "Sin eventos: cambia los filtros".
+ */
+export function resultsButtonLabel({ shown, searched }: Pick<FilterModel, "shown" | "searched">): string {
+  if (shown) return `Ver ${eventCountLabel(shown)}`;
+  return searched ? "Sin eventos: cambia los filtros" : "Sin eventos: cambia la búsqueda";
 }
 
 /** Whether a date was chosen that the list no longer has (the day changed while the page was open). */
