@@ -2,7 +2,7 @@
 # properties, unit tests (Vitest), and build. On pull requests, also the title: it becomes the commit on main
 # (squash merge), whose Conventional Commits type sets the next version (frontend/scripts/release.mjs).
 # Runs on every pull request, including the data PRs opened by the pa-bailar-bot GitHub App
-# from the (private) backend repository.
+# from the backend repository (pa-bailar/backend).
 name: ci
 
 on:

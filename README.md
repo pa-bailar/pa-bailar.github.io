@@ -5,13 +5,14 @@ from the Instagram accounts of the city's dance academies, on one page with a ca
 
 ```
 frontend/   Astro site (static), deployed to GitHub Pages
-data/       events.json + flyers/ + previews/, updated by pull requests from the backend
+data/       events.json, meta.json and archive/ (past events), updated by pull requests from the backend; the
+            flyers/ and previews/ are copied in from pa-bailar/media before every check and build
 docs/       architecture (ARCHITECTURE.md), design system (DESIGN.md) and data contract (DATA.md)
 ```
 
-The data comes from a separate, private backend (Instagram → Gemini). It sweeps twice a day (9 AM and
-9 PM Bogotá time, each account about once a day) and opens a pull request here when the events change.
-This repository only builds and publishes the site.
+The data comes from a separate backend, `pa-bailar/backend` (Instagram → Gemini). It sweeps twice a day (6:30 AM
+and 9 PM Bogotá time; most accounts once a day, quiet ones less often) and opens a pull request here when the
+events change. This repository only builds and publishes the site.
 
 **How the site gets its data, is built, published and works in the browser, with diagrams:
 [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).**
@@ -75,8 +76,9 @@ follow the format, so no change goes uncounted.
 visits, each event whose details were opened, where its details were opened from (`detalles-tarjeta`, `detalles-boton`,
 `detalles-enlace`; `detalles-linea` is retired), and clicks as events named `click-<name>` (`data-track="<name>"`,
 `frontend/src/scripts/lib/analytics.ts`): Instagram (the details' Instagram button: `click-ver-video`, `click-ver-carrusel`, `click-ver-publicacion`; the viewer's "Abrir en Instagram": `click-instagram-desde-visor`, `click-instagram-perfil-desde-visor`), an account's @ (`click-perfil-tarjeta`, `-detalle`, `-organiza`, `-historia`, `-fuentes`, and `click-contacto-instagram`), the other contact links (WhatsApp…), "Cómo llegar", the other posts
-(`click-ver-publicaciones`), sharing, saving,
-installing and reports, and the bar at the bottom (`click-barra-eventos`, `-calendario`, `-buscar`, `-guardados`,
+(`click-ver-publicaciones`), a carousel's ‹ › (`click-carrusel`), sharing, saving,
+installing and reports, the notices' buttons (`click-aviso-ver-guardados`, `-deshacer`, `-abrir-navegador`,
+`-whatsapp`), and the bar at the bottom (`click-barra-eventos`, `-calendario`, `-buscar`, `-guardados`,
 `-filtros`). Shared
 links carry `utm_source=compartido`. Local testing (localhost) isn't counted.
 

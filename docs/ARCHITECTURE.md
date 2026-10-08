@@ -4,7 +4,7 @@ How the site at <https://pa-bailar.github.io> gets its data, how it's built and 
 works in the visitor's browser. This repository (`pa-bailar/pa-bailar.github.io`, public) holds the
 site and the published data.
 
-The collector that produces the data (Instagram → Gemini) is a separate, private repository
+The collector that produces the data (Instagram → Gemini) is a separate, public repository
 (`pa-bailar/backend`). Its `docs/ARCHITECTURE.md` covers the whole system's infrastructure in depth:
 external services, the sweep, quotas, monitoring.
 
@@ -12,7 +12,7 @@ Related documents in this repository:
 - [`DATA.md`](DATA.md): the data contract, every field of `events.json`.
 - [`DESIGN.md`](DESIGN.md): the design system, every visual rule.
 
-Last reviewed: 5 October 2026.
+Last reviewed: 8 October 2026.
 
 Contents:
 
@@ -37,9 +37,11 @@ backend updates through pull requests.
 
 ```mermaid
 flowchart LR
-    subgraph Backend["pa-bailar/backend (private)"]
+    subgraph Backend["pa-bailar/backend"]
         SW["sweep, twice a day<br/>Instagram → Gemini"]
     end
+
+    MEDIA[("pa-bailar/media<br/>flyers and clips")]
 
     subgraph Repo["pa-bailar/pa-bailar.github.io (this repository)"]
         PR["data PR<br/>(pa-bailar-bot, label data)"]
@@ -54,6 +56,9 @@ flowchart LR
     GF["Google Fonts"]
 
     SW -- "twice a day, when events changed" --> PR
+    SW -- "new and changed images" --> MEDIA
+    MEDIA -. "copied into data/<br/>before checks and builds" .-> CI
+    MEDIA -.-> DEP
     PR --> CI -- "pass: auto-merge (squash)" --> MAIN
     MAIN -- "push to main" --> DEP --> PAGES --> VIS
     SW -. "no changes: start deploy<br/>with the check time" .-> DEP
@@ -72,9 +77,9 @@ flowchart LR
 
 ## 2. How data reaches the site
 
-The backend's sweep runs twice a day, at 9 AM and 9 PM Bogotá time (cron-job.org starts its workflow), and
-reads each account about once a day. It works on a checkout of this repository and writes `data/` exactly
-as described in [`DATA.md`](DATA.md).
+The backend's sweep runs twice a day, at 6:30 AM and 9 PM Bogotá time (cron-job.org starts its workflow), and
+reads most accounts once a day (quiet ones less often). It works on a checkout of this repository and writes
+`data/` exactly as described in [`DATA.md`](DATA.md).
 
 ```mermaid
 sequenceDiagram
@@ -104,8 +109,8 @@ sequenceDiagram
 ```
 
 Notes:
-- **Only real changes open a PR.** `meta.json` is rewritten on every run, but only events or flyers
-  count as a change.
+- **Only real changes open a PR.** `meta.json` is rewritten on every run, but only the events and the archive
+  count as a change; the images go straight to `pa-bailar/media`.
 - **The bot's PRs are checked like anyone's.** The backend uses a GitHub App (pa-bailar-bot), not the
   default workflow token, whose PRs wouldn't trigger this repository's `ci`.
 - **A data PR can't break the site.** `check-data.mjs` checks every field against the contract, and the
@@ -158,6 +163,9 @@ flowchart LR
 
 - **Typed once:** the JSON is cast to the types in `src/scripts/types.ts`, which mirror the backend's
   models. CI checked the files against the contract first.
+- **The posts shown:** a story steps aside once its event has a post with a flyer (`shownMedia` in `src/pageData.ts`):
+  every page, card and preview gets the event's media without it. `events.json` keeps the story (`DESIGN.md`,
+  "Events with several posts").
 - **Flyer versions:** each flyer's media item also gets `version`, a short hash of its file (`src/images.ts`,
   `fileVersion`). The backend can remake a flyer under the same name, so its URL carries the version (`?v=`,
   `flyerUrl` and `thumbUrl` in `lib/links.ts`): a new file is a new URL for browsers and the service worker, and
@@ -171,13 +179,13 @@ flowchart LR
 
 | Output | Source | What it is |
 |---|---|---|
-| `/` (`index.html`) | `pages/index.astro` (its body: `components/HomePage.astro`) | The app: header, toolbar, jump bar, the three views (the list, the calendar, Guardados), details drawer, filter sheet. Every event is embedded as JSON (`<script type="application/json" id="events-data">`, `src/pageData.ts`, without `doubts`), and the browser renders the cards and calendar from it. Its preview image is `/og/sitio.jpg` |
+| `/` (`index.html`) | `pages/index.astro` (its body: `components/HomePage.astro`) | The app: header, toolbar, jump bar, the bar at the bottom, the three views (the list, the calendar, Guardados), details drawer, filter sheet. Every event is embedded as JSON (`<script type="application/json" id="events-data">`, `src/pageData.ts`, without `doubts`), and the browser renders the cards and calendar from it. Its preview image is `/og/sitio.jpg` |
 | `/calendario/` | `pages/calendario/index.astro` | The same app opening on the calendar (`HomePage.astro` with `view="calendar"`; `main.ts` reads the address with `viewOfPath`), so a reload or a shared link stays on it. Each view's title and description: `lib/viewTitles.ts` |
 | `/guardados/` | `pages/guardados/index.astro` | The same app opening on the visitor's saved events (`view="saved"`). Not indexed (`noindex`) nor in the sitemap: it's each visitor's |
 | `/evento/<id>/` | `pages/evento/[id].astro` | One page per event: where a shared link points. A browser is forwarded to the home page with the event open over the list, unless it's past (section 5.3). Rendered at build time: the flyer, then the same details as the drawer. Includes the link preview's tags (section 3.4) and schema.org `Event` data (section 6) |
 | `/og/<id>.jpg` | `pages/og/[id].jpg.ts` | Each event's link-preview image: 1200×630, the flyer with the date, title, place and price (section 3.4) |
 | `/og/sitio.jpg` | `pages/og/sitio.jpg.ts` | The home page's link preview. Drawn once with the site's fonts by `scripts/og-site.html` and stored as `src/assets/og-site.jpg` |
-| `/thumbs/<flyer>.webp` | `pages/thumbs/[name].webp.ts` | A small square thumbnail of every flyer, for where flyers show small (the posts sheet, summarized periods, the 404 page, a shared list's image), so they load at once on a phone |
+| `/thumbs/<flyer>.webp` | `pages/thumbs/[name].webp.ts` | A small 3:4 thumbnail of every flyer, like Instagram's grid, for where flyers show small (the posts sheet, summarized periods, the 404 page, a shared list's image), so they load at once on a phone |
 | `/calendario.ics` | `pages/calendario.ics.ts` | A subscribable calendar feed (iCalendar) with every event, a workshop series as one entry per session (`lib/calendarFeed.ts`, section 6). Rebuilt with the site. Not linked anymore; kept so existing subscriptions keep working |
 | `/manifest.webmanifest` | `pages/manifest.webmanifest.ts` | What lets a phone install the site like an app: name, colors, icons, full screen |
 | `/icons/<name>.png` | `pages/icons/[name].png.ts` | The app icons (192, 512, maskable 512, Apple touch icon), made from SVG at build time |
@@ -332,9 +340,10 @@ sequenceDiagram
     I->>I: theme: dark if saved, else light
     H->>M: module script after parsing
     M->>M: events = JSON from #events-data
-    M->>M: theme toggle, details drawer, posts sheet, media viewer, sharing, install offer, service worker, jump bar, the toolbar's pill panels (initFilterPanels), bottom bar, click tracking, save buttons
+    M->>M: the saved ids trimmed past SAVED_LIMIT (trimSaved), the pressed look (allowPressedLook)
+    M->>M: theme toggle, details drawer, posts sheet, media viewer, sharing, install offer, notice, service worker, jump bar, the toolbar's pill panels (initFilterPanels), carousels, lightbox, keyboard, bottom bar, click tracking, stray second taps (dropStraySecondTaps), save buttons
     M->>M: the view from the address (viewOfPath: /calendario/, /guardados/)
-    M->>V: render(): filters, Próximos or Calendario, jump bar, bottom bar
+    M->>V: render(): filters, the view (Próximos, Calendario or Guardados), jump bar, bottom bar
     M->>V: opened on /calendario/: the calendar's home on screen (openedOnCalendar)
     M->>M: a shared link's event (openSharedEvent), then the screens' history (initScreenHistory)
     M->>M: watchDayChange: shown again on another day, or midnight on screen: draw again (or load again)
@@ -364,12 +373,14 @@ flowchart TD
     R --> F["lib/filterModel.ts → views/filters.ts<br/>the bar's chips and line,<br/>the filter sheet, the toolbar's pills"]
     R --> U["upcomingView.ts<br/>Próximos: events grouped by period"]
     R --> C["calendarView.ts<br/>Calendario: month grid + the day's events"]
-    R --> J["jumpBar.ts<br/>phones: the pinned bar, search, keeping your place"]
+    R --> S["savedView.ts<br/>Guardados: the saved events by period,<br/>the past ones folded"]
+    R --> J["jumpBar.ts<br/>phones: the pinned bar, the filter sheet,<br/>keeping your place"]
     J --> WM["whenMenu.ts<br/>the Cuándo menu: open, place, keys, close"]
     F --> FP["filterPanels.ts<br/>wide screens: the pills' panels"]
     R --> BN["bottomNav.ts<br/>phones: the bar at the bottom,<br/>the search field above the keyboard"]
     U --> CARD["eventCard.ts"]
     C --> CARD
+    S --> CARD
     CARD -- "tap" --> DLG["eventDrawer.ts<br/>details drawer over the list"]
     DLG --> DET["eventDetail.ts"]
 ```
@@ -522,16 +533,18 @@ stateDiagram-v2
 - **The event page** (`eventPage.ts`) is already rendered at build time (the flyer, then the drawer's details); a
   browser leaves it for the app at once. What depends on the day ("Hoy", "Mañana", "Este evento ya pasó", a series'
   sessions) is set again when it opens, since the page was built hours earlier. Its script wires the same pieces as
-  the app's (theme, tracking, posts sheet and media viewer, saving, sharing, install offer, clips) plus the detail's
-  clicks.
+  the app's (theme, tracking, posts sheet and media viewer, saving, sharing and its notice, install offer, clips, the
+  pressed look, stray second taps dropped) plus the detail's clicks.
 - **The media:** the details' **Instagram** quick action (`data-media-link`) opens the post in the media viewer
-  (`postViewer.ts`, Instagram's player); it's a link to the post underneath, so a new-tab click follows it. A card's
-  posts badge and "Ver las N publicaciones" open the posts sheet (`postsSheet.ts`), whose chosen post opens in the
+  (`postViewer.ts`, Instagram's player); it's a link to the post underneath, so a new-tab click follows it. The
+  details' "Ver las N publicaciones" and the posts badge on an event page's flyer open the posts sheet (`postsSheet.ts`;
+  a card shows its posts as a carousel instead, `views/carousel.ts`), whose chosen post opens in the
   media viewer in its place (`openPanelSheet(…, { replacing })` takes over the sheet's history entry and its opener).
   On the event page, the flyer plays a video in place (`inlinePlayer.ts`).
 - **A story** (`media_type` `STORY`, [`DATA.md`](DATA.md#stories); `isStory` in `lib/mediaLabel.ts`) has no post
   behind it: its flyer is a plain image, the media viewer never loads Instagram's player for it, and its Instagram
-  quick action opens the account's profile (a `data-profile` link to its `permalink`).
+  quick action opens the account's profile (a `data-profile` link to its `permalink`). Once the event has a post with
+  a flyer, the story isn't shown at all (`shownMedia`, section 3.1).
 - **An account's @** (anywhere; all built by `lib/accountLink.ts`) opens its profile in the media viewer: an iframe
   of Instagram's profile embed (`profileEmbedUrl`). The link underneath is the profile itself, for a new tab.
 - **The other actions:** "Compartir" opens the phone's share menu (`views/sharing.ts`, section 5.5); "Cómo llegar"
@@ -672,14 +685,14 @@ Every browser on an iPhone is Safari's engine (WebKit), with its own limits:
 | Service | What for | Data sent | If it's down |
 |---|---|---|---|
 | **GitHub Pages** | Hosting | | The site is down |
-| **GoatCounter** (`jzamora9.goatcounter.com`) | Visit statistics, without cookies or personal data, so no consent banner is needed | Page views. Each event opened in the details drawer, as a view of its page, once while it stays open; one the keyboard only steps through (the arrows, Tab, in the list or inside the details) counts once it stayed on for 2 s (`seenCounter`); Enter on the event the reading pane shows counts it then, with `detalles-tarjeta`. Where details were opened from (`detailsEventName`: `detalles-tarjeta`, `detalles-boton`, `detalles-enlace`). Clicks on elements with `data-track` (Instagram, contact, "Cómo llegar", sharing, saving, installing, reports, the bar at the bottom: `barra-…`). Local testing isn't counted. Its script (`count.js`) is a copy served from the site (`src/vendor/goatcounter-count.js`, ISC license), so the policy (section 3.3) allows no other script host; GoatCounter keeps its `/count` endpoint compatible, so the copy needs no updates. One change: it reads its `skipgc` setting inside `try`, so blocked storage doesn't stop the count | Nothing breaks: the script is optional and wrapped in `try` (`lib/analytics.ts`) |
+| **GoatCounter** (`jzamora9.goatcounter.com`) | Visit statistics, without cookies or personal data, so no consent banner is needed | Page views. Each event opened in the details drawer, as a view of its page, once while it stays open; one the keyboard only steps through (the arrows, Tab, in the list or inside the details) counts once it stayed on for 2 s (`seenCounter`); Enter on the event the reading pane shows counts it then, with `detalles-tarjeta`. Where details were opened from (`detailsEventName`: `detalles-tarjeta`, `detalles-boton`, `detalles-enlace`). Clicks on elements with `data-track` (Instagram, contact, "Cómo llegar", sharing, saving, installing, reports, the notices' buttons: `aviso-…`, the bar at the bottom: `barra-…`). Local testing isn't counted. Its script (`count.js`) is a copy served from the site (`src/vendor/goatcounter-count.js`, ISC license), so the policy (section 3.3) allows no other script host; GoatCounter keeps its `/count` endpoint compatible, so the copy needs no updates. One change: it reads its `skipgc` setting inside `try`, so blocked storage doesn't stop the count | Nothing breaks: the script is optional and wrapped in `try` (`lib/analytics.ts`) |
 | **Instagram embed** (`instagram.com/embed.js`) | Showing a post inside the site (the media viewer, an event page's flyer) | Loaded only on that tap, never with the page: the post's link; Instagram's player then runs as Meta's code (and cookies) inside its frame | Our copy of the flyer stays, with "Abrir en Instagram" (also when a post's link can't be read) |
 | **Instagram profile embed** (`instagram.com/<account>/embed/`, an iframe) | An account's profile inside the site (any account's @: `lib/accountLink.ts`) | Loaded only on that tap: the account's name; Instagram's page runs as Meta's code (and cookies) inside its frame | "El perfil no cargó aquí: ábrelo en Instagram.", and the bar's "Abrir en Instagram ↗" |
 | **Google Fonts** | Shrikhand, Bodoni Moda (italic) and Instrument Sans | The font request | System fonts are used |
 | **Instagram, WhatsApp, Google Maps** | Links the visitor chooses to open | Only what's in the link | |
 | **Google Forms** (the author's account) | Reports and ideas: the report link in each event's detail (the event filled in, `feedbackUrl` in `lib/links.ts`) and the footer's. Answers go to a Google Sheet and an email | What the visitor writes, and the event it's about | Nothing on the site: it's a link |
 
-Flyers are copies served from this repository, so the site never needs Instagram to show events. The
+Flyers are copies served from the site (kept in `pa-bailar/media`), so the site never needs Instagram to show events. The
 only Instagram content it loads is a post's player or an account's profile embed, and only when a visitor taps to open one.
 
 ---
@@ -692,7 +705,7 @@ only Instagram content it loads is a post's player or an account's profile embed
 | Types | `astro check`: strict TypeScript, including `noUncheckedIndexedAccess` | `tsconfig.json` |
 | Color contrast | Every color pair the site uses, in both themes, against WCAG 2.2 AA. It reads the tokens from `tokens.css`, so it can't drift from the design system | `frontend/scripts/check-contrast.mjs` |
 | CSS custom properties | Every `var(--name)` in the stylesheets, components and scripts has a definition; the few set from scripts (`style.setProperty`) are listed, and each must still be set by one | `frontend/scripts/check-css-vars.mjs` |
-| Unit tests | One file per module or feature. Kinds: pure logic in `lib/` (dates, holidays, filtering, formatting, search, link previews, the calendar feed…); the views' models (the filter chips and pills, the drawer's geometry, Guardados, the bar at the bottom); history between screens and overlays, on a fake history (`fakeHistory.ts`); the service worker, on fake caches (`images.test.ts`); the build's checks and integrations; values that must match the CSS (the drawer's numbers, the motion tokens, the brand's colors against `tokens.css`). **Guard tests** fail if a fixed bug's pattern comes back: a page-level `data-*` control attribute (`savedView.test.ts`), a path that shows events without `matchesFilters` (`hideBars.test.ts`), a hand-written profile link (`accountLink.test.ts`), chip rows back in the toolbar (`filterPills.test.ts`), the bar at the bottom's items and scope (`bottomNav.test.ts`) | `frontend/tests/*.test.ts` (Vitest; test events in `factories.ts`) |
+| Unit tests | One file per module or feature. Kinds: pure logic in `lib/` (dates, holidays, filtering, formatting, search, link previews, the calendar feed…); the views' models (the filter chips and pills, the drawer's geometry, Guardados, the bar at the bottom, the card each arrow lands on); history between screens and overlays, on a fake history (`fakeHistory.ts`); the service worker, on fake caches (`images.test.ts`); the notice, on a fake page (`notice.test.ts`); saves shared by tabs, on a fake storage (`saved.test.ts`); the build's checks and integrations; values that must match the CSS (the drawer's numbers, the motion tokens, the brand's colors against `tokens.css`, the colors for iOS 16's Safari: `lightDarkFallback.test.ts`). **Guard tests** fail if a fixed bug's pattern comes back: a page-level `data-*` control attribute (`savedView.test.ts`), a path that shows events without `matchesFilters` (`hideBars.test.ts`), a hand-written profile link (`accountLink.test.ts`), chip rows back in the toolbar (`filterPills.test.ts`), the bar at the bottom's items and scope (`bottomNav.test.ts`), the tap's flash coming back, or the pressed look on a card (`baseStyles.test.ts`), an event type missing from `TYPE_ORDER` (`filters.test.ts`) or a rhythm without a family (`styleFamilies.test.ts`), the images' copy failing on a missing folder (`mediaCopy.test.ts`) | `frontend/tests/*.test.ts` (Vitest; test events in `factories.ts`) |
 | Build | Every page, image and feed is generated; the Content Security Policy checks (section 3.3); the link previews' checks (section 3.4) | `npm run build`, `frontend/scripts/csp-meta.mjs`, `frontend/scripts/og-check.mjs`, `frontend/scripts/sw-precache.mjs` (fails if `sw.js` has no list to fill in) |
 
 All six run in `ci` on every pull request, and the ruleset requires `ci` before merging.
@@ -704,20 +717,22 @@ All six run in `ci` on every pull request, and the ruleset requires `ci` before 
 ```
 frontend/
   astro.config.mjs        site URL, public folder (../data), sitemap, DATA_DIR and ASSETS_DIR, Content Security Policy,
-                          the csp-meta, og-check and sw-precache integrations, no Markdown highlighting
+                          the csp-meta, og-check, sw-precache and module-preload integrations, no Markdown highlighting
   vitest.config.ts        unit tests, with Astro's settings
   scripts/                check-data.mjs, check-contrast.mjs, check-css-vars.mjs (run by npm run check); release.mjs (versions);
+                          media.mjs (npm run media: the flyers and clips from pa-bailar/media, copied into data/);
                           og-site.html (draws the home page's link preview); csp-meta.mjs (the policy, after
                           the build); og-check.mjs (the events' link previews, after the build); sw-precache.mjs (the build's
                           files, written into sw.js); module-preload.mjs (each page's script and its chunks, preloaded);
                           light-dark-fallback.mjs (writes styles/tokens-fallback.css: the colors for iOS 16's Safari)
   tests/                  Vitest tests, factories.ts (test events, a story-only one, a workshop series), checkData.test.ts (the data contract), fakeHistory.ts (history and popstate in Node)
   src/
-    data.ts               the data, typed, with flyer sizes and versions (build time only)
+    data.ts               the data, typed, with the posts shown, flyer sizes and versions (build time only)
     csp.ts                allowInlineScript(): an inline script, allowed by its hash (build time only)
     themeScript.ts        the theme before first paint, an inline script (build time only)
     linkPreviewImage.ts   an event's link-preview image: satori + sharp (build time only)
-    pageData.ts           the events as the home page embeds them, without `doubts` (build time only)
+    pageData.ts           the posts shown (shownMedia: a story steps aside for a post), and the events as the home page
+                          embeds them, without `doubts` (build time only)
     vendor/goatcounter-count.js   GoatCounter's script, served from the site
     env.d.ts              the build's variables: PUBLIC_CHECKED_AT, PUBLIC_VERSION, DATA_DIR, ASSETS_DIR
     images.ts             the flyers' list and each one's version (a hash of its file: its URL's ?v=)
@@ -727,40 +742,42 @@ frontend/
     pages/
       index.astro         the app, on the list (/)
       calendario/index.astro   the same app, on the calendar (/calendario/)
+      guardados/index.astro    the same app, on Guardados (/guardados/, not indexed)
       evento/[id].astro   an event's page (forwards browsers to the app)
       og/[id].jpg.ts, og/sitio.jpg.ts   link previews
       thumbs/[name].webp.ts   flyer thumbnails
       icons/[name].png.ts, manifest.webmanifest.ts, sw.js.ts   installing (icons, manifest, service worker)
       calendario.ics.ts   the calendar feed (no longer linked; written by lib/calendarFeed.ts)
       404.astro
-    components/           HomePage (the app's body, for / and /calendario/), SiteHeader, ThemeToggle, Stripes,
-                          ViewToolbar, JumpBar, BottomNav, FilterSheet, CalendarView, EventDrawer, PostsSheet,
+    components/           HomePage (the app's body, for /, /calendario/ and /guardados/), SiteHeader, ThemeToggle, Stripes,
+                          ViewToolbar, JumpBar, BottomNav, FilterSheet, CalendarView, EventDrawer, Lightbox, PostsSheet,
                           PostViewer, InstallOffer, Notice, SiteFooter
     scripts/
       main.ts             entry point of the home page: state, render, the clicks' handlers
       eventPage.ts        entry point of an event's page
-      state.ts            AppState, filtering, period grouping
+      state.ts            AppState, filtering and the days shown, period grouping, a day's order
       screenHistory.ts    the phone's back between the app's screens
       types.ts            DanceEvent, EventMedia, Meta, AppState (mirror of the backend's models)
       theme.ts, themeConfig.ts   the Claro / Oscuro switch, its rule and colors
-      views/              upcomingView, calendarView, viewNavigation, eventCard, eventDetail, eventDetailActions, eventDrawer,
-                          drawerSheet, drawerGestures, drawerHistory, filters, filterPanels, jumpBar, whenMenu, bottomNav, postsSheet,
-                          postViewer, inlinePlayer, clips, saveButton, saveNotice, notice, sharing, installPrompt, detailsHint, dayChange (HTML strings +
-                          their behavior)
+      views/              upcomingView, calendarView, savedView, viewNavigation, eventCard, carousel, lightbox, keyboardNav, tabOrder,
+                          eventDetail, eventDetailActions, eventDrawer, drawerSheet, drawerGestures, drawerHistory, filters, filterPanels,
+                          jumpBar, pinnedBars, whenMenu, bottomNav, postsSheet, postViewer, inlinePlayer, clips, saveButton, saveNotice,
+                          notice, sharing, installPrompt, detailsHint, dayChange, secondTaps (HTML strings + their behavior)
       lib/                dates, holidays, format, links, linkPreview, calendarFeed, contact, mediaLabel, filterModel, styleFamilies, search, searchWords, searchDays,
                           saved, saveNotice, secondTap, share, shareText, shareSources, shareCard, analytics, dom, focus, icons, accountLink,
-                          externalLink, sheet, sheetMotion, motion, brandColors, instagramEmbed, loader, installPlace, onceFlag, storedSwitch,
-                          storedValue, outsideClick, viewTitles
-    styles/               tokens.css (design tokens), base.css, components/*.css
+                          externalLink, sheet, sheetMotion, motion, glide, cards, brandColors, instagramEmbed, loader, installPlace, onceFlag,
+                          storedSwitch, storedValue, outsideClick, viewTitles
+    styles/               tokens.css (design tokens), tokens-fallback.css (generated: the colors for iOS 16's Safari), base.css,
+                          components/*.css
 ```
 
 | Module | Responsibility |
 |---|---|
-| `data.ts` | Reads `data/`, adds flyer sizes and versions (`?v=`), lists every account the sweep reads (`meta.accounts`, else the accounts with events) for the footer's sources |
-| `state.ts` | The UI state; filtering (AND across groups, OR within dates, types and rhythms; hiding the bars: `isBar`, `matchesBars`, `HIDE_BARS_KEY`); Filtros' count (the badge); "Limpiar"; grouping by period; the date options |
+| `data.ts` | Reads `data/`, keeps the posts the site shows (`shownMedia`, `pageData.ts`), adds flyer sizes and versions (`?v=`), lists every account the sweep reads (`meta.accounts`, plus any account with events) for the footer's sources |
+| `state.ts` | The UI state; filtering (AND across groups, OR within dates, types and rhythms; hiding the bars: `isBar`, `matchesBars`, `HIDE_BARS_KEY`); the days each view shows an event on (`shownDays`); Filtros' count (the badge); "Limpiar"; grouping by period; a day's order (`dayOrderKey`, `listOrder`); the date options |
 | `views/upcomingView.ts` | "Próximos"; where a shared link's event is (`sharedEventEntry`) |
 | `views/calendarView.ts` | "Calendario", with holidays; each day's events with the filters on (`calendarDays`); a day's dots on phones (`dotsHtml`, `MAX_DOTS_PER_DAY`); the selected day's heading; an empty day, and why (`emptyDayHtml`: the search, or the filters when the search alone finds that day's events) |
-| `views/eventCard.ts` | A card: flyer at its shape (or a video's clip), or a carousel of the event's posts; date sticker; the action row (Detalles, Compartir, the carousel's dots, Guardar) |
+| `views/eventCard.ts` | A card: flyer at its shape (or a video's clip), or a carousel of the event's posts; date sticker; the action row (Detalles, Compartir, the carousel's dots, Guardar); what its link says, its one Tab stop (`cardLabel`) |
 | `views/lightbox.ts`, `components/Lightbox.astro` | A card's image big beside the side panel (wide screens with a mouse): a non-modal stage over the list up to the panel; its event is the panel's, it closes with it and shares its history entry |
 | `views/keyboardNav.ts` | The arrows between cards (`neighbor`, on the cards' boxes) and between events in the open details; Enter |
 | `views/tabOrder.ts` | Tab: one stop per event (a card's own controls out of the Tab order), the side panel following it, never into the panel from outside, and out of it to the next event |
@@ -778,7 +795,7 @@ from under one gets its entry when the overlay closes (pushed over the overlay's
 | `views/savedView.ts` | Guardados: the saved events to come by period, the past ones folded, the empty states (`savedLists`, `emptySavedHtml`, `renderSavedView`) |
 | `lib/filterModel.ts` | The filters' model, pure: options, counts, dimmed, the rhythms by family (`styleGroups`), the bar's chips, "Cuándo" (`whenModel`), the toolbar's pills (`filterPills`), what's applied, the badge, the line (`summaryLine`), the sheet's button (`resultsButtonLabel`, from what the search alone finds: `searched`), whether the search or the filters emptied a view (`searchIsWhy`: the empty list's and the empty day's words), stale dates; a view with no event shows the main types (`MAIN_TYPES`) |
 | `views/filters.ts` | Drawing the model: the phone bar's chips and line, the filter sheet (Ritmo by family), the toolbar's pills, their panels' content and the status row (`pillHtml`, `panelHtml`, `statusHtml`); empty results |
-| `views/filterPanels.ts` | Wide screens: the toolbar's pills open their panels (Cuándo, Ritmo, Tipo): one at a time, each with its own history entry (an overlay, `menu: "panel-…"`), placed under its pill (`menuPlacement`), the keys (`nextOption`), closing (Escape, a click outside, back, a too-small screen) and the focus. A click outside is swallowed or held until the panel's back lands (`lib/outsideClick.ts`) |
+| `views/filterPanels.ts` | Wide screens: the toolbar's pills open their panels (Cuándo, Tipo, Ritmo): one at a time, each with its own history entry (an overlay, `menu: "panel-…"`), placed under its pill (`menuPlacement`), the keys (`nextOption`), closing (Escape, a click outside, back, a too-small screen) and the focus. A click outside is swallowed or held until the panel's back lands (`lib/outsideClick.ts`) |
 | `lib/styleFamilies.ts` | The rhythms' families (Salsa, Bachata, Urbanos, Otros): `STYLE_FAMILIES`, `familyOf`, `groupByFamily` (the sheet and the Ritmo panel); every rhythm of the data contract in one (`tests/styleFamilies.test.ts`) |
 | `views/jumpBar.ts` | Phones: the pinned bar (the chips; it never hides), the filter sheet's setup; both: keeping your place when a filter changes, scrolling on purpose |
 | `views/pinnedBars.ts` | The bars pinned to the top: their height (`stickyOffset`; wide screens: `--pinned-height` follows the sticky toolbar's real height, what `scroll-padding` keeps focused things clear of), the room they leave (`room`, `inSight`) and `data-pinned` |
@@ -812,9 +829,9 @@ from under one gets its entry when the overlay closes (pushed over the overlay's
 | `lib/share.ts`, `lib/shareText.ts`, `lib/shareSources.ts`, `lib/shareCard.ts`, `views/sharing.ts` | Sharing through the phone's menu: the text, what each list's button shares (`shareSources`, pure), the image of a list, the buttons |
 | `views/installPrompt.ts`, `lib/installPlace.ts` | Installing the site like an app: the offer, and the steps for each browser; registers the service worker |
 | `lib/analytics.ts` | GoatCounter events: page views of events, clicks (`data-track`), where details were opened from |
-| `lib/dom.ts`, `lib/icons.ts` | DOM helpers (`escapeHtml`, `isPlainClick`: a click that isn't asking for a new tab); inline SVG icons |
+| `lib/dom.ts`, `lib/icons.ts` | DOM helpers (`escapeHtml`, `isPlainClick`: a click that isn't asking for a new tab; `allowPressedLook`: a held button shows it on iPhones too); inline SVG icons |
 | `lib/accountLink.ts`, `lib/externalLink.ts` | Links as HTML: an account's @ (its profile inside the site), and any other that leaves in a new tab (`externalLinkHtml`) |
-| `lib/dates.ts`, `lib/holidays.ts`, `lib/format.ts` | Dates in Bogotá (an event's days: over several days, or a workshop series' sessions), Colombian holidays, Spanish formatting (`LOCALE`, the short weekday and month names shared by the cards, previews and shared texts) |
+| `lib/dates.ts`, `lib/holidays.ts`, `lib/format.ts` | Dates in Bogotá (an event's days: over several days, or a workshop series' sessions), Colombian holidays, Spanish formatting (`LOCALE`, the short weekday and month names shared by the cards, previews and shared texts), the types in the owner's order (`TYPE_ORDER`: the filters' chips and a day's events) |
 
 ---
 
@@ -824,6 +841,7 @@ From `frontend/` (Node 24):
 
 ```bash
 npm ci
+npm run media     # the flyers and clips from pa-bailar/media, copied into data/ (the data check needs them)
 npm run dev       # http://localhost:4321, with the current data/
 npm run check     # data contract, types, contrast, CSS custom properties
 npm test

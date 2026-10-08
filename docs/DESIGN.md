@@ -19,6 +19,7 @@ The **structure** (type, motifs, components) comes from Fania. The **mood** of t
 ```
 frontend/src/styles/
 ├─ tokens.css            ← every design decision lives here
+├─ tokens-fallback.css   ← generated from tokens.css: the colors for browsers without light-dark() (see "Tokens")
 ├─ base.css              ← element defaults, .container, shared text styles, utilities
 └─ components/           ← one file per component, named like the component
    ├─ stripes.css
@@ -38,9 +39,11 @@ frontend/src/styles/
    ├─ posts-sheet.css    ← every post announcing an event
    ├─ post-viewer.css    ← a post with Instagram's player
    ├─ loader.css         ← a ring turning while something loads (the player, a profile, a video)
+   ├─ lightbox.css       ← wide screens with a mouse: a card's image big beside the side panel
    ├─ filter-sheet.css
    ├─ site-footer.css
-   └─ install.css        ← installing the site: the banner and the steps sheet
+   ├─ install.css        ← installing the site: the banner and the steps sheet
+   └─ notice.css         ← the notice at the bottom ("Guardado · Ver guardados", "Enlace copiado")
 ```
 
 ## Tokens
@@ -48,7 +51,7 @@ frontend/src/styles/
 `tokens.css` has three layers:
 
 1. **Palette:** raw named colors (`--wine-900`, `--tomato-600`, `--marigold-600`…). **Components never use these.**
-2. **Semantic colors:** what a color is *for* (`--bg`, `--surface`, `--text-muted`, `--accent`, `--action`…). Each is `light-dark(<Fania de día>, <Luz de escenario>)`. **Components only use these.** Browsers without `light-dark()` (Safari before 17.5: iPhones on iOS 16) would drop them all and show no colors: `tokens-fallback.css`, generated from `tokens.css` by `scripts/light-dark-fallback.mjs` (a test fails while it's stale), gives them the same values inside `@supports not (light-dark())`, which every other browser skips (the owner, 6 Oct 2026).
+2. **Semantic colors:** what a color is *for* (`--bg`, `--surface`, `--text-muted`, `--accent`, `--action`…). Each is `light-dark(<Fania de día>, <Luz de escenario>)`. **Components only use these.** Browsers without `light-dark()` (Safari before 17.5: iPhones on iOS 16) would drop them all and show no colors: `tokens-fallback.css`, generated from `tokens.css` by `scripts/light-dark-fallback.mjs` (a test fails while it's stale), gives them the same values inside `@supports not (color: light-dark(#000, #fff))`, which every other browser skips (the owner, 6 Oct 2026).
 3. **Scales:** type sizes, spacing, radii, control sizes, motion.
 
 Themes switch through CSS `color-scheme`: `light` at `:root`, `dark` only under `html[data-theme="dark"]`. An inline script in `<head>` (`src/themeScript.ts`, put in every page by `BaseLayout.astro`) sets `data-theme` from the saved choice before first paint, so Oscuro never flashes Claro, and sets the `theme-color` meta. The Content Security Policy allows it by its hash (`ARCHITECTURE.md`, section 3.3). `scripts/theme.ts` runs the switch; its icon and label follow `data-theme` through CSS. Both share their rule (only a saved `dark` is dark) and colors through `scripts/themeConfig.ts`. The installed app's manifest uses the light theme's paper for its splash screen and bar.
@@ -70,12 +73,14 @@ Themes switch through CSS `color-scheme`: `light` at `:root`, `dark` only under 
 | `--action` / `--on-action` | deep orange / white | gold / ink `#1c1033` | The primary button |
 | `--accent-text` | tomato-700 | pink-400 | The accent as a word on the page (`--accent` is below 4.5:1 on the page in light) |
 | `--chip-active-*` | wine / cream | pink-300 `#ff9fcb` / ink | Selected filter chip, an item that's on in the bar at the bottom, the badges |
+| `--free` / `--on-free` | palm green / white | the same | The "Gratis" price tag |
 | `--dimmed` | cocoa-200 | indigo-400 | A filter option with nothing to show (inactive, exempt from contrast) |
 | `--details-ink` | wine-900 | lilac-300 `#c3b7db` | The cards' "Detalles ›" frame |
 | `--details-pressed` | cream-250 | indigo-800 | "Detalles ›" pressed: the frame's fill |
 | `--scrim` | wine-950 | indigo-975 | Under the details drawer |
 | `--backdrop` | wine at 60% | indigo-black at 78% | Behind the bottom sheets |
 | `--focus` | tomato-600 | gold-300 | The keyboard's focus ring |
+| `--card-current` | amber-700 (the stripes' orange, deepened) | pink-400 | The card shown in the side panel, outlined in the list: never the focus ring's color |
 | `--stripe-1..3` | tomato, orange, marigold | magenta `#e0438f`, coral `#f2785c`, gold | 70s stripes, the period rule, the offset under "Detalles ›" |
 | `--period-title` / `--period-shadow` | deep tomato / sand | pink-200 `#f7b0d4` / indigo-975 | Period headings |
 | `--sticker-*` | tomato / cream | gold / ink | Round date sticker |
@@ -111,6 +116,7 @@ pixels at 375 and 1280px and also passes.
 
 Sizes: `--text-2xs` 11 · `xs` 12 · `sm` 13 · `md` 15 (body) · `base` 16 · `lg` 17 · `xl` 21 · `2xl` 26 · `3xl` 36 · `logo` 44–72 (fluid).
 `--text-base` is for the search fields (under 16px, iPhones zoom the page in on focus) and the media viewer's title.
+Weights: `--weight-regular` 400 and `--weight-bold` 600 (Instrument Sans), `--weight-serif` 500 (Bodoni Moda's only one).
 `npm run check` fails when a stylesheet reads a custom property nobody defines (`scripts/check-css-vars.mjs`; the
 few set from scripts are listed there).
 
@@ -122,8 +128,11 @@ few set from scripts are listed there).
   - `--radius-md` (4px): cards, dialog, calendar cells
   - `--radius-round`: **only** what's round by nature: the date sticker, calendar day numbers, a carousel's dots and
     ‹ ›, the install steps' numbers, a loader
-- `--border-width` 1.5px everywhere.
-- Controls: `--control-height` 40px (buttons, toggle), `--chip-height` 32px, `--sticker-size` 60px.
+- `--border-width` 1.5px everywhere. The 70s stripes are `--stripe-height` 5px, the lines around period headings
+  `--period-rule-height` 3px.
+- The page's column: `--content-width` 1120px.
+- Controls: `--control-height` 40px (buttons, toggle), `--chip-height` 32px, `--sticker-size` 60px; the filter
+  sheet's switch, `--switch-width` × `--switch-height` 44×24px.
 - Touch: `--touch-target` 44px for every control. A control drawn smaller gets an invisible `::after` that makes up the
   difference, so the target is met without making its row taller.
 - The phone bars: `--jump-bar-height` 56px, `--filter-line-height` 40px (the line under it while filtering);
@@ -135,6 +144,11 @@ few set from scripts are listed there).
 - The details: `--drawer-top-gap` 12px (phones: what's left above the drawer at full height), `--panel-width` 420px (wide screens: the side panel).
 - Small parts: `--tab-underline` 3px, `--icon-sm` 16px, `--icon-md` 20px, `--icon-lg` 24px, `--handle-width` × `--handle-height` 40×4px (every sheet's grab handle, `.sheet-handle`).
 - Over photos: `--on-image` (white) with `--shadow-on-image`, the same in both themes, for marks that sit on any flyer; `--on-image-bg` (black at 60%) behind words on a flyer.
+- What floats (the drawer and the side panel, the posts badge, the notice, the "Cuándo" menu and the pills' panels)
+  casts `--shadow-menu`.
+- Layers, lowest first: `--z-raised` 1 (above a sibling's stretched click area), `--z-sticky` 10 (the pinned bars, the
+  bar at the bottom, the menus), `--z-panel` 20 (the side panel and the image beside it), `--z-notice` 30 (the notice,
+  over them all).
 
 ### Motion
 
@@ -205,7 +219,7 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves: the pa
 
   The detail's "Cuándo" reads "Viernes 13 al domingo 15 de noviembre · hora por confirmar", and shared lists "Vie 13 – dom 15".
 - **A workshop series** (one program on separate dated sessions, `DATA.md`) is one card, listed under its next session's
-  day (among that day's events by its time) and moving on as each session passes; it leaves the list after the last.
+  day (among that day's events by its type and time) and moving on as each session passes; it leaves the list after the last.
   Its card says the next session (`cardWhenLabel`), its sticker shows that session's day:
 
   | When | Card |
@@ -540,7 +554,7 @@ screens in the toolbar's pills and their panels:
 - **One tap chooses, another unchooses.** A chosen chip takes the selected-chip colors with an ×; tapping it again (or
   its × anywhere) removes it. Choices made in the sheet that have no chip of their own in the bar (a rhythm, "Sin
   bares") show in the sheet and in the line under the bar ("12 eventos · Kizomba"), never as chips in the row.
-- **Dates look like what they are: "Cuándo" (`views/whenMenu.ts`).** Not chips like the rhythms (they read as the same
+- **Dates look like what they are: "Cuándo" (`views/whenMenu.ts`).** Not chips like the types (they read as the same
   kind of thing): in the bar dates are one control, the pattern of Google Maps' chips with a ▾:
   - **The chip:** "🕒 ▾", named "Cuándo: Cualquier fecha" (a clock, not a calendar, which is Calendario's icon: the
     owner, 4 October 2026). Chosen, it reads "🕒 Finde" (named "Finde, Cuándo: Este fin de semana"), with **×** beside
@@ -602,7 +616,7 @@ screens in the toolbar's pills and their panels:
 - **Clearing:** every "Limpiar" clears the dates, rhythms and types, and **shows the bars again** (and forgets it on the
   device): it counts on the badge, so "Limpiar" leaves nothing counted there. Not the search (it has its own way out).
   Nothing else is remembered between visits, and filters aren't in the address.
-- **Dates are the list's:** the calendar has its own days, so there "Cuándo" hides (rhythms stay), the dates chosen
+- **Dates are the list's:** the calendar has its own days, so there "Cuándo" hides (the types and rhythms stay), the dates chosen
   are ignored (and kept for the list) and the badge doesn't count them.
 - **Searching:** the bar at the bottom becomes the search field; the line under the pinned bar stays while filtering.
 - **Empty results always offer a way out:** with filters, "No hay eventos con estos filtros" · "Prueba con otras fechas
@@ -702,7 +716,7 @@ An event can be announced by several Instagram posts (a flyer, then a video, a r
   page's first stop, shown only while focused, skips the header and the toolbar (11 stops) to the list: `<main>`
   takes the focus only then (a click in the list never gives it the focus), and the arrows start from there as from
   nothing focused. Escape in the toolbar's search ends the search only; a second one closes the side panel.
-- **Every post, in a sheet** (`PostsSheet.astro`, `scripts/views/postsSheet.ts`): from the card's "▦ 3", the details' "Ver las 3 publicaciones", or the event page's `.posts-badge`. Tabs Flyers and Videos when the event has both, and 3:4 thumbnails like Instagram's grid since 2025, made at build time (`pages/thumbs/[name].webp.ts`): a 4:5 flyer keeps all but its sides' edges, where a square cut a fifth of its height (the Instagram audit, 7 October 2026). Choosing one opens it in the media viewer, which takes over the sheet's history entry (back returns to the list or the details, not to a sheet that's gone); on an event's page it shows that post on the page instead.
+- **Every post, in a sheet** (`PostsSheet.astro`, `scripts/views/postsSheet.ts`): from the details' "Ver las 3 publicaciones", or the event page's `.posts-badge` ("▦ 3"; a card has its carousel instead). Tabs Flyers and Videos when the event has both, and 3:4 thumbnails like Instagram's grid since 2025, made at build time (`pages/thumbs/[name].webp.ts`): a 4:5 flyer keeps all but its sides' edges, where a square cut a fifth of its height (the Instagram audit, 7 October 2026). Choosing one opens it in the media viewer, which takes over the sheet's history entry (back returns to the list or the details, not to a sheet that's gone); on an event's page it shows that post on the page instead.
 - **The media viewer** (`PostViewer.astro`, `scripts/views/postViewer.ts`): the post inside the site, in a sheet over everything, with Instagram's own player (`lib/instagramEmbed.ts`): videos with sound, carousels with all their slides. Opening the Instagram app would leave the site, and the app's back button doesn't come back; the sheet's bar keeps "Abrir en Instagram ↗". Our copy of the flyer shows at once, with a turning ring in its middle and "Cargando la publicación…" under it (the owner, 7 Oct 2026: the words alone didn't say something was coming), and the player replaces it when ready; if it can't load, the ring goes and the flyer stays with "Esta publicación solo se puede ver en Instagram." A profile and a video tapped on an event's page get the same ring before their "Cargando…" (`loader.css`, `lib/loader.ts`). Instagram's script loads on the first tap only, never with the page. Closing it removes the player, so a video stops.
 - **Videos play in the feed.** When the backend made a video's clip (`preview`), the card plays it: silent, looping, about 6 seconds, like Instagram's feed (`views/clips.ts`). No sound control: a tap opens the details, where the full video plays with sound (the owner, 4 October 2026, after a "Sin sonido / Con sonido" toggle that did nothing, since the clips have no sound). Only the clip on screen plays; one that leaves the screen unloads. No autoplay with reduced motion or the data saver. The service worker doesn't cache clips.
 - **Every video's card says "Video"** (`.video-mark`), whether it plays its clip or not (the owner, 4 October 2026: the label on some videos and not others was confusing). Not a ▶ in the middle: that promised it would play on the card.
@@ -740,7 +754,7 @@ On phones the details open like Instagram's comments: a drawer rises over the li
     the stripes.
 - **No line at the card's foot** (such as "Ver horario, precios y cómo llegar"): "Detalles" on every card already says
   it, so the card ends with its price and rhythms.
-- **The whole card opens the details**, its flyer and clip included (the posts' badge opens the posts).
+- **The whole card opens the details**, its flyer, clip and carousel included (a carousel's ‹ › only change the slide).
 - **First visit:** the first card's "Detalles" pulses gently once when its row is fully on screen
   (`views/detailsHint.ts`), never again in this browser (`details-hint-seen` in localStorage, `lib/onceFlag.ts`), and
   not at all once the visitor has opened any details. No hint bubble over the list. Nothing moves with reduced motion.
