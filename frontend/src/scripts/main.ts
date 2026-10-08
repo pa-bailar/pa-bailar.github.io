@@ -58,7 +58,7 @@ import { closeSearchField, initBottomNav, renderBottomNav } from "./views/bottom
 import { viewNavigation } from "./views/viewNavigation";
 import { closeWhenMenu, isWhenMenuOpen, openWhenMenu, syncWhenMenu } from "./views/whenMenu";
 import { closePanel, initFilterPanels, syncPanels, togglePanel } from "./views/filterPanels";
-import { initSaveButtons, renderSavedCount as drawSavedCount, toggleSave } from "./views/saveButton";
+import { initSaveButtons, renderSavedCount as drawSavedCount, saveAgain } from "./views/saveButton";
 import { initNotice } from "./views/notice";
 import { tellSaveChange } from "./views/saveNotice";
 import { reminderMayReplace } from "./lib/saveNotice";
@@ -501,7 +501,7 @@ export function start() {
   initSaveButtons((id, saved) => {
     const inSaved = state.view === "saved";
     const seeSaved = () => navigateView("saved");
-    const told = tellSaveChange(id, saved, { inSaved, seeSaved, undo: () => toggleSave(id) });
+    const told = tellSaveChange(id, saved, { inSaved, seeSaved, undo: () => saveAgain(id) });
     if (reminderMayReplace(told)) offerAfterSaving(upcomingSaved().length); // a new save's "Guardado" only
     savesChanged({ quiet: told !== null });
   }, () => savesChanged());

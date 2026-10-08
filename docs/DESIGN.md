@@ -349,9 +349,10 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
     carries `aria-keyshortcuts`). The notice is far in Tab's order (from the details' Guardado, 14 Shift+Tabs, and gone
     after its 4 seconds: the bug hunt of 7 Oct 2026); taking the focus to it instead would pull the visitor away from
     where they are, and Enter there would undo. Not while typing in a field (its own undo), nor under a modal. In the
-    details, Guardar itself also saves the event again. Guardados drawn again (Deshacer, a save in another tab) keeps
-    the focus on the card that had it (after Escape from the details, the focus fell to the page and Tab started over
-    from the top: the bug-squash pass of 8 Oct 2026).
+    details, Guardar itself also saves the event again. Deshacer only ever saves: saved again meanwhile in another
+    tab, it leaves it so (it toggled, and took the event away for good). Guardados drawn again (Deshacer, a save in
+    another tab) keeps the focus on the card that had it (after Escape from the details, the focus fell to the page
+    and Tab started over from the top). Both: the bug-squash pass of 8 Oct 2026.
 - **Guardados is a place of its own** (`views/savedView.ts`, `/guardados/`), like Instagram's Saved and Airbnb's
   Wishlists. Not a toggle over the list and the calendar (it read as "the calendar without the calendar", and you could
   be in Eventos and Guardados at once): the owner, 5 October 2026. It's in the bar at the bottom and a third tab on

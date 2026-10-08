@@ -42,11 +42,23 @@ export function isSaved(id: string): boolean {
 /** Save or unsave; returns whether it's saved now. From what's stored now, not what the page read when it opened:
  * another tab may have saved since (writing the page's old list back erased those, the bug hunt of 7 Oct 2026). */
 export function toggleSaved(id: string): boolean {
+  const on = !(read() ?? load()).has(id);
+  setSaved(id, on);
+  return on;
+}
+
+/**
+ * Saved (`on`) or not, from what's stored now; returns whether that changed anything. Deshacer saves an event again
+ * this way, never by toggling: another tab may have saved it again meanwhile, and toggling then took it away for good
+ * (the bug-squash pass of 8 Oct 2026).
+ */
+export function setSaved(id: string, on: boolean): boolean {
   saved = read() ?? load();
-  if (saved.has(id)) saved.delete(id);
-  else saved.add(id);
+  if (saved.has(id) === on) return false;
+  if (on) saved.add(id);
+  else saved.delete(id);
   persist();
-  return saved.has(id);
+  return true;
 }
 
 /** Past SAVED_LIMIT ids, forgets the oldest whose events are no longer in the data (`existing`), so the list doesn't

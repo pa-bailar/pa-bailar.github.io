@@ -82,4 +82,25 @@ describe("saved events (lib/saved.ts)", () => {
     expect(page.isSaved("a") && page.isSaved("b")).toBe(true);
     expect(page.toggleSaved("a")).toBe(false);
   });
+
+  // The bug-squash pass of 8 Oct 2026: in Guardados, an event unsaved ("Quitado · Deshacer"), then saved again in
+  // another tab, then Deshacer here (Ctrl+Z): Deshacer toggled it, so it took the event away for good.
+  it("Deshacer saves the event again from what's stored now: another tab's save meanwhile stays", async () => {
+    const page = await tab();
+    page.toggleSaved("x");
+    page.toggleSaved("x"); // unsaved here: "Quitado de tus guardados · Deshacer"
+    const other = await tab();
+    other.toggleSaved("x"); // saved again in another tab
+    expect(page.setSaved("x", true)).toBe(false); // Deshacer: already saved, nothing to change
+    expect(stored()).toEqual(["x"]);
+    page.toggleSaved("x");
+    expect(page.setSaved("x", true)).toBe(true);
+    expect(stored()).toEqual(["x"]);
+  });
+
+  it("the page's Deshacer saves again, never toggles (main.ts)", async () => {
+    const { readFileSync } = await import("node:fs");
+    const main = readFileSync(new URL("../src/scripts/main.ts", import.meta.url), "utf8");
+    expect(main).toContain("undo: () => saveAgain(id)");
+  });
 });
