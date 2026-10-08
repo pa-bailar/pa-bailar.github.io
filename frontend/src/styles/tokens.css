@@ -210,6 +210,8 @@
   --handle-width: 40px; /* sheets' grab handle */
   --handle-height: 4px;
 
+  --pressed-opacity: 0.6; /* a button or a link while it's held (base.css) */
+
   /* ---------- Layer 3: motion ---------- */
   --duration: 150ms; /* hovers, small state changes */
   --duration-enter: 320ms; /* a bottom sheet rising, the details drawer rising to half height */

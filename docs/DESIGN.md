@@ -740,6 +740,11 @@ already left (the owner's review, 6 Oct 2026). Closing never reopens an earlier 
 - **No browser flash on a tap** (`-webkit-tap-highlight-color: transparent` on `html`, inherited everywhere): Android
   Chrome painted a blue box over a whole card, even through the pinned bars (the owner, 7 October 2026). A control
   shows its own press or change instead: Detalles' print, a filled bookmark, a chip turned on, a sheet opening.
+- **A held button or link dims** (`--pressed-opacity`, `base.css`), like Instagram's, so a tap shows it registered even
+  before its answer (Compartir, a link to another app). Never a card, its link or its flyer: they're held at the start
+  of every scroll, and would flash. Detalles, "Ver N más" and a card's Compartir sink into their own fill instead. iOS
+  needs a touchstart listener for it (`allowPressedLook`). (The bug hunt of 7 October 2026: after the flash went, most
+  controls showed nothing.)
 - **No `style=""` attributes** in markup: the Content Security Policy blocks them and the build fails on them. Use a class, or set a value that depends on the data from a script (`element.style.setProperty`), like a card's `--flyer-ratio`.
 - **Flyers are never cropped** (`object-fit: contain`). Like Instagram's feed, phones show each flyer at its own shape, from 4:5 (portrait) to 1.91:1 (landscape); taller ones (stories), and every card on wider screens, get a 4:5 frame, filled around the flyer with a blurred copy of itself. The size comes from the file at build time (`src/data.ts`), so the page never jumps as images load.
 - **Accessibility:**

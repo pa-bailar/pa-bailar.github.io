@@ -2,7 +2,7 @@
 
 import type { AppState, DanceEvent, EventType, View } from "./types";
 import { initClickTracking } from "./lib/analytics";
-import { byId, isPlainClick } from "./lib/dom";
+import { allowPressedLook, byId, isPlainClick } from "./lib/dom";
 import { CARD_LINK, cardLink, cardOnScreen } from "./lib/cards";
 import { focusAfterClearing, focusScope, focusSelector } from "./lib/focus";
 import { eventCountLabel, formatLongDate } from "./lib/format";
@@ -421,6 +421,7 @@ export function start() {
   events = JSON.parse(byId("events-data").textContent || "[]");
   eventById = new Map(events.map((event) => [event.id, event]));
   trimSaved(new Set(eventById.keys())); // past many, the oldest saved events no longer in the data are forgotten
+  allowPressedLook(); // a held button shows it, on iPhones too (base.css)
   initThemeToggle();
   initEventDrawer(findEvent);
   initPostsSheet();
