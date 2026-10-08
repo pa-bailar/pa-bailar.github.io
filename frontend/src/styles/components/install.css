@@ -81,7 +81,9 @@
 
 .install-sheet__clip {
   flex: none;
-  height: min(32rem, 64dvh);
+  /* As tall as fits, and narrow enough to leave the taps their width (~11.5rem with the sheet's padding and the gap:
+     "Agregar a Inicio" on one line) on a narrow screen or with Safari's page zoom (125% on a 402 pt iPhone: 322 px). */
+  height: min(32rem, 64dvh, (100vw - 11.5rem) * 874 / 402);
   aspect-ratio: 402 / 874; /* the recording's screen, in points */
   border: var(--border-width) solid var(--border);
   border-radius: var(--radius-md);
