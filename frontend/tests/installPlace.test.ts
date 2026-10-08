@@ -1,8 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { installGuide, installPlace } from "../src/scripts/lib/installPlace";
+import { installGuide, installPlace, openInBrowser, withoutArrival } from "../src/scripts/lib/installPlace";
 
 // Real user agents (iOS 26 reports itself as iOS 18.6; Safari's own version says 26).
 const UA = {
+  safari27: "Mozilla/5.0 (iPhone; CPU iPhone OS 18_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.0 Mobile/15E148 Safari/604.1",
   safari26: "Mozilla/5.0 (iPhone; CPU iPhone OS 18_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0 Mobile/15E148 Safari/604.1",
   safari18: "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1",
   safari17: "Mozilla/5.0 (iPhone; CPU iPhone OS 17_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Mobile/15E148 Safari/604.1",
@@ -31,10 +32,10 @@ describe("where the visitor is, for installing", () => {
   });
 
   it("apps' own browsers, which can't install", () => {
-    expect(installPlace(UA.instagramIos)).toEqual({ kind: "in-app", ios: true });
-    expect(installPlace(UA.facebookIos)).toEqual({ kind: "in-app", ios: true });
-    expect(installPlace(UA.googleAppIos)).toEqual({ kind: "in-app", ios: true });
-    expect(installPlace(UA.androidInstagram)).toEqual({ kind: "in-app", ios: false });
+    expect(installPlace(UA.instagramIos)).toEqual({ kind: "in-app", ios: true, app: "instagram" });
+    expect(installPlace(UA.facebookIos)).toEqual({ kind: "in-app", ios: true, app: "other" });
+    expect(installPlace(UA.googleAppIos)).toEqual({ kind: "in-app", ios: true, app: "other" });
+    expect(installPlace(UA.androidInstagram)).toEqual({ kind: "in-app", ios: false, app: "instagram" });
   });
 
   it("an iPad asking for the desktop site is told from a Mac by its touch screen", () => {
@@ -60,6 +61,20 @@ describe("the steps for each place", () => {
     expect(first).toMatch(/abajo a la derecha y luego Compartir/);
     expect(second).toMatch(/Agregar a inicio/);
     expect(third).toMatch(/Abrir como app web.*Agregar/);
+  });
+
+  // iOS 27 (Sept 2026): the compact bar's bottom-right button became Tabs, so "⋯ abajo a la derecha" pointed at the
+  // wrong button. Compartir is in the page's menu at the left of the address (Cult of Mac); no arrow until it's seen.
+  it("Safari 27: the page's menu at the left of the address (or holding it), then Compartir; no arrow", () => {
+    const guide = installGuide(installPlace(UA.safari27))!;
+    expect(installPlace(UA.safari27)).toMatchObject({ kind: "ios", browser: "safari", safariVersion: 27 });
+    expect(guide.pointer).toBeNull();
+    const [first, second, third] = guide.steps.map(text);
+    expect(first).toMatch(/a la izquierda de la dirección, y luego Compartir/);
+    expect(first).toMatch(/Mantén presionada la dirección/);
+    expect(first).not.toMatch(/abajo a la derecha/);
+    expect(second).toMatch(/Agregar a inicio/);
+    expect(third).toMatch(/Abrir como app web/);
   });
 
   it("Safari 18 and earlier: Compartir in the middle of the bottom bar", () => {
@@ -92,5 +107,55 @@ describe("the steps for each place", () => {
 
   it("nothing on a computer (only a browser that announces it can install there)", () => {
     expect(installGuide(installPlace(UA.windowsChrome))).toBeNull();
+  });
+});
+
+// The owner, 8 Oct 2026: most visitors come from Instagram, whose browser can't install; leaving it took finding its
+// menu. A link does it in one tap where the app lets one: Android's intent links, Instagram's own way out on iPhone.
+describe("out of an app's browser in one tap", () => {
+  const text = (html: string) => html.replace(/<svg[\s\S]*?<\/svg>/g, "").replace(/<[^>]+>/g, "");
+  const here = new URL("https://pa-bailar.github.io/?instalar");
+
+  it("Instagram on iPhone: its own extbrowser link, to Safari", () => {
+    expect(openInBrowser(installPlace(UA.instagramIos), here)).toEqual({
+      href: "instagram://extbrowser/?url=https%3A%2F%2Fpa-bailar.github.io%2F%3Finstalar",
+      label: "Abrir en Safari",
+    });
+  });
+
+  it("any app on Android: an intent link, to the default browser", () => {
+    expect(openInBrowser(installPlace(UA.androidInstagram), here)).toEqual({
+      href: "intent://pa-bailar.github.io/?instalar#Intent;scheme=https;end",
+      label: "Abrir en el navegador",
+    });
+  });
+
+  it("none where no link works (Facebook, the Google app on iPhone), nor outside an app's browser", () => {
+    expect(openInBrowser(installPlace(UA.facebookIos), here)).toBeNull();
+    expect(openInBrowser(installPlace(UA.googleAppIos), here)).toBeNull();
+    expect(openInBrowser(installPlace(UA.safari26), here)).toBeNull();
+    expect(openInBrowser(installPlace(UA.androidChrome), here)).toBeNull();
+  });
+
+  it("the steps lead with the link, and keep the app's menu and the link to copy for when it doesn't open", () => {
+    const instagram = installGuide(installPlace(UA.instagramIos), here)!;
+    expect(instagram.open?.label).toBe("Abrir en Safari");
+    expect(instagram.copyLink).toBe(true);
+    const [first, second, third] = instagram.steps.map(text);
+    expect(first).toMatch(/^Toca Abrir en Safari y acepta salir de Instagram/);
+    expect(second).toMatch(/^¿No se abrió\? Toca .*Abrir en el navegador, o copia el enlace y pégalo en Safari/);
+    expect(third).toMatch(/En Safari se abren solos los pasos/);
+    const android = installGuide(installPlace(UA.androidInstagram), here)!;
+    expect(android.steps.map(text)[0]).toBe("Toca Abrir en el navegador.");
+    expect(android.steps.map(text)[2]).toMatch(/Ahí toca Instalar/);
+    const facebook = installGuide(installPlace(UA.facebookIos), here)!;
+    expect(facebook.open).toBeUndefined();
+    expect(facebook.steps.map(text).join(" ")).toMatch(/Abrir en el navegador \(Safari\)/);
+  });
+
+  it("the page it opens is marked, and the mark comes off the address (the rest stays)", () => {
+    expect(withoutArrival("https://pa-bailar.github.io/?instalar")).toBe("/");
+    expect(withoutArrival("https://pa-bailar.github.io/calendario/?instalar&x=1#y")).toBe("/calendario/?x=1#y");
+    expect(withoutArrival("https://pa-bailar.github.io/?x=1")).toBeNull();
   });
 });

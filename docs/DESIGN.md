@@ -313,16 +313,26 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
 
   | Where | Title | Steps |
   |---|---|---|
+  | Safari 27 (iPhone) | Instálala en tu iPhone | Toca el botón de la página, a la izquierda de la dirección, y luego Compartir (¿No lo ves? Mantén presionada la dirección.) · Baja en el menú y elige Agregar a inicio. Si no está, toca Ver más. · Deja activado Abrir como app web y toca Agregar. No arrow: iOS 27 turned the bottom-right ⋯ into Tabs (8 Oct 2026, from Cult of Mac's description; to check in the iOS Simulator) |
   | Safari 26 (iPhone) | Instálala en tu iPhone | Toca ⋯ abajo a la derecha y luego Compartir (¿Ya ves Compartir en la barra? Tócalo directo.) · Baja en el menú y elige Agregar a inicio. Si no está, toca Ver más. · Deja activado Abrir como app web y toca Agregar. Arrow: bottom right |
   | Safari 18 and earlier | Instálala en tu iPhone | Toca Compartir en la barra de abajo, en el centro. · Baja en el menú y elige Agregar a inicio. · Toca Agregar (arriba a la derecha). Arrow: bottom middle |
   | Safari on iPad | Instálala en tu iPad | Toca Compartir arriba a la derecha. · Elige Agregar a inicio. · Toca Agregar. No arrow |
   | Chrome, Edge, Firefox on iPhone | Instálala en tu iPhone | Toca Compartir junto a la dirección (Chrome) or in the browser's menu · Agregar a inicio · Agregar |
-  | Inside Instagram, Facebook, TikTok, the Google app… | Ábrela en tu navegador | Toca ⋯ o ⋮ arriba a la derecha y elige Abrir en el navegador (Safari). · ¿No aparece? Toca Copiar enlace y pégalo en Safari. · Ahí toca Instalar en Pa' Bailar. With "Copiar enlace" |
+  | Inside Instagram on iPhone, or any app on Android | Ábrela en tu navegador | Toca Abrir en Safari y acepta salir de Instagram (Android: Toca Abrir en el navegador). · ¿No se abrió? Toca ⋯ (⋮) arriba a la derecha y elige Abrir en el navegador, o copia el enlace y pégalo en Safari. · En Safari se abren solos los pasos para instalarla (Android: Ahí toca Instalar en Pa' Bailar). With the button and "Copiar enlace" |
+  | Inside Facebook, TikTok, the Google app… on iPhone | Ábrela en tu navegador | Toca ⋯ o ⋮ arriba a la derecha y elige Abrir en el navegador (Safari). · ¿No aparece? Toca Copiar enlace y pégalo en Safari. · Ahí toca Instalar en Pa' Bailar. With "Copiar enlace" |
   | An iPhone browser before iOS 16.4 | Ábrela en Safari | Copy the link, open it in Safari, install there. With "Copiar enlace" |
   | Android | Instalar en tu celular | Toca el menú ⋮ · Instalar aplicación · Instalar |
 
   On iPhone the page can't tell whether it was added, so the sheet ends with "Ya la agregué" (hides the offer
   for good), and closing the steps rests the banner for 30 days like ×; the footer's link stays.
+- **Out of an app's browser in one tap** (the owner, 8 Oct 2026: most visitors come from Instagram, whose browser
+  can't install). iPhone has no install dialog nor any way for a page to start one; what a page can do is get the
+  visitor to the browser that can. "Abrir en Safari" (Instagram on iPhone: its own `instagram://extbrowser` link,
+  undocumented, Instagram asks to confirm) and "Abrir en el navegador" (any app on Android: an `intent://` link) open
+  the home page there, marked `?instalar`: the mark comes off the address at once, the banner shows even if it was
+  dismissed, and on iPhone the steps open by themselves. Chrome's own dialog needs a tap of the visitor's, so on
+  Android the banner's "Instalar" is the one tap left. Facebook, TikTok and the others have no link that works
+  (`x-safari-https` stopped working in Meta's apps around mid-2025): their steps point to the app's menu.
 - **A reminder:** whoever dismissed the banner on an earlier visit gets one small reminder, once, when a new save
   makes two saved events or more ("Tus guardados a un toque: instala Pa' Bailar · Instalar ×", a notice at the bottom:
   see "Saving and searching", in place of that save's "Guardado · Ver guardados", for 10 seconds). Offering again at a
