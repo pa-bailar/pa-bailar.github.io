@@ -205,11 +205,11 @@ const ARTICLES = ["el", "la", "los", "las", "este", "esta"];
  * own, any of them ("viernes sábado", "hoy mañana", "sábado 10 domingo 11").
  */
 function narrowerAt(words: string[], at: number, kind: DayKind, today: string): DayPhrase | null {
-  const said = (word: string | undefined) => WEEKDAYS.has(word ?? "");
-  if (kind === "day") return said(words[at]) ? dayAt(words, at, today) : null;
+  const isWeekday = (word: string | undefined) => WEEKDAYS.has(word ?? "");
+  if (kind === "day") return isWeekday(words[at]) ? dayAt(words, at, today) : null;
   if (kind !== "weekday" && kind !== "holiday") return null;
   const next = dayAt(words, at, today);
-  if (next && (kind === "weekday" ? next[2] === "holiday" : said(words[at]))) return next;
+  if (next && (kind === "weekday" ? next[2] === "holiday" : isWeekday(words[at]))) return next;
   const join = JOINS.includes(words[at] ?? "") ? 1 : 0;
   const article = ARTICLES.includes(words[at + join] ?? "") ? 1 : 0;
   for (const skip of new Set([join, join + article])) {

@@ -411,8 +411,8 @@ function openerNow(): HTMLElement | null {
   if (!opener || opener.isConnected) return opener;
   const id = opener.closest<HTMLElement>("[data-event-card]")?.dataset.eventCard;
   if (!id) return null;
-  const leftList = id === state.current?.id ? standIn(state.place, (other) => Boolean(cardOnScreen(other))) : null;
-  return cardLink(cardOnScreen(id) ?? cardOf(leftList));
+  const standInId = id === state.current?.id ? standIn(state.place, (other) => Boolean(cardOnScreen(other))) : null;
+  return cardLink(cardOnScreen(id) ?? cardOf(standInId));
 }
 
 /** Everything closing leaves behind: the focus back, the content gone, the address. */
