@@ -29,6 +29,14 @@ describe("a second tap on something the first one opened (lib/secondTap.ts)", ()
     expect(isStraySecondTap(more, { x: 190, y: 530, at: 1120, control: "" })).toBe(true); // the page under a notice
   });
 
+  // The code-quality pass of 8 Oct 2026: WebKit held a 150 ms double-tap's second click back, 200–380 ms after the
+  // first and past 450 under load, and it opened the first new card's details.
+  it("is dropped when WebKit's click comes late, as a double-tap's second does there", () => {
+    const card = { x: 190, y: 530, control: "ARTICLE data-event-card=social" };
+    expect(isStraySecondTap(more, { ...card, at: 1380 })).toBe(true); // WebKit's usual delay
+    expect(isStraySecondTap(more, { ...card, at: 1520 })).toBe(true); // a slower double-tap, or a busy phone
+  });
+
   it("isn't when it presses the same control again (a month's arrow), comes later, or lands elsewhere", () => {
     expect(isStraySecondTap(more, { ...more, at: 1120 })).toBe(false);
     expect(isStraySecondTap(more, { ...more, control: "A href=/", at: 1000 + SECOND_TAP_MS + 1 })).toBe(false);
