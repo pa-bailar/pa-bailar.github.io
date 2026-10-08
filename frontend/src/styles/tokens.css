@@ -171,7 +171,7 @@
   --details-tuck: 0.5px; /* how far its offset reaches under the frame's ink: half a device pixel at 1x (set by density below) */
   --chip-height: 32px;
   --touch-target: 44px; /* the filter chips, the cards' action row, the drawer's buttons */
-  --jump-bar-height: 56px; /* phones: the pinned bar with the filter chips ("Cuándo", the rhythms) */
+  --jump-bar-height: 56px; /* phones: the pinned bar with the filter chips ("Cuándo", the types) */
   --filter-line-height: 40px; /* phones: "12 eventos · Finde, Salsa · × Limpiar" under the bar, while filtering */
   --pinned-height: var(--jump-bar-height); /* phones: all that's pinned to the top (jump-bar.css adds the line) */
   --bottom-nav-height: 60px; /* phones: the bar at the bottom, icons with their labels */
@@ -204,7 +204,7 @@
   --on-image-bg: rgb(0 0 0 / 0.6); /* behind words and marks over any image: a card's "Video", "Historia" */
 
   /* ---------- Layer 3: small parts ---------- */
-  --tab-underline: 3px; /* the selected tab's line: Próximos / Calendario, Flyers / Videos */
+  --tab-underline: 3px; /* the selected tab's line: Próximos / Calendario / Guardados, Flyers / Videos */
   --icon-sm: 16px; /* marks over flyers and thumbnails, a chip's ×, "× Limpiar", a card's "Video" */
   --icon-md: 20px; /* the cards' "Detalles" and Compartir, "Cuándo"'s clock, the drawer's ×, the details' media links */
   --icon-lg: 24px; /* Guardar, the details' quick actions, the bar at the bottom */
@@ -230,7 +230,7 @@
             a phone in landscape keeps the phone's bars)
      900px  the details: a drawer over the list below it, a side panel from it (and 600px tall: a phone in
             landscape keeps the drawer, and its bar at the bottom)
-     960px  wide: more card columns */
+     The cards' columns need none: the grid fits as many as the width holds (event-card.css). */
 }
 
 /* "Detalles"'s offset reaches under the frame's ink by one device pixel where the ink is at least two thick (2x and

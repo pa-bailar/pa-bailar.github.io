@@ -1,5 +1,5 @@
 // Checks data/events.json and data/meta.json against the data contract (docs/DATA.md) before the site
-// is built. The backend that writes them lives in another (private) repository, so this is where a
+// is built. The backend that writes them lives in another repository (pa-bailar/backend), so this is where a
 // mismatch is caught: CI fails instead of the site breaking.
 // Usage: node scripts/check-data.mjs   (exits 1 on any problem; run by `npm run check`). The tests call checkData.
 

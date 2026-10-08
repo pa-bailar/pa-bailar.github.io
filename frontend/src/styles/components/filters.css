@@ -63,7 +63,7 @@
 }
 
 /* ---------- "Cuándo" in the phone bar (filters.ts, whenMenu.ts) ----------
-   Not a chip like the rhythms: a clock and a ▾ say it opens a menu of dates ("🕒 ▾"). Once a date is chosen it
+   Not a chip like the types: a clock and a ▾ say it opens a menu of dates ("🕒 ▾"). Once a date is chosen it
    reads "🕒 Finde" in the chosen colors, with × beside it: two buttons (open the menu, take the date away) drawn as
    one piece, a line between them. */
 .when-chip {
@@ -91,7 +91,7 @@
   height: var(--icon-sm);
 }
 
-/* The word "Cuándo" where there's room for it (phones show the clock and ▾, so two rhythms fit). */
+/* The word "Cuándo" where there's room for it (phones show the clock and ▾, so more types fit). */
 .when-chip__word {
   display: none;
 }
@@ -316,7 +316,7 @@
 }
 
 /* ---------- wide screens: the toolbar's pills (filters.ts) ----------
-   [🕒 Cuándo ▾] [Ritmo · 2 ▾] [Tipo ▾]   [Ocultar bares]: one row, each pill opening its panel. */
+   [🕒 Cuándo ▾] [Tipo ▾] [Ritmo · 2 ▾]   [Ocultar bares]: one row, each pill opening its panel. */
 
 .filter-pills {
   display: flex;

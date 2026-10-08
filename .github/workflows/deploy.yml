@@ -1,6 +1,6 @@
 # Builds the Astro site and publishes it to GitHub Pages.
 # Runs on every push to main (merged PRs, including the data PRs), from the manual button, and from the
-# backend's sweep (twice a day, 9 AM and 9 PM Bogotá) when it changed nothing, passing the time of its
+# backend's sweep (twice a day, 6:30 AM and 9 PM Bogotá) when it changed nothing, passing the time of its
 # check so "Actualizado el …" stays current even without new events.
 # Before building, it works out the site's version from the PRs merged since the last one
 # (frontend/scripts/release.mjs). Only once the site is live, when they change it, it tags the new version and

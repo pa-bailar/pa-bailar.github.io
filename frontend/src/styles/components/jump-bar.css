@@ -61,7 +61,7 @@
   display: none;
 }
 
-/* Between the dates and the rhythms. */
+/* Between the dates and the types. */
 .jump-bar__divider {
   flex: none;
   width: var(--border-width);

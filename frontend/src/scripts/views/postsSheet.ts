@@ -1,8 +1,8 @@
-// The posts announcing an event, in a sheet (components/PostsSheet.astro), opened from a card's "▦ 16", the
-// details' "Ver las 16 publicaciones" or the badge on an event page's flyer: like Airbnb's "show all photos", the
-// gallery takes no room in the details themselves.
+// The posts announcing an event, in a sheet (components/PostsSheet.astro), opened from the details' "Ver las 16
+// publicaciones" or the badge on an event page's flyer ("▦ 16"; a card shows them as a carousel): like Airbnb's "show
+// all photos", the gallery takes no room in the details themselves.
 //   - Flyers (photos, carousels and stories) and Videos tabs, when the event has both.
-//   - Square thumbnails (160 px files made at build time), marked like Instagram's grid: ▶ for a video,
+//   - 3:4 thumbnails, like Instagram's grid (180×240 px files made at build time), marked like it: ▶ for a video,
 //     stacked squares for a carousel, a ring for a story. They wrap; nothing scrolls sideways.
 //   - Choosing one opens it in the media viewer, in the sheet's place (postViewer.ts); on an event's page it shows
 //     there instead (its image, the Instagram quick action and its caption) and the sheet closes.
