@@ -603,7 +603,10 @@ An event can be announced by several Instagram posts (a flyer, then a video, a r
     under the finger, and the second tap of a double-tap, the same spot within 450 ms, is dropped. Before, it
     landed on them: Compartir, the account's profile, or the dim area that closed them again (20 of 20 emulated
     double-taps, the audit of 7 Oct 2026). A desktop double-click likewise keeps the image and the details open.
-    (`lib/secondTap.ts`, `dropSecondTap` in `main.ts`.)
+    The same holds for anything a tap opens or changes under the finger ("Ver N más", "Ver las 6 publicaciones", the
+    Instagram button, a notice's button, an event page's flyer): a second tap that lands on another control than the
+    first is dropped; the same control twice (a month's arrow, a carousel's) still counts twice (the bug hunt of 7 Oct
+    2026). (`lib/secondTap.ts`, `views/secondTaps.ts`.)
   - Every post is still a link away: the details' "Ver las 6 publicaciones" (the posts sheet).
 - **Wide screens with a mouse: a card's image big beside its details**, like Instagram's desktop view of a post
   (`Lightbox.astro`, `views/lightbox.ts`; the owner, 5–6 October 2026: a flyer's fine print is too small on the card,
@@ -617,10 +620,12 @@ An event can be announced by several Instagram posts (a flyer, then a video, a r
   card was tiresome). A card focused: ↑ ↓ ← → to the card above, below, before or after; Enter opens its details with
   the image big beside them where that works, the details alone elsewhere. The details open: Enter on them shows the
   image beside them (to press Enter an event was almost always just clicked: the owner, 6 Oct 2026). Nothing focused:
-  any arrow starts on the first card whose top shows below the pinned bars (Page Up/Down, space and the wheel still
-  scroll); with the details open, from their event. A summarized period ("Ver los 23 eventos") and "Ver 7 más" are
-  stops in the grid too: Enter opens the period, the focus lands on its first new event, and the arrows go on, so the
-  whole list can be walked without the mouse (the owner, 6 Oct 2026). The details open: ← → the event before or after in the
+  any arrow starts on the first card whose top shows below the pinned bars, or, when none does, the one straddling
+  them, brought whole into view (Page Up/Down, space and the wheel still scroll); with the details open, from their
+  event. A summarized period ("Ver los 23 eventos") and "Ver 7 más" are stops in the grid too: Enter or Space opens the
+  period, the focus lands on its first new event, on screen, the side panel following, and the arrows go on, so the
+  whole list can be walked without the mouse (the owner, 6 Oct 2026; Space and the straddling card: the bug hunt of
+  7 Oct 2026). The details open: ← → the event before or after in the
   list, ↑ ↓ the one in the row above or below; with the image beside them, ← → go through its photos first, then on
   to the next event (going back, the previous one's last photo), like one stream; a block on the way opens by itself
   and the details show its first new event (its last, going back), so the image never stays still (the owner, 6 Oct
@@ -741,7 +746,7 @@ already left (the owner's review, 6 Oct 2026). Closing never reopens an earlier 
 - **The event's page** is what a shared link points to, for link previews (see "Link previews"), search engines
   (schema.org `Event` data) and browsers without scripts. Its header links "← Ver próximos eventos"; a past event says
   "Este evento ya pasó." (a night past midnight only once its end time has passed, the morning after).
-- **Panel sheets** (filters, an event's posts, a post, the install steps) share one base: `.sheet-panel` (`sheet.css`, attached to the bottom on phones, a centered window on wide screens) and `initPanelSheet` / `openPanelSheet` (`lib/sheet.ts`: ×, backdrop, drag down, Escape). Each gets its own history entry, so the phone's back button closes only the sheet on top: a post, then the details, then the list; forward never reopens a closed one. A sheet opened in another's place (a post chosen among the posts) takes over its entry, and closing it gives the focus back to what opened the first one.
+- **Panel sheets** (filters, an event's posts, a post, the install steps) share one base: `.sheet-panel` (`sheet.css`, attached to the bottom on phones, a centered window on wide screens) and `initPanelSheet` / `openPanelSheet` (`lib/sheet.ts`: ×, backdrop, drag down, Escape). A tap on the backdrop closes one; a tap on its own edges (the gutters beside a flyer, the strip under the handle) doesn't (`isOnBackdrop`, the bug hunt of 7 Oct 2026). Each gets its own history entry, so the phone's back button closes only the sheet on top: a post, then the details, then the list; forward never reopens a closed one. A sheet opened in another's place (a post chosen among the posts) takes over its entry, and closing it gives the focus back to what opened the first one.
 - **Bottom sheets** behave like native ones, with values from Material/iOS sheets, the same as the drawer: they rise
   while the backdrop fades in; dragging down follows the finger 1:1 and dragging up rubber-bands; on release, a flick
   down (>0.5 px/ms) or a drag past max(110px, 22% of the screen) closes, otherwise it springs back; closing continues
@@ -767,6 +772,11 @@ already left (the owner's review, 6 Oct 2026). Closing never reopens an earlier 
 - **No browser flash on a tap** (`-webkit-tap-highlight-color: transparent` on `html`, inherited everywhere): Android
   Chrome painted a blue box over a whole card, even through the pinned bars (the owner, 7 October 2026). A control
   shows its own press or change instead: Detalles' print, a filled bookmark, a chip turned on, a sheet opening.
+- **A held button or link dims** (`--pressed-opacity`, `base.css`), like Instagram's, so a tap shows it registered even
+  before its answer (Compartir, a link to another app). Never a card, its link or its flyer: they're held at the start
+  of every scroll, and would flash. Detalles, "Ver N más" and a card's Compartir sink into their own fill instead. iOS
+  needs a touchstart listener for it (`allowPressedLook`). (The bug hunt of 7 October 2026: after the flash went, most
+  controls showed nothing.)
 - **No `style=""` attributes** in markup: the Content Security Policy blocks them and the build fails on them. Use a class, or set a value that depends on the data from a script (`element.style.setProperty`), like a card's `--flyer-ratio`.
 - **Flyers are never cropped** (`object-fit: contain`). Like Instagram's feed, phones show each flyer at its own shape, from 4:5 (portrait) to 1.91:1 (landscape); taller ones (stories), and every card on wider screens, get a 4:5 frame, filled around the flyer with a blurred copy of itself. The size comes from the file at build time (`src/data.ts`), so the page never jumps as images load.
 - **Accessibility:**

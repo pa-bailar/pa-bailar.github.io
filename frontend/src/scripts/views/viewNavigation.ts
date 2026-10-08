@@ -72,9 +72,10 @@ export function viewNavigation(state: AppState, render: () => void): ViewNavigat
    * Shows `view` (no history entry of its own). The list comes back where it was left (listComeback); the calendar
    * always opens on its home: the month and the start of the day's list on screen, never where it was scrolled before
    * (its cards look like the list's, and coming back deep in them, visitors lost track of where they were: the owner,
-   * 4 October 2026). Guardados opens at its top.
+   * 4 October 2026). Guardados opens at its top. `scrollY`: where the list's history entry says it was, for when the
+   * page has no memory of leaving it (reloaded since: back then put the list at its top, the bug hunt of 7 Oct 2026).
    */
-  function showView(view: View) {
+  function showView(view: View, { scrollY }: { scrollY?: number } = {}) {
     if (view === state.view) return;
     if (state.view === "upcoming") {
       leftList = { scrollY: window.scrollY, choices: listChoices(state), anchor: captureListPosition() };
@@ -83,7 +84,7 @@ export function viewNavigation(state: AppState, render: () => void): ViewNavigat
     document.title = VIEW_TITLES[view].title;
     render();
     if (view === "upcoming") {
-      if (!leftList) return;
+      if (!leftList) return scrollY === undefined ? undefined : returnToScroll(scrollY);
       const comeback = listComeback(leftList.choices, listChoices(state));
       if (comeback === "spot") returnToScroll(leftList.scrollY);
       else if (comeback === "start") backToTop();
@@ -133,11 +134,10 @@ export function viewNavigation(state: AppState, render: () => void): ViewNavigat
   }
 
   function backToTop() {
-    // Wide screens: the toolbar (the tabs). Phones hide it: the content's top, under the pinned bar.
-    const toolbar = document.querySelector<HTMLElement>(".toolbar");
-    const shown = toolbar && toolbar.getClientRects().length > 0;
-    const anchor = shown ? toolbar : document.querySelector<HTMLElement>("main");
-    const top = (anchor?.getBoundingClientRect().top ?? 0) - (shown ? 0 : stickyOffset());
+    // The content's top, just under what's pinned (the toolbar and its tabs on wide screens, the bar on phones). Not the
+    // toolbar's own top: it's sticky, so once pinned it reads 0, and wide screens never went back up (Guardados opened
+    // at its bottom, a search's results mid-page: the bug hunt of 7 Oct 2026).
+    const top = (document.querySelector("main")?.getBoundingClientRect().top ?? 0) - stickyOffset();
     if (top < 0) window.scrollTo({ top: top + window.scrollY, behavior: "auto" });
     revealDay(); // in the calendar, the day's list still starts on screen
   }
@@ -152,7 +152,7 @@ export function viewNavigation(state: AppState, render: () => void): ViewNavigat
     if (sameScreen(screen, currentScreen())) return; // e.g. back from an event or a sheet: the screen stays
     setWholePeriods(screen.periods);
     if (screen.view !== state.view) {
-      showView(screen.view); // it puts each view back where it was
+      showView(screen.view, { scrollY: screen.scrollY }); // it puts each view back where it was
       return;
     }
     render();

@@ -6,7 +6,7 @@
 import type { DanceEvent } from "./types";
 import { initClickTracking } from "./lib/analytics";
 import { isSeries, isUpcoming } from "./lib/dates";
-import { byId } from "./lib/dom";
+import { allowPressedLook, byId } from "./lib/dom";
 import { cardWhenLabel } from "./lib/format";
 import { initThemeToggle } from "./theme";
 import { eventDetailHtml } from "./views/eventDetail";
@@ -18,8 +18,11 @@ import { initSaveButtons } from "./views/saveButton";
 import { initSharing } from "./views/sharing";
 import { initInstallPrompt, registerServiceWorker } from "./views/installPrompt";
 import { initNotice } from "./views/notice";
+import { dropStraySecondTaps } from "./views/secondTaps";
 
 export function initEventPage() {
+  dropStraySecondTaps(); // first: a double-tap on the flyer doesn't land on the viewer rising under it
+  allowPressedLook(); // a held button shows it, on iPhones too (base.css)
   initThemeToggle();
   initClickTracking();
   initPostsSheet();
