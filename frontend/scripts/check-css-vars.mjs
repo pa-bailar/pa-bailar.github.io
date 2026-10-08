@@ -20,7 +20,7 @@ export const SET_FROM_SCRIPTS = [
   "--flyer-ratio", // views/eventCard.ts: each flyer's shape (data-flyer-ratio)
   "--drag", // lib/sheet.ts: how far a sheet is dragged down (its backdrop fades with it)
   "--sheet-exit-duration", // …and how fast it leaves, at the finger's speed
-  "--keyboard-inset", // views/bottomNav.ts: how far the bar at the bottom rises to sit above the keyboard
+  "--keyboard-inset", // views/bottomNav.ts: how far the bar at the bottom (and the notice) rise to sit above the keyboard
 ];
 
 const files = (dir) =>

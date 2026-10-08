@@ -1,4 +1,4 @@
-// Event card used in the upcoming list and the calendar's day list.
+// Event card used in the upcoming list, the calendar's day list and Guardados.
 // The title is a link to the event's page (open in a new tab, share, crawl); a plain click opens the details
 // drawer instead (main.ts). Its ::after stretches over the whole card, so the card is one big target, its photo
 // flyer included.

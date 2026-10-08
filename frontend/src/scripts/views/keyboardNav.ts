@@ -181,7 +181,7 @@ interface Hooks {
 }
 
 export function initKeyboardNav(hooks: Hooks) {
-  /** Enter on a card, on the open details, or on a period's button. */
+  /** Enter on a card or on the open details (a period's button is onPeriodKey's: its click). */
   function onEnter(domEvent: KeyboardEvent, target: Element) {
     const link = target.closest<HTMLAnchorElement>(CARD_LINK);
     const openId = hooks.openEventId();

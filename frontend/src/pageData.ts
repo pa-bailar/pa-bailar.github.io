@@ -1,5 +1,6 @@
-// The events as the home page embeds them (<script type="application/json" id="events-data">, HomePage.astro), which
-// main.ts reads. Build time only.
+// The events as the pages get them: which of an event's posts the site shows (shownMedia, applied in src/data.ts), and
+// the JSON the home page embeds (<script type="application/json" id="events-data">, HomePage.astro), which main.ts
+// reads. Build time only.
 
 import type { DanceEvent, EventMedia } from "./scripts/types";
 import { jsValue } from "./csp";
