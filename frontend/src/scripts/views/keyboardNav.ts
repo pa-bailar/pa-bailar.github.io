@@ -185,17 +185,23 @@ export function initKeyboardNav(hooks: Hooks) {
     const onDetails = !link && openId && inDetails(target) && !target.closest(CONTROL);
     const event = link ? hooks.findEvent(link.dataset.event ?? "") : onDetails ? hooks.findEvent(openId) : undefined;
     if (event && hooks.showImage(event, link)) domEvent.preventDefault(); // otherwise a card's link opens the details
-    // A period's button: it opens the period and focuses its first new event without scrolling (main.ts showPeriod,
-    // so a click doesn't jump); from the keyboard that card must come into view, or the next arrow starts off screen.
-    // The side panel follows it, as after an arrow: else it stayed on the event before, and the next → skipped the
-    // first new one.
-    if (target.closest("[data-show-period]")) {
-      requestAnimationFrame(() => {
-        const card = document.activeElement?.closest<HTMLElement>("[data-event-card]") ?? undefined;
-        card?.scrollIntoView({ block: "nearest" });
-        showInPane(card);
-      });
-    }
+  }
+
+  /**
+   * A period's button pressed from the keyboard, Enter or Space (a real click with no position; the arrows' own,
+   * openPeriod, isn't trusted): it opens the period and focuses its first new event without scrolling (main.ts
+   * showPeriod, so a click doesn't jump); from the keyboard that card must come into view, or the next arrow starts off
+   * screen. The side panel follows it, as after an arrow: else it stayed on the event before, and the next → skipped
+   * the first new one. (Only Enter did both: Space left the card 184 px above the screen, the bug hunt of 7 Oct 2026.)
+   */
+  function onPeriodKey(domEvent: MouseEvent) {
+    if (!domEvent.isTrusted || domEvent.detail !== 0) return;
+    if (!(domEvent.target instanceof Element) || !domEvent.target.closest("[data-show-period]")) return;
+    requestAnimationFrame(() => {
+      const card = document.activeElement?.closest<HTMLElement>("[data-event-card]") ?? undefined;
+      card?.scrollIntoView({ block: "nearest" });
+      showInPane(card);
+    });
   }
 
   /**
@@ -252,12 +258,15 @@ export function initKeyboardNav(hooks: Hooks) {
     const focus = first === null ? null : focusOf(list[first]);
     if (!box || !focus) return;
     domEvent.preventDefault();
-    // Already on screen: no scroll (the browser would push a tall card under the bar). Below the screen (the top of the
-    // page, the header taking the room): the browser brings it in.
-    focus.focus({ preventScroll: box.top >= top && box.top < bottom });
+    // Already on screen: no scroll (the browser would push a tall card under the bar). Straddling the pinned bar (no
+    // stop's top on screen; it fits): the whole card into view, else its top stayed under the toolbar (the bug hunt of 7
+    // Oct 2026). Below the screen (the top of the page, the header taking the room): the browser brings it in.
+    if (box.top < top && box.height <= bottom - top) focusStop(focus);
+    else focus.focus({ preventScroll: box.top >= top && box.top < bottom });
     showInPane(first === null ? undefined : list[first]);
   }
 
+  document.addEventListener("click", onPeriodKey);
   document.addEventListener("keydown", (domEvent) => {
     if (domEvent.defaultPrevented || modified(domEvent)) return;
     const target = domEvent.target instanceof Element ? domEvent.target : document.body;
