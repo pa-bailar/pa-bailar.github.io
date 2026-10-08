@@ -39,6 +39,10 @@ export function hideNotice(which?: number) {
   window.clearTimeout(timer);
   action = undefined;
   shown = 0;
+  // Empty, nothing of it is under the mouse (no pointer events: notice.css). WebKit sends no pointerleave when the
+  // button under the mouse goes (its own click), and the next notices waited for the mouse forever (the bug hunt of 7
+  // Oct 2026).
+  mouseOn = false;
   notice().replaceChildren();
 }
 
