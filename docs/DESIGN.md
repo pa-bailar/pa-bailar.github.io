@@ -347,16 +347,16 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
   - **The calendar marks the days** holding a saved event (as filtered on screen; at once as an event is saved or unsaved
     there) with a small bookmark, and says it to screen readers ("…, 3 eventos, 1 guardado"); the legend under the
     grid has "Festivo" and "Guardado".
-- **Search** (`lib/search.ts`) runs on the events already in the page: accent- and case-insensitive,
-  every word must be found in the event (title, academy, organizer, venue, area, artists, rhythms, activities, type,
-  as the site shows them: "Otros ritmos"). A word is found **at the start of one of the event's words**, so a search
-  typed halfway works ("bach") and "son" isn't found inside "Jason". **Plurals** find their singular ("talleres",
-  "sociales"). **Whole, where a start would find too much** (the bug hunt of 7 Oct 2026): a number ("calle 7" isn't
-  Calle 73; joined to letters it's still one: "93" finds "#93A-36"), a letter after other words ("zona t" is Zona T,
-  not Zona 6 at Tributo; alone, a search starting, it's a start), a singular ("andres" isn't Andrea). **Inside an
-  academy's handle**, where its words run together, a name of five letters or more ("jaguar" in @discojaguar.bta,
-  "torre" in @frank.de.latorre), never the search's own words, which find what they mean ("banda" isn't
-  @proyectourbandance, nor "competencia" @jaleocompetencia_'s social).
+- **Search** (`lib/search.ts`) runs on the events already in the page: accent- and case-insensitive, every word must be
+  found in the event (title, academy, organizer, venue, area, artists, rhythms, activities, type, as the site shows
+  them: "Otros ritmos"). A word is found **at the start of one of the event's words**, so a search typed halfway works
+  ("bach") and "son" isn't found inside "Jason". **Plurals** find their singular ("talleres", "sociales"). **Whole,
+  where a start would find too much** (the bug hunt of 7 Oct 2026): a number ("calle 7" isn't Calle 73; joined to
+  letters it's still one: "93" finds "#93A-36") and a singular ("andres" isn't Andrea); a letter right after a word
+  starts the event's word after that one ("zona t" is Zona T, not Zona 6 at Tributo; typing "bachata s" still shows
+  "Bachata sensual", the list never empty for a moment). **Inside an academy's handle**, where its words run together, a
+  name of five letters or more ("jaguar" in @discojaguar.bta, "torre" in @frank.de.latorre), never the search's own
+  words, which find what they mean ("banda" isn't @proyectourbandance, nor "competencia" @jaleocompetencia_'s social).
 - **The search's Spanish** (`lib/searchWords.ts`; the owner, 7 Oct 2026: "list synonyms based on the Spanish
   language"): a visitor's word also finds the site's word for it, **one way**: "clase", "curso", "workshop" find the
   workshops (but "taller" doesn't find the socials that open with a class); "fiesta", "farra", "party" the parties

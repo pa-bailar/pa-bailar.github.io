@@ -224,10 +224,14 @@ describe("whole, where a word's start would find too much", () => {
     expect(wordsOf("la33orquesta 93a")).toEqual(["la", "33", "orquesta", "93", "a"]);
   });
 
-  it("a letter is whole, unless it's all that's typed yet: «zona t» is Zona T, not Zona 6 at Tributo", () => {
+  it("a letter after a word starts the event's word that follows it: «zona t» is Zona T, not Zona 6 at Tributo", () => {
     expect(matchesWords(event({ area: "Zona T" }), "zona t")).toBe(true);
     expect(matchesWords(event({ area: "Zona 6", venue: "Tributo Salsa y Jazz" }), "zona t")).toBe(false);
     expect(matchesWords(event({ title: "Tardeo" }), "t")).toBe(true); // a search starting
+    // Typing the next word, the list never empties for its first letter ("bachata s" on the way to "bachata sensual").
+    expect(matchesWords(event({ styles: ["bachata sensual"] }), "bachata s")).toBe(true);
+    expect(matchesWords(event({ title: "Taller de salsa", event_type: "workshop" }), "taller de s")).toBe(true);
+    expect(matchesWords(event({ title: "Taller de salsa", event_type: "workshop" }), "talleres d")).toBe(true);
   });
 
   it("a singular is whole: «andres» isn't Andrea; «talleres» still finds Taller", () => {

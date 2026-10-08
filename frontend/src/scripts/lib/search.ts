@@ -7,10 +7,10 @@
 // site's words for it (lib/searchWords.ts: "clase" finds the workshops, "milonga" the tango, "sin costo" the free
 // events: the owner, 7 Oct 2026). "Free", however it's written, is "gratis", which an event whose card says "Gratis",
 // or whose own words say free ("entrada libre"), gets too.
-// Whole, where a word's start would find too much (the bug hunt of 7 Oct 2026): a number ("calle 7" isn't Calle 73),
-// a letter after other words ("zona t" isn't Zona 6 at Tributo), a singular ("andres" isn't Andrea). Inside a handle,
-// only a name of five letters or more, never the search's own words ("banda" isn't @proyectourbandance, nor
-// "competencia" @jaleocompetencia_).
+// Whole, where a word's start would find too much (the bug hunt of 7 Oct 2026): a number ("calle 7" isn't Calle 73)
+// and a singular ("andres" isn't Andrea); a letter right after a word starts the word after it ("zona t" isn't Zona 6
+// at Tributo). Inside a handle, only a name of five letters or more, never the search's own words ("banda" isn't
+// @proyectourbandance, nor "competencia" @jaleocompetencia_).
 // Days are found by date, not in the words (lib/searchDays.ts: "hoy", "sábado", "este finde", "15 de octubre"…): they
 // narrow the days an event is shown on, as "Cuándo" does (state.ts shownDays). The words that only join others ("el",
 // "de", "con") are left out ("clase de salsa el sábado").
@@ -87,11 +87,15 @@ function searchableOf(event: DanceEvent): Searchable {
   return found;
 }
 
-/** One part of a search: a typed word starting one of the event's words, a whole word or phrase, a name in the handle. */
+/**
+ * One part of a search: a typed word starting one of the event's words, a whole word or phrase, a name in the handle,
+ * or (`follows`) a word and the start of the one after it ("zona t").
+ */
 interface Term {
   starts: string[];
   phrases: string[];
   handle?: string;
+  follows?: string[];
 }
 
 /** A day a search names; `name`: its word, when it's also a first name (searchDays.ts DAY_NAMES). */
@@ -116,11 +120,14 @@ function phraseAt(words: string[], at: number): [string, number] | null {
 }
 
 /**
- * A typed word: found at the start of the event's words; whole when it's a number, a letter (unless it's `alone`: a
- * search starting) or a singular; inside the handle when it's a name of five letters or more (not one of OWN_WORDS).
+ * A typed word: found at the start of the event's words; whole when it's a number or a singular; inside the handle when
+ * it's a name of five letters or more (not one of OWN_WORDS). A letter typed `after` a word starts the event's word
+ * that follows that one: "zona t" is "Zona T", not Zona 6 at Tributo, and typing "bachata s" finds "Bachata sensual"
+ * instead of nothing.
  */
-function wordTerm(word: string, { alone = false } = {}): Term {
-  if (/^\d+$/.test(word) || (word.length === 1 && !alone)) return { starts: [], phrases: [word] };
+function wordTerm(word: string, { after }: { after?: string } = {}): Term {
+  if (/^\d+$/.test(word)) return { starts: [], phrases: [word] };
+  if (word.length === 1 && after) return { starts: [], phrases: [], follows: singulars(after).map((form) => `${form} ${word}`) };
   const forms = singulars(word);
   const name = word.length >= MIN_IN_HANDLE && !forms.some((form) => OWN_WORDS.has(form));
   return { starts: [word], phrases: [...forms.slice(1), ...forms.flatMap(alsoFinds)], ...(name && { handle: word }) };
@@ -136,6 +143,7 @@ export function parseQuery(query: string, today: string): Query {
   const words = wordsOf(fold(query).replace(/(?<=[a-z])['’](?=[a-z])/g, ""));
   const read: Query = { terms: [], days: [] };
   const leftOut: string[] = [];
+  let previous: string | undefined; // the word just before, when it's a plain one (not a day's, a phrase's)
   for (let at = 0; at < words.length; ) {
     const days = daysAt(words, at, today);
     const time = days ? 0 : timeOfDayAt(words, at);
@@ -145,21 +153,25 @@ export function parseQuery(query: string, today: string): Query {
       const word = words[at]!;
       read.days.push(length === 1 && DAY_NAMES.has(word) ? { test, name: word } : { test });
       at += length;
+      previous = undefined;
     } else if (time) {
       leftOut.push(...words.slice(at, at + time));
       at += time;
+      previous = undefined;
     } else if (phrase) {
       const [text, length] = phrase;
       read.terms.push({ starts: [], phrases: [text, ...alsoFinds(text)] });
       at += length;
+      previous = undefined;
     } else {
       const word = words[at]!;
       if (LEFT_OUT.has(word)) leftOut.push(word);
-      else read.terms.push(wordTerm(word, { alone: words.length === 1 }));
+      else read.terms.push(wordTerm(word, { after: previous }));
+      previous = word;
       at += 1;
     }
   }
-  if (!read.terms.length && !read.days.length) read.terms = leftOut.map((word) => wordTerm(word, { alone: true }));
+  if (!read.terms.length && !read.days.length) read.terms = leftOut.map((word) => wordTerm(word));
   return read;
 }
 
@@ -175,7 +187,8 @@ function hasTerm(event: Searchable, term: Term): boolean {
   return (
     term.starts.some((start) => event.words.some((word) => word.startsWith(start))) ||
     term.phrases.some((phrase) => event.text.includes(` ${phrase} `)) ||
-    (term.handle !== undefined && event.account.includes(term.handle))
+    (term.handle !== undefined && event.account.includes(term.handle)) ||
+    (term.follows?.some((follow) => event.text.includes(` ${follow}`)) ?? false)
   );
 }
 
