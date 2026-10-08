@@ -22,14 +22,14 @@ import {
 
 /** The main rhythms: always in the sheet and the Ritmo panel, first in their families, dimmed when there's none. The
  * bar's chips until 8 Oct 2026, when the bar took the types (the owner: the rhythms stay in the Filtros menu). */
-export const MAIN_STYLES = ["salsa", "bachata", "urbano", "tango"];
+const MAIN_STYLES = ["salsa", "bachata", "urbano", "tango"];
 
 /**
  * The main types (the first in the owner's order): the bar's chips, dimmed, where the view has no event at all (a month
  * without events in the calendar), which left the phone's bar an empty band pinned at the top (the bug-squash pass of 8
  * Oct 2026).
  */
-export const MAIN_TYPES: EventType[] = ["social", "party", "workshop"];
+const MAIN_TYPES: EventType[] = ["social", "party", "workshop"];
 
 export interface FilterOption {
   group: FilterGroup;

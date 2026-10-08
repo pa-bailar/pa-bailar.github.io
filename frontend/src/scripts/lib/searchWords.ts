@@ -11,7 +11,7 @@ import { STYLE_FAMILIES } from "./styleFamilies";
 
 /** "Free", however it's written: in a search or in an event's own words, they all mean "gratis" (search.ts). */
 export const FREE_WORD = "gratis";
-export const FREE_PHRASES = [
+const FREE_PHRASES = [
   FREE_WORD,
   "gratuito",
   "gratuita",

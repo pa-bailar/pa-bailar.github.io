@@ -138,7 +138,7 @@ function wordTerm(word: string, { after }: { after?: string } = {}): Term {
  * part of the day said alone ("clases en la mañana": no hours here) and the words left out (searchWords.ts LEFT_OUT:
  * "de", "el próximo", "qué hay") count only when the search is nothing else ("la" alone still finds "La Casona").
  */
-export function parseQuery(query: string, today: string): Query {
+function parseQuery(query: string, today: string): Query {
   // An apostrophe between letters joins them, as in the events ("pa'lante" is palante; "pa' bailar" stays two words).
   const words = wordsOf(fold(query).replace(/(?<=[a-z])['’](?=[a-z])/g, ""));
   const read: Query = { terms: [], days: [] };
