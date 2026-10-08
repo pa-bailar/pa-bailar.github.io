@@ -5,6 +5,7 @@
 // The flyer on top, as on its card, then the same details as the home page's drawer (scripts/views/eventDetail.ts).
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import InstallOffer from "../../components/InstallOffer.astro";
+import Notice from "../../components/Notice.astro";
 import PostViewer from "../../components/PostViewer.astro";
 import PostsSheet from "../../components/PostsSheet.astro";
 import SiteFooter from "../../components/SiteFooter.astro";
@@ -171,6 +172,7 @@ const redirectScript = allowInlineScript(
   <PostsSheet />
   <PostViewer />
   <InstallOffer />
+  <Notice />
 
   <script type="application/json" id="event-data" set:html={jsValue(event)} />
   <script>

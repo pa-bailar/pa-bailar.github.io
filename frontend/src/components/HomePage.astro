@@ -19,6 +19,7 @@ import PostViewer from "./PostViewer.astro";
 import PostsSheet from "./PostsSheet.astro";
 import Lightbox from "./Lightbox.astro";
 import BottomNav from "./BottomNav.astro";
+import Notice from "./Notice.astro";
 import { accounts, events, meta } from "../data";
 import { LOCALE } from "../scripts/lib/format";
 import { pageEventsJson } from "../pageData";
@@ -62,9 +63,8 @@ const { view } = Astro.props;
   <JumpBar />
   <!-- Phones: the bar at the bottom of the screen. Here in the page's order, so the keyboard reaches it before the list. -->
   <BottomNav />
-  <!-- A short notice after an action, over the page ("Guardado · Ver guardados": views/notice.ts). A live region, empty
-       between notices; here in the page's order, so the keyboard reaches its button before the list. -->
-  <div class="notice" id="notice" role="status"></div>
+  <!-- Here in the page's order, so the keyboard reaches the notice's button before the list. -->
+  <Notice />
 
   <main class="container page-main" id="contenido">
     <!-- The count after each change, said politely; inside the main landmark, like everything a screen reader reads. -->

@@ -1,5 +1,6 @@
-/* A short notice at the bottom of the screen (scripts/views/notice.ts): "Guardado · Ver guardados", the install
-   reminder. Just above the bar at the bottom (phones), or above the home indicator; on wide screens at the bottom
+/* A short notice at the bottom of the screen (scripts/views/notice.ts): "Guardado · Ver guardados", "Enlace copiado ·
+   Enviar por WhatsApp", the install reminder. Just above the bar at the bottom (phones), or above the home indicator
+   (an event's own page has no bar); on wide screens at the bottom
    left, away from the side panel. Between notices it's empty: no room, no taps, but still a live region, so screen
    readers hear the next one. */
 .notice {

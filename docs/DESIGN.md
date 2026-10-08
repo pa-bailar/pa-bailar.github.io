@@ -224,9 +224,12 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves: the pa
 
 ## Sharing
 
-Everything goes through the phone's own share menu (`lib/share.ts`, Web Share): the visitor picks
-WhatsApp, a group, Instagram, Telegram or "copy", as in any app. Where there's no menu (most computers),
-WhatsApp opens with the text. What can be shared (`scripts/views/sharing.ts`):
+Everything goes through the device's own share menu (`lib/share.ts`, Web Share): the visitor picks
+WhatsApp, a group, Instagram, Telegram or "copy", as in any app. Phones and most computers have one. Where there's
+none (Firefox on a computer, some apps' browsers), the link is copied and the notice says so, with WhatsApp a tap
+away: "Enlace copiado · Enviar por WhatsApp" (the Instagram audit, 7 Oct 2026: WhatsApp used to be the only way).
+Over the details on a phone (a modal, where no notice can show) or without a clipboard, WhatsApp opens with the text,
+as before. What can be shared (`scripts/views/sharing.ts`):
 - **An event:** "Compartir" in its details or on its card: its title, date, place and price, and its page's link, whose
   preview shows its own image (see "Link previews").
 - **A near period:** a share icon at the end of "Hoy", "Esta semana", "Este fin de semana" and "Próxima

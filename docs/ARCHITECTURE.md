@@ -544,7 +544,7 @@ stateDiagram-v2
   (`overlayState`), never another overlay's mark, so the field steps back only when its own entry is on top
   (`leftEmpty`). A reload drops any overlay mark from the entry it lands on (`initScreenHistory`). Typing goes
   through the same `[data-search]` input handler as the toolbar's field (`main.ts`).
-- **Sharing** (`views/sharing.ts`) goes through the phone's share menu: an event (its link, with its preview: section 3.4), a near period or the visitor's plans (an image drawn in the browser, `lib/shareCard.ts`, and a list as text).
+- **Sharing** (`views/sharing.ts`) goes through the phone's share menu: an event (its link, with its preview: section 3.4), a near period or the visitor's plans (an image drawn in the browser, `lib/shareCard.ts`, and a list as text). Without a menu (`lib/share.ts`), the link is copied and the notice says so ("Enlace copiado · Enviar por WhatsApp"), on the home page and an event's own page (`components/Notice.astro`); over a modal, where no notice can show (`canShowNotice`), or with no clipboard, WhatsApp opens with the text.
 
 ### 5.6 Themes
 
@@ -698,7 +698,7 @@ frontend/
       404.astro
     components/           HomePage (the app's body, for / and /calendario/), SiteHeader, ThemeToggle, Stripes,
                           ViewToolbar, JumpBar, BottomNav, FilterSheet, CalendarView, EventDrawer, PostsSheet,
-                          PostViewer, InstallOffer, SiteFooter
+                          PostViewer, InstallOffer, Notice, SiteFooter
     scripts/
       main.ts             entry point of the home page: state, render, the clicks' handlers
       eventPage.ts        entry point of an event's page
@@ -770,7 +770,7 @@ from under one gets its entry when the overlay closes (pushed over the overlay's
 | `lib/search.ts`, `lib/searchWords.ts`, `lib/searchDays.ts` | Search over the events in the page: words by their start, plurals, known phrases whole, joining words left out; the visitors' Spanish and the site's words it finds (one way); the days a search names, found by date |
 | `lib/secondTap.ts` | A double-tap's second tap (the same spot, within 450 ms): `main.ts` drops it after a tap opened an event, so it doesn't land on the details rising under the finger |
 | `lib/saved.ts`, `views/saveButton.ts` | Saved events: the ids in this browser; the bookmarks, and Guardados' number on the bar and the tab (`renderSavedCount`) |
-| `views/notice.ts` | A short notice at the bottom (`#notice`, a live region): one at a time, gone after its seconds unless the mouse or the focus is on it; none over a modal |
+| `views/notice.ts` | A short notice at the bottom (`#notice`, a live region in `components/Notice.astro`): one at a time, gone after its seconds unless the mouse or the focus is on it; none over a modal (`canShowNotice`) |
 | `lib/saveNotice.ts`, `views/saveNotice.ts` | What a save says ("Guardado · Ver guardados", "Quitado de tus guardados · Deshacer", in an app's browser "Guardado solo en este navegador"), and its button's action |
 | `lib/share.ts`, `lib/shareText.ts`, `lib/shareSources.ts`, `lib/shareCard.ts`, `views/sharing.ts` | Sharing through the phone's menu: the text, what each list's button shares (`shareSources`, pure), the image of a list, the buttons |
 | `views/installPrompt.ts`, `lib/installPlace.ts` | Installing the site like an app: the offer, and the steps for each browser; registers the service worker |
