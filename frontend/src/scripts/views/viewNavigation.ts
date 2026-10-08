@@ -14,7 +14,7 @@ import {
 } from "./jumpBar";
 import { stickyOffset } from "./pinnedBars";
 import { setWholePeriods, wholePeriods } from "./upcomingView";
-import { bottomInset } from "./bottomNav";
+import { bottomInset, visibleBottom } from "./bottomNav";
 import { VIEW_TITLES } from "../lib/viewTitles";
 
 /** How much of the day's list shows under its heading once it's revealed: the start of the first card. */
@@ -117,8 +117,9 @@ export function viewNavigation(state: AppState, render: () => void): ViewNavigat
     if (state.view !== "calendar") return;
     const day = document.querySelector<HTMLElement>(".calendar__day-heading");
     if (!day) return;
-    // What's on screen ends at the bar at the bottom (phones).
-    const below = day.getBoundingClientRect().bottom + DAY_PEEK - (window.innerHeight - bottomInset());
+    // What's on screen ends at the bar at the bottom (phones), or above the keyboard while searching.
+    const screenEnd = visibleBottom(window.innerHeight, window.visualViewport, bottomInset());
+    const below = day.getBoundingClientRect().bottom + DAY_PEEK - screenEnd;
     if (below > 0) scrollPageTo(window.scrollY + below, { smooth });
   }
 

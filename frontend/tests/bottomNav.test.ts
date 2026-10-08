@@ -55,6 +55,38 @@ describe("the keyboard leaving while the field keeps the focus (Android's back)"
     expect(keyboardJustHid(60, 0)).toBe(false); // toolbars collapsing
     expect(keyboardJustHid(300, 280)).toBe(false); // a keyboard changing height (suggestions bar)
   });
+
+  // The iPhone audit, 8 Oct 2026: with the keyboard up, the page scrolled (the calendar showing a search's day) and
+  // iOS panned the visual viewport: the bar's lift fell to 0, read as the keyboard leaving, and the field closed.
+  it("measured by the height the keyboard takes, which a pan doesn't change", async () => {
+    const { keyboardHeight, keyboardInset } = await import("../src/scripts/views/bottomNav");
+    const up = { height: 538, offsetTop: 0 };
+    const panned = { height: 538, offsetTop: 336 }; // the same keyboard, the visual viewport panned down to it
+    expect(keyboardInset(874, panned)).toBe(0); // the lift alone says "gone"
+    expect(keyboardJustHid(keyboardHeight(874, up), keyboardHeight(874, panned))).toBe(false);
+    expect(keyboardJustHid(keyboardHeight(874, up), keyboardHeight(874, { height: 874 }))).toBe(true); // really gone
+    expect(keyboardHeight(874, { height: 940 })).toBe(0); // toolbars collapsed
+    expect(keyboardHeight(874, null)).toBe(0);
+  });
+});
+
+// The iPhone audit, 8 Oct 2026: searching in the calendar with the keyboard up, the day's list stayed behind the
+// keyboard: iOS doesn't shrink innerHeight, so the list counted as on screen.
+describe("where the screen ends (visibleBottom)", () => {
+  it("the keyboard up on iOS: above it, less the lifted field", async () => {
+    const { visibleBottom } = await import("../src/scripts/views/bottomNav");
+    // iPhone 17: 874 pt tall, the keyboard ~336 pt, the visual viewport not panned
+    expect(visibleBottom(874, { height: 538, offsetTop: 0 }, 52)).toBe(486);
+    // panned by 100 pt: what's seen moved down the page with it
+    expect(visibleBottom(874, { height: 538, offsetTop: 100 }, 52)).toBe(586);
+  });
+
+  it("no keyboard: the window less the bar; never past the window (toolbars collapsed)", async () => {
+    const { visibleBottom } = await import("../src/scripts/views/bottomNav");
+    expect(visibleBottom(812, { height: 812, offsetTop: 0 }, 60)).toBe(752);
+    expect(visibleBottom(812, { height: 880, offsetTop: 0 }, 60)).toBe(752);
+    expect(visibleBottom(812, null, 60)).toBe(752);
+  });
 });
 
 describe("rising above the keyboard (keyboardInset)", async () => {
