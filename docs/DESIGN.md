@@ -204,7 +204,7 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves: the pa
   Weeks run Monday to Sunday.
 - **Choosing dates** (the date filter, see "Filters") lists each event on its first day within the chosen periods,
   and "Mañana", when chosen, gets a group of its own between "Hoy" and the rest (its share icon says "Mañana en
-  Bogotá").
+  Bogotá"). Chosen periods open whole: no summary row.
 - **Each card says when:** "Hoy / Mañana · 8:00 p. m.", the weekday within a week ("Domingo · 6:00 p. m."), or weekday and date further away ("Martes 20 oct."). The sticker keeps the date number.
 - **An event over several days says its days** instead (`cardWhenLabel`), by where today falls (Level Up, Friday 13 to Sunday 15 November):
 
@@ -409,8 +409,8 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
     notice, "¿Guardaste eventos en Safari? · Pegarlos". The copied text is a line and a link,
     `/?guardados=<id>,<id>`; pasting saves the ids this page knows (iOS asks with its own "Pegar" bubble). Nowhere
     else: on Android the app shares the browser's saves, and computers have no home-screen app.
-  - **What it shows:** "Tus 3 eventos guardados [Compartir]", then the saved events to come by period, then the past
-    ones folded at the end: **"Ya pasaron (2) ⌄"** (the latest first).
+  - **What it shows:** "Tus 3 eventos guardados [Compartir]", then the saved events to come by period, always whole
+    (no summaries), then the past ones folded at the end: **"Ya pasaron (2) ⌄"** (the latest first).
     Saved but none to come: "Ninguno de tus eventos guardados está por venir" and "Ver eventos".
   - **No filters there:** a short, personal list. Filtros is off in the bar (named "Filtros: no se usan en Guardados";
     its badge stays), and the pinned bar and the toolbar's pills are hidden (`body[data-screen="saved"]`). The filters
@@ -497,15 +497,24 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
 
 ## Long lists
 
-**The list shows every event** (`scripts/views/upcomingView.ts`; the owner, 8 Oct 2026). Until then a busy period
-showed six events and "Ver 25 más", and later months started as a row of small flyers ("Ver los 22 eventos"). With
-the weekend full, the button scrolled by unnoticed between two periods, and the six were all Friday's: Saturday and
-Sunday were folded away. A "load more" button works at the end of a list, where it's the natural stop (Baymard's
-studies), not in the middle of a feed that keeps going. Browsing further ahead is the calendar's job.
+People look for "tonight, this weekend, next week" (the date buckets Eventbrite's quick filters use), so
+the list stays short there and summarizes what's further away (`scripts/views/upcomingView.ts`):
+- **Near periods in full:** Hoy, Esta semana, Este fin de semana and Próxima semana show every event (and any
+  period chosen in the date filter). No "Ver N más" inside them (the owner, 8 Oct 2026): until then a busy period
+  showed six events and "Ver 25 más". With the puente weekend full, the button scrolled by unnoticed between two
+  periods, and the six shown were all Friday's: Saturday and Sunday were folded away. A "load more" button works at
+  the end of a list, where it's the natural stop (Baymard's studies), not in the middle of a feed that keeps going.
 - **The weekend by day:** the busiest period goes under a heading per day, the calendar's day heading a step smaller
   ("Mañana · Viernes, 9 de octubre", "Sábado, 10 de octubre"; " · Festivo" on a holiday), so a long weekend still
   says where the reader is. On wide screens each day starts its own row.
 - **Far events by year:** months get their own group for the next six months (relative to today, so in December next January is still its own month); beyond that, one group per year: "En 2027", or "Más adelante en 2027" when months of 2027 are already listed.
+- **Later periods summarized:** "Más adelante en <mes>" and each later month start as one row with their
+  first five flyers as small squares and "Ver los 23 eventos ›" (`.period-summary`); tapping it shows
+  them in full. Choosing that period in the date filter opens it too.
+- **Short lists whole:** with 12 events or fewer (for example once filtered) nothing is summarized. With
+  nothing in the near periods, the first period opens.
+- What the visitor opens stays open while filtering or switching views, and focus moves to the first
+  newly shown event.
 
 ## Phones: feed, jump bar, the bar at the bottom and filter sheet
 
@@ -628,7 +637,7 @@ screens in the toolbar's pills and their panels:
   "Mañana").
 - **"Mañana"** overlaps the periods (tomorrow is in "Esta semana", the weekend or next week): it's an extra option,
   shown only when something is on tomorrow and never as a group unless chosen.
-- **Choosing a date** shows just those periods, at the top of the list.
+- **Choosing a date** shows just those periods, at the top of the list, whole (no summary rows).
 - **What's chosen, at a glance:** under the bar, only while filtering, "**12 eventos** · Finde, Salsa" (cut with "…"
   when long) and "× Limpiar" (named "Limpiar filtros" for screen readers). The count is also said politely to screen
   readers after each change (`#results-status`). In the calendar it reads "5 eventos en octubre · Salsa".
@@ -721,11 +730,14 @@ An event can be announced by several Instagram posts (a flyer, then a video, a r
   image beside them (to press Enter an event was almost always just clicked: the owner, 6 Oct 2026). Nothing focused:
   any arrow starts on the first card whose top shows below the pinned bars, or, when none does, the one straddling
   them, brought whole into view (Page Up/Down, space and the wheel still scroll); with the details open, from their
-  event. The whole list can be walked without the mouse (the owner, 6 Oct 2026; the straddling card: the bug hunt
-  of 7 Oct 2026). The details open: ← → the event before or after in the
+  event. A summarized period ("Ver los 23 eventos") is a stop in the grid too: Enter or Space opens the
+  period, the focus lands on its first new event, on screen, the side panel following, and the arrows go on, so the
+  whole list can be walked without the mouse (the owner, 6 Oct 2026; Space and the straddling card: the bug hunt of
+  7 Oct 2026). The details open: ← → the event before or after in the
   list, ↑ ↓ the one in the row above or below; with the image beside them, ← → go through its photos first, then on
-  to the next event (going back, the previous one's last photo), like one stream (the owner, 6 Oct 2026); the list
-  follows (its card outlined, brought into view); Escape leaves the focus on that card, and back still
+  to the next event (going back, the previous one's last photo), like one stream; a block on the way opens by itself
+  and the details show its first new event (its last, going back), so the image never stays still (the owner, 6 Oct
+  2026); the list follows (its card outlined, brought into view); Escape leaves the focus on that card, and back still
   returns to the list (the panel swaps events in place). **Where the side panel fits, it shows the card in focus**,
   like an inbox's reading pane: an arrow onto a card opens it, from a fresh page too (the owner, 6 Oct 2026; not where
   the details are the phones' drawer), and the arrows carry it along (the focus stays in the list, the card whole in
@@ -735,7 +747,7 @@ An event can be announced by several Instagram posts (a flyer, then a video, a r
   moved through the list while the panel stayed on the first event). Never while typing, in a menu or under another
   dialog; a card's ‹ › stay the mouse's and Tab's, so ← → never mean two things. **Tab: one stop per event** (the owner, 6 Oct 2026): Tab
   walks the list in its reading order, the same as →, each event once (the card itself), with the periods' Compartir
-  where they are, then the footer, then out of the page; Shift+Tab goes back like
+  and the month blocks where they are, then the footer, then out of the page; Shift+Tab goes back like
   ←. An event's own buttons (Detalles, Compartir, Guardar, ‹ ›, the profile) are out of the Tab order: all of them are
   in the details, which Enter opens. The side panel follows the event Tab lands on; in it, Tab goes through its
   controls and past the last one on to the next event, Shift+Tab from its start back to the event it shows; from
@@ -830,7 +842,9 @@ chose this instead: covering a whole column, the selected card among them, was w
 do). Another card shows its
 event in the panel (the address changes without adding to the history), and the open event's card is outlined (`--card-current`: amber in light, pink in dark; never the focus ring's color, red in light and gold in dark, so with the keyboard elsewhere both show). × and
 Escape close it, and the focus goes back to the last card opened. If the list next to it moves to another view (the
-calendar), another card gets its own history entry. Closing never reopens an earlier event (`historyMove`).
+calendar), another card gets its own history entry. A period opened whole meanwhile (a click on a month's block, or the
+arrows from the details) gets its entry when the panel closes, so back then folds it and never reopens an event
+already left (the owner's review, 6 Oct 2026). Closing never reopens an earlier event (`historyMove`).
 
 ## Event detail: drawer and page
 
@@ -846,7 +860,7 @@ calendar), another card gets its own history entry. Closing never reopens an ear
   down (>0.5 px/ms) or a drag past max(110px, 22% of the screen) closes, otherwise it springs back; closing continues
   at the finger's speed, and at once when Safari's edge swipe already animated the back navigation. No rise and no
   slide with reduced motion.
-- **Back moves between the app's screens** (`screenHistory.ts`): the calendar and Guardados each get a history entry, so the phone's back button returns to the previous screen where it was scrolled, instead of leaving the site (which closes the installed app). Undoing one from the page steps back, so history never piles up. Between the calendar and Guardados the entry is replaced (`replaceScreen`): back from either returns to the list, like Instagram's tabs. Back from an in-page jump (Info, `#info`) puts the scroll back where it was. The app restores scrolling itself (`history.scrollRestoration = "manual"`).
+- **Back moves between the app's screens** (`screenHistory.ts`): a period opened whole, the calendar and Guardados each get a history entry, so the phone's back button returns to the previous screen where it was scrolled, instead of leaving the site (which closes the installed app). Undoing one from the page steps back, so history never piles up. Between the calendar and Guardados the entry is replaced (`replaceScreen`): back from either returns to the list, like Instagram's tabs. Back from an in-page jump (Info, `#info`) puts the scroll back where it was. The app restores scrolling itself (`history.scrollRestoration = "manual"`).
   - **Overlays** (the sheets and the details) get entries on top of the screen's (`overlayState`). A move undone from inside one (the sheet's "Limpiar") is undone right there, the overlay stays, and its screen's entry is skipped later.
 - **The details have a URL:** opening pushes `/evento/<id>/`, so the phone's back button closes them. A copied link opens that event's page.
 - **Shared links open the app.** An event's link (`/evento/<id>/`) forwards a browser to the home page (`?evento=<id>`), which shows the list at that event's card with its drawer open at half height (`main.ts`, `openSharedEvent`): × or back leave the visitor on the list, not off the site. A past event (in Bogotá's time) or one no longer in the list stays on its page.

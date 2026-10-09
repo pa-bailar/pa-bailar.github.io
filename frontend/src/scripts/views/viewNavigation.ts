@@ -13,6 +13,7 @@ import {
   scrollPageTo,
 } from "./jumpBar";
 import { stickyOffset } from "./pinnedBars";
+import { setWholePeriods, wholePeriods } from "./upcomingView";
 import { bottomInset, visibleBottom } from "./bottomNav";
 import { VIEW_TITLES } from "../lib/viewTitles";
 
@@ -144,11 +145,13 @@ export function viewNavigation(state: AppState, render: () => void): ViewNavigat
 
   const currentScreen = (): ScreenData => ({
     view: state.view,
+    periods: wholePeriods(),
     scrollY: window.scrollY,
   });
 
   function applyScreen(screen: Screen) {
     if (sameScreen(screen, currentScreen())) return; // e.g. back from an event or a sheet: the screen stays
+    setWholePeriods(screen.periods);
     if (screen.view !== state.view) {
       showView(screen.view, { scrollY: screen.scrollY }); // it puts each view back where it was
       return;

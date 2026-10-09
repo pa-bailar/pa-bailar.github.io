@@ -2,7 +2,7 @@
 // details, which rise under the finger (on a wide screen with a mouse, its image big beside them), and the second landed
 // on whatever they put there: Compartir, the account's profile, the dim area that closes them again (the audit of 7 Oct
 // 2026: 20 emulated double-taps on Android and iPhone, the second tap on the details every time). The same goes for
-// anything a tap opens or changes under the finger: "Ver N más" (the second tap opened the first new card's details),
+// anything a tap opens or changes under the finger: a summarized period's "Ver los 23 eventos" (the second tap opened the first new card's details),
 // "Ver las 6 publicaciones", the Instagram button, a notice's button (gone at once, the view under it took the tap), an
 // event page's flyer ("Abrir en Instagram" rising under it): the bug hunt of 7 Oct 2026. So a second tap is dropped
 // when it lands on another control than the first one did (views/secondTaps.ts); the same control twice (a month's

@@ -8,6 +8,7 @@ type Sheets = typeof import("../src/scripts/lib/sheet");
 
 /** The page's screen, as main.ts keeps it: what `current` reads and `apply` puts back. */
 interface App {
+  period: string | null; // a period opened whole
   view: View;
 }
 
@@ -21,12 +22,13 @@ beforeEach(async () => {
   vi.resetModules(); // each test starts with fresh module state and listeners
   screens = await import("../src/scripts/screenHistory");
   sheets = await import("../src/scripts/lib/sheet");
-  app = { view: "upcoming" };
-  const current = () => ({ view: app.view, scrollY: 0 });
+  app = { period: null, view: "upcoming" };
+  const current = () => ({ view: app.view, periods: app.period ? [app.period] : [], scrollY: 0 });
   screens.initScreenHistory({
     current,
     apply: (screen) => {
       if (screens.sameScreen(screen, current())) return;
+      app.period = screen.periods[0] ?? null;
       app.view = screen.view;
     },
   });
@@ -36,8 +38,8 @@ afterEach(() => {
   vi.unstubAllGlobals();
 });
 
-const openCalendar = () => screens.goTo("view", () => (app.view = "calendar"));
-const backToList = () => screens.leave("view", () => (app.view = "upcoming"));
+const openPeriod = () => screens.goTo("period", () => (app.period = "hoy"));
+const leavePeriod = () => screens.leave("period", () => (app.period = null));
 
 /** The "Filtros" sheet, as jumpBar.ts sets it up, opened. */
 function openFilterSheet() {
@@ -51,9 +53,9 @@ describe("a reload", () => {
   it("leaves no overlay marked on the entry it reloaded (the search field, a menu, a sheet were open)", async () => {
     fake = installFakeHistory();
     vi.resetModules();
-    history.replaceState({ screen: { view: "upcoming", scrollY: 0 }, search: "x", menu: "when", sheet: "filter-sheet", overlay: true }, "");
+    history.replaceState({ screen: { view: "upcoming", periods: [], scrollY: 0 }, search: "x", menu: "when", sheet: "filter-sheet", overlay: true }, "");
     screens = await import("../src/scripts/screenHistory");
-    screens.initScreenHistory({ current: () => ({ view: "upcoming", scrollY: 0 }), apply: () => {} });
+    screens.initScreenHistory({ current: () => ({ view: "upcoming", periods: [], scrollY: 0 }), apply: () => {} });
     expect(fake.state).toEqual({ screen: expect.objectContaining({ view: "upcoming" }) });
   });
 });
@@ -70,52 +72,52 @@ describe("an overlay's entry", () => {
 });
 
 describe("moves between screens", () => {
-  it("another view gets a history entry; back puts the list back", async () => {
-    openCalendar();
+  it("a period opened whole gets a history entry; back puts the list back", async () => {
+    openPeriod();
     expect(fake.entries).toHaveLength(2);
     history.back();
     await settle();
-    expect(app.view).toBe("upcoming");
+    expect(app.period).toBeNull();
     expect(fake.index).toBe(0);
   });
 
   it("undoing the move from the page goes back in history: no screens pile up", async () => {
-    openCalendar();
-    backToList();
+    openPeriod();
+    leavePeriod();
     await settle();
-    expect(app.view).toBe("upcoming");
+    expect(app.period).toBeNull();
     expect(fake.index).toBe(0);
   });
 
   // The iPhone audit, 8 Oct 2026: Calendario → "Info" (#info, an entry the browser makes) → Eventos left the calendar's
   // entry behind it: back brought the calendar back, then the list again.
   it("undoing a move after an in-page jump (Info) steps back over the jump too", async () => {
-    openCalendar();
+    screens.goTo("view", () => (app.view = "calendar"));
     screens.beforeJump();
     history.pushState(null, "", "#info"); // what the browser does for the link
     screens.afterJump();
     expect(fake.entries).toHaveLength(3);
-    backToList();
+    screens.leave("view", () => (app.view = "upcoming"));
     await settle();
     expect(app.view).toBe("upcoming");
     expect(fake.index).toBe(0); // the list's own entry: one back from here leaves the site, nothing in between
   });
 
   it("the calendar, Info, then Guardados: still replaced, so Eventos returns to the list", async () => {
-    openCalendar();
+    screens.goTo("view", () => (app.view = "calendar"));
     screens.beforeJump();
     history.pushState(null, "", "#info");
     screens.afterJump();
     screens.replaceScreen("view", () => (app.view = "saved"));
     expect(fake.entries).toHaveLength(3);
-    backToList();
+    screens.leave("view", () => (app.view = "upcoming"));
     await settle();
     expect(app.view).toBe("upcoming");
     expect(fake.index).toBe(0);
   });
 
   it("back from the jump returns to the same screen's entry, and the jump keeps it", async () => {
-    openCalendar();
+    screens.goTo("view", () => (app.view = "calendar"));
     screens.beforeJump();
     history.pushState(null, "", "#info");
     screens.afterJump();
@@ -126,72 +128,71 @@ describe("moves between screens", () => {
     expect(fake.index).toBe(1);
   });
 
-  it("undoing a move that isn't the current entry happens in place (the page opened on /calendario/)", () => {
-    app.view = "calendar";
-    backToList();
-    expect(fake.index).toBe(0);
-    expect(fake.entries).toHaveLength(1);
-    expect(app.view).toBe("upcoming");
+  it("undoing a move that isn't the current entry happens in place", () => {
+    openPeriod();
+    screens.leave("view", () => (app.view = "upcoming"));
+    expect(fake.index).toBe(1);
+    expect(app.period).toBe("hoy");
   });
 });
 
-describe("the Filtros sheet over another view", () => {
-  it("its entry is an overlay over the view's screen", () => {
-    openCalendar();
+describe("the Filtros sheet over a period opened whole", () => {
+  it("its entry is an overlay over the period's screen", () => {
+    openPeriod();
     openFilterSheet();
-    expect(fake.state).toMatchObject({ sheet: "filter-sheet", overlay: true, screen: { view: "calendar" } });
+    expect(fake.state).toMatchObject({ sheet: "filter-sheet", overlay: true, screen: { periods: ["hoy"] } });
   });
 
-  it("leaving the view from inside it happens there, and the sheet stays open", async () => {
-    openCalendar();
+  it("leaving the period from inside it happens there, and the sheet stays open", async () => {
+    openPeriod();
     const sheet = openFilterSheet();
-    backToList();
+    leavePeriod();
     await settle();
-    expect(app.view).toBe("upcoming");
+    expect(app.period).toBeNull();
     expect(sheet.open).toBe(true);
-    expect(fake.state).toMatchObject({ sheet: "filter-sheet", screen: { view: "upcoming" } });
+    expect(fake.state).toMatchObject({ sheet: "filter-sheet", screen: { periods: [] } });
   });
 
-  it("closing it afterwards (×) doesn't bring the view back: its screen is skipped", async () => {
-    openCalendar();
+  it("closing it afterwards (×) doesn't bring the period back: its screen is skipped", async () => {
+    openPeriod();
     const sheet = openFilterSheet();
-    backToList();
+    leavePeriod();
     sheets.dismissSheet(sheet);
     await settle();
     expect(sheet.open).toBe(false);
-    expect(app.view).toBe("upcoming");
+    expect(app.period).toBeNull();
     expect(fake.index).toBe(0);
   });
 
   it("nor does the phone's back button", async () => {
-    openCalendar();
+    openPeriod();
     const sheet = openFilterSheet();
-    backToList();
+    leavePeriod();
     history.back();
     await settle();
     expect(sheet.open).toBe(false);
-    expect(app.view).toBe("upcoming");
+    expect(app.period).toBeNull();
     expect(fake.index).toBe(0);
   });
 
-  it("without leaving the view, closing it keeps the view's screen", async () => {
-    openCalendar();
+  it("without leaving the period, closing it keeps the period's screen", async () => {
+    openPeriod();
     const sheet = openFilterSheet();
     sheets.dismissSheet(sheet);
     await settle();
-    expect(app.view).toBe("calendar");
+    expect(app.period).toBe("hoy");
     expect(fake.index).toBe(1);
   });
 
   it("two screens left from inside it are both skipped", async () => {
     screens.goTo("view", () => (app.view = "saved"));
-    openCalendar();
+    openPeriod();
     const sheet = openFilterSheet();
-    screens.leave("view", () => (app.view = "saved"));
-    backToList();
+    leavePeriod();
+    screens.leave("view", () => (app.view = "upcoming"));
     sheets.dismissSheet(sheet);
     await settle(10);
-    expect(app).toEqual({ view: "upcoming" });
+    expect(app).toEqual({ period: null, view: "upcoming" });
     expect(fake.index).toBe(0);
   });
 });
@@ -200,20 +201,48 @@ describe("the side panel (an overlay with the event's address)", () => {
   const openPanel = (id: string) =>
     history.pushState(screens.overlayState({ eventId: id }), "", `/evento/${id}/`);
 
-  it("leaving the view from the list next to it, then closing it, stays on the list", async () => {
-    openCalendar();
+  it("leaving the period from the list next to it, then closing it, stays on the whole list", async () => {
+    openPeriod();
     openPanel("social-1");
-    backToList();
-    expect(app.view).toBe("upcoming");
+    leavePeriod();
+    expect(app.period).toBeNull();
     history.back(); // closing the panel goes through the history
     await settle();
-    expect(app.view).toBe("upcoming");
+    expect(app.period).toBeNull();
     expect(fake.path).toBe("/");
+  });
+
+  it("a period opened while it's open gets no entry: the panel's entry records it (review, 6 Oct 2026)", () => {
+    openPanel("social-1");
+    const at = fake.index;
+    openPeriod();
+    expect(fake.index).toBe(at);
+    expect(fake.state).toMatchObject({ eventId: "social-1", overlay: true, screen: { periods: ["hoy"] } });
+    expect(fake.path).toBe("/evento/social-1/");
+  });
+
+  it("closing the panel keeps the period, which gets its entry then: back folds it, never reopening the event", async () => {
+    openPanel("social-1");
+    openPeriod();
+    history.back(); // closing the panel goes through the history
+    await settle();
+    expect(app.period).toBe("hoy");
+    expect(fake.state).toMatchObject({ screen: { periods: ["hoy"] } });
+    expect(fake.state).not.toHaveProperty("eventId");
+    expect(fake.path).toBe("/");
+    history.back(); // the period's entry, like any period opened whole: back folds it
+    await settle();
+    expect(app.period).toBeNull();
+    expect(fake.state?.eventId).toBeUndefined();
+    history.forward(); // the panel's entry is gone: forward is the period again, not the event
+    await settle();
+    expect(app.period).toBe("hoy");
+    expect(fake.state?.eventId).toBeUndefined();
   });
 
   it("a view moved to while it's open still gets its own entry", () => {
     openPanel("social-1");
-    openCalendar();
+    screens.goTo("view", () => (app.view = "calendar"));
     expect(fake.state).not.toHaveProperty("eventId");
     expect(addressAfterClosing(location)).toBe("/"); // the drawer's close puts the address back to the home page
   });
@@ -249,7 +278,7 @@ describe("each view's own address (/calendario/, /guardados/)", () => {
     const { viewPath } = await import("../src/scripts/lib/links");
     shown = { view: "upcoming" };
     screens.initScreenHistory({
-      current: () => ({ view: shown.view, scrollY: 0 }),
+      current: () => ({ view: shown.view, periods: [], scrollY: 0 }),
       apply: (screen) => (shown.view = screen.view),
       address: (screen) => viewPath(screen.view),
     });
