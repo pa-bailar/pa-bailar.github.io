@@ -11,6 +11,10 @@ import type { InstallPlace } from "./installPlace";
 /** What the saves can do here: be copied (a browser on iPhone or iPad), be pasted (the installed app there), neither. */
 export type SavedMove = "copy" | "paste" | null;
 
+/** The buttons' words, also named in the notices that point to them (views/savedView.ts, views/savedMoveView.ts). */
+export const COPY_LABEL = "Copiar para la app";
+export const PASTE_LABEL = "Pegar mis guardados de Safari";
+
 /** The parameter of the link that carries them: `?guardados=<id>,<id>`. */
 export const MOVE_PARAM = "guardados";
 

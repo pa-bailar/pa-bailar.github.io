@@ -4,14 +4,14 @@
 
 import { BASE_URL } from "../lib/links";
 import { savedIds, setSaved } from "../lib/saved";
-import { idsFromMove, moveText } from "../lib/savedMove";
+import { COPY_LABEL, PASTE_LABEL, idsFromMove, moveText } from "../lib/savedMove";
 
 /** "Copiar para la app": the saves on the clipboard, as a link; `say` tells how it went. */
 export function copySavesForApp(say: (text: string) => void) {
   const text = moveText(savedIds(), new URL(BASE_URL, location.origin).href);
   const write = navigator.clipboard?.writeText(text) ?? Promise.reject(new Error("no clipboard"));
   write.then(
-    () => say("Copiados. En la app, abre Guardados y toca «Pegar mis guardados de Safari»."),
+    () => say(`Copiados. En la app, abre Guardados y toca «${PASTE_LABEL}».`),
     () => say("No pudimos copiarlos. Inténtalo otra vez."),
   );
 }
@@ -40,7 +40,7 @@ export async function pasteSavesFromSafari(): Promise<PasteResult> {
 /** The notice after pasting. */
 export function pastedText(result: PasteResult): string {
   if (result === "denied") return "No pudimos leer lo copiado. Toca otra vez y elige «Pegar».";
-  if (result === "nothing") return "No hay guardados en lo copiado. En Safari, abre Guardados y toca «Copiar para la app».";
+  if (result === "nothing") return `No hay guardados en lo copiado. En Safari, abre Guardados y toca «${COPY_LABEL}».`;
   if (result.added === 0) return "Ya tenías esos guardados aquí.";
   return result.added === 1 ? "Listo: 1 guardado de Safari." : `Listo: ${result.added} guardados de Safari.`;
 }

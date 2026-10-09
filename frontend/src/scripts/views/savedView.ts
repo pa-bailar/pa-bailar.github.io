@@ -11,7 +11,7 @@ import { eventCountLabel } from "../lib/format";
 import { isUpcoming, lastDay, nowInBogota, todayIso } from "../lib/dates";
 import { viewPath } from "../lib/links";
 import { isSaved } from "../lib/saved";
-import type { SavedMove } from "../lib/savedMove";
+import { COPY_LABEL, PASTE_LABEL, type SavedMove } from "../lib/savedMove";
 import { matchesWords } from "../lib/search";
 import { type AgendaGroup, groupByPeriod, listedDay, shownDays } from "../state";
 import { applyFlyerRatios, eventCardGridHtml } from "./eventCard";
@@ -62,8 +62,6 @@ function groupHtml(group: AgendaGroup, listedOn: (event: DanceEvent) => string):
 
 const SEE_EVENTS = `<a class="btn btn--primary" href="${viewPath("upcoming")}" data-view="upcoming">Ver eventos</a>`;
 
-const PASTE_LABEL = "Pegar mis guardados de Safari";
-
 /**
  * iPhone: a line to move the saves to the installed app, which keeps its own (lib/savedMove.ts). In Safari, with saves:
  * copy them; in the app: paste Safari's. Nothing elsewhere (Android's app shares the browser's saves).
@@ -71,7 +69,7 @@ const PASTE_LABEL = "Pegar mis guardados de Safari";
 export function savedMoveHtml(move: SavedMove): string {
   if (move === "copy") {
     return `<p class="saved-move">¿Tienes Pa' Bailar en tu inicio? Tus guardados de aquí no están allá:
-      <button class="link-button" type="button" data-saved-copy data-track="guardados-copiar-app">Copiar para la app</button></p>`;
+      <button class="link-button" type="button" data-saved-copy data-track="guardados-copiar-app">${COPY_LABEL}</button></p>`;
   }
   if (move === "paste") {
     return `<p class="saved-move">¿Guardaste más en Safari?
@@ -98,7 +96,7 @@ export function emptySavedHtml(query: string, move: SavedMove = null): string {
       <p class="empty-state__title">Aún no tienes eventos guardados</p>
       <p>Toca ${ICONS.bookmark}<span class="visually-hidden">(Guardar)</span> en un evento para tenerlo aquí, a la mano.
         Se quedan en este navegador, sin crear cuenta.</p>
-      ${move === "paste" ? `<p>¿Guardaste eventos en Safari? Cópialos allá con «Copiar para la app» y pégalos aquí.</p>` : ""}
+      ${move === "paste" ? `<p>¿Guardaste eventos en Safari? Cópialos allá con «${COPY_LABEL}» y pégalos aquí.</p>` : ""}
       <div class="empty-state__actions">${SEE_EVENTS}${
         move === "paste"
           ? `<button class="btn" type="button" data-saved-paste data-track="guardados-pegar-app">${PASTE_LABEL}</button>`
