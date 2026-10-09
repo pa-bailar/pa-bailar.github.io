@@ -46,3 +46,16 @@ describe("pasteSavesFromSafari", () => {
     expect(await pasteSavesFromSafari()).toBe("denied");
   });
 });
+
+describe("pastedText", () => {
+  it("says how the paste went: denied, nothing of ours, nothing new, or how many came", async () => {
+    const { pastedText } = await import("../src/scripts/views/savedMoveView");
+    expect(pastedText("denied")).toBe("No pudimos leer lo copiado. Toca otra vez y elige «Pegar».");
+    expect(pastedText("nothing")).toBe(
+      "No hay guardados en lo copiado. En Safari, abre Guardados y toca «Copiar para la app».",
+    );
+    expect(pastedText({ added: 0 })).toBe("Ya tenías esos guardados aquí.");
+    expect(pastedText({ added: 1 })).toBe("Listo: 1 guardado de Safari.");
+    expect(pastedText({ added: 3 })).toBe("Listo: 3 guardados de Safari.");
+  });
+});

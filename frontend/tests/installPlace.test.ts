@@ -6,6 +6,7 @@ import {
   installGuide,
   installPlace,
   openInBrowser,
+  reminderText,
   withoutArrival,
 } from "../src/scripts/lib/installPlace";
 
@@ -210,5 +211,20 @@ describe("out of an app's browser in one tap", () => {
     expect(withoutArrival("https://pa-bailar.github.io/?instalar")).toBe("/");
     expect(withoutArrival("https://pa-bailar.github.io/calendario/?instalar&x=1#y")).toBe("/calendario/?x=1#y");
     expect(withoutArrival("https://pa-bailar.github.io/?x=1")).toBeNull();
+  });
+});
+
+describe("the reminder after a second save (reminderText)", () => {
+  it("on iPhone and iPad it doesn't promise the saves: the app starts without them", () => {
+    expect(reminderText(installPlace(UA.safari27))).toBe("Pa' Bailar a un toque: instálala en tu iPhone.");
+    expect(reminderText(installPlace(UA.ipadDesktop, { platform: "MacIntel", maxTouchPoints: 5 }))).toBe(
+      "Pa' Bailar a un toque: instálala en tu iPad.",
+    );
+    expect(reminderText(installPlace(UA.safari27))).not.toMatch(/guardados/i);
+  });
+
+  it("elsewhere it's as it was: Android's app has the browser's saves", () => {
+    expect(reminderText(installPlace(UA.androidChrome))).toBe("Tus guardados a un toque: instala Pa' Bailar.");
+    expect(reminderText(installPlace(UA.windowsChrome))).toBe("Tus guardados a un toque: instala Pa' Bailar.");
   });
 });
