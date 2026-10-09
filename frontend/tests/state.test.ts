@@ -93,8 +93,9 @@ describe("styles", () => {
 
 describe("a day's events: by type in the owner's order, then by time (the owner, 8 Oct 2026)", () => {
   const day = "2026-11-14";
+  // Each its own account's (an account's events of a day stay together: below).
   const at = (id: string, event_type: DanceEvent["event_type"], start_time: string | null) =>
-    event({ id, date: day, event_type, start_time });
+    event({ id, account: id, date: day, event_type, start_time });
   const list = [
     at("taller-10", "workshop", "10:00"),
     at("concierto-sin-hora", "concert", null),
@@ -116,6 +117,23 @@ describe("a day's events: by type in the owner's order, then by time (the owner,
       "concierto-sin-hora",
     ]);
     expect(dayOrderKey(list[0], day) < dayOrderKey(list[1], day)).toBe(true);
+  });
+
+  // The owner, 8 Oct 2026: Bachatamania's competition (19:00) and its social (20:30) the same night had three other
+  // accounts' events between them (sorted by type, the social came first and the competition after the workshops).
+  it("an account's events of a day stay together where its first one goes, in the order they start", () => {
+    const of = (id: string, account: string, event_type: DanceEvent["event_type"], start_time: string) =>
+      event({ id, account, date: day, event_type, start_time });
+    const night = [
+      of("competencia", "bachatamania", "competition", "19:00"),
+      of("taller-otro", "otra", "workshop", "16:00"),
+      of("social", "bachatamania", "social", "20:30"),
+      of("concierto", "bar", "concert", "21:00"),
+      of("social-otro", "otra-mas", "social", "21:00"),
+    ];
+    const ids = ["competencia", "social", "social-otro", "taller-otro", "concierto"];
+    expect(groupByDay(night).get(day)?.map((item) => item.id)).toEqual(ids);
+    expect(groupByPeriod(night, "2026-11-12").flatMap((group) => group.events.map((item) => item.id))).toEqual(ids);
   });
 
   it("the list keeps the days in order, each ordered the same way", () => {

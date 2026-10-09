@@ -164,12 +164,39 @@ export function dayOrderKey(event: DanceEvent, day: string): string {
   return `${String(rank < 0 ? TYPE_ORDER.length : rank).padStart(2, "0")} ${startOn(event, day) || "99:99"}`;
 }
 
-/** The events on one day in their order (dayOrderKey), else as given. */
-function inDayOrder(events: DanceEvent[], day: string): DanceEvent[] {
-  return events
-    .map((event, index) => ({ event, index, key: dayOrderKey(event, day) }))
-    .sort((a, b) => a.key.localeCompare(b.key) || a.index - b.index)
+/** An event where it goes: its day, its place that day (dayOrderKey) and its place as given (ties keep it). */
+interface Placed {
+  event: DanceEvent;
+  index: number;
+  day: string;
+  key: string;
+}
+
+/** When it starts that day, one with no known time last. */
+const startKey = (item: Placed) => startOn(item.event, item.day) || "99:99";
+
+const byPlace = (a: Placed, b: Placed) => a.day.localeCompare(b.day) || a.key.localeCompare(b.key) || a.index - b.index;
+
+/**
+ * By day, then dayOrderKey, keeping an account's events of one day together where its first one goes, in the order
+ * they start (the owner, 8 Oct 2026: Bachatamania's competition at 19:00 and its social at 20:30 the same night had
+ * three other accounts' events between them, the social first).
+ */
+function inOrder(items: Placed[]): DanceEvent[] {
+  const first = new Map<string, Placed>();
+  for (const item of [...items].sort(byPlace)) {
+    const id = `${item.day} ${item.event.account}`;
+    if (!first.has(id)) first.set(id, item);
+  }
+  const firstOf = (item: Placed) => first.get(`${item.day} ${item.event.account}`)!;
+  return items
+    .sort((a, b) => byPlace(firstOf(a), firstOf(b)) || startKey(a).localeCompare(startKey(b)) || byPlace(a, b))
     .map(({ event }) => event);
+}
+
+/** The events on one day in their order (dayOrderKey, an account's together), else as given. */
+function inDayOrder(events: DanceEvent[], day: string): DanceEvent[] {
+  return inOrder(events.map((event, index) => ({ event, index, day, key: dayOrderKey(event, day) })));
 }
 
 /** Events the current view can show before filtering: upcoming ones (until their last day; a night past midnight
@@ -351,16 +378,16 @@ export function listedDay(event: DanceEvent, choices: DayChoices = {}, today = t
 
 /**
  * The upcoming list's order: by the day each event is listed on, then within the day by type and start time
- * (dayOrderKey). A series is listed on its next session, among that day's events.
+ * (dayOrderKey), an account's events of the day together (inOrder). A series is listed on its next session, among that
+ * day's events.
  */
 export function listOrder(events: DanceEvent[], today = todayIso(), choices: DayChoices = {}): DanceEvent[] {
-  return events
-    .map((event, index) => {
+  return inOrder(
+    events.map((event, index) => {
       const day = listedDay(event, choices, today);
-      return { event, index, key: `${day} ${dayOrderKey(event, day)}` };
-    })
-    .sort((a, b) => a.key.localeCompare(b.key) || a.index - b.index)
-    .map(({ event }) => event);
+      return { event, index, day, key: dayOrderKey(event, day) };
+    }),
+  );
 }
 
 /** The list's periods, each with its events (see above). `choices`: the view, the dates chosen and the search. */
