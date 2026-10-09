@@ -187,8 +187,8 @@
   display: none;
 }
 
-/* "Ya la agregué": a quiet link, the steps being what matters; a finger's height to tap. */
-.install-sheet__done {
+/* "Ya la agregué" and "Copiar mis N guardados": quiet links, the steps being what matters; a finger's height to tap. */
+.install-sheet__quiet {
   min-height: var(--control-height);
   color: var(--text-muted);
   font-size: var(--text-sm);
