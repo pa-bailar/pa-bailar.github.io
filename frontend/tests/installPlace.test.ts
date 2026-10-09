@@ -49,6 +49,17 @@ describe("where the visitor is, for installing", () => {
     expect(installPlace(UA.androidInstagram)).toEqual({ kind: "in-app", ios: false, app: "instagram" });
   });
 
+  // The bug-squash pass of 8 Oct 2026: Threads ("Barcelona") read as an iPhone browser that can add pages; a plain
+  // Android WebView (an app's own browser, "; wv)") got Chrome's menu steps.
+  it("Threads and any Android app's own browser are apps' browsers too", () => {
+    const threads =
+      "Mozilla/5.0 (iPhone; CPU iPhone OS 18_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 Barcelona 359.0.0.25.84";
+    const webView =
+      "Mozilla/5.0 (Linux; Android 14; Pixel 8; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/129.0.0.0 Mobile Safari/537.36";
+    expect(installPlace(threads)).toEqual({ kind: "in-app", ios: true, app: "other" });
+    expect(installPlace(webView)).toEqual({ kind: "in-app", ios: false, app: "other" });
+  });
+
   it("an iPad asking for the desktop site is told from a Mac by its touch screen", () => {
     expect(installPlace(UA.ipadDesktop, { platform: "MacIntel", maxTouchPoints: 5 })).toMatchObject({ kind: "ios", ipad: true, browser: "safari" });
     expect(installPlace(UA.ipadDesktop, { platform: "MacIntel", maxTouchPoints: 0 })).toEqual({ kind: "computer" });

@@ -284,6 +284,20 @@ describe("each view's own address (/calendario/, /guardados/)", () => {
     });
   });
 
+  // The bug-squash pass of 8 Oct 2026, in WebKit: after "Info" (#info) the browser's own scroll restoring came back
+  // ("auto" on the jump's entry, inherited by the next), and #info stuck to every later address.
+  it("after Info (#info), a move to another view drops the hash and keeps the scroll the app's", () => {
+    screens.beforeJump();
+    history.pushState(null, "", "#info");
+    history.scrollRestoration = "auto"; // what WebKit does for the jump's entry
+    screens.afterJump();
+    expect(history.scrollRestoration).toBe("manual");
+    screens.goTo("view", () => (shown.view = "calendar"));
+    expect(`${fake.path}${location.hash}`).toBe("/calendario/");
+    screens.replaceScreen("view", () => (shown.view = "saved"));
+    expect(`${fake.path}${location.hash}`).toBe("/guardados/");
+  });
+
   it("the calendar's move pushes /calendario/; back returns to /", async () => {
     screens.goTo("view", () => (shown.view = "calendar"));
     expect(fake.path).toBe("/calendario/");

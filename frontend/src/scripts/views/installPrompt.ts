@@ -178,9 +178,11 @@ function dropClip() {
   video.load();
 }
 
-/** The home page's address, for pasting it in the browser (apps' own browsers can't install). */
+/** The home page's address, marked (?instalar), for pasting it in the browser (apps' own browsers can't install):
+ * there the steps open by themselves, as the in-app steps promise. Unmarked, nothing did (the bug-squash pass of 8 Oct
+ * 2026). */
 async function copyLink() {
-  const url = new URL(BASE_URL, location.origin).href;
+  const url = arrivalUrl().href;
   let copied = false;
   try {
     await navigator.clipboard.writeText(url);
@@ -239,6 +241,7 @@ export function initInstallPrompt(isKnown: (id: string) => boolean = known) {
     }
     else if (target.closest("[data-install-dismiss]")) {
       dismissedAt.set(String(Date.now()));
+      arrived = false; // the arrival shows the banner until the visitor answers it (× did nothing after ?instalar)
       render();
     }
   });
@@ -247,6 +250,7 @@ export function initInstallPrompt(isKnown: (id: string) => boolean = known) {
   // Having seen the steps counts as an answer: the banner rests like after ×, and the footer's link stays.
   sheet.addEventListener("close", () => {
     dismissedAt.set(String(Date.now()));
+    arrived = false;
     dropClip();
     render();
   });
