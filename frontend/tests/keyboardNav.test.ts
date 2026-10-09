@@ -67,8 +67,8 @@ describe("a summarized period's block among the cards (the owner, 6 Oct 2026)", 
   });
 });
 
-describe("a short button just above the next period's cards (bug, 6 Oct 2026)", () => {
-  // The weekend's last row, its "Ver 10 más" (44 px tall, centered), and next week's first row 168 px below it.
+describe("a short stop just above taller cards is a row of its own (bug, 6 Oct 2026)", () => {
+  // The weekend's last row, the list's old "Ver 10 más" (44 px tall, centered), and next week's first row 168 px below.
   const button = { left: 590, top: 1272, width: 100, height: 44 };
   const list = [box(0, 640), box(280, 640), button, box(0, 1440), box(280, 1440)];
 
