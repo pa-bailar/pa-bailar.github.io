@@ -75,9 +75,10 @@ describe("a series' days (lib/dates.ts)", () => {
 });
 
 describe("a series in the upcoming list (groupByPeriod)", () => {
-  const thursday = event({ id: "jueves", date: "2026-11-19", start_time: "20:00" });
-  const sundayMorning = event({ id: "domingo-temprano", date: "2026-11-22", start_time: "10:00" });
-  const sundayNight = event({ id: "domingo-noche", date: "2026-11-22", start_time: "19:00" });
+  // Other accounts' (an account's events of a day stay together: state.ts inOrder).
+  const thursday = event({ id: "jueves", account: "otra", date: "2026-11-19", start_time: "20:00" });
+  const sundayMorning = event({ id: "domingo-temprano", account: "otra", date: "2026-11-22", start_time: "10:00" });
+  const sundayNight = event({ id: "domingo-noche", account: "una-mas", date: "2026-11-22", start_time: "19:00" });
   const december = event({ id: "diciembre", date: "2026-12-02" });
   // events.json order: by date, so the series (dated by its first session) comes first.
   const all = [series, festival, thursday, sundayMorning, sundayNight, december];

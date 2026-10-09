@@ -189,7 +189,10 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves: the pa
   socials first, then rumbas, then workshops, then concerts, festivals, congresses, competitions, shows and other
   (`TYPE_ORDER`, the same as the filters' chips); within a type, by start time, one with no known time (or that began
   on an earlier day) last. Before, a day went by time alone, and the events with no time came first: three bars'
-  concerts above a day's social. The calendar's day list and Guardados follow it too (`dayOrderKey`).
+  concerts above a day's social. **An account's events of one day stay together** (the owner, 8 Oct 2026): where its
+  first one goes, in the order they start. Bachatamania's competition (19:00) and its social (20:30) the
+  same night had three other accounts' events between them. The calendar's day list and Guardados follow it too
+  (`dayOrderKey`, `inOrder` in `state.ts`).
 - **Grouped by period, not by day** (`groupByPeriod` in `scripts/state.ts`). Days with one or two events share rows instead of each leaving a mostly empty row. The buckets don't overlap, follow the usual calendar "date range" grouping, and split out the weekend because that's when most socials happen:
 
   | Group | Range |
