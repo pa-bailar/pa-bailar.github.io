@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { colombianHolidays, easterSunday, isHoliday } from "../src/scripts/lib/holidays";
+import { colombianHolidays, easterSunday, isHoliday, weekendSpan } from "../src/scripts/lib/holidays";
+import { groupByPeriod } from "../src/scripts/state";
+import { periodShareTitle } from "../src/scripts/lib/shareText";
+import { event } from "./factories";
 
 // The official calendars (decree / published lists of festivos).
 const OFFICIAL: Record<number, string[]> = {
@@ -30,5 +33,36 @@ describe("Colombian holidays", () => {
   it("ordinary days are not holidays", () => {
     expect(isHoliday("2026-10-12")).toBe(true);
     expect(isHoliday("2026-10-13")).toBe(false);
+  });
+});
+
+// The owner, 8 Oct 2026: a long weekend is "Este puente", the holidays next to it included.
+describe("this week's weekend, a puente when holidays make it longer (weekendSpan)", () => {
+  it("a Monday holiday (Columbus Day, moved to Mon 12 Oct 2026): Friday to Monday", () => {
+    expect(weekendSpan("2026-10-07")).toEqual({ start: "2026-10-09", end: "2026-10-12", puente: true });
+  });
+
+  it("Holy Week: Holy Thursday and Good Friday join it (Thu 2 to Sun 5 Apr 2026)", () => {
+    expect(weekendSpan("2026-03-30")).toEqual({ start: "2026-04-02", end: "2026-04-05", puente: true });
+  });
+
+  it("a holiday on its Friday (Christmas 2026) makes it a puente too", () => {
+    expect(weekendSpan("2026-12-21")).toEqual({ start: "2026-12-25", end: "2026-12-27", puente: true });
+  });
+
+  it("no holiday: Friday to Sunday, the usual weekend", () => {
+    expect(weekendSpan("2026-10-21")).toEqual({ start: "2026-10-23", end: "2026-10-25", puente: false });
+  });
+
+  it("the list names it, takes its Monday, and shares it as such", () => {
+    const monday = event({ id: "lunes-festivo", date: "2026-10-12" });
+    const tuesday = event({ id: "martes", date: "2026-10-13" });
+    const [puente, nextWeek] = groupByPeriod([monday, tuesday], "2026-10-07");
+    expect([puente?.key, puente?.label, puente?.shortLabel]).toEqual(["fin-de-semana", "Este puente", "Puente"]);
+    expect(puente?.events.map((item) => item.id)).toEqual(["lunes-festivo"]);
+    expect([nextWeek?.key, nextWeek?.events.map((item) => item.id)]).toEqual(["proxima-semana", ["martes"]]);
+    expect(periodShareTitle(puente!)).toBe("Este puente en Bogotá");
+    const [weekend] = groupByPeriod([event({ id: "sabado", date: "2026-10-24" })], "2026-10-21");
+    expect([weekend?.label, periodShareTitle(weekend!)]).toEqual(["Este fin de semana", "Este finde en Bogotá"]);
   });
 });

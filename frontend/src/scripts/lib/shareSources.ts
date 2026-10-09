@@ -6,7 +6,7 @@ import { type AgendaGroup, listedDay } from "../state";
 import type { AppState, DanceEvent } from "../types";
 import { lastDay, shownDay } from "./dates";
 import { dateRangeLabel, styleLabel, typeLabel } from "./format";
-import { PERIOD_SHARE_TITLES, periodShareText, plansShareText } from "./shareText";
+import { periodShareText, periodShareTitle, plansShareText } from "./shareText";
 
 /** What a list's share button shares (data-share="<key>"). */
 export interface ShareSource {
@@ -41,7 +41,7 @@ export function shareSources({ groups, state, plans, planUrl }: ShareSourcesInpu
   const sources = new Map<string, ShareSource>();
   const filters = filtersLabel(state);
   for (const group of groups) {
-    const title = PERIOD_SHARE_TITLES[group.key];
+    const title = periodShareTitle(group);
     const days = group.events.map((event) => listedDay(event, state)); // as listed: an event under way is today's
     const first = days[0];
     const last = days.at(-1);

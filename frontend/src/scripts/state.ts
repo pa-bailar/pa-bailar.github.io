@@ -3,6 +3,7 @@
 import type { AppState, DanceEvent, View } from "./types";
 import { addDays, currentMonth, daysFrom, daysOf, endOfWeek, isUpcoming, nowInBogota, shownDay, startOn, todayIso, toIsoDate } from "./lib/dates";
 import { TYPE_ORDER, capitalize, formatMonthName } from "./lib/format";
+import { PUENTE, weekendSpan } from "./lib/holidays";
 import { matchesWords, searchedDays } from "./lib/search";
 import type { DayTest } from "./lib/searchDays";
 
@@ -259,8 +260,9 @@ export const TOMORROW = "manana";
  *
  *   "Hoy"                    today, first: what most visitors want to know (cf. hoy-milonga, Eventbrite)
  *   "Esta semana"            tomorrow … Thursday of this week (only Monday–Wednesday)
- *   "Este fin de semana"     Friday … Sunday of this week (Friday night counts as weekend)
- *   "Próxima semana"         next Monday … Sunday
+ *   "Este fin de semana"     Friday … Sunday of this week (Friday night counts as weekend); "Este puente" when
+ *                            holidays next to it make it longer (a Monday holiday, Holy Thursday: weekendSpan)
+ *   "Próxima semana"         next Monday … Sunday (from Tuesday after a puente that took the Monday)
  *   "Más adelante en <mes>"  the rest of the current month
  *   "<Mes>" / "<Mes> de <año>"  one group per month for the next MONTH_HORIZON months (year shown when
  *                            it's not this year)
@@ -290,7 +292,7 @@ function monthsAhead(today: string, date: string): number {
  * "Más adelante en <año>" once months of that year are listed. `tomorrow`: tomorrow is "Mañana". */
 function periodNamer(today: string, { tomorrow = false } = {}): (date: string) => Period {
   const thisWeekEnd = endOfWeek(today);
-  const weekendStart = addDays(thisWeekEnd, -2); // Friday
+  const weekend = weekendSpan(today);
   const nextWeekEnd = addDays(thisWeekEnd, 7);
   const currentMonth = today.slice(0, 7);
   const nextDay = addDays(today, 1);
@@ -313,8 +315,10 @@ function periodNamer(today: string, { tomorrow = false } = {}): (date: string) =
     }
     if (date === today) return ["hoy", "Hoy", "Hoy"];
     if (tomorrow && date === nextDay) return [TOMORROW, "Mañana", "Mañana"];
-    if (date < weekendStart) return ["esta-semana", "Esta semana", "Esta semana"];
-    if (date <= thisWeekEnd) return ["fin-de-semana", "Este fin de semana", "Finde"];
+    if (date < weekend.start) return ["esta-semana", "Esta semana", "Esta semana"];
+    if (date <= weekend.end) {
+      return weekend.puente ? ["fin-de-semana", PUENTE.label, PUENTE.short] : ["fin-de-semana", "Este fin de semana", "Finde"];
+    }
     if (date <= nextWeekEnd) return ["proxima-semana", "Próxima semana", "Próx. semana"];
     const month = formatMonthName(date);
     if (date.startsWith(currentMonth)) return ["resto-del-mes", `Más adelante en ${month}`, `Resto de ${month}`];
@@ -330,7 +334,7 @@ function periodNamer(today: string, { tomorrow = false } = {}): (date: string) =
 export function periodDays(key: string, today = todayIso()): [string, string] | null {
   const tomorrow = addDays(today, 1);
   const thisWeekEnd = endOfWeek(today);
-  const weekendStart = addDays(thisWeekEnd, -2); // Friday
+  const weekend = weekendSpan(today);
   const nextWeekEnd = addDays(thisWeekEnd, 7);
   const later = (a: string, b: string) => (a > b ? a : b);
   const monthEnd = (() => {
@@ -343,11 +347,11 @@ export function periodDays(key: string, today = todayIso()): [string, string] | 
     case TOMORROW:
       return [tomorrow, tomorrow];
     case "esta-semana":
-      return [tomorrow, addDays(weekendStart, -1)];
+      return [tomorrow, addDays(weekend.start, -1)];
     case "fin-de-semana":
-      return [later(weekendStart, tomorrow), thisWeekEnd];
+      return [later(weekend.start, tomorrow), weekend.end];
     case "proxima-semana":
-      return [addDays(thisWeekEnd, 1), nextWeekEnd];
+      return [later(addDays(thisWeekEnd, 1), addDays(weekend.end, 1)), nextWeekEnd];
     case "resto-del-mes":
       return [later(addDays(nextWeekEnd, 1), tomorrow), monthEnd];
     default:

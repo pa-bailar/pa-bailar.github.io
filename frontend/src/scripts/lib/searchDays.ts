@@ -18,7 +18,7 @@
 // still any of them ("viernes sábado", "hoy y mañana").
 
 import { addDays, addMonths, endOfWeek, parseIsoDate, toIsoDate } from "./dates";
-import { isHoliday } from "./holidays";
+import { isHoliday, weekendSpan } from "./holidays";
 
 /** Whether a day ("2026-10-10") is one the search names. */
 export type DayTest = (day: string) => boolean;
@@ -109,11 +109,13 @@ function nthWeekday(today: string, weekday: number, n: number): string {
 function stretches(today: string): [string, DayTest, DayKind][] {
   const sunday = endOfWeek(today);
   const weekend = between(addDays(sunday, -2), sunday); // Friday to Sunday
+  const span = weekendSpan(today);
   const nextWeek = between(addDays(sunday, 1), addDays(sunday, 7));
   const nextMonth = startsWith(toIsoDate(addMonths(parseIsoDate(today), 1)).slice(0, 7));
   return [
     ["otro fin de semana", between(addDays(sunday, 5), addDays(sunday, 7)), "stretch"], // after the coming one
     ["otro finde", between(addDays(sunday, 5), addDays(sunday, 7)), "stretch"],
+    ...(span.puente ? [["puente", between(span.start, span.end), "stretch"] as [string, DayTest, DayKind]] : []),
     ["fin de semana", weekend, "stretch"],
     ["finde", weekend, "stretch"],
     ["weekend", weekend, "stretch"],
