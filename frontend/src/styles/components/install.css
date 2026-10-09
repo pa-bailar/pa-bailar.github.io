@@ -195,14 +195,6 @@
   font-weight: var(--weight-regular);
 }
 
-/* A side note under a step. */
-.install-sheet__steps small {
-  display: block;
-  font-size: var(--text-sm);
-  line-height: 1.4;
-  color: var(--text-muted);
-}
-
 .install-sheet__status {
   flex-basis: 100%;
   font-size: var(--text-sm);

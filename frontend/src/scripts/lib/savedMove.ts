@@ -16,7 +16,7 @@ export const COPY_LABEL = "Copiar para la app";
 export const PASTE_LABEL = "Pegar mis guardados de Safari";
 
 /** The parameter of the link that carries them: `?guardados=<id>,<id>`. */
-export const MOVE_PARAM = "guardados";
+const MOVE_PARAM = "guardados";
 
 /** An event id as the backend writes them (pa_bailar/ids.py: lowercase words and dashes). */
 const ID = /^[a-z0-9][a-z0-9-]{0,120}$/;

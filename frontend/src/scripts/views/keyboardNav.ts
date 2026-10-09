@@ -64,9 +64,8 @@ export function neighbor(boxes: Box[], from: number, direction: Direction): numb
   if (!candidates.length) return null;
   const rowTop = below ? Math.min(...candidates.map(({ box }) => box.top)) : Math.max(...candidates.map(({ box }) => box.top));
   // The row is told by its own first box's height, not this one's: a short stop (the list's old "Ver 10 más") just
-  // above the next period's
-  // cards is a row of its own (measured by a 620-px card, it was grouped with them and skipped). rowTop is a
-  // candidate's own top, so one is found.
+  // above the next period's cards is a row of its own (measured by a 620-px card, it was grouped with them and
+  // skipped). rowTop is a candidate's own top, so one is found.
   const nearest = candidates.find(({ box }) => box.top === rowTop)!.box;
   const row = candidates.filter(({ box }) => Math.abs(box.top - rowTop) < Math.min(here.height, nearest.height) / 2);
   row.sort((a, b) => Math.abs(a.box.left + a.box.width / 2 - middle) - Math.abs(b.box.left + b.box.width / 2 - middle));

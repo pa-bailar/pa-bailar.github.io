@@ -120,7 +120,7 @@ export function renderSavedView(container: HTMLElement, events: DanceEvent[], st
   // Drawn again (a save, a search): the past ones stay open or folded as they were.
   const pastOpen = container.querySelector<HTMLDetailsElement>(".saved-past")?.open ?? false;
   if (!upcoming.length && !past.length) {
-    container.innerHTML = emptySavedHtml(state.query, state.query.trim() ? null : move);
+    container.innerHTML = emptySavedHtml(state.query, move); // a search says it found nothing first
     return 0;
   }
   const today = todayIso();
