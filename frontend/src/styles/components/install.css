@@ -51,7 +51,7 @@
    the link and the arrow in the sheet. */
 /* Taller than the other sheets (85dvh, sheet.css) for the clip: a strip of the page still shows above it. */
 .sheet-panel.install-sheet {
-  max-height: 92dvh;
+  max-height: var(--sheet-tall-max);
 }
 
 .install-sheet__watch {
@@ -187,20 +187,12 @@
   display: none;
 }
 
-/* "Ya la agregué": a quiet link, the steps being what matters; a finger's height to tap. */
-.install-sheet__done {
+/* "Ya la agregué" and "Copiar mis N guardados": quiet links, the steps being what matters; a finger's height to tap. */
+.install-sheet__quiet {
   min-height: var(--control-height);
   color: var(--text-muted);
   font-size: var(--text-sm);
   font-weight: var(--weight-regular);
-}
-
-/* A side note under a step. */
-.install-sheet__steps small {
-  display: block;
-  font-size: var(--text-sm);
-  line-height: 1.4;
-  color: var(--text-muted);
 }
 
 .install-sheet__status {

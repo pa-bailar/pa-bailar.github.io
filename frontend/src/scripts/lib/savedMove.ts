@@ -11,11 +11,18 @@ import type { InstallPlace } from "./installPlace";
 /** What the saves can do here: be copied (a browser on iPhone or iPad), be pasted (the installed app there), neither. */
 export type SavedMove = "copy" | "paste" | null;
 
-/** The parameter of the link that carries them: `?guardados=<id>,<id>`. */
-export const MOVE_PARAM = "guardados";
+/** The buttons' words, also named in the notices that point to them (views/savedView.ts, views/savedMoveView.ts). */
+export const COPY_LABEL = "Copiar para la app";
+export const PASTE_LABEL = "Pegar mis guardados de Safari";
 
-/** An event id as the backend writes them (pa_bailar/ids.py: lowercase words and dashes). */
-const ID = /^[a-z0-9][a-z0-9-]{0,120}$/;
+/** The parameter of the link that carries them: `?guardados=<id>,<id>`. */
+const MOVE_PARAM = "guardados";
+
+/** An event id as the data contract has them (scripts/check-data.mjs ID, from pa_bailar/ids.py: lowercase words
+ * joined by hyphens), and not too long (the backend's are ~60 characters), so a pasted wall of text isn't kept. */
+const ID = /^[a-z0-9]+(-[a-z0-9]+)*$/;
+const MAX_ID_LENGTH = 121;
+const isId = (id: string) => id.length <= MAX_ID_LENGTH && ID.test(id);
 
 /** Where the visitor is, for moving the saves: `app`, running as the installed app. */
 export function savedMove(place: InstallPlace, app: boolean): SavedMove {
@@ -26,7 +33,7 @@ export function savedMove(place: InstallPlace, app: boolean): SavedMove {
 /** The text copied: a line, and the link with the ids (`home`: the site's home page, absolute). */
 export function moveText(ids: Iterable<string>, home: string): string {
   const url = new URL(home);
-  url.search = `${MOVE_PARAM}=${[...ids].filter((id) => ID.test(id)).join(",")}`;
+  url.search = `${MOVE_PARAM}=${[...ids].filter(isId).join(",")}`;
   return `Mis eventos guardados en Pa' Bailar: ${url.href}`;
 }
 
@@ -40,5 +47,5 @@ export function idsFromMove(text: string): string[] {
   } catch {
     return [];
   }
-  return [...new Set(value.split(",").map((id) => id.trim()).filter((id) => ID.test(id)))];
+  return [...new Set(value.split(",").map((id) => id.trim()).filter(isId))];
 }

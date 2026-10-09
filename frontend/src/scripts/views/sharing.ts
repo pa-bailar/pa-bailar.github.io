@@ -9,7 +9,7 @@
 // sharing right at the tap: drawing it then would lose the tap. If it isn't ready, the text goes alone.
 
 import type { DanceEvent } from "../types";
-import { eventPageUrl, BASE_URL } from "../lib/links";
+import { eventPageUrl, SITE_URL } from "../lib/links";
 import { shareContent, type ShareContent, whatsAppUrl } from "../lib/share";
 import { drawShareCard } from "../lib/shareCard";
 import type { ShareSource } from "../lib/shareSources";
@@ -18,7 +18,6 @@ import { canShowNotice, showNotice } from "./notice";
 
 // Tagged so visits from shared links count as such (messaging apps hide where a visit came from).
 const shareUrl = (url: string) => `${url}${url.includes("?") ? "&" : "?"}utm_source=compartido`;
-const SITE_URL = new URL(BASE_URL, import.meta.env.SITE).href;
 
 const sources = new Map<string, ShareSource>();
 const images = new Map<string, File | null>(); // drawn images, by what they show

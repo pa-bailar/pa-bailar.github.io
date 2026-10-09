@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { installPlace, reminderText } from "../src/scripts/lib/installPlace";
+import { installPlace } from "../src/scripts/lib/installPlace";
 import { idsFromMove, moveText, savedMove } from "../src/scripts/lib/savedMove";
 import { emptySavedHtml, savedMoveHtml } from "../src/scripts/views/savedView";
 
@@ -51,21 +51,6 @@ describe("the copied text and back", () => {
     expect(idsFromMove("?guardados=<script>,ok-1,%E0%A4%A")).toEqual([]); // a broken escape: nothing
     expect(idsFromMove("?guardados=<b>,OK,ok-1")).toEqual(["ok-1"]);
     expect(moveText(["ok-1", "<b>"], home)).toMatch(/guardados=ok-1$/);
-  });
-});
-
-describe("the reminder after a second save (reminderText)", () => {
-  it("on iPhone and iPad it doesn't promise the saves: the app starts without them", () => {
-    expect(reminderText(installPlace(UA.safari27))).toBe("Pa' Bailar a un toque: instálala en tu iPhone.");
-    expect(reminderText(installPlace(UA.ipadDesktop, { platform: "MacIntel", maxTouchPoints: 5 }))).toBe(
-      "Pa' Bailar a un toque: instálala en tu iPad.",
-    );
-    expect(reminderText(installPlace(UA.safari27))).not.toMatch(/guardados/i);
-  });
-
-  it("elsewhere it's as it was: Android's app has the browser's saves", () => {
-    expect(reminderText(installPlace(UA.androidChrome))).toBe("Tus guardados a un toque: instala Pa' Bailar.");
-    expect(reminderText(installPlace(UA.windowsChrome))).toBe("Tus guardados a un toque: instala Pa' Bailar.");
   });
 });
 

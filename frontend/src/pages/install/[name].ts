@@ -10,12 +10,21 @@ import { INSTALL_CLIPS } from "../../scripts/lib/installPlace";
 
 const TYPES = { mp4: "video/mp4", jpg: "image/jpeg" } as const;
 
-export const getStaticPaths: GetStaticPaths = () =>
-  INSTALL_CLIPS.flatMap((clip) => Object.keys(TYPES).map((extension) => ({ params: { name: `${clip}.${extension}` } })));
+/** Each file's name and type, given by getStaticPaths (no parsing the name back). */
+interface Props {
+  file: string;
+  type: (typeof TYPES)[keyof typeof TYPES];
+}
 
-export const GET: APIRoute = async ({ params }) => {
-  const name = params.name as string;
-  const file = await readFile(path.join(import.meta.env.ASSETS_DIR, "install", name));
-  const type = TYPES[path.extname(name).slice(1) as keyof typeof TYPES];
-  return new Response(new Uint8Array(file), { headers: { "Content-Type": type } });
+export const getStaticPaths: GetStaticPaths = () =>
+  INSTALL_CLIPS.flatMap((clip) =>
+    Object.entries(TYPES).map(([extension, type]) => {
+      const file = `${clip}.${extension}`;
+      return { params: { name: file }, props: { file, type } satisfies Props };
+    }),
+  );
+
+export const GET: APIRoute<Props> = async ({ props }) => {
+  const contents = await readFile(path.join(import.meta.env.ASSETS_DIR, "install", props.file));
+  return new Response(new Uint8Array(contents), { headers: { "Content-Type": props.type } });
 };

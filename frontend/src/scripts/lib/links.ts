@@ -5,7 +5,8 @@ import { addDays, isMultiDay, isSeries, lastDay } from "./dates";
 import { eventDaysLabel, formatTime, priceSummary } from "./format";
 
 export const BASE_URL = import.meta.env.BASE_URL.replace(/\/?$/, "/");
-const SITE_URL = new URL(BASE_URL, import.meta.env.SITE).href; // "https://pa-bailar.github.io/"
+/** The published site's home page, absolute ("https://pa-bailar.github.io/"): for links that leave the page (shared). */
+export const SITE_URL = new URL(BASE_URL, import.meta.env.SITE).href;
 const DEFAULT_DURATION_HOURS = 4; // socials often run past midnight
 // Reports and ideas go to a Google Form (owned by the site's author): no account needed, answers land in a
 // Google Sheet. From an event's detail, its "Evento" question comes filled in (a pre-filled link's entry).
@@ -123,6 +124,14 @@ export function sharedEventLink({ pathname, search, hash }: Pick<Location, "path
   params.delete("evento");
   const rest = params.toString();
   return { id, params, address: `${pathname}${rest ? `?${rest}` : ""}${hash}` };
+}
+
+/**
+ * The home page where the visitor is now, absolute (this origin, unlike SITE_URL: the local preview stays local), with
+ * `search` as its query: the install guide's link for the phone's browser, the link that carries the saves to the app.
+ */
+export function homeUrl(search = ""): URL {
+  return new URL(`${BASE_URL}${search ? `?${search}` : ""}`, location.origin);
 }
 
 /** Full URL of the event's page, for sharing and calendars. */

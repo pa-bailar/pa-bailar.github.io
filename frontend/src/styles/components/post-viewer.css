@@ -3,7 +3,7 @@
    takes its place. */
 
 .post-viewer {
-  max-height: 92dvh; /* a video or a carousel with its caption is tall */
+  max-height: var(--sheet-tall-max); /* a video or a carousel with its caption is tall */
 }
 
 .post-viewer__title {

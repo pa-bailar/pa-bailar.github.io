@@ -182,6 +182,7 @@
   --switch-width: 44px; /* the filter sheet's switch ("Ocultar eventos de bares"): its track */
   --switch-height: 24px;
   --sticker-size: 60px;
+  --sheet-tall-max: 92dvh; /* the tall sheets (the install steps' clip, a post's player): a strip of the page above */
   --drawer-top-gap: 12px; /* phones: what's left above the details drawer at full height */
   --panel-width: 420px; /* wide screens: the details as a side panel */
   --content-width: 1120px;

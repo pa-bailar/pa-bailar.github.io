@@ -33,9 +33,9 @@ import { ICONS } from "../scripts/lib/icons";
     <button class="btn" type="button" id="install-copy" data-install-copy data-track="instalar-copiar-enlace" hidden>
       <Fragment set:html={ICONS.link} />Copiar enlace
     </button>
-    <button class="link-button install-sheet__done" type="button" id="install-done" data-install-done data-track="instalar-hecho" hidden>Ya la agregué</button>
+    <button class="link-button install-sheet__quiet" type="button" id="install-done" data-install-done data-track="instalar-hecho" hidden>Ya la agregué</button>
     <!-- iPhone: the installed app starts with none of Safari's saves; they go across by the clipboard (lib/savedMove.ts). -->
-    <button class="link-button install-sheet__done" type="button" id="install-copy-saved" data-saved-copy data-track="instalar-copiar-guardados" hidden></button>
+    <button class="link-button install-sheet__quiet" type="button" id="install-copy-saved" data-saved-copy data-track="instalar-copiar-guardados" hidden></button>
     <p class="install-sheet__status" id="install-status" role="status"></p>
   </div>
   <p class="install-sheet__note" id="install-note">Pa' Bailar queda en tu pantalla de inicio y se abre como una app.</p>

@@ -60,15 +60,21 @@ import { closeWhenMenu, isWhenMenuOpen, openWhenMenu, syncWhenMenu } from "./vie
 import { closePanel, initFilterPanels, syncPanels, togglePanel } from "./views/filterPanels";
 import { initSaveButtons, renderSavedCount as drawSavedCount, saveAgain, syncSaveButtons } from "./views/saveButton";
 import { initNotice, showNotice } from "./views/notice";
-import { copySavesForApp, pastedText, pasteSavesFromSafari } from "./views/savedMoveView";
-import { onceFlag } from "./lib/onceFlag";
+import { copySavesForApp, offerSafariSaves, pasteSaves } from "./views/savedMoveView";
 import { tellSaveChange } from "./views/saveNotice";
 import { reminderMayReplace } from "./lib/saveNotice";
 import { renderSavedView } from "./views/savedView";
 import { watchDayChange } from "./views/dayChange";
-import { initInstallPrompt, offerAfterSaving, registerServiceWorker, savedMoveHere, stepsOnArrival } from "./views/installPrompt";
+import {
+  initInstallPrompt,
+  offerAfterSaving,
+  registerServiceWorker,
+  savedMoveHere,
+  sayInSheet,
+  stepsOnArrival,
+} from "./views/installPrompt";
 import { initSharing, plansEventUrl, setShareSources } from "./views/sharing";
-import { isSaved, savedIds, trimSaved } from "./lib/saved";
+import { isSaved, trimSaved } from "./lib/saved";
 import { dropStraySecondTaps, markOpeningTap } from "./views/secondTaps";
 
 /** "Ocultar eventos de bares", remembered in this browser (blocked storage: for this visit). */
@@ -382,37 +388,20 @@ const CONTROLS: [attribute: string, handler: ControlHandler][] = [
   ["today", showToday],
   ["skip", skipToList],
   ["savedCopy", copySaves],
-  ["savedPaste", () => void pasteSaves()],
+  ["savedPaste", () => void pasteSaves(showPasted)],
 ];
 
 /** iPhone, Safari: the saves on the clipboard for the installed app (views/savedMoveView.ts); said in the install sheet
- * when it's there (a notice can't show over it), else in a notice. */
-function copySaves(_: string, control: HTMLElement) {
-  const inSheet = control.closest("#install-sheet");
-  copySavesForApp((text) => {
-    if (inSheet) byId("install-status").textContent = text;
-    else showNotice(text, undefined, { seconds: 8 });
-  });
+ * when it's open (a notice can't show over it), else in a notice. */
+function copySaves() {
+  copySavesForApp((text) => sayInSheet(text) || showNotice(text, undefined, { seconds: 8 }));
 }
 
-/** iPhone, the installed app: Safari's saves from the clipboard. Every bookmark follows (the side panel's too: render()
- * redraws the view, not the panel, whose Guardar then still said unsaved, and a tap on it unsaved the event; the
- * bug-squash pass of 8 Oct 2026). */
-async function pasteSaves() {
-  const result = await pasteSavesFromSafari();
-  if (typeof result === "object" && result.added) {
-    syncSaveButtons();
-    render();
-  }
-  showNotice(pastedText(result), undefined, { seconds: 8 });
-}
-
-/** The installed iPhone app's first start with nothing saved: one offer to bring Safari's (it can't see them). */
-const pasteOffered = onceFlag("saved-paste-offered");
-function offerSafariSaves() {
-  if (savedMoveHere() !== "paste" || savedIds().length || pasteOffered.seen()) return;
-  const offer = { label: "Pegarlos", run: () => void pasteSaves(), track: "guardados-pegar-app-aviso" };
-  if (showNotice("¿Guardaste eventos en Safari?", offer, { seconds: 12, closable: true })) pasteOffered.mark();
+/** Saves pasted from Safari: every bookmark follows (the side panel's too: render() redraws the view, not the panel,
+ * whose Guardar then still said unsaved, and a tap on it unsaved the event; the bug-squash pass of 8 Oct 2026). */
+function showPasted() {
+  syncSaveButtons();
+  render();
 }
 
 /** "monthStep" → "[data-month-step]" */
@@ -548,7 +537,7 @@ export function start() {
   if (state.view === "calendar") openedOnCalendar();
   openSharedEvent();
   initScreenHistory({ current: currentScreen, apply: applyScreen, address: (screen) => viewPath(screen.view) });
-  offerSafariSaves(); // the iPhone app's first start, nothing saved: Safari's saves can come across
+  offerSafariSaves(savedMoveHere(), showPasted); // the iPhone app's first start, nothing saved: Safari's saves can come across
   stepsOnArrival(); // opened from an app's browser to install: on iPhone, the steps (installPrompt.ts)
   watchDayChange(state, () => render()); // shown again on another day: today's events, or the latest ones
 }

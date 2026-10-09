@@ -67,18 +67,21 @@ export function watchDayChange(state: AppState, render: () => void) {
   const loadedAt = Date.now();
   let renderedDay = todayIso();
   let renderedAt = loadedAt;
+  // Drawn again for `today`: the calendar follows the day, and the next check counts from now (the midnight redraw
+  // too, so a page shown soon after midnight isn't drawn twice).
+  const redraw = (today: string, now: number) => {
+    moveToToday(state, renderedDay, today);
+    renderedDay = today;
+    renderedAt = now;
+    render();
+  };
   const check = () => {
     if (document.visibilityState !== "visible") return;
     const today = todayIso();
     const now = Date.now();
     const action = resumeAction({ loadedAt, now, online: navigator.onLine, renderedDay, renderedAt, today });
     if (action === "reload") location.reload();
-    else if (action === "render") {
-      moveToToday(state, renderedDay, today);
-      renderedDay = today;
-      renderedAt = now;
-      render();
-    }
+    else if (action === "render") redraw(today, now);
   };
   document.addEventListener("visibilitychange", check);
   window.addEventListener("pageshow", (event) => {
@@ -87,11 +90,7 @@ export function watchDayChange(state: AppState, render: () => void) {
   // Midnight with the page on screen: drawn again for the new day. Hidden, it waits to be shown (check, above).
   const atMidnight = () => {
     const today = todayIso();
-    if (document.visibilityState === "visible" && today !== renderedDay) {
-      moveToToday(state, renderedDay, today);
-      renderedDay = today;
-      render();
-    }
+    if (document.visibilityState === "visible" && today !== renderedDay) redraw(today, Date.now());
     setTimeout(atMidnight, untilNextDay(Date.now()));
   };
   setTimeout(atMidnight, untilNextDay(Date.now()));
