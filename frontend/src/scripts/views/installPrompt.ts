@@ -40,7 +40,7 @@ import { savedIds } from "../lib/saved";
 import { savedMove, type SavedMove } from "../lib/savedMove";
 import { storedSwitch } from "../lib/storedSwitch";
 import { storedValue } from "../lib/storedValue";
-import { BASE_URL } from "../lib/links";
+import { BASE_URL, homeUrl } from "../lib/links";
 import { dismissSheet, initPanelSheet, openPanelSheet } from "../lib/sheet";
 import { showNotice } from "./notice";
 
@@ -93,7 +93,7 @@ const NOTE = "Pa' Bailar queda en tu pantalla de inicio y se abre como una app."
 
 const place = () => installPlace(navigator.userAgent, navigator);
 /** The home page, marked, for an app's browser to open in the phone's browser (installPlace.ts openInBrowser). */
-const arrivalUrl = () => new URL(`${BASE_URL}?${ARRIVAL}`, location.origin);
+const arrivalUrl = () => homeUrl(ARRIVAL);
 const guide = () => installGuide(place(), arrivalUrl());
 
 /** Whether the saves can be copied for the installed app here (Safari on iPhone) or pasted from Safari (the app). */
@@ -343,7 +343,7 @@ export function registerServiceWorker() {
       { once: true },
     );
   }
-  workers.register(`${import.meta.env.BASE_URL.replace(/\/?$/, "/")}sw.js`).catch(() => {
+  workers.register(`${BASE_URL}sw.js`).catch(() => {
     // Not installable or not offline-ready this time: the site itself works the same.
   });
 }

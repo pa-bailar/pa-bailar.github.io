@@ -2,13 +2,13 @@
 // clipboard both ways. Both run right in the visitor's tap, as iOS allows the clipboard only there; reading it, iOS
 // asks first with its own "Pegar" bubble.
 
-import { BASE_URL } from "../lib/links";
+import { homeUrl } from "../lib/links";
 import { savedIds, setSaved } from "../lib/saved";
 import { COPY_LABEL, PASTE_LABEL, idsFromMove, moveText } from "../lib/savedMove";
 
 /** "Copiar para la app": the saves on the clipboard, as a link; `say` tells how it went. */
 export function copySavesForApp(say: (text: string) => void) {
-  const text = moveText(savedIds(), new URL(BASE_URL, location.origin).href);
+  const text = moveText(savedIds(), homeUrl().href);
   const write = navigator.clipboard?.writeText(text) ?? Promise.reject(new Error("no clipboard"));
   write.then(
     () => say(`Copiados. En la app, abre Guardados y toca «${PASTE_LABEL}».`),
