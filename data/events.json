@@ -3281,10 +3281,11 @@
     "event_type": "concert",
     "is_recurring": false,
     "styles": [
+      "otro",
       "salsa"
     ],
-    "organizer": "Tributo. Salsa y Jazz",
-    "venue": "Tributo. Salsa y Jazz",
+    "organizer": "Tributo Salsa y Jazz",
+    "venue": "Tributo Salsa y Jazz",
     "address": "Av. Boyacá #64c 97",
     "area": "Zona 6",
     "date": "2026-10-08",
@@ -3302,9 +3303,7 @@
     ],
     "contact": "WhatsApp 310 5714824",
     "confidence": "high",
-    "doubts": [
-      "sin precio de entrada especificado"
-    ],
+    "doubts": [],
     "id": "latin-jazz-grandes-clasicos-de-ayer-y-hoy-con-8-oct",
     "account": "tributo.salsayjazz",
     "media": [
@@ -3480,6 +3479,53 @@
     "bar": true
   },
   {
+    "title": "Cumpleaños de DJ Rolman",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "La Diez Luxury",
+    "venue": "La Diez Luxury",
+    "address": "Carrera 60 # 12 - 92",
+    "area": null,
+    "date": "2026-10-09",
+    "end_date": "2026-10-11",
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "DJ Rolman"
+    ],
+    "activities": [
+      "celebración de cumpleaños",
+      "baile"
+    ],
+    "contact": "WhatsApp 314 481 0382",
+    "confidence": "medium",
+    "doubts": [
+      "sin precios especificados",
+      "sin horarios específicos"
+    ],
+    "id": "cumpleanos-de-dj-rolman-9-oct",
+    "account": "ladiezluxury_outlet",
+    "media": [
+      {
+        "post_id": "17925599538423102",
+        "permalink": "https://www.instagram.com/reel/DeQcFhOMEs0/",
+        "media_type": "VIDEO",
+        "published": "2026-10-09T02:33:28+0000",
+        "flyer": "flyers/17925599538423102-0.webp",
+        "caption": "¡El cumple es de DJ Rolman, pero el plan es de todos! 🥳🎧🔥\n\nEste fin de semana celebramos en La Diez Luxury, y el domingo nos juntamos para ponerle baile al cumpleaños. 💃🏽🕺🏽\n\nVen con tu combo y acompáñanos a celebrar como se debe. ¡Que el cumpleañero sienta todo el cariño de esta familia! 🎂❤️\n\n👇 Déjale tu felicitación a DJ Rolman en los comentarios.\n\n#ladiezluxury #CumpleañosDJRolman #salsaenbogotá",
+        "preview": "previews/17925599538423102-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Música en vivo con Grupo Pa los Santos",
     "event_type": "concert",
     "is_recurring": false,
@@ -3550,13 +3596,12 @@
       "Kndela Orquesta"
     ],
     "activities": [
-      "orquesta en vivo",
-      "azotar baldosa"
+      "orquesta en vivo"
     ],
     "contact": "WhatsApp 3105714824",
     "confidence": "high",
     "doubts": [
-      "sin precio"
+      "no se especifica el valor del cover o entrada"
     ],
     "id": "calor-que-enamora-con-kndela-orquesta-9-oct",
     "account": "tributo.salsayjazz",
@@ -3640,6 +3685,49 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "Viernes de Romantiqueo Al 100",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "La Diez Luxury",
+    "venue": "La Diez Luxury",
+    "address": "Carrera 60 # 12-92",
+    "area": null,
+    "date": "2026-10-09",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "19:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "DJ Román"
+    ],
+    "activities": [],
+    "contact": "WhatsApp 314 481 0382",
+    "confidence": "high",
+    "doubts": [
+      "cover o precio de entrada no especificado"
+    ],
+    "id": "viernes-de-romantiqueo-al-100-9-oct",
+    "account": "ladiezluxury_outlet",
+    "media": [
+      {
+        "post_id": "18153749230546651",
+        "permalink": "https://www.instagram.com/reel/DePxOHYMt7o/",
+        "media_type": "VIDEO",
+        "published": "2026-10-08T20:15:45+0000",
+        "flyer": "flyers/18153749230546651-0.webp",
+        "caption": "Este viernes se vale bailar pegadito, cantar con sentimiento y dedicar esa canción 👀❤️‍🔥\n\n¡Llegó el Romantiqueo al 100 a La Diez Luxury! Ven con tu pareja, tu parche o ese crush que ya merece una invitación 😉🎶\n\n🎧 En vivo, DJ Román\n🥃 Happy Hour de 7 a 10 p. m.: botellas de aguardiente a $100.000\n\n📅 Viernes 9 de octubre\n📍 Carrera 60 #12-92\n📲 Reservas: 314 481 0382 – 311 592 8222\n\nEtiqueta a quien te debe una noche de baile ❤️👇\n\n#LaDiezLuxury #RomantiqueoAl100 #salsaromantica #salsaenbogotá",
+        "preview": "previews/18153749230546651-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": true
   },
   {
     "title": "Cumbia vs. Salsa",
@@ -4132,53 +4220,6 @@
     "bar": true
   },
   {
-    "title": "Noche con Sabor",
-    "event_type": "concert",
-    "is_recurring": false,
-    "styles": [
-      "salsa"
-    ],
-    "organizer": "Tributo Salsa y Jazz",
-    "venue": "Tributo Salsa y Jazz",
-    "address": "Av. Boyacá #64c 97",
-    "area": "Zona 6",
-    "date": "2026-10-10",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "sábado",
-    "start_time": "18:00",
-    "end_time": null,
-    "prices": [],
-    "artists": [
-      "Tributo Orquesta"
-    ],
-    "activities": [
-      "rumba",
-      "orquesta en vivo",
-      "azotar baldosa"
-    ],
-    "contact": "WhatsApp 3105714824",
-    "confidence": "high",
-    "doubts": [
-      "sin precio de entrada"
-    ],
-    "id": "noche-con-sabor-10-oct",
-    "account": "tributo.salsayjazz",
-    "media": [
-      {
-        "post_id": "18116534044809233",
-        "permalink": "https://www.instagram.com/p/DeKiyuQlBbO/",
-        "media_type": "IMAGE",
-        "published": "2026-10-06T19:32:57+0000",
-        "flyer": "flyers/18116534044809233-0.webp",
-        "caption": "¡LLEGÓ EL SÁBADO PARA VIVIR UNA VERDADERA NOCHE CON SABOR! 💃🕺🔥 Porque el fin de semana se goza como se debe, te esperamos en tu casa: ¡Tributo Salsa y Jazz! Este sábado 10 de octubre prepárate para una rumba cargada de buena clave, golpe y la mejor energía. Ven a disfrutar de un buen trago con tus amigos, alístate para azotar baldosa y déjate llevar por el talento y la potencia de Tributo Orquesta en vivo. ¡Puro sabor para encender la noche! 🥂🎺🔥 📍 Lugar: Av. Boyacá #64c 97 (Zona 6) ⏰ Apertura: 6:00 PM | Orquesta en vivo: 10:00 PM 📲 Reservas: 310 5714824 ¡Asegura tu mesa antes de que se llene! RESERVA, arma tu parche salsero y nos vemos en la pista para gozar. 👇✨https://wa.me/573105714824",
-        "preview": null,
-        "slides": null
-      }
-    ],
-    "bar": true
-  },
-  {
     "title": "Flamenco Gran Taller",
     "event_type": "workshop",
     "is_recurring": false,
@@ -4222,6 +4263,94 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "Noche con Sabor",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Tributo Salsa y Jazz",
+    "venue": "Tributo Salsa y Jazz",
+    "address": "Av. Boyacá #64c 97",
+    "area": "Zona 6",
+    "date": "2026-10-10",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "18:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Tributo Orquesta"
+    ],
+    "activities": [
+      "orquesta en vivo",
+      "rumba"
+    ],
+    "contact": "WhatsApp 3105714824",
+    "confidence": "high",
+    "doubts": [
+      "no se especifican precios de entrada"
+    ],
+    "id": "noche-con-sabor-10-oct",
+    "account": "tributo.salsayjazz",
+    "media": [
+      {
+        "post_id": "18116534044809233",
+        "permalink": "https://www.instagram.com/p/DeKiyuQlBbO/",
+        "media_type": "IMAGE",
+        "published": "2026-10-06T19:32:57+0000",
+        "flyer": "flyers/18116534044809233-0.webp",
+        "caption": "¡LLEGÓ EL SÁBADO PARA VIVIR UNA VERDADERA NOCHE CON SABOR! 💃🕺🔥 Porque el fin de semana se goza como se debe, te esperamos en tu casa: ¡Tributo Salsa y Jazz! Este sábado 10 de octubre prepárate para una rumba cargada de buena clave, golpe y la mejor energía. Ven a disfrutar de un buen trago con tus amigos, alístate para azotar baldosa y déjate llevar por el talento y la potencia de Tributo Orquesta en vivo. ¡Puro sabor para encender la noche! 🥂🎺🔥 📍 Lugar: Av. Boyacá #64c 97 (Zona 6) ⏰ Apertura: 6:00 PM | Orquesta en vivo: 10:00 PM 📲 Reservas: 310 5714824 ¡Asegura tu mesa antes de que se llene! RESERVA, arma tu parche salsero y nos vemos en la pista para gozar. 👇✨https://wa.me/573105714824",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Sin Salsa No Hay Paraíso",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "La Diez Luxury",
+    "venue": "La Diez Luxury",
+    "address": "Carrera 60 #12-92",
+    "area": null,
+    "date": "2026-10-10",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "19:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "DJ Rolman",
+      "DJ Vanegas"
+    ],
+    "activities": [],
+    "contact": "WhatsApp 314 481 0382",
+    "confidence": "high",
+    "doubts": [],
+    "id": "sin-salsa-no-hay-paraiso-10-oct",
+    "account": "ladiezluxury_outlet",
+    "media": [
+      {
+        "post_id": "17911913073472931",
+        "permalink": "https://www.instagram.com/reel/DeP4vYKMDt1/",
+        "media_type": "VIDEO",
+        "published": "2026-10-08T21:21:27+0000",
+        "flyer": "flyers/17911913073472931-0.webp",
+        "caption": "¡Sin salsa no hay paraíso… y sin ustedes tampoco! 🔥💃🕺\n\nEste sábado 10 de octubre el parche es en La Diez Luxury. Ven a sacar tus mejores pasos y a cantar esos temas que no te dejan quedarte sentado 🎶🙌\n\n🎧 En vivo: DJ Rolman y DJ Vanegas\n🥃 Happy Hour de 7 a 10 p. m.: botellas de aguardiente a $100.000\n\n📍 Carrera 60 #12-92\n📲 Reservas: 314 481 0382 – 311 592 8222\n\nEtiqueta a ese amigo que escucha salsa y de una se antoja de salir 👀👇\n\n#LaDiezLuxury #SinSalsaNoHayParaíso #SalsaEnBogotá #ParcheSalsero",
+        "preview": "previews/17911913073472931-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": true
   },
   {
     "title": "Primer Aniversario LuDance - Fiesta Crossover",
@@ -4368,8 +4497,7 @@
     "is_recurring": false,
     "styles": [
       "salsa",
-      "son",
-      "otro"
+      "son"
     ],
     "organizer": "El Callejón, mecato & salsa",
     "venue": "El Callejón, mecato & salsa",
@@ -4394,15 +4522,15 @@
       }
     ],
     "artists": [
-      "Marediaguamusic",
+      "Marediagua",
       "Carito Percu",
       "Amparo Arrebato"
     ],
     "activities": [
-      "DJ set",
-      "concierto"
+      "concierto",
+      "dj set"
     ],
-    "contact": "WhatsApp 3006924505",
+    "contact": "3006924505",
     "confidence": "high",
     "doubts": [],
     "id": "callejon-marediaguamusic-e-invitadas-especiales-10-oct",
@@ -4578,6 +4706,52 @@
         "caption": "🌟 Una nueva semana para bailarnos la vida a ritmo de SALSA 🔥💥 Y viene larga y contundente con salsa, Caribe, orquestas en vivo, regalitos para celebrar tu cumpleaños 🎂 y clásicos del repertorio de martes a domingo 😮‍💨\n\nEsta semana en vivo: lacharanganewyork la orquesta insignia de la salsa bogotana ✨; Los Ángeles de Charlie de garciabone01 🎺 ; orquestasoncapital con su noche brava 🌶️; ns.orquesta con lo mejor de la salsa + la música Caribe 🌴 \n\n💿 En el tornamesa suenan los discos de nuestra colección en manos de los djs estrella: johanancines elgordocastillo y Eduardo Moya\n\n¡Nos vemos en todas las sedes de Galeria Café Libro!",
         "preview": null,
         "slides": 13
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Domingo de Golazo",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "La Diez Luxury",
+    "venue": "La Diez Luxury",
+    "address": "Carrera 60 # 12-92",
+    "area": "Outlet de las Américas",
+    "date": "2026-10-11",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "baile",
+      "ingreso de bebidas"
+    ],
+    "contact": "314 481 0382",
+    "confidence": "high",
+    "doubts": [
+      "no se especifica el valor del cover",
+      "no se especifica la hora de inicio",
+      "no se aclara si la agrupación de la imagen se presenta en vivo"
+    ],
+    "id": "domingo-de-golazo-11-oct",
+    "account": "ladiezluxury_outlet",
+    "media": [
+      {
+        "post_id": "18099500033647620",
+        "permalink": "https://www.instagram.com/reel/DeQD25FM2NC/",
+        "media_type": "VIDEO",
+        "published": "2026-10-08T22:58:55+0000",
+        "flyer": "flyers/18099500033647620-0.webp",
+        "caption": "⚽🔥 ¡Este domingo el golazo lo hacemos en La Diez Luxury!\n\nEste 11 de octubre ven con tu parche a disfrutar de un Domingo de Golazo con buena salsa, baile y tremendo ambiente. 💃🕺🥁\n\n🍻 ¡Tú pones las bebidas! Paga el cover e ingresa tus bebidas para compartir con los tuyos.\n\n¡Etiqueta a quienes se apuntan y armemos el plan! 🙌\n\n📍 Carrera 60 #12-92 · Outlet de las Américas\n📲 Info y reservas: 314 481 0382 – 311 592 8222\n\n#LaDiezLuxury #DomingoDeGolazo #SalsaEnBogotá #OutletDeLasAméricas",
+        "preview": "previews/18099500033647620-0.mp4",
+        "slides": null
       }
     ],
     "bar": true
@@ -7075,6 +7249,82 @@
     "bar": true
   },
   {
+    "title": "Bureo Awards 2026 - Noche Dorada Gala",
+    "event_type": "show",
+    "is_recurring": false,
+    "styles": [],
+    "organizer": "Bureo Dance Studio",
+    "venue": "Teatro Astor Plaza",
+    "address": null,
+    "area": null,
+    "date": "2026-11-05",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "jueves",
+    "start_time": "16:30",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Platea Preventa",
+        "amount_cop": 80000,
+        "condition": "hasta el 20 de octubre"
+      },
+      {
+        "label": "Platea General",
+        "amount_cop": 100000,
+        "condition": null
+      },
+      {
+        "label": "Balcón Preventa",
+        "amount_cop": 56000,
+        "condition": "hasta el 20 de octubre"
+      },
+      {
+        "label": "Balcón General",
+        "amount_cop": 70000,
+        "condition": null
+      },
+      {
+        "label": "General Preventa",
+        "amount_cop": 40000,
+        "condition": "hasta el 20 de octubre"
+      },
+      {
+        "label": "General General",
+        "amount_cop": 50000,
+        "condition": null
+      },
+      {
+        "label": "Pack Familia",
+        "amount_cop": 170000,
+        "condition": "4 boletas de General"
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "gala de premiación",
+      "shows de baile"
+    ],
+    "contact": "@bureodancestudio",
+    "confidence": "high",
+    "doubts": [],
+    "id": "bureo-awards-2026-noche-dorada-gala-5-nov",
+    "account": "bureodancestudio",
+    "media": [
+      {
+        "post_id": "17907416070330853",
+        "permalink": "https://www.instagram.com/p/DeQSLLvCLIV/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-09T01:03:11+0000",
+        "flyer": "flyers/17907416070330853-0.webp",
+        "caption": "🏆✨ ¡EL MOMENTO DE SER PARTE DE LOS BUREO AWARDS 2026 HA LLEGADO!\n\nLa cuenta regresiva para nuestra NOCHE DORADA ya comenzó y queremos que vivas esta experiencia con nosotros. 🖤💛\n\n🎟️ Conoce nuestras localidades y elige dónde quieres vivir esta gran celebración:\n\n✨ PLATEA: Preventa $80.000 | General $100.000\n✨ BALCÓN: Preventa $56.000 | General $70.000\n✨ GENERAL: Preventa $40.000 | General $50.000\n\n🔥 PREVENTA HASTA EL 20 DE OCTUBRE.\n\n👨‍👩‍👧‍👦 Plan familia: 4 entradas de General por $170.000.\n\n📅 5 de noviembre\n📍 Teatro Astor Plaza\n\nGuarda este post, compártelo con tu parche y prepárate para celebrar el talento por todo lo alto.\n\nNos vemos en la pista… y esta vez, también en la gala. ✨",
+        "preview": null,
+        "slides": 3
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Concierto",
     "event_type": "concert",
     "is_recurring": false,
@@ -7828,7 +8078,7 @@
       "salsa",
       "bachata"
     ],
-    "organizer": "Madyum",
+    "organizer": "Madyum Dance",
     "venue": null,
     "address": null,
     "area": null,
@@ -7849,9 +8099,9 @@
       "clase de salsa"
     ],
     "contact": "@madyumdance",
-    "confidence": "medium",
+    "confidence": "high",
     "doubts": [
-      "No se especifica la hora de inicio ni el lugar exacto del evento."
+      "Falta hora, precios, lugar y estilos de baile específicos"
     ],
     "id": "elysium-madyum-gran-aniversario-2026-5-dic",
     "account": "madyumdance",
