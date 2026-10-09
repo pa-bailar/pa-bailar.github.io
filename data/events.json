@@ -3070,56 +3070,6 @@
     "bar": true
   },
   {
-    "title": "Jueves de Salsa con Los Ángeles de Charlie",
-    "event_type": "concert",
-    "is_recurring": false,
-    "styles": [
-      "salsa"
-    ],
-    "organizer": "Galería Café Libro",
-    "venue": "Galería Café Libro - Parque 93",
-    "address": "Cra. 11A # 93-42",
-    "area": "Parque 93",
-    "date": "2026-10-08",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "jueves",
-    "start_time": null,
-    "end_time": null,
-    "prices": [
-      {
-        "label": "Cover",
-        "amount_cop": 20000,
-        "condition": null
-      }
-    ],
-    "artists": [
-      "Los Ángeles de Charlie"
-    ],
-    "activities": [
-      "música en vivo",
-      "concierto de salsa"
-    ],
-    "contact": "3176608742",
-    "confidence": "high",
-    "doubts": [],
-    "id": "jueves-de-salsa-con-los-angeles-de-charlie-8-oct",
-    "account": "galeriacafelibro",
-    "media": [
-      {
-        "post_id": "18110935439161762",
-        "permalink": "https://www.instagram.com/p/DeKZq_oDJ4_/",
-        "media_type": "CAROUSEL_ALBUM",
-        "published": "2026-10-06T18:13:15+0000",
-        "flyer": "flyers/18110935439161762-5.webp",
-        "caption": "🌟 Una nueva semana para bailarnos la vida a ritmo de SALSA 🔥💥 Y viene larga y contundente con salsa, Caribe, orquestas en vivo, regalitos para celebrar tu cumpleaños 🎂 y clásicos del repertorio de martes a domingo 😮‍💨\n\nEsta semana en vivo: lacharanganewyork la orquesta insignia de la salsa bogotana ✨; Los Ángeles de Charlie de garciabone01 🎺 ; orquestasoncapital con su noche brava 🌶️; ns.orquesta con lo mejor de la salsa + la música Caribe 🌴 \n\n💿 En el tornamesa suenan los discos de nuestra colección en manos de los djs estrella: johanancines elgordocastillo y Eduardo Moya\n\n¡Nos vemos en todas las sedes de Galeria Café Libro!",
-        "preview": null,
-        "slides": 13
-      }
-    ],
-    "bar": true
-  },
-  {
     "title": "Feria de Cali",
     "event_type": "party",
     "is_recurring": false,
@@ -3216,12 +3166,12 @@
     "event_type": "concert",
     "is_recurring": false,
     "styles": [
-      "son",
-      "salsa"
+      "salsa",
+      "son"
     ],
-    "organizer": "Salsa Cámara",
-    "venue": "Salsa Cámara",
-    "address": "Carrera 11 #70A-22",
+    "organizer": "Salsa Camará",
+    "venue": "Salsa Camará",
+    "address": "Carrera 11 #70A - 22",
     "area": null,
     "date": "2026-10-08",
     "end_date": null,
@@ -3237,17 +3187,14 @@
       }
     ],
     "artists": [
-      "Orlando y su sonora"
+      "Orlando y su Sonora"
     ],
     "activities": [
-      "concierto",
       "música en vivo"
     ],
-    "contact": "WhatsApp 3138308844",
+    "contact": "WhatsApp 313 830 8844",
     "confidence": "high",
-    "doubts": [
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
+    "doubts": [],
     "id": "jueves-de-son-gozon-con-orlando-y-su-sonora-8-oct",
     "account": "salsacamaraoficial",
     "media": [
@@ -3260,6 +3207,71 @@
         "caption": "Conoce nuestro repertorio salsero de este fin de semana\n\n📆 Jueves 08 de Octubre\n🎺 Orlando y su sonora\n🎟️ Aporte cultural: 15K\n\n📆 Sábado 10 de Octubre\n🎺 Zafra Son\n🎟️ Aporte cultural: 20K\n\n⏳ Desde las 4 PM\n📍 Carrera 11 #70A-22\n📲 Reserva por WhatsApp: 313 830 8844",
         "preview": null,
         "slides": 4
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Jueves de Salsa con Los Ángeles de Charlie",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Galería Café Libro",
+    "venue": "Galería Café Libro - Parque 93",
+    "address": "Cra. 11A # 93-42",
+    "area": "Parque 93",
+    "date": "2026-10-08",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "jueves",
+    "start_time": "18:30",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 20000,
+        "condition": null
+      },
+      {
+        "label": "Cover cumpleañeros",
+        "amount_cop": 0,
+        "condition": "para ti + 1 acompañante el jueves de tu cumpleaños"
+      }
+    ],
+    "artists": [
+      "Los Ángeles de Charlie"
+    ],
+    "activities": [
+      "música en vivo",
+      "concierto de salsa"
+    ],
+    "contact": "3176608742",
+    "confidence": "high",
+    "doubts": [],
+    "id": "jueves-de-salsa-con-los-angeles-de-charlie-8-oct",
+    "account": "galeriacafelibro",
+    "media": [
+      {
+        "post_id": "17868206442661328",
+        "permalink": "https://www.instagram.com/p/DePH01sDDQL/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-08T14:13:30+0000",
+        "flyer": "flyers/17868206442661328-0.webp",
+        "caption": "Ya es juernes 💥💃 El plancito es celebrar con salsa en vivo y si cumples años te duplicamos la gozadera ➡️🎉\n\nAbrimos desde 5pm con Happy Hour 🍹\n💃 Clase de salsa 6.30 pm y remate con rumba en vivo con Los Ángeles de Charlie",
+        "preview": null,
+        "slides": 2
+      },
+      {
+        "post_id": "18110935439161762",
+        "permalink": "https://www.instagram.com/p/DeKZq_oDJ4_/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-06T18:13:15+0000",
+        "flyer": "flyers/18110935439161762-5.webp",
+        "caption": "🌟 Una nueva semana para bailarnos la vida a ritmo de SALSA 🔥💥 Y viene larga y contundente con salsa, Caribe, orquestas en vivo, regalitos para celebrar tu cumpleaños 🎂 y clásicos del repertorio de martes a domingo 😮‍💨\n\nEsta semana en vivo: lacharanganewyork la orquesta insignia de la salsa bogotana ✨; Los Ángeles de Charlie de garciabone01 🎺 ; orquestasoncapital con su noche brava 🌶️; ns.orquesta con lo mejor de la salsa + la música Caribe 🌴 \n\n💿 En el tornamesa suenan los discos de nuestra colección en manos de los djs estrella: johanancines elgordocastillo y Eduardo Moya\n\n¡Nos vemos en todas las sedes de Galeria Café Libro!",
+        "preview": null,
+        "slides": 13
       }
     ],
     "bar": true
@@ -3906,7 +3918,11 @@
     ],
     "contact": "@bogotadanceclub",
     "confidence": "high",
-    "doubts": [],
+    "doubts": [
+      "sin hora de inicio",
+      "sin precio",
+      "sin ubicación exacta"
+    ],
     "id": "tardeo-latino-edicion-angeles-10-oct",
     "account": "bogotadanceclub",
     "media": [
@@ -3918,6 +3934,16 @@
         "flyer": "flyers/18049951595603676-0.webp",
         "caption": "😇 Este sábado los angelitos también salen de fiesta… y vienen con ganas de conocer gente nueva 🪽🔥\n\nMúsica en vivo, baile y muchas sorpresas durante la noche 😏\n\nNuestra segunda fiesta temática de octubre llega para que vengas con tu parche, o llegues solo y termines haciendo nuevos amigos en la pista 👀 \n\n📢 Comunidad bailadora de 18 a 45 años ✨\n🗓️ Sábado 10 de octubre | 🕒 3PM a 10PM\n📍 Calle 25F # 36-15 – Bogotá Dance Club\n\n🤓 Clase de baile pre fiesta (para romper el hielo 🧊)\n\n💸 1ra etapa: $25.000 \n💵 2da etapa: $30.000\n💰 Taquilla: ???\n(Incluye aureola + clase + 1 bebida)\n\n🪽 Ponte tu aureola, trae tu mejor actitud y prepárate para bailar, conocer gente y vivir una fiesta diferente. Este sábado, nos vemos en la pista 😏💃🏻",
         "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "17896621326673240",
+        "permalink": "https://www.instagram.com/reel/DeQQhhduwqe/",
+        "media_type": "VIDEO",
+        "published": "2026-10-09T00:52:06+0000",
+        "flyer": "flyers/17896621326673240-0.webp",
+        "caption": "Este sábado 10 de octubre tenemos nuestra segunda fiesta temática, esta vez: Ángeles 😇 \n\nVamos a tener música en vivo, clase de baile y concursos 🔥\n\nSi quieres más información comenta esta video 👇🏻\n\n#baile #bogota #planesenbogotá #salsa #bachata",
+        "preview": "previews/17896621326673240-0.mp4",
         "slides": null
       },
       {
@@ -3941,9 +3967,9 @@
       "salsa",
       "son"
     ],
-    "organizer": "Salsa Cámara",
-    "venue": "Salsa Cámara",
-    "address": "Carrera 11 #70A-22",
+    "organizer": "Salsa Camará",
+    "venue": "Salsa Camará",
+    "address": "Carrera 11 #70A - 22",
     "area": null,
     "date": "2026-10-10",
     "end_date": null,
@@ -3959,17 +3985,14 @@
       }
     ],
     "artists": [
-      "Zafra"
+      "Zafra Son"
     ],
     "activities": [
-      "concierto",
       "música en vivo"
     ],
-    "contact": "WhatsApp 3138308844",
+    "contact": "WhatsApp 313 830 8844",
     "confidence": "high",
-    "doubts": [
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
+    "doubts": [],
     "id": "sabado-de-orquesta-y-sabor-con-zafra-10-oct",
     "account": "salsacamaraoficial",
     "media": [
@@ -4849,7 +4872,7 @@
     "organizer": "Pachanga y Pochola",
     "venue": "Pachanga y Pochola",
     "address": "Calle 73 # 14 / 53",
-    "area": null,
+    "area": "Chapinero",
     "date": "2026-10-11",
     "end_date": null,
     "sessions": null,
@@ -4882,6 +4905,16 @@
     "id": "tardeo-viva-salsa-social-11-oct",
     "account": "fernandoespanadj",
     "media": [
+      {
+        "post_id": "18126585622797750",
+        "permalink": "https://www.instagram.com/reel/DeO0r1MIZ4a/",
+        "media_type": "VIDEO",
+        "published": "2026-10-08T11:26:22+0000",
+        "flyer": "flyers/18126585622797750-0.webp",
+        "caption": "Este domingo 11 de octubre les esperamos en Pachanga y Pochola, el Tardeo con la salsa distinta y diferente programada por Miss Timba y Fernando España. Agüita para mí gente!",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "17905429290568646",
         "permalink": "https://www.instagram.com/reel/DeMUZyERMsw/",
