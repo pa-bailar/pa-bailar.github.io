@@ -410,7 +410,9 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
     install sheet, "Copiar mis N guardados para la app" by "Ya la agregué"; in the app, "Pegar mis guardados de
     Safari" in Guardados (its empty state too, with a line saying how), and on its first start with nothing saved one
     notice, "¿Guardaste eventos en Safari? · Pegarlos". The copied text is a line and a link,
-    `/?guardados=<id>,<id>`; pasting saves the ids this page knows (iOS asks with its own "Pegar" bubble). Nowhere
+    `/?guardados=<id>,<id>`; pasting saves every id in it, also one of an event this copy of the page doesn't have yet
+    (the app may show an older stored copy than Safari's), and the install sheet counts the saves Guardados shows
+    (iOS asks with its own "Pegar" bubble). Nowhere
     else: on Android the app shares the browser's saves, and computers have no home-screen app.
   - **What it shows:** "Tus 3 eventos guardados [Compartir]", then the saved events to come by period, always whole
     (no summaries), then the past ones folded at the end: **"Ya pasaron (2) ⌄"** (the latest first).

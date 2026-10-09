@@ -19,15 +19,20 @@ export function copySavesForApp(say: (text: string) => void) {
 /** What "Pegar" found: how many saves were new here, nothing of ours on the clipboard, or no reading it. */
 export type PasteResult = { added: number } | "nothing" | "denied";
 
-/** "Pegar mis guardados de Safari": the saves in what was copied, saved here; only events this page knows (`known`). */
-export async function pasteSavesFromSafari(known: (id: string) => boolean): Promise<PasteResult> {
+/**
+ * "Pegar mis guardados de Safari": the saves in what was copied, saved here. Every one, also an event this page doesn't
+ * know: the app may show an older stored copy of the page (offline, a slow network) than Safari's, and the saved list
+ * keeps such ids for when the page catches up (lib/saved.ts). Dropped, they were lost, and "No hay guardados" was
+ * wrong (the bug-squash pass of 8 Oct 2026).
+ */
+export async function pasteSavesFromSafari(): Promise<PasteResult> {
   let text: string;
   try {
     text = await navigator.clipboard.readText();
   } catch {
     return "denied"; // the visitor didn't tap iOS's "Pegar", or no clipboard here
   }
-  const ids = idsFromMove(text).filter(known);
+  const ids = idsFromMove(text);
   if (!ids.length) return "nothing";
   return { added: ids.filter((id) => setSaved(id, true)).length };
 }
