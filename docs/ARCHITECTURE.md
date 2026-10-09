@@ -572,8 +572,9 @@ stateDiagram-v2
   (`views/savedView.ts`: the ones to come by period, the past ones folded; the search applies, the filters don't), and
   the calendar marks the days holding one. On iPhone and iPad they're moved from Safari to the installed app (its own
   storage) by the clipboard: `lib/savedMove.ts` (where, and the copied link's format, `?guardados=`),
-  `views/savedMoveView.ts` (copy and paste, in the tap), `savedIds`, and the `savedCopy`/`savedPaste` controls in
-  `main.ts` (DESIGN.md, Guardados). A save or an unsave in Guardados says so in a notice at the bottom
+  `views/savedMoveView.ts` (copy and paste, in the tap; the paste, the app's first-start offer and the notices),
+  `savedIds`, and the `savedCopy`/`savedPaste` controls in `main.ts`, which says a copy in the install sheet when it's
+  open (`installPrompt.ts` `sayInSheet`) (DESIGN.md, Guardados). A save or an unsave in Guardados says so in a notice at the bottom
   (`views/notice.ts`, chosen by `lib/saveNotice.ts`): `main.ts` gives its button the way to Guardados (`navigateView`)
   or the undo (`saveAgain`: saved again from what's stored, never toggled, as another tab may have saved it meanwhile; the bug-squash pass of 8 Oct 2026), which Ctrl+Z (⌘Z) also runs while it's up (`NoticeAction.undo`: the keyboard's way to
   it, through the button's own click); the install reminder after a second save is the same notice (`offerAfterSaving`),
