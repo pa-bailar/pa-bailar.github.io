@@ -11,6 +11,7 @@ import { eventCountLabel } from "../lib/format";
 import { isUpcoming, lastDay, nowInBogota, todayIso } from "../lib/dates";
 import { viewPath } from "../lib/links";
 import { isSaved } from "../lib/saved";
+import type { SavedMove } from "../lib/savedMove";
 import { matchesWords } from "../lib/search";
 import { type AgendaGroup, groupByPeriod, listedDay, shownDays } from "../state";
 import { applyFlyerRatios, eventCardGridHtml } from "./eventCard";
@@ -61,8 +62,27 @@ function groupHtml(group: AgendaGroup, listedOn: (event: DanceEvent) => string):
 
 const SEE_EVENTS = `<a class="btn btn--primary" href="${viewPath("upcoming")}" data-view="upcoming">Ver eventos</a>`;
 
-/** Nothing to show: nothing saved yet (how to save), or nothing saved matches the search. */
-export function emptySavedHtml(query: string): string {
+const PASTE_LABEL = "Pegar mis guardados de Safari";
+
+/**
+ * iPhone: a line to move the saves to the installed app, which keeps its own (lib/savedMove.ts). In Safari, with saves:
+ * copy them; in the app: paste Safari's. Nothing elsewhere (Android's app shares the browser's saves).
+ */
+export function savedMoveHtml(move: SavedMove): string {
+  if (move === "copy") {
+    return `<p class="saved-move">¿Tienes Pa' Bailar en tu inicio? Tus guardados de aquí no están allá:
+      <button class="link-button" type="button" data-saved-copy data-track="guardados-copiar-app">Copiar para la app</button></p>`;
+  }
+  if (move === "paste") {
+    return `<p class="saved-move">¿Guardaste más en Safari?
+      <button class="link-button" type="button" data-saved-paste data-track="guardados-pegar-app">${PASTE_LABEL}</button></p>`;
+  }
+  return "";
+}
+
+/** Nothing to show: nothing saved yet (how to save; in the iPhone app, pasting Safari's too), or nothing saved matches
+ * the search. */
+export function emptySavedHtml(query: string, move: SavedMove = null): string {
   const text = query.trim();
   if (text) {
     return `
@@ -78,7 +98,12 @@ export function emptySavedHtml(query: string): string {
       <p class="empty-state__title">Aún no tienes eventos guardados</p>
       <p>Toca ${ICONS.bookmark}<span class="visually-hidden">(Guardar)</span> en un evento para tenerlo aquí, a la mano.
         Se quedan en este navegador, sin crear cuenta.</p>
-      <div class="empty-state__actions">${SEE_EVENTS}</div>
+      ${move === "paste" ? `<p>¿Guardaste eventos en Safari? Cópialos allá con «Copiar para la app» y pégalos aquí.</p>` : ""}
+      <div class="empty-state__actions">${SEE_EVENTS}${
+        move === "paste"
+          ? `<button class="btn" type="button" data-saved-paste data-track="guardados-pegar-app">${PASTE_LABEL}</button>`
+          : ""
+      }</div>
     </div>`;
 }
 
@@ -91,13 +116,13 @@ function pastHtml(past: DanceEvent[], open: boolean): string {
     </details>`;
 }
 
-/** Renders Guardados; returns how many saved events are still to come (said to screen readers). */
-export function renderSavedView(container: HTMLElement, events: DanceEvent[], state: AppState): number {
+/** Renders Guardados; returns how many saved events are still to come (said to screen readers). `move`: savedMoveHtml. */
+export function renderSavedView(container: HTMLElement, events: DanceEvent[], state: AppState, move: SavedMove = null): number {
   const { upcoming, past } = savedLists(events, { saved: isSaved, query: state.query, now: nowInBogota() });
   // Drawn again (a save, a search): the past ones stay open or folded as they were.
   const pastOpen = container.querySelector<HTMLDetailsElement>(".saved-past")?.open ?? false;
   if (!upcoming.length && !past.length) {
-    container.innerHTML = emptySavedHtml(state.query);
+    container.innerHTML = emptySavedHtml(state.query, state.query.trim() ? null : move);
     return 0;
   }
   const today = todayIso();
@@ -108,6 +133,7 @@ export function renderSavedView(container: HTMLElement, events: DanceEvent[], st
     : `<div class="saved-note"><p>Ninguno de tus eventos guardados está por venir.</p>${SEE_EVENTS}</div>`;
   container.innerHTML = [
     upcoming.length ? plansBarHtml(upcoming.length) : none,
+    state.query.trim() ? "" : savedMoveHtml(move),
     ...groupByPeriod(upcoming, today, choices).map((group) => groupHtml(group, listedOn)), // on a day searched
     past.length ? pastHtml(past, pastOpen) : "",
   ].join("");
