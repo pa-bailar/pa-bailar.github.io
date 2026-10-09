@@ -102,6 +102,16 @@ export function howToInstallLabel(place: InstallPlace): string | null {
   return null;
 }
 
+/**
+ * The reminder after a second save (views/installPrompt.ts offerAfterSaving). On iPhone and iPad it can't promise the
+ * saves: the installed app has its own storage, and opens with none of Safari's (they're moved by hand: savedMove.ts).
+ * On Android the app shares the browser's, so it can (the owner, 8 Oct 2026).
+ */
+export function reminderText(place: InstallPlace): string {
+  if (place.kind === "ios") return `Pa' Bailar a un toque: instálala en tu ${place.ipad ? "iPad" : "iPhone"}.`;
+  return "Tus guardados a un toque: instala Pa' Bailar.";
+}
+
 const b = (label: string) => `<b>${label}</b>`;
 const key = (icon: string, label = "") =>
   `<span class="install-key">${icon}${label ? `<span>${label}</span>` : ""}</span>`;

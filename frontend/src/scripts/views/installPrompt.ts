@@ -31,10 +31,13 @@ import {
   ARRIVAL,
   howToInstallLabel,
   installGuide,
+  reminderText,
   installPlace,
   withoutArrival,
   type InstallClip,
 } from "../lib/installPlace";
+import { savedIds } from "../lib/saved";
+import { savedMove, type SavedMove } from "../lib/savedMove";
 import { storedSwitch } from "../lib/storedSwitch";
 import { storedValue } from "../lib/storedValue";
 import { BASE_URL } from "../lib/links";
@@ -93,6 +96,9 @@ const place = () => installPlace(navigator.userAgent, navigator);
 const arrivalUrl = () => new URL(`${BASE_URL}?${ARRIVAL}`, location.origin);
 const guide = () => installGuide(place(), arrivalUrl());
 
+/** Whether the saves can be copied for the installed app here (Safari on iPhone) or pasted from Safari (the app). */
+export const savedMoveHere = (): SavedMove => savedMove(place(), isApp());
+
 /** Inside an app's own browser (Instagram, Facebook, TikTok…), where saved events stay apart from the phone's browser. */
 export const inAppBrowser = () => place().kind === "in-app";
 
@@ -137,6 +143,11 @@ export function showInstallSteps() {
   open.textContent = steps.open?.label ?? "";
   byId("install-copy").hidden = !steps.copyLink;
   byId("install-done").hidden = place().kind !== "ios" || steps.copyLink; // only where it can be added here
+  // With saves, on iPhone: copy them now for the app, which starts with none of them (lib/savedMove.ts).
+  const saves = savedIds().length;
+  const copySaved = byId("install-copy-saved");
+  copySaved.hidden = savedMoveHere() !== "copy" || steps.copyLink || saves === 0;
+  copySaved.textContent = saves === 1 ? "Copiar mi guardado para la app" : `Copiar mis ${saves} guardados para la app`;
   byId("install-status").textContent = "";
   const note = byId("install-note");
   note.textContent = steps.note ?? NOTE;
@@ -277,7 +288,7 @@ export function offerAfterSaving(savedCount: number) {
   const moment = { savedCount, dismissedAt: dismissedTime(), nudged: Boolean(nudgedAt.get()), openedAt: OPENED_AT };
   if (!canOffer() || !reminderDue({ ...moment, now: Date.now() })) return;
   const reminder = { label: "Instalar", run: () => void install().then(render), track: "instalar" };
-  if (showNotice("Tus guardados a un toque: instala Pa' Bailar.", reminder, { seconds: NUDGE_SECONDS, closable: true })) {
+  if (showNotice(reminderText(place()), reminder, { seconds: NUDGE_SECONDS, closable: true })) {
     nudgedAt.set(String(Date.now()));
   }
 }

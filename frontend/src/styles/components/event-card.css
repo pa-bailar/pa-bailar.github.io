@@ -105,6 +105,19 @@
   color: var(--text-muted);
 }
 
+/* iPhone: moving the saves between Safari and the installed app (savedMoveHtml): a small line under the plans bar. */
+.saved-move {
+  margin: calc(var(--space-2) * -1) 0 var(--space-4);
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.saved-move .link-button {
+  min-height: var(--control-height); /* a finger's height, though it reads as text */
+  color: var(--text);
+  font-size: inherit;
+}
+
 /* Nothing saved yet: a big bookmark over how to save. */
 .saved-empty__icon .icon {
   width: 40px;

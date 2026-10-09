@@ -39,6 +39,11 @@ export function isSaved(id: string): boolean {
   return load().has(id);
 }
 
+/** Every saved id, from what's stored now (another tab may have saved since): for moving them to the app (savedMove.ts). */
+export function savedIds(): string[] {
+  return [...(read() ?? load())];
+}
+
 /** Save or unsave; returns whether it's saved now. From what's stored now, not what the page read when it opened:
  * another tab may have saved since (writing the page's old list back erased those, the bug hunt of 7 Oct 2026). */
 export function toggleSaved(id: string): boolean {

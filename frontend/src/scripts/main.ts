@@ -59,14 +59,16 @@ import { viewNavigation } from "./views/viewNavigation";
 import { closeWhenMenu, isWhenMenuOpen, openWhenMenu, syncWhenMenu } from "./views/whenMenu";
 import { closePanel, initFilterPanels, syncPanels, togglePanel } from "./views/filterPanels";
 import { initSaveButtons, renderSavedCount as drawSavedCount, saveAgain } from "./views/saveButton";
-import { initNotice } from "./views/notice";
+import { initNotice, showNotice } from "./views/notice";
+import { copySavesForApp, pastedText, pasteSavesFromSafari } from "./views/savedMoveView";
+import { onceFlag } from "./lib/onceFlag";
 import { tellSaveChange } from "./views/saveNotice";
 import { reminderMayReplace } from "./lib/saveNotice";
 import { renderSavedView } from "./views/savedView";
 import { watchDayChange } from "./views/dayChange";
-import { initInstallPrompt, offerAfterSaving, registerServiceWorker, stepsOnArrival } from "./views/installPrompt";
+import { initInstallPrompt, offerAfterSaving, registerServiceWorker, savedMoveHere, stepsOnArrival } from "./views/installPrompt";
 import { initSharing, plansEventUrl, setShareSources } from "./views/sharing";
-import { isSaved, trimSaved } from "./lib/saved";
+import { isSaved, savedIds, trimSaved } from "./lib/saved";
 import { dropStraySecondTaps, markOpeningTap } from "./views/secondTaps";
 
 /** "Ocultar eventos de bares", remembered in this browser (blocked storage: for this visit). */
@@ -103,7 +105,7 @@ function renderView(searched: number): { shown: number; groups: AgendaGroup[] } 
   const container = byId(VIEW_IDS[state.view]);
   if (state.view === "upcoming") return renderUpcomingView(container, events, state, searched);
   if (state.view === "calendar") return { shown: renderCalendarView(events, state), groups: [] }; // no periods
-  return { shown: renderSavedView(container, events, state), groups: [] }; // its plans are shared whole
+  return { shown: renderSavedView(container, events, state, savedMoveHere()), groups: [] }; // its plans are shared whole
 }
 
 /**
@@ -379,7 +381,34 @@ const CONTROLS: [attribute: string, handler: ControlHandler][] = [
   ["monthStep", stepMonth],
   ["today", showToday],
   ["skip", skipToList],
+  ["savedCopy", copySaves],
+  ["savedPaste", () => void pasteSaves()],
 ];
+
+/** iPhone, Safari: the saves on the clipboard for the installed app (views/savedMoveView.ts); said in the install sheet
+ * when it's there (a notice can't show over it), else in a notice. */
+function copySaves(_: string, control: HTMLElement) {
+  const inSheet = control.closest("#install-sheet");
+  copySavesForApp((text) => {
+    if (inSheet) byId("install-status").textContent = text;
+    else showNotice(text, undefined, { seconds: 8 });
+  });
+}
+
+/** iPhone, the installed app: Safari's saves from the clipboard. */
+async function pasteSaves() {
+  const result = await pasteSavesFromSafari((id) => eventById.has(id));
+  if (typeof result === "object" && result.added) render();
+  showNotice(pastedText(result), undefined, { seconds: 8 });
+}
+
+/** The installed iPhone app's first start with nothing saved: one offer to bring Safari's (it can't see them). */
+const pasteOffered = onceFlag("saved-paste-offered");
+function offerSafariSaves() {
+  if (savedMoveHere() !== "paste" || savedIds().length || pasteOffered.seen()) return;
+  const offer = { label: "Pegarlos", run: () => void pasteSaves(), track: "guardados-pegar-app-aviso" };
+  if (showNotice("¿Guardaste eventos en Safari?", offer, { seconds: 12, closable: true })) pasteOffered.mark();
+}
 
 /** "monthStep" → "[data-month-step]" */
 const CONTROLS_SELECTOR = CONTROLS.map(([attribute]) => `[data-${attribute.replace(/[A-Z]/g, (c) => `-${c.toLowerCase()}`)}]`).join(",");
@@ -511,6 +540,7 @@ export function start() {
   if (state.view === "calendar") openedOnCalendar();
   openSharedEvent();
   initScreenHistory({ current: currentScreen, apply: applyScreen, address: (screen) => viewPath(screen.view) });
+  offerSafariSaves(); // the iPhone app's first start, nothing saved: Safari's saves can come across
   stepsOnArrival(); // opened from an app's browser to install: on iPhone, the steps (installPrompt.ts)
   watchDayChange(state, () => render()); // shown again on another day: today's events, or the latest ones
 }
