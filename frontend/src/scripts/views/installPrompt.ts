@@ -115,7 +115,7 @@ function render() {
   document.querySelectorAll<HTMLElement>("[data-install-offer]").forEach((element) => (element.hidden = !offer || !!howTo));
   document.querySelectorAll<HTMLElement>("[data-install-howto]").forEach((element) => {
     element.hidden = !howTo;
-    if (howTo) element.querySelector("button")!.textContent = howTo;
+    if (howTo) element.querySelector("button")!.textContent = howTo; // each such line has its button (SiteFooter.astro)
   });
   const banner = document.getElementById("install-banner");
   if (banner) banner.hidden = !offer || (dismissedRecently() && !arrived);

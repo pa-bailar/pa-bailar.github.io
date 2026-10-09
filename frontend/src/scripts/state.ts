@@ -188,7 +188,7 @@ function inOrder(items: Placed[]): DanceEvent[] {
     const id = `${item.day} ${item.event.account}`;
     if (!first.has(id)) first.set(id, item);
   }
-  const firstOf = (item: Placed) => first.get(`${item.day} ${item.event.account}`)!;
+  const firstOf = (item: Placed) => first.get(`${item.day} ${item.event.account}`)!; // every item's is set just above
   return items
     .sort((a, b) => byPlace(firstOf(a), firstOf(b)) || startKey(a).localeCompare(startKey(b)) || byPlace(a, b))
     .map(({ event }) => event);
