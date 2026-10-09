@@ -25,7 +25,7 @@ export function saveButtonHtml(event: DanceEvent, { labeled = false, className =
 }
 
 /** Every bookmark of the event `id` (or of every event) shows whether it's saved. */
-function syncSaveButtons(id?: string) {
+export function syncSaveButtons(id?: string) {
   const selector = id ? `[data-save="${CSS.escape(id)}"]` : "[data-save]";
   document.querySelectorAll<HTMLElement>(selector).forEach((button) => {
     const saved = isSaved(button.dataset.save ?? "");

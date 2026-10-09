@@ -50,15 +50,15 @@ import {
   restoreListPosition,
   returnToScroll,
 } from "./views/jumpBar";
-import { renderUpcomingView, sharedEventEntry, showWholePeriod } from "./views/upcomingView";
-import { goTo, initScreenHistory } from "./screenHistory";
+import { renderUpcomingView, setWholePeriods, sharedEventEntry, showWholePeriod } from "./views/upcomingView";
+import { goTo, historyState, initScreenHistory } from "./screenHistory";
 import { initPostViewer } from "./views/postViewer";
 import { initPostsSheet } from "./views/postsSheet";
 import { closeSearchField, initBottomNav, renderBottomNav } from "./views/bottomNav";
 import { viewNavigation } from "./views/viewNavigation";
 import { closeWhenMenu, isWhenMenuOpen, openWhenMenu, syncWhenMenu } from "./views/whenMenu";
 import { closePanel, initFilterPanels, syncPanels, togglePanel } from "./views/filterPanels";
-import { initSaveButtons, renderSavedCount as drawSavedCount, saveAgain } from "./views/saveButton";
+import { initSaveButtons, renderSavedCount as drawSavedCount, saveAgain, syncSaveButtons } from "./views/saveButton";
 import { initNotice, showNotice } from "./views/notice";
 import { copySavesForApp, pastedText, pasteSavesFromSafari } from "./views/savedMoveView";
 import { onceFlag } from "./lib/onceFlag";
@@ -395,10 +395,15 @@ function copySaves(_: string, control: HTMLElement) {
   });
 }
 
-/** iPhone, the installed app: Safari's saves from the clipboard. */
+/** iPhone, the installed app: Safari's saves from the clipboard. Every bookmark follows (the side panel's too: render()
+ * redraws the view, not the panel, whose Guardar then still said unsaved, and a tap on it unsaved the event; the
+ * bug-squash pass of 8 Oct 2026). */
 async function pasteSaves() {
-  const result = await pasteSavesFromSafari((id) => eventById.has(id));
-  if (typeof result === "object" && result.added) render();
+  const result = await pasteSavesFromSafari();
+  if (typeof result === "object" && result.added) {
+    syncSaveButtons();
+    render();
+  }
   showNotice(pastedText(result), undefined, { seconds: 8 });
 }
 
@@ -464,7 +469,7 @@ export function start() {
   initPostsSheet();
   initPostViewer();
   initSharing(findEvent);
-  initInstallPrompt();
+  initInstallPrompt((id) => eventById.has(id));
   initNotice();
   registerServiceWorker();
   initJumpBar();
@@ -536,6 +541,9 @@ export function start() {
   }, () => savesChanged());
   // The page's own address picks the view it opens on: /calendario/, /guardados/ (lib/links.ts viewOfPath).
   state.view = viewOfPath(location.pathname);
+  // A reload (or back into the site) on an entry with blocks open: open again, as the entry says. Folded, the entry
+  // was rewritten folded but kept its step, and the next back did nothing (the bug-squash pass of 8 Oct 2026).
+  setWholePeriods(historyState().screen?.periods ?? []);
   render();
   if (state.view === "calendar") openedOnCalendar();
   openSharedEvent();

@@ -58,7 +58,9 @@ export interface DeviceHints {
   maxTouchPoints?: number;
 }
 
-const IN_APP = /Instagram|FBAN|FBAV|FB_IAB|FBIOS|WhatsApp|musical_ly|BytedanceWebview|TikTok|Snapchat|\bLine\/|Twitter|LinkedInApp|Pinterest|GSA\//i; // GSA: the Google app
+// GSA: the Google app; Barcelona: Threads; "; wv)": any Android app's own browser (a WebView, which can't install).
+const IN_APP =
+  /Instagram|FBAN|FBAV|FB_IAB|FBIOS|WhatsApp|musical_ly|BytedanceWebview|TikTok|Snapchat|\bLine\/|Twitter|LinkedInApp|Pinterest|GSA\/|Barcelona|; wv\)/i;
 
 /** iOS version from the user agent ("OS 17_4"); 0 when it isn't there. */
 function iosVersion(agent: string): number {

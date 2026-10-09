@@ -85,18 +85,36 @@ let carriedFrom: ScreenData | null = null;
 const newId = () => `${Date.now().toString(36)}.${(counter++).toString(36)}`;
 const stepsOf = (state: AppHistoryState): Step[] => state.screen?.steps ?? [{ id: newId() }];
 
-/** The current entry remembers the screen as it is now (above all, how far down it was). */
-function remember(steps = stepsOf(historyState())) {
+/** The current entry remembers the screen as it is now (above all, how far down it was); `keepHash` false when it
+ * now shows another screen (replaceScreen). */
+function remember(steps = stepsOf(historyState()), keepHash = true) {
   if (!hooks) return;
   const state = historyState();
   const screen = hooks.current();
-  history.replaceState({ ...state, screen: { ...screen, steps } } satisfies AppHistoryState, "", addressOf(screen, state));
+  history.replaceState(
+    { ...state, screen: { ...screen, steps } } satisfies AppHistoryState,
+    "",
+    addressOf(screen, state, keepHash),
+  );
 }
 
-/** The screen's own address, with the query and the hash; none for an overlay (it keeps its own, e.g. an event's). */
-function addressOf(screen: ScreenData, state: AppHistoryState): string | undefined {
+/**
+ * The screen's own address, with the query, and the hash for the screen it's on (`keepHash`); none for an overlay (it
+ * keeps its own, e.g. an event's). A move to another screen drops the hash: "Info" (#info) stuck to every address
+ * after it, /calendario/#info (the bug-squash pass of 8 Oct 2026).
+ */
+function addressOf(screen: ScreenData, state: AppHistoryState, keepHash = true): string | undefined {
   if (!hooks?.address || state.overlay) return undefined;
-  return `${hooks.address(screen)}${location.search}${location.hash}`;
+  return `${hooks.address(screen)}${location.search}${keepHash ? location.hash : ""}`;
+}
+
+/**
+ * The app puts each screen's scroll back itself. WebKit turns the browser's own restoring back to "auto" for the entry
+ * an in-page jump makes (#info), and the entries pushed after it inherit it: the list came back where the calendar was
+ * (the bug-squash pass of 8 Oct 2026). Set again after a jump and before each push.
+ */
+function manualScroll() {
+  history.scrollRestoration = "manual";
 }
 
 /** The screen's chain where an in-page jump started (`beforeJump`), for the entry the browser makes for it. */
@@ -114,6 +132,7 @@ export function beforeJump() {
  * brought the calendar back (the iPhone audit, 8 Oct 2026). Back or forward onto an entry that has its state: nothing.
  */
 export function afterJump() {
+  manualScroll();
   const from = jumpFrom;
   jumpFrom = null;
   if (!hooks || historyState().screen || !from) return;
@@ -130,7 +149,7 @@ export function initScreenHistory(screenHooks: Hooks) {
   hooks = screenHooks;
   // The screens put their own scroll back (`apply`). The browser's own restoring would undo it: it saves an
   // entry's position when the next one is pushed, after the move already scrolled.
-  history.scrollRestoration = "manual";
+  manualScroll();
   shownHash = location.hash;
   // A reload shows no overlay: an entry left marked as one (the search field, a menu or a sheet open when the page
   // was reloaded) would be stepped back over later, as a dead step, along with the entry under it.
@@ -155,7 +174,8 @@ export function initScreenHistory(screenHooks: Hooks) {
         history.replaceState({ ...state, screen: { ...before, steps: below } } satisfies AppHistoryState, "");
         const screen = hooks.current();
         const steps = [...below, { id: newId(), kind: "period" as const }];
-        history.pushState({ screen: { ...screen, steps } } satisfies AppHistoryState, "", addressOf(screen, {}));
+        manualScroll();
+        history.pushState({ screen: { ...screen, steps } } satisfies AppHistoryState, "", addressOf(screen, {}, false));
         return;
       }
     }
@@ -197,7 +217,8 @@ export function goTo(kind: ScreenKind, move: () => void) {
   move();
   if (hooks) {
     const screen: Screen = { ...hooks.current(), steps: [...steps, { id: newId(), kind }] };
-    history.pushState({ screen } satisfies AppHistoryState, "", addressOf(screen, {}));
+    manualScroll();
+    history.pushState({ screen } satisfies AppHistoryState, "", addressOf(screen, {}, false));
   }
 }
 
@@ -213,7 +234,7 @@ export function replaceScreen(kind: ScreenKind, move: () => void) {
   const moved = steps.findLast((step) => step.kind !== "jump"); // past in-page jumps: the same screen
   if (state.overlay || steps.length < 2 || moved === steps[0] || moved?.kind !== kind) return goTo(kind, move);
   move();
-  remember();
+  remember(steps, false);
 }
 
 /**

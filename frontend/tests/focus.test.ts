@@ -28,6 +28,12 @@ describe("focusSelector (lib/focus.ts)", () => {
     return focusSelector(element as unknown as Element);
   };
 
+  // The bug-squash pass of 8 Oct 2026: after pasting Safari's saves, the redraw dropped the focus to the page.
+  it("Copiar and Pegar (the saves between Safari and the app)", () => {
+    expect(selectorOf(new FakeElement({ savedPaste: "" }, ["[data-saved-paste]"]))).toBe("[data-saved-paste]");
+    expect(selectorOf(new FakeElement({ savedCopy: "" }, ["[data-saved-copy]"]))).toBe("[data-saved-copy]");
+  });
+
   it("names the controls a redraw draws again", () => {
     const chip = new FakeElement({ filter: "types", value: "party" });
     expect(selectorOf(chip)).toBe('[data-filter="types"][data-value="party"]');

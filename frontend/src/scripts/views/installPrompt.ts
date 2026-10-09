@@ -143,8 +143,9 @@ export function showInstallSteps() {
   open.textContent = steps.open?.label ?? "";
   byId("install-copy").hidden = !steps.copyLink;
   byId("install-done").hidden = place().kind !== "ios" || steps.copyLink; // only where it can be added here
-  // With saves, on iPhone: copy them now for the app, which starts with none of them (lib/savedMove.ts).
-  const saves = savedIds().length;
+  // With saves, on iPhone: copy them now for the app, which starts with none of them (lib/savedMove.ts). Counted
+  // as Guardados shows them: ids of events gone from the data said "Copiar mis 5" over 3 saves (8 Oct 2026).
+  const saves = savedIds().filter(known).length;
   const copySaved = byId("install-copy-saved");
   copySaved.hidden = savedMoveHere() !== "copy" || steps.copyLink || saves === 0;
   copySaved.textContent = saves === 1 ? "Copiar mi guardado para la app" : `Copiar mis ${saves} guardados para la app`;
@@ -177,9 +178,11 @@ function dropClip() {
   video.load();
 }
 
-/** The home page's address, for pasting it in the browser (apps' own browsers can't install). */
+/** The home page's address, marked (?instalar), for pasting it in the browser (apps' own browsers can't install):
+ * there the steps open by themselves, as the in-app steps promise. Unmarked, nothing did (the bug-squash pass of 8 Oct
+ * 2026). */
 async function copyLink() {
-  const url = new URL(BASE_URL, location.origin).href;
+  const url = arrivalUrl().href;
   let copied = false;
   try {
     await navigator.clipboard.writeText(url);
@@ -200,7 +203,11 @@ async function install() {
   await event.userChoice;
 }
 
-export function initInstallPrompt() {
+/** Whether an id is an event in the data (main.ts): the saves to copy are counted as Guardados shows them. */
+let known: (id: string) => boolean = () => true;
+
+export function initInstallPrompt(isKnown: (id: string) => boolean = known) {
+  known = isKnown;
   const unmarked = withoutArrival(location.href);
   if (unmarked !== null) {
     arrived = true;
@@ -234,6 +241,7 @@ export function initInstallPrompt() {
     }
     else if (target.closest("[data-install-dismiss]")) {
       dismissedAt.set(String(Date.now()));
+      arrived = false; // the arrival shows the banner until the visitor answers it (× did nothing after ?instalar)
       render();
     }
   });
@@ -242,6 +250,7 @@ export function initInstallPrompt() {
   // Having seen the steps counts as an answer: the banner rests like after ×, and the footer's link stays.
   sheet.addEventListener("close", () => {
     dismissedAt.set(String(Date.now()));
+    arrived = false;
     dropClip();
     render();
   });

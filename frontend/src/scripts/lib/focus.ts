@@ -19,6 +19,8 @@ export function focusSelector(element: Element | null): string | null {
   if (event && element.matches(CARD_LINK)) return `${CARD_LINK}[data-event="${CSS.escape(event)}"]`;
   if (element.matches("[data-open-filters]")) return "[data-open-filters]";
   if (element.matches("[data-when-open]")) return "[data-when-open]";
+  if (element.matches("[data-saved-paste]")) return "[data-saved-paste]";
+  if (element.matches("[data-saved-copy]")) return "[data-saved-copy]";
   return null;
 }
 

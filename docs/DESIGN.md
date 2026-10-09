@@ -347,7 +347,8 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
   visitor to the browser that can. "Abrir en Safari" (Instagram on iPhone: its own `instagram://extbrowser` link,
   undocumented, Instagram asks to confirm) and "Abrir en el navegador" (any app on Android: an `intent://` link) open
   the home page there, marked `?instalar`: the mark comes off the address at once, the banner shows even if it was
-  dismissed, and on iPhone the steps open by themselves. Chrome's own dialog needs a tap of the visitor's, so on
+  dismissed (until the visitor answers it: × or the steps closed), and on iPhone the steps open by themselves. "Copiar
+  enlace" copies the marked address too. Threads and any Android app's own browser (a WebView) count as apps' browsers. Chrome's own dialog needs a tap of the visitor's, so on
   Android the banner's "Instalar" is the one tap left. Facebook, TikTok and the others have no link that works
   (`x-safari-https` stopped working in Meta's apps around mid-2025): their steps point to the app's menu.
 - **A reminder:** whoever dismissed the banner on an earlier visit gets one small reminder, once, when a new save
@@ -410,7 +411,9 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
     install sheet, "Copiar mis N guardados para la app" by "Ya la agregué"; in the app, "Pegar mis guardados de
     Safari" in Guardados (its empty state too, with a line saying how), and on its first start with nothing saved one
     notice, "¿Guardaste eventos en Safari? · Pegarlos". The copied text is a line and a link,
-    `/?guardados=<id>,<id>`; pasting saves the ids this page knows (iOS asks with its own "Pegar" bubble). Nowhere
+    `/?guardados=<id>,<id>`; pasting saves every id in it, also one of an event this copy of the page doesn't have yet
+    (the app may show an older stored copy than Safari's), and the install sheet counts the saves Guardados shows
+    (iOS asks with its own "Pegar" bubble). Nowhere
     else: on Android the app shares the browser's saves, and computers have no home-screen app.
   - **What it shows:** "Tus 3 eventos guardados [Compartir]", then the saved events to come by period, always whole
     (no summaries), then the past ones folded at the end: **"Ya pasaron (2) ⌄"** (the latest first).
@@ -863,7 +866,7 @@ already left (the owner's review, 6 Oct 2026). Closing never reopens an earlier 
   down (>0.5 px/ms) or a drag past max(110px, 22% of the screen) closes, otherwise it springs back; closing continues
   at the finger's speed, and at once when Safari's edge swipe already animated the back navigation. No rise and no
   slide with reduced motion.
-- **Back moves between the app's screens** (`screenHistory.ts`): a period opened whole, the calendar and Guardados each get a history entry, so the phone's back button returns to the previous screen where it was scrolled, instead of leaving the site (which closes the installed app). Undoing one from the page steps back, so history never piles up. Between the calendar and Guardados the entry is replaced (`replaceScreen`): back from either returns to the list, like Instagram's tabs. Back from an in-page jump (Info, `#info`) puts the scroll back where it was. The app restores scrolling itself (`history.scrollRestoration = "manual"`).
+- **Back moves between the app's screens** (`screenHistory.ts`): a period opened whole, the calendar and Guardados each get a history entry, so the phone's back button returns to the previous screen where it was scrolled, instead of leaving the site (which closes the installed app). Undoing one from the page steps back, so history never piles up. Between the calendar and Guardados the entry is replaced (`replaceScreen`): back from either returns to the list, like Instagram's tabs. Back from an in-page jump (Info, `#info`) puts the scroll back where it was, and a move to another screen drops the hash. A reload keeps the month blocks that entry had open, so back still folds them (the bug-squash pass of 8 Oct 2026). The app restores scrolling itself (`history.scrollRestoration = "manual"`, set again after an in-page jump: WebKit turns it back to "auto" for the jump's entry, and the list came back where the calendar was).
   - **Overlays** (the sheets and the details) get entries on top of the screen's (`overlayState`). A move undone from inside one (the sheet's "Limpiar") is undone right there, the overlay stays, and its screen's entry is skipped later.
 - **The details have a URL:** opening pushes `/evento/<id>/`, so the phone's back button closes them. A copied link opens that event's page.
 - **Shared links open the app.** An event's link (`/evento/<id>/`) forwards a browser to the home page (`?evento=<id>`), which shows the list at that event's card with its drawer open at half height (`main.ts`, `openSharedEvent`): × or back leave the visitor on the list, not off the site. A past event (in Bogotá's time) or one no longer in the list stays on its page.
