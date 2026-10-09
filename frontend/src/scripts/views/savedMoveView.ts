@@ -3,8 +3,10 @@
 // asks first with its own "Pegar" bubble.
 
 import { homeUrl } from "../lib/links";
+import { onceFlag } from "../lib/onceFlag";
 import { savedIds, setSaved } from "../lib/saved";
-import { COPY_LABEL, PASTE_LABEL, idsFromMove, moveText } from "../lib/savedMove";
+import { COPY_LABEL, PASTE_LABEL, idsFromMove, moveText, type SavedMove } from "../lib/savedMove";
+import { showNotice } from "./notice";
 
 /** "Copiar para la app": the saves on the clipboard, as a link; `say` tells how it went. */
 export function copySavesForApp(say: (text: string) => void) {
@@ -43,4 +45,22 @@ export function pastedText(result: PasteResult): string {
   if (result === "nothing") return `No hay guardados en lo copiado. En Safari, abre Guardados y toca «${COPY_LABEL}».`;
   if (result.added === 0) return "Ya tenías esos guardados aquí.";
   return result.added === 1 ? "Listo: 1 guardado de Safari." : `Listo: ${result.added} guardados de Safari.`;
+}
+
+/** iPhone, the installed app: Safari's saves from the clipboard, and a notice says how it went. `pasted`: redraws what
+ * shows the saves, when some were new here (main.ts). */
+export async function pasteSaves(pasted: () => void) {
+  const result = await pasteSavesFromSafari();
+  if (typeof result === "object" && result.added) pasted();
+  showNotice(pastedText(result), undefined, { seconds: 8 });
+}
+
+const pasteOffered = onceFlag("saved-paste-offered");
+
+/** The installed iPhone app's first start with nothing saved: one offer to bring Safari's (it can't see them). `move`:
+ * what the saves can do here (installPrompt.ts savedMoveHere); `pasted`: as for pasteSaves. */
+export function offerSafariSaves(move: SavedMove, pasted: () => void) {
+  if (move !== "paste" || savedIds().length || pasteOffered.seen()) return;
+  const offer = { label: "Pegarlos", run: () => void pasteSaves(pasted), track: "guardados-pegar-app-aviso" };
+  if (showNotice("¿Guardaste eventos en Safari?", offer, { seconds: 12, closable: true })) pasteOffered.mark();
 }

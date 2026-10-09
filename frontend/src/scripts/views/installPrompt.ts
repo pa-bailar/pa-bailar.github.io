@@ -157,6 +157,15 @@ export function showInstallSteps() {
   openPanelSheet(byId<HTMLDialogElement>("install-sheet"));
 }
 
+/** Says `text` in the install sheet's status line when the sheet is open (a notice can't show over it, notice.ts):
+ * whether it did. */
+export function sayInSheet(text: string): boolean {
+  const sheet = document.getElementById("install-sheet") as HTMLDialogElement | null;
+  if (!sheet?.open) return false;
+  byId("install-status").textContent = text;
+  return true;
+}
+
 /** The steps' clip (pages/install/[name].ts), or none. Its address is set only now, so it loads only when asked for;
  * with reduced motion, the poster alone (a still of the step that differs: the menu with Compartir). */
 function showClip(clip: InstallClip | undefined) {
