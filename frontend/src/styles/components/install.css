@@ -51,7 +51,7 @@
    the link and the arrow in the sheet. */
 /* Taller than the other sheets (85dvh, sheet.css) for the clip: a strip of the page still shows above it. */
 .sheet-panel.install-sheet {
-  max-height: 92dvh;
+  max-height: var(--sheet-tall-max);
 }
 
 .install-sheet__watch {
