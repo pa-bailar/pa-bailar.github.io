@@ -2,6 +2,9 @@
 //   - A card has the focus: ↑ ↓ ← → move it to the card above, below, before or after (the grid's rows on wide screens,
 //     the feed's single column on phones). Enter opens its details, with its image big beside them where that works
 //     (lightbox.ts); elsewhere the card's own link opens the details.
+//   - A summarized period ("Ver los 23 eventos") is a stop too, in the grid's order (the
+//     owner, 6 Oct 2026: the arrows go on through the whole list instead of scrolling past its end). Enter opens the
+//     period whole and puts the focus on its first new event (main.ts showPeriod), and the arrows go on from there.
 //   - Nothing has the focus yet: any arrow puts it on the first stop on screen, the first whose top shows below the
 //     pinned bars (the owner, 6 Oct 2026: ↑ ↓ too; Page Up/Down, space and the wheel still scroll). With the details
 //     open, it moves from their event instead, as in the details (a click on the page's margin drops the focus).
@@ -14,13 +17,15 @@
 //     ← ↑ to the one before it (eventDrawer.ts openEventGap).
 //   - With the image beside the details, ← → go through its photos first, then on to the event before or after (its
 //     last photo, going back), like one stream (the owner, 6 Oct 2026; lightbox.ts stepStage).
+//   - From the details, a period's block on the way opens by itself and the details show its first new event (its
+//     last, going back): moving onto a block the details can't show left the image unchanged (the owner, 6 Oct 2026).
 //   - Where the side panel fits (wide screens), it shows the card the arrows move to, like an inbox's reading pane: an
 //     arrow onto a card opens it, from a fresh page too (the owner, 6 Oct 2026), and the focus stays in the list (so
 //     ↑ ↓ keep working there). Escape closes it; the next arrow opens it again. Not where the details are the phones'
 //     drawer over the list. Before, after a look at another card's image (the lightbox) or Escape from it, the arrows
 //     moved through the list and the panel stayed on the first event (the owner, 5 Oct 2026).
 //   - Tab: one stop per event (the owner, 6 Oct 2026). Tab walks the list in its reading order, the same as →: each
-//     card once (the card itself), the periods' Compartir where they are; Shift+Tab goes
+//     card once (the card itself), the periods' Compartir and the month blocks where they are; Shift+Tab goes
 //     back like ←. The side panel follows the card Tab lands on, as with the arrows (tabOrder.ts).
 // Never while typing (the search), in a menu (Cuándo, a pill's panel) or under another dialog (a sheet, the post
 // viewer); the image stage beside the details is theirs (its ← → go through the photos first). A card's ‹ › stay the
@@ -58,8 +63,9 @@ export function neighbor(boxes: Box[], from: number, direction: Direction): numb
     .filter(({ box }) => (below ? box.top > here.top + here.height / 2 : box.top + box.height / 2 < here.top));
   if (!candidates.length) return null;
   const rowTop = below ? Math.min(...candidates.map(({ box }) => box.top)) : Math.max(...candidates.map(({ box }) => box.top));
-  // The row is told by its own first box's height, not this one's: a short stop just above taller cards is a row of
-  // its own (measured by a 620-px card, the list's old "Ver 10 más" was grouped with them and skipped). rowTop is a
+  // The row is told by its own first box's height, not this one's: a short stop (the list's old "Ver 10 más") just
+  // above the next period's
+  // cards is a row of its own (measured by a 620-px card, it was grouped with them and skipped). rowTop is a
   // candidate's own top, so one is found.
   const nearest = candidates.find(({ box }) => box.top === rowTop)!.box;
   const row = candidates.filter(({ box }) => Math.abs(box.top - rowTop) < Math.min(here.height, nearest.height) / 2);
@@ -79,11 +85,31 @@ export function firstInView(boxes: Box[], top: number, bottom: number): number |
   return partly >= 0 ? partly : boxes.length ? 0 : null;
 }
 
-/** Where the arrows stop in the view on screen, in reading order, laid out: its cards. */
+/**
+ * Where the arrows stop in the view on screen, in reading order, laid out: its cards, and the buttons that open a
+ * period whole (a summarized period's "Ver los 23 eventos").
+ */
 function stops(): HTMLElement[] {
-  return [...document.querySelectorAll<HTMLElement>(`${VIEW_ON_SCREEN} [data-event-card]`)].filter(
+  return [...document.querySelectorAll<HTMLElement>(`${VIEW_ON_SCREEN} [data-event-card], ${VIEW_ON_SCREEN} [data-show-period]`)].filter(
     (stop) => stop.getClientRects().length > 0,
   );
+}
+
+/** What gets the focus at a stop: a card's link, or the period's button itself. */
+const focusOf = (stop: HTMLElement | undefined): HTMLElement | null =>
+  stop?.matches("[data-show-period]") ? stop : cardLink(stop);
+
+/**
+ * Opens a period's block from the details (its button's own click: main.ts showPeriod) and returns the first card it
+ * added, or the last one going back.
+ */
+function openPeriod(button: HTMLElement, backward: boolean): HTMLElement | undefined {
+  const key = button.dataset.showPeriod ?? "";
+  const section = () => document.querySelector(`${VIEW_ON_SCREEN} [data-period="${CSS.escape(key)}"]`);
+  const before = section()?.querySelectorAll("[data-event-card]").length ?? 0;
+  button.click();
+  const added = [...(section()?.querySelectorAll<HTMLElement>("[data-event-card]") ?? [])].slice(before);
+  return backward ? added.at(-1) : added[0];
 }
 
 /** Whether the keys belong to something else: typing, a menu, a dialog over the page other than the details. */
@@ -105,7 +131,7 @@ function onScreen(stop: HTMLElement | undefined): boolean {
 }
 
 /**
- * The focus on `focus` (a card's link), and its whole card in view, clear of the pinned bars: a
+ * The focus on `focus` (a card's link, or a period's button), and its whole stop in view, clear of the pinned bars: a
  * card's link is its title, under the image, so focusing it alone could leave the image under the toolbar.
  */
 function focusStop(focus: HTMLElement) {
@@ -156,7 +182,7 @@ interface Hooks {
 }
 
 export function initKeyboardNav(hooks: Hooks) {
-  /** Enter on a card or on the open details. */
+  /** Enter on a card or on the open details (a period's button is onPeriodKey's: its click). */
   function onEnter(domEvent: KeyboardEvent, target: Element) {
     const link = target.closest<HTMLAnchorElement>(CARD_LINK);
     const openId = hooks.openEventId();
@@ -167,7 +193,24 @@ export function initKeyboardNav(hooks: Hooks) {
   }
 
   /**
-   * From the details (`at`: their event's stop): a photo, or the event that way. `inPanel`:
+   * A period's button pressed from the keyboard, Enter or Space (a real click with no position; the arrows' own,
+   * openPeriod, isn't trusted): it opens the period and focuses its first new event without scrolling (main.ts
+   * showPeriod, so a click doesn't jump); from the keyboard that card must come into view, or the next arrow starts off
+   * screen. The side panel follows it, as after an arrow: else it stayed on the event before, and the next → skipped
+   * the first new one. (Only Enter did both: Space left the card 184 px above the screen, the bug hunt of 7 Oct 2026.)
+   */
+  function onPeriodKey(domEvent: MouseEvent) {
+    if (!domEvent.isTrusted || domEvent.detail !== 0) return;
+    if (!(domEvent.target instanceof Element) || !domEvent.target.closest("[data-show-period]")) return;
+    requestAnimationFrame(() => {
+      const card = document.activeElement?.closest<HTMLElement>("[data-event-card]") ?? undefined;
+      card?.scrollIntoView({ block: "nearest" });
+      showInPane(card);
+    });
+  }
+
+  /**
+   * From the details (`at`: their event's stop): a photo, or the event that way, opening a block on the way. `inPanel`:
    * the focus was in them (it stays there); else on nothing, and it goes to the card, as with the reading pane.
    */
   function fromDetails(domEvent: KeyboardEvent, direction: Direction, list: HTMLElement[], at: number, inPanel: boolean) {
@@ -180,7 +223,11 @@ export function initKeyboardNav(hooks: Hooks) {
     // Its card left the list (unsaved in Guardados): on from where it was, to the card after it (now in its place) or
     // before it (the bug hunt of 7 Oct 2026: the arrows did nothing).
     const gap = at < 0 ? hooks.openEventGap() : null;
-    const next = to === null ? (backward ? gap?.before : gap?.after) : list[to];
+    let next = to === null ? (backward ? gap?.before : gap?.after) : list[to];
+    if (next?.dataset.showPeriod) {
+      domEvent.preventDefault(); // even if it adds nothing to go to: no scrolling instead
+      next = openPeriod(next, backward);
+    }
     const event = next?.dataset.eventCard ? hooks.findEvent(next.dataset.eventCard) : undefined;
     const link = cardLink(next);
     if (!event || !link) return;
@@ -197,13 +244,13 @@ export function initKeyboardNav(hooks: Hooks) {
     if (hooks.openEventId() || hooks.readingPane()) hooks.showEvent(event, link, { stayInList: true });
   }
 
-  /** From a card: the card that way; the side panel follows it. */
+  /** From a card or a period's button: the stop that way; the side panel follows a card. */
   function fromStop(domEvent: KeyboardEvent, direction: Direction, list: HTMLElement[], stop: HTMLElement) {
     const from = list.indexOf(stop);
     if (from < 0) return;
     const to = neighbor(list.map((item) => item.getBoundingClientRect()), from, direction);
     const next = to === null ? undefined : list[to];
-    const focus = cardLink(next);
+    const focus = focusOf(next);
     if (!focus) return;
     domEvent.preventDefault();
     focusStop(focus); // scroll-padding keeps it clear of the pinned bars
@@ -216,7 +263,7 @@ export function initKeyboardNav(hooks: Hooks) {
     const boxes = list.map((item) => item.getBoundingClientRect());
     const first = firstInView(boxes, top, bottom);
     const box = first === null ? undefined : boxes[first];
-    const focus = first === null ? null : cardLink(list[first]);
+    const focus = first === null ? null : focusOf(list[first]);
     if (!box || !focus) return;
     domEvent.preventDefault();
     // Already on screen: no scroll (the browser would push a tall card under the bar). Straddling the pinned bar (no
@@ -227,6 +274,7 @@ export function initKeyboardNav(hooks: Hooks) {
     showInPane(first === null ? undefined : list[first]);
   }
 
+  document.addEventListener("click", onPeriodKey);
   document.addEventListener("keydown", (domEvent) => {
     if (domEvent.defaultPrevented || modified(domEvent)) return;
     const target = domEvent.target instanceof Element ? domEvent.target : document.body;
@@ -243,9 +291,9 @@ export function initKeyboardNav(hooks: Hooks) {
     if (openId && (inDetails(target) || (onNothing(target) && at >= 0 && onScreen(list[at])))) {
       return fromDetails(domEvent, direction, list, at, inDetails(target));
     }
-    // A card in focus: from it, while any of it is in sight; scrolled away from it (the wheel, Page Down),
+    // A card or a block in focus: from it, while any of it is in sight; scrolled away from it (the wheel, Page Down),
     // from the first one where the visitor is looking, as from the details (DESIGN.md, the keyboard).
-    const stop = target.closest<HTMLElement>("[data-event-card]");
+    const stop = target.closest<HTMLElement>("[data-event-card], [data-show-period]");
     if (stop && inSight(stop)) return fromStop(domEvent, direction, list, stop);
     if (stop || onNothing(target)) fromNothing(domEvent, list);
   });
