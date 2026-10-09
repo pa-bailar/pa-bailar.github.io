@@ -4,6 +4,7 @@
 
 import type { DanceEvent } from "../types";
 import { isMultiDay, isSeries, lastDay, shownSession, todayIso } from "./dates";
+import { PUENTE } from "./holidays";
 import {
   capitalize,
   eventCountLabel,
@@ -68,7 +69,8 @@ export function eventShareText(event: DanceEvent): string {
     .join("\n");
 }
 
-/** The near periods of the list that can be shared, and the title of their image. */
+/** The near periods of the list that can be shared, and the title of their image (the weekend's when it's a puente:
+ * periodShareTitle). */
 export const PERIOD_SHARE_TITLES: Record<string, string> = {
   hoy: "Hoy en Bogotá",
   manana: "Mañana en Bogotá", // only when chosen in the date filter (state.ts, TOMORROW)
@@ -76,3 +78,8 @@ export const PERIOD_SHARE_TITLES: Record<string, string> = {
   "fin-de-semana": "Este finde en Bogotá",
   "proxima-semana": "La próxima semana en Bogotá",
 };
+
+/** A period's share title, as its group is named: the weekend's reads "Este puente en Bogotá" when it's one. */
+export function periodShareTitle(group: { key: string; label: string }): string | undefined {
+  return group.key === "fin-de-semana" && group.label === PUENTE.label ? PUENTE.share : PERIOD_SHARE_TITLES[group.key];
+}

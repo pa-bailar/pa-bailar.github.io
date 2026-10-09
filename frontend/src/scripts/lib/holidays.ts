@@ -5,7 +5,7 @@
 //   - from Easter: Holy Thursday and Good Friday, and (moved to Monday) Ascension (+39 days),
 //     Corpus Christi (+60) and Sacred Heart (+68).
 
-import { addDays, parseIsoDate, toIsoDate } from "./dates";
+import { addDays, endOfWeek, parseIsoDate, toIsoDate } from "./dates";
 
 const FIXED = ["01-01", "05-01", "07-20", "08-07", "12-08", "12-25"];
 const MOVED_TO_MONDAY = ["01-06", "03-19", "06-29", "08-15", "10-12", "11-01", "11-11"];
@@ -59,4 +59,28 @@ export function isHoliday(iso: string): boolean {
     byYear.set(year, holidays);
   }
   return holidays.has(iso);
+}
+
+/** The weekend's group in the list when it's a puente (state.ts), and its share title (shareText.ts). */
+export const PUENTE = { label: "Este puente", short: "Puente", share: "Este puente en Bogotá" };
+
+/** This week's weekend (`today`'s week, Monday to Sunday): Friday to Sunday, `puente` when holidays make it longer. */
+export interface WeekendSpan {
+  start: string;
+  end: string;
+  puente: boolean;
+}
+
+/**
+ * This week's weekend, stretched over the holidays next to it (the owner, 8 Oct 2026: "Este puente"): a Monday holiday
+ * (most of them, Ley Emiliani) or Holy Thursday join it, and a holiday on its Friday makes it a puente too. Fri 9 to
+ * Mon 12 Oct 2026 (Columbus Day moved to Monday) is "Este puente".
+ */
+export function weekendSpan(today: string): WeekendSpan {
+  const friday = addDays(endOfWeek(today), -2);
+  let start = friday;
+  let end = endOfWeek(today);
+  while (isHoliday(addDays(start, -1))) start = addDays(start, -1);
+  while (isHoliday(addDays(end, 1))) end = addDays(end, 1);
+  return { start, end, puente: start < friday || end > endOfWeek(today) || isHoliday(friday) };
 }

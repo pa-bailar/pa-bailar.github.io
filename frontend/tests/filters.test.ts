@@ -75,7 +75,8 @@ describe("dates: any of the chosen periods", () => {
   });
 
   it("the list shows each event on its first day within the chosen periods, Mañana as a group of its own", () => {
-    expect(listedDay(festival, { dates: ["proxima-semana"] }, TODAY)).toBe("2026-10-12");
+    // Monday 12 Oct 2026 is a holiday: the weekend is a puente to Monday, next week starts on Tuesday 13.
+    expect(listedDay(festival, { dates: ["proxima-semana"] }, TODAY)).toBe("2026-10-13");
     expect(listedDay(festival, {}, TODAY)).toBe("2026-10-11");
     const groups = (dates: string[]) =>
       groupByPeriod([congress, tomorrow, saturday, festival].filter((e) => matchesDates(e, dates, TODAY)), TODAY, { dates }).map(
@@ -392,7 +393,7 @@ describe("the filter chips (filterModel)", () => {
 });
 
 describe("the \"Cuándo\" menu", () => {
-  it("each near period's days, as its hint: \"mié 7\", \"9–11 oct\"; none for a month", () => {
+  it("each near period's days, as its hint: \"mié 7\", \"9–12 oct\" (a puente); none for a month", () => {
     const hint = (key: string, today = TODAY) => {
       const days = periodDays(key, today);
       return days ? spanLabel(...days) : null;
@@ -400,13 +401,14 @@ describe("the \"Cuándo\" menu", () => {
     expect(hint("hoy")).toBe("mié 7");
     expect(hint(TOMORROW)).toBe("jue 8");
     expect(hint("esta-semana")).toBe("jue 8");
-    expect(hint("fin-de-semana")).toBe("9–11 oct");
-    expect(hint("proxima-semana")).toBe("12–18 oct");
+    expect(hint("fin-de-semana")).toBe("9–12 oct"); // Monday 12 Oct 2026 is a holiday: "Este puente"
+    expect(hint("proxima-semana")).toBe("13–18 oct");
     expect(hint("resto-del-mes")).toBe("19–31 oct");
     expect(hint("2026-11")).toBeNull();
     // Across months; and on Saturday the weekend left is from tomorrow.
-    expect(hint("fin-de-semana", "2026-10-28")).toBe("30 oct – 1 nov");
-    expect(hint("fin-de-semana", "2026-10-10")).toBe("dom 11");
+    expect(hint("fin-de-semana", "2026-10-28")).toBe("30 oct – 2 nov"); // All Saints' moved to Monday 2 Nov: a puente
+    expect(hint("fin-de-semana", "2026-10-10")).toBe("11–12 oct");
+    expect(hint("fin-de-semana", "2026-10-21")).toBe("23–25 oct"); // no holiday: Friday to Sunday
   });
 
   it("is a menu of radio items: Cualquier fecha first, the chosen one checked, a dimmed one aria-disabled", () => {

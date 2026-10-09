@@ -197,10 +197,10 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves: the pa
 
   | Group | Range |
   |---|---|
-  | Hoy | today, always first: what most visitors come for. An event over several days that has started is here every day it goes on |
+  | Hoy | today, always first: what most visitors come for. An event over several days that has started is here every day it goes on. A day's event stays until midnight, even after its end time (the owner, 8 Oct 2026: fine as is); one that runs past midnight stays until its end |
   | Esta semana | tomorrow … Thursday of this week (only Monday–Wednesday) |
-  | Este fin de semana | Friday … Sunday of this week (Friday night counts as weekend) |
-  | Próxima semana | next Monday … Sunday |
+  | Este fin de semana | Friday … Sunday of this week (Friday night counts as weekend). **"Este puente"** ("Puente" in the bar and the Cuándo menu, "Este puente en Bogotá" when shared) when holidays next to it make it longer: a Monday holiday (most of them, Ley Emiliani), Holy Thursday, or a holiday on its Friday (the owner, 8 Oct 2026; `lib/holidays.ts` `weekendSpan`). "puente" in the search names its days |
+  | Próxima semana | next Monday … Sunday (from Tuesday when the puente took the Monday) |
   | Más adelante en *mes* | rest of the current month |
   | *Mes* / *Mes de año* | one group per later month (year shown outside the current year) |
 

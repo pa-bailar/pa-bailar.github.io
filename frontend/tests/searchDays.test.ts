@@ -45,6 +45,16 @@ describe("days in the search (lib/searchDays.ts)", () => {
     expect(finds("finde", on("2026-10-11"), "2026-10-10")).toBe(true);
   });
 
+  // The owner, 8 Oct 2026: "Este puente" (lib/holidays.ts weekendSpan): "puente" names its days, Monday's holiday too.
+  it("puente: this week's long weekend, with its holiday; nothing special in a week without one", () => {
+    for (const query of ["puente", "este puente"]) {
+      expect(finds(query, on("2026-10-09")), query).toBe(true);
+      expect(finds(query, on("2026-10-12")), query).toBe(true);
+      expect(finds(query, on("2026-10-13")), query).toBe(false);
+    }
+    expect(finds("puente", on("2026-10-24"), "2026-10-21")).toBe(false); // no puente that week: a plain word
+  });
+
   it("this week and the next", () => {
     expect(finds("esta semana", on("2026-10-11"))).toBe(true);
     expect(finds("esta semana", on("2026-10-12"))).toBe(false);
