@@ -93,13 +93,16 @@ export function installPlace(agent: string, { platform = "", maxTouchPoints = 0 
   return { kind: "computer" };
 }
 
+/** The device named in the words: "iPad" or "iPhone". */
+const device = (place: { ipad: boolean }) => (place.ipad ? "iPad" : "iPhone");
+
 /**
  * The footer's link to the steps on iPhone and iPad (in a browser or an app's own), always there: the page can't tell
  * the site was added, so the steps stay one tap away after "Ya la agregué" or the steps closed (the owner, 8 Oct 2026).
  * null elsewhere, where the footer offers it only while it isn't installed.
  */
 export function howToInstallLabel(place: InstallPlace): string | null {
-  if (place.kind === "ios") return `Cómo instalar Pa' Bailar en tu ${place.ipad ? "iPad" : "iPhone"}`;
+  if (place.kind === "ios") return `Cómo instalar Pa' Bailar en tu ${device(place)}`;
   if (place.kind === "in-app" && place.ios) return "Cómo instalar Pa' Bailar en tu iPhone";
   return null;
 }
@@ -110,7 +113,7 @@ export function howToInstallLabel(place: InstallPlace): string | null {
  * On Android the app shares the browser's, so it can (the owner, 8 Oct 2026).
  */
 export function reminderText(place: InstallPlace): string {
-  if (place.kind === "ios") return `Pa' Bailar a un toque: instálala en tu ${place.ipad ? "iPad" : "iPhone"}.`;
+  if (place.kind === "ios") return `Pa' Bailar a un toque: instálala en tu ${device(place)}.`;
   return "Tus guardados a un toque: instala Pa' Bailar.";
 }
 
@@ -217,7 +220,7 @@ export function installGuide(place: InstallPlace, here?: URL): InstallGuide | nu
       break;
   }
   if (!place.canAdd) return OPEN_IN_SAFARI;
-  const title = place.ipad ? "Instálala en tu iPad" : "Instálala en tu iPhone";
+  const title = `Instálala en tu ${device(place)}`;
   if (place.browser === "safari") {
     if (place.ipad) {
       return {

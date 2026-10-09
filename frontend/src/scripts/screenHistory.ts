@@ -222,6 +222,14 @@ export function goTo(kind: ScreenKind, move: () => void) {
   }
 }
 
+/** Where the last move between screens is in `steps`: in-page jumps after it (#info) are the same screen. 0: none
+ * since the start. */
+function lastMoveIndex(steps: Step[]): number {
+  let at = steps.length - 1;
+  while (at > 0 && steps[at]?.kind === "jump") at--;
+  return at;
+}
+
 /**
  * A move from one screen to another of the same rank (the calendar and Guardados): the current entry shows the new one,
  * so back still leads where it did (the list). It gets an entry of its own (`goTo`) when the current one isn't such a
@@ -231,8 +239,8 @@ export function goTo(kind: ScreenKind, move: () => void) {
 export function replaceScreen(kind: ScreenKind, move: () => void) {
   const state = historyState();
   const steps = stepsOf(state);
-  const moved = steps.findLast((step) => step.kind !== "jump"); // past in-page jumps: the same screen
-  if (state.overlay || steps.length < 2 || moved === steps[0] || moved?.kind !== kind) return goTo(kind, move);
+  const at = lastMoveIndex(steps);
+  if (state.overlay || at < 1 || steps[at]?.kind !== kind) return goTo(kind, move);
   move();
   remember(steps, false);
 }
@@ -244,9 +252,7 @@ export function replaceScreen(kind: ScreenKind, move: () => void) {
 export function leave(kind: ScreenKind, move: () => void) {
   const state = historyState();
   const steps = stepsOf(state);
-  // In-page jumps since that move (#info) are the same screen: back over them too.
-  let at = steps.length - 1;
-  while (at > 0 && steps[at]?.kind === "jump") at--;
+  const at = lastMoveIndex(steps); // in-page jumps since that move (#info): back over them too
   const jumps = steps.length - 1 - at;
   const last = steps[at];
   if (last?.kind === kind && at > 0 && !(jumps && state.overlay)) {
