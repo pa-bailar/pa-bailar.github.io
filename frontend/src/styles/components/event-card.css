@@ -6,45 +6,14 @@
   margin-top: var(--space-7);
 }
 
-/* A later period, summarized until opened (upcomingView.ts): its first flyers as small squares and
-   "Ver los 23 eventos". The whole row is the button. */
-.period-summary {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-  width: 100%;
-  padding: var(--space-3);
-  border: var(--border-width) solid var(--border);
-  border-radius: var(--radius-md);
-  background: var(--surface);
-  color: var(--text);
-  text-align: left;
+/* The weekend's days (upcomingView.ts BY_DAY): "Mañana · Viernes, 9 de octubre" over each day's cards, the calendar's
+   day heading (base.css .day-heading) a step smaller, under the period's. */
+.agenda-day {
+  font-size: var(--text-xl);
 }
 
-.period-summary__flyers {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: var(--space-2);
-  max-width: 440px; /* wide screens: small squares, not a row of posters */
-}
-
-.period-summary__flyers img {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 1;
-  object-fit: cover;
-  border-radius: var(--radius-sm);
-  background: var(--surface-sunken);
-}
-
-.period-summary__label {
-  font-size: var(--text-sm);
-  font-weight: var(--weight-bold);
-}
-
-.period-summary__label::after {
-  content: " ›";
+.agenda-day:not(:first-of-type) {
+  margin-top: var(--space-6);
 }
 
 /* The share icon at the end of a near period's heading (views/sharing.ts). */
@@ -169,39 +138,6 @@
 
 .saved-past[open] .saved-past__summary {
   margin-bottom: var(--space-3);
-}
-
-/* "Ver 7 más ⌄" under a busy period's first events: the rest unfolds here. A month's block (.period-summary) without
-   its flyers, one row with its label and ⌄ (the owner, 6 Oct 2026: a small button went unnoticed), printed like
-   "Detalles ›" (7 Oct: more visible): the same ink frame and offset in the three colors, shared with the action row's
-   rules below, the frame on the button's whole box. Pressed, it sinks onto the offset and fills. It sits as far from
-   its cards as from the next period (7 Oct: it looked low between them). */
-.period-more {
-  --details-press: 0px;
-  --details-inset: 0px;
-  position: relative;
-  isolation: isolate; /* the frame and the offset (z-index below 0) stay behind the label, inside the button */
-  top: var(--details-press);
-  left: var(--details-press);
-  flex-direction: row;
-  align-items: center;
-  gap: var(--space-2);
-  min-height: calc(var(--touch-target) + var(--space-2)); /* 52px: chunkier than a control, easier to see (7 Oct) */
-  margin-top: var(--space-6);
-  padding-inline: var(--space-4);
-  border: 0;
-  background: none; /* the fill is the frame's (::after), inside its ink */
-  font-size: var(--text-md);
-  font-weight: var(--weight-bold);
-}
-
-.agenda-group:has(> .period-more) + .agenda-group {
-  margin-top: var(--space-6);
-}
-
-.period-more .icon {
-  width: var(--icon-md);
-  height: var(--icon-md);
 }
 
 /* Period header, in the lettering of Izzy Sanabria's Fania covers: the title in the display face with a
@@ -572,9 +508,8 @@
   stroke-width: 2.4;
 }
 
-/* The frame: 36px tall (--details-height), the button's width; "Ver N más"'s whole box (--details-inset 0). */
-.event-card__details::after,
-.period-more::after {
+/* The frame: 36px tall (--details-height), the button's width. */
+.event-card__details::after {
   content: "";
   position: absolute;
   z-index: -1;
@@ -585,13 +520,11 @@
 }
 
 /* The keyboard's ring goes around the frame, not the 44px target. */
-.event-card__details:focus-visible,
-.period-more:focus-visible {
+.event-card__details:focus-visible {
   outline: none;
 }
 
-.event-card__details:focus-visible::after,
-.period-more:focus-visible::after {
+.event-card__details:focus-visible::after {
   outline: 2px solid var(--focus);
   outline-offset: 2px;
 }
@@ -603,8 +536,7 @@
    and right lines look as thick as the top and left ones (cut at the middle of the line, the band tinted them and
    seemed to climb over the bottom one). At the rounded corner the cut steps in diagonally (--details-step), within the ink, so the
    band fills that corner too. */
-.event-card__details::before,
-.period-more::before {
+.event-card__details::before {
   --details-gap: calc(var(--details-offset) - var(--details-press)); /* what shows past the frame */
   --details-cut: calc(100% - var(--details-gap) - var(--details-tuck));
   --details-step: calc(var(--radius-sm) - 2 * var(--details-tuck));
@@ -628,24 +560,12 @@
   );
 }
 
-.event-card__details:active,
-.period-more:active {
+.event-card__details:active {
   --details-press: 1px;
 }
 
-.event-card__details:active::after,
-.period-more:active::after {
+.event-card__details:active::after {
   background: var(--details-pressed);
-}
-
-/* "Ver N más" keeps the month blocks' fill (.period-summary's --surface) inside its frame (the owner, 7 Oct 2026).
-   Pressed, it sinks to the image wells' tone: Detalles' pressed fill is the cards' own in the dark theme. */
-.period-more::after {
-  background: var(--surface);
-}
-
-.period-more:active::after {
-  background: var(--surface-sunken);
 }
 
 .event-card__share {

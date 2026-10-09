@@ -3,7 +3,7 @@
 import type { AppState, DanceEvent, EventType, View } from "./types";
 import { initClickTracking } from "./lib/analytics";
 import { allowPressedLook, byId, isPlainClick } from "./lib/dom";
-import { CARD_LINK, cardLink, cardOnScreen } from "./lib/cards";
+import { cardLink, cardOnScreen } from "./lib/cards";
 import { focusAfterClearing, focusScope, focusSelector, refocus } from "./lib/focus";
 import { eventCountLabel, formatLongDate } from "./lib/format";
 import { addMonths, currentMonth, isUpcoming, nowInBogota, todayIso } from "./lib/dates";
@@ -14,7 +14,6 @@ import {
   clearFilters,
   createInitialState,
   defaultDayForMonth,
-  groupByPeriod,
   isFilterGroup,
   isView,
   listOrder,
@@ -50,8 +49,8 @@ import {
   restoreListPosition,
   returnToScroll,
 } from "./views/jumpBar";
-import { renderUpcomingView, sharedEventEntry, showWholePeriod } from "./views/upcomingView";
-import { goTo, initScreenHistory } from "./screenHistory";
+import { renderUpcomingView } from "./views/upcomingView";
+import { initScreenHistory } from "./screenHistory";
 import { initPostViewer } from "./views/postViewer";
 import { initPostsSheet } from "./views/postsSheet";
 import { closeSearchField, initBottomNav, renderBottomNav } from "./views/bottomNav";
@@ -240,19 +239,6 @@ const endSearch: ControlHandler = () => {
   render();
 };
 
-/** "Ver los 23 eventos" / "Ver 7 más": the period opens whole; focus moves to its first new event. */
-const showPeriod: ControlHandler = (key, control) => {
-  const section = control.closest<HTMLElement>(".agenda-group");
-  const before = section?.querySelectorAll(".event-card").length ?? 0;
-  goTo("period", () => {
-    if (showWholePeriod(key)) render();
-  });
-  const cards = section?.isConnected
-    ? section.querySelectorAll<HTMLElement>(CARD_LINK)
-    : document.querySelector(`[data-period="${CSS.escape(key)}"]`)?.querySelectorAll<HTMLElement>(CARD_LINK);
-  cards?.[before]?.focus({ preventScroll: true });
-};
-
 /**
  * "Saltar a los eventos": the focus to the list, <main>, which takes it only then (a tabindex while it has it). With
  * one for good, any click in the list's gaps (in Safari, on any card: it doesn't focus links on a click) gave <main>
@@ -372,7 +358,6 @@ const CONTROLS: [attribute: string, handler: ControlHandler][] = [
   ["closeSearch", endSearch],
   ["clearSearch", endSearch],
   ["openFilters", (_, control) => !isDisabled(control) && openFilterSheet()], // off in Guardados
-  ["showPeriod", showPeriod],
   ["event", openCardEvent],
   ["view", chooseView],
   ["filter", toggleFilter],
@@ -424,8 +409,8 @@ function handleClick(domEvent: MouseEvent) {
 }
 
 /**
- * A shared link (/evento/<id>/, which forwards here as ?evento=<id>): the list opens at that event's card (its
- * period opened whole if it was summarized), with its details drawer at half height over it. The address goes
+ * A shared link (/evento/<id>/, which forwards here as ?evento=<id>): the list opens at that event's card, with its
+ * details drawer at half height over it. The address goes
  * back to the home page first, so × or "back" leave the visitor on the list instead of leaving the site. An event
  * that isn't in the list (it already passed) goes back to its own page, which says so; a bar's, hidden by "Ocultar
  * eventos de bares", opens its details over the list all the same.
@@ -437,20 +422,19 @@ function openSharedEvent() {
   history.replaceState(null, "", link.address); // the list's entry, under the drawer's (pushed once it opens)
   const event = findEvent(id);
   if (!event) return;
-  const entryWith = (shown: AppState) => sharedEventEntry(groupByPeriod(visibleEvents(events, shown), todayIso(), shown), id);
-  const entry = entryWith(state);
+  const listedWith = (shown: AppState) => visibleEvents(events, shown).some((item) => item.id === id);
+  const listed = listedWith(state);
   // A bar's event while the bars are hidden (remembered from an earlier visit): its details open all the same, over
   // the list without its card, as for any filter; the setting stays as the visitor left it.
-  const hiddenBar = !entry.listed && entryWith({ ...state, hideBars: false }).listed;
-  if (!entry.listed && !hiddenBar) {
+  const hiddenBar = !listed && listedWith({ ...state, hideBars: false });
+  if (!listed && !hiddenBar) {
     params.set("pagina", "1"); // its page stays (it would forward here again otherwise)
     location.replace(`${eventPath(event)}?${params}`);
     return;
   }
-  if (entry.listed && entry.open && showWholePeriod(entry.open)) render();
   // Once the page has settled (fonts in, layout measured): the card is found where it will stay.
   void document.fonts.ready.then(() =>
-    requestAnimationFrame(() => requestAnimationFrame(() => openEventDrawer(event, { source: "enlace", shared: entry.listed }))),
+    requestAnimationFrame(() => requestAnimationFrame(() => openEventDrawer(event, { source: "enlace", shared: listed }))),
   );
 }
 

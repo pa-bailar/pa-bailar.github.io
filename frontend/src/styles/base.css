@@ -21,12 +21,11 @@ html {
 /* Pressed: with the browser's flash off (above), a button or a link dims while it's held, like Instagram's, so a tap
    shows it registered (the bug hunt of 7 Oct 2026: most controls showed nothing, and Compartir or a link to another
    app answered only after a moment). Never a card, its link or its flyer: they're held at the start of every scroll,
-   and would flash. Nor the controls that sink into their own fill (Detalles, "Ver N más", a card's Compartir:
+   and would flash. Nor the controls that sink into their own fill (Detalles, a card's Compartir:
    event-card.css). iOS shows :active only where a touchstart listener exists (lib/dom.ts, allowPressedLook). */
 :where(button, a[href], summary, label, [role="button"]):active:not(
     .event-card__hit,
     .event-card__details,
-    .period-more,
     .event-card__share
   ) {
   opacity: var(--pressed-opacity);

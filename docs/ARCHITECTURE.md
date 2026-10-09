@@ -185,7 +185,7 @@ flowchart LR
 | `/evento/<id>/` | `pages/evento/[id].astro` | One page per event: where a shared link points. A browser is forwarded to the home page with the event open over the list, unless it's past (section 5.3). Rendered at build time: the flyer, then the same details as the drawer. Includes the link preview's tags (section 3.4) and schema.org `Event` data (section 6) |
 | `/og/<id>.jpg` | `pages/og/[id].jpg.ts` | Each event's link-preview image: 1200×630, the flyer with the date, title, place and price (section 3.4) |
 | `/og/sitio.jpg` | `pages/og/sitio.jpg.ts` | The home page's link preview. Drawn once with the site's fonts by `scripts/og-site.html` and stored as `src/assets/og-site.jpg` |
-| `/thumbs/<flyer>.webp` | `pages/thumbs/[name].webp.ts` | A small 3:4 thumbnail of every flyer, like Instagram's grid, for where flyers show small (the posts sheet, summarized periods, the 404 page, a shared list's image), so they load at once on a phone |
+| `/thumbs/<flyer>.webp` | `pages/thumbs/[name].webp.ts` | A small 3:4 thumbnail of every flyer, like Instagram's grid, for where flyers show small (the posts sheet, the 404 page, a shared list's image), so they load at once on a phone |
 | `/calendario.ics` | `pages/calendario.ics.ts` | A subscribable calendar feed (iCalendar) with every event, a workshop series as one entry per session (`lib/calendarFeed.ts`, section 6). Rebuilt with the site. Not linked anymore; kept so existing subscriptions keep working |
 | `/manifest.webmanifest` | `pages/manifest.webmanifest.ts` | What lets a phone install the site like an app: name, colors, icons, full screen |
 | `/icons/<name>.png` | `pages/icons/[name].png.ts` | The app icons (192, 512, maskable 512, Apple touch icon), made from SVG at build time |
@@ -434,8 +434,8 @@ flowchart TD
   started it's listed under "Hoy" every day it goes on (`shownDay` in `lib/dates.ts`). A workshop series (`sessions`)
   is upcoming until its last session and listed under its next session's day (`listOrder`, `startOn`); listed under
   another one (a day searched, a date chosen, the calendar's day, a past one too), its card says that session
-  (`eventCardGridHtml`'s `listedOn`, `shownSession`'s `listed`). Near periods show a few flyers, then "Ver N más"; later periods start as a
-  summary row (`DESIGN.md`, "Long lists").
+  (`eventCardGridHtml`'s `listedOn`, `shownSession`'s `listed`). Every period shows every event; the weekend goes
+  under a heading per day (`DESIGN.md`, "Long lists").
 - **"Calendario"** shows a month grid: days with events show dots on phones (`dotsHtml`) and names on wide screens,
   capped so a busy day never makes its week taller. Colombian holidays are tinted, and the selected day's events are
   listed below; whatever changes that list ends with its start on screen (`revealDay` in `views/viewNavigation.ts`),
@@ -530,7 +530,7 @@ stateDiagram-v2
 - **A shared link opens the app:** the event's page forwards a browser to `/?evento=<id>` (its inline script, unless
   the event is past in Bogotá's date, `?pagina` is set, or the visitor is a bot or a link-preview fetcher, by its
   user agent). `openSharedEvent` (`main.ts`) takes the parameter off the address (keeping the others), finds the
-  event's card (`sharedEventEntry`, `upcomingView.ts`, opening its period whole if needed), then opens the drawer
+  event in the list (`visibleEvents`), then opens the drawer
   with the list scrolled to the card and counts `detalles-enlace`. An event not in the list goes back to its page
   with `?pagina=1`. Link previews and search engines read the event's page itself (they don't run scripts).
 - **The event page** (`eventPage.ts`) is already rendered at build time (the flyer, then the drawer's details); a
@@ -790,7 +790,7 @@ frontend/
 |---|---|
 | `data.ts` | Reads `data/`, keeps the posts the site shows (`shownMedia`, `pageData.ts`), adds flyer sizes and versions (`?v=`), lists every account the sweep reads (`meta.accounts`, plus any account with events) for the footer's sources |
 | `state.ts` | The UI state; filtering (AND across groups, OR within dates, types and rhythms; hiding the bars: `isBar`, `matchesBars`, `HIDE_BARS_KEY`); the days each view shows an event on (`shownDays`); Filtros' count (the badge); "Limpiar"; grouping by period; a day's order (`dayOrderKey`, `listOrder`); the date options |
-| `views/upcomingView.ts` | "Próximos"; where a shared link's event is (`sharedEventEntry`) |
+| `views/upcomingView.ts` | "Próximos": every event by period, the weekend by day (`groupBodyHtml`) |
 | `views/calendarView.ts` | "Calendario", with holidays; each day's events with the filters on (`calendarDays`); a day's dots on phones (`dotsHtml`, `MAX_DOTS_PER_DAY`); the selected day's heading; an empty day, and why (`emptyDayHtml`: the search, or the filters when the search alone finds that day's events) |
 | `views/eventCard.ts` | A card: flyer at its shape (or a video's clip), or a carousel of the event's posts; date sticker; the action row (Detalles, Compartir, the carousel's dots, Guardar); what its link says, its one Tab stop (`cardLabel`) |
 | `views/lightbox.ts`, `components/Lightbox.astro` | A card's image big beside the side panel (wide screens with a mouse): a non-modal stage over the list up to the panel; its event is the panel's, it closes with it and shares its history entry |
@@ -804,8 +804,7 @@ frontend/
 | `views/eventDrawer.ts`, `views/drawerSheet.ts` | The details: a drawer over the list on phones (half / full height, scrim, keeping the card in view) and a side panel on wide screens; opening and closing; the geometry and where a drag ends (pure, tested) |
 | `views/drawerGestures.ts` | Dragging the drawer: touch, mouse or pen, the wheel (through `DrawerControl`) |
 | `views/drawerHistory.ts` | The details' history entries: the event's address, closing through back, what back or forward does (`historyMove`) |
-| `screenHistory.ts` | History entries for the app's screens (a period opened whole, the calendar, Guardados): the phone's back steps through them; between the calendar and Guardados the entry is replaced (`replaceScreen`), so back returns to the list. Its hooks (`initScreenHistory`): the screen on show (`current`), putting one back (`apply`) and each screen's address (`address`, `viewPath`). Back from an in-page jump (`#info`) puts the scroll back. Overlays (sheets, the details, the "Cuándo" menu, a toolbar pill's panel, the search field) carry the screen under them (`overlayState`); a screen left from inside one is skipped later, and a period opened
-from under one gets its entry when the overlay closes (pushed over the overlay's entry, it left that entry behind). Every entry's state is one type (`AppHistoryState`), read with `historyState` |
+| `screenHistory.ts` | History entries for the app's screens (the calendar, Guardados): the phone's back steps through them; between the calendar and Guardados the entry is replaced (`replaceScreen`), so back returns to the list. Its hooks (`initScreenHistory`): the screen on show (`current`), putting one back (`apply`) and each screen's address (`address`, `viewPath`). Back from an in-page jump (`#info`) puts the scroll back. Overlays (sheets, the details, the "Cuándo" menu, a toolbar pill's panel, the search field) carry the screen under them (`overlayState`); a screen left from inside one is skipped later. Every entry's state is one type (`AppHistoryState`), read with `historyState` |
 | `components/HomePage.astro`, `lib/viewTitles.ts` | The app's page, for each address (`/`, `/calendario/`, `/guardados/`, by its `view`); each view's title and description, for the page's head and the tab's title when the view changes |
 | `lib/savedMove.ts`, `views/savedMoveView.ts` | iPhone and iPad: Safari's saves to the installed app, by copy and paste (where it applies, the link with the ids, reading it back) |
 | `views/savedView.ts` | Guardados: the saved events to come by period, the past ones folded, the empty states (`savedLists`, `emptySavedHtml`, `renderSavedView`) |

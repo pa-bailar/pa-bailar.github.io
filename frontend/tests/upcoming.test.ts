@@ -1,50 +1,42 @@
-import { describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { groupByPeriod } from "../src/scripts/state";
-import { isPeriodOpen, sharedEventEntry, showWholePeriod } from "../src/scripts/views/upcomingView";
+import { groupBodyHtml } from "../src/scripts/views/upcomingView";
 import { event } from "./factories";
 
 // Wednesday 2026-10-07: periods "hoy", "fin-de-semana", "resto-del-mes", "2026-11"…
 const TODAY = "2026-10-07";
 const on = (date: string, count = 1) => Array.from({ length: count }, (_, i) => event({ id: `${date}-${i}`, date }));
-const openKeys = (dates: [string, number][]) => {
-  const groups = groupByPeriod(dates.flatMap(([date, count]) => on(date, count)), TODAY);
-  return groups.filter((_, position) => isPeriodOpen(groups, position)).map((group) => group.key);
-};
+const groupsOf = (dates: [string, number][]) => groupByPeriod(dates.flatMap(([date, count]) => on(date, count)), TODAY);
+const listedOn = (item: { date: string }) => item.date;
+const cards = (html: string) => (html.match(/data-event-card=/g) ?? []).length;
+const dayHeadings = (html: string) => [...html.matchAll(/<h3 class="day-heading agenda-day">([^<]*)<\/h3>/g)].map((m) => m[1]);
 
-describe("which periods of the upcoming list open", () => {
-  it("a short list (12 or fewer) opens whole", () => {
-    expect(openKeys([["2026-10-07", 2], ["2026-10-25", 5], ["2026-11-05", 5]])).toEqual(["hoy", "resto-del-mes", "2026-11"]);
+// The owner, 8 Oct 2026: "Ver 25 más" scrolled by unnoticed between busy periods, and hid the weekend's Saturday and
+// Sunday. Every period now shows every event.
+describe("the upcoming list shows every event", () => {
+  beforeEach(() => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date("2026-10-07T12:00:00-05:00")); // the headings say "Hoy" / "Mañana" by the real clock
+  });
+  afterEach(() => vi.useRealTimers());
+
+  it('a busy period, and a later month, are whole: no "Ver N más", no summary row', () => {
+    for (const group of groupsOf([["2026-10-09", 20], ["2026-11-05", 15]])) {
+      const html = groupBodyHtml(group, listedOn);
+      expect(cards(html)).toBe(group.events.length);
+      expect(html).not.toContain("data-show-period");
+    }
   });
 
-  it("a long list opens the near periods and summarizes the later ones", () => {
-    expect(openKeys([["2026-10-07", 2], ["2026-10-09", 3], ["2026-10-25", 6], ["2026-12-05", 6]])).toEqual(["hoy", "fin-de-semana"]);
+  it("the weekend goes under a heading per day, in order", () => {
+    const weekend = groupsOf([["2026-10-09", 2], ["2026-10-10", 3], ["2026-10-11", 1]]).find((g) => g.key === "fin-de-semana")!;
+    const html = groupBodyHtml(weekend, listedOn);
+    expect(dayHeadings(html)).toEqual(["Viernes, 9 de octubre", "Sábado, 10 de octubre", "Domingo, 11 de octubre"]);
+    expect(cards(html)).toBe(6);
   });
 
-  it("with nothing near, the first period opens", () => {
-    expect(openKeys([["2026-10-25", 8], ["2026-11-05", 8]])).toEqual(["resto-del-mes"]);
-  });
-
-  it("a period the visitor opened stays open", () => {
-    showWholePeriod("2026-12");
-    expect(openKeys([["2026-10-07", 2], ["2026-10-25", 6], ["2026-12-05", 6]])).toEqual(["hoy", "2026-12"]);
-  });
-});
-
-describe("a shared link's event in the list", () => {
-  const groupsOf = (dates: [string, number][]) => groupByPeriod(dates.flatMap(([date, count]) => on(date, count)), TODAY);
-
-  it("an event in an open period: its card is there, nothing to open", () => {
-    expect(sharedEventEntry(groupsOf([["2026-10-07", 2], ["2026-10-25", 5]]), "2026-10-07-1")).toEqual({ listed: true, open: null });
-  });
-
-  it("an event in a summarized period, or past a busy period's \"Ver N más\": that period opens whole first", () => {
-    const groups = groupsOf([["2026-10-07", 2], ["2026-10-09", 8], ["2026-11-20", 6]]);
-    expect(sharedEventEntry(groups, "2026-11-20-3")).toEqual({ listed: true, open: "2026-11" });
-    expect(sharedEventEntry(groups, "2026-10-09-7")).toEqual({ listed: true, open: "fin-de-semana" });
-    expect(sharedEventEntry(groups, "2026-10-09-2")).toEqual({ listed: true, open: null });
-  });
-
-  it("an event that isn't in the list (it passed): its own page instead", () => {
-    expect(sharedEventEntry(groupsOf([["2026-10-07", 2]]), "ya-paso")).toEqual({ listed: false });
+  it("other periods have no day headings", () => {
+    const later = groupsOf([["2026-10-20", 2], ["2026-10-22", 2]])[0]!;
+    expect(dayHeadings(groupBodyHtml(later, listedOn))).toEqual([]);
   });
 });
