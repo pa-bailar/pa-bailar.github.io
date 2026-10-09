@@ -348,7 +348,9 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
   Android the banner's "Instalar" is the one tap left. Facebook, TikTok and the others have no link that works
   (`x-safari-https` stopped working in Meta's apps around mid-2025): their steps point to the app's menu.
 - **A reminder:** whoever dismissed the banner on an earlier visit gets one small reminder, once, when a new save
-  makes two saved events or more ("Tus guardados a un toque: instala Pa' Bailar · Instalar ×", a notice at the bottom:
+  makes two saved events or more ("Tus guardados a un toque: instala Pa' Bailar · Instalar ×"; on iPhone and iPad "Pa'
+  Bailar a un toque: instálala en tu iPhone", since the app there starts without Safari's saves: `reminderText`, the
+  owner, 8 Oct 2026; a notice at the bottom:
   see "Saving and searching", in place of that save's "Guardado · Ver guardados", for 10 seconds). Offering again at a
   moment the app clearly helps, instead of nagging, is Google's advice. Never in place of the in-app note ("Guardado
   solo en este navegador", which then never showed), nor after Deshacer (an event back in Guardados isn't a new save),
@@ -397,6 +399,16 @@ time for every event (`src/linkPreviewImage.ts`; how: `ARCHITECTURE.md`, section
   Wishlists. Not a toggle over the list and the calendar (it read as "the calendar without the calendar", and you could
   be in Eventos and Guardados at once): the owner, 5 October 2026. It's in the bar at the bottom and a third tab on
   wide screens ("Guardados 3").
+  - **From Safari to the installed app, on iPhone and iPad** (`lib/savedMove.ts`; the owner, 8 Oct 2026): the
+    home-screen app keeps its own storage, so it opens with none of Safari's saves, and nothing can carry them by
+    itself (the app opens on the manifest's `start_url` whatever the page's address was when added: tested in the iOS
+    27 Simulator, with a query and with the address rewritten). So the visitor carries them, by the clipboard: in
+    Safari, a line under "Tus N eventos guardados" ("¿Tienes Pa' Bailar en tu inicio? … Copiar para la app") and, in the
+    install sheet, "Copiar mis N guardados para la app" by "Ya la agregué"; in the app, "Pegar mis guardados de
+    Safari" in Guardados (its empty state too, with a line saying how), and on its first start with nothing saved one
+    notice, "¿Guardaste eventos en Safari? · Pegarlos". The copied text is a line and a link,
+    `/?guardados=<id>,<id>`; pasting saves the ids this page knows (iOS asks with its own "Pegar" bubble). Nowhere
+    else: on Android the app shares the browser's saves, and computers have no home-screen app.
   - **What it shows:** "Tus 3 eventos guardados [Compartir]", then the saved events to come by period, always whole
     (no summaries, no "Ver N más"), then the past ones folded at the end: **"Ya pasaron (2) ⌄"** (the latest first).
     Saved but none to come: "Ninguno de tus eventos guardados está por venir" and "Ver eventos".

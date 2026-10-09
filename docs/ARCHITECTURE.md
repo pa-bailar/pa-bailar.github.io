@@ -570,7 +570,10 @@ stateDiagram-v2
   counts, calendar marks and Guardados). An id whose event left the data stays (an older stored copy of a page lacks
   the newest events): past `SAVED_LIMIT` (200), the oldest of those are forgotten (`trimSaved`). Guardados is a view of its own
   (`views/savedView.ts`: the ones to come by period, the past ones folded; the search applies, the filters don't), and
-  the calendar marks the days holding one. A save or an unsave in Guardados says so in a notice at the bottom
+  the calendar marks the days holding one. On iPhone and iPad they're moved from Safari to the installed app (its own
+  storage) by the clipboard: `lib/savedMove.ts` (where, and the copied link's format, `?guardados=`),
+  `views/savedMoveView.ts` (copy and paste, in the tap), `savedIds`, and the `savedCopy`/`savedPaste` controls in
+  `main.ts` (DESIGN.md, Guardados). A save or an unsave in Guardados says so in a notice at the bottom
   (`views/notice.ts`, chosen by `lib/saveNotice.ts`): `main.ts` gives its button the way to Guardados (`navigateView`)
   or the undo (`saveAgain`: saved again from what's stored, never toggled, as another tab may have saved it meanwhile; the bug-squash pass of 8 Oct 2026), which Ctrl+Z (⌘Z) also runs while it's up (`NoticeAction.undo`: the keyboard's way to
   it, through the button's own click); the install reminder after a second save is the same notice (`offerAfterSaving`),
@@ -804,6 +807,7 @@ frontend/
 | `screenHistory.ts` | History entries for the app's screens (a period opened whole, the calendar, Guardados): the phone's back steps through them; between the calendar and Guardados the entry is replaced (`replaceScreen`), so back returns to the list. Its hooks (`initScreenHistory`): the screen on show (`current`), putting one back (`apply`) and each screen's address (`address`, `viewPath`). Back from an in-page jump (`#info`) puts the scroll back. Overlays (sheets, the details, the "Cuándo" menu, a toolbar pill's panel, the search field) carry the screen under them (`overlayState`); a screen left from inside one is skipped later, and a period opened
 from under one gets its entry when the overlay closes (pushed over the overlay's entry, it left that entry behind). Every entry's state is one type (`AppHistoryState`), read with `historyState` |
 | `components/HomePage.astro`, `lib/viewTitles.ts` | The app's page, for each address (`/`, `/calendario/`, `/guardados/`, by its `view`); each view's title and description, for the page's head and the tab's title when the view changes |
+| `lib/savedMove.ts`, `views/savedMoveView.ts` | iPhone and iPad: Safari's saves to the installed app, by copy and paste (where it applies, the link with the ids, reading it back) |
 | `views/savedView.ts` | Guardados: the saved events to come by period, the past ones folded, the empty states (`savedLists`, `emptySavedHtml`, `renderSavedView`) |
 | `lib/filterModel.ts` | The filters' model, pure: options, counts, dimmed, the rhythms by family (`styleGroups`), the bar's chips, "Cuándo" (`whenModel`), the toolbar's pills (`filterPills`), what's applied, the badge, the line (`summaryLine`), the sheet's button (`resultsButtonLabel`, from what the search alone finds: `searched`), whether the search or the filters emptied a view (`searchIsWhy`: the empty list's and the empty day's words), stale dates; a view with no event shows the main types (`MAIN_TYPES`) |
 | `views/filters.ts` | Drawing the model: the phone bar's chips and line, the filter sheet (Ritmo by family), the toolbar's pills, their panels' content and the status row (`pillHtml`, `panelHtml`, `statusHtml`); empty results |
