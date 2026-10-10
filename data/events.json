@@ -4499,13 +4499,28 @@
       "DJ Rolman",
       "DJ Vanegas"
     ],
-    "activities": [],
+    "activities": [
+      "noche de salsa"
+    ],
     "contact": "WhatsApp 314 481 0382",
     "confidence": "high",
-    "doubts": [],
+    "doubts": [
+      "sin precio",
+      "sin hora de inicio"
+    ],
     "id": "sin-salsa-no-hay-paraiso-10-oct",
     "account": "ladiezluxury_outlet",
     "media": [
+      {
+        "post_id": "18150959335547991",
+        "permalink": "https://www.instagram.com/reel/DeSEWQvMo9I/",
+        "media_type": "VIDEO",
+        "published": "2026-10-09T17:44:23+0000",
+        "flyer": "flyers/18150959335547991-0.webp",
+        "caption": "Hay canciones que no te dejan quedarte sentado… y este sábado venimos a bailarlas todas 💃🔥\n\nEste 10 de octubre nos vemos en La Diez Luxury para una noche de SIN SALSA NO HAY PARAÍSO. 🎶🌴\n\nArma el parche y etiqueta a esa persona que siempre dice “una más y nos vamos”… ¡pero nunca se va! 😂👇\n\n#LaDiezLuxury #SinSalsaNoHayParaíso #salsaenbogotá #plandesábado",
+        "preview": "previews/18150959335547991-0.mp4",
+        "slides": null
+      },
       {
         "post_id": "17911913073472931",
         "permalink": "https://www.instagram.com/reel/DeP4vYKMDt1/",
@@ -4928,6 +4943,49 @@
         "flyer": "flyers/18099500033647620-0.webp",
         "caption": "⚽🔥 ¡Este domingo el golazo lo hacemos en La Diez Luxury!\n\nEste 11 de octubre ven con tu parche a disfrutar de un Domingo de Golazo con buena salsa, baile y tremendo ambiente. 💃🕺🥁\n\n🍻 ¡Tú pones las bebidas! Paga el cover e ingresa tus bebidas para compartir con los tuyos.\n\n¡Etiqueta a quienes se apuntan y armemos el plan! 🙌\n\n📍 Carrera 60 #12-92 · Outlet de las Américas\n📲 Info y reservas: 314 481 0382 – 311 592 8222\n\n#LaDiezLuxury #DomingoDeGolazo #SalsaEnBogotá #OutletDeLasAméricas",
         "preview": "previews/18099500033647620-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Salsa en Familia",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Tributo Salsa y Jazz",
+    "venue": "Tributo Salsa y Jazz",
+    "address": "Av. Boyacá #64c - 97",
+    "area": "Zona 6",
+    "date": "2026-10-11",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "13:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Alejandro Castro"
+    ],
+    "activities": [
+      "show en vivo"
+    ],
+    "contact": "WhatsApp 310 571 4824",
+    "confidence": "high",
+    "doubts": [],
+    "id": "salsa-en-familia-11-oct",
+    "account": "tributo.salsayjazz",
+    "media": [
+      {
+        "post_id": "17942519394401254",
+        "permalink": "https://www.instagram.com/p/DeRkyHYnNzB/",
+        "media_type": "IMAGE",
+        "published": "2026-10-09T13:05:01+0000",
+        "flyer": "flyers/17942519394401254-0.webp",
+        "caption": "¡LLEGÓ EL DOMINGO PARA DISFRUTAR DE 'SALSA EN FAMILIA'! 🎷🎺👨‍👩‍👧‍👦✨ Porque el fin de semana se remata mejor unidos, te esperamos en tu casa: ¡Tributo Salsa y Jazz! Este domingo 11 de octubre, prepárate para vivir una experiencia única junto a los que más quieres. Trae a tu familia y comparte una tarde inolvidable llena de excelente música, deliciosa comida y todo el sabor que nos caracteriza. Disfrutaremos del virtuosismo en vivo de Alejandro Castro Solista. ¡El plan perfecto para compartir, almorzar y gozar en grande! 🥂🪈🍲✨ 📍 Lugar: Av. Boyacá #64c - 97 (Zona 6) ⏰ Apertura: 1:00 PM 🎶 Show en vivo: Alejandro Castro Solista 📲 Reservas: 310 571 4824 (Nota: Los menores de edad deben estar bajo la supervisión y acompañamiento de un adulto responsable) ¡Asegura la mesa para toda la familia antes de que se llene! RESERVA, arma el parche familiar y nos vemos este domingo. 👇✨https://wa.me/573105714824",
+        "preview": null,
         "slides": null
       }
     ],
@@ -7915,6 +7973,154 @@
         "caption": "Los Morochos en Florencia, Caquetá 🍫❤️‍🔥✨\nNos vemos este domingo 4 de octubre en la mmamazonia_ para vivir una Bailatón con morochos_rsc ✨🖤",
         "preview": "previews/18229425175325979-0.mp4",
         "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Audiciones Esfera Latina - Bachata Iniciación",
+    "event_type": "competition",
+    "is_recurring": false,
+    "styles": [
+      "bachata"
+    ],
+    "organizer": "Esfera Latina",
+    "venue": null,
+    "address": null,
+    "area": null,
+    "date": "2026-11-08",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "10:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Valor",
+        "amount_cop": 15000,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "audiciones"
+    ],
+    "contact": "WhatsApp 3135802345",
+    "confidence": "high",
+    "doubts": [
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "audiciones-esfera-latina-bachata-iniciacion-8-nov",
+    "account": "esferalatinaoficial",
+    "media": [
+      {
+        "post_id": "18110945663238022",
+        "permalink": "https://www.instagram.com/p/DeSv2aRiRI7/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-10T00:00:02+0000",
+        "flyer": "flyers/18110945663238022-0.webp",
+        "caption": "ES MOMENTO DE DAR EL SIGUIENTE PASO! 🖤💛\n\nCada ensayo, cada esfuerzo y cada reto nos acercan a una mejor versión de nosotros mismos. 🔥\n\nEn Esfera Latina creemos en el talento, pero sobre todo en la disciplina, el compromiso y las ganas de evolucionar.\n\nUna nueva oportunidad para demostrar cuánto has crecido, superar tus límites y conquistar nuevas metas.\n\nNo se trata solo de subir de nivel, sino de demostrar que estás listo para hacerlo. ✨\n\n📲 Inscripciones: 3135802345\n\n¡Tu evolución comienza contigo! 💃🕺",
+        "preview": null,
+        "slides": 8
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Audiciones Esfera Latina - Salsa",
+    "event_type": "competition",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Esfera Latina",
+    "venue": null,
+    "address": null,
+    "area": null,
+    "date": "2026-11-08",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "14:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Valor",
+        "amount_cop": 15000,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "audiciones"
+    ],
+    "contact": "WhatsApp 3135802345",
+    "confidence": "high",
+    "doubts": [
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "audiciones-esfera-latina-salsa-8-nov",
+    "account": "esferalatinaoficial",
+    "media": [
+      {
+        "post_id": "18110945663238022",
+        "permalink": "https://www.instagram.com/p/DeSv2aRiRI7/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-10T00:00:02+0000",
+        "flyer": "flyers/18110945663238022-0.webp",
+        "caption": "ES MOMENTO DE DAR EL SIGUIENTE PASO! 🖤💛\n\nCada ensayo, cada esfuerzo y cada reto nos acercan a una mejor versión de nosotros mismos. 🔥\n\nEn Esfera Latina creemos en el talento, pero sobre todo en la disciplina, el compromiso y las ganas de evolucionar.\n\nUna nueva oportunidad para demostrar cuánto has crecido, superar tus límites y conquistar nuevas metas.\n\nNo se trata solo de subir de nivel, sino de demostrar que estás listo para hacerlo. ✨\n\n📲 Inscripciones: 3135802345\n\n¡Tu evolución comienza contigo! 💃🕺",
+        "preview": null,
+        "slides": 8
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Audiciones Esfera Latina - Ladies Salsa y Bachata",
+    "event_type": "competition",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "bachata"
+    ],
+    "organizer": "Esfera Latina",
+    "venue": null,
+    "address": null,
+    "area": null,
+    "date": "2026-11-08",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "17:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Valor",
+        "amount_cop": 15000,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "audiciones"
+    ],
+    "contact": "WhatsApp 3135802345",
+    "confidence": "high",
+    "doubts": [
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "audiciones-esfera-latina-ladies-salsa-y-bachata-8-nov",
+    "account": "esferalatinaoficial",
+    "media": [
+      {
+        "post_id": "18110945663238022",
+        "permalink": "https://www.instagram.com/p/DeSv2aRiRI7/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-10T00:00:02+0000",
+        "flyer": "flyers/18110945663238022-0.webp",
+        "caption": "ES MOMENTO DE DAR EL SIGUIENTE PASO! 🖤💛\n\nCada ensayo, cada esfuerzo y cada reto nos acercan a una mejor versión de nosotros mismos. 🔥\n\nEn Esfera Latina creemos en el talento, pero sobre todo en la disciplina, el compromiso y las ganas de evolucionar.\n\nUna nueva oportunidad para demostrar cuánto has crecido, superar tus límites y conquistar nuevas metas.\n\nNo se trata solo de subir de nivel, sino de demostrar que estás listo para hacerlo. ✨\n\n📲 Inscripciones: 3135802345\n\n¡Tu evolución comienza contigo! 💃🕺",
+        "preview": null,
+        "slides": 8
       }
     ],
     "bar": false
