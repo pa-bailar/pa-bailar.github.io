@@ -3526,6 +3526,58 @@
     "bar": true
   },
   {
+    "title": "La Salsa Party",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Meeting House",
+    "venue": "Meeting House",
+    "address": "Calle 32 #6B-43 Piso 3",
+    "area": "Centro Internacional",
+    "date": "2026-10-09",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "16:00",
+    "end_time": "03:00",
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 15000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "SalSound",
+      "J Balles"
+    ],
+    "activities": [
+      "salsa en vivo",
+      "homenaje a la Sonora Ponceña",
+      "DJ crossover"
+    ],
+    "contact": "WhatsApp 3152859570",
+    "confidence": "high",
+    "doubts": [],
+    "id": "la-salsa-party-9-oct",
+    "account": "meetinghousebogota",
+    "media": [
+      {
+        "post_id": "18212692111363912",
+        "permalink": "https://www.instagram.com/p/DeP-zOlD3nE/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-08T22:13:53+0000",
+        "flyer": "flyers/18212692111363912-2.webp",
+        "caption": "🔥🎉 ¡ESTA SEMANA SE PRENDE MEETING HOUSE! 🍻🎶\n\n🌎🎤 JUEVES: Intercambio de idiomas + Karaoke. ¡Reserva con 4 amigos o más y participa por una BOTELLA DE AMARILLO GRATIS! 🍾\n\n💃🎺 VIERNES: ¡Estrenamos nuestra nueva orquesta de la casa, SalSound con un HOMENAJE A LA SONORA PONCEÑA. Salsa en vivo + DJ crossover para bailar toda la noche. 🔥\n\n🎸🎉 SÁBADO: ¡Concierto en vivo + fiesta hasta la madrugada!\n\n🏃‍♂️☀️ DOMINGO: Runners, asadito, clase de baile y mucha fiesta para cerrar la semana con toda.\n\n🍕🍹 ¡Buena música, comida deliciosa, cocteles y el mejor ambiente!\n\n📍 Meeting House – Centro Internacional, Bogotá\n📲 Reservas: 315 285 9570\n\n🔥 ¡Arma tu parche y nos vemos en Meeting!",
+        "preview": null,
+        "slides": 6
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Música en vivo con Grupo Pa los Santos",
     "event_type": "concert",
     "is_recurring": false,
@@ -3728,6 +3780,57 @@
       }
     ],
     "bar": true
+  },
+  {
+    "title": "BachaFriday",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "bachata"
+    ],
+    "organizer": "Original Step",
+    "venue": "Original Step",
+    "address": "Cra. 27a #52-31",
+    "area": null,
+    "date": "2026-10-09",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "20:00",
+    "end_time": "00:00",
+    "prices": [
+      {
+        "label": "Solo social",
+        "amount_cop": 10000,
+        "condition": "solo por este viernes 9 de octubre"
+      }
+    ],
+    "artists": [
+      "Isa y Jonn",
+      "DJ Jonn Stiven"
+    ],
+    "activities": [
+      "clase de bachata",
+      "social"
+    ],
+    "contact": "@originalstepdance",
+    "confidence": "high",
+    "doubts": [],
+    "id": "bachafriday-9-oct",
+    "account": "originalstepdance",
+    "media": [
+      {
+        "post_id": "17959491945252082",
+        "permalink": "https://www.instagram.com/p/DePJ9f-iNpd/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-08T14:32:10+0000",
+        "flyer": "flyers/17959491945252082-0.webp",
+        "caption": "🔥 ISA & JONN 🔥\n\nUna mezcla muy urbana y muy elegante esta pareja que nos acompaña el fin de semana con su estilo, donde han representado de manera nacional e internacional su baile y nos estarán acompañando en las clases del fin de semana.\n\n🚨 SOCIAL ALERT 🚨\nAdemás, tendremos social el viernes a las 9:20pm hasta las 12am con DJ JONN STIVEN que nos acompañará con la música 🎧\n\n¿Solo quieres asistir al social? \n💸 10.000 SOLO POR ESTE VIERNES 9 OCT\n\n📍Cra. 27a #52 -31, Bogotá, Colombia\n\n#bachata #bachatasocial#style #originalstep socialdancing",
+        "preview": null,
+        "slides": 5
+      }
+    ],
+    "bar": false
   },
   {
     "title": "Cumbia vs. Salsa",
@@ -3988,14 +4091,9 @@
     "end_time": "22:00",
     "prices": [
       {
-        "label": "1ra etapa",
-        "amount_cop": 25000,
-        "condition": null
-      },
-      {
-        "label": "2da etapa",
-        "amount_cop": 30000,
-        "condition": null
+        "label": "Diana",
+        "amount_cop": 0,
+        "condition": "Si te llamas Diana"
       }
     ],
     "artists": [
@@ -4022,6 +4120,16 @@
         "flyer": "flyers/18049951595603676-0.webp",
         "caption": "😇 Este sábado los angelitos también salen de fiesta… y vienen con ganas de conocer gente nueva 🪽🔥\n\nMúsica en vivo, baile y muchas sorpresas durante la noche 😏\n\nNuestra segunda fiesta temática de octubre llega para que vengas con tu parche, o llegues solo y termines haciendo nuevos amigos en la pista 👀 \n\n📢 Comunidad bailadora de 18 a 45 años ✨\n🗓️ Sábado 10 de octubre | 🕒 3PM a 10PM\n📍 Calle 25F # 36-15 – Bogotá Dance Club\n\n🤓 Clase de baile pre fiesta (para romper el hielo 🧊)\n\n💸 1ra etapa: $25.000 \n💵 2da etapa: $30.000\n💰 Taquilla: ???\n(Incluye aureola + clase + 1 bebida)\n\n🪽 Ponte tu aureola, trae tu mejor actitud y prepárate para bailar, conocer gente y vivir una fiesta diferente. Este sábado, nos vemos en la pista 😏💃🏻",
         "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "17889055434617265",
+        "permalink": "https://www.instagram.com/reel/DeSjxVcuHl-/",
+        "media_type": "VIDEO",
+        "published": "2026-10-09T22:19:23+0000",
+        "flyer": "flyers/17889055434617265-0.webp",
+        "caption": "Si te llamas DIANA tienes entrada gratis este sábado 10 de octubre a nuestro Tardeo Latino edición: Ángeles 😇 \n\nVamos a tener:\n🔸 Música en vivo\n🔸 Clase de baile\n🔸 Dinámicas para conocernos\n🔸 Concursos para parches de amigos \n\nPero más que todo, mucho baile 😏🔥\n\nSi quieres más información comenta este video 👇🏻\n\n#planesenbogotá #baile #bogota #bachata #salsa",
+        "preview": "previews/17889055434617265-0.mp4",
         "slides": null
       },
       {
@@ -4309,6 +4417,55 @@
       }
     ],
     "bar": true
+  },
+  {
+    "title": "Bachata Lady Style con Isabella Urrego",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "bachata"
+    ],
+    "organizer": "Original Step",
+    "venue": "Zafra Dance",
+    "address": "Cra. 27A #52-31",
+    "area": null,
+    "date": "2026-10-10",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "18:00",
+    "end_time": "19:30",
+    "prices": [
+      {
+        "label": "2x1",
+        "amount_cop": 40000,
+        "condition": "paga una entran dos"
+      }
+    ],
+    "artists": [
+      "Isabella Urrego"
+    ],
+    "activities": [
+      "clase especial de bachata lady style"
+    ],
+    "contact": "+57 3212499241",
+    "confidence": "high",
+    "doubts": [],
+    "id": "bachata-lady-style-con-isabella-urrego-10-oct",
+    "account": "originalstepdance",
+    "media": [
+      {
+        "post_id": "18197166832343989",
+        "permalink": "https://www.instagram.com/p/DePPabZiNjx/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-08T15:19:49+0000",
+        "flyer": "flyers/18197166832343989-0.webp",
+        "caption": "👠✨ LADY STYLE CON ISA URREGO ✨👠\n\nEste sábado a las 6:00 p. m. tendremos a la hermosa Isa Urrego acompañándonos en una clase especial de Lady Style en Zafra Dance 📍💃🏻\n\nY aprovecha nuestra promo 🔥\n2x1 por solo $40.000 🤩\n\nEtiqueta a esa persona con la que quieres asistir 👯‍♀️💜 y vengan a disfrutar juntas de una clase llena de estilo, técnica y mucha actitud. ❤️‍🔥\n\n#ladystylebogota #ladystylebachata #bachateras #originalstepdance",
+        "preview": null,
+        "slides": 2
+      }
+    ],
+    "bar": false
   },
   {
     "title": "Sin Salsa No Hay Paraíso",
@@ -6334,6 +6491,56 @@
     "bar": true
   },
   {
+    "title": "Batalla Internacional ViaAlternativa 2026 - Hip Hop al Parque",
+    "event_type": "competition",
+    "is_recurring": false,
+    "styles": [
+      "urbano"
+    ],
+    "organizer": "Idartes",
+    "venue": "Parque Simón Bolívar",
+    "address": null,
+    "area": null,
+    "date": "2026-10-24",
+    "end_date": "2026-10-25",
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Brothers Fresh",
+      "Capital Style",
+      "Último Enjambre",
+      "Old School Breakin Bogotá 80s"
+    ],
+    "activities": [
+      "batalla de breaking",
+      "presentación de colectivos de hip hop"
+    ],
+    "contact": "@danzaenlaciudad",
+    "confidence": "high",
+    "doubts": [
+      "no se especifican horarios de las batallas",
+      "no se menciona si tiene costo, aunque usualmente los eventos al parque son de entrada libre"
+    ],
+    "id": "batalla-internacional-viaalternativa-2026-hip-hop-24-oct",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18145682326569942",
+        "permalink": "https://www.instagram.com/p/DeR0t7BRHn6/",
+        "media_type": "IMAGE",
+        "published": "2026-10-09T15:46:17+0000",
+        "flyer": "flyers/18145682326569942-0.webp",
+        "caption": "🔥 ¡El breaking se toma Hip Hop al Parque 2026! 🕺🎶\n\nBrothers Fresh, Capital Style, Último Enjambre y Old School Breakin Bogotá llegan para demostrar que el hip hop es mucho más que baile: es cultura, disciplina, identidad y comunidad. 💥\n\nDesde las nuevas generaciones hasta quienes han mantenido viva la esencia del breaking durante décadas, estos colectivos representan el talento, la historia y la fuerza de la escena urbana bogotana. 🏙️🤘\n\n📍 Parque Simón Bolívar\n📅 24 y 25 de octubre\n\n#HipHopAlParque2026 #DeLaEsquinaAlParque #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Taller de bachata para las fiestas",
     "event_type": "workshop",
     "is_recurring": false,
@@ -6866,6 +7073,16 @@
     "account": "distritosocialbog",
     "media": [
       {
+        "post_id": "17995555578047630",
+        "permalink": "https://www.instagram.com/p/DePkHO2Fg6y/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-08T18:20:41+0000",
+        "flyer": "flyers/17995555578047630-0.webp",
+        "caption": "Horarios ✨\n\n17 Talleres de diferentes géneros con los mejores profesores y referentes de cada uno de sus estilos 🤯\n\nIniciaremos ambos días a las 10 AM para que puedas reponerte de esos 2 súper sociales que tendremos y puedas aprovechar al máximo 🥳🥳🥳\n\nSalsa - Bachata - Kizomba - Urbano\n\n🗓️ 31 Oct, 1 y 2 de Nov\n📍 Distrito Social\n\nNo dejes que te lo cuenten reserva en nuestras Webs\n\ndistrito-social-academy.com/eventos\nappdanza.com",
+        "preview": null,
+        "slides": 2
+      },
+      {
         "post_id": "18174896527445791",
         "permalink": "https://www.instagram.com/p/DeDPu_Dx6HU/",
         "media_type": "IMAGE",
@@ -6973,6 +7190,16 @@
         "flyer": "flyers/18018174977930391-0.webp",
         "caption": "Ricardo y Laura ✨\n\nLos reyes del BachaTango dicen presente en nuestro aniversario 🥳🥳🥳🥳 prepárate para compartir y aprender mucho de esta pareja y de todos los artistas invitados\n\n¿Ya tienes tu boleta? No dejes que te lo cuenten\n\nReserva en nuestras Webs:\ndistrito-social-academy.com/eventos\nappdanza.com",
         "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18122137267938670",
+        "permalink": "https://www.instagram.com/reel/DeSiJYQRI_2/",
+        "media_type": "VIDEO",
+        "published": "2026-10-09T22:03:20+0000",
+        "flyer": "flyers/18122137267938670-0.webp",
+        "caption": "Luis y Camila ✨\n\nTenemos casi todo listo para nuestro aniversario 🥳🥳\n\n17 horas de Talleres\n12 horas de Social\n\nSalsa - Bachata - Kizomba - Urbano\n\nNo te lo puedes perder, traemos el mejor evento para ti, para que aprendas y bailes un montón 🤩🤩\n\nReserva ahora en nuestras Webs:\n\ndistrito-social-academy.com/eventos\nappdanza.com",
+        "preview": "previews/18122137267938670-0.mp4",
         "slides": null
       },
       {
