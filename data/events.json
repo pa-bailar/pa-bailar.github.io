@@ -3410,6 +3410,16 @@
     "account": "pachanga_y_pochola",
     "media": [
       {
+        "post_id": "18102704594023451",
+        "permalink": "https://www.instagram.com/reel/DeQe5ZhRTtA/",
+        "media_type": "VIDEO",
+        "published": "2026-10-09T02:55:19+0000",
+        "flyer": "flyers/18102704594023451-0.webp",
+        "caption": "Ya el maestro está aquí!!! issacdelgadoofficial \n#salsa #pachanga",
+        "preview": "previews/18102704594023451-0.mp4",
+        "slides": null
+      },
+      {
         "post_id": "18415582924085513",
         "permalink": "https://www.instagram.com/reel/DeNhvsYxgMx/",
         "media_type": "VIDEO",
@@ -4587,7 +4597,7 @@
     "end_date": null,
     "sessions": null,
     "weekday": "sábado",
-    "start_time": "20:40",
+    "start_time": "20:15",
     "end_time": "05:00",
     "prices": [
       {
@@ -4625,6 +4635,16 @@
     "id": "social-pal-parche-10-oct",
     "account": "jaleocompetencia_",
     "media": [
+      {
+        "post_id": "18191767138399833",
+        "permalink": "https://www.instagram.com/p/DeQveOtiow-/",
+        "media_type": "IMAGE",
+        "published": "2026-10-09T16:25:06+0000",
+        "flyer": "flyers/18191767138399833-0.webp",
+        "caption": "🔥𝐂𝐑𝐎𝐍𝐎𝐆𝐑𝐀𝐌𝐀 𝐒𝐀𝐁𝐀𝐃𝐎 𝐒𝐎𝐂𝐈𝐀𝐋 𝐏𝐀’𝐋 𝐏𝐀𝐑𝐂𝐇𝐄🔥\n\nAquí tendremos nuestra programación \n\nTalleres \nShowcase \nSocial salsa y bachata\nHasta el amanecer 🌅 \n\nLos esperamos !!\nAún tenemos entradas en taquilla y preventa 🔥🔥🔥🔥\n-\n-\n-\n#salsa #fiesta #clasesdebaile #la85",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18106987091241198",
         "permalink": "https://www.instagram.com/p/DeIlV9MliV8/",
@@ -5212,7 +5232,7 @@
     "end_time": null,
     "prices": [
       {
-        "label": "Pre-venta",
+        "label": "Preventa",
         "amount_cop": 20000,
         "condition": null
       },
@@ -5236,6 +5256,16 @@
     "id": "tardeo-viva-salsa-social-11-oct",
     "account": "fernandoespanadj",
     "media": [
+      {
+        "post_id": "17919205575244506",
+        "permalink": "https://www.instagram.com/reel/DeRgUbuR-gl/",
+        "media_type": "VIDEO",
+        "published": "2026-10-09T12:26:04+0000",
+        "flyer": "flyers/17919205575244506-0.webp",
+        "caption": "Este domingo 11 de octubre, Vive el Tardeo, vive la salsa en Pachanga y Pochola desde las 5 de la tarde. Miss Timba y Fernando España, invitan. Concurso de Ruedas de Casino, de parejas y venta de libros.",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18126585622797750",
         "permalink": "https://www.instagram.com/reel/DeO0r1MIZ4a/",
@@ -6965,6 +6995,50 @@
         "published": "2026-10-04T22:09:19+0000",
         "flyer": "flyers/18210323335323212-0.webp",
         "caption": "🎃🩸 BOGOTÁ, ¿ESTÁN PREPARADOS PARA UNA NOCHE DE TERROR, SALSA Y MUCHO FLOW? 🔥💀\n\nEste 31 de octubre, en Pachanga&Pochola, el miedo se baila y la noche se vive sin reglas. 👻🕺🏽 Una fiesta donde los disfraces, la buena salsa y los premios serán los protagonistas. 🏆🎃\n\n💰 ¡5 MILLONES EN PREMIOS! Y una pregunta: ¿ya tienes pensado tu disfraz? #salsa  #pachanga #lasalsavuelveabrillar",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Halloween Salsero",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Salsa & Son",
+    "venue": "Salsa y Son",
+    "address": "Cra. 14 # 82 - 87",
+    "area": "Zona T",
+    "date": "2026-10-31",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "concurso de disfraces",
+      "rumba"
+    ],
+    "contact": "WhatsApp 3227283910",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio ni precio de entrada"
+    ],
+    "id": "halloween-salsero-31-oct",
+    "account": "salsaysonoficial",
+    "media": [
+      {
+        "post_id": "18072466343732193",
+        "permalink": "https://www.instagram.com/p/DeS1L_9PEPw/",
+        "media_type": "IMAGE",
+        "published": "2026-10-10T00:48:36+0000",
+        "flyer": "flyers/18072466343732193-0.webp",
+        "caption": "🧛🏻‍♂️🩸 HALLOWEEN SALSERO — SALSA Y SON 🎃🔥\n\nEste sábado 31 de octubre, la noche se viste de misterio, sabor y mucha salsa. 💃🏻🕺🏻\n\nPrepárate para vivir una noche de disfraces, rumba y sorpresas en una experiencia donde el terror se baila al ritmo de la salsa. 🥀🎶\n\n🏆 PREMIOS AL MEJOR DISFRAZ: $600.000\n\n📍 Salsa y Son — Zona T, Bogotá\n📌 Cra. 14 #82-87\n📲 Reservas: 322 728 3910\n\n🕸️ Tu disfraz, tu actitud y la mejor energía salsera. ¿Ya tienes listo tu personaje para esta noche?\n\nEste Halloween, el miedo se siente… ¡pero la salsa se baila! 🔥💀\n\n#HalloweenSalsero #SalsaYSon #HalloweenBogotá #RumbaSalsera ZonaT",
         "preview": null,
         "slides": null
       }
