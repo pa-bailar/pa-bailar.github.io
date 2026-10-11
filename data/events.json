@@ -5804,11 +5804,11 @@
     "event_type": "social",
     "is_recurring": false,
     "styles": [
-      "bachata"
+      "bachata dominicana"
     ],
     "organizer": "Bachatamania",
     "venue": "Distrito Social",
-    "address": "Cra 29 #68-18",
+    "address": "Cra 29 #68 -18",
     "area": null,
     "date": "2026-10-17",
     "end_date": null,
@@ -5835,11 +5835,11 @@
     ],
     "artists": [
       "Adriana Tibaduiza",
-      "DJ Laurin"
+      "DJ Laurín"
     ],
     "activities": [
-      "clase bachata tradicional",
-      "social 100% bachata"
+      "clase de bachata tradicional",
+      "social de bachata"
     ],
     "contact": "appdanza.com",
     "confidence": "high",
@@ -5880,14 +5880,25 @@
     "organizer": "El Goce Pagano",
     "venue": "El Goce Pagano",
     "address": "Diagonal 20A N. 0-82",
-    "area": null,
+    "area": "Centro",
     "date": "2026-10-18",
     "end_date": null,
     "sessions": null,
     "weekday": "domingo",
-    "start_time": null,
-    "end_time": null,
-    "prices": [],
+    "start_time": "14:00",
+    "end_time": "22:00",
+    "prices": [
+      {
+        "label": "Preventa Solterx",
+        "amount_cop": 35000,
+        "condition": null
+      },
+      {
+        "label": "Preventa Parejx",
+        "amount_cop": 65000,
+        "condition": null
+      }
+    ],
     "artists": [],
     "activities": [
       "rumba",
@@ -5902,6 +5913,16 @@
     "id": "una-cita-con-la-salsa-18-oct",
     "account": "elgocepagano",
     "media": [
+      {
+        "post_id": "18141672184717371",
+        "permalink": "https://www.instagram.com/p/DeUbWwST_qQ/",
+        "media_type": "IMAGE",
+        "published": "2026-10-10T15:40:26+0000",
+        "flyer": "flyers/18141672184717371-0.webp",
+        "caption": "¿Hay una mejor cita que un helado ?🍦 Claro, Una Cita con la Salsa, bailando, conectando y sintiendo la música. \nEste domingo 18 de octubre en elgocepagano acompañanos a vivir la primera edición del evento que reúne actividades para solteros parejas clase de baile tinder Life y una rumba salsera que no te obliga a trasnochar. \n💃 Clase de Baile\n🥤 Welcome Drink\n❤️ Tinder Live\n🥳 Tardeo Salsero - Fiesta\n🏆 Premios para parejas y solteros\n📍El Goce Pagano - Diag 20A #0-82 Centro Bogotá \nConsigue tu entradas 🎟️ en TuBaile.com/eventos\n🚫 Aforo Limitado +18",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "17873536227593859",
         "permalink": "https://www.instagram.com/p/Dd7mV70jn6J/",
@@ -6557,6 +6578,16 @@
     "id": "batalla-internacional-viaalternativa-2026-hip-hop-24-oct",
     "account": "danzaenlaciudad",
     "media": [
+      {
+        "post_id": "18383837752227944",
+        "permalink": "https://www.instagram.com/p/DeT_PobxuZB/",
+        "media_type": "IMAGE",
+        "published": "2026-10-10T12:30:07+0000",
+        "flyer": "flyers/18383837752227944-0.webp",
+        "caption": "🎤🔥 ¡El talento y la cultura hip hop se encuentran en #HipHopAlParque2026!\n\nB.Boy Speedy, referente del breaking bogotano, será el host de la Batalla Internacional de Breaking BIVA 2026, aportando su experiencia en las batallas, la formación y la gestión cultural. 🎙️\n\nA su lado estará DJ Blanko, tornamesista, beat maker y coleccionista de vinilos, con una trayectoria que lo ha llevado a representar a Colombia en importantes competencias internacionales de scratch. 🎧💿\n\nDos referentes que conectan experiencia, técnica y pasión por la cultura hip hop.\n\n📅 24 y 25 de octubre\n📍 Parque Simón Bolívar\n\n#DeLaEsquinaAlParque #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18145682326569942",
         "permalink": "https://www.instagram.com/p/DeR0t7BRHn6/",
@@ -7727,6 +7758,58 @@
     "bar": false
   },
   {
+    "title": "Segundo Aniversario Ebi Dance",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "salsa cubana",
+      "urbano"
+    ],
+    "organizer": "Ebi Dance Company",
+    "venue": "Distrito Social",
+    "address": "Carrera 29 # 68-18",
+    "area": null,
+    "date": "2026-11-07",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "20:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 35000,
+        "condition": "incluye consumo 5K"
+      }
+    ],
+    "artists": [
+      "Víctor Blanco"
+    ],
+    "activities": [
+      "fiesta social",
+      "clase de reparto",
+      "shows de estrenos"
+    ],
+    "contact": "@Ebi_dancecompany",
+    "confidence": "high",
+    "doubts": [],
+    "id": "segundo-aniversario-ebi-dance-7-nov",
+    "account": "ebi_dancecompany",
+    "media": [
+      {
+        "post_id": "18115452482045911",
+        "permalink": "https://www.instagram.com/p/DeUn8eppf1G/",
+        "media_type": "IMAGE",
+        "published": "2026-10-10T17:30:26+0000",
+        "flyer": "flyers/18115452482045911-0.webp",
+        "caption": "🔥 EBI Dance Company está de aniversario💃🕺\n\nDos años de baile, crecimiento y cultura cubana merecen celebrarse a lo grande.\n\n🎭 12 shows de muestra, estrenos y mucho sabor en una noche donde el talento y la pasión por el baile serán protagonistas.\n\nPrepárate para celebrar con nosotros. Nos vemos en la pista 🩷🩵",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Milonga",
     "event_type": "social",
     "is_recurring": false,
@@ -8073,6 +8156,16 @@
         "flyer": "flyers/18073448372447981-0.webp",
         "caption": "🔥 JESÚS CASTILLO LLEGA A CASINEA 2026\n\nDesde Venezuela hasta Colombia, Jesús Castillo ha construido una trayectoria como instructor, coreógrafo y bailarín, convirtiéndose en un explorador constante de las nuevas expresiones del movimiento cubano. 🇻🇪🇨🇴\n\nSu fortaleza está en la capacidad de interpretar y desarrollar diferentes lenguajes de la música cubana, con especial dominio del reparto cubano, el cubatón y los ritmos urbanos, sin dejar de lado la riqueza del folclor afrocubano.\n\nJesús es de esos artistas que no se quedan quietos: investiga, explora y transforma lo que escucha en movimiento, buscando nuevas maneras de interpretar los ritmos que hacen parte de la Cuba contemporánea.\n\nY antes de estar del otro lado como instructor y coreógrafo, también conoció de cerca la competencia. 🏆\n\nDurante sus años como competidor, Jesús alcanzó múltiples podios en el Festival Internacional Casinea y en otras competencias de Colombia y Venezuela, construyendo una experiencia que hoy reúne el conocimiento técnico, la experiencia escénica y la mirada del competidor.\n\nEn Casinea 2026, tendremos la oportunidad de aprender de un artista que entiende el movimiento desde diferentes lugares: la competencia, la creación, la enseñanza, el folclor y la exploración de los ritmos urbanos cubanos. 🔥\n\n📅 13 al 16 de noviembre de 2026\n📍 Bogotá, Colombia\n\nJesús Castillo, nos vemos en Casinea.\n\n#FestivalCasinea #Casinea2026 #RepartoCubano #Cubatón #IléDanza",
         "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18051296834803247",
+        "permalink": "https://www.instagram.com/reel/DeVgynPxSIT/",
+        "media_type": "VIDEO",
+        "published": "2026-10-11T01:51:34+0000",
+        "flyer": "flyers/18051296834803247-0.webp",
+        "caption": "WILMER Y MARÍA ESTARÁN EN CASINEA 2026\n\nSi ellos mismos te lo dicen, ¿quiénes somos nosotros para contradecirlos? 😂💃🕺\n\nDos artistas fundamentales en la historia de Casinea regresan para ser parte de nuestra décima edición, con todo su conocimiento, talento, sabor y, por supuesto, esa personalidad que nunca pasa desapercibida.\n\nPrepárate, porque esta edición viene cargada de encuentros, baile y momentos inolvidables. ¡Y con Wilmer por ahí, las risas tampoco van a faltar! 😂🔥\n\n📅 13 al 16 de noviembre de 2026 📍 Bogotá, Colombia 🇨🇴\n\nLo bueno se repite. Lo extraordinario evoluciona. 💜✨\n\n#FestivalCasinea #Casinea2026 #WilmerYMaría #SalsaCasino #BailandoYoViviré",
+        "preview": "previews/18051296834803247-0.mp4",
         "slides": null
       }
     ],
