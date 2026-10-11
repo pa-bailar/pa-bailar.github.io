@@ -4799,49 +4799,6 @@
     "bar": false
   },
   {
-    "title": "El Golazo de Bulevar",
-    "event_type": "party",
-    "is_recurring": false,
-    "styles": [
-      "salsa"
-    ],
-    "organizer": "Bulevar Rooftop",
-    "venue": "Bulevar Rooftop",
-    "address": "Calle 13 # 82 - 37",
-    "area": null,
-    "date": "2026-10-11",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "domingo",
-    "start_time": null,
-    "end_time": null,
-    "prices": [],
-    "artists": [],
-    "activities": [
-      "ingresar todas las bebidas que quieras una única vez pagando el cover"
-    ],
-    "contact": null,
-    "confidence": "high",
-    "doubts": [
-      "sin precio de cover"
-    ],
-    "id": "el-golazo-de-bulevar-11-oct",
-    "account": "bulevarsalsarooftop",
-    "media": [
-      {
-        "post_id": "18130057825689666",
-        "permalink": "https://www.instagram.com/reel/DeGD0PpR8Di/",
-        "media_type": "VIDEO",
-        "published": "2026-10-05T01:48:35+0000",
-        "flyer": "flyers/18130057825689666-0.webp",
-        "caption": "El Golazo de Bulevar 🥳🥃❤️‍🔥\nPagas el cover y puedes ingresar todas las bebidas que quieras una única vez 🥃🥳\n\nDomingo 11 Octubre\nBULEVAR ROOFTOP\n📍 Calle 13 # 82 - 37",
-        "preview": "previews/18130057825689666-0.mp4",
-        "slides": null
-      }
-    ],
-    "bar": true
-  },
-  {
     "title": "Salsa y Caribe con Nick Salas (NS Orquesta)",
     "event_type": "concert",
     "is_recurring": false,
@@ -4928,6 +4885,46 @@
         "flyer": "flyers/18099500033647620-0.webp",
         "caption": "⚽🔥 ¡Este domingo el golazo lo hacemos en La Diez Luxury!\n\nEste 11 de octubre ven con tu parche a disfrutar de un Domingo de Golazo con buena salsa, baile y tremendo ambiente. 💃🕺🥁\n\n🍻 ¡Tú pones las bebidas! Paga el cover e ingresa tus bebidas para compartir con los tuyos.\n\n¡Etiqueta a quienes se apuntan y armemos el plan! 🙌\n\n📍 Carrera 60 #12-92 · Outlet de las Américas\n📲 Info y reservas: 314 481 0382 – 311 592 8222\n\n#LaDiezLuxury #DomingoDeGolazo #SalsaEnBogotá #OutletDeLasAméricas",
         "preview": "previews/18099500033647620-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "El Golazo de Bulevar",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [],
+    "organizer": "Bulevar Rooftop",
+    "venue": "Bulevar Rooftop",
+    "address": "Calle 13 # 82 - 37",
+    "area": null,
+    "date": "2026-10-11",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [],
+    "activities": [],
+    "contact": "@bulevarsalsarooftop",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio",
+      "sin precio especificado"
+    ],
+    "id": "el-golazo-de-bulevar-11-oct",
+    "account": "bulevarsalsarooftop",
+    "media": [
+      {
+        "post_id": "18130057825689666",
+        "permalink": "https://www.instagram.com/reel/DeGD0PpR8Di/",
+        "media_type": "VIDEO",
+        "published": "2026-10-05T01:48:35+0000",
+        "flyer": "flyers/18130057825689666-0.webp",
+        "caption": "El Golazo de Bulevar 🥳🥃❤️‍🔥\nPagas el cover y puedes ingresar todas las bebidas que quieras una única vez 🥃🥳\n\nDomingo 11 Octubre\nBULEVAR ROOFTOP\n📍 Calle 13 # 82 - 37",
+        "preview": "previews/18130057825689666-0.mp4",
         "slides": null
       }
     ],
@@ -5308,12 +5305,12 @@
     "end_time": null,
     "prices": [
       {
-        "label": "Preventa Individual",
+        "label": "Preventa individual",
         "amount_cop": 45000,
         "condition": null
       },
       {
-        "label": "Preventa Pareja",
+        "label": "Preventa pareja",
         "amount_cop": 80000,
         "condition": null
       }
@@ -5337,6 +5334,16 @@
     "id": "tour-de-la-salsa-capitulo-001-11-oct",
     "account": "salsaculto",
     "media": [
+      {
+        "post_id": "17969691930169272",
+        "permalink": "https://www.instagram.com/p/DeUXVbYAjKm/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-10T15:05:14+0000",
+        "flyer": "flyers/17969691930169272-3.webp",
+        "caption": "Bogotá y la salsa tienen una historia de amor que nadie nos contó — simplemente la vivimos 💃 ¿Usted se apunta al Tour? #TourDeLaSalsa #SalsaCulto #ElGocePagano #ParcheXBogotá #SalsaBogotá",
+        "preview": null,
+        "slides": 4
+      },
       {
         "post_id": "17873536227593859",
         "permalink": "https://www.instagram.com/p/Dd7mV70jn6J/",
@@ -5970,73 +5977,6 @@
     "bar": false
   },
   {
-    "title": "Ritmos Cruzados",
-    "event_type": "workshop",
-    "is_recurring": false,
-    "styles": [
-      "salsa"
-    ],
-    "organizer": "Esfera Latina",
-    "venue": "Esfera Latina",
-    "address": null,
-    "area": null,
-    "date": "2026-10-20",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "martes",
-    "start_time": null,
-    "end_time": null,
-    "prices": [
-      {
-        "label": "Estudiantes Esfera",
-        "amount_cop": 10000,
-        "condition": null
-      },
-      {
-        "label": "General",
-        "amount_cop": 20000,
-        "condition": null
-      }
-    ],
-    "artists": [
-      "Mancho Osorio",
-      "Alex Salsita"
-    ],
-    "activities": [
-      "clase de ritmos cruzados"
-    ],
-    "contact": "3135802345",
-    "confidence": "high",
-    "doubts": [
-      "Estilo de salsa específico no especificado"
-    ],
-    "id": "ritmos-cruzados-20-oct",
-    "account": "esferalatinaoficial",
-    "media": [
-      {
-        "post_id": "18109663904592419",
-        "permalink": "https://www.instagram.com/p/Dd4hT0Rx8hD/",
-        "media_type": "IMAGE",
-        "published": "2026-10-06T18:00:06+0000",
-        "flyer": "flyers/18109663904592419-0.webp",
-        "caption": "🔥 MARTES 20 DE OCTUBRE - Dos estilos, una sola clase y mucha energía. 🔥\n\nPrepárate para una clase diferente junto a manchoosorio & alexsalsitaoficial 💥\n\nReserva tu cupo y nos vemos en la pista! 💃🏽🕺🏽",
-        "preview": null,
-        "slides": null
-      },
-      {
-        "post_id": "18112581790860968",
-        "permalink": "https://www.instagram.com/p/DdwoUWYDUwb/",
-        "media_type": "CAROUSEL_ALBUM",
-        "published": "2026-09-26T18:00:04+0000",
-        "flyer": "flyers/18112581790860968-1.webp",
-        "caption": "🔥 OCTUBRE SE VIVE EN ESFERA LATINA 🔥\n\nUn mes para aprender, entrenar, disfrutar y, sobre todo… BAILAR. 💃🕺\n\nEscríbenos para más información y reservas\n\n📱3135802345",
-        "preview": null,
-        "slides": 2
-      }
-    ],
-    "bar": false
-  },
-  {
     "title": "Taller Acrobalance desde el acroyoga",
     "event_type": "workshop",
     "is_recurring": false,
@@ -6145,6 +6085,83 @@
         "caption": "Octubre trae nuevas formas de moverse, sentir y crear. ✨\r\n\r\nEn La Casona de la Danza, el cuerpo es la puerta de entrada a experiencias que invitan a explorar el movimiento, despertar la imaginación y encontrarse con otras personas a través de la danza. 💫\r\n\r\nEste mes, déjese sorprender por una programación pensada para experimentar, aprender y disfrutar el movimiento desde diferentes perspectivas. Talleres, encuentros y experiencias donde cada paso puede convertirse en una nueva manera de expresarse. 🌿\r\n\r\nHaga una pausa, escuche su cuerpo y anímese a descubrir todo lo que puede pasar cuando el movimiento toma el espacio. 💃🕺\r\n\r\n📍 Deslice y explore la programación de octubre.\r\n\r\n#CasonaDeLaDanza #BogotáMiCiudadMiCasa",
         "preview": null,
         "slides": 19
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Ritmos Cruzados",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Esfera Latina",
+    "venue": "Esfera Latina",
+    "address": null,
+    "area": null,
+    "date": "2026-10-20",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "martes",
+    "start_time": "20:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Estudiantes Esfera",
+        "amount_cop": 10000,
+        "condition": null
+      },
+      {
+        "label": "General",
+        "amount_cop": 20000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Mancho Osorio",
+      "Alex Salsita"
+    ],
+    "activities": [
+      "clase de ritmos cruzados"
+    ],
+    "contact": "3135802345",
+    "confidence": "high",
+    "doubts": [
+      "Estilo de salsa específico no especificado"
+    ],
+    "id": "ritmos-cruzados-20-oct",
+    "account": "esferalatinaoficial",
+    "media": [
+      {
+        "post_id": "18026328986860113",
+        "permalink": "https://www.instagram.com/p/DeP18T8pb0G/",
+        "media_type": "IMAGE",
+        "published": "2026-10-10T15:00:23+0000",
+        "flyer": "flyers/18026328986860113-0.webp",
+        "caption": "Dos estilos, una sola clase y mucha energía. 🔥\n\nPrepárate para una clase diferente junto a manchoosorio & alexsalsitaoficial 💥\n\nReserva tu cupo y nos vemos en la pista! 💃🏽🕺🏽",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18109663904592419",
+        "permalink": "https://www.instagram.com/p/Dd4hT0Rx8hD/",
+        "media_type": "IMAGE",
+        "published": "2026-10-06T18:00:06+0000",
+        "flyer": "flyers/18109663904592419-0.webp",
+        "caption": "🔥 MARTES 20 DE OCTUBRE - Dos estilos, una sola clase y mucha energía. 🔥\n\nPrepárate para una clase diferente junto a manchoosorio & alexsalsitaoficial 💥\n\nReserva tu cupo y nos vemos en la pista! 💃🏽🕺🏽",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18112581790860968",
+        "permalink": "https://www.instagram.com/p/DdwoUWYDUwb/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-09-26T18:00:04+0000",
+        "flyer": "flyers/18112581790860968-1.webp",
+        "caption": "🔥 OCTUBRE SE VIVE EN ESFERA LATINA 🔥\n\nUn mes para aprender, entrenar, disfrutar y, sobre todo… BAILAR. 💃🕺\n\nEscríbenos para más información y reservas\n\n📱3135802345",
+        "preview": null,
+        "slides": 2
       }
     ],
     "bar": false
@@ -7424,9 +7441,12 @@
       "clases abiertas",
       "concurso de disfraces"
     ],
-    "contact": null,
+    "contact": "@dlivingstudio",
     "confidence": "high",
-    "doubts": [],
+    "doubts": [
+      "sin hora especificada",
+      "sin precio especificado"
+    ],
     "id": "halloween-social-31-oct",
     "account": "dlivingstudio",
     "media": [
@@ -7437,6 +7457,16 @@
         "published": "2026-10-04T19:22:29+0000",
         "flyer": "flyers/17904095547356280-0.webp",
         "caption": "🎃 Este Halloween, es en d’Living 👻\n\nPrepárate para nuestro social de Halloween: una noche llena de música, baile y sorpresas, con camilo_barretto y frank.de.latorre poniendo el ambiente para que no pares de bailar. 🕺🏻💃🏻\n\nY porque en D’Living nos gusta que el baile también sea una experiencia, tendremos clases abiertas incluidas con tu entrada 😏 para aprender, compartir y llegar al social con toda la actitud. 🔥\n\nAdemás, 👻 CONCURSO DE DISFRACES\nPrepara tu mejor personaje porque tendremos varios premios para los mejores 🎭🏆\n\n📅 31 de octubre\n🕘 9:00 p. m.\n📍 Cll 25 #27B-83 — Torre de las Américas\n🎟️ Preventa $15K | Taquilla $20K\n\n¿Ya tienes tu disfraz? Porque nosotros ya tenemos la fiesta. 🧟‍♀️🎃",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "17879468097554912",
+        "permalink": "https://www.instagram.com/reel/DeVLiDLP40l/",
+        "media_type": "VIDEO",
+        "published": "2026-10-10T22:42:48+0000",
+        "flyer": "flyers/17879468097554912-0.webp",
+        "caption": "Hay noches para salir y noches que prometen convertirse en leyenda 👻 Este 31 de octubre, nos vemos en dlivingstudio ¿Estás listo? 🎃",
         "preview": null,
         "slides": null
       }
