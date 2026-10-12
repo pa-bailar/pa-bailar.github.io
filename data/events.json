@@ -4842,52 +4842,6 @@
     "bar": true
   },
   {
-    "title": "Salsa y Caribe con Nick Salas (NS Orquesta)",
-    "event_type": "concert",
-    "is_recurring": false,
-    "styles": [
-      "salsa"
-    ],
-    "organizer": "Galería Café Libro",
-    "venue": "Galería Café Libro - Parque 93",
-    "address": "Cra. 11A # 93-42",
-    "area": "Parque 93",
-    "date": "2026-10-11",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "domingo",
-    "start_time": null,
-    "end_time": null,
-    "prices": [],
-    "artists": [
-      "Nick Salas",
-      "NS Orquesta"
-    ],
-    "activities": [
-      "música en vivo"
-    ],
-    "contact": "3176608742",
-    "confidence": "high",
-    "doubts": [
-      "sin precio especificado"
-    ],
-    "id": "salsa-y-caribe-con-nick-salas-ns-orquesta-11-oct",
-    "account": "galeriacafelibro",
-    "media": [
-      {
-        "post_id": "18110935439161762",
-        "permalink": "https://www.instagram.com/p/DeKZq_oDJ4_/",
-        "media_type": "CAROUSEL_ALBUM",
-        "published": "2026-10-06T18:13:15+0000",
-        "flyer": "flyers/18110935439161762-0.webp",
-        "caption": "🌟 Una nueva semana para bailarnos la vida a ritmo de SALSA 🔥💥 Y viene larga y contundente con salsa, Caribe, orquestas en vivo, regalitos para celebrar tu cumpleaños 🎂 y clásicos del repertorio de martes a domingo 😮‍💨\n\nEsta semana en vivo: lacharanganewyork la orquesta insignia de la salsa bogotana ✨; Los Ángeles de Charlie de garciabone01 🎺 ; orquestasoncapital con su noche brava 🌶️; ns.orquesta con lo mejor de la salsa + la música Caribe 🌴 \n\n💿 En el tornamesa suenan los discos de nuestra colección en manos de los djs estrella: johanancines elgordocastillo y Eduardo Moya\n\n¡Nos vemos en todas las sedes de Galeria Café Libro!",
-        "preview": null,
-        "slides": 13
-      }
-    ],
-    "bar": true
-  },
-  {
     "title": "Domingo de Golazo",
     "event_type": "party",
     "is_recurring": false,
@@ -5288,6 +5242,78 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "Salsa y Caribe con Nick Salas (NS Orquesta)",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Galería Café Libro",
+    "venue": "Galería Café Libro - Parque 93",
+    "address": "Cra. 11A # 93-42",
+    "area": "Parque 93",
+    "date": "2026-10-11",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "18:00",
+    "end_time": "03:00",
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 25000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Nick Salas",
+      "NS Orquesta"
+    ],
+    "activities": [
+      "música en vivo"
+    ],
+    "contact": "3176608742",
+    "confidence": "high",
+    "doubts": [
+      "sin precio especificado"
+    ],
+    "id": "salsa-y-caribe-con-nick-salas-ns-orquesta-11-oct",
+    "account": "galeriacafelibro",
+    "media": [
+      {
+        "post_id": "18087013607287521",
+        "permalink": "https://www.instagram.com/p/DeWImqbs5n-/",
+        "media_type": "IMAGE",
+        "published": "2026-10-11T14:00:14+0000",
+        "flyer": "flyers/18087013607287521-0.webp",
+        "caption": "Domingo con salsa y Caribe 🌴 Nos vemos en Galeria Café Libro para rematar la semana con la rumba en vivo de ns.orquesta y con los discos de nuestros djs residentes 💿💥\n\nAbiertos de 6pm a 3am\n🎟️ $25.000",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18110935439161762",
+        "permalink": "https://www.instagram.com/p/DeKZq_oDJ4_/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-06T18:13:15+0000",
+        "flyer": "flyers/18110935439161762-0.webp",
+        "caption": "🌟 Una nueva semana para bailarnos la vida a ritmo de SALSA 🔥💥 Y viene larga y contundente con salsa, Caribe, orquestas en vivo, regalitos para celebrar tu cumpleaños 🎂 y clásicos del repertorio de martes a domingo 😮‍💨\n\nEsta semana en vivo: lacharanganewyork la orquesta insignia de la salsa bogotana ✨; Los Ángeles de Charlie de garciabone01 🎺 ; orquestasoncapital con su noche brava 🌶️; ns.orquesta con lo mejor de la salsa + la música Caribe 🌴 \n\n💿 En el tornamesa suenan los discos de nuestra colección en manos de los djs estrella: johanancines elgordocastillo y Eduardo Moya\n\n¡Nos vemos en todas las sedes de Galeria Café Libro!",
+        "preview": null,
+        "slides": 13
+      },
+      {
+        "post_id": "18067949288601249",
+        "permalink": "https://www.instagram.com/reel/DeXqcy8MgCZ/",
+        "media_type": "VIDEO",
+        "published": "2026-10-11T21:50:56+0000",
+        "flyer": "flyers/18067949288601249-0.webp",
+        "caption": "Hoy la salsa se toma Galería Café Libro 🔥🎶\n\nNos vemos esta noche con ns.orquesta en vivo para cerrar el domingo como se debe: bailando, cantando y gozando. 💃🏽🕺🏽\n\n📍 Galería Café Libro 93\n⏰ 6:00 p.m. – 3:00 a.m.\n🎟️ Cover: $25.000\n\n¿Nos vemos en la pista? 👀🔥",
+        "preview": "previews/18067949288601249-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": true
   },
   {
     "title": "Tour de la Salsa — Capítulo 001",
@@ -5970,73 +5996,6 @@
     "bar": false
   },
   {
-    "title": "Ritmos Cruzados",
-    "event_type": "workshop",
-    "is_recurring": false,
-    "styles": [
-      "salsa"
-    ],
-    "organizer": "Esfera Latina",
-    "venue": "Esfera Latina",
-    "address": null,
-    "area": null,
-    "date": "2026-10-20",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "martes",
-    "start_time": null,
-    "end_time": null,
-    "prices": [
-      {
-        "label": "Estudiantes Esfera",
-        "amount_cop": 10000,
-        "condition": null
-      },
-      {
-        "label": "General",
-        "amount_cop": 20000,
-        "condition": null
-      }
-    ],
-    "artists": [
-      "Mancho Osorio",
-      "Alex Salsita"
-    ],
-    "activities": [
-      "clase de ritmos cruzados"
-    ],
-    "contact": "3135802345",
-    "confidence": "high",
-    "doubts": [
-      "Estilo de salsa específico no especificado"
-    ],
-    "id": "ritmos-cruzados-20-oct",
-    "account": "esferalatinaoficial",
-    "media": [
-      {
-        "post_id": "18109663904592419",
-        "permalink": "https://www.instagram.com/p/Dd4hT0Rx8hD/",
-        "media_type": "IMAGE",
-        "published": "2026-10-06T18:00:06+0000",
-        "flyer": "flyers/18109663904592419-0.webp",
-        "caption": "🔥 MARTES 20 DE OCTUBRE - Dos estilos, una sola clase y mucha energía. 🔥\n\nPrepárate para una clase diferente junto a manchoosorio & alexsalsitaoficial 💥\n\nReserva tu cupo y nos vemos en la pista! 💃🏽🕺🏽",
-        "preview": null,
-        "slides": null
-      },
-      {
-        "post_id": "18112581790860968",
-        "permalink": "https://www.instagram.com/p/DdwoUWYDUwb/",
-        "media_type": "CAROUSEL_ALBUM",
-        "published": "2026-09-26T18:00:04+0000",
-        "flyer": "flyers/18112581790860968-1.webp",
-        "caption": "🔥 OCTUBRE SE VIVE EN ESFERA LATINA 🔥\n\nUn mes para aprender, entrenar, disfrutar y, sobre todo… BAILAR. 💃🕺\n\nEscríbenos para más información y reservas\n\n📱3135802345",
-        "preview": null,
-        "slides": 2
-      }
-    ],
-    "bar": false
-  },
-  {
     "title": "Taller Acrobalance desde el acroyoga",
     "event_type": "workshop",
     "is_recurring": false,
@@ -6145,6 +6104,83 @@
         "caption": "Octubre trae nuevas formas de moverse, sentir y crear. ✨\r\n\r\nEn La Casona de la Danza, el cuerpo es la puerta de entrada a experiencias que invitan a explorar el movimiento, despertar la imaginación y encontrarse con otras personas a través de la danza. 💫\r\n\r\nEste mes, déjese sorprender por una programación pensada para experimentar, aprender y disfrutar el movimiento desde diferentes perspectivas. Talleres, encuentros y experiencias donde cada paso puede convertirse en una nueva manera de expresarse. 🌿\r\n\r\nHaga una pausa, escuche su cuerpo y anímese a descubrir todo lo que puede pasar cuando el movimiento toma el espacio. 💃🕺\r\n\r\n📍 Deslice y explore la programación de octubre.\r\n\r\n#CasonaDeLaDanza #BogotáMiCiudadMiCasa",
         "preview": null,
         "slides": 19
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Ritmos Cruzados",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Esfera Latina",
+    "venue": "Esfera Latina",
+    "address": null,
+    "area": null,
+    "date": "2026-10-20",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "martes",
+    "start_time": "20:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Estudiantes Esfera",
+        "amount_cop": 10000,
+        "condition": null
+      },
+      {
+        "label": "General",
+        "amount_cop": 20000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Mancho Osorio",
+      "Alex Salsita"
+    ],
+    "activities": [
+      "clase de ritmos cruzados"
+    ],
+    "contact": "3135802345",
+    "confidence": "high",
+    "doubts": [
+      "Estilo de salsa específico no especificado"
+    ],
+    "id": "ritmos-cruzados-20-oct",
+    "account": "esferalatinaoficial",
+    "media": [
+      {
+        "post_id": "18026328986860113",
+        "permalink": "https://www.instagram.com/p/DeP18T8pb0G/",
+        "media_type": "IMAGE",
+        "published": "2026-10-10T15:00:23+0000",
+        "flyer": "flyers/18026328986860113-0.webp",
+        "caption": "Dos estilos, una sola clase y mucha energía. 🔥\n\nPrepárate para una clase diferente junto a manchoosorio & alexsalsitaoficial 💥\n\nReserva tu cupo y nos vemos en la pista! 💃🏽🕺🏽",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18109663904592419",
+        "permalink": "https://www.instagram.com/p/Dd4hT0Rx8hD/",
+        "media_type": "IMAGE",
+        "published": "2026-10-06T18:00:06+0000",
+        "flyer": "flyers/18109663904592419-0.webp",
+        "caption": "🔥 MARTES 20 DE OCTUBRE - Dos estilos, una sola clase y mucha energía. 🔥\n\nPrepárate para una clase diferente junto a manchoosorio & alexsalsitaoficial 💥\n\nReserva tu cupo y nos vemos en la pista! 💃🏽🕺🏽",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18112581790860968",
+        "permalink": "https://www.instagram.com/p/DdwoUWYDUwb/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-09-26T18:00:04+0000",
+        "flyer": "flyers/18112581790860968-1.webp",
+        "caption": "🔥 OCTUBRE SE VIVE EN ESFERA LATINA 🔥\n\nUn mes para aprender, entrenar, disfrutar y, sobre todo… BAILAR. 💃🕺\n\nEscríbenos para más información y reservas\n\n📱3135802345",
+        "preview": null,
+        "slides": 2
       }
     ],
     "bar": false
