@@ -5491,6 +5491,59 @@
     "bar": true
   },
   {
+    "title": "Proyección de Metrópolis con DJ en vivo",
+    "event_type": "other",
+    "is_recurring": false,
+    "styles": [],
+    "organizer": "Espacio 64",
+    "venue": "Espacio 64",
+    "address": null,
+    "area": null,
+    "date": "2026-10-16",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "jueves",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "proyección de película",
+      "performance sonora"
+    ],
+    "contact": "@espacio.64",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio",
+      "sin precio de boletería"
+    ],
+    "id": "proyeccion-de-metropolis-con-dj-en-vivo-16-oct",
+    "account": "espacio.64",
+    "media": [
+      {
+        "post_id": "17897100882672940",
+        "permalink": "https://www.instagram.com/reel/DeZ3UlGpzzr/",
+        "media_type": "VIDEO",
+        "published": "2026-10-12T18:26:27+0000",
+        "flyer": "flyers/17897100882672940-0.webp",
+        "caption": "🚨 TRANSMISIÓN DESDE EL FUTURO 🚨\n\nTe traemos 3 ideas de disfraces futuristas para que llegues a nuestra proyección de Metrópolis con toda la estética de otro siglo. 🦾✨\n\n👽 Robots, androides, criaturas distópicas o habitantes de una ciudad futurista… ¡queremos ver sus versiones!\n\n🪩 SÍ, TENEMOS DRESS CODE FUTURISTA, y nos emociona muchísimo ver cómo lo interpretan. Pero tranqui: es una invitación a jugar, no una obligación. Puedes venir como quieras y disfrutar de la película con nosotros. 🖤\n\n🎬 Proyección de Metrópolis (1927) + DJ en vivo creando el sonido de la película.\n\n¿Te atreves a venir desde el futuro? 👾\nEscríbenos para obtener tu entrada ✨\n\n#Metrópolis #CineMudo #PlanEnBogotá #CineYMúsica #Futurismo",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18145943356598221",
+        "permalink": "https://www.instagram.com/reel/DeU4HXTuwMm/",
+        "media_type": "VIDEO",
+        "published": "2026-10-10T19:53:19+0000",
+        "flyer": "flyers/18145943356598221-0.webp",
+        "caption": "🌁 🎥 METRÓPOLIS se proyecta y se sonoriza en vivo con un DJ AQUÍ EN ESPACIO 64. Una sola experiencia, una performance sonora donde película y música se sobreponen 🎹\n\n🤖 En 1927, Fritz Lang imaginó el futuro. Estamos en 2026… y acertó en tres cosas que dan miedo:\n\n1️⃣ Una sociedad partida en dos: unos arriba, otros sosteniendo la ciudad desde abajo. 2️⃣ Humanos al ritmo de la máquina: hoy no son palancas, son pantallas y algoritmos. 3️⃣ Una máquina con rostro humano que convence a las multitudes: hola, inteligencia artificial.\n\nAhora imagina ver esta película con una banda sonora que se crea en vivo, frente a ti.\n\n¡Te esperamos este 16 de octubre · Espacio 64! 🎟️ Boletas al DM 🎟️",
+        "preview": "previews/18145943356598221-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Muestra Formativa Tributo Dorado",
     "event_type": "show",
     "is_recurring": false,
@@ -5885,9 +5938,20 @@
     "end_date": null,
     "sessions": null,
     "weekday": "domingo",
-    "start_time": null,
-    "end_time": null,
-    "prices": [],
+    "start_time": "14:00",
+    "end_time": "22:00",
+    "prices": [
+      {
+        "label": "Preventa Solterx",
+        "amount_cop": 35000,
+        "condition": null
+      },
+      {
+        "label": "Preventa Parejx",
+        "amount_cop": 65000,
+        "condition": null
+      }
+    ],
     "artists": [],
     "activities": [
       "rumba",
@@ -5902,6 +5966,16 @@
     "id": "una-cita-con-la-salsa-18-oct",
     "account": "elgocepagano",
     "media": [
+      {
+        "post_id": "18152491579556289",
+        "permalink": "https://www.instagram.com/p/DeZ6iFAFPVs/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-12T18:49:00+0000",
+        "flyer": "flyers/18152491579556289-2.webp",
+        "caption": "Si las salidas a comer helado 🍦 o tomar café ☕ ya se quedan cortas para conectar con alguien, Una Cita con la Salsa es lo que necesitas.\n🥳 Una fiesta temprano con clase de baile, actividades para parejas y para solteros. Mucha Salsa y poco guayabo 😍.\n🎟️ Preventa con descuento en TuBaile.com \n🥤 Incluye una bebida \n💃 Clase de Baile 3PM\n📍 Diagonal 20A #0-83 elgocepagano",
+        "preview": null,
+        "slides": 3
+      },
       {
         "post_id": "17873536227593859",
         "permalink": "https://www.instagram.com/p/Dd7mV70jn6J/",
@@ -7267,6 +7341,16 @@
         "slides": null
       },
       {
+        "post_id": "18110201558466375",
+        "permalink": "https://www.instagram.com/reel/DeaohFPtUBj/",
+        "media_type": "VIDEO",
+        "published": "2026-10-13T01:30:05+0000",
+        "flyer": "flyers/18110201558466375-0.webp",
+        "caption": "Sebastián Agudelo ✨\n\nSeguimos alistando motores para nuestro Aniversario 🥳🥳🥳 no te puedes perder esta mega clase de Salsa Caleña\n\n17 horas de Talleres\n12 horas de Social\n\n🗓️ 31 Oct, 1 y 2 Nov\n📍 Distrito Social\n\n¿No tienes tu boleta aún? Reserva en nuestra web:\n\ndistrito-social-academy.com/eventos",
+        "preview": null,
+        "slides": null
+      },
+      {
         "post_id": "18122137267938670",
         "permalink": "https://www.instagram.com/reel/DeSiJYQRI_2/",
         "media_type": "VIDEO",
@@ -8182,6 +8266,16 @@
     "id": "jack-and-jill-20-nov",
     "account": "jackandjilloficial",
     "media": [
+      {
+        "post_id": "18126376342876048",
+        "permalink": "https://www.instagram.com/p/DeXKcFtSNEA/",
+        "media_type": "IMAGE",
+        "published": "2026-10-11T17:10:33+0000",
+        "flyer": "flyers/18126376342876048-0.webp",
+        "caption": "🔥 DANIEL TELLO 🔥\n\n¡La magia, la elegancia y la sabrosura del auténtico estilo caleño nos acompañarán en esta edición! 🇨🇴💃🏻\n\nPrepárate para disfrutar de su sabor, energía y ese movimiento inconfundible que hace de la salsa caleña una experiencia única. ¡El ritmo, la velocidad y la esencia de Cali se toman nuestra pista! 🔥",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18494005900106895",
         "permalink": "https://www.instagram.com/p/DeMlmrgSxay/",
