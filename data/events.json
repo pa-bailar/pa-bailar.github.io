@@ -6285,7 +6285,7 @@
     "end_time": null,
     "prices": [
       {
-        "label": "Cover",
+        "label": "Entrada",
         "amount_cop": 20000,
         "condition": null
       }
@@ -6299,7 +6299,9 @@
     ],
     "contact": "WhatsApp 3176608742",
     "confidence": "high",
-    "doubts": [],
+    "doubts": [
+      "sin hora de inicio"
+    ],
     "id": "celebrando-40-anos-de-trayectoria-enrique-barrios-22-oct",
     "account": "galeriacafelibro",
     "media": [
@@ -6311,6 +6313,16 @@
         "flyer": "flyers/18077925755706373-0.webp",
         "caption": "Celebrando una vida de salsa 🌟 Llega Enrique Barrios junto a gerbandlatingroup con lo mejor de su repertorio y todo el poder de la salsa en vivo. \n\nColombia y Venezuela unidos en tarima 🇻🇪🇨🇴\n\nLa cita es este jueves, 22 de octubre, en Galeria Café Libro sede Parque 93.\n\n🎟️ $20k\n📍 Cra 11A#93-42",
         "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18075504902737968",
+        "permalink": "https://www.instagram.com/reel/DeaetXnMksq/",
+        "media_type": "VIDEO",
+        "published": "2026-10-13T00:05:46+0000",
+        "flyer": "flyers/18075504902737968-0.webp",
+        "caption": "Una noche para vivir la salsa como se debe. 🔥🎶\n\nEste jueves 22 de octubre, Enrique Barrios llega a Galería Café Libro junto a gerbandlatingroup para poner a bailar Parque 93 con una noche llena de sabor, música en vivo y grandes clásicos.\n\n🎶 Salsa en vivo, buena música y una noche para bailar sin parar.\n\n📍 Galería Café Libro Parque 93\nCra. 11A #93-42\n🎟️ Entrada: $20.000\n\nNos vemos en la pista. 💃🏽🕺🏽",
+        "preview": "previews/18075504902737968-0.mp4",
         "slides": null
       }
     ],
@@ -7042,7 +7054,18 @@
     "weekday": "sábado",
     "start_time": null,
     "end_time": null,
-    "prices": [],
+    "prices": [
+      {
+        "label": "Cover con disfraz",
+        "amount_cop": 20000,
+        "condition": null
+      },
+      {
+        "label": "Cover sin disfraz",
+        "amount_cop": 35000,
+        "condition": null
+      }
+    ],
     "artists": [
       "Nelson DJ",
       "DJ Gracia",
@@ -7069,6 +7092,16 @@
         "published": "2026-10-04T22:09:19+0000",
         "flyer": "flyers/18210323335323212-0.webp",
         "caption": "🎃🩸 BOGOTÁ, ¿ESTÁN PREPARADOS PARA UNA NOCHE DE TERROR, SALSA Y MUCHO FLOW? 🔥💀\n\nEste 31 de octubre, en Pachanga&Pochola, el miedo se baila y la noche se vive sin reglas. 👻🕺🏽 Una fiesta donde los disfraces, la buena salsa y los premios serán los protagonistas. 🏆🎃\n\n💰 ¡5 MILLONES EN PREMIOS! Y una pregunta: ¿ya tienes pensado tu disfraz? #salsa  #pachanga #lasalsavuelveabrillar",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18105586774965643",
+        "permalink": "https://www.instagram.com/reel/Deas6USROzA/",
+        "media_type": "VIDEO",
+        "published": "2026-10-13T02:13:10+0000",
+        "flyer": "flyers/18105586774965643-0.webp",
+        "caption": "🎃🔥 ¡ESTE HALLOWEEN, EL TERROR SE BAILA EN PACHANGA💀🕺🏽\n\nEste 31 DE OCTUBRE prepárate para una noche de locura, disfraces, perreo y mucha fiesta. 👹🔥\n🎧 NELSON DJ, DJ GRACIA, DJ JULI SAVOY y JESSON DJ llegan con todo para hacerte vivir una noche de otro mundo. 🌑🔊\n\n💰 ¡🤑5 MILLONES EN PREMIOS! Sí, leíste bien… ¡cinco millones para ponerle más emoción a esta noche de terror! 🤑🏆\n\n🧟‍♀️ Ponte tu mejor disfraz, reúne a tu combo y ven a demostrar que hasta los monstruos saben rumbear.\n📍 Calle 73 #14-53, Chapinero.\n📲 Info: 313 289 1788.\n\nCover:20k con disfraz y 35k sin disfraz.👀\n\n#pachanga #halloween",
         "preview": null,
         "slides": null
       }
