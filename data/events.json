@@ -6657,6 +6657,63 @@
     "bar": false
   },
   {
+    "title": "Taller de Bachata Ladies",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "bachata"
+    ],
+    "organizer": "Soondanz Company",
+    "venue": null,
+    "address": null,
+    "area": null,
+    "date": "2026-10-24",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "18:00",
+    "end_time": "19:30",
+    "prices": [
+      {
+        "label": "Público general",
+        "amount_cop": 40000,
+        "condition": null
+      },
+      {
+        "label": "Alumnas",
+        "amount_cop": 25000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Keyla Gómez"
+    ],
+    "activities": [
+      "coreografía de bachata ladies",
+      "grabación del taller"
+    ],
+    "contact": "@soondanz_company",
+    "confidence": "high",
+    "doubts": [
+      "lugar no especificado"
+    ],
+    "id": "taller-de-bachata-ladies-24-oct",
+    "account": "soondanz_company",
+    "media": [
+      {
+        "post_id": "17994756708102808",
+        "permalink": "https://www.instagram.com/reel/DeZ3SvcvdDH/",
+        "media_type": "VIDEO",
+        "published": "2026-10-12T18:20:22+0000",
+        "flyer": "flyers/17994756708102808-0.webp",
+        "caption": "Te invitamos a un taller especial con la profe keylagomezy donde trabajaremos:\n\n💃 Coreografía de Bachata Ladies.\n✨ Detalles de estilo, técnica y expresión.\n🎥 Grabación del taller jei.studio_ para llevarte un recuerdo de tu proceso.\n\n📅 Sábado 24 de octubre\n🕕 6:00 p. m.\n⏳ Duración: 1 hora y media + grabación.\n\n💰 Inversión:\n🔥 Público general: $40.000\n❤️ Alumnas: $25.000\n\n⚠️ ¡Prepárate para bailar, sentir y brillar!\n\n📩 Escríbeme por DM para reservar tu cupo.\n\n Los espacios pueden ser limitados.\n#BachataLadies #BachataBogotá #BachataStyle #TallerDeBachata #BaileBogotá 💃👑",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Taller de bachata para las fiestas",
     "event_type": "workshop",
     "is_recurring": false,
