@@ -139,6 +139,8 @@ describe("a searched day, in every view: the days shown are the ones named", () 
   });
 
   it("with \"Cuándo\": a day both name, or nothing; its options counted on the days the search names", () => {
+    vi.useFakeTimers(); // the upcoming list (eventsInView) reads the clock: past 10 Oct 2026 the Saturday was gone
+    vi.setSystemTime(new Date(`${TODAY}T17:00:00Z`));
     expect(matchesFilters(wedSat, list("sábado", { dates: ["hoy"] }), undefined, TODAY)).toBe(false);
     expect(matchesFilters(wedSat, list("sábado", { dates: ["fin-de-semana"] }), undefined, TODAY)).toBe(true);
     const counts = dateOptions([wedSat], [wedSat], TODAY, "sábado").map((option) => [option.key, option.count]);

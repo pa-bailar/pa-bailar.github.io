@@ -196,10 +196,6 @@
 .bottom-nav__close {
   position: relative;
   flex: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
   color: var(--text);
 }
 
@@ -207,9 +203,4 @@
   content: "";
   position: absolute;
   inset: calc((var(--control-height) - var(--touch-target)) / 2 - var(--border-width));
-}
-
-.bottom-nav__close .icon {
-  width: var(--icon-md);
-  height: var(--icon-md);
 }
