@@ -21,14 +21,25 @@
   color: var(--on-action);
 }
 
+/* A square button with one icon (or a × glyph), centered both ways: the calendar's month arrows sat low as the
+   text glyphs ‹ › (owner, 12 Oct 2026). */
 .icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: var(--control-height);
   height: var(--control-height);
+  padding: 0;
   background: var(--surface);
   border: var(--border-width) solid var(--border);
   border-radius: var(--radius-sm);
   font-size: var(--text-xl);
   line-height: 1;
+}
+
+.icon-btn .icon {
+  width: var(--icon-md);
+  height: var(--icon-md);
 }
 
 /* The bookmark that saves an event (scripts/views/saveButton.ts): on cards (above their stretched click

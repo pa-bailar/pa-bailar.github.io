@@ -874,7 +874,8 @@ already left (the owner's review, 6 Oct 2026). Closing never reopens an earlier 
 - **"Cómo llegar"** after the venue opens Google Maps (only when there's a venue or address).
 - **Reporting an error:** the detail ends with a small "¿Algo está mal? Repórtalo" link to the Google Form, with the event filled in (`feedbackUrl`); the footer has "Escríbenos" for anything else. Out of the way of the actions, because almost everyone just wants the event.
 - **The contact is a link** (`lib/contact.ts`): an @username opens its profile inside the site; a mobile number opens a WhatsApp chat (`wa.me/57…`), not a call: that's how people reach academies; a landline (60X) is a call (`tel:`); a website opens it. A number that isn't a full Colombian or international one stays plain text.
-- **Icons** (`scripts/lib/icons.ts`): Instagram and WhatsApp marks (Simple Icons, CC0) and drawn icons, inline SVG in the text color, hidden from screen readers.
+- **Icons** (`scripts/lib/icons.ts`): Instagram and WhatsApp marks (Simple Icons, CC0) and drawn icons, inline SVG in the text color, hidden from screen readers. Arrows are icons, never text glyphs: the calendar's
+  month ‹ › sat low as the characters (the owner, 12 Oct 2026). `.icon-btn` centers its icon both ways.
 
 ## Component rules
 

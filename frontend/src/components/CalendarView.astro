@@ -7,8 +7,8 @@ import { ICONS } from "../scripts/lib/icons";
 <section id="view-calendar" class="calendar" role="tabpanel" aria-labelledby="tab-calendar" hidden>
   <div class="calendar__head">
     <h2 class="calendar__title" id="cal-title"></h2>
-    <button class="icon-btn" data-month-step="-1" aria-label="Mes anterior">‹</button>
-    <button class="icon-btn" data-month-step="1" aria-label="Mes siguiente">›</button>
+    <button class="icon-btn" data-month-step="-1" aria-label="Mes anterior"><Fragment set:html={ICONS.chevronLeft} /></button>
+    <button class="icon-btn" data-month-step="1" aria-label="Mes siguiente"><Fragment set:html={ICONS.chevronRight} /></button>
     <button class="btn" data-today>Hoy</button>
   </div>
   <div class="calendar__grid" id="cal-grid"></div>
