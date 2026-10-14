@@ -5491,57 +5491,73 @@
     "bar": true
   },
   {
-    "title": "Proyección de Metrópolis con DJ en vivo",
-    "event_type": "other",
+    "title": "La Salsa Party en Vivo - Homenaje al Gran Combo de Puerto Rico",
+    "event_type": "concert",
     "is_recurring": false,
-    "styles": [],
-    "organizer": "Espacio 64",
-    "venue": "Espacio 64",
-    "address": null,
-    "area": null,
+    "styles": [
+      "salsa",
+      "urbano"
+    ],
+    "organizer": "Meeting House",
+    "venue": "Meeting House",
+    "address": "Calle 32 #6B-43 Piso 3",
+    "area": "Centro Internacional",
     "date": "2026-10-16",
     "end_date": null,
     "sessions": null,
-    "weekday": "jueves",
-    "start_time": null,
-    "end_time": null,
-    "prices": [],
-    "artists": [],
-    "activities": [
-      "proyección de película",
-      "performance sonora"
-    ],
-    "contact": "@espacio.64",
-    "confidence": "high",
-    "doubts": [
-      "sin hora de inicio",
-      "sin precio de boletería"
-    ],
-    "id": "proyeccion-de-metropolis-con-dj-en-vivo-16-oct",
-    "account": "espacio.64",
-    "media": [
+    "weekday": "viernes",
+    "start_time": "16:00",
+    "end_time": "03:00",
+    "prices": [
       {
-        "post_id": "17897100882672940",
-        "permalink": "https://www.instagram.com/reel/DeZ3UlGpzzr/",
-        "media_type": "VIDEO",
-        "published": "2026-10-12T18:26:27+0000",
-        "flyer": "flyers/17897100882672940-0.webp",
-        "caption": "🚨 TRANSMISIÓN DESDE EL FUTURO 🚨\n\nTe traemos 3 ideas de disfraces futuristas para que llegues a nuestra proyección de Metrópolis con toda la estética de otro siglo. 🦾✨\n\n👽 Robots, androides, criaturas distópicas o habitantes de una ciudad futurista… ¡queremos ver sus versiones!\n\n🪩 SÍ, TENEMOS DRESS CODE FUTURISTA, y nos emociona muchísimo ver cómo lo interpretan. Pero tranqui: es una invitación a jugar, no una obligación. Puedes venir como quieras y disfrutar de la película con nosotros. 🖤\n\n🎬 Proyección de Metrópolis (1927) + DJ en vivo creando el sonido de la película.\n\n¿Te atreves a venir desde el futuro? 👾\nEscríbenos para obtener tu entrada ✨\n\n#Metrópolis #CineMudo #PlanEnBogotá #CineYMúsica #Futurismo",
-        "preview": null,
-        "slides": null
+        "label": "Preventa",
+        "amount_cop": 10000,
+        "condition": null
       },
       {
-        "post_id": "18145943356598221",
-        "permalink": "https://www.instagram.com/reel/DeU4HXTuwMm/",
-        "media_type": "VIDEO",
-        "published": "2026-10-10T19:53:19+0000",
-        "flyer": "flyers/18145943356598221-0.webp",
-        "caption": "🌁 🎥 METRÓPOLIS se proyecta y se sonoriza en vivo con un DJ AQUÍ EN ESPACIO 64. Una sola experiencia, una performance sonora donde película y música se sobreponen 🎹\n\n🤖 En 1927, Fritz Lang imaginó el futuro. Estamos en 2026… y acertó en tres cosas que dan miedo:\n\n1️⃣ Una sociedad partida en dos: unos arriba, otros sosteniendo la ciudad desde abajo. 2️⃣ Humanos al ritmo de la máquina: hoy no son palancas, son pantallas y algoritmos. 3️⃣ Una máquina con rostro humano que convence a las multitudes: hola, inteligencia artificial.\n\nAhora imagina ver esta película con una banda sonora que se crea en vivo, frente a ti.\n\n¡Te esperamos este 16 de octubre · Espacio 64! 🎟️ Boletas al DM 🎟️",
-        "preview": "previews/18145943356598221-0.mp4",
-        "slides": null
+        "label": "Preventa",
+        "amount_cop": 15000,
+        "condition": null
+      },
+      {
+        "label": "Taquilla",
+        "amount_cop": 15000,
+        "condition": null
+      },
+      {
+        "label": "Taquilla",
+        "amount_cop": 20000,
+        "condition": null
       }
     ],
-    "bar": false
+    "artists": [
+      "SalSound",
+      "J Balles",
+      "Bloalize"
+    ],
+    "activities": [
+      "homenaje al Gran Combo de Puerto Rico",
+      "orquesta en vivo",
+      "fiesta con DJ"
+    ],
+    "contact": "WhatsApp 3152859570",
+    "confidence": "high",
+    "doubts": [],
+    "id": "la-salsa-party-en-vivo-homenaje-al-gran-combo-de-16-oct",
+    "account": "meetinghousebogota",
+    "media": [
+      {
+        "post_id": "18133239400672350",
+        "permalink": "https://www.instagram.com/p/DedHR_BFMY9/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-14T00:38:07+0000",
+        "flyer": "flyers/18133239400672350-4.webp",
+        "caption": "🔥 ¡ESTA SEMANA MEETING HOUSE SE PRENDE CON TODA! 🔥\n\n🍕 MIÉRCOLES 14 – PIZZA PARTY\n¡Nuestra primera edición! Emprendimientos, networking, catas de pizza, DJs de electrónica y un sonido brutal para una noche llena de sabor y buena energía. 🍕🎧\n\n🎤 JUEVES 15 – LANGUAGE EXCHANGE + KARAOKE\n🌎 6 PM: Conoce gente de todo el mundo y practica idiomas.\n🎙️ 8 PM: ¡Saca tu artista interior y rompe el escenario con el karaoke!\n\n💃 VIERNES 16 – SALSA PARTY\n🔥 Nuestra orquesta de la casa SalSound llega con un homenaje al legendario Gran Combo de Puerto Rico. Y sin falta DJs de crossover, perreo y fiesta hasta la madrugada🪘🎶\n\n🥩 SÁBADO 17 – ASADO PARTY\n¡Regresa una de nuestras fiestas más sabrosas! 🔥 Parrilla en vivo, Cumbia, mucho Fernet y un ambiente espectacular para bailar, comer y disfrutar con tu parche. 🥃💃\n\n📍 MEETING HOUSE – Centro Internacional, Bogotá\n\n🍻 ¡Cuatro noches, cuatro planes imperdibles! Arma tu parche, reserva y ven a vivir la semana con nosotros.\n\n📲 Reservas: 315 285 9570",
+        "preview": null,
+        "slides": 7
+      }
+    ],
+    "bar": true
   },
   {
     "title": "Muestra Formativa Tributo Dorado",
@@ -7431,6 +7447,16 @@
         "slides": null
       },
       {
+        "post_id": "17938615815380251",
+        "permalink": "https://www.instagram.com/reel/DecJ_Y4Rg1p/",
+        "media_type": "VIDEO",
+        "published": "2026-10-13T15:44:40+0000",
+        "flyer": "flyers/17938615815380251-0.webp",
+        "caption": "Cristian y Natalia ✨\n\nSeguimos preparando todo para que aprendas, bailes y disfrutes al máximo 🥳🥳🥳🥳\n\nNo te pierdas nuestro aniversario con esta increíble clase de Bachata Fusión 🤩\n\n17 horas de Talleres\n12 horas de Social\n\n🗓️ 31 Oct, 1 y 2 Nov\n📍 Distrito Social\n\n¿No tienes tu boleta aún? Reserva en nuestra web\n\ndistrito-social-academy.com/eventos",
+        "preview": "previews/17938615815380251-0.mp4",
+        "slides": null
+      },
+      {
         "post_id": "18110201558466375",
         "permalink": "https://www.instagram.com/reel/DeaohFPtUBj/",
         "media_type": "VIDEO",
@@ -7846,6 +7872,96 @@
         "caption": "✨ Tango Bardo INTIMO una produccion de Ivan Ovalle y Alma de Tango ✨\n\nTres momentos. Tres experiencias para vivir el tango de una manera diferente. 🖤🍷\n\n🎶 CONCIERTO\n📅 6 de noviembre | 🕗 8:00 p. m.\n💰 $120.000\n🍷 Copa de vino + tortilla horneada\n\n💃 MILONGA\n📅 7 de noviembre | 🕘 9:00 p. m.\n💰 $100.000\n🍷 Copa de vino + empanada horneada\n\n🤝 MEET & GREET\n📅 7 de noviembre | 🕕 6:00 p. m.\n✨ Incluido exclusivamente en el Paquete VIP\n\n⭐ PAQUETE VIP — $280.000\nIncluye Concierto + Milonga + Meet & Greet.\n\nUna noche de música, tango, encuentro y momentos que se quedan en la memoria. ✨\n\n📍 Alma de Tango\n🎟️ Cupos limitados.\n\nReserva tu experiencia y déjate envolver por la magia de Íntimo. 🥂🎶\n\n#AlmaDeTango #TangoBardo #Íntimo #Tango #Milonga Concierto Bogotá TangoEnBogotá MúsicaEnVivo ExperienciaTango",
         "preview": null,
         "slides": 4
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Guabalosas Intensivo Versión 2.0",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa caleña"
+    ],
+    "organizer": "Jenssy González",
+    "venue": "Distrito Social",
+    "address": "Cra. 29 #68 - 18",
+    "area": null,
+    "date": "2026-11-07",
+    "end_date": "2026-11-29",
+    "sessions": [
+      {
+        "date": "2026-11-07",
+        "start_time": "17:00",
+        "end_time": null
+      },
+      {
+        "date": "2026-11-14",
+        "start_time": "17:00",
+        "end_time": null
+      },
+      {
+        "date": "2026-11-21",
+        "start_time": "17:00",
+        "end_time": null
+      },
+      {
+        "date": "2026-11-29",
+        "start_time": "12:00",
+        "end_time": null
+      }
+    ],
+    "weekday": "sábado",
+    "start_time": "17:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "1 día",
+        "amount_cop": 40000,
+        "condition": null
+      },
+      {
+        "label": "2 días",
+        "amount_cop": 75000,
+        "condition": null
+      },
+      {
+        "label": "3 días",
+        "amount_cop": 105000,
+        "condition": null
+      },
+      {
+        "label": "4 días",
+        "amount_cop": 120000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Jenssy González"
+    ],
+    "activities": [
+      "clase de salsa caleña",
+      "estilo femenino",
+      "técnica",
+      "cadereo"
+    ],
+    "contact": "appdanza.com",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de finalización definida para las sesiones"
+    ],
+    "id": "guabalosas-intensivo-version-2-0-7-nov",
+    "account": "jen.ssy",
+    "media": [
+      {
+        "post_id": "18409331449090604",
+        "permalink": "https://www.instagram.com/p/Dec7ag1H197/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-13T22:54:25+0000",
+        "flyer": "flyers/18409331449090604-0.webp",
+        "caption": "✨ GUABALOSAS TEAM by Jenssy — VERSIÓN 2.0 ✨\n\nBOGOTÁ, PREPAREN  ESAS CADERAS… QUE GUABALOSAS VUELVE👠🔥\n\nY esta vez volvemos para cerrar el año como se debe: ¡con todo el sabor del estilo caleño femenino! 💃🏽❤️‍🔥\nMás cadereo, más visaje, más técnica y esa sabrosura que nos hace únicas.\n\nNoviembre es de nosotras, 4 clases intensivas para que tu estilo caleño llegue a otro nivel y conectes con la sabrosura que nos caracteriza 🔥\n\n¿Estás lista para ser parte de esta segunda edición? 👀Agenda tu cupo y no te quedes por fuera💋\n\n#salsacaleña #salsa #salsalady #femenina #salsabaulalmáximo",
+        "preview": null,
+        "slides": 3
       }
     ],
     "bar": false
