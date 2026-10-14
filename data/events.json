@@ -5435,6 +5435,156 @@
     "bar": false
   },
   {
+    "title": "Mambo Candela",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "son"
+    ],
+    "organizer": "Salsa Camará",
+    "venue": "Salsa Camará",
+    "address": "Carrera 11 #70A - 22",
+    "area": null,
+    "date": "2026-10-15",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "jueves",
+    "start_time": "16:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Aporte cultural",
+        "amount_cop": 15000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Mambo Candela"
+    ],
+    "activities": [
+      "música en vivo"
+    ],
+    "contact": "WhatsApp 313 830 8844",
+    "confidence": "high",
+    "doubts": [
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "mambo-candela-15-oct",
+    "account": "salsacamaraoficial",
+    "media": [
+      {
+        "post_id": "18117980431950593",
+        "permalink": "https://www.instagram.com/p/Dec4NgFlXJs/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-13T22:26:26+0000",
+        "flyer": "flyers/18117980431950593-0.webp",
+        "caption": "Conoce nuestro repertorio salsero de este fin de semana\n\n📆 Jueves 15 de Octubre\n🎺 Mambo Candela\n🎟️ Aporte cultural: 15K\n\n📆 Sábado de 17 de Octubre\n🎺 Javier Guaneme Homenaje a Willie Colón\n🎟️ Aporte cultural: 20K\n\n⏳ Desde las 4 PM\n📍 Carrera 11 #70A-22\n📲 Reserva por WhatsApp: 313 830 8844",
+        "preview": null,
+        "slides": 4
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Latin Jazz con Alejandro Castro",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "Tributo Salsa y Jazz",
+    "venue": "Tributo Salsa y Jazz",
+    "address": "Av. Boyacá #64c - 97",
+    "area": "Zona 6",
+    "date": "2026-10-15",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "jueves",
+    "start_time": "20:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Alejandro Castro"
+    ],
+    "activities": [
+      "música en vivo",
+      "solista"
+    ],
+    "contact": "WhatsApp 310 5714824",
+    "confidence": "high",
+    "doubts": [
+      "sin precio"
+    ],
+    "id": "latin-jazz-con-alejandro-castro-15-oct",
+    "account": "tributo.salsayjazz",
+    "media": [
+      {
+        "post_id": "18069432494501142",
+        "permalink": "https://www.instagram.com/p/Dec1x6FlJS3/",
+        "media_type": "IMAGE",
+        "published": "2026-10-13T22:05:11+0000",
+        "flyer": "flyers/18069432494501142-0.webp",
+        "caption": "¡LLEGÓ EL JUEVES PARA VIVIR LOS CLÁSICOS DEL LATIN JAZZ! 🎷🎶\n Porque el fin de semana se empieza a gozar desde hoy, te esperamos en tu casa: \n¡Tributo Salsa y Jazz! \n\nEste jueves 15 de octubre prepárate para una velada inolvidable recorriendo los clásicos del jazz de ayer y hoy.\n\nVen a disfrutar de un buen trago con tus amigos, contágiate de la mejor atmósfera y alístate para dejarte llevar por el virtuosismo, la elegancia y la magia del solista Alejandro Castro en vivo. \n\n¡Puro sabor para el alma melómana! 🥂🎷🔥 \n📍 Lugar: Av. Boyacá #64c - 97 (Zona 6)\n⏰ Apertura: 6:00 PM | Orquesta en vivo: 8:00 PM \n📲 Reservas: 310 5714 824\n\n¡Asegura tu mesa antes de que se llene! RESERVA, arma tu parche melómano y nos vemos para disfrutar de la buena música. 👇\n\n✨https://wa.me/573105714824",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Remate del concierto de Yellowman",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "dancehall",
+      "urbano"
+    ],
+    "organizer": "Callejón Salsa & Mecato",
+    "venue": "Callejón Salsa & Mecato",
+    "address": "Calle 12D # 3-84",
+    "area": null,
+    "date": "2026-10-15",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "jueves",
+    "start_time": "21:30",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 20000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Claumar",
+      "Vizcaíno"
+    ],
+    "activities": [
+      "fiesta remate",
+      "música en vivo"
+    ],
+    "contact": "@callejonsalsa",
+    "confidence": "high",
+    "doubts": [],
+    "id": "remate-del-concierto-de-yellowman-15-oct",
+    "account": "callejonsalsa",
+    "media": [
+      {
+        "post_id": "18100002356382634",
+        "permalink": "https://www.instagram.com/p/DecOTQPx4Vg/",
+        "media_type": "IMAGE",
+        "published": "2026-10-13T16:20:16+0000",
+        "flyer": "flyers/18100002356382634-0.webp",
+        "caption": "BOGOTÁ, EL REMATE DE YELLOWMAN ES EN CALLEJÓN. 🔥\nMi gente, esto sigue después del concierto. Big tunes al mando CLAUMAR & VIZCAÍNO claumar_31 y negro_sobrenegro poniendo a rodar dancehall, reggae, y DnB con criterio. Selectores pesados, buena música y la familia del Sound System en la pista. Y si los músicos de Yellowman llegan, la fiesta se pone mejor. 🚨\nBogotá va a tener muchas fiestas esa noche, pero esta tiene su propio swing. \n\n📍Callejón Salsa & Mecato - Calle 12D #3-84\n🗓️ 15 de octubre - 9:30 p.m.\n🎟️ 20K\n\nNos vemos en la pista!!!",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "The Bambas",
     "event_type": "concert",
     "is_recurring": false,
@@ -5607,6 +5757,100 @@
     "bar": false
   },
   {
+    "title": "Noche de Tributo: Grupo Niche y Hermanos Lebron",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "@casavander_",
+    "venue": "Casa Vander",
+    "address": "Cra 16 #35-08",
+    "area": null,
+    "date": "2026-10-16",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "20:30",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Grupo Niche",
+      "Hermanos Lebron"
+    ],
+    "activities": [
+      "orquesta en vivo",
+      "tributo"
+    ],
+    "contact": "3011620492",
+    "confidence": "high",
+    "doubts": [
+      "sin precio",
+      "no es claro si se trata de los artistas originales o de una orquesta interpretando su música"
+    ],
+    "id": "noche-de-tributo-grupo-niche-y-hermanos-lebron-16-oct",
+    "account": "casavander_",
+    "media": [
+      {
+        "post_id": "18179626177437481",
+        "permalink": "https://www.instagram.com/p/DecNouUBkOw/",
+        "media_type": "IMAGE",
+        "published": "2026-10-13T17:30:03+0000",
+        "flyer": "flyers/18179626177437481-0.webp",
+        "caption": "LOS HERMANOS LEBRON Y GRUPO NICHE.\nUds lo piden y nosotros cumplimos, ambos una misma noche. \n\nEste viernes 16 de Octubre agéndese con su combo salsero, recuerde cenar acá no se ponga a improvisar, buena Pola y buenos tacos.\n\nVenga y celebre el cumpleaños, el aniversario, el amor, la soltería y la vida. \n\nReservas en el link de la bio.",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Salsa Night con TimbaKé",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa cubana"
+    ],
+    "organizer": "Tributo Salsa y Jazz",
+    "venue": "Tributo Salsa y Jazz",
+    "address": "Av. Boyacá #64c 97",
+    "area": "Zona 6",
+    "date": "2026-10-16",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "22:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "TimbaKé"
+    ],
+    "activities": [
+      "rumba",
+      "orquesta en vivo"
+    ],
+    "contact": "WhatsApp 310 5714824",
+    "confidence": "high",
+    "doubts": [
+      "sin precio"
+    ],
+    "id": "salsa-night-con-timbake-16-oct",
+    "account": "tributo.salsayjazz",
+    "media": [
+      {
+        "post_id": "18113840408017610",
+        "permalink": "https://www.instagram.com/p/DeclB8LlG6z/",
+        "media_type": "IMAGE",
+        "published": "2026-10-13T19:38:50+0000",
+        "flyer": "flyers/18113840408017610-0.webp",
+        "caption": "¡LLEGÓ EL VIERNES Y SE PRENDE LA NOCHE CON UNA VERDADERA SALSA NIGHT! 💃🕺🔥 Porque el fin de semana arranca como se debe, te esperamos en tu casa: \n\n¡Tributo Salsa y Jazz!\n\n Este viernes 16 de octubre prepárate para una rumba inolvidable llena de timba, clave y pura sabrosura. Ven a disfrutar de un buen trago con tus amigos, alístate para azotar baldosa y déjate llevar por el ritmo y la energía en vivo de TimbaKé. \n\n¡Pura candela para encender la pista! 🥂🎺🔥 \n📍 Lugar: Av. Boyacá #64c 97 (Zona 6) \n⏰ Apertura: 6:00 PM | Orquesta en vivo: 10:00 PM \n📲 Reservas: 310 5714824 \n ¡Asegura tu mesa antes de que se llene!\n\n RESERVA, arma tu parche salsero y nos vemos en la pista para gozar. 👇\n✨https://wa.me/573105714824",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Fidel peña y su Tono Mayor",
     "event_type": "concert",
     "is_recurring": false,
@@ -5770,6 +6014,58 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "Javier Guaneme Homenaje a Willie Colón",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Salsa Camará",
+    "venue": "Salsa Camará",
+    "address": "Carrera 11 #70A - 22",
+    "area": null,
+    "date": "2026-10-17",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "16:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Aporte cultural",
+        "amount_cop": 20000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Javier Guaneme"
+    ],
+    "activities": [
+      "Homenaje a Willie Colón",
+      "música en vivo"
+    ],
+    "contact": "WhatsApp 313 830 8844",
+    "confidence": "high",
+    "doubts": [
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "javier-guaneme-homenaje-a-willie-colon-17-oct",
+    "account": "salsacamaraoficial",
+    "media": [
+      {
+        "post_id": "18117980431950593",
+        "permalink": "https://www.instagram.com/p/Dec4NgFlXJs/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-13T22:26:26+0000",
+        "flyer": "flyers/18117980431950593-2.webp",
+        "caption": "Conoce nuestro repertorio salsero de este fin de semana\n\n📆 Jueves 15 de Octubre\n🎺 Mambo Candela\n🎟️ Aporte cultural: 15K\n\n📆 Sábado de 17 de Octubre\n🎺 Javier Guaneme Homenaje a Willie Colón\n🎟️ Aporte cultural: 20K\n\n⏳ Desde las 4 PM\n📍 Carrera 11 #70A-22\n📲 Reserva por WhatsApp: 313 830 8844",
+        "preview": null,
+        "slides": 4
+      }
+    ],
+    "bar": true
   },
   {
     "title": "Taller Especial de Salsa",
@@ -6009,6 +6305,52 @@
         "published": "2026-10-01T00:45:26+0000",
         "flyer": "flyers/18079187786372305-0.webp",
         "caption": "Un mes con eventos inolvidables!",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Salsa en Familia",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Tributo Salsa y Jazz",
+    "venue": "Tributo Salsa y Jazz",
+    "address": "Av. Boyacá #64c - 97",
+    "area": "Zona 6",
+    "date": "2026-10-18",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "14:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Orquesta en vivo"
+    ],
+    "activities": [
+      "orquesta en vivo",
+      "comer sabroso"
+    ],
+    "contact": "WhatsApp 310 5714 824",
+    "confidence": "high",
+    "doubts": [
+      "sin precio"
+    ],
+    "id": "salsa-en-familia-18-oct",
+    "account": "tributo.salsayjazz",
+    "media": [
+      {
+        "post_id": "17886636120624354",
+        "permalink": "https://www.instagram.com/p/DedM8xUjJwf/",
+        "media_type": "IMAGE",
+        "published": "2026-10-14T01:27:39+0000",
+        "flyer": "flyers/17886636120624354-0.webp",
+        "caption": "¡LLEGÓ EL DOMINGO PARA DISFRUTAR DE 'SALSA EN FAMILIA'! 🎷🎺👨‍👩‍👧‍👦✨ \n\nPorque el fin de semana se remata mejor unidos, te esperamos en tu casa: ¡Tributo Salsa y Jazz! \n\nEste domingo 18 de octubre, prepárate para vivir una tarde inolvidable llena de música, alegría y el mejor ambiente para grandes y chicos. \n\nTrae a tu familia, comparte una experiencia deliciosa y déjate llevar por todo el sabor de nuestra orquesta en vivo. \n\n¡El plan perfecto para compartir, comer sabroso y gozar en grande! 🥂🎁🎉✨ \n📍 Lugar: Av. Boyacá #64c - 97 (Zona 6) \n⏰ Apertura: 2:00 PM | Orquesta en vivo: 3:00 PM \n📲 Reservas: 310 5714 824 \n\n(Nota: Los menores de edad deben ir acompañados y ser supervisados por un adulto responsable) \n\n¡Asegura la mesa para toda la familia antes de que se llene! RESERVA, arma tu parche familiar y nos vemos este domingo. 👇\n\n✨https://wa.me/573105714824",
         "preview": null,
         "slides": null
       }
@@ -6989,6 +7331,61 @@
     "bar": true
   },
   {
+    "title": "¡Embrújate con Salsa! - Viernes",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Galería Café Libro",
+    "venue": "Galería Café Libro",
+    "address": null,
+    "area": "Parque 93 / Palermo",
+    "date": "2026-10-30",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Entrada",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "3 djs residentes"
+    ],
+    "activities": [
+      "fiesta salsera",
+      "premios a los 3 mejores disfraces",
+      "trago de bienvenida"
+    ],
+    "contact": "WhatsApp 3176608742",
+    "confidence": "high",
+    "doubts": [
+      "no se especifica hora de inicio",
+      "el flyer menciona Salón Café Bohemia pero el pie de foto menciona tres sedes",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "embrujate-con-salsa-viernes-30-oct",
+    "account": "galeriacafelibro",
+    "media": [
+      {
+        "post_id": "18393602263163041",
+        "permalink": "https://www.instagram.com/p/Deb3d1YjMxP/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-13T13:00:04+0000",
+        "flyer": "flyers/18393602263163041-0.webp",
+        "caption": "🎃🪄Este Halloween ¡EMBRÚJATE CON SALSA! 🌟🧙‍♀️🧙‍♂️\n\nDos noches de fiesta salsera con premios a los mejores disfraces, 🎭🧛‍♀️ sorpresas durante toda la noche y tres sedes vestidas de magia 🧚🏻 Desliza para ver nuestros premios ➡️\n\nViernes 30: 💿 3 djs residentes, entrada libre, trago de bienvenida y premios para los 3 mejores disfraces (categoría libre)\n\nSábado 31: 🎺 Música en vivo con ns.orquesta en sede Parque 93 y con Los Emperadores en sede Palermo; 3 djs residentes, trago de bienvenida, premios a los 3 mejores disfraces (categoría libre). Cover: $25.000\n\n💬 ¿Quieres reservar tu mesa? Comenta 𝗘𝗠𝗕𝗥𝗨𝗝𝗢 y te enviamos la información por DM. 🎃\n\n🎟️ Entradas y reservas: galeriacafelibro.com.co / 3176608742 / 6012851794/ DM\n📍 Galeria Cafe Libro • Sedes:\nParque 93\ngaleriacafelibrosedepalermo \nsaloncafebohemia \n\n#Halloween #Salsa #SalsaEnBogotá #GaleriaCafeLibro",
+        "preview": null,
+        "slides": 2
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "La Guillaera",
     "event_type": "social",
     "is_recurring": false,
@@ -7221,6 +7618,62 @@
         "caption": "🧛🏻‍♂️🩸 HALLOWEEN SALSERO — SALSA Y SON 🎃🔥\n\nEste sábado 31 de octubre, la noche se viste de misterio, sabor y mucha salsa. 💃🏻🕺🏻\n\nPrepárate para vivir una noche de disfraces, rumba y sorpresas en una experiencia donde el terror se baila al ritmo de la salsa. 🥀🎶\n\n🏆 PREMIOS AL MEJOR DISFRAZ: $600.000\n\n📍 Salsa y Son — Zona T, Bogotá\n📌 Cra. 14 #82-87\n📲 Reservas: 322 728 3910\n\n🕸️ Tu disfraz, tu actitud y la mejor energía salsera. ¿Ya tienes listo tu personaje para esta noche?\n\nEste Halloween, el miedo se siente… ¡pero la salsa se baila! 🔥💀\n\n#HalloweenSalsero #SalsaYSon #HalloweenBogotá #RumbaSalsera ZonaT",
         "preview": null,
         "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "¡Embrújate con Salsa! - Sábado",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Galería Café Libro",
+    "venue": "Galería Café Libro",
+    "address": null,
+    "area": "Parque 93 / Palermo",
+    "date": "2026-10-31",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 25000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "ns.orquesta",
+      "Los Emperadores",
+      "3 djs residentes"
+    ],
+    "activities": [
+      "música en vivo",
+      "premios a los 3 mejores disfraces",
+      "trago de bienvenida"
+    ],
+    "contact": "WhatsApp 3176608742",
+    "confidence": "high",
+    "doubts": [
+      "no se especifica hora de inicio",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "embrujate-con-salsa-sabado-31-oct",
+    "account": "galeriacafelibro",
+    "media": [
+      {
+        "post_id": "18393602263163041",
+        "permalink": "https://www.instagram.com/p/Deb3d1YjMxP/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-13T13:00:04+0000",
+        "flyer": "flyers/18393602263163041-0.webp",
+        "caption": "🎃🪄Este Halloween ¡EMBRÚJATE CON SALSA! 🌟🧙‍♀️🧙‍♂️\n\nDos noches de fiesta salsera con premios a los mejores disfraces, 🎭🧛‍♀️ sorpresas durante toda la noche y tres sedes vestidas de magia 🧚🏻 Desliza para ver nuestros premios ➡️\n\nViernes 30: 💿 3 djs residentes, entrada libre, trago de bienvenida y premios para los 3 mejores disfraces (categoría libre)\n\nSábado 31: 🎺 Música en vivo con ns.orquesta en sede Parque 93 y con Los Emperadores en sede Palermo; 3 djs residentes, trago de bienvenida, premios a los 3 mejores disfraces (categoría libre). Cover: $25.000\n\n💬 ¿Quieres reservar tu mesa? Comenta 𝗘𝗠𝗕𝗥𝗨𝗝𝗢 y te enviamos la información por DM. 🎃\n\n🎟️ Entradas y reservas: galeriacafelibro.com.co / 3176608742 / 6012851794/ DM\n📍 Galeria Cafe Libro • Sedes:\nParque 93\ngaleriacafelibrosedepalermo \nsaloncafebohemia \n\n#Halloween #Salsa #SalsaEnBogotá #GaleriaCafeLibro",
+        "preview": null,
+        "slides": 2
       }
     ],
     "bar": true
