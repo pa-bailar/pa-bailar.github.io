@@ -5641,6 +5641,53 @@
     "bar": true
   },
   {
+    "title": "Yambú Orquesta",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Casa Quiebra-Canto",
+    "venue": "Casa Quiebra-Canto",
+    "address": null,
+    "area": null,
+    "date": "2026-10-16",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Yambú Orquesta"
+    ],
+    "activities": [
+      "concierto"
+    ],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [
+      "sin horario",
+      "sin precio",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "yambu-orquesta-16-oct",
+    "account": "casaquiebracanto",
+    "media": [
+      {
+        "post_id": "18117549506055151",
+        "permalink": "https://www.instagram.com/p/Defs08NxtpX/",
+        "media_type": "IMAGE",
+        "published": "2026-10-15T00:44:44+0000",
+        "flyer": "flyers/18117549506055151-0.webp",
+        "caption": "Vamos a echarle salsita a la vida con dannyrosalescastro  pachitoech  a meterle candela al fin de semana",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "La Salsa Party en Vivo - Homenaje al Gran Combo de Puerto Rico",
     "event_type": "concert",
     "is_recurring": false,
@@ -5754,6 +5801,52 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "Salsa & Reguetón",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "urbano"
+    ],
+    "organizer": "El Bochinche Café-Bar",
+    "venue": "El Bochinche Café-Bar",
+    "address": "Calle 22 #01-26",
+    "area": null,
+    "date": "2026-10-16",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "19:30",
+    "end_time": "02:30",
+    "prices": [
+      {
+        "label": "Entrada libre",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [],
+    "id": "salsa-regueton-16-oct",
+    "account": "el_bochinche_cafe_",
+    "media": [
+      {
+        "post_id": "18142212085522552",
+        "permalink": "https://www.instagram.com/p/DefbH04JUCt/",
+        "media_type": "IMAGE",
+        "published": "2026-10-14T22:11:34+0000",
+        "flyer": "flyers/18142212085522552-0.webp",
+        "caption": "Es pura calentura dura la que se viene este viernes con este dúo🔥\n\n🗓️ Viernes 16 de octubre \n🕣 De 7:30 pm a 2:30 am \n💸 Entrada libre\n📍 Calle 22 #01-26",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
   },
   {
     "title": "Noche de Tributo: Grupo Niche y Hermanos Lebron",
@@ -5899,6 +5992,54 @@
         "published": "2026-10-01T00:45:26+0000",
         "flyer": "flyers/18079187786372305-0.webp",
         "caption": "Un mes con eventos inolvidables!",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Pachito Echavarría y La Gente del Callejón",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Casa Quiebra-Canto",
+    "venue": "Casa Quiebra-Canto",
+    "address": null,
+    "area": null,
+    "date": "2026-10-17",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Pachito Echavarría",
+      "La Gente del Callejón"
+    ],
+    "activities": [
+      "concierto"
+    ],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [
+      "sin horario",
+      "sin precio",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "pachito-echavarria-y-la-gente-del-callejon-17-oct",
+    "account": "casaquiebracanto",
+    "media": [
+      {
+        "post_id": "18117549506055151",
+        "permalink": "https://www.instagram.com/p/Defs08NxtpX/",
+        "media_type": "IMAGE",
+        "published": "2026-10-15T00:44:44+0000",
+        "flyer": "flyers/18117549506055151-0.webp",
+        "caption": "Vamos a echarle salsita a la vida con dannyrosalescastro  pachitoech  a meterle candela al fin de semana",
         "preview": null,
         "slides": null
       }
@@ -6171,6 +6312,57 @@
     "bar": false
   },
   {
+    "title": "Salsa Boricua vs Salsa Colombiana",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": null,
+    "venue": "Galeria Cafe Libro 93",
+    "address": "Cra 11A#93-42",
+    "area": "Parque 93",
+    "date": "2026-10-17",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "17:00",
+    "end_time": "03:00",
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 25000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Sonora Extrema",
+      "johanancines"
+    ],
+    "activities": [
+      "rumba salsera",
+      "Happy Hour con 2x1 hasta las 8pm"
+    ],
+    "contact": "WhatsApp 3176608742",
+    "confidence": "high",
+    "doubts": [],
+    "id": "salsa-boricua-vs-salsa-colombiana-17-oct",
+    "account": "galeriacafelibro",
+    "media": [
+      {
+        "post_id": "17972147352174515",
+        "permalink": "https://www.instagram.com/p/Dee5W0xs1yW/",
+        "media_type": "IMAGE",
+        "published": "2026-10-14T17:18:47+0000",
+        "flyer": "flyers/17972147352174515-0.webp",
+        "caption": "Este sábado hay mano a mano de salsa boricua 🇵🇷 vs salsa colombiana 🇨🇴 \n\nLa pista va a encenderse con sonoraextrema para gozar con lo mejor del repertorio 🌟 Y en el tornamesa: johanancines con los mejores discos de todos los tiempos ¡Te esperamos para una noche de rumba salsera en Bogotá!\n\n📍 Galeria Cafe Libro 93: Cra 11A#93-42\n🎟️ $25.000 • disponibles en taquilla o galeriacafelibro.com.co\n⏰ 5pm a 3 am • Happy Hour con 2x1 hasta las 8pm",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Bachatamania Master League - Competencia Jack & Jill Tercera Sesión",
     "event_type": "competition",
     "is_recurring": false,
@@ -6288,6 +6480,56 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "Remate Festival Afrodiáspora - El Jam Atípico",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Callejón Salsa y Mecato",
+    "venue": "Callejón Salsa y Mecato",
+    "address": "Calle 12D # 3-84",
+    "area": "La Candelaria",
+    "date": "2026-10-17",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "22:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 25000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "El Jam Atípico",
+      "harlysanti"
+    ],
+    "activities": [
+      "música en vivo"
+    ],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [],
+    "id": "remate-festival-afrodiaspora-el-jam-atipico-17-oct",
+    "account": "callejonsalsa",
+    "media": [
+      {
+        "post_id": "17951284272294692",
+        "permalink": "https://www.instagram.com/p/DefBW5_hrHv/",
+        "media_type": "IMAGE",
+        "published": "2026-10-14T18:24:53+0000",
+        "flyer": "flyers/17951284272294692-0.webp",
+        "caption": "El sábado llega al Callejón uno de los proyectos más potentes de Cali, El Jam Atípico liderado por uno de los músicos más impresionantes del occidente colombiano harlysanti 🔥🔥. Improvisación, groove, y mucho sabor para encontrarnos alrededor de buena música. \n¿Quién se apunta? Nos vemos en el Callejón 💥\n\n📍Callejón Salsa y Mecato - La Candelaria, Bogotá.",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
   },
   {
     "title": "Una Cita con la Salsa",
@@ -7261,7 +7503,13 @@
     "weekday": "sábado",
     "start_time": "20:00",
     "end_time": null,
-    "prices": [],
+    "prices": [
+      {
+        "label": "Entradas",
+        "amount_cop": 25000,
+        "condition": null
+      }
+    ],
     "artists": [],
     "activities": [
       "show de bailarines",
@@ -7284,6 +7532,16 @@
         "flyer": "flyers/18129749683771543.webp",
         "caption": "👻Este 24 de octubre prepárate para vivir nuestro SOCIAL DE HALLOWEEN en Bembé 🎃🔥\n\n✨ Show de bailarines\n👻 Premio al mejor disfraz\n🎶 Mucho baile, música y diversión\n\n¿Ya tienes tu disfraz listo? 😈🧛‍♀️🧟‍♂️",
         "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18132585646756879",
+        "permalink": "https://www.instagram.com/reel/DegN-EhhZgl/",
+        "media_type": "VIDEO",
+        "published": "2026-10-15T05:38:12+0000",
+        "flyer": "flyers/18132585646756879-0.webp",
+        "caption": "🎃Nos vemos  el 👻Sábado 24 de Octubre 💀\n\n👻Entras 🎃Disponibles Por 25 K 🎃\n\n#bembéacademiadebaile #halloween #salsa #bachata #social",
+        "preview": "previews/18132585646756879-0.mp4",
         "slides": null
       }
     ],
@@ -7491,6 +7749,16 @@
         "caption": "🎃🪄Este Halloween ¡EMBRÚJATE CON SALSA! 🌟🧙‍♀️🧙‍♂️\n\nDos noches de fiesta salsera con premios a los mejores disfraces, 🎭🧛‍♀️ sorpresas durante toda la noche y tres sedes vestidas de magia 🧚🏻 Desliza para ver nuestros premios ➡️\n\nViernes 30: 💿 3 djs residentes, entrada libre, trago de bienvenida y premios para los 3 mejores disfraces (categoría libre)\n\nSábado 31: 🎺 Música en vivo con ns.orquesta en sede Parque 93 y con Los Emperadores en sede Palermo; 3 djs residentes, trago de bienvenida, premios a los 3 mejores disfraces (categoría libre). Cover: $25.000\n\n💬 ¿Quieres reservar tu mesa? Comenta 𝗘𝗠𝗕𝗥𝗨𝗝𝗢 y te enviamos la información por DM. 🎃\n\n🎟️ Entradas y reservas: galeriacafelibro.com.co / 3176608742 / 6012851794/ DM\n📍 Galeria Cafe Libro • Sedes:\nParque 93\ngaleriacafelibrosedepalermo \nsaloncafebohemia \n\n#Halloween #Salsa #SalsaEnBogotá #GaleriaCafeLibro",
         "preview": null,
         "slides": 2
+      },
+      {
+        "post_id": "18098610047428299",
+        "permalink": "https://www.instagram.com/reel/Defkrb9sp7V/",
+        "media_type": "VIDEO",
+        "published": "2026-10-14T23:34:13+0000",
+        "flyer": "flyers/18098610047428299-0.webp",
+        "caption": "🧙‍♀️🔥 ¡BOGOTÁ, PREPÁRATE PARA EMBRUJARTE CON SALSA! 💃🏽🕺🏽\n\nEste 30 y 31 de octubre, llega ¡Embrújate! a Galería Café Libro. 👀✨ Dos noches para bailar, disfrutar y dejarte llevar por el hechizo de la salsa. ❤️‍🔥\n\n🎭 Disfrázate como quieras y participa por increíbles premios:\n🥃 1.er puesto: Ancheta Glenfiddich.\n🍸 2.º puesto: Cata de Hendrick’s para 2 personas.\n🥃 3.er puesto: Ancheta Monkey Shoulder.\n\n📍 Galería Café Libro.\n\n📲 Info y reservas: 317 660 8742 – 601 285 1794.\n\n¿Ya estás listo para dejarte embrujar? 🔮🔥\n\n#EmbrújateConSalsa #GaleríaCaféLibro #Halloween2026 #SalsaEnBogotá",
+        "preview": null,
+        "slides": null
       }
     ],
     "bar": true
@@ -7784,6 +8052,16 @@
         "caption": "🎃🪄Este Halloween ¡EMBRÚJATE CON SALSA! 🌟🧙‍♀️🧙‍♂️\n\nDos noches de fiesta salsera con premios a los mejores disfraces, 🎭🧛‍♀️ sorpresas durante toda la noche y tres sedes vestidas de magia 🧚🏻 Desliza para ver nuestros premios ➡️\n\nViernes 30: 💿 3 djs residentes, entrada libre, trago de bienvenida y premios para los 3 mejores disfraces (categoría libre)\n\nSábado 31: 🎺 Música en vivo con ns.orquesta en sede Parque 93 y con Los Emperadores en sede Palermo; 3 djs residentes, trago de bienvenida, premios a los 3 mejores disfraces (categoría libre). Cover: $25.000\n\n💬 ¿Quieres reservar tu mesa? Comenta 𝗘𝗠𝗕𝗥𝗨𝗝𝗢 y te enviamos la información por DM. 🎃\n\n🎟️ Entradas y reservas: galeriacafelibro.com.co / 3176608742 / 6012851794/ DM\n📍 Galeria Cafe Libro • Sedes:\nParque 93\ngaleriacafelibrosedepalermo \nsaloncafebohemia \n\n#Halloween #Salsa #SalsaEnBogotá #GaleriaCafeLibro",
         "preview": null,
         "slides": 2
+      },
+      {
+        "post_id": "18098610047428299",
+        "permalink": "https://www.instagram.com/reel/Defkrb9sp7V/",
+        "media_type": "VIDEO",
+        "published": "2026-10-14T23:34:13+0000",
+        "flyer": "flyers/18098610047428299-0.webp",
+        "caption": "🧙‍♀️🔥 ¡BOGOTÁ, PREPÁRATE PARA EMBRUJARTE CON SALSA! 💃🏽🕺🏽\n\nEste 30 y 31 de octubre, llega ¡Embrújate! a Galería Café Libro. 👀✨ Dos noches para bailar, disfrutar y dejarte llevar por el hechizo de la salsa. ❤️‍🔥\n\n🎭 Disfrázate como quieras y participa por increíbles premios:\n🥃 1.er puesto: Ancheta Glenfiddich.\n🍸 2.º puesto: Cata de Hendrick’s para 2 personas.\n🥃 3.er puesto: Ancheta Monkey Shoulder.\n\n📍 Galería Café Libro.\n\n📲 Info y reservas: 317 660 8742 – 601 285 1794.\n\n¿Ya estás listo para dejarte embrujar? 🔮🔥\n\n#EmbrújateConSalsa #GaleríaCaféLibro #Halloween2026 #SalsaEnBogotá",
+        "preview": null,
+        "slides": null
       }
     ],
     "bar": true
