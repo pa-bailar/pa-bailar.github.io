@@ -5645,8 +5645,7 @@
     "event_type": "concert",
     "is_recurring": false,
     "styles": [
-      "salsa",
-      "urbano"
+      "salsa"
     ],
     "organizer": "Meeting House",
     "venue": "Meeting House",
@@ -5670,12 +5669,12 @@
         "condition": null
       },
       {
-        "label": "Taquilla",
+        "label": "Cover (desde las 7:00 pm)",
         "amount_cop": 15000,
         "condition": null
       },
       {
-        "label": "Taquilla",
+        "label": "Cover (desde las 7:00 pm)",
         "amount_cop": 20000,
         "condition": null
       }
@@ -5686,11 +5685,11 @@
       "Bloalize"
     ],
     "activities": [
+      "concierto en vivo",
       "homenaje al Gran Combo de Puerto Rico",
-      "orquesta en vivo",
-      "fiesta con DJ"
+      "fiesta crossover"
     ],
-    "contact": "WhatsApp 3152859570",
+    "contact": "WhatsApp 315-285-9570",
     "confidence": "high",
     "doubts": [],
     "id": "la-salsa-party-en-vivo-homenaje-al-gran-combo-de-16-oct",
@@ -5957,6 +5956,61 @@
         "flyer": "flyers/17902083543361973-0.webp",
         "caption": null,
         "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Fiesta de Máscaras",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "bachata",
+      "salsa"
+    ],
+    "organizer": "Bogotá Dance Club",
+    "venue": "Bogotá Dance Club",
+    "address": "Calle 25F #36-15",
+    "area": null,
+    "date": "2026-10-17",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "15:00",
+    "end_time": "22:00",
+    "prices": [
+      {
+        "label": "Preventa",
+        "amount_cop": 25000,
+        "condition": null
+      },
+      {
+        "label": "Puerta",
+        "amount_cop": 30000,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "clase de bachata",
+      "fiesta",
+      "dinámicas"
+    ],
+    "contact": "@bogotadanceclub",
+    "confidence": "high",
+    "doubts": [],
+    "id": "fiesta-de-mascaras-17-oct",
+    "account": "bogotadanceclub",
+    "media": [
+      {
+        "post_id": "18473172046142809",
+        "permalink": "https://www.instagram.com/reel/Defk_3JA0Gl/",
+        "media_type": "VIDEO",
+        "published": "2026-10-14T23:37:31+0000",
+        "flyer": "flyers/18473172046142809-0.webp",
+        "caption": "📱 ¿Cansado de hacer swipe en Tinder? 👀 Deja de migajear un match virtual, y mejor haz match en la pista de baile 😏🔥\n\n📢 Comunidad bailadora de 18 a 45 años ✨\n🗓️ 17 de octubre 🕒 De 3PM A 10PM\n📍 Calle 25F #36-15 - Bogotá Dance Club\n\n🤓 Clase de pre fiesta de bachata (para calentar motores)\n\n💵 Cover en preventa: $25.000\n💰 Cover en puerta: $30.000\n(Incluye antifaz + clase + bebida + fiesta + dinámicas)\n\nOlvídate de los perfiles perfectos y los chats interminables. Aquí vas a romper el hielo bailando, participar en dinámicas y conocer personas sin saber quién está detrás de cada antifaz. 👀🎭 Y cuando llegue el momento… ¡las máscaras caerán!\n\n ¿Te le mides a conocer a alguien en la vida real y no detrás de una pantalla?✨\n\n#planesenbogotá #baile #bachata #salsa",
+        "preview": "previews/18473172046142809-0.mp4",
         "slides": null
       }
     ],
@@ -7128,6 +7182,62 @@
         "flyer": "flyers/18116548465972121-0.webp",
         "caption": "PENNYWISE SABE COSAS😈\n\nEl Claaan del disfrute convoca a toda persona que quiera aprender truquitos de bachata que le sirvan para los bares.\n\nEsta vez, convoca a todo aquel que quiera hacer un plancito de Halloween sorpresa jeje🌝.\n\nReservamos tu cupo desde hoy yyyyy dejaremos cupos limitados, tú sabes por qué 🙂‍↔️🤌🏽\n\nNOS FUIMOSSS🎃👻💀\n\n#bogotá #plan #planbogota #baile",
         "preview": "previews/18116548465972121-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Halloween: Concurso de disfraces, fiesta y taller de baile",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "bachata"
+    ],
+    "organizer": "Show Stars",
+    "venue": null,
+    "address": null,
+    "area": null,
+    "date": "2026-10-24",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "19:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Individual",
+        "amount_cop": 30000,
+        "condition": null
+      },
+      {
+        "label": "Pareja",
+        "amount_cop": 50000,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "concurso de disfraces",
+      "taller de baile",
+      "social"
+    ],
+    "contact": "3118344120",
+    "confidence": "high",
+    "doubts": [
+      "sin lugar especificado"
+    ],
+    "id": "halloween-concurso-de-disfraces-fiesta-y-taller-de-24-oct",
+    "account": "showstarscol",
+    "media": [
+      {
+        "post_id": "18639910369054067",
+        "permalink": "https://www.instagram.com/p/DedpHKlRXBX/",
+        "media_type": "IMAGE",
+        "published": "2026-10-14T12:00:06+0000",
+        "flyer": "flyers/18639910369054067-0.webp",
+        "caption": "🎃🕸️ ESTE HALLOWEEN, EL MIEDO SE BAILA… ¡Y LA NOCHE SE ENCIENDE! 🖤🔥\n\nPrepárate para una noche de disfraces, baile, premios y mucha fiesta. 👻💃🕺\n\n🧛‍♀️ Concurso de disfraces con premios de hasta $100.000 COP 🏆\n\n🔥 Taller de baile + social crossover\n🖤 70% bachata | 30% crossover\n📅 Sábado 24 de octubre | 🕖 7:00 p. m.\n🎟️ Individual: $30K | Pareja: $50K\n\n💀 ¿Ya tienes tu disfraz? No te quedes por fuera de la noche más aterradoramente divertida.\n\n📩 Escríbenos “HALLOWEEN” por mensaje directo y te enviamos toda la información. 🎃\n\n#HalloweenDance #HalloweenBogotá #BachataBogotá #SocialDeBaile #ShowStars NocheDeHalloween",
+        "preview": null,
         "slides": null
       }
     ],
@@ -8393,16 +8503,11 @@
       "Jenssy González"
     ],
     "activities": [
-      "clase de salsa caleña",
-      "estilo femenino",
-      "técnica",
-      "cadereo"
+      "taller de salsa caleña estilo femenino"
     ],
     "contact": "appdanza.com",
     "confidence": "high",
-    "doubts": [
-      "sin hora de finalización definida para las sesiones"
-    ],
+    "doubts": [],
     "id": "guabalosas-intensivo-version-2-0-7-nov",
     "account": "jen.ssy",
     "media": [
@@ -8758,6 +8863,16 @@
     "id": "festival-internacional-casinea-10-a-edicion-13-nov",
     "account": "casineafest",
     "media": [
+      {
+        "post_id": "17879932452630876",
+        "permalink": "https://www.instagram.com/p/DeejPaxxwGF/",
+        "media_type": "IMAGE",
+        "published": "2026-10-14T14:01:43+0000",
+        "flyer": "flyers/17879932452630876-0.webp",
+        "caption": "🔥🎶 ¡ATENCIÓN, COMPETIDORES DE CASINEA 2026! YA ESTÁ DISPONIBLE LA PLAYLIST OFICIAL DE IMPROVISACIÓN.\n\nEste año tenemos una novedad importante: por primera vez en la historia del Festival Internacional Casinea, todas las modalidades y categorías de improvisación compartirán una única lista de reproducción. 💥\n\nA diferencia de ediciones anteriores, en las que cada modalidad y categoría tenía su propia selección musical, esta vez todas las canciones estarán reunidas en una sola playlist.\n\n💃🕺 ¿Qué significa esto para ti? La canción con la que bailarás se escogerá al azar entre las canciones de esta lista. Por eso, no basta con conocer algunas: ¡te recomendamos escucharlas todas y practicar tu improvisación con cada una!\n\n🎧 Familiarízate con los ritmos, identifica los cambios musicales, trabaja tu interpretación y prepárate para responder con creatividad a lo que suene en la pista.\n\n⚠️ No dejes tu preparación para el último momento. Revisa la playlist, ensaya y llega listo para demostrar tu musicalidad, técnica y capacidad de improvisación.\n\n🔥 En Casinea, la música puede sorprenderte. ¡Que no te sorprenda sin haber practicado!\n\n📅 13 al 16 de noviembre de 2026 📍 Bogotá, Colombia 🇨🇴\n\n#FestivalCasinea #Casinea2026 #ImprovisaciónCasino #SalsaCasino #CompetenciaCasinea",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18188499625395008",
         "permalink": "https://www.instagram.com/p/DdmtW8iR4qm/",
@@ -9254,7 +9369,7 @@
       "talleres",
       "sociales"
     ],
-    "contact": null,
+    "contact": "@reyesdelasalsa.col",
     "confidence": "high",
     "doubts": [
       "sin lugar específico",
@@ -9263,6 +9378,16 @@
     "id": "reyes-de-la-salsa-2027-19-mar",
     "account": "reyesdelasalsa.col",
     "media": [
+      {
+        "post_id": "18224563774339499",
+        "permalink": "https://www.instagram.com/p/DefD3TmMiMH/",
+        "media_type": "IMAGE",
+        "published": "2026-10-14T18:46:47+0000",
+        "flyer": "flyers/18224563774339499-0.webp",
+        "caption": null,
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "17910685500495782",
         "permalink": "https://www.instagram.com/p/DdmcmQkMZOa/",
