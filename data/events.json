@@ -5849,6 +5849,62 @@
     "bar": true
   },
   {
+    "title": "Los Titanes de la Salsa",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa cubana"
+    ],
+    "organizer": null,
+    "venue": "Hoja al Viento",
+    "address": "Cra 15 Bis # 45 - 08",
+    "area": null,
+    "date": "2026-10-16",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "20:00",
+    "end_time": "03:00",
+    "prices": [
+      {
+        "label": "Preventa",
+        "amount_cop": 20000,
+        "condition": null
+      },
+      {
+        "label": "Taquilla",
+        "amount_cop": 25000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "DJ Nando",
+      "Chepe",
+      "Fernando España"
+    ],
+    "activities": [
+      "rumba"
+    ],
+    "contact": "3237992727",
+    "confidence": "high",
+    "doubts": [],
+    "id": "los-titanes-de-la-salsa-16-oct",
+    "account": "fernandoespanadj",
+    "media": [
+      {
+        "post_id": "18131341363682566",
+        "permalink": "https://www.instagram.com/reel/DehC49Au_QN/",
+        "media_type": "VIDEO",
+        "published": "2026-10-15T13:16:46+0000",
+        "flyer": "flyers/18131341363682566-0.webp",
+        "caption": "Mañana Viernes 16, Los Titanes de la Salsa en Hoja al Viento. Gozadera y sabrosura con Nando Dj, en el Viejo Chepe y conmigo. Desde Sonfonía a Son Salomé y Salszburgo. Música cubana y salsita de la otra. Les esperamos.",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Noche de Tributo: Grupo Niche y Hermanos Lebron",
     "event_type": "concert",
     "is_recurring": false,
@@ -7884,6 +7940,16 @@
         "slides": 2
       },
       {
+        "post_id": "18219406894346651",
+        "permalink": "https://www.instagram.com/reel/DeiQXDAsuEw/",
+        "media_type": "VIDEO",
+        "published": "2026-10-16T00:35:31+0000",
+        "flyer": "flyers/18219406894346651-0.webp",
+        "caption": "🎃🔥 ¡EMBRÚJATE EN GALERÍA CAFÉ LIBRO!\n\nEste Halloween, disfrázate como quieras y gana. 👻🥃 Tenemos 3 premios que están de otro nivel:\n\n🥇 Primer puesto: Ancheta Glenfiddich.\n🥈 Segundo puesto: Cata de Hendrick’s para 2 personas.\n🥉 Tercer puesto: Ancheta Monkey Shoulder.\n\n🎶 Y este 31 de octubre, la fiesta se prende con ns.orquesta , que nos acompañará para vivir una noche llena de salsa y mucha gozadera. 💃🏽\n\n📅 Viernes 30 y sábado 31 de octubre.\n📍 Salón Café Bohemia, Parque 93 y Palermo.\n\n¿Ya tienes pensado tu disfraz? 👀🕸️\n\n📲 Info y reservas: 317 660 8742 – 601 285 1794.\n\n#GaleríaCaféLibro #Halloween #Embrújate #BogotáDeNoche",
+        "preview": "previews/18219406894346651-0.mp4",
+        "slides": null
+      },
+      {
         "post_id": "18098610047428299",
         "permalink": "https://www.instagram.com/reel/Defkrb9sp7V/",
         "media_type": "VIDEO",
@@ -8185,6 +8251,16 @@
         "caption": "🎃🪄Este Halloween ¡EMBRÚJATE CON SALSA! 🌟🧙‍♀️🧙‍♂️\n\nDos noches de fiesta salsera con premios a los mejores disfraces, 🎭🧛‍♀️ sorpresas durante toda la noche y tres sedes vestidas de magia 🧚🏻 Desliza para ver nuestros premios ➡️\n\nViernes 30: 💿 3 djs residentes, entrada libre, trago de bienvenida y premios para los 3 mejores disfraces (categoría libre)\n\nSábado 31: 🎺 Música en vivo con ns.orquesta en sede Parque 93 y con Los Emperadores en sede Palermo; 3 djs residentes, trago de bienvenida, premios a los 3 mejores disfraces (categoría libre). Cover: $25.000\n\n💬 ¿Quieres reservar tu mesa? Comenta 𝗘𝗠𝗕𝗥𝗨𝗝𝗢 y te enviamos la información por DM. 🎃\n\n🎟️ Entradas y reservas: galeriacafelibro.com.co / 3176608742 / 6012851794/ DM\n📍 Galeria Cafe Libro • Sedes:\nParque 93\ngaleriacafelibrosedepalermo \nsaloncafebohemia \n\n#Halloween #Salsa #SalsaEnBogotá #GaleriaCafeLibro",
         "preview": null,
         "slides": 2
+      },
+      {
+        "post_id": "18219406894346651",
+        "permalink": "https://www.instagram.com/reel/DeiQXDAsuEw/",
+        "media_type": "VIDEO",
+        "published": "2026-10-16T00:35:31+0000",
+        "flyer": "flyers/18219406894346651-0.webp",
+        "caption": "🎃🔥 ¡EMBRÚJATE EN GALERÍA CAFÉ LIBRO!\n\nEste Halloween, disfrázate como quieras y gana. 👻🥃 Tenemos 3 premios que están de otro nivel:\n\n🥇 Primer puesto: Ancheta Glenfiddich.\n🥈 Segundo puesto: Cata de Hendrick’s para 2 personas.\n🥉 Tercer puesto: Ancheta Monkey Shoulder.\n\n🎶 Y este 31 de octubre, la fiesta se prende con ns.orquesta , que nos acompañará para vivir una noche llena de salsa y mucha gozadera. 💃🏽\n\n📅 Viernes 30 y sábado 31 de octubre.\n📍 Salón Café Bohemia, Parque 93 y Palermo.\n\n¿Ya tienes pensado tu disfraz? 👀🕸️\n\n📲 Info y reservas: 317 660 8742 – 601 285 1794.\n\n#GaleríaCaféLibro #Halloween #Embrújate #BogotáDeNoche",
+        "preview": "previews/18219406894346651-0.mp4",
+        "slides": null
       },
       {
         "post_id": "18098610047428299",
@@ -8600,7 +8676,10 @@
     ],
     "contact": null,
     "confidence": "high",
-    "doubts": [],
+    "doubts": [
+      "sin precio",
+      "sin hora de inicio"
+    ],
     "id": "halloween-social-31-oct",
     "account": "dlivingstudio",
     "media": [
@@ -8611,6 +8690,16 @@
         "published": "2026-10-04T19:22:29+0000",
         "flyer": "flyers/17904095547356280-0.webp",
         "caption": "🎃 Este Halloween, es en d’Living 👻\n\nPrepárate para nuestro social de Halloween: una noche llena de música, baile y sorpresas, con camilo_barretto y frank.de.latorre poniendo el ambiente para que no pares de bailar. 🕺🏻💃🏻\n\nY porque en D’Living nos gusta que el baile también sea una experiencia, tendremos clases abiertas incluidas con tu entrada 😏 para aprender, compartir y llegar al social con toda la actitud. 🔥\n\nAdemás, 👻 CONCURSO DE DISFRACES\nPrepara tu mejor personaje porque tendremos varios premios para los mejores 🎭🏆\n\n📅 31 de octubre\n🕘 9:00 p. m.\n📍 Cll 25 #27B-83 — Torre de las Américas\n🎟️ Preventa $15K | Taquilla $20K\n\n¿Ya tienes tu disfraz? Porque nosotros ya tenemos la fiesta. 🧟‍♀️🎃",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18096949412401891",
+        "permalink": "https://www.instagram.com/reel/DeiPHURvkDM/",
+        "media_type": "VIDEO",
+        "published": "2026-10-16T00:23:57+0000",
+        "flyer": "flyers/18096949412401891-0.webp",
+        "caption": "💃🏽🚨 Si hay que revolear las patas, ¡se revuelan!\n\nY si es en Halloween, mejor todavía. 🎃👻\n\nEste 31 de octubre tenemos una cita en d’Living para bailar, disfrutar y pasar una noche de locura. 🔥\n\n¿Ya tienes tu entrada? Aprovecha la preventa 👀👇🏽",
         "preview": null,
         "slides": null
       }
