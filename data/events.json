@@ -6541,7 +6541,7 @@
     "organizer": "El Goce Pagano",
     "venue": "El Goce Pagano",
     "address": "Diagonal 20A N. 0-82",
-    "area": null,
+    "area": "Centro",
     "date": "2026-10-18",
     "end_date": null,
     "sessions": null,
@@ -6550,14 +6550,9 @@
     "end_time": "22:00",
     "prices": [
       {
-        "label": "Preventa Solterx",
+        "label": "Cover",
         "amount_cop": 35000,
-        "condition": null
-      },
-      {
-        "label": "Preventa Parejx",
-        "amount_cop": 65000,
-        "condition": null
+        "condition": "incluye bebida clase y concursos"
       }
     ],
     "artists": [],
@@ -6593,6 +6588,16 @@
         "caption": "🔥Concierto salsero, en elgocepagano 🔥\nSalsa bogotana, sabor, calle y goce en una sola noche\n\n🕔 Puertas: 6 pm | 🎶 Shows: 11 pm y 1 am\n📍 Diagonal 20A No. 82 – Bogotá\n\n✨🔥¡A bailar!🔥✨\nCover 20k\n#salsaenvivo #salsa\n#concierto #envivo\n#conciertobogota #salsaenbogotá",
         "preview": null,
         "slides": 2
+      },
+      {
+        "post_id": "18115985489078103",
+        "permalink": "https://www.instagram.com/reel/DehTDR2Tzj4/",
+        "media_type": "VIDEO",
+        "published": "2026-10-15T15:54:45+0000",
+        "flyer": "flyers/18115985489078103-0.webp",
+        "caption": "Este domingo 18 de Oct. tenemos Una Cita con la Salsa ❤️. \n🌅 El primer tardeo 100% salsero que te reconectar con tu pareja o te ayuda a encontrar a otros solteros que quieren cambiar las frías tardes de domingo por salsa, baile y alegría.\n🗓️ Desde las 2PM en elgocepagano con clase de baile , concursos y actividades para vivir una tarde diferente.\n🎟️ Cover $35K incluye bebida clase y concursos.\n📍 Diagonal 20A #0-82 Centro Bogotá \n🚫 Evento +18",
+        "preview": "previews/18115985489078103-0.mp4",
+        "slides": null
       },
       {
         "post_id": "18079187786372305",
@@ -6654,6 +6659,58 @@
     "bar": true
   },
   {
+    "title": "Enrique Barrios en vivo en La Viejoteca",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Bogotá Dance Club",
+    "venue": "Bogotá Dance Club",
+    "address": "Calle 25F #36-15",
+    "area": null,
+    "date": "2026-10-18",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "15:00",
+    "end_time": "22:00",
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 30000,
+        "condition": "Incluye 2 bebidas + fiesta"
+      }
+    ],
+    "artists": [
+      "Enrique Barrios",
+      "GerBand"
+    ],
+    "activities": [
+      "música en vivo",
+      "fiesta",
+      "tarde de salsa"
+    ],
+    "contact": "@bogotadanceclub",
+    "confidence": "high",
+    "doubts": [],
+    "id": "enrique-barrios-en-vivo-en-la-viejoteca-18-oct",
+    "account": "bogotadanceclub",
+    "media": [
+      {
+        "post_id": "18106674194266348",
+        "permalink": "https://www.instagram.com/reel/DeiZPvkuoHV/",
+        "media_type": "VIDEO",
+        "published": "2026-10-16T01:54:55+0000",
+        "flyer": "flyers/18106674194266348-0.webp",
+        "caption": "🔥 ¡Este domingo les traemos talento internacional a Bogotá Dance Club! 🇻🇪❤️‍🔥 Desde Venezuela aterriza el Ángel de la Salsa, enriquebarriosg , acompañado nada más y nada menos que la GerBand gerband.latingroup 🎺🎶 ¡Prepárate para una tarde de pura salsa y sabor!\n\n📢 Comunidad bailadora +45\n\n🗓️ Domingo 18 de octubre\n🕒 3:00 p.m. a 10:00 p.m.\n📍 Calle 25F #36-15 – Bogotá Dance Club\n\n💰 Cover $30.000\nIncluye 2 bebidas + fiesta 🍻\n🪑 Mesas compartidas por orden de llegada\n\n💃🕺 Esta Viejoteca será muy especial: música en vivo, grandes artistas y una pista lista para vibrar de principio a fin. ¡No te puedes perder este encuentro con la salsa! 🔥\n\n#baile #planesenbogotá #bogota #planesenbogotá",
+        "preview": "previews/18106674194266348-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Taller Female Dancehall: La feminidad en lo urbano",
     "event_type": "workshop",
     "is_recurring": false,
@@ -6693,6 +6750,62 @@
         "caption": "Octubre trae nuevas formas de moverse, sentir y crear. ✨\r\n\r\nEn La Casona de la Danza, el cuerpo es la puerta de entrada a experiencias que invitan a explorar el movimiento, despertar la imaginación y encontrarse con otras personas a través de la danza. 💫\r\n\r\nEste mes, déjese sorprender por una programación pensada para experimentar, aprender y disfrutar el movimiento desde diferentes perspectivas. Talleres, encuentros y experiencias donde cada paso puede convertirse en una nueva manera de expresarse. 🌿\r\n\r\nHaga una pausa, escuche su cuerpo y anímese a descubrir todo lo que puede pasar cuando el movimiento toma el espacio. 💃🕺\r\n\r\n📍 Deslice y explore la programación de octubre.\r\n\r\n#CasonaDeLaDanza #BogotáMiCiudadMiCasa",
         "preview": null,
         "slides": 19
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Máster Class Heels",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "heels"
+    ],
+    "organizer": "Bureo Dance Studio",
+    "venue": "Sede 109",
+    "address": null,
+    "area": null,
+    "date": "2026-10-19",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "lunes",
+    "start_time": "17:30",
+    "end_time": "19:00",
+    "prices": [
+      {
+        "label": "Externos",
+        "amount_cop": 70000,
+        "condition": null
+      },
+      {
+        "label": "Members Bureo",
+        "amount_cop": 60000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Maria",
+      "Cristi"
+    ],
+    "activities": [
+      "collab heels",
+      "máster class"
+    ],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [],
+    "id": "master-class-heels-19-oct",
+    "account": "bureodancestudio",
+    "media": [
+      {
+        "post_id": "18152455312533608",
+        "permalink": "https://www.instagram.com/p/Def6lOlkXzM/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-15T02:44:52+0000",
+        "flyer": "flyers/18152455312533608-0.webp",
+        "caption": "HEELS, ACTITUD Y MUCHO FLOW. 🔥🖤\n\nPrepárate para una experiencia donde la sensualidad, la técnica y la fuerza se encuentran en una sola pista. ✨\n\nLlega nuestra MÁSTER CLASS DE HEELS junto a MARIA X CRISTI en una collab que promete elevar tu nivel y llevar tu expresión al siguiente nivel. 👠\n\n📍 Sede 109\n📅 Lunes 19 de octubre\n⏰ 5:30 p. m. – 7:00 p. m.\n🔥 Nivel intermedio\n\nINVERSIÓN:\n✦ Externos: $70.000\n✦ Members Bureo: $60.000\n\n¿Lista para bailar, explorar tu sensualidad y sacar tu versión más poderosa? ❤️‍🔥\n\nCupos limitados. Escríbenos por DM para reservar tu lugar.",
+        "preview": null,
+        "slides": 4
       }
     ],
     "bar": false
@@ -7448,13 +7561,13 @@
     "end_time": null,
     "prices": [
       {
-        "label": "Individual",
-        "amount_cop": 30000,
+        "label": "Pareja",
+        "amount_cop": 50000,
         "condition": null
       },
       {
-        "label": "Pareja",
-        "amount_cop": 50000,
+        "label": "Individual",
+        "amount_cop": 30000,
         "condition": null
       }
     ],
@@ -7480,6 +7593,26 @@
         "flyer": "flyers/18639910369054067-0.webp",
         "caption": "🎃🕸️ ESTE HALLOWEEN, EL MIEDO SE BAILA… ¡Y LA NOCHE SE ENCIENDE! 🖤🔥\n\nPrepárate para una noche de disfraces, baile, premios y mucha fiesta. 👻💃🕺\n\n🧛‍♀️ Concurso de disfraces con premios de hasta $100.000 COP 🏆\n\n🔥 Taller de baile + social crossover\n🖤 70% bachata | 30% crossover\n📅 Sábado 24 de octubre | 🕖 7:00 p. m.\n🎟️ Individual: $30K | Pareja: $50K\n\n💀 ¿Ya tienes tu disfraz? No te quedes por fuera de la noche más aterradoramente divertida.\n\n📩 Escríbenos “HALLOWEEN” por mensaje directo y te enviamos toda la información. 🎃\n\n#HalloweenDance #HalloweenBogotá #BachataBogotá #SocialDeBaile #ShowStars NocheDeHalloween",
         "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18088707512695517",
+        "permalink": "https://www.instagram.com/reel/DeiD-SiJ1bz/",
+        "media_type": "VIDEO",
+        "published": "2026-10-15T22:45:07+0000",
+        "flyer": "flyers/18088707512695517-0.webp",
+        "caption": "🔥🎃 ¡¿QUÉ ESTÁS ESPERANDO PARA VENIR A NUESTRO PRÓXIMO SOCIAL?! 👀🕺\n\n¡En Show Stars ya estamos listos para vivir una noche de miedo! 💀🔥 Este sábado 24 de octubre tenemos nuestra fiesta de HALLOWEEN, y tú no te puedes quedar por fuera.\n\n🎭 Concurso de disfraces \n💃 Taller de baile \n🎉 Fiesta crossover \n🏆 ¡Premios para los mejores disfraces!\n\n📅 Sábado 24 de octubre ⏰ 7:00 p. m. \n🕺 70% bachata + 30% crossover\n\n💰 Entradas: 👫 Pareja: $50.000 🙋 Individual: $30.000\n\n🏆 PREMIOS DEL CONCURSO: \n🥇 $100.000 COP \n🥈 $50.000 COP \n🥉 ¡Una camiseta Show Stars!\n\n📲 ¿Qué estás esperando para separar tu cupo? Escríbenos al 311 834 4120 y prepárate para una noche de baile, disfraces y mucha diversión. 🔥👻\n\nEtiqueta a tu pareja de baile y vengan con el mejor disfraz. 👇🎃\n\n#ShowStars #HalloweenShowStars #HalloweenBogotá #FiestaDeDisfraces #BachataBogotá BachataSocial",
+        "preview": "previews/18088707512695517-0.mp4",
+        "slides": null
+      },
+      {
+        "post_id": "18108641945256687",
+        "permalink": "https://www.instagram.com/reel/Dehpe6xM4sH/",
+        "media_type": "VIDEO",
+        "published": "2026-10-15T18:54:49+0000",
+        "flyer": "flyers/18108641945256687-0.webp",
+        "caption": "🔥🎃 ¡¿QUÉ ESTÁS ESPERANDO PARA VENIR A NUESTRO PRÓXIMO SOCIAL?! 👀🕺\n\n¡En Show Stars ya estamos listos para vivir una noche de miedo! 💀🔥 Este sábado 24 de octubre tenemos nuestra fiesta de HALLOWEEN, y tú no te puedes quedar por fuera.\n\n🎭 Concurso de disfraces \n💃 Taller de baile \n🎉 Fiesta crossover \n🏆 ¡Premios para los mejores disfraces!\n\n📅 Sábado 24 de octubre ⏰ 7:00 p. m. \n🕺 70% bachata + 30% crossover\n\n💰 Entradas: 👫 Pareja: $50.000 🙋 Individual: $30.000\n\n🏆 PREMIOS DEL CONCURSO: \n🥇 $100.000 COP \n🥈 $50.000 COP \n🥉 ¡Una camiseta Show Stars!\n\n📲 ¿Qué estás esperando para separar tu cupo? Escríbenos al 311 834 4120 y prepárate para una noche de baile, disfraces y mucha diversión. 🔥👻\n\nEtiqueta a tu pareja de baile y vengan con el mejor disfraz. 👇🎃\n\n#ShowStars #HalloweenShowStars #HalloweenBogotá #FiestaDeDisfraces #BachataBogotá BachataSocial",
+        "preview": "previews/18108641945256687-0.mp4",
         "slides": null
       }
     ],
