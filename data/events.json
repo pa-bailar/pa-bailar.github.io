@@ -5688,6 +5688,50 @@
     "bar": true
   },
   {
+    "title": "Descarga Salsera",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Quema",
+    "venue": "Quema",
+    "address": null,
+    "area": null,
+    "date": "2026-10-16",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "música en vivo",
+      "salsa en vivo"
+    ],
+    "contact": "@quemaquequema",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio"
+    ],
+    "id": "descarga-salsera-16-oct",
+    "account": "quemaquequema",
+    "media": [
+      {
+        "post_id": "17953164690272530",
+        "permalink": "https://www.instagram.com/p/DeiJjFSmof-/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-15T23:34:08+0000",
+        "flyer": "flyers/17953164690272530-0.webp",
+        "caption": "Descarga Salsera 🎶 porque tenemos Música en Vivo 🎤\n\nRecordando clásicos de Sonora Matancera, Grupo Niche, Tommy Olivencia, Ismael Miranda y Oscar D’Leon 🎶 \n\nNuestra banda de salsa en vivo los espera viernes 16 y sábado 17 de octubre 🏠\n\nNos vemos en Quema 🔥 \n\n#restaurantequemaquequema #gruponiche #sonoramatancera #salsa #oscardleon",
+        "preview": "previews/17953164690272530-0.mp4",
+        "slides": 5
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "La Salsa Party en Vivo - Homenaje al Gran Combo de Puerto Rico",
     "event_type": "concert",
     "is_recurring": false,
@@ -5953,6 +5997,55 @@
     "bar": true
   },
   {
+    "title": "Rueda de Gaitas y Tambores En Vivo",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "afro"
+    ],
+    "organizer": null,
+    "venue": "Casa de Citas",
+    "address": "Cra 3 #12B - 35",
+    "area": "La Candelaria",
+    "date": "2026-10-16",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "21:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "NO COVER",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "DJ Carlos"
+    ],
+    "activities": [
+      "rumba caribe"
+    ],
+    "contact": "WhatsApp 3152125733",
+    "confidence": "high",
+    "doubts": [],
+    "id": "rueda-de-gaitas-y-tambores-en-vivo-16-oct",
+    "account": "restaurantecasadecitas",
+    "media": [
+      {
+        "post_id": "18018150248951844",
+        "permalink": "https://www.instagram.com/p/DehghctP225/",
+        "media_type": "IMAGE",
+        "published": "2026-10-15T17:35:42+0000",
+        "flyer": "flyers/18018150248951844-0.webp",
+        "caption": "Este viernes: Rueda de Gaitas y Tambores 🇨🇴🔥🪘\nNO COVER\nLes esperamos 🍷✨",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Salsa Night con TimbaKé",
     "event_type": "concert",
     "is_recurring": false,
@@ -5992,62 +6085,6 @@
         "published": "2026-10-13T19:38:50+0000",
         "flyer": "flyers/18113840408017610-0.webp",
         "caption": "¡LLEGÓ EL VIERNES Y SE PRENDE LA NOCHE CON UNA VERDADERA SALSA NIGHT! 💃🕺🔥 Porque el fin de semana arranca como se debe, te esperamos en tu casa: \n\n¡Tributo Salsa y Jazz!\n\n Este viernes 16 de octubre prepárate para una rumba inolvidable llena de timba, clave y pura sabrosura. Ven a disfrutar de un buen trago con tus amigos, alístate para azotar baldosa y déjate llevar por el ritmo y la energía en vivo de TimbaKé. \n\n¡Pura candela para encender la pista! 🥂🎺🔥 \n📍 Lugar: Av. Boyacá #64c 97 (Zona 6) \n⏰ Apertura: 6:00 PM | Orquesta en vivo: 10:00 PM \n📲 Reservas: 310 5714824 \n ¡Asegura tu mesa antes de que se llene!\n\n RESERVA, arma tu parche salsero y nos vemos en la pista para gozar. 👇\n✨https://wa.me/573105714824",
-        "preview": null,
-        "slides": null
-      }
-    ],
-    "bar": true
-  },
-  {
-    "title": "Fidel peña y su Tono Mayor",
-    "event_type": "concert",
-    "is_recurring": false,
-    "styles": [
-      "salsa"
-    ],
-    "organizer": "El Goce Pagano",
-    "venue": "El Goce Pagano",
-    "address": "Diagonal 20A N. 0-82",
-    "area": null,
-    "date": "2026-10-17",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "sábado",
-    "start_time": null,
-    "end_time": null,
-    "prices": [],
-    "artists": [
-      "Fidel peña y su Tono Mayor"
-    ],
-    "activities": [
-      "concierto salsero"
-    ],
-    "contact": "WhatsApp 3168710646",
-    "confidence": "high",
-    "doubts": [
-      "sin hora",
-      "sin precio"
-    ],
-    "id": "salsoteca-dc-fidel-pena-y-su-tono-mayor-17-oct",
-    "account": "elgocepagano",
-    "media": [
-      {
-        "post_id": "17873536227593859",
-        "permalink": "https://www.instagram.com/p/Dd7mV70jn6J/",
-        "media_type": "CAROUSEL_ALBUM",
-        "published": "2026-10-01T00:15:22+0000",
-        "flyer": "flyers/17873536227593859-1.webp",
-        "caption": "🔥Concierto salsero, en elgocepagano 🔥\nSalsa bogotana, sabor, calle y goce en una sola noche\n\n🕔 Puertas: 6 pm | 🎶 Shows: 11 pm y 1 am\n📍 Diagonal 20A No. 82 – Bogotá\n\n✨🔥¡A bailar!🔥✨\nCover 20k\n#salsaenvivo #salsa\n#concierto #envivo\n#conciertobogota #salsaenbogotá",
-        "preview": null,
-        "slides": 2
-      },
-      {
-        "post_id": "18079187786372305",
-        "permalink": "https://www.instagram.com/reel/Dd7pwCYOCNs/",
-        "media_type": "VIDEO",
-        "published": "2026-10-01T00:45:26+0000",
-        "flyer": "flyers/18079187786372305-0.webp",
-        "caption": "Un mes con eventos inolvidables!",
         "preview": null,
         "slides": null
       }
@@ -6101,6 +6138,169 @@
       }
     ],
     "bar": true
+  },
+  {
+    "title": "Descarga Salsera",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Quema",
+    "venue": "Quema",
+    "address": null,
+    "area": null,
+    "date": "2026-10-17",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "música en vivo",
+      "salsa en vivo"
+    ],
+    "contact": "@quemaquequema",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio"
+    ],
+    "id": "descarga-salsera-17-oct",
+    "account": "quemaquequema",
+    "media": [
+      {
+        "post_id": "17953164690272530",
+        "permalink": "https://www.instagram.com/p/DeiJjFSmof-/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-15T23:34:08+0000",
+        "flyer": "flyers/17953164690272530-0.webp",
+        "caption": "Descarga Salsera 🎶 porque tenemos Música en Vivo 🎤\n\nRecordando clásicos de Sonora Matancera, Grupo Niche, Tommy Olivencia, Ismael Miranda y Oscar D’Leon 🎶 \n\nNuestra banda de salsa en vivo los espera viernes 16 y sábado 17 de octubre 🏠\n\nNos vemos en Quema 🔥 \n\n#restaurantequemaquequema #gruponiche #sonoramatancera #salsa #oscardleon",
+        "preview": "previews/17953164690272530-0.mp4",
+        "slides": 5
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Noche de Bolero",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": null,
+    "venue": "Casa de Citas",
+    "address": "Cra 3 #12B - 35",
+    "area": "La Candelaria",
+    "date": "2026-10-17",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "NO COVER",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Jhon Álvaro Cardona",
+      "DJ Jaiime"
+    ],
+    "activities": [
+      "música en vivo",
+      "rumba caribe"
+    ],
+    "contact": "WhatsApp 3152125733",
+    "confidence": "high",
+    "doubts": [],
+    "id": "noche-de-bolero-17-oct",
+    "account": "restaurantecasadecitas",
+    "media": [
+      {
+        "post_id": "18012325880971862",
+        "permalink": "https://www.instagram.com/p/DehQ7pOP7jA/",
+        "media_type": "IMAGE",
+        "published": "2026-10-15T15:19:28+0000",
+        "flyer": "flyers/18012325880971862-0.webp",
+        "caption": "Este sábado: música en vivo, deliciosos platos, bebidas, DJ y más... Les esperamos 🍷✨🎶",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Taller de salsa caleña",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa caleña"
+    ],
+    "organizer": "Bogotá Dance Club",
+    "venue": "Bogotá Dance Club",
+    "address": null,
+    "area": null,
+    "date": "2026-10-17",
+    "end_date": "2026-10-25",
+    "sessions": [
+      {
+        "date": "2026-10-17",
+        "start_time": "11:30",
+        "end_time": "13:30"
+      },
+      {
+        "date": "2026-10-18",
+        "start_time": "11:30",
+        "end_time": "13:30"
+      },
+      {
+        "date": "2026-10-24",
+        "start_time": "11:30",
+        "end_time": "13:30"
+      },
+      {
+        "date": "2026-10-25",
+        "start_time": "11:30",
+        "end_time": "13:30"
+      }
+    ],
+    "weekday": "sábado",
+    "start_time": "11:30",
+    "end_time": "13:30",
+    "prices": [
+      {
+        "label": "Inversión",
+        "amount_cop": 260000,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "taller de salsa caleña"
+    ],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [],
+    "id": "taller-de-salsa-calena-17-oct",
+    "account": "bogotadanceclub.academy",
+    "media": [
+      {
+        "post_id": "18076363700727121",
+        "permalink": "https://www.instagram.com/reel/DehSpW3xKUX/",
+        "media_type": "VIDEO",
+        "published": "2026-10-15T15:39:06+0000",
+        "flyer": "flyers/18076363700727121-0.webp",
+        "caption": "Si quieres entender mejor la salsa caleña, este video es para ti 🔥\n\n📅 17, 18, 24 y 25 de octubre\n🕦 11:30 a. m. a 1:30 p. m.\n📍 Bogotá Dance Club\n💰 Inversión: $260.000\n\n¿Te gustaría ser parte de esta nueva edición? 🔥🕺💛\nComenta 👇🏻👇🏻👇🏻\n\n#aprenderabailar #salsa #salsadancing #salsacaleña #dancereels",
+        "preview": "previews/18076363700727121-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": false
   },
   {
     "title": "Taller de Salsa Estilo Caleño",
@@ -6412,6 +6612,78 @@
         "published": "2026-10-14T17:18:47+0000",
         "flyer": "flyers/17972147352174515-0.webp",
         "caption": "Este sábado hay mano a mano de salsa boricua 🇵🇷 vs salsa colombiana 🇨🇴 \n\nLa pista va a encenderse con sonoraextrema para gozar con lo mejor del repertorio 🌟 Y en el tornamesa: johanancines con los mejores discos de todos los tiempos ¡Te esperamos para una noche de rumba salsera en Bogotá!\n\n📍 Galeria Cafe Libro 93: Cra 11A#93-42\n🎟️ $25.000 • disponibles en taquilla o galeriacafelibro.com.co\n⏰ 5pm a 3 am • Happy Hour con 2x1 hasta las 8pm",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Fidel peña y su Tono Mayor",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "El Goce Pagano",
+    "venue": "El Goce Pagano",
+    "address": "Diagonal 20A N. 0-82",
+    "area": null,
+    "date": "2026-10-17",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "18:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 20000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Fidel peña y su Tono Mayor"
+    ],
+    "activities": [
+      "concierto salsero"
+    ],
+    "contact": "WhatsApp 3168710646",
+    "confidence": "high",
+    "doubts": [
+      "sin hora",
+      "sin precio"
+    ],
+    "id": "salsoteca-dc-fidel-pena-y-su-tono-mayor-17-oct",
+    "account": "elgocepagano",
+    "media": [
+      {
+        "post_id": "18119308250071145",
+        "permalink": "https://www.instagram.com/p/DehbRw3mqM1/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-15T16:49:49+0000",
+        "flyer": "flyers/18119308250071145-0.webp",
+        "caption": "🔥Concierto salsero, en elgocepagano 🔥\nSalsa bogotana, sabor, calle y goce en una sola noche\n\n🕔 Puertas: 6 pm | 🎶 Shows: 11 pm y 1 am\n📍 Diagonal 20A No. 82 – Bogotá\n\n✨🔥¡A bailar!🔥✨\nCover 20k\n#salsaenvivo #salsa\n#concierto #envivo\n#conciertobogota #salsaenbogotá",
+        "preview": null,
+        "slides": 2
+      },
+      {
+        "post_id": "17873536227593859",
+        "permalink": "https://www.instagram.com/p/Dd7mV70jn6J/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-01T00:15:22+0000",
+        "flyer": "flyers/17873536227593859-1.webp",
+        "caption": "🔥Concierto salsero, en elgocepagano 🔥\nSalsa bogotana, sabor, calle y goce en una sola noche\n\n🕔 Puertas: 6 pm | 🎶 Shows: 11 pm y 1 am\n📍 Diagonal 20A No. 82 – Bogotá\n\n✨🔥¡A bailar!🔥✨\nCover 20k\n#salsaenvivo #salsa\n#concierto #envivo\n#conciertobogota #salsaenbogotá",
+        "preview": null,
+        "slides": 2
+      },
+      {
+        "post_id": "18079187786372305",
+        "permalink": "https://www.instagram.com/reel/Dd7pwCYOCNs/",
+        "media_type": "VIDEO",
+        "published": "2026-10-01T00:45:26+0000",
+        "flyer": "flyers/18079187786372305-0.webp",
+        "caption": "Un mes con eventos inolvidables!",
         "preview": null,
         "slides": null
       }
@@ -7147,6 +7419,95 @@
         "caption": "Una noche para vivir la salsa como se debe. 🔥🎶\n\nEste jueves 22 de octubre, Enrique Barrios llega a Galería Café Libro junto a gerbandlatingroup para poner a bailar Parque 93 con una noche llena de sabor, música en vivo y grandes clásicos.\n\n🎶 Salsa en vivo, buena música y una noche para bailar sin parar.\n\n📍 Galería Café Libro Parque 93\nCra. 11A #93-42\n🎟️ Entrada: $20.000\n\nNos vemos en la pista. 💃🏽🕺🏽",
         "preview": "previews/18075504902737968-0.mp4",
         "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Párchate Bailando Salsa",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Salsa y Son",
+    "venue": "Salsa y Son",
+    "address": "Cra. 14A #82-87",
+    "area": "Zona T",
+    "date": "2026-10-22",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "jueves",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Mali Bullet"
+    ],
+    "activities": [
+      "clase de salsa"
+    ],
+    "contact": "WhatsApp 322 728 3910",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio",
+      "sin precio"
+    ],
+    "id": "parchate-bailando-salsa-22-oct",
+    "account": "salsaysonoficial",
+    "media": [
+      {
+        "post_id": "18131083546764404",
+        "permalink": "https://www.instagram.com/p/DeigSkah2b0/",
+        "media_type": "IMAGE",
+        "published": "2026-10-16T02:53:13+0000",
+        "flyer": "flyers/18131083546764404-0.webp",
+        "caption": "✨💃 ¡BOGOTÁ, PÁRCHATE BAILANDO SALSA! 🔥\n\nEste jueves 22 de octubre, Salsa y Son se convierte en el punto de encuentro para los amantes del baile, el sabor y la buena rumba. ❤️‍🔥\n\n💃 Aprende, disfruta y déjate llevar por el ritmo junto a la profe Mali_bullet.\n\n🍸 CÓCTELES 2x1 para brindar y disfrutar la noche como se debe.\n\n📍 Salsa y Son — Zona T, Bogotá\n📌 Cra. 14A #82-87\n📲 Reservas: 322 728 3910\n\nEtiqueta a tu parche salsero y nos vemos en la pista. 🔥\n\n#SalsaYSon #ParchateBailandoSalsa #SalsaEnBogotá #ZonaT JuevesDeSalsa",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Tributo a Bob Marley",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [],
+    "organizer": "El Bochinche",
+    "venue": "El Bochinche",
+    "address": null,
+    "area": null,
+    "date": "2026-10-22",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "jueves",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "tributo a Bob Marley"
+    ],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [
+      "sin precio",
+      "sin horario de inicio",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "tributo-a-bob-marley-22-oct",
+    "account": "el_bochinche_cafe_",
+    "media": [
+      {
+        "post_id": "18118313924044117",
+        "permalink": "https://www.instagram.com/p/DehvTBfCVxy/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-15T19:44:45+0000",
+        "flyer": "flyers/18118313924044117-1.webp",
+        "caption": "Octubre es el mes para sacar tus múltiples personalidades y El Bochi se disfrazará de muchas cosas: de rockera, de reguee y de perreadora 🔥 no te pierdas ninguno de estos tres eventos que mostrarán lo multifacéticas que podemos ser ✨\n\nToda la información de cada evento la puedes encontrar en nuestro feed",
+        "preview": null,
+        "slides": 2
       }
     ],
     "bar": true
@@ -7963,6 +8324,59 @@
     "bar": true
   },
   {
+    "title": "Fiesta de Antifaz",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Pachanga y Pochola",
+    "venue": "Pachanga y Pochola",
+    "address": null,
+    "area": null,
+    "date": "2026-10-30",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "jueves",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "No Cover",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Orquesta NS"
+    ],
+    "activities": [
+      "show de baile",
+      "premio a la mejor máscara",
+      "premio al mejor antifaz"
+    ],
+    "contact": "@pachanga_y_pochola",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio"
+    ],
+    "id": "fiesta-de-antifaz-30-oct",
+    "account": "pachanga_y_pochola",
+    "media": [
+      {
+        "post_id": "18026982905700407",
+        "permalink": "https://www.instagram.com/reel/DeheTAxx_sz/",
+        "media_type": "VIDEO",
+        "published": "2026-10-15T17:18:26+0000",
+        "flyer": "flyers/18026982905700407-0.webp",
+        "caption": "🎭 ¿NO TE DISFRAZAS, PERO SÍ TE DESCONTROLAS?. 🔥🥃\n\n¡En Pachanga no necesitas disfraz para ser el alma de la noche! 👀🔥\nEste 30 DE OCTUBRE nos ponemos el antifaz, nos escondemos detrás de la máscara y dejamos que la salsa revele quiénes somos cuando empieza la rumba. 💃🏽🕺🏽\n\n🎭 Premios para el MEJOR ANTIFAZ y la MEJOR MÁSCARA.\n\n¿Eres de los que se disfrazan o de los que solo necesitan un buen antifaz para perder la vergüenza? 😂🔥 Etiqueta a tu combo y alista esa máscara.\n#pachanga #nochedeantifaz #salsa",
+        "preview": "previews/18026982905700407-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "La Guillaera",
     "event_type": "social",
     "is_recurring": false,
@@ -8005,6 +8419,16 @@
     "id": "la-guillaera-31-oct",
     "account": "valkandela",
     "media": [
+      {
+        "post_id": "18118313924044117",
+        "permalink": "https://www.instagram.com/p/DehvTBfCVxy/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-15T19:44:45+0000",
+        "flyer": "flyers/18118313924044117-1.webp",
+        "caption": "Octubre es el mes para sacar tus múltiples personalidades y El Bochi se disfrazará de muchas cosas: de rockera, de reguee y de perreadora 🔥 no te pierdas ninguno de estos tres eventos que mostrarán lo multifacéticas que podemos ser ✨\n\nToda la información de cada evento la puedes encontrar en nuestro feed",
+        "preview": null,
+        "slides": 2
+      },
       {
         "post_id": "18106590419580056",
         "permalink": "https://www.instagram.com/reel/Ddr2p6AuB2s/",
@@ -8286,11 +8710,11 @@
     "organizer": "@elratonsalsaclub",
     "venue": "El Ratón Salsa Club",
     "address": "Cra 14A # 82-14",
-    "area": null,
+    "area": "Zona T",
     "date": "2026-10-31",
     "end_date": null,
     "sessions": null,
-    "weekday": "viernes",
+    "weekday": "sábado",
     "start_time": "15:00",
     "end_time": "03:00",
     "prices": [
@@ -8318,10 +8742,22 @@
     ],
     "contact": null,
     "confidence": "high",
-    "doubts": [],
+    "doubts": [
+      "sin precio"
+    ],
     "id": "la-fiesta-de-halloween-que-estabas-esperando-31-oct",
     "account": "elratonsalsaclub",
     "media": [
+      {
+        "post_id": "18191728312410541",
+        "permalink": "https://www.instagram.com/reel/DeiDhU0R6q5/",
+        "media_type": "VIDEO",
+        "published": "2026-10-15T22:50:13+0000",
+        "flyer": "flyers/18191728312410541-0.webp",
+        "caption": "¿Aún sin plan para el 31? 🎃\n\nVen a vivir la mejor fiesta de Halloween de la ciudad en un solo :\n\n​• Orno Cantina: Crossover noventero con todo lo que cantabas y bailabas ( 1er piso)\n• El Gato: House y rock alternativo de los 90's 🐈‍⬛ (2do piso)\n• El Ratón Salsa Club: Salsa en vivo, orquesta y fiesta en la terraza 🐭 ( 3er piso)\n\n​🔥 Happy Hour (3:00 PM a 6:00 PM) + Concurso al Mejor Disfraz con premios. \n\n⛔️ NO ES OBLIGATORIO EL DISFRAZ ⛔️\n\n​Sábado 31 OCT | Desde las 3:00 PM\n📍 Cra. 14A # 82-14, Zona T \n\n​🎟️ Asegura tus entradas antes de que se agoten. Ve al link de nuestra bio o escríbenos directamente para comprar tu boleta. \n\n​#halloween # fiestahalloween  #afternoon #rumba #RumbaBogotá #zonat",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18157825405525306",
         "permalink": "https://www.instagram.com/reel/Dd4RibnRExW/",
