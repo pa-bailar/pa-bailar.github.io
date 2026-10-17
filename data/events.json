@@ -5454,7 +5454,7 @@
     ],
     "organizer": "Salsa Camará",
     "venue": "Salsa Camará",
-    "address": "Carrera 11 #70A - 22",
+    "address": "Carrera 11 #70A-22",
     "area": null,
     "date": "2026-10-15",
     "end_date": null,
@@ -5473,13 +5473,11 @@
       "Mambo Candela"
     ],
     "activities": [
-      "música en vivo"
+      "concierto"
     ],
     "contact": "WhatsApp 313 830 8844",
     "confidence": "high",
-    "doubts": [
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
+    "doubts": [],
     "id": "mambo-candela-15-oct",
     "account": "salsacamaraoficial",
     "media": [
@@ -5651,53 +5649,6 @@
     "bar": true
   },
   {
-    "title": "Yambú Orquesta",
-    "event_type": "concert",
-    "is_recurring": false,
-    "styles": [
-      "salsa"
-    ],
-    "organizer": "Casa Quiebra-Canto",
-    "venue": "Casa Quiebra-Canto",
-    "address": null,
-    "area": null,
-    "date": "2026-10-16",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "viernes",
-    "start_time": null,
-    "end_time": null,
-    "prices": [],
-    "artists": [
-      "Yambú Orquesta"
-    ],
-    "activities": [
-      "concierto"
-    ],
-    "contact": null,
-    "confidence": "high",
-    "doubts": [
-      "sin horario",
-      "sin precio",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
-    "id": "yambu-orquesta-16-oct",
-    "account": "casaquiebracanto",
-    "media": [
-      {
-        "post_id": "18117549506055151",
-        "permalink": "https://www.instagram.com/p/Defs08NxtpX/",
-        "media_type": "IMAGE",
-        "published": "2026-10-15T00:44:44+0000",
-        "flyer": "flyers/18117549506055151-0.webp",
-        "caption": "Vamos a echarle salsita a la vida con dannyrosalescastro  pachitoech  a meterle candela al fin de semana",
-        "preview": null,
-        "slides": null
-      }
-    ],
-    "bar": true
-  },
-  {
     "title": "Descarga Salsera",
     "event_type": "concert",
     "is_recurring": false,
@@ -5787,6 +5738,53 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "Yambú Orquesta",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Casa Quiebra-Canto",
+    "venue": "Casa Quiebra-Canto",
+    "address": null,
+    "area": null,
+    "date": "2026-10-16",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Yambú Orquesta"
+    ],
+    "activities": [
+      "concierto",
+      "música en vivo"
+    ],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [
+      "sin hora",
+      "sin precio"
+    ],
+    "id": "yambu-orquesta-16-oct",
+    "account": "casaquiebracanto",
+    "media": [
+      {
+        "post_id": "18117549506055151",
+        "permalink": "https://www.instagram.com/p/Defs08NxtpX/",
+        "media_type": "IMAGE",
+        "published": "2026-10-15T00:44:44+0000",
+        "flyer": "flyers/18117549506055151-0.webp",
+        "caption": "Vamos a echarle salsita a la vida con dannyrosalescastro  pachitoech  a meterle candela al fin de semana",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
   },
   {
     "title": "La Salsa Party en Vivo - Homenaje al Gran Combo de Puerto Rico",
@@ -5993,6 +5991,16 @@
     "account": "fernandoespanadj",
     "media": [
       {
+        "post_id": "18115066295107837",
+        "permalink": "https://www.instagram.com/reel/Deke_6oi8Dd/",
+        "media_type": "VIDEO",
+        "published": "2026-10-16T21:20:11+0000",
+        "flyer": "flyers/18115066295107837-0.webp",
+        "caption": "Hoy viernes, la rumba salsera distinta y diferente. La otra salsa. Bienvenidas, bienvenidos a Hoja al Viento. Calle 45 con Carrera 17. Los Titanes de la Salsa.",
+        "preview": null,
+        "slides": null
+      },
+      {
         "post_id": "18131341363682566",
         "permalink": "https://www.instagram.com/reel/DehC49Au_QN/",
         "media_type": "VIDEO",
@@ -6149,54 +6157,6 @@
     "bar": true
   },
   {
-    "title": "Pachito Echavarría y La Gente del Callejón",
-    "event_type": "concert",
-    "is_recurring": false,
-    "styles": [
-      "salsa"
-    ],
-    "organizer": "Casa Quiebra-Canto",
-    "venue": "Casa Quiebra-Canto",
-    "address": null,
-    "area": null,
-    "date": "2026-10-17",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "sábado",
-    "start_time": null,
-    "end_time": null,
-    "prices": [],
-    "artists": [
-      "Pachito Echavarría",
-      "La Gente del Callejón"
-    ],
-    "activities": [
-      "concierto"
-    ],
-    "contact": null,
-    "confidence": "high",
-    "doubts": [
-      "sin horario",
-      "sin precio",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
-    "id": "pachito-echavarria-y-la-gente-del-callejon-17-oct",
-    "account": "casaquiebracanto",
-    "media": [
-      {
-        "post_id": "18117549506055151",
-        "permalink": "https://www.instagram.com/p/Defs08NxtpX/",
-        "media_type": "IMAGE",
-        "published": "2026-10-15T00:44:44+0000",
-        "flyer": "flyers/18117549506055151-0.webp",
-        "caption": "Vamos a echarle salsita a la vida con dannyrosalescastro  pachitoech  a meterle candela al fin de semana",
-        "preview": null,
-        "slides": null
-      }
-    ],
-    "bar": true
-  },
-  {
     "title": "Descarga Salsera",
     "event_type": "concert",
     "is_recurring": false,
@@ -6241,14 +6201,61 @@
     "bar": true
   },
   {
+    "title": "Pachito Echavarría y La Gente del Callejón",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Casa Quiebra-Canto",
+    "venue": "Casa Quiebra-Canto",
+    "address": null,
+    "area": null,
+    "date": "2026-10-17",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Pachito Echavarría y La Gente del Callejón"
+    ],
+    "activities": [
+      "concierto",
+      "música en vivo"
+    ],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [
+      "sin hora",
+      "sin precio"
+    ],
+    "id": "pachito-echavarria-y-la-gente-del-callejon-17-oct",
+    "account": "casaquiebracanto",
+    "media": [
+      {
+        "post_id": "18117549506055151",
+        "permalink": "https://www.instagram.com/p/Defs08NxtpX/",
+        "media_type": "IMAGE",
+        "published": "2026-10-15T00:44:44+0000",
+        "flyer": "flyers/18117549506055151-0.webp",
+        "caption": "Vamos a echarle salsita a la vida con dannyrosalescastro  pachitoech  a meterle candela al fin de semana",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Noche de Bolero",
     "event_type": "concert",
     "is_recurring": false,
     "styles": [
       "otro"
     ],
-    "organizer": null,
-    "venue": "Casa de Citas",
+    "organizer": "Casa de Citas",
+    "venue": "Casa de Citas Restaurante y Centro Cultural",
     "address": "Cra 3 #12B - 35",
     "area": "La Candelaria",
     "date": "2026-10-17",
@@ -6259,7 +6266,7 @@
     "end_time": null,
     "prices": [
       {
-        "label": "NO COVER",
+        "label": "No cover",
         "amount_cop": 0,
         "condition": null
       }
@@ -6269,12 +6276,13 @@
       "DJ Jaiime"
     ],
     "activities": [
-      "música en vivo",
-      "rumba caribe"
+      "música en vivo"
     ],
-    "contact": "WhatsApp 3152125733",
+    "contact": "315 212 5733",
     "confidence": "high",
-    "doubts": [],
+    "doubts": [
+      "sin hora de inicio"
+    ],
     "id": "noche-de-bolero-17-oct",
     "account": "restaurantecasadecitas",
     "media": [
@@ -6340,7 +6348,7 @@
     "activities": [
       "taller de salsa caleña"
     ],
-    "contact": null,
+    "contact": "@bogotadanceclub.academy",
     "confidence": "high",
     "doubts": [],
     "id": "taller-de-salsa-calena-17-oct",
@@ -6544,7 +6552,7 @@
     ],
     "organizer": "Salsa Camará",
     "venue": "Salsa Camará",
-    "address": "Carrera 11 #70A - 22",
+    "address": "Carrera 11 #70A-22",
     "area": null,
     "date": "2026-10-17",
     "end_date": null,
@@ -6563,14 +6571,11 @@
       "Javier Guaneme"
     ],
     "activities": [
-      "Homenaje a Willie Colón",
-      "música en vivo"
+      "concierto"
     ],
     "contact": "WhatsApp 313 830 8844",
     "confidence": "high",
-    "doubts": [
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
+    "doubts": [],
     "id": "javier-guaneme-homenaje-a-willie-colon-17-oct",
     "account": "salsacamaraoficial",
     "media": [
@@ -6643,9 +6648,9 @@
     "styles": [
       "salsa"
     ],
-    "organizer": null,
-    "venue": "Galeria Cafe Libro 93",
-    "address": "Cra 11A#93-42",
+    "organizer": "Galería Café Libro",
+    "venue": "Galería Café Libro",
+    "address": "Cra 11A # 93-42",
     "area": "Parque 93",
     "date": "2026-10-17",
     "end_date": null,
@@ -6662,13 +6667,13 @@
     ],
     "artists": [
       "Sonora Extrema",
-      "johanancines"
+      "Johan Ancines"
     ],
     "activities": [
-      "rumba salsera",
-      "Happy Hour con 2x1 hasta las 8pm"
+      "concierto",
+      "fiesta"
     ],
-    "contact": "WhatsApp 3176608742",
+    "contact": "3176608742",
     "confidence": "high",
     "doubts": [],
     "id": "salsa-boricua-vs-salsa-colombiana-17-oct",
@@ -6883,10 +6888,11 @@
     "event_type": "concert",
     "is_recurring": false,
     "styles": [
-      "salsa"
+      "salsa",
+      "afro"
     ],
-    "organizer": "Callejón Salsa y Mecato",
-    "venue": "Callejón Salsa y Mecato",
+    "organizer": "Callejón Salsa & Mecato",
+    "venue": "Callejón Salsa & Mecato",
     "address": "Calle 12D # 3-84",
     "area": "La Candelaria",
     "date": "2026-10-17",
@@ -6903,8 +6909,7 @@
       }
     ],
     "artists": [
-      "El Jam Atípico",
-      "harlysanti"
+      "El Jam Atípico"
     ],
     "activities": [
       "música en vivo"
@@ -7061,18 +7066,14 @@
     "start_time": "14:00",
     "end_time": null,
     "prices": [],
-    "artists": [
-      "Orquesta en vivo"
-    ],
+    "artists": [],
     "activities": [
       "orquesta en vivo",
-      "comer sabroso"
+      "música en vivo"
     ],
-    "contact": "WhatsApp 310 5714 824",
+    "contact": "WhatsApp 3105714824",
     "confidence": "high",
-    "doubts": [
-      "sin precio"
-    ],
+    "doubts": [],
     "id": "salsa-en-familia-18-oct",
     "account": "tributo.salsayjazz",
     "media": [
@@ -7520,15 +7521,15 @@
     "bar": false
   },
   {
-    "title": "Celebrando 40 años de trayectoria - Enrique Barrios",
+    "title": "Enrique Barrios & Gerband Latin Group",
     "event_type": "concert",
     "is_recurring": false,
     "styles": [
       "salsa"
     ],
     "organizer": "Galería Café Libro",
-    "venue": "Galería Café Libro sede Parque 93",
-    "address": "Cra 11A # 93-42",
+    "venue": "Galería Café Libro Parque 93",
+    "address": "Cra. 11A #93-42",
     "area": "Parque 93",
     "date": "2026-10-22",
     "end_date": null,
@@ -7548,9 +7549,10 @@
       "Gerband Latin Group"
     ],
     "activities": [
-      "concierto de salsa en vivo"
+      "salsa en vivo",
+      "música en vivo"
     ],
-    "contact": "WhatsApp 3176608742",
+    "contact": "@galeriacafelibro",
     "confidence": "high",
     "doubts": [
       "sin hora de inicio"
@@ -8538,7 +8540,7 @@
     "date": "2026-10-30",
     "end_date": null,
     "sessions": null,
-    "weekday": "jueves",
+    "weekday": "viernes",
     "start_time": null,
     "end_time": null,
     "prices": [
@@ -8564,6 +8566,16 @@
     "id": "fiesta-de-antifaz-30-oct",
     "account": "pachanga_y_pochola",
     "media": [
+      {
+        "post_id": "18091859585205977",
+        "permalink": "https://www.instagram.com/reel/Dek2kD7R28O/",
+        "media_type": "VIDEO",
+        "published": "2026-10-17T00:46:55+0000",
+        "flyer": "flyers/18091859585205977-0.webp",
+        "caption": "antifaz, nos escondemos detrás de la máscara y dejamos que la salsa revele quiénes somos cuando empieza la rumba. 💃🏽🕺🏽\n\n🎭 Premios para el MEJOR ANTIFAZ y la MEJOR MÁSCARA.\n\n¿Eres de los que se disfrazan o de los que solo necesitan un buen antifaz para perder la vergüenza? 😂🔥 Etiqueta a tu combo y alista esa máscara.\n#pachanga #nochedeantifaz #salsa",
+        "preview": "previews/18091859585205977-0.mp4",
+        "slides": null
+      },
       {
         "post_id": "18026982905700407",
         "permalink": "https://www.instagram.com/reel/DeheTAxx_sz/",
