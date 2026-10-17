@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-17T13:47:29-05:00",
+  "generated_at": "2026-10-17T13:53:42-05:00",
   "accounts": [
     "_olorumcongress",
     "academia_cowork",
@@ -135,8 +135,8 @@
     "accounts": 0,
     "posts_analyzed": 1,
     "posts_triaged_out": 0,
-    "events_new": 1,
-    "events_merged": 0,
+    "events_new": 0,
+    "events_merged": 1,
     "events_discarded": 0,
     "provisional": 0,
     "upgraded": 0,
@@ -167,10 +167,10 @@
     "instagram_reads": null,
     "instagram_stop": null,
     "by_account": {
-      "ebi_dancecompany": {
+      "casineafest": {
         "posts_analyzed": 1,
-        "events_new": 1,
-        "events_merged": 0,
+        "events_new": 0,
+        "events_merged": 1,
         "pending": 0,
         "errors": 0,
         "backfill": false,
