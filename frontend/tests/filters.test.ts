@@ -264,7 +264,7 @@ describe("the filter chips (filterModel)", () => {
     expect(bachata.options.find((option) => option.value === TOMORROW)).toMatchObject({ count: 1, dimmed: false });
     expect(bachata.options[0]).toMatchObject({ count: 1, dimmed: false });
     const hoy = bachata.options.find((option) => option.value === "hoy")!;
-    expect(hoy.hint).toMatch(/^[a-zé]{3} \d{1,2}$/); // "dom 4"
+    expect(hoy.hint).toMatch(/^(lun|mar|mié|jue|vie|sáb|dom) \d{1,2}$/); // "dom 4"; "sáb 17" failed ci on Saturdays
   });
 
   it("every choice is in use: dates, then rhythms, then types (no date has a chip of its own: Cuándo shows them)", () => {
