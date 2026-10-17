@@ -9784,6 +9784,58 @@
     "bar": false
   },
   {
+    "title": "Segundo Aniversario Ebi Dance",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "salsa cubana",
+      "urbano"
+    ],
+    "organizer": "Ebi Dance Company",
+    "venue": "Distrito Social",
+    "address": "Carrera 29 # 68-18",
+    "area": null,
+    "date": "2026-11-07",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "20:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 35000,
+        "condition": "incluye 5K de consumo"
+      }
+    ],
+    "artists": [
+      "Victor Blanco"
+    ],
+    "activities": [
+      "fiesta social",
+      "clase de reparto",
+      "shows de estrenos"
+    ],
+    "contact": "@Ebi_dancecompany",
+    "confidence": "high",
+    "doubts": [],
+    "id": "segundo-aniversario-ebi-dance-7-nov",
+    "account": "ebi_dancecompany",
+    "media": [
+      {
+        "post_id": "18115452482045911",
+        "permalink": "https://www.instagram.com/p/DeUn8eppf1G/",
+        "media_type": "IMAGE",
+        "published": "2026-10-10T17:30:26+0000",
+        "flyer": "flyers/18115452482045911-0.webp",
+        "caption": "🔥 EBI Dance Company está de aniversario💃🕺\n\nDos años de baile, crecimiento y cultura cubana merecen celebrarse a lo grande.\n\n🎭 12 shows de muestra, estrenos y mucho sabor en una noche donde el talento y la pasión por el baile serán protagonistas.\n\nPrepárate para celebrar con nosotros. Nos vemos en la pista 🩷🩵",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Milonga",
     "event_type": "social",
     "is_recurring": false,
