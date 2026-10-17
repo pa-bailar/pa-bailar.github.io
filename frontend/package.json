@@ -11,7 +11,8 @@
     "check:data": "node scripts/check-data.mjs",
     "check:contrast": "node scripts/check-contrast.mjs",
     "check:css": "node scripts/check-css-vars.mjs",
-    "test": "vitest run"
+    "test": "vitest run",
+    "test:clock-ahead": "node scripts/test-clock-ahead.mjs"
   },
   "dependencies": {
     "astro": "~7.3.5"

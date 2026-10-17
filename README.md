@@ -28,6 +28,7 @@ npm run media   # the flyers and clips (they live in pa-bailar/media): clones or
 npm run dev     # local preview at http://localhost:4321
 npm run check   # data format + type check + color contrast (WCAG AA) + CSS custom properties
 npm test        # unit tests (Vitest)
+npm run test:clock-ahead  # the same, with the clock months ahead on a Saturday night (ci runs both)
 npm run build   # static site in frontend/dist/ (fails if a page breaks its Content Security Policy)
 npm run preview # the build at http://localhost:4321, with the policy (dev mode doesn't apply it)
 ```

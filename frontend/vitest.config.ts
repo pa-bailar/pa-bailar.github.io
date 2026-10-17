@@ -5,5 +5,6 @@ import { getViteConfig } from "astro/config";
 export default getViteConfig({
   test: {
     include: ["tests/**/*.test.ts"],
+    setupFiles: ["./tests/shiftedClock.ts"], // the real clock unless CLOCK_AT is set (test:clock-ahead)
   },
 });

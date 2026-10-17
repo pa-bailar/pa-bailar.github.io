@@ -59,5 +59,9 @@ jobs:
         run: npm run check
       - name: Unit tests
         run: npm test
+      # Again, months ahead on a Saturday night: a test that passes only on today's date fails on its own PR, not on a
+      # sweep's data PR later (two did, 10–17 Oct 2026, and the data waited).
+      - name: Unit tests with the clock ahead
+        run: npm run test:clock-ahead
       - name: Build
         run: npm run build
