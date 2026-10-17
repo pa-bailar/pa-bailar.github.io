@@ -5422,6 +5422,16 @@
     "account": "danzaenlaciudad",
     "media": [
       {
+        "post_id": "18130009276722897",
+        "permalink": "https://www.instagram.com/p/Dek4LQFEVc6/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-17T01:00:04+0000",
+        "flyer": "flyers/18130009276722897-1.webp",
+        "caption": "En el marco de #HipHopAlParque2026, la Franja Académica de Danza abre espacios para explorar las danzas urbanas desde la técnica, la creatividad y el intercambio de saberes. 💥\n\n💃 Female Dancehall: la feminidad en lo urbano\nUna experiencia para explorar la musicalidad, el groove, la coordinación y la presencia escénica, reconociendo la identidad, la fuerza y la expresión de los cuerpos femeninos y disidentes.\n\n🤸 Breakin, con Rudolf Laban\nUn encuentro entre el breaking y los estudios del movimiento de Rudolf Laban para descubrir nuevas dinámicas, intenciones y calidades corporales desde la danza urbana.\n\n🎧 DJs Breakin: Each One, Teach One Vol. 2\nUn espacio para aprender sobre mezcla, scratch, beat juggling y gramática musical, conectando el sonido con el movimiento y la energía de las batallas de breaking.\n\n📍 La Casona de la Danza (carrera 1 n.º 17-01).\n\n📅 Female Dancehall: 19, 20 y 21 de octubre | 2 p.m. a 4 p.m.\n📅 Breakin, con Rudolf Laban: 21 de octubre | 4 p.m. a 6 p.m.\n📅 DJs Breakin: Each One, Teach One Vol. 2: 22 y 23 de octubre | 6 p.m. a 9 p.m.\n\n📝 ¡Recuerde que los talleres requieren inscripción previa!\n\nLink en la bio.\n\n #DeLaEsquinaAlParque #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 3
+      },
+      {
         "post_id": "18380887969228934",
         "permalink": "https://www.instagram.com/p/Dd92TeoCUUO/",
         "media_type": "CAROUSEL_ALBUM",
@@ -5730,6 +5740,53 @@
       }
     ],
     "bar": true
+  },
+  {
+    "title": "Clase Especial con Diego & Zaivis",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "bachata sensual"
+    ],
+    "organizer": "Original Step",
+    "venue": null,
+    "address": "Cra. 27a No. 52-31",
+    "area": null,
+    "date": "2026-10-16",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Diego",
+      "Zaivis"
+    ],
+    "activities": [
+      "clase especial de bachata"
+    ],
+    "contact": "@originalstepdance",
+    "confidence": "medium",
+    "doubts": [
+      "hora no especificada",
+      "precio no especificado"
+    ],
+    "id": "clase-especial-con-diego-zaivis-16-oct",
+    "account": "originalstepdance",
+    "media": [
+      {
+        "post_id": "18126912164313778",
+        "permalink": "https://www.instagram.com/p/Dej0SzXiHai/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-16T15:06:53+0000",
+        "flyer": "flyers/18126912164313778-0.webp",
+        "caption": "✨ DIEGO & ZAIVIS ✨\n\nEste viernes tendremos una clase especial con dos grandes exponentes de la bachata desde Venezuela: Diego & Zaivis. 🇻🇪🔥\n\nReconocidos por su experiencia en Bachata Sensual y como grandes representantes de la Bachata Pacheco, cuentan además con una amplia trayectoria como formadores de bailarines y artistas. 💃🕺\n\nSu trabajo tiene un fuerte enfoque en el baile social, las batallas y el Jack & Jill, desarrollando herramientas de técnica, conexión, creatividad, musicalidad e improvisación para llevar el baile a otro nivel. 🏆🎶\n\nDurante esta clase estarán compartiendo parte de su metodología, experiencia y visión de la bachata, combinando técnica, interpretación y recursos pensados para desenvolverse con mayor seguridad y versatilidad en pista. 🤩\n\n📍 Cra. 27a No. 52-31, Bogotá, Colombia\n\n#bachata #bachatasensual #bachatapacheco #jackandjill #batallasdebachata improvisacion bachatacolombia bogota clasesdebachata originalstep",
+        "preview": "previews/18126912164313778-0.mp4",
+        "slides": 5
+      }
+    ],
+    "bar": false
   },
   {
     "title": "La Salsa Party en Vivo - Homenaje al Gran Combo de Puerto Rico",
@@ -6396,10 +6453,22 @@
     ],
     "contact": "@bogotadanceclub",
     "confidence": "high",
-    "doubts": [],
+    "doubts": [
+      "hora no especificada en esta publicación"
+    ],
     "id": "fiesta-de-mascaras-17-oct",
     "account": "bogotadanceclub",
     "media": [
+      {
+        "post_id": "18098527757424662",
+        "permalink": "https://www.instagram.com/reel/Dekx6-CuQcj/",
+        "media_type": "VIDEO",
+        "published": "2026-10-17T00:08:28+0000",
+        "flyer": "flyers/18098527757424662-0.webp",
+        "caption": "Si te quedaste con ganas de ir a una fiesta de máscaras después de ver Bridgerton, te traemos la solución ✨\n\nEste sábado vuelve nuestra 🎭TINDER DE MÁSCARAS🎭 a Bogotá Dance Club, un espacio para conocer gente más allá de las apariencias 💃🏻\n\nSi quieres más información comenta este video 👇🏻\n\n#planesenbogotá #baile #bachata #salsa #bogota",
+        "preview": "previews/18098527757424662-0.mp4",
+        "slides": null
+      },
       {
         "post_id": "18473172046142809",
         "permalink": "https://www.instagram.com/reel/Defk_3JA0Gl/",
@@ -6860,6 +6929,49 @@
     "bar": true
   },
   {
+    "title": "Clase de Bachata Tradicional en Pareja",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "bachata dominicana"
+    ],
+    "organizer": "Show Stars",
+    "venue": "Show Stars",
+    "address": null,
+    "area": null,
+    "date": "2026-10-18",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "10:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "clase de bachata tradicional en pareja"
+    ],
+    "contact": "@showstarscol",
+    "confidence": "high",
+    "doubts": [
+      "precio no especificado"
+    ],
+    "id": "clase-de-bachata-tradicional-en-pareja-18-oct",
+    "account": "showstarscol",
+    "media": [
+      {
+        "post_id": "18197127829383032",
+        "permalink": "https://www.instagram.com/reel/DekKZIcymOJ/",
+        "media_type": "VIDEO",
+        "published": "2026-10-16T18:24:41+0000",
+        "flyer": "flyers/18197127829383032-0.webp",
+        "caption": "🔥 ¡Vuelve a la raíz, siente la esencia de la bachata! ❤️‍🔥\n¿Quieres aprender a bailar bachata tradicional en pareja? 💃🕺\n\nEste 18 de octubre a las 10:00 a. m. te invitamos a conectar con las raíces de este hermoso ritmo, aprender su esencia, mejorar tu conexión en pareja y disfrutar de la magia de cada movimiento. 🇩🇴✨\n\nPorque la bachata no solo se baila… ¡se siente! ❤️\n\n📍 Te esperamos en Show Stars.\n\n📲 ¿Te animas a vivir esta experiencia? Escríbenos por mensaje directo y reserva tu cupo. ¡Ven a bailar con nosotros!\n\n#BachataTradicional #BachataEnPareja #RaícesDeLaBachata #clasesdebachata",
+        "preview": "previews/18197127829383032-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Una Cita con la Salsa",
     "event_type": "party",
     "is_recurring": false,
@@ -6889,10 +7001,11 @@
       "social de salsa"
     ],
     "contact": "WhatsApp 3168710646",
-    "confidence": "high",
+    "confidence": "low",
     "doubts": [
       "sin hora",
-      "sin precio"
+      "sin precio",
+      "@germanbaila lo anunció cancelado o aplazado: revisar"
     ],
     "id": "una-cita-con-la-salsa-18-oct",
     "account": "elgocepagano",
@@ -6916,16 +7029,6 @@
         "caption": "🔥Concierto salsero, en elgocepagano 🔥\nSalsa bogotana, sabor, calle y goce en una sola noche\n\n🕔 Puertas: 6 pm | 🎶 Shows: 11 pm y 1 am\n📍 Diagonal 20A No. 82 – Bogotá\n\n✨🔥¡A bailar!🔥✨\nCover 20k\n#salsaenvivo #salsa\n#concierto #envivo\n#conciertobogota #salsaenbogotá",
         "preview": null,
         "slides": 2
-      },
-      {
-        "post_id": "18115985489078103",
-        "permalink": "https://www.instagram.com/reel/DehTDR2Tzj4/",
-        "media_type": "VIDEO",
-        "published": "2026-10-15T15:54:45+0000",
-        "flyer": "flyers/18115985489078103-0.webp",
-        "caption": "Este domingo 18 de Oct. tenemos Una Cita con la Salsa ❤️. \n🌅 El primer tardeo 100% salsero que te reconectar con tu pareja o te ayuda a encontrar a otros solteros que quieren cambiar las frías tardes de domingo por salsa, baile y alegría.\n🗓️ Desde las 2PM en elgocepagano con clase de baile , concursos y actividades para vivir una tarde diferente.\n🎟️ Cover $35K incluye bebida clase y concursos.\n📍 Diagonal 20A #0-82 Centro Bogotá \n🚫 Evento +18",
-        "preview": "previews/18115985489078103-0.mp4",
-        "slides": null
       },
       {
         "post_id": "18079187786372305",
@@ -7069,6 +7172,16 @@
     "id": "taller-female-dancehall-la-feminidad-en-lo-urbano-19-oct",
     "account": "danzaenlaciudad",
     "media": [
+      {
+        "post_id": "18130009276722897",
+        "permalink": "https://www.instagram.com/p/Dek4LQFEVc6/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-17T01:00:04+0000",
+        "flyer": "flyers/18130009276722897-0.webp",
+        "caption": "En el marco de #HipHopAlParque2026, la Franja Académica de Danza abre espacios para explorar las danzas urbanas desde la técnica, la creatividad y el intercambio de saberes. 💥\n\n💃 Female Dancehall: la feminidad en lo urbano\nUna experiencia para explorar la musicalidad, el groove, la coordinación y la presencia escénica, reconociendo la identidad, la fuerza y la expresión de los cuerpos femeninos y disidentes.\n\n🤸 Breakin, con Rudolf Laban\nUn encuentro entre el breaking y los estudios del movimiento de Rudolf Laban para descubrir nuevas dinámicas, intenciones y calidades corporales desde la danza urbana.\n\n🎧 DJs Breakin: Each One, Teach One Vol. 2\nUn espacio para aprender sobre mezcla, scratch, beat juggling y gramática musical, conectando el sonido con el movimiento y la energía de las batallas de breaking.\n\n📍 La Casona de la Danza (carrera 1 n.º 17-01).\n\n📅 Female Dancehall: 19, 20 y 21 de octubre | 2 p.m. a 4 p.m.\n📅 Breakin, con Rudolf Laban: 21 de octubre | 4 p.m. a 6 p.m.\n📅 DJs Breakin: Each One, Teach One Vol. 2: 22 y 23 de octubre | 6 p.m. a 9 p.m.\n\n📝 ¡Recuerde que los talleres requieren inscripción previa!\n\nLink en la bio.\n\n #DeLaEsquinaAlParque #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 3
+      },
       {
         "post_id": "18380887969228934",
         "permalink": "https://www.instagram.com/p/Dd92TeoCUUO/",
@@ -7255,6 +7368,51 @@
         "caption": "Octubre trae nuevas formas de moverse, sentir y crear. ✨\r\n\r\nEn La Casona de la Danza, el cuerpo es la puerta de entrada a experiencias que invitan a explorar el movimiento, despertar la imaginación y encontrarse con otras personas a través de la danza. 💫\r\n\r\nEste mes, déjese sorprender por una programación pensada para experimentar, aprender y disfrutar el movimiento desde diferentes perspectivas. Talleres, encuentros y experiencias donde cada paso puede convertirse en una nueva manera de expresarse. 🌿\r\n\r\nHaga una pausa, escuche su cuerpo y anímese a descubrir todo lo que puede pasar cuando el movimiento toma el espacio. 💃🕺\r\n\r\n📍 Deslice y explore la programación de octubre.\r\n\r\n#CasonaDeLaDanza #BogotáMiCiudadMiCasa",
         "preview": null,
         "slides": 19
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Perder la cabeza - Clínica de Experimentación Coreográfica",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "Orbitante Plataforma Danza Bogotá",
+    "venue": "La Casona de la Danza",
+    "address": "Carrera 1 No. 17-01",
+    "area": null,
+    "date": "2026-10-20",
+    "end_date": "2026-10-23",
+    "sessions": null,
+    "weekday": "martes",
+    "start_time": "14:00",
+    "end_time": "18:00",
+    "prices": [],
+    "artists": [
+      "Movedizo Danza"
+    ],
+    "activities": [
+      "improvisación guiada",
+      "composición coreográfica",
+      "exploración del movimiento"
+    ],
+    "contact": "@danzaenlaciudad",
+    "confidence": "high",
+    "doubts": [],
+    "id": "perder-la-cabeza-clinica-de-experimentacion-20-oct",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "17920332081453464",
+        "permalink": "https://www.instagram.com/p/DejzkSPRvV3/",
+        "media_type": "IMAGE",
+        "published": "2026-10-16T15:01:43+0000",
+        "flyer": "flyers/17920332081453464-0.webp",
+        "caption": "Orbitante Plataforma Danza Bogotá le invita a explorar una nueva línea de acción: Clínicas de Experimentación Coreográfica, espacios para la creación, la investigación y el pensamiento crítico en torno al cuerpo, el movimiento y los lenguajes escénicos.\n\n❤️‍🔥 PERDER LA CABEZA | Clínica de Experimentación Coreográfica\n\nPrepárese para invertir los papeles, cuestionar las formas de control y explorar otras perspectivas del cuerpo y el movimiento. ¿Qué pasaría si pone el vientre sobre el corazón, el corazón sobre el cerebro y el cerebro sobre la tierra?\n\nA través de la improvisación guiada, la exploración del movimiento desde el suelo y la creación de partituras coreográficas, podrá experimentar nuevas posibilidades de la teatralidad, la danza y la composición, mientras descubre otras maneras de observar sin dominar y de habitar el cuerpo.\n\n✨ Un espacio para transformar sus imaginarios, cuestionar lo establecido y explorar colectivamente nuevas formas de creación escénica.\n\n📅 Fechas: 20, 21, 22 y 23 de octubre\n🕑 Horario: 2 p.m. a 6 p.m.\n📍 Lugar: La Casona de la Danza — Carrera 1 No. 17-01\n📝 Inscripciones previas hasta el 18 de octubre.\n\nLink en la bio.\n\n¡Anímese a perder la cabeza, mover sus ideas y expandir las posibilidades del movimiento! 🌀\n\n#BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": null
       }
     ],
     "bar": false
@@ -7828,6 +7986,26 @@
     "account": "danzaenlaciudad",
     "media": [
       {
+        "post_id": "18120497569984779",
+        "permalink": "https://www.instagram.com/p/DeknG0cEZOJ/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-16T22:30:43+0000",
+        "flyer": "flyers/18120497569984779-1.webp",
+        "caption": "🎙️ En BIVA, la energía de la pista también se vive con el público.\n\nPresentamos a nuestro host: Speedy ⚡\n\nCon una amplia trayectoria””(...) en el breaking y la cultura hip hop de Bogotá, Speedy llega a esta edición como bailarín, formador, gestor cultural y animador de batallas, con experiencia en escenarios distritales, nacionales e internacionales, incluyendo varias ediciones de Hip Hop al Parque.\n\n🔥 En BIVA será quien acompañe cada ronda, conecte con el público y mantenga encendida la energía de la pista.\n\n#HipHopAlParque2026 #DeLaEsquinaAlParque #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 2
+      },
+      {
+        "post_id": "18143567938610663",
+        "permalink": "https://www.instagram.com/p/DekjqLqEZlB/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-16T22:00:46+0000",
+        "flyer": "flyers/18143567938610663-4.webp",
+        "caption": "🕺 Llega la Batalla Internacional ViAlterna – BIVA, un encuentro que reúne talento, trayectoria y diversidad en una misma pista.\n\nCuatro crews de Bogotá representan la fuerza y el legado del breaking de nuestra ciudad:\n\nÚltimo Enjambre: más de 8 años de trayectoria en la escena nacional e internacional.\n\nBrothers Fresh: una nueva generación que conecta formación, creación y competencia.\n\nOld School Breakin Bogotá 80s: 40 años preservando las raíces y la memoria del breaking capitalino.\n\nCapital Style: más de 10 años impulsando el hip hop desde Suba hacia escenarios y batallas.\n\nCuatro generaciones, estilos y territorios que se encuentran para demostrar que el breaking conecta a Bogotá con el mundo.\n\n#HipHopAlParque2026 #DeLaEsquinaAlParque #BogotáMiCiudadMiCasa”",
+        "preview": null,
+        "slides": 5
+      },
+      {
         "post_id": "18145682326569942",
         "permalink": "https://www.instagram.com/p/DeR0t7BRHn6/",
         "media_type": "IMAGE",
@@ -7932,10 +8110,33 @@
     ],
     "contact": "3108519066",
     "confidence": "high",
-    "doubts": [],
+    "doubts": [
+      "sin hora",
+      "sin dirección ni lugar especificado"
+    ],
     "id": "taller-de-bachata-para-las-fiestas-24-oct",
     "account": "clandisfrute",
     "media": [
+      {
+        "post_id": "18635439067042641",
+        "permalink": "https://www.instagram.com/reel/Dej_1LtxyUQ/",
+        "media_type": "VIDEO",
+        "published": "2026-10-16T16:47:56+0000",
+        "flyer": "flyers/18635439067042641-0.webp",
+        "caption": "A ver, pronúnciense🗣️🗣️\n\nSeguimos reservando cuposss no te vayas a quedar por fuera😼🌝🥳",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18214099102317948",
+        "permalink": "https://www.instagram.com/reel/Dej_t5nRtal/",
+        "media_type": "VIDEO",
+        "published": "2026-10-16T16:47:04+0000",
+        "flyer": "flyers/18214099102317948-0.webp",
+        "caption": "A ver, pronúnciense🗣️🗣️\n\nSeguimos reservando cuposss no te vayas a quedar por fuera😼🌝🥳",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18445356367126431",
         "permalink": "https://www.instagram.com/reel/DeH7l9xv5xd/",
@@ -8375,6 +8576,66 @@
       }
     ],
     "bar": true
+  },
+  {
+    "title": "Halloween Salsero - El Tour de la Salsa Vol. 1",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Salsa Culto",
+    "venue": "Botánico Hostel",
+    "address": "Carrera 2 # 9-87",
+    "area": "La Candelaria",
+    "date": "2026-10-30",
+    "end_date": "2026-10-31",
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": null,
+    "end_time": "03:00",
+    "prices": [
+      {
+        "label": "Preventa Individual",
+        "amount_cop": 45000,
+        "condition": null
+      },
+      {
+        "label": "Preventa Pareja",
+        "amount_cop": 80000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Sonido Oriente",
+      "Amparo Arrebato",
+      "Hermanos Baez"
+    ],
+    "activities": [
+      "clase de salsa",
+      "tinder salsero",
+      "brindis de bienvenida",
+      "concurso de disfraces",
+      "remate en El Candelario"
+    ],
+    "contact": "www.salsaculto.com",
+    "confidence": "high",
+    "doubts": [],
+    "id": "halloween-salsero-el-tour-de-la-salsa-vol-1-30-oct",
+    "account": "salsaculto",
+    "media": [
+      {
+        "post_id": "18111348329605436",
+        "permalink": "https://www.instagram.com/p/Dej5ixDkUO7/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-16T15:52:45+0000",
+        "flyer": "flyers/18111348329605436-4.webp",
+        "caption": "🧛‍♂️ Policarpa bailando con Drácula: así arranca el Halloween más salsero de Bogotá.\n\n🎃 Dos noches, 30 y 31 de octubre, en la casa de Policarpa Salavarrieta (Botánico Hostel, La Candelaria). Clase de salsa, tinder salsero, Hermanos Baez, DJ invitado y remate en El Candelario hasta las 3:00 a. m. 🌙\n\n🏆 El mejor disfraz se gana una noche para 2 en la Habitación Heliconia, con desayuno incluido 🌿\n\n🎟️ Desde $45.000 · Link en la bio\nPremio sujeto a disponibilidad y reserva previa.",
+        "preview": null,
+        "slides": 5
+      }
+    ],
+    "bar": false
   },
   {
     "title": "La Guillaera",
@@ -9867,6 +10128,16 @@
         "flyer": "flyers/18073448372447981-0.webp",
         "caption": "🔥 JESÚS CASTILLO LLEGA A CASINEA 2026\n\nDesde Venezuela hasta Colombia, Jesús Castillo ha construido una trayectoria como instructor, coreógrafo y bailarín, convirtiéndose en un explorador constante de las nuevas expresiones del movimiento cubano. 🇻🇪🇨🇴\n\nSu fortaleza está en la capacidad de interpretar y desarrollar diferentes lenguajes de la música cubana, con especial dominio del reparto cubano, el cubatón y los ritmos urbanos, sin dejar de lado la riqueza del folclor afrocubano.\n\nJesús es de esos artistas que no se quedan quietos: investiga, explora y transforma lo que escucha en movimiento, buscando nuevas maneras de interpretar los ritmos que hacen parte de la Cuba contemporánea.\n\nY antes de estar del otro lado como instructor y coreógrafo, también conoció de cerca la competencia. 🏆\n\nDurante sus años como competidor, Jesús alcanzó múltiples podios en el Festival Internacional Casinea y en otras competencias de Colombia y Venezuela, construyendo una experiencia que hoy reúne el conocimiento técnico, la experiencia escénica y la mirada del competidor.\n\nEn Casinea 2026, tendremos la oportunidad de aprender de un artista que entiende el movimiento desde diferentes lugares: la competencia, la creación, la enseñanza, el folclor y la exploración de los ritmos urbanos cubanos. 🔥\n\n📅 13 al 16 de noviembre de 2026\n📍 Bogotá, Colombia\n\nJesús Castillo, nos vemos en Casinea.\n\n#FestivalCasinea #Casinea2026 #RepartoCubano #Cubatón #IléDanza",
         "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18123454639919017",
+        "permalink": "https://www.instagram.com/reel/Dek3SczR3-G/",
+        "media_type": "VIDEO",
+        "published": "2026-10-17T00:53:40+0000",
+        "flyer": "flyers/18123454639919017-0.webp",
+        "caption": "🇲🇽🔥 **¡MARLY Y ALEXIS CONFIRMAN SU PARTICIPACIÓN EN CASINEA 2026!**\n\n¡Desde México hasta Bogotá! 🇲🇽🇨🇴 Marly y Alexis, directores de brotherson_mx, tienen un mensaje para toda la comunidad del casino: ¡nos vemos en la décima edición del Festival Internacional Casinea! 💃🕺\n\nReconocidos exponentes del casino en la Ciudad de México, bailarines, maestros y coreógrafos con títulos en distintas competencias, llegan para compartir su experiencia y enseñarnos nuevas posibilidades dentro del baile.\n\n🔥 **¿Qué nos traen a Casinea 2026?**\n\n💥 **Trucos en pareja:** técnica, creatividad y recursos para llevar las figuras y acrobacias del casino a otro nivel.\n\n🕺💃 **Estilo masculino y femenino:** un taller simultáneo en el que Alexis explorará los movimientos del estilo masculino y Marly los del estilo femenino, compartiendo la misma pista y llevando el encuentro a un dinámico desafío de estilos.\n\nDos talleres para trabajar el dominio corporal, enriquecer la interpretación y descubrir nuevas herramientas para bailar casino.\n\n**Su llegada a Casinea representa un nuevo encuentro entre México y Bogotá, y una oportunidad para aprender de dos grandes referentes que han llevado el casino a nuevos escenarios dentro y fuera de su país.** 🇲🇽🇨🇴🇨🇺\n\n📅 **13 al 16 de noviembre de 2026**\n📍 Bogotá, Colombia\n\n🔥 **¡México llega a Casinea! Nos vemos en la pista.**\n\n#FestivalCasinea #Casinea2026 #BrotherSonMexico #SalsaCasino",
+        "preview": "previews/18123454639919017-0.mp4",
         "slides": null
       }
     ],
