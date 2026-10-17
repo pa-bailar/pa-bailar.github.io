@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-17T14:02:37-05:00",
+  "generated_at": "2026-10-17T14:08:48-05:00",
   "accounts": [
     "_olorumcongress",
     "academia_cowork",
@@ -153,7 +153,7 @@
     "rate_limited": false,
     "out_of_time": false,
     "gemini_requests": {
-      "gemini-3.8-flash": 1
+      "gemini-3.8-flash": 2
     },
     "models_unavailable": [],
     "external": {
@@ -167,7 +167,7 @@
     "instagram_reads": null,
     "instagram_stop": null,
     "by_account": {
-      "danzaenlaciudad": {
+      "esferalatinaoficial": {
         "posts_analyzed": 1,
         "events_new": 0,
         "events_merged": 1,
