@@ -7253,73 +7253,6 @@
     "bar": false
   },
   {
-    "title": "Ritmos Cruzados",
-    "event_type": "workshop",
-    "is_recurring": false,
-    "styles": [
-      "salsa"
-    ],
-    "organizer": "Esfera Latina",
-    "venue": "Esfera Latina",
-    "address": null,
-    "area": null,
-    "date": "2026-10-20",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "martes",
-    "start_time": null,
-    "end_time": null,
-    "prices": [
-      {
-        "label": "Estudiantes Esfera",
-        "amount_cop": 10000,
-        "condition": null
-      },
-      {
-        "label": "General",
-        "amount_cop": 20000,
-        "condition": null
-      }
-    ],
-    "artists": [
-      "Mancho Osorio",
-      "Alex Salsita"
-    ],
-    "activities": [
-      "clase de ritmos cruzados"
-    ],
-    "contact": "3135802345",
-    "confidence": "high",
-    "doubts": [
-      "Estilo de salsa específico no especificado"
-    ],
-    "id": "ritmos-cruzados-20-oct",
-    "account": "esferalatinaoficial",
-    "media": [
-      {
-        "post_id": "18109663904592419",
-        "permalink": "https://www.instagram.com/p/Dd4hT0Rx8hD/",
-        "media_type": "IMAGE",
-        "published": "2026-10-06T18:00:06+0000",
-        "flyer": "flyers/18109663904592419-0.webp",
-        "caption": "🔥 MARTES 20 DE OCTUBRE - Dos estilos, una sola clase y mucha energía. 🔥\n\nPrepárate para una clase diferente junto a manchoosorio & alexsalsitaoficial 💥\n\nReserva tu cupo y nos vemos en la pista! 💃🏽🕺🏽",
-        "preview": null,
-        "slides": null
-      },
-      {
-        "post_id": "18112581790860968",
-        "permalink": "https://www.instagram.com/p/DdwoUWYDUwb/",
-        "media_type": "CAROUSEL_ALBUM",
-        "published": "2026-09-26T18:00:04+0000",
-        "flyer": "flyers/18112581790860968-1.webp",
-        "caption": "🔥 OCTUBRE SE VIVE EN ESFERA LATINA 🔥\n\nUn mes para aprender, entrenar, disfrutar y, sobre todo… BAILAR. 💃🕺\n\nEscríbenos para más información y reservas\n\n📱3135802345",
-        "preview": null,
-        "slides": 2
-      }
-    ],
-    "bar": false
-  },
-  {
     "title": "Taller Acrobalance desde el acroyoga",
     "event_type": "workshop",
     "is_recurring": false,
@@ -7473,6 +7406,83 @@
         "caption": "Octubre trae nuevas formas de moverse, sentir y crear. ✨\r\n\r\nEn La Casona de la Danza, el cuerpo es la puerta de entrada a experiencias que invitan a explorar el movimiento, despertar la imaginación y encontrarse con otras personas a través de la danza. 💫\r\n\r\nEste mes, déjese sorprender por una programación pensada para experimentar, aprender y disfrutar el movimiento desde diferentes perspectivas. Talleres, encuentros y experiencias donde cada paso puede convertirse en una nueva manera de expresarse. 🌿\r\n\r\nHaga una pausa, escuche su cuerpo y anímese a descubrir todo lo que puede pasar cuando el movimiento toma el espacio. 💃🕺\r\n\r\n📍 Deslice y explore la programación de octubre.\r\n\r\n#CasonaDeLaDanza #BogotáMiCiudadMiCasa",
         "preview": null,
         "slides": 19
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Ritmos Cruzados",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Esfera Latina",
+    "venue": "Esfera Latina",
+    "address": null,
+    "area": null,
+    "date": "2026-10-20",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "martes",
+    "start_time": "20:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Estudiantes Esfera",
+        "amount_cop": 10000,
+        "condition": null
+      },
+      {
+        "label": "General",
+        "amount_cop": 20000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Mancho Osorio",
+      "Alex Salsita"
+    ],
+    "activities": [
+      "clase de ritmos cruzados"
+    ],
+    "contact": "3135802345",
+    "confidence": "high",
+    "doubts": [
+      "Estilo de salsa específico no especificado"
+    ],
+    "id": "ritmos-cruzados-20-oct",
+    "account": "esferalatinaoficial",
+    "media": [
+      {
+        "post_id": "18026328986860113",
+        "permalink": "https://www.instagram.com/p/DeP18T8pb0G/",
+        "media_type": "IMAGE",
+        "published": "2026-10-10T15:00:23+0000",
+        "flyer": "flyers/18026328986860113-0.webp",
+        "caption": "Dos estilos, una sola clase y mucha energía. 🔥\n\nPrepárate para una clase diferente junto a manchoosorio & alexsalsitaoficial 💥\n\nReserva tu cupo y nos vemos en la pista! 💃🏽🕺🏽",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18109663904592419",
+        "permalink": "https://www.instagram.com/p/Dd4hT0Rx8hD/",
+        "media_type": "IMAGE",
+        "published": "2026-10-06T18:00:06+0000",
+        "flyer": "flyers/18109663904592419-0.webp",
+        "caption": "🔥 MARTES 20 DE OCTUBRE - Dos estilos, una sola clase y mucha energía. 🔥\n\nPrepárate para una clase diferente junto a manchoosorio & alexsalsitaoficial 💥\n\nReserva tu cupo y nos vemos en la pista! 💃🏽🕺🏽",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18112581790860968",
+        "permalink": "https://www.instagram.com/p/DdwoUWYDUwb/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-09-26T18:00:04+0000",
+        "flyer": "flyers/18112581790860968-1.webp",
+        "caption": "🔥 OCTUBRE SE VIVE EN ESFERA LATINA 🔥\n\nUn mes para aprender, entrenar, disfrutar y, sobre todo… BAILAR. 💃🕺\n\nEscríbenos para más información y reservas\n\n📱3135802345",
+        "preview": null,
+        "slides": 2
       }
     ],
     "bar": false
