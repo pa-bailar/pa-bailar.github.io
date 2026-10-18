@@ -7136,7 +7136,7 @@
       {
         "label": "Cover",
         "amount_cop": 30000,
-        "condition": "Incluye 2 bebidas + fiesta"
+        "condition": "incluye 2 bebidas + fiesta"
       }
     ],
     "artists": [
@@ -7145,10 +7145,9 @@
     ],
     "activities": [
       "música en vivo",
-      "fiesta",
-      "tarde de salsa"
+      "fiesta"
     ],
-    "contact": "@bogotadanceclub",
+    "contact": null,
     "confidence": "high",
     "doubts": [],
     "id": "enrique-barrios-en-vivo-en-la-viejoteca-18-oct",
@@ -7985,7 +7984,9 @@
     ],
     "contact": "WhatsApp 3227283910",
     "confidence": "high",
-    "doubts": [],
+    "doubts": [
+      "sin hora de inicio"
+    ],
     "id": "argy-gomez-en-salsa-son-24-oct",
     "account": "salsaysonoficial",
     "media": [
@@ -8325,13 +8326,13 @@
     "end_time": null,
     "prices": [
       {
-        "label": "Pareja",
-        "amount_cop": 50000,
+        "label": "Individual",
+        "amount_cop": 30000,
         "condition": null
       },
       {
-        "label": "Individual",
-        "amount_cop": 30000,
+        "label": "Pareja",
+        "amount_cop": 50000,
         "condition": null
       }
     ],
@@ -8402,7 +8403,7 @@
     "end_time": null,
     "prices": [
       {
-        "label": "Entradas",
+        "label": "Entrada",
         "amount_cop": 25000,
         "condition": null
       }
@@ -8623,16 +8624,13 @@
       "3 djs residentes"
     ],
     "activities": [
-      "fiesta salsera",
-      "premios a los 3 mejores disfraces",
-      "trago de bienvenida"
+      "concurso de disfraces"
     ],
-    "contact": "WhatsApp 3176608742",
+    "contact": "317 660 8742",
     "confidence": "high",
     "doubts": [
-      "no se especifica hora de inicio",
-      "el flyer menciona Salón Café Bohemia pero el pie de foto menciona tres sedes",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+      "sin hora de inicio",
+      "sin precio de entrada"
     ],
     "id": "embrujate-con-salsa-viernes-30-oct",
     "account": "galeriacafelibro",
@@ -8929,11 +8927,11 @@
     "event_type": "party",
     "is_recurring": false,
     "styles": [
-      "salsa"
+      "urbano"
     ],
-    "organizer": "Pachanga&Pochola",
+    "organizer": "Pachanga & Pochola",
     "venue": "Pachanga & Pochola",
-    "address": "Calle 73 14-53",
+    "address": "Calle 73 #14-53",
     "area": "Chapinero",
     "date": "2026-10-31",
     "end_date": null,
@@ -8943,12 +8941,12 @@
     "end_time": null,
     "prices": [
       {
-        "label": "Cover con disfraz",
+        "label": "Con disfraz",
         "amount_cop": 20000,
         "condition": null
       },
       {
-        "label": "Cover sin disfraz",
+        "label": "Sin disfraz",
         "amount_cop": 35000,
         "condition": null
       }
@@ -8957,13 +8955,13 @@
       "Nelson DJ",
       "DJ Gracia",
       "DJ Juli Savoy",
-      "Jeisson DJ"
+      "Jesson DJ"
     ],
     "activities": [
-      "espectacular show de baile",
-      "concurso de disfraces con premios"
+      "concurso de disfraces",
+      "fiesta"
     ],
-    "contact": "WhatsApp 3132891788",
+    "contact": "313 289 1788",
     "confidence": "high",
     "doubts": [
       "sin precio",
@@ -9041,7 +9039,7 @@
   },
   {
     "title": "¡Embrújate con Salsa! - Sábado",
-    "event_type": "concert",
+    "event_type": "party",
     "is_recurring": false,
     "styles": [
       "salsa"
@@ -9069,15 +9067,13 @@
       "3 djs residentes"
     ],
     "activities": [
-      "música en vivo",
-      "premios a los 3 mejores disfraces",
-      "trago de bienvenida"
+      "concurso de disfraces"
     ],
-    "contact": "WhatsApp 3176608742",
+    "contact": "317 660 8742",
     "confidence": "high",
     "doubts": [
-      "no se especifica hora de inicio",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+      "sin hora de inicio",
+      "sin precio de entrada"
     ],
     "id": "embrujate-con-salsa-sabado-31-oct",
     "account": "galeriacafelibro",
