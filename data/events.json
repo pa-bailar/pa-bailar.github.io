@@ -6687,7 +6687,10 @@
     ],
     "contact": "3176608742",
     "confidence": "high",
-    "doubts": [],
+    "doubts": [
+      "sin hora de inicio",
+      "sin información de cover o precio"
+    ],
     "id": "salsa-boricua-vs-salsa-colombiana-17-oct",
     "account": "galeriacafelibro",
     "media": [
@@ -6699,6 +6702,16 @@
         "flyer": "flyers/17972147352174515-0.webp",
         "caption": "Este sábado hay mano a mano de salsa boricua 🇵🇷 vs salsa colombiana 🇨🇴 \n\nLa pista va a encenderse con sonoraextrema para gozar con lo mejor del repertorio 🌟 Y en el tornamesa: johanancines con los mejores discos de todos los tiempos ¡Te esperamos para una noche de rumba salsera en Bogotá!\n\n📍 Galeria Cafe Libro 93: Cra 11A#93-42\n🎟️ $25.000 • disponibles en taquilla o galeriacafelibro.com.co\n⏰ 5pm a 3 am • Happy Hour con 2x1 hasta las 8pm",
         "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18117436837790376",
+        "permalink": "https://www.instagram.com/reel/DemukO6McO-/",
+        "media_type": "VIDEO",
+        "published": "2026-10-17T18:17:38+0000",
+        "flyer": "flyers/18117436837790376-0.webp",
+        "caption": "¡Hoy nos vemos a gozar de lo bueno de la salsa! 🔥🎺💃🏽\n\nLa música en vivo se disfruta diferente y con sonoraextrema se prende la pista. 🎶❤️‍🔥\n\n¡Alista los zapatos de baile que hoy se goza como es! 💃🏽🕺🏽",
+        "preview": "previews/18117436837790376-0.mp4",
         "slides": null
       }
     ],
@@ -7511,9 +7524,20 @@
     "end_date": null,
     "sessions": null,
     "weekday": "miércoles",
-    "start_time": null,
-    "end_time": null,
-    "prices": [],
+    "start_time": "19:00",
+    "end_time": "21:00",
+    "prices": [
+      {
+        "label": "Bailarines Esfera Latina",
+        "amount_cop": 25000,
+        "condition": null
+      },
+      {
+        "label": "General",
+        "amount_cop": 40000,
+        "condition": null
+      }
+    ],
     "artists": [
       "Omar Crespo"
     ],
@@ -7528,6 +7552,16 @@
     "id": "videoclass-21-oct",
     "account": "esferalatinaoficial",
     "media": [
+      {
+        "post_id": "17911542237516047",
+        "permalink": "https://www.instagram.com/p/Dena3JBkeia/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-18T00:41:37+0000",
+        "flyer": "flyers/17911542237516047-0.webp",
+        "caption": "🔥🎥 ¡LLEGA VIDEO CLASS A ESFERA LATINA!\n\nEste 21 de octubre prepárate para vivir una clase increíble junto a Omar Crespo. 🔥💃\n\n📲 Información y reservas: 3135802345\n\n✨ ¡Ven, baila, disfruta y demuestra todo tu talento frente a la cámara!",
+        "preview": null,
+        "slides": 2
+      },
       {
         "post_id": "18112581790860968",
         "permalink": "https://www.instagram.com/p/DdwoUWYDUwb/",
@@ -7747,6 +7781,76 @@
       }
     ],
     "bar": true
+  },
+  {
+    "title": "Salsa vs Dancehall",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "dancehall"
+    ],
+    "organizer": "Parche x Bogotá",
+    "venue": "Viajero Bogotá",
+    "address": "Cra. 3 #20-35",
+    "area": null,
+    "date": "2026-10-23",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "19:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Preventa Individual",
+        "amount_cop": 25000,
+        "condition": "incluye cóctel"
+      },
+      {
+        "label": "Preventa Pareja",
+        "amount_cop": 40000,
+        "condition": "incluye cóctel por persona"
+      },
+      {
+        "label": "Taquilla Individual",
+        "amount_cop": 30000,
+        "condition": null
+      },
+      {
+        "label": "Taquilla Pareja",
+        "amount_cop": 50000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "DJ Zaz",
+      "Juancho Salsita",
+      "Niko"
+    ],
+    "activities": [
+      "intercambio de idiomas",
+      "clase de baile",
+      "fiesta",
+      "concurso día de spa"
+    ],
+    "contact": "@parchexbogota",
+    "confidence": "high",
+    "doubts": [],
+    "id": "salsa-vs-dancehall-23-oct",
+    "account": "parchexbogota",
+    "media": [
+      {
+        "post_id": "18065987546786044",
+        "permalink": "https://www.instagram.com/p/DemRd6EFcNE/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-17T14:00:05+0000",
+        "flyer": "flyers/18065987546786044-1.webp",
+        "caption": "Pocxs lo pueden hacer 😅\n\nSi quiere aprender esta skill, prográmese para la clase de baile más parchada de Bogotá, esta vez con su edición Salsa vs Dancehall. 😏🪩\nEl parche es en viajero.bogota, donde podrá conocer personas viajando por Colombia y de Bogotá. \n\nLa entrada cuesta 25k individual y la pareja 40k, incluyen un cóctel de bienvenida. 🍹\nTaquilla 30k individual y 50 pareja. \n\nSon cupos limitados así que reserve ahora escirbiendo un mensaje directo a parchexbogota 💌",
+        "preview": null,
+        "slides": 2
+      }
+    ],
+    "bar": false
   },
   {
     "title": "Clase Dinamita de Heels",
@@ -9012,6 +9116,45 @@
     "bar": true
   },
   {
+    "title": "Tardeo Salsero",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Bulevar Salsa Bar",
+    "venue": "Bulevar Rooftop",
+    "address": "Carrera 13 # 82 - 37",
+    "area": null,
+    "date": "2026-10-31",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "13:00",
+    "end_time": "18:00",
+    "prices": [],
+    "artists": [],
+    "activities": [],
+    "contact": "3124245746",
+    "confidence": "high",
+    "doubts": [],
+    "id": "tardeo-salsero-31-oct",
+    "account": "bulevarsalsabar",
+    "media": [
+      {
+        "post_id": "18177526777443153",
+        "permalink": "https://www.instagram.com/reel/DekA5TlglMX/",
+        "media_type": "VIDEO",
+        "published": "2026-10-16T16:58:11+0000",
+        "flyer": "flyers/18177526777443153-0.webp",
+        "caption": "Próximo Tardeo De Bulevar 🎃👻💀 \n\nSábado 31 Octubre \nDesde la 1PM hasta las 6PM\nBULEVAR ROOFTOP\n📍Carrera 13 # 82 - 37",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "La fiesta de Halloween que estabas esperando",
     "event_type": "party",
     "is_recurring": false,
@@ -9031,19 +9174,19 @@
     "end_time": "03:00",
     "prices": [
       {
-        "label": "Hasta el 15 de Octubre",
+        "label": "Hasta el 23 Oct",
         "amount_cop": 50000,
-        "condition": "hasta el 15 de Octubre"
+        "condition": "hasta el 23 de octubre"
       },
       {
-        "label": "Del 16 al 30 de Octubre",
+        "label": "Del 24 al 30 Oct",
         "amount_cop": 70000,
-        "condition": "del 16 al 30 de Octubre"
+        "condition": "del 24 al 30 de octubre"
       },
       {
-        "label": "Día del evento en puerta",
+        "label": "En puerta (31 Oct)",
         "amount_cop": 90000,
-        "condition": "31 de Oct"
+        "condition": null
       }
     ],
     "artists": [],
@@ -9052,7 +9195,7 @@
       "happy hour",
       "premios en consumo al mejor disfraz"
     ],
-    "contact": null,
+    "contact": "@elratonsalsaclub",
     "confidence": "high",
     "doubts": [
       "sin precio"
@@ -9060,6 +9203,16 @@
     "id": "la-fiesta-de-halloween-que-estabas-esperando-31-oct",
     "account": "elratonsalsaclub",
     "media": [
+      {
+        "post_id": "17987552085087938",
+        "permalink": "https://www.instagram.com/reel/DemyU6KyXdY/",
+        "media_type": "VIDEO",
+        "published": "2026-10-17T18:47:50+0000",
+        "flyer": "flyers/17987552085087938-0.webp",
+        "caption": "Un edificio, tres pisos y una sola noche para vivir la fiesta de Halloween más grande de la Zona T. \n\n​• El Ratón: Salsa en vivo y la mejor vista en la terraza.\n• El Gato: House y sonido 90s.\n• Orno: Crossover noventero para cantar y bailar. \n\n​🔥 Happy Hour en todos los tragos de 3 a 6 PM + Premios en consumo al mejor disfraz (disfrazarte es opcional). \n\n​🎟️ Boletería:\n​Hasta el 23 Oct: $50k \n​Del 24 al 30 Oct: $70k \n​En puerta (31 Oct): $90k \n\n​Sábado 31 OCT | Desde las 3:00 PM\n📍 Cra. 14A # 82-14 \n\n​Asegura tus entradas al precio preventa escribiéndonos directo al link de la bio. ⚡\n\n​#elgatobogota #90sclub #90slovers #RumbaBogotá #zonat",
+        "preview": "previews/17987552085087938-0.mp4",
+        "slides": null
+      },
       {
         "post_id": "18191728312410541",
         "permalink": "https://www.instagram.com/reel/DeiDhU0R6q5/",
@@ -10526,6 +10679,16 @@
     "id": "los-25-de-la-33-21-nov",
     "account": "la33orquesta",
     "media": [
+      {
+        "post_id": "18181390432428351",
+        "permalink": "https://www.instagram.com/p/DemqtevlWiK/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-17T17:40:52+0000",
+        "flyer": "flyers/18181390432428351-3.webp",
+        "caption": "LA-33 EN VIVO 🔥\r\nTOUR 25 AÑOS 🥳\r\n\r\n𝗖𝗢𝗟𝗢𝗠𝗕𝗜𝗔 🇨🇴\n• Octubre 17 – Cali\r\nLa-33 en Cali celebrando sus 25 años\r\n📍Lugar: latopatolondraoficial \r\n🎟️📲 Info y entradas al: 310 3676943 – 313 3384907 – 323 5972646\r\n\r\n• Noviembre 13 - Barranquilla\r\nferiaexpodrinks \r\n📍Lugar: Puerta de oro – Centro de Eventos del Caribe\r\n🎟️ Entradas: expodrinks.co o tiendas Olimpica\r\n\r\n• Noviembre 21 - Bogotá\r\nLos 25 de la-33\r\n📍 Lugar: royalbogota \r\n🎟️ Entradas: royalcenter.com.co (Link en bio)\r\n\r\n𝗨𝗦𝗔 🇺🇸\r\n• Noviembre 6 – Manhattan, NY\r\n📍 Lugar: HK Hall, New York\r\n🎟️ Tickets: josecruzusa.com\r\n\r\n• Noviembre 7 – Elizabeth, NJ\r\n📍 Lugar: Provenza Immerse Venue\r\n🎟️ Tickets: josecruzusa.com\n.\n.\n¡Salsa es lo que hay! 🔥🥳💃🕺\n\n• Octubre 17 – Cali\r\nLa-33 en Cali celebrando sus 25 años\r\n📍Lugar: latopatolondraoficial \r\n🎟️📲 Info y entradas al: 310 3676943 – 313 3384907 – 323 5972646\n\n• Noviembre 13 - Barranquilla\r\nferiaexpodrinks \r\n📍Lugar: Puerta de oro – Centro de Eventos del Caribe\r\n🎟️ Entradas: expodrinks.co o tiendas Olimpica\n\n• Noviembre 21 - Bogotá\r\nLos 25 de la-33\r\n📍 Lugar: royalbogota \r\n🎟️ Entradas: royalcenter.com.co (Link en bio)\n\n• Noviembre 6 – Manhattan, NY\r\n📍 Lugar: HK Hall, New York\r\n🎟️ Tickets: josecruzusa.com\n\n• Noviembre 7 – Elizabeth, NJ\r\n📍 Lugar: Provenza Immerse Venue\r\n🎟️ Tickets: josecruzusa.com",
+        "preview": null,
+        "slides": 6
+      },
       {
         "post_id": "18130491478784014",
         "permalink": "https://www.instagram.com/p/DeILoalFVBD/",
