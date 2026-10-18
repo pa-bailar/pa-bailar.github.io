@@ -2433,7 +2433,7 @@
     "styles": [
       "salsa en línea"
     ],
-    "organizer": "frank.de.latorre",
+    "organizer": "Academia EFA Danza",
     "venue": "Academia EFA Danza",
     "address": "Cra 19 #51-76",
     "area": null,
@@ -2466,15 +2466,15 @@
     "end_time": "18:00",
     "prices": [
       {
-        "label": "Valor del paquete por persona",
+        "label": "Paquete por persona",
         "amount_cop": 150000,
         "condition": null
       }
     ],
-    "artists": [],
-    "activities": [
-      "curso de iniciación"
+    "artists": [
+      "@frank.de.latorre"
     ],
+    "activities": [],
     "contact": "WhatsApp 3016256707",
     "confidence": "high",
     "doubts": [],
@@ -5376,6 +5376,16 @@
         "caption": "La salsa se aprende bailando, pero también se aprende viviéndola. 💃🏽🕺🏽\n\nPor eso creamos Tour de la Salsa: un recorrido por algunos de los lugares que mantienen viva la cultura salsera de Bogotá.\n\nQueremos que cada parada sea una oportunidad para aprender a bailar, descubrir nuevos lugares, escuchar buena música, conocer gente y conectar con la comunidad salsera.\n\nY todo comienza este 11 de octubre en un lugar que respira salsa:\n\n📍 elgocepagano\n\nPrimer capítulo del Tour:\n💃🏽 Clase de salsa\n❤️ Tinder Salsero\n🎧 DJ invitada: La Guancona\n🥃 Trago de bienvenida\n🔥 Y una pista lista para bailar\n\nEste es apenas el comienzo. Cada 15 días tendremos una nueva parada.\n\nBogotá se baila por capítulos.\n\n¿Se viene con nosotros?\n\n📅 11 de octubre\n📍 El Goce Pagano\n📲 Info y reservas: +57 300 257 7024",
         "preview": "previews/18465297490140535-0.mp4",
         "slides": null
+      },
+      {
+        "post_id": "18079187786372305",
+        "permalink": "https://www.instagram.com/reel/Dd7pwCYOCNs/",
+        "media_type": "VIDEO",
+        "published": "2026-10-01T00:45:26+0000",
+        "flyer": "flyers/18079187786372305-0.webp",
+        "caption": "Un mes con eventos inolvidables!",
+        "preview": null,
+        "slides": null
       }
     ],
     "bar": false
@@ -6491,59 +6501,6 @@
     "bar": false
   },
   {
-    "title": "Video Class Survivor",
-    "event_type": "workshop",
-    "is_recurring": false,
-    "styles": [
-      "salsa"
-    ],
-    "organizer": "Salsa en Bogota",
-    "venue": "Ile Danza",
-    "address": null,
-    "area": null,
-    "date": "2026-10-17",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "sábado",
-    "start_time": "16:00",
-    "end_time": null,
-    "prices": [
-      {
-        "label": "Pre-venta",
-        "amount_cop": 30000,
-        "condition": "hasta el 30 de septiembre"
-      },
-      {
-        "label": "General",
-        "amount_cop": 40000,
-        "condition": null
-      }
-    ],
-    "artists": [],
-    "activities": [
-      "video class",
-      "rutina de salsa"
-    ],
-    "contact": null,
-    "confidence": "high",
-    "doubts": [],
-    "id": "video-class-survivor-17-oct",
-    "account": "and1erita",
-    "media": [
-      {
-        "post_id": "17901537792596657",
-        "permalink": "https://www.instagram.com/p/DdZk7xEizo9/",
-        "media_type": "IMAGE",
-        "published": "2026-09-17T19:09:00+0000",
-        "flyer": "flyers/17901537792596657-0.webp",
-        "caption": "Quieres tener un video profesional bailando una rutina de Salsa? \nÉste 17 de octubre. Te invito a grabarlo conmigo y el teso de masky_______ \n\nSurvivor no es una canción… es un llamado a ser Resilientes y mostrarle el mundo que detrás de cada paso, hay sacrificios y Pruebas, dudas, ansiedad, miedo… pero la Danza nos hace tan fuertes en el espíritu !! al final, cuando la música nos toca, somos plenos y dejamos salir todo ese amor por lo que hacemos!! \nTe espero!!\n\nPd. Tenemos Pre-venta hasta el 30 de septiembre a 30K. \nSepárame el cupo 🫶🏾",
-        "preview": null,
-        "slides": null
-      }
-    ],
-    "bar": false
-  },
-  {
     "title": "Javier Guaneme Homenaje a Willie Colón",
     "event_type": "concert",
     "is_recurring": false,
@@ -6591,6 +6548,61 @@
       }
     ],
     "bar": true
+  },
+  {
+    "title": "Video Class Survivor",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Salsa en Bogotá",
+    "venue": "Ile Danza",
+    "address": null,
+    "area": null,
+    "date": "2026-10-17",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "16:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Preventa",
+        "amount_cop": 30000,
+        "condition": "hasta el 30 de septiembre"
+      },
+      {
+        "label": "General",
+        "amount_cop": 40000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Masky"
+    ],
+    "activities": [
+      "video class",
+      "grabación de rutina"
+    ],
+    "contact": "@and1erita",
+    "confidence": "high",
+    "doubts": [],
+    "id": "video-class-survivor-17-oct",
+    "account": "and1erita",
+    "media": [
+      {
+        "post_id": "17901537792596657",
+        "permalink": "https://www.instagram.com/p/DdZk7xEizo9/",
+        "media_type": "IMAGE",
+        "published": "2026-09-17T19:09:00+0000",
+        "flyer": "flyers/17901537792596657-0.webp",
+        "caption": "Quieres tener un video profesional bailando una rutina de Salsa? \nÉste 17 de octubre. Te invito a grabarlo conmigo y el teso de masky_______ \n\nSurvivor no es una canción… es un llamado a ser Resilientes y mostrarle el mundo que detrás de cada paso, hay sacrificios y Pruebas, dudas, ansiedad, miedo… pero la Danza nos hace tan fuertes en el espíritu !! al final, cuando la música nos toca, somos plenos y dejamos salir todo ese amor por lo que hacemos!! \nTe espero!!\n\nPd. Tenemos Pre-venta hasta el 30 de septiembre a 30K. \nSepárame el cupo 🫶🏾",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
   },
   {
     "title": "Taller Especial de Salsa",
@@ -7197,7 +7209,7 @@
     "bar": false
   },
   {
-    "title": "Máster Class Heels",
+    "title": "Máster Class Heels - Maria x Cristi",
     "event_type": "workshop",
     "is_recurring": false,
     "styles": [
@@ -7230,10 +7242,9 @@
       "Cristi"
     ],
     "activities": [
-      "collab heels",
-      "máster class"
+      "masterclass de heels"
     ],
-    "contact": null,
+    "contact": "@bureodancestudio",
     "confidence": "high",
     "doubts": [],
     "id": "master-class-heels-19-oct",
@@ -7643,7 +7654,9 @@
     "title": "Tributo a Bob Marley",
     "event_type": "party",
     "is_recurring": false,
-    "styles": [],
+    "styles": [
+      "otro"
+    ],
     "organizer": "El Bochinche",
     "venue": "El Bochinche",
     "address": null,
@@ -7656,15 +7669,12 @@
     "end_time": null,
     "prices": [],
     "artists": [],
-    "activities": [
-      "tributo a Bob Marley"
-    ],
-    "contact": null,
+    "activities": [],
+    "contact": "@el_bochinche_cafe_",
     "confidence": "high",
     "doubts": [
-      "sin precio",
-      "sin horario de inicio",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+      "sin hora de inicio",
+      "sin precio"
     ],
     "id": "tributo-a-bob-marley-22-oct",
     "account": "el_bochinche_cafe_",
@@ -7997,6 +8007,16 @@
     "id": "batalla-internacional-viaalternativa-2026-hip-hop-24-oct",
     "account": "danzaenlaciudad",
     "media": [
+      {
+        "post_id": "18116587046115225",
+        "permalink": "https://www.instagram.com/p/DenWJELkf6N/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-18T00:00:10+0000",
+        "flyer": "flyers/18116587046115225-1.webp",
+        "caption": "🎧 En BIVA, cada movimiento necesita un ritmo.\n\nDetrás de las tornamesas estará DJ Blanko, Dj, beat maker y coleccionista de vinilos con más de 20 años de trayectoria.\n\nFundador de Manos Duras Academia, ha representado a Colombia en competencias internacionales de scratch y llevado sus sets en vinilo a clubes y festivales dentro y fuera del país.\n\n🔥 Ahora, sus tornamesas llega a BIVA 2026 para ponerle ritmo a cada ronda.\n\n#HipHopAlParque2026 #DeLaEsquinaAlParque #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 2
+      },
       {
         "post_id": "18383837752227944",
         "permalink": "https://www.instagram.com/p/DeT_PobxuZB/",
@@ -8670,14 +8690,14 @@
     "bar": false
   },
   {
-    "title": "La Guillaera",
-    "event_type": "social",
+    "title": "La Guillaera - El Verdadero Perreo",
+    "event_type": "party",
     "is_recurring": false,
     "styles": [
       "urbano"
     ],
-    "organizer": "@valkandela",
-    "venue": "el_bochinche_cafe_",
+    "organizer": "El Bochinche",
+    "venue": "El Bochinche",
     "address": "Calle 22 #1-26",
     "area": "Centro",
     "date": "2026-10-31",
@@ -8702,12 +8722,11 @@
     "activities": [
       "concurso"
     ],
-    "contact": "WhatsApp 3170857229",
+    "contact": "@el_bochinche_cafe_",
     "confidence": "high",
     "doubts": [
-      "sin precio",
       "sin hora de inicio",
-      "estilos de baile no especificados"
+      "sin precio"
     ],
     "id": "la-guillaera-31-oct",
     "account": "valkandela",
@@ -10351,6 +10370,16 @@
     "id": "jack-and-jill-20-nov",
     "account": "jackandjilloficial",
     "media": [
+      {
+        "post_id": "18573996961077882",
+        "permalink": "https://www.instagram.com/p/Dem-UW3ytIs/",
+        "media_type": "IMAGE",
+        "published": "2026-10-17T20:33:19+0000",
+        "flyer": "flyers/18573996961077882-0.webp",
+        "caption": "NICOLÁS CARREÑO\n\n¡El talento, la técnica y la experiencia se unen en esta edición! 🔥\n\nNos complace contar con Nicolás Carreño como juez y tallerista, quien llegará para compartir sus conocimientos, aportar su visión artística y elevar el nivel de nuestra experiencia a través del movimiento, la musicalidad y la conexión con el baile.",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18126376342876048",
         "permalink": "https://www.instagram.com/p/DeXKcFtSNEA/",
