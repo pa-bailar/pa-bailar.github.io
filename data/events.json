@@ -6206,6 +6206,16 @@
         "caption": "Descarga Salsera 🎶 porque tenemos Música en Vivo 🎤\n\nRecordando clásicos de Sonora Matancera, Grupo Niche, Tommy Olivencia, Ismael Miranda y Oscar D’Leon 🎶 \n\nNuestra banda de salsa en vivo los espera viernes 16 y sábado 17 de octubre 🏠\n\nNos vemos en Quema 🔥 \n\n#restaurantequemaquequema #gruponiche #sonoramatancera #salsa #oscardleon",
         "preview": "previews/17953164690272530-0.mp4",
         "slides": 5
+      },
+      {
+        "post_id": "18050107592818331",
+        "permalink": "https://www.instagram.com/reel/DenEjYIPID9/",
+        "media_type": "VIDEO",
+        "published": "2026-10-17T21:28:44+0000",
+        "flyer": "flyers/18050107592818331-0.webp",
+        "caption": "Life is better with Salsa 💃 \n\nAquí la salsa no se escucha, se siente y se vive 🎶 Sabor en el plato, sabor en la pista 🎺\n\nVen con tus ganas de bailar 🕺 Nosotros ponemos hoy la banda de salsa en vivo 🎶\n\n#salsa #salsasocial #lalorodriguez #salsaenvivo #restaurantequemaquequema",
+        "preview": null,
+        "slides": null
       }
     ],
     "bar": true
@@ -8787,6 +8797,58 @@
         "caption": "🧛‍♂️ Policarpa bailando con Drácula: así arranca el Halloween más salsero de Bogotá.\n\n🎃 Dos noches, 30 y 31 de octubre, en la casa de Policarpa Salavarrieta (Botánico Hostel, La Candelaria). Clase de salsa, tinder salsero, Hermanos Baez, DJ invitado y remate en El Candelario hasta las 3:00 a. m. 🌙\n\n🏆 El mejor disfraz se gana una noche para 2 en la Habitación Heliconia, con desayuno incluido 🌿\n\n🎟️ Desde $45.000 · Link en la bio\nPremio sujeto a disponibilidad y reserva previa.",
         "preview": null,
         "slides": 5
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Akelarre: Noche de Ritual Latino",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "salsa cubana",
+      "kizomba",
+      "bachata",
+      "merengue"
+    ],
+    "organizer": "Son de Habana",
+    "venue": "Sin Visa",
+    "address": null,
+    "area": null,
+    "date": "2026-10-30",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "21:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 30000,
+        "condition": "con pola hasta las 10 pm"
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "reto coreo: bailarines vs bailadores",
+      "premio al mejor disfraz",
+      "social de halloween"
+    ],
+    "contact": "3176610567",
+    "confidence": "high",
+    "doubts": [],
+    "id": "akelarre-noche-de-ritual-latino-30-oct",
+    "account": "sondehabana",
+    "media": [
+      {
+        "post_id": "18112781816175418",
+        "permalink": "https://www.instagram.com/p/Dep18DYKxm2/",
+        "media_type": "IMAGE",
+        "published": "2026-10-18T23:19:39+0000",
+        "flyer": "flyers/18112781816175418-0.webp",
+        "caption": "Por primera vez en Son de habana, Bailarines vs Bailadores 🏆🧟 premios y muchas sorpresas!!\n\nTe esperamos en nuestro social de halloween 🎃 este 30 de octubre a las 9pm.\n\n#halloween #baile #fiesta #competencia #bailadores",
+        "preview": null,
+        "slides": null
       }
     ],
     "bar": false
