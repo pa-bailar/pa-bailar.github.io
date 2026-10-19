@@ -10348,14 +10348,14 @@
     "bar": false
   },
   {
-    "title": "Bailatón Los Morochos",
-    "event_type": "social",
+    "title": "Bailatón con Los Morochos",
+    "event_type": "workshop",
     "is_recurring": false,
     "styles": [
       "urbano"
     ],
-    "organizer": "morochos_rsc",
-    "venue": "mmamazonia_",
+    "organizer": "@soywiwioficial",
+    "venue": "Bulevar Rooftop",
     "address": "Carrera 13 # 82 - 37",
     "area": null,
     "date": "2026-11-08",
@@ -10369,14 +10369,13 @@
       "Los Morochos"
     ],
     "activities": [
-      "Bailatón"
+      "bailatón"
     ],
-    "contact": null,
-    "confidence": "high",
+    "contact": "@soywiwioficial",
+    "confidence": "medium",
     "doubts": [
-      "Evento fuera de Bogotá",
-      "Sin precio",
-      "Sin horario"
+      "discrepancia de fecha entre el texto de la imagen (7 de noviembre) y la descripción (8 de noviembre)",
+      "sin precio especificado"
     ],
     "id": "bailaton-los-morochos-4-oct",
     "account": "soywiwioficial",
@@ -10389,16 +10388,6 @@
         "flyer": "flyers/18122042672487029-0.webp",
         "caption": "Próxima Bailatón con Los Morochos 🍫❤️‍🔥\n\n🔗en nuestro perfil encuentras el link para asegurar tu cupo ( AFORO LIMITADO ‼️)\n\nDomingo 8 Noviembre \n⏰ 9 AM\n\nBULEVAR ROOFTOP\n📍Carrera 13 # 82 - 37",
         "preview": null,
-        "slides": null
-      },
-      {
-        "post_id": "18229425175325979",
-        "permalink": "https://www.instagram.com/reel/Dd4Oicvxb4z/",
-        "media_type": "VIDEO",
-        "published": "2026-09-29T16:51:34+0000",
-        "flyer": "flyers/18229425175325979-0.webp",
-        "caption": "Los Morochos en Florencia, Caquetá 🍫❤️‍🔥✨\nNos vemos este domingo 4 de octubre en la mmamazonia_ para vivir una Bailatón con morochos_rsc ✨🖤",
-        "preview": "previews/18229425175325979-0.mp4",
         "slides": null
       }
     ],
@@ -10500,16 +10489,6 @@
     "id": "festival-internacional-casinea-10-a-edicion-13-nov",
     "account": "casineafest",
     "media": [
-      {
-        "post_id": "17879932452630876",
-        "permalink": "https://www.instagram.com/p/DeejPaxxwGF/",
-        "media_type": "IMAGE",
-        "published": "2026-10-14T14:01:43+0000",
-        "flyer": "flyers/17879932452630876-0.webp",
-        "caption": "🔥🎶 ¡ATENCIÓN, COMPETIDORES DE CASINEA 2026! YA ESTÁ DISPONIBLE LA PLAYLIST OFICIAL DE IMPROVISACIÓN.\n\nEste año tenemos una novedad importante: por primera vez en la historia del Festival Internacional Casinea, todas las modalidades y categorías de improvisación compartirán una única lista de reproducción. 💥\n\nA diferencia de ediciones anteriores, en las que cada modalidad y categoría tenía su propia selección musical, esta vez todas las canciones estarán reunidas en una sola playlist.\n\n💃🕺 ¿Qué significa esto para ti? La canción con la que bailarás se escogerá al azar entre las canciones de esta lista. Por eso, no basta con conocer algunas: ¡te recomendamos escucharlas todas y practicar tu improvisación con cada una!\n\n🎧 Familiarízate con los ritmos, identifica los cambios musicales, trabaja tu interpretación y prepárate para responder con creatividad a lo que suene en la pista.\n\n⚠️ No dejes tu preparación para el último momento. Revisa la playlist, ensaya y llega listo para demostrar tu musicalidad, técnica y capacidad de improvisación.\n\n🔥 En Casinea, la música puede sorprenderte. ¡Que no te sorprenda sin haber practicado!\n\n📅 13 al 16 de noviembre de 2026 📍 Bogotá, Colombia 🇨🇴\n\n#FestivalCasinea #Casinea2026 #ImprovisaciónCasino #SalsaCasino #CompetenciaCasinea",
-        "preview": null,
-        "slides": null
-      },
       {
         "post_id": "18188499625395008",
         "permalink": "https://www.instagram.com/p/DdmtW8iR4qm/",
