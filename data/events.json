@@ -7585,6 +7585,61 @@
     "bar": false
   },
   {
+    "title": "Clase de baile salsa y bachata",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "bachata"
+    ],
+    "organizer": "A Seis Manos",
+    "venue": "A Seis Manos",
+    "address": "Calle 22 # 8 - 60",
+    "area": "Centro",
+    "date": "2026-10-21",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "miércoles",
+    "start_time": "19:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Persona",
+        "amount_cop": 25000,
+        "condition": "incluye $5.000 consumibles"
+      },
+      {
+        "label": "Pareja",
+        "amount_cop": 30000,
+        "condition": "sin consumibles"
+      }
+    ],
+    "artists": [
+      "esteban_1024"
+    ],
+    "activities": [
+      "clases de salsa y bachata"
+    ],
+    "contact": "@aseismanos",
+    "confidence": "high",
+    "doubts": [],
+    "id": "clase-de-baile-salsa-y-bachata-21-oct",
+    "account": "aseismanos",
+    "media": [
+      {
+        "post_id": "18115124420018063",
+        "permalink": "https://www.instagram.com/p/Dep5BshNBHT/",
+        "media_type": "IMAGE",
+        "published": "2026-10-18T23:43:44+0000",
+        "flyer": "flyers/18115124420018063-0.webp",
+        "caption": "Miércoles 21 de octubre 7:00 P.M.\n💃🔥 ¡EL CENTRO SE BAILA A RITMO DE SALSA Y BACHATA! 🔥🕺\nSuelta la pena, mueve las caderas y déjate llevar por el ritmo con el mejor profe esteban_1024\n\nVen a aprender, conectar y disfrutar de una noche donde la música, el baile y la buena energía se encuentran. No importa si tienes dos pies izquierdos: ¡aquí vinimos a bailar!\n\n🍹 Clases de salsa y bachata\n🎶 Música, cócteles y buena compañía\n🔥 Happy hour para calentar motores\n\n📍 A Seis Manos Calle 22 # 8 - 60\n Un lugar para bailar, compartir y vivir el Centro de otra manera.\n\n🎟️$25.000 persona ($5.000 consumibles)\n$30.000 pareja (sin consumibles)\n\n¡Tu próximo paso de baile empieza aquí! 💃🕺",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Enrique Barrios & Gerband Latin Group",
     "event_type": "concert",
     "is_recurring": false,
@@ -7603,7 +7658,7 @@
     "end_time": null,
     "prices": [
       {
-        "label": "Entrada",
+        "label": "Cover",
         "amount_cop": 20000,
         "condition": null
       }
@@ -7624,6 +7679,16 @@
     "id": "celebrando-40-anos-de-trayectoria-enrique-barrios-22-oct",
     "account": "galeriacafelibro",
     "media": [
+      {
+        "post_id": "18098327756083808",
+        "permalink": "https://www.instagram.com/p/Deot953sv4u/",
+        "media_type": "IMAGE",
+        "published": "2026-10-18T14:30:06+0000",
+        "flyer": "flyers/18098327756083808-0.webp",
+        "caption": "Este jueves te traemos una rumba irrepetible con gerband.latingroup y la voz del gran enriquebarriosg como artista invitado de la noche🎙️ \n\nTributo a los grandes soneros de la salsa y noche de grandes clásicos🌟 ¡Ven a disfrutar la mejor rumba con música en vivo!\n\nLa cita es en Galería Café Libro 93\n✨Las entradas están a la venta en galeriacafelibro.com.co 🎟️",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18077925755706373",
         "permalink": "https://www.instagram.com/p/DeE-Oo0seCp/",
@@ -7860,6 +7925,52 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "Noche de Tributo: Fruko y Sus Tesos & Ismael Rivera",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Van Der",
+    "venue": "Van Der",
+    "address": "Cra 16 #35-08",
+    "area": null,
+    "date": "2026-10-23",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "20:30",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Kaona Orquesta"
+    ],
+    "activities": [
+      "concierto",
+      "música en vivo"
+    ],
+    "contact": "WhatsApp 301 162 0492",
+    "confidence": "high",
+    "doubts": [
+      "sin información de precio o cover"
+    ],
+    "id": "noche-de-tributo-fruko-y-sus-tesos-ismael-rivera-23-oct",
+    "account": "casavander_",
+    "media": [
+      {
+        "post_id": "18124738006905346",
+        "permalink": "https://www.instagram.com/p/DeqACWnsSHe/",
+        "media_type": "IMAGE",
+        "published": "2026-10-19T00:48:19+0000",
+        "flyer": "flyers/18124738006905346-0.webp",
+        "caption": "🔥 Seguimos rindiendo homenaje al legado salsero 🔥 esta vez al Sonero Mayor, Ismael Rivera y a Fruko y Sus Tesos y si usted es seguidor de estas leyendas de la salsa, venga y canta y disfruta de escuchar en vivo sus clásicos 🎶\n\n🎺 kaonaorquesta \n📍 Cra 16 #35-08\n🗓️ Viernes 23 de octubre \n🍽️ Reservas solo vía WhatsApp 301 162 0492",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
   },
   {
     "title": "Clase Dinamita de Heels",
@@ -9618,11 +9729,6 @@
         "label": "Preventa",
         "amount_cop": 15000,
         "condition": null
-      },
-      {
-        "label": "Taquilla",
-        "amount_cop": 20000,
-        "condition": null
       }
     ],
     "artists": [
@@ -9649,6 +9755,16 @@
         "published": "2026-10-04T19:22:29+0000",
         "flyer": "flyers/17904095547356280-0.webp",
         "caption": "🎃 Este Halloween, es en d’Living 👻\n\nPrepárate para nuestro social de Halloween: una noche llena de música, baile y sorpresas, con camilo_barretto y frank.de.latorre poniendo el ambiente para que no pares de bailar. 🕺🏻💃🏻\n\nY porque en D’Living nos gusta que el baile también sea una experiencia, tendremos clases abiertas incluidas con tu entrada 😏 para aprender, compartir y llegar al social con toda la actitud. 🔥\n\nAdemás, 👻 CONCURSO DE DISFRACES\nPrepara tu mejor personaje porque tendremos varios premios para los mejores 🎭🏆\n\n📅 31 de octubre\n🕘 9:00 p. m.\n📍 Cll 25 #27B-83 — Torre de las Américas\n🎟️ Preventa $15K | Taquilla $20K\n\n¿Ya tienes tu disfraz? Porque nosotros ya tenemos la fiesta. 🧟‍♀️🎃",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "17963777985234544",
+        "permalink": "https://www.instagram.com/reel/DeqD9bQvqvw/",
+        "media_type": "VIDEO",
+        "published": "2026-10-19T01:27:42+0000",
+        "flyer": "flyers/17963777985234544-0.webp",
+        "caption": "POV: te contrataron para promocionar Halloween y te lo tomaste demasiado en serio 😭🤸🏽‍♂️🍑\n\nJAJAJA, y hablando del tema… 👀🎃\n\nEste 31 DE OCTUBRE tenemos una cita en dlivingstudio 🪩🔥\n\n🎧 DJs invitados\n👻 Sorpresas\n💃 Mucho baile y cero ganas de irse temprano.\n\n¿Ya tienes tu disfraz listo? 💀👇\nAPROVECHA LA PREVENTA (15k) 🤯",
         "preview": null,
         "slides": null
       },
