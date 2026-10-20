@@ -7521,6 +7521,59 @@
     "bar": false
   },
   {
+    "title": "Los Miércoles son de Tango",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "tango"
+    ],
+    "organizer": "Callejón Salsa & Mecato",
+    "venue": "Callejón Salsa & Mecato",
+    "address": "Calle 12D #3-84",
+    "area": null,
+    "date": "2026-10-21",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "miércoles",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Entrada libre",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Francisco",
+      "Oscar Rivillas",
+      "Javier y Gina"
+    ],
+    "activities": [
+      "show de baile"
+    ],
+    "contact": "@callejonsalsa",
+    "confidence": "high",
+    "doubts": [
+      "hora de inicio no especificada"
+    ],
+    "id": "los-miercoles-son-de-tango-21-oct",
+    "account": "callejonsalsa",
+    "media": [
+      {
+        "post_id": "17900809557387861",
+        "permalink": "https://www.instagram.com/p/DeshhWoN4OP/",
+        "media_type": "IMAGE",
+        "published": "2026-10-20T00:16:04+0000",
+        "flyer": "flyers/17900809557387861-0.webp",
+        "caption": "Comenzamos con mucha gratitud hacia estos géneros y la tradición que han cuidado por décadas grandes cantineros y cantineras que han liderado verdaderos templos de la música argentina, nuestros miércoles de Tango en Callejón. Los invitados, un verdadero lujo y privilegio, en la selección musical Francisco (el hijo de Marielita) de El Viejo Almacén, y Oscar Rivillas de cafetindebuenos y en el show especial de baile, nada más y nada menos que los inmensos Javier y Gina javierandres_sanchez soyginamedina \nQue la magia de estos grandes impregne el Callejón, y nos dejen la suerte para que todos los miércoles sea un punto de encuentro de los amantes del tango.  Los esperamos a todos, conocedores y curiosos, bailarines profesionales o aprendices, selectores y selectoras con trayectoria o principiantes. La música nos Iguala a todos. Bienvenid@s este miércoles 21 de octubre y todos los miércoles.",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "VideoClass",
     "event_type": "workshop",
     "is_recurring": false,
@@ -7801,6 +7854,56 @@
     "bar": true
   },
   {
+    "title": "Jueves de Son Gozón: Güije & Su Combo",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "son"
+    ],
+    "organizer": "Salsa Camará",
+    "venue": "Salsa Camará",
+    "address": "Carrera 11 #70A - 22",
+    "area": null,
+    "date": "2026-10-22",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "jueves",
+    "start_time": "16:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Aporte cultural",
+        "amount_cop": 15000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Güije & Su Combo"
+    ],
+    "activities": [
+      "música en vivo"
+    ],
+    "contact": "WhatsApp 313 830 8844",
+    "confidence": "high",
+    "doubts": [],
+    "id": "jueves-de-son-gozon-guije-su-combo-22-oct",
+    "account": "salsacamaraoficial",
+    "media": [
+      {
+        "post_id": "17920212738242048",
+        "permalink": "https://www.instagram.com/p/DesMQG2FZXf/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-19T21:10:10+0000",
+        "flyer": "flyers/17920212738242048-0.webp",
+        "caption": "Conoce nuestro repertorio salsero de este fin de semana\n\n📆 Jueves 22 de Octubre\n🎺 Güije y su combo\n🎟️ Aporte cultural: 15K\n\n📆 Sábado de 24 de Octubre\n🎺 Sonora Extrema\n🎟️ Aporte cultural: 20K\n\n⏳ Desde las 4 PM\n📍 Carrera 11 #70A-22\n📲 Reserva por WhatsApp: 313 830 8844",
+        "preview": null,
+        "slides": 4
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Candombé",
     "event_type": "concert",
     "is_recurring": false,
@@ -7850,6 +7953,55 @@
         "published": "2026-10-01T00:45:26+0000",
         "flyer": "flyers/18079187786372305-0.webp",
         "caption": "Un mes con eventos inolvidables!",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Salsa Pa'l Que Sabe - Gran Concierto",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Tributo Salsa y Jazz",
+    "venue": "Tributo Salsa y Jazz",
+    "address": "Av. Boyacá #64c-97",
+    "area": "Zona 6",
+    "date": "2026-10-23",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "18:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Aporte cultural",
+        "amount_cop": 15000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Rumbankere Orq."
+    ],
+    "activities": [
+      "orquesta en vivo"
+    ],
+    "contact": "WhatsApp 3105714824",
+    "confidence": "high",
+    "doubts": [],
+    "id": "salsa-pa-l-que-sabe-gran-concierto-23-oct",
+    "account": "tributo.salsayjazz",
+    "media": [
+      {
+        "post_id": "18342425053285357",
+        "permalink": "https://www.instagram.com/p/DesCZZelPuh/",
+        "media_type": "IMAGE",
+        "published": "2026-10-19T19:44:03+0000",
+        "flyer": "flyers/18342425053285357-0.webp",
+        "caption": "¡LLEGÓ EL VIERNES PARA UNA VERDADERA NOCHE DE SALSA PA'L QUE SABE! 🔥💃 Porque el fin de semana se recibe bailando, te esperamos en tu casa: ¡Tributo Salsa y Jazz!\n\nEste viernes 23 de octubre prepárate para un gran concierto de esos que no se olvidan. Ven a disfrutar de un buen trago con tus amigos, contágiate de la mejor energía y alístate para azotar baldosa con todo el golpe y la sabrosura de Rumbankere Orq. en vivo. ¡Pura candela pa' los pies! 🎺🍻🔥\n\n📍 Lugar: Av. Boyacá #64c-97 (Zona 6)\n🎟️ Aporte Cultural: $15.000 COP\n⏰ Apertura: 6:00 PM | Orquesta en vivo: 10:00 PM\n📲 Reservas: 310 5714824\n\n¡Asegura tu mesa antes de que se llene! RESERVA, arma tu combo salsero y nos vemos en la pista. 👇✨\nhttps://wa.me/573105714824",
         "preview": null,
         "slides": null
       }
@@ -7981,6 +8133,53 @@
     "bar": true
   },
   {
+    "title": "Dynamic Class - Heels Dark Circus",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "heels"
+    ],
+    "organizer": "Esfera Latina",
+    "venue": "Esfera Latina",
+    "address": null,
+    "area": null,
+    "date": "2026-10-23",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "20:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "General",
+        "amount_cop": 40000,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "clase de heels"
+    ],
+    "contact": "@esferalatinaoficial",
+    "confidence": "high",
+    "doubts": [],
+    "id": "dynamic-class-heels-dark-circus-23-oct",
+    "account": "esferalatinaoficial",
+    "media": [
+      {
+        "post_id": "17911027629473022",
+        "permalink": "https://www.instagram.com/p/Deq_iQPRmH8/",
+        "media_type": "IMAGE",
+        "published": "2026-10-19T15:00:20+0000",
+        "flyer": "flyers/17911027629473022-0.webp",
+        "caption": "🎪🖤 WELCOME TO THE DARK CIRCUS 🎃🔥\n\n¡El circo más oscuro llega a ESFERA LATINA! 🎭✨\n\nUna noche donde el misterio, la actitud, la sensualidad y el poder de los tacones se apoderarán de la pista. 👠🔥\n\nPrepárate para una DYNAMIC CLASS – HEELS fuera de lo convencional, donde cada movimiento será parte del espectáculo.\n\n🖤 Atrévete a explorar tu lado más oscuro, desafía tus límites y conviértete en protagonista de este circo.\n\n🎪 ¿ESTÁS LISTA PARA ENTRAR AL DARK CIRCUS? 👠🔥",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Noche de Tributo: Fruko y Sus Tesos & Ismael Rivera",
     "event_type": "concert",
     "is_recurring": false,
@@ -8068,62 +8267,6 @@
       }
     ],
     "bar": false
-  },
-  {
-    "title": "La Pambelé",
-    "event_type": "concert",
-    "is_recurring": false,
-    "styles": [
-      "salsa"
-    ],
-    "organizer": "El Goce Pagano",
-    "venue": "El Goce Pagano",
-    "address": "Diagonal 20A N. 0-82",
-    "area": null,
-    "date": "2026-10-24",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "sábado",
-    "start_time": null,
-    "end_time": null,
-    "prices": [],
-    "artists": [
-      "La Pambelé"
-    ],
-    "activities": [
-      "concierto salsero"
-    ],
-    "contact": "WhatsApp 3168710646",
-    "confidence": "high",
-    "doubts": [
-      "sin hora",
-      "sin precio"
-    ],
-    "id": "salsoteca-dc-la-pambele-24-oct",
-    "account": "elgocepagano",
-    "media": [
-      {
-        "post_id": "17873536227593859",
-        "permalink": "https://www.instagram.com/p/Dd7mV70jn6J/",
-        "media_type": "CAROUSEL_ALBUM",
-        "published": "2026-10-01T00:15:22+0000",
-        "flyer": "flyers/17873536227593859-1.webp",
-        "caption": "🔥Concierto salsero, en elgocepagano 🔥\nSalsa bogotana, sabor, calle y goce en una sola noche\n\n🕔 Puertas: 6 pm | 🎶 Shows: 11 pm y 1 am\n📍 Diagonal 20A No. 82 – Bogotá\n\n✨🔥¡A bailar!🔥✨\nCover 20k\n#salsaenvivo #salsa\n#concierto #envivo\n#conciertobogota #salsaenbogotá",
-        "preview": null,
-        "slides": 2
-      },
-      {
-        "post_id": "18079187786372305",
-        "permalink": "https://www.instagram.com/reel/Dd7pwCYOCNs/",
-        "media_type": "VIDEO",
-        "published": "2026-10-01T00:45:26+0000",
-        "flyer": "flyers/18079187786372305-0.webp",
-        "caption": "Un mes con eventos inolvidables!",
-        "preview": null,
-        "slides": null
-      }
-    ],
-    "bar": true
   },
   {
     "title": "Argy Gómez en Salsa & Son",
@@ -8386,6 +8529,56 @@
     "bar": false
   },
   {
+    "title": "Homenaje al Grupo Niche: Sonora Extrema",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Salsa Camará",
+    "venue": "Salsa Camará",
+    "address": "Carrera 11 #70A - 22",
+    "area": null,
+    "date": "2026-10-24",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "16:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Aporte cultural",
+        "amount_cop": 20000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Sonora Extrema"
+    ],
+    "activities": [
+      "música en vivo",
+      "homenaje al Grupo Niche"
+    ],
+    "contact": "WhatsApp 313 830 8844",
+    "confidence": "high",
+    "doubts": [],
+    "id": "homenaje-al-grupo-niche-sonora-extrema-24-oct",
+    "account": "salsacamaraoficial",
+    "media": [
+      {
+        "post_id": "17920212738242048",
+        "permalink": "https://www.instagram.com/p/DesMQG2FZXf/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-19T21:10:10+0000",
+        "flyer": "flyers/17920212738242048-2.webp",
+        "caption": "Conoce nuestro repertorio salsero de este fin de semana\n\n📆 Jueves 22 de Octubre\n🎺 Güije y su combo\n🎟️ Aporte cultural: 15K\n\n📆 Sábado de 24 de Octubre\n🎺 Sonora Extrema\n🎟️ Aporte cultural: 20K\n\n⏳ Desde las 4 PM\n📍 Carrera 11 #70A-22\n📲 Reserva por WhatsApp: 313 830 8844",
+        "preview": null,
+        "slides": 4
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Taller de Bachata Ladies",
     "event_type": "workshop",
     "is_recurring": false,
@@ -8441,6 +8634,88 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "La Pambelé",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "El Goce Pagano",
+    "venue": "El Goce Pagano",
+    "address": "Diagonal 20A N. 0-82",
+    "area": null,
+    "date": "2026-10-24",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "18:30",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Preventa",
+        "amount_cop": 40000,
+        "condition": null
+      },
+      {
+        "label": "Taquilla",
+        "amount_cop": 50000,
+        "condition": null
+      },
+      {
+        "label": "Taquilla con donación de chocolate",
+        "amount_cop": 40000,
+        "condition": "si traes chocolate de mesa para donar"
+      }
+    ],
+    "artists": [
+      "La Pambelé"
+    ],
+    "activities": [
+      "concierto salsero"
+    ],
+    "contact": "WhatsApp 3168710646",
+    "confidence": "high",
+    "doubts": [
+      "sin hora",
+      "sin precio"
+    ],
+    "id": "salsoteca-dc-la-pambele-24-oct",
+    "account": "elgocepagano",
+    "media": [
+      {
+        "post_id": "18027082292866197",
+        "permalink": "https://www.instagram.com/p/DesmPBBju0z/",
+        "media_type": "IMAGE",
+        "published": "2026-10-20T00:57:12+0000",
+        "flyer": "flyers/18027082292866197-0.webp",
+        "caption": "¡Aterrizamos en el Goce Pagano!\n\nA la memoria del muerto, para honrar bailando y cantando a los que se nos fueron!\n\nOjo: Trae un paquete de chocolate de mesa y lo haremos llegar junto a Abaco a los damnificados de la emergencia en Chocó que AÚN continúa\n\n🕛 Desde las 18:30 hrs\n📍 Goce Pagano, Diagonal 20a No. 0 - 82\n🎟️ Preventa, 40K\n💸 En taquilla, 50k\n🍫 Si traes chocolate de mesa para donar te mantenemos el precio de preventa en la taquilla\n🤳🏼 Nequi al número 316 4932906",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "17873536227593859",
+        "permalink": "https://www.instagram.com/p/Dd7mV70jn6J/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-01T00:15:22+0000",
+        "flyer": "flyers/17873536227593859-1.webp",
+        "caption": "🔥Concierto salsero, en elgocepagano 🔥\nSalsa bogotana, sabor, calle y goce en una sola noche\n\n🕔 Puertas: 6 pm | 🎶 Shows: 11 pm y 1 am\n📍 Diagonal 20A No. 82 – Bogotá\n\n✨🔥¡A bailar!🔥✨\nCover 20k\n#salsaenvivo #salsa\n#concierto #envivo\n#conciertobogota #salsaenbogotá",
+        "preview": null,
+        "slides": 2
+      },
+      {
+        "post_id": "18079187786372305",
+        "permalink": "https://www.instagram.com/reel/Dd7pwCYOCNs/",
+        "media_type": "VIDEO",
+        "published": "2026-10-01T00:45:26+0000",
+        "flyer": "flyers/18079187786372305-0.webp",
+        "caption": "Un mes con eventos inolvidables!",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
   },
   {
     "title": "Taller de bachata para las fiestas",
@@ -8739,6 +9014,121 @@
     "bar": false
   },
   {
+    "title": "Clase especial: Salsa",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Zafra Dance Company",
+    "venue": "Zafra Dance Company",
+    "address": "Carrera 27 A # 52 - 31",
+    "area": "Galerías",
+    "date": "2026-10-25",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "09:00",
+    "end_time": "10:00",
+    "prices": [
+      {
+        "label": "1 persona",
+        "amount_cop": 40000,
+        "condition": null
+      },
+      {
+        "label": "Pareja",
+        "amount_cop": 70000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Alex Barreto",
+      "Polen Amaya"
+    ],
+    "activities": [
+      "clase de salsa"
+    ],
+    "contact": "3164952960",
+    "confidence": "high",
+    "doubts": [
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "clase-especial-salsa-25-oct",
+    "account": "zafradance",
+    "media": [
+      {
+        "post_id": "18113569163605668",
+        "permalink": "https://www.instagram.com/p/DesjcUpDcM8/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-20T00:32:48+0000",
+        "flyer": "flyers/18113569163605668-1.webp",
+        "caption": "Super clase el próximo domingo 25 de octubre. \n9am Salsa\n10am Champeta \n\nProfes: barretoalexarte amayapolen \n\n#clasesdesalsaenbogota #clasedechampeta #champetaenbogota",
+        "preview": null,
+        "slides": 4
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Clase especial: Champeta",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "champeta"
+    ],
+    "organizer": "Zafra Dance Company",
+    "venue": "Zafra Dance Company",
+    "address": "Carrera 27 A # 52 - 31",
+    "area": "Galerías",
+    "date": "2026-10-25",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "10:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "1 persona",
+        "amount_cop": 40000,
+        "condition": null
+      },
+      {
+        "label": "Pareja",
+        "amount_cop": 70000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Alex Barreto",
+      "Polen Amaya"
+    ],
+    "activities": [
+      "clase de champeta"
+    ],
+    "contact": "3164952960",
+    "confidence": "high",
+    "doubts": [
+      "hora de finalización no especificada",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "clase-especial-champeta-25-oct",
+    "account": "zafradance",
+    "media": [
+      {
+        "post_id": "18113569163605668",
+        "permalink": "https://www.instagram.com/p/DesjcUpDcM8/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-20T00:32:48+0000",
+        "flyer": "flyers/18113569163605668-1.webp",
+        "caption": "Super clase el próximo domingo 25 de octubre. \n9am Salsa\n10am Champeta \n\nProfes: barretoalexarte amayapolen \n\n#clasesdesalsaenbogota #clasedechampeta #champetaenbogota",
+        "preview": null,
+        "slides": 4
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Social Halloween",
     "event_type": "social",
     "is_recurring": false,
@@ -8986,7 +9376,7 @@
     "end_date": "2026-10-31",
     "sessions": null,
     "weekday": "viernes",
-    "start_time": null,
+    "start_time": "19:00",
     "end_time": "03:00",
     "prices": [
       {
@@ -9014,7 +9404,9 @@
     ],
     "contact": "www.salsaculto.com",
     "confidence": "high",
-    "doubts": [],
+    "doubts": [
+      "sin precio"
+    ],
     "id": "halloween-salsero-el-tour-de-la-salsa-vol-1-30-oct",
     "account": "salsaculto",
     "media": [
@@ -9027,6 +9419,16 @@
         "caption": "🧛‍♂️ Policarpa bailando con Drácula: así arranca el Halloween más salsero de Bogotá.\n\n🎃 Dos noches, 30 y 31 de octubre, en la casa de Policarpa Salavarrieta (Botánico Hostel, La Candelaria). Clase de salsa, tinder salsero, Hermanos Baez, DJ invitado y remate en El Candelario hasta las 3:00 a. m. 🌙\n\n🏆 El mejor disfraz se gana una noche para 2 en la Habitación Heliconia, con desayuno incluido 🌿\n\n🎟️ Desde $45.000 · Link en la bio\nPremio sujeto a disponibilidad y reserva previa.",
         "preview": null,
         "slides": 5
+      },
+      {
+        "post_id": "18633902146045749",
+        "permalink": "https://www.instagram.com/reel/DerqZlUh4VH/",
+        "media_type": "VIDEO",
+        "published": "2026-10-19T16:18:14+0000",
+        "flyer": "flyers/18633902146045749-0.webp",
+        "caption": "Dicen que en la casa de Policarpa Salavarrieta todavía se escucha música de noche… 👻\nEste 30 y 31 de octubre vamos a comprobarlo.\n\nEl Tour de la Salsa llega a Botánico Hostel, en el corazón de La Candelaria, con un Halloween salsero de dos días: Policarpa ya escogió pareja de baile (sí, es Drácula 🧛‍♂️), ¿y tú?\n\n🍹 Trago de bienvenida · 👟 Clase de salsa · ❤️ Tinder salsero\n🎺 Hermanos Baez (7:00 a 10:00 p. m.) · 🎧 Sonido Oriente el viernes y Amparo Arrebato el sábado (10:00 p. m. a 12:00 m.)\n🌙 Remate en el reconocido bar El Candelario hasta las 3:00 a. m.\n\nVen disfrazado de tu canción de salsa favorita 🎃\n🎟️ Entradas en el link de la bio · Cupos limitados · +18\n\n#TourDeLaSalsa #HalloweenSalsero #SalsaBogotá #LaCandelaria",
+        "preview": "previews/18633902146045749-0.mp4",
+        "slides": null
       }
     ],
     "bar": false
@@ -9270,6 +9672,16 @@
         "flyer": "flyers/18210323335323212-0.webp",
         "caption": "🎃🩸 BOGOTÁ, ¿ESTÁN PREPARADOS PARA UNA NOCHE DE TERROR, SALSA Y MUCHO FLOW? 🔥💀\n\nEste 31 de octubre, en Pachanga&Pochola, el miedo se baila y la noche se vive sin reglas. 👻🕺🏽 Una fiesta donde los disfraces, la buena salsa y los premios serán los protagonistas. 🏆🎃\n\n💰 ¡5 MILLONES EN PREMIOS! Y una pregunta: ¿ya tienes pensado tu disfraz? #salsa  #pachanga #lasalsavuelveabrillar",
         "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18023339954920628",
+        "permalink": "https://www.instagram.com/reel/DesQlEFReWO/",
+        "media_type": "VIDEO",
+        "published": "2026-10-19T21:49:22+0000",
+        "flyer": "flyers/18023339954920628-0.webp",
+        "caption": "🎃🔥 ¡ESTE HALLOWEEN, EL TERROR SE BAILA EN PACHANGA💀🕺🏽\n\nEste 31 DE OCTUBRE prepárate para una noche de locura, disfraces, perreo y mucha fiesta. 👹🔥\n🎧 nelsondj_oficial, julisavoydj, jeisson_dj_salsa y graciadj_10 llegan con todo para hacerte vivir una noche de otro mundo. 🌑🔊\n\n💰 ¡🤑5 MILLONES EN PREMIOS! Sí, leíste bien… ¡cinco millones para ponerle más emoción a esta noche de terror! 🤑🏆\n\n🧟‍♀️ Ponte tu mejor disfraz, reúne a tu combo y ven a demostrar que hasta los monstruos saben rumbear.\n📍 Calle 73 #14-53, Chapinero.\n📲 Info: 313 289 1788.\n\nCover:20k con disfraz y 35k sin disfraz.👀\n\n#pachanga #halloween",
+        "preview": "previews/18023339954920628-0.mp4",
         "slides": null
       },
       {
@@ -11025,7 +11437,7 @@
     "organizer": "Madyum Dance",
     "venue": null,
     "address": null,
-    "area": null,
+    "area": "Madelena",
     "date": "2026-12-05",
     "end_date": null,
     "sessions": null,
@@ -11068,6 +11480,16 @@
         "flyer": "flyers/18104347286615308.webp",
         "caption": "⚜️ ELYSYUM MADYUM ⚜️\n\n05 de DICIEMBRE, una noche sin precedentes. Llega después de 5 años nuestro gran ANIVERSARIO MADYUM. Luego de múltiples experiencias, crecimiento, aprendizajes, adversidades, construcción de personas, procesos y evolución, nos reuniremos en una noche llena de celebración, baile, disfrute, manifestación y gran muestra de estos años de arduo trabajo. \n\nNos vemos pronto 🎤\n\n#aniversario #clausura #salsa #bachata #escueladebaile",
         "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18131220040809054",
+        "permalink": "https://www.instagram.com/reel/DesiRTWNQJR/",
+        "media_type": "VIDEO",
+        "published": "2026-10-20T00:27:36+0000",
+        "flyer": "flyers/18131220040809054-0.webp",
+        "caption": "👑 ANIVERSARIO MADYUM 2026 👑\n\n¿Estás listo para este 05 de diciembre?\n\n#aniversario #madelena #Clausura #fiesta #dancing",
+        "preview": "previews/18131220040809054-0.mp4",
         "slides": null
       }
     ],
