@@ -7927,6 +7927,60 @@
     "bar": false
   },
   {
+    "title": "Golazo Panteonista con Negro Salsero",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "El Panteón De La Salsa",
+    "venue": "El Panteón De La Salsa",
+    "address": "Carrera 71D # 2A - 13 Sur, Piso 2",
+    "area": "Plaza de las Américas",
+    "date": "2026-10-23",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "20:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 25000,
+        "condition": null
+      },
+      {
+        "label": "Cumpleañeros de octubre",
+        "amount_cop": 0,
+        "condition": "cumpleañeros de octubre no pagan cover"
+      }
+    ],
+    "artists": [
+      "Negro Salsero"
+    ],
+    "activities": [
+      "fiesta"
+    ],
+    "contact": "@el_panteon_de_la_salsa",
+    "confidence": "high",
+    "doubts": [],
+    "id": "golazo-panteonista-con-negro-salsero-23-oct",
+    "account": "el_panteon_de_la_salsa",
+    "media": [
+      {
+        "post_id": "18080221511381122",
+        "permalink": "https://www.instagram.com/reel/DepU3UCARdC/",
+        "media_type": "VIDEO",
+        "published": "2026-10-18T18:28:52+0000",
+        "flyer": "flyers/18080221511381122-0.webp",
+        "caption": "Tenemos fecha de próximo #golazo \nProgramando negro_salsero \n#cumoleaños #octubre",
+        "preview": "previews/18080221511381122-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Noche de Tributo: Fruko y Sus Tesos & Ismael Rivera",
     "event_type": "concert",
     "is_recurring": false,
@@ -8287,6 +8341,51 @@
     "bar": false
   },
   {
+    "title": "Salsa al Perreo - Privado con Los Morochos",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "urbano"
+    ],
+    "organizer": "Salsa al Perreo",
+    "venue": null,
+    "address": "Carrera 13 # 82 - 43",
+    "area": "Zona T",
+    "date": "2026-10-24",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Los Morochos"
+    ],
+    "activities": [],
+    "contact": "322 830 9511",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio",
+      "sin precio"
+    ],
+    "id": "salsa-al-perreo-privado-con-los-morochos-24-oct",
+    "account": "soywiwioficial",
+    "media": [
+      {
+        "post_id": "18136823818634666",
+        "permalink": "https://www.instagram.com/reel/DesdYN0sAw8/",
+        "media_type": "VIDEO",
+        "published": "2026-10-19T23:54:51+0000",
+        "flyer": "flyers/18136823818634666-0.webp",
+        "caption": "Un privado con los Morochos🔥🍫\n salsaalperreo \n\nSábado 24 Octubre \nSALSA AL PERREO\n📍Carrera 13 # 82 - 43 ( Zona T )\n\nEntradas 322 830 9511📲",
+        "preview": "previews/18136823818634666-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Taller de Bachata Ladies",
     "event_type": "workshop",
     "is_recurring": false,
@@ -8385,6 +8484,26 @@
     "id": "taller-de-bachata-para-las-fiestas-24-oct",
     "account": "clandisfrute",
     "media": [
+      {
+        "post_id": "17880726486545830",
+        "permalink": "https://www.instagram.com/reel/DesEGAwP1_J/",
+        "media_type": "VIDEO",
+        "published": "2026-10-19T19:59:05+0000",
+        "flyer": "flyers/17880726486545830-0.webp",
+        "caption": "Dicen que si vas al espejo y gritas 3 veces \"Clandisfrute\", se aparece el espíritu del bailador💀\n\nRESERVA TU CUPIRRI\n#baile #plan",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "17953169631273846",
+        "permalink": "https://www.instagram.com/reel/DesDc33v1hK/",
+        "media_type": "VIDEO",
+        "published": "2026-10-19T19:53:31+0000",
+        "flyer": "flyers/17953169631273846-0.webp",
+        "caption": "Dicen que si vas al espejo y gritas 3 veces \"Clandisfrute\", se aparece el espíritu del bailador💀\n\nRESERVA TU CUPIRRI\n#baile #plan",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18635439067042641",
         "permalink": "https://www.instagram.com/reel/Dej_1LtxyUQ/",
