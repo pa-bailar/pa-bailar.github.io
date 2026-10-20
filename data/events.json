@@ -8133,7 +8133,7 @@
     "bar": true
   },
   {
-    "title": "Dynamic Class - Heels Dark Circus",
+    "title": "Dynamic Class Heels Dark Circus",
     "event_type": "workshop",
     "is_recurring": false,
     "styles": [
@@ -9022,7 +9022,7 @@
     ],
     "organizer": "Zafra Dance Company",
     "venue": "Zafra Dance Company",
-    "address": "Carrera 27 A # 52 - 31",
+    "address": "Carrera 27A #52-31",
     "area": "Galerías",
     "date": "2026-10-25",
     "end_date": null,
@@ -9037,23 +9037,21 @@
         "condition": null
       },
       {
-        "label": "Pareja",
+        "label": "2 personas",
         "amount_cop": 70000,
         "condition": null
       }
     ],
     "artists": [
-      "Alex Barreto",
-      "Polen Amaya"
+      "barretoalexarte",
+      "amayapolen"
     ],
     "activities": [
       "clase de salsa"
     ],
     "contact": "3164952960",
     "confidence": "high",
-    "doubts": [
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
+    "doubts": [],
     "id": "clase-especial-salsa-25-oct",
     "account": "zafradance",
     "media": [
@@ -9079,7 +9077,7 @@
     ],
     "organizer": "Zafra Dance Company",
     "venue": "Zafra Dance Company",
-    "address": "Carrera 27 A # 52 - 31",
+    "address": "Carrera 27A #52-31",
     "area": "Galerías",
     "date": "2026-10-25",
     "end_date": null,
@@ -9094,24 +9092,21 @@
         "condition": null
       },
       {
-        "label": "Pareja",
+        "label": "2 personas",
         "amount_cop": 70000,
         "condition": null
       }
     ],
     "artists": [
-      "Alex Barreto",
-      "Polen Amaya"
+      "barretoalexarte",
+      "amayapolen"
     ],
     "activities": [
       "clase de champeta"
     ],
     "contact": "3164952960",
     "confidence": "high",
-    "doubts": [
-      "hora de finalización no especificada",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
+    "doubts": [],
     "id": "clase-especial-champeta-25-oct",
     "account": "zafradance",
     "media": [
