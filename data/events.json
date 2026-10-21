@@ -7574,6 +7574,56 @@
     "bar": true
   },
   {
+    "title": "Miércoles de salsa en vivo",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Bilongo",
+    "venue": "Bilongo",
+    "address": null,
+    "area": null,
+    "date": "2026-10-21",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "miércoles",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 25000,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "salsa en vivo"
+    ],
+    "contact": "@bilongocolombia",
+    "confidence": "medium",
+    "doubts": [
+      "nombre de la orquesta no mencionado",
+      "hora de inicio no especificada"
+    ],
+    "id": "miercoles-de-salsa-en-vivo-21-oct",
+    "account": "bilongocolombia",
+    "media": [
+      {
+        "post_id": "17894197653438041",
+        "permalink": "https://www.instagram.com/p/DeujqNsBBvI/",
+        "media_type": "IMAGE",
+        "published": "2026-10-20T19:13:24+0000",
+        "flyer": "flyers/17894197653438041-0.webp",
+        "caption": "No me mire así que yo me conozco. 👀 Caiga este MIÉRCOLES de salsa en vivo. 💃🏽\n\nCover 25k\nReservas por DM 📩\n\n#SalsaBogotá #SalsaEnBogotá #SalsaYAmor #Bilongo",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "VideoClass",
     "event_type": "workshop",
     "is_recurring": false,
@@ -7733,6 +7783,16 @@
     "account": "galeriacafelibro",
     "media": [
       {
+        "post_id": "18142046725721585",
+        "permalink": "https://www.instagram.com/p/Det1kJqjAUN/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-20T12:30:02+0000",
+        "flyer": "flyers/18142046725721585-6.webp",
+        "caption": "Semana de salsa, son y rumba de martes a sábado🔥💿 \n\n🎺Nuestro escenario se ilumina con las mejores orquestas capitalinas esta semana: clandelsolar gerband.latingroup enriquebarriosg tumbaque_ \n\n💃 Clases de baile miércoles y jueves en Parque 93, y jueves en Palermo 👌🏻\n\nLa mejor rumba con nuestros djs residentes 🎧 y todo el ambiente Caribe para bailar, tomar unos buenos tragos y disfrutar de nuestro restaurante toda la noche 🥂\n\n¡Nos vemos por aquí! ✨\n\n➡️ Entradas y reservas en galeriacafelibro.com.co \n3176608742 / DM\n\n#galeriacafelibro #salsa #salsaenbogotá",
+        "preview": null,
+        "slides": 11
+      },
+      {
         "post_id": "18098327756083808",
         "permalink": "https://www.instagram.com/p/Deot953sv4u/",
         "media_type": "IMAGE",
@@ -7779,7 +7839,7 @@
     "date": "2026-10-22",
     "end_date": null,
     "sessions": null,
-    "weekday": "jueves",
+    "weekday": "miércoles",
     "start_time": null,
     "end_time": null,
     "prices": [],
@@ -7806,6 +7866,16 @@
         "flyer": "flyers/18131083546764404-0.webp",
         "caption": "✨💃 ¡BOGOTÁ, PÁRCHATE BAILANDO SALSA! 🔥\n\nEste jueves 22 de octubre, Salsa y Son se convierte en el punto de encuentro para los amantes del baile, el sabor y la buena rumba. ❤️‍🔥\n\n💃 Aprende, disfruta y déjate llevar por el ritmo junto a la profe Mali_bullet.\n\n🍸 CÓCTELES 2x1 para brindar y disfrutar la noche como se debe.\n\n📍 Salsa y Son — Zona T, Bogotá\n📌 Cra. 14A #82-87\n📲 Reservas: 322 728 3910\n\nEtiqueta a tu parche salsero y nos vemos en la pista. 🔥\n\n#SalsaYSon #ParchateBailandoSalsa #SalsaEnBogotá #ZonaT JuevesDeSalsa",
         "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18477036196112927",
+        "permalink": "https://www.instagram.com/reel/Deu45n1s85_/",
+        "media_type": "VIDEO",
+        "published": "2026-10-20T22:19:11+0000",
+        "flyer": "flyers/18477036196112927-0.webp",
+        "caption": "🔥 OCTUBRE SE VIVE EN SALSA Y SON 🔥\n\n¡Prográmate y prepárate para un mes lleno de ritmo, sabor y noches inolvidables! 💃🏻🕺🏻\n\n📅 22 DE OCTUBRE: Clases de baile 💃\n🎤 24 DE OCTUBRE: Argy Gómez\n🎃 31 DE OCTUBRE: ¡Una noche de Halloween que no te puedes perder!\n\n✨ La música, el baile y la mejor energía te esperan en Salsa y Son.\n\n📲 Reserva tu mesa con anticipación y vive cada fecha como se merece.\n\n📍 Salsa y Son, Bogotá\n🥂 ¡Tu próximo gran plan está aquí!\n\n#SalsaYSon #PrográmateEnOctubre #BogotáNocturna #Salsa #AgendaDeOctubre",
+        "preview": "previews/18477036196112927-0.mp4",
         "slides": null
       }
     ],
@@ -7904,6 +7974,61 @@
     "bar": true
   },
   {
+    "title": "Pop Up Class con Andrea",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "urbano"
+    ],
+    "organizer": "Danceholic Project",
+    "venue": "Danceholic Project",
+    "address": "Calle 57 13 76",
+    "area": "Chapinero",
+    "date": "2026-10-22",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "jueves",
+    "start_time": "18:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "General",
+        "amount_cop": 35000,
+        "condition": null
+      },
+      {
+        "label": "Afiliados",
+        "amount_cop": 0,
+        "condition": "se cuenta como una clase con el carnet"
+      }
+    ],
+    "artists": [
+      "Andrea (@andreeaaa.av)"
+    ],
+    "activities": [
+      "clase de coreografía",
+      "clase especial"
+    ],
+    "contact": "@danceholicproject",
+    "confidence": "high",
+    "doubts": [],
+    "id": "pop-up-class-con-andrea-22-oct",
+    "account": "danceholicproject",
+    "media": [
+      {
+        "post_id": "18491585851128472",
+        "permalink": "https://www.instagram.com/p/DeuPqdHkV04/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-20T16:18:27+0000",
+        "flyer": "flyers/18491585851128472-0.webp",
+        "caption": "POP UP CLASS 🔥 \n\nContinuamos con más sorpresas en la mansión, para este JUEVES 22 DE OCTUBRE tenemos como invitada Especial a andreeaaa.av desde Cali 🇨🇴 quien estará nuevamente con nosotros compartiendo un poco de su conocimiento y experiencia en la Mansión 🔥\n\nFECHA: JUEVES 22 DE OCTUBRE \nHORA: 6:00PM\nVALOR : 35K\nLUGAR: DANCEHOLIC PROJECT ( Calle 57 13 76\nChapinero\nPOST: para las personas afiliadas a Danceholic Project, esta clase no tiene ningún costo adicional (se cuenta como una clase con el carnet)\nEs importante reservar para la clase !\nworkshop danceholicproject \n\nDesign : jaydanceholic\n#danceholicproject #popupclass #choreo",
+        "preview": null,
+        "slides": 2
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Candombé",
     "event_type": "concert",
     "is_recurring": false,
@@ -7953,6 +8078,53 @@
         "published": "2026-10-01T00:45:26+0000",
         "flyer": "flyers/18079187786372305-0.webp",
         "caption": "Un mes con eventos inolvidables!",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Charanga New York con Armando Quintana y la Expresividad",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Casa Quiebra-Canto",
+    "venue": "Casa Quiebra-Canto",
+    "address": null,
+    "area": null,
+    "date": "2026-10-23",
+    "end_date": "2026-10-24",
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Armando Quintana y la Expresividad"
+    ],
+    "activities": [
+      "m\u0000\u0000sica en vivo",
+      "rumba"
+    ],
+    "contact": "@casaquiebracanto",
+    "confidence": "high",
+    "doubts": [
+      "sin precio",
+      "sin horario de inicio"
+    ],
+    "id": "charanga-new-york-con-armando-quintana-y-la-23-oct",
+    "account": "casaquiebracanto",
+    "media": [
+      {
+        "post_id": "18201605854377858",
+        "permalink": "https://www.instagram.com/p/Deu9D4rR1D5/",
+        "media_type": "IMAGE",
+        "published": "2026-10-20T22:55:11+0000",
+        "flyer": "flyers/18201605854377858-0.webp",
+        "caption": "A celebrar con salsa , amigos , familia,  en la casa de todos !\n#massalsaparatuvida \n#amorporlasalsa",
         "preview": null,
         "slides": null
       }
@@ -8180,6 +8352,55 @@
     "bar": false
   },
   {
+    "title": "Secreto en el Bochi - Cumple de Motta",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "urbano"
+    ],
+    "organizer": "El Bochinche Café-Bar",
+    "venue": "El Bochinche Café-Bar",
+    "address": "Calle 22 #01-26",
+    "area": null,
+    "date": "2026-10-23",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "20:00",
+    "end_time": "02:45",
+    "prices": [
+      {
+        "label": "Entrada",
+        "amount_cop": 0,
+        "condition": "Entrada libre"
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "Salsa, Reguetón y Corridos",
+      "CÓDIGO DE VESTIMENTA: Vaquerxs"
+    ],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [],
+    "id": "secreto-en-el-bochi-cumple-de-motta-23-oct",
+    "account": "el_bochinche_cafe_",
+    "media": [
+      {
+        "post_id": "18136396114646788",
+        "permalink": "https://www.instagram.com/p/DeuNnUWlPbF/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-20T16:00:33+0000",
+        "flyer": "flyers/18136396114646788-0.webp",
+        "caption": "Este viernes en El Bochinche celebramos la vida. Y la alegría de poder compartirla con las personas que amamos. En honor a la existencia de Motta (amiga, familia y parte de nuestro equipo), abrimos nuestras puertas para celebrar su segunda vez cumpliendo 15 años 🎂.\n\n⭐️Entrada libre a su mundo (Salsa, Reguetón y Corridos)⭐️\n🐄CÓDIGO DE VESTIMENTA: Vaquerxs 👢 \n\n🗓️ Viernes 23 de octubre \n🕣 De 8:00 pm a 2:45 am\n💸 Entrada libre \n📍 Calle 22 #01-26",
+        "preview": null,
+        "slides": 3
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Noche de Tributo: Fruko y Sus Tesos & Ismael Rivera",
     "event_type": "concert",
     "is_recurring": false,
@@ -8316,6 +8537,16 @@
         "flyer": "flyers/17902055949596846-0.webp",
         "caption": "🔥 argygomezoficial  EN SALSA & SON 🔥\n\nEste sábado 24 de octubre, prepárate para una noche de música, baile y mucho sabor junto a argygomezoficial 🎤✨\n\nUna noche para cantar, bailar y disfrutar al ritmo de la salsa. 💃🕺\n\n🎟️ Cover: $20.000 por persona\n📲 Reservas: 322 728 3910\n📍 Cra. 14A #82-87 — Zona T, Bogotá\n\n¿Listos para vivirla? 🔥\nNos vemos en Salsa & Son. ❤️‍🔥\n\n#SalsaYSon #ArgyGomez #SalsaEnBogota #ZonaT Salsa Bogota NocheDeSalsa MusicaEnVivo PlanEnBogota",
         "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18477036196112927",
+        "permalink": "https://www.instagram.com/reel/Deu45n1s85_/",
+        "media_type": "VIDEO",
+        "published": "2026-10-20T22:19:11+0000",
+        "flyer": "flyers/18477036196112927-0.webp",
+        "caption": "🔥 OCTUBRE SE VIVE EN SALSA Y SON 🔥\n\n¡Prográmate y prepárate para un mes lleno de ritmo, sabor y noches inolvidables! 💃🏻🕺🏻\n\n📅 22 DE OCTUBRE: Clases de baile 💃\n🎤 24 DE OCTUBRE: Argy Gómez\n🎃 31 DE OCTUBRE: ¡Una noche de Halloween que no te puedes perder!\n\n✨ La música, el baile y la mejor energía te esperan en Salsa y Son.\n\n📲 Reserva tu mesa con anticipación y vive cada fecha como se merece.\n\n📍 Salsa y Son, Bogotá\n🥂 ¡Tu próximo gran plan está aquí!\n\n#SalsaYSon #PrográmateEnOctubre #BogotáNocturna #Salsa #AgendaDeOctubre",
+        "preview": "previews/18477036196112927-0.mp4",
         "slides": null
       },
       {
@@ -8527,6 +8758,114 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "La Feria de Cali se toma Bogot1: Clan del Solar",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Galer3a Caf3 Libro",
+    "venue": "Galer3a Caf3 Libro - Parque 93",
+    "address": "Cra 11A # 93-42",
+    "area": "Parque 93",
+    "date": "2026-10-24",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Preventa",
+        "amount_cop": 25000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Clan del Solar"
+    ],
+    "activities": [
+      "m3sica en vivo",
+      "tributo a Niche vs Guayac1n"
+    ],
+    "contact": "WhatsApp 3012398194",
+    "confidence": "high",
+    "doubts": [
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "la-feria-de-cali-se-toma-bogot1-clan-del-solar-24-oct",
+    "account": "galeriacafelibro",
+    "media": [
+      {
+        "post_id": "18142046725721585",
+        "permalink": "https://www.instagram.com/p/Det1kJqjAUN/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-20T12:30:02+0000",
+        "flyer": "flyers/18142046725721585-9.webp",
+        "caption": "Semana de salsa, son y rumba de martes a sábado🔥💿 \n\n🎺Nuestro escenario se ilumina con las mejores orquestas capitalinas esta semana: clandelsolar gerband.latingroup enriquebarriosg tumbaque_ \n\n💃 Clases de baile miércoles y jueves en Parque 93, y jueves en Palermo 👌🏻\n\nLa mejor rumba con nuestros djs residentes 🎧 y todo el ambiente Caribe para bailar, tomar unos buenos tragos y disfrutar de nuestro restaurante toda la noche 🥂\n\n¡Nos vemos por aquí! ✨\n\n➡️ Entradas y reservas en galeriacafelibro.com.co \n3176608742 / DM\n\n#galeriacafelibro #salsa #salsaenbogotá",
+        "preview": null,
+        "slides": 11
+      },
+      {
+        "post_id": "17878845378562448",
+        "permalink": "https://www.instagram.com/reel/Deu4KfMMhC-/",
+        "media_type": "VIDEO",
+        "published": "2026-10-20T22:27:02+0000",
+        "flyer": "flyers/17878845378562448-0.webp",
+        "caption": "🔥💃 ¡BOGOTÁ, LA FERIA DE CALI SE TOMA LA CIUDAD! 🥁❤️‍🔥\n\nEste sábado 24 de octubre, la salsa se vive a otro nivel con clandelsolar\n\nPrepárate para una noche de salsa, sabor, guaguancó y mucho tumbao con un duelo que promete poner a bailar hasta al más tímido:\n\n⚔️ los temas de NICHE 🆚 GUAYACÁN ⚔️ Clásicos de dos leyendas colombianas sonando en el mismo escenario y en una fiesta que no te puedes perder. 🔥\n\n📍 Galería Café Libro – Parque de la 93 \n📅 Sábado 24 de octubre de 2026 \n🎟️ Preventa: $25.000\n\n📲 Info y reservas: 317 660 8742 – 601 285 1794 🌐 www.galeriacafelibro.com.co\n\nEtiqueta a tu combo salsero y ve preparando los pasos, porque esa noche… ¡TE TRAEMOS UN PEDACITO DE LA SUCURSAL! 💥💃🕺\n\n#LaFeriaDeCali #NicheVsGuayacán #SalsaEnBogotá #GaleríaCaféLibro #OrquestaClandelSolar",
+        "preview": "previews/17878845378562448-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Orquesta Tumbaque: la m3sica de Niche Vs Gran Combo",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Galer3a Caf3 Libro",
+    "venue": "Galer3a Caf3 Libro - Palermo",
+    "address": "Transv. 15B # 46-38",
+    "area": "Palermo",
+    "date": "2026-10-24",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "s1bado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Orquesta Tumbaque"
+    ],
+    "activities": [
+      "m3sica en vivo"
+    ],
+    "contact": "WhatsApp 3176608742",
+    "confidence": "high",
+    "doubts": [
+      "sin precio especificado",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "orquesta-tumbaque-la-m3sica-de-niche-vs-gran-combo-24-oct",
+    "account": "galeriacafelibro",
+    "media": [
+      {
+        "post_id": "18142046725721585",
+        "permalink": "https://www.instagram.com/p/Det1kJqjAUN/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-20T12:30:02+0000",
+        "flyer": "flyers/18142046725721585-1.webp",
+        "caption": "Semana de salsa, son y rumba de martes a sábado🔥💿 \n\n🎺Nuestro escenario se ilumina con las mejores orquestas capitalinas esta semana: clandelsolar gerband.latingroup enriquebarriosg tumbaque_ \n\n💃 Clases de baile miércoles y jueves en Parque 93, y jueves en Palermo 👌🏻\n\nLa mejor rumba con nuestros djs residentes 🎧 y todo el ambiente Caribe para bailar, tomar unos buenos tragos y disfrutar de nuestro restaurante toda la noche 🥂\n\n¡Nos vemos por aquí! ✨\n\n➡️ Entradas y reservas en galeriacafelibro.com.co \n3176608742 / DM\n\n#galeriacafelibro #salsa #salsaenbogotá",
+        "preview": null,
+        "slides": 11
+      }
+    ],
+    "bar": true
   },
   {
     "title": "TARDEO DE MUERTOS",
@@ -9034,6 +9373,56 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "Noche de Boleros",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "Casa de Citas",
+    "venue": "Casa de Citas Restaurante y Centro Cultural",
+    "address": "Cra 3 #12B - 35",
+    "area": "La Candelaria",
+    "date": "2026-10-24",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "20:30",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "No Cover",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Jhon Álvaro Cardona",
+      "DJ Carlos"
+    ],
+    "activities": [
+      "música en vivo"
+    ],
+    "contact": "WhatsApp 3152125733",
+    "confidence": "high",
+    "doubts": [],
+    "id": "noche-de-boleros-24-oct",
+    "account": "restaurantecasadecitas",
+    "media": [
+      {
+        "post_id": "18125872663893304",
+        "permalink": "https://www.instagram.com/p/DevXcEPtVmQ/",
+        "media_type": "IMAGE",
+        "published": "2026-10-21T02:45:41+0000",
+        "flyer": "flyers/18125872663893304-0.webp",
+        "caption": "Este sábado 24 de octubre: música en vivo, deliciosos platos, bebidas, DJ con Tumba Caribe y más... Les esperamos 🍷✨🎶",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
   },
   {
     "title": "LATINHOLIC night",
@@ -9816,6 +10205,16 @@
         "flyer": "flyers/18072466343732193-0.webp",
         "caption": "🧛🏻‍♂️🩸 HALLOWEEN SALSERO — SALSA Y SON 🎃🔥\n\nEste sábado 31 de octubre, la noche se viste de misterio, sabor y mucha salsa. 💃🏻🕺🏻\n\nPrepárate para vivir una noche de disfraces, rumba y sorpresas en una experiencia donde el terror se baila al ritmo de la salsa. 🥀🎶\n\n🏆 PREMIOS AL MEJOR DISFRAZ: $600.000\n\n📍 Salsa y Son — Zona T, Bogotá\n📌 Cra. 14 #82-87\n📲 Reservas: 322 728 3910\n\n🕸️ Tu disfraz, tu actitud y la mejor energía salsera. ¿Ya tienes listo tu personaje para esta noche?\n\nEste Halloween, el miedo se siente… ¡pero la salsa se baila! 🔥💀\n\n#HalloweenSalsero #SalsaYSon #HalloweenBogotá #RumbaSalsera ZonaT",
         "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18477036196112927",
+        "permalink": "https://www.instagram.com/reel/Deu45n1s85_/",
+        "media_type": "VIDEO",
+        "published": "2026-10-20T22:19:11+0000",
+        "flyer": "flyers/18477036196112927-0.webp",
+        "caption": "🔥 OCTUBRE SE VIVE EN SALSA Y SON 🔥\n\n¡Prográmate y prepárate para un mes lleno de ritmo, sabor y noches inolvidables! 💃🏻🕺🏻\n\n📅 22 DE OCTUBRE: Clases de baile 💃\n🎤 24 DE OCTUBRE: Argy Gómez\n🎃 31 DE OCTUBRE: ¡Una noche de Halloween que no te puedes perder!\n\n✨ La música, el baile y la mejor energía te esperan en Salsa y Son.\n\n📲 Reserva tu mesa con anticipación y vive cada fecha como se merece.\n\n📍 Salsa y Son, Bogotá\n🥂 ¡Tu próximo gran plan está aquí!\n\n#SalsaYSon #PrográmateEnOctubre #BogotáNocturna #Salsa #AgendaDeOctubre",
+        "preview": "previews/18477036196112927-0.mp4",
         "slides": null
       }
     ],
@@ -10605,6 +11004,53 @@
     "bar": false
   },
   {
+    "title": "Viernes de Salsa & Son con Tambaluna",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "son"
+    ],
+    "organizer": "Tributo Salsa y Jazz",
+    "venue": "Tributo Salsa y Jazz",
+    "address": "Av. Boyacá #64c - 97, ZONA 6",
+    "area": "Zona 6",
+    "date": "2026-11-06",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "18:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Tambaluna"
+    ],
+    "activities": [
+      "orquesta en vivo",
+      "rumba"
+    ],
+    "contact": "WhatsApp 3105714824",
+    "confidence": "high",
+    "doubts": [
+      "sin precio"
+    ],
+    "id": "viernes-de-salsa-son-con-tambaluna-6-nov",
+    "account": "tributo.salsayjazz",
+    "media": [
+      {
+        "post_id": "18208315507368704",
+        "permalink": "https://www.instagram.com/p/DeuqwzXlOKD/",
+        "media_type": "IMAGE",
+        "published": "2026-10-20T20:15:15+0000",
+        "flyer": "flyers/18208315507368704-0.webp",
+        "caption": "¡LLEGÓ EL VIERNES DE SALSA & SON! 🔥💃 Porque el fin de semana se recibe bailando, te esperamos en tu casa: ¡Tributo Salsa y Jazz! \n\nEste viernes 06 de noviembre prepárate para una rumba de esas que no se olvidan. Ven a disfrutar de un buen trago con tus amigos, contágiate de la mejor energía y alístate para azotar baldosa con todo el talento y la sabrosura de Tambaluna en vivo. \n\n¡Pura candela pa' los pies! \n🎺🍻🔥\n\n📍 Lugar: Av. Boyacá #64c - 97, ZONA 6\n⏰ Apertura: 6:00 PM | Orquesta en vivo: 10:00 PM\n📲 Reservas: 310 5714 824\n\n¡Asegura tu mesa antes de que se llene! RESERVA, arma tu combo salsero y nos vemos en la pista. 👇✨https://wa.me/573105714824",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Concierto",
     "event_type": "concert",
     "is_recurring": false,
@@ -10786,6 +11232,58 @@
         "caption": "✨ Tango Bardo INTIMO una produccion de Ivan Ovalle y Alma de Tango ✨\n\nTres momentos. Tres experiencias para vivir el tango de una manera diferente. 🖤🍷\n\n🎶 CONCIERTO\n📅 6 de noviembre | 🕗 8:00 p. m.\n💰 $120.000\n🍷 Copa de vino + tortilla horneada\n\n💃 MILONGA\n📅 7 de noviembre | 🕘 9:00 p. m.\n💰 $100.000\n🍷 Copa de vino + empanada horneada\n\n🤝 MEET & GREET\n📅 7 de noviembre | 🕕 6:00 p. m.\n✨ Incluido exclusivamente en el Paquete VIP\n\n⭐ PAQUETE VIP — $280.000\nIncluye Concierto + Milonga + Meet & Greet.\n\nUna noche de música, tango, encuentro y momentos que se quedan en la memoria. ✨\n\n📍 Alma de Tango\n🎟️ Cupos limitados.\n\nReserva tu experiencia y déjate envolver por la magia de Íntimo. 🥂🎶\n\n#AlmaDeTango #TangoBardo #Íntimo #Tango #Milonga Concierto Bogotá TangoEnBogotá MúsicaEnVivo ExperienciaTango",
         "preview": null,
         "slides": 4
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Audiciones Compañía de Baile Paso Latino 2026",
+    "event_type": "other",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Compañía de Baile Paso Latino",
+    "venue": "Academia de Baile Paso Latino",
+    "address": "Cra 14 # 46-91 piso 2",
+    "area": null,
+    "date": "2026-11-07",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "18:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Audición",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Caterine",
+      "Nicolas"
+    ],
+    "activities": [
+      "coreografía preparada",
+      "improvisación",
+      "secuencia coreográfica"
+    ],
+    "contact": "3112725216",
+    "confidence": "high",
+    "doubts": [],
+    "id": "audiciones-compania-de-baile-paso-latino-2026-7-nov",
+    "account": "academiadebailepasolatino",
+    "media": [
+      {
+        "post_id": "18643381009044041",
+        "permalink": "https://www.instagram.com/reel/DersGs_KKis/",
+        "media_type": "VIDEO",
+        "published": "2026-10-19T16:31:48+0000",
+        "flyer": "flyers/18643381009044041-0.webp",
+        "caption": "La Compañía de Baile Paso Latino abre audiciones para bailarines que quieran ser parte de nuestro cuerpo de baile, y quieran un enfoque profesional con proyección escénica y de competencia, fórmate y capacítate para participar en congresos, competencias, festivales y shows tanto distritales, nacionales, como internacionales. \n\nEstamos en búsqueda de bailarines con excelente presencia escénica, sólida técnica y capacidad demostrada para innovar en su arte. Se requiere, talento, actitud, responsabilidad, y mucho compromiso para obtener excelentes resultados. \n\nLas audiciones se realizarán para las categorías, profesionales, semiprofesionales y amateur. Desde los 6 años en adelante.\n\nLa selección se llevará acabo el 7 de noviembre a las 6 pm, en la Academia de Baile Paso Latino (Cra 14 # 46-91 piso 2)\n\nQUE DEBO HACER?\n\nLa audición consta de dos fases:\n\n1. Coreografía preparada por el bailarín o improvisación, en solista o pareja, con una duración mínima de 1 min.\n2. Aprender y ejecutar una secuencia coreográfica establecida por Caterine y Nicolas, directores de la Compañía Paso Latino.\n\nRecuerda:\n\n* No se necesita una indumentaria en especial.\n* La audición no tiene ningún costo.\n\nPara cualquier información adicional llámanos o escríbenos:\n\n3112725216\nAcademiapasolatino@gmail.com\nInbox.\n\nAtrévete a más!\n\n#audiciones2026danza #academiapasolatino #salsa #pasolatinoforce",
+        "preview": "previews/18643381009044041-0.mp4",
+        "slides": null
       }
     ],
     "bar": false
@@ -11451,7 +11949,17 @@
       {
         "label": "Etapa 3",
         "amount_cop": 155000,
-        "condition": "desde el 6 de octubre hasta agotar existencias"
+        "condition": "desde el 6 de octubre"
+      },
+      {
+        "label": "Etapa 2",
+        "amount_cop": 135000,
+        "condition": "19 de agosto al 5 de octubre"
+      },
+      {
+        "label": "Etapa 1",
+        "amount_cop": 115000,
+        "condition": "6 de julio al 18 de agosto"
       }
     ],
     "artists": [
@@ -11473,6 +11981,16 @@
     "id": "los-25-de-la-33-21-nov",
     "account": "la33orquesta",
     "media": [
+      {
+        "post_id": "18116072249101403",
+        "permalink": "https://www.instagram.com/p/DevBPnPDfUN/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-20T23:31:42+0000",
+        "flyer": "flyers/18116072249101403-2.webp",
+        "caption": "Bogotá 🇨🇴\n𝗜𝗻𝘃𝗶𝘁𝗮𝗱𝗼 𝗲𝘀𝗽𝗲𝗰𝗶𝗮𝗹: Mario Duarte se suma a: Los 25 de la-33. 🎉\r\n\nLa música nos une y esta celebración será aún más especial con marioduartedlt compartiendo una noche donde el rock y la salsa bogotana se encuentran para celebrar nuestra historia. 🥳🔥🤘\r\n\r\nEste 21 de noviembre en el royalbogota ¡Vengan a celebrar con nosotros! 🥳🔥💃🕺\r\n\r\n🎟️ Aseguren sus entradas en royalcenter.com.co (Link en bio) \r\n📲 Informes al: 317 331 3956 – 300 660 1156\r\n.\n.\n.\n🌟 Arte: sebastianbravoguerrero",
+        "preview": null,
+        "slides": 5
+      },
       {
         "post_id": "18181390432428351",
         "permalink": "https://www.instagram.com/p/DemqtevlWiK/",
