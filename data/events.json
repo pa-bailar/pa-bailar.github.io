@@ -7604,8 +7604,7 @@
     "contact": "@bilongocolombia",
     "confidence": "medium",
     "doubts": [
-      "nombre de la orquesta no mencionado",
-      "hora de inicio no especificada"
+      "sin hora de inicio"
     ],
     "id": "miercoles-de-salsa-en-vivo-21-oct",
     "account": "bilongocolombia",
@@ -7839,7 +7838,7 @@
     "date": "2026-10-22",
     "end_date": null,
     "sessions": null,
-    "weekday": "miércoles",
+    "weekday": "jueves",
     "start_time": null,
     "end_time": null,
     "prices": [],
@@ -8085,7 +8084,7 @@
     "bar": true
   },
   {
-    "title": "Charanga New York con Armando Quintana y la Expresividad",
+    "title": "Charanga New York / Armando Quintana y la Expresividad",
     "event_type": "concert",
     "is_recurring": false,
     "styles": [
@@ -8103,17 +8102,17 @@
     "end_time": null,
     "prices": [],
     "artists": [
+      "Charanga New York",
       "Armando Quintana y la Expresividad"
     ],
     "activities": [
-      "m\u0000\u0000sica en vivo",
-      "rumba"
+      "música en vivo"
     ],
     "contact": "@casaquiebracanto",
     "confidence": "high",
     "doubts": [
-      "sin precio",
-      "sin horario de inicio"
+      "sin hora de inicio",
+      "sin precio"
     ],
     "id": "charanga-new-york-con-armando-quintana-y-la-23-oct",
     "account": "casaquiebracanto",
@@ -8371,17 +8370,17 @@
     "end_time": "02:45",
     "prices": [
       {
-        "label": "Entrada",
+        "label": "Entrada libre",
         "amount_cop": 0,
-        "condition": "Entrada libre"
+        "condition": null
       }
     ],
     "artists": [],
     "activities": [
-      "Salsa, Reguetón y Corridos",
-      "CÓDIGO DE VESTIMENTA: Vaquerxs"
+      "celebración de cumpleaños",
+      "fiesta temática"
     ],
-    "contact": null,
+    "contact": "@el_bochinche_cafe_",
     "confidence": "high",
     "doubts": [],
     "id": "secreto-en-el-bochi-cumple-de-motta-23-oct",
@@ -8760,14 +8759,14 @@
     "bar": false
   },
   {
-    "title": "La Feria de Cali se toma Bogot1: Clan del Solar",
+    "title": "Clan del Solar: La feria de Cali se toma Bogotá",
     "event_type": "concert",
     "is_recurring": false,
     "styles": [
       "salsa"
     ],
-    "organizer": "Galer3a Caf3 Libro",
-    "venue": "Galer3a Caf3 Libro - Parque 93",
+    "organizer": "Galería Café Libro",
+    "venue": "Galería Café Libro - Sede Parque 93",
     "address": "Cra 11A # 93-42",
     "area": "Parque 93",
     "date": "2026-10-24",
@@ -8787,13 +8786,12 @@
       "Clan del Solar"
     ],
     "activities": [
-      "m3sica en vivo",
-      "tributo a Niche vs Guayac1n"
+      "concierto"
     ],
-    "contact": "WhatsApp 3012398194",
+    "contact": "WhatsApp 301 239 8194",
     "confidence": "high",
     "doubts": [
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+      "sin hora de inicio"
     ],
     "id": "la-feria-de-cali-se-toma-bogot1-clan-del-solar-24-oct",
     "account": "galeriacafelibro",
@@ -8822,34 +8820,34 @@
     "bar": true
   },
   {
-    "title": "Orquesta Tumbaque: la m3sica de Niche Vs Gran Combo",
+    "title": "Orquesta Tumbaqué: la música de Niche Vs Gran Combo",
     "event_type": "concert",
     "is_recurring": false,
     "styles": [
       "salsa"
     ],
-    "organizer": "Galer3a Caf3 Libro",
-    "venue": "Galer3a Caf3 Libro - Palermo",
+    "organizer": "Galería Café Libro",
+    "venue": "Galería Café Libro - Sede Palermo",
     "address": "Transv. 15B # 46-38",
     "area": "Palermo",
     "date": "2026-10-24",
     "end_date": null,
     "sessions": null,
-    "weekday": "s1bado",
+    "weekday": "sábado",
     "start_time": null,
     "end_time": null,
     "prices": [],
     "artists": [
-      "Orquesta Tumbaque"
+      "Orquesta Tumbaqué"
     ],
     "activities": [
-      "m3sica en vivo"
+      "concierto"
     ],
-    "contact": "WhatsApp 3176608742",
+    "contact": "3176608742",
     "confidence": "high",
     "doubts": [
-      "sin precio especificado",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+      "sin hora de inicio",
+      "sin precio"
     ],
     "id": "orquesta-tumbaque-la-m3sica-de-niche-vs-gran-combo-24-oct",
     "account": "galeriacafelibro",
