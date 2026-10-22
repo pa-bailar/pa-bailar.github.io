@@ -8810,6 +8810,16 @@
     "account": "soywiwioficial",
     "media": [
       {
+        "post_id": "17994944046023025",
+        "permalink": "https://www.instagram.com/reel/DewyUrbRL9B/",
+        "media_type": "VIDEO",
+        "published": "2026-10-21T16:01:49+0000",
+        "flyer": "flyers/17994944046023025-0.webp",
+        "caption": "Privado con los Morochos 🍫❤️‍🔥✨\nSábado 24 octubre\nsalsaalperreo \n📍Carrera 13 # 82 - 43",
+        "preview": "previews/17994944046023025-0.mp4",
+        "slides": null
+      },
+      {
         "post_id": "18136823818634666",
         "permalink": "https://www.instagram.com/reel/DesdYN0sAw8/",
         "media_type": "VIDEO",
@@ -9375,6 +9385,51 @@
     "bar": false
   },
   {
+    "title": "Noche de Salsa",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "El Bochinche Café-Bar",
+    "venue": "El Bochinche Café-Bar",
+    "address": "Calle 22 #01-26",
+    "area": null,
+    "date": "2026-10-24",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "19:30",
+    "end_time": "02:30",
+    "prices": [
+      {
+        "label": "Entrada libre",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [],
+    "contact": "@el_bochinche_cafe_",
+    "confidence": "high",
+    "doubts": [],
+    "id": "noche-de-salsa-24-oct",
+    "account": "el_bochinche_cafe_",
+    "media": [
+      {
+        "post_id": "18111489839179212",
+        "permalink": "https://www.instagram.com/p/Dexjv5Spn6T/",
+        "media_type": "IMAGE",
+        "published": "2026-10-21T23:31:47+0000",
+        "flyer": "flyers/18111489839179212-0.webp",
+        "caption": "En las noches del bochinche se teje una red que atrapa amantes de la salsa 🕸️, enredados en los hilos solo les queda bailar y solo pueden soltarse con el sudor de haber sacado la danza que tenían en el cuerpo 🥵 \n\n🗓️ Sábado 24 \n🕣 De 7:30 pm a 2:30 am\n💸 Entrada libré \n📍 Calle 22 #01-26",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Social de Halloween",
     "event_type": "social",
     "is_recurring": false,
@@ -9689,48 +9744,6 @@
         "caption": "Super clase el próximo domingo 25 de octubre. \n9am Salsa\n10am Champeta \n\nProfes: barretoalexarte amayapolen \n\n#clasesdesalsaenbogota #clasedechampeta #champetaenbogota",
         "preview": null,
         "slides": 4
-      }
-    ],
-    "bar": false
-  },
-  {
-    "title": "Social Halloween",
-    "event_type": "social",
-    "is_recurring": false,
-    "styles": [],
-    "organizer": "Esfera Latina",
-    "venue": "Esfera Latina",
-    "address": null,
-    "area": null,
-    "date": "2026-10-30",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "viernes",
-    "start_time": null,
-    "end_time": null,
-    "prices": [],
-    "artists": [],
-    "activities": [
-      "social halloween",
-      "baile social"
-    ],
-    "contact": "3135802345",
-    "confidence": "high",
-    "doubts": [
-      "Estilos musicales o de baile no especificados"
-    ],
-    "id": "social-halloween-30-oct",
-    "account": "esferalatinaoficial",
-    "media": [
-      {
-        "post_id": "18112581790860968",
-        "permalink": "https://www.instagram.com/p/DdwoUWYDUwb/",
-        "media_type": "CAROUSEL_ALBUM",
-        "published": "2026-09-26T18:00:04+0000",
-        "flyer": "flyers/18112581790860968-1.webp",
-        "caption": "🔥 OCTUBRE SE VIVE EN ESFERA LATINA 🔥\n\nUn mes para aprender, entrenar, disfrutar y, sobre todo… BAILAR. 💃🕺\n\nEscríbenos para más información y reservas\n\n📱3135802345",
-        "preview": null,
-        "slides": 2
       }
     ],
     "bar": false
@@ -10052,6 +10065,79 @@
         "caption": "Aquí: las PRÓXIMAS FECHAS en que nos encontramos pa’ azotar baldosa (para ti que siempre andas preguntando que en dónde pongo música y tal) 🫵🏼✨❤️\n\n🍴24 OCT / Salsa en DIGITAL desde siga.bog (reserva tu \nmesa ya ya ya) 8-10PM\n\n🎈30 OCT / Desde las 8PM celebrando juntos el cumpleaños #7 de la Nena Magdalena en paradiscobardeescucha junto a amparo_arrebato y rollergal_ \n\nPor las fotos, gracias a casaparamo.co (mi lugar predilecto en Pasto) y a un_bejuco que las tomó. \n\nPD: ¡Para noviembre se viene anuncio especial para USA (específicamente la costa oeste, más específicamente San Diego y Los Ángeles 🤩)!\n\nTe veooo porái 💋",
         "preview": null,
         "slides": 3
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Social Halloween",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "bachata",
+      "salsa"
+    ],
+    "organizer": "Esfera Latina",
+    "venue": "Esfera Latina",
+    "address": null,
+    "area": null,
+    "date": "2026-10-30",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "21:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Estudiantes Esfera",
+        "amount_cop": 10000,
+        "condition": null
+      },
+      {
+        "label": "Pre Venta",
+        "amount_cop": 15000,
+        "condition": "hasta el 29 de octubre"
+      },
+      {
+        "label": "En Taquilla",
+        "amount_cop": 25000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Duane"
+    ],
+    "activities": [
+      "social halloween",
+      "baile social"
+    ],
+    "contact": "3135802345",
+    "confidence": "high",
+    "doubts": [
+      "Estilos musicales o de baile no especificados"
+    ],
+    "id": "social-halloween-30-oct",
+    "account": "esferalatinaoficial",
+    "media": [
+      {
+        "post_id": "18282325291294871",
+        "permalink": "https://www.instagram.com/p/Dd46wYPMiXT/",
+        "media_type": "IMAGE",
+        "published": "2026-10-21T18:00:06+0000",
+        "flyer": "flyers/18282325291294871-0.webp",
+        "caption": "🎃🔥 ¡HALLOWEEN SOCIAL NIGHT! 🔥🎃\n\nUna noche para disfrazarte, bailar y vivir Halloween en Esfera. 👻\n\n💃 9 PM | Bachata con Duane\n✨ Shows\n⚔️ Batallas 1 vs 1\n💰 Premios en efectivo al ganador de la batalla y al mejor disfraz 🏆\n\n🎭 Ponte creativo, prepara tus pasos y ¡ven a vivir una noche de miedo! 🔥🎃",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18112581790860968",
+        "permalink": "https://www.instagram.com/p/DdwoUWYDUwb/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-09-26T18:00:04+0000",
+        "flyer": "flyers/18112581790860968-1.webp",
+        "caption": "🔥 OCTUBRE SE VIVE EN ESFERA LATINA 🔥\n\nUn mes para aprender, entrenar, disfrutar y, sobre todo… BAILAR. 💃🕺\n\nEscríbenos para más información y reservas\n\n📱3135802345",
+        "preview": null,
+        "slides": 2
       }
     ],
     "bar": false
@@ -10383,7 +10469,7 @@
     ],
     "organizer": "Galería Café Libro",
     "venue": "Galería Café Libro",
-    "address": null,
+    "address": "Cra 11A # 93-42",
     "area": "Parque 93 / Palermo",
     "date": "2026-10-31",
     "end_date": null,
@@ -10415,6 +10501,16 @@
     "id": "embrujate-con-salsa-sabado-31-oct",
     "account": "galeriacafelibro",
     "media": [
+      {
+        "post_id": "18076711859739400",
+        "permalink": "https://www.instagram.com/p/DewpRHLMJr_/",
+        "media_type": "IMAGE",
+        "published": "2026-10-21T14:48:25+0000",
+        "flyer": "flyers/18076711859739400-0.webp",
+        "caption": "Falta muy poco para EMBRUJARNOS CON SALSA 🎃👻 Y el sábado 31 de octubre la fiesta es con orquesta en vivo: ns.orquesta + 3 djs residentes de Galeria Café Libro poniendo lo mejor del repertorio 🔥 \n\nPREMIOS A LOS MEJORES DISFRACES 🧙🧛 Primer, segundo y tercer lugar ¡tema libre! 🥇🥈🥉\n\nTe recibimos con shot de bienvenida 🥂 ¿Qué salsitas te embrujan en Halloween? 🧙 ¡Reserva tu cupo para esta rumba!\n\n🎟️ $25.000 • disponibles en galeriacafelibro.com.co\nReservas: 3176608742 o DM",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18393602263163041",
         "permalink": "https://www.instagram.com/p/Deb3d1YjMxP/",
@@ -11020,6 +11116,16 @@
         "published": "2026-10-04T19:22:29+0000",
         "flyer": "flyers/17904095547356280-0.webp",
         "caption": "🎃 Este Halloween, es en d’Living 👻\n\nPrepárate para nuestro social de Halloween: una noche llena de música, baile y sorpresas, con camilo_barretto y frank.de.latorre poniendo el ambiente para que no pares de bailar. 🕺🏻💃🏻\n\nY porque en D’Living nos gusta que el baile también sea una experiencia, tendremos clases abiertas incluidas con tu entrada 😏 para aprender, compartir y llegar al social con toda la actitud. 🔥\n\nAdemás, 👻 CONCURSO DE DISFRACES\nPrepara tu mejor personaje porque tendremos varios premios para los mejores 🎭🏆\n\n📅 31 de octubre\n🕘 9:00 p. m.\n📍 Cll 25 #27B-83 — Torre de las Américas\n🎟️ Preventa $15K | Taquilla $20K\n\n¿Ya tienes tu disfraz? Porque nosotros ya tenemos la fiesta. 🧟‍♀️🎃",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18118286756007245",
+        "permalink": "https://www.instagram.com/reel/Dew2gzlv5WW/",
+        "media_type": "VIDEO",
+        "published": "2026-10-21T16:37:31+0000",
+        "flyer": "flyers/18118286756007245-0.webp",
+        "caption": "👻🎃 Hay cosas que sí dan miedo… como pasar la vida sin bailar, perderse una clase o quedarse con las ganas de aprender ese paso 😱💃🏻\n\n¡Que el miedo no te paralice, que te ponga a bailar! 🔥\nEn d’Living siempre hay un ritmo esperándote ❤️‍🔥\n\nY recuerda… este 31 de octubre tenemos fiesta de Halloween. 👀🎃 ¿Te lo vas a perder?",
         "preview": null,
         "slides": null
       },
@@ -12109,6 +12215,16 @@
     "account": "jackandjilloficial",
     "media": [
       {
+        "post_id": "18064017230790640",
+        "permalink": "https://www.instagram.com/p/DexVRwESxSD/",
+        "media_type": "IMAGE",
+        "published": "2026-10-21T21:05:26+0000",
+        "flyer": "flyers/18064017230790640-0.webp",
+        "caption": "🇵🇪✨ ¡DESDE PERÚ, LA GRAN ROMINA VELARDE!\n\nNos acompañará en esta edición como jueza y tallerista, compartiendo toda su experiencia, talento y pasión por el baile. Además, nos deleitará con un increíble BOOTCAMP DE SALSA Y BACHATA, una experiencia imperdible para aprender, crecer y disfrutar al máximo de estos dos géneros. 🔥💃🕺",
+        "preview": null,
+        "slides": null
+      },
+      {
         "post_id": "18573996961077882",
         "permalink": "https://www.instagram.com/p/Dem-UW3ytIs/",
         "media_type": "IMAGE",
@@ -12366,7 +12482,9 @@
     "start_time": null,
     "end_time": null,
     "prices": [],
-    "artists": [],
+    "artists": [
+      "Team Bachata Ladies"
+    ],
     "activities": [
       "galardones",
       "espectáculos",
@@ -12400,6 +12518,16 @@
         "published": "2026-09-15T23:44:00+0000",
         "flyer": "flyers/18104347286615308.webp",
         "caption": "⚜️ ELYSYUM MADYUM ⚜️\n\n05 de DICIEMBRE, una noche sin precedentes. Llega después de 5 años nuestro gran ANIVERSARIO MADYUM. Luego de múltiples experiencias, crecimiento, aprendizajes, adversidades, construcción de personas, procesos y evolución, nos reuniremos en una noche llena de celebración, baile, disfrute, manifestación y gran muestra de estos años de arduo trabajo. \n\nNos vemos pronto 🎤\n\n#aniversario #clausura #salsa #bachata #escueladebaile",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "17895492006426826",
+        "permalink": "https://www.instagram.com/reel/Dewy4_0xuXw/",
+        "media_type": "VIDEO",
+        "published": "2026-10-21T16:08:09+0000",
+        "flyer": "flyers/17895492006426826-0.webp",
+        "caption": "💃 TEAM LADIES BACHATA 💃\n\nPresentamos nuestro primer Show de la noche en nuestro aniversario ELYSIUM MADYUM. Nos vemos el 05 de diciembre 📣\n\n#bachata #escueladebaile #madelena #dancer #aniversario",
         "preview": null,
         "slides": null
       },
