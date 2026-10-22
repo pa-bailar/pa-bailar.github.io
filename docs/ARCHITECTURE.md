@@ -275,7 +275,8 @@ flowchart LR
   - **Text with the site's fonts:** satori turns the text into SVG paths, with the TTF files in
     `src/assets/fonts/og/` (each with its license): the build machine has no fonts, and satori reads neither WOFF2
     nor system fonts. satori's version is pinned (`package.json`): an update can move text, so check the images
-    after one.
+    after one. Every box sizes with its padding and border (`box-sizing: border-box`, set in `h()`): satori 0.60
+    defaults to content-box, which pushed the brand line out of the image (22 Oct 2026); a test checks it's drawn.
   - **The flyer:** sharp puts the whole flyer over a blurred copy of itself, draws the SVG on top and writes a JPEG,
     written again at lower quality if it would pass 280 KB. An event without a flyer gets the app icon's record.
   - **Cost:** about 0.12 s and 115 KB per event (with 77 events, about 10 s more per build).

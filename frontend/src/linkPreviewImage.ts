@@ -71,7 +71,9 @@ type Child = Node | string | null;
 const h = (type: string, style: Style, ...children: Child[]): Node => {
   // satori counts an array as several children (even of one), which only display: flex may have.
   const kept = children.filter((child) => child !== null);
-  return { type, props: { style, children: kept.length > 1 ? kept : kept[0] } };
+  // Sizes include padding and border, like the site's CSS. satori 0.60 (Yoga 3) defaults to content-box: the text
+  // column grew past the image's bottom and lost its last line, and the sticker grew by its border.
+  return { type, props: { style: { boxSizing: "border-box", ...style }, children: kept.length > 1 ? kept : kept[0] } };
 };
 
 /** Emoji and pictographs have no glyph in the fonts: they're left out of the image (not of the text). */
