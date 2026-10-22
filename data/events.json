@@ -7742,6 +7742,71 @@
     "bar": true
   },
   {
+    "title": "Bachata Lady Style",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "bachata"
+    ],
+    "organizer": "Original Step",
+    "venue": "Original Step",
+    "address": "Cra. 27A #52-31",
+    "area": null,
+    "date": "2026-10-21",
+    "end_date": "2026-10-28",
+    "sessions": [
+      {
+        "date": "2026-10-21",
+        "start_time": "20:15",
+        "end_time": "21:45"
+      },
+      {
+        "date": "2026-10-28",
+        "start_time": "20:15",
+        "end_time": "21:45"
+      }
+    ],
+    "weekday": "miércoles",
+    "start_time": "20:15",
+    "end_time": "21:45",
+    "prices": [
+      {
+        "label": "2 clases",
+        "amount_cop": 40000,
+        "condition": null
+      },
+      {
+        "label": "1 clase",
+        "amount_cop": 30000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Zams Freites"
+    ],
+    "activities": [
+      "clase de bachata lady style"
+    ],
+    "contact": "+573212499241",
+    "confidence": "high",
+    "doubts": [],
+    "id": "bachata-lady-style-21-oct",
+    "account": "originalstepdance",
+    "media": [
+      {
+        "post_id": "18635975734061813",
+        "permalink": "https://www.instagram.com/p/DewVMAGIcMM/",
+        "media_type": "IMAGE",
+        "published": "2026-10-21T11:47:05+0000",
+        "flyer": "flyers/18635975734061813-0.webp",
+        "caption": "👠✨ ¡BACHATA LADY STYLE CON ZAIVIS! ✨👠\n\nEste miércoles 21 y 28 de octubre tendremos a la hermosa zaivisfreites acompañándonos en dos clases especiales de Bachata Lady Style en Original Step 💃🏻💖\n\nDos noches para trabajar nuestra técnica, estilo, elegancia, expresión corporal y, sobre todo, ¡bailar con mucha actitud! ❤️‍🔥\n\nY aprovecha nuestros precios especiales 🔥\n\n💖 2 clases por solo $40.000\n💖 1 clase por $30.000\n\n🕣 8:15 p. m. – 9:45 p. m.\n📍 Cra. 27A #52-31, Bogotá\n📲 Info: +57 321 249 9241\n\nEtiqueta a esa amiga con la que quieres venir 👯‍♀️💕 ¡Las esperamos para disfrutar juntas de mucha bachata!\n\n#ladystylebogota #bachataladystyle #bachateras #originalstepdance bachatabogota",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Enrique Barrios & Gerband Latin Group",
     "event_type": "concert",
     "is_recurring": false,
@@ -7981,7 +8046,7 @@
     ],
     "organizer": "Danceholic Project",
     "venue": "Danceholic Project",
-    "address": "Calle 57 13 76",
+    "address": "Calle 57 # 13-76",
     "area": "Chapinero",
     "date": "2026-10-22",
     "end_date": null,
@@ -7998,17 +8063,16 @@
       {
         "label": "Afiliados",
         "amount_cop": 0,
-        "condition": "se cuenta como una clase con el carnet"
+        "condition": "afiliados a Danceholic Project con carnet"
       }
     ],
     "artists": [
-      "Andrea (@andreeaaa.av)"
+      "andreeaaa.av"
     ],
     "activities": [
-      "clase de coreografía",
-      "clase especial"
+      "pop up class"
     ],
-    "contact": "@danceholicproject",
+    "contact": "@andreeaaa.av",
     "confidence": "high",
     "doubts": [],
     "id": "pop-up-class-con-andrea-22-oct",
@@ -8887,12 +8951,12 @@
       {
         "label": "Preventa",
         "amount_cop": 25000,
-        "condition": null
+        "condition": "incluye maquillaje calavérico + clase + 1 bebida"
       },
       {
         "label": "Puerta",
         "amount_cop": 30000,
-        "condition": null
+        "condition": "incluye maquillaje calavérico + clase + 1 bebida"
       }
     ],
     "artists": [
@@ -9373,6 +9437,50 @@
     "bar": false
   },
   {
+    "title": "Salsa en DIGITAL",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "@lanenamagdalena",
+    "venue": "siga.bog",
+    "address": null,
+    "area": null,
+    "date": "2026-10-24",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "20:00",
+    "end_time": "22:00",
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "Salsa en DIGITAL"
+    ],
+    "contact": "@lanenamagdalena",
+    "confidence": "high",
+    "doubts": [
+      "sin precio",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "salsa-en-digital-24-oct",
+    "account": "lanenamagdalena",
+    "media": [
+      {
+        "post_id": "18105833054357942",
+        "permalink": "https://www.instagram.com/p/Dexrf3ejP7p/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-22T00:19:24+0000",
+        "flyer": "flyers/18105833054357942-0.webp",
+        "caption": "Aquí: las PRÓXIMAS FECHAS en que nos encontramos pa’ azotar baldosa (para ti que siempre andas preguntando que en dónde pongo música y tal) 🫵🏼✨❤️\n\n🍴24 OCT / Salsa en DIGITAL desde siga.bog (reserva tu \nmesa ya ya ya) 8-10PM\n\n🎈30 OCT / Desde las 8PM celebrando juntos el cumpleaños #7 de la Nena Magdalena en paradiscobardeescucha junto a amparo_arrebato y rollergal_ \n\nPor las fotos, gracias a casaparamo.co (mi lugar predilecto en Pasto) y a un_bejuco que las tomó. \n\nPD: ¡Para noviembre se viene anuncio especial para USA (específicamente la costa oeste, más específicamente San Diego y Los Ángeles 🤩)!\n\nTe veooo porái 💋",
+        "preview": null,
+        "slides": 3
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Noche de Boleros",
     "event_type": "concert",
     "is_recurring": false,
@@ -9380,7 +9488,7 @@
       "otro"
     ],
     "organizer": "Casa de Citas",
-    "venue": "Casa de Citas Restaurante y Centro Cultural",
+    "venue": "Casa de Citas",
     "address": "Cra 3 #12B - 35",
     "area": "La Candelaria",
     "date": "2026-10-24",
@@ -9403,7 +9511,7 @@
     "activities": [
       "música en vivo"
     ],
-    "contact": "WhatsApp 3152125733",
+    "contact": "315 212 5733",
     "confidence": "high",
     "doubts": [],
     "id": "noche-de-boleros-24-oct",
@@ -9896,6 +10004,54 @@
         "caption": "Dicen que en la casa de Policarpa Salavarrieta todavía se escucha música de noche… 👻\nEste 30 y 31 de octubre vamos a comprobarlo.\n\nEl Tour de la Salsa llega a Botánico Hostel, en el corazón de La Candelaria, con un Halloween salsero de dos días: Policarpa ya escogió pareja de baile (sí, es Drácula 🧛‍♂️), ¿y tú?\n\n🍹 Trago de bienvenida · 👟 Clase de salsa · ❤️ Tinder salsero\n🎺 Hermanos Baez (7:00 a 10:00 p. m.) · 🎧 Sonido Oriente el viernes y Amparo Arrebato el sábado (10:00 p. m. a 12:00 m.)\n🌙 Remate en el reconocido bar El Candelario hasta las 3:00 a. m.\n\nVen disfrazado de tu canción de salsa favorita 🎃\n🎟️ Entradas en el link de la bio · Cupos limitados · +18\n\n#TourDeLaSalsa #HalloweenSalsero #SalsaBogotá #LaCandelaria",
         "preview": "previews/18633902146045749-0.mp4",
         "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Celebración cumpleaños #7 de la Nena Magdalena",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "@lanenamagdalena",
+    "venue": "paradiscobardeescucha",
+    "address": null,
+    "area": null,
+    "date": "2026-10-30",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "20:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "amparo_arrebato",
+      "rollergal_"
+    ],
+    "activities": [
+      "celebrando juntos el cumpleaños #7"
+    ],
+    "contact": "@lanenamagdalena",
+    "confidence": "high",
+    "doubts": [
+      "sin precio",
+      "estilos deducidos del texto o de la cuenta, no leídos en el post",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "celebracion-cumpleanos-7-de-la-nena-magdalena-30-oct",
+    "account": "lanenamagdalena",
+    "media": [
+      {
+        "post_id": "18105833054357942",
+        "permalink": "https://www.instagram.com/p/Dexrf3ejP7p/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-22T00:19:24+0000",
+        "flyer": "flyers/18105833054357942-0.webp",
+        "caption": "Aquí: las PRÓXIMAS FECHAS en que nos encontramos pa’ azotar baldosa (para ti que siempre andas preguntando que en dónde pongo música y tal) 🫵🏼✨❤️\n\n🍴24 OCT / Salsa en DIGITAL desde siga.bog (reserva tu \nmesa ya ya ya) 8-10PM\n\n🎈30 OCT / Desde las 8PM celebrando juntos el cumpleaños #7 de la Nena Magdalena en paradiscobardeescucha junto a amparo_arrebato y rollergal_ \n\nPor las fotos, gracias a casaparamo.co (mi lugar predilecto en Pasto) y a un_bejuco que las tomó. \n\nPD: ¡Para noviembre se viene anuncio especial para USA (específicamente la costa oeste, más específicamente San Diego y Los Ángeles 🤩)!\n\nTe veooo porái 💋",
+        "preview": null,
+        "slides": 3
       }
     ],
     "bar": false
@@ -10414,6 +10570,67 @@
     "bar": true
   },
   {
+    "title": "Tardeo Latino / Tarde de Bailoween",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "bachata",
+      "merengue",
+      "urbano"
+    ],
+    "organizer": "Bogotá Dance Club",
+    "venue": "Bogotá Dance Club",
+    "address": "Calle 25F #36-15",
+    "area": null,
+    "date": "2026-10-31",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "15:00",
+    "end_time": "22:00",
+    "prices": [
+      {
+        "label": "1ra etapa",
+        "amount_cop": 25000,
+        "condition": "Incluye clase + fiesta + bebida"
+      },
+      {
+        "label": "2da etapa",
+        "amount_cop": 30000,
+        "condition": "Incluye clase + fiesta + bebida"
+      }
+    ],
+    "artists": [
+      "La Reina del Perreo"
+    ],
+    "activities": [
+      "clase de baile",
+      "concurso de disfraces",
+      "fiesta"
+    ],
+    "contact": "WhatsApp 3114964964",
+    "confidence": "high",
+    "doubts": [
+      "precio de taquilla no especificado"
+    ],
+    "id": "tardeo-latino-tarde-de-bailoween-31-oct",
+    "account": "bogotadanceclub",
+    "media": [
+      {
+        "post_id": "18120053069064798",
+        "permalink": "https://www.instagram.com/p/DexnoB9ucuF/",
+        "media_type": "IMAGE",
+        "published": "2026-10-21T23:53:11+0000",
+        "flyer": "flyers/18120053069064798-0.webp",
+        "caption": "Este 31 de octubre, las criaturas del más allá salen de sus tumbas, porque hay una fiesta que ni la muerte se quiere perder 💀🔥 \n\nY ojo, porque tu disfraz podría hacerte salir de la fiesta con los bolsillos más llenos… 💸🏆 \n¡Tendremos premio en efectivo para el mejor disfraz! \n\nAdemás nuestra DJ invitada es La Reina del Perreo michigyal.dj 💿 que va a poner a arder la pista 😈\n\n📢 Comunidad bailadora de 18 a 45 años ✨\n🗓️ 31 de octubre | 🕒 3 PM a 10 PM\n📍 Calle 25F #36-15 - Bogotá Dance Club\n\n💃 Clase de baile prefiesta (para calentar motores)\n\n💵 Cover 1.ª etapa: $25.000\n💸 Cover 2.ª etapa: $30.000\n💰 Cover en puerta: ???\n(Incluye clase de baile + 1 bebida)\n\nEn este BAILOWEEEN ni los muertos se quedan sentados 🔥\n🎃 Desempolva tu mejor disfraz, saca los pasos prohibidos y prepárate porque nos vamos de rumba hasta el más allá 🪩✨\n\n#halloween #halloweenbogotá #fiestadehalloween🎃 #planesenbogotá",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Distrito Social Aniversario",
     "event_type": "festival",
     "is_recurring": false,
@@ -10428,7 +10645,7 @@
     "date": "2026-10-31",
     "end_date": "2026-11-02",
     "sessions": null,
-    "weekday": "sábado",
+    "weekday": "s\u0000\u0000bado",
     "start_time": "20:00",
     "end_time": null,
     "prices": [
@@ -10571,6 +10788,26 @@
         "published": "2026-09-03T16:49:31+0000",
         "flyer": "flyers/18018174977930391-0.webp",
         "caption": "Ricardo y Laura ✨\n\nLos reyes del BachaTango dicen presente en nuestro aniversario 🥳🥳🥳🥳 prepárate para compartir y aprender mucho de esta pareja y de todos los artistas invitados\n\n¿Ya tienes tu boleta? No dejes que te lo cuenten\n\nReserva en nuestras Webs:\ndistrito-social-academy.com/eventos\nappdanza.com",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18089824406256946",
+        "permalink": "https://www.instagram.com/reel/DexUtY2AEgw/",
+        "media_type": "VIDEO",
+        "published": "2026-10-21T21:01:36+0000",
+        "flyer": "flyers/18089824406256946-0.webp",
+        "caption": "Sebas BML ✨\r\n\r\n¿Están listos para ver cómo se prende la pista de baile?\r\n\r\nLos esperamos este 31 Octubre, 1 y 2 de Noviembre en el Festival de Aniversario de Distrito Social dónde tendremos nuestra gran final 🥳🥳🥳\r\n\r\n14 Finalistas\r\n7 Leaders\r\n7 Followers\r\n\r\nNo te pierdas la mejor final de Jack and Jill 🤩🤩🤩\r\n\r\nReserva en nuestras Webs:\r\n\r\ndistrito-social-academy.com/eventos\r\nappdanza.com",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18450948583127130",
+        "permalink": "https://www.instagram.com/reel/Dew4mBBiq2N/",
+        "media_type": "VIDEO",
+        "published": "2026-10-21T16:55:58+0000",
+        "flyer": "flyers/18450948583127130-0.webp",
+        "caption": "Gabriela BML ✨\r\n\r\n¿Están listos para ver cómo se prende la pista de baile?\r\n\r\nLos esperamos este 31 Octubre, 1 y 2 de Noviembre en el Festival de Aniversario de Distrito Social dónde tendremos nuestra gran final 🥳🥳🥳\r\n\r\n14 Finalistas\r\n7 Leaders\r\n7 Followers\r\n\r\nNo te pierdas la mejor final de Jack and Jill 🤩🤩🤩\r\n\r\nReserva en nuestras Webs:\r\n\r\ndistrito-social-academy.com/eventos\r\nappdanza.com",
         "preview": null,
         "slides": null
       },
@@ -10867,6 +11104,54 @@
         "published": "2026-09-07T01:34:46+0000",
         "flyer": "flyers/18199884541372721-0.webp",
         "caption": "🎭 ENTRE RITMOS Y LATIDOS — THE MUSICAL ❤️‍🔥\n\nEn un barrio donde cada persona carga su propia historia, sus sueños, problemas y luchas, una academia de salsa se convierte en el lugar donde sus vidas comienzan a cambiar.\n\nEntre la calle, la familia, las dificultades y las segundas oportunidades, descubrirán que bailar puede ser mucho más que aprender unos pasos: puede devolver la confianza, unir personas y transformar vidas.\n\nUna historia llena de salsa, música, baile, humor y emociones, inspirada en esas realidades que vivimos todos los días.\n\nPorque hay ritmos que se bailan…\ny otros que te cambian la vida. ❤️\n\n📅 1 de noviembre de 2026\n📍 Teatro Libre Chapinero — Bogotá\n\n🔥 Muy pronto conocerás sus historias.\n\n#EntreRitmosYLatidos #TheMusical #TeatroMusical #Salsa #Bogotá TeatroBogotá RitmosAcademiaDeBaile",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Coca-Cola Bailable",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "GermanBaila",
+    "venue": "El Goce Pagano",
+    "address": "Diag. 20A #0-82",
+    "area": "Centro",
+    "date": "2026-11-01",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "14:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 20000,
+        "condition": "Incluye clase y bebida"
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "clase de salsa",
+      "concurso de disfraces familiar"
+    ],
+    "contact": "WhatsApp 3222282646",
+    "confidence": "high",
+    "doubts": [],
+    "id": "coca-cola-bailable-1-nov",
+    "account": "germanbaila",
+    "media": [
+      {
+        "post_id": "18383386795238938",
+        "permalink": "https://www.instagram.com/p/DexWCl1h9tY/",
+        "media_type": "IMAGE",
+        "published": "2026-10-21T21:11:57+0000",
+        "flyer": "flyers/18383386795238938-0.webp",
+        "caption": "Halloween Bogotá se celebra mejor en familia, bailando en la 🥤 Coca-Cola Bailable 💃 de germanbaila y elgocepagano este domingo 1 de noviembre desde las 2PM con clase de baile, concurso de disfraces y actividades para toda la familia. \n🎟️ Cover $20K\n💃 Incluye clase y bebida 🥤\n🪩 Fiesta salsera familiar \n📍 Diagonal 20A #0-82 Bogotá",
         "preview": null,
         "slides": null
       }
@@ -11587,7 +11872,7 @@
     "date": "2026-11-13",
     "end_date": "2026-11-16",
     "sessions": null,
-    "weekday": "viernes",
+    "weekday": "jueves",
     "start_time": null,
     "end_time": null,
     "prices": [],
@@ -11616,6 +11901,16 @@
     "id": "festival-internacional-casinea-10-a-edicion-13-nov",
     "account": "casineafest",
     "media": [
+      {
+        "post_id": "18060961865570540",
+        "permalink": "https://www.instagram.com/p/DexWCFtEWdk/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-21T21:11:50+0000",
+        "flyer": "flyers/18060961865570540-0.webp",
+        "caption": "⏳🔥 ¡FALTAN SOLO 10 DÍAS PARA EL CIERRE DE INSCRIPCIONES DE CASINEA 2026!\n\nCompetidores, ¡el tiempo corre! 💃🕺 Aseguren su participación en la décima edición del Festival Internacional Casinea.\n\n📅 Fecha límite: 1 de noviembre de 2026\n⏰ 11:59 p. m. (hora Colombia 🇨🇴)\n\nNo esperes al último momento. Elige tu modalidad y categoría, completa tu inscripción y prepara tu pista musical.\n\n⚠️ Si participas en pareja, dúo o rueda, solo un representante debe diligenciar el formulario y subir la pista.\n\n📲 Formulario disponible en el enlace de nuestro perfil, en las historias o en www.festivalcasinea.com.\n\n🔥 ¡Diez días para asegurar tu lugar en la pista!\n\n📍 Bogotá | 13 al 16 de noviembre de 2026\n\n#FestivalCasinea #Casinea2026 #CompetenciaCasinea #SalsaCasino #CasinoColombia\n\n🎧⚠️ COMPETIDORES: ¡REVISEN SU PISTA MUSICAL ANTES DE ENVIARLA!\n\nPara evitar inconvenientes, verifica que tu archivo cumpla con los requisitos técnicos de Casinea 2026:\n\n🔊 Formato: WAV o MP3.\n⏱️ Duración: exacta según tu modalidad.\n🔇 Silencios: máximo 5 segundos al inicio o al final.\n🎶 Mezclas: máximo 3 cortes de canciones distintas.\n🎚️ Calidad recomendada: MP3 a 320 kbps o WAV desde la fuente.\n🎛️ Audio: transiciones fluidas, sin saturación ni cambios abruptos de volumen.\n\n📌 ¿Quién debe enviar la pista?\n\n- 💃 Solistas: cada competidor realiza su inscripción.\n- 👫 Parejas y dúos: un solo integrante diligencia el formulario y sube el audio.\n- 🔄 Ruedas: un único representante realiza el registro y envía la pista.\n\nUna inscripción y una pista por pareja, dúo o rueda. Evitemos registros duplicados.\n\n📅 Fecha límite: 1 de noviembre de 2026, a las 11:59 p. m. (hora Colombia).\n\n📲 Completa tu inscripción en el enlace del perfil, las historias o www.festivalcasinea.com\n\n🔥 ¡Prepara tu música y llega listo para competir!\n\n⚠️ ¿Problemas técnicos al subir tu pista al formulario? Envíala a FestivalCasinea@gmail.com para garantizar su recepción.\n\n#FestivalCasinea #Casinea2026 #CompetenciaCasinea #SalsaCasino #CasinoColombia",
+        "preview": null,
+        "slides": 2
+      },
       {
         "post_id": "18188499625395008",
         "permalink": "https://www.instagram.com/p/DdmtW8iR4qm/",
