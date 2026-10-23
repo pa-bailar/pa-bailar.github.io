@@ -8212,20 +8212,15 @@
     "start_time": null,
     "end_time": null,
     "prices": [],
-    "artists": [
-      "Banda de salsa"
-    ],
+    "artists": [],
     "activities": [
       "música en vivo",
-      "cena de las costas",
-      "cócteles"
+      "cena"
     ],
     "contact": "@quemaquequema",
-    "confidence": "medium",
+    "confidence": "high",
     "doubts": [
-      "sin hora específica",
-      "sin precio",
-      "nombre de la banda no especificado"
+      "hora no especificada"
     ],
     "id": "salsa-en-vivo-en-quema-23-oct",
     "account": "quemaquequema",
@@ -9582,7 +9577,7 @@
   },
   {
     "title": "Salsa en DIGITAL",
-    "event_type": "social",
+    "event_type": "party",
     "is_recurring": false,
     "styles": [
       "salsa"
@@ -9598,16 +9593,13 @@
     "start_time": "20:00",
     "end_time": "22:00",
     "prices": [],
-    "artists": [],
-    "activities": [
-      "Salsa en DIGITAL"
+    "artists": [
+      "@lanenamagdalena"
     ],
-    "contact": "@lanenamagdalena",
+    "activities": [],
+    "contact": "@siga.bog",
     "confidence": "high",
-    "doubts": [
-      "sin precio",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
+    "doubts": [],
     "id": "salsa-en-digital-24-oct",
     "account": "lanenamagdalena",
     "media": [
@@ -10173,18 +10165,17 @@
     "end_time": null,
     "prices": [],
     "artists": [
-      "amparo_arrebato",
-      "rollergal_"
+      "@lanenamagdalena",
+      "@amparo_arrebato",
+      "@rollergal_"
     ],
     "activities": [
-      "celebrando juntos el cumpleaños #7"
+      "celebración de cumpleaños"
     ],
-    "contact": "@lanenamagdalena",
+    "contact": null,
     "confidence": "high",
     "doubts": [
-      "sin precio",
-      "estilos deducidos del texto o de la cuenta, no leídos en el post",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+      "estilos deducidos del texto o de la cuenta, no leídos en el post"
     ],
     "id": "celebracion-cumpleanos-7-de-la-nena-magdalena-30-oct",
     "account": "lanenamagdalena",
@@ -11654,7 +11645,7 @@
     ],
     "organizer": "Tributo Salsa y Jazz",
     "venue": "Tributo Salsa y Jazz",
-    "address": "Av. Boyacá #64c - 97, ZONA 6",
+    "address": "Av. Boyacá #64c - 97",
     "area": "Zona 6",
     "date": "2026-11-06",
     "end_date": null,
@@ -11667,13 +11658,12 @@
       "Tambaluna"
     ],
     "activities": [
-      "orquesta en vivo",
-      "rumba"
+      "orquesta en vivo"
     ],
-    "contact": "WhatsApp 3105714824",
+    "contact": "WhatsApp 310 5714 824",
     "confidence": "high",
     "doubts": [
-      "sin precio"
+      "precio de entrada no especificado"
     ],
     "id": "viernes-de-salsa-son-con-tambaluna-6-nov",
     "account": "tributo.salsayjazz",
