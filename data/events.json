@@ -8195,6 +8195,55 @@
     "bar": true
   },
   {
+    "title": "Salsa en vivo en Quema",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Quema",
+    "venue": "Quema",
+    "address": null,
+    "area": null,
+    "date": "2026-10-23",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Banda de salsa"
+    ],
+    "activities": [
+      "música en vivo",
+      "cena de las costas",
+      "cócteles"
+    ],
+    "contact": "@quemaquequema",
+    "confidence": "medium",
+    "doubts": [
+      "sin hora específica",
+      "sin precio",
+      "nombre de la banda no especificado"
+    ],
+    "id": "salsa-en-vivo-en-quema-23-oct",
+    "account": "quemaquequema",
+    "media": [
+      {
+        "post_id": "18096844433407651",
+        "permalink": "https://www.instagram.com/reel/De0Kud8Pot-/",
+        "media_type": "VIDEO",
+        "published": "2026-10-22T23:31:27+0000",
+        "flyer": "flyers/18096844433407651-0.webp",
+        "caption": "Hace 97 años nació Ray Barreto 🪘 Hoy escuchamos su descarga \n\nRecordamos esta leyenda de la salsa 🎶 porque mañana tenemos música en vivo 🎤\n\nBanda de salsa 💃 cena de las costas 🥘 y cócteles para brindar en la noche 🍸\n\nNos vemos en Quema 🔥 \n\n#restaurantequemaquequema #raybarreto #faniastars #descargasalsera #salsaenvivo",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Salsa Pa'l Que Sabe - Gran Concierto",
     "event_type": "concert",
     "is_recurring": false,
@@ -8725,6 +8774,26 @@
     "account": "danzaenlaciudad",
     "media": [
       {
+        "post_id": "18169493452415909",
+        "permalink": "https://www.instagram.com/p/DezunGCCVV2/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-22T19:25:05+0000",
+        "flyer": "flyers/18169493452415909-4.webp",
+        "caption": "🌎 Desde Latinoamérica llegan 3 crews internacionales  y 1 crew nacional a la Batalla Internacional ViAlterna – BIVA\n\nSamuráis Veloces – Venezuela: cerca de 15 años representando el breaking venezolano en formación, creación y competencia.\n\nLos Más Buscados Crew – Costa Rica: desde 2005, usan el arte urbano como herramienta de transformación y formación para nuevas generaciones.\n\nDiamond Squad – Ecuador: desde Quito, llevan más de 17 años explorando el breaking con creatividad, dificultad y mucho estilo.\n\nPinaos Crew – Ibagué-Colombia: Su trayectoria refleja la evolución de la cultura urbana en la región, consolidándose como un colectivo de bailarines de alto nivel con representación a nivel local, nacional e internacional.\n\n⚡ Venezuela, Costa Rica, Ecuador e Ibagué-Colombia se encuentran en Bogotá para una batalla en la que se cruzan talento, estrategia, musicalidad, creatividad y energía.\n\n¡La pista de BIVA está lista!\n\n#HipHopAlParque2026 #DeLaEsquinaAlParque #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 5
+      },
+      {
+        "post_id": "18107490263263993",
+        "permalink": "https://www.instagram.com/p/Dey7vWrkZNA/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-22T12:00:03+0000",
+        "flyer": "flyers/18107490263263993-0.webp",
+        "caption": "💥 El Breaking se juzga con experiencia, criterio y conocimiento de la cultura.\n\nEn la Batalla Internacional ViAlterna – BIVA, presentamos al equipo que pondrá su experiencia y mirada en cada batalla:\n\nNathana: atleta, artista y jueza brasileña, con más de 10 años de trayectoria y experiencia en escenarios internacionales.\n\nLéo Caron: B-Boy de Montreal con más de 20 años en el Breaking y cerca de 60 primeros lugares en competencias.\n\nAlejo: bailarín, creador y gestor cultural de Soacha, con más de 20 años de trayectoria en la cultura hip hop.\n\n⚡ Tres trayectorias. Tres miradas. Una misma pista.\n\n#HipHopAlParque2026 #DeLaEsquinaAlParque #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 3
+      },
+      {
         "post_id": "18116587046115225",
         "permalink": "https://www.instagram.com/p/DenWJELkf6N/",
         "media_type": "CAROUSEL_ALBUM",
@@ -8954,19 +9023,19 @@
     "date": "2026-10-24",
     "end_date": null,
     "sessions": null,
-    "weekday": "sábado",
+    "weekday": "viernes",
     "start_time": "15:00",
     "end_time": "22:00",
     "prices": [
       {
         "label": "Preventa",
         "amount_cop": 25000,
-        "condition": "incluye maquillaje calavérico + clase + 1 bebida"
+        "condition": null
       },
       {
         "label": "Puerta",
         "amount_cop": 30000,
-        "condition": "incluye maquillaje calavérico + clase + 1 bebida"
+        "condition": null
       }
     ],
     "artists": [
@@ -8983,6 +9052,16 @@
     "id": "tardeo-de-muertos-24-oct",
     "account": "bogotadanceclub",
     "media": [
+      {
+        "post_id": "17948259135068964",
+        "permalink": "https://www.instagram.com/reel/De0JPB6Ojhr/",
+        "media_type": "VIDEO",
+        "published": "2026-10-22T23:22:41+0000",
+        "flyer": "flyers/17948259135068964-0.webp",
+        "caption": "💀🪇 Si tú también ya estás calentando motores para Halloween, ¡no te puedes perder nuestra fiesta de Día de Muertos! 🔥Una tarde para bailar sin parar y vivir la música en vivo con sonidosudakaoficial 🎶🎸\n\n📢 Comunidad bailadora de 18 a 45 años ✨\n🗓️ 24 de octubre | 🕒 3PM a 10PM\n📍 Calle 25F #36-15 - Bogotá Dance Club\n\n🤓 Clase de pre fiesta de merengue (para calentar motores)\n\n💵 Cover en preventa: $25.000\n💰 Cover en puerta: $30.000\n(Incluye maquillaje calavérico + clase + 1 bebida)\n\n🕯️💀 Una tarde en la que los muertos se levantan del más allá solo por una razón: ¡venir a bailar hasta que el cuerpo aguante! ⚰️🔥 \n\n#planesenbogotá #halloween #salsa #baile",
+        "preview": "previews/17948259135068964-0.mp4",
+        "slides": null
+      },
       {
         "post_id": "18130957972687765",
         "permalink": "https://www.instagram.com/reel/Deu9k4fOXkB/",
@@ -10666,7 +10745,7 @@
     "bar": true
   },
   {
-    "title": "Tardeo Latino / Tarde de Bailoween",
+    "title": "Tardeo Latino, Tarde de Bailoween",
     "event_type": "social",
     "is_recurring": false,
     "styles": [
@@ -10689,27 +10768,25 @@
       {
         "label": "1ra etapa",
         "amount_cop": 25000,
-        "condition": "Incluye clase + fiesta + bebida"
+        "condition": null
       },
       {
         "label": "2da etapa",
         "amount_cop": 30000,
-        "condition": "Incluye clase + fiesta + bebida"
+        "condition": null
       }
     ],
     "artists": [
-      "La Reina del Perreo"
+      "Michi Gyal"
     ],
     "activities": [
       "clase de baile",
-      "concurso de disfraces",
-      "fiesta"
+      "fiesta",
+      "concurso de disfraces"
     ],
-    "contact": "WhatsApp 3114964964",
+    "contact": "3114964964",
     "confidence": "high",
-    "doubts": [
-      "precio de taquilla no especificado"
-    ],
+    "doubts": [],
     "id": "tardeo-latino-tarde-de-bailoween-31-oct",
     "account": "bogotadanceclub",
     "media": [
@@ -10741,7 +10818,7 @@
     "date": "2026-10-31",
     "end_date": "2026-11-02",
     "sessions": null,
-    "weekday": "s\u0000\u0000bado",
+    "weekday": "sábado",
     "start_time": "20:00",
     "end_time": null,
     "prices": [
@@ -10884,6 +10961,26 @@
         "published": "2026-09-03T16:49:31+0000",
         "flyer": "flyers/18018174977930391-0.webp",
         "caption": "Ricardo y Laura ✨\n\nLos reyes del BachaTango dicen presente en nuestro aniversario 🥳🥳🥳🥳 prepárate para compartir y aprender mucho de esta pareja y de todos los artistas invitados\n\n¿Ya tienes tu boleta? No dejes que te lo cuenten\n\nReserva en nuestras Webs:\ndistrito-social-academy.com/eventos\nappdanza.com",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18385322023231841",
+        "permalink": "https://www.instagram.com/reel/De0HRDFD9ON/",
+        "media_type": "VIDEO",
+        "published": "2026-10-22T23:01:33+0000",
+        "flyer": "flyers/18385322023231841-0.webp",
+        "caption": "Cristian BML ✨\r\n\r\n¿Están listos para ver cómo se prende la pista de baile?\r\n\r\nLos esperamos este 31 Octubre, 1 y 2 de Noviembre en el Festival de Aniversario de Distrito Social dónde tendremos nuestra gran final 🥳🥳🥳\r\n\r\n14 Finalistas\r\n7 Leaders\r\n7 Followers\r\n\r\nNo te pierdas la mejor final de Jack and Jill 🤩🤩🤩\r\n\r\nReserva en nuestras Webs:\r\n\r\ndistrito-social-academy.com/eventos\r\nappdanza.com",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18196832170392559",
+        "permalink": "https://www.instagram.com/reel/Dezmeb_kROJ/",
+        "media_type": "VIDEO",
+        "published": "2026-10-22T18:14:31+0000",
+        "flyer": "flyers/18196832170392559-0.webp",
+        "caption": "Sara BML ✨\r\n\r\n¿Están listos para ver cómo se prende la pista de baile?\r\n\r\nLos esperamos este 31 Octubre, 1 y 2 de Noviembre en el Festival de Aniversario de Distrito Social dónde tendremos nuestra gran final 🥳🥳🥳\r\n\r\n14 Finalistas\r\n7 Leaders\r\n7 Followers\r\n\r\nNo te pierdas la mejor final de Jack and Jill 🤩🤩🤩\r\n\r\nReserva en nuestras Webs:\r\n\r\ndistrito-social-academy.com/eventos\r\nappdanza.com",
         "preview": null,
         "slides": null
       },
@@ -11217,13 +11314,13 @@
     "bar": false
   },
   {
-    "title": "Coca-Cola Bailable",
+    "title": "Coca-Cola Bailable - Especial de Halloween",
     "event_type": "social",
     "is_recurring": false,
     "styles": [
       "salsa"
     ],
-    "organizer": "GermanBaila",
+    "organizer": "German Baila",
     "venue": "El Goce Pagano",
     "address": "Diag. 20A #0-82",
     "area": "Centro",
@@ -11237,7 +11334,7 @@
       {
         "label": "Cover",
         "amount_cop": 20000,
-        "condition": "Incluye clase y bebida"
+        "condition": "incluye clase y bebida"
       }
     ],
     "artists": [],
@@ -11245,7 +11342,7 @@
       "clase de salsa",
       "concurso de disfraces familiar"
     ],
-    "contact": "WhatsApp 3222282646",
+    "contact": "322 2282646",
     "confidence": "high",
     "doubts": [],
     "id": "coca-cola-bailable-1-nov",
@@ -11388,6 +11485,54 @@
         "caption": "🏆✨ ¡EL MOMENTO DE SER PARTE DE LOS BUREO AWARDS 2026 HA LLEGADO!\n\nLa cuenta regresiva para nuestra NOCHE DORADA ya comenzó y queremos que vivas esta experiencia con nosotros. 🖤💛\n\n🎟️ Conoce nuestras localidades y elige dónde quieres vivir esta gran celebración:\n\n✨ PLATEA: Preventa $80.000 | General $100.000\n✨ BALCÓN: Preventa $56.000 | General $70.000\n✨ GENERAL: Preventa $40.000 | General $50.000\n\n🔥 PREVENTA HASTA EL 20 DE OCTUBRE.\n\n👨‍👩‍👧‍👦 Plan familia: 4 entradas de General por $170.000.\n\n📅 5 de noviembre\n📍 Teatro Astor Plaza\n\nGuarda este post, compártelo con tu parche y prepárate para celebrar el talento por todo lo alto.\n\nNos vemos en la pista… y esta vez, también en la gala. ✨",
         "preview": null,
         "slides": 3
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "25 años de Alma de Tango junto a Tango Bardo",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "tango"
+    ],
+    "organizer": "Alma de Tango",
+    "venue": "Casa Alma de Tango",
+    "address": "Calle 44 # 18a-46",
+    "area": null,
+    "date": "2026-11-06",
+    "end_date": "2026-11-08",
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Tango Bardo"
+    ],
+    "activities": [
+      "celebración de aniversario",
+      "concierto íntimo",
+      "música en vivo"
+    ],
+    "contact": "3112656956",
+    "confidence": "high",
+    "doubts": [
+      "sin horario",
+      "sin precios"
+    ],
+    "id": "25-anos-de-alma-de-tango-junto-a-tango-bardo-6-nov",
+    "account": "academiaalmadetangoe",
+    "media": [
+      {
+        "post_id": "17926687134196384",
+        "permalink": "https://www.instagram.com/reel/De0M3TAqBA3/",
+        "media_type": "VIDEO",
+        "published": "2026-10-22T23:50:29+0000",
+        "flyer": "flyers/17926687134196384-0.webp",
+        "caption": "Bogotá se prepara para vivir un fin de semana lleno de tango!!!\n\n6, 7 y 8 de noviembre te esperamos en la casa para celebrar 25 años de Alma de Tango junto a Tango Bardo.\n\n#TangoBardo #AlmaDeTango #PasiónPorElTango #CulturaYArte #BogotáBaila",
+        "preview": "previews/17926687134196384-0.mp4",
+        "slides": null
       }
     ],
     "bar": false
@@ -12624,6 +12769,16 @@
     "id": "reyes-de-la-salsa-2027-19-mar",
     "account": "reyesdelasalsa.col",
     "media": [
+      {
+        "post_id": "18125776030901534",
+        "permalink": "https://www.instagram.com/p/DeyFSPvxrNc/",
+        "media_type": "IMAGE",
+        "published": "2026-10-22T04:04:53+0000",
+        "flyer": "flyers/18125776030901534-0.webp",
+        "caption": "¿Estás listo para Reyes de la Salsa 2027? 👑🔥\n\n* 🏆 ¡Sí, voy con todo!\n* 💃 ¡Quiero información!",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18224563774339499",
         "permalink": "https://www.instagram.com/p/DefD3TmMiMH/",
