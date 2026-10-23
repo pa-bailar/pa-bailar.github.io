@@ -8950,6 +8950,16 @@
         "slides": 11
       },
       {
+        "post_id": "18120997537950860",
+        "permalink": "https://www.instagram.com/reel/De0MjbosZ2i/",
+        "media_type": "VIDEO",
+        "published": "2026-10-22T23:48:09+0000",
+        "flyer": "flyers/18120997537950860-0.webp",
+        "caption": "🔥 CLAN DEL SOLAR LLEGA A GALERÍA CAFÉ LIBRO! 🔥\n\nEste sábado 24 de octubre tenemos un duelo salsero de esos que se viven con el alma: Niche vs. Guayacán. 🎺💃🏽\n\nEl Clan del Solar llega con toda la esencia de la salsa hecha en Bogotá pa’l mundo entero. ¿Ya sabes de qué lado estás? 👀🔥\n\n🎟️ Preventa: $25.000\n📍 Galería Café Libro · Parque de la 93\n📲 Info y reservas: 317 660 8742 – 601 285 1794\n\n¡Etiqueta a tu parche salsero y nos vemos en la pista! ❤️‍🔥",
+        "preview": "previews/18120997537950860-0.mp4",
+        "slides": null
+      },
+      {
         "post_id": "17878845378562448",
         "permalink": "https://www.instagram.com/reel/Deu4KfMMhC-/",
         "media_type": "VIDEO",
@@ -9826,6 +9836,50 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "Halloween en Familia",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Tributo Salsa y Jazz",
+    "venue": "Tributo Salsa y Jazz",
+    "address": "Av. Boyacá #64c - 97",
+    "area": "Zona 6",
+    "date": "2026-10-25",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "13:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "música en vivo",
+      "orquesta en vivo"
+    ],
+    "contact": "WhatsApp 3105714824",
+    "confidence": "high",
+    "doubts": [
+      "estilos deducidos del texto o de la cuenta, no leídos en el post"
+    ],
+    "id": "halloween-en-familia-25-oct",
+    "account": "tributo.salsayjazz",
+    "media": [
+      {
+        "post_id": "18018103730959212",
+        "permalink": "https://www.instagram.com/p/DezEsLSnKF4/",
+        "media_type": "IMAGE",
+        "published": "2026-10-22T13:18:46+0000",
+        "flyer": "flyers/18018103730959212-0.webp",
+        "caption": "¡LLEGÓ EL DOMINGO PARA UN HALLOWEEN EN FAMILIA! 🎃👻\n\n Porque la diversión se comparte con los que más quieres, te esperamos en tu casa: ¡Tributo Salsa y Jazz!\n\nEste domingo 25 de octubre, ven con tu familia y vive una tarde de terror y mucha diversión. Prepárate para disfrutar de música en vivo, un ambiente único, sorpresas y mucho más. ¡Un plan espectacular para grandes y chicos! 🎶🧛‍♂️🕸️\n\n📍 Lugar: Av. Boyacá #64c - 97, ZONA 6\n⏰ Apertura: 1:00 PM | Orquesta en vivo\n⚠️ Todos los menores de edad deben estar acompañados de un adulto responsable.\n📲 Reservas: 310 5714 824\n\n¡Asegura tu mesa! RESERVA, ponte tu mejor disfraz, arma tu parche familiar y nos vemos para gozar todos juntos. 👇✨\nhttps://wa.me/573105714824",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
   },
   {
     "title": "Salsa Infierno",
@@ -11166,6 +11220,59 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "¡Quiero Cumbia Para Mí! - Fiesta de disfraces",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa cubana"
+    ],
+    "organizer": "Restaurante Casa de Citas",
+    "venue": "Restaurante Casa de Citas",
+    "address": "Cra 3 # 12B - 35",
+    "area": "La Candelaria",
+    "date": "2026-10-31",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "20:30",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "No cover",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "La Tambora de Gilbert",
+      "DJ Carlos"
+    ],
+    "activities": [
+      "fiesta de disfraces",
+      "música en vivo"
+    ],
+    "contact": "315 212 5733",
+    "confidence": "high",
+    "doubts": [
+      "El afiche dice 2025 por error"
+    ],
+    "id": "quiero-cumbia-para-mi-fiesta-de-disfraces-31-oct",
+    "account": "restaurantecasadecitas",
+    "media": [
+      {
+        "post_id": "18108423959218539",
+        "permalink": "https://www.instagram.com/p/De0Uhovt_Xq/",
+        "media_type": "IMAGE",
+        "published": "2026-10-23T00:56:26+0000",
+        "flyer": "flyers/18108423959218539-0.webp",
+        "caption": "🎃👻 CUMBIA Y HALLOWEEN 👻🕸️🎃\nFiesta de disfraces con música colombiana en vivo\n DJ - Rumba Caribe (salsa, música cubana y más)\nSábado 31 de octubre. NO COVER \nLes esperamos 🍷✨🎃",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
   },
   {
     "title": "Halloween Social",
@@ -12584,6 +12691,16 @@
         "caption": "BOGOTÁ, nos vemos en el royalbogota \r𝗟𝗼𝘀 𝟮𝟱 𝗱𝗲 𝗹𝗮-𝟯𝟯, se celebran a lo grande 🎉🇨🇴🔥\r\n\r\nEste 21 de noviembre nos encontramos para celebrar 25 años de historia, música y salsa. LA-33 EN VIVO + invitados especiales\r\n\r\nY la celebración se prende aún más con loscorralerosdemajagual_ una de las agrupaciones más emblemáticas de la música tropical colombiana 🥳🔥🔥\r\n\r\n🗓️ Fecha: Sábado 21 de noviembre de 2026\r\n📍Lugar: royalbogota (Cra 13 # 66-80 Bogotá) 🇨🇴\r\n🔥 DJ´S: loa_malbec y rivas_santiago \r\n\r\n🎟️ Entradas en: royalcenter.com.co (el enlace en la bio)\r\n🎟️ 2da etapa $135.000 + servicio, hasta el 5 de octubre\r\n*Aplican términos y condiciones*\r\n\r\nNo dejes que te lo cuenten. Ven a celebrar con nosotros. 🔥🥳💃🕺\r📲 Informes al: 317 331 3956 – 300 660 1156\n.\n.\n.\n🌟 Arte: sebastianbravoguerrero",
         "preview": null,
         "slides": 4
+      },
+      {
+        "post_id": "18096547922670671",
+        "permalink": "https://www.instagram.com/reel/De0K8o5NSqs/",
+        "media_type": "VIDEO",
+        "published": "2026-10-22T23:52:08+0000",
+        "flyer": "flyers/18096547922670671-0.webp",
+        "caption": "Bogotá, se viene el rumbón de “Los 25 de la-33” 🇨🇴🥳\r\n\r\nEste 21 de noviembre celebraremos nuestro cuarto de siglo, la-33 EN VIVO + loscorralerosdemajagual_ Como invitado especial: marioduartedlt y muchas sorpresas más. 🥳🔥\r\n\r\n🎟️ ¡Etapa 3 y última de la boletería! Compra tus entradas ya en: royalcenter.com.co (Link en bio) 🏃‍♀️\n\r\n¡No te puedes perder esta fiesta! Nos vemos en el royalbogota 🔥💃🕺\n.\n.\n.\n#la33 #la33orquesta #salsa #concierto #bogota",
+        "preview": "previews/18096547922670671-0.mp4",
+        "slides": null
       },
       {
         "post_id": "17981971556902899",
