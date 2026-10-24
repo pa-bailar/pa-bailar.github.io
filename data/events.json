@@ -10669,6 +10669,52 @@
     "bar": true
   },
   {
+    "title": "Un Halloween de Película",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "La Diez Luxury",
+    "venue": "La Diez Luxury",
+    "address": "Outlets de las Américas",
+    "area": "Américas",
+    "date": "2026-10-31",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "fiesta de disfraces",
+      "rumba"
+    ],
+    "contact": "@ladiezluxury_outlet",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio",
+      "sin precio",
+      "estilos deducidos del texto o de la cuenta, no leídos en el post"
+    ],
+    "id": "un-halloween-de-pelicula-31-oct",
+    "account": "ladiezluxury_outlet",
+    "media": [
+      {
+        "post_id": "17864341272692986",
+        "permalink": "https://www.instagram.com/reel/De18t1eMlvs/",
+        "media_type": "VIDEO",
+        "published": "2026-10-23T16:08:18+0000",
+        "flyer": "flyers/17864341272692986-0.webp",
+        "caption": "🎬🎃 ¡Este Halloween, el protagonista eres tú!\n\nEl sábado 31 de octubre, llega a La Diez Luxury con un look inspirado en tu personaje favorito y vive con nosotros UN HALLOWEEN DE PELÍCULA. 🍿🕸️🔥\n\nPrepara tu disfraz, reúne a tus amigos y ven a protagonizar una noche para recordar. 💃🕺\n\n📍 La Diez Luxury · Outlets de las Américas\n\n👇 ¿Qué personaje vas a ser? ¡Te leemos! 👀\n\n#ladiezluxury #halloweendepelícula #halloweenbogotá #rumbaenbogotá",
+        "preview": "previews/17864341272692986-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Tardeo Salsero",
     "event_type": "party",
     "is_recurring": false,
@@ -11006,6 +11052,26 @@
         "published": "2026-09-03T16:49:31+0000",
         "flyer": "flyers/18018174977930391-0.webp",
         "caption": "Ricardo y Laura ✨\n\nLos reyes del BachaTango dicen presente en nuestro aniversario 🥳🥳🥳🥳 prepárate para compartir y aprender mucho de esta pareja y de todos los artistas invitados\n\n¿Ya tienes tu boleta? No dejes que te lo cuenten\n\nReserva en nuestras Webs:\ndistrito-social-academy.com/eventos\nappdanza.com",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18164022982433812",
+        "permalink": "https://www.instagram.com/reel/De2hv_mgpsr/",
+        "media_type": "VIDEO",
+        "published": "2026-10-23T21:31:25+0000",
+        "flyer": "flyers/18164022982433812-0.webp",
+        "caption": "Jonn BML ✨\r\n\r\n¿Están listos para ver cómo se prende la pista de baile?\r\n\r\nLos esperamos este 31 Octubre, 1 y 2 de Noviembre en el Festival de Aniversario de Distrito Social dónde tendremos nuestra gran final 🥳🥳🥳\r\n\r\n14 Finalistas\r\n7 Leaders\r\n7 Followers\r\n\r\nNo te pierdas la mejor final de Jack and Jill 🤩🤩🤩\r\n\r\nReserva en nuestras Webs:\r\n\r\ndistrito-social-academy.com/eventos\r\nappdanza.com",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18032040029888643",
+        "permalink": "https://www.instagram.com/reel/De11K9kAOnq/",
+        "media_type": "VIDEO",
+        "published": "2026-10-23T15:01:50+0000",
+        "flyer": "flyers/18032040029888643-0.webp",
+        "caption": "Maleja BML ✨\r\n\r\n¿Están listos para ver cómo se prende la pista de baile?\r\n\r\nLos esperamos este 31 Octubre, 1 y 2 de Noviembre en el Festival de Aniversario de Distrito Social dónde tendremos nuestra gran final 🥳🥳🥳\r\n\r\n14 Finalistas\r\n7 Leaders\r\n7 Followers\r\n\r\nNo te pierdas la mejor final de Jack and Jill 🤩🤩🤩\r\n\r\nReserva en nuestras Webs:\r\n\r\ndistrito-social-academy.com/eventos\r\nappdanza.com",
         "preview": null,
         "slides": null
       },
@@ -11589,7 +11655,7 @@
   },
   {
     "title": "25 años de Alma de Tango junto a Tango Bardo",
-    "event_type": "social",
+    "event_type": "festival",
     "is_recurring": false,
     "styles": [
       "tango"
@@ -11608,17 +11674,10 @@
     "artists": [
       "Tango Bardo"
     ],
-    "activities": [
-      "celebración de aniversario",
-      "concierto íntimo",
-      "música en vivo"
-    ],
+    "activities": [],
     "contact": "3112656956",
     "confidence": "high",
-    "doubts": [
-      "sin horario",
-      "sin precios"
-    ],
+    "doubts": [],
     "id": "25-anos-de-alma-de-tango-junto-a-tango-bardo-6-nov",
     "account": "academiaalmadetangoe",
     "media": [
