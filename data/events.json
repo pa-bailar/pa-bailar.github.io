@@ -8647,6 +8647,16 @@
         "slides": null
       },
       {
+        "post_id": "18119565430959380",
+        "permalink": "https://www.instagram.com/reel/De10Dw5hHxs/",
+        "media_type": "VIDEO",
+        "published": "2026-10-23T14:51:38+0000",
+        "flyer": "flyers/18119565430959380-0.webp",
+        "caption": "🔥 OCTUBRE SE VIVE EN SALSA Y SON 🔥\n\nTres fechas, tres razones para vivir noches inolvidables. 💃🏻🕺🏻\n\n📅 JUEVES 22 DE OCTUBRE\n💃 Clases de salsa para encender la pista.\n\n🎤 SÁBADO 24 DE OCTUBRE\n🔥 Argy Gómez en vivo.\n🎟️ Cover: $20.000.\n\n🎃 SÁBADO 31 DE OCTUBRE\n👻 ¡Prepárate para Halloween!\n🏆 $600.000 de premio al mejor disfraz.\n\n✨ La música, el baile y las mejores noches se viven en SALSA Y SON.\n\n📲 Reserva tu lugar y asegura tu mesa.\n¡Nos vemos en la pista! 🔥\n\n#SalsaYSon #AgendaDeOctubre #Salsa #Halloween #Bogotá",
+        "preview": null,
+        "slides": null
+      },
+      {
         "post_id": "18477036196112927",
         "permalink": "https://www.instagram.com/reel/Deu45n1s85_/",
         "media_type": "VIDEO",
@@ -9014,6 +9024,59 @@
     "bar": true
   },
   {
+    "title": "Remate de concierto de Yuri Buenaventura",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Callejón Salsa & Mecato",
+    "venue": "Callejón Salsa & Mecato",
+    "address": "Calle 12D #3-84",
+    "area": null,
+    "date": "2026-10-24",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "General",
+        "amount_cop": 15000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Yuri Buenaventura",
+      "Carlos Sepúlveda"
+    ],
+    "activities": [
+      "vinil set",
+      "remate de concierto"
+    ],
+    "contact": "@callejonsalsa",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio"
+    ],
+    "id": "remate-de-concierto-de-yuri-buenaventura-24-oct",
+    "account": "callejonsalsa",
+    "media": [
+      {
+        "post_id": "18470115154184556",
+        "permalink": "https://www.instagram.com/p/De2Em7UOoOE/",
+        "media_type": "IMAGE",
+        "published": "2026-10-23T17:15:50+0000",
+        "flyer": "flyers/18470115154184556-0.webp",
+        "caption": "Mañana sábado 24 de octubre va arder el Callejón, porque estaremos de remate del concierto sinfónico que tendrá el maestro yuri_buenaventura en Bogotá. Un invitado muy especial en las tornas seleccionando la mejor salsa carlos.occidente \nY que el encuentro nos dure hasta la madrugada con el maestro Yuri y los músicos de su banda, que estarán compartiendo y celebrando en Callejón. \n📍Callejón Salsa & Mecato. Calle 12D #3-84\n🎟️ 15K",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "TARDEO DE MUERTOS",
     "event_type": "social",
     "is_recurring": false,
@@ -9028,7 +9091,7 @@
     "date": "2026-10-24",
     "end_date": null,
     "sessions": null,
-    "weekday": "viernes",
+    "weekday": "sábado",
     "start_time": "15:00",
     "end_time": "22:00",
     "prices": [
@@ -9053,10 +9116,22 @@
     ],
     "contact": "@bogotadanceclub",
     "confidence": "high",
-    "doubts": [],
+    "doubts": [
+      "fecha exacta no escrita en el texto, deducida del evento previo"
+    ],
     "id": "tardeo-de-muertos-24-oct",
     "account": "bogotadanceclub",
     "media": [
+      {
+        "post_id": "17942995878095401",
+        "permalink": "https://www.instagram.com/reel/De3BsI4OXO0/",
+        "media_type": "VIDEO",
+        "published": "2026-10-24T02:14:52+0000",
+        "flyer": "flyers/17942995878095401-0.webp",
+        "caption": "No te puedes perder nuestra fiesta pre Halloween: Tardeo de Muertos 💀🎃\n\n🕒 De 3PM a 10PM\n📍 Bogotá Dance Club \n\nUna fiesta con mucha baile, buena música y el rock de parte de sonidosudakaoficial en vivo 🎸🔥\n\nSi quieres más información comenta este video 👇🏻\n\n#baile #planesenbogotá #salsa #bachata #bogotá",
+        "preview": "previews/17942995878095401-0.mp4",
+        "slides": null
+      },
       {
         "post_id": "17948259135068964",
         "permalink": "https://www.instagram.com/reel/De0JPB6Ojhr/",
@@ -10213,17 +10288,17 @@
     "end_time": null,
     "prices": [
       {
-        "label": "Estudiantes Esfera",
+        "label": "Estudiantes",
         "amount_cop": 10000,
         "condition": null
       },
       {
-        "label": "Pre Venta",
+        "label": "Preventa",
         "amount_cop": 15000,
-        "condition": "hasta el 29 de octubre"
+        "condition": null
       },
       {
-        "label": "En Taquilla",
+        "label": "Taquilla",
         "amount_cop": 25000,
         "condition": null
       }
@@ -10243,6 +10318,16 @@
     "id": "social-halloween-30-oct",
     "account": "esferalatinaoficial",
     "media": [
+      {
+        "post_id": "18106099283528296",
+        "permalink": "https://www.instagram.com/p/De2LWz9JidN/",
+        "media_type": "IMAGE",
+        "published": "2026-10-23T18:15:56+0000",
+        "flyer": "flyers/18106099283528296-0.webp",
+        "caption": "🎃🔥 SOCIAL NIGHT HALLOWEEN 🔥🎃\n\n👻 ¡Prepárate para una noche de locura, baile y disfraces!\n\nEste viernes 30 de octubre, Esfera Latina se transforma en una fiesta llena de música, baile, diversión y mucho terror. 🕸️💜\n\n💃 9:00 PM | Clase de Salsa Fusión con el increíble maik_the_dancer \n\n🎭 Shows que te sorprenderán.\n\n🏆💰 ¡PREMIO EN EFECTIVO AL MEJOR DISFRAZ!\n\n📲 Reserva: 3135802345\n\n🧛‍♀️ Ponte tu mejor disfraz, reúne a tus amigos y ven a disfrutar de una noche inolvidable.\n\n🔥 ¡Este Halloween no se viene a descansar, se viene a bailar! 🎃",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18282325291294871",
         "permalink": "https://www.instagram.com/p/Dd46wYPMiXT/",
@@ -10572,6 +10657,16 @@
         "slides": null
       },
       {
+        "post_id": "18119565430959380",
+        "permalink": "https://www.instagram.com/reel/De10Dw5hHxs/",
+        "media_type": "VIDEO",
+        "published": "2026-10-23T14:51:38+0000",
+        "flyer": "flyers/18119565430959380-0.webp",
+        "caption": "🔥 OCTUBRE SE VIVE EN SALSA Y SON 🔥\n\nTres fechas, tres razones para vivir noches inolvidables. 💃🏻🕺🏻\n\n📅 JUEVES 22 DE OCTUBRE\n💃 Clases de salsa para encender la pista.\n\n🎤 SÁBADO 24 DE OCTUBRE\n🔥 Argy Gómez en vivo.\n🎟️ Cover: $20.000.\n\n🎃 SÁBADO 31 DE OCTUBRE\n👻 ¡Prepárate para Halloween!\n🏆 $600.000 de premio al mejor disfraz.\n\n✨ La música, el baile y las mejores noches se viven en SALSA Y SON.\n\n📲 Reserva tu lugar y asegura tu mesa.\n¡Nos vemos en la pista! 🔥\n\n#SalsaYSon #AgendaDeOctubre #Salsa #Halloween #Bogotá",
+        "preview": null,
+        "slides": null
+      },
+      {
         "post_id": "18477036196112927",
         "permalink": "https://www.instagram.com/reel/Deu45n1s85_/",
         "media_type": "VIDEO",
@@ -10677,8 +10772,8 @@
     ],
     "organizer": "La Diez Luxury",
     "venue": "La Diez Luxury",
-    "address": "Outlets de las Américas",
-    "area": "Américas",
+    "address": null,
+    "area": "Outlets de las Américas",
     "date": "2026-10-31",
     "end_date": null,
     "sessions": null,
@@ -12018,6 +12113,16 @@
     "account": "ebi_dancecompany",
     "media": [
       {
+        "post_id": "18106129610112628",
+        "permalink": "https://www.instagram.com/p/De15MDuxSMe/",
+        "media_type": "IMAGE",
+        "published": "2026-10-23T15:37:01+0000",
+        "flyer": "flyers/18106129610112628-0.webp",
+        "caption": "Dos años construyendo, aprendiendo y bailando con propósito. 🔥\nHoy comenzamos a presentar a quienes serán parte de esta celebración.\n\nShow 1 tiny_dancer______\n\n#solista #salsa #bailarina #timba #aniversario",
+        "preview": null,
+        "slides": null
+      },
+      {
         "post_id": "18115452482045911",
         "permalink": "https://www.instagram.com/p/DeUn8eppf1G/",
         "media_type": "IMAGE",
@@ -12410,6 +12515,51 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "Duelo Salsero: Colombia vs Nueva York",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Tributo Salsa y Jazz",
+    "venue": "Tributo Salsa y Jazz",
+    "address": "Av. Boyacá #64c - 97",
+    "area": "Zona 6",
+    "date": "2026-11-14",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "18:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Kaona"
+    ],
+    "activities": [
+      "orquesta en vivo"
+    ],
+    "contact": "WhatsApp 3105714824",
+    "confidence": "high",
+    "doubts": [
+      "sin información de precio de entrada"
+    ],
+    "id": "duelo-salsero-colombia-vs-nueva-york-14-nov",
+    "account": "tributo.salsayjazz",
+    "media": [
+      {
+        "post_id": "17896663707677756",
+        "permalink": "https://www.instagram.com/p/De2bFJyFEP8/",
+        "media_type": "IMAGE",
+        "published": "2026-10-23T20:32:08+0000",
+        "flyer": "flyers/17896663707677756-0.webp",
+        "caption": "¡LLEGÓ EL SÁBADO PARA UN VERDADERO DUELO SALSERO! 🔥🗽 Porque el fin de semana se goza con los mejores, te esperamos en tu casa: ¡Tributo Salsa y Jazz! \n\nEste sábado 14 de noviembre prepárate para un choque de titanes en la pista: ¡Colombia VS Nueva York! Ven a disfrutar de un buen trago con tus amigos, contágiate de la mejor energía y alístate para azotar baldosa defendiendo tu estilo favorito con todo el golpe de la orquesta Kaona en vivo. \n\n¡Pura candela pa' los pies! 🎺🍻🔥 \n\n📍 Lugar: Av. Boyacá #64c - 97, ZONA 6\n⏰ Apertura: 6:00 PM | Orquesta en vivo: 10:00 PM\n📲 Reservas: 310 5714 824 \n\n¡Asegura tu mesa antes de que se llene! RESERVA, arma tu combo salsero y nos vemos en la pista. 👇✨\n\nhttps://wa.me/573105714824",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
   },
   {
     "title": "Jack and Jill",
