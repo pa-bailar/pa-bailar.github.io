@@ -12214,10 +12214,23 @@
     ],
     "contact": "@Ebi_dancecompany",
     "confidence": "high",
-    "doubts": [],
+    "doubts": [
+      "sin hora",
+      "sin lugar ni precio en el flyer"
+    ],
     "id": "segundo-aniversario-ebi-dance-7-nov",
     "account": "ebi_dancecompany",
     "media": [
+      {
+        "post_id": "18358337593175032",
+        "permalink": "https://www.instagram.com/p/De5jb_2NcEU/",
+        "media_type": "IMAGE",
+        "published": "2026-10-25T01:42:56+0000",
+        "flyer": "flyers/18358337593175032-0.webp",
+        "caption": null,
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18106129610112628",
         "permalink": "https://www.instagram.com/p/De15MDuxSMe/",
@@ -13085,6 +13098,16 @@
         "published": "2026-09-15T23:44:00+0000",
         "flyer": "flyers/18104347286615308.webp",
         "caption": "⚜️ ELYSYUM MADYUM ⚜️\n\n05 de DICIEMBRE, una noche sin precedentes. Llega después de 5 años nuestro gran ANIVERSARIO MADYUM. Luego de múltiples experiencias, crecimiento, aprendizajes, adversidades, construcción de personas, procesos y evolución, nos reuniremos en una noche llena de celebración, baile, disfrute, manifestación y gran muestra de estos años de arduo trabajo. \n\nNos vemos pronto 🎤\n\n#aniversario #clausura #salsa #bachata #escueladebaile",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18146983315577346",
+        "permalink": "https://www.instagram.com/reel/De5MZ2ZhFHv/",
+        "media_type": "VIDEO",
+        "published": "2026-10-24T22:30:04+0000",
+        "flyer": "flyers/18146983315577346-0.webp",
+        "caption": "🕺 GRUPO BACHATA PAREJA 💃\n\nPresentamos nuestra muestra oficial de Bachata partner Madyum 2026 de nuestro aniversario. Nos vemos el 05 de diciembre ⏳️ \n\n#bachata #pareja #escueladebaile #dancers #aniversario",
         "preview": null,
         "slides": null
       },
