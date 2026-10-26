@@ -10126,6 +10126,54 @@
     "bar": true
   },
   {
+    "title": "Halloween en Bulevar",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Bulevar Salsa Bar",
+    "venue": "Bulevar Salsa Bar",
+    "address": null,
+    "area": "Chapinero y Zona T",
+    "date": "2026-10-30",
+    "end_date": "2026-11-01",
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "fiesta de Halloween",
+      "rumba",
+      "domingo de golazo",
+      "ingreso de bebidas propias (domingo)"
+    ],
+    "contact": "@bulevarsalsabar",
+    "confidence": "medium",
+    "doubts": [
+      "precio del cover no especificado",
+      "hora de inicio no especificada",
+      "fechas inferidas por la semana de Halloween"
+    ],
+    "id": "halloween-en-bulevar-30-oct",
+    "account": "bulevarsalsabar",
+    "media": [
+      {
+        "post_id": "18137588845726793",
+        "permalink": "https://www.instagram.com/reel/De8M9UhRZlU/",
+        "media_type": "VIDEO",
+        "published": "2026-10-26T02:27:14+0000",
+        "flyer": "flyers/18137588845726793-0.webp",
+        "caption": "Halloween en Bulevar 👻🎃❤️‍🔥\n📆Viernes, sábado y Domingo ( Golazo )\nEn ambas sedes Chapinero y Zona T ✅",
+        "preview": "previews/18137588845726793-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Social de Halloween",
     "event_type": "social",
     "is_recurring": false,
@@ -10307,6 +10355,52 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "Halloween Salsa Party",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Casa Van Der",
+    "venue": "Casa Van Der",
+    "address": "Cra 16 #35-08",
+    "area": null,
+    "date": "2026-10-30",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "20:30",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Orquesta Media Vista"
+    ],
+    "activities": [
+      "música en vivo",
+      "premio al mejor disfraz salsero"
+    ],
+    "contact": "3011620492",
+    "confidence": "high",
+    "doubts": [
+      "sin precio de entrada"
+    ],
+    "id": "halloween-salsa-party-30-oct",
+    "account": "casavander_",
+    "media": [
+      {
+        "post_id": "17978394153139061",
+        "permalink": "https://www.instagram.com/p/De78GOYMcRr/",
+        "media_type": "IMAGE",
+        "published": "2026-10-25T23:59:36+0000",
+        "flyer": "flyers/17978394153139061-0.webp",
+        "caption": "HALLOWEEN PARTY! Una cervecería salsera con un swing tropical y buena comida. Imagínate un Halloween salsero, al son de la orquesta Media Vista y con pola fría y fresca en las mesas. \n\nCae al mejor plan del fin de semana. \nHalloween Party! 🎃💀\nEste viernes 30 de Octubre. \n\nReservas en el link de la bio.",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
   },
   {
     "title": "Social Halloween",
@@ -10992,12 +11086,12 @@
     "end_time": "22:00",
     "prices": [
       {
-        "label": "1ra etapa",
+        "label": "1.ª etapa",
         "amount_cop": 25000,
         "condition": null
       },
       {
-        "label": "2da etapa",
+        "label": "2.ª etapa",
         "amount_cop": 30000,
         "condition": null
       }
@@ -11023,6 +11117,16 @@
         "published": "2026-10-21T23:53:11+0000",
         "flyer": "flyers/18120053069064798-0.webp",
         "caption": "Este 31 de octubre, las criaturas del más allá salen de sus tumbas, porque hay una fiesta que ni la muerte se quiere perder 💀🔥 \n\nY ojo, porque tu disfraz podría hacerte salir de la fiesta con los bolsillos más llenos… 💸🏆 \n¡Tendremos premio en efectivo para el mejor disfraz! \n\nAdemás nuestra DJ invitada es La Reina del Perreo michigyal.dj 💿 que va a poner a arder la pista 😈\n\n📢 Comunidad bailadora de 18 a 45 años ✨\n🗓️ 31 de octubre | 🕒 3 PM a 10 PM\n📍 Calle 25F #36-15 - Bogotá Dance Club\n\n💃 Clase de baile prefiesta (para calentar motores)\n\n💵 Cover 1.ª etapa: $25.000\n💸 Cover 2.ª etapa: $30.000\n💰 Cover en puerta: ???\n(Incluye clase de baile + 1 bebida)\n\nEn este BAILOWEEEN ni los muertos se quedan sentados 🔥\n🎃 Desempolva tu mejor disfraz, saca los pasos prohibidos y prepárate porque nos vamos de rumba hasta el más allá 🪩✨\n\n#halloween #halloweenbogotá #fiestadehalloween🎃 #planesenbogotá",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18125128118296355",
+        "permalink": "https://www.instagram.com/reel/De8HeTKuM3p/",
+        "media_type": "VIDEO",
+        "published": "2026-10-26T01:40:17+0000",
+        "flyer": "flyers/18125128118296355-0.webp",
+        "caption": "Ya está abierta la 1RA ETAPA DE PREVENTA 🔥 de nuestra fiesta de Halloween este sábado 31 de octubre 🎃👻\n\n💀 Este BAILOWEEN ni los muertos se quedan quietos y tu disfraz podría hacerte ganar 💸🏆 ¡Premio en efectivo para el mejor! Además, llega Michi Gyal, la Reina del Perreo 💿😈\n\n📢 Comunidad bailadora de 18 a 45 años ✨\n🗓️ 31 de octubre | 🕒 3 PM a 10 PM\n📍 Calle 25F #36-15 - Bogotá Dance Club\n\n💃 Clase de baile prefiesta + 1 bebida\n💵 1.ª etapa: $25.000 | 2.ª etapa: $30.000\n\n🎃 ¡Asegura tu entrada en preventa, desempolva tu disfraz y prepárate para una rumba de miedo! 🔥🪩\n\n#halloweenbogotá #halloween #planesenbogotá #octubrebogota",
         "preview": null,
         "slides": null
       }
@@ -12491,6 +12595,56 @@
     "bar": false
   },
   {
+    "title": "Sonido 70",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "@galeriacafelibro",
+    "venue": "Galería Café Libro",
+    "address": "Cra. 11A # 93-42",
+    "area": null,
+    "date": "2026-11-12",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "jueves",
+    "start_time": "19:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 25000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Sonido 70"
+    ],
+    "activities": [
+      "concierto de salsa brava",
+      "rumba salsera"
+    ],
+    "contact": "@galeriacafelibro",
+    "confidence": "high",
+    "doubts": [],
+    "id": "sonido-70-12-nov",
+    "account": "galeriacafelibro",
+    "media": [
+      {
+        "post_id": "18358881070271223",
+        "permalink": "https://www.instagram.com/reel/De75UUnMJAG/",
+        "media_type": "VIDEO",
+        "published": "2026-10-25T23:33:24+0000",
+        "flyer": "flyers/18358881070271223-0.webp",
+        "caption": "🔥🎺 ¡BOGOTÁ SE PRENDE A RITMO DE SALSA BRAVA! 🎺🔥\n\nPrepárate para una noche con la orquesta de Las Leyendas Vivas de la Salsa: SONIDO 70❤️‍🔥💃🏻🕺🏻Salsa para bailadores, melómanos y  amantes del sonido neoyorquino, puertorriqueño y por supuesto colombiano.\n\nEste jueves 12 de noviembre llegan a Galería Café Libro con un espectáculo único para ponerle sabor a la noche bogotana. \n\n📅 Jueves 12 de noviembre\n🕖 7:00 p. m.\n📍 Galería Café Libro — Cra. 11A # 93-42\n🎟️ Cover: $25.000\n\n¡Alista los zapatos, reúne a tu parche salsero y ven a vivir una noche llena de sabor, música y tradición! 🔥🎶\n\n¿Quién se apunta a esta rumba salsera? 👇🏽❤️‍🔥\n\n#GaleríaCaféLibro #Sonando70 #SalsaBrava #salsaenbogotá",
+        "preview": "previews/18358881070271223-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Level Up Bachata Fusion Congress",
     "event_type": "congress",
     "is_recurring": false,
@@ -13092,6 +13246,76 @@
         "flyer": "flyers/18143692393605612-0.webp",
         "caption": "¿A quién tienes ganas de decirle: “Échate Pa’ Acá”? ❤️\r\nEsta canción nació de una historia de amor, de esas que dan ganas de tener a alguien cerquita. ❤️‍🔥🎶\r\n\r\n“Échate Pa Acá” (2023), canción compuesta por “Lencho” y Diego Sánchez. Dale play, conoce la historia de “Lencho” y Susana y dedícasela a esa persona que te da calorcito en la vida. ❤️‍🔥🥳🎧\r\n\r\nY seguimos calentando motores para nuestros 25 años. 21 de noviembre en el Royal Center, Bogotá 🥳🔥\r\n.\n.\n.\r\n✍️ Guion: Susana Silva\r\n🎥 Dirección y realización: bretonamadeus \r\n.\r\n#la33 #la33orquesta #salsa #cancion #amor",
         "preview": "previews/18143692393605612-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Intensivo 2026 · 4.0",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa en línea"
+    ],
+    "organizer": "Salseros OCS",
+    "venue": "ilé Danza",
+    "address": null,
+    "area": null,
+    "date": "2026-11-22",
+    "end_date": "2026-12-13",
+    "sessions": [
+      {
+        "date": "2026-11-22",
+        "start_time": null,
+        "end_time": null
+      },
+      {
+        "date": "2026-12-06",
+        "start_time": null,
+        "end_time": null
+      },
+      {
+        "date": "2026-12-13",
+        "start_time": null,
+        "end_time": null
+      }
+    ],
+    "weekday": "domingo",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Individual",
+        "amount_cop": 130000,
+        "condition": null
+      },
+      {
+        "label": "Pareja",
+        "amount_cop": 230000,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "clase de salsa en línea ON1 en parejas"
+    ],
+    "contact": "WhatsApp 3016256707",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio"
+    ],
+    "id": "intensivo-2026-4-0-22-nov",
+    "account": "frank.de.latorre",
+    "media": [
+      {
+        "post_id": "18113902745182299",
+        "permalink": "https://www.instagram.com/p/De71x8uvePc/",
+        "media_type": "IMAGE",
+        "published": "2026-10-25T23:02:53+0000",
+        "flyer": "flyers/18113902745182299-0.webp",
+        "caption": "🔥 ¡LLEGÓ EL INTENSIVO 2026 · 4.0! 🔥\n\nSeguimos bailando, aprendiendo y creciendo juntos. 💃🕺 Este año hemos compartido grandes experiencias en la pista, y queremos cerrar este ciclo con una nueva edición de nuestro intensivo de Salsa en Línea ON1 en parejas. ❤️‍🔥\n\n📅 Fechas: 22 de noviembre, 6 y 13 de diciembre.\n📍 Lugar: ilé Danza.\n🎟️ Individual: $130.000 | Pareja: $230.000.\n\nTres encuentros para seguir puliendo nuestro baile, conectar con la música y disfrutar del proceso. ¿Te sumas a esta cuarta edición? 🔥\n\n📲 Más información e inscripciones: 301 625 6707.\n\n¡Nos vemos en la pista! 🙌\n\n#SalsaEnLínea #SalsaON1 #Intensivo2026 #SalsaBogotá #BaileEnPareja",
+        "preview": null,
         "slides": null
       }
     ],
