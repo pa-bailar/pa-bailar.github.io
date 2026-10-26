@@ -10126,6 +10126,60 @@
     "bar": true
   },
   {
+    "title": "Social de Halloween",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "bachata"
+    ],
+    "organizer": "Imperio Latino Dance Studio",
+    "venue": "Imperio Latino Dance Studio",
+    "address": "Calle 72 # 80 - 23",
+    "area": null,
+    "date": "2026-10-30",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "18:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Entrada general",
+        "amount_cop": 20000,
+        "condition": null
+      },
+      {
+        "label": "Estudiantes activos",
+        "amount_cop": 15000,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "clases de baile",
+      "social de salsa y bachata"
+    ],
+    "contact": "WhatsApp 316 450 1010",
+    "confidence": "high",
+    "doubts": [],
+    "id": "social-de-halloween-30-oct",
+    "account": "imperiolatino",
+    "media": [
+      {
+        "post_id": "17968742196193898",
+        "permalink": "https://www.instagram.com/p/De5SKJpPHtJ/",
+        "media_type": "IMAGE",
+        "published": "2026-10-24T23:13:03+0000",
+        "flyer": "flyers/17968742196193898-0.webp",
+        "caption": "🎃🕸️ ¡ESTE HALLOWEEN, EL MIEDO SE BAILA! 🔥💃🕺\n\nPrepárate para una noche donde los disfraces, la música y el sabor latino se apoderan de la pista. 🦇🧡\n\n👻 SOCIAL DE HALLOWEEN — IMPERIO LATINO\n💃 Salsa y bachata\n🔥 ¡Incluye 2 clases de baile!\n\n📅 Viernes 30 de octubre\n🕕 Desde las 6:00 p. m.\n\n🎟️ ENTRADAS:\n🧡 Estudiantes activos: $15.000\n🖤 Entrada general: $20.000\n\n📍 Calle 72 #80-23\n\nVen con tus amigos, trae toda tu energía y prepárate para bailar hasta que el cuerpo aguante. 🕷️🎶\n\n👀 Etiqueta a esa persona con la que no puedes dejar de bailar. 💃❤️\n\n📲 Reserva tu cupo al 316 450 1010.\n\n🔥 En Imperio Latino, ¡hasta los muertos salen a bailar! 🎃💀\n\n#ImperioLatino #SocialDeHalloween #SalsaYBachata #Halloween2026 BogotáBaila PasiónPorElBaile",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Halloween Salsero - El Tour de la Salsa Vol. 1",
     "event_type": "social",
     "is_recurring": false,
