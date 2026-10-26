@@ -10135,7 +10135,7 @@
     "organizer": "Bulevar Salsa Bar",
     "venue": "Bulevar Salsa Bar",
     "address": null,
-    "area": "Chapinero y Zona T",
+    "area": null,
     "date": "2026-10-30",
     "end_date": "2026-11-01",
     "sessions": null,
@@ -10144,18 +10144,12 @@
     "end_time": null,
     "prices": [],
     "artists": [],
-    "activities": [
-      "fiesta de Halloween",
-      "rumba",
-      "domingo de golazo",
-      "ingreso de bebidas propias (domingo)"
-    ],
+    "activities": [],
     "contact": "@bulevarsalsabar",
-    "confidence": "medium",
+    "confidence": "high",
     "doubts": [
-      "precio del cover no especificado",
       "hora de inicio no especificada",
-      "fechas inferidas por la semana de Halloween"
+      "precio del cover no especificado"
     ],
     "id": "halloween-en-bulevar-30-oct",
     "account": "bulevarsalsabar",
@@ -10364,7 +10358,7 @@
       "salsa"
     ],
     "organizer": "Casa Van Der",
-    "venue": "Casa Van Der",
+    "venue": "Van Der",
     "address": "Cra 16 #35-08",
     "area": null,
     "date": "2026-10-30",
@@ -10378,7 +10372,7 @@
       "Orquesta Media Vista"
     ],
     "activities": [
-      "música en vivo",
+      "orquesta en vivo",
       "premio al mejor disfraz salsero"
     ],
     "contact": "3011620492",
@@ -12464,91 +12458,6 @@
     "bar": false
   },
   {
-    "title": "Intensivo 2026 4.0 - Salsa en línea",
-    "event_type": "workshop",
-    "is_recurring": false,
-    "styles": [
-      "salsa en línea"
-    ],
-    "organizer": "Salseros OCS",
-    "venue": "Ilé Danza",
-    "address": null,
-    "area": null,
-    "date": "2026-11-08",
-    "end_date": "2026-12-06",
-    "sessions": [
-      {
-        "date": "2026-11-08",
-        "start_time": null,
-        "end_time": null
-      },
-      {
-        "date": "2026-11-22",
-        "start_time": null,
-        "end_time": null
-      },
-      {
-        "date": "2026-11-29",
-        "start_time": null,
-        "end_time": null
-      },
-      {
-        "date": "2026-12-06",
-        "start_time": null,
-        "end_time": null
-      }
-    ],
-    "weekday": "domingo",
-    "start_time": null,
-    "end_time": null,
-    "prices": [
-      {
-        "label": "Por persona",
-        "amount_cop": 160000,
-        "condition": null
-      },
-      {
-        "label": "Parejas",
-        "amount_cop": 280000,
-        "condition": null
-      }
-    ],
-    "artists": [],
-    "activities": [
-      "intensivo salsa en línea on1 en parejas"
-    ],
-    "contact": "301 625 6707",
-    "confidence": "high",
-    "doubts": [
-      "sin hora de inicio"
-    ],
-    "id": "intensivo-2026-4-0-salsa-en-linea-8-nov",
-    "account": "frank.de.latorre",
-    "media": [
-      {
-        "post_id": "17947877313339984",
-        "permalink": "https://www.instagram.com/p/DeNasUDvTfG/",
-        "media_type": "IMAGE",
-        "published": "2026-10-07T22:21:31+0000",
-        "flyer": "flyers/17947877313339984-0.webp",
-        "caption": "🔥 ¡REGRESA NUESTRO INTENSIVO! 🔥\n\n4 sesiones para seguir desarrollando tu baile, conexión y trabajo en pareja. 🕺🏻💃🏻\n\nUna experiencia de Salsa en Línea ON1 en parejas, pensada para quienes quieren bailar, aprender y llevar su partnerwork a otro nivel.\n\n📅 8, 22 y 29 de noviembre + 6 de diciembre\n📍 ilé Danza\n💰 $160.000 por persona\n👫 $280.000 por pareja\n\nSon 4 encuentros para entrenar, compartir y disfrutar del proceso. ❤️‍🔥\n\n¿Vienes solo/a? ¡También puedes participar! La dinámica está pensada para que puedas bailar y aprovechar la experiencia.\n\n📲 Reserva tu cupo al 301 625 6707.\n\n⚠️ Cupos limitados.\n\nGuarda las fechas, arma tu pareja y nos vemos en la pista. 🔥\n\nY tú? Ya has estado en los anteriores?",
-        "preview": null,
-        "slides": null
-      },
-      {
-        "post_id": "story-8ccbeb9e2cbbba06",
-        "permalink": "https://www.instagram.com/frank.de.latorre/",
-        "media_type": "STORY",
-        "published": "2026-10-04T19:24:18+0000",
-        "flyer": "flyers/story-8ccbeb9e2cbbba06-0.webp",
-        "caption": null,
-        "preview": null,
-        "slides": null
-      }
-    ],
-    "bar": false
-  },
-  {
     "title": "Bailatón con Los Morochos",
     "event_type": "workshop",
     "is_recurring": false,
@@ -12601,7 +12510,7 @@
     "styles": [
       "salsa"
     ],
-    "organizer": "@galeriacafelibro",
+    "organizer": "Galería Café Libro",
     "venue": "Galería Café Libro",
     "address": "Cra. 11A # 93-42",
     "area": null,
@@ -12622,8 +12531,8 @@
       "Sonido 70"
     ],
     "activities": [
-      "concierto de salsa brava",
-      "rumba salsera"
+      "concierto",
+      "música en vivo"
     ],
     "contact": "@galeriacafelibro",
     "confidence": "high",
@@ -13252,14 +13161,14 @@
     "bar": false
   },
   {
-    "title": "Intensivo 2026 · 4.0",
+    "title": "Intensivo 2026 4.0 - Salsa en línea",
     "event_type": "workshop",
     "is_recurring": false,
     "styles": [
       "salsa en línea"
     ],
     "organizer": "Salseros OCS",
-    "venue": "ilé Danza",
+    "venue": "Ilé Danza",
     "address": null,
     "area": null,
     "date": "2026-11-22",
@@ -13298,14 +13207,14 @@
     ],
     "artists": [],
     "activities": [
-      "clase de salsa en línea ON1 en parejas"
+      "intensivo salsa en línea on1 en parejas"
     ],
-    "contact": "WhatsApp 3016256707",
+    "contact": "301 625 6707",
     "confidence": "high",
     "doubts": [
       "sin hora de inicio"
     ],
-    "id": "intensivo-2026-4-0-22-nov",
+    "id": "intensivo-2026-4-0-salsa-en-linea-8-nov",
     "account": "frank.de.latorre",
     "media": [
       {
@@ -13315,6 +13224,26 @@
         "published": "2026-10-25T23:02:53+0000",
         "flyer": "flyers/18113902745182299-0.webp",
         "caption": "🔥 ¡LLEGÓ EL INTENSIVO 2026 · 4.0! 🔥\n\nSeguimos bailando, aprendiendo y creciendo juntos. 💃🕺 Este año hemos compartido grandes experiencias en la pista, y queremos cerrar este ciclo con una nueva edición de nuestro intensivo de Salsa en Línea ON1 en parejas. ❤️‍🔥\n\n📅 Fechas: 22 de noviembre, 6 y 13 de diciembre.\n📍 Lugar: ilé Danza.\n🎟️ Individual: $130.000 | Pareja: $230.000.\n\nTres encuentros para seguir puliendo nuestro baile, conectar con la música y disfrutar del proceso. ¿Te sumas a esta cuarta edición? 🔥\n\n📲 Más información e inscripciones: 301 625 6707.\n\n¡Nos vemos en la pista! 🙌\n\n#SalsaEnLínea #SalsaON1 #Intensivo2026 #SalsaBogotá #BaileEnPareja",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "17947877313339984",
+        "permalink": "https://www.instagram.com/p/DeNasUDvTfG/",
+        "media_type": "IMAGE",
+        "published": "2026-10-07T22:21:31+0000",
+        "flyer": "flyers/17947877313339984-0.webp",
+        "caption": "🔥 ¡REGRESA NUESTRO INTENSIVO! 🔥\n\n4 sesiones para seguir desarrollando tu baile, conexión y trabajo en pareja. 🕺🏻💃🏻\n\nUna experiencia de Salsa en Línea ON1 en parejas, pensada para quienes quieren bailar, aprender y llevar su partnerwork a otro nivel.\n\n📅 8, 22 y 29 de noviembre + 6 de diciembre\n📍 ilé Danza\n💰 $160.000 por persona\n👫 $280.000 por pareja\n\nSon 4 encuentros para entrenar, compartir y disfrutar del proceso. ❤️‍🔥\n\n¿Vienes solo/a? ¡También puedes participar! La dinámica está pensada para que puedas bailar y aprovechar la experiencia.\n\n📲 Reserva tu cupo al 301 625 6707.\n\n⚠️ Cupos limitados.\n\nGuarda las fechas, arma tu pareja y nos vemos en la pista. 🔥\n\nY tú? Ya has estado en los anteriores?",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "story-8ccbeb9e2cbbba06",
+        "permalink": "https://www.instagram.com/frank.de.latorre/",
+        "media_type": "STORY",
+        "published": "2026-10-04T19:24:18+0000",
+        "flyer": "flyers/story-8ccbeb9e2cbbba06-0.webp",
+        "caption": null,
         "preview": null,
         "slides": null
       }
