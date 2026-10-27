@@ -10143,6 +10143,58 @@
     "bar": false
   },
   {
+    "title": "Miércoles de Hector Lavoe y Marc Anthony",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "@bilongocolombia",
+    "venue": "Bilongo",
+    "address": null,
+    "area": null,
+    "date": "2026-10-28",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "miércoles",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 25000,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "rumba",
+      "tributo musical"
+    ],
+    "contact": "@bilongocolombia",
+    "confidence": "medium",
+    "doubts": [
+      "fecha inferida del día de la semana",
+      "hora de inicio no especificada",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "miercoles-de-hector-lavoe-y-marc-anthony-28-oct",
+    "account": "bilongocolombia",
+    "media": [
+      {
+        "post_id": "17872240320644614",
+        "permalink": "https://www.instagram.com/reel/De-el-dREIi/",
+        "media_type": "VIDEO",
+        "published": "2026-10-26T23:38:03+0000",
+        "flyer": "flyers/17872240320644614-0.webp",
+        "caption": "El universo sí sabe lo que hace. 😂❤️‍🔥\nUno tampoco va a contradecir las señales. 👀\n\nCaé a los últimos especiales de octubre: miércoles de Hector Lavoe y Marc Anthony / jueves de la Feria de Cali / sábado Latin Sessions. 🎶\n\nCover 25k\nReservas: DM 📩\n\n#SalsaBogotá #SalsaEnBogotá #SalsaYAmor #Bilongo",
+        "preview": "previews/17872240320644614-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Semana Ryan: Coreografía con Dani Almanza",
     "event_type": "workshop",
     "is_recurring": false,
@@ -10195,6 +10247,66 @@
     "bar": false
   },
   {
+    "title": "Noche de Salsa y Bachata",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "bachata"
+    ],
+    "organizer": "A Seis Manos",
+    "venue": "A Seis Manos",
+    "address": "Calle 22 # 8-60",
+    "area": "Bogotá Centro",
+    "date": "2026-10-28",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "miércoles",
+    "start_time": "19:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Individual",
+        "amount_cop": 25000,
+        "condition": "$5.000 consumibles"
+      },
+      {
+        "label": "Pareja",
+        "amount_cop": 30000,
+        "condition": "sin consumibles"
+      }
+    ],
+    "artists": [
+      "esteban_1024"
+    ],
+    "activities": [
+      "clase de salsa",
+      "clase de bachata",
+      "rumba",
+      "happy hour"
+    ],
+    "contact": "313 3682909",
+    "confidence": "medium",
+    "doubts": [
+      "conflicto de fechas entre el texto (7 de octubre) y el flyer/inicio del post (28 de octubre)"
+    ],
+    "id": "noche-de-salsa-y-bachata-28-oct",
+    "account": "aseismanos",
+    "media": [
+      {
+        "post_id": "18049538348817953",
+        "permalink": "https://www.instagram.com/p/De-CM8TRYMK/",
+        "media_type": "IMAGE",
+        "published": "2026-10-26T19:28:43+0000",
+        "flyer": "flyers/18049538348817953-0.webp",
+        "caption": "💃🔥 ¡MIÉRCOLES 28 de octubre • 7:00 P.M.\nNOCHE DE SALSA Y BACHATA EN A SEIS MANOS! \n\n¿Mitad de semana? ¡Perfecta excusa para bailar! Con el mejor profe esteban_1024\n\nVen a aprender, practicar y disfrutar una noche llena de salsa, bachata, buena música y mucho sabor. No importa si estás empezando o ya tienes tus pasos: aquí vienes a bailar, soltar el cuerpo y pasarla bueno. \n\n📅 Miércoles 7 de octubre\n⏰ 7:00 p. m.\n💃 Clase de Salsa + Bachata\n\n🎟️$25.000 por persona ($5.000 consumibles)\n👫 Promo pareja: $30.000 (Sin consumibles)\n🍹 Happy hour para participantes toda la noche \n📞Reservas 313 3682909\n\nY después de la clase… ¡que siga la rumba! 🎶🍸\n\n📍 A Seis Manos \nCalle 22 # 8-60 • Bogotá Centro\n\nVen solo, con tu parche o con tu pareja. Aquí siempre hay con quién bailar. 💃🕺",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Semana Ryan: Reggaeton con Jujo",
     "event_type": "workshop",
     "is_recurring": false,
@@ -10245,6 +10357,109 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "Jueves de la Feria de Cali",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "@bilongocolombia",
+    "venue": "Bilongo",
+    "address": null,
+    "area": null,
+    "date": "2026-10-29",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "jueves",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 25000,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "rumba",
+      "noche temática"
+    ],
+    "contact": "@bilongocolombia",
+    "confidence": "medium",
+    "doubts": [
+      "fecha inferida del día de la semana",
+      "hora de inicio no especificada",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "jueves-de-la-feria-de-cali-29-oct",
+    "account": "bilongocolombia",
+    "media": [
+      {
+        "post_id": "17872240320644614",
+        "permalink": "https://www.instagram.com/reel/De-el-dREIi/",
+        "media_type": "VIDEO",
+        "published": "2026-10-26T23:38:03+0000",
+        "flyer": "flyers/17872240320644614-0.webp",
+        "caption": "El universo sí sabe lo que hace. 😂❤️‍🔥\nUno tampoco va a contradecir las señales. 👀\n\nCaé a los últimos especiales de octubre: miércoles de Hector Lavoe y Marc Anthony / jueves de la Feria de Cali / sábado Latin Sessions. 🎶\n\nCover 25k\nReservas: DM 📩\n\n#SalsaBogotá #SalsaEnBogotá #SalsaYAmor #Bilongo",
+        "preview": "previews/17872240320644614-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Jueves de Son Gozón / Zafra Son",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "son"
+    ],
+    "organizer": "Salsa Camará",
+    "venue": "Salsa Camará",
+    "address": "Carrera 11 #70A - 22",
+    "area": null,
+    "date": "2026-10-29",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "jueves",
+    "start_time": "16:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Aporte cultural",
+        "amount_cop": 15000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Zafra Son"
+    ],
+    "activities": [
+      "música en vivo"
+    ],
+    "contact": "WhatsApp 313 830 8844",
+    "confidence": "high",
+    "doubts": [
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "jueves-de-son-gozon-zafra-son-29-oct",
+    "account": "salsacamaraoficial",
+    "media": [
+      {
+        "post_id": "18136692793633800",
+        "permalink": "https://www.instagram.com/p/De-cwVIland/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-26T23:20:42+0000",
+        "flyer": "flyers/18136692793633800-0.webp",
+        "caption": "Conoce nuestro repertorio salsero de este fin de semana de terror salsero\n📆 Jueves 29de Octubre\n🎺 Zafra Son\n🎟️ Aporte cultural: 15K\n\n📆 Sábado de 31 de Octubre\n🎺 Alex Rebambarambá\n🎟️ Aporte cultural: 20K\n\n⏳ Desde las 4 PM\n📍 Carrera 11 #70A-22\n📲 Reserva por WhatsApp: 313 830 8844",
+        "preview": null,
+        "slides": 4
+      }
+    ],
+    "bar": true
   },
   {
     "title": "Semana Ryan: Sexy Style con Tito",
@@ -10631,6 +10846,54 @@
     "bar": true
   },
   {
+    "title": "Javier Ortega y su orquesta: Homenaje a Willy Colón",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Casa Quiebra-Canto",
+    "venue": "Casa Quiebra-Canto",
+    "address": null,
+    "area": null,
+    "date": "2026-10-30",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Javier Ortega y su orquesta"
+    ],
+    "activities": [
+      "música en vivo",
+      "rumba"
+    ],
+    "contact": "@casaquiebracanto",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio",
+      "sin precio",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "javier-ortega-y-su-orquesta-homenaje-a-willy-colon-30-oct",
+    "account": "casaquiebracanto",
+    "media": [
+      {
+        "post_id": "17995534296013468",
+        "permalink": "https://www.instagram.com/p/De9xDBHxN4S/",
+        "media_type": "IMAGE",
+        "published": "2026-10-26T16:58:49+0000",
+        "flyer": "flyers/17995534296013468-0.webp",
+        "caption": "Hallowen en su salsa , ven y vive con nosotros un fin de semana lleno de musica en vivo y buena rumba",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Social de Halloween",
     "event_type": "social",
     "is_recurring": false,
@@ -10685,6 +10948,64 @@
     "bar": false
   },
   {
+    "title": "Un Son de Miedo",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "son",
+      "otro"
+    ],
+    "organizer": "Tributo Salsa y Jazz",
+    "venue": "Tributo Salsa y Jazz",
+    "address": "Av. Boyacá #64c - 97",
+    "area": "Zona 6",
+    "date": "2026-10-30",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "18:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Son Latinos m-a"
+    ],
+    "activities": [
+      "orquesta en vivo",
+      "fiesta de pre-halloween"
+    ],
+    "contact": "WhatsApp 3105714824",
+    "confidence": "high",
+    "doubts": [
+      "sin precio de entrada"
+    ],
+    "id": "un-son-de-miedo-30-oct",
+    "account": "tributo.salsayjazz",
+    "media": [
+      {
+        "post_id": "18088750178299347",
+        "permalink": "https://www.instagram.com/p/De-U4CZFJ2T/",
+        "media_type": "IMAGE",
+        "published": "2026-10-26T22:11:51+0000",
+        "flyer": "flyers/18088750178299347-0.webp",
+        "caption": "¡PREPÁRATE PARA UNA NOCHE TERRORÍFICAMENTE BUENA CON 'UN SON DE MIEDO'! 🎃🎷👻🔥\n\nPorque el fin de semana de Pre-Halloween se vive a lo grande, te esperamos en tu casa: ¡Tributo Salsa y Jazz! \n\nEste viernes 30 de octubre, alístate para una fiesta exclusiva solo para adultos donde el misterio, la elegancia y la sabrosura se encuentran en la pista. \n\nVen a disfrutar de unos buenos tragos con tus amigos, saca tu mejor actitud y déjate llevar por el ritmo inconfundible de Son Latinos m-a en vivo. \n\n¡Pura candela y buen Latin-Jazz para encender la noche de brujas! 🥂🎺🔥 \n\n📍 Lugar: Av. Boyacá #64c - 97 (Zona 6) ⏰ Apertura: 6:00 PM | Orquesta en vivo: 10:00 PM \n📲 Reservas: 310 5714 824 \n(Fiesta solo para adultos)\n\n¡Asegura tu mesa antes de que se llene! RESERVA, arma tu parche y nos vemos este viernes para disfrutar una noche espeluznantemente buena. 👇\n\n✨https://wa.me/573105714824",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "17985564237120687",
+        "permalink": "https://www.instagram.com/reel/De-rfW0gur3/",
+        "media_type": "VIDEO",
+        "published": "2026-10-27T01:29:40+0000",
+        "flyer": "flyers/17985564237120687-0.webp",
+        "caption": "LEGÓ LA NOCHE DE PRE-HALLOWEEN Y SE SIENTE UN SON DE MIEDO EN EL AIRE! 🎃🕷️👻🔥 \n\nCuando cae la oscuridad, las almas salseras se despiertan para celebrar en tu casa: ¡Tributo Salsa y Jazz! \n\nEste viernes 30 de octubre, abre la puerta al misterio en una velada encantada y exclusiva solo para adultos. Ven a brindar con tus brebajes favoritos, despierta tus sentidos y déjate poseer por el ritmo seductor de Son Latinos m-a en vivo. \n\n¡Elegancia, hechizo y puro Latin-Jazz para encender una noche de ultratumba! 🥂🎷💀🔥 \n\n📍 Lugar: Av. Boyacá #64c - 97 (Zona 6) ⏰ Apertura de puertas: 6:00 PM | Ritual en vivo: 10:00 PM \n📲 Reservas: 310 5714 824 \n(Fiesta solo para adultos) \n\n ¡Asegura tu mesa antes de que las sombras la acaparen! RESERVA, invoca a tu aquelarre y nos vemos este viernes para una noche de pura magia. 👇✨https://wa.me/573105714824",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Halloween Salsero - El Tour de la Salsa Vol. 1",
     "event_type": "social",
     "is_recurring": false,
@@ -10733,6 +11054,16 @@
     "id": "halloween-salsero-el-tour-de-la-salsa-vol-1-30-oct",
     "account": "salsaculto",
     "media": [
+      {
+        "post_id": "18491833246105558",
+        "permalink": "https://www.instagram.com/p/De-PHfCRqQy/",
+        "media_type": "IMAGE",
+        "published": "2026-10-26T21:31:32+0000",
+        "flyer": "flyers/18491833246105558-0.webp",
+        "caption": "Hay canciones que te recuerdan lo que falta… 🎺\nY a esta pista le faltas tú. «Falta» de los Hermanos Lebrón, salsa de la que se lleva en el pecho, y una noche entera para bailarla como se debe.\n\n🎃 Halloween Salsero · jueves 30 de octubre\n📍 Botánico Hostel · con acceso a El Candelario\n👉 Compra tu entrada en el link de la bio. Aquí no sobra nadie, ¡pero tú sí haces falta!",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18131908702689686",
         "permalink": "https://www.instagram.com/p/Det8VUckXeA/",
@@ -10957,6 +11288,16 @@
         "published": "2026-10-25T23:59:36+0000",
         "flyer": "flyers/17978394153139061-0.webp",
         "caption": "HALLOWEEN PARTY! Una cervecería salsera con un swing tropical y buena comida. Imagínate un Halloween salsero, al son de la orquesta Media Vista y con pola fría y fresca en las mesas. \n\nCae al mejor plan del fin de semana. \nHalloween Party! 🎃💀\nEste viernes 30 de Octubre. \n\nReservas en el link de la bio.",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18116913860041243",
+        "permalink": "https://www.instagram.com/reel/De-gyRrMiBu/",
+        "media_type": "VIDEO",
+        "published": "2026-10-26T23:58:38+0000",
+        "flyer": "flyers/18116913860041243-0.webp",
+        "caption": "Halloween Party este 30 de Octubre. \nImagínate ser Celia Cruz por una noche?\n\nTendremos a la Orquesta en Vivo Media Vidta, un ambiente salsero y de brujas a todo dar y daremos premios a los mejores 3 puestos.\n\nArma tu parche, ven a brillar la baldosa y a cantarlas todas. \n\nReservas en el link de la bio!",
         "preview": null,
         "slides": null
       }
@@ -11550,6 +11891,109 @@
     "bar": true
   },
   {
+    "title": "Clan del Solar presenta: Huye que te coje la muerte",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "afro"
+    ],
+    "organizer": "Casa Quiebra-Canto",
+    "venue": "Casa Quiebra-Canto",
+    "address": null,
+    "area": null,
+    "date": "2026-10-31",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Clan del Solar"
+    ],
+    "activities": [
+      "música en vivo",
+      "rumba",
+      "salsa",
+      "rumba y desenfreno"
+    ],
+    "contact": "@casaquiebracanto",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio",
+      "sin precio",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "clan-del-solar-presenta-huye-que-te-coje-la-muerte-31-oct",
+    "account": "casaquiebracanto",
+    "media": [
+      {
+        "post_id": "17995534296013468",
+        "permalink": "https://www.instagram.com/p/De9xDBHxN4S/",
+        "media_type": "IMAGE",
+        "published": "2026-10-26T16:58:49+0000",
+        "flyer": "flyers/17995534296013468-0.webp",
+        "caption": "Hallowen en su salsa , ven y vive con nosotros un fin de semana lleno de musica en vivo y buena rumba",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Latin Sessions",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "@bilongocolombia",
+    "venue": "Bilongo",
+    "address": null,
+    "area": null,
+    "date": "2026-10-31",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 25000,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "rumba"
+    ],
+    "contact": "@bilongocolombia",
+    "confidence": "medium",
+    "doubts": [
+      "fecha inferida del día de la semana",
+      "hora de inicio no especificada",
+      "coincide con Halloween",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "latin-sessions-31-oct",
+    "account": "bilongocolombia",
+    "media": [
+      {
+        "post_id": "17872240320644614",
+        "permalink": "https://www.instagram.com/reel/De-el-dREIi/",
+        "media_type": "VIDEO",
+        "published": "2026-10-26T23:38:03+0000",
+        "flyer": "flyers/17872240320644614-0.webp",
+        "caption": "El universo sí sabe lo que hace. 😂❤️‍🔥\nUno tampoco va a contradecir las señales. 👀\n\nCaé a los últimos especiales de octubre: miércoles de Hector Lavoe y Marc Anthony / jueves de la Feria de Cali / sábado Latin Sessions. 🎶\n\nCover 25k\nReservas: DM 📩\n\n#SalsaBogotá #SalsaEnBogotá #SalsaYAmor #Bilongo",
+        "preview": "previews/17872240320644614-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Yoga",
     "event_type": "workshop",
     "is_recurring": false,
@@ -12084,6 +12528,16 @@
         "slides": null
       },
       {
+        "post_id": "18166871767470506",
+        "permalink": "https://www.instagram.com/reel/De-fZYHu-8q/",
+        "media_type": "VIDEO",
+        "published": "2026-10-26T23:45:28+0000",
+        "flyer": "flyers/18166871767470506-0.webp",
+        "caption": "Este 31 de octubre, las criaturas del más allá salen de sus tumbas, porque hay una fiesta que ni la muerte se quiere perder 💀🔥 \n\nY ojo, porque tu disfraz podría hacerte salir de la fiesta con los bolsillos más llenos… 💸🏆 \n¡Tendremos premio en efectivo para el mejor disfraz! \n\nAdemás nuestra DJ invitada es Michi Gyal: La Reina del Perreo 💿 que va a poner a arder la pista 😈\n\n📢 Comunidad bailadora de 18 a 45 años ✨\n🗓️ 31 de octubre | 🕒 3 PM a 10 PM\n📍 Calle 25F #36-15 - Bogotá Dance Club\n\n💃 Clase de baile prefiesta (para calentar motores)\n\n💵 Cover 1.ª etapa: $25.000\n💸 Cover 2.ª etapa: $30.000\n💰 Cover en puerta: ???\n(Incluye clase de baile + 1 bebida)\n\nEn este BAILOWEEEN ni los muertos se quedan sentados 🔥\n🎃 Desempolva tu mejor disfraz, saca los pasos prohibidos y prepárate porque nos vamos de rumba hasta el más allá 🪩✨\n\n#halloween #halloweenbogotá #planesenbogotá #quehacerenbogotá",
+        "preview": "previews/18166871767470506-0.mp4",
+        "slides": null
+      },
+      {
         "post_id": "18125128118296355",
         "permalink": "https://www.instagram.com/reel/De8HeTKuM3p/",
         "media_type": "VIDEO",
@@ -12095,6 +12549,58 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "Gran Rumba de Halloween / Alex Rebambarambá",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Salsa Camará",
+    "venue": "Salsa Camará",
+    "address": "Carrera 11 #70A - 22",
+    "area": null,
+    "date": "2026-10-31",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "16:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Aporte cultural",
+        "amount_cop": 20000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Alex Rebambarambá"
+    ],
+    "activities": [
+      "fiesta de disfraces",
+      "música en vivo"
+    ],
+    "contact": "WhatsApp 313 830 8844",
+    "confidence": "high",
+    "doubts": [
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "gran-rumba-de-halloween-alex-rebambaramba-31-oct",
+    "account": "salsacamaraoficial",
+    "media": [
+      {
+        "post_id": "18136692793633800",
+        "permalink": "https://www.instagram.com/p/De-cwVIland/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-26T23:20:42+0000",
+        "flyer": "flyers/18136692793633800-2.webp",
+        "caption": "Conoce nuestro repertorio salsero de este fin de semana de terror salsero\n📆 Jueves 29de Octubre\n🎺 Zafra Son\n🎟️ Aporte cultural: 15K\n\n📆 Sábado de 31 de Octubre\n🎺 Alex Rebambarambá\n🎟️ Aporte cultural: 20K\n\n⏳ Desde las 4 PM\n📍 Carrera 11 #70A-22\n📲 Reserva por WhatsApp: 313 830 8844",
+        "preview": null,
+        "slides": 4
+      }
+    ],
+    "bar": true
   },
   {
     "title": "Salsa Básica",
@@ -13074,6 +13580,47 @@
     "bar": false
   },
   {
+    "title": "IX Encuentro de Escuelas y Academias de Ballet 2026",
+    "event_type": "show",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "Gerencia de Danza de Idartes",
+    "venue": "Teatro Municipal Jorge Eliécer Gaitán",
+    "address": "Carrera 7 No. 22-47",
+    "area": null,
+    "date": "2026-11-01",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "15:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "presentaciones de ballet"
+    ],
+    "contact": "@danzaenlaciudad",
+    "confidence": "high",
+    "doubts": [],
+    "id": "ix-encuentro-de-escuelas-y-academias-de-ballet-1-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "17991728157075405",
+        "permalink": "https://www.instagram.com/p/De-HgLtJ90C/",
+        "media_type": "IMAGE",
+        "published": "2026-10-26T21:00:04+0000",
+        "flyer": "flyers/17991728157075405-0.webp",
+        "caption": "Llega el IX Encuentro de Escuelas y Academias de Ballet 2026 , un espacio donde el talento, la disciplina y la pasión por la danza se unen para celebrar la magia del ballet clásico, la danza neoclásica y moderna. 🩰\n\nOrganizado por la Gerencia de Danza de Idartes, este encuentro reúne a escuelas, academias y compañías que, a través de sus procesos formativos y artísticos, dan vida a propuestas escénicas y hacen brillar el talento dancístico de nuestra ciudad. 👏\n\n🌟 Una oportunidad para reconocer a nuevas promesas y agrupaciones consolidadas, fortalecer los procesos de formación y celebrar el ballet como una expresión artística fundamental en el panorama cultural de Bogotá. \n\n#EncuentroDeBallet2026 #BalletEnBogotá #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "La Miniteca de El Panteón de la Salsa Vol. 14",
     "event_type": "party",
     "is_recurring": false,
@@ -13558,10 +14105,23 @@
     ],
     "contact": "3112725216",
     "confidence": "high",
-    "doubts": [],
+    "doubts": [
+      "sin estilos especificados",
+      "sin precio"
+    ],
     "id": "audiciones-compania-de-baile-paso-latino-2026-7-nov",
     "account": "academiadebailepasolatino",
     "media": [
+      {
+        "post_id": "17972523924188132",
+        "permalink": "https://www.instagram.com/reel/De-i47-qniP/",
+        "media_type": "VIDEO",
+        "published": "2026-10-27T02:34:48+0000",
+        "flyer": "flyers/17972523924188132-0.webp",
+        "caption": "Se acercan nuestras audiciones, no lo olvides próximo 7 de noviembre, 6 pm. Pregunta por más info.  #pasolatinoforce #pasolatinofamily",
+        "preview": "previews/17972523924188132-0.mp4",
+        "slides": null
+      },
       {
         "post_id": "18643381009044041",
         "permalink": "https://www.instagram.com/reel/DersGs_KKis/",
@@ -13617,6 +14177,16 @@
     "id": "segundo-aniversario-ebi-dance-7-nov",
     "account": "ebi_dancecompany",
     "media": [
+      {
+        "post_id": "17908373889670247",
+        "permalink": "https://www.instagram.com/p/De-vReRtVRO/",
+        "media_type": "IMAGE",
+        "published": "2026-10-27T02:02:34+0000",
+        "flyer": "flyers/17908373889670247-0.webp",
+        "caption": "Show 3 | Pareja Máster 🔥\nHoy presentamos a una pareja que llevará su talento y experiencia al escenario de nuestra celebración.\n\n🕺carlos.hernandez_20 \n💃aluque20 \n\n#salsa #salsacasino #pareja #aniversario #timba",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18358337593175032",
         "permalink": "https://www.instagram.com/p/De5jb_2NcEU/",
@@ -14145,6 +14715,16 @@
     "id": "jack-and-jill-20-nov",
     "account": "jackandjilloficial",
     "media": [
+      {
+        "post_id": "18116778422085156",
+        "permalink": "https://www.instagram.com/p/De-tp7rSZxg/",
+        "media_type": "IMAGE",
+        "published": "2026-10-27T01:49:15+0000",
+        "flyer": "flyers/18116778422085156-0.webp",
+        "caption": "Dj Camilo Barreto ✨\n\nEstará acompañándonos en esta edición 💛",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18064017230790640",
         "permalink": "https://www.instagram.com/p/DexVRwESxSD/",
