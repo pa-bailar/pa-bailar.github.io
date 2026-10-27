@@ -10712,7 +10712,7 @@
     "end_time": null,
     "prices": [
       {
-        "label": "No Cover",
+        "label": "Cover",
         "amount_cop": 0,
         "condition": null
       }
@@ -10733,6 +10733,26 @@
     "id": "fiesta-de-antifaz-30-oct",
     "account": "pachanga_y_pochola",
     "media": [
+      {
+        "post_id": "18142540198616198",
+        "permalink": "https://www.instagram.com/reel/De-ptQcxjue/",
+        "media_type": "VIDEO",
+        "published": "2026-10-27T01:19:53+0000",
+        "flyer": "flyers/18142540198616198-0.webp",
+        "caption": "¡Noche de Salsa Tenebrosa! 🕸️🎃 \n\nEste 30 de Octubre ven con tu mejor antifaz y máscara \n\nCOVER FREE!!!!!!\n🎶 Tendremos nuestra orquesta ns.orquesta \n\nReservas: +57 313 2891788\n\nEtiqueta a tu parche para que no se lo pierdan 👇",
+        "preview": "previews/18142540198616198-0.mp4",
+        "slides": null
+      },
+      {
+        "post_id": "18090570965265390",
+        "permalink": "https://www.instagram.com/reel/De9n6V3RPF1/",
+        "media_type": "VIDEO",
+        "published": "2026-10-26T15:39:52+0000",
+        "flyer": "flyers/18090570965265390-0.webp",
+        "caption": "Este 30 de octubre viviremos una noche de salsa tenebrosa, al ritmo de la orquesta ns.orquesta ✨🥳🥳🥳\n\nSI RESERVAS ANTES DEL MIÉRCOLES 28 DE OCTUBRE TENDRÁS DESCUENTO EN EL COVER… 🥳🥳🥳🤩🧙🏽‍♀️🧙🏽‍♀️🧙🏽‍♀️\n\nESCRÍBENOS +57 313 2891788 😜😜😝😛",
+        "preview": "previews/18090570965265390-0.mp4",
+        "slides": null
+      },
       {
         "post_id": "18091859585205977",
         "permalink": "https://www.instagram.com/reel/Dek2kD7R28O/",
@@ -13295,12 +13315,12 @@
     "date": "2026-10-31",
     "end_date": null,
     "sessions": null,
-    "weekday": "sábado",
+    "weekday": "s1bado",
     "start_time": "20:30",
     "end_time": null,
     "prices": [
       {
-        "label": "No cover",
+        "label": "No Cover",
         "amount_cop": 0,
         "condition": null
       }
@@ -13321,6 +13341,16 @@
     "id": "quiero-cumbia-para-mi-fiesta-de-disfraces-31-oct",
     "account": "restaurantecasadecitas",
     "media": [
+      {
+        "post_id": "18435589861199911",
+        "permalink": "https://www.instagram.com/p/De-1RkstLYj/",
+        "media_type": "IMAGE",
+        "published": "2026-10-27T02:55:00+0000",
+        "flyer": "flyers/18435589861199911-0.webp",
+        "caption": "👻 Noche de Halloween 🎃 \nFiesta de disfraces con música colombiana en Casa de citas 💃🏽🎶🍷\nLes esperamos este sábado 31 de octubre para una noche de gozadera. NO COVER.",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18108423959218539",
         "permalink": "https://www.instagram.com/p/De0Uhovt_Xq/",
