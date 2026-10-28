@@ -26,8 +26,8 @@ export interface ListChoices {
   query: string;
 }
 
-export function listChoices(state: Pick<AppState, "types" | "styles" | "dates" | "hideBars" | "query">): ListChoices {
-  return { filters: JSON.stringify([state.types, state.styles, state.dates, state.hideBars]), query: state.query.trim() };
+export function listChoices(state: Pick<AppState, "types" | "styles" | "dates" | "onlyFree" | "hideBars" | "query">): ListChoices {
+  return { filters: JSON.stringify([state.types, state.styles, state.dates, state.onlyFree, state.hideBars]), query: state.query.trim() };
 }
 
 /**
