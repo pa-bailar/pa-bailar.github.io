@@ -31,7 +31,7 @@
 // viewer); the image stage beside the details is theirs (its ← → go through the photos first). A card's ‹ › stay the
 // mouse's and Tab's: ← → never mean two things.
 
-import { CARD_LINK, type CardGap, cardLink, VIEW_ON_SCREEN } from "../lib/cards";
+import { CARD_LINK, type CardGap, cardLink, SCHEDULE, VIEW_ON_SCREEN } from "../lib/cards";
 import { settleGlides } from "../lib/glide";
 import { inSight, room } from "./pinnedBars";
 import { initTabOrder } from "./tabOrder";
@@ -94,14 +94,10 @@ export function stepStop(boxes: Box[], card: (number | null)[], from: number, di
 
 /** The boxes and schedules stepStop works on, for the stops `list` on screen. */
 function stepBetween(list: HTMLElement[], from: number, direction: Direction): number | null {
-  const schedules = new Map<Element, number>();
-  const card = list.map((stop) => {
-    const schedule = stop.closest("[data-flyer-card]");
-    if (!schedule) return null;
-    if (!schedules.has(schedule)) schedules.set(schedule, schedules.size);
-    return schedules.get(schedule)!;
-  });
-  const boxes = list.map((stop) => (stop.closest("[data-flyer-card]") ?? stop).getBoundingClientRect());
+  const outer = list.map((stop) => stop.closest(SCHEDULE));
+  const numbers = new Map([...new Set(outer.filter((schedule) => schedule !== null))].map((schedule, n) => [schedule, n]));
+  const card = outer.map((schedule) => (schedule ? (numbers.get(schedule) ?? null) : null));
+  const boxes = list.map((stop, i) => (outer[i] ?? stop).getBoundingClientRect());
   return stepStop(boxes, card, from, direction);
 }
 

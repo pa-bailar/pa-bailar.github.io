@@ -12,7 +12,7 @@
 // Tried first and dropped: the list as one Tab stop (a roving tabindex: Tab skipped every other event, straight to the
 // footer) and every control of every card (about 124 stops, and Tab disagreed with the arrows).
 
-import { CARD_LINK, type CardGap, cardLink, cardOnScreen, VIEW_ON_SCREEN } from "../lib/cards";
+import { CARD_LINK, type CardGap, cardLink, cardOnScreen, SCHEDULE, VIEW_ON_SCREEN } from "../lib/cards";
 import { settleGlides } from "../lib/glide";
 
 interface TabHooks {
@@ -51,7 +51,7 @@ export function initTabOrder(hooks: TabHooks) {
    * schedule (`data-flyer-card`) is one stop per row: its own controls go too, its rows' links stay.
    */
   function applyTabOrder() {
-    for (const card of document.querySelectorAll<HTMLElement>(`${VIEW_ON_SCREEN} [data-event-card], ${VIEW_ON_SCREEN} [data-flyer-card]`)) {
+    for (const card of document.querySelectorAll<HTMLElement>(`${VIEW_ON_SCREEN} [data-event-card], ${VIEW_ON_SCREEN} ${SCHEDULE}`)) {
       for (const control of controlsOf(card)) control.tabIndex = -1;
     }
   }
