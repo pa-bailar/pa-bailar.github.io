@@ -232,7 +232,7 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves: the pa
   them apart), and so do a series and an event over several days. With a filter on, only the rows that match are
   listed (the flyer still shows the whole day, as on Instagram); a schedule left with one row is an ordinary card. The
   list, the calendar's day and Guardados all do it (`lib/flyerGroups.ts`). On a narrow card (wide screens with the
-  side panel open) the time goes over the title.
+  side panel open) the time goes over the title; with no time on any row (a bar's two concerts), there's no time column.
 - **A workshop series** (one program on separate dated sessions, `DATA.md`) is one card, listed under its next session's
   day (among that day's events by its type and time) and moving on as each session passes; it leaves the list after the last.
   Its card says the next session (`cardWhenLabel`), its sticker shows that session's day:

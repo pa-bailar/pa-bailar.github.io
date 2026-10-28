@@ -249,7 +249,7 @@ const endSearch: ControlHandler = () => {
 /** "Ver los 23 eventos": the period opens whole; focus moves to its first new event. */
 const showPeriod: ControlHandler = (key, control) => {
   const section = control.closest<HTMLElement>(".agenda-group");
-  const before = section?.querySelectorAll(".event-card").length ?? 0;
+  const before = section?.querySelectorAll(CARD_LINK).length ?? 0; // links, as below: a schedule has one per row
   goTo("period", () => {
     if (showWholePeriod(key)) render();
   });

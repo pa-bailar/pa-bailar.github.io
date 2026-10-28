@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { cardItems, flyerKey, scheduleTitles } from "../src/scripts/lib/flyerGroups";
-import { eventCardGridHtml, rowPlace, schedulePrice } from "../src/scripts/views/eventCard";
+import { cardItems, flyerKey, rowPlace, schedulePrice, scheduleTitles } from "../src/scripts/lib/flyerGroups";
+import { eventCardGridHtml } from "../src/scripts/views/eventCard";
 import { formatMoney } from "../src/scripts/lib/format";
 import type { DanceEvent } from "../src/scripts/types";
 import { event, seriesEvent } from "./factories";
@@ -71,6 +71,12 @@ describe("a schedule's heading and rows", () => {
     expect(scheduleTitles(["Taller - Salsa", "taller – Bachata"])).toEqual({ heading: "Taller", rows: ["Salsa", "Bachata"] });
   });
 
+  it("a time's colon is no separator: \"Clase 10:00 Salsa\" isn't \"Clase 10\" and \"00 Salsa\" (bug-squash, 28 Oct)", () => {
+    const titles = ["Clase 10:00 Salsa", "Clase 10:00 Bachata"];
+    expect(scheduleTitles(titles)).toEqual({ heading: null, rows: titles });
+    expect(scheduleTitles(["Social 8:30: Salsa", "Social 8:30: Bachata"]).heading).toBe("Social 8:30");
+  });
+
   it("titles that share nothing stay whole, with no heading", () => {
     const titles = ["Yoga", "Bachata Básica", "Salsa Básica"];
     expect(scheduleTitles(titles)).toEqual({ heading: null, rows: titles });
@@ -132,6 +138,13 @@ describe("the schedule card", () => {
     ]);
     expect(night).not.toContain('class="tag-type ');
     expect(night.match(/class="schedule__note">(Competencia|Social)</g)).toHaveLength(2);
+  });
+
+  it("with no time on any row (a bar's two concerts), no empty time column (bug-squash, 28 Oct)", () => {
+    const concert = (id: string) => onFlyer("p4", { id, title: id, date: "2026-10-31", start_time: null, event_type: "concert" });
+    const night = eventCardGridHtml([concert("charanga"), concert("son-capital")]);
+    expect(night).toContain('class="schedule schedule--untimed"');
+    expect(night).not.toContain("schedule__time");
   });
 
   it("says each row's place when they differ, and the shared one once otherwise", () => {

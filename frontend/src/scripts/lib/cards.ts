@@ -14,6 +14,9 @@ export const CARD_LINK = "a.event-card__hit";
  */
 export const FLYER_CARD = ".event-card";
 
+/** A flyer's schedule: the whole card, whose rows are each an event's card. */
+export const SCHEDULE = "[data-flyer-card]";
+
 /** The link of the card `element` is in (or is), if any: in a schedule outside its rows (the flyer, "Detalles"), the first row's. */
 export function cardLink(element: Element | null | undefined): HTMLAnchorElement | null {
   const card = element?.closest("[data-event-card]") ?? element?.closest(FLYER_CARD);

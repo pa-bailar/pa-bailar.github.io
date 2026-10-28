@@ -25,7 +25,6 @@ import {
   cardDayLabel,
   cardWhenLabel,
   eventCountLabel,
-  formatMoney,
   formatTime,
   placeLabel,
   priceSummary,
@@ -33,8 +32,7 @@ import {
   stylesLabel,
   typeLabel,
 } from "../lib/format";
-import { cardItems, scheduleTitles } from "../lib/flyerGroups";
-import { todayIso } from "../lib/dates";
+import { cardItems, rowPlace, schedulePrice, scheduleTitles, shared } from "../lib/flyerGroups";
 import { accountLinkHtml } from "../lib/accountLink";
 import { eventPath, flyerUrl, mainMedia, previewUrl } from "../lib/links";
 import { saveButtonHtml } from "./saveButton";
@@ -215,39 +213,6 @@ function eventCardHtml(event: DanceEvent, listed?: string): string {
     </article>`;
 }
 
-/** What every one of `values` says, or "" when they differ. */
-const shared = (values: string[]) => (values.every((value) => value === values[0]) ? (values[0] ?? "") : "");
-
-/** The parts of a place, from the one that best tells two apart: the venue ("Sede 109"), the area, the address. */
-const PLACE_PARTS: ((event: DanceEvent) => string)[] = [
-  (event) => (event.venue && event.venue !== event.organizer ? event.venue : ""),
-  (event) => event.area ?? "",
-  (event) => event.address ?? "",
-];
-
-/**
- * How a schedule's row says its place when the rows' places differ: only the part that differs ("Fontibón", "Norte";
- * "Sede 109", "Sede 127"), not the whole line, which wrapped on a phone. The whole place in the details.
- */
-export function rowPlace(events: DanceEvent[]): (event: DanceEvent) => string {
-  return PLACE_PARTS.find((part) => new Set(events.map(part)).size > 1) ?? placeLabel;
-}
-
-/**
- * A schedule's price at the card's foot: the one they all have, else "Desde" the lowest of all ("" when the lowest is
- * free or none has a price: the rows' details say theirs).
- */
-export function schedulePrice(events: DanceEvent[]): string {
-  const summaries = events.map(priceSummary);
-  if (summaries.every(Boolean)) {
-    const same = shared(summaries);
-    if (same) return same;
-  }
-  const amounts = events.flatMap((event) => event.prices.map((price) => price.amount_cop));
-  const lowest = amounts.length ? Math.min(...amounts) : 0;
-  return lowest > 0 ? `Desde ${formatMoney(lowest)}` : "";
-}
-
 /** A schedule's action row: "Detalles ›" (its first event) and the carousel's dots. Sharing and Guardar are each row's. */
 function scheduleActionsHtml(first: DanceEvent, slides: number): string {
   return `
@@ -270,9 +235,10 @@ function scheduleCardHtml(events: DanceEvent[], listed?: string): string {
   const titles = scheduleTitles(events.map((event) => event.title));
   const count = eventCountLabel(events.length);
   const heading = titles.heading ?? count;
-  const places = events.map(placeLabel);
-  const place = shared(places);
+  const place = shared(events.map(placeLabel));
   const ownPlace = rowPlace(events);
+  // No time on any row (a bar's two concerts): no time column, not an empty one pushing the titles right.
+  const timed = events.some((event) => event.start_time);
   const price = schedulePrice(events);
   const styles = stylesLabel([...new Set(events.flatMap((event) => event.styles))], MAX_STYLES_ON_CARD);
   const rows = events
@@ -285,7 +251,7 @@ function scheduleCardHtml(events: DanceEvent[], listed?: string): string {
       const note = [types.length > 1 ? typeLabel(event.event_type) : "", place ? "" : ownPlace(event)].filter(Boolean).join(" · ");
       return `
           <li class="schedule__row" data-event-card="${escapeHtml(event.id)}">
-            <span class="schedule__time">${escapeHtml(time)}</span>
+            ${timed ? `<span class="schedule__time">${escapeHtml(time)}</span>` : ""}
             <a class="event-card__hit schedule__title" href="${escapeHtml(eventPath(event))}" data-event="${escapeHtml(event.id)}"
               aria-label="${escapeHtml(label)}">${escapeHtml(titles.rows[index]!)}</a>
             ${note ? `<span class="schedule__note">${escapeHtml(note)}</span>` : ""}
@@ -299,10 +265,10 @@ function scheduleCardHtml(events: DanceEvent[], listed?: string): string {
       ${media.html}
       ${scheduleActionsHtml(first, media.slides)}
       <div class="event-card__body">
-        <p class="event-card__time">${escapeHtml(cardDayLabel(listed ?? first.date, todayIso()))}</p>
+        <p class="event-card__time">${escapeHtml(cardDayLabel(listed ?? first.date))}</p>
         <h3 class="event-card__title">${escapeHtml(heading)}</h3>
         ${accountHtml(first)}
-        <ul class="schedule">${rows}</ul>
+        <ul class="schedule${timed ? "" : " schedule--untimed"}">${rows}</ul>
         ${place ? `<p class="event-card__meta">${escapeHtml(place)}</p>` : ""}
         ${footHtml(price, events.every(isFree), styles)}
       </div>

@@ -234,7 +234,7 @@ function multiDayWhenLabel(event: DanceEvent, today: string): string {
 }
 
 /** A day as a card says it: "Hoy", "Mañana", "Sábado" within a week, "Martes 20 oct." further away. */
-export function cardDayLabel(iso: string, today: string): string {
+export function cardDayLabel(iso: string, today = todayIso()): string {
   const days = daysBetween(today, iso);
   const date = parseIsoDate(iso);
   if (days === 0) return "Hoy";
