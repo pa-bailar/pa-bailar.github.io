@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { cardItems, flyerKey, scheduleTitles } from "../src/scripts/lib/flyerGroups";
-import { eventCardGridHtml, rowPlace, schedulePrice } from "../src/scripts/views/eventCard";
+import { cardItems, flyerKey, rowPlace, schedulePrice, scheduleTitles } from "../src/scripts/lib/flyerGroups";
+import { eventCardGridHtml } from "../src/scripts/views/eventCard";
 import { formatMoney } from "../src/scripts/lib/format";
 import type { DanceEvent } from "../src/scripts/types";
 import { event, seriesEvent } from "./factories";

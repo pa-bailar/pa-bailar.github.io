@@ -4,9 +4,11 @@
 // (views/eventCard.ts). Events of the same post on different days keep a card each: the day is what tells them apart.
 // Only plain one-day events are grouped: a workshop series or an event over several days says its own days on its card.
 // The list hands over the events it shows (already filtered: a row that doesn't match the filters isn't there).
+// Here: which events share a card, and what a schedule says (its heading, rows' titles and places, its price).
 
 import type { DanceEvent } from "../types";
 import { isMultiDay, isSeries } from "./dates";
+import { formatMoney, placeLabel, priceSummary } from "./format";
 import { mainMedia } from "./links";
 
 /** One card in a list: an event alone, or a flyer's events of one day (two or more). */
@@ -63,4 +65,37 @@ export function scheduleTitles(titles: string[]): { heading: string | null; rows
     head &&
     split.every((part) => part && part.tail && part.head.toLocaleLowerCase("es") === head.toLocaleLowerCase("es"));
   return shared ? { heading: head, rows: split.map((part) => part!.tail) } : { heading: null, rows: titles };
+}
+
+/** What every one of `values` says, or "" when they differ. */
+export const shared = (values: string[]) => (values.every((value) => value === values[0]) ? (values[0] ?? "") : "");
+
+/** The parts of a place, from the one that best tells two apart: the venue ("Sede 109"), the area, the address. */
+const PLACE_PARTS: ((event: DanceEvent) => string)[] = [
+  (event) => (event.venue && event.venue !== event.organizer ? event.venue : ""),
+  (event) => event.area ?? "",
+  (event) => event.address ?? "",
+];
+
+/**
+ * How a schedule's row says its place when the rows' places differ: only the part that differs ("Fontibón", "Norte";
+ * "Sede 109", "Sede 127"), not the whole line, which wrapped on a phone. The whole place in the details.
+ */
+export function rowPlace(events: DanceEvent[]): (event: DanceEvent) => string {
+  return PLACE_PARTS.find((part) => new Set(events.map(part)).size > 1) ?? placeLabel;
+}
+
+/**
+ * A schedule's price at the card's foot: the one they all have, else "Desde" the lowest of all ("" when the lowest is
+ * free or none has a price: the rows' details say theirs).
+ */
+export function schedulePrice(events: DanceEvent[]): string {
+  const summaries = events.map(priceSummary);
+  if (summaries.every(Boolean)) {
+    const same = shared(summaries);
+    if (same) return same;
+  }
+  const amounts = events.flatMap((event) => event.prices.map((price) => price.amount_cop));
+  const lowest = amounts.length ? Math.min(...amounts) : 0;
+  return lowest > 0 ? `Desde ${formatMoney(lowest)}` : "";
 }
