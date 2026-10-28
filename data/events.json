@@ -10195,6 +10195,51 @@
     "bar": true
   },
   {
+    "title": "Clases de salsa y solista en vivo",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Quema",
+    "venue": "Quema",
+    "address": null,
+    "area": null,
+    "date": "2026-10-28",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "miércoles",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "clases de salsa",
+      "solista en vivo"
+    ],
+    "contact": "@quemaquequema",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio",
+      "sin precio"
+    ],
+    "id": "clases-de-salsa-y-solista-en-vivo-28-oct",
+    "account": "quemaquequema",
+    "media": [
+      {
+        "post_id": "18124365596318990",
+        "permalink": "https://www.instagram.com/reel/DfBDXM1Pinq/",
+        "media_type": "VIDEO",
+        "published": "2026-10-27T23:36:52+0000",
+        "flyer": "flyers/18124365596318990-0.webp",
+        "caption": "¡Mañana se baila! 💃 Clases de salsa y solista en vivo.\n\nVen a aprender, a soltar los pies y a disfrutar de buena música 🎶\n\n📅 Miércoles 28 de octubre\n🕺 Puedes venir con o sin pareja\n🥘 Cena Cocina de las Costas\n\nBailemos salsa al estilo de Roberto Roena y Rafael Felo Bacallao.\nNos vemos en Quema 🔥\n\n#restaurantequemaquequema #clasesdesalsa #solistaenvivo #bailarsalsa #robertoroena",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Semana Ryan: Coreografía con Dani Almanza",
     "event_type": "workshop",
     "is_recurring": false,
@@ -10529,11 +10574,16 @@
     "sessions": null,
     "weekday": "jueves",
     "start_time": "20:00",
-    "end_time": null,
+    "end_time": "21:30",
     "prices": [
       {
-        "label": "2x1 Clases individuales",
-        "amount_cop": 50000,
+        "label": "Members Bureo",
+        "amount_cop": 60000,
+        "condition": null
+      },
+      {
+        "label": "Externos",
+        "amount_cop": 70000,
         "condition": null
       }
     ],
@@ -10552,6 +10602,16 @@
     "id": "semana-ryan-heels-con-maju-pardo-29-oct",
     "account": "bureodancestudio",
     "media": [
+      {
+        "post_id": "18027253727876420",
+        "permalink": "https://www.instagram.com/p/DfAr_5LH--S/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-27T20:12:23+0000",
+        "flyer": "flyers/18027253727876420-0.webp",
+        "caption": "❤️‍🔥 BOGOTÁ, PREPÁRATE PARA BAILAR CON ARIANA. arianadraganoiu \n\nActualmente hace parte de la gira de Beéle y ha trabajado en escenarios y proyectos junto a grandes artistas de la industria como Maluma, Quevedo, Emilia Mernes, entre otros. 🇪🇸✨\n\nAhora llega a Bureo Dance Studio para compartir su estilo, energía y experiencia en una masterclass de coreografía que no te puedes perder.\n\n📅 Jueves 29 de octubre\n⏰ 8:00 p. m. – 9:30 p. m.\n📍 Bureo Dance Studio sede 109 \n\n🎟️ Inversión:\n• Members Bureo: $60.000\n• Externos: $70.000\n\n⚡ Cupos limitados. Reserva tu lugar y vive esta experiencia con una bailarina que está llevando su talento a grandes escenarios internacionales.\n\nNos vemos en el salón. 🔥",
+        "preview": null,
+        "slides": 2
+      },
       {
         "post_id": "18109115036209896",
         "permalink": "https://www.instagram.com/p/De-L6a-krDg/",
@@ -11828,7 +11888,7 @@
     ],
     "organizer": "La Diez Luxury",
     "venue": "La Diez Luxury",
-    "address": null,
+    "address": "Outlets de las Américas",
     "area": "Outlets de las Américas",
     "date": "2026-10-31",
     "end_date": null,
@@ -11852,6 +11912,16 @@
     "id": "un-halloween-de-pelicula-31-oct",
     "account": "ladiezluxury_outlet",
     "media": [
+      {
+        "post_id": "17940706092390244",
+        "permalink": "https://www.instagram.com/reel/DfARjjKM4sv/",
+        "media_type": "VIDEO",
+        "published": "2026-10-27T16:22:54+0000",
+        "flyer": "flyers/17940706092390244-0.webp",
+        "caption": "🎬👻 ¡Este Halloween, tú eres protagonista!\n\nEl sábado 31 de octubre, los personajes salen de la pantalla para tomarse La Diez Luxury. 🕷️🔥\n\n🎭 Ven disfrazado de tu personaje de película favorito y participa por premios en efectivo para los mejores disfraces. 💸🏆\n\nUna noche de película merece un elenco completo… etiqueta a quienes vienen contigo. 👇🍻\n\n📍 La Diez Luxury · Outlets de las Américas, Bogotá.\n\n#halloweenbogota #ladiezluxury #halloweendepelícula #fiestadedisfraces",
+        "preview": "previews/17940706092390244-0.mp4",
+        "slides": null
+      },
       {
         "post_id": "17864341272692986",
         "permalink": "https://www.instagram.com/reel/De18t1eMlvs/",
@@ -12984,6 +13054,26 @@
         "published": "2026-09-03T16:49:31+0000",
         "flyer": "flyers/18018174977930391-0.webp",
         "caption": "Ricardo y Laura ✨\n\nLos reyes del BachaTango dicen presente en nuestro aniversario 🥳🥳🥳🥳 prepárate para compartir y aprender mucho de esta pareja y de todos los artistas invitados\n\n¿Ya tienes tu boleta? No dejes que te lo cuenten\n\nReserva en nuestras Webs:\ndistrito-social-academy.com/eventos\nappdanza.com",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18157551946530949",
+        "permalink": "https://www.instagram.com/reel/DfA4U30vYbZ/",
+        "media_type": "VIDEO",
+        "published": "2026-10-27T22:01:05+0000",
+        "flyer": "flyers/18157551946530949-0.webp",
+        "caption": "Wilson BML ✨\r\n\r\n¿Están listos para ver cómo se prende la pista de baile?\r\n\r\nLos esperamos este 31 Octubre, 1 y 2 de Noviembre en el Festival de Aniversario de Distrito Social dónde tendremos nuestra gran final 🥳🥳🥳\r\n\r\n14 Finalistas\r\n7 Leaders\r\n7 Followers\r\n\r\nNo te pierdas la mejor final de Jack and Jill 🤩🤩🤩\r\n\r\nReserva en nuestras Webs:\r\n\r\ndistrito-social-academy.com/eventos\r\nappdanza.com",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18109601986924948",
+        "permalink": "https://www.instagram.com/reel/DfABbZlI8k9/",
+        "media_type": "VIDEO",
+        "published": "2026-10-27T14:01:23+0000",
+        "flyer": "flyers/18109601986924948-0.webp",
+        "caption": "Laura BML ✨\r\n\r\n¿Están listos para ver cómo se prende la pista de baile?\r\n\r\nLos esperamos este 31 Octubre, 1 y 2 de Noviembre en el Festival de Aniversario de Distrito Social dónde tendremos nuestra gran final 🥳🥳🥳\r\n\r\n14 Finalistas\r\n7 Leaders\r\n7 Followers\r\n\r\nNo te pierdas la mejor final de Jack and Jill 🤩🤩🤩\r\n\r\nReserva en nuestras Webs:\r\n\r\ndistrito-social-academy.com/eventos\r\nappdanza.com",
         "preview": null,
         "slides": null
       },
