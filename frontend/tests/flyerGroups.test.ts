@@ -140,6 +140,13 @@ describe("the schedule card", () => {
     expect(night.match(/class="schedule__note">(Competencia|Social)</g)).toHaveLength(2);
   });
 
+  it("with no time on any row (a bar's two concerts), no empty time column (bug-squash, 28 Oct)", () => {
+    const concert = (id: string) => onFlyer("p4", { id, title: id, date: "2026-10-31", start_time: null, event_type: "concert" });
+    const night = eventCardGridHtml([concert("charanga"), concert("son-capital")]);
+    expect(night).toContain('class="schedule schedule--untimed"');
+    expect(night).not.toContain("schedule__time");
+  });
+
   it("says each row's place when they differ, and the shared one once otherwise", () => {
     const at = (id: string, area: string) =>
       onFlyer("p3", { id, title: id, date: "2026-10-31", start_time: "10:00", area, venue: null, address: null });

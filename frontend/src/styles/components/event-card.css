@@ -885,6 +885,19 @@
   font-weight: var(--weight-bold);
 }
 
+/* No time on any row: no time column. */
+.schedule--untimed .schedule__row {
+  grid-template-columns: 1fr auto;
+}
+
+.schedule--untimed .schedule__note {
+  grid-column: 1;
+}
+
+.schedule--untimed .schedule__row .save-button {
+  grid-column: 2;
+}
+
 /* What differs between the rows (the type, the place), under each row's title. */
 .schedule__note {
   grid-column: 2;

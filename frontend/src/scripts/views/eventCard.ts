@@ -273,6 +273,8 @@ function scheduleCardHtml(events: DanceEvent[], listed?: string): string {
   const places = events.map(placeLabel);
   const place = shared(places);
   const ownPlace = rowPlace(events);
+  // No time on any row (a bar's two concerts): no time column, not an empty one pushing the titles right.
+  const timed = events.some((event) => event.start_time);
   const price = schedulePrice(events);
   const styles = stylesLabel([...new Set(events.flatMap((event) => event.styles))], MAX_STYLES_ON_CARD);
   const rows = events
@@ -285,7 +287,7 @@ function scheduleCardHtml(events: DanceEvent[], listed?: string): string {
       const note = [types.length > 1 ? typeLabel(event.event_type) : "", place ? "" : ownPlace(event)].filter(Boolean).join(" · ");
       return `
           <li class="schedule__row" data-event-card="${escapeHtml(event.id)}">
-            <span class="schedule__time">${escapeHtml(time)}</span>
+            ${timed ? `<span class="schedule__time">${escapeHtml(time)}</span>` : ""}
             <a class="event-card__hit schedule__title" href="${escapeHtml(eventPath(event))}" data-event="${escapeHtml(event.id)}"
               aria-label="${escapeHtml(label)}">${escapeHtml(titles.rows[index]!)}</a>
             ${note ? `<span class="schedule__note">${escapeHtml(note)}</span>` : ""}
@@ -302,7 +304,7 @@ function scheduleCardHtml(events: DanceEvent[], listed?: string): string {
         <p class="event-card__time">${escapeHtml(cardDayLabel(listed ?? first.date, todayIso()))}</p>
         <h3 class="event-card__title">${escapeHtml(heading)}</h3>
         ${accountHtml(first)}
-        <ul class="schedule">${rows}</ul>
+        <ul class="schedule${timed ? "" : " schedule--untimed"}">${rows}</ul>
         ${place ? `<p class="event-card__meta">${escapeHtml(place)}</p>` : ""}
         ${footHtml(price, events.every(isFree), styles)}
       </div>
