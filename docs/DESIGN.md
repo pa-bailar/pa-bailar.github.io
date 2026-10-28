@@ -592,7 +592,7 @@ the list stays short there and summarizes what's further away (`scripts/views/up
   - **A day tapped in the calendar says so where the list starts:** its heading ("Miércoles, 14 de octubre") has the count under it ("3 eventos"; an empty day says "No hay eventos este día.") and glows briefly when the day changes (not with reduced motion). Screen readers hear "Miércoles, 14 de octubre: 3 eventos" (`#results-status`).
 - **Filter sheet** (`FilterSheet.astro`, `filter-sheet.css`), from Filtros in the bar at the bottom:
   - **Head:** "Filtros", "Limpiar" (only enabled with something to clear) and ×.
-  - **Groups:** **Fecha** · *elige una o varias* (every period and month), **Tipo de evento** (several too), **Ritmo** · *elige uno o varios* (under their families, see "Filters"). Each option with its count ("Noviembre 2"); the ones with nothing to show dimmed. First, above them, the "Ocultar eventos de bares" switch (see "Filters", "Hiding the bars").
+  - **Groups:** **Fecha** · *elige una o varias* (every period and month), **Tipo de evento** (several too), **Ritmo** · *elige uno o varios* (under their families, see "Filters"). Each option with its count ("Noviembre 2"); the ones with nothing to show dimmed. First, above them, the "Solo eventos gratis" and "Ocultar eventos de bares" switches (see "Filters", "Gratis" and "Hiding the bars").
   - **"Ver 12 eventos"** stays at the bottom (the primary button): "Ver 1 evento", or, disabled, what to change:
     "Sin eventos: cambia los filtros", or "Sin eventos: cambia la búsqueda" when the search alone finds nothing (no
     filter would help; the bug hunt of 7 Oct 2026: it blamed the filters), or just "Sin eventos" with no search in a
@@ -659,6 +659,14 @@ screens in the toolbar's pills and their panels:
 - **What's chosen, at a glance:** under the bar, only while filtering, "**12 eventos** · Finde, Salsa" (cut with "…"
   when long) and "× Limpiar" (named "Limpiar filtros" for screen readers). The count is also said politely to screen
   readers after each change (`#results-status`). In the calendar it reads "5 eventos en octubre · Salsa".
+- **Gratis** (the owner, 28 Oct 2026): only the free events, those every price of which is $0 (`isFree`, the same rule
+  as the cards' green "Gratis"; an event with no price known isn't free). A filter like the types and rhythms: it goes
+  with the others (AND), the others count against it (its count, dimmed at none), it counts one on Filtros' badge, it's
+  a removable chip while on ("Gratis ×", said "Solo eventos gratis"), "Limpiar" clears it, and it **isn't remembered**
+  (hiding the bars is a standing preference; "Gratis" is a search for tonight).
+  - **The phone bar:** a "Gratis" chip at the end of the row, after the types and a divider (it isn't a type).
+  - **In the sheet:** a switch, **Solo eventos gratis**, first, above the bars' (`freeSwitchHtml`).
+  - **Wide screens:** a "Gratis" toggle chip after the pills, before "Ocultar bares".
 - **Hiding the bars** (the owner, 5 October 2026). Bars and clubs open every week; the site lists only their special
   nights (`bar: true`, `DATA.md`), and **shows them by default**. Visitors who only want academies' events can hide them:
   - **In the sheet:** a switch **first**, one compact row (the owner: near the top, taking little room): **Ocultar

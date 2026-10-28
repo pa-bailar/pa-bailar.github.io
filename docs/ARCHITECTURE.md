@@ -399,6 +399,8 @@ flowchart TD
     shown" below). Upcoming list only: the calendar ignores them.
   - **Types** (`types`, several): social, workshop…
   - **Rhythms** (`styles`, several): filtering by a parent rhythm ("salsa") also matches its variants ("salsa caleña").
+  - **Gratis** (`onlyFree`, the group `free`, off; not remembered): only events every price of which is $0 (`isFree`, the
+    cards' "Gratis" rule).
   - **Bars** (`hideBars`, off by default): while on, no event with `bar: true` (`isBar`, `matchesBars`). Not a group of
     options, so every count leaves the bars out while they're hidden; the model names it among the choices in use as
     "Sin bares" (`HIDDEN_BARS`, last), and its controls carry `data-filter="bars"`. **Remembered** in this browser (key
@@ -812,7 +814,7 @@ from under one gets its entry when the overlay closes (pushed over the overlay's
 | `components/HomePage.astro`, `lib/viewTitles.ts` | The app's page, for each address (`/`, `/calendario/`, `/guardados/`, by its `view`); each view's title and description, for the page's head and the tab's title when the view changes |
 | `lib/savedMove.ts`, `views/savedMoveView.ts` | iPhone and iPad: Safari's saves to the installed app, by copy and paste (where it applies, the link with the ids, reading it back) |
 | `views/savedView.ts` | Guardados: the saved events to come by period, the past ones folded, the empty states (`savedLists`, `emptySavedHtml`, `renderSavedView`) |
-| `lib/filterModel.ts` | The filters' model, pure: options, counts, dimmed, the rhythms by family (`styleGroups`), the bar's chips, "Cuándo" (`whenModel`), the toolbar's pills (`filterPills`), what's applied, the badge, the line (`summaryLine`), the sheet's button (`resultsButtonLabel`, from what the search alone finds: `searched`), whether the search or the filters emptied a view (`searchIsWhy`: the empty list's and the empty day's words), stale dates; a view with no event shows the main types (`MAIN_TYPES`) |
+| `lib/filterModel.ts` | The filters' model, pure: options, counts, dimmed ("Gratis" too: `free`, `FREE_FILTER`), the rhythms by family (`styleGroups`), the bar's chips, "Cuándo" (`whenModel`), the toolbar's pills (`filterPills`), what's applied, the badge, the line (`summaryLine`), the sheet's button (`resultsButtonLabel`, from what the search alone finds: `searched`), whether the search or the filters emptied a view (`searchIsWhy`: the empty list's and the empty day's words), stale dates; a view with no event shows the main types (`MAIN_TYPES`) |
 | `views/filters.ts` | Drawing the model: the phone bar's chips and line, the filter sheet (Ritmo by family), the toolbar's pills, their panels' content and the status row (`pillHtml`, `panelHtml`, `statusHtml`); empty results |
 | `views/filterPanels.ts` | Wide screens: the toolbar's pills open their panels (Cuándo, Tipo, Ritmo): one at a time, each with its own history entry (an overlay, `menu: "panel-…"`), placed under its pill (`menuPlacement`), the keys (`nextOption`), closing (Escape, a click outside, back, a too-small screen) and the focus. A click outside is swallowed or held until the panel's back lands (`lib/outsideClick.ts`) |
 | `lib/styleFamilies.ts` | The rhythms' families (Salsa, Bachata, Urbanos, Otros): `STYLE_FAMILIES`, `familyOf`, `groupByFamily` (the sheet and the Ritmo panel); every rhythm of the data contract in one (`tests/styleFamilies.test.ts`) |
