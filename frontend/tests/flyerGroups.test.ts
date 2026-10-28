@@ -71,6 +71,12 @@ describe("a schedule's heading and rows", () => {
     expect(scheduleTitles(["Taller - Salsa", "taller – Bachata"])).toEqual({ heading: "Taller", rows: ["Salsa", "Bachata"] });
   });
 
+  it("a time's colon is no separator: \"Clase 10:00 Salsa\" isn't \"Clase 10\" and \"00 Salsa\" (bug-squash, 28 Oct)", () => {
+    const titles = ["Clase 10:00 Salsa", "Clase 10:00 Bachata"];
+    expect(scheduleTitles(titles)).toEqual({ heading: null, rows: titles });
+    expect(scheduleTitles(["Social 8:30: Salsa", "Social 8:30: Bachata"]).heading).toBe("Social 8:30");
+  });
+
   it("titles that share nothing stay whole, with no heading", () => {
     const titles = ["Yoga", "Bachata Básica", "Salsa Básica"];
     expect(scheduleTitles(titles)).toEqual({ heading: null, rows: titles });

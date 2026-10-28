@@ -42,8 +42,11 @@ export function cardItems(events: DanceEvent[], listedOn?: (event: DanceEvent) =
   );
 }
 
-/** What separates a title's shared part from each event's own: "Semana Ryan: Dancehall", "Taller - Salsa". */
-const SEPARATOR = /\s*(?::|\s[-–—]\s)\s*/;
+/**
+ * What separates a title's shared part from each event's own: "Semana Ryan: Dancehall", "Taller - Salsa". A colon only
+ * with a space after it: a time's ("Clase 10:00 Salsa") made the heading "Clase 10" and the rows "00 Salsa".
+ */
+const SEPARATOR = /\s*(?::\s|\s[-–—]\s)\s*/;
 
 /**
  * A schedule's heading and each row's title: the part every title shares before a separator ("Semana Ryan", rows
