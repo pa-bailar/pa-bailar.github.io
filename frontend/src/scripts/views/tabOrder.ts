@@ -46,9 +46,12 @@ const focusables = (root: Element): HTMLElement[] =>
 const openPanel = () => document.querySelector<HTMLDialogElement>("dialog#event-drawer[open]");
 
 export function initTabOrder(hooks: TabHooks) {
-  /** Each card is one Tab stop: its own controls leave the Tab order. Again after every redraw (new cards). */
+  /**
+   * Each card is one Tab stop: its own controls leave the Tab order. Again after every redraw (new cards). A flyer's
+   * schedule (`data-flyer-card`) is one stop per row: its own controls go too, its rows' links stay.
+   */
   function applyTabOrder() {
-    for (const card of document.querySelectorAll<HTMLElement>(`${VIEW_ON_SCREEN} [data-event-card]`)) {
+    for (const card of document.querySelectorAll<HTMLElement>(`${VIEW_ON_SCREEN} [data-event-card], ${VIEW_ON_SCREEN} [data-flyer-card]`)) {
       for (const control of controlsOf(card)) control.tabIndex = -1;
     }
   }

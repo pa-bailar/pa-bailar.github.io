@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import { firstInView, neighbor } from "../src/scripts/views/keyboardNav";
+import { firstInView, neighbor, stepStop } from "../src/scripts/views/keyboardNav";
 
 // Moving through the events with the keyboard (the owner, 5 October 2026): which card each arrow lands on.
 
@@ -30,6 +30,38 @@ describe("arrows between cards", () => {
     expect(neighbor(feed, 0, "down")).toBe(1);
     expect(neighbor(feed, 2, "up")).toBe(1);
     expect(neighbor(feed, 1, "right")).toBe(2);
+  });
+});
+
+describe("arrows with a flyer's schedule (one card, a row per event: 28 Oct 2026)", () => {
+  // The grid's first row: a card, a schedule of three rows (stops 1–3, each with the whole card's box), a card; then a
+  // card under each column.
+  const schedule = box(280, 0);
+  const boxes = [box(0, 0), schedule, schedule, schedule, box(560, 0), box(0, 640), box(280, 640), box(560, 640)];
+  const card = [null, 0, 0, 0, null, null, null, null];
+
+  it("↓ from the first column goes to the card below it, not into the schedule beside it (the site checks' arrows)", () => {
+    expect(stepStop(boxes, card, 0, "down")).toBe(5);
+  });
+
+  it("↑ ↓ go row by row inside the schedule, then on to the card below or above it", () => {
+    expect(stepStop(boxes, card, 1, "down")).toBe(2);
+    expect(stepStop(boxes, card, 2, "down")).toBe(3);
+    expect(stepStop(boxes, card, 3, "down")).toBe(6);
+    expect(stepStop(boxes, card, 2, "up")).toBe(1);
+    expect(stepStop(boxes, card, 1, "up")).toBeNull();
+  });
+
+  it("into a schedule: its first row going down, its last going up", () => {
+    const below = [box(280, 0), box(0, 640), box(280, 640), box(280, 640), box(560, 640)];
+    expect(stepStop(below, [null, null, 0, 0, null], 0, "down")).toBe(2);
+    expect(stepStop(boxes, card, 6, "up")).toBe(3);
+  });
+
+  it("← → keep reading order, row by row through the schedule", () => {
+    expect(stepStop(boxes, card, 0, "right")).toBe(1);
+    expect(stepStop(boxes, card, 3, "right")).toBe(4);
+    expect(stepStop(boxes, card, 4, "left")).toBe(3);
   });
 });
 

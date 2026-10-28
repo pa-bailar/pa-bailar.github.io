@@ -12,18 +12,29 @@
 // swipe must reach it) and is a target of its own (`data-card-image`, `data-event`): the details, or with a mouse on a
 // wide screen the lightbox (lightbox.ts).
 
+// A flyer's events of one day are one card instead (lib/flyerGroups.ts; the owner, 28 Oct 2026): the flyer once, then the
+// day's schedule, a row per event. Each row is that event's own card for everything that works by event (its link opens
+// its details and is its Tab stop, the arrows go row by row, the side panel outlines it, its own Guardar); the flyer and
+// "Detalles" open the first. The outer card has `data-flyer-card`, not `data-event-card`.
+
 import type { DanceEvent, EventMedia } from "../types";
 import { isVideoCover } from "../lib/mediaLabel";
 import { ICONS } from "../lib/icons";
 import { escapeHtml } from "../lib/dom";
 import {
+  cardDayLabel,
   cardWhenLabel,
+  eventCountLabel,
+  formatMoney,
+  formatTime,
   placeLabel,
   priceSummary,
   stickerDate,
   stylesLabel,
   typeLabel,
 } from "../lib/format";
+import { cardItems, scheduleTitles } from "../lib/flyerGroups";
+import { todayIso } from "../lib/dates";
 import { accountLinkHtml } from "../lib/accountLink";
 import { eventPath, flyerUrl, mainMedia, previewUrl } from "../lib/links";
 import { saveButtonHtml } from "./saveButton";
@@ -141,8 +152,11 @@ export function cardLabel(event: DanceEvent, when: string, place: string | null,
   return [event.title, when, typeLabel(event.event_type), place, price].filter(Boolean).join(", ");
 }
 
-/** An event's card. `listed`: the day it's listed under, when a series' card should say that session (stickerDate). */
-function eventCardHtml(event: DanceEvent, listed?: string): string {
+/**
+ * The card's image (the flyer, its carousel, or the placeholder) with what sits on it: the type's tag (`type`, or none),
+ * "Video" and the date sticker. Also the number of slides, for the dots in the action row.
+ */
+function mediaHtml(event: DanceEvent, type: DanceEvent["event_type"] | null, listed?: string): { html: string; slides: number } {
   const media = mainMedia(event);
   const flyer = flyerUrl(media);
   const ratio = flyer ? frameRatio(media) : null;
@@ -155,6 +169,31 @@ function eventCardHtml(event: DanceEvent, listed?: string): string {
         ? flyerHtml(event, media, flyer, clip)
         : `<div class="no-flyer" aria-hidden="true">Pa'</div>`;
   const sticker = stickerDate(event, undefined, listed);
+  const html = `
+      <div class="event-card__media"${ratio ? ` data-flyer-ratio="${ratio.toFixed(4)}"` : ""}>
+        ${image}
+        ${type ? `<span class="tag-type t-${escapeHtml(type)}">${typeLabel(type)}</span>` : ""}
+        ${slides.length <= 1 && isVideoCover(media) ? VIDEO_MARK : ""}
+        <span class="date-sticker${sticker.range ? " date-sticker--range" : ""}" aria-hidden="true"><b>${sticker.day}</b><small>${sticker.month}</small></span>
+      </div>`;
+  return { html, slides: slides.length };
+}
+
+/** The price and the styles at the card's foot, if any. */
+function footHtml(price: string, free: boolean, styles: string): string {
+  if (!price && !styles) return "";
+  return `<div class="event-card__foot">
+          ${price ? `<span class="event-card__price${free ? " event-card__price--free" : ""}">${escapeHtml(price)}</span>` : ""}
+          ${styles ? `<span class="style-list">${escapeHtml(styles)}</span>` : ""}
+        </div>`;
+}
+
+const accountHtml = (event: DanceEvent) =>
+  `<p class="event-card__meta">${accountLinkHtml(event.account, { className: "event-card__account", track: "perfil-tarjeta" })}</p>`;
+
+/** An event's card. `listed`: the day it's listed under, when a series' card should say that session (stickerDate). */
+function eventCardHtml(event: DanceEvent, listed?: string): string {
+  const media = mediaHtml(event, event.event_type, listed);
   const when = cardWhenLabel(event, undefined, listed);
   const place = placeLabel(event);
   const price = priceSummary(event);
@@ -162,37 +201,125 @@ function eventCardHtml(event: DanceEvent, listed?: string): string {
 
   return `
     <article class="event-card" data-event-card="${escapeHtml(event.id)}">
-      <div class="event-card__media"${ratio ? ` data-flyer-ratio="${ratio.toFixed(4)}"` : ""}>
-        ${image}
-        <span class="tag-type t-${escapeHtml(event.event_type)}">${typeLabel(event.event_type)}</span>
-        ${slides.length <= 1 && isVideoCover(media) ? VIDEO_MARK : ""}
-        <span class="date-sticker${sticker.range ? " date-sticker--range" : ""}" aria-hidden="true"><b>${sticker.day}</b><small>${sticker.month}</small></span>
-      </div>
-      ${actionsHtml(event, slides.length)}
+      ${media.html}
+      ${actionsHtml(event, media.slides)}
       <div class="event-card__body">
         <p class="event-card__time">${escapeHtml(when)}</p>
         <h3 class="event-card__title">
           <a class="event-card__hit" href="${escapeHtml(eventPath(event))}" data-event="${escapeHtml(event.id)}" aria-label="${escapeHtml(cardLabel(event, when, place, price))}">${escapeHtml(event.title)}</a>
         </h3>
-        <p class="event-card__meta">
-          ${accountLinkHtml(event.account, { className: "event-card__account", track: "perfil-tarjeta" })}
-        </p>
+        ${accountHtml(event)}
         ${place ? `<p class="event-card__meta">${escapeHtml(place)}</p>` : ""}
-        ${
-          price || styles
-            ? `<div class="event-card__foot">
-          ${price ? `<span class="event-card__price${isFree(event) ? " event-card__price--free" : ""}">${escapeHtml(price)}</span>` : ""}
-          ${styles ? `<span class="style-list">${escapeHtml(styles)}</span>` : ""}
-        </div>`
-            : ""
-        }
+        ${footHtml(price, isFree(event), styles)}
       </div>
     </article>`;
 }
 
-/** The cards of `events`; `listedOn`: the day each is listed under (a series' card then says that session). */
+/** What every one of `values` says, or "" when they differ. */
+const shared = (values: string[]) => (values.every((value) => value === values[0]) ? (values[0] ?? "") : "");
+
+/** The parts of a place, from the one that best tells two apart: the venue ("Sede 109"), the area, the address. */
+const PLACE_PARTS: ((event: DanceEvent) => string)[] = [
+  (event) => (event.venue && event.venue !== event.organizer ? event.venue : ""),
+  (event) => event.area ?? "",
+  (event) => event.address ?? "",
+];
+
+/**
+ * How a schedule's row says its place when the rows' places differ: only the part that differs ("Fontibón", "Norte";
+ * "Sede 109", "Sede 127"), not the whole line, which wrapped on a phone. The whole place in the details.
+ */
+export function rowPlace(events: DanceEvent[]): (event: DanceEvent) => string {
+  return PLACE_PARTS.find((part) => new Set(events.map(part)).size > 1) ?? placeLabel;
+}
+
+/**
+ * A schedule's price at the card's foot: the one they all have, else "Desde" the lowest of all ("" when the lowest is
+ * free or none has a price: the rows' details say theirs).
+ */
+export function schedulePrice(events: DanceEvent[]): string {
+  const summaries = events.map(priceSummary);
+  if (summaries.every(Boolean)) {
+    const same = shared(summaries);
+    if (same) return same;
+  }
+  const amounts = events.flatMap((event) => event.prices.map((price) => price.amount_cop));
+  const lowest = amounts.length ? Math.min(...amounts) : 0;
+  return lowest > 0 ? `Desde ${formatMoney(lowest)}` : "";
+}
+
+/** A schedule's action row: "Detalles ›" (its first event) and the carousel's dots. Sharing and Guardar are each row's. */
+function scheduleActionsHtml(first: DanceEvent, slides: number): string {
+  return `
+    <div class="event-card__actions">
+      <button class="event-card__details" type="button" data-event="${escapeHtml(first.id)}" data-source="boton"
+        aria-label="Detalles: ${escapeHtml(first.title)}">Detalles${ICONS.chevronRight}</button>
+      ${slides > 1 ? dotsHtml(slides) : ""}
+    </div>`;
+}
+
+/**
+ * A flyer's events of one day (two or more, in the list's order): the flyer once, the day, a heading (what the titles
+ * share, or how many there are), the account, then a row per event (its time, its own title, under it what differs
+ * between the rows: its type, its place; its Guardar), and the place, price and styles they share. Each row is its event's card (`data-event-card`).
+ */
+function scheduleCardHtml(events: DanceEvent[], listed?: string): string {
+  const first = events[0]!;
+  const types = [...new Set(events.map((event) => event.event_type))];
+  const media = mediaHtml(first, types.length === 1 ? types[0]! : null, listed);
+  const titles = scheduleTitles(events.map((event) => event.title));
+  const count = eventCountLabel(events.length);
+  const heading = titles.heading ?? count;
+  const places = events.map(placeLabel);
+  const place = shared(places);
+  const ownPlace = rowPlace(events);
+  const price = schedulePrice(events);
+  const styles = stylesLabel([...new Set(events.flatMap((event) => event.styles))], MAX_STYLES_ON_CARD);
+  const rows = events
+    .map((event, index) => {
+      const when = cardWhenLabel(event, undefined, listed);
+      const label = cardLabel(event, when, placeLabel(event), priceSummary(event));
+      const time = formatTime(event.start_time);
+      // What tells this row apart besides its time and title: @studiolatindance's morning classes in Fontibón, the
+      // evening's in Norte; a competition, then the social.
+      const note = [types.length > 1 ? typeLabel(event.event_type) : "", place ? "" : ownPlace(event)].filter(Boolean).join(" · ");
+      return `
+          <li class="schedule__row" data-event-card="${escapeHtml(event.id)}">
+            <span class="schedule__time">${escapeHtml(time)}</span>
+            <a class="event-card__hit schedule__title" href="${escapeHtml(eventPath(event))}" data-event="${escapeHtml(event.id)}"
+              aria-label="${escapeHtml(label)}">${escapeHtml(titles.rows[index]!)}</a>
+            ${note ? `<span class="schedule__note">${escapeHtml(note)}</span>` : ""}
+            ${saveButtonHtml(event)}
+          </li>`;
+    })
+    .join("");
+
+  return `
+    <article class="event-card event-card--schedule" data-flyer-card aria-label="${escapeHtml(titles.heading ? `${heading}, ${count}` : count)}">
+      ${media.html}
+      ${scheduleActionsHtml(first, media.slides)}
+      <div class="event-card__body">
+        <p class="event-card__time">${escapeHtml(cardDayLabel(listed ?? first.date, todayIso()))}</p>
+        <h3 class="event-card__title">${escapeHtml(heading)}</h3>
+        ${accountHtml(first)}
+        <ul class="schedule">${rows}</ul>
+        ${place ? `<p class="event-card__meta">${escapeHtml(place)}</p>` : ""}
+        ${footHtml(price, events.every(isFree), styles)}
+      </div>
+    </article>`;
+}
+
+/**
+ * The cards of `events`; `listedOn`: the day each is listed under (a series' card then says that session). A flyer's
+ * events of one day share one card (lib/flyerGroups.ts).
+ */
 export function eventCardGridHtml(events: DanceEvent[], listedOn?: (event: DanceEvent) => string): string {
-  return `<div class="card-grid">${events.map((event) => eventCardHtml(event, listedOn?.(event))).join("")}</div>`;
+  const cards = cardItems(events, listedOn).map((item) =>
+    item.kind === "event"
+      ? eventCardHtml(item.event, listedOn?.(item.event))
+      : scheduleCardHtml(item.events, listedOn?.(item.events[0]!)),
+  );
+  return `<div class="card-grid">${cards.join("")}</div>`;
 }
 
 /**

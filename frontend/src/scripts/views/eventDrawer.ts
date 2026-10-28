@@ -80,7 +80,7 @@ const body = () => drawer().querySelector<HTMLElement>(".drawer__body");
 
 /** No card outlined as the side panel's. */
 const clearCurrentCard = () =>
-  document.querySelectorAll(".event-card.is-current").forEach((card) => card.classList.remove("is-current"));
+  document.querySelectorAll("[data-event-card].is-current").forEach((card) => card.classList.remove("is-current"));
 
 // ---------- the drawer's height (phones) ----------
 

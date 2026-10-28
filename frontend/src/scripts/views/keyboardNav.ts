@@ -73,6 +73,39 @@ export function neighbor(boxes: Box[], from: number, direction: Direction): numb
 }
 
 /**
+ * The stop a key moves to, with a flyer's schedule (eventCard.ts) among the stops: its rows are stops, `card[i]` the
+ * schedule a stop is a row of (null: a card of its own). ↑ ↓ go row by row inside a schedule; otherwise a row counts as
+ * its whole card in the grid (`boxes`: a row's box is its card's), entered at its first row going down, its last going
+ * up. Measured by the rows' own boxes, ↓ from the grid's first column went to a schedule's row in the next one: a
+ * short row in a tall card was the "row below" (the site checks' arrows, 28 Oct 2026). Pure (tested).
+ */
+export function stepStop(boxes: Box[], card: (number | null)[], from: number, direction: Direction): number | null {
+  const own = card[from];
+  if (own != null && (direction === "up" || direction === "down")) {
+    const next = direction === "down" ? from + 1 : from - 1;
+    if (card[next] === own) return next;
+  }
+  const to = neighbor(boxes, from, direction);
+  if (to === null || direction !== "up" || card[to] == null) return to;
+  let last = to;
+  while (card[last + 1] === card[to]) last++;
+  return last;
+}
+
+/** The boxes and schedules stepStop works on, for the stops `list` on screen. */
+function stepBetween(list: HTMLElement[], from: number, direction: Direction): number | null {
+  const schedules = new Map<Element, number>();
+  const card = list.map((stop) => {
+    const schedule = stop.closest("[data-flyer-card]");
+    if (!schedule) return null;
+    if (!schedules.has(schedule)) schedules.set(schedule, schedules.size);
+    return schedules.get(schedule)!;
+  });
+  const boxes = list.map((stop) => (stop.closest("[data-flyer-card]") ?? stop).getBoundingClientRect());
+  return stepStop(boxes, card, from, direction);
+}
+
+/**
  * The stop to start on when nothing has the focus: the first (reading order) whose top shows between `top` (below the
  * pinned bars) and `bottom`; else the first still partly below `top` (one taller than the room); null: no stops.
  * Pure, on the stops' boxes (tested). Before, a card scrolled almost out above, under the pinned bar, got the focus.
@@ -218,7 +251,7 @@ export function initKeyboardNav(hooks: Hooks) {
       domEvent.preventDefault();
       return;
     }
-    const to = at < 0 ? null : neighbor(list.map((item) => item.getBoundingClientRect()), at, direction);
+    const to = at < 0 ? null : stepBetween(list, at, direction);
     // Its card left the list (unsaved in Guardados): on from where it was, to the card after it (now in its place) or
     // before it (the bug hunt of 7 Oct 2026: the arrows did nothing).
     const gap = at < 0 ? hooks.openEventGap() : null;
@@ -247,7 +280,7 @@ export function initKeyboardNav(hooks: Hooks) {
   function fromStop(domEvent: KeyboardEvent, direction: Direction, list: HTMLElement[], stop: HTMLElement) {
     const from = list.indexOf(stop);
     if (from < 0) return;
-    const to = neighbor(list.map((item) => item.getBoundingClientRect()), from, direction);
+    const to = stepBetween(list, from, direction);
     const next = to === null ? undefined : list[to];
     const focus = focusOf(next);
     if (!focus) return;
