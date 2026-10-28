@@ -326,6 +326,7 @@ const chooseView: ControlHandler = (view, control, domEvent) => {
 
 /**
  * A filter chip: one tap chooses, another unchooses; a dimmed option (nothing to show with the others) does nothing.
+ * "Gratis" (its chips and the sheet's switch) turns on or off, not remembered: a filter like the rest.
  * "Ocultar eventos de bares" (the sheet's switch, the toolbar's chip) turns on or off, and is remembered.
  */
 const toggleFilter: ControlHandler = (group, control) => {
@@ -336,7 +337,8 @@ const toggleFilter: ControlHandler = (group, control) => {
     return redraw(control, { filtered: true });
   }
   if (value === undefined || isDisabled(control) || !isFilterGroup(group)) return;
-  if (group === "types") state.types = toggled(state.types, value) as EventType[];
+  if (group === "free") state.onlyFree = !state.onlyFree;
+  else if (group === "types") state.types = toggled(state.types, value) as EventType[];
   else state[group] = toggled(state[group], value);
   redraw(control, { filtered: true });
 };

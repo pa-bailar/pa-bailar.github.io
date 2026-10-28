@@ -110,6 +110,22 @@ export function barsSwitchHtml(on: boolean): string {
 }
 
 /**
+ * The sheet's "Solo eventos gratis" (the owner, 28 Oct 2026): a switch like the bars' above it, for the "Gratis" filter
+ * (the bar's and the toolbar's chip). Off when no free event is left by the other filters: dimmed, still focusable.
+ */
+export function freeSwitchHtml(free: FilterOption): string {
+  return `<button class="filter-switch" type="button" role="switch" aria-checked="${free.chosen}"
+    data-filter="${free.group}" data-value="${escapeHtml(free.value)}"${free.dimmed ? ` aria-disabled="true"` : ""}
+    aria-labelledby="filter-free-name" aria-describedby="filter-free-hint">
+      <span class="filter-switch__text">
+        <span class="filter-switch__name" id="filter-free-name">Solo eventos gratis</span>
+        <span class="visually-hidden" id="filter-free-hint">${escapeHtml(eventCountLabel(free.count))} con entrada libre.</span>
+      </span>
+      <span class="filter-switch__track" aria-hidden="true"><span class="filter-switch__thumb"></span></span>
+    </button>`;
+}
+
+/**
  * Wide screens: the same choice as a toggle chip at the end of the pills' row, "Ocultar bares" (with × while on), named
  * by its own words (label in name), pressed while on.
  */
@@ -142,6 +158,8 @@ function renderBarChips(model: FilterModel) {
     when ? whenChipHtml(when) : "",
     when ? `<span class="jump-bar__divider" aria-hidden="true"></span>` : "",
     ...model.types.map((item) => chipHtml(item, { short: true })),
+    `<span class="jump-bar__divider" aria-hidden="true"></span>`,
+    chipHtml(model.free, { short: true }),
   ].join("");
   row.scrollLeft = scrolled;
   const fresh = new Set(model.applied.map(choiceKey).filter((key) => !barChoices.has(key)));
@@ -196,6 +214,7 @@ function renderSheet(model: FilterModel, state: AppState) {
   const body = byId("filter-sheet-body");
   const scrolled = body.scrollTop;
   body.innerHTML = [
+    `<div class="filter-sheet__switch">${freeSwitchHtml(model.free)}</div>`,
     `<div class="filter-sheet__switch">${barsSwitchHtml(model.hideBars)}</div>`,
     dates,
     group("Tipo de evento", "", model.types, "Tipo de evento"),
@@ -244,7 +263,7 @@ export function pillHtml(pill: FilterPill, open: boolean): string {
 
 /** The pills' row: Cuándo (the list), Tipo, Ritmo, then "Ocultar bares" set a little apart. */
 export function pillsRowHtml(model: FilterModel, open: PillKey | null): string {
-  return [...model.pills.map((pill) => pillHtml(pill, open === pill.key)), barsChipHtml(model.hideBars)].join("");
+  return [...model.pills.map((pill) => pillHtml(pill, open === pill.key)), chipHtml(model.free), barsChipHtml(model.hideBars)].join("");
 }
 
 /** A panel's content: Tipo (its chips) and Ritmo (its families), each option with its count; Cuándo is its menu. */

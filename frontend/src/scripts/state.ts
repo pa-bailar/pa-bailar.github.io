@@ -24,6 +24,7 @@ export function createInitialState(remembered: Partial<Pick<AppState, "hideBars"
     dates: [],
     query: "",
     hideBars: remembered.hideBars ?? false,
+    onlyFree: false,
     month: currentMonth(),
     selectedDay: todayIso(),
   };
@@ -46,6 +47,14 @@ export function isBar(event: Pick<DanceEvent, "bar">): boolean {
   return event.bar === true;
 }
 
+/**
+ * A free event: it has prices and every one is $0 ("Entrada libre"). No price known isn't free: the cards' green "Gratis"
+ * and the "Gratis" filter (the owner, 28 Oct 2026) say the same.
+ */
+export function isFree(event: Pick<DanceEvent, "prices">): boolean {
+  return event.prices.length > 0 && event.prices.every((price) => price.amount_cop === 0);
+}
+
 /** "Ocultar eventos de bares": while on, no event from a bar; off, every event. */
 export function matchesBars(event: Pick<DanceEvent, "bar">, hideBars: boolean): boolean {
   return !hideBars || !isBar(event);
@@ -56,16 +65,16 @@ function datesApply({ view = "upcoming", dates = [] }: DayChoices): boolean {
   return view === "upcoming" && dates.length > 0;
 }
 
-/** The groups of choices in the filters (the search apart). */
-export type FilterGroup = "dates" | "styles" | "types";
+/** The groups of choices in the filters (the search apart): "free" is "Gratis", one choice on or off. */
+export type FilterGroup = "dates" | "styles" | "types" | "free";
 
 /** Whether a value read from the page (a chip's `data-filter`) is one of the groups. */
 export function isFilterGroup(value: string | undefined): value is FilterGroup {
-  return value === "dates" || value === "styles" || value === "types";
+  return value === "dates" || value === "styles" || value === "types" || value === "free";
 }
 
 /**
- * Whether the event passes every filter: AND across them (types, rhythms, bars, the search's words, and a day shown:
+ * Whether the event passes every filter: AND across them (types, rhythms, free, bars, the search's words, and a day shown:
  * shownDays, the dates and the search's days), OR within each group of choices. `except` leaves one group out: the
  * options of that group are counted against the others (filterModel, lib/filterModel.ts). Every path that shows
  * events goes through here (the list, the calendar, the counts), so hiding the bars applies everywhere at once.
@@ -73,8 +82,9 @@ export function isFilterGroup(value: string | undefined): value is FilterGroup {
 export function matchesFilters(event: DanceEvent, state: AppState, except?: FilterGroup, today = todayIso()): boolean {
   const typeOk = except === "types" || !state.types.length || state.types.includes(event.event_type);
   const stylesOk = except === "styles" || matchesStyles(event, state.styles);
+  const freeOk = except === "free" || !state.onlyFree || isFree(event);
   const barsOk = matchesBars(event, state.hideBars);
-  return typeOk && stylesOk && barsOk && matchesWords(event, state.query, today) && shownDays(event, state, today, except).length > 0;
+  return typeOk && stylesOk && freeOk && barsOk && matchesWords(event, state.query, today) && shownDays(event, state, today, except).length > 0;
 }
 
 /**
@@ -111,12 +121,12 @@ export function shownDays(event: DanceEvent, choices: DayChoices, today = todayI
 }
 
 /**
- * Every choice in use, for Filtros' badge: each date (not in the calendar, which has its own days), rhythm and type, and
- * hiding the bars (one). Guardados doesn't use them, but they're still there for the list: the badge stays.
+ * Every choice in use, for Filtros' badge: each date (not in the calendar, which has its own days), rhythm and type,
+ * "Gratis" (one) and hiding the bars (one). Guardados doesn't use them, but they're still there for the list: the badge stays.
  */
 export function activeFilterCount(state: AppState): number {
   const dates = state.view !== "calendar" ? state.dates.length : 0;
-  return dates + state.styles.length + state.types.length + (state.hideBars ? 1 : 0);
+  return dates + state.styles.length + state.types.length + (state.onlyFree ? 1 : 0) + (state.hideBars ? 1 : 0);
 }
 
 /** Anything narrowing the list: the filters or a search. */
@@ -130,19 +140,20 @@ export function toggled(values: string[], value: string): string[] {
 }
 
 /**
- * "Limpiar": the dates, rhythms and types, and the bars shown again (hiding them counts on the badge, so it goes with
+ * "Limpiar": the dates, rhythms, types and "Gratis", and the bars shown again (hiding them counts on the badge, so it goes with
  * the rest; main.ts forgets it in storage too). Not the search, which has its own way out.
  */
 export function clearFilters(state: AppState) {
   state.types = [];
   state.styles = [];
   state.dates = [];
+  state.onlyFree = false;
   state.hideBars = false;
 }
 
 /** The same view with the search alone: no filter (what an empty result says is why: the search or the filters). */
 export function withoutFilters(state: AppState): AppState {
-  return { ...state, types: [], styles: [], dates: [], hideBars: false };
+  return { ...state, types: [], styles: [], dates: [], onlyFree: false, hideBars: false };
 }
 
 function monthPrefix(month: Date): string {

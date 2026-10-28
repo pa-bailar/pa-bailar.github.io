@@ -88,6 +88,7 @@ export interface AppState {
   dates: string[]; // periods chosen in the list ("hoy", "manana", "fin-de-semana", "2026-11"…; none = every date)
   query: string; // search text ("" = no search)
   hideBars: boolean; // "Ocultar eventos de bares": no event with `bar: true` (remembered in this browser: state.ts, HIDE_BARS_KEY)
+  onlyFree: boolean; // "Gratis": only the events every price of which is $0 (a filter like the others: not remembered)
   month: Date; // first day of the month shown in the calendar
   selectedDay: string; // YYYY-MM-DD
 }

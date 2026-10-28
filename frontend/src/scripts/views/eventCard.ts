@@ -36,13 +36,10 @@ import { cardItems, rowPlace, schedulePrice, scheduleTitles, shared } from "../l
 import { accountLinkHtml } from "../lib/accountLink";
 import { eventPath, flyerUrl, mainMedia, previewUrl } from "../lib/links";
 import { saveButtonHtml } from "./saveButton";
+import { isFree } from "../state";
 import { dotStates } from "./carousel";
 
 const MAX_STYLES_ON_CARD = 3;
-
-function isFree(event: DanceEvent): boolean {
-  return event.prices.length > 0 && event.prices.every((price) => price.amount_cop === 0);
-}
 
 // Flyers keep their shape, like Instagram's feed: anything from 4:5 (portrait) to 1.91:1 (landscape) is
 // shown whole at its own shape on phones. Taller ones (stories) get a 4:5 frame, and on wider screens every

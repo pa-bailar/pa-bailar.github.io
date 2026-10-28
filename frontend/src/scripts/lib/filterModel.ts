@@ -14,6 +14,7 @@ import {
   activeFilterCount,
   dateOptions,
   eventsInView,
+  isFree,
   matchesFilters,
   periodDays,
   styleMatches,
@@ -43,6 +44,9 @@ export interface FilterOption {
 
 /** "Ocultar eventos de bares" as a choice in use: its chip's `data-filter` and `data-value` (main.ts toggles it). */
 export const HIDE_BARS_FILTER = { group: "bars", value: "ocultar" } as const;
+
+/** "Gratis" as a filter's option: its chip's `data-filter` and `data-value` (main.ts turns it on or off). */
+export const FREE_FILTER = { group: "free", value: "gratis" } as const;
 
 /** A choice in use, as a removable chip and in the line under the bar. */
 export interface AppliedFilter {
@@ -92,10 +96,11 @@ export interface FilterModel {
   styles: FilterOption[]; // the main four first, then most frequent first, "Otros ritmos" last
   styleGroups: FamilyGroup<FilterOption>[]; // the same rhythms under their families (the sheet, the Ritmo panel)
   types: FilterOption[]; // the view's types (and any chosen), in TYPE_ORDER: the bar's chips, the sheet's, the panel's
+  free: FilterOption; // "Gratis": the bar's chip after the types, the sheet's switch, the toolbar's chip
   when: WhenModel | null; // the bar's "Cuándo" (null in the calendar)
   pills: FilterPill[]; // wide screens: Cuándo (the list, with dates), Tipo, Ritmo
   hideBars: boolean; // "Ocultar eventos de bares" is on (the sheet's switch, the toolbar's chip)
-  applied: AppliedFilter[]; // every choice: dates, rhythms, types, and "Sin bares" while the bars are hidden
+  applied: AppliedFilter[]; // every choice: dates, rhythms, types, "Gratis", and "Sin bares" while the bars are hidden
   active: number; // Filtros' badge (the bar at the bottom): every choice (hiding the bars counts one)
   shown: number; // events the view shows with every filter on (the list, or the calendar's month)
   searched: number; // events the view shows with the search alone, no filter (with none, every event in view)
@@ -157,6 +162,10 @@ export function filterModel(events: DanceEvent[], state: AppState, today = today
     option("types", type, typeLabel(type), typeLabel(type), typeCount(type, withoutTypes), state.types.includes(type)),
   );
 
+  // "Gratis": how many free events the other filters leave (dimmed at none, unless on).
+  const freeCount = without("free").filter(isFree).length;
+  const free = option("free", FREE_FILTER.value, "Gratis", "Gratis", freeCount, state.onlyFree);
+
   const dates =
     state.view === "upcoming"
       ? dateOptions(inView, without("dates"), today, state.query).map((period) =>
@@ -167,6 +176,7 @@ export function filterModel(events: DanceEvent[], state: AppState, today = today
   const asApplied = (item: FilterOption): AppliedFilter => ({ group: item.group, value: item.value, label: item.short, name: item.label });
   const applied = [
     ...[...dates, ...styles, ...types].filter((item) => item.chosen).map(asApplied),
+    ...(free.chosen ? [{ ...asApplied(free), name: "Solo eventos gratis" }] : []),
     ...(state.hideBars ? [HIDDEN_BARS] : []),
   ];
 
@@ -177,6 +187,7 @@ export function filterModel(events: DanceEvent[], state: AppState, today = today
     styles,
     styleGroups: groupByFamily(styles),
     types,
+    free,
     when,
     pills: filterPills(when && dates.length ? when : null, styles, types),
     hideBars: state.hideBars,
