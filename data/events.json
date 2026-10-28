@@ -10143,58 +10143,6 @@
     "bar": false
   },
   {
-    "title": "Miércoles de Hector Lavoe y Marc Anthony",
-    "event_type": "party",
-    "is_recurring": false,
-    "styles": [
-      "salsa"
-    ],
-    "organizer": "@bilongocolombia",
-    "venue": "Bilongo",
-    "address": null,
-    "area": null,
-    "date": "2026-10-28",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "miércoles",
-    "start_time": null,
-    "end_time": null,
-    "prices": [
-      {
-        "label": "Cover",
-        "amount_cop": 25000,
-        "condition": null
-      }
-    ],
-    "artists": [],
-    "activities": [
-      "rumba",
-      "tributo musical"
-    ],
-    "contact": "@bilongocolombia",
-    "confidence": "medium",
-    "doubts": [
-      "fecha inferida del día de la semana",
-      "hora de inicio no especificada",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
-    "id": "miercoles-de-hector-lavoe-y-marc-anthony-28-oct",
-    "account": "bilongocolombia",
-    "media": [
-      {
-        "post_id": "17872240320644614",
-        "permalink": "https://www.instagram.com/reel/De-el-dREIi/",
-        "media_type": "VIDEO",
-        "published": "2026-10-26T23:38:03+0000",
-        "flyer": "flyers/17872240320644614-0.webp",
-        "caption": "El universo sí sabe lo que hace. 😂❤️‍🔥\nUno tampoco va a contradecir las señales. 👀\n\nCaé a los últimos especiales de octubre: miércoles de Hector Lavoe y Marc Anthony / jueves de la Feria de Cali / sábado Latin Sessions. 🎶\n\nCover 25k\nReservas: DM 📩\n\n#SalsaBogotá #SalsaEnBogotá #SalsaYAmor #Bilongo",
-        "preview": "previews/17872240320644614-0.mp4",
-        "slides": null
-      }
-    ],
-    "bar": true
-  },
-  {
     "title": "Clases de salsa y solista en vivo",
     "event_type": "workshop",
     "is_recurring": false,
@@ -10234,6 +10182,53 @@
         "flyer": "flyers/18124365596318990-0.webp",
         "caption": "¡Mañana se baila! 💃 Clases de salsa y solista en vivo.\n\nVen a aprender, a soltar los pies y a disfrutar de buena música 🎶\n\n📅 Miércoles 28 de octubre\n🕺 Puedes venir con o sin pareja\n🥘 Cena Cocina de las Costas\n\nBailemos salsa al estilo de Roberto Roena y Rafael Felo Bacallao.\nNos vemos en Quema 🔥\n\n#restaurantequemaquequema #clasesdesalsa #solistaenvivo #bailarsalsa #robertoroena",
         "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Miércoles de Hector Lavoe y Marc Anthony",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Bilongo",
+    "venue": "Bilongo",
+    "address": null,
+    "area": null,
+    "date": "2026-10-28",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "miércoles",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 25000,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [],
+    "contact": "@bilongocolombia",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio"
+    ],
+    "id": "miercoles-de-hector-lavoe-y-marc-anthony-28-oct",
+    "account": "bilongocolombia",
+    "media": [
+      {
+        "post_id": "17872240320644614",
+        "permalink": "https://www.instagram.com/reel/De-el-dREIi/",
+        "media_type": "VIDEO",
+        "published": "2026-10-26T23:38:03+0000",
+        "flyer": "flyers/17872240320644614-0.webp",
+        "caption": "El universo sí sabe lo que hace. 😂❤️‍🔥\nUno tampoco va a contradecir las señales. 👀\n\nCaé a los últimos especiales de octubre: miércoles de Hector Lavoe y Marc Anthony / jueves de la Feria de Cali / sábado Latin Sessions. 🎶\n\nCover 25k\nReservas: DM 📩\n\n#SalsaBogotá #SalsaEnBogotá #SalsaYAmor #Bilongo",
+        "preview": "previews/17872240320644614-0.mp4",
         "slides": null
       }
     ],
@@ -10301,8 +10296,8 @@
     ],
     "organizer": "A Seis Manos",
     "venue": "A Seis Manos",
-    "address": "Calle 22 # 8-60",
-    "area": "Bogotá Centro",
+    "address": "Calle 22 # 8 - 60",
+    "area": "Centro",
     "date": "2026-10-28",
     "end_date": null,
     "sessions": null,
@@ -10316,25 +10311,22 @@
         "condition": "$5.000 consumibles"
       },
       {
-        "label": "Pareja",
+        "label": "Promo pareja",
         "amount_cop": 30000,
-        "condition": "sin consumibles"
+        "condition": "Sin consumible"
       }
     ],
     "artists": [
-      "esteban_1024"
+      "@esteban_1024"
     ],
     "activities": [
       "clase de salsa",
       "clase de bachata",
-      "rumba",
-      "happy hour"
+      "rumba"
     ],
     "contact": "313 3682909",
-    "confidence": "medium",
-    "doubts": [
-      "conflicto de fechas entre el texto (7 de octubre) y el flyer/inicio del post (28 de octubre)"
-    ],
+    "confidence": "high",
+    "doubts": [],
     "id": "noche-de-salsa-y-bachata-28-oct",
     "account": "aseismanos",
     "media": [
@@ -10410,7 +10402,7 @@
     "styles": [
       "salsa"
     ],
-    "organizer": "@bilongocolombia",
+    "organizer": "Bilongo",
     "venue": "Bilongo",
     "address": null,
     "area": null,
@@ -10428,16 +10420,11 @@
       }
     ],
     "artists": [],
-    "activities": [
-      "rumba",
-      "noche temática"
-    ],
+    "activities": [],
     "contact": "@bilongocolombia",
-    "confidence": "medium",
+    "confidence": "high",
     "doubts": [
-      "fecha inferida del día de la semana",
-      "hora de inicio no especificada",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+      "sin hora de inicio"
     ],
     "id": "jueves-de-la-feria-de-cali-29-oct",
     "account": "bilongocolombia",
@@ -11858,6 +11845,16 @@
         "slides": null
       },
       {
+        "post_id": "18101485001426929",
+        "permalink": "https://www.instagram.com/reel/DfA3mtoRjjq/",
+        "media_type": "VIDEO",
+        "published": "2026-10-27T22:03:50+0000",
+        "flyer": "flyers/18101485001426929-0.webp",
+        "caption": "💋🔪 DE ASESINA A REINA DEL TERROR… ¡Y AHORA VIENE A RUMBEAR!😈🩸5 MILLONES EN PREMIOS 💵💵💸🤑\n\nTiffany, la novia de Chucky, pasó de ser una mujer obsesionada con el muñeco diabólico a convertirse en una de las figuras más icónicas del terror. 💀🖤\n\nPero esta vez cambió los crímenes por la rumba… 👀🔥 ¿Te atreves a encontrártela en Pachanga&Pochola?\n\n🎃 Este 31 de octubre, la noche será de miedo, disfraces y mucha fiesta. jeisson_dj_salsa  julisavoydj  nelsondj_oficial  graciadj_10 \n\nEtiqueta a tu cómplice de terror.👇🏽😂",
+        "preview": "previews/18101485001426929-0.mp4",
+        "slides": null
+      },
+      {
         "post_id": "18023339954920628",
         "permalink": "https://www.instagram.com/reel/DesQlEFReWO/",
         "media_type": "VIDEO",
@@ -12207,58 +12204,6 @@
     "bar": true
   },
   {
-    "title": "Latin Sessions",
-    "event_type": "party",
-    "is_recurring": false,
-    "styles": [
-      "salsa"
-    ],
-    "organizer": "@bilongocolombia",
-    "venue": "Bilongo",
-    "address": null,
-    "area": null,
-    "date": "2026-10-31",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "sábado",
-    "start_time": null,
-    "end_time": null,
-    "prices": [
-      {
-        "label": "Cover",
-        "amount_cop": 25000,
-        "condition": null
-      }
-    ],
-    "artists": [],
-    "activities": [
-      "rumba"
-    ],
-    "contact": "@bilongocolombia",
-    "confidence": "medium",
-    "doubts": [
-      "fecha inferida del día de la semana",
-      "hora de inicio no especificada",
-      "coincide con Halloween",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
-    "id": "latin-sessions-31-oct",
-    "account": "bilongocolombia",
-    "media": [
-      {
-        "post_id": "17872240320644614",
-        "permalink": "https://www.instagram.com/reel/De-el-dREIi/",
-        "media_type": "VIDEO",
-        "published": "2026-10-26T23:38:03+0000",
-        "flyer": "flyers/17872240320644614-0.webp",
-        "caption": "El universo sí sabe lo que hace. 😂❤️‍🔥\nUno tampoco va a contradecir las señales. 👀\n\nCaé a los últimos especiales de octubre: miércoles de Hector Lavoe y Marc Anthony / jueves de la Feria de Cali / sábado Latin Sessions. 🎶\n\nCover 25k\nReservas: DM 📩\n\n#SalsaBogotá #SalsaEnBogotá #SalsaYAmor #Bilongo",
-        "preview": "previews/17872240320644614-0.mp4",
-        "slides": null
-      }
-    ],
-    "bar": true
-  },
-  {
     "title": "El Cementerio de las canciones vivas",
     "event_type": "party",
     "is_recurring": false,
@@ -12298,6 +12243,53 @@
         "flyer": "flyers/18087098468708994-0.webp",
         "caption": "Semana movida en Callejón, y planes diferentes para que vengan a encontrarse aquí toda la semana. Mañana continuamos nuestros miércoles de Tango (tango, milonga, fox, bolero, etc.), bastante falta que nos hacia un lugar de Tango en La Candelaria, pues aquí lo tienen. El viernes nos acompañarán la profe Teffa teffa_mg con una clase de salsa para todos, y seguir la rumba con negritolealsalsaconbuengusto El sábado de halloween una noche para revivir canciones que se niegan a morir, con \"El Cementerio de las canciones vivas\". El domingo de 12:00 m a 8:00 p.m. conmemoraremos el día de muertos y de las almas con un tardeo a ritmo de sonidos tropicales de antaño con serenamorenamusic y maurosatori y feria de emprendimientos. No se pierdan esta semana en Callejón que va estar de miedo!! \n📍 Callejón Salsa & Mecato | Calle 12D #3-84 La Candelaria",
         "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Latin Sessions",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Bilongo",
+    "venue": "Bilongo",
+    "address": null,
+    "area": null,
+    "date": "2026-10-31",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 25000,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [],
+    "contact": "@bilongocolombia",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio"
+    ],
+    "id": "latin-sessions-31-oct",
+    "account": "bilongocolombia",
+    "media": [
+      {
+        "post_id": "17872240320644614",
+        "permalink": "https://www.instagram.com/reel/De-el-dREIi/",
+        "media_type": "VIDEO",
+        "published": "2026-10-26T23:38:03+0000",
+        "flyer": "flyers/17872240320644614-0.webp",
+        "caption": "El universo sí sabe lo que hace. 😂❤️‍🔥\nUno tampoco va a contradecir las señales. 👀\n\nCaé a los últimos especiales de octubre: miércoles de Hector Lavoe y Marc Anthony / jueves de la Feria de Cali / sábado Latin Sessions. 🎶\n\nCover 25k\nReservas: DM 📩\n\n#SalsaBogotá #SalsaEnBogotá #SalsaYAmor #Bilongo",
+        "preview": "previews/17872240320644614-0.mp4",
         "slides": null
       }
     ],
@@ -12748,6 +12740,16 @@
     "id": "la-fiesta-de-halloween-que-estabas-esperando-31-oct",
     "account": "elratonsalsaclub",
     "media": [
+      {
+        "post_id": "18382835053236107",
+        "permalink": "https://www.instagram.com/reel/DfAz7xehlYN/",
+        "media_type": "VIDEO",
+        "published": "2026-10-27T21:28:32+0000",
+        "flyer": "flyers/18382835053236107-0.webp",
+        "caption": "🌇AFTERNOON HALLOWEEN PARTY👻 +25: ¡LA FIESTA SE PRENDE! 🪩🔥\n\nDISFRAZ OPCIONAL pero con premio al mejor look 🏆\n\n📍 Tres ambientes: salsa, rock house y world music\n\n🌇 Tardeo de 3:00 a 6:00 p. m. y fiesta toda la noche 🌙🎶\n\n📲 Etiqueta a tu combo y prepárense para bailar. 🥂🖤\n\n📍 Cra. 14A #82-14\n📲 WhatsApp: 312 844 7099 / 312 833 3069/ 3206356047\n\n#HalloweenParty #Halloween25Plus #Tardeo\n#Afternoon SalsaRockCrossover",
+        "preview": "previews/18382835053236107-0.mp4",
+        "slides": null
+      },
       {
         "post_id": "17987552085087938",
         "permalink": "https://www.instagram.com/reel/DemyU6KyXdY/",
