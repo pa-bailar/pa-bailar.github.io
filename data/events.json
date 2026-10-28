@@ -10507,6 +10507,62 @@
     "bar": true
   },
   {
+    "title": "Rumba en Vivo con Kabala Ensamble",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Galería Café Libro",
+    "venue": "Galería Café Libro - Sede Parque 93",
+    "address": "Cra 11A # 93-42",
+    "area": "Parque 93",
+    "date": "2026-10-29",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "jueves",
+    "start_time": "17:00",
+    "end_time": "03:00",
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 20000,
+        "condition": null
+      },
+      {
+        "label": "Cumpleañeros",
+        "amount_cop": 0,
+        "condition": "te invitamos 2 covers"
+      }
+    ],
+    "artists": [
+      "Kabala Ensamble"
+    ],
+    "activities": [
+      "rumba en vivo",
+      "clase de salsa",
+      "happy hour"
+    ],
+    "contact": "WhatsApp 3176608742",
+    "confidence": "high",
+    "doubts": [],
+    "id": "rumba-en-vivo-con-kabala-ensamble-29-oct",
+    "account": "galeriacafelibro",
+    "media": [
+      {
+        "post_id": "18633584032045840",
+        "permalink": "https://www.instagram.com/p/DfAMWL6Mmvx/",
+        "media_type": "IMAGE",
+        "published": "2026-10-27T17:00:06+0000",
+        "flyer": "flyers/18633584032045840-0.webp",
+        "caption": "❤️‍🔥 Este jueves el modo salsa es con kabalaensamble una de las agrupaciones ganadoras de Salsa al Parque 2026 ✨ La previa de Halloween va con todos los poderes y la magia salsera en nuestro escenario de sede Parque 93.\n\n💃 Abiertos de 5pm a 3 am • Happy Hour hasta 8pm\n🎂 Si celebras tu cumple los jueves: te invitamos 2 covers, coctel y te decoramos sin costo 🎶\n🎟️$20.000 • disponibles en taquilla\n\n#salsa #jueves #bogotá #galeriacafelibro",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Semana Ryan: Sexy Style con Tito",
     "event_type": "workshop",
     "is_recurring": false,
@@ -10729,6 +10785,16 @@
         "caption": "🎃🪄Este Halloween ¡EMBRÚJATE CON SALSA! 🌟🧙‍♀️🧙‍♂️\n\nDos noches de fiesta salsera con premios a los mejores disfraces, 🎭🧛‍♀️ sorpresas durante toda la noche y tres sedes vestidas de magia 🧚🏻 Desliza para ver nuestros premios ➡️\n\nViernes 30: 💿 3 djs residentes, entrada libre, trago de bienvenida y premios para los 3 mejores disfraces (categoría libre)\n\nSábado 31: 🎺 Música en vivo con ns.orquesta en sede Parque 93 y con Los Emperadores en sede Palermo; 3 djs residentes, trago de bienvenida, premios a los 3 mejores disfraces (categoría libre). Cover: $25.000\n\n💬 ¿Quieres reservar tu mesa? Comenta 𝗘𝗠𝗕𝗥𝗨𝗝𝗢 y te enviamos la información por DM. 🎃\n\n🎟️ Entradas y reservas: galeriacafelibro.com.co / 3176608742 / 6012851794/ DM\n📍 Galeria Cafe Libro • Sedes:\nParque 93\ngaleriacafelibrosedepalermo \nsaloncafebohemia \n\n#Halloween #Salsa #SalsaEnBogotá #GaleriaCafeLibro",
         "preview": null,
         "slides": 2
+      },
+      {
+        "post_id": "17916286533542805",
+        "permalink": "https://www.instagram.com/reel/DfBNMXcMY-Z/",
+        "media_type": "VIDEO",
+        "published": "2026-10-28T01:03:15+0000",
+        "flyer": "flyers/17916286533542805-0.webp",
+        "caption": "🧙🏽‍♂️💃🏽 ¡Embrújate con Salsa! 🔮🔥\n\nAlgunos salseros ya están hechizados con esas canciones que ponen a cualquiera a gozar. 🎶❤️‍🔥\n\nEste 30 y 31 de octubre, la cita es en Galería Café Libro para vivir dos noches de pura brujería salsera. 🪄\n\nDisfrázate y gana premios 💓🎟️\n\nY tú, ¿qué canción te embruja? 👀 Te leemos en los comentarios. 💬",
+        "preview": "previews/17916286533542805-0.mp4",
+        "slides": null
       },
       {
         "post_id": "18219406894346651",
@@ -11140,7 +11206,7 @@
         "media_type": "IMAGE",
         "published": "2026-10-26T21:31:32+0000",
         "flyer": "flyers/18491833246105558-0.webp",
-        "caption": "Hay canciones que te recuerdan lo que falta… 🎺\nY a esta pista le faltas tú. «Falta» de los Hermanos Lebrón, salsa de la que se lleva en el pecho, y una noche entera para bailarla como se debe.\n\n🎃 Halloween Salsero · jueves 30 de octubre\n📍 Botánico Hostel · con acceso a El Candelario\n👉 Compra tu entrada en el link de la bio. Aquí no sobra nadie, ¡pero tú sí haces falta!",
+        "caption": "Hay canciones que te recuerdan lo que falta… 🎺\nY a esta pista le faltas tú. «Falta» de los Hermanos Lebrón, salsa de la que se lleva en el pecho, y una noche entera para bailarla como se debe.\n\n🎃 Halloween Salsero · viernes 30 de octubre\n📍 Botánico Hostel · con acceso a El Candelario\n👉 Compra tu entrada en el link de la bio. Aquí no sobra nadie, ¡pero tú sí haces falta!",
         "preview": null,
         "slides": null
       },
@@ -11282,6 +11348,70 @@
     "bar": false
   },
   {
+    "title": "Viernes de Salsa",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Callejón Salsa & Mecato",
+    "venue": "Callejón Salsa & Mecato",
+    "address": "Calle 12D # 3-84",
+    "area": "La Candelaria",
+    "date": "2026-10-30",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "19:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "General",
+        "amount_cop": 10000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Teffa",
+      "El Negrito Leal"
+    ],
+    "activities": [
+      "clase de salsa",
+      "dj set"
+    ],
+    "contact": "@callejonsalsa",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "viernes-de-salsa-30-oct",
+    "account": "callejonsalsa",
+    "media": [
+      {
+        "post_id": "18440568706180738",
+        "permalink": "https://www.instagram.com/p/DfAtVZJI3p-/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-27T20:24:03+0000",
+        "flyer": "flyers/18440568706180738-0.webp",
+        "caption": "Este viernes 30 de octubre la rumba es en Callejón. Comenzamos con una clase de la profe teffa_mg con selección de el pinchadiscosdekien y luego rumba corrida con el set de negritolealsalsaconbuengusto\nY como siempre la carta de comida con el mejor \"mecato\" de La Candelaria, para que la ida a cenar no sea una excusa.\n\n📍Callejón Salsa & Mecato | Calle 12D #3-84 La Candelaria.\n🗓️ Viernes 30 de octubre\n🕖 7:00 p.m.\n🎟️ 10K",
+        "preview": null,
+        "slides": 2
+      },
+      {
+        "post_id": "18087098468708994",
+        "permalink": "https://www.instagram.com/p/DfAdNUBJL0X/",
+        "media_type": "IMAGE",
+        "published": "2026-10-27T18:03:11+0000",
+        "flyer": "flyers/18087098468708994-0.webp",
+        "caption": "Semana movida en Callejón, y planes diferentes para que vengan a encontrarse aquí toda la semana. Mañana continuamos nuestros miércoles de Tango (tango, milonga, fox, bolero, etc.), bastante falta que nos hacia un lugar de Tango en La Candelaria, pues aquí lo tienen. El viernes nos acompañarán la profe Teffa teffa_mg con una clase de salsa para todos, y seguir la rumba con negritolealsalsaconbuengusto El sábado de halloween una noche para revivir canciones que se niegan a morir, con \"El Cementerio de las canciones vivas\". El domingo de 12:00 m a 8:00 p.m. conmemoraremos el día de muertos y de las almas con un tardeo a ritmo de sonidos tropicales de antaño con serenamorenamusic y maurosatori y feria de emprendimientos. No se pierdan esta semana en Callejón que va estar de miedo!! \n📍 Callejón Salsa & Mecato | Calle 12D #3-84 La Candelaria",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Celebración cumpleaños #7 de la Nena Magdalena",
     "event_type": "party",
     "is_recurring": false,
@@ -11290,7 +11420,7 @@
     ],
     "organizer": "@lanenamagdalena",
     "venue": "paradiscobardeescucha",
-    "address": null,
+    "address": "Cra 6 # 67-63",
     "area": null,
     "date": "2026-10-30",
     "end_date": null,
@@ -11298,7 +11428,18 @@
     "weekday": "viernes",
     "start_time": "20:00",
     "end_time": null,
-    "prices": [],
+    "prices": [
+      {
+        "label": "Antes de las 9:30pm",
+        "amount_cop": 25000,
+        "condition": "antes de las 9:30pm"
+      },
+      {
+        "label": "Luego de las 9:30pm",
+        "amount_cop": 35000,
+        "condition": "luego de las 9:30pm"
+      }
+    ],
     "artists": [
       "@lanenamagdalena",
       "@amparo_arrebato",
@@ -11307,11 +11448,9 @@
     "activities": [
       "celebración de cumpleaños"
     ],
-    "contact": null,
+    "contact": "@lanenamagdalena",
     "confidence": "high",
-    "doubts": [
-      "estilos deducidos del texto o de la cuenta, no leídos en el post"
-    ],
+    "doubts": [],
     "id": "celebracion-cumpleanos-7-de-la-nena-magdalena-30-oct",
     "account": "lanenamagdalena",
     "media": [
@@ -11324,6 +11463,16 @@
         "caption": "Aquí: las PRÓXIMAS FECHAS en que nos encontramos pa’ azotar baldosa (para ti que siempre andas preguntando que en dónde pongo música y tal) 🫵🏼✨❤️\n\n🍴24 OCT / Salsa en DIGITAL desde siga.bog (reserva tu \nmesa ya ya ya) 8-10PM\n\n🎈30 OCT / Desde las 8PM celebrando juntos el cumpleaños #7 de la Nena Magdalena en paradiscobardeescucha junto a amparo_arrebato y rollergal_ \n\nPor las fotos, gracias a casaparamo.co (mi lugar predilecto en Pasto) y a un_bejuco que las tomó. \n\nPD: ¡Para noviembre se viene anuncio especial para USA (específicamente la costa oeste, más específicamente San Diego y Los Ángeles 🤩)!\n\nTe veooo porái 💋",
         "preview": null,
         "slides": 3
+      },
+      {
+        "post_id": "17914222191550286",
+        "permalink": "https://www.instagram.com/reel/DfA3sQfPnil/",
+        "media_type": "VIDEO",
+        "published": "2026-10-27T22:03:39+0000",
+        "flyer": "flyers/17914222191550286-0.webp",
+        "caption": "¿¡Un privadito de SALSA y VAMPIROS para celebrar los 7 años de La Nena Magdalena!? En efecto ✨🧛🏼‍♀️🦇\n\nNos vemos este viernes 30 de octubre en una edición más de ache_salsaycontrol en paradiscobardeescucha (cra 6 # 67-63) 🏠\n\n8-9pm: Compartición conjunta y charlada de salsa\n9- hasta el fin: Bailoteo salsero vampiresco intenso\n\nPura SALSA EN VINILO en manos de amparo_arrebato, rollergal_ (AKA Yroko) y, por supuesto, lanenamagdalena 💋\n\nTu entrada únicamente en puerta esa misma noche. 25k antes de las 9:30pm, luego de eso 35k 🚪\n\n¡Gracias por bailarte un año más conmigo!",
+        "preview": "previews/17914222191550286-0.mp4",
+        "slides": null
       }
     ],
     "bar": false
@@ -11857,6 +12006,16 @@
         "slides": 2
       },
       {
+        "post_id": "17916286533542805",
+        "permalink": "https://www.instagram.com/reel/DfBNMXcMY-Z/",
+        "media_type": "VIDEO",
+        "published": "2026-10-28T01:03:15+0000",
+        "flyer": "flyers/17916286533542805-0.webp",
+        "caption": "🧙🏽‍♂️💃🏽 ¡Embrújate con Salsa! 🔮🔥\n\nAlgunos salseros ya están hechizados con esas canciones que ponen a cualquiera a gozar. 🎶❤️‍🔥\n\nEste 30 y 31 de octubre, la cita es en Galería Café Libro para vivir dos noches de pura brujería salsera. 🪄\n\nDisfrázate y gana premios 💓🎟️\n\nY tú, ¿qué canción te embruja? 👀 Te leemos en los comentarios. 💬",
+        "preview": "previews/17916286533542805-0.mp4",
+        "slides": null
+      },
+      {
         "post_id": "18219406894346651",
         "permalink": "https://www.instagram.com/reel/DeiQXDAsuEw/",
         "media_type": "VIDEO",
@@ -11998,7 +12157,13 @@
     "weekday": "sábado",
     "start_time": null,
     "end_time": null,
-    "prices": [],
+    "prices": [
+      {
+        "label": "Preventa",
+        "amount_cop": 25000,
+        "condition": null
+      }
+    ],
     "artists": [
       "Clan del Solar"
     ],
@@ -12026,6 +12191,16 @@
         "flyer": "flyers/17995534296013468-0.webp",
         "caption": "Hallowen en su salsa , ven y vive con nosotros un fin de semana lleno de musica en vivo y buena rumba",
         "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18182672851380892",
+        "permalink": "https://www.instagram.com/reel/De_1jhgRuEn/",
+        "media_type": "VIDEO",
+        "published": "2026-10-27T12:17:12+0000",
+        "flyer": "flyers/18182672851380892-0.webp",
+        "caption": "iHUYE QUE TE COJE LA MUERTE!\nEste Halloween, la muerte viene bailando...y jel que no baile, se lo lleva!\nCLAN DEL SOLAR te espera para una noche de salsa, rumba y desenfreno. Una fiesta para bailar hasta que el cuerpo aguante.. i o hasta que la muerte nos separe!\nSábado 31 de octubre Quiebracanto Preventa: $25.000 Info y reservas: 301 239 8194 Boletería en Tikzet\nDisfrazate, armá el parche y asegurá tu entrada antes de que la muerte te coja sin boleta.\niNOS VEMOS EN LA PISTA...SI LA MUERTE NOS DEJA!",
+        "preview": "previews/18182672851380892-0.mp4",
         "slides": null
       }
     ],
@@ -12078,6 +12253,51 @@
         "flyer": "flyers/17872240320644614-0.webp",
         "caption": "El universo sí sabe lo que hace. 😂❤️‍🔥\nUno tampoco va a contradecir las señales. 👀\n\nCaé a los últimos especiales de octubre: miércoles de Hector Lavoe y Marc Anthony / jueves de la Feria de Cali / sábado Latin Sessions. 🎶\n\nCover 25k\nReservas: DM 📩\n\n#SalsaBogotá #SalsaEnBogotá #SalsaYAmor #Bilongo",
         "preview": "previews/17872240320644614-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "El Cementerio de las canciones vivas",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Callejón Salsa & Mecato",
+    "venue": "Callejón Salsa & Mecato",
+    "address": "Calle 12D # 3-84",
+    "area": "La Candelaria",
+    "date": "2026-10-31",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "fiesta de halloween"
+    ],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [
+      "sin precio",
+      "sin hora de inicio",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "el-cementerio-de-las-canciones-vivas-31-oct",
+    "account": "callejonsalsa",
+    "media": [
+      {
+        "post_id": "18087098468708994",
+        "permalink": "https://www.instagram.com/p/DfAdNUBJL0X/",
+        "media_type": "IMAGE",
+        "published": "2026-10-27T18:03:11+0000",
+        "flyer": "flyers/18087098468708994-0.webp",
+        "caption": "Semana movida en Callejón, y planes diferentes para que vengan a encontrarse aquí toda la semana. Mañana continuamos nuestros miércoles de Tango (tango, milonga, fox, bolero, etc.), bastante falta que nos hacia un lugar de Tango en La Candelaria, pues aquí lo tienen. El viernes nos acompañarán la profe Teffa teffa_mg con una clase de salsa para todos, y seguir la rumba con negritolealsalsaconbuengusto El sábado de halloween una noche para revivir canciones que se niegan a morir, con \"El Cementerio de las canciones vivas\". El domingo de 12:00 m a 8:00 p.m. conmemoraremos el día de muertos y de las almas con un tardeo a ritmo de sonidos tropicales de antaño con serenamorenamusic y maurosatori y feria de emprendimientos. No se pierdan esta semana en Callejón que va estar de miedo!! \n📍 Callejón Salsa & Mecato | Calle 12D #3-84 La Candelaria",
+        "preview": null,
         "slides": null
       }
     ],
@@ -12603,7 +12823,10 @@
     ],
     "contact": "3114964964",
     "confidence": "high",
-    "doubts": [],
+    "doubts": [
+      "sin precio específico",
+      "sin hora de inicio"
+    ],
     "id": "tardeo-latino-tarde-de-bailoween-31-oct",
     "account": "bogotadanceclub",
     "media": [
@@ -12615,6 +12838,16 @@
         "flyer": "flyers/18120053069064798-0.webp",
         "caption": "Este 31 de octubre, las criaturas del más allá salen de sus tumbas, porque hay una fiesta que ni la muerte se quiere perder 💀🔥 \n\nY ojo, porque tu disfraz podría hacerte salir de la fiesta con los bolsillos más llenos… 💸🏆 \n¡Tendremos premio en efectivo para el mejor disfraz! \n\nAdemás nuestra DJ invitada es La Reina del Perreo michigyal.dj 💿 que va a poner a arder la pista 😈\n\n📢 Comunidad bailadora de 18 a 45 años ✨\n🗓️ 31 de octubre | 🕒 3 PM a 10 PM\n📍 Calle 25F #36-15 - Bogotá Dance Club\n\n💃 Clase de baile prefiesta (para calentar motores)\n\n💵 Cover 1.ª etapa: $25.000\n💸 Cover 2.ª etapa: $30.000\n💰 Cover en puerta: ???\n(Incluye clase de baile + 1 bebida)\n\nEn este BAILOWEEEN ni los muertos se quedan sentados 🔥\n🎃 Desempolva tu mejor disfraz, saca los pasos prohibidos y prepárate porque nos vamos de rumba hasta el más allá 🪩✨\n\n#halloween #halloweenbogotá #fiestadehalloween🎃 #planesenbogotá",
         "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18129032911858808",
+        "permalink": "https://www.instagram.com/reel/DfBNlsHOf4B/",
+        "media_type": "VIDEO",
+        "published": "2026-10-28T01:10:09+0000",
+        "flyer": "flyers/18129032911858808-0.webp",
+        "caption": "Abrimos 2da etapa de pre venta porque la primera está agotada 🔥para nuestra fiesta de BAILOWEEN este 31 de octubre 👻\n\nVamos a tener show de baile, clase pre fiesta, concurso al mejor disfraz y rumba traída desde el inframundo 💀🪩\n\nNo te quedes sin tu cupo, comenta este video y te enviamos toda la info 🎃👇🏻\n\n#baile #planesenbogotá #halloween #halloweenbogotá #salsa",
+        "preview": "previews/18129032911858808-0.mp4",
         "slides": null
       },
       {
@@ -13474,6 +13707,11 @@
         "label": "Preventa",
         "amount_cop": 15000,
         "condition": null
+      },
+      {
+        "label": "Puerta",
+        "amount_cop": 20000,
+        "condition": null
       }
     ],
     "artists": [
@@ -13500,6 +13738,16 @@
         "published": "2026-10-04T19:22:29+0000",
         "flyer": "flyers/17904095547356280-0.webp",
         "caption": "🎃 Este Halloween, es en d’Living 👻\n\nPrepárate para nuestro social de Halloween: una noche llena de música, baile y sorpresas, con camilo_barretto y frank.de.latorre poniendo el ambiente para que no pares de bailar. 🕺🏻💃🏻\n\nY porque en D’Living nos gusta que el baile también sea una experiencia, tendremos clases abiertas incluidas con tu entrada 😏 para aprender, compartir y llegar al social con toda la actitud. 🔥\n\nAdemás, 👻 CONCURSO DE DISFRACES\nPrepara tu mejor personaje porque tendremos varios premios para los mejores 🎭🏆\n\n📅 31 de octubre\n🕘 9:00 p. m.\n📍 Cll 25 #27B-83 — Torre de las Américas\n🎟️ Preventa $15K | Taquilla $20K\n\n¿Ya tienes tu disfraz? Porque nosotros ya tenemos la fiesta. 🧟‍♀️🎃",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18288798955295340",
+        "permalink": "https://www.instagram.com/reel/DfAPo1oPnUI/",
+        "media_type": "VIDEO",
+        "published": "2026-10-27T16:06:07+0000",
+        "flyer": "flyers/18288798955295340-0.webp",
+        "caption": "🎃👻 En d’Living ya estamos preparando todo para Halloween… ¿y ustedes? 😂\n\nEste 31 de octubre tenemos una cita en d’Living 🕸️🔥\n\n🧛🏻‍♀️ Disfraces, baile, DJs invitados y muchas sorpresas.\n🎟️ Preventa: $15.000 | Puerta: $20.000\n🕘 Desde las 9:00 p. m.\n📍 Calle 25 #27B-83, Torre de las Américas.\n\n¡Vayan alistando ese disfraz que nos vemos en la pista! 🪩💃🏻",
         "preview": null,
         "slides": null
       },
@@ -13652,6 +13900,100 @@
     "bar": false
   },
   {
+    "title": "Día de Muertos y de las Almas",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "Callejón Salsa & Mecato",
+    "venue": "Callejón Salsa & Mecato",
+    "address": "Calle 12D # 3-84",
+    "area": "La Candelaria",
+    "date": "2026-11-01",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "12:00",
+    "end_time": "20:00",
+    "prices": [],
+    "artists": [
+      "Serena Morena",
+      "Mauro Satori"
+    ],
+    "activities": [
+      "tardeo",
+      "sonidos tropicales de antaño",
+      "feria de emprendimientos"
+    ],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [
+      "sin precio",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "dia-de-muertos-y-de-las-almas-1-nov",
+    "account": "callejonsalsa",
+    "media": [
+      {
+        "post_id": "18087098468708994",
+        "permalink": "https://www.instagram.com/p/DfAdNUBJL0X/",
+        "media_type": "IMAGE",
+        "published": "2026-10-27T18:03:11+0000",
+        "flyer": "flyers/18087098468708994-0.webp",
+        "caption": "Semana movida en Callejón, y planes diferentes para que vengan a encontrarse aquí toda la semana. Mañana continuamos nuestros miércoles de Tango (tango, milonga, fox, bolero, etc.), bastante falta que nos hacia un lugar de Tango en La Candelaria, pues aquí lo tienen. El viernes nos acompañarán la profe Teffa teffa_mg con una clase de salsa para todos, y seguir la rumba con negritolealsalsaconbuengusto El sábado de halloween una noche para revivir canciones que se niegan a morir, con \"El Cementerio de las canciones vivas\". El domingo de 12:00 m a 8:00 p.m. conmemoraremos el día de muertos y de las almas con un tardeo a ritmo de sonidos tropicales de antaño con serenamorenamusic y maurosatori y feria de emprendimientos. No se pierdan esta semana en Callejón que va estar de miedo!! \n📍 Callejón Salsa & Mecato | Calle 12D #3-84 La Candelaria",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Venezuela en su Sazón",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Tributo Salsa y Jazz",
+    "venue": "Tributo Salsa y Jazz",
+    "address": "Av. Boyacá #64c - 97",
+    "area": "Zona 6",
+    "date": "2026-11-01",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "13:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "4K Team Orquesta"
+    ],
+    "activities": [
+      "orquesta en vivo"
+    ],
+    "contact": "WhatsApp 3105714824",
+    "confidence": "high",
+    "doubts": [
+      "sin precio"
+    ],
+    "id": "venezuela-en-su-sazon-1-nov",
+    "account": "tributo.salsayjazz",
+    "media": [
+      {
+        "post_id": "18081747686374065",
+        "permalink": "https://www.instagram.com/reel/DfApBzqAX4z/",
+        "media_type": "VIDEO",
+        "published": "2026-10-27T19:46:45+0000",
+        "flyer": "flyers/18081747686374065-0.webp",
+        "caption": "¡LLEGÓ EL DOMINGO PARA VIVIR 'VENEZUELA EN SU SAZÓN'! 🎶🔥 \n\nPorque los domingos se disfrutan en familia y con sabor como en casa, te esperamos en tu casa: ¡Tributo Salsa y Jazz! \n\nEste domingo 01 de noviembre, prepárate para una tarde llena de alegría, nostalgia, excelente ambiente y toda la sabrosura de la mejor música en vivo a cargo de 4K Team Orquesta. \n\nVen a compartir con tus amigos y familia de una jornada inolvidable cargada de puro ritmo y tradición. ¡El plan perfecto para sentir el sabor de casa! 🥂🎺💥✨ \n📍 Lugar: Av. Boyacá #64c - 97 (Zona 6) ⏰ Apertura: 1:00 PM | Orquesta en vivo 📲 Reservas: 310 5714 824 \n\n¡Asegura tu mesa antes de que se llene! RESERVA, arma tu parche y nos vemos este domingo para gozar juntos. 👇✨\n\nhttps://wa.me/573105714824",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Coca-Cola Bailable - Especial de Halloween",
     "event_type": "social",
     "is_recurring": false,
@@ -13667,7 +14009,7 @@
     "sessions": null,
     "weekday": "domingo",
     "start_time": "14:00",
-    "end_time": null,
+    "end_time": "22:00",
     "prices": [
       {
         "label": "Cover",
@@ -13686,6 +14028,16 @@
     "id": "coca-cola-bailable-1-nov",
     "account": "germanbaila",
     "media": [
+      {
+        "post_id": "18152848375551212",
+        "permalink": "https://www.instagram.com/p/DfAoF1UAe-Y/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-27T19:38:14+0000",
+        "flyer": "flyers/18152848375551212-3.webp",
+        "caption": "Este domingo 1 de noviembre celebramos Halloween en familia, bailando y concursando en la Coca-Cola Bailable de germanbaila y elgocepagano desde las 2PM \n\nLa fiesta que une a las diferentes generaciones en torno a la pista de baile. \n\nConsigue ya tu entrada 🎃\n🎟️ Cover: $20K\n💃🥤 Incluye clase y bebida\n📍 Diagonal 20A #0-82",
+        "preview": null,
+        "slides": 4
+      },
       {
         "post_id": "18383386795238938",
         "permalink": "https://www.instagram.com/p/DexWCl1h9tY/",
@@ -14969,6 +15321,53 @@
     "bar": false
   },
   {
+    "title": "Tributo a Ismael Rivera",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "afro"
+    ],
+    "organizer": "Tributo Salsa y Jazz",
+    "venue": "Tributo Salsa y Jazz",
+    "address": "Av. Boyacá #64c - 97",
+    "area": "Zona 6",
+    "date": "2026-11-20",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "18:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Orquesta Kadana"
+    ],
+    "activities": [
+      "orquesta en vivo",
+      "baile"
+    ],
+    "contact": "WhatsApp 3105714824",
+    "confidence": "high",
+    "doubts": [
+      "sin precio de entrada"
+    ],
+    "id": "tributo-a-ismael-rivera-20-nov",
+    "account": "tributo.salsayjazz",
+    "media": [
+      {
+        "post_id": "18079403360436115",
+        "permalink": "https://www.instagram.com/p/DfApRg8FD7N/",
+        "media_type": "IMAGE",
+        "published": "2026-10-27T19:48:34+0000",
+        "flyer": "flyers/18079403360436115-0.webp",
+        "caption": "¡LLEGÓ EL VIERNES PARA RENDIR HOMENAJE AL SONERO MAYOR! 🎤🔥👑 \n\nPorque el fin de semana se vive con la verdadera clave y el mejor guaguancó, te esperamos en tu casa: ¡Tributo Salsa y Jazz! \n\nEste viernes 20 de noviembre, prepárate para un inolvidable Tributo a Ismael Rivera \"El Sonero Mayor\". \n\nVen a cantar a todo pulmón clásicos eternos, disfrutar de un buen trago con tus amigos y dejarlo todo en la pista al ritmo en vivo de Orquesta Kadana. ¡Pura sazón, sentimiento y clave para encender la noche! 🥂🎺🔥 \n📍 Lugar: Av. Boyacá #64c - 97 (Zona 6) ⏰ Apertura: 6:00 PM | Orquesta en vivo: 10:00 PM \n📲 Reservas: 310 5714 824 \n\n¡Asegura tu mesa antes de que se llene! RESERVA, arma tu parche salsero y nos vemos este viernes para gozar. 👇✨\n\nhttps://wa.me/573105714824",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Los 25 de la-33",
     "event_type": "concert",
     "is_recurring": false,
@@ -15099,6 +15498,54 @@
         "flyer": "flyers/18143692393605612-0.webp",
         "caption": "¿A quién tienes ganas de decirle: “Échate Pa’ Acá”? ❤️\r\nEsta canción nació de una historia de amor, de esas que dan ganas de tener a alguien cerquita. ❤️‍🔥🎶\r\n\r\n“Échate Pa Acá” (2023), canción compuesta por “Lencho” y Diego Sánchez. Dale play, conoce la historia de “Lencho” y Susana y dedícasela a esa persona que te da calorcito en la vida. ❤️‍🔥🥳🎧\r\n\r\nY seguimos calentando motores para nuestros 25 años. 21 de noviembre en el Royal Center, Bogotá 🥳🔥\r\n.\n.\n.\r\n✍️ Guion: Susana Silva\r\n🎥 Dirección y realización: bretonamadeus \r\n.\r\n#la33 #la33orquesta #salsa #cancion #amor",
         "preview": "previews/18143692393605612-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Gran Taller: Salsa Corporalidad",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa en línea"
+    ],
+    "organizer": "Madyum",
+    "venue": "Escuela del Mambo",
+    "address": null,
+    "area": null,
+    "date": "2026-11-21",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "18:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Laura Gallo"
+    ],
+    "activities": [
+      "taller de salsa",
+      "clase de corporalidad",
+      "clase de mambo"
+    ],
+    "contact": "@madyumdance",
+    "confidence": "high",
+    "doubts": [
+      "sin precio",
+      "sin dirección exacta"
+    ],
+    "id": "gran-taller-salsa-corporalidad-21-nov",
+    "account": "madyumdance",
+    "media": [
+      {
+        "post_id": "18387050719234934",
+        "permalink": "https://www.instagram.com/reel/DfAZYQih9yO/",
+        "media_type": "VIDEO",
+        "published": "2026-10-27T17:40:01+0000",
+        "flyer": "flyers/18387050719234934-0.webp",
+        "caption": "🔥SALSA CORPORALIDAD 🔥\n\nLlega a nuestra Escuela del Mambo este poderoso taller de Salsa para el més de noviembre a cargo de la talentosa maestra lauraximenadance que nos visita desde Medellín. \n\nUna sesión llena de sabor, estilo, elegancia. Calle y mucha salseridad. Te esperamos 📔✅\n\nNivel: MULTINIVEL (todos los niveles)\nHora: 6:00 pm\nFecha: 21 de Noviembre \n\n#dancing #salsa #mambo #escueladebaile academiadebaile",
+        "preview": null,
         "slides": null
       }
     ],
