@@ -9,7 +9,7 @@
 //     Instagram button opens that post.
 //   - A video's clip plays while its slide is the one on screen (clips.ts: off-screen slides aren't in view).
 
-import { cardLink } from "../lib/cards";
+import { cardLink, FLYER_CARD } from "../lib/cards";
 import { isPlainClick, prefersReducedMotion } from "../lib/dom";
 
 /** Dots shown at once: a long carousel (an event with 20 posts) slides its window along. */
@@ -44,7 +44,7 @@ function sync(strip: HTMLElement) {
   const index = slideIndex(strip.scrollLeft, strip.clientWidth, count);
   if (strip.dataset.index === String(index)) return;
   strip.dataset.index = String(index);
-  const card = strip.closest<HTMLElement>("[data-event-card]");
+  const card = strip.closest<HTMLElement>(FLYER_CARD);
   if (!card) return;
   const counter = card.querySelector<HTMLElement>("[data-carousel-count]");
   if (counter) counter.textContent = `${index + 1}/${count}`;
@@ -92,7 +92,7 @@ function onClick(domEvent: MouseEvent) {
   openInNewTab(domEvent);
   const button = (domEvent.target as Element | null)?.closest<HTMLElement>("[data-carousel-step]");
   if (!button) return;
-  const strip = button.closest("[data-event-card]")?.querySelector<HTMLElement>("[data-carousel]");
+  const strip = button.closest(FLYER_CARD)?.querySelector<HTMLElement>("[data-carousel]");
   if (!strip) return;
   domEvent.preventDefault();
   const behavior = prefersReducedMotion() ? "auto" : "smooth";
@@ -101,7 +101,7 @@ function onClick(domEvent: MouseEvent) {
 
 /** The slide on screen in the card holding `element` (0 without a carousel): the details select it. */
 export function carouselSlide(element: Element): number {
-  const strip = element.closest("[data-event-card]")?.querySelector<HTMLElement>("[data-carousel]");
+  const strip = element.closest(FLYER_CARD)?.querySelector<HTMLElement>("[data-carousel]");
   return strip ? Number(strip.dataset.index) || 0 : 0;
 }
 

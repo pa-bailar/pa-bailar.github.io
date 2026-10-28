@@ -841,3 +841,100 @@
     animation: none;
   }
 }
+
+/* ---------- a flyer's schedule: one card, a row per event of that day (scripts/views/eventCard.ts) ----------
+   Each row is its event's card: its title is the link (stretched over the row only), its own Guardar at the end. The
+   focus ring and the side panel's outline go on the row, not on the whole card. */
+.event-card--schedule:has(.event-card__hit:focus-visible) {
+  outline: none;
+}
+
+.schedule {
+  container-type: inline-size; /* its rows lay out by its width (below) */
+  display: flex;
+  flex-direction: column;
+  margin: var(--space-2) 0 var(--space-1);
+  padding: 0;
+  list-style: none;
+}
+
+.schedule__row {
+  position: relative; /* the row's link stretches over the row, not the card */
+  display: grid;
+  grid-template-columns: 5.5em 1fr auto;
+  align-items: center;
+  column-gap: var(--space-2);
+  min-height: var(--touch-target);
+  border-top: 1px solid var(--divider);
+}
+
+.schedule__row:last-child {
+  border-bottom: 1px solid var(--divider);
+}
+
+.schedule__time {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+}
+
+.schedule__title {
+  padding: var(--space-2) 0;
+  font-size: var(--text-md);
+  font-weight: var(--weight-bold);
+}
+
+/* What differs between the rows (the type, the place), under each row's title. */
+.schedule__note {
+  grid-column: 2;
+  margin-top: calc(var(--space-2) * -1);
+  padding-bottom: var(--space-2);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+.schedule__row .save-button {
+  grid-column: 3;
+  grid-row: 1 / span 2;
+  width: var(--touch-target);
+  height: var(--touch-target);
+  margin: 0 calc(var(--space-2) * -1) 0 0;
+}
+
+.schedule__row:has(.event-card__hit:focus-visible),
+.schedule__row.is-current {
+  outline: 2px solid var(--focus);
+  outline-offset: -2px;
+}
+
+.schedule__row.is-current {
+  outline: 3px solid var(--card-current);
+}
+
+/* A narrow card (wide screens' grid with the side panel open): the time over the title, not beside it, where its column
+   left the title a few words a line. */
+@container (max-width: 15rem) {
+  .schedule__row {
+    grid-template-columns: 1fr auto;
+  }
+
+  .schedule__time {
+    padding-top: var(--space-2);
+  }
+
+  .schedule__time,
+  .schedule__title,
+  .schedule__note {
+    grid-column: 1;
+  }
+
+  .schedule__title {
+    padding-top: 0;
+  }
+
+  .schedule__row .save-button {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+  }
+}

@@ -176,7 +176,7 @@ The palette's hex values for what can't read CSS (the link previews, the share c
 ## Signature motifs
 
 - **70s stripes** (`<Stripes />`): three bands (tomato, orange, marigold). Used in the page headers (home, event page, 404), the event detail and the footer; the period headings use the same three colors as one thin line. Don't use them anywhere else; they lose meaning if repeated. The one exception: the offset under the cards' "Detalles ›" (the owner's choice; see "Opening an event").
-- **Date sticker:** a round "record label" with the day and month, inside the bottom-right corner of each flyer, on cards and in the event detail. Two events sharing one flyer (a monthly schedule) are told apart by it while swiping. An event over several days within one month shows its days ("13–15 / NOV"); across months it keeps the first day ("31 / OCT"), and the card's line gives the range. A workshop series shows its next session ("29 / NOV"), or the one it is listed under, the last once all have passed.
+- **Date sticker:** a round "record label" with the day and month, inside the bottom-right corner of each flyer, on cards and in the event detail. Events sharing one flyer on different days (a monthly schedule) are told apart by it while swiping. An event over several days within one month shows its days ("13–15 / NOV"); across months it keeps the first day ("31 / OCT"), and the card's line gives the range. A workshop series shows its next session ("29 / NOV"), or the one it is listed under, the last once all have passed.
 - **Italic headings:** group, day and month headings in Bodoni italic, like a handwritten setlist.
 
 The light theme's creams are the paper of 1970s salsa flyers and sleeves: the page uses an aged tone rather than near-white, so it isn't glaring, and cards sit one step lighter.
@@ -221,6 +221,18 @@ The light theme's creams are the paper of 1970s salsa flyers and sleeves: the pa
   | its last day | En curso · último día |
 
   The detail's "Cuándo" reads "Viernes 13 al domingo 15 de noviembre · hora por confirmar", and shared lists "Vie 13 – dom 15".
+- **One card per flyer and day** (the owner, 28 Oct 2026): a post that announces several events on the same day (an
+  academy's Saturday of nine classes, a competition and then its social) is one card: the flyer once, the day, a heading
+  (what the titles share before a ":" or " - ", like "Semana Ryan", or "9 eventos"), the account, then the day's
+  **schedule**, a row per event: its time, its own title, under it what tells the rows apart (its type when they differ,
+  its place when the places differ: only the part that differs, "Fontibón" / "Norte"), and its own Guardar. Each row
+  opens its own details and is its own Tab and arrow stop; the flyer and "Detalles" open the first. The place, price
+  ("Desde" the lowest when they differ) and styles they share go at the foot. Before, it was one card per event: the
+  same flyer nine times in a row on a phone. Events of the same post on other days keep their own cards (the day tells
+  them apart), and so do a series and an event over several days. With a filter on, only the rows that match are
+  listed (the flyer still shows the whole day, as on Instagram); a schedule left with one row is an ordinary card. The
+  list, the calendar's day and Guardados all do it (`lib/flyerGroups.ts`). On a narrow card (wide screens with the
+  side panel open) the time goes over the title.
 - **A workshop series** (one program on separate dated sessions, `DATA.md`) is one card, listed under its next session's
   day (among that day's events by its type and time) and moving on as each session passes; it leaves the list after the last.
   Its card says the next session (`cardWhenLabel`), its sticker shows that session's day:
@@ -731,7 +743,8 @@ An event can be announced by several Instagram posts (a flyer, then a video, a r
   back to the card. The title and "Detalles" open the panel alone. Phones and tablets: a tap on the image opens the
   details, as before.
 - **The keyboard moves through the events** (`views/keyboardNav.ts`; the owner, 5 October 2026: clicking card after
-  card was tiresome). A card focused: ↑ ↓ ← → to the card above, below, before or after; Enter opens its details with
+  card was tiresome). A card focused: ↑ ↓ ← → to the card above, below, before or after (in a flyer's schedule, ↑ ↓ go
+  row by row, and the schedule is one card in the grid: entered at its first row going down, its last going up); Enter opens its details with
   the image big beside them where that works, the details alone elsewhere. The details open: Enter on them shows the
   image beside them (to press Enter an event was almost always just clicked: the owner, 6 Oct 2026). Nothing focused:
   any arrow starts on the first card whose top shows below the pinned bars, or, when none does, the one straddling
