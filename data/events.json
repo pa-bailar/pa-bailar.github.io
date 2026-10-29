@@ -10669,6 +10669,52 @@
     "bar": false
   },
   {
+    "title": "Salsa Funk Samba",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "otro"
+    ],
+    "organizer": "El Bochinche Café Bar",
+    "venue": "El Bochinche Café Bar",
+    "address": "Calle 22 # 01-26",
+    "area": null,
+    "date": "2026-10-29",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "jueves",
+    "start_time": "20:00",
+    "end_time": "02:30",
+    "prices": [
+      {
+        "label": "Entrada libre",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [],
+    "contact": "@el_bochinche_cafe_",
+    "confidence": "high",
+    "doubts": [],
+    "id": "salsa-funk-samba-29-oct",
+    "account": "el_bochinche_cafe_",
+    "media": [
+      {
+        "post_id": "17963230950210525",
+        "permalink": "https://www.instagram.com/p/DfDImVdlLYS/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-28T19:00:02+0000",
+        "flyer": "flyers/17963230950210525-0.webp",
+        "caption": "Nos reunimos este jueves para celebrar la esperanza y el poder de la colectividad, que sostiene ideas, vidas y territorios🇧🇷\n\nCelebramos la victoria de Lula y con ella la posibilidad de imaginar otros futuros para nuestra América Latina.\n\nTe veo en la pista para brindar, bailar y politizar la guachafita ❤️⭐️🇧🇷\n\nBrasil, esta noche danzamos contigo y pa’ ti. 🪅",
+        "preview": "previews/17963230950210525-0.mp4",
+        "slides": 3
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Salsa Infierno",
     "event_type": "concert",
     "is_recurring": false,
@@ -11855,6 +11901,16 @@
         "slides": null
       },
       {
+        "post_id": "17913884763473376",
+        "permalink": "https://www.instagram.com/reel/DfDvSiBxqqp/",
+        "media_type": "VIDEO",
+        "published": "2026-10-29T00:39:41+0000",
+        "flyer": "flyers/17913884763473376-0.webp",
+        "caption": "🌑🌿 LA TUNDA: LA LEYENDA QUE SIGUE ASUSTANDO AL PACÍFICO 👣😨\n\nTE ESPERAMOS ESTE 31 DE OCTUBRE \n\nCuentan los mayores que, en lo profundo de la selva del Pacífico colombiano, habita un ser misterioso conocido como *La Tunda*.\n\nDicen que puede adoptar la apariencia de alguien que conoces, incluso la de tu propia mamá, para engañarte y llevarte hacia el monte. 🌳👀\n\nPero hay algo que la delata: una de sus piernas tiene la forma de un molinillo de madera, mientras que la otra es humana.\n\nSegún cuentan las historias, La Tunda atrae a sus víctimas con comida, especialmente camarones y cangrejos, y las mantiene encantadas, perdidas entre los árboles, sin querer regresar a casa.\n\nCuando alguien desaparece, sus familiares y vecinos salen a buscarlo, llamándolo entre la selva y recurriendo a los sonidos de los instrumentos tradicionales y a los saberes de los mayores para intentar romper el encanto.\n\nAsí ha viajado esta leyenda de generación en generación, entre el miedo, el misterio y la tradición oral de nuestros pueblos afro del Pacífico. 🖤💚\n\nPorque nuestras leyendas no solo nos ponen los pelos de punta: también cuentan quiénes somos y de dónde venimos.\n\n¿Tú qué has escuchado de la Tunda? 😳🥵",
+        "preview": "previews/17913884763473376-0.mp4",
+        "slides": null
+      },
+      {
         "post_id": "18101485001426929",
         "permalink": "https://www.instagram.com/reel/DfA3mtoRjjq/",
         "media_type": "VIDEO",
@@ -12515,6 +12571,52 @@
         "caption": "CONCURSO DE DISFRACES Y MUCHAS CLASES GRATIS 🎃 Prográmate este 31 de octubre y disfruta de nuestras clases en cada sede TOTALMENTE GRATIS, trae a tu amigo, tu familia o quien tú quieras y si vienen disfrazados podrán participar por grandes descuentos para que no dejes de bailar 💃 \n\nDale like, comenta y comparte 😎 \n\nTe dejamos las clases y el horario de cada sede ❤️\n\n📍 SEDE FONTIBÓN\n\n9:00 a. m. – Yoga\nProfesora: Adriana Hormaza\n\n10:00 a. m. – Bachata Básica\nProfesor: Álvaro Vela\n\n10:00 a. m. – Bachata Intermedia\nProfesor: Cristian Pantoja\n\n11:00 a. m. – Salsa Básica\nProfesor: Álvaro Vela\n\n11:00 a. m. – Salsa Intermedia\nProfesor: Juan Ma Quintero\n\n📍 SEDE NORTE\n\n6:00 p. m. – Salsa Básica\nProfesor: Álvaro Vela\n\n6:00 p. m. – Salsa Intermedia\nProfesor: Juan Ma Quintero\n\n7:30 p. m. – Bachata Básica\nProfesora: Natalia Rey\n\n7:30 p. m. – Bachata Intermedia\nProfesor: Cristian Pantoja\n\nLOS ESPERAMOS 🔥🎃",
         "preview": null,
         "slides": 3
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Halloween Clase Kids",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Salsa & Ritmo Latino",
+    "venue": "Sede CC. Plaza de las Américas",
+    "address": "Calle 6A Sur #71D-79",
+    "area": "Plaza de las Américas",
+    "date": "2026-10-31",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "10:30",
+    "end_time": null,
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "clase de kids",
+      "juegos",
+      "compartir",
+      "disfraces"
+    ],
+    "contact": "WhatsApp 312 336 3405",
+    "confidence": "high",
+    "doubts": [
+      "sin precio explicitado"
+    ],
+    "id": "halloween-clase-kids-31-oct",
+    "account": "salsayritmolatino",
+    "media": [
+      {
+        "post_id": "17914963158287588",
+        "permalink": "https://www.instagram.com/p/DfDBnyLCPJw/",
+        "media_type": "IMAGE",
+        "published": "2026-10-28T17:59:55+0000",
+        "flyer": "flyers/17914963158287588-0.webp",
+        "caption": "🎃 ¡Celebra Halloween con Salsa, Ritmo & Latino! 👻🧛‍♂️\n\nDisfruta una mañana llena de juegos, risas y diversión para los más pequeños. 🧡🕸️ ¡Ven disfrazado y trae algo para compartir!\n\n📅 31 de octubre | ⏰ 10:30 a. m. Clase de Kids\n📍 Calle 6A Sur #71D-79, Sede CC. Plaza de las Américas\n📲 WhatsApp: 312 336 3405\n\n#HalloweenInfantil #HalloweenEnBogotá #PlanesParaNiños #SalsaRitmoLatino",
+        "preview": null,
+        "slides": null
       }
     ],
     "bar": false
@@ -14642,6 +14744,66 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "Joaquín Fernández presenta: Caminando",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "Casa de Citas",
+    "venue": "Casa de Citas",
+    "address": "Cra 3 #12B - 35",
+    "area": "La Candelaria",
+    "date": "2026-11-06",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "20:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Preventa",
+        "amount_cop": 25000,
+        "condition": null
+      },
+      {
+        "label": "Taquilla",
+        "amount_cop": 30000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Joaquín Fernández",
+      "Mayté Álvarez",
+      "Nicolás Castellanos",
+      "Christian Fernández \"Wilcho\"",
+      "Selena Higuera",
+      "DJ Carlos"
+    ],
+    "activities": [
+      "concierto de música latinoamericana",
+      "rumba caribe"
+    ],
+    "contact": "315 212 5733",
+    "confidence": "high",
+    "doubts": [],
+    "id": "joaquin-fernandez-presenta-caminando-6-nov",
+    "account": "restaurantecasadecitas",
+    "media": [
+      {
+        "post_id": "18127817770662119",
+        "permalink": "https://www.instagram.com/p/DfDYCzBv-cw/",
+        "media_type": "IMAGE",
+        "published": "2026-10-28T21:15:47+0000",
+        "flyer": "flyers/18127817770662119-0.webp",
+        "caption": "Joaquín Fernández viene de Uruguay con el proyecto Caminando donde canta y cuenta las historias de sus composiciones acompañado de su guitarra al ritmo del candombe uruguayo, el ijexá brasileño y la cumbia. Acá en Bogotá se junta al sabor de los tambores de Mayté Álvarez, Nicolás Castellanos y Kristian Fernández “Wilcho” y el bajo de Selena Higuera, para cantar canciones que hablan de la vida y de la naturaleza, proponiendo un ambiente agradable, íntimo y danzante. \n\nVen a disfrutar de un lindo momento de nueva música latinoamericana en Casa de citas.\n\n🗓️Viernes 6 de Noviembre \n🕗 8PM\nLes esperamos 🍷✨",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
   },
   {
     "title": "Guabalosas Intensivo Versión 2.0",
