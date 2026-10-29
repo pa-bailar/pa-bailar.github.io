@@ -12296,6 +12296,59 @@
     "bar": true
   },
   {
+    "title": "Halloween en Studio Latin Dance",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "bachata"
+    ],
+    "organizer": "Studio Latin Dance",
+    "venue": "Studio Latin Dance – Ambas Sedes",
+    "address": null,
+    "area": "Fontibón",
+    "date": "2026-10-31",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "General",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Luis Bachata"
+    ],
+    "activities": [
+      "clases completamente gratis",
+      "concurso de disfraces"
+    ],
+    "contact": "@studiolatindance",
+    "confidence": "high",
+    "doubts": [
+      "no se especifica horario de inicio exacto"
+    ],
+    "id": "halloween-en-studio-latin-dance-31-oct",
+    "account": "studiolatindance",
+    "media": [
+      {
+        "post_id": "18105295001014078",
+        "permalink": "https://www.instagram.com/reel/DfDoPhqOjFv/",
+        "media_type": "VIDEO",
+        "published": "2026-10-28T23:38:42+0000",
+        "flyer": "flyers/18105295001014078-0.webp",
+        "caption": "🎃 ESTE 31 DE OCTUBRE, ALGO OSCURO SE APODERA DE STUDIO LATIN DANCE… 🩸\n\nHay noches en las que es mejor no preguntar qué está pasando… y esta será una de ellas. 👁️\n\nLas puertas estarán abiertas, pero esta vez no sabemos quiénes se atreverán a entrar. 💀\n\n👻 ¡HALLOWEEN EN STUDIO LATIN DANCE!\n\n🔥 Clases completamente GRATIS para todo el público.\n\n🎭 CONCURSO DE DISFRACES al finalizar nuestras clases.\n\n📅 Sábado 31 de octubre.\n\n📍 Studio Latin Dance – Ambas Sedes.\n\nVen con tu mejor disfraz, trae a tus amigos y prepárate para vivir una experiencia fuera de lo normal.\n\n🩸 La entrada es gratis… el miedo corre por tu cuenta.\n\n¿Te atreves a acompañarnos? 👀\n\n📽️ Productor: oggun_media_house deivy.gm\n🕺🏽 Actor: luis_bachata\n\n#StudioLatinDance #Halloween2026 #HalloweenBogota #Fontibon #ClasesDeBaile ConcursoDeDisfraces HalloweenParty",
+        "preview": "previews/18105295001014078-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Yoga",
     "event_type": "workshop",
     "is_recurring": false,
@@ -13142,7 +13195,7 @@
     "organizer": "Distrito Social",
     "venue": "Distrito Social",
     "address": "CRA 29 68 - 18",
-    "area": null,
+    "area": "Barrios Unidos",
     "date": "2026-10-31",
     "end_date": "2026-11-02",
     "sessions": null,
@@ -13172,6 +13225,16 @@
     "id": "distrito-social-aniversario-31-oct",
     "account": "distritosocialbog",
     "media": [
+      {
+        "post_id": "18397159246203838",
+        "permalink": "https://www.instagram.com/p/DfCx0Pbx_Ek/",
+        "media_type": "IMAGE",
+        "published": "2026-10-28T15:41:44+0000",
+        "flyer": "flyers/18397159246203838-0.webp",
+        "caption": "Llegó el Aniversario ✨\n\nCelebramos por lo alto en Distrito Social un fin de semana imperdible cargado de la mejor energía, baile y sabor. \n\n¡Dos noches de sociales imperdibles de puro SBK (Salsa, Bachata y Kizomba) para gozar nos la pista como se debe! 🔥\n\nTendremos a cargo de los sets a estos 4 DJ que están listos para ponernos a bailar \n\n🔸 DJ Jonn\n🔸 DJ Frank\n🔸 DJ Crisstian\n🔸 DJ Duane\n\nPrepara los zapatos de baile, avísale a tu pareja y ven a celebrar con nosotros 🥳\n\n🗓️ 31 Oct, 1 y 2 Nov\n📍 Distrito Social - CRA 29 N68-18\n\nReserva en nuestras Webs: \n\ndistrito-social-academy.com/eventos\nappdanza.com",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "17995555578047630",
         "permalink": "https://www.instagram.com/p/DePkHO2Fg6y/",
@@ -14095,6 +14158,56 @@
     "bar": false
   },
   {
+    "title": "IX Encuentro de Escuelas y Academias de Ballet",
+    "event_type": "show",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "La Coartada Centro Cultural",
+    "venue": "Teatro Jorge Eliécer Gaitán",
+    "address": null,
+    "area": null,
+    "date": "2026-11-01",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "15:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Entrada libre",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "La Coartada Centro Cultural"
+    ],
+    "activities": [
+      "gala de ballet",
+      "presentación de danza"
+    ],
+    "contact": "@lacoartadacentrocultural",
+    "confidence": "high",
+    "doubts": [],
+    "id": "ix-encuentro-de-escuelas-y-academias-de-ballet-1-nov-2",
+    "account": "lacoartadacentrocultural",
+    "media": [
+      {
+        "post_id": "18373804897209049",
+        "permalink": "https://www.instagram.com/p/DfCy2n5xXPA/",
+        "media_type": "IMAGE",
+        "published": "2026-10-28T16:51:35+0000",
+        "flyer": "flyers/18373804897209049-0.webp",
+        "caption": "🗓️🩰 Este Domingo, 1 de noviembre, a las 3pm en el teatrojeg bailarán los 4 grupos ganadores del IX ENCUENTRO DE ESCUELAS Y ACADEMIAS DE BALLET del 2026.\n\n🐦‍🔥 Te esperamos desde las 2pm para que te acomodes y nos acompañes en esta gala en la que LA COARTADA CENTRO CULTURAL bailará con un fragmento de Pájaros en la cabeza.\n\n🎟️ ENTRADA LIBRE‼️\n\nIntérpretes: inflorescensia.11 alejagolondrina silviii_sm _mgabrielam isa_feliza semiuusroue mielazucaradaa keyrah_kyrh \nVoz: lorito_hormaza \nEdición: Laura Zapata \nDirección, texto y coreografía: violetamanceramurcia avilaperdomo",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "La Miniteca de El Panteón de la Salsa Vol. 14",
     "event_type": "party",
     "is_recurring": false,
@@ -14198,7 +14311,18 @@
         "condition": "4 boletas de General"
       }
     ],
-    "artists": [],
+    "artists": [
+      "Alejandro Pacheco",
+      "Con Amor Dani",
+      "Mario Trujillo",
+      "Huny",
+      "Saii",
+      "Nicky Cast",
+      "Noah",
+      "Blanca",
+      "Matt",
+      "Maria Nathalia"
+    ],
     "activities": [
       "gala de premiación",
       "shows de baile"
@@ -14209,6 +14333,16 @@
     "id": "bureo-awards-2026-noche-dorada-gala-5-nov",
     "account": "bureodancestudio",
     "media": [
+      {
+        "post_id": "17884669035526294",
+        "permalink": "https://www.instagram.com/p/DfDSDKsEiav/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-28T20:23:21+0000",
+        "flyer": "flyers/17884669035526294-0.webp",
+        "caption": "✨ EL TALENTO TIENE NOMBRE, Y ESTA NOCHE TIENE PROTAGONISTAS. 🏆🔥\n\nEllos serán los encargados de darle vida, brillo y mucha actitud a los BUREO AWARDS 2026. Una noche para celebrar a quienes hacen de la danza, la creatividad y el movimiento algo extraordinario. 🖤✨\n\nPrepárense para una noche llena de talento, sorpresas y momentos que quedarán para la historia. 👀\n\n¿Están listos para la noche más esperada de Bureo? 🏆",
+        "preview": null,
+        "slides": 11
+      },
       {
         "post_id": "17907416070330853",
         "permalink": "https://www.instagram.com/p/DeQSLLvCLIV/",
