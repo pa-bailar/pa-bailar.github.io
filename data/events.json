@@ -10602,6 +10602,60 @@
     "bar": false
   },
   {
+    "title": "Pop Up Class Afro con Chiky",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "afro"
+    ],
+    "organizer": "Danceholic Project",
+    "venue": "Danceholic Project",
+    "address": "Calle 57 # 13-76",
+    "area": "Chapinero",
+    "date": "2026-10-29",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "jueves",
+    "start_time": "19:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "General",
+        "amount_cop": 35000,
+        "condition": null
+      },
+      {
+        "label": "Afiliados Danceholic",
+        "amount_cop": 0,
+        "condition": "incluido con el carnet"
+      }
+    ],
+    "artists": [
+      "Chiky"
+    ],
+    "activities": [
+      "clase de afro"
+    ],
+    "contact": "@danceholicproject",
+    "confidence": "high",
+    "doubts": [],
+    "id": "pop-up-class-afro-con-chiky-29-oct",
+    "account": "danceholicproject",
+    "media": [
+      {
+        "post_id": "18110369294237107",
+        "permalink": "https://www.instagram.com/p/DfFav2kkWoQ/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-29T16:17:50+0000",
+        "flyer": "flyers/18110369294237107-0.webp",
+        "caption": "POP UP CLASS 🔥 \n\nLas sorpresas en la mansión no paran , para HOY JUEVES 26 DE OCTUBRE tenemos como invitado Especial  a uno de los pioneros del Afro en Colombia chikydanceroficial desde Cartagena 🇨🇴 quien estará compartiendo un poco de su danza y conocimiento en la Mansión 🔥\n\nFECHA: ( HOY ) JUEVES 29 DE OCTUBRE \nHORA: 7:00PM\nVALOR : 35K\nLUGAR: DANCEHOLIC PROJECT ( Calle 57 13 76\nChapinero\nPOST: para las personas afiliadas a Danceholic Project, esta clase no tiene ningún costo adicional (se cuenta como una clase con el carnet)\nEs importante reservar para la clase !\n\nDesign : jaydanceholic 🎨\n#danceholicproject #popupclass #afro",
+        "preview": null,
+        "slides": 2
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Semana Ryan: Heels con Maju Pardo",
     "event_type": "workshop",
     "is_recurring": false,
@@ -11006,7 +11060,9 @@
     "start_time": null,
     "end_time": null,
     "prices": [],
-    "artists": [],
+    "artists": [
+      "Tributo a Celia Cruz"
+    ],
     "activities": [
       "fiesta de disfraces",
       "música en vivo",
@@ -11021,6 +11077,16 @@
     "id": "fiesta-de-disfraces-epoca-dorada-de-cuba-anos-20-30-oct",
     "account": "quemaquequema",
     "media": [
+      {
+        "post_id": "18191617588404601",
+        "permalink": "https://www.instagram.com/reel/DfGaK4vP9S5/",
+        "media_type": "VIDEO",
+        "published": "2026-10-30T01:32:56+0000",
+        "flyer": "flyers/18191617588404601-0.webp",
+        "caption": "Nos Disfrazamos este fin de semana 🎭\n\nFiestas de disfraces 🥁\n🇨🇺 Viernes 30 Oct: Epoca dorada cuba - Tributo a Celia Cruz y Son Cubano\n🏴‍☠️ Sábado 31 Oct: Piratas, Marineros y Ron - Ron del Caribe con Degustación \n\n🔥 Gana pase doble a Concierto Rubén Blades: con el mejor disfraz y compartiendo un video con las frases de Rubén, ubicadas en nuestros baños 🎟️ participa para ganar \n\nReserva tu mesa ahora 🕺\n\n#restaurantequemaquequema #rubenblades #celiacruz #soncubano #salsaenvivo",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18073007690759904",
         "permalink": "https://www.instagram.com/reel/De-eTC8PWNJ/",
@@ -12199,6 +12265,16 @@
     "id": "fiesta-de-disfraces-piratas-y-ron-31-oct",
     "account": "quemaquequema",
     "media": [
+      {
+        "post_id": "18191617588404601",
+        "permalink": "https://www.instagram.com/reel/DfGaK4vP9S5/",
+        "media_type": "VIDEO",
+        "published": "2026-10-30T01:32:56+0000",
+        "flyer": "flyers/18191617588404601-0.webp",
+        "caption": "Nos Disfrazamos este fin de semana 🎭\n\nFiestas de disfraces 🥁\n🇨🇺 Viernes 30 Oct: Epoca dorada cuba - Tributo a Celia Cruz y Son Cubano\n🏴‍☠️ Sábado 31 Oct: Piratas, Marineros y Ron - Ron del Caribe con Degustación \n\n🔥 Gana pase doble a Concierto Rubén Blades: con el mejor disfraz y compartiendo un video con las frases de Rubén, ubicadas en nuestros baños 🎟️ participa para ganar \n\nReserva tu mesa ahora 🕺\n\n#restaurantequemaquequema #rubenblades #celiacruz #soncubano #salsaenvivo",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18073007690759904",
         "permalink": "https://www.instagram.com/reel/De-eTC8PWNJ/",
@@ -13802,12 +13878,22 @@
       "rifa de 1 güiro",
       "obsequios a los mejores disfraces"
     ],
-    "contact": null,
+    "contact": "@el_panteon_de_la_salsa",
     "confidence": "high",
     "doubts": [],
     "id": "la-danza-de-los-vampiros-31-oct",
     "account": "el_panteon_de_la_salsa",
     "media": [
+      {
+        "post_id": "18093203198692387",
+        "permalink": "https://www.instagram.com/reel/DfFH30PgsIs/",
+        "media_type": "VIDEO",
+        "published": "2026-10-29T13:35:16+0000",
+        "flyer": "flyers/18093203198692387-0.webp",
+        "caption": "#halloween \nProgramando \nnegro_salsero & djelchicocervantes \n#nocover",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18056492690804265",
         "permalink": "https://www.instagram.com/reel/De98L1JAz0M/",
