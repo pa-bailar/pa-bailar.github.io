@@ -11551,6 +11551,56 @@
     "bar": true
   },
   {
+    "title": "Salsa vs Reggaeton",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "urbano"
+    ],
+    "organizer": "El Bochinche",
+    "venue": "El Bochinche Café-Bar",
+    "address": "Calle 22 #01-26",
+    "area": null,
+    "date": "2026-10-30",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "19:30",
+    "end_time": "02:45",
+    "prices": [
+      {
+        "label": "Entrada libre",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "rumba"
+    ],
+    "contact": "@el_bochinche_cafe_",
+    "confidence": "high",
+    "doubts": [
+      "discrepancia en el horario entre el flyer y el pie de foto"
+    ],
+    "id": "salsa-vs-reggaeton-30-oct",
+    "account": "el_bochinche_cafe_",
+    "media": [
+      {
+        "post_id": "18347514967287542",
+        "permalink": "https://www.instagram.com/p/DfFbcm0y9zS/",
+        "media_type": "IMAGE",
+        "published": "2026-10-29T19:00:07+0000",
+        "flyer": "flyers/18347514967287542-0.webp",
+        "caption": "☝🏽Una buena salsa te enamora; un buen reggaetón te mete en problemas. 🔥\n\nAhora imagínate tener los dos en una misma noche. 👀🎺🎶\nEste viernes se prende el VS en El Bochinche y tú tienes que hacer parte de esto 🪅\n\n🗓️ viernes 30 de octubre\n🕣 De 7:30 pm a 2:45 am\n📍 Calle 22 #01-26\n\n💸 Entrada libre",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Celebración cumpleaños #7 de la Nena Magdalena",
     "event_type": "party",
     "is_recurring": false,
@@ -12967,7 +13017,7 @@
     "organizer": "Bulevar Salsa Bar",
     "venue": "Bulevar Rooftop",
     "address": "Carrera 13 # 82 - 37",
-    "area": null,
+    "area": "Zona T",
     "date": "2026-10-31",
     "end_date": null,
     "sessions": null,
@@ -12979,10 +13029,22 @@
     "activities": [],
     "contact": "3124245746",
     "confidence": "high",
-    "doubts": [],
+    "doubts": [
+      "sin precio"
+    ],
     "id": "tardeo-salsero-31-oct",
     "account": "bulevarsalsabar",
     "media": [
+      {
+        "post_id": "18120854485948258",
+        "permalink": "https://www.instagram.com/reel/DfFfjnbAlEv/",
+        "media_type": "VIDEO",
+        "published": "2026-10-29T17:02:11+0000",
+        "flyer": "flyers/18120854485948258-0.webp",
+        "caption": "Próximo Tardeo de Bulevar 🌇😎🍹\n\nSábado 31 Octubre \n⏰Desde la 1 PM hasta las 6 PM\nBULEVAR ROOFTOP\n📍Carrera 13 # 82 - 37 ( Zona T )\n\nÚltimas Entradas\n📲312 424 5746",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18177526777443153",
         "permalink": "https://www.instagram.com/reel/DekA5TlglMX/",
