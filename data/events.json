@@ -11088,6 +11088,16 @@
     "account": "quemaquequema",
     "media": [
       {
+        "post_id": "18130732510876580",
+        "permalink": "https://www.instagram.com/reel/DfIt2B5POir/",
+        "media_type": "VIDEO",
+        "published": "2026-10-30T23:03:01+0000",
+        "flyer": "flyers/18130732510876580-0.webp",
+        "caption": "Fin de Semana 🎭 De Salsa y Disfraces 🕺\n\nHoy y mañana el Hogar de la Salsa 🏠 los espera llenos de ritmo y sabor 💃\n\nLos esperamos disfrazados 🏴‍☠️ para que participen para el pase doble de Rubén Blades 🎤\n\nNos vemos en Quema 🔥 \n\n#restaurantequemaquequema #salsaenvivo #rubenblades #salseros #salsaparty",
+        "preview": null,
+        "slides": null
+      },
+      {
         "post_id": "18191617588404601",
         "permalink": "https://www.instagram.com/reel/DfGaK4vP9S5/",
         "media_type": "VIDEO",
@@ -11157,6 +11167,52 @@
       }
     ],
     "bar": true
+  },
+  {
+    "title": "Clase Especial con Jean & Gaby",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "bachata"
+    ],
+    "organizer": "Original Step",
+    "venue": null,
+    "address": "Cra. 27a No. 52-31",
+    "area": null,
+    "date": "2026-10-30",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Jean & Gaby"
+    ],
+    "activities": [
+      "clase especial",
+      "bachata social"
+    ],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [
+      "hora no especificada en el texto"
+    ],
+    "id": "clase-especial-con-jean-gaby-30-oct",
+    "account": "originalstepdance",
+    "media": [
+      {
+        "post_id": "18046247069828028",
+        "permalink": "https://www.instagram.com/p/DfHWbqajFN4/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-30T10:18:37+0000",
+        "flyer": "flyers/18046247069828028-0.webp",
+        "caption": "✨ JEAN & GABY HOY ✨\n\nEste viernes tendremos una clase especial con dos grandes representantes de la bachata social desde Bogotá, Colombia: Jean & Gaby. 🇨🇴🔥\n\nReconocidos por su creatividad, versatilidad y estilo de baile, se destacan por su propuesta de Bachata Social, Creatividad y Fusión, explorando nuevas formas de interpretar la música y conectar en pareja. 💃🕺\n\nSu estilo combina técnica, conexión, musicalidad, improvisación y elementos de diferentes disciplinas, creando una propuesta dinámica y original que busca llevar el baile social a otro nivel. 🎶🔥\n\nDurante esta clase estarán compartiendo parte de su esencia, conocimientos y recursos creativos, brindando herramientas para desarrollar mayor libertad de movimiento, explorar nuevas posibilidades y enriquecer la interpretación musical en la pista. 🤩✨\n\n📍 Cra. 27a No. 52-31, Bogotá, Colombia\n\n#bachata #bachatasocial #bachatafusion #creatividad #musicalidad improvisacion bachatacolombia bogota clasesdebachata originalstep",
+        "preview": "previews/18046247069828028-0.mp4",
+        "slides": 3
+      }
+    ],
+    "bar": false
   },
   {
     "title": "Social de Halloween",
@@ -12411,6 +12467,16 @@
     "id": "fiesta-de-disfraces-piratas-y-ron-31-oct",
     "account": "quemaquequema",
     "media": [
+      {
+        "post_id": "18130732510876580",
+        "permalink": "https://www.instagram.com/reel/DfIt2B5POir/",
+        "media_type": "VIDEO",
+        "published": "2026-10-30T23:03:01+0000",
+        "flyer": "flyers/18130732510876580-0.webp",
+        "caption": "Fin de Semana 🎭 De Salsa y Disfraces 🕺\n\nHoy y mañana el Hogar de la Salsa 🏠 los espera llenos de ritmo y sabor 💃\n\nLos esperamos disfrazados 🏴‍☠️ para que participen para el pase doble de Rubén Blades 🎤\n\nNos vemos en Quema 🔥 \n\n#restaurantequemaquequema #salsaenvivo #rubenblades #salseros #salsaparty",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18191617588404601",
         "permalink": "https://www.instagram.com/reel/DfGaK4vP9S5/",
@@ -15155,6 +15221,54 @@
     "bar": false
   },
   {
+    "title": "Unidos por la Salsa",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa caleña"
+    ],
+    "organizer": "La Diez Luxury",
+    "venue": "La Diez Luxury",
+    "address": "Carrera 60 # 12 - 92",
+    "area": "Outlets de las Américas",
+    "date": "2026-11-06",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "DJ Mono",
+      "DJ Pollo",
+      "DJ Karen"
+    ],
+    "activities": [
+      "rumba"
+    ],
+    "contact": "WhatsApp 3144810382",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio",
+      "sin precio"
+    ],
+    "id": "unidos-por-la-salsa-6-nov",
+    "account": "ladiezluxury_outlet",
+    "media": [
+      {
+        "post_id": "18115395005056503",
+        "permalink": "https://www.instagram.com/reel/DfItOVUskza/",
+        "media_type": "VIDEO",
+        "published": "2026-10-30T22:57:48+0000",
+        "flyer": "flyers/18115395005056503-0.webp",
+        "caption": "🔥💃🏻 ¡BOGOTÁ, NOS UNE LA SALSA! 🕺🏻🔥\n\nEste viernes 6 de noviembre, el sabor, la música y la rumba se apoderan de LA DIEZ LUXURY. 🎶❤️‍🔥\n\n🎤 Desde Cali, DJ Mono & DJ Pullo, junto a nuestra invitada DJ Karen, llegan para poner a vibrar la pista con lo mejor de la salsa. 🔥\n\nPorque la salsa no solo se escucha… ¡se siente, se vive y se baila! ❤️\n\n📍 La Diez Luxury – Outlets de las Américas\n📅 Viernes 6 de noviembre\n📲 Info y reservas: 314 481 0382 – 311 592 8222\n\n💃🏻 Etiqueta a esa persona con la que no dejarías de bailar ni una sola canción. 👀🔥\n\n#ladiezluxury #unidosporlasalsa #salsaenbogotá #rumbasalsera #salsacalena",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Viernes de Salsa & Son con Tambaluna",
     "event_type": "concert",
     "is_recurring": false,
@@ -17071,6 +17185,65 @@
         "flyer": "flyers/17939961648366902-0.webp",
         "caption": "🇲🇽🔥 ¡MÉXICO LLEGA A REYES DE LA SALSA 2027! 🔥🇨🇴\n\nLe damos una cálida bienvenida a Art Dance Studio México, agrupación que nos acompañará en nuestra competencia internacional Reyes de la Salsa, del 19 al 21 de marzo de 2027 en Bogotá, Colombia.\n\nSerá un verdadero honor recibirlos y compartir su talento, experiencia y conocimientos sobre la quebradita fusionada con la salsa, enriqueciendo nuestro evento con la fuerza y el sabor de la cultura mexicana.\n\n¡Gracias por aceptar nuestra invitación! Para nosotros es un orgullo tenerlos en Colombia y vivir juntos esta gran celebración internacional de la danza.\n\n🇲🇽 México y Colombia unidos por el baile 🇨🇴\n✨ ¡Bienvenidos, Art Dance Studio México! ✨",
         "preview": "previews/17939961648366902-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Bachata Social Congress 2027",
+    "event_type": "congress",
+    "is_recurring": false,
+    "styles": [
+      "bachata"
+    ],
+    "organizer": "David y Laura",
+    "venue": null,
+    "address": null,
+    "area": null,
+    "date": "2027-06-24",
+    "end_date": "2027-06-28",
+    "sessions": null,
+    "weekday": "jueves",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "David y Laura"
+    ],
+    "activities": [
+      "workshops",
+      "social dancing",
+      "Bachata Jam Session"
+    ],
+    "contact": "@bachatasocialcongress",
+    "confidence": "high",
+    "doubts": [
+      "sin lugar exacto",
+      "sin precios",
+      "sin horarios"
+    ],
+    "id": "bachata-social-congress-2027-24-jun",
+    "account": "bachatasocialcongresss",
+    "media": [
+      {
+        "post_id": "17873739702640798",
+        "permalink": "https://www.instagram.com/p/DfIIA9cx6CB/",
+        "media_type": "IMAGE",
+        "published": "2026-10-30T17:32:01+0000",
+        "flyer": "flyers/17873739702640798-0.webp",
+        "caption": "🚨 BACHATA SOCIAL CONGRESS 2027 🚨\n\nWE ARE BACK! 🔥🇨🇴\n\nUna nueva edición está en camino y queremos que seas parte de esta historia.\n\n🌎 Artistas internacionales\n\n🎶 Workshops & Social Dancing\n\n🏆 Bachata Jam Session\n\n❤️ Una comunidad, una pasión.\n\nCOMING SOON… 🔜\n\n👇 ¿Desde qué país nos acompañarías?\n\n#BachataSocialCongress #BSC2027 #BachataJamSession #BachataColombia",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18064275404674703",
+        "permalink": "https://www.instagram.com/p/DfIH3AxRRmU/",
+        "media_type": "IMAGE",
+        "published": "2026-10-30T17:30:46+0000",
+        "flyer": "flyers/18064275404674703-0.webp",
+        "caption": "🚨 BACHATA SOCIAL CONGRESS 2027 🚨\n\nWE ARE BACK! 🔥🇨🇴\n\nUna nueva edición está en camino y queremos que seas parte de esta historia.\n\n🌎 Artistas internacionales\n\n🎶 Workshops & Social Dancing\n\n🏆 Bachata Jam Session\n\n❤️ Una comunidad, una pasión.\n\nCOMING SOON… 🔜\n\n👇 ¿Desde qué país nos acompañarías?\n\n#BachataSocialCongress #BSC2027 #BachataJamSession #BachataColombia",
+        "preview": null,
         "slides": null
       }
     ],
