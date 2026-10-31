@@ -12189,6 +12189,16 @@
         "slides": null
       },
       {
+        "post_id": "17970665442189537",
+        "permalink": "https://www.instagram.com/reel/DfISuubpLBO/",
+        "media_type": "VIDEO",
+        "published": "2026-10-30T19:07:17+0000",
+        "flyer": "flyers/17970665442189537-0.webp",
+        "caption": "Solo nos separa una 1 día, nos vemos mañana, contaremos con los DJS jeisson_dj_salsa  julisavoydj \n\nTENEMOS 5 MILLONES EN PREMIOS 🥳🥳🥳🔥🔥\n#Halloweeen #pachanga",
+        "preview": "previews/17970665442189537-0.mp4",
+        "slides": null
+      },
+      {
         "post_id": "17913884763473376",
         "permalink": "https://www.instagram.com/reel/DfDvSiBxqqp/",
         "media_type": "VIDEO",
@@ -12923,7 +12933,7 @@
     "organizer": "Salsa & Ritmo Latino",
     "venue": "Sede CC. Plaza de las Américas",
     "address": "Calle 6A Sur #71D-79",
-    "area": "Plaza de las Américas",
+    "area": null,
     "date": "2026-10-31",
     "end_date": null,
     "sessions": null,
@@ -12934,15 +12944,11 @@
     "artists": [],
     "activities": [
       "clase de kids",
-      "juegos",
-      "compartir",
-      "disfraces"
+      "juegos"
     ],
-    "contact": "WhatsApp 312 336 3405",
+    "contact": "WhatsApp 3123363405",
     "confidence": "high",
-    "doubts": [
-      "sin precio explicitado"
-    ],
+    "doubts": [],
     "id": "halloween-clase-kids-31-oct",
     "account": "salsayritmolatino",
     "media": [
