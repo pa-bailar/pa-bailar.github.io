@@ -12312,6 +12312,16 @@
     "account": "galeriacafelibro",
     "media": [
       {
+        "post_id": "18120360382972135",
+        "permalink": "https://www.instagram.com/p/DfLJQ3tI7Ai/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-31T21:40:03+0000",
+        "flyer": "flyers/18120360382972135-0.webp",
+        "caption": "🎃👻 ¡TRES PLANES DE HALLOWEEN, UN MISMO TEMPLO SALSERO! 🔥\n\nEn Galería Café Libro tenemos todo listo para que vivas una noche de miedo, pero de la buena: música, baile, disfraces y mucho sabor. 💃🏻🕺🏻\n\nY para empezar la rumba como se debe, tenemos HAPPY HOUR de 5:00 a 8:00 p. m. 🍹\n\n¡Arma tu parche, elige tu sede, ponte tu mejor disfraz y ven a celebrar Halloween con nosotros! ❤️‍🔥\n\n📍 Sede Parque 93: salsa en vivo con Nick Salas\n📍galeriacafelibropalermo ¡A la memoria del muerto! Salsa en vivo con Los Emperadores\n📍 saloncafebohemia La noche de blanco con Dj Gordo Castillo + La Melodia de los Oviedo como djs invitados",
+        "preview": null,
+        "slides": 4
+      },
+      {
         "post_id": "17927148462200673",
         "permalink": "https://www.instagram.com/p/DfIH8gko1AU/",
         "media_type": "CAROUSEL_ALBUM",
@@ -12534,7 +12544,7 @@
     ],
     "organizer": "Casa Quiebra-Canto",
     "venue": "Casa Quiebra-Canto",
-    "address": null,
+    "address": "Carrera 5 # 17 - 76",
     "area": null,
     "date": "2026-10-31",
     "end_date": null,
@@ -12572,6 +12582,16 @@
         "published": "2026-10-26T16:58:49+0000",
         "flyer": "flyers/17995534296013468-0.webp",
         "caption": "Hallowen en su salsa , ven y vive con nosotros un fin de semana lleno de musica en vivo y buena rumba",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18120237215051986",
+        "permalink": "https://www.instagram.com/reel/DfL4xLPkVOr/",
+        "media_type": "VIDEO",
+        "published": "2026-11-01T04:35:55+0000",
+        "flyer": "flyers/18120237215051986-0.webp",
+        "caption": "clandelsolar pa ponerte a gozarrrr",
         "preview": null,
         "slides": null
       },
@@ -12752,6 +12772,108 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "A la memoria del muerto con Los Emperadores",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Galería Café Libro",
+    "venue": "Galería Café Libro Sede Palermo",
+    "address": "Transversal 15B # 46-38",
+    "area": "Palermo",
+    "date": "2026-10-31",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 20000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Los Emperadores"
+    ],
+    "activities": [
+      "salsa en vivo",
+      "altar y fiesta para honrar a los santos salseros",
+      "premios a los mejores disfraces"
+    ],
+    "contact": "3176608742",
+    "confidence": "high",
+    "doubts": [
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "a-la-memoria-del-muerto-con-los-emperadores-31-oct",
+    "account": "galeriacafelibro",
+    "media": [
+      {
+        "post_id": "18120360382972135",
+        "permalink": "https://www.instagram.com/p/DfLJQ3tI7Ai/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-31T21:40:03+0000",
+        "flyer": "flyers/18120360382972135-3.webp",
+        "caption": "🎃👻 ¡TRES PLANES DE HALLOWEEN, UN MISMO TEMPLO SALSERO! 🔥\n\nEn Galería Café Libro tenemos todo listo para que vivas una noche de miedo, pero de la buena: música, baile, disfraces y mucho sabor. 💃🏻🕺🏻\n\nY para empezar la rumba como se debe, tenemos HAPPY HOUR de 5:00 a 8:00 p. m. 🍹\n\n¡Arma tu parche, elige tu sede, ponte tu mejor disfraz y ven a celebrar Halloween con nosotros! ❤️‍🔥\n\n📍 Sede Parque 93: salsa en vivo con Nick Salas\n📍galeriacafelibropalermo ¡A la memoria del muerto! Salsa en vivo con Los Emperadores\n📍 saloncafebohemia La noche de blanco con Dj Gordo Castillo + La Melodia de los Oviedo como djs invitados",
+        "preview": null,
+        "slides": 4
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Noche de Blanco",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Galería Café Libro",
+    "venue": "Salón Café Bohemia",
+    "address": "Transversal 15B # 46-38",
+    "area": "Palermo",
+    "date": "2026-10-31",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Javier \"El Gordo\" Castillo",
+      "La Melodía de los Oviedo",
+      "Raúl",
+      "Leo"
+    ],
+    "activities": [
+      "premios a los mejores disfraces"
+    ],
+    "contact": "3176608742",
+    "confidence": "high",
+    "doubts": [
+      "sin precio en el flyer",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "noche-de-blanco-31-oct",
+    "account": "galeriacafelibro",
+    "media": [
+      {
+        "post_id": "18120360382972135",
+        "permalink": "https://www.instagram.com/p/DfLJQ3tI7Ai/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-10-31T21:40:03+0000",
+        "flyer": "flyers/18120360382972135-2.webp",
+        "caption": "🎃👻 ¡TRES PLANES DE HALLOWEEN, UN MISMO TEMPLO SALSERO! 🔥\n\nEn Galería Café Libro tenemos todo listo para que vivas una noche de miedo, pero de la buena: música, baile, disfraces y mucho sabor. 💃🏻🕺🏻\n\nY para empezar la rumba como se debe, tenemos HAPPY HOUR de 5:00 a 8:00 p. m. 🍹\n\n¡Arma tu parche, elige tu sede, ponte tu mejor disfraz y ven a celebrar Halloween con nosotros! ❤️‍🔥\n\n📍 Sede Parque 93: salsa en vivo con Nick Salas\n📍galeriacafelibropalermo ¡A la memoria del muerto! Salsa en vivo con Los Emperadores\n📍 saloncafebohemia La noche de blanco con Dj Gordo Castillo + La Melodia de los Oviedo como djs invitados",
+        "preview": null,
+        "slides": 4
+      }
+    ],
+    "bar": true
   },
   {
     "title": "Bachata Básica",
@@ -13384,6 +13506,16 @@
     "account": "salsacamaraoficial",
     "media": [
       {
+        "post_id": "18133512238745603",
+        "permalink": "https://www.instagram.com/p/DfLbpkYFb9E/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-01T00:21:10+0000",
+        "flyer": "flyers/18133512238745603-0.webp",
+        "caption": "Ven con tu mejor disfraz y participa en 3 increíbles premios.\n\nTe esperamos en nuestra gran fiesta de disfraces el sábado 31\n\n⏳ Desde las 4 PM\n📍 Carrera 11 #70A-22\n📲 Reserva por WhatsApp: 313 830 8844",
+        "preview": null,
+        "slides": 8
+      },
+      {
         "post_id": "18136692793633800",
         "permalink": "https://www.instagram.com/p/De-cwVIland/",
         "media_type": "CAROUSEL_ALBUM",
@@ -13470,6 +13602,16 @@
         "published": "2026-10-04T19:22:29+0000",
         "flyer": "flyers/17904095547356280-0.webp",
         "caption": "🎃 Este Halloween, es en d’Living 👻\n\nPrepárate para nuestro social de Halloween: una noche llena de música, baile y sorpresas, con camilo_barretto y frank.de.latorre poniendo el ambiente para que no pares de bailar. 🕺🏻💃🏻\n\nY porque en D’Living nos gusta que el baile también sea una experiencia, tendremos clases abiertas incluidas con tu entrada 😏 para aprender, compartir y llegar al social con toda la actitud. 🔥\n\nAdemás, 👻 CONCURSO DE DISFRACES\nPrepara tu mejor personaje porque tendremos varios premios para los mejores 🎭🏆\n\n📅 31 de octubre\n🕘 9:00 p. m.\n📍 Cll 25 #27B-83 — Torre de las Américas\n🎟️ Preventa $15K | Taquilla $20K\n\n¿Ya tienes tu disfraz? Porque nosotros ya tenemos la fiesta. 🧟‍♀️🎃",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18375670156215988",
+        "permalink": "https://www.instagram.com/reel/DfLShfIvbfl/",
+        "media_type": "VIDEO",
+        "published": "2026-10-31T23:03:04+0000",
+        "flyer": "flyers/18375670156215988-0.webp",
+        "caption": "Ya estamos listos! Solo faltas tú 🤩🤩",
         "preview": null,
         "slides": null
       },
@@ -14473,6 +14615,104 @@
     "bar": false
   },
   {
+    "title": "Inauguración Feel Academy: Clase de Rumba",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "Feel Academy",
+    "venue": "Feel Academy",
+    "address": "Carrera 22g #59 a - 13 sur, Tercer Piso Cooratiendas",
+    "area": "Barrio Casa Linda",
+    "date": "2026-11-01",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "10:00",
+    "end_time": "11:00",
+    "prices": [
+      {
+        "label": "General",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "clase de rumba"
+    ],
+    "contact": "3118377734",
+    "confidence": "high",
+    "doubts": [
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "inauguracion-feel-academy-clase-de-rumba-1-nov",
+    "account": "academyfeel",
+    "media": [
+      {
+        "post_id": "18085885028707787",
+        "permalink": "https://www.instagram.com/p/DfKTeAMNN7T/",
+        "media_type": "IMAGE",
+        "published": "2026-10-31T13:54:18+0000",
+        "flyer": "flyers/18085885028707787-0.webp",
+        "caption": "Te invitamos a la Inauguración de nuestra nueva casita 🤍🖤\n\nTendremos clases totalmente gratis para todas las edades 🥰\n\n📆 01 de Noviembre \n🕣 10 am \n📍 Barrio Casa linda \nCarrera 22g #59 a - 13 sur \n*TERCER PISO* Cooratiendas\n\nTe esperamos !!\n\n#salsa #bachata #academia #feelacademy",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Inauguración Feel Academy: Clase de Salsa",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Feel Academy",
+    "venue": "Feel Academy",
+    "address": "Carrera 22g #59 a - 13 sur, Tercer Piso Cooratiendas",
+    "area": "Barrio Casa Linda",
+    "date": "2026-11-01",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "11:00",
+    "end_time": "12:00",
+    "prices": [
+      {
+        "label": "General",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "clase de salsa"
+    ],
+    "contact": "3118377734",
+    "confidence": "high",
+    "doubts": [
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "inauguracion-feel-academy-clase-de-salsa-1-nov",
+    "account": "academyfeel",
+    "media": [
+      {
+        "post_id": "18085885028707787",
+        "permalink": "https://www.instagram.com/p/DfKTeAMNN7T/",
+        "media_type": "IMAGE",
+        "published": "2026-10-31T13:54:18+0000",
+        "flyer": "flyers/18085885028707787-0.webp",
+        "caption": "Te invitamos a la Inauguración de nuestra nueva casita 🤍🖤\n\nTendremos clases totalmente gratis para todas las edades 🥰\n\n📆 01 de Noviembre \n🕣 10 am \n📍 Barrio Casa linda \nCarrera 22g #59 a - 13 sur \n*TERCER PISO* Cooratiendas\n\nTe esperamos !!\n\n#salsa #bachata #academia #feelacademy",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Día de Muertos y de las Almas",
     "event_type": "party",
     "is_recurring": false,
@@ -14535,6 +14775,56 @@
       }
     ],
     "bar": true
+  },
+  {
+    "title": "Inauguración Feel Academy: Clase Niños",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "Feel Academy",
+    "venue": "Feel Academy",
+    "address": "Carrera 22g #59 a - 13 sur, Tercer Piso Cooratiendas",
+    "area": "Barrio Casa Linda",
+    "date": "2026-11-01",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "12:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "General",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "clase para niños"
+    ],
+    "contact": "3118377734",
+    "confidence": "high",
+    "doubts": [
+      "estilo de baile no especificado para la clase de niños",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "inauguracion-feel-academy-clase-ninos-1-nov",
+    "account": "academyfeel",
+    "media": [
+      {
+        "post_id": "18085885028707787",
+        "permalink": "https://www.instagram.com/p/DfKTeAMNN7T/",
+        "media_type": "IMAGE",
+        "published": "2026-10-31T13:54:18+0000",
+        "flyer": "flyers/18085885028707787-0.webp",
+        "caption": "Te invitamos a la Inauguración de nuestra nueva casita 🤍🖤\n\nTendremos clases totalmente gratis para todas las edades 🥰\n\n📆 01 de Noviembre \n🕣 10 am \n📍 Barrio Casa linda \nCarrera 22g #59 a - 13 sur \n*TERCER PISO* Cooratiendas\n\nTe esperamos !!\n\n#salsa #bachata #academia #feelacademy",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
   },
   {
     "title": "Venezuela en su Sazón",
@@ -14602,7 +14892,7 @@
       {
         "label": "Cover",
         "amount_cop": 20000,
-        "condition": "incluye una bebida"
+        "condition": "incluye clase y bebida"
       }
     ],
     "artists": [
@@ -14646,6 +14936,16 @@
         "flyer": "flyers/18383386795238938-0.webp",
         "caption": "Halloween Bogotá se celebra mejor en familia, bailando en la 🥤 Coca-Cola Bailable 💃 de germanbaila y elgocepagano este domingo 1 de noviembre desde las 2PM con clase de baile, concurso de disfraces y actividades para toda la familia. \n🎟️ Cover $20K\n💃 Incluye clase y bebida 🥤\n🪩 Fiesta salsera familiar \n📍 Diagonal 20A #0-82 Bogotá",
         "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18101146832394814",
+        "permalink": "https://www.instagram.com/reel/DfKycpnTXtH/",
+        "media_type": "VIDEO",
+        "published": "2026-10-31T18:23:05+0000",
+        "flyer": "flyers/18101146832394814-0.webp",
+        "caption": "Nos vemos mañana en la Coca-Cola Bailable de disfraces, la fiesta salsera de las familias bogotanas en elgocepagano desde las 2PM \n📍 Diagonal 20A #0-82 \n🎟️ Cover $20K",
+        "preview": "previews/18101146832394814-0.mp4",
         "slides": null
       },
       {
@@ -15728,6 +16028,16 @@
     "account": "ebi_dancecompany",
     "media": [
       {
+        "post_id": "18643483594028640",
+        "permalink": "https://www.instagram.com/p/DfLjcWdNJ1a/",
+        "media_type": "IMAGE",
+        "published": "2026-11-01T01:29:19+0000",
+        "flyer": "flyers/18643483594028640-0.webp",
+        "caption": null,
+        "preview": null,
+        "slides": null
+      },
+      {
         "post_id": "18335800270302897",
         "permalink": "https://www.instagram.com/p/DfD8yJttFqV/",
         "media_type": "IMAGE",
@@ -16144,6 +16454,26 @@
         "flyer": "flyers/18073448372447981-0.webp",
         "caption": "🔥 JESÚS CASTILLO LLEGA A CASINEA 2026\n\nDesde Venezuela hasta Colombia, Jesús Castillo ha construido una trayectoria como instructor, coreógrafo y bailarín, convirtiéndose en un explorador constante de las nuevas expresiones del movimiento cubano. 🇻🇪🇨🇴\n\nSu fortaleza está en la capacidad de interpretar y desarrollar diferentes lenguajes de la música cubana, con especial dominio del reparto cubano, el cubatón y los ritmos urbanos, sin dejar de lado la riqueza del folclor afrocubano.\n\nJesús es de esos artistas que no se quedan quietos: investiga, explora y transforma lo que escucha en movimiento, buscando nuevas maneras de interpretar los ritmos que hacen parte de la Cuba contemporánea.\n\nY antes de estar del otro lado como instructor y coreógrafo, también conoció de cerca la competencia. 🏆\n\nDurante sus años como competidor, Jesús alcanzó múltiples podios en el Festival Internacional Casinea y en otras competencias de Colombia y Venezuela, construyendo una experiencia que hoy reúne el conocimiento técnico, la experiencia escénica y la mirada del competidor.\n\nEn Casinea 2026, tendremos la oportunidad de aprender de un artista que entiende el movimiento desde diferentes lugares: la competencia, la creación, la enseñanza, el folclor y la exploración de los ritmos urbanos cubanos. 🔥\n\n📅 13 al 16 de noviembre de 2026\n📍 Bogotá, Colombia\n\nJesús Castillo, nos vemos en Casinea.\n\n#FestivalCasinea #Casinea2026 #RepartoCubano #Cubatón #IléDanza",
         "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "17918814000530279",
+        "permalink": "https://www.instagram.com/reel/DfMECkZR5P7/",
+        "media_type": "VIDEO",
+        "published": "2026-11-01T06:32:09+0000",
+        "flyer": "flyers/17918814000530279-0.webp",
+        "caption": "🎭🔥 ¡CASINEA ES MUCHO MÁS QUE COMPETENCIA!\n\nEn esta décima edición del Festival Internacional Casinea, la experiencia va mucho más allá de la pista competitiva. Tenemos cuatro días para encontrarnos, aprender, compartir y disfrutar de la cultura del baile. 💃🕺\n\nNuestro anfitrión, Leo Fuentes, nos cuenta sobre algunas de las actividades que harán parte de esta edición:\n\n🎤 Rueda de prensa y encuentro de apertura: el espacio para dar inicio al festival y recibir a las delegaciones.\n\n🎓 Talleres internacionales: jornadas de formación con maestros provenientes de diferentes países, que compartirán sus conocimientos y experiencias.\n\n🎶 Espacios sociales e integraciones: encuentros para bailar, conectar con otras comunidades y disfrutar de la música más allá de las competencias.\n\n✨ Exhibiciones y experiencias especiales: momentos para celebrar el talento, la diversidad y la riqueza de nuestra cultura dancística.\n\nPorque Casinea no se trata solamente de competir: también es aprender, conocer otras culturas, hacer comunidad y disfrutar juntos de aquello que nos une.\n\n🎤 ¡Descubre todo lo que nuestro anfitrión tiene para contarte y prepárate para vivir la experiencia completa!\n\n📅 13 al 16 de noviembre de 2026\n📍 Bogotá, Colombia 🇨🇴\n\n¡Nos vemos en la décima edición del Festival Internacional Casinea!\n\n#FestivalCasinea #Casinea2026 #DécimaEdición #SalsaCasino #CulturaCubana",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18106499402001115",
+        "permalink": "https://www.instagram.com/reel/DfK9rNKusqL/",
+        "media_type": "VIDEO",
+        "published": "2026-10-31T20:03:23+0000",
+        "flyer": "flyers/18106499402001115-0.webp",
+        "caption": "🌎🔥 CINCO PAÍSES, UNA MISMA PASIÓN: EL BAILE.\n\nUna de las grandes riquezas del Festival Internacional Casinea es su capacidad de reunir artistas, maestros y comunidades de diferentes partes del mundo alrededor de una misma cultura.\n\nEn esta décima edición recibimos a talleristas internacionales provenientes de Suiza, México, Venezuela, Cuba y Colombia, cada uno con experiencias, conocimientos, estilos y perspectivas que enriquecen el encuentro y hacen de Casinea un espacio de intercambio artístico y cultural. 💃🕺\n\nLa presencia de diferentes nacionalidades nos permite descubrir distintas maneras de interpretar, enseñar y vivir la danza, compartir conocimientos y fortalecer los vínculos entre las comunidades del casino a nivel internacional.\n\n🇨🇺 Desde Cuba, cuna de esta cultura y de las tradiciones bailables que nos convocan, hasta Colombia, nuestro país anfitrión, Casinea abre sus puertas para celebrar la diversidad y la conexión que nace en la pista.\n\n🎤 Nuestro anfitrión, Leo Fuentes, nos invita a descubrir esta dimensión internacional del festival.\n\n🔥 ¡Cinco países, muchas culturas y una misma pista de baile!\n\n📅 13 al 16 de noviembre de 2026\n📍 Bogotá, Colombia\n\n#FestivalCasinea #Casinea2026 #FestivalInternacional #SalsaCasino #IntercambioCultural",
+        "preview": "previews/18106499402001115-0.mp4",
         "slides": null
       },
       {
@@ -17189,6 +17519,36 @@
     "id": "reyes-de-la-salsa-2027-19-mar",
     "account": "reyesdelasalsa.col",
     "media": [
+      {
+        "post_id": "17901590451608854",
+        "permalink": "https://www.instagram.com/p/DfKgD2XR_sH/",
+        "media_type": "IMAGE",
+        "published": "2026-10-31T15:40:35+0000",
+        "flyer": "flyers/17901590451608854-0.webp",
+        "caption": "🌎👑 ¡BOGOTÁ SE PREPARA PARA RECIBIR AL MUNDO! 🔥\n\nDel 19 al 21 de marzo de 2027 llega REYES DE LA SALSA – Competencia Internacional 🇨🇴✨\n\n💃 SALSA | BACHATA | URBANO 🕺\n🏆 Competencia internacional\n🔥 Talleres • Shows • Social\n🌎 Compañías nacionales e internacionales\n\n📋 Desde este lunes, reglamento y valores de inscripción disponibles.\n\n📲 WhatsApp: 3197987486\n📸 Instagram: Reyesdelasalsa.col\n\n¿Tu país está listo para conquistar Bogotá? 👑🔥\n¡Nos vemos en la pista!\n\n#ReyesDeLaSalsa2027 #Salsa #Bachata #Urbano #Bogotá Colombia",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18120433130095928",
+        "permalink": "https://www.instagram.com/p/DfKfTNERj1-/",
+        "media_type": "IMAGE",
+        "published": "2026-10-31T15:33:56+0000",
+        "flyer": "flyers/18120433130095928-0.webp",
+        "caption": "🌎👑 ¡BOGOTÁ SE PREPARA PARA RECIBIR AL MUNDO! 🔥\n\nDel 19 al 21 de marzo de 2027 llega REYES DE LA SALSA – Competencia Internacional 🇨🇴✨\n\n💃 SALSA | BACHATA | URBANO 🕺\n🏆 Competencia internacional\n🔥 Talleres • Shows • Social\n🌎 Compañías nacionales e internacionales\n\n📋 Desde este lunes, reglamento y valores de inscripción disponibles.\n\n📲 WhatsApp: 3197987486\n📸 Instagram: Reyesdelasalsa.col\n\n¿Tu país está listo para conquistar Bogotá? 👑🔥\n¡Nos vemos en la pista!\n\n#ReyesDeLaSalsa2027 #Salsa #Bachata #Urbano #Bogotá Colombia",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18030847742882183",
+        "permalink": "https://www.instagram.com/p/DfKc-pDxz-p/",
+        "media_type": "IMAGE",
+        "published": "2026-10-31T15:13:41+0000",
+        "flyer": "flyers/18030847742882183-0.webp",
+        "caption": "🌎👑 ¡BOGOTÁ SE PREPARA PARA RECIBIR AL MUNDO! 🔥\n\nDel 19 al 21 de marzo de 2027 llega REYES DE LA SALSA – Competencia Internacional 🇨🇴✨\n\n💃 SALSA | BACHATA | URBANO 🕺\n🏆 Competencia internacional\n🔥 Talleres • Shows • Social\n🌎 Compañías nacionales e internacionales\n\n📋 Desde este lunes, reglamento y valores de inscripción disponibles.\n\n📲 WhatsApp: 320 830 9284\n📸 Instagram: Reyesdelasalsa.col\n\n¿Tu país está listo para conquistar Bogotá? 👑🔥\n¡Nos vemos en la pista!\n\n#ReyesDeLaSalsa2027 #Salsa #Bachata #Urbano #Bogotá Colombia",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18125776030901534",
         "permalink": "https://www.instagram.com/p/DeyFSPvxrNc/",
