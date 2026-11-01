@@ -14619,34 +14619,33 @@
     "event_type": "workshop",
     "is_recurring": false,
     "styles": [
-      "otro"
+      "afro"
     ],
     "organizer": "Feel Academy",
     "venue": "Feel Academy",
-    "address": "Carrera 22g #59 a - 13 sur, Tercer Piso Cooratiendas",
-    "area": "Barrio Casa Linda",
+    "address": "Carrera 22G #59A - 13 Sur, Tercer Piso",
+    "area": "Casa Linda",
     "date": "2026-11-01",
     "end_date": null,
     "sessions": null,
     "weekday": "domingo",
     "start_time": "10:00",
-    "end_time": "11:00",
+    "end_time": null,
     "prices": [
       {
-        "label": "General",
+        "label": "Entrada gratis",
         "amount_cop": 0,
         "condition": null
       }
     ],
     "artists": [],
     "activities": [
-      "clase de rumba"
+      "clase de rumba",
+      "inauguración"
     ],
     "contact": "3118377734",
     "confidence": "high",
-    "doubts": [
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
+    "doubts": [],
     "id": "inauguracion-feel-academy-clase-de-rumba-1-nov",
     "account": "academyfeel",
     "media": [
@@ -14672,30 +14671,29 @@
     ],
     "organizer": "Feel Academy",
     "venue": "Feel Academy",
-    "address": "Carrera 22g #59 a - 13 sur, Tercer Piso Cooratiendas",
-    "area": "Barrio Casa Linda",
+    "address": "Carrera 22G #59A - 13 Sur, Tercer Piso",
+    "area": "Casa Linda",
     "date": "2026-11-01",
     "end_date": null,
     "sessions": null,
     "weekday": "domingo",
     "start_time": "11:00",
-    "end_time": "12:00",
+    "end_time": null,
     "prices": [
       {
-        "label": "General",
+        "label": "Entrada gratis",
         "amount_cop": 0,
         "condition": null
       }
     ],
     "artists": [],
     "activities": [
-      "clase de salsa"
+      "clase de salsa",
+      "inauguración"
     ],
     "contact": "3118377734",
     "confidence": "high",
-    "doubts": [
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
+    "doubts": [],
     "id": "inauguracion-feel-academy-clase-de-salsa-1-nov",
     "account": "academyfeel",
     "media": [
@@ -14780,13 +14778,11 @@
     "title": "Inauguración Feel Academy: Clase Niños",
     "event_type": "workshop",
     "is_recurring": false,
-    "styles": [
-      "otro"
-    ],
+    "styles": [],
     "organizer": "Feel Academy",
     "venue": "Feel Academy",
-    "address": "Carrera 22g #59 a - 13 sur, Tercer Piso Cooratiendas",
-    "area": "Barrio Casa Linda",
+    "address": "Carrera 22G #59A - 13 Sur, Tercer Piso",
+    "area": "Casa Linda",
     "date": "2026-11-01",
     "end_date": null,
     "sessions": null,
@@ -14795,21 +14791,19 @@
     "end_time": null,
     "prices": [
       {
-        "label": "General",
+        "label": "Entrada gratis",
         "amount_cop": 0,
         "condition": null
       }
     ],
     "artists": [],
     "activities": [
-      "clase para niños"
+      "clase para niños",
+      "inauguración"
     ],
     "contact": "3118377734",
     "confidence": "high",
-    "doubts": [
-      "estilo de baile no especificado para la clase de niños",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
+    "doubts": [],
     "id": "inauguracion-feel-academy-clase-ninos-1-nov",
     "account": "academyfeel",
     "media": [
@@ -14848,13 +14842,12 @@
       "4K Team Orquesta"
     ],
     "activities": [
-      "orquesta en vivo"
+      "orquesta en vivo",
+      "música en vivo"
     ],
     "contact": "WhatsApp 3105714824",
     "confidence": "high",
-    "doubts": [
-      "sin precio"
-    ],
+    "doubts": [],
     "id": "venezuela-en-su-sazon-1-nov",
     "account": "tributo.salsayjazz",
     "media": [
@@ -15158,7 +15151,6 @@
       "Tropicana Ensamble"
     ],
     "activities": [
-      "concierto",
       "música en vivo"
     ],
     "contact": "WhatsApp 313 830 8844",
