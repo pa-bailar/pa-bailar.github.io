@@ -15048,6 +15048,16 @@
     "account": "lacoartadacentrocultural",
     "media": [
       {
+        "post_id": "18107387047983002",
+        "permalink": "https://www.instagram.com/p/DfNITdukRVy/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-01T16:10:36+0000",
+        "flyer": "flyers/18107387047983002-0.webp",
+        "caption": "🩰 HOY 3PM LA COARTADA BAILA JUNTO A TRES GRUPOS EN EL teatrojeg EN EL IX ENCUENTRO DE ESCUELAS Y ACADEMIAS DE BALLET 2026.\n\n‼️ENTRADA LIBRE‼️",
+        "preview": null,
+        "slides": 2
+      },
+      {
         "post_id": "18373804897209049",
         "permalink": "https://www.instagram.com/p/DfCy2n5xXPA/",
         "media_type": "IMAGE",
@@ -15231,7 +15241,7 @@
     "styles": [
       "salsa"
     ],
-    "organizer": "bilongo",
+    "organizer": "Bilongo",
     "venue": "Bilongo",
     "address": null,
     "area": null,
@@ -15252,15 +15262,10 @@
       "Triana Music",
       "La Guabalosa"
     ],
-    "activities": [
-      "salsa de los 80, 90 y 2000"
-    ],
+    "activities": [],
     "contact": "@bilongocolombia",
     "confidence": "high",
-    "doubts": [
-      "sin hora de inicio",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
+    "doubts": [],
     "id": "la-maquina-del-tiempo-4-nov",
     "account": "bilongocolombia",
     "media": [
@@ -15610,6 +15615,66 @@
     "bar": true
   },
   {
+    "title": "Zouk Intensivo: Bases y Fundamentos",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "zouk"
+    ],
+    "organizer": "LuDance Studio",
+    "venue": "LuDance Studio",
+    "address": "Kr 13 #73-30",
+    "area": "Suburbio",
+    "date": "2026-11-06",
+    "end_date": "2026-11-07",
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "19:00",
+    "end_time": "15:00",
+    "prices": [
+      {
+        "label": "2 días",
+        "amount_cop": 90000,
+        "condition": null
+      },
+      {
+        "label": "1 día",
+        "amount_cop": 50000,
+        "condition": null
+      },
+      {
+        "label": "1 hora",
+        "amount_cop": 30000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Isa Botero"
+    ],
+    "activities": [
+      "taller intensivo de zouk",
+      "práctica social"
+    ],
+    "contact": "WhatsApp 3018847358",
+    "confidence": "high",
+    "doubts": [],
+    "id": "zouk-intensivo-bases-y-fundamentos-6-nov",
+    "account": "ludancestudios",
+    "media": [
+      {
+        "post_id": "18013101627002327",
+        "permalink": "https://www.instagram.com/p/DfNqhIzgZht/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-01T21:09:34+0000",
+        "flyer": "flyers/18013101627002327-0.webp",
+        "caption": "🔥 ZOUK INTENSIVE – 6 Y 7 DE NOVIEMBRE 🔥\n\n¡Prepárate para llevar tu baile a otro nivel! \n\nEste espacio está especialmente pensado para bailarines que desean adquirir herramientas y fundamentos que les permitan llegar mejor preparados a los próximos encuentros y congresos: levelupbfc LEVEL UP Bachata Fusión Congress (Bogotá) y colombiasecretzouk Colombia Secret (Medellín).\n\nUna oportunidad para ampliar tu lenguaje corporal, enriquecer tus recursos de baile y descubrir nuevas posibilidades de conexión a través del Zouk.\n\n📅 FECHAS: 6 Y 7 DE NOVIEMBRE\n\n🕒 HORARIOS\n\nVIERNES\n7:00 PM – 8:00 PM\n8:00 PM – 9:00 PM\n\nSÁBADO\n1:00 PM – 2:00 PM\n2:00 PM – 3:00 PM\n\n💰 TABLA DE PRECIOS\n\n• 2 días: $90.000\n• 1 día: $50.000\n• 1 hora: $30.000\n\n📍 LUDANCE STUDIO\n\nNo importa si buscas fortalecer tus bases o ampliar tus herramientas como bailarín: este es el momento de prepararte, aprender y seguir evolucionando.\n\n¡Nos vemos en la pista! 🔥",
+        "preview": null,
+        "slides": 2
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Concierto",
     "event_type": "concert",
     "is_recurring": false,
@@ -15694,12 +15759,12 @@
       "Mayté Álvarez",
       "Nicolás Castellanos",
       "Christian Fernández \"Wilcho\"",
-      "Selena Higuera",
+      "Selene Higuera",
       "DJ Carlos"
     ],
     "activities": [
-      "concierto de música latinoamericana",
-      "rumba caribe"
+      "concierto",
+      "música en vivo"
     ],
     "contact": "315 212 5733",
     "confidence": "high",
@@ -15928,11 +15993,11 @@
     "organizer": "Acá Parchamos",
     "venue": "Acá Parchamos",
     "address": "Calle 49 # 9-85",
-    "area": "Bogotá D.C.",
+    "area": null,
     "date": "2026-11-07",
     "end_date": null,
     "sessions": null,
-    "weekday": "jueves",
+    "weekday": "sábado",
     "start_time": "19:00",
     "end_time": null,
     "prices": [
@@ -15940,25 +16005,18 @@
         "label": "Cover",
         "amount_cop": 20000,
         "condition": null
-      },
-      {
-        "label": "Preventa",
-        "amount_cop": 20000,
-        "condition": null
       }
     ],
     "artists": [
-      "Fabián Mora",
-      "Team Latino (Orquesta)",
+      "Fabián Mora y Team Latino",
       "Nelson Contreras"
     ],
     "activities": [
       "clase de baile gratis",
       "show de baile",
-      "música en vivo",
-      "selector de vinilos"
+      "música en vivo"
     ],
-    "contact": "WhatsApp 3108199393",
+    "contact": "WhatsApp +57 310 8199393",
     "confidence": "high",
     "doubts": [],
     "id": "mira-ven-pa-aca-7-nov",
@@ -15976,6 +16034,52 @@
       }
     ],
     "bar": true
+  },
+  {
+    "title": "Sábado de Bachata - Bachatango",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "bachata",
+      "tango"
+    ],
+    "organizer": "Show Stars Academia de Baile",
+    "venue": "Show Stars",
+    "address": null,
+    "area": "Modelia",
+    "date": "2026-11-07",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "19:30",
+    "end_time": null,
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "dos talleres de bachata",
+      "práctica social"
+    ],
+    "contact": "@showstarscol",
+    "confidence": "high",
+    "doubts": [
+      "sin precio",
+      "dirección exacta no especificada"
+    ],
+    "id": "sabado-de-bachata-bachatango-7-nov",
+    "account": "showstarscol",
+    "media": [
+      {
+        "post_id": "18437816401198347",
+        "permalink": "https://www.instagram.com/reel/DfNtltts75Z/",
+        "media_type": "VIDEO",
+        "published": "2026-11-01T22:05:55+0000",
+        "flyer": "flyers/18437816401198347-0.webp",
+        "caption": "🔥💃 ¡SÁBADO DE BACHATA EN SHOW STARS! 🕺✨\n\nPrepárate para una noche llena de ritmo, conexión y mucho sabor. ❤️\n\nEste sábado 7 de noviembre tenemos una experiencia especial para los amantes de la bachata:\n\n✨ Dos talleres de bachata.\n🔥 Espacios para aprender, mejorar tu técnica y conectar con el baile.\n💃 Práctica social para poner en acción todo lo aprendido y disfrutar bailando.\n\n🕢 Iniciamos a las 7:30 p. m.\n\nNo importa si vienes con pareja o por tu cuenta, ¡lo importante es tener ganas de bailar y disfrutar!\n\n📍 Show Stars – Modelia, Bogotá.\n\n⭐ Aprende, practica y vive la bachata con nosotros.\n\n¡Te esperamos en la pista!\n\n#ShowStars #NocheDeBachata #BachataBogotá #BachataSocial #bachata",
+        "preview": "previews/18437816401198347-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": false
   },
   {
     "title": "Segundo Aniversario Ebi Dance",
@@ -16180,13 +16284,58 @@
     "bar": false
   },
   {
+    "title": "Clase Especial de Bachata en Pareja",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "bachata"
+    ],
+    "organizer": "Show Stars",
+    "venue": "Show Stars",
+    "address": null,
+    "area": null,
+    "date": "2026-11-08",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "10:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Luis & Laura"
+    ],
+    "activities": [
+      "clase especial de bachata en pareja"
+    ],
+    "contact": "@showstarscol",
+    "confidence": "high",
+    "doubts": [
+      "precio no especificado"
+    ],
+    "id": "clase-especial-de-bachata-en-pareja-8-nov",
+    "account": "showstarscol",
+    "media": [
+      {
+        "post_id": "18339272863279718",
+        "permalink": "https://www.instagram.com/reel/DfOIcNSNWme/",
+        "media_type": "VIDEO",
+        "published": "2026-11-02T01:31:55+0000",
+        "flyer": "flyers/18339272863279718-0.webp",
+        "caption": "❤️🔥 ¡ESTE DOMINGO LA BACHATA SE BAILA EN PAREJA! 🔥\n\n¿Quieres mejorar tu conexión, aprender nuevos movimientos y disfrutar del ritmo de la bachata? 💃🕺\n\nTenemos una clase especial con Luis & Laura, donde aprenderás, practicarás y vivirás la magia de bailar en pareja. ✨\n\n📅 Domingo 8 de noviembre\n🕙 10:00 a. m.\n🔥 Clase especial de Bachata en pareja.\n\nNo importa si estás comenzando o quieres perfeccionar tu baile, ¡esta experiencia es para ti!\n\n📲 ¡Reserva tu espacio ahora! Escríbenos por mensaje directo la palabra BACHATA y prepárate para bailar.\n\n⭐ ¡Te esperamos en Show Stars!",
+        "preview": "previews/18339272863279718-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "La Máquina del Tiempo",
     "event_type": "party",
     "is_recurring": false,
     "styles": [
       "salsa"
     ],
-    "organizer": "bilongo",
+    "organizer": "Bilongo",
     "venue": "Bilongo",
     "address": null,
     "area": null,
@@ -16207,15 +16356,10 @@
       "Triana Music",
       "La Guabalosa"
     ],
-    "activities": [
-      "salsa de los 80, 90 y 2000"
-    ],
+    "activities": [],
     "contact": "@bilongocolombia",
     "confidence": "high",
-    "doubts": [
-      "sin hora de inicio",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
+    "doubts": [],
     "id": "la-maquina-del-tiempo-11-nov",
     "account": "bilongocolombia",
     "media": [
@@ -16534,15 +16678,13 @@
       "Danny Rosales"
     ],
     "activities": [
-      "fiesta",
-      "concierto de salsa"
+      "fiesta de fin de año"
     ],
     "contact": "@galeriacafelibro",
     "confidence": "high",
     "doubts": [
       "sin hora de inicio",
-      "sin precio",
-      "no especifica sede (Palermo o 93)"
+      "sin precio"
     ],
     "id": "fiesta-de-fin-de-ano-con-gustavo-rodriguez-y-danny-14-nov",
     "account": "galeriacafelibro",
@@ -16612,7 +16754,7 @@
     "styles": [
       "salsa"
     ],
-    "organizer": "bilongo",
+    "organizer": "Bilongo",
     "venue": "Bilongo",
     "address": null,
     "area": null,
@@ -16633,15 +16775,10 @@
       "Triana Music",
       "La Guabalosa"
     ],
-    "activities": [
-      "salsa de los 80, 90 y 2000"
-    ],
+    "activities": [],
     "contact": "@bilongocolombia",
     "confidence": "high",
-    "doubts": [
-      "sin hora de inicio",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
+    "doubts": [],
     "id": "la-maquina-del-tiempo-18-nov",
     "account": "bilongocolombia",
     "media": [
@@ -17223,7 +17360,7 @@
     "styles": [
       "salsa"
     ],
-    "organizer": "bilongo",
+    "organizer": "Bilongo",
     "venue": "Bilongo",
     "address": null,
     "area": null,
@@ -17244,15 +17381,10 @@
       "Triana Music",
       "La Guabalosa"
     ],
-    "activities": [
-      "salsa de los 80, 90 y 2000"
-    ],
+    "activities": [],
     "contact": "@bilongocolombia",
     "confidence": "high",
-    "doubts": [
-      "sin hora de inicio",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
+    "doubts": [],
     "id": "la-maquina-del-tiempo-25-nov",
     "account": "bilongocolombia",
     "media": [
