@@ -15283,6 +15283,114 @@
     "bar": true
   },
   {
+    "title": "Noche de Salsa y Bachata: Clase de Baile",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "bachata"
+    ],
+    "organizer": "A Seis Manos",
+    "venue": "A Seis Manos",
+    "address": "Calle 22 # 8-60",
+    "area": "Centro",
+    "date": "2026-11-04",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "miércoles",
+    "start_time": "19:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Individual",
+        "amount_cop": 25000,
+        "condition": "$5.000 consumibles"
+      },
+      {
+        "label": "Pareja",
+        "amount_cop": 30000,
+        "condition": "Sin consumible"
+      }
+    ],
+    "artists": [
+      "esteban_1024"
+    ],
+    "activities": [
+      "clase de salsa",
+      "clase de bachata",
+      "rumba"
+    ],
+    "contact": "313 3682909",
+    "confidence": "medium",
+    "doubts": [
+      "El texto incluye por error 7 de octubre en una línea, pero el afiche y el encabezado confirman 4 de noviembre"
+    ],
+    "id": "noche-de-salsa-y-bachata-clase-de-baile-4-nov",
+    "account": "aseismanos",
+    "media": [
+      {
+        "post_id": "17957210211082142",
+        "permalink": "https://www.instagram.com/p/DfOPq3Xtvnu/",
+        "media_type": "IMAGE",
+        "published": "2026-11-02T02:34:15+0000",
+        "flyer": "flyers/17957210211082142-0.webp",
+        "caption": "💃🔥 ¡MIÉRCOLES 04 de noviembre • 7:00 P.M.\nNOCHE DE SALSA Y BACHATA EN A SEIS MANOS! \n\n¿Mitad de semana? ¡Perfecta excusa para bailar! Con el mejor profe esteban_1024\n\nVen a aprender, practicar y disfrutar una noche llena de salsa, bachata, buena música y mucho sabor. No importa si estás empezando o ya tienes tus pasos: aquí vienes a bailar, soltar el cuerpo y pasarla bueno. \n\n📅 Miércoles 7 de octubre\n⏰ 7:00 p. m.\n💃 Clase de Salsa + Bachata\n\n🎟️$25.000 por persona ($5.000 consumibles)\n👫 Promo pareja: $30.000 (Sin consumibles)\n🍹 Happy hour para participantes toda la noche \n📞Reservas 313 3682909\n\nY después de la clase… ¡que siga la rumba! 🎶🍸\n\n📍 A Seis Manos \nCalle 22 # 8-60 • Bogotá Centro\n\nVen solo, con tu parche o con tu pareja. Aquí siempre hay con quién bailar. 💃🕺",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Dos Costas en un Solo País",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Bilongo",
+    "venue": "Bilongo",
+    "address": "Calle 69A #4-93",
+    "area": "Zona G",
+    "date": "2026-11-05",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "jueves",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 25000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "La Guabalosa"
+    ],
+    "activities": [
+      "salsa en vivo"
+    ],
+    "contact": "@bilongocolombia",
+    "confidence": "high",
+    "doubts": [],
+    "id": "dos-costas-en-un-solo-pais-5-nov",
+    "account": "bilongocolombia",
+    "media": [
+      {
+        "post_id": "18361648852221061",
+        "permalink": "https://www.instagram.com/p/DfNvlGIhnCs/",
+        "media_type": "IMAGE",
+        "published": "2026-11-01T21:54:06+0000",
+        "flyer": "flyers/18361648852221061-0.webp",
+        "caption": "EL PACÍFICO AL CARIBE SIN SALIR DE LA ZONA G. 🌊🔥\n\nUna noche entre «Kilele» y «En Barranquilla me quedo», pa’ que más.\n\nLos jueves de noviembre arme parche y caiga a Bilongo a vivir Dos costas en un solo país.\n\nCover 25k\nReservas por DM 📩\n\n#SalsaColombiana #SalsaEnVivo #JoeArroyo #GrupoNiche",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Bureo Awards 2026 - Noche Dorada Gala",
     "event_type": "show",
     "is_recurring": false,
@@ -16377,6 +16485,55 @@
     "bar": true
   },
   {
+    "title": "Dos Costas en un Solo País",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Bilongo",
+    "venue": "Bilongo",
+    "address": "Calle 69A #4-93",
+    "area": "Zona G",
+    "date": "2026-11-12",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "jueves",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 25000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "La Guabalosa"
+    ],
+    "activities": [
+      "salsa en vivo"
+    ],
+    "contact": "@bilongocolombia",
+    "confidence": "high",
+    "doubts": [],
+    "id": "dos-costas-en-un-solo-pais-12-nov",
+    "account": "bilongocolombia",
+    "media": [
+      {
+        "post_id": "18361648852221061",
+        "permalink": "https://www.instagram.com/p/DfNvlGIhnCs/",
+        "media_type": "IMAGE",
+        "published": "2026-11-01T21:54:06+0000",
+        "flyer": "flyers/18361648852221061-0.webp",
+        "caption": "EL PACÍFICO AL CARIBE SIN SALIR DE LA ZONA G. 🌊🔥\n\nUna noche entre «Kilele» y «En Barranquilla me quedo», pa’ que más.\n\nLos jueves de noviembre arme parche y caiga a Bilongo a vivir Dos costas en un solo país.\n\nCover 25k\nReservas por DM 📩\n\n#SalsaColombiana #SalsaEnVivo #JoeArroyo #GrupoNiche",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Sonido 70",
     "event_type": "concert",
     "is_recurring": false,
@@ -16796,6 +16953,55 @@
     "bar": true
   },
   {
+    "title": "Dos Costas en un Solo País",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Bilongo",
+    "venue": "Bilongo",
+    "address": "Calle 69A #4-93",
+    "area": "Zona G",
+    "date": "2026-11-19",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "jueves",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 25000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "La Guabalosa"
+    ],
+    "activities": [
+      "salsa en vivo"
+    ],
+    "contact": "@bilongocolombia",
+    "confidence": "high",
+    "doubts": [],
+    "id": "dos-costas-en-un-solo-pais-19-nov",
+    "account": "bilongocolombia",
+    "media": [
+      {
+        "post_id": "18361648852221061",
+        "permalink": "https://www.instagram.com/p/DfNvlGIhnCs/",
+        "media_type": "IMAGE",
+        "published": "2026-11-01T21:54:06+0000",
+        "flyer": "flyers/18361648852221061-0.webp",
+        "caption": "EL PACÍFICO AL CARIBE SIN SALIR DE LA ZONA G. 🌊🔥\n\nUna noche entre «Kilele» y «En Barranquilla me quedo», pa’ que más.\n\nLos jueves de noviembre arme parche y caiga a Bilongo a vivir Dos costas en un solo país.\n\nCover 25k\nReservas por DM 📩\n\n#SalsaColombiana #SalsaEnVivo #JoeArroyo #GrupoNiche",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Jack and Jill",
     "event_type": "congress",
     "is_recurring": false,
@@ -17037,8 +17243,7 @@
     "event_type": "concert",
     "is_recurring": false,
     "styles": [
-      "salsa",
-      "afro"
+      "salsa"
     ],
     "organizer": "Tributo Salsa y Jazz",
     "venue": "Tributo Salsa y Jazz",
@@ -17056,12 +17261,12 @@
     ],
     "activities": [
       "orquesta en vivo",
-      "baile"
+      "tributo a Ismael Rivera"
     ],
     "contact": "WhatsApp 3105714824",
     "confidence": "high",
     "doubts": [
-      "sin precio de entrada"
+      "sin precio especificado"
     ],
     "id": "tributo-a-ismael-rivera-20-nov",
     "account": "tributo.salsayjazz",
@@ -17395,6 +17600,55 @@
         "published": "2026-10-29T23:33:04+0000",
         "flyer": "flyers/18436172479150487-0.webp",
         "caption": "SÚBASE QUE NOS VAMOS PA’ LOS 80, 90 Y 2000. ⏳🕺🏽\n\nDe las que sonaban en el equipo de la casa a las que uno dedicaba por Messenger.\n\nTodos los miércoles de noviembre caiga a Bilongo y montémonos en La Máquina del Tiempo.\n\nCover 25k\nReservas por DM 📩\n\n#SalsaEnBogotá #SalsaClásica #GrupoNiche #MarcAnthony",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Dos Costas en un Solo País",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Bilongo",
+    "venue": "Bilongo",
+    "address": "Calle 69A #4-93",
+    "area": "Zona G",
+    "date": "2026-11-26",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "jueves",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 25000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "La Guabalosa"
+    ],
+    "activities": [
+      "salsa en vivo"
+    ],
+    "contact": "@bilongocolombia",
+    "confidence": "high",
+    "doubts": [],
+    "id": "dos-costas-en-un-solo-pais-26-nov",
+    "account": "bilongocolombia",
+    "media": [
+      {
+        "post_id": "18361648852221061",
+        "permalink": "https://www.instagram.com/p/DfNvlGIhnCs/",
+        "media_type": "IMAGE",
+        "published": "2026-11-01T21:54:06+0000",
+        "flyer": "flyers/18361648852221061-0.webp",
+        "caption": "EL PACÍFICO AL CARIBE SIN SALIR DE LA ZONA G. 🌊🔥\n\nUna noche entre «Kilele» y «En Barranquilla me quedo», pa’ que más.\n\nLos jueves de noviembre arme parche y caiga a Bilongo a vivir Dos costas en un solo país.\n\nCover 25k\nReservas por DM 📩\n\n#SalsaColombiana #SalsaEnVivo #JoeArroyo #GrupoNiche",
         "preview": null,
         "slides": null
       }
