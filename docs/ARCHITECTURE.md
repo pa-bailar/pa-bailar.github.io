@@ -115,6 +115,7 @@ Notes:
   default workflow token, whose PRs wouldn't trigger this repository's `ci`.
 - **A data PR can't break the site.** `check-data.mjs` checks every field against the contract, and the
   build must succeed before the PR can merge; otherwise the data PR stays open and the backend's run reports it.
+  Only those gate it: a data-only PR skips the unit tests, so a code test can't hold the events back (`ci`, below).
 - **"Actualizado el …"** in the header shows when the data was last **checked**, not when it last
   changed:
   - on days without changes, the backend starts the deploy with `checked_at`, which reaches the build as
@@ -297,7 +298,7 @@ flowchart LR
 
 | Workflow | Trigger | Steps | Permissions |
 |---|---|---|---|
-| `ci` | Every pull request (including data PRs, and title edits); manual | The PR title (Conventional Commits, `release.mjs check`). The images from `pa-bailar/media` copied into `data/` (its latest version, `flyers/` and `previews/` only; a missing folder is fine: git keeps no empty one). `npm ci`, `npm run check` (section 8), `npm test`, `npm run test:clock-ahead` (the unit tests again with the clock about four months ahead on a Saturday at 23:30 Bogotá, `tests/shiftedClock.ts`: a test that passes only on today's date fails on its own PR; two blocked the sweeps' data PRs, 10–17 Oct 2026), `npm run build` | `contents: read` |
+| `ci` | Every pull request (including data PRs, and title edits); manual | The PR title (Conventional Commits, `release.mjs check`). The images from `pa-bailar/media` copied into `data/` (its latest version, `flyers/` and `previews/` only; a missing folder is fine: git keeps no empty one). `npm ci`, `npm run check` (section 8), `npm test`, `npm run test:clock-ahead` (the unit tests again with the clock a week, a month and about four months ahead, each on a Saturday at 23:30 Bogotá, `tests/shiftedClock.ts`: a test that passes only on today's date fails on its own PR; two blocked the sweeps' data PRs, 10–17 Oct 2026, and one 2–3 Nov), `npm run build`. A PR that changes only `data/` skips both unit-test steps (they test the code, and none reads `data/`): a test broken by the calendar fails the next code PR instead of holding back the events (3 Nov 2026) | `contents: read` |
 | `deploy` | Push to `main` (every merged PR); manual; the backend's sweep on days without changes (with `checked_at`) | **version**: the version from the commits since the last tag (`release.mjs plan`) and its release notes. **build**: the images from `pa-bailar/media` copied into `data/`; `npm ci`, `npm run check`, `npm run build` (with `PUBLIC_CHECKED_AT` and `PUBLIC_VERSION`), upload the Pages artifact. **deploy**: publish to GitHub Pages. **release**, only after a successful deploy and when the commits change the site: tag the version and publish its GitHub Release. A failed build or deploy tags nothing | Version and build: `contents: read` (the build runs npm's install scripts). Deploy: `pages: write`, `id-token: write`. Release: `contents: write` (it runs no npm package, only `gh`) |
 
 - **One deploy at a time:** `concurrency: pages` without cancelling, so two merges in a row publish one
