@@ -224,7 +224,9 @@ describe("the filter chips (filterModel)", () => {
   // The bug-squash pass of 8 Oct 2026: paging the calendar to a month without events (January 2027), the phone's bar
   // was an empty band pinned at the top, its chips the month's types: none.
   it("a view without events (an empty month in the calendar) keeps the main types in the bar, dimmed", () => {
-    const empty = { ...list, view: "calendar" as const, month: new Date(2027, 0, 1) };
+    // A month none of them is in whatever today is: 100 days ahead, past `later` (January 2027 held it from 22 Nov).
+    const ahead = parseIsoDate(addDays(today, 100));
+    const empty = { ...list, view: "calendar" as const, month: new Date(ahead.getFullYear(), ahead.getMonth(), 1) };
     const types = filterModel(all, empty, today).types;
     expect(types.map((option) => [option.value, option.count, option.dimmed])).toEqual([
       ["social", 0, true],

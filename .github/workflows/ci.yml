@@ -1,5 +1,5 @@
 # The `ci` check required on main: data format check, type check (strict), color contrast and CSS custom
-# properties, unit tests (Vitest), and build. On pull requests, also the title: it becomes the commit on main
+# properties, unit tests (Vitest; not on a PR that changes only data/), and build. On pull requests, also the title: it becomes the commit on main
 # (squash merge), whose Conventional Commits type sets the next version (frontend/scripts/release.mjs).
 # Runs on every pull request, including the data PRs opened by the pa-bailar-bot GitHub App
 # from the backend repository (pa-bailar/backend).
@@ -26,6 +26,18 @@ jobs:
         working-directory: frontend
     steps:
       - uses: actions/checkout@v7
+        with:
+          fetch-depth: 2 # the PR's merge commit and main's: what the PR changes (below)
+      # A PR that changes only data/ (the sweeps' data PRs) skips the unit tests: they test the code, which it leaves
+      # as it is, and none reads data/. The data check, the type check and the build still run. A test that broke with
+      # the calendar blocked every sweep's data on 2–3 Nov 2026; now it fails on the next code PR instead.
+      - name: What the PR changes
+        id: changes
+        if: github.event_name == 'pull_request'
+        working-directory: .
+        run: |
+          if git diff --name-only HEAD^1 HEAD | grep -qv '^data/'; then data_only=false; else data_only=true; fi
+          echo "data_only=$data_only" | tee -a "$GITHUB_OUTPUT"
       - uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
@@ -58,10 +70,12 @@ jobs:
       - name: Data format, type check, color contrast and CSS properties
         run: npm run check
       - name: Unit tests
+        if: steps.changes.outputs.data_only != 'true'
         run: npm test
-      # Again, months ahead on a Saturday night: a test that passes only on today's date fails on its own PR, not on a
-      # sweep's data PR later (two did, 10–17 Oct 2026, and the data waited).
+      # Again, a week, a month and months ahead on a Saturday night: a test that passes only on today's date fails on
+      # its own PR, not later on another PR (two blocked the sweeps' data PRs, 10–17 Oct 2026, and one 2–3 Nov).
       - name: Unit tests with the clock ahead
+        if: steps.changes.outputs.data_only != 'true'
         run: npm run test:clock-ahead
       - name: Build
         run: npm run build

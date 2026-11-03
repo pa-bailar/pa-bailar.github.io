@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import type { DanceEvent } from "../src/scripts/types";
 import { addDays, daysOf, isMultiDay, lastDay, shownDay, todayIso } from "../src/scripts/lib/dates";
 import {
@@ -15,6 +15,10 @@ import {
 } from "../src/scripts/state";
 import { rankedStyles } from "../src/scripts/lib/filterModel";
 import { event } from "./factories";
+
+afterEach(() => {
+  vi.useRealTimers();
+});
 
 describe("groupByPeriod (today: Wednesday 2026-10-07)", () => {
   const today = "2026-10-07";
@@ -171,6 +175,10 @@ describe("events over several days", () => {
     expect(eventsInView(all, calendar(new Date(2026, 9, 1), "2026-10-31")).map((e) => e.id)).toEqual(["aniversario"]);
     expect(visibleEvents(all, calendar(new Date(2026, 10, 1), "2026-11-02")).map((e) => e.id)).toEqual(["aniversario"]);
     expect(visibleEvents(all, calendar(new Date(2026, 10, 1), "2026-11-15")).map((e) => e.id)).toEqual(["level-up"]);
+    // A month without today opens on its first event day: the clock in October (from 2 Nov 2026 the real one was in
+    // that month, the calendar rightly picked today, and the test blocked the sweeps' data PRs).
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date("2026-10-07T17:00:00Z"));
     expect(defaultDayForMonth([festival], new Date(2026, 10, 1))).toBe("2026-11-01");
   });
 
