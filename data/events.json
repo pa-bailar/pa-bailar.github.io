@@ -15283,6 +15283,60 @@
     "bar": true
   },
   {
+    "title": "Tornas Abiertas de Rap y Salsa",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "urbano"
+    ],
+    "organizer": "Ritmo Moderno",
+    "venue": "Ritmo Moderno",
+    "address": "Cra 4 # 17-39",
+    "area": "Centro",
+    "date": "2026-11-04",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "miércoles",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Entrada",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "4 DJs seleccionados"
+    ],
+    "activities": [
+      "sets individuales de 60 mins",
+      "back to backs"
+    ],
+    "contact": "@ritmomoderno",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "tornas-abiertas-de-rap-y-salsa-4-nov",
+    "account": "ritmomoderno",
+    "media": [
+      {
+        "post_id": "18034385192676330",
+        "permalink": "https://www.instagram.com/p/DfSp9_LGJdg/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-03T19:40:58+0000",
+        "flyer": "flyers/18034385192676330-1.webp",
+        "caption": "ESTA SEMANA ES EN EL CENTRO EN RITMO 💥💥💥\n\nMiércoles 4 💃📻🕺🏽\nTORNAS ABIERTAS DE RAP Y SALSA!!!\nInscripciones al dm - tendremos 4 cupos para djs y selectores que quieran sonar sus colecciones de rap y salsa en las Tornas de Ritmo en sets de 1 hora y back2backs! \nENTRADA LIBRE POLAS A 5k Y COCTELES 2x1 toda la noche!🥂🥂🥂\n\nJuernes 5! 🌴🌴🌴\nKEA MODERNO 🔥🔥🔥 KEA kearestbar marcó una época importante en la rumba diferente de Bogotá y ha sido un referente para lo que es hoy Ritmo!! Sonaremos junto a good.javito la mente detrás de KEA aka JOINT TRAVOLTA música icónica de la época mas el Ritmo style junto a Oswaldo Sesto y sagauno  bailoteo y remenbranzas para activar el baile!! Si vivió esta época lxs esperamos y si no estuvo los esperamos para que conozcan el meke!\nENTRADA LIBRE HASTA LAS 10pm / 10k dsps \nCOCTELES 2x1 toda la noche\n\nViernes 6 🔥🫦🔥RITMO PRESENTA:\nSANTA GROOVES NOCHE DE JEFAS CON selva____ oojitooos bitacoradecalixta y aparición especial de cero39_oficial \nVuelven las curadurías makiavelikas de Ritmo reuniendo a tres de las mujeres que mandan la vida nocturna de la capi en una fiesta  sonando dark wave, cumbias, perreo y la sorpresa con el infame Cero39!!\nEntrada libre con boleta para los asistentes al estreno de la peli KMKZ de dantacine \nCOVER GENERAL 10k hasta 10pm / 20k dsps\nReservas al 3023066868\n\nSabado 7 💃🍑💃\nI ❤️ SALSA Y PERREO 🐕 \nnoche con djs misterio sonando los temas calientes para quemar la pista!! 🪩🪩🪩\nCocteles 2x1 hasta las 10 pm!\nNo cover hasta las 10 - 10k después!!\n\nNO HAY PIERDE EN EL CENTRO EN RITMO 🥁🫦🕺🏽💃🌴",
+        "preview": null,
+        "slides": 13
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Noche de Salsa y Bachata: Clase de Baile",
     "event_type": "workshop",
     "is_recurring": false,
@@ -15483,6 +15537,112 @@
         "caption": "🏆✨ ¡EL MOMENTO DE SER PARTE DE LOS BUREO AWARDS 2026 HA LLEGADO!\n\nLa cuenta regresiva para nuestra NOCHE DORADA ya comenzó y queremos que vivas esta experiencia con nosotros. 🖤💛\n\n🎟️ Conoce nuestras localidades y elige dónde quieres vivir esta gran celebración:\n\n✨ PLATEA: Preventa $80.000 | General $100.000\n✨ BALCÓN: Preventa $56.000 | General $70.000\n✨ GENERAL: Preventa $40.000 | General $50.000\n\n🔥 PREVENTA HASTA EL 20 DE OCTUBRE.\n\n👨‍👩‍👧‍👦 Plan familia: 4 entradas de General por $170.000.\n\n📅 5 de noviembre\n📍 Teatro Astor Plaza\n\nGuarda este post, compártelo con tu parche y prepárate para celebrar el talento por todo lo alto.\n\nNos vemos en la pista… y esta vez, también en la gala. ✨",
         "preview": null,
         "slides": 3
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Kea Moderno",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "urbano",
+      "afro"
+    ],
+    "organizer": "Ritmo Moderno",
+    "venue": "Ritmo Moderno",
+    "address": "Cra 4 # 17-39",
+    "area": "Centro",
+    "date": "2026-11-05",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "jueves",
+    "start_time": "20:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Entrada libre hasta las 10pm",
+        "amount_cop": 0,
+        "condition": null
+      },
+      {
+        "label": "Cover después de las 10pm",
+        "amount_cop": 10000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Javi Kea (Joint Travolta)",
+      "Oswaldo Sesto",
+      "Sagauno"
+    ],
+    "activities": [
+      "rumba rolo alternativa"
+    ],
+    "contact": "@ritmomoderno",
+    "confidence": "high",
+    "doubts": [
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "kea-moderno-5-nov",
+    "account": "ritmomoderno",
+    "media": [
+      {
+        "post_id": "18034385192676330",
+        "permalink": "https://www.instagram.com/p/DfSp9_LGJdg/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-03T19:40:58+0000",
+        "flyer": "flyers/18034385192676330-2.webp",
+        "caption": "ESTA SEMANA ES EN EL CENTRO EN RITMO 💥💥💥\n\nMiércoles 4 💃📻🕺🏽\nTORNAS ABIERTAS DE RAP Y SALSA!!!\nInscripciones al dm - tendremos 4 cupos para djs y selectores que quieran sonar sus colecciones de rap y salsa en las Tornas de Ritmo en sets de 1 hora y back2backs! \nENTRADA LIBRE POLAS A 5k Y COCTELES 2x1 toda la noche!🥂🥂🥂\n\nJuernes 5! 🌴🌴🌴\nKEA MODERNO 🔥🔥🔥 KEA kearestbar marcó una época importante en la rumba diferente de Bogotá y ha sido un referente para lo que es hoy Ritmo!! Sonaremos junto a good.javito la mente detrás de KEA aka JOINT TRAVOLTA música icónica de la época mas el Ritmo style junto a Oswaldo Sesto y sagauno  bailoteo y remenbranzas para activar el baile!! Si vivió esta época lxs esperamos y si no estuvo los esperamos para que conozcan el meke!\nENTRADA LIBRE HASTA LAS 10pm / 10k dsps \nCOCTELES 2x1 toda la noche\n\nViernes 6 🔥🫦🔥RITMO PRESENTA:\nSANTA GROOVES NOCHE DE JEFAS CON selva____ oojitooos bitacoradecalixta y aparición especial de cero39_oficial \nVuelven las curadurías makiavelikas de Ritmo reuniendo a tres de las mujeres que mandan la vida nocturna de la capi en una fiesta  sonando dark wave, cumbias, perreo y la sorpresa con el infame Cero39!!\nEntrada libre con boleta para los asistentes al estreno de la peli KMKZ de dantacine \nCOVER GENERAL 10k hasta 10pm / 20k dsps\nReservas al 3023066868\n\nSabado 7 💃🍑💃\nI ❤️ SALSA Y PERREO 🐕 \nnoche con djs misterio sonando los temas calientes para quemar la pista!! 🪩🪩🪩\nCocteles 2x1 hasta las 10 pm!\nNo cover hasta las 10 - 10k después!!\n\nNO HAY PIERDE EN EL CENTRO EN RITMO 🥁🫦🕺🏽💃🌴",
+        "preview": null,
+        "slides": 13
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "After Bureo Awards 2026 × ONO",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "Bureo Dance Studio",
+    "venue": "ONO",
+    "address": "Calle 84A #9-11",
+    "area": null,
+    "date": "2026-11-05",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "jueves",
+    "start_time": "22:30",
+    "end_time": null,
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "baile",
+      "brindis",
+      "lista de invitados"
+    ],
+    "contact": "@bureodancestudio",
+    "confidence": "high",
+    "doubts": [
+      "sin estilos de baile especificados",
+      "sin precios especificados"
+    ],
+    "id": "after-bureo-awards-2026-ono-5-nov",
+    "account": "bureodancestudio",
+    "media": [
+      {
+        "post_id": "17955760221082889",
+        "permalink": "https://www.instagram.com/p/DfP6sj-CvEa/",
+        "media_type": "IMAGE",
+        "published": "2026-11-02T18:11:37+0000",
+        "flyer": "flyers/17955760221082889-0.webp",
+        "caption": "The awards are over. The night is just getting started. 🖤\n\nDespués de celebrar lo mejor de nuestra historia, nos encontramos para seguir bailando, brindar y vivir una noche diferente.\n\nAFTER BUREO AWARDS × ONO\n\n📍 ONO Bogotá · Calle 84A #9-11\n📅 5 de noviembre\n🕥 10:30 PM\n\nUna noche. Otro escenario. La misma energía.\n\nGUEST LIST OPEN.\n¡Anótate y acompáñanos! 🥂",
+        "preview": null,
+        "slides": null
       }
     ],
     "bar": false
@@ -15894,6 +16054,60 @@
     "bar": true
   },
   {
+    "title": "Fiesta del Caribe",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "merengue",
+      "otro"
+    ],
+    "organizer": "Galería Café Libro",
+    "venue": "Galería Café Libro - Calle 93",
+    "address": "Carrera 11A # 93-42",
+    "area": null,
+    "date": "2026-11-07",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Por persona",
+        "amount_cop": 50000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Big Band San Fernando de New York"
+    ],
+    "activities": [
+      "música en vivo",
+      "concurso de vestimenta costeña"
+    ],
+    "contact": "WhatsApp 317 660 8742",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio"
+    ],
+    "id": "fiesta-del-caribe-7-nov",
+    "account": "galeriacafelibro",
+    "media": [
+      {
+        "post_id": "18122427761514569",
+        "permalink": "https://www.instagram.com/p/DfQC10zMGOT/",
+        "media_type": "IMAGE",
+        "published": "2026-11-02T23:45:05+0000",
+        "flyer": "flyers/18122427761514569-0.webp",
+        "caption": "La Big Band San Fernando de Nueva York 🗽 llega con todo el sabor de la música caribeña, colombiana y decembrina en gran formato 🎷🎺🎙️ \n\n22 músicos en tarima, los ritmos de nuestra costa Caribe 🌊 y el poder de nuestra música sonando en una noche con sabor a fin de año ✨¡Trae tu mejor pinta costeña y gana premio!✨\n\n🎉 Aprovecha esta fiesta para celebrar tus eventos de fin de año con empresa, amigos o familiares.\n\n🎟️ $50.000\ngaleriacafelibro.com.co o en taquilla",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Guabalosas Intensivo Versión 2.0",
     "event_type": "workshop",
     "is_recurring": false,
@@ -16161,8 +16375,23 @@
     "weekday": "sábado",
     "start_time": "19:30",
     "end_time": null,
-    "prices": [],
-    "artists": [],
+    "prices": [
+      {
+        "label": "Individual",
+        "amount_cop": 25000,
+        "condition": null
+      },
+      {
+        "label": "Pareja",
+        "amount_cop": 40000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Isa Botero",
+      "Ricardo",
+      "Mayra"
+    ],
     "activities": [
       "dos talleres de bachata",
       "práctica social"
@@ -16176,6 +16405,16 @@
     "id": "sabado-de-bachata-bachatango-7-nov",
     "account": "showstarscol",
     "media": [
+      {
+        "post_id": "17906895141355094",
+        "permalink": "https://www.instagram.com/p/DfTBdvJke9Z/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-03T23:06:17+0000",
+        "flyer": "flyers/17906895141355094-0.webp",
+        "caption": "🔥💃 ¡UNA NOCHE, DOS ESTILOS Y MUCHA BACHATA! 🕺✨\n\nEste sábado 7 de noviembre llega a Show Stars una experiencia para aprender, explorar y disfrutar la bachata de una manera diferente. ❤️\n\nPrepárate para vivir dos talleres especiales:\n\n🔥 Bachazouk: descubre nuevas formas de conexión, fluidez y movimiento.\n\n❤️ Bachatango: explora la elegancia, la musicalidad y la conexión de estos dos ritmos.\n\nY porque después de aprender viene lo mejor… ¡cerramos con una práctica social para bailar, compartir y poner en práctica todo lo aprendido! 🎶\n\n📅 Sábado 7 de noviembre\n🕢 Inicio: 7:30 p. m.\n💃 2 talleres + práctica social.\n\nNo importa si vienes en pareja o por tu cuenta, ven con toda la actitud y las ganas de disfrutar.\n\n📲 ¡Reserva tu espacio desde ahora! Escríbenos por interno la palabra BACHATA.\n\n⭐ Show Stars: donde el baile se convierte en una experiencia.\n\n#ShowStars #Bachazouk #Bachatango #BachataBogotá #bachata",
+        "preview": null,
+        "slides": 2
+      },
       {
         "post_id": "18437816401198347",
         "permalink": "https://www.instagram.com/reel/DfNtltts75Z/",
@@ -16293,6 +16532,64 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "I ❤️ Salsa y Perreo",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "urbano"
+    ],
+    "organizer": "Ritmo Moderno",
+    "venue": "Ritmo Moderno",
+    "address": "Cra 4 # 17-39",
+    "area": "Centro",
+    "date": "2026-11-07",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "20:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "No cover hasta las 10pm",
+        "amount_cop": 0,
+        "condition": null
+      },
+      {
+        "label": "Cover después de las 10pm",
+        "amount_cop": 10000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Secret DJs"
+    ],
+    "activities": [
+      "baile"
+    ],
+    "contact": "@ritmomoderno",
+    "confidence": "high",
+    "doubts": [
+      "DJs secretos",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "i-salsa-y-perreo-7-nov",
+    "account": "ritmomoderno",
+    "media": [
+      {
+        "post_id": "18034385192676330",
+        "permalink": "https://www.instagram.com/p/DfSp9_LGJdg/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-03T19:40:58+0000",
+        "flyer": "flyers/18034385192676330-4.webp",
+        "caption": "ESTA SEMANA ES EN EL CENTRO EN RITMO 💥💥💥\n\nMiércoles 4 💃📻🕺🏽\nTORNAS ABIERTAS DE RAP Y SALSA!!!\nInscripciones al dm - tendremos 4 cupos para djs y selectores que quieran sonar sus colecciones de rap y salsa en las Tornas de Ritmo en sets de 1 hora y back2backs! \nENTRADA LIBRE POLAS A 5k Y COCTELES 2x1 toda la noche!🥂🥂🥂\n\nJuernes 5! 🌴🌴🌴\nKEA MODERNO 🔥🔥🔥 KEA kearestbar marcó una época importante en la rumba diferente de Bogotá y ha sido un referente para lo que es hoy Ritmo!! Sonaremos junto a good.javito la mente detrás de KEA aka JOINT TRAVOLTA música icónica de la época mas el Ritmo style junto a Oswaldo Sesto y sagauno  bailoteo y remenbranzas para activar el baile!! Si vivió esta época lxs esperamos y si no estuvo los esperamos para que conozcan el meke!\nENTRADA LIBRE HASTA LAS 10pm / 10k dsps \nCOCTELES 2x1 toda la noche\n\nViernes 6 🔥🫦🔥RITMO PRESENTA:\nSANTA GROOVES NOCHE DE JEFAS CON selva____ oojitooos bitacoradecalixta y aparición especial de cero39_oficial \nVuelven las curadurías makiavelikas de Ritmo reuniendo a tres de las mujeres que mandan la vida nocturna de la capi en una fiesta  sonando dark wave, cumbias, perreo y la sorpresa con el infame Cero39!!\nEntrada libre con boleta para los asistentes al estreno de la peli KMKZ de dantacine \nCOVER GENERAL 10k hasta 10pm / 20k dsps\nReservas al 3023066868\n\nSabado 7 💃🍑💃\nI ❤️ SALSA Y PERREO 🐕 \nnoche con djs misterio sonando los temas calientes para quemar la pista!! 🪩🪩🪩\nCocteles 2x1 hasta las 10 pm!\nNo cover hasta las 10 - 10k después!!\n\nNO HAY PIERDE EN EL CENTRO EN RITMO 🥁🫦🕺🏽💃🌴",
+        "preview": null,
+        "slides": 13
+      }
+    ],
+    "bar": true
   },
   {
     "title": "Milonga",
@@ -16423,6 +16720,16 @@
     "id": "clase-especial-de-bachata-en-pareja-8-nov",
     "account": "showstarscol",
     "media": [
+      {
+        "post_id": "18036928826663024",
+        "permalink": "https://www.instagram.com/reel/DfPQg9apPdt/",
+        "media_type": "VIDEO",
+        "published": "2026-11-02T12:00:06+0000",
+        "flyer": "flyers/18036928826663024-0.webp",
+        "caption": "❤️🔥 ¡ESTE DOMINGO LA BACHATA SE BAILA EN PAREJA! 🔥\n\n¿Quieres mejorar tu conexión, aprender nuevos movimientos y disfrutar del ritmo de la bachata? 💃🕺\n\nTenemos una clase especial con Luis & Laura, donde aprenderás, practicarás y vivirás la magia de bailar en pareja. ✨\n\n📅 Domingo 8 de noviembre\n🕙 10:00 a. m.\n🔥 Clase especial de Bachata en pareja.\n\nNo importa si estás comenzando o quieres perfeccionar tu baile, ¡esta experiencia es para ti!\n\n📲 ¡Reserva tu espacio ahora! Escríbenos por mensaje directo la palabra BACHATA y prepárate para bailar.\n\n⭐ ¡Te esperamos en Show Stars!",
+        "preview": "previews/18036928826663024-0.mp4",
+        "slides": null
+      },
       {
         "post_id": "18339272863279718",
         "permalink": "https://www.instagram.com/reel/DfOIcNSNWme/",
@@ -16807,6 +17114,53 @@
         "flyer": "flyers/18051296834803247-0.webp",
         "caption": "WILMER Y MARÍA ESTARÁN EN CASINEA 2026\n\nSi ellos mismos te lo dicen, ¿quiénes somos nosotros para contradecirlos? 😂💃🕺\n\nDos artistas fundamentales en la historia de Casinea regresan para ser parte de nuestra décima edición, con todo su conocimiento, talento, sabor y, por supuesto, esa personalidad que nunca pasa desapercibida.\n\nPrepárate, porque esta edición viene cargada de encuentros, baile y momentos inolvidables. ¡Y con Wilmer por ahí, las risas tampoco van a faltar! 😂🔥\n\n📅 13 al 16 de noviembre de 2026 📍 Bogotá, Colombia 🇨🇴\n\nLo bueno se repite. Lo extraordinario evoluciona. 💜✨\n\n#FestivalCasinea #Casinea2026 #WilmerYMaría #SalsaCasino #BailandoYoViviré",
         "preview": "previews/18051296834803247-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Competencia Palo Pa' Rumba",
+    "event_type": "competition",
+    "is_recurring": false,
+    "styles": [
+      "bachata"
+    ],
+    "organizer": "Imperio Latino Dance Studio",
+    "venue": null,
+    "address": null,
+    "area": null,
+    "date": "2026-11-13",
+    "end_date": "2026-11-16",
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "competencia de baile"
+    ],
+    "contact": "@imperiolatino",
+    "confidence": "high",
+    "doubts": [
+      "sin horarios específicos",
+      "sin lugar específico",
+      "sin precios",
+      "estilos deducidos del texto o de la cuenta, no leídos en el post",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "competencia-palo-pa-rumba-13-nov",
+    "account": "imperiolatino",
+    "media": [
+      {
+        "post_id": "17978460681139527",
+        "permalink": "https://www.instagram.com/p/DfTI9hjgvef/",
+        "media_type": "IMAGE",
+        "published": "2026-11-04T00:15:10+0000",
+        "flyer": "flyers/17978460681139527-0.webp",
+        "caption": "🔥 ¡NOVIEMBRE LLEGA CON GRANDES EXPERIENCIAS A IMPERIO LATINO! 🔥\nEste mes tenemos nuevos retos, grandes escenarios y oportunidades para seguir creciendo a través del baile. 💃🕺\n\n✨ AGENDA DE NOVIEMBRE:\n\n🏆 13 al 16 de noviembre: Competencia Palo Pa’ Rumba. ¡Vamos a demostrar nuestro talento!\n\n🔥 21 de noviembre: Taller especial de Bachata. Aprende, perfecciona tu técnica y disfruta del ritmo.\n\n⭐ 22 de noviembre: Convocatoria 2027. Selección de talentos para nuestras agrupaciones competitivas. ¡Una oportunidad para llevar tu pasión a otro nivel!\n\nEn Imperio Latino creemos que cada bailarín tiene una historia, un talento y un potencial por descubrir.\n\n💛 ES TU MOMENTO: APRENDE, PRACTICA Y HAZ PARTE DE NUESTRA CASA.\n\n¡No te quedes por fuera! Te esperamos para vivir un noviembre lleno de baile, aprendizaje y nuevas oportunidades.\n\n📲 Escríbenos y pregunta cómo participar.\n\nIMPERIO LATINO DANCE STUDIO\nDonde el talento se transforma en pasión.",
+        "preview": null,
         "slides": null
       }
     ],
@@ -17421,11 +17775,57 @@
     "bar": false
   },
   {
+    "title": "Taller Especial de Bachata",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "bachata"
+    ],
+    "organizer": "Imperio Latino Dance Studio",
+    "venue": "Imperio Latino Dance Studio",
+    "address": null,
+    "area": null,
+    "date": "2026-11-21",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "taller de bachata",
+      "perfecciona tu técnica"
+    ],
+    "contact": "@imperiolatino",
+    "confidence": "high",
+    "doubts": [
+      "sin horario",
+      "sin precios",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "taller-especial-de-bachata-21-nov",
+    "account": "imperiolatino",
+    "media": [
+      {
+        "post_id": "17978460681139527",
+        "permalink": "https://www.instagram.com/p/DfTI9hjgvef/",
+        "media_type": "IMAGE",
+        "published": "2026-11-04T00:15:10+0000",
+        "flyer": "flyers/17978460681139527-0.webp",
+        "caption": "🔥 ¡NOVIEMBRE LLEGA CON GRANDES EXPERIENCIAS A IMPERIO LATINO! 🔥\nEste mes tenemos nuevos retos, grandes escenarios y oportunidades para seguir creciendo a través del baile. 💃🕺\n\n✨ AGENDA DE NOVIEMBRE:\n\n🏆 13 al 16 de noviembre: Competencia Palo Pa’ Rumba. ¡Vamos a demostrar nuestro talento!\n\n🔥 21 de noviembre: Taller especial de Bachata. Aprende, perfecciona tu técnica y disfruta del ritmo.\n\n⭐ 22 de noviembre: Convocatoria 2027. Selección de talentos para nuestras agrupaciones competitivas. ¡Una oportunidad para llevar tu pasión a otro nivel!\n\nEn Imperio Latino creemos que cada bailarín tiene una historia, un talento y un potencial por descubrir.\n\n💛 ES TU MOMENTO: APRENDE, PRACTICA Y HAZ PARTE DE NUESTRA CASA.\n\n¡No te quedes por fuera! Te esperamos para vivir un noviembre lleno de baile, aprendizaje y nuevas oportunidades.\n\n📲 Escríbenos y pregunta cómo participar.\n\nIMPERIO LATINO DANCE STUDIO\nDonde el talento se transforma en pasión.",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Gran Taller: Salsa Corporalidad",
     "event_type": "workshop",
     "is_recurring": false,
     "styles": [
-      "salsa en línea"
+      "salsa"
     ],
     "organizer": "Madyum",
     "venue": "Escuela del Mambo",
@@ -17442,15 +17842,12 @@
       "Laura Gallo"
     ],
     "activities": [
-      "taller de salsa",
-      "clase de corporalidad",
-      "clase de mambo"
+      "taller de salsa"
     ],
-    "contact": "@madyumdance",
+    "contact": "@lauraximenadance",
     "confidence": "high",
     "doubts": [
-      "sin precio",
-      "sin dirección exacta"
+      "sin precio"
     ],
     "id": "gran-taller-salsa-corporalidad-21-nov",
     "account": "madyumdance",
@@ -17552,6 +17949,69 @@
         "published": "2026-10-04T19:24:18+0000",
         "flyer": "flyers/story-8ccbeb9e2cbbba06-0.webp",
         "caption": null,
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Convocatoria 2027",
+    "event_type": "other",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "bachata"
+    ],
+    "organizer": "Imperio Latino Dance Studio",
+    "venue": "Imperio Latino Dance Studio",
+    "address": null,
+    "area": null,
+    "date": "2026-11-22",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Participación",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "selección de talentos",
+      "audiciones para agrupaciones competitivas"
+    ],
+    "contact": "@imperiolatino",
+    "confidence": "high",
+    "doubts": [
+      "sin horario",
+      "sin precios",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "convocatoria-2027-22-nov",
+    "account": "imperiolatino",
+    "media": [
+      {
+        "post_id": "18083257100375924",
+        "permalink": "https://www.instagram.com/p/DfTLNE6Ace3/",
+        "media_type": "IMAGE",
+        "published": "2026-11-04T00:36:08+0000",
+        "flyer": "flyers/18083257100375924-0.webp",
+        "caption": "¡BUSCAMOS TALENTOS, NO EDADES!\n\nDesde los más pequeños hasta los adultos, todos tienen un lugar en Imperio Latino. 💛🖤 🔥💛 ¡EL TALENTO NO TIENE EDAD, LOS GRANDES SUEÑOS TAMPOCO! 🖤\n¿Tu hijo o hija ama bailar? ¿Eres joven o adulto y sueñas con llevar tu talento a otro nivel?\n\n¡Esta es tu oportunidad!\n\nIMPERIO LATINO DANCE STUDIO ABRE SUS CONVOCATORIAS 2027.\n\nEstamos buscando nuevos talentos para conformar nuestras agrupaciones competitivas de:\n\n✨ CABARET\n✨ LADIES\n✨ HOMBRES\n✨ NIÑOS Y NIÑAS\n\n💃 Formación en SALSA Y BACHATA.\n🏆 Niveles amateur y semiprofesional.\n🌟 Espacios para descubrir, desarrollar y proyectar tu talento.\n\n📅 22 DE NOVIEMBRE\n🎟️ PARTICIPACIÓN GRATUITA\n\nNo importa si apenas estás comenzando o si ya tienes experiencia. Queremos conocer tu talento, tu disciplina y tus ganas de crecer.\n\n👨‍👩‍👧‍👦 ¡Invita a tus hijos, hermanos, amigos y familiares!\n\nES TU MOMENTO: APRENDE, PRACTICA Y HAZ PARTE DE NUESTRA CASA.\n\n📲 Escríbenos y pregunta cómo participar.\n\nIMPERIO LATINO DANCE STUDIO\n\nMás que una academia, una familia que crece a través del baile.",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "17978460681139527",
+        "permalink": "https://www.instagram.com/p/DfTI9hjgvef/",
+        "media_type": "IMAGE",
+        "published": "2026-11-04T00:15:10+0000",
+        "flyer": "flyers/17978460681139527-0.webp",
+        "caption": "🔥 ¡NOVIEMBRE LLEGA CON GRANDES EXPERIENCIAS A IMPERIO LATINO! 🔥\nEste mes tenemos nuevos retos, grandes escenarios y oportunidades para seguir creciendo a través del baile. 💃🕺\n\n✨ AGENDA DE NOVIEMBRE:\n\n🏆 13 al 16 de noviembre: Competencia Palo Pa’ Rumba. ¡Vamos a demostrar nuestro talento!\n\n🔥 21 de noviembre: Taller especial de Bachata. Aprende, perfecciona tu técnica y disfruta del ritmo.\n\n⭐ 22 de noviembre: Convocatoria 2027. Selección de talentos para nuestras agrupaciones competitivas. ¡Una oportunidad para llevar tu pasión a otro nivel!\n\nEn Imperio Latino creemos que cada bailarín tiene una historia, un talento y un potencial por descubrir.\n\n💛 ES TU MOMENTO: APRENDE, PRACTICA Y HAZ PARTE DE NUESTRA CASA.\n\n¡No te quedes por fuera! Te esperamos para vivir un noviembre lleno de baile, aprendizaje y nuevas oportunidades.\n\n📲 Escríbenos y pregunta cómo participar.\n\nIMPERIO LATINO DANCE STUDIO\nDonde el talento se transforma en pasión.",
         "preview": null,
         "slides": null
       }
@@ -17747,13 +18207,15 @@
     "bar": false
   },
   {
-    "title": "Cubania Segunda Edición",
+    "title": "Cubanía Segunda Edición",
     "event_type": "congress",
     "is_recurring": false,
     "styles": [
-      "salsa cubana"
+      "salsa cubana",
+      "afro",
+      "urbano"
     ],
-    "organizer": "Salsa en Bogota y Alpaso",
+    "organizer": "Salsa en Bogotá y Alpaso",
     "venue": null,
     "address": null,
     "area": null,
@@ -17787,20 +18249,18 @@
     ],
     "artists": [
       "Mia Martinez",
-      "Jesus Castillo",
+      "Jesus Uztariz",
+      "Viviana Sierra",
       "Jesus Cabezas",
-      "Viviana Sierra"
+      "and1erita"
     ],
     "activities": [
-      "clase de reparto",
-      "social",
-      "fundamentos de corporalidad de ritmos cubanos"
+      "workshops",
+      "social"
     ],
     "contact": "@and1erita",
     "confidence": "high",
-    "doubts": [
-      "sin lugar ni horarios específicos"
-    ],
+    "doubts": [],
     "id": "cubania-segunda-edicion-6-dic",
     "account": "and1erita",
     "media": [
@@ -18014,7 +18474,7 @@
     "activities": [
       "workshops",
       "social dancing",
-      "Bachata Jam Session"
+      "bachata jam session"
     ],
     "contact": "@bachatasocialcongress",
     "confidence": "high",
