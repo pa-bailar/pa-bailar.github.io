@@ -15837,6 +15837,53 @@
     "bar": true
   },
   {
+    "title": "Yambú Orquesta en vivo",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Casa Quiebra-Canto",
+    "venue": "Casa Quiebra-Canto",
+    "address": null,
+    "area": null,
+    "date": "2026-11-06",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Yambú Orquesta"
+    ],
+    "activities": [
+      "música en vivo"
+    ],
+    "contact": "@casaquiebracanto",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio",
+      "sin precio",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "yambu-orquesta-en-vivo-6-nov",
+    "account": "casaquiebracanto",
+    "media": [
+      {
+        "post_id": "18140881657619164",
+        "permalink": "https://www.instagram.com/p/DfSsZMVBpWu/",
+        "media_type": "IMAGE",
+        "published": "2026-11-03T20:02:12+0000",
+        "flyer": "flyers/18140881657619164-0.webp",
+        "caption": "Metele salsita a este Noviembre con buena musica en vivo dannyrosalescastro quiebracombo",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Viernes de Salsa & Son con Tambaluna",
     "event_type": "concert",
     "is_recurring": false,
@@ -16054,6 +16101,52 @@
     "bar": true
   },
   {
+    "title": "Gran Tributo a Ruben Blades y Héctor Lavoe",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Casa Van Der",
+    "venue": "Casa Van Der",
+    "address": "Cra 16 #35-08",
+    "area": null,
+    "date": "2026-11-06",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "20:30",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Cienfuegos Group"
+    ],
+    "activities": [
+      "orquesta en vivo",
+      "baile"
+    ],
+    "contact": "3011620492",
+    "confidence": "high",
+    "doubts": [
+      "sin precio especificado"
+    ],
+    "id": "gran-tributo-a-ruben-blades-y-hector-lavoe-6-nov",
+    "account": "casavander_",
+    "media": [
+      {
+        "post_id": "18200985931386595",
+        "permalink": "https://www.instagram.com/p/DfQnnzgsNi3/",
+        "media_type": "IMAGE",
+        "published": "2026-11-03T00:44:03+0000",
+        "flyer": "flyers/18200985931386595-0.webp",
+        "caption": "Gran Tributo a Ruben Blades y Héctor Lavoe. \nGran orquesta en vivo con cienfuegosgroup \nUna noche para cantar, bailar, disfrutar y gozar. \nCaiga con el combo o solito que aquí se consigue parche. \n\nCélebre que nos quedan menos de 6 viernes para 2027.\nEmpezó la cuenta regresiva. \nReservas en el link de la bio.",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Fiesta del Caribe",
     "event_type": "concert",
     "is_recurring": false,
@@ -16106,6 +16199,156 @@
       }
     ],
     "bar": true
+  },
+  {
+    "title": "Salsa Dura & Guaguancó con Zonora Quiebracanto",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "afro"
+    ],
+    "organizer": "Casa Quiebra-Canto",
+    "venue": "Casa Quiebra-Canto",
+    "address": null,
+    "area": null,
+    "date": "2026-11-07",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sabado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Zonora Quiebracanto"
+    ],
+    "activities": [
+      "música en vivo"
+    ],
+    "contact": "@casaquiebracanto",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio",
+      "sin precio",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "salsa-dura-guaguanco-con-zonora-quiebracanto-7-nov",
+    "account": "casaquiebracanto",
+    "media": [
+      {
+        "post_id": "18140881657619164",
+        "permalink": "https://www.instagram.com/p/DfSsZMVBpWu/",
+        "media_type": "IMAGE",
+        "published": "2026-11-03T20:02:12+0000",
+        "flyer": "flyers/18140881657619164-0.webp",
+        "caption": "Metele salsita a este Noviembre con buena musica en vivo dannyrosalescastro quiebracombo",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Pachanghetto Volumen 2",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Callejón Salsa & Mecato",
+    "venue": "Callejón Salsa & Mecato",
+    "address": "Calle 12D # 3-84",
+    "area": null,
+    "date": "2026-11-07",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Entrada",
+        "amount_cop": 20000,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "salsa dura"
+    ],
+    "contact": "@callejonsalsa",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio"
+    ],
+    "id": "pachanghetto-volumen-2-7-nov",
+    "account": "callejonsalsa",
+    "media": [
+      {
+        "post_id": "17979852837178540",
+        "permalink": "https://www.instagram.com/p/DfQhUVZPFsY/",
+        "media_type": "IMAGE",
+        "published": "2026-11-02T23:46:57+0000",
+        "flyer": "flyers/17979852837178540-0.webp",
+        "caption": "Nos espera una semana fantástica!!! Pre Latín Grammy.... \nMiércoles de tango, e iniciamos las clases con la profesora Ceci Urzola ceciurzolatangosobreviviente y estaremos todos los miércoles de noviembre con ella. \nEl jueves será de Jazz en vivo, y nada menos que con uno de los mejores tríos de la ciudad, caldasgiovanni juancamilobateriasxx juliangomezcontrabajo abriendo este espacio que mantendremos. \nEl viernes continuamos con las clases de salsa con la profesora teffa_mg y la noche al ritmo de los clásicos de el pinchadiscosdekien \nEl sábado tendremos el volumen 2 del Pachanghetto, con la mejor salsa dura. \nY el tardeo del domingo viene con dos bandas en vivo, desde Chile estará pulsogaiano y por Colombia Nación Vibrass, con el set de Mao Zeta Pe. \nSemana para no salir de Callejón.",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Parche de Bailadores",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Bogotá Dance Club",
+    "venue": "Bogotá Dance Club",
+    "address": "Calle 25F # 36-15",
+    "area": null,
+    "date": "2026-11-07",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "15:00",
+    "end_time": "22:00",
+    "prices": [
+      {
+        "label": "Preventa",
+        "amount_cop": 25000,
+        "condition": null
+      },
+      {
+        "label": "Puerta",
+        "amount_cop": 30000,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "clase pre-fiesta de salsa",
+      "concursos"
+    ],
+    "contact": "@bogotadanceclub",
+    "confidence": "high",
+    "doubts": [],
+    "id": "parche-de-bailadores-7-nov",
+    "account": "bogotadanceclub",
+    "media": [
+      {
+        "post_id": "18092934140226646",
+        "permalink": "https://www.instagram.com/reel/DfTO9kLui9b/",
+        "media_type": "VIDEO",
+        "published": "2026-11-04T01:07:33+0000",
+        "flyer": "flyers/18092934140226646-0.webp",
+        "caption": "¿Eres un rolo incomprendido al que le encanta bailar? 💃🏻🕺🏻 ¿De los que siempre terminan siendo el alma de la fiesta?\n\nEste sábado tenemos PARCHE DE BAILADORES 🪩, una tarde para sacar los mejores pasos, conocer gente y demostrar quién manda en la pista 😉\n\n📢 Comunidad de 18 a 45 años ✨\n🗓️ 07 de noviembre | 🕒 3PM a 10PM\n📍 Calle 25F # 36-15 – Bogotá Dance Club\n\n🤓 Clase pre-fiesta de salsa\n\n💵 Preventa: $25.000\n💰 Puerta: $30.000\n(Incluye clase + 1 bebida + concursos).\n\n🏆 Tendremos concursos para descubrir quién es el verdadero rey o reina de la pista🔥\n\n¡Prepara tus mejores pasos, arma tu parche y ven a demostrar de qué estás hecho! 💃🏻🕺🏻\n\n#planesenbogotá #baile #bogota #salsa",
+        "preview": "previews/18092934140226646-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": false
   },
   {
     "title": "Guabalosas Intensivo Versión 2.0",
@@ -16191,6 +16434,58 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "Latin Sessions con Trío Bilonguero",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "son"
+    ],
+    "organizer": "Bilongo",
+    "venue": "Bilongo",
+    "address": null,
+    "area": null,
+    "date": "2026-11-07",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "17:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 25000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Trío Bilonguero"
+    ],
+    "activities": [
+      "salsa en vivo"
+    ],
+    "contact": "@bilongocolombia",
+    "confidence": "high",
+    "doubts": [
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "latin-sessions-con-trio-bilonguero-7-nov",
+    "account": "bilongocolombia",
+    "media": [
+      {
+        "post_id": "18187978930417774",
+        "permalink": "https://www.instagram.com/p/DfPy4tChRIV/",
+        "media_type": "IMAGE",
+        "published": "2026-11-02T17:01:38+0000",
+        "flyer": "flyers/18187978930417774-0.webp",
+        "caption": "LOS SÁBADOS ACÁ SE SIENTEN DISTINTO. ❤️‍🔥\n\nAmbiente sabroso desde las 5 y el trío bilonguero tocando salsa pa’ gozársela lento y sabroso. 👀\n\nCaiga a los Latin Sessions y nos cuenta.\n\nCover 25k\nReservas por DM 📩\n\n#LatinSessions #SalsaBogotá #SalsaEnVivo #Bilongo",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
   },
   {
     "title": "Meet & Greet",
@@ -16304,6 +16599,53 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "Capital de la Salsa",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Tributo Salsa y Jazz",
+    "venue": "Tributo Salsa y Jazz",
+    "address": "Av. Boyacá #64c - 97",
+    "area": "ZONA 6",
+    "date": "2026-11-07",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "18:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Orquesta en vivo"
+    ],
+    "activities": [
+      "rumba",
+      "orquesta en vivo"
+    ],
+    "contact": "WhatsApp 3105714824",
+    "confidence": "high",
+    "doubts": [
+      "sin precio",
+      "nombre de la orquesta no especificado"
+    ],
+    "id": "capital-de-la-salsa-7-nov",
+    "account": "tributo.salsayjazz",
+    "media": [
+      {
+        "post_id": "17914249041484959",
+        "permalink": "https://www.instagram.com/p/DfSvuQxFOrv/",
+        "media_type": "IMAGE",
+        "published": "2026-11-03T20:31:15+0000",
+        "flyer": "flyers/17914249041484959-0.webp",
+        "caption": "¡LLEGÓ EL SÁBADO PARA BAILAR EN LA CAPITAL DE LA SALSA! 💃🕺🔥 \n\nPorque el fin de semana se vive a lo grande en la capital latina, te esperamos en tu casa: ¡Tributo Salsa y Jazz! Este sábado 07 de noviembre, prepárate para una rumba inolvidable cargada de puro golpe, clave y la mejor energía. \n\nVen a disfrutar de unos buenos tragos con tus amigos, alístate para azotar baldosa y déjate llevar por el sabor y la potencia de nuestra orquesta en vivo.\n ¡Pura candela para encender la pista! 🥂🎺✨ \n\n📍 Lugar: Av. Boyacá #64c - 97, ZONA 6 ⏰ Apertura: 6:00 PM \nOrquesta en vivo: 10:00 PM 📲 Reservas: 310 5714 824 \n¡Asegura tu mesa antes de que se llene!\n\n RESERVA, arma tu parche salsero y nos vemos en la pista para gozar. 👇\n\n✨https://wa.me/573105714824",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
   },
   {
     "title": "Mira, ven pa’ acá",
@@ -16470,6 +16812,16 @@
     "id": "segundo-aniversario-ebi-dance-7-nov",
     "account": "ebi_dancecompany",
     "media": [
+      {
+        "post_id": "18037025822667584",
+        "permalink": "https://www.instagram.com/p/DfQovl1t2Z_/",
+        "media_type": "IMAGE",
+        "published": "2026-11-03T00:51:51+0000",
+        "flyer": "flyers/18037025822667584-0.webp",
+        "caption": "Show 8 | Pareja Semi Pro ✨\nHoy presentamos una pareja que llega al escenario para compartir su interpretación, su energía y el resultado de su crecimiento artístico.\n\n#pareja #salsacasino #timba #aniversario #rumbacubana",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18643483594028640",
         "permalink": "https://www.instagram.com/p/DfLjcWdNJ1a/",
@@ -16940,6 +17292,53 @@
     "bar": false
   },
   {
+    "title": "Competencia Palo Pa' Rumba",
+    "event_type": "competition",
+    "is_recurring": false,
+    "styles": [
+      "bachata"
+    ],
+    "organizer": "Imperio Latino Dance Studio",
+    "venue": null,
+    "address": null,
+    "area": null,
+    "date": "2026-11-13",
+    "end_date": "2026-11-16",
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "competencia de baile"
+    ],
+    "contact": "@imperiolatino",
+    "confidence": "high",
+    "doubts": [
+      "sin horarios específicos",
+      "sin lugar específico",
+      "sin precios",
+      "estilos deducidos del texto o de la cuenta, no leídos en el post",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "competencia-palo-pa-rumba-13-nov",
+    "account": "imperiolatino",
+    "media": [
+      {
+        "post_id": "17978460681139527",
+        "permalink": "https://www.instagram.com/p/DfTI9hjgvef/",
+        "media_type": "IMAGE",
+        "published": "2026-11-04T00:15:10+0000",
+        "flyer": "flyers/17978460681139527-0.webp",
+        "caption": "🔥 ¡NOVIEMBRE LLEGA CON GRANDES EXPERIENCIAS A IMPERIO LATINO! 🔥\nEste mes tenemos nuevos retos, grandes escenarios y oportunidades para seguir creciendo a través del baile. 💃🕺\n\n✨ AGENDA DE NOVIEMBRE:\n\n🏆 13 al 16 de noviembre: Competencia Palo Pa’ Rumba. ¡Vamos a demostrar nuestro talento!\n\n🔥 21 de noviembre: Taller especial de Bachata. Aprende, perfecciona tu técnica y disfruta del ritmo.\n\n⭐ 22 de noviembre: Convocatoria 2027. Selección de talentos para nuestras agrupaciones competitivas. ¡Una oportunidad para llevar tu pasión a otro nivel!\n\nEn Imperio Latino creemos que cada bailarín tiene una historia, un talento y un potencial por descubrir.\n\n💛 ES TU MOMENTO: APRENDE, PRACTICA Y HAZ PARTE DE NUESTRA CASA.\n\n¡No te quedes por fuera! Te esperamos para vivir un noviembre lleno de baile, aprendizaje y nuevas oportunidades.\n\n📲 Escríbenos y pregunta cómo participar.\n\nIMPERIO LATINO DANCE STUDIO\nDonde el talento se transforma en pasión.",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Festival Internacional Casinea - 10.ª Edición",
     "event_type": "congress",
     "is_recurring": false,
@@ -16951,16 +17350,22 @@
       "urbano"
     ],
     "organizer": "Festival Internacional Casinea",
-    "venue": null,
-    "address": null,
+    "venue": "Bendito Vice",
+    "address": "Calle 51 #7-45",
     "area": "Bogotá",
     "date": "2026-11-13",
     "end_date": "2026-11-16",
     "sessions": null,
     "weekday": "viernes",
-    "start_time": null,
+    "start_time": "21:00",
     "end_time": null,
-    "prices": [],
+    "prices": [
+      {
+        "label": "Cover en taquilla",
+        "amount_cop": 35000,
+        "condition": null
+      }
+    ],
     "artists": [
       "Wilmer y Maria",
       "Alexis y Christa",
@@ -16986,6 +17391,16 @@
     "id": "festival-internacional-casinea-10-a-edicion-13-nov",
     "account": "casineafest",
     "media": [
+      {
+        "post_id": "18135592195669083",
+        "permalink": "https://www.instagram.com/p/DfTxPXdx57y/",
+        "media_type": "IMAGE",
+        "published": "2026-11-04T06:03:49+0000",
+        "flyer": "flyers/18135592195669083-0.webp",
+        "caption": "🖤🤍 BLACK & WHITE CUBAN SOCIAL: UNA NOCHE PARA BAILAR SIN ETIQUETAS\n\nEste domingo 15 de noviembre, Casinea se traslada a Bendito Vice, un espacio en Bogotá que será el punto de encuentro para disfrutar de una noche cargada de música, baile y sabor cubano.\n\nLa temática de esta edición será Black & White: te invitamos a sumarte al ambiente vistiendo de blanco y negro mientras la pista se llena de timba, salsa, son, rumba, reparto y cubatón.\n\n📍 Bendito Vice – Calle 51 #7-45, Bogotá\n🕘 9:00 p. m.\n🎟️ Cover en taquilla: $35.000 COP\n✨ Incluido en el Full Pass y Experience Pass.\n\nMás timba, más salsa, más sabor cubano. ¡Nos encontramos en la pista!\n\n#Casinea2026 #BlackAndWhiteCubanSocial #BenditoVice #SalsaCasino",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18060961865570540",
         "permalink": "https://www.instagram.com/p/DexWCFtEWdk/",
@@ -17120,53 +17535,6 @@
     "bar": false
   },
   {
-    "title": "Competencia Palo Pa' Rumba",
-    "event_type": "competition",
-    "is_recurring": false,
-    "styles": [
-      "bachata"
-    ],
-    "organizer": "Imperio Latino Dance Studio",
-    "venue": null,
-    "address": null,
-    "area": null,
-    "date": "2026-11-13",
-    "end_date": "2026-11-16",
-    "sessions": null,
-    "weekday": "viernes",
-    "start_time": null,
-    "end_time": null,
-    "prices": [],
-    "artists": [],
-    "activities": [
-      "competencia de baile"
-    ],
-    "contact": "@imperiolatino",
-    "confidence": "high",
-    "doubts": [
-      "sin horarios específicos",
-      "sin lugar específico",
-      "sin precios",
-      "estilos deducidos del texto o de la cuenta, no leídos en el post",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
-    "id": "competencia-palo-pa-rumba-13-nov",
-    "account": "imperiolatino",
-    "media": [
-      {
-        "post_id": "17978460681139527",
-        "permalink": "https://www.instagram.com/p/DfTI9hjgvef/",
-        "media_type": "IMAGE",
-        "published": "2026-11-04T00:15:10+0000",
-        "flyer": "flyers/17978460681139527-0.webp",
-        "caption": "🔥 ¡NOVIEMBRE LLEGA CON GRANDES EXPERIENCIAS A IMPERIO LATINO! 🔥\nEste mes tenemos nuevos retos, grandes escenarios y oportunidades para seguir creciendo a través del baile. 💃🕺\n\n✨ AGENDA DE NOVIEMBRE:\n\n🏆 13 al 16 de noviembre: Competencia Palo Pa’ Rumba. ¡Vamos a demostrar nuestro talento!\n\n🔥 21 de noviembre: Taller especial de Bachata. Aprende, perfecciona tu técnica y disfruta del ritmo.\n\n⭐ 22 de noviembre: Convocatoria 2027. Selección de talentos para nuestras agrupaciones competitivas. ¡Una oportunidad para llevar tu pasión a otro nivel!\n\nEn Imperio Latino creemos que cada bailarín tiene una historia, un talento y un potencial por descubrir.\n\n💛 ES TU MOMENTO: APRENDE, PRACTICA Y HAZ PARTE DE NUESTRA CASA.\n\n¡No te quedes por fuera! Te esperamos para vivir un noviembre lleno de baile, aprendizaje y nuevas oportunidades.\n\n📲 Escríbenos y pregunta cómo participar.\n\nIMPERIO LATINO DANCE STUDIO\nDonde el talento se transforma en pasión.",
-        "preview": null,
-        "slides": null
-      }
-    ],
-    "bar": false
-  },
-  {
     "title": "Fiesta de fin de año con Gustavo Rodríguez y Danny Rosales",
     "event_type": "concert",
     "is_recurring": false,
@@ -17208,6 +17576,110 @@
         "flyer": "flyers/18084386861354136-0.webp",
         "caption": "¡Que se vaya sintiendo diciembre! 🎶🔥\n\nEste 14 de noviembre nos vamos de fiesta con gustavorodriguezsalsa y dannyrosalescastro \nPrepárate porque vamos a cantar esos clásicos que nos ponen a bailar, recordar y gozar como en diciembre. 💃🕺\n\n¡Trae a tu parche y celebremos juntos el fin de año en Galería Café Libro! 🥳",
         "preview": "previews/18084386861354136-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Oro Negro con más Afinque",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa cubana"
+    ],
+    "organizer": "Oro Negro Club",
+    "venue": "Mister Afinque",
+    "address": "Kr 71 D # 2A - 13 Sur",
+    "area": "Plaza de las Américas",
+    "date": "2026-11-14",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 10000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "DJ Camilo Carreño",
+      "DJ Plasma",
+      "Hermanos Burgos"
+    ],
+    "activities": [
+      "música en vivo",
+      "percusión en vivo"
+    ],
+    "contact": "320 3891286",
+    "confidence": "high",
+    "doubts": [],
+    "id": "oro-negro-con-mas-afinque-14-nov",
+    "account": "oronegroclub",
+    "media": [
+      {
+        "post_id": "18238530307321402",
+        "permalink": "https://www.instagram.com/p/DfNnxefJHpE/",
+        "media_type": "IMAGE",
+        "published": "2026-11-01T20:51:27+0000",
+        "flyer": "flyers/18238530307321402-0.webp",
+        "caption": "🔥¡ORO NEGRO CON MÁS AFINQUE!🎶\n\nEste sábado 14 de noviembre, nos tomamos la pista de misterafinquesalsa con una noche cargada de sabor, gozadera y mucha sabrosura.\n\n🥁 Percusión en vivo\n🎶 Melodía selecta para los verdaderos amantes de la salsa.\n🥃 Los mejores licores para brindar como se debe.\n\nPrepárate para sentir el golpe de la campana, el sabor del cuero y la magia de una noche hecha para los que llevan la salsa en la sangre. 🔥\n\n📍 Discoteca Mr. Afinque\n🎟️ Cover: $10.000\n\n¡Nos vemos en la pista! Porque cuando se junta Oro Negro con Mr. Afinque… ¡el afinque se siente de verdad!🔥\n\n#ponteon",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Latin Sessions con Trío Bilonguero",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "son"
+    ],
+    "organizer": "Bilongo",
+    "venue": "Bilongo",
+    "address": null,
+    "area": null,
+    "date": "2026-11-14",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "17:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 25000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Trío Bilonguero"
+    ],
+    "activities": [
+      "salsa en vivo"
+    ],
+    "contact": "@bilongocolombia",
+    "confidence": "high",
+    "doubts": [
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "latin-sessions-con-trio-bilonguero-14-nov",
+    "account": "bilongocolombia",
+    "media": [
+      {
+        "post_id": "18187978930417774",
+        "permalink": "https://www.instagram.com/p/DfPy4tChRIV/",
+        "media_type": "IMAGE",
+        "published": "2026-11-02T17:01:38+0000",
+        "flyer": "flyers/18187978930417774-0.webp",
+        "caption": "LOS SÁBADOS ACÁ SE SIENTEN DISTINTO. ❤️‍🔥\n\nAmbiente sabroso desde las 5 y el trío bilonguero tocando salsa pa’ gozársela lento y sabroso. 👀\n\nCaiga a los Latin Sessions y nos cuenta.\n\nCover 25k\nReservas por DM 📩\n\n#LatinSessions #SalsaBogotá #SalsaEnVivo #Bilongo",
+        "preview": null,
         "slides": null
       }
     ],
@@ -17657,9 +18129,9 @@
     "end_time": null,
     "prices": [
       {
-        "label": "Etapa 3",
-        "amount_cop": 155000,
-        "condition": "desde el 6 de octubre"
+        "label": "Etapa 1",
+        "amount_cop": 115000,
+        "condition": "6 de julio al 18 de agosto"
       },
       {
         "label": "Etapa 2",
@@ -17667,9 +18139,9 @@
         "condition": "19 de agosto al 5 de octubre"
       },
       {
-        "label": "Etapa 1",
-        "amount_cop": 115000,
-        "condition": "6 de julio al 18 de agosto"
+        "label": "Etapa 3",
+        "amount_cop": 155000,
+        "condition": "6 de octubre hasta agotar existencias"
       }
     ],
     "artists": [
@@ -17691,6 +18163,16 @@
     "id": "los-25-de-la-33-21-nov",
     "account": "la33orquesta",
     "media": [
+      {
+        "post_id": "18152247310547501",
+        "permalink": "https://www.instagram.com/p/DfTFIHoFbO0/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-03T23:38:17+0000",
+        "flyer": "flyers/18152247310547501-0.webp",
+        "caption": "Bogotá 🇨🇴\r𝗜𝗻𝘃𝗶𝘁𝗮𝗱𝗮 𝗲𝘀𝗽𝗲𝗰𝗶𝗮𝗹: Briela Ojeda ❤️‍🔥\r\n\r\nLa poderosa voz de brielaojeda se suma a los 25 de la-33 para reencontrarnos en vivo con “Qué Te Pedí”, nuestra colaboración en homenaje a La Lupe. 🥳🔥\r\n\r\nUna noche para celebrar el bolero, los sentimientos profundos y la fuerza femenina. ¡Qué alegría compartir esta fiesta contigo, Briela! ❤️🔥\r\n\r\nLa cita es el 21 de noviembre en el royalbogota 🥳\r\n\r\n¡25 años de gozadera y muchas sorpresas! 🎉\r\n🎟️ ¿Ya tienen sus entradas? \nEntradas en royalcenter.com.co (Link en bio) 🔥🥳\n\r\n📲 Informes al: 317 331 3956 – 300 660 1156\n.\n.\n.\n🌟 Arte: sebastianbravoguerrero",
+        "preview": null,
+        "slides": 6
+      },
       {
         "post_id": "18116072249101403",
         "permalink": "https://www.instagram.com/p/DevBPnPDfUN/",
@@ -17819,6 +18301,58 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "Latin Sessions con Trío Bilonguero",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "son"
+    ],
+    "organizer": "Bilongo",
+    "venue": "Bilongo",
+    "address": null,
+    "area": null,
+    "date": "2026-11-21",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "17:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 25000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Trío Bilonguero"
+    ],
+    "activities": [
+      "salsa en vivo"
+    ],
+    "contact": "@bilongocolombia",
+    "confidence": "high",
+    "doubts": [
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "latin-sessions-con-trio-bilonguero-21-nov",
+    "account": "bilongocolombia",
+    "media": [
+      {
+        "post_id": "18187978930417774",
+        "permalink": "https://www.instagram.com/p/DfPy4tChRIV/",
+        "media_type": "IMAGE",
+        "published": "2026-11-02T17:01:38+0000",
+        "flyer": "flyers/18187978930417774-0.webp",
+        "caption": "LOS SÁBADOS ACÁ SE SIENTEN DISTINTO. ❤️‍🔥\n\nAmbiente sabroso desde las 5 y el trío bilonguero tocando salsa pa’ gozársela lento y sabroso. 👀\n\nCaiga a los Latin Sessions y nos cuenta.\n\nCover 25k\nReservas por DM 📩\n\n#LatinSessions #SalsaBogotá #SalsaEnVivo #Bilongo",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
   },
   {
     "title": "Gran Taller: Salsa Corporalidad",
@@ -18109,6 +18643,58 @@
         "published": "2026-11-01T21:54:06+0000",
         "flyer": "flyers/18361648852221061-0.webp",
         "caption": "EL PACÍFICO AL CARIBE SIN SALIR DE LA ZONA G. 🌊🔥\n\nUna noche entre «Kilele» y «En Barranquilla me quedo», pa’ que más.\n\nLos jueves de noviembre arme parche y caiga a Bilongo a vivir Dos costas en un solo país.\n\nCover 25k\nReservas por DM 📩\n\n#SalsaColombiana #SalsaEnVivo #JoeArroyo #GrupoNiche",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Latin Sessions con Trío Bilonguero",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "son"
+    ],
+    "organizer": "Bilongo",
+    "venue": "Bilongo",
+    "address": null,
+    "area": null,
+    "date": "2026-11-28",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "17:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 25000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Trío Bilonguero"
+    ],
+    "activities": [
+      "salsa en vivo"
+    ],
+    "contact": "@bilongocolombia",
+    "confidence": "high",
+    "doubts": [
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "latin-sessions-con-trio-bilonguero-28-nov",
+    "account": "bilongocolombia",
+    "media": [
+      {
+        "post_id": "18187978930417774",
+        "permalink": "https://www.instagram.com/p/DfPy4tChRIV/",
+        "media_type": "IMAGE",
+        "published": "2026-11-02T17:01:38+0000",
+        "flyer": "flyers/18187978930417774-0.webp",
+        "caption": "LOS SÁBADOS ACÁ SE SIENTEN DISTINTO. ❤️‍🔥\n\nAmbiente sabroso desde las 5 y el trío bilonguero tocando salsa pa’ gozársela lento y sabroso. 👀\n\nCaiga a los Latin Sessions y nos cuenta.\n\nCover 25k\nReservas por DM 📩\n\n#LatinSessions #SalsaBogotá #SalsaEnVivo #Bilongo",
         "preview": null,
         "slides": null
       }
