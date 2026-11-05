@@ -1,0 +1,121 @@
+[
+  {
+    "title": "FIESTA NEÓN",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Bogotá Dance Club",
+    "venue": "Bogotá Dance Club",
+    "address": "Calle 25F #36-15",
+    "area": null,
+    "date": "2026-09-05",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "15:00",
+    "end_time": "22:00",
+    "prices": [
+      {
+        "label": "Cover en preventa",
+        "amount_cop": 25000,
+        "condition": null
+      },
+      {
+        "label": "Cover en puerta",
+        "amount_cop": 30000,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "clase de pre fiesta de salsa"
+    ],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [],
+    "id": "fiesta-neon-5-sep",
+    "account": "bogotadanceclub",
+    "media": [
+      {
+        "post_id": "18100778483204765",
+        "permalink": "https://www.instagram.com/reel/Dc4cTF9gzxq/",
+        "media_type": "VIDEO",
+        "published": "2026-09-04T22:32:30+0000",
+        "flyer": "archive/flyers/18100778483204765-0.webp",
+        "caption": "Si tú también necesitas amig@s o simplemente conocer gente nueva no te puedas perder nuestra ✨FIESTA NEÓN✨ \n\nUn espacio para conocer gente nueva en Bogotá 😌\n\n📢 Comunidad bailadora de 18 a 45 años ✨\n🗓️ 05 de septiembre 🕒 De 3PM A 10PM\n📍 Calle 25F #36-15 - Bogotá Dance Club\n\n👗 Dresscode: Neón\n\n🤓 Clase de pre fiesta de salsa (para calentar motores)\n\n💵 Cover en preventa: $25.000\n💰 Cover en puerta: $30.000\n(Incluye antifaz + clase + bebida + fiesta + dinámicas)\n\nAnímate a salir de tu zona de confort 🔥 Comenta para más información 👇🏻",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Social Espacio Seguro",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "bachata"
+    ],
+    "organizer": "Zafra Dance Company",
+    "venue": "Zafra Dance Company",
+    "address": "Carrera 27A # 52-31",
+    "area": "Galerías",
+    "date": "2026-09-05",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "20:00",
+    "end_time": "01:00",
+    "prices": [
+      {
+        "label": "Puerta",
+        "amount_cop": 30000,
+        "condition": null
+      },
+      {
+        "label": "Preventa",
+        "amount_cop": 25000,
+        "condition": "hasta el viernes 4 de septiembre"
+      },
+      {
+        "label": "Zafristas",
+        "amount_cop": 20000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Jenssy González",
+      "GuioVanni",
+      "Daniela",
+      "Jason Fernando Rodríguez",
+      "barretoalexarte"
+    ],
+    "activities": [
+      "clase de salsa caleña",
+      "social",
+      "práctica",
+      "dance partners"
+    ],
+    "contact": "3164952960",
+    "confidence": "high",
+    "doubts": [],
+    "id": "social-espacio-seguro-5-sep",
+    "account": "zafradance",
+    "media": [
+      {
+        "post_id": "18330914212277947",
+        "permalink": "https://www.instagram.com/p/DczfoX6DUnC/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-09-03T00:11:23+0000",
+        "flyer": "archive/flyers/18330914212277947.webp",
+        "caption": "Próximo sábado 5 de septiembre. \nUn espacio 100% seguro para bailar, practicar y compartir. \n\nPre venta hasta el viernes 4 de septiembre. \n\nActividades barretoalexarte\n\nClase de salsa Caleña jen.ssy 💃🏽\n\nDance partners (parejas de baile) \ngiomonroy01 dani14_0101 \njasonfernandorodriguez\n\n#clasesdesalsaenbogota #bailandosalsaenbogota\n#bailabachataenbogota",
+        "preview": null,
+        "slides": 4
+      }
+    ],
+    "bar": false
+  }
+]
