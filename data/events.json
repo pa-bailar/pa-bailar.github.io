@@ -15434,8 +15434,8 @@
       "salsa"
     ],
     "organizer": "Galería Café Libro",
-    "venue": "Galería Café Libro - Sede Parque 93",
-    "address": "Carrera 11A # 93-42",
+    "venue": "Galería Café Libro - Parque 93",
+    "address": "Cra 11A # 93-42",
     "area": "Parque 93",
     "date": "2026-11-05",
     "end_date": null,
@@ -15456,12 +15456,9 @@
     "activities": [
       "música en vivo"
     ],
-    "contact": "WhatsApp 3176608742",
+    "contact": "3176608742",
     "confidence": "high",
-    "doubts": [
-      "sin hora de inicio",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
+    "doubts": [],
     "id": "rumba-salsera-en-vivo-con-nick-salas-orquesta-5-nov",
     "account": "galeriacafelibro",
     "media": [
@@ -15483,10 +15480,10 @@
     "event_type": "concert",
     "is_recurring": false,
     "styles": [
-      "salsa",
-      "son"
+      "son",
+      "salsa"
     ],
-    "organizer": "@salsacamaraoficial",
+    "organizer": "Salsa Camará",
     "venue": "Salsa Camará",
     "address": "Carrera 11 #70A - 22",
     "area": null,
@@ -15511,9 +15508,7 @@
     ],
     "contact": "WhatsApp 313 830 8844",
     "confidence": "high",
-    "doubts": [
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
+    "doubts": [],
     "id": "jueves-de-son-gozon-con-huaracha-lnt-5-nov",
     "account": "salsacamaraoficial",
     "media": [
@@ -15704,11 +15699,9 @@
   },
   {
     "title": "After Bureo Awards 2026 × ONO",
-    "event_type": "social",
+    "event_type": "party",
     "is_recurring": false,
-    "styles": [
-      "otro"
-    ],
+    "styles": [],
     "organizer": "Bureo Dance Studio",
     "venue": "ONO",
     "address": "Calle 84A #9-11",
@@ -15722,16 +15715,11 @@
     "prices": [],
     "artists": [],
     "activities": [
-      "baile",
-      "brindis",
-      "lista de invitados"
+      "after party"
     ],
     "contact": "@bureodancestudio",
     "confidence": "high",
-    "doubts": [
-      "sin estilos de baile especificados",
-      "sin precios especificados"
-    ],
+    "doubts": [],
     "id": "after-bureo-awards-2026-ono-5-nov",
     "account": "bureodancestudio",
     "media": [
@@ -16340,18 +16328,16 @@
     "bar": true
   },
   {
-    "title": "Fiesta del Caribe",
+    "title": "Charanga Premiere en Palermo",
     "event_type": "concert",
     "is_recurring": false,
     "styles": [
-      "salsa",
-      "merengue",
-      "otro"
+      "salsa"
     ],
     "organizer": "Galería Café Libro",
-    "venue": "Galería Café Libro - Calle 93",
-    "address": "Carrera 11A # 93-42",
-    "area": "Parque 93",
+    "venue": "Galería Café Libro - Palermo",
+    "address": "Transversal 15B # 46-38",
+    "area": "Palermo",
     "date": "2026-11-07",
     "end_date": null,
     "sessions": null,
@@ -16366,13 +16352,12 @@
       }
     ],
     "artists": [
-      "Big Band San Fernando de New York"
+      "Charanga Premiere"
     ],
     "activities": [
-      "música en vivo",
-      "concurso de vestimenta costeña"
+      "música en vivo"
     ],
-    "contact": "WhatsApp 317 660 8742",
+    "contact": "3176608742",
     "confidence": "high",
     "doubts": [
       "sin hora de inicio"
@@ -16385,7 +16370,7 @@
         "permalink": "https://www.instagram.com/p/DfVUDrwjMU2/",
         "media_type": "CAROUSEL_ALBUM",
         "published": "2026-11-04T20:27:14+0000",
-        "flyer": "flyers/17925026457223208-8.webp",
+        "flyer": "flyers/17925026457223208-1.webp",
         "caption": "La salsa y la música del Caribe se toman la casa esta semana ⚡️🎷 Gozamos con lo mejor del repertorio en vivo y en la selección de nuestros djs 🎧 \n\nEn el escenario esta semana: bigbandsanfernandooficial ns.orquesta charangapremiere 🌟\n\nEn los tornamesas: johanancines littfack elgordocastillo Beto Dj y Eduardo Moya\n\n✨ Tres sedes, 4 días de rumba y toda la gozadera ✨\n\n¡Nos vemos en la pista! 💃💥",
         "preview": null,
         "slides": 11
@@ -16511,53 +16496,6 @@
     "bar": true
   },
   {
-    "title": "Charanga Premiere en Palermo",
-    "event_type": "concert",
-    "is_recurring": false,
-    "styles": [
-      "salsa"
-    ],
-    "organizer": "Galería Café Libro",
-    "venue": "Galería Café Libro - Palermo",
-    "address": "Transversal 15B # 46-38",
-    "area": "Palermo",
-    "date": "2026-11-07",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "sábado",
-    "start_time": null,
-    "end_time": null,
-    "prices": [],
-    "artists": [
-      "Charanga Premiere"
-    ],
-    "activities": [
-      "música en vivo"
-    ],
-    "contact": "WhatsApp 3176608742",
-    "confidence": "high",
-    "doubts": [
-      "sin hora de inicio",
-      "sin precio de entrada",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
-    "id": "charanga-premiere-en-palermo-7-nov",
-    "account": "galeriacafelibro",
-    "media": [
-      {
-        "post_id": "17925026457223208",
-        "permalink": "https://www.instagram.com/p/DfVUDrwjMU2/",
-        "media_type": "CAROUSEL_ALBUM",
-        "published": "2026-11-04T20:27:14+0000",
-        "flyer": "flyers/17925026457223208-1.webp",
-        "caption": "La salsa y la música del Caribe se toman la casa esta semana ⚡️🎷 Gozamos con lo mejor del repertorio en vivo y en la selección de nuestros djs 🎧 \n\nEn el escenario esta semana: bigbandsanfernandooficial ns.orquesta charangapremiere 🌟\n\nEn los tornamesas: johanancines littfack elgordocastillo Beto Dj y Eduardo Moya\n\n✨ Tres sedes, 4 días de rumba y toda la gozadera ✨\n\n¡Nos vemos en la pista! 💃💥",
-        "preview": null,
-        "slides": 11
-      }
-    ],
-    "bar": true
-  },
-  {
     "title": "Noche de Salsa con Son Legales",
     "event_type": "concert",
     "is_recurring": false,
@@ -16604,6 +16542,55 @@
         "caption": "🔥 ¡BOGOTÁ SE VISTE DE SALSA! ❤️💃\n\nEste sábado tenemos una cita con el sabor, el ritmo y la buena música en SALSA & SON.\n\n🎶 Nos acompaña SON LEGALES para vivir una noche llena de sabor y mucha gozadera.\n\n📅 Sábado 7 de noviembre\n✨ ENTRADA SIN COVER\n\nPrepara los zapatos, reúne a tu combo y ven a disfrutar de una noche inolvidable.\n\n📍 Salsa & Son – Live Music\n\n¡La salsa se vive, se siente y se baila! 🔥\n\n#SalsaYSon #SonLegales #NocheDeSalsa #SalsaEnBogotá #LiveMusic",
         "preview": null,
         "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Fiesta del Caribe",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Galería Café Libro",
+    "venue": "Galería Café Libro - Parque 93",
+    "address": "Carrera 11A # 93-42",
+    "area": "Parque 93",
+    "date": "2026-11-07",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Entrada",
+        "amount_cop": 50000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Big Band San Fernando de New York"
+    ],
+    "activities": [
+      "música en vivo"
+    ],
+    "contact": "WhatsApp 3176608742",
+    "confidence": "high",
+    "doubts": [],
+    "id": "charanga-premiere-en-palermo-7-nov",
+    "account": "galeriacafelibro",
+    "media": [
+      {
+        "post_id": "17925026457223208",
+        "permalink": "https://www.instagram.com/p/DfVUDrwjMU2/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-04T20:27:14+0000",
+        "flyer": "flyers/17925026457223208-9.webp",
+        "caption": "La salsa y la música del Caribe se toman la casa esta semana ⚡️🎷 Gozamos con lo mejor del repertorio en vivo y en la selección de nuestros djs 🎧 \n\nEn el escenario esta semana: bigbandsanfernandooficial ns.orquesta charangapremiere 🌟\n\nEn los tornamesas: johanancines littfack elgordocastillo Beto Dj y Eduardo Moya\n\n✨ Tres sedes, 4 días de rumba y toda la gozadera ✨\n\n¡Nos vemos en la pista! 💃💥",
+        "preview": null,
+        "slides": 11
       }
     ],
     "bar": true
@@ -16668,7 +16655,7 @@
     "styles": [
       "salsa"
     ],
-    "organizer": "@salsacamaraoficial",
+    "organizer": "Salsa Camará",
     "venue": "Salsa Camará",
     "address": "Carrera 11 #70A - 22",
     "area": null,
@@ -16693,9 +16680,7 @@
     ],
     "contact": "WhatsApp 313 830 8844",
     "confidence": "high",
-    "doubts": [
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
+    "doubts": [],
     "id": "sabado-de-orquesta-y-sabor-con-real-charanga-7-nov",
     "account": "salsacamaraoficial",
     "media": [
