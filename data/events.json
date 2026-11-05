@@ -1,124 +1,5 @@
 [
   {
-    "title": "FIESTA NEÓN",
-    "event_type": "social",
-    "is_recurring": false,
-    "styles": [
-      "salsa"
-    ],
-    "organizer": "Bogotá Dance Club",
-    "venue": "Bogotá Dance Club",
-    "address": "Calle 25F #36-15",
-    "area": null,
-    "date": "2026-09-05",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "sábado",
-    "start_time": "15:00",
-    "end_time": "22:00",
-    "prices": [
-      {
-        "label": "Cover en preventa",
-        "amount_cop": 25000,
-        "condition": null
-      },
-      {
-        "label": "Cover en puerta",
-        "amount_cop": 30000,
-        "condition": null
-      }
-    ],
-    "artists": [],
-    "activities": [
-      "clase de pre fiesta de salsa"
-    ],
-    "contact": null,
-    "confidence": "high",
-    "doubts": [],
-    "id": "fiesta-neon-5-sep",
-    "account": "bogotadanceclub",
-    "media": [
-      {
-        "post_id": "18100778483204765",
-        "permalink": "https://www.instagram.com/reel/Dc4cTF9gzxq/",
-        "media_type": "VIDEO",
-        "published": "2026-09-04T22:32:30+0000",
-        "flyer": "flyers/18100778483204765-0.webp",
-        "caption": "Si tú también necesitas amig@s o simplemente conocer gente nueva no te puedas perder nuestra ✨FIESTA NEÓN✨ \n\nUn espacio para conocer gente nueva en Bogotá 😌\n\n📢 Comunidad bailadora de 18 a 45 años ✨\n🗓️ 05 de septiembre 🕒 De 3PM A 10PM\n📍 Calle 25F #36-15 - Bogotá Dance Club\n\n👗 Dresscode: Neón\n\n🤓 Clase de pre fiesta de salsa (para calentar motores)\n\n💵 Cover en preventa: $25.000\n💰 Cover en puerta: $30.000\n(Incluye antifaz + clase + bebida + fiesta + dinámicas)\n\nAnímate a salir de tu zona de confort 🔥 Comenta para más información 👇🏻",
-        "preview": "previews/18100778483204765-0.mp4",
-        "slides": null
-      }
-    ],
-    "bar": false
-  },
-  {
-    "title": "Social Espacio Seguro",
-    "event_type": "social",
-    "is_recurring": false,
-    "styles": [
-      "salsa",
-      "bachata"
-    ],
-    "organizer": "Zafra Dance Company",
-    "venue": "Zafra Dance Company",
-    "address": "Carrera 27A # 52-31",
-    "area": "Galerías",
-    "date": "2026-09-05",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "sábado",
-    "start_time": "20:00",
-    "end_time": "01:00",
-    "prices": [
-      {
-        "label": "Puerta",
-        "amount_cop": 30000,
-        "condition": null
-      },
-      {
-        "label": "Preventa",
-        "amount_cop": 25000,
-        "condition": "hasta el viernes 4 de septiembre"
-      },
-      {
-        "label": "Zafristas",
-        "amount_cop": 20000,
-        "condition": null
-      }
-    ],
-    "artists": [
-      "Jenssy González",
-      "GuioVanni",
-      "Daniela",
-      "Jason Fernando Rodríguez",
-      "barretoalexarte"
-    ],
-    "activities": [
-      "clase de salsa caleña",
-      "social",
-      "práctica",
-      "dance partners"
-    ],
-    "contact": "3164952960",
-    "confidence": "high",
-    "doubts": [],
-    "id": "social-espacio-seguro-5-sep",
-    "account": "zafradance",
-    "media": [
-      {
-        "post_id": "18330914212277947",
-        "permalink": "https://www.instagram.com/p/DczfoX6DUnC/",
-        "media_type": "CAROUSEL_ALBUM",
-        "published": "2026-09-03T00:11:23+0000",
-        "flyer": "flyers/18330914212277947.webp",
-        "caption": "Próximo sábado 5 de septiembre. \nUn espacio 100% seguro para bailar, practicar y compartir. \n\nPre venta hasta el viernes 4 de septiembre. \n\nActividades barretoalexarte\n\nClase de salsa Caleña jen.ssy 💃🏽\n\nDance partners (parejas de baile) \ngiomonroy01 dani14_0101 \njasonfernandorodriguez\n\n#clasesdesalsaenbogota #bailandosalsaenbogota\n#bailabachataenbogota",
-        "preview": null,
-        "slides": 4
-      }
-    ],
-    "bar": false
-  },
-  {
     "title": "Hagámoslo Real - Semana de Clases",
     "event_type": "workshop",
     "is_recurring": false,
@@ -15598,6 +15479,58 @@
     "bar": true
   },
   {
+    "title": "¡Jueves de Son Gozón! con Huaracha LNT",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "son"
+    ],
+    "organizer": "@salsacamaraoficial",
+    "venue": "Salsa Camará",
+    "address": "Carrera 11 #70A - 22",
+    "area": null,
+    "date": "2026-11-05",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "jueves",
+    "start_time": "16:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Aporte cultural",
+        "amount_cop": 15000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Huaracha LNT"
+    ],
+    "activities": [
+      "música en vivo"
+    ],
+    "contact": "WhatsApp 313 830 8844",
+    "confidence": "high",
+    "doubts": [
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "jueves-de-son-gozon-con-huaracha-lnt-5-nov",
+    "account": "salsacamaraoficial",
+    "media": [
+      {
+        "post_id": "18469047766136719",
+        "permalink": "https://www.instagram.com/p/DfU8cdXlRJD/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-04T17:00:01+0000",
+        "flyer": "flyers/18469047766136719-0.webp",
+        "caption": "Conoce nuestro repertorio salsero de este fin de semana de gozo salsero\n\n🗓️Jueves 05 de Noviembre\n🎺Huaracha LNT\n🎟️Aporte cultural: 15K\n\n🗓️Sábado 07 de Noviembre\n🎺Real Charanga\n🎟️Aporte cultural: 20K\n\n⌚️Desde las 4 PM\n📍Carrera 11 #70A-22\n📲Reserva por WhatsApp: 313 830 8844",
+        "preview": null,
+        "slides": 2
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Bureo Awards 2026 - Noche Dorada Gala",
     "event_type": "show",
     "is_recurring": false,
@@ -15911,10 +15844,12 @@
     "title": "XIX Festival Danza en la Ciudad",
     "event_type": "festival",
     "is_recurring": false,
-    "styles": [],
+    "styles": [
+      "otro"
+    ],
     "organizer": "@danzaenlaciudad",
-    "venue": null,
-    "address": null,
+    "venue": "La Casona de la Danza",
+    "address": "Carrera 1 No. 17-01",
     "area": null,
     "date": "2026-11-06",
     "end_date": null,
@@ -15924,7 +15859,9 @@
     "end_time": null,
     "prices": [],
     "artists": [],
-    "activities": [],
+    "activities": [
+      "clases maestras"
+    ],
     "contact": "@danzaenlaciudad",
     "confidence": "high",
     "doubts": [
@@ -15933,6 +15870,36 @@
     "id": "xix-festival-danza-en-la-ciudad-6-nov",
     "account": "danzaenlaciudad",
     "media": [
+      {
+        "post_id": "17890540311479989",
+        "permalink": "https://www.instagram.com/p/DfVbWkOidut/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-04T21:30:04+0000",
+        "flyer": "flyers/17890540311479989-0.webp",
+        "caption": "En la edicion del XIX Festival Danza en la Ciudad: Tejiendo movimiento, la franja académica propone un espacio para aprender, explorar y compartir saberes mediante clases maestras que abren nuevas posibilidades para la creación y el movimiento. \n\n🩰 Conozca la programación de clases maestras:\n🔸 5 de noviembre: Danza gamina (2 a 5 p. m.) y Joropo y contacto (5 a 8 p. m.).\n🔸 10 de noviembre: Composición, sistemas y trabajo de objetos (9 a. m. a 12 m.).\n🔸 11 de noviembre: La voz bailante (9 a. m. a 12 m.).\n🔸 14 de noviembre: Herramientas para la creación (9 a. m. a 12 m.).\n📍 La Casona de la Danza (Carrera 1 No. 17-01).\n\n📝 Inscripción previa, en el link de la bio.\n\nUna invitación a encontrarnos, intercambiar saberes y hacer comunidad a través del cuerpo. Porque cada movimiento es un hilo que transforma el tejido colectivo.\n\n#FestivalDanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 6
+      },
+      {
+        "post_id": "18099393695440811",
+        "permalink": "https://www.instagram.com/reel/DfVSb8GpL7S/",
+        "media_type": "VIDEO",
+        "published": "2026-11-04T20:13:51+0000",
+        "flyer": "flyers/18099393695440811-0.webp",
+        "caption": "🧵✨ ¡Bogotá está a punto de moverse de muchas maneras!\n\nLos cuerpos se encuentran, las historias se entrelazan y los movimientos crean nuevas conexiones. \nXIX Festival Danza en la Ciudad 2026: Tejiendo movimiento, una celebración de la diversidad de la danza y de todo aquello que nos une a través del cuerpo.\n\nPrepárese para vivir una ciudad que danza, se transforma y teje comunidad en cada escenario.\n\n💃🕺 Tejiendo movimiento: hacer comunidad a través del cuerpo.\n\n📍 Bogotá \n📅 Del 6 al 16 de noviembre de 2026\n\n📹 diegorente / Idartes\n\n#FestivalDanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
+        "preview": "previews/18099393695440811-0.mp4",
+        "slides": null
+      },
+      {
+        "post_id": "18111026626929988",
+        "permalink": "https://www.instagram.com/reel/DfUrlQNR9Ur/",
+        "media_type": "VIDEO",
+        "published": "2026-11-04T15:01:45+0000",
+        "flyer": "flyers/18111026626929988-0.webp",
+        "caption": "XIX Festival Danza en la Ciudad 2026: Tejiendo movimiento, una invitación a descubrir cómo los cuerpos, los lenguajes, las historias y los territorios se encuentran a través de la danza.\n\nDesde escenarios convencionales y no convencionales, la ciudad se convierte en un gran escenario donde todas las formas de la danza tienen lugar.\n\n✨ Celebremos la diversidad de movimientos que nos conectan y hacen de Bogotá un territorio para encontrarnos a través del arte.\n\n🗓️ Del 6 al 16 de noviembre.\n\nAnimación: juanneva_ / Idartes\n\n#FestivalDanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
+        "preview": "previews/18111026626929988-0.mp4",
+        "slides": null
+      },
       {
         "post_id": "18425123695157162",
         "permalink": "https://www.instagram.com/reel/DfJCOUhhihz/",
@@ -16151,6 +16118,64 @@
         "published": "2026-11-01T21:09:34+0000",
         "flyer": "flyers/18013101627002327-0.webp",
         "caption": "🔥 ZOUK INTENSIVE – 6 Y 7 DE NOVIEMBRE 🔥\n\n¡Prepárate para llevar tu baile a otro nivel! \n\nEste espacio está especialmente pensado para bailarines que desean adquirir herramientas y fundamentos que les permitan llegar mejor preparados a los próximos encuentros y congresos: levelupbfc LEVEL UP Bachata Fusión Congress (Bogotá) y colombiasecretzouk Colombia Secret (Medellín).\n\nUna oportunidad para ampliar tu lenguaje corporal, enriquecer tus recursos de baile y descubrir nuevas posibilidades de conexión a través del Zouk.\n\n📅 FECHAS: 6 Y 7 DE NOVIEMBRE\n\n🕒 HORARIOS\n\nVIERNES\n7:00 PM – 8:00 PM\n8:00 PM – 9:00 PM\n\nSÁBADO\n1:00 PM – 2:00 PM\n2:00 PM – 3:00 PM\n\n💰 TABLA DE PRECIOS\n\n• 2 días: $90.000\n• 1 día: $50.000\n• 1 hora: $30.000\n\n📍 LUDANCE STUDIO\n\nNo importa si buscas fortalecer tus bases o ampliar tus herramientas como bailarín: este es el momento de prepararte, aprender y seguir evolucionando.\n\n¡Nos vemos en la pista! 🔥",
+        "preview": null,
+        "slides": 2
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Párchese la Salsa",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "urbano"
+    ],
+    "organizer": "Parche x Bogotá",
+    "venue": "Viajero Bogotá Hostels",
+    "address": "Cra. 3 #20-35",
+    "area": null,
+    "date": "2026-11-06",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "19:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Individual Preventa",
+        "amount_cop": 25000,
+        "condition": "incluye cóctel de bienvenida"
+      },
+      {
+        "label": "Pareja Preventa",
+        "amount_cop": 40000,
+        "condition": "incluye un cóctel de bienvenida por persona"
+      }
+    ],
+    "artists": [
+      "Juancho Salsita",
+      "DJ Riot"
+    ],
+    "activities": [
+      "intercambio de idiomas",
+      "clase de salsa",
+      "fiesta"
+    ],
+    "contact": "@parchexbogota",
+    "confidence": "high",
+    "doubts": [],
+    "id": "parchese-la-salsa-6-nov",
+    "account": "parchexbogota",
+    "media": [
+      {
+        "post_id": "18451707364123512",
+        "permalink": "https://www.instagram.com/p/DfVerJfmlKv/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-04T22:00:01+0000",
+        "flyer": "flyers/18451707364123512-1.webp",
+        "caption": "¡Alerta, parche! 🚨 Este viernes se pronostican fuertes corrientes de salsa con ráfagas de dembow viejito sobre Bogotá.\n\nSi no quiere que el aguacero lo agarre sin saber bailar, refúgiese en Párchese la Salsa, el parche social y la clase de baile más parchada de la ciudad. \n\n📍 El punto de encuentro es viajero.bogota (Cra. 3 #20-35), donde podrá conocer personas que andan viajando por Colombia y gente de Bogotá.\n\n🗓️ Pronóstico del viernes 6 de noviembre:\n7:00 p. m. · Intercambio de idiomas\n8:00 p. m. · Clase de salsa con Juancho Salsita\n9:30 p. m. · Fiesta con DJ Riot\n\n🍹 Preventa: 25k individual y 40k pareja, incluye un cóctel de bienvenida por persona.\n\nLos cupos son limitados, así que reserve ahora escribiendo un mensaje directo a parchexbogota 💌",
         "preview": null,
         "slides": 2
       }
@@ -16533,6 +16558,57 @@
     "bar": true
   },
   {
+    "title": "Noche de Salsa con Son Legales",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Salsa & Son",
+    "venue": "Salsa & Son – Live Music",
+    "address": null,
+    "area": null,
+    "date": "2026-11-07",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Entrada",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Son Legales"
+    ],
+    "activities": [
+      "música en vivo"
+    ],
+    "contact": "@salsaysonoficial",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio"
+    ],
+    "id": "noche-de-salsa-con-son-legales-7-nov",
+    "account": "salsaysonoficial",
+    "media": [
+      {
+        "post_id": "18106715504574045",
+        "permalink": "https://www.instagram.com/p/DfVOrWBv0Ou/",
+        "media_type": "IMAGE",
+        "published": "2026-11-04T19:40:31+0000",
+        "flyer": "flyers/18106715504574045-0.webp",
+        "caption": "🔥 ¡BOGOTÁ SE VISTE DE SALSA! ❤️💃\n\nEste sábado tenemos una cita con el sabor, el ritmo y la buena música en SALSA & SON.\n\n🎶 Nos acompaña SON LEGALES para vivir una noche llena de sabor y mucha gozadera.\n\n📅 Sábado 7 de noviembre\n✨ ENTRADA SIN COVER\n\nPrepara los zapatos, reúne a tu combo y ven a disfrutar de una noche inolvidable.\n\n📍 Salsa & Son – Live Music\n\n¡La salsa se vive, se siente y se baila! 🔥\n\n#SalsaYSon #SonLegales #NocheDeSalsa #SalsaEnBogotá #LiveMusic",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Parche de Bailadores",
     "event_type": "social",
     "is_recurring": false,
@@ -16584,6 +16660,57 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "¡Sábado de Orquesta y Sabor! con Real Charanga",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "@salsacamaraoficial",
+    "venue": "Salsa Camará",
+    "address": "Carrera 11 #70A - 22",
+    "area": null,
+    "date": "2026-11-07",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "16:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Aporte cultural",
+        "amount_cop": 20000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Real Charanga"
+    ],
+    "activities": [
+      "música en vivo"
+    ],
+    "contact": "WhatsApp 313 830 8844",
+    "confidence": "high",
+    "doubts": [
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "sabado-de-orquesta-y-sabor-con-real-charanga-7-nov",
+    "account": "salsacamaraoficial",
+    "media": [
+      {
+        "post_id": "18469047766136719",
+        "permalink": "https://www.instagram.com/p/DfU8cdXlRJD/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-04T17:00:01+0000",
+        "flyer": "flyers/18469047766136719-1.webp",
+        "caption": "Conoce nuestro repertorio salsero de este fin de semana de gozo salsero\n\n🗓️Jueves 05 de Noviembre\n🎺Huaracha LNT\n🎟️Aporte cultural: 15K\n\n🗓️Sábado 07 de Noviembre\n🎺Real Charanga\n🎟️Aporte cultural: 20K\n\n⌚️Desde las 4 PM\n📍Carrera 11 #70A-22\n📲Reserva por WhatsApp: 313 830 8844",
+        "preview": null,
+        "slides": 2
+      }
+    ],
+    "bar": true
   },
   {
     "title": "Guabalosas Intensivo Versión 2.0",
@@ -16826,6 +16953,16 @@
     "id": "audiciones-compania-de-baile-paso-latino-2026-7-nov",
     "account": "academiadebailepasolatino",
     "media": [
+      {
+        "post_id": "18114883522887637",
+        "permalink": "https://www.instagram.com/reel/DfU_DZHq99h/",
+        "media_type": "VIDEO",
+        "published": "2026-11-04T18:25:27+0000",
+        "flyer": "flyers/18114883522887637-0.webp",
+        "caption": "¡Lo que ves en el escenario es magia, pero lo que hay detrás es puro corazón, esfuerzo y dedicación! ✨\nDetrás de cada sonrisa, de cada acrobacia perfecta y de cada aplauso, hay horas de ensayo, cansancio, risas, repeticiones hasta el cansancio y, sobre todo, una disciplina inquebrantable. Ser parte de esta gran familia significa crecer, aprender y superarse todos los días.  \n¿Estás list@ para ser parte de nuestra historia?  \n🔥 ¡Llegó tu momento! 🔥\nTe invitamos a nuestras AUDICIONES:\n📅 Fecha: Sábado 07 de noviembre\n⏰ Hora: 06:00 PM\n📍 Lugar: Academia Paso Latino Cra 14 no. 46-91 piso 2. \n¡Atrévete a más y demuestra de lo que eres capaz! 💃🕺✨\n#pasolatino #audicionesdebaile #danza #esfuerzoydedicación #pasolatinoforce",
+        "preview": "previews/18114883522887637-0.mp4",
+        "slides": null
+      },
       {
         "post_id": "17972523924188132",
         "permalink": "https://www.instagram.com/reel/De-i47-qniP/",
@@ -17616,7 +17753,7 @@
     "end_date": "2026-11-16",
     "sessions": null,
     "weekday": "viernes",
-    "start_time": "21:00",
+    "start_time": "17:00",
     "end_time": null,
     "prices": [
       {
@@ -17650,6 +17787,16 @@
     "id": "festival-internacional-casinea-10-a-edicion-13-nov",
     "account": "casineafest",
     "media": [
+      {
+        "post_id": "18355654066270329",
+        "permalink": "https://www.instagram.com/p/DfWIq6kkQYt/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-05T04:06:58+0000",
+        "flyer": "flyers/18355654066270329-0.webp",
+        "caption": "📅 ¡ASÍ COMIENZA CASINEA 2026!\n\nNuestra décima edición arranca el viernes 13 de noviembre con dos jornadas llenas de encuentros, talento y celebración.\n\nVIERNES 13 | APERTURA CASINERA\nNos encontramos en Ilé Danza para la acreditación de participantes, la entrega de manillas y la verificación de pistas. A las 7:00 p. m. presentaremos oficialmente a nuestros talleristas internacionales en la rueda de prensa. Después, llega la Integración Casinera: el primer espacio para compartir y conectar con las delegaciones y la comunidad del festival.\n\nSÁBADO 14 | COMPETENCIA Y SHOW TIME\nDesde la 1:00 p. m. recibiremos a artistas y competidores en el Teatro Crisanto Luque. A partir de las 2:00 p. m. comienza la franja de competencias, seguida del Show Time Casinea 2026.\n\nY cuando caiga la noche, ¡la celebración continúa! Nos vamos para Tropical Nights Music Social, en Pachanga y Pochola, para seguir bailando hasta la madrugada.\n\nDesliza para consultar horarios y lugares. ¡Organiza tu agenda y prepárate para vivir el comienzo de Casinea 2026!\n\n📍 Bogotá | 13 y 14 de noviembre\n\n#Casinea2026 #FestivalInternacionalCasinea #SalsaCasino #TropicalNights #BogotáBaila\n\n🎓 DOS DÍAS PARA APRENDER, COMPARTIR Y SEGUIR BAILANDO.\n\nCasinea 2026 continúa el domingo 15 y el lunes 16 de noviembre con una programación dedicada a la formación artística, el intercambio de conocimientos y los encuentros alrededor de la danza.\n\nDOMINGO 15 | TALLERES Y BLACK & WHITE CUBAN SOCIAL Desde las 9:30 a. m. tendremos nuestra primera franja de talleres, seguida de una segunda jornada formativa a partir de las 3:00 p. m., en el Teatro Faenza y el Auditorio Caja de Colores.\n\nEn la noche, nos espera Black & White Cuban Social, en Bendito Vice. Una celebración con timba, salsa, son, rumba, reparto y cubatón. ¡Prepara tu mejor combinación en blanco y negro!\n\nLUNES 16 | ÚLTIMA JORNADA Y CIERRE CASINEA 2026 Seguimos aprendiendo con dos nuevas franjas de talleres: la primera a las 10:00 a. m. y la segunda a las 2:30 p. m. Finalmente, a las 6:00 p. m., nos reuniremos en el Teatro Faenza para el cierre oficial de esta décima edición.\n\nCuatro días de experiencias que nos recuerdan que Casinea es mucho más que una compet",
+        "preview": null,
+        "slides": 2
+      },
       {
         "post_id": "18135592195669083",
         "permalink": "https://www.instagram.com/p/DfTxPXdx57y/",
