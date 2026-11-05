@@ -15396,6 +15396,107 @@
     "bar": true
   },
   {
+    "title": "Pop Up Class X Fucking Session",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [],
+    "organizer": "Danceholic Project",
+    "venue": "Danceholic Project",
+    "address": "Calle 57 # 13-76",
+    "area": "Chapinero",
+    "date": "2026-11-04",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "miércoles",
+    "start_time": "20:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "General",
+        "amount_cop": 35000,
+        "condition": null
+      },
+      {
+        "label": "Afiliados",
+        "amount_cop": 0,
+        "condition": "con el carnet de Danceholic Project"
+      }
+    ],
+    "artists": [
+      "itsfuckingdavidd"
+    ],
+    "activities": [
+      "pop up class"
+    ],
+    "contact": "@danceholicproject",
+    "confidence": "high",
+    "doubts": [],
+    "id": "pop-up-class-x-fucking-session-4-nov",
+    "account": "danceholicproject",
+    "media": [
+      {
+        "post_id": "17918304639470818",
+        "permalink": "https://www.instagram.com/p/DfU2NNPEU4e/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-04T16:06:23+0000",
+        "flyer": "flyers/17918304639470818-0.webp",
+        "caption": "POP UP CLASS X FUCKING SESSION🔥 \n\nSeguimos con mas sopresas en la mansión no , para HOY MIERCOLES 04 DE NOVIEMBRE tenemos como invitad@ Especial a itsfuckingdavidd desde medellin 🇨🇴y viviendo en mexico 🇲🇽 hace algunos años, quien estará compartiendo una Fucking Session y su conocimiento en la Mansión 🔥\n\nFECHA: ( HOY ) MIERCOLES 04 DE NOVIEMBRE \nHORA: 8:00PM\nVALOR : 35K\nLUGAR: DANCEHOLIC PROJECT ( Calle 57 13 76\nChapinero\nPOST: para las personas afiliadas a Danceholic Project, esta clase no tiene ningún costo adicional (se cuenta como una clase con el carnet)\nEs importante reservar para la clase !\n\nDesign : jaydanceholic 🎨\n#danceholicproject #popupclass #Session",
+        "preview": null,
+        "slides": 3
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Bachata Lady Style",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "bachata"
+    ],
+    "organizer": "Original Step",
+    "venue": "Original Step",
+    "address": "Cra. 27A #52-31",
+    "area": null,
+    "date": "2026-11-04",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "miércoles",
+    "start_time": "20:15",
+    "end_time": "21:45",
+    "prices": [
+      {
+        "label": "2x1",
+        "amount_cop": 40000,
+        "condition": "Paga una entran dos"
+      }
+    ],
+    "artists": [
+      "Sara Isaza"
+    ],
+    "activities": [
+      "clase de bachata lady style"
+    ],
+    "contact": "+57 3212499241",
+    "confidence": "high",
+    "doubts": [],
+    "id": "bachata-lady-style-4-nov",
+    "account": "originalstepdance",
+    "media": [
+      {
+        "post_id": "18101267966392754",
+        "permalink": "https://www.instagram.com/p/DfUgfU8IOlP/",
+        "media_type": "IMAGE",
+        "published": "2026-11-04T12:58:47+0000",
+        "flyer": "flyers/18101267966392754-0.webp",
+        "caption": "🚨💖 ¡ES HOYYYY! BACHATA LADY STYLE 💖🔥\n\nHoy tenemos una cita con el estilo, la elegancia y la musicalidad. 😍✨\n\nDisfruta de una clase increíble con saraisaza_official , una excelente bailarina que destaca por su estilo femenino impecable, su técnica y una musicalidad espectacular. ❤️‍🔥\n\n💕 ¡Y lo mejor! HOY TENEMOS 2x1 💕\n¡Paga una entrada y entran dos! Así que invita a tu amiga y vengan a disfrutar juntas. 👯‍♀️\n\n📅 Hoy, 4 de noviembre\n⏰ 8:15 p. m. – 9:45 p. m.\n💰 $40.000 COP (2 personas)\n📍 Original Step | Cra. 27A #52-31\n\n🔥 ¡No te pierdas esta oportunidad de aprender, bailar y potenciar tu Lady Style!\n\n#BachataLadyStyle #SaraIsaza #OriginalStep #BachataBogota LadyStyle Bachata",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Dos Costas en un Solo País",
     "event_type": "concert",
     "is_recurring": false,
@@ -15445,14 +15546,69 @@
     "bar": true
   },
   {
+    "title": "Rumba salsera en vivo con Nick Salas Orquesta",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Galería Café Libro",
+    "venue": "Galería Café Libro - Sede Parque 93",
+    "address": "Carrera 11A # 93-42",
+    "area": "Parque 93",
+    "date": "2026-11-05",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "jueves",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 20000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Nick Salas Orquesta"
+    ],
+    "activities": [
+      "música en vivo"
+    ],
+    "contact": "WhatsApp 3176608742",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "rumba-salsera-en-vivo-con-nick-salas-orquesta-5-nov",
+    "account": "galeriacafelibro",
+    "media": [
+      {
+        "post_id": "17925026457223208",
+        "permalink": "https://www.instagram.com/p/DfVUDrwjMU2/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-04T20:27:14+0000",
+        "flyer": "flyers/17925026457223208-4.webp",
+        "caption": "La salsa y la música del Caribe se toman la casa esta semana ⚡️🎷 Gozamos con lo mejor del repertorio en vivo y en la selección de nuestros djs 🎧 \n\nEn el escenario esta semana: bigbandsanfernandooficial ns.orquesta charangapremiere 🌟\n\nEn los tornamesas: johanancines littfack elgordocastillo Beto Dj y Eduardo Moya\n\n✨ Tres sedes, 4 días de rumba y toda la gozadera ✨\n\n¡Nos vemos en la pista! 💃💥",
+        "preview": null,
+        "slides": 11
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Bureo Awards 2026 - Noche Dorada Gala",
     "event_type": "show",
     "is_recurring": false,
-    "styles": [],
+    "styles": [
+      "urbano",
+      "otro"
+    ],
     "organizer": "Bureo Dance Studio",
     "venue": "Teatro Astor Plaza",
-    "address": null,
-    "area": null,
+    "address": "Calle 67 # 11-58",
+    "area": "Chapinero",
     "date": "2026-11-05",
     "end_date": null,
     "sessions": null,
@@ -15514,10 +15670,22 @@
     ],
     "contact": "@bureodancestudio",
     "confidence": "high",
-    "doubts": [],
+    "doubts": [
+      "sin información de precios en el texto"
+    ],
     "id": "bureo-awards-2026-noche-dorada-gala-5-nov",
     "account": "bureodancestudio",
     "media": [
+      {
+        "post_id": "18358116229168043",
+        "permalink": "https://www.instagram.com/p/DfVYbwUn-Xi/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-04T21:05:28+0000",
+        "flyer": "flyers/18358116229168043-0.webp",
+        "caption": "✨ LOS ARTISTAS DE LA NOCHE DORADA ✨\n\nMañana el escenario del Teatro Astor Plaza se enciende con 4 artistas invitados en los #BureoAwards2026 💛\n\n🎤 PENÉLOPE · Abre la gala. Artista de Sony Music, que canta con todo el cuerpo.\n\n🔥 SAI · La nueva voz urbana de Bogotá.\n\n🌟 ALEJANDRO SAAVEDRA · Desde Ibagué, con su sonido latino fresco y profundo.\n\n🏝️ GAMALL · Desde Cartagena, para cerrar con todo el calor de la costa.\n\nUna noche para celebrar el baile en Colombia: 25 premios, 10 presentadores y los shows de Bureo Dance Studio.\n\n📍 Teatro Astor Plaza, Bogotá\n🗓️ Jueves 5 de noviembre\n🔥 Alfombra roja desde las 4:30 pm · Gala 7:00 pm\n\nGracias a nuestros aliados, que hacen posible esta noche: teatroastorplaza , grupo_altavista , redbullcol , wellnessspamovil , ono.culto y tu_limo 🥂",
+        "preview": null,
+        "slides": 4
+      },
       {
         "post_id": "17884669035526294",
         "permalink": "https://www.instagram.com/p/DfDSDKsEiav/",
@@ -16158,7 +16326,7 @@
     "organizer": "Galería Café Libro",
     "venue": "Galería Café Libro - Calle 93",
     "address": "Carrera 11A # 93-42",
-    "area": null,
+    "area": "Parque 93",
     "date": "2026-11-07",
     "end_date": null,
     "sessions": null,
@@ -16167,7 +16335,7 @@
     "end_time": null,
     "prices": [
       {
-        "label": "Por persona",
+        "label": "Cover",
         "amount_cop": 50000,
         "condition": null
       }
@@ -16188,6 +16356,16 @@
     "account": "galeriacafelibro",
     "media": [
       {
+        "post_id": "17925026457223208",
+        "permalink": "https://www.instagram.com/p/DfVUDrwjMU2/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-04T20:27:14+0000",
+        "flyer": "flyers/17925026457223208-8.webp",
+        "caption": "La salsa y la música del Caribe se toman la casa esta semana ⚡️🎷 Gozamos con lo mejor del repertorio en vivo y en la selección de nuestros djs 🎧 \n\nEn el escenario esta semana: bigbandsanfernandooficial ns.orquesta charangapremiere 🌟\n\nEn los tornamesas: johanancines littfack elgordocastillo Beto Dj y Eduardo Moya\n\n✨ Tres sedes, 4 días de rumba y toda la gozadera ✨\n\n¡Nos vemos en la pista! 💃💥",
+        "preview": null,
+        "slides": 11
+      },
+      {
         "post_id": "18122427761514569",
         "permalink": "https://www.instagram.com/p/DfQC10zMGOT/",
         "media_type": "IMAGE",
@@ -16195,6 +16373,16 @@
         "flyer": "flyers/18122427761514569-0.webp",
         "caption": "La Big Band San Fernando de Nueva York 🗽 llega con todo el sabor de la música caribeña, colombiana y decembrina en gran formato 🎷🎺🎙️ \n\n22 músicos en tarima, los ritmos de nuestra costa Caribe 🌊 y el poder de nuestra música sonando en una noche con sabor a fin de año ✨¡Trae tu mejor pinta costeña y gana premio!✨\n\n🎉 Aprovecha esta fiesta para celebrar tus eventos de fin de año con empresa, amigos o familiares.\n\n🎟️ $50.000\ngaleriacafelibro.com.co o en taquilla",
         "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18106869260249506",
+        "permalink": "https://www.instagram.com/reel/DfVpDZARUUe/",
+        "media_type": "VIDEO",
+        "published": "2026-11-04T23:30:07+0000",
+        "flyer": "flyers/18106869260249506-0.webp",
+        "caption": "¡BOGOTÁ SE PREPARA PARA UNA NOCHE CON TODO EL SABOR DEL CARIBE! 🌴🎷\n\nDesde Nueva York llega la Big Band San Fernando para poner a sonar lo mejor de la música colombiana, caribeña y esos clásicos que anuncian que diciembre está cerca. 🇨🇴🎺\n\nUna puesta en escena de 22 músicos, mucho ritmo, alegría y una noche para cantar, bailar y celebrar como se debe. \n\n✨ Ponte tu mejor pinta costeña y participa por un premio especial.\n\n🥂 También es el plan perfecto para celebrar tu evento de fin de año con amigos, familia o compañeros de trabajo.\n\n🎟️ Cover: $50.000\n📍 Compra tus entradas en galeriacafelibro.com.co o directamente en taquilla.\n\n¡Nos vemos para vivir una noche inolvidable!",
+        "preview": "previews/18106869260249506-0.mp4",
         "slides": null
       }
     ],
@@ -16293,6 +16481,53 @@
         "caption": "Nos espera una semana fantástica!!! Pre Latín Grammy.... \nMiércoles de tango, e iniciamos las clases con la profesora Ceci Urzola ceciurzolatangosobreviviente y estaremos todos los miércoles de noviembre con ella. \nEl jueves será de Jazz en vivo, y nada menos que con uno de los mejores tríos de la ciudad, caldasgiovanni juancamilobateriasxx juliangomezcontrabajo abriendo este espacio que mantendremos. \nEl viernes continuamos con las clases de salsa con la profesora teffa_mg y la noche al ritmo de los clásicos de el pinchadiscosdekien \nEl sábado tendremos el volumen 2 del Pachanghetto, con la mejor salsa dura. \nY el tardeo del domingo viene con dos bandas en vivo, desde Chile estará pulsogaiano y por Colombia Nación Vibrass, con el set de Mao Zeta Pe. \nSemana para no salir de Callejón.",
         "preview": null,
         "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Charanga Premiere en Palermo",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Galería Café Libro",
+    "venue": "Galería Café Libro - Palermo",
+    "address": "Transversal 15B # 46-38",
+    "area": "Palermo",
+    "date": "2026-11-07",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Charanga Premiere"
+    ],
+    "activities": [
+      "música en vivo"
+    ],
+    "contact": "WhatsApp 3176608742",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio",
+      "sin precio de entrada",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "charanga-premiere-en-palermo-7-nov",
+    "account": "galeriacafelibro",
+    "media": [
+      {
+        "post_id": "17925026457223208",
+        "permalink": "https://www.instagram.com/p/DfVUDrwjMU2/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-04T20:27:14+0000",
+        "flyer": "flyers/17925026457223208-1.webp",
+        "caption": "La salsa y la música del Caribe se toman la casa esta semana ⚡️🎷 Gozamos con lo mejor del repertorio en vivo y en la selección de nuestros djs 🎧 \n\nEn el escenario esta semana: bigbandsanfernandooficial ns.orquesta charangapremiere 🌟\n\nEn los tornamesas: johanancines littfack elgordocastillo Beto Dj y Eduardo Moya\n\n✨ Tres sedes, 4 días de rumba y toda la gozadera ✨\n\n¡Nos vemos en la pista! 💃💥",
+        "preview": null,
+        "slides": 11
       }
     ],
     "bar": true
@@ -16418,7 +16653,11 @@
     ],
     "contact": "appdanza.com",
     "confidence": "high",
-    "doubts": [],
+    "doubts": [
+      "la imagen no muestra las fechas exactas ni la hora; se asumen las del evento conocido aunque el pie de foto menciona un ajuste de calendario",
+      "sin precio",
+      "dura más de una semana: revisar fechas"
+    ],
     "id": "guabalosas-intensivo-version-2-0-7-nov",
     "account": "jen.ssy",
     "media": [
@@ -16431,6 +16670,16 @@
         "caption": "✨ GUABALOSAS TEAM by Jenssy — VERSIÓN 2.0 ✨\n\nBOGOTÁ, PREPAREN  ESAS CADERAS… QUE GUABALOSAS VUELVE👠🔥\n\nY esta vez volvemos para cerrar el año como se debe: ¡con todo el sabor del estilo caleño femenino! 💃🏽❤️‍🔥\nMás cadereo, más visaje, más técnica y esa sabrosura que nos hace únicas.\n\nNoviembre es de nosotras, 4 clases intensivas para que tu estilo caleño llegue a otro nivel y conectes con la sabrosura que nos caracteriza 🔥\n\n¿Estás lista para ser parte de esta segunda edición? 👀Agenda tu cupo y no te quedes por fuera💋\n\n#salsacaleña #salsa #salsalady #femenina #salsabaulalmáximo",
         "preview": null,
         "slides": 3
+      },
+      {
+        "post_id": "17981688660129708",
+        "permalink": "https://www.instagram.com/reel/DfVbtcRh_Sz/",
+        "media_type": "VIDEO",
+        "published": "2026-11-04T21:35:16+0000",
+        "flyer": "flyers/17981688660129708-0.webp",
+        "caption": "¡Ahora sí, tenemos nuevas fechas!🔥\n\nGuabalosas Team tiene nueva programación para esta segunda edición.\n\nAjustamos el calendario y seguimos con las mismas ganas de meterle técnica, cadereo y mucho estilo caleño.\n\nRevisa la nueva programación y nos vemos en clase ❤️‍🔥",
+        "preview": "previews/17981688660129708-0.mp4",
+        "slides": null
       }
     ],
     "bar": false
@@ -17202,7 +17451,7 @@
     "organizer": "Galería Café Libro",
     "venue": "Galería Café Libro",
     "address": "Cra. 11A # 93-42",
-    "area": null,
+    "area": "Parque 93",
     "date": "2026-11-12",
     "end_date": null,
     "sessions": null,
@@ -17229,6 +17478,16 @@
     "id": "sonido-70-12-nov",
     "account": "galeriacafelibro",
     "media": [
+      {
+        "post_id": "18148379041568227",
+        "permalink": "https://www.instagram.com/p/DfUXSDJsEke/",
+        "media_type": "IMAGE",
+        "published": "2026-11-04T12:30:04+0000",
+        "flyer": "flyers/18148379041568227-0.webp",
+        "caption": "¿Listos para una noche de pura SALSA? 💥 Sonido 70, la orquesta de las Leyendas Vivas de la Salsa llega a Galeria Café Libro este 12 de noviembre con todos los poderes y el sonido clásico de los 70 🌟\n\nCon un repertorio que rememora los grandes clásicos salseros, así como la rumba, el bolero y el guaguancó, Sonido 70 viene a encender la pista para repartir gozadera a los bailadores 🎺💿\n\n¡Nos vemos en Galeria Café Libro sede Parque 93! \n🎟️ $25.000 • galeriacafelibro.com.co",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18358881070271223",
         "permalink": "https://www.instagram.com/reel/De75UUnMJAG/",
