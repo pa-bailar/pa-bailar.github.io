@@ -16721,11 +16721,9 @@
     "activities": [
       "clase de salsa"
     ],
-    "contact": "@callejonsalsa",
+    "contact": "@teffa_mg",
     "confidence": "high",
-    "doubts": [
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
+    "doubts": [],
     "id": "clase-de-salsa-con-teffa-murcia-6-nov",
     "account": "callejonsalsa",
     "media": [
@@ -16966,14 +16964,11 @@
       "El Pinchadiscos de Kien"
     ],
     "activities": [
-      "DJ sesión de salsa clásica"
+      "DJ set"
     ],
-    "contact": "@callejonsalsa",
+    "contact": null,
     "confidence": "high",
-    "doubts": [
-      "no se menciona el precio de la fiesta después de la clase",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
+    "doubts": [],
     "id": "los-clasicos-de-el-pinchadiscos-de-kien-6-nov",
     "account": "callejonsalsa",
     "media": [
