@@ -15218,6 +15218,138 @@
     "bar": true
   },
   {
+    "title": "Salones de Baile: Fiesta Tropical - Kennedy",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "merengue"
+    ],
+    "organizer": "Idartes",
+    "venue": "Salón social Nuevo amanecer Onassis",
+    "address": "Transversal 78h No. 43-76 Sur",
+    "area": "Kennedy",
+    "date": "2026-11-04",
+    "end_date": "2026-11-25",
+    "sessions": [
+      {
+        "date": "2026-11-04",
+        "start_time": "07:00",
+        "end_time": "09:00"
+      },
+      {
+        "date": "2026-11-11",
+        "start_time": "07:00",
+        "end_time": "09:00"
+      },
+      {
+        "date": "2026-11-18",
+        "start_time": "07:00",
+        "end_time": "09:00"
+      },
+      {
+        "date": "2026-11-25",
+        "start_time": "07:00",
+        "end_time": "09:00"
+      }
+    ],
+    "weekday": "miércoles",
+    "start_time": "07:00",
+    "end_time": "09:00",
+    "prices": [
+      {
+        "label": "Entrada libre",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "baile tropical"
+    ],
+    "contact": "@danzaenlaciudad",
+    "confidence": "high",
+    "doubts": [],
+    "id": "salones-de-baile-fiesta-tropical-kennedy-4-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18117412544032837",
+        "permalink": "https://www.instagram.com/p/DfXALgyEU5W/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-05T12:12:01+0000",
+        "flyer": "flyers/18117412544032837-6.webp",
+        "caption": "Los Salones de Baile del Idartes son espacios para vivir la danza desde el encuentro, donde los ritmos se convierten en protagonistas y cada persona encuentra su propia forma de disfrutar la pista. 💃🕺\r\n\r\nEn noviembre, Bogotá se mueve al compás de nuevas experiencias para compartir, aprender y disfrutar en comunidad. Una oportunidad para dejar atrás la rutina, conocer otros ritmos y hacer del baile un motivo para encontrarnos.\r\n\r\n¡Anímese a bailar! No necesita experiencia, solo ganas de disfrutar y dejarse llevar por la música. ❤️\r\n\r\n📍 Consulte la programación de noviembre y descubra las actividades disponibles en su localidad.\r\n\r\n✨ Entrada libre hasta completar aforo.",
+        "preview": null,
+        "slides": 15
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Salones de Baile: Susurros de Bandoneón - Teusaquillo",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "tango"
+    ],
+    "organizer": "Idartes",
+    "venue": "Casa de la Cultura Paulo VI 2° SECTOR",
+    "address": "Carrera 57 No. 56-36",
+    "area": "Teusaquillo",
+    "date": "2026-11-04",
+    "end_date": "2026-11-25",
+    "sessions": [
+      {
+        "date": "2026-11-04",
+        "start_time": "10:00",
+        "end_time": "12:00"
+      },
+      {
+        "date": "2026-11-18",
+        "start_time": "10:00",
+        "end_time": "12:00"
+      },
+      {
+        "date": "2026-11-25",
+        "start_time": "10:00",
+        "end_time": "12:00"
+      }
+    ],
+    "weekday": "miércoles",
+    "start_time": "10:00",
+    "end_time": "12:00",
+    "prices": [
+      {
+        "label": "Entrada libre",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "taller de tango"
+    ],
+    "contact": "@danzaenlaciudad",
+    "confidence": "high",
+    "doubts": [],
+    "id": "salones-de-baile-susurros-de-bandoneon-teusaquillo-4-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18117412544032837",
+        "permalink": "https://www.instagram.com/p/DfXALgyEU5W/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-05T12:12:01+0000",
+        "flyer": "flyers/18117412544032837-9.webp",
+        "caption": "Los Salones de Baile del Idartes son espacios para vivir la danza desde el encuentro, donde los ritmos se convierten en protagonistas y cada persona encuentra su propia forma de disfrutar la pista. 💃🕺\r\n\r\nEn noviembre, Bogotá se mueve al compás de nuevas experiencias para compartir, aprender y disfrutar en comunidad. Una oportunidad para dejar atrás la rutina, conocer otros ritmos y hacer del baile un motivo para encontrarnos.\r\n\r\n¡Anímese a bailar! No necesita experiencia, solo ganas de disfrutar y dejarse llevar por la música. ❤️\r\n\r\n📍 Consulte la programación de noviembre y descubra las actividades disponibles en su localidad.\r\n\r\n✨ Entrada libre hasta completar aforo.",
+        "preview": null,
+        "slides": 15
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Noche de Salsa y Bachata: Clase de Baile",
     "event_type": "workshop",
     "is_recurring": false,
@@ -15484,6 +15616,142 @@
       }
     ],
     "bar": true
+  },
+  {
+    "title": "Salones de Baile: Póngale clave a la salsa - Engativá",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Idartes",
+    "venue": "Casa comunal Santa María del Lago",
+    "address": "Calle 74B No. 73A-47",
+    "area": "Engativá",
+    "date": "2026-11-05",
+    "end_date": "2026-11-26",
+    "sessions": [
+      {
+        "date": "2026-11-05",
+        "start_time": "08:00",
+        "end_time": "10:00"
+      },
+      {
+        "date": "2026-11-12",
+        "start_time": "08:00",
+        "end_time": "10:00"
+      },
+      {
+        "date": "2026-11-19",
+        "start_time": "08:00",
+        "end_time": "10:00"
+      },
+      {
+        "date": "2026-11-26",
+        "start_time": "08:00",
+        "end_time": "10:00"
+      }
+    ],
+    "weekday": "jueves",
+    "start_time": "08:00",
+    "end_time": "10:00",
+    "prices": [
+      {
+        "label": "Entrada libre",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "taller de salsa"
+    ],
+    "contact": "@danzaenlaciudad",
+    "confidence": "high",
+    "doubts": [],
+    "id": "salones-de-baile-pongale-clave-a-la-salsa-engativa-5-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18117412544032837",
+        "permalink": "https://www.instagram.com/p/DfXALgyEU5W/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-05T12:12:01+0000",
+        "flyer": "flyers/18117412544032837-2.webp",
+        "caption": "Los Salones de Baile del Idartes son espacios para vivir la danza desde el encuentro, donde los ritmos se convierten en protagonistas y cada persona encuentra su propia forma de disfrutar la pista. 💃🕺\r\n\r\nEn noviembre, Bogotá se mueve al compás de nuevas experiencias para compartir, aprender y disfrutar en comunidad. Una oportunidad para dejar atrás la rutina, conocer otros ritmos y hacer del baile un motivo para encontrarnos.\r\n\r\n¡Anímese a bailar! No necesita experiencia, solo ganas de disfrutar y dejarse llevar por la música. ❤️\r\n\r\n📍 Consulte la programación de noviembre y descubra las actividades disponibles en su localidad.\r\n\r\n✨ Entrada libre hasta completar aforo.",
+        "preview": null,
+        "slides": 15
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Salones de Baile: Póngale clave a la salsa - Suba",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Idartes",
+    "venue": "Salón Comunal Spring",
+    "address": "Calle 138 No. 52A-37",
+    "area": "Suba",
+    "date": "2026-11-05",
+    "end_date": "2026-11-26",
+    "sessions": [
+      {
+        "date": "2026-11-05",
+        "start_time": "14:00",
+        "end_time": "16:00"
+      },
+      {
+        "date": "2026-11-12",
+        "start_time": "14:00",
+        "end_time": "16:00"
+      },
+      {
+        "date": "2026-11-19",
+        "start_time": "14:00",
+        "end_time": "16:00"
+      },
+      {
+        "date": "2026-11-26",
+        "start_time": "14:00",
+        "end_time": "16:00"
+      }
+    ],
+    "weekday": "jueves",
+    "start_time": "14:00",
+    "end_time": "16:00",
+    "prices": [
+      {
+        "label": "Entrada libre",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "taller de salsa"
+    ],
+    "contact": "@danzaenlaciudad",
+    "confidence": "high",
+    "doubts": [],
+    "id": "salones-de-baile-pongale-clave-a-la-salsa-suba-5-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18117412544032837",
+        "permalink": "https://www.instagram.com/p/DfXALgyEU5W/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-05T12:12:01+0000",
+        "flyer": "flyers/18117412544032837-3.webp",
+        "caption": "Los Salones de Baile del Idartes son espacios para vivir la danza desde el encuentro, donde los ritmos se convierten en protagonistas y cada persona encuentra su propia forma de disfrutar la pista. 💃🕺\r\n\r\nEn noviembre, Bogotá se mueve al compás de nuevas experiencias para compartir, aprender y disfrutar en comunidad. Una oportunidad para dejar atrás la rutina, conocer otros ritmos y hacer del baile un motivo para encontrarnos.\r\n\r\n¡Anímese a bailar! No necesita experiencia, solo ganas de disfrutar y dejarse llevar por la música. ❤️\r\n\r\n📍 Consulte la programación de noviembre y descubra las actividades disponibles en su localidad.\r\n\r\n✨ Entrada libre hasta completar aforo.",
+        "preview": null,
+        "slides": 15
+      }
+    ],
+    "bar": false
   },
   {
     "title": "¡Jueves de Son Gozón! con Huaracha LNT",
@@ -15839,89 +16107,6 @@
     "bar": false
   },
   {
-    "title": "XIX Festival Danza en la Ciudad",
-    "event_type": "festival",
-    "is_recurring": false,
-    "styles": [
-      "otro"
-    ],
-    "organizer": "@danzaenlaciudad",
-    "venue": "La Casona de la Danza",
-    "address": "Carrera 1 No. 17-01",
-    "area": null,
-    "date": "2026-11-06",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "viernes",
-    "start_time": null,
-    "end_time": null,
-    "prices": [],
-    "artists": [],
-    "activities": [
-      "clases maestras"
-    ],
-    "contact": "@danzaenlaciudad",
-    "confidence": "high",
-    "doubts": [
-      "dura más de una semana: revisar fechas"
-    ],
-    "id": "xix-festival-danza-en-la-ciudad-6-nov",
-    "account": "danzaenlaciudad",
-    "media": [
-      {
-        "post_id": "17890540311479989",
-        "permalink": "https://www.instagram.com/p/DfVbWkOidut/",
-        "media_type": "CAROUSEL_ALBUM",
-        "published": "2026-11-04T21:30:04+0000",
-        "flyer": "flyers/17890540311479989-0.webp",
-        "caption": "En la edicion del XIX Festival Danza en la Ciudad: Tejiendo movimiento, la franja académica propone un espacio para aprender, explorar y compartir saberes mediante clases maestras que abren nuevas posibilidades para la creación y el movimiento. \n\n🩰 Conozca la programación de clases maestras:\n🔸 5 de noviembre: Danza gamina (2 a 5 p. m.) y Joropo y contacto (5 a 8 p. m.).\n🔸 10 de noviembre: Composición, sistemas y trabajo de objetos (9 a. m. a 12 m.).\n🔸 11 de noviembre: La voz bailante (9 a. m. a 12 m.).\n🔸 14 de noviembre: Herramientas para la creación (9 a. m. a 12 m.).\n📍 La Casona de la Danza (Carrera 1 No. 17-01).\n\n📝 Inscripción previa, en el link de la bio.\n\nUna invitación a encontrarnos, intercambiar saberes y hacer comunidad a través del cuerpo. Porque cada movimiento es un hilo que transforma el tejido colectivo.\n\n#FestivalDanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
-        "preview": null,
-        "slides": 6
-      },
-      {
-        "post_id": "18099393695440811",
-        "permalink": "https://www.instagram.com/reel/DfVSb8GpL7S/",
-        "media_type": "VIDEO",
-        "published": "2026-11-04T20:13:51+0000",
-        "flyer": "flyers/18099393695440811-0.webp",
-        "caption": "🧵✨ ¡Bogotá está a punto de moverse de muchas maneras!\n\nLos cuerpos se encuentran, las historias se entrelazan y los movimientos crean nuevas conexiones. \nXIX Festival Danza en la Ciudad 2026: Tejiendo movimiento, una celebración de la diversidad de la danza y de todo aquello que nos une a través del cuerpo.\n\nPrepárese para vivir una ciudad que danza, se transforma y teje comunidad en cada escenario.\n\n💃🕺 Tejiendo movimiento: hacer comunidad a través del cuerpo.\n\n📍 Bogotá \n📅 Del 6 al 16 de noviembre de 2026\n\n📹 diegorente / Idartes\n\n#FestivalDanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
-        "preview": "previews/18099393695440811-0.mp4",
-        "slides": null
-      },
-      {
-        "post_id": "18111026626929988",
-        "permalink": "https://www.instagram.com/reel/DfUrlQNR9Ur/",
-        "media_type": "VIDEO",
-        "published": "2026-11-04T15:01:45+0000",
-        "flyer": "flyers/18111026626929988-0.webp",
-        "caption": "XIX Festival Danza en la Ciudad 2026: Tejiendo movimiento, una invitación a descubrir cómo los cuerpos, los lenguajes, las historias y los territorios se encuentran a través de la danza.\n\nDesde escenarios convencionales y no convencionales, la ciudad se convierte en un gran escenario donde todas las formas de la danza tienen lugar.\n\n✨ Celebremos la diversidad de movimientos que nos conectan y hacen de Bogotá un territorio para encontrarnos a través del arte.\n\n🗓️ Del 6 al 16 de noviembre.\n\nAnimación: juanneva_ / Idartes\n\n#FestivalDanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
-        "preview": "previews/18111026626929988-0.mp4",
-        "slides": null
-      },
-      {
-        "post_id": "18425123695157162",
-        "permalink": "https://www.instagram.com/reel/DfJCOUhhihz/",
-        "media_type": "VIDEO",
-        "published": "2026-10-31T02:00:05+0000",
-        "flyer": "flyers/18425123695157162-0.webp",
-        "caption": "Del 6 al 16 de noviembre de 2026, el XIX Festival Danza en la Ciudad llega para demostrarle que la danza es nuestra forma de relacionarnos y hacer comunidad. 🏙️💃  \n\nCada paso, memoria y lenguaje se une en un gran entramado cultural en escenarios convencionales y no convencionales de Bogotá. Porque tejer movimiento es unirnos sin perder nuestra singularidad.  \n\n🗓️ Del 6 al 16 de noviembre.\n  \n¡Prepárese para disfrutar de una programación llena de diversos formatos y mucha interacción!\n\n📹 lpvive / Idartes\n\n#FestivalDanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
-        "preview": "previews/18425123695157162-0.mp4",
-        "slides": null
-      },
-      {
-        "post_id": "18019939742739968",
-        "permalink": "https://www.instagram.com/reel/DfF9IdXyyuE/",
-        "media_type": "VIDEO",
-        "published": "2026-10-29T21:18:50+0000",
-        "flyer": "flyers/18019939742739968-0.webp",
-        "caption": "Del 6 al 16 de noviembre de 2026, llega el XIX Festival Danza en la Ciudad, un encuentro donde los cuerpos, los lenguajes, las memorias y los territorios se conectan para hacer de la danza una experiencia compartida.\n\nBajo el lema “Tejiendo movimiento”, esta edición nos invita a reconocer que cada cuerpo tiene una historia que contar y que, cuando nos encontramos a través de la danza, nuestras diferencias se entrelazan para crear nuevas formas de sentir, habitar y construir comunidad. 🧵\n\nPrepárate para vivir la danza en escenarios convencionales y no convencionales, descubrir múltiples lenguajes del movimiento y encontrarte con el arte que transforma nuestra manera de vivir la ciudad.\n\nPorque tejer movimiento es encontrarnos, reconocernos y hacer comunidad a través del cuerpo.\n\n📍 Bogotá \n📅 Del 6 al 16 de noviembre de 2026\n\n#FestivalDanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
-        "preview": "previews/18019939742739968-0.mp4",
-        "slides": null
-      }
-    ],
-    "bar": false
-  },
-  {
     "title": "Unidos por la Salsa",
     "event_type": "party",
     "is_recurring": false,
@@ -16017,6 +16202,126 @@
     "bar": true
   },
   {
+    "title": "NS Orquesta en vivo",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Pachanga y Pochola",
+    "venue": "Pachanga y Pochola",
+    "address": null,
+    "area": null,
+    "date": "2026-11-06",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Entrada",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "ns.orquesta"
+    ],
+    "activities": [
+      "música en vivo",
+      "rumba"
+    ],
+    "contact": "@pachanga_y_pochola",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio"
+    ],
+    "id": "ns-orquesta-en-vivo-6-nov",
+    "account": "pachanga_y_pochola",
+    "media": [
+      {
+        "post_id": "17954532930316980",
+        "permalink": "https://www.instagram.com/reel/DfYd8iqx-Aw/",
+        "media_type": "VIDEO",
+        "published": "2026-11-06T01:55:19+0000",
+        "flyer": "flyers/17954532930316980-0.webp",
+        "caption": "Este viernes 06 de noviembre tendremos en vivo a nuestra orquesta ns.orquesta  con todos sus éxitos, no te puedes perder esta noche cargada de mucha salsa y un gran ambiente 🥳🔥🤩🤩✨✨\n\nENTRADA LIBRE!!! 🎟️🔥🔥\n\n¿Ya tienes el combo para este viernes? 🥳💃🏽. \n\n#pachangaypochola  #pachanga",
+        "preview": "previews/17954532930316980-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Salones de Baile: Susurros de Bandoneón - Chapinero",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "tango"
+    ],
+    "organizer": "Idartes",
+    "venue": "Centro Felicidad Chapinero",
+    "address": "Calle 82 No. 10-69",
+    "area": "Chapinero",
+    "date": "2026-11-06",
+    "end_date": "2026-11-27",
+    "sessions": [
+      {
+        "date": "2026-11-06",
+        "start_time": "17:00",
+        "end_time": "19:00"
+      },
+      {
+        "date": "2026-11-13",
+        "start_time": "17:00",
+        "end_time": "19:00"
+      },
+      {
+        "date": "2026-11-20",
+        "start_time": "17:00",
+        "end_time": "19:00"
+      },
+      {
+        "date": "2026-11-27",
+        "start_time": "17:00",
+        "end_time": "19:00"
+      }
+    ],
+    "weekday": "viernes",
+    "start_time": "17:00",
+    "end_time": "19:00",
+    "prices": [
+      {
+        "label": "Entrada libre",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "taller de tango"
+    ],
+    "contact": "@danzaenlaciudad",
+    "confidence": "high",
+    "doubts": [],
+    "id": "salones-de-baile-susurros-de-bandoneon-chapinero-6-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18117412544032837",
+        "permalink": "https://www.instagram.com/p/DfXALgyEU5W/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-05T12:12:01+0000",
+        "flyer": "flyers/18117412544032837-8.webp",
+        "caption": "Los Salones de Baile del Idartes son espacios para vivir la danza desde el encuentro, donde los ritmos se convierten en protagonistas y cada persona encuentra su propia forma de disfrutar la pista. 💃🕺\r\n\r\nEn noviembre, Bogotá se mueve al compás de nuevas experiencias para compartir, aprender y disfrutar en comunidad. Una oportunidad para dejar atrás la rutina, conocer otros ritmos y hacer del baile un motivo para encontrarnos.\r\n\r\n¡Anímese a bailar! No necesita experiencia, solo ganas de disfrutar y dejarse llevar por la música. ❤️\r\n\r\n📍 Consulte la programación de noviembre y descubra las actividades disponibles en su localidad.\r\n\r\n✨ Entrada libre hasta completar aforo.",
+        "preview": null,
+        "slides": 15
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Viernes de Salsa & Son con Tambaluna",
     "event_type": "concert",
     "is_recurring": false,
@@ -16061,6 +16366,162 @@
       }
     ],
     "bar": true
+  },
+  {
+    "title": "Salsa Dura - La Bemba Venenosa en vivo",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "El Goce Pagano",
+    "venue": "El Goce Pagano",
+    "address": "Diagonal 20A # 0-82",
+    "area": null,
+    "date": "2026-11-06",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "18:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 20000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "La Bemba Venenosa"
+    ],
+    "activities": [
+      "salsa en vivo",
+      "show 11 pm",
+      "show 1 am"
+    ],
+    "contact": "@elgocepagano",
+    "confidence": "high",
+    "doubts": [],
+    "id": "salsa-dura-la-bemba-venenosa-en-vivo-6-nov",
+    "account": "elgocepagano",
+    "media": [
+      {
+        "post_id": "18179673124452473",
+        "permalink": "https://www.instagram.com/p/DfU8qgDGupr/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-04T17:02:49+0000",
+        "flyer": "flyers/18179673124452473-0.webp",
+        "caption": "Inicia noviembre con la mejor salsa en vivo!\n🔥elgocepagano 🔥\nSalsa bogotana, sabor, calle y goce en una sola noche\n\n🕔 Puertas: 6 pm | 🎶 Shows: 11 pm y 1 am\n📍 Diagonal 20A No. 82 – Bogotá\n\n✨🔥¡A bailar!🔥✨\nCover 20k\n#salsaenvivo #salsa\n#concierto #envivo\n#conciertobogota #salsaenbogotá",
+        "preview": null,
+        "slides": 1
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "XIX Festival Danza en la Ciudad",
+    "event_type": "festival",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "@danzaenlaciudad",
+    "venue": "La Casona de la Danza",
+    "address": "Carrera 1 No. 17-01",
+    "area": null,
+    "date": "2026-11-06",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "19:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Quasar Cia. de Dança"
+    ],
+    "activities": [
+      "clases maestras"
+    ],
+    "contact": "@danzaenlaciudad",
+    "confidence": "high",
+    "doubts": [
+      "dura más de una semana: revisar fechas"
+    ],
+    "id": "xix-festival-danza-en-la-ciudad-6-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18129470869884321",
+        "permalink": "https://www.instagram.com/p/DfX8y9wpyX4/",
+        "media_type": "IMAGE",
+        "published": "2026-11-05T21:45:03+0000",
+        "flyer": "flyers/18129470869884321-0.webp",
+        "caption": "En el marco del XIX Festival Danza en la Ciudad, llega ‘Noche Movediza’, iniciativa ganadora de la Invitación Cultural: Bogotá danza: la ciudad en movimiento, de la SCRD, una gala que reúne colectivos y compañías bogotanas para compartir distintas perspectivas creativas a través de solos, obras grupales y videodanzas.\n\nEntre las agrupaciones participantes está Movedizo Danza, colectivo juvenil profesional que, desde 2018, investiga y experimenta con los lenguajes de la danza contemporánea y el breakdance. Bajo la dirección de Samuel García y Azud Romero, su trabajo propone nuevas maneras de entender la danza, la coreografía y la creación colectiva.\nUna oportunidad para descubrir el talento local, acercarse a propuestas emergentes y disfrutar de la diversidad de la danza que se crea en Bogotá. \n\n📅6 de noviembre 🕖7 p.m.\n📍Teatro El Ensueño\n📌 Transversal 70 D No. 60-90 sur\n\n#DanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18355273768267160",
+        "permalink": "https://www.instagram.com/p/DfX70DrJOrY/",
+        "media_type": "IMAGE",
+        "published": "2026-11-05T21:00:11+0000",
+        "flyer": "flyers/18355273768267160-0.webp",
+        "caption": "La danza contemporánea llega desde Brasil al XIX Festival Danza en la Ciudad.✨\n\nCon 38 años de trayectoria, Quasar Cia. de Dança presenta ‘Ceu de Pêssego’ (Cielo de durazno), una propuesta coreográfica que explora la fugacidad de la vida cotidiana, las relaciones humanas y las múltiples formas del deseo, a través del movimiento, la sensibilidad y el humor.\n\nInspirada en los colores del cielo durante ese instante en que adquiere tonalidades de durazno, esta obra reúne escenas grupales, solos, dúos y otras composiciones en las que cada intérprete aporta su propia experiencia y personalidad, dando vida a una creación que invita a descubrir la complejidad de las emociones humanas.\n\n¡Déjese llevar por esta experiencia escénica internacional y descubra nuevas formas de sentir el movimiento! 💫\n\n📅 6 de noviembre 🕖8 p.m. \n📍Teatro Municipal Jorge Eliécer Gaitán \n\n#DanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "17890540311479989",
+        "permalink": "https://www.instagram.com/p/DfVbWkOidut/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-04T21:30:04+0000",
+        "flyer": "flyers/17890540311479989-0.webp",
+        "caption": "En la edicion del XIX Festival Danza en la Ciudad: Tejiendo movimiento, la franja académica propone un espacio para aprender, explorar y compartir saberes mediante clases maestras que abren nuevas posibilidades para la creación y el movimiento. \n\n🩰 Conozca la programación de clases maestras:\n🔸 5 de noviembre: Danza gamina (2 a 5 p. m.) y Joropo y contacto (5 a 8 p. m.).\n🔸 10 de noviembre: Composición, sistemas y trabajo de objetos (9 a. m. a 12 m.).\n🔸 11 de noviembre: La voz bailante (9 a. m. a 12 m.).\n🔸 14 de noviembre: Herramientas para la creación (9 a. m. a 12 m.).\n📍 La Casona de la Danza (Carrera 1 No. 17-01).\n\n📝 Inscripción previa, en el link de la bio.\n\nUna invitación a encontrarnos, intercambiar saberes y hacer comunidad a través del cuerpo. Porque cada movimiento es un hilo que transforma el tejido colectivo.\n\n#FestivalDanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 6
+      },
+      {
+        "post_id": "18099393695440811",
+        "permalink": "https://www.instagram.com/reel/DfVSb8GpL7S/",
+        "media_type": "VIDEO",
+        "published": "2026-11-04T20:13:51+0000",
+        "flyer": "flyers/18099393695440811-0.webp",
+        "caption": "🧵✨ ¡Bogotá está a punto de moverse de muchas maneras!\n\nLos cuerpos se encuentran, las historias se entrelazan y los movimientos crean nuevas conexiones. \nXIX Festival Danza en la Ciudad 2026: Tejiendo movimiento, una celebración de la diversidad de la danza y de todo aquello que nos une a través del cuerpo.\n\nPrepárese para vivir una ciudad que danza, se transforma y teje comunidad en cada escenario.\n\n💃🕺 Tejiendo movimiento: hacer comunidad a través del cuerpo.\n\n📍 Bogotá \n📅 Del 6 al 16 de noviembre de 2026\n\n📹 diegorente / Idartes\n\n#FestivalDanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
+        "preview": "previews/18099393695440811-0.mp4",
+        "slides": null
+      },
+      {
+        "post_id": "18111026626929988",
+        "permalink": "https://www.instagram.com/reel/DfUrlQNR9Ur/",
+        "media_type": "VIDEO",
+        "published": "2026-11-04T15:01:45+0000",
+        "flyer": "flyers/18111026626929988-0.webp",
+        "caption": "XIX Festival Danza en la Ciudad 2026: Tejiendo movimiento, una invitación a descubrir cómo los cuerpos, los lenguajes, las historias y los territorios se encuentran a través de la danza.\n\nDesde escenarios convencionales y no convencionales, la ciudad se convierte en un gran escenario donde todas las formas de la danza tienen lugar.\n\n✨ Celebremos la diversidad de movimientos que nos conectan y hacen de Bogotá un territorio para encontrarnos a través del arte.\n\n🗓️ Del 6 al 16 de noviembre.\n\nAnimación: juanneva_ / Idartes\n\n#FestivalDanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
+        "preview": "previews/18111026626929988-0.mp4",
+        "slides": null
+      },
+      {
+        "post_id": "18425123695157162",
+        "permalink": "https://www.instagram.com/reel/DfJCOUhhihz/",
+        "media_type": "VIDEO",
+        "published": "2026-10-31T02:00:05+0000",
+        "flyer": "flyers/18425123695157162-0.webp",
+        "caption": "Del 6 al 16 de noviembre de 2026, el XIX Festival Danza en la Ciudad llega para demostrarle que la danza es nuestra forma de relacionarnos y hacer comunidad. 🏙️💃  \n\nCada paso, memoria y lenguaje se une en un gran entramado cultural en escenarios convencionales y no convencionales de Bogotá. Porque tejer movimiento es unirnos sin perder nuestra singularidad.  \n\n🗓️ Del 6 al 16 de noviembre.\n  \n¡Prepárese para disfrutar de una programación llena de diversos formatos y mucha interacción!\n\n📹 lpvive / Idartes\n\n#FestivalDanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
+        "preview": "previews/18425123695157162-0.mp4",
+        "slides": null
+      },
+      {
+        "post_id": "18019939742739968",
+        "permalink": "https://www.instagram.com/reel/DfF9IdXyyuE/",
+        "media_type": "VIDEO",
+        "published": "2026-10-29T21:18:50+0000",
+        "flyer": "flyers/18019939742739968-0.webp",
+        "caption": "Del 6 al 16 de noviembre de 2026, llega el XIX Festival Danza en la Ciudad, un encuentro donde los cuerpos, los lenguajes, las memorias y los territorios se conectan para hacer de la danza una experiencia compartida.\n\nBajo el lema “Tejiendo movimiento”, esta edición nos invita a reconocer que cada cuerpo tiene una historia que contar y que, cuando nos encontramos a través de la danza, nuestras diferencias se entrelazan para crear nuevas formas de sentir, habitar y construir comunidad. 🧵\n\nPrepárate para vivir la danza en escenarios convencionales y no convencionales, descubrir múltiples lenguajes del movimiento y encontrarte con el arte que transforma nuestra manera de vivir la ciudad.\n\nPorque tejer movimiento es encontrarnos, reconocernos y hacer comunidad a través del cuerpo.\n\n📍 Bogotá \n📅 Del 6 al 16 de noviembre de 2026\n\n#FestivalDanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
+        "preview": "previews/18019939742739968-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": false
   },
   {
     "title": "Zouk Intensivo: Bases y Fundamentos",
@@ -16181,6 +16642,107 @@
     "bar": false
   },
   {
+    "title": "Un paso para bailar, otro para conectar",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "bachata"
+    ],
+    "organizer": "TikStore",
+    "venue": "Bar Tributo Salsa y Jazz",
+    "address": "Cra. 72 #64C-97",
+    "area": null,
+    "date": "2026-11-06",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "19:00",
+    "end_time": "20:30",
+    "prices": [
+      {
+        "label": "General",
+        "amount_cop": 20000,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "clase de salsa",
+      "clase de bachata",
+      "conocer gente nueva"
+    ],
+    "contact": "WhatsApp 310 5714 824",
+    "confidence": "high",
+    "doubts": [],
+    "id": "un-paso-para-bailar-otro-para-conectar-6-nov",
+    "account": "tributo.salsayjazz",
+    "media": [
+      {
+        "post_id": "18133696591686520",
+        "permalink": "https://www.instagram.com/p/DfXt9eRFJVK/",
+        "media_type": "IMAGE",
+        "published": "2026-11-05T18:52:03+0000",
+        "flyer": "flyers/18133696591686520-0.webp",
+        "caption": "¡UN PASO PARA BAILAR, OTRO PARA CONECTAR! 💃🕺✨ \n\nPorque la pista de tu casa se enciende con una experiencia única, te esperamos en: ¡Tributo Salsa y Jazz! \n\n🎶Este viernes 6 de noviembre te invitamos a una noche especial de Salsa y Bachata en colaboración con TikStore. \n\nVen a aprender, soltar los pasos, pasar un rato increíble y conocer gente nueva en un ambiente inigualable. ¡El plan perfecto para conectar a través del ritmo! 🥂🔥 \n📅 Fecha: Viernes 6 de noviembre \n⏰ Hora: 7:00 a 8:30 p. m. \n💵 Valor: $20.000 \n📍 Lugar: Bar Tributo Salsa y Jazz (Cra. 72 #64C-97, Bogotá) \n📲 Reservas: 310 5714 824\n\n¡Los cupos son limitados! Asegura el tuyo a tiempo, arma tu parche y ven a disfrutar. 👇✨https://wa.me/573105714824",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Clase de Salsa con Teffa Murcia",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Callejón Salsa & Mecato",
+    "venue": "Callejón Salsa & Mecato",
+    "address": "Calle 12D # 3-84",
+    "area": "La Candelaria",
+    "date": "2026-11-06",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "19:30",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Clase",
+        "amount_cop": 10000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Teffa Murcia"
+    ],
+    "activities": [
+      "clase de salsa"
+    ],
+    "contact": "@callejonsalsa",
+    "confidence": "high",
+    "doubts": [
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "clase-de-salsa-con-teffa-murcia-6-nov",
+    "account": "callejonsalsa",
+    "media": [
+      {
+        "post_id": "18102183677421899",
+        "permalink": "https://www.instagram.com/p/DfYdJwIxsYR/",
+        "media_type": "IMAGE",
+        "published": "2026-11-06T01:44:28+0000",
+        "flyer": "flyers/18102183677421899-0.webp",
+        "caption": "Nos vemos mañana para una gran noche de salsa. Comenzaremos con clase de salsa con la profesora teffa_mg a las 7:30 p.m. la clase cuesta 10K, y después de la clase de Teffa, DJ sesión con pinchadiscosdekien de salsa clásica, para melómanos y bailadores. La salsa con criterio se disfruta en Callejón Salsa & Mecato.",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Concierto",
     "event_type": "concert",
     "is_recurring": false,
@@ -16292,6 +16854,51 @@
     "bar": true
   },
   {
+    "title": "Cielo de Durazno - Quasar Cia. de Dança (XIX Festival Danza en la Ciudad)",
+    "event_type": "show",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "Idartes",
+    "venue": "Teatro Municipal Jorge Eliécer Gaitán",
+    "address": null,
+    "area": null,
+    "date": "2026-11-06",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "20:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Quasar Cia. de Dança"
+    ],
+    "activities": [
+      "obra de danza contemporánea"
+    ],
+    "contact": "@danzaenlaciudad",
+    "confidence": "high",
+    "doubts": [
+      "sin precio"
+    ],
+    "id": "cielo-de-durazno-quasar-cia-de-danca-xix-festival-6-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18131220853929356",
+        "permalink": "https://www.instagram.com/reel/DfYWdTIhwpX/",
+        "media_type": "VIDEO",
+        "published": "2026-11-06T00:45:05+0000",
+        "flyer": "flyers/18131220853929356-0.webp",
+        "caption": "¿Qué sucede cuando el movimiento se convierte en una forma de explorar la vida, el deseo y las relaciones humanas? 🍑✨\n\nDesde Goiânia, Brasil, Quasar Cia. de Dança llega con ‘Cielo de Durazno’, una creación que reúne 38 años de búsqueda artística y exploración del cuerpo como lenguaje.\n\nA través de una propuesta visual, dinámica y cargada de matices, la obra transita por las emociones, los encuentros, la fugacidad de la vida cotidiana y las múltiples expresiones del deseo, sin dejar de lado el humor y la sensibilidad.\n\nUna experiencia en la que cada movimiento cuenta una historia y cada intérprete aporta su propia mirada para construir un universo escénico en constante transformación. 💫\n\n📅 6 de noviembre 🕖8 p.m. \n📍Teatro Municipal Jorge Eliécer Gaitán \n\n📹 lpvive / Idartes \n\n#DanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
+        "preview": "previews/18131220853929356-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Gran Tributo a Ruben Blades y Héctor Lavoe",
     "event_type": "concert",
     "is_recurring": false,
@@ -16331,6 +16938,52 @@
         "published": "2026-11-03T00:44:03+0000",
         "flyer": "flyers/18200985931386595-0.webp",
         "caption": "Gran Tributo a Ruben Blades y Héctor Lavoe. \nGran orquesta en vivo con cienfuegosgroup \nUna noche para cantar, bailar, disfrutar y gozar. \nCaiga con el combo o solito que aquí se consigue parche. \n\nCélebre que nos quedan menos de 6 viernes para 2027.\nEmpezó la cuenta regresiva. \nReservas en el link de la bio.",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Los Clásicos de El Pinchadiscos de Kien",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Callejón Salsa & Mecato",
+    "venue": "Callejón Salsa & Mecato",
+    "address": "Calle 12D # 3-84",
+    "area": "La Candelaria",
+    "date": "2026-11-06",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "21:00",
+    "end_time": "02:00",
+    "prices": [],
+    "artists": [
+      "El Pinchadiscos de Kien"
+    ],
+    "activities": [
+      "DJ sesión de salsa clásica"
+    ],
+    "contact": "@callejonsalsa",
+    "confidence": "high",
+    "doubts": [
+      "no se menciona el precio de la fiesta después de la clase",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "los-clasicos-de-el-pinchadiscos-de-kien-6-nov",
+    "account": "callejonsalsa",
+    "media": [
+      {
+        "post_id": "18102183677421899",
+        "permalink": "https://www.instagram.com/p/DfYdJwIxsYR/",
+        "media_type": "IMAGE",
+        "published": "2026-11-06T01:44:28+0000",
+        "flyer": "flyers/18102183677421899-0.webp",
+        "caption": "Nos vemos mañana para una gran noche de salsa. Comenzaremos con clase de salsa con la profesora teffa_mg a las 7:30 p.m. la clase cuesta 10K, y después de la clase de Teffa, DJ sesión con pinchadiscosdekien de salsa clásica, para melómanos y bailadores. La salsa con criterio se disfruta en Callejón Salsa & Mecato.",
         "preview": null,
         "slides": null
       }
@@ -16606,6 +17259,304 @@
     "bar": true
   },
   {
+    "title": "Salones de Baile: Fiesta Disco - San Cristóbal",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "Idartes",
+    "venue": "Centro Felicidad San Cristóbal",
+    "address": "Calle 17A Sur No. 2A-60 Este",
+    "area": "San Cristóbal",
+    "date": "2026-11-07",
+    "end_date": "2026-11-21",
+    "sessions": [
+      {
+        "date": "2026-11-07",
+        "start_time": "09:00",
+        "end_time": "11:00"
+      },
+      {
+        "date": "2026-11-14",
+        "start_time": "09:00",
+        "end_time": "11:00"
+      },
+      {
+        "date": "2026-11-21",
+        "start_time": "09:00",
+        "end_time": "11:00"
+      }
+    ],
+    "weekday": "sábado",
+    "start_time": "09:00",
+    "end_time": "11:00",
+    "prices": [
+      {
+        "label": "Entrada libre",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "baile de música disco"
+    ],
+    "contact": "@danzaenlaciudad",
+    "confidence": "high",
+    "doubts": [],
+    "id": "salones-de-baile-fiesta-disco-san-cristobal-7-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18117412544032837",
+        "permalink": "https://www.instagram.com/p/DfXALgyEU5W/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-05T12:12:01+0000",
+        "flyer": "flyers/18117412544032837-5.webp",
+        "caption": "Los Salones de Baile del Idartes son espacios para vivir la danza desde el encuentro, donde los ritmos se convierten en protagonistas y cada persona encuentra su propia forma de disfrutar la pista. 💃🕺\r\n\r\nEn noviembre, Bogotá se mueve al compás de nuevas experiencias para compartir, aprender y disfrutar en comunidad. Una oportunidad para dejar atrás la rutina, conocer otros ritmos y hacer del baile un motivo para encontrarnos.\r\n\r\n¡Anímese a bailar! No necesita experiencia, solo ganas de disfrutar y dejarse llevar por la música. ❤️\r\n\r\n📍 Consulte la programación de noviembre y descubra las actividades disponibles en su localidad.\r\n\r\n✨ Entrada libre hasta completar aforo.",
+        "preview": null,
+        "slides": 15
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Coquito - Maldita Danza (XIX Festival Danza en la Ciudad)",
+    "event_type": "show",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "Maldita Danza",
+    "venue": "Cerro de Monserrate",
+    "address": "Sector artesanías y comidas",
+    "area": "Santa Fe",
+    "date": "2026-11-07",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "10:15",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Maldita Danza",
+      "Pepopi"
+    ],
+    "activities": [
+      "danza Butoh",
+      "danza festiva del Carnaval",
+      "experiencia sensorial"
+    ],
+    "contact": "@danzaenlaciudad",
+    "confidence": "high",
+    "doubts": [
+      "sin precio explícito (probablemente gratuito por ser en espacio público)"
+    ],
+    "id": "coquito-maldita-danza-xix-festival-danza-en-la-7-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18082052603739833",
+        "permalink": "https://www.instagram.com/p/DfX-H9Wptda/",
+        "media_type": "IMAGE",
+        "published": "2026-11-05T23:15:02+0000",
+        "flyer": "flyers/18082052603739833-0.webp",
+        "caption": "¡La calle también es un escenario para celebrar la vida a través del movimiento! 🎭🎶\n\n‘Coquito’, de la compañía Maldita Danza, iniciativa ganadora de la Invitación Cultural: Bogotá danza: la ciudad en movimiento, de la SCRD, llega al XIX Festival Danza en la Ciudad con una propuesta itinerante que mezcla la danza Butoh y la danza festiva del Carnaval para crear una experiencia cercana, sensorial y llena de poesía visual.\n\nEntre cantos, bailes y sonidos, Coquito transforma los espacios cotidianos en lugares de encuentro y celebración. Acompañado por Pepopi, su perro orquesta, y un músico, invita a los transeúntes a participar de una fiesta que reconoce las memorias sensibles, las expresiones populares y la riqueza cultural de nuestros territorios.\n\nUna invitación a dejarse sorprender por la danza que sale al encuentro de la ciudad y convierte la calle en un espacio para compartir. 💜\n\n📅 7 de noviembre 🕖10:15 a. m.\n📍 Cerro de Monserrate\n📌 Sector artesanías y comidas\n\n#DanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Salones de Baile: Fiesta Tropical - Usaquén",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "merengue"
+    ],
+    "organizer": "Idartes",
+    "venue": "Centro de Desarrollo Comunitario - CDC Simón Bolívar (Servitá)",
+    "address": "Calle 165 No. 7-52",
+    "area": "Usaquén",
+    "date": "2026-11-07",
+    "end_date": "2026-11-28",
+    "sessions": [
+      {
+        "date": "2026-11-07",
+        "start_time": "11:00",
+        "end_time": "13:00"
+      },
+      {
+        "date": "2026-11-14",
+        "start_time": "11:00",
+        "end_time": "13:00"
+      },
+      {
+        "date": "2026-11-21",
+        "start_time": "11:00",
+        "end_time": "13:00"
+      },
+      {
+        "date": "2026-11-28",
+        "start_time": "11:00",
+        "end_time": "13:00"
+      }
+    ],
+    "weekday": "sábado",
+    "start_time": "11:00",
+    "end_time": "13:00",
+    "prices": [
+      {
+        "label": "Entrada libre",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "baile tropical"
+    ],
+    "contact": "@danzaenlaciudad",
+    "confidence": "high",
+    "doubts": [],
+    "id": "salones-de-baile-fiesta-tropical-usaquen-7-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18117412544032837",
+        "permalink": "https://www.instagram.com/p/DfXALgyEU5W/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-05T12:12:01+0000",
+        "flyer": "flyers/18117412544032837-7.webp",
+        "caption": "Los Salones de Baile del Idartes son espacios para vivir la danza desde el encuentro, donde los ritmos se convierten en protagonistas y cada persona encuentra su propia forma de disfrutar la pista. 💃🕺\r\n\r\nEn noviembre, Bogotá se mueve al compás de nuevas experiencias para compartir, aprender y disfrutar en comunidad. Una oportunidad para dejar atrás la rutina, conocer otros ritmos y hacer del baile un motivo para encontrarnos.\r\n\r\n¡Anímese a bailar! No necesita experiencia, solo ganas de disfrutar y dejarse llevar por la música. ❤️\r\n\r\n📍 Consulte la programación de noviembre y descubra las actividades disponibles en su localidad.\r\n\r\n✨ Entrada libre hasta completar aforo.",
+        "preview": null,
+        "slides": 15
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Taller - Cuidando a cuidadoras: danza, bienestar y comunidad",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "La Casona de la Danza",
+    "venue": "La Casona de la Danza",
+    "address": "Cra 1 No. 17-01",
+    "area": null,
+    "date": "2026-11-07",
+    "end_date": "2026-12-19",
+    "sessions": [
+      {
+        "date": "2026-11-07",
+        "start_time": "13:00",
+        "end_time": "15:00"
+      },
+      {
+        "date": "2026-11-21",
+        "start_time": "13:00",
+        "end_time": "15:00"
+      },
+      {
+        "date": "2026-11-28",
+        "start_time": "13:00",
+        "end_time": "15:00"
+      },
+      {
+        "date": "2026-12-05",
+        "start_time": "13:00",
+        "end_time": "15:00"
+      },
+      {
+        "date": "2026-12-12",
+        "start_time": "13:00",
+        "end_time": "15:00"
+      },
+      {
+        "date": "2026-12-19",
+        "start_time": "13:00",
+        "end_time": "15:00"
+      }
+    ],
+    "weekday": "sábado",
+    "start_time": "13:00",
+    "end_time": "15:00",
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "taller de danza y bienestar"
+    ],
+    "contact": "www.danzaenlaciudad.gov.co",
+    "confidence": "high",
+    "doubts": [],
+    "id": "taller-cuidando-a-cuidadoras-danza-bienestar-y-7-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18154494292539250",
+        "permalink": "https://www.instagram.com/p/DfXTa6yEV46/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-05T15:00:09+0000",
+        "flyer": "flyers/18154494292539250-1.webp",
+        "caption": "Noviembre en La Casona de la Danza,es una invitación a descubrir nuevas posibilidades a través del cuerpo y el movimiento. 🍃\n\nDurante este mes, la programación reúne propuestas para aprender, compartir y dejarse llevar por distintas experiencias alrededor del movimiento. Un espacio para salir de la rutina, descubrir nuevas sensaciones y permitir que el cuerpo cuente sus propias historias. 💫\n\nRegálese un momento para explorar, crear y vivir la danza de otras maneras.\n\n📍 Deslice y conozca las actividades que tenemos preparadas para noviembre.\n\n#CasonaDeLaDanza #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 11
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Salón de baile Carranguero",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "Idartes - Programa Salones de Baile",
+    "venue": "Lobby Teatro Municipal Jorge Eliécer Gaitán",
+    "address": "Carrera 7 No. 22-47",
+    "area": null,
+    "date": "2026-11-07",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "14:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Los Quibeños"
+    ],
+    "activities": [
+      "baile carranguero",
+      "fiesta carranguera"
+    ],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [
+      "sin información de precio"
+    ],
+    "id": "salon-de-baile-carranguero-7-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "17956971516277808",
+        "permalink": "https://www.instagram.com/p/DfX-5K2pJPf/",
+        "media_type": "IMAGE",
+        "published": "2026-11-06T00:00:02+0000",
+        "flyer": "flyers/17956971516277808-0.webp",
+        "caption": "¡La música y el baile son una invitación a encontrarnos, compartir y celebrar nuestras tradiciones! 💃🕺🎶\n\nEl Salón de Baile Carranguero llega al XIX Festival Danza en la Ciudad con una jornada para disfrutar de los ritmos campesinos, la alegría del encuentro y el movimiento colectivo.\n\nEsta experiencia, que hace parte del Programa Salones de Baile de Idartes, abre un espacio para que personas de todas las edades se acerquen a la danza, compartan saberes y mantengan vivas las expresiones culturales que hacen parte de nuestra identidad.\n\n¡Prepárese para bailar,  conectar con las raíces campesinas y disfrutar de la fiesta carranguera! 🌻\n\n📅 7 de noviembre 🕖2 p.m. \n📍 Lobby del Teatro Municipal Jorge Eliécer Gaitán \n📌 Carrera 7 No. 22-47 \n\n#DanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Parche de Bailadores",
     "event_type": "social",
     "is_recurring": false,
@@ -16641,10 +17592,22 @@
     ],
     "contact": "@bogotadanceclub",
     "confidence": "high",
-    "doubts": [],
+    "doubts": [
+      "sin precio"
+    ],
     "id": "parche-de-bailadores-7-nov",
     "account": "bogotadanceclub",
     "media": [
+      {
+        "post_id": "18122937580916931",
+        "permalink": "https://www.instagram.com/reel/DfYaXZ6DTPr/",
+        "media_type": "VIDEO",
+        "published": "2026-11-06T01:21:01+0000",
+        "flyer": "flyers/18122937580916931-0.webp",
+        "caption": "¿Será verdad que a los bogotanos no les gusta bailar? 👀💃🕺\n\nNos fuimos al centro de Bogotá a comprobarlo y encontramos a varios que sí llevan el baile en la sangre 🔥\n\nSi tú eres de los que no se resisten a una buena canción, ¡te esperamos en nuestro Parche de Bailadores este sabado! 🎶\n\n📅 Sábado 7 de noviembre desde las 3:00 p. m.\n📍 Bogotá Dance Club – Calle 25F #36-15\n\n¿Y tú? ¿Te habrías animado a bailar con nosotros en plena calle? 👀👇\n\n#baile #planesenbogotá #bogota #salsa",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18092934140226646",
         "permalink": "https://www.instagram.com/reel/DfTO9kLui9b/",
@@ -16706,6 +17669,74 @@
       }
     ],
     "bar": true
+  },
+  {
+    "title": "Salones de Baile: Fiesta Disco - Ciudad Bolívar",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "Idartes",
+    "venue": "Teatro El Ensueño",
+    "address": "Transversal 70D No. 60-90 Sur",
+    "area": "Ciudad Bolívar",
+    "date": "2026-11-07",
+    "end_date": "2026-11-28",
+    "sessions": [
+      {
+        "date": "2026-11-07",
+        "start_time": "16:00",
+        "end_time": "18:00"
+      },
+      {
+        "date": "2026-11-14",
+        "start_time": "16:00",
+        "end_time": "18:00"
+      },
+      {
+        "date": "2026-11-21",
+        "start_time": "16:00",
+        "end_time": "18:00"
+      },
+      {
+        "date": "2026-11-28",
+        "start_time": "16:00",
+        "end_time": "18:00"
+      }
+    ],
+    "weekday": "sábado",
+    "start_time": "16:00",
+    "end_time": "18:00",
+    "prices": [
+      {
+        "label": "Entrada libre",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "baile de música disco"
+    ],
+    "contact": "@danzaenlaciudad",
+    "confidence": "high",
+    "doubts": [],
+    "id": "salones-de-baile-fiesta-disco-ciudad-bolivar-7-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18117412544032837",
+        "permalink": "https://www.instagram.com/p/DfXALgyEU5W/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-05T12:12:01+0000",
+        "flyer": "flyers/18117412544032837-1.webp",
+        "caption": "Los Salones de Baile del Idartes son espacios para vivir la danza desde el encuentro, donde los ritmos se convierten en protagonistas y cada persona encuentra su propia forma de disfrutar la pista. 💃🕺\r\n\r\nEn noviembre, Bogotá se mueve al compás de nuevas experiencias para compartir, aprender y disfrutar en comunidad. Una oportunidad para dejar atrás la rutina, conocer otros ritmos y hacer del baile un motivo para encontrarnos.\r\n\r\n¡Anímese a bailar! No necesita experiencia, solo ganas de disfrutar y dejarse llevar por la música. ❤️\r\n\r\n📍 Consulte la programación de noviembre y descubra las actividades disponibles en su localidad.\r\n\r\n✨ Entrada libre hasta completar aforo.",
+        "preview": null,
+        "slides": 15
+      }
+    ],
+    "bar": false
   },
   {
     "title": "Guabalosas Intensivo Versión 2.0",
@@ -16857,6 +17888,74 @@
       }
     ],
     "bar": true
+  },
+  {
+    "title": "Salones de Baile: Susurros de Bandoneón - Santa Fe",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "tango"
+    ],
+    "organizer": "Idartes",
+    "venue": "Teatro Jorge Eliécer Gaitán",
+    "address": "Carrera 7 No. 22-47",
+    "area": "Santa Fe",
+    "date": "2026-11-07",
+    "end_date": "2026-11-28",
+    "sessions": [
+      {
+        "date": "2026-11-07",
+        "start_time": "17:00",
+        "end_time": "19:00"
+      },
+      {
+        "date": "2026-11-14",
+        "start_time": "17:00",
+        "end_time": "19:00"
+      },
+      {
+        "date": "2026-11-21",
+        "start_time": "17:00",
+        "end_time": "19:00"
+      },
+      {
+        "date": "2026-11-28",
+        "start_time": "17:00",
+        "end_time": "19:00"
+      }
+    ],
+    "weekday": "sábado",
+    "start_time": "17:00",
+    "end_time": "19:00",
+    "prices": [
+      {
+        "label": "Entrada libre",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "taller de tango"
+    ],
+    "contact": "@danzaenlaciudad",
+    "confidence": "high",
+    "doubts": [],
+    "id": "salones-de-baile-susurros-de-bandoneon-santa-fe-7-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18117412544032837",
+        "permalink": "https://www.instagram.com/p/DfXALgyEU5W/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-05T12:12:01+0000",
+        "flyer": "flyers/18117412544032837-4.webp",
+        "caption": "Los Salones de Baile del Idartes son espacios para vivir la danza desde el encuentro, donde los ritmos se convierten en protagonistas y cada persona encuentra su propia forma de disfrutar la pista. 💃🕺\r\n\r\nEn noviembre, Bogotá se mueve al compás de nuevas experiencias para compartir, aprender y disfrutar en comunidad. Una oportunidad para dejar atrás la rutina, conocer otros ritmos y hacer del baile un motivo para encontrarnos.\r\n\r\n¡Anímese a bailar! No necesita experiencia, solo ganas de disfrutar y dejarse llevar por la música. ❤️\r\n\r\n📍 Consulte la programación de noviembre y descubra las actividades disponibles en su localidad.\r\n\r\n✨ Entrada libre hasta completar aforo.",
+        "preview": null,
+        "slides": 15
+      }
+    ],
+    "bar": false
   },
   {
     "title": "Meet & Greet",
@@ -17079,6 +18178,52 @@
       }
     ],
     "bar": true
+  },
+  {
+    "title": "Petra - XIX Festival Danza en la Ciudad",
+    "event_type": "show",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "Leonardo Martínez",
+    "venue": "Teatro El Parque",
+    "address": "Carrera 5 No. 36-05",
+    "area": null,
+    "date": "2026-11-07",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "19:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Leonardo Martínez"
+    ],
+    "activities": [
+      "obra de danza 'Petra'",
+      "puesta en escena que explora el duelo, la memoria y los vínculos humanos"
+    ],
+    "contact": "@danzaenlaciudad",
+    "confidence": "high",
+    "doubts": [
+      "sin información de precios"
+    ],
+    "id": "petra-xix-festival-danza-en-la-ciudad-7-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18437905354196560",
+        "permalink": "https://www.instagram.com/p/DfX90sdpvDi/",
+        "media_type": "IMAGE",
+        "published": "2026-11-05T22:30:04+0000",
+        "flyer": "flyers/18437905354196560-0.webp",
+        "caption": "El cuerpo también guarda historias, recuerdos y emociones que transforman nuestra manera de relacionarnos. 🖤\n\n‘Petra’, una creación de Leonardo Martínez, iniciativa ganadora de la Invitación Cultural: Bogotá danza: la ciudad en movimiento, de la SCRD, llega al XIX Festival Danza en la Ciudad con una propuesta que explora, desde el lenguaje del movimiento, las complejidades del duelo, la memoria y los vínculos humanos.\n\nA través de la historia de Petra y Diego, una pareja que enfrenta la pérdida de un ser querido, la obra aborda las transformaciones que atraviesan el amor y la vida cuando aparecen la ausencia, la enfermedad y las heridas familiares. Una puesta en escena que invita a reflexionar sobre los afectos, la salud mental y aquello que permanece incluso cuando todo cambia.\n\nUna experiencia para descubrir cómo la danza puede contar historias profundamente humanas y poner en movimiento emociones que nos atraviesan. ✨\n\n📅 7 de noviembre 🕖7 p.m. \n📍Teatro El Parque \n📌 Carrera 5 No. 36-05\n\n#DanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
   },
   {
     "title": "Sábado de Bachata - Bachatango",
@@ -18273,6 +19418,157 @@
     "bar": true
   },
   {
+    "title": "De la media punta a la punta segura: metodología, biomecánica y prevención de lesiones en el ballet",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "La Casona de la Danza",
+    "venue": "La Casona de la Danza",
+    "address": "Cra 1 No. 17-01",
+    "area": null,
+    "date": "2026-11-18",
+    "end_date": "2026-11-25",
+    "sessions": [
+      {
+        "date": "2026-11-18",
+        "start_time": "09:00",
+        "end_time": "12:00"
+      },
+      {
+        "date": "2026-11-25",
+        "start_time": "09:00",
+        "end_time": "12:00"
+      }
+    ],
+    "weekday": "miércoles",
+    "start_time": "09:00",
+    "end_time": "12:00",
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "taller de ballet y prevención de lesiones"
+    ],
+    "contact": "www.danzaenlaciudad.gov.co",
+    "confidence": "high",
+    "doubts": [],
+    "id": "de-la-media-punta-a-la-punta-segura-metodologia-18-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18154494292539250",
+        "permalink": "https://www.instagram.com/p/DfXTa6yEV46/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-05T15:00:09+0000",
+        "flyer": "flyers/18154494292539250-3.webp",
+        "caption": "Noviembre en La Casona de la Danza,es una invitación a descubrir nuevas posibilidades a través del cuerpo y el movimiento. 🍃\n\nDurante este mes, la programación reúne propuestas para aprender, compartir y dejarse llevar por distintas experiencias alrededor del movimiento. Un espacio para salir de la rutina, descubrir nuevas sensaciones y permitir que el cuerpo cuente sus propias historias. 💫\n\nRegálese un momento para explorar, crear y vivir la danza de otras maneras.\n\n📍 Deslice y conozca las actividades que tenemos preparadas para noviembre.\n\n#CasonaDeLaDanza #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 11
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Taller - \"¡Cali es Cali, lo demás es loma!\"",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa caleña"
+    ],
+    "organizer": "La Casona de la Danza",
+    "venue": "La Casona de la Danza",
+    "address": "Cra 1 No. 17-01",
+    "area": null,
+    "date": "2026-11-18",
+    "end_date": "2026-11-20",
+    "sessions": [
+      {
+        "date": "2026-11-18",
+        "start_time": "16:00",
+        "end_time": "18:00"
+      },
+      {
+        "date": "2026-11-20",
+        "start_time": "16:00",
+        "end_time": "18:00"
+      }
+    ],
+    "weekday": "miércoles",
+    "start_time": "16:00",
+    "end_time": "18:00",
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "taller"
+    ],
+    "contact": "www.danzaenlaciudad.gov.co",
+    "confidence": "high",
+    "doubts": [],
+    "id": "taller-cali-es-cali-lo-demas-es-loma-18-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18092653832232787",
+        "permalink": "https://www.instagram.com/p/DfXW4_6kYzs/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-05T15:30:15+0000",
+        "flyer": "flyers/18092653832232787-2.webp",
+        "caption": "La danza sigue abriendo caminos para descubrir, experimentar y conectar con nuevas formas de expresión. 🍃\n\nEn noviembre y diciembre, La Casona de la Danza continúa siendo un punto de encuentro para quienes quieren acercarse al movimiento desde diferentes experiencias, explorar sus posibilidades y compartir alrededor del cuerpo y la creatividad. Cada espacio es una oportunidad para aprender algo nuevo y dejarse sorprender por lo que la danza tiene por contar. 💫\n\nAnímese a hacer parte de estas experiencias y encuentre en el movimiento una nueva forma de vivir el arte.\n\n📍 Deslice y conozca la programación que continúa durante noviembre.\n\n#CasonaDeLaDanza #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 11
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Muestra formativa del miocardio, el gaznate y unas cuantas bayas silvestres",
+    "event_type": "show",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "La Casona de la Danza",
+    "venue": "Museo Nacional",
+    "address": "Carrera 7 No. 28-66",
+    "area": null,
+    "date": "2026-11-18",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "miércoles",
+    "start_time": "17:00",
+    "end_time": "18:30",
+    "prices": [
+      {
+        "label": "Entrada libre",
+        "amount_cop": 0,
+        "condition": "hasta completar aforo"
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "muestra formativa"
+    ],
+    "contact": "www.danzaenlaciudad.gov.co",
+    "confidence": "high",
+    "doubts": [],
+    "id": "muestra-formativa-del-miocardio-el-gaznate-y-unas-18-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18154494292539250",
+        "permalink": "https://www.instagram.com/p/DfXTa6yEV46/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-05T15:00:09+0000",
+        "flyer": "flyers/18154494292539250-4.webp",
+        "caption": "Noviembre en La Casona de la Danza,es una invitación a descubrir nuevas posibilidades a través del cuerpo y el movimiento. 🍃\n\nDurante este mes, la programación reúne propuestas para aprender, compartir y dejarse llevar por distintas experiencias alrededor del movimiento. Un espacio para salir de la rutina, descubrir nuevas sensaciones y permitir que el cuerpo cuente sus propias historias. 💫\n\nRegálese un momento para explorar, crear y vivir la danza de otras maneras.\n\n📍 Deslice y conozca las actividades que tenemos preparadas para noviembre.\n\n#CasonaDeLaDanza #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 11
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Dos Costas en un Solo País",
     "event_type": "concert",
     "is_recurring": false,
@@ -18320,6 +19616,48 @@
       }
     ],
     "bar": true
+  },
+  {
+    "title": "Conversación teórico-práctica a ritmo de torbellino y merengue",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "merengue",
+      "otro"
+    ],
+    "organizer": "La Casona de la Danza",
+    "venue": "Corporación Universitaria CENDA - Sala Colombia de la Universidad INCCA de Colombia",
+    "address": "Avenida Carrera 14 No. 35-18",
+    "area": null,
+    "date": "2026-11-19",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "jueves",
+    "start_time": "10:00",
+    "end_time": "12:00",
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "conversación teórico-práctica"
+    ],
+    "contact": "www.danzaenlaciudad.gov.co",
+    "confidence": "high",
+    "doubts": [],
+    "id": "conversacion-teorico-practica-a-ritmo-de-19-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18154494292539250",
+        "permalink": "https://www.instagram.com/p/DfXTa6yEV46/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-05T15:00:09+0000",
+        "flyer": "flyers/18154494292539250-9.webp",
+        "caption": "Noviembre en La Casona de la Danza,es una invitación a descubrir nuevas posibilidades a través del cuerpo y el movimiento. 🍃\n\nDurante este mes, la programación reúne propuestas para aprender, compartir y dejarse llevar por distintas experiencias alrededor del movimiento. Un espacio para salir de la rutina, descubrir nuevas sensaciones y permitir que el cuerpo cuente sus propias historias. 💫\n\nRegálese un momento para explorar, crear y vivir la danza de otras maneras.\n\n📍 Deslice y conozca las actividades que tenemos preparadas para noviembre.\n\n#CasonaDeLaDanza #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 11
+      }
+    ],
+    "bar": false
   },
   {
     "title": "Jack and Jill",
@@ -18554,6 +19892,47 @@
         "caption": "NUESTRO LINE UP OFICIAL 2026 ✨\n\nrominavelarde.c \ncaterine.pasolatino \nnicolasc.pasolatino \nmanchoosorio \nbom_dance \ndanitello22 \npaulapopayancortes \nmateopopayancortes \njomberc \njhezua2 \ntibaduiza__ \nfredyysaraoficial \nandree.pintoo \nfrank.de.latorre \ncamilo_barretto",
         "preview": null,
         "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "VI Encuentro sobre las pedagogías danzarias entramados sensibles: cuerpos, saberes y pedagogías",
+    "event_type": "congress",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "La Casona de la Danza",
+    "venue": "La Casona de la Danza",
+    "address": "Carrera 1 No. 17-01",
+    "area": null,
+    "date": "2026-11-20",
+    "end_date": "2026-11-21",
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "08:00",
+    "end_time": "14:00",
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "encuentro de pedagogías danzarias"
+    ],
+    "contact": "www.danzaenlaciudad.gov.co",
+    "confidence": "high",
+    "doubts": [],
+    "id": "vi-encuentro-sobre-las-pedagogias-danzarias-20-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18154494292539250",
+        "permalink": "https://www.instagram.com/p/DfXTa6yEV46/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-05T15:00:09+0000",
+        "flyer": "flyers/18154494292539250-7.webp",
+        "caption": "Noviembre en La Casona de la Danza,es una invitación a descubrir nuevas posibilidades a través del cuerpo y el movimiento. 🍃\n\nDurante este mes, la programación reúne propuestas para aprender, compartir y dejarse llevar por distintas experiencias alrededor del movimiento. Un espacio para salir de la rutina, descubrir nuevas sensaciones y permitir que el cuerpo cuente sus propias historias. 💫\n\nRegálese un momento para explorar, crear y vivir la danza de otras maneras.\n\n📍 Deslice y conozca las actividades que tenemos preparadas para noviembre.\n\n#CasonaDeLaDanza #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 11
       }
     ],
     "bar": false
@@ -19047,6 +20426,226 @@
     "bar": false
   },
   {
+    "title": "Taller - En clave de casino: fundamentos para conectar, bailar en pareja y entrar en la rueda",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa cubana"
+    ],
+    "organizer": "La Casona de la Danza",
+    "venue": "La Casona de la Danza",
+    "address": "Cra 1 No. 17-01",
+    "area": null,
+    "date": "2026-11-23",
+    "end_date": "2026-11-27",
+    "sessions": [
+      {
+        "date": "2026-11-23",
+        "start_time": "14:00",
+        "end_time": "16:00"
+      },
+      {
+        "date": "2026-11-25",
+        "start_time": "14:00",
+        "end_time": "16:00"
+      },
+      {
+        "date": "2026-11-27",
+        "start_time": "14:00",
+        "end_time": "16:00"
+      }
+    ],
+    "weekday": "lunes",
+    "start_time": "14:00",
+    "end_time": "16:00",
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "taller de salsa casino",
+      "baile en pareja",
+      "rueda de casino"
+    ],
+    "contact": "www.danzaenlaciudad.gov.co",
+    "confidence": "high",
+    "doubts": [],
+    "id": "taller-en-clave-de-casino-fundamentos-para-23-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18154494292539250",
+        "permalink": "https://www.instagram.com/p/DfXTa6yEV46/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-05T15:00:09+0000",
+        "flyer": "flyers/18154494292539250-6.webp",
+        "caption": "Noviembre en La Casona de la Danza,es una invitación a descubrir nuevas posibilidades a través del cuerpo y el movimiento. 🍃\n\nDurante este mes, la programación reúne propuestas para aprender, compartir y dejarse llevar por distintas experiencias alrededor del movimiento. Un espacio para salir de la rutina, descubrir nuevas sensaciones y permitir que el cuerpo cuente sus propias historias. 💫\n\nRegálese un momento para explorar, crear y vivir la danza de otras maneras.\n\n📍 Deslice y conozca las actividades que tenemos preparadas para noviembre.\n\n#CasonaDeLaDanza #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 11
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Taller - Objetos como compañeros creativos",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "La Casona de la Danza",
+    "venue": "La Casona de la Danza",
+    "address": "Cra 1 No. 17-01",
+    "area": null,
+    "date": "2026-11-23",
+    "end_date": "2026-11-27",
+    "sessions": [
+      {
+        "date": "2026-11-23",
+        "start_time": "16:00",
+        "end_time": "18:00"
+      },
+      {
+        "date": "2026-11-25",
+        "start_time": "16:00",
+        "end_time": "18:00"
+      },
+      {
+        "date": "2026-11-27",
+        "start_time": "16:00",
+        "end_time": "18:00"
+      }
+    ],
+    "weekday": "lunes",
+    "start_time": "16:00",
+    "end_time": "18:00",
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "taller de creación en danza"
+    ],
+    "contact": "www.danzaenlaciudad.gov.co",
+    "confidence": "high",
+    "doubts": [],
+    "id": "taller-objetos-como-companeros-creativos-23-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18154494292539250",
+        "permalink": "https://www.instagram.com/p/DfXTa6yEV46/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-05T15:00:09+0000",
+        "flyer": "flyers/18154494292539250-8.webp",
+        "caption": "Noviembre en La Casona de la Danza,es una invitación a descubrir nuevas posibilidades a través del cuerpo y el movimiento. 🍃\n\nDurante este mes, la programación reúne propuestas para aprender, compartir y dejarse llevar por distintas experiencias alrededor del movimiento. Un espacio para salir de la rutina, descubrir nuevas sensaciones y permitir que el cuerpo cuente sus propias historias. 💫\n\nRegálese un momento para explorar, crear y vivir la danza de otras maneras.\n\n📍 Deslice y conozca las actividades que tenemos preparadas para noviembre.\n\n#CasonaDeLaDanza #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 11
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Taller ¡A mover la cintura, que llegó la sabrosura del merengue y lo tropical!",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "merengue"
+    ],
+    "organizer": "La Casona de la Danza",
+    "venue": "La Casona de la Danza",
+    "address": "Cra 1 No. 17-01",
+    "area": null,
+    "date": "2026-11-23",
+    "end_date": "2026-11-26",
+    "sessions": [
+      {
+        "date": "2026-11-23",
+        "start_time": "16:00",
+        "end_time": "18:00"
+      },
+      {
+        "date": "2026-11-26",
+        "start_time": "16:00",
+        "end_time": "18:00"
+      }
+    ],
+    "weekday": "lunes",
+    "start_time": "16:00",
+    "end_time": "18:00",
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "taller"
+    ],
+    "contact": "www.danzaenlaciudad.gov.co",
+    "confidence": "high",
+    "doubts": [],
+    "id": "taller-a-mover-la-cintura-que-llego-la-sabrosura-23-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18092653832232787",
+        "permalink": "https://www.instagram.com/p/DfXW4_6kYzs/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-05T15:30:15+0000",
+        "flyer": "flyers/18092653832232787-3.webp",
+        "caption": "La danza sigue abriendo caminos para descubrir, experimentar y conectar con nuevas formas de expresión. 🍃\n\nEn noviembre y diciembre, La Casona de la Danza continúa siendo un punto de encuentro para quienes quieren acercarse al movimiento desde diferentes experiencias, explorar sus posibilidades y compartir alrededor del cuerpo y la creatividad. Cada espacio es una oportunidad para aprender algo nuevo y dejarse sorprender por lo que la danza tiene por contar. 💫\n\nAnímese a hacer parte de estas experiencias y encuentre en el movimiento una nueva forma de vivir el arte.\n\n📍 Deslice y conozca la programación que continúa durante noviembre.\n\n#CasonaDeLaDanza #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 11
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Taller - Azúcar, tumbao y sabor",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "La Casona de la Danza",
+    "venue": "La Casona de la Danza",
+    "address": "Cra 1 No. 17-01",
+    "area": null,
+    "date": "2026-11-24",
+    "end_date": "2026-11-27",
+    "sessions": [
+      {
+        "date": "2026-11-24",
+        "start_time": "16:00",
+        "end_time": "18:00"
+      },
+      {
+        "date": "2026-11-27",
+        "start_time": "16:00",
+        "end_time": "18:00"
+      }
+    ],
+    "weekday": "martes",
+    "start_time": "16:00",
+    "end_time": "18:00",
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "taller"
+    ],
+    "contact": "www.danzaenlaciudad.gov.co",
+    "confidence": "high",
+    "doubts": [],
+    "id": "taller-azucar-tumbao-y-sabor-24-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18092653832232787",
+        "permalink": "https://www.instagram.com/p/DfXW4_6kYzs/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-05T15:30:15+0000",
+        "flyer": "flyers/18092653832232787-4.webp",
+        "caption": "La danza sigue abriendo caminos para descubrir, experimentar y conectar con nuevas formas de expresión. 🍃\n\nEn noviembre y diciembre, La Casona de la Danza continúa siendo un punto de encuentro para quienes quieren acercarse al movimiento desde diferentes experiencias, explorar sus posibilidades y compartir alrededor del cuerpo y la creatividad. Cada espacio es una oportunidad para aprender algo nuevo y dejarse sorprender por lo que la danza tiene por contar. 💫\n\nAnímese a hacer parte de estas experiencias y encuentre en el movimiento una nueva forma de vivir el arte.\n\n📍 Deslice y conozca la programación que continúa durante noviembre.\n\n#CasonaDeLaDanza #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 11
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "La Máquina del Tiempo",
     "event_type": "party",
     "is_recurring": false,
@@ -19093,6 +20692,47 @@
       }
     ],
     "bar": true
+  },
+  {
+    "title": "Clase maestra Danza, pausa y pasión",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "La Casona de la Danza",
+    "venue": "La Casona de la Danza",
+    "address": "Cra 1 No. 17-01",
+    "area": null,
+    "date": "2026-11-25",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "miércoles",
+    "start_time": "10:00",
+    "end_time": "12:00",
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "clase maestra"
+    ],
+    "contact": "www.danzaenlaciudad.gov.co",
+    "confidence": "high",
+    "doubts": [],
+    "id": "clase-maestra-danza-pausa-y-pasion-25-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18092653832232787",
+        "permalink": "https://www.instagram.com/p/DfXW4_6kYzs/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-05T15:30:15+0000",
+        "flyer": "flyers/18092653832232787-5.webp",
+        "caption": "La danza sigue abriendo caminos para descubrir, experimentar y conectar con nuevas formas de expresión. 🍃\n\nEn noviembre y diciembre, La Casona de la Danza continúa siendo un punto de encuentro para quienes quieren acercarse al movimiento desde diferentes experiencias, explorar sus posibilidades y compartir alrededor del cuerpo y la creatividad. Cada espacio es una oportunidad para aprender algo nuevo y dejarse sorprender por lo que la danza tiene por contar. 💫\n\nAnímese a hacer parte de estas experiencias y encuentre en el movimiento una nueva forma de vivir el arte.\n\n📍 Deslice y conozca la programación que continúa durante noviembre.\n\n#CasonaDeLaDanza #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 11
+      }
+    ],
+    "bar": false
   },
   {
     "title": "Dos Costas en un Solo País",
@@ -19142,6 +20782,53 @@
       }
     ],
     "bar": true
+  },
+  {
+    "title": "Muestra educativa Adiós Bogotá",
+    "event_type": "show",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "La Casona de la Danza",
+    "venue": "Museo Nacional",
+    "address": "Carrera 7 No. 28-66",
+    "area": null,
+    "date": "2026-11-28",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "14:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Entrada libre",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "muestra educativa"
+    ],
+    "contact": "www.danzaenlaciudad.gov.co",
+    "confidence": "high",
+    "doubts": [],
+    "id": "muestra-educativa-adios-bogota-28-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18092653832232787",
+        "permalink": "https://www.instagram.com/p/DfXW4_6kYzs/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-05T15:30:15+0000",
+        "flyer": "flyers/18092653832232787-6.webp",
+        "caption": "La danza sigue abriendo caminos para descubrir, experimentar y conectar con nuevas formas de expresión. 🍃\n\nEn noviembre y diciembre, La Casona de la Danza continúa siendo un punto de encuentro para quienes quieren acercarse al movimiento desde diferentes experiencias, explorar sus posibilidades y compartir alrededor del cuerpo y la creatividad. Cada espacio es una oportunidad para aprender algo nuevo y dejarse sorprender por lo que la danza tiene por contar. 💫\n\nAnímese a hacer parte de estas experiencias y encuentre en el movimiento una nueva forma de vivir el arte.\n\n📍 Deslice y conozca la programación que continúa durante noviembre.\n\n#CasonaDeLaDanza #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 11
+      }
+    ],
+    "bar": false
   },
   {
     "title": "Latin Sessions con Trío Bilonguero",
@@ -19194,6 +20881,135 @@
       }
     ],
     "bar": true
+  },
+  {
+    "title": "Muestra en el Museo Colonial",
+    "event_type": "show",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "La Casona de la Danza",
+    "venue": "Museo Colonial",
+    "address": "Carrera 6 No. 9-77",
+    "area": null,
+    "date": "2026-11-29",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "12:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Entrada libre",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "muestra"
+    ],
+    "contact": "www.danzaenlaciudad.gov.co",
+    "confidence": "high",
+    "doubts": [],
+    "id": "muestra-en-el-museo-colonial-29-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18092653832232787",
+        "permalink": "https://www.instagram.com/p/DfXW4_6kYzs/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-05T15:30:15+0000",
+        "flyer": "flyers/18092653832232787-7.webp",
+        "caption": "La danza sigue abriendo caminos para descubrir, experimentar y conectar con nuevas formas de expresión. 🍃\n\nEn noviembre y diciembre, La Casona de la Danza continúa siendo un punto de encuentro para quienes quieren acercarse al movimiento desde diferentes experiencias, explorar sus posibilidades y compartir alrededor del cuerpo y la creatividad. Cada espacio es una oportunidad para aprender algo nuevo y dejarse sorprender por lo que la danza tiene por contar. 💫\n\nAnímese a hacer parte de estas experiencias y encuentre en el movimiento una nueva forma de vivir el arte.\n\n📍 Deslice y conozca la programación que continúa durante noviembre.\n\n#CasonaDeLaDanza #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 11
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Taller - Las fábulas de Tamalameque",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "La Casona de la Danza",
+    "venue": "La Casona de la Danza",
+    "address": "Cra 1 No. 17-01",
+    "area": null,
+    "date": "2026-12-03",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "jueves",
+    "start_time": "18:00",
+    "end_time": "20:00",
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "taller"
+    ],
+    "contact": "www.danzaenlaciudad.gov.co",
+    "confidence": "high",
+    "doubts": [],
+    "id": "taller-las-fabulas-de-tamalameque-3-dic",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18092653832232787",
+        "permalink": "https://www.instagram.com/p/DfXW4_6kYzs/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-05T15:30:15+0000",
+        "flyer": "flyers/18092653832232787-8.webp",
+        "caption": "La danza sigue abriendo caminos para descubrir, experimentar y conectar con nuevas formas de expresión. 🍃\n\nEn noviembre y diciembre, La Casona de la Danza continúa siendo un punto de encuentro para quienes quieren acercarse al movimiento desde diferentes experiencias, explorar sus posibilidades y compartir alrededor del cuerpo y la creatividad. Cada espacio es una oportunidad para aprender algo nuevo y dejarse sorprender por lo que la danza tiene por contar. 💫\n\nAnímese a hacer parte de estas experiencias y encuentre en el movimiento una nueva forma de vivir el arte.\n\n📍 Deslice y conozca la programación que continúa durante noviembre.\n\n#CasonaDeLaDanza #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 11
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "VI Festival de Velitas y Tambores 2026",
+    "event_type": "festival",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "La Casona de la Danza",
+    "venue": "La Casona de la Danza",
+    "address": "Cra 1 No. 17-01",
+    "area": null,
+    "date": "2026-12-04",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "13:00",
+    "end_time": "20:00",
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "festival"
+    ],
+    "contact": "www.danzaenlaciudad.gov.co",
+    "confidence": "high",
+    "doubts": [],
+    "id": "vi-festival-de-velitas-y-tambores-2026-4-dic",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18092653832232787",
+        "permalink": "https://www.instagram.com/p/DfXW4_6kYzs/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-05T15:30:15+0000",
+        "flyer": "flyers/18092653832232787-9.webp",
+        "caption": "La danza sigue abriendo caminos para descubrir, experimentar y conectar con nuevas formas de expresión. 🍃\n\nEn noviembre y diciembre, La Casona de la Danza continúa siendo un punto de encuentro para quienes quieren acercarse al movimiento desde diferentes experiencias, explorar sus posibilidades y compartir alrededor del cuerpo y la creatividad. Cada espacio es una oportunidad para aprender algo nuevo y dejarse sorprender por lo que la danza tiene por contar. 💫\n\nAnímese a hacer parte de estas experiencias y encuentre en el movimiento una nueva forma de vivir el arte.\n\n📍 Deslice y conozca la programación que continúa durante noviembre.\n\n#CasonaDeLaDanza #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 11
+      }
+    ],
+    "bar": false
   },
   {
     "title": "Elysium Madyum Gran Aniversario 2026",
