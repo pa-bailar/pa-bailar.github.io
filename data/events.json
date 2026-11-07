@@ -17802,6 +17802,16 @@
     "account": "bogotadanceclub",
     "media": [
       {
+        "post_id": "18362178841216007",
+        "permalink": "https://www.instagram.com/reel/Dfa_MGLO815/",
+        "media_type": "VIDEO",
+        "published": "2026-11-07T01:21:42+0000",
+        "flyer": "flyers/18362178841216007-0.webp",
+        "caption": "🕷️ Si Peter Parker hubiera nacido en Bogotá, con ese flow definitivamente te lo habrías encontrado en PARCHE BAILADOR de Bogotá Dance Club 💃🏻🕺🏻🔥\n\nY tú no te puedes quedar por fuera. ¡Nos vemos este sábado! 👀\n\n📅 Sábado 7 de noviembre\n🕒 3:00 p. m. a 10:00 p. m.\n🎟️ Preventa: $25.000 | Puerta: $30.000\n🥤 Incluye 1 bebida + clase de baile pre-fiesta.\n\n¡Alista los pasos y nos vemos en la pista! 🔥\n\n#planesenbogotá #spiderman3 #spiderman #baile #salsa",
+        "preview": null,
+        "slides": null
+      },
+      {
         "post_id": "18122937580916931",
         "permalink": "https://www.instagram.com/reel/DfYaXZ6DTPr/",
         "media_type": "VIDEO",
@@ -18562,6 +18572,16 @@
     "account": "ebi_dancecompany",
     "media": [
       {
+        "post_id": "18031643312693164",
+        "permalink": "https://www.instagram.com/p/DfarBt2hnZL/",
+        "media_type": "IMAGE",
+        "published": "2026-11-06T22:24:11+0000",
+        "flyer": "flyers/18031643312693164-0.webp",
+        "caption": "Show 12 – Solista Femenino Abierto 💃🔥\nUna mujer que llega a la pista para demostrar su talento, personalidad y pasión por la danza.\n\n#solista #timba #rumbacubana #aniversario #ladys",
+        "preview": null,
+        "slides": null
+      },
+      {
         "post_id": "18037025822667584",
         "permalink": "https://www.instagram.com/p/DfQovl1t2Z_/",
         "media_type": "IMAGE",
@@ -18834,6 +18854,370 @@
         "flyer": "flyers/18339272863279718-0.webp",
         "caption": "❤️🔥 ¡ESTE DOMINGO LA BACHATA SE BAILA EN PAREJA! 🔥\n\n¿Quieres mejorar tu conexión, aprender nuevos movimientos y disfrutar del ritmo de la bachata? 💃🕺\n\nTenemos una clase especial con Luis & Laura, donde aprenderás, practicarás y vivirás la magia de bailar en pareja. ✨\n\n📅 Domingo 8 de noviembre\n🕙 10:00 a. m.\n🔥 Clase especial de Bachata en pareja.\n\nNo importa si estás comenzando o quieres perfeccionar tu baile, ¡esta experiencia es para ti!\n\n📲 ¡Reserva tu espacio ahora! Escríbenos por mensaje directo la palabra BACHATA y prepárate para bailar.\n\n⭐ ¡Te esperamos en Show Stars!",
         "preview": "previews/18339272863279718-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Las Madres de JAMHARRED - XIX Festival Danza en la Ciudad",
+    "event_type": "show",
+    "is_recurring": false,
+    "styles": [
+      "afro"
+    ],
+    "organizer": "Fundación Integrando Fronteras",
+    "venue": "Escenario Móvil Armando de la Torre",
+    "address": "Parque Metropolitano Biblioteca El Tintal Calle 6d No. 86 13",
+    "area": "Kennedy",
+    "date": "2026-11-08",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "11:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Proyecto Curricular Arte Danzario ASAB Estudiantes Práctica Interpretativa de Danza Contemporánea"
+    ],
+    "activities": [
+      "presentación de danza contemporánea"
+    ],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [
+      "sin precio",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "las-madres-de-jamharred-xix-festival-danza-en-la-8-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18148446394581872",
+        "permalink": "https://www.instagram.com/p/DfaM4XhkbEF/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-06T18:00:04+0000",
+        "flyer": "flyers/18148446394581872-0.webp",
+        "caption": "El movimiento también es una forma de contar historias, conectar culturas y reconocer aquello que nos une. 💃✨\nEn el XIX Festival Danza en la Ciudad, diferentes agrupaciones y artistas se encuentran para compartir propuestas que exploran la memoria, las tradiciones, las identidades y las posibilidades del cuerpo en escena.\nDesde la danza contemporánea y los ritmos del bullerengue hasta las expresiones festivas y las reflexiones sobre la memoria de las madres de las víctimas de los mal llamados falsos positivos, estas presentaciones invitan a descubrir cómo el cuerpo también puede narrar, recordar y transformar.\n\n💃 Estudio de Movimiento: Saga Cándida y La Salsa Vive.\n🎶 Sentires del Bullerengue: SonArte – UNIMINUTO Virtual.\n🎭 Ancestros: Grupo Ancestros – Universidad de La Sabana.\n🩰 Las Madres de JAMHARRED: Proyecto Curricular Arte Danzario – Universidad Distrital.\n\n📅 8 de noviembre 🕖11 a.m.\n📍 Escenario Móvil Armando de la Torre\n📌Parque Metropolitano Biblioteca El Tintal\nCalle 6D No. 86-13\n\n#DanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 4
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Ancestros - XIX Festival Danza en la Ciudad",
+    "event_type": "show",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "Fundación Integrando Fronteras",
+    "venue": "Escenario Móvil Armando de la Torre",
+    "address": "Parque Metropolitano Biblioteca El Tintal Calle 6d No. 86 13",
+    "area": "Kennedy",
+    "date": "2026-11-08",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "11:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Grupo Ancestros Universidad de La Sabana"
+    ],
+    "activities": [
+      "presentación de danza folclórica"
+    ],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [
+      "sin precio",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "ancestros-xix-festival-danza-en-la-ciudad-8-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18148446394581872",
+        "permalink": "https://www.instagram.com/p/DfaM4XhkbEF/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-06T18:00:04+0000",
+        "flyer": "flyers/18148446394581872-1.webp",
+        "caption": "El movimiento también es una forma de contar historias, conectar culturas y reconocer aquello que nos une. 💃✨\nEn el XIX Festival Danza en la Ciudad, diferentes agrupaciones y artistas se encuentran para compartir propuestas que exploran la memoria, las tradiciones, las identidades y las posibilidades del cuerpo en escena.\nDesde la danza contemporánea y los ritmos del bullerengue hasta las expresiones festivas y las reflexiones sobre la memoria de las madres de las víctimas de los mal llamados falsos positivos, estas presentaciones invitan a descubrir cómo el cuerpo también puede narrar, recordar y transformar.\n\n💃 Estudio de Movimiento: Saga Cándida y La Salsa Vive.\n🎶 Sentires del Bullerengue: SonArte – UNIMINUTO Virtual.\n🎭 Ancestros: Grupo Ancestros – Universidad de La Sabana.\n🩰 Las Madres de JAMHARRED: Proyecto Curricular Arte Danzario – Universidad Distrital.\n\n📅 8 de noviembre 🕖11 a.m.\n📍 Escenario Móvil Armando de la Torre\n📌Parque Metropolitano Biblioteca El Tintal\nCalle 6D No. 86-13\n\n#DanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 4
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Sentires del Bullerengue - XIX Festival Danza en la Ciudad",
+    "event_type": "show",
+    "is_recurring": false,
+    "styles": [
+      "afro"
+    ],
+    "organizer": "Fundación Integrando Fronteras",
+    "venue": "Escenario Móvil Armando de la Torre",
+    "address": "Parque Metropolitano Biblioteca El Tintal Calle 6d No. 86 13",
+    "area": "Kennedy",
+    "date": "2026-11-08",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "11:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "SonArte – UNIMINUTO Virtual"
+    ],
+    "activities": [
+      "presentación de bullerengue"
+    ],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [
+      "sin precio",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "sentires-del-bullerengue-xix-festival-danza-en-la-8-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18148446394581872",
+        "permalink": "https://www.instagram.com/p/DfaM4XhkbEF/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-06T18:00:04+0000",
+        "flyer": "flyers/18148446394581872-2.webp",
+        "caption": "El movimiento también es una forma de contar historias, conectar culturas y reconocer aquello que nos une. 💃✨\nEn el XIX Festival Danza en la Ciudad, diferentes agrupaciones y artistas se encuentran para compartir propuestas que exploran la memoria, las tradiciones, las identidades y las posibilidades del cuerpo en escena.\nDesde la danza contemporánea y los ritmos del bullerengue hasta las expresiones festivas y las reflexiones sobre la memoria de las madres de las víctimas de los mal llamados falsos positivos, estas presentaciones invitan a descubrir cómo el cuerpo también puede narrar, recordar y transformar.\n\n💃 Estudio de Movimiento: Saga Cándida y La Salsa Vive.\n🎶 Sentires del Bullerengue: SonArte – UNIMINUTO Virtual.\n🎭 Ancestros: Grupo Ancestros – Universidad de La Sabana.\n🩰 Las Madres de JAMHARRED: Proyecto Curricular Arte Danzario – Universidad Distrital.\n\n📅 8 de noviembre 🕖11 a.m.\n📍 Escenario Móvil Armando de la Torre\n📌Parque Metropolitano Biblioteca El Tintal\nCalle 6D No. 86-13\n\n#DanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 4
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Estudio de Movimiento: Saga Cándida y La Salsa Vive - XIX Festival Danza en la Ciudad",
+    "event_type": "show",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "afro"
+    ],
+    "organizer": "Fundación Integrando Fronteras",
+    "venue": "Escenario Móvil Armando de la Torre",
+    "address": "Parque Metropolitano Biblioteca El Tintal Calle 6d No. 86 13",
+    "area": "Kennedy",
+    "date": "2026-11-08",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "11:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Grupos Artísticos Institucionales: Danza Contemporánea y Grupo Salsa - Universidad Nacional de Colombia"
+    ],
+    "activities": [
+      "presentación de danza contemporánea",
+      "presentación de salsa"
+    ],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [
+      "sin precio",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "estudio-de-movimiento-saga-candida-y-la-salsa-vive-8-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18148446394581872",
+        "permalink": "https://www.instagram.com/p/DfaM4XhkbEF/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-06T18:00:04+0000",
+        "flyer": "flyers/18148446394581872-3.webp",
+        "caption": "El movimiento también es una forma de contar historias, conectar culturas y reconocer aquello que nos une. 💃✨\nEn el XIX Festival Danza en la Ciudad, diferentes agrupaciones y artistas se encuentran para compartir propuestas que exploran la memoria, las tradiciones, las identidades y las posibilidades del cuerpo en escena.\nDesde la danza contemporánea y los ritmos del bullerengue hasta las expresiones festivas y las reflexiones sobre la memoria de las madres de las víctimas de los mal llamados falsos positivos, estas presentaciones invitan a descubrir cómo el cuerpo también puede narrar, recordar y transformar.\n\n💃 Estudio de Movimiento: Saga Cándida y La Salsa Vive.\n🎶 Sentires del Bullerengue: SonArte – UNIMINUTO Virtual.\n🎭 Ancestros: Grupo Ancestros – Universidad de La Sabana.\n🩰 Las Madres de JAMHARRED: Proyecto Curricular Arte Danzario – Universidad Distrital.\n\n📅 8 de noviembre 🕖11 a.m.\n📍 Escenario Móvil Armando de la Torre\n📌Parque Metropolitano Biblioteca El Tintal\nCalle 6D No. 86-13\n\n#DanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 4
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "El sol seguirá subiendo, la sombra se irá corriendo, poco después, volverá la tarde - El Pez Dorado (XIX Festival Danza en la Ciudad)",
+    "event_type": "show",
+    "is_recurring": false,
+    "styles": [],
+    "organizer": "Fundación Integrando Fronteras",
+    "venue": "La Futilería",
+    "address": "Calle 59 No. 17-48",
+    "area": null,
+    "date": "2026-11-08",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "14:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "El Pez Dorado"
+    ],
+    "activities": [
+      "experiencia escénica",
+      "danza contemporánea"
+    ],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [
+      "sin precio"
+    ],
+    "id": "el-sol-seguira-subiendo-la-sombra-se-ira-corriendo-8-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18121094053958096",
+        "permalink": "https://www.instagram.com/p/DfZyC_nRx6e/",
+        "media_type": "IMAGE",
+        "published": "2026-11-06T14:06:26+0000",
+        "flyer": "flyers/18121094053958096-0.webp",
+        "caption": "La luz, el tiempo y el movimiento se encuentran en una experiencia escénica que invita a contemplar la belleza de lo efímero. ✨\n\nDesde Ecuador, El Pez Dorado presenta ‘El sol seguirá subiendo, la sombra se irá corriendo, poco después, volverá la tarde’, una creación íntima en la que dos intérpretes exploran los ciclos de la permanencia y la fugacidad, transformando un espacio reducido en un universo de posibilidades.\n\nA través del gesto, la música, los objetos, la tecnología y el juego con la luz, las artistas construyen un paisaje cambiante que reflexiona sobre la fragilidad del cuerpo y la importancia de la presencia del otro.\n\nUna propuesta de danza contemporánea para detenerse, observar y descubrir cómo los pequeños detalles también pueden convertirse en grandes experiencias. 💫\n\n📅 8 de noviembre 🕖2 p.m. y 4 p.m. \n📍La Futilería \n📌 Calle 59 No. 17-48 \n\n#DanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Filarmónica en movimiento",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "urbano"
+    ],
+    "organizer": "Orquesta Filarmónica de Bogotá",
+    "venue": "Teatro Municipal Jorge Eliécer Gaitán",
+    "address": "Carrera 7 No. 22-47",
+    "area": null,
+    "date": "2026-11-08",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "15:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Orquesta Filarmónica de Mujeres",
+      "D-Thre3",
+      "ANVAR"
+    ],
+    "activities": [
+      "presentación artística",
+      "música sinfónica y danza urbana"
+    ],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [
+      "sin precio"
+    ],
+    "id": "filarmonica-en-movimiento-8-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18136329784735421",
+        "permalink": "https://www.instagram.com/p/DfZytLDRskj/",
+        "media_type": "IMAGE",
+        "published": "2026-11-06T17:00:04+0000",
+        "flyer": "flyers/18136329784735421-0.webp",
+        "caption": "Filarmónica en movimiento presenta una propuesta artística que reúne el talento de la Orquesta Filarmónica de Mujeres, D-Thre3 y ANVAR, un encuentro en el que la música sinfónica y la danza urbana dialogan a través del movimiento y la creación colectiva.\n\nEsta presentación celebra el estreno de los ganadores de la Invitación Cultural Filarmónica en Movimiento de la OFB, una apuesta que conecta diferentes lenguajes artísticos y reconoce el talento de agrupaciones que, desde sus trayectorias, enriquecen la escena cultural de Bogotá.\n\nUna experiencia para descubrir nuevas posibilidades de encuentro entre la música y la danza, y disfrutar de cómo distintos ritmos y expresiones construyen un mismo escenario. ✨\n\n📅 8 de noviembre 🕖3 p.m.\n📍 Teatro Municipal Jorge Eliécer Gaitán\n📌 Carrera 7 No. 22-47\n\n#DanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Jolgorio pa'l Chiras",
+    "event_type": "show",
+    "is_recurring": false,
+    "styles": [],
+    "organizer": "Sas Bequia Danza",
+    "venue": "Auditorio Facultad de Artes – Universidad Javeriana",
+    "address": "Calle 40B No. 5-37",
+    "area": null,
+    "date": "2026-11-08",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "18:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "obra de danza"
+    ],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [
+      "sin precio"
+    ],
+    "id": "jolgorio-pa-l-chiras-8-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18116322002148668",
+        "permalink": "https://www.instagram.com/p/DfZyVl1RSZD/",
+        "media_type": "IMAGE",
+        "published": "2026-11-06T16:00:04+0000",
+        "flyer": "flyers/18116322002148668-0.webp",
+        "caption": "‘Jolgorio pa’l Chiras’, de la compañía Sas Bequia Danza, iniciativa ganadora de la Invitación Cultural: Bogotá danza: la ciudad en movimiento, de la SCRD, llega al XIX Festival Danza en la Ciudad con una propuesta que explora la figura del diablo en las tradiciones festivas colombianas y latinoamericanas.\n\nA través del movimiento, la ritualidad y los imaginarios populares, la obra presenta al diablo como un personaje irreverente, festivo y transformador, que reúne lo sagrado y lo profano en una celebración de los sincretismos culturales y la memoria de los territorios.\n\nDesde la investigación corporal y la experimentación con los saberes culturales, Sas Bequia Danza construye un lenguaje propio que invita a reconocer la riqueza de nuestras tradiciones y la fuerza de la fiesta como expresión de la vida colectiva.\n\n📅 8 de noviembre 🕖6 p.m.\n📍 Auditorio Facultad de Artes – Universidad Javeriana\n📌 Calle 40B No. 5-37\n\n#DanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "VACÍO",
+    "event_type": "show",
+    "is_recurring": false,
+    "styles": [],
+    "organizer": "Laboratorio de Teatralidades Expandidas – ARTEFACTUM 2026",
+    "venue": "Cinemateca de Bogotá",
+    "address": "Carrera 3 No. 19-10",
+    "area": "Centro",
+    "date": "2026-11-10",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "martes",
+    "start_time": "19:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Jimmy Rangel"
+    ],
+    "activities": [
+      "creación transdisciplinar",
+      "danza",
+      "teatro y cine expandido"
+    ],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [
+      "sin precio"
+    ],
+    "id": "vacio-10-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18108678101198957",
+        "permalink": "https://www.instagram.com/p/DfZyKlHRq2S/",
+        "media_type": "IMAGE",
+        "published": "2026-11-06T15:00:03+0000",
+        "flyer": "flyers/18108678101198957-0.webp",
+        "caption": "¿Qué sucede cuando el cuerpo, la memoria y la imagen se encuentran para contar una historia? 🎭🎬\n\n‘VACÍO’, una creación del Laboratorio de Teatralidades Expandidas – ARTEFACTUM 2026, propone una experiencia que entrelaza danza, teatro y cine expandido para explorar las relaciones entre la memoria familiar, el encierro y las realidades que condicionan la vida de sus personajes.\n\nA través de una narrativa audiovisual y corporal, 16 artistas construyen un universo en el que los espacios cotidianos, los rituales y los cuerpos en movimiento se convierten en vehículos para explorar las memorias, las represiones y las posibilidades de transformación.\n\nBajo la dirección y orientación de Jimmy Rangel, esta creación transdisciplinar invita a descubrir otras formas de narrar y experimentar las artes escénicas, expandiendo los límites entre el cuerpo, la imagen y el espacio. ✨\n\n📅 10 de noviembre 🕖7 p.m. \n📍 Cinemateca de Bogotá – Sala Capital \n📌 Carrera 3 No. 19-10\n\n#DanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
+        "preview": null,
         "slides": null
       }
     ],
@@ -19521,6 +19905,49 @@
         "flyer": "flyers/18238530307321402-0.webp",
         "caption": "🔥¡ORO NEGRO CON MÁS AFINQUE!🎶\n\nEste sábado 14 de noviembre, nos tomamos la pista de misterafinquesalsa con una noche cargada de sabor, gozadera y mucha sabrosura.\n\n🥁 Percusión en vivo\n🎶 Melodía selecta para los verdaderos amantes de la salsa.\n🥃 Los mejores licores para brindar como se debe.\n\nPrepárate para sentir el golpe de la campana, el sabor del cuero y la magia de una noche hecha para los que llevan la salsa en la sangre. 🔥\n\n📍 Discoteca Mr. Afinque\n🎟️ Cover: $10.000\n\n¡Nos vemos en la pista! Porque cuando se junta Oro Negro con Mr. Afinque… ¡el afinque se siente de verdad!🔥\n\n#ponteon",
         "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Tardeo Salsero",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "bulevarsalsabar",
+    "venue": "Bulevar Salsa Bar",
+    "address": "Carrera 13 # 82 - 37",
+    "area": "Zona T",
+    "date": "2026-11-14",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "13:00",
+    "end_time": "18:00",
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "tardeo salsero"
+    ],
+    "contact": "WhatsApp 3124245746",
+    "confidence": "high",
+    "doubts": [
+      "sin precio"
+    ],
+    "id": "tardeo-salsero-14-nov",
+    "account": "bulevarsalsabar",
+    "media": [
+      {
+        "post_id": "18135116314799246",
+        "permalink": "https://www.instagram.com/reel/DfZ6Kl8xdsi/",
+        "media_type": "VIDEO",
+        "published": "2026-11-06T15:19:13+0000",
+        "flyer": "flyers/18135116314799246-0.webp",
+        "caption": "El Tardeo salsero de Bulevar 🌇😎🍹\n\nSábado 14 noviembre\nDesde la 1PM hasta las 6PM\n📍Carrera 13 # 82 - 37 ( Zona T )",
+        "preview": "previews/18135116314799246-0.mp4",
         "slides": null
       }
     ],
@@ -21443,7 +21870,28 @@
     "weekday": "sábado",
     "start_time": null,
     "end_time": null,
-    "prices": [],
+    "prices": [
+      {
+        "label": "Preventa Comunidad Madyum",
+        "amount_cop": 25000,
+        "condition": "hasta el 25 de noviembre"
+      },
+      {
+        "label": "Preventa Precio General",
+        "amount_cop": 30000,
+        "condition": "hasta el 25 de noviembre"
+      },
+      {
+        "label": "Precio Full Comunidad Madyum",
+        "amount_cop": 35000,
+        "condition": "después del 25 de noviembre"
+      },
+      {
+        "label": "Precio Full General",
+        "amount_cop": 40000,
+        "condition": "después del 25 de noviembre"
+      }
+    ],
     "artists": [
       "Team Bachata Ladies"
     ],
@@ -21480,6 +21928,16 @@
         "published": "2026-09-15T23:44:00+0000",
         "flyer": "flyers/18104347286615308.webp",
         "caption": "⚜️ ELYSYUM MADYUM ⚜️\n\n05 de DICIEMBRE, una noche sin precedentes. Llega después de 5 años nuestro gran ANIVERSARIO MADYUM. Luego de múltiples experiencias, crecimiento, aprendizajes, adversidades, construcción de personas, procesos y evolución, nos reuniremos en una noche llena de celebración, baile, disfrute, manifestación y gran muestra de estos años de arduo trabajo. \n\nNos vemos pronto 🎤\n\n#aniversario #clausura #salsa #bachata #escueladebaile",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "17976308565150111",
+        "permalink": "https://www.instagram.com/reel/DfZ1KnoN_KV/",
+        "media_type": "VIDEO",
+        "published": "2026-11-06T14:39:31+0000",
+        "flyer": "flyers/17976308565150111-0.webp",
+        "caption": "🎫 PRECIOS ANIVERSARIO 🎫\n\nHacemos lanzamiento oficial de precios preventa y venta para nuestro aniversario 2026 \n\nTEN EN CUENTA que nuestra preventa va hasta el 25 de noviembre. Aprovecha YA 🥳🍾\n\n#precios #taquilla #aniversario #boletas #academiadebaile",
         "preview": null,
         "slides": null
       },
