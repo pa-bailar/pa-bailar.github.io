@@ -15173,7 +15173,7 @@
     ],
     "organizer": "Ritmo Moderno",
     "venue": "Ritmo Moderno",
-    "address": "Cra 4 # 17-39",
+    "address": "Cra 4 #17-39",
     "area": "Centro",
     "date": "2026-11-04",
     "end_date": null,
@@ -15183,22 +15183,18 @@
     "end_time": null,
     "prices": [
       {
-        "label": "Entrada",
+        "label": "Entrada Libre",
         "amount_cop": 0,
         "condition": null
       }
     ],
-    "artists": [
-      "4 DJs seleccionados"
-    ],
+    "artists": [],
     "activities": [
-      "sets individuales de 60 mins",
-      "back to backs"
+      "sets de djs y selectores"
     ],
-    "contact": "@ritmomoderno",
+    "contact": null,
     "confidence": "high",
     "doubts": [
-      "sin hora de inicio",
       "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
     ],
     "id": "tornas-abiertas-de-rap-y-salsa-4-nov",
@@ -15210,7 +15206,7 @@
         "media_type": "CAROUSEL_ALBUM",
         "published": "2026-11-03T19:40:58+0000",
         "flyer": "flyers/18034385192676330-1.webp",
-        "caption": "ESTA SEMANA ES EN EL CENTRO EN RITMO 💥💥💥\n\nMiércoles 4 💃📻🕺🏽\nTORNAS ABIERTAS DE RAP Y SALSA!!!\nInscripciones al dm - tendremos 4 cupos para djs y selectores que quieran sonar sus colecciones de rap y salsa en las Tornas de Ritmo en sets de 1 hora y back2backs! \nENTRADA LIBRE POLAS A 5k Y COCTELES 2x1 toda la noche!🥂🥂🥂\n\nJuernes 5! 🌴🌴🌴\nKEA MODERNO 🔥🔥🔥 KEA kearestbar marcó una época importante en la rumba diferente de Bogotá y ha sido un referente para lo que es hoy Ritmo!! Sonaremos junto a good.javito la mente detrás de KEA aka JOINT TRAVOLTA música icónica de la época mas el Ritmo style junto a Oswaldo Sesto y sagauno  bailoteo y remenbranzas para activar el baile!! Si vivió esta época lxs esperamos y si no estuvo los esperamos para que conozcan el meke!\nENTRADA LIBRE HASTA LAS 10pm / 10k dsps \nCOCTELES 2x1 toda la noche\n\nViernes 6 🔥🫦🔥RITMO PRESENTA:\nSANTA GROOVES NOCHE DE JEFAS CON selva____ oojitooos bitacoradecalixta y aparición especial de cero39_oficial \nVuelven las curadurías makiavelikas de Ritmo reuniendo a tres de las mujeres que mandan la vida nocturna de la capi en una fiesta  sonando dark wave, cumbias, perreo y la sorpresa con el infame Cero39!!\nEntrada libre con boleta para los asistentes al estreno de la peli KMKZ de dantacine \nCOVER GENERAL 10k hasta 10pm / 20k dsps\nReservas al 3023066868\n\nSabado 7 💃🍑💃\nI ❤️ SALSA Y PERREO 🐕 \nnoche con djs misterio sonando los temas calientes para quemar la pista!! 🪩🪩🪩\nCocteles 2x1 hasta las 10 pm!\nNo cover hasta las 10 - 10k después!!\n\nNO HAY PIERDE EN EL CENTRO EN RITMO 🥁🫦🕺🏽💃🌴",
+        "caption": "ESTA SEMANA ES EN EL CENTRO EN RITMO 💥💥💥\n\nMiércoles 4 💃📻🕺🏽\nTORNAS ABIERTAS DE RAP Y SALSA!!!\nInscripciones al dm - tendremos 4 cupos para djs y selectores que quieran sonar sus colecciones de rap y salsa en las Tornas de Ritmo en sets de 1 hora y back2backs! \nENTRADA LIBRE POLAS A 5k Y COCTELES 2x1 toda la noche!🥂🥂🥂\n\nJuernes 5! 🌴🌴🌴\nKEA MODERNO 🔥🔥🔥 KEA kearestbar marcó una época importante en la rumba diferente de Bogotá y ha sido un referente para lo que es hoy Ritmo!! Sonaremos junto a good.javito la mente detrás de KEA aka JOINT TRAVOLTA música icónica de la época mas el Ritmo style junto a Oswaldo Sesto y sagauno  bailoteo y remenbranzas para activar el baile!! Si vivió esta época lxs esperamos y si no estuvo los esperamos para que conozcan el meke!\nENTRADA LIBRE HASTA LAS 10pm / 10k dsps \nCOCTELES 2x1 toda la noche\n\nViernes 6 🔥🫦🔥RITMO PRESENTA:\nQSANTA GROOVES NOCHE DE JEFAS CON selva____ oojitooos bitacoradecalixta y aparición especial de cero39_oficial \nVuelven las curadurías makiavelikas de Ritmo reuniendo a tres de las mujeres que mandan la vida nocturna de la capi en una fiesta  sonando dark wave, cumbias, perreo y la sorpresa con el infame Cero39!!\nEntrada libre con boleta para los asistentes al estreno de la peli KMKZ de dantacine \nCOVER GENERAL 10k hasta 10pm / 20k dsps\nReservas al 3023066868\n\nSabado 7 💃🍑💃\nI ❤️ SALSA Y PERREO 🐕 \nnoche con djs misterio sonando los temas calientes para quemar la pista!! 🪩🪩🪩\nCocteles 2x1 hasta las 10 pm!\nNo cover hasta las 10 - 10k después!!\n\nNO HAY PIERDE EN EL CENTRO EN RITMO 🥁🫦🕺🏽💃🌴",
         "preview": null,
         "slides": 13
       }
@@ -15926,7 +15922,7 @@
     ],
     "organizer": "Ritmo Moderno",
     "venue": "Ritmo Moderno",
-    "address": "Cra 4 # 17-39",
+    "address": "Cra 4 #17-39",
     "area": "Centro",
     "date": "2026-11-05",
     "end_date": null,
@@ -15936,25 +15932,24 @@
     "end_time": null,
     "prices": [
       {
-        "label": "Entrada libre hasta las 10pm",
+        "label": "Entrada Libre hasta las 10pm",
         "amount_cop": 0,
-        "condition": null
+        "condition": "hasta las 10pm"
       },
       {
-        "label": "Cover después de las 10pm",
+        "label": "Cover",
         "amount_cop": 10000,
-        "condition": null
+        "condition": "después de las 10pm"
       }
     ],
     "artists": [
-      "Javi Kea (Joint Travolta)",
+      "Good.javito",
+      "Joint Travolta",
       "Oswaldo Sesto",
       "Sagauno"
     ],
-    "activities": [
-      "rumba rolo alternativa"
-    ],
-    "contact": "@ritmomoderno",
+    "activities": [],
+    "contact": null,
     "confidence": "high",
     "doubts": [
       "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
@@ -15968,7 +15963,7 @@
         "media_type": "CAROUSEL_ALBUM",
         "published": "2026-11-03T19:40:58+0000",
         "flyer": "flyers/18034385192676330-2.webp",
-        "caption": "ESTA SEMANA ES EN EL CENTRO EN RITMO 💥💥💥\n\nMiércoles 4 💃📻🕺🏽\nTORNAS ABIERTAS DE RAP Y SALSA!!!\nInscripciones al dm - tendremos 4 cupos para djs y selectores que quieran sonar sus colecciones de rap y salsa en las Tornas de Ritmo en sets de 1 hora y back2backs! \nENTRADA LIBRE POLAS A 5k Y COCTELES 2x1 toda la noche!🥂🥂🥂\n\nJuernes 5! 🌴🌴🌴\nKEA MODERNO 🔥🔥🔥 KEA kearestbar marcó una época importante en la rumba diferente de Bogotá y ha sido un referente para lo que es hoy Ritmo!! Sonaremos junto a good.javito la mente detrás de KEA aka JOINT TRAVOLTA música icónica de la época mas el Ritmo style junto a Oswaldo Sesto y sagauno  bailoteo y remenbranzas para activar el baile!! Si vivió esta época lxs esperamos y si no estuvo los esperamos para que conozcan el meke!\nENTRADA LIBRE HASTA LAS 10pm / 10k dsps \nCOCTELES 2x1 toda la noche\n\nViernes 6 🔥🫦🔥RITMO PRESENTA:\nSANTA GROOVES NOCHE DE JEFAS CON selva____ oojitooos bitacoradecalixta y aparición especial de cero39_oficial \nVuelven las curadurías makiavelikas de Ritmo reuniendo a tres de las mujeres que mandan la vida nocturna de la capi en una fiesta  sonando dark wave, cumbias, perreo y la sorpresa con el infame Cero39!!\nEntrada libre con boleta para los asistentes al estreno de la peli KMKZ de dantacine \nCOVER GENERAL 10k hasta 10pm / 20k dsps\nReservas al 3023066868\n\nSabado 7 💃🍑💃\nI ❤️ SALSA Y PERREO 🐕 \nnoche con djs misterio sonando los temas calientes para quemar la pista!! 🪩🪩🪩\nCocteles 2x1 hasta las 10 pm!\nNo cover hasta las 10 - 10k después!!\n\nNO HAY PIERDE EN EL CENTRO EN RITMO 🥁🫦🕺🏽💃🌴",
+        "caption": "ESTA SEMANA ES EN EL CENTRO EN RITMO 💥💥💥\n\nMiércoles 4 💃📻🕺🏽\nTORNAS ABIERTAS DE RAP Y SALSA!!!\nInscripciones al dm - tendremos 4 cupos para djs y selectores que quieran sonar sus colecciones de rap y salsa en las Tornas de Ritmo en sets de 1 hora y back2backs! \nENTRADA LIBRE POLAS A 5k Y COCTELES 2x1 toda la noche!🥂🥂🥂\n\nJuernes 5! 🌴🌴🌴\nKEA MODERNO 🔥🔥🔥 KEA kearestbar marcó una época importante en la rumba diferente de Bogotá y ha sido un referente para lo que es hoy Ritmo!! Sonaremos junto a good.javito la mente detrás de KEA aka JOINT TRAVOLTA música icónica de la época mas el Ritmo style junto a Oswaldo Sesto y sagauno  bailoteo y remenbranzas para activar el baile!! Si vivió esta época lxs esperamos y si no estuvo los esperamos para que conozcan el meke!\nENTRADA LIBRE HASTA LAS 10pm / 10k dsps \nCOCTELES 2x1 toda la noche\n\nViernes 6 🔥🫦🔥RITMO PRESENTA:\nQSANTA GROOVES NOCHE DE JEFAS CON selva____ oojitooos bitacoradecalixta y aparición especial de cero39_oficial \nVuelven las curadurías makiavelikas de Ritmo reuniendo a tres de las mujeres que mandan la vida nocturna de la capi en una fiesta  sonando dark wave, cumbias, perreo y la sorpresa con el infame Cero39!!\nEntrada libre con boleta para los asistentes al estreno de la peli KMKZ de dantacine \nCOVER GENERAL 10k hasta 10pm / 20k dsps\nReservas al 3023066868\n\nSabado 7 💃🍑💃\nI ❤️ SALSA Y PERREO 🐕 \nnoche con djs misterio sonando los temas calientes para quemar la pista!! 🪩🪩🪩\nCocteles 2x1 hasta las 10 pm!\nNo cover hasta las 10 - 10k después!!\n\nNO HAY PIERDE EN EL CENTRO EN RITMO 🥁🫦🕺🏽💃🌴",
         "preview": null,
         "slides": 13
       }
@@ -16249,6 +16244,117 @@
         "caption": "Este viernes 06 de noviembre tendremos en vivo a nuestra orquesta ns.orquesta  con todos sus éxitos, no te puedes perder esta noche cargada de mucha salsa y un gran ambiente 🥳🔥🤩🤩✨✨\n\nENTRADA LIBRE!!! 🎟️🔥🔥\n\n¿Ya tienes el combo para este viernes? 🥳💃🏽. \n\n#pachangaypochola  #pachanga",
         "preview": "previews/17954532930316980-0.mp4",
         "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Salsa en Vivo - Tributo al Gran Combo de Puerto Rico",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "@quemaquequema",
+    "venue": "Quema Que Quema",
+    "address": null,
+    "area": null,
+    "date": "2026-11-06",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Banda de salsa de Quema Que Quema"
+    ],
+    "activities": [
+      "salsa en vivo",
+      "clásicos para cantar y bailar"
+    ],
+    "contact": "@quemaquequema",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio",
+      "sin precio",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "salsa-en-vivo-tributo-al-gran-combo-de-puerto-rico-6-nov",
+    "account": "quemaquequema",
+    "media": [
+      {
+        "post_id": "17966556483231433",
+        "permalink": "https://www.instagram.com/reel/Dfa3rNYPv6D/",
+        "media_type": "VIDEO",
+        "published": "2026-11-07T00:15:11+0000",
+        "flyer": "flyers/17966556483231433-0.webp",
+        "caption": "Fin de semana con Salsa en Vivo 🎶\n\nEl Hogar de la Salsa 🏠 comienza Noviembre escuchando al Gran Combo de Puerto Rico 🇵🇷 \n\nEste viernes 6 y sábado 7 🎤 nuestra banda de salsa interpretará los mejores clásicos 🎶 para cantar y bailar 🕺 \n\nY para ti ¿Noviembre con N de…? 🔥👇\n\n#restaurantequemaquequema #musicaenvivo #salsaenvivo #grancombodepuertorico #elgrancombodepuertorico",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Santa Grooves Noche de Jefas",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "urbano"
+    ],
+    "organizer": "Ritmo Moderno",
+    "venue": "Ritmo Moderno",
+    "address": "Cra 4 #17-39",
+    "area": "Centro",
+    "date": "2026-11-06",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Entrada libre",
+        "amount_cop": 0,
+        "condition": "con boleta para los asistentes al estreno de la peli KMKZ"
+      },
+      {
+        "label": "Cover general hasta 10pm",
+        "amount_cop": 10000,
+        "condition": "hasta 10pm"
+      },
+      {
+        "label": "Cover general después",
+        "amount_cop": 20000,
+        "condition": "después de las 10pm"
+      }
+    ],
+    "artists": [
+      "Selva",
+      "Ojitos",
+      "Calixta",
+      "Cero39"
+    ],
+    "activities": [],
+    "contact": "WhatsApp 3023066868",
+    "confidence": "high",
+    "doubts": [
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "santa-grooves-noche-de-jefas-6-nov",
+    "account": "ritmomoderno",
+    "media": [
+      {
+        "post_id": "18034385192676330",
+        "permalink": "https://www.instagram.com/p/DfSp9_LGJdg/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-03T19:40:58+0000",
+        "flyer": "flyers/18034385192676330-3.webp",
+        "caption": "ESTA SEMANA ES EN EL CENTRO EN RITMO 💥💥💥\n\nMiércoles 4 💃📻🕺🏽\nTORNAS ABIERTAS DE RAP Y SALSA!!!\nInscripciones al dm - tendremos 4 cupos para djs y selectores que quieran sonar sus colecciones de rap y salsa en las Tornas de Ritmo en sets de 1 hora y back2backs! \nENTRADA LIBRE POLAS A 5k Y COCTELES 2x1 toda la noche!🥂🥂🥂\n\nJuernes 5! 🌴🌴🌴\nKEA MODERNO 🔥🔥🔥 KEA kearestbar marcó una época importante en la rumba diferente de Bogotá y ha sido un referente para lo que es hoy Ritmo!! Sonaremos junto a good.javito la mente detrás de KEA aka JOINT TRAVOLTA música icónica de la época mas el Ritmo style junto a Oswaldo Sesto y sagauno  bailoteo y remenbranzas para activar el baile!! Si vivió esta época lxs esperamos y si no estuvo los esperamos para que conozcan el meke!\nENTRADA LIBRE HASTA LAS 10pm / 10k dsps \nCOCTELES 2x1 toda la noche\n\nViernes 6 🔥🫦🔥RITMO PRESENTA:\nQSANTA GROOVES NOCHE DE JEFAS CON selva____ oojitooos bitacoradecalixta y aparición especial de cero39_oficial \nVuelven las curadurías makiavelikas de Ritmo reuniendo a tres de las mujeres que mandan la vida nocturna de la capi en una fiesta  sonando dark wave, cumbias, perreo y la sorpresa con el infame Cero39!!\nEntrada libre con boleta para los asistentes al estreno de la peli KMKZ de dantacine \nCOVER GENERAL 10k hasta 10pm / 20k dsps\nReservas al 3023066868\n\nSabado 7 💃🍑💃\nI ❤️ SALSA Y PERREO 🐕 \nnoche con djs misterio sonando los temas calientes para quemar la pista!! 🪩🪩🪩\nCocteles 2x1 hasta las 10 pm!\nNo cover hasta las 10 - 10k después!!\n\nNO HAY PIERDE EN EL CENTRO EN RITMO 🥁🫦🕺🏽💃🌴",
+        "preview": null,
+        "slides": 13
       }
     ],
     "bar": true
@@ -16897,6 +17003,60 @@
     "bar": false
   },
   {
+    "title": "Los Escorpiones Están de Fiesta!",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Amalia Bembe",
+    "venue": "El Panteón de la Salsa",
+    "address": "Carrera 71D No. 2A - 13 Sur, 2° Piso",
+    "area": "Plaza de las Américas",
+    "date": "2026-11-06",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "20:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "No cover",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Fabian",
+      "Juan K",
+      "Cesar",
+      "Cafeterito"
+    ],
+    "activities": [
+      "celebración de cumpleaños",
+      "música en vinilo",
+      "tornamesas abiertas"
+    ],
+    "contact": "@bembeasoc",
+    "confidence": "high",
+    "doubts": [],
+    "id": "los-escorpiones-estan-de-fiesta-6-nov",
+    "account": "el_panteon_de_la_salsa",
+    "media": [
+      {
+        "post_id": "18117715352009893",
+        "permalink": "https://www.instagram.com/reel/DfYjgLdgUTQ/",
+        "media_type": "VIDEO",
+        "published": "2026-11-06T02:42:35+0000",
+        "flyer": "flyers/18117715352009893-0.webp",
+        "caption": "Salsa Vieja Guardia desde  su formato #original\n #tornamesas  abiertas.\nInvita bembeasoc",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Gran Tributo a Ruben Blades y Héctor Lavoe",
     "event_type": "concert",
     "is_recurring": false,
@@ -17249,6 +17409,54 @@
         "caption": "La salsa y la música del Caribe se toman la casa esta semana ⚡️🎷 Gozamos con lo mejor del repertorio en vivo y en la selección de nuestros djs 🎧 \n\nEn el escenario esta semana: bigbandsanfernandooficial ns.orquesta charangapremiere 🌟\n\nEn los tornamesas: johanancines littfack elgordocastillo Beto Dj y Eduardo Moya\n\n✨ Tres sedes, 4 días de rumba y toda la gozadera ✨\n\n¡Nos vemos en la pista! 💃💥",
         "preview": null,
         "slides": 11
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Salsa en Vivo - Tributo al Gran Combo de Puerto Rico",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "@quemaquequema",
+    "venue": "Quema Que Quema",
+    "address": null,
+    "area": null,
+    "date": "2026-11-07",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Banda de salsa de Quema Que Quema"
+    ],
+    "activities": [
+      "salsa en vivo",
+      "clásicos para cantar y bailar"
+    ],
+    "contact": "@quemaquequema",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio",
+      "sin precio",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "salsa-en-vivo-tributo-al-gran-combo-de-puerto-rico-7-nov",
+    "account": "quemaquequema",
+    "media": [
+      {
+        "post_id": "17966556483231433",
+        "permalink": "https://www.instagram.com/reel/Dfa3rNYPv6D/",
+        "media_type": "VIDEO",
+        "published": "2026-11-07T00:15:11+0000",
+        "flyer": "flyers/17966556483231433-0.webp",
+        "caption": "Fin de semana con Salsa en Vivo 🎶\n\nEl Hogar de la Salsa 🏠 comienza Noviembre escuchando al Gran Combo de Puerto Rico 🇵🇷 \n\nEste viernes 6 y sábado 7 🎤 nuestra banda de salsa interpretará los mejores clásicos 🎶 para cantar y bailar 🕺 \n\nY para ti ¿Noviembre con N de…? 🔥👇\n\n#restaurantequemaquequema #musicaenvivo #salsaenvivo #grancombodepuertorico #elgrancombodepuertorico",
+        "preview": null,
+        "slides": null
       }
     ],
     "bar": true
@@ -18436,7 +18644,7 @@
     ],
     "organizer": "Ritmo Moderno",
     "venue": "Ritmo Moderno",
-    "address": "Cra 4 # 17-39",
+    "address": "Cra 4 #17-39",
     "area": "Centro",
     "date": "2026-11-07",
     "end_date": null,
@@ -18446,26 +18654,21 @@
     "end_time": null,
     "prices": [
       {
-        "label": "No cover hasta las 10pm",
+        "label": "No cover hasta las 10",
         "amount_cop": 0,
-        "condition": null
+        "condition": "hasta las 10"
       },
       {
-        "label": "Cover después de las 10pm",
+        "label": "Cover",
         "amount_cop": 10000,
-        "condition": null
+        "condition": "después de las 10"
       }
     ],
-    "artists": [
-      "Secret DJs"
-    ],
-    "activities": [
-      "baile"
-    ],
-    "contact": "@ritmomoderno",
+    "artists": [],
+    "activities": [],
+    "contact": null,
     "confidence": "high",
     "doubts": [
-      "DJs secretos",
       "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
     ],
     "id": "i-salsa-y-perreo-7-nov",
@@ -18477,7 +18680,7 @@
         "media_type": "CAROUSEL_ALBUM",
         "published": "2026-11-03T19:40:58+0000",
         "flyer": "flyers/18034385192676330-4.webp",
-        "caption": "ESTA SEMANA ES EN EL CENTRO EN RITMO 💥💥💥\n\nMiércoles 4 💃📻🕺🏽\nTORNAS ABIERTAS DE RAP Y SALSA!!!\nInscripciones al dm - tendremos 4 cupos para djs y selectores que quieran sonar sus colecciones de rap y salsa en las Tornas de Ritmo en sets de 1 hora y back2backs! \nENTRADA LIBRE POLAS A 5k Y COCTELES 2x1 toda la noche!🥂🥂🥂\n\nJuernes 5! 🌴🌴🌴\nKEA MODERNO 🔥🔥🔥 KEA kearestbar marcó una época importante en la rumba diferente de Bogotá y ha sido un referente para lo que es hoy Ritmo!! Sonaremos junto a good.javito la mente detrás de KEA aka JOINT TRAVOLTA música icónica de la época mas el Ritmo style junto a Oswaldo Sesto y sagauno  bailoteo y remenbranzas para activar el baile!! Si vivió esta época lxs esperamos y si no estuvo los esperamos para que conozcan el meke!\nENTRADA LIBRE HASTA LAS 10pm / 10k dsps \nCOCTELES 2x1 toda la noche\n\nViernes 6 🔥🫦🔥RITMO PRESENTA:\nSANTA GROOVES NOCHE DE JEFAS CON selva____ oojitooos bitacoradecalixta y aparición especial de cero39_oficial \nVuelven las curadurías makiavelikas de Ritmo reuniendo a tres de las mujeres que mandan la vida nocturna de la capi en una fiesta  sonando dark wave, cumbias, perreo y la sorpresa con el infame Cero39!!\nEntrada libre con boleta para los asistentes al estreno de la peli KMKZ de dantacine \nCOVER GENERAL 10k hasta 10pm / 20k dsps\nReservas al 3023066868\n\nSabado 7 💃🍑💃\nI ❤️ SALSA Y PERREO 🐕 \nnoche con djs misterio sonando los temas calientes para quemar la pista!! 🪩🪩🪩\nCocteles 2x1 hasta las 10 pm!\nNo cover hasta las 10 - 10k después!!\n\nNO HAY PIERDE EN EL CENTRO EN RITMO 🥁🫦🕺🏽💃🌴",
+        "caption": "ESTA SEMANA ES EN EL CENTRO EN RITMO 💥💥💥\n\nMiércoles 4 💃📻🕺🏽\nTORNAS ABIERTAS DE RAP Y SALSA!!!\nInscripciones al dm - tendremos 4 cupos para djs y selectores que quieran sonar sus colecciones de rap y salsa en las Tornas de Ritmo en sets de 1 hora y back2backs! \nENTRADA LIBRE POLAS A 5k Y COCTELES 2x1 toda la noche!🥂🥂🥂\n\nJuernes 5! 🌴🌴🌴\nKEA MODERNO 🔥🔥🔥 KEA kearestbar marcó una época importante en la rumba diferente de Bogotá y ha sido un referente para lo que es hoy Ritmo!! Sonaremos junto a good.javito la mente detrás de KEA aka JOINT TRAVOLTA música icónica de la época mas el Ritmo style junto a Oswaldo Sesto y sagauno  bailoteo y remenbranzas para activar el baile!! Si vivió esta época lxs esperamos y si no estuvo los esperamos para que conozcan el meke!\nENTRADA LIBRE HASTA LAS 10pm / 10k dsps \nCOCTELES 2x1 toda la noche\n\nViernes 6 🔥🫦🔥RITMO PRESENTA:\nQSANTA GROOVES NOCHE DE JEFAS CON selva____ oojitooos bitacoradecalixta y aparición especial de cero39_oficial \nVuelven las curadurías makiavelikas de Ritmo reuniendo a tres de las mujeres que mandan la vida nocturna de la capi en una fiesta  sonando dark wave, cumbias, perreo y la sorpresa con el infame Cero39!!\nEntrada libre con boleta para los asistentes al estreno de la peli KMKZ de dantacine \nCOVER GENERAL 10k hasta 10pm / 20k dsps\nReservas al 3023066868\n\nSabado 7 💃🍑💃\nI ❤️ SALSA Y PERREO 🐕 \nnoche con djs misterio sonando los temas calientes para quemar la pista!! 🪩🪩🪩\nCocteles 2x1 hasta las 10 pm!\nNo cover hasta las 10 - 10k después!!\n\nNO HAY PIERDE EN EL CENTRO EN RITMO 🥁🫦🕺🏽💃🌴",
         "preview": null,
         "slides": 13
       }
@@ -18678,6 +18881,62 @@
         "published": "2026-10-29T23:33:04+0000",
         "flyer": "flyers/18436172479150487-0.webp",
         "caption": "SÚBASE QUE NOS VAMOS PA’ LOS 80, 90 Y 2000. ⏳🕺🏽\n\nDe las que sonaban en el equipo de la casa a las que uno dedicaba por Messenger.\n\nTodos los miércoles de noviembre caiga a Bilongo y montémonos en La Máquina del Tiempo.\n\nCover 25k\nReservas por DM 📩\n\n#SalsaEnBogotá #SalsaClásica #GrupoNiche #MarcAnthony",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Raíces Latinas en Vivo: Jazz Lab Big Band y Sabra Collective",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Galería Café Libro",
+    "venue": "Galería Café Libro",
+    "address": "Cra 11A # 93-42",
+    "area": "Parque 93",
+    "date": "2026-11-11",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "miércoles",
+    "start_time": "19:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Preventa y estudiantes",
+        "amount_cop": 25000,
+        "condition": null
+      },
+      {
+        "label": "Taquilla",
+        "amount_cop": 30000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Jazz Lab Big Band",
+      "Sabra Collective"
+    ],
+    "activities": [
+      "concierto",
+      "remate con salsa"
+    ],
+    "contact": "www.galeriacafelibro.com.co",
+    "confidence": "high",
+    "doubts": [],
+    "id": "raices-latinas-en-vivo-jazz-lab-big-band-y-sabra-11-nov",
+    "account": "galeriacafelibro",
+    "media": [
+      {
+        "post_id": "18127181833897998",
+        "permalink": "https://www.instagram.com/p/DfaG2bdMmKF/",
+        "media_type": "IMAGE",
+        "published": "2026-11-06T17:30:23+0000",
+        "flyer": "flyers/18127181833897998-0.webp",
+        "caption": "🎷Jazz Lab Big Band y Sabra Collective llegan a Galeria Cafe Libro con un concierto en el que nuestras raíces latinas son las protagonistas 🎺🌴\n\nMás de 20 músicos en escena representando el talento joven de nuestro país e interpretando latin jazz, boleros, música colombiana, latinoamericana y afrocubana 🔥 \n\nTe esperamos este miércoles 11 de noviembre a las 7pm ✨🎙️ Rematamos la noche con salsa de la casa💃 \n\n🎟️ Preventa y estudiantes: $25.000\n🎫 Taquilla: $30.000\nDisponibles en galeriacafelibro.com.co\n\n📍Cra 11A No. 93-42\n\n#concierto #latinjazz #bigband #galeriacafelibro #bogotá",
         "preview": null,
         "slides": null
       }
@@ -19358,6 +19617,57 @@
         "published": "2026-10-23T20:32:08+0000",
         "flyer": "flyers/17896663707677756-0.webp",
         "caption": "¡LLEGÓ EL SÁBADO PARA UN VERDADERO DUELO SALSERO! 🔥🗽 Porque el fin de semana se goza con los mejores, te esperamos en tu casa: ¡Tributo Salsa y Jazz! \n\nEste sábado 14 de noviembre prepárate para un choque de titanes en la pista: ¡Colombia VS Nueva York! Ven a disfrutar de un buen trago con tus amigos, contágiate de la mejor energía y alístate para azotar baldosa defendiendo tu estilo favorito con todo el golpe de la orquesta Kaona en vivo. \n\n¡Pura candela pa' los pies! 🎺🍻🔥 \n\n📍 Lugar: Av. Boyacá #64c - 97, ZONA 6\n⏰ Apertura: 6:00 PM | Orquesta en vivo: 10:00 PM\n📲 Reservas: 310 5714 824 \n\n¡Asegura tu mesa antes de que se llene! RESERVA, arma tu combo salsero y nos vemos en la pista. 👇✨\n\nhttps://wa.me/573105714824",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Son Pimienta en vivo",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "son",
+      "salsa"
+    ],
+    "organizer": "Casa de Citas",
+    "venue": "Casa de Citas",
+    "address": "Cra 3 #12B - 35",
+    "area": "La Candelaria",
+    "date": "2026-11-14",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "20:30",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 15000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Son Pimienta",
+      "DJ Carlos"
+    ],
+    "activities": [
+      "concierto en vivo"
+    ],
+    "contact": "315 212 5733",
+    "confidence": "high",
+    "doubts": [],
+    "id": "son-pimienta-en-vivo-14-nov",
+    "account": "restaurantecasadecitas",
+    "media": [
+      {
+        "post_id": "18442911169196712",
+        "permalink": "https://www.instagram.com/p/Dfa9CRkvUtc/",
+        "media_type": "IMAGE",
+        "published": "2026-11-07T01:01:33+0000",
+        "flyer": "flyers/18442911169196712-0.webp",
+        "caption": "¡Noche de Salsa, Son y Bolero!\nSon Pimienta en vivo 🔥\n🎟️15K\nLes esperamos 🍷\n.\n#lacandelaria #centro #salsa #bogota #rumba",
         "preview": null,
         "slides": null
       }
@@ -20268,6 +20578,59 @@
     "bar": false
   },
   {
+    "title": "Latinholic Night",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "bachata"
+    ],
+    "organizer": "Latinfusion & Danceholic",
+    "venue": "Danceholic Project",
+    "address": null,
+    "area": null,
+    "date": "2026-11-21",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "21:00",
+    "end_time": "02:30",
+    "prices": [
+      {
+        "label": "General",
+        "amount_cop": 30000,
+        "condition": "Incluye clase de bachata + bebida"
+      }
+    ],
+    "artists": [
+      "Frank de la Torre",
+      "Camilo Barreto"
+    ],
+    "activities": [
+      "clase de bachata",
+      "social",
+      "showcases"
+    ],
+    "contact": "@danceholicproject",
+    "confidence": "high",
+    "doubts": [],
+    "id": "latinholic-night-21-nov",
+    "account": "danceholicproject",
+    "media": [
+      {
+        "post_id": "17911491282571617",
+        "permalink": "https://www.instagram.com/p/DfYkrIFRT-X/",
+        "media_type": "IMAGE",
+        "published": "2026-11-06T03:05:34+0000",
+        "flyer": "flyers/17911491282571617-0.webp",
+        "caption": "LATINHOLIC🔥\n\n. \n💃🔥UNA NOCHE PARA BAILAR, CONECTAR CON MÁS\nGENTE Y PASARLA BUENO.\n\nEsta vez cambiamos el salón de clases por una noche de\nSALSA & BACHATA en Danceholic.🕺❤️\n\nNo importa si bailas hace años, si estás empezando o si simplemente quieres venir a disfrutar. Aquí vienes a bailar.\n\n🎶Salsa\n🎶Bachata\n🤲Social\n💫Showcases\n🔥Buena música\n❤️Mucha energía\n\nVen con tu parche, con tu pareja... o ven solo/a. Seguro terminas bailando con alguien.\n\n📍: DANCEHOLIC PROJECT\n: 🗓️SABADO 21 NOVIEMBRE\n: ⏰9:00PM\n💸30K ( Incluye clase de bachata +bebida)\n👗Dress Code: Blanco\n🎨 joup_music / joupvisuals \n\nGuarda la fecha, invita a tu combo y nos vemos por la mansión🕺💃\n🚨NO OLVIDES RESERVAR POR DM🚨\n\n#DanceholicProject #Salsa #Bachata #SocialDance #bogota",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Intensivo 2026 4.0 - Salsa en línea",
     "event_type": "workshop",
     "is_recurring": false,
@@ -20878,6 +21241,62 @@
     "bar": true
   },
   {
+    "title": "Bachatamania Social",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "bachata"
+    ],
+    "organizer": "Bachatamania Bogotá",
+    "venue": "Distrito Social",
+    "address": "CRA 29 #68-18",
+    "area": null,
+    "date": "2026-11-28",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "20:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Preventa",
+        "amount_cop": 30000,
+        "condition": null
+      },
+      {
+        "label": "Puerta",
+        "amount_cop": 35000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Jean y Gaby",
+      "DJ Duane"
+    ],
+    "activities": [
+      "clase bachata",
+      "social 100% bachata"
+    ],
+    "contact": "appdanza.com",
+    "confidence": "high",
+    "doubts": [],
+    "id": "bachatamania-social-28-nov",
+    "account": "bachatamania_bogota",
+    "media": [
+      {
+        "post_id": "18118338497022267",
+        "permalink": "https://www.instagram.com/p/DfY4fYvgVxi/",
+        "media_type": "IMAGE",
+        "published": "2026-11-06T14:00:06+0000",
+        "flyer": "flyers/18118338497022267-0.webp",
+        "caption": "Bachatamania Noviembre ✨\n\nPenúltimo Bachatamania del 2026 y venimos con toda 🥳🥳🥳\n\nNo te pierdas la clase de Jean y Gaby a las 8 PM seguido de un social 100% Bachata a manos de DJ Duane para que disfrutes y bailes hasta que el cuerpo aguante 🤩🤩🤩\n\n🗓️ 28 de Noviembre\n📍 Distrito Social - CRA 29 68 - 18\n🕢 8:00 PM\n\nNo dejes que te lo cuenten, ven a bailar en el mejor social bachatero de Bogotá 🔥\n\nReserva tus boletas en nuestra web: \n\nappdanza.com",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Muestra en el Museo Colonial",
     "event_type": "show",
     "is_recurring": false,
@@ -21355,10 +21774,16 @@
     "date": "2027-06-24",
     "end_date": "2027-06-28",
     "sessions": null,
-    "weekday": "jueves",
+    "weekday": "miércoles",
     "start_time": null,
     "end_time": null,
-    "prices": [],
+    "prices": [
+      {
+        "label": "Blind Pass",
+        "amount_cop": 300000,
+        "condition": "solo 50 pases disponibles"
+      }
+    ],
     "artists": [
       "David y Laura"
     ],
@@ -21377,6 +21802,16 @@
     "id": "bachata-social-congress-2027-24-jun",
     "account": "bachatasocialcongresss",
     "media": [
+      {
+        "post_id": "18116009779841692",
+        "permalink": "https://www.instagram.com/p/DfaM1Ncx8KC/",
+        "media_type": "IMAGE",
+        "published": "2026-11-06T18:00:55+0000",
+        "flyer": "flyers/18116009779841692-0.webp",
+        "caption": "🔥 ¿CONFÍAS EN NOSOTROS? 😏💎\n\n¡El BACHATA SOCIAL CONGRESS 2027 comienza con una locura! 🇨🇴🔥\n\nLanzamos nuestros BLIND PASSES: una oportunidad exclusiva para quienes se atreven a vivir la experiencia sin conocer todavía el LINE UP. 👀\n\n💎 ¿Qué incluye tu BLIND PASS?\n\n✅ Todos los workshops regulares.\n\n✅ Todas las noches sociales.\n\n✅ Acceso a la PREPARTY.\n\n✅ Precio especial de preventa.\n\nEn pocas palabras, estarás comprando un DIAMOND PASS A CIEGAS, confiando en nosotros y en todo lo que estamos preparando para ustedes. ❤️\n\n⚠️ Importante: No incluye masterclasses ni competencias.\n\n🎟️ SOLO 50 PASES DISPONIBLES\n\n🔥 $300.000 COP en lugar de $350.000 COP.\n\nUna vez se agoten los 50 pases, ¡este precio desaparecerá!\n\n📍 Bogotá, Colombia 🇨🇴\n\n📅 24 al 28 de junio de 2027\n\n🌎 THE WORLD MEETS IN BOGOTÁ\n\n¿Estás listo para confiar en nosotros y vivir algo inolvidable? 😏\n\nComenta 💎 si quieres asegurar tu BLIND PASS y te enviaremos toda la información.\n\n#BachataSocialCongress #BSC2027 #BlindPass #BachataBogota #BachataFestival",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "17873739702640798",
         "permalink": "https://www.instagram.com/p/DfIIA9cx6CB/",
