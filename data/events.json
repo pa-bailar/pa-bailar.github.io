@@ -16150,53 +16150,6 @@
     "bar": true
   },
   {
-    "title": "Yambú Orquesta en vivo",
-    "event_type": "concert",
-    "is_recurring": false,
-    "styles": [
-      "salsa"
-    ],
-    "organizer": "Casa Quiebra-Canto",
-    "venue": "Casa Quiebra-Canto",
-    "address": null,
-    "area": null,
-    "date": "2026-11-06",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "viernes",
-    "start_time": null,
-    "end_time": null,
-    "prices": [],
-    "artists": [
-      "Yambú Orquesta"
-    ],
-    "activities": [
-      "música en vivo"
-    ],
-    "contact": "@casaquiebracanto",
-    "confidence": "high",
-    "doubts": [
-      "sin hora de inicio",
-      "sin precio",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
-    "id": "yambu-orquesta-en-vivo-6-nov",
-    "account": "casaquiebracanto",
-    "media": [
-      {
-        "post_id": "18140881657619164",
-        "permalink": "https://www.instagram.com/p/DfSsZMVBpWu/",
-        "media_type": "IMAGE",
-        "published": "2026-11-03T20:02:12+0000",
-        "flyer": "flyers/18140881657619164-0.webp",
-        "caption": "Metele salsita a este Noviembre con buena musica en vivo dannyrosalescastro quiebracombo",
-        "preview": null,
-        "slides": null
-      }
-    ],
-    "bar": true
-  },
-  {
     "title": "NS Orquesta en vivo",
     "event_type": "concert",
     "is_recurring": false,
@@ -16355,6 +16308,52 @@
         "caption": "ESTA SEMANA ES EN EL CENTRO EN RITMO 💥💥💥\n\nMiércoles 4 💃📻🕺🏽\nTORNAS ABIERTAS DE RAP Y SALSA!!!\nInscripciones al dm - tendremos 4 cupos para djs y selectores que quieran sonar sus colecciones de rap y salsa en las Tornas de Ritmo en sets de 1 hora y back2backs! \nENTRADA LIBRE POLAS A 5k Y COCTELES 2x1 toda la noche!🥂🥂🥂\n\nJuernes 5! 🌴🌴🌴\nKEA MODERNO 🔥🔥🔥 KEA kearestbar marcó una época importante en la rumba diferente de Bogotá y ha sido un referente para lo que es hoy Ritmo!! Sonaremos junto a good.javito la mente detrás de KEA aka JOINT TRAVOLTA música icónica de la época mas el Ritmo style junto a Oswaldo Sesto y sagauno  bailoteo y remenbranzas para activar el baile!! Si vivió esta época lxs esperamos y si no estuvo los esperamos para que conozcan el meke!\nENTRADA LIBRE HASTA LAS 10pm / 10k dsps \nCOCTELES 2x1 toda la noche\n\nViernes 6 🔥🫦🔥RITMO PRESENTA:\nQSANTA GROOVES NOCHE DE JEFAS CON selva____ oojitooos bitacoradecalixta y aparición especial de cero39_oficial \nVuelven las curadurías makiavelikas de Ritmo reuniendo a tres de las mujeres que mandan la vida nocturna de la capi en una fiesta  sonando dark wave, cumbias, perreo y la sorpresa con el infame Cero39!!\nEntrada libre con boleta para los asistentes al estreno de la peli KMKZ de dantacine \nCOVER GENERAL 10k hasta 10pm / 20k dsps\nReservas al 3023066868\n\nSabado 7 💃🍑💃\nI ❤️ SALSA Y PERREO 🐕 \nnoche con djs misterio sonando los temas calientes para quemar la pista!! 🪩🪩🪩\nCocteles 2x1 hasta las 10 pm!\nNo cover hasta las 10 - 10k después!!\n\nNO HAY PIERDE EN EL CENTRO EN RITMO 🥁🫦🕺🏽💃🌴",
         "preview": null,
         "slides": 13
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Yambú Orquesta",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Casa Quiebra-Canto",
+    "venue": "Casa Quiebra-Canto",
+    "address": null,
+    "area": null,
+    "date": "2026-11-06",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Yambú Orquesta"
+    ],
+    "activities": [
+      "música en vivo"
+    ],
+    "contact": "@casaquiebracanto",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio",
+      "sin precio"
+    ],
+    "id": "yambu-orquesta-en-vivo-6-nov",
+    "account": "casaquiebracanto",
+    "media": [
+      {
+        "post_id": "18140881657619164",
+        "permalink": "https://www.instagram.com/p/DfSsZMVBpWu/",
+        "media_type": "IMAGE",
+        "published": "2026-11-03T20:02:12+0000",
+        "flyer": "flyers/18140881657619164-0.webp",
+        "caption": "Metele salsita a este Noviembre con buena musica en vivo dannyrosalescastro quiebracombo",
+        "preview": null,
+        "slides": null
       }
     ],
     "bar": true
@@ -17217,103 +17216,6 @@
     "bar": true
   },
   {
-    "title": "Salsa Dura & Guaguancó con Zonora Quiebracanto",
-    "event_type": "concert",
-    "is_recurring": false,
-    "styles": [
-      "salsa",
-      "afro"
-    ],
-    "organizer": "Casa Quiebra-Canto",
-    "venue": "Casa Quiebra-Canto",
-    "address": null,
-    "area": null,
-    "date": "2026-11-07",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "sabado",
-    "start_time": null,
-    "end_time": null,
-    "prices": [],
-    "artists": [
-      "Zonora Quiebracanto"
-    ],
-    "activities": [
-      "música en vivo"
-    ],
-    "contact": "@casaquiebracanto",
-    "confidence": "high",
-    "doubts": [
-      "sin hora de inicio",
-      "sin precio",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
-    "id": "salsa-dura-guaguanco-con-zonora-quiebracanto-7-nov",
-    "account": "casaquiebracanto",
-    "media": [
-      {
-        "post_id": "18140881657619164",
-        "permalink": "https://www.instagram.com/p/DfSsZMVBpWu/",
-        "media_type": "IMAGE",
-        "published": "2026-11-03T20:02:12+0000",
-        "flyer": "flyers/18140881657619164-0.webp",
-        "caption": "Metele salsita a este Noviembre con buena musica en vivo dannyrosalescastro quiebracombo",
-        "preview": null,
-        "slides": null
-      }
-    ],
-    "bar": true
-  },
-  {
-    "title": "Pachanghetto Volumen 2",
-    "event_type": "party",
-    "is_recurring": false,
-    "styles": [
-      "salsa"
-    ],
-    "organizer": "Callejón Salsa & Mecato",
-    "venue": "Callejón Salsa & Mecato",
-    "address": "Calle 12D # 3-84",
-    "area": null,
-    "date": "2026-11-07",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "sábado",
-    "start_time": null,
-    "end_time": null,
-    "prices": [
-      {
-        "label": "Entrada",
-        "amount_cop": 20000,
-        "condition": null
-      }
-    ],
-    "artists": [],
-    "activities": [
-      "salsa dura"
-    ],
-    "contact": "@callejonsalsa",
-    "confidence": "high",
-    "doubts": [
-      "sin hora de inicio"
-    ],
-    "id": "pachanghetto-volumen-2-7-nov",
-    "account": "callejonsalsa",
-    "media": [
-      {
-        "post_id": "17979852837178540",
-        "permalink": "https://www.instagram.com/p/DfQhUVZPFsY/",
-        "media_type": "IMAGE",
-        "published": "2026-11-02T23:46:57+0000",
-        "flyer": "flyers/17979852837178540-0.webp",
-        "caption": "Nos espera una semana fantástica!!! Pre Latín Grammy.... \nMiércoles de tango, e iniciamos las clases con la profesora Ceci Urzola ceciurzolatangosobreviviente y estaremos todos los miércoles de noviembre con ella. \nEl jueves será de Jazz en vivo, y nada menos que con uno de los mejores tríos de la ciudad, caldasgiovanni juancamilobateriasxx juliangomezcontrabajo abriendo este espacio que mantendremos. \nEl viernes continuamos con las clases de salsa con la profesora teffa_mg y la noche al ritmo de los clásicos de el pinchadiscosdekien \nEl sábado tendremos el volumen 2 del Pachanghetto, con la mejor salsa dura. \nY el tardeo del domingo viene con dos bandas en vivo, desde Chile estará pulsogaiano y por Colombia Nación Vibrass, con el set de Mao Zeta Pe. \nSemana para no salir de Callejón.",
-        "preview": null,
-        "slides": null
-      }
-    ],
-    "bar": true
-  },
-  {
     "title": "Noche de Salsa con Son Legales",
     "event_type": "concert",
     "is_recurring": false,
@@ -17462,6 +17364,98 @@
     "bar": true
   },
   {
+    "title": "Pachanghetto Volumen 2",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Callejón Salsa & Mecato",
+    "venue": "Callejón Salsa & Mecato",
+    "address": "Calle 12D # 3-84",
+    "area": null,
+    "date": "2026-11-07",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Entrada",
+        "amount_cop": 20000,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [],
+    "contact": "@callejonsalsa",
+    "confidence": "high",
+    "doubts": [],
+    "id": "pachanghetto-volumen-2-7-nov",
+    "account": "callejonsalsa",
+    "media": [
+      {
+        "post_id": "17979852837178540",
+        "permalink": "https://www.instagram.com/p/DfQhUVZPFsY/",
+        "media_type": "IMAGE",
+        "published": "2026-11-02T23:46:57+0000",
+        "flyer": "flyers/17979852837178540-0.webp",
+        "caption": "Nos espera una semana fantástica!!! Pre Latín Grammy.... \nMiércoles de tango, e iniciamos las clases con la profesora Ceci Urzola ceciurzolatangosobreviviente y estaremos todos los miércoles de noviembre con ella. \nEl jueves será de Jazz en vivo, y nada menos que con uno de los mejores tríos de la ciudad, caldasgiovanni juancamilobateriasxx juliangomezcontrabajo abriendo este espacio que mantendremos. \nEl viernes continuamos con las clases de salsa con la profesora teffa_mg y la noche al ritmo de los clásicos de el pinchadiscosdekien \nEl sábado tendremos el volumen 2 del Pachanghetto, con la mejor salsa dura. \nY el tardeo del domingo viene con dos bandas en vivo, desde Chile estará pulsogaiano y por Colombia Nación Vibrass, con el set de Mao Zeta Pe. \nSemana para no salir de Callejón.",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Salsa Dura & Guaguancó con Zonora Quiebracanto",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "afro"
+    ],
+    "organizer": "Casa Quiebra-Canto",
+    "venue": "Casa Quiebra-Canto",
+    "address": null,
+    "area": null,
+    "date": "2026-11-07",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Zonora Quiebracanto"
+    ],
+    "activities": [
+      "música en vivo"
+    ],
+    "contact": "@casaquiebracanto",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio",
+      "sin precio"
+    ],
+    "id": "salsa-dura-guaguanco-con-zonora-quiebracanto-7-nov",
+    "account": "casaquiebracanto",
+    "media": [
+      {
+        "post_id": "18140881657619164",
+        "permalink": "https://www.instagram.com/p/DfSsZMVBpWu/",
+        "media_type": "IMAGE",
+        "published": "2026-11-03T20:02:12+0000",
+        "flyer": "flyers/18140881657619164-0.webp",
+        "caption": "Metele salsita a este Noviembre con buena musica en vivo dannyrosalescastro quiebracombo",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Salones de Baile: Fiesta Disco - San Cristóbal",
     "event_type": "workshop",
     "is_recurring": false,
@@ -17533,8 +17527,8 @@
     ],
     "organizer": "Maldita Danza",
     "venue": "Cerro de Monserrate",
-    "address": "Sector artesanías y comidas",
-    "area": "Santa Fe",
+    "address": null,
+    "area": "Sector artesanías y comidas",
     "date": "2026-11-07",
     "end_date": null,
     "sessions": null,
@@ -17543,19 +17537,15 @@
     "end_time": null,
     "prices": [],
     "artists": [
-      "Maldita Danza",
-      "Pepopi"
+      "Maldita Danza"
     ],
     "activities": [
       "danza Butoh",
-      "danza festiva del Carnaval",
-      "experiencia sensorial"
+      "danza festiva del Carnaval"
     ],
     "contact": "@danzaenlaciudad",
     "confidence": "high",
-    "doubts": [
-      "sin precio explícito (probablemente gratuito por ser en espacio público)"
-    ],
+    "doubts": [],
     "id": "coquito-maldita-danza-xix-festival-danza-en-la-7-nov",
     "account": "danzaenlaciudad",
     "media": [
@@ -17720,8 +17710,8 @@
     "styles": [
       "otro"
     ],
-    "organizer": "Idartes - Programa Salones de Baile",
-    "venue": "Lobby Teatro Municipal Jorge Eliécer Gaitán",
+    "organizer": "Idartes",
+    "venue": "Teatro Municipal Jorge Eliécer Gaitán",
     "address": "Carrera 7 No. 22-47",
     "area": null,
     "date": "2026-11-07",
@@ -17735,14 +17725,11 @@
       "Los Quibeños"
     ],
     "activities": [
-      "baile carranguero",
-      "fiesta carranguera"
+      "baile"
     ],
     "contact": null,
     "confidence": "high",
-    "doubts": [
-      "sin información de precio"
-    ],
+    "doubts": [],
     "id": "salon-de-baile-carranguero-7-nov",
     "account": "danzaenlaciudad",
     "media": [
@@ -18051,58 +18038,6 @@
     "bar": false
   },
   {
-    "title": "Latin Sessions con Trío Bilonguero",
-    "event_type": "concert",
-    "is_recurring": false,
-    "styles": [
-      "salsa",
-      "son"
-    ],
-    "organizer": "Bilongo",
-    "venue": "Bilongo",
-    "address": null,
-    "area": null,
-    "date": "2026-11-07",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "sábado",
-    "start_time": "17:00",
-    "end_time": null,
-    "prices": [
-      {
-        "label": "Cover",
-        "amount_cop": 25000,
-        "condition": null
-      }
-    ],
-    "artists": [
-      "Trío Bilonguero"
-    ],
-    "activities": [
-      "salsa en vivo"
-    ],
-    "contact": "@bilongocolombia",
-    "confidence": "high",
-    "doubts": [
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
-    "id": "latin-sessions-con-trio-bilonguero-7-nov",
-    "account": "bilongocolombia",
-    "media": [
-      {
-        "post_id": "18187978930417774",
-        "permalink": "https://www.instagram.com/p/DfPy4tChRIV/",
-        "media_type": "IMAGE",
-        "published": "2026-11-02T17:01:38+0000",
-        "flyer": "flyers/18187978930417774-0.webp",
-        "caption": "LOS SÁBADOS ACÁ SE SIENTEN DISTINTO. ❤️‍🔥\n\nAmbiente sabroso desde las 5 y el trío bilonguero tocando salsa pa’ gozársela lento y sabroso. 👀\n\nCaiga a los Latin Sessions y nos cuenta.\n\nCover 25k\nReservas por DM 📩\n\n#LatinSessions #SalsaBogotá #SalsaEnVivo #Bilongo",
-        "preview": null,
-        "slides": null
-      }
-    ],
-    "bar": true
-  },
-  {
     "title": "Salones de Baile: Susurros de Bandoneón - Santa Fe",
     "event_type": "workshop",
     "is_recurring": false,
@@ -18169,6 +18104,56 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "Latin Sessions con Trío Bilonguero",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "son"
+    ],
+    "organizer": "Bilongo",
+    "venue": "Bilongo",
+    "address": null,
+    "area": null,
+    "date": "2026-11-07",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "17:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 25000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Trío Bilonguero"
+    ],
+    "activities": [
+      "salsa en vivo"
+    ],
+    "contact": "@bilongocolombia",
+    "confidence": "high",
+    "doubts": [],
+    "id": "latin-sessions-con-trio-bilonguero-7-nov",
+    "account": "bilongocolombia",
+    "media": [
+      {
+        "post_id": "18187978930417774",
+        "permalink": "https://www.instagram.com/p/DfPy4tChRIV/",
+        "media_type": "IMAGE",
+        "published": "2026-11-02T17:01:38+0000",
+        "flyer": "flyers/18187978930417774-0.webp",
+        "caption": "LOS SÁBADOS ACÁ SE SIENTEN DISTINTO. ❤️‍🔥\n\nAmbiente sabroso desde las 5 y el trío bilonguero tocando salsa pa’ gozársela lento y sabroso. 👀\n\nCaiga a los Latin Sessions y nos cuenta.\n\nCover 25k\nReservas por DM 📩\n\n#LatinSessions #SalsaBogotá #SalsaEnVivo #Bilongo",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
   },
   {
     "title": "Meet & Greet",
@@ -19986,9 +19971,7 @@
     ],
     "contact": "@bilongocolombia",
     "confidence": "high",
-    "doubts": [
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
+    "doubts": [],
     "id": "latin-sessions-con-trio-bilonguero-14-nov",
     "account": "bilongocolombia",
     "media": [
@@ -20940,9 +20923,7 @@
     ],
     "contact": "@bilongocolombia",
     "confidence": "high",
-    "doubts": [
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
+    "doubts": [],
     "id": "latin-sessions-con-trio-bilonguero-21-nov",
     "account": "bilongocolombia",
     "media": [
@@ -21648,9 +21629,7 @@
     ],
     "contact": "@bilongocolombia",
     "confidence": "high",
-    "doubts": [
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
+    "doubts": [],
     "id": "latin-sessions-con-trio-bilonguero-28-nov",
     "account": "bilongocolombia",
     "media": [
