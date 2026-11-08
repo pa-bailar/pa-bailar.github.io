@@ -19048,8 +19048,10 @@
     "title": "El sol seguirá subiendo, la sombra se irá corriendo, poco después, volverá la tarde - El Pez Dorado (XIX Festival Danza en la Ciudad)",
     "event_type": "show",
     "is_recurring": false,
-    "styles": [],
-    "organizer": "Fundación Integrando Fronteras",
+    "styles": [
+      "otro"
+    ],
+    "organizer": "@danzaenlaciudad",
     "venue": "La Futilería",
     "address": "Calle 59 No. 17-48",
     "area": null,
@@ -19064,14 +19066,11 @@
       "El Pez Dorado"
     ],
     "activities": [
-      "experiencia escénica",
-      "danza contemporánea"
+      "función de danza contemporánea"
     ],
-    "contact": null,
+    "contact": "@danzaenlaciudad",
     "confidence": "high",
-    "doubts": [
-      "sin precio"
-    ],
+    "doubts": [],
     "id": "el-sol-seguira-subiendo-la-sombra-se-ira-corriendo-8-nov",
     "account": "danzaenlaciudad",
     "media": [
@@ -19090,12 +19089,12 @@
   },
   {
     "title": "Filarmónica en movimiento",
-    "event_type": "concert",
+    "event_type": "show",
     "is_recurring": false,
     "styles": [
       "urbano"
     ],
-    "organizer": "Orquesta Filarmónica de Bogotá",
+    "organizer": "@danzaenlaciudad",
     "venue": "Teatro Municipal Jorge Eliécer Gaitán",
     "address": "Carrera 7 No. 22-47",
     "area": null,
@@ -19109,17 +19108,14 @@
     "artists": [
       "Orquesta Filarmónica de Mujeres",
       "D-Thre3",
-      "ANVAR"
+      "Agrupación ANVAR"
     ],
     "activities": [
-      "presentación artística",
-      "música sinfónica y danza urbana"
+      "espectáculo de danza urbana y música sinfónica"
     ],
-    "contact": null,
+    "contact": "@danzaenlaciudad",
     "confidence": "high",
-    "doubts": [
-      "sin precio"
-    ],
+    "doubts": [],
     "id": "filarmonica-en-movimiento-8-nov",
     "account": "danzaenlaciudad",
     "media": [
@@ -19142,7 +19138,7 @@
     "is_recurring": false,
     "styles": [],
     "organizer": "Sas Bequia Danza",
-    "venue": "Auditorio Facultad de Artes – Universidad Javeriana",
+    "venue": "Auditorio Facultad de Artes - Universidad Javeriana",
     "address": "Calle 40B No. 5-37",
     "area": null,
     "date": "2026-11-08",
@@ -19152,15 +19148,15 @@
     "start_time": "18:00",
     "end_time": null,
     "prices": [],
-    "artists": [],
+    "artists": [
+      "Sas Bequia Danza"
+    ],
     "activities": [
-      "obra de danza"
+      "presentación de danza"
     ],
     "contact": null,
     "confidence": "high",
-    "doubts": [
-      "sin precio"
-    ],
+    "doubts": [],
     "id": "jolgorio-pa-l-chiras-8-nov",
     "account": "danzaenlaciudad",
     "media": [
