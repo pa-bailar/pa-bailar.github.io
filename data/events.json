@@ -16202,54 +16202,6 @@
     "bar": true
   },
   {
-    "title": "Salsa en Vivo - Tributo al Gran Combo de Puerto Rico",
-    "event_type": "concert",
-    "is_recurring": false,
-    "styles": [
-      "salsa"
-    ],
-    "organizer": "@quemaquequema",
-    "venue": "Quema Que Quema",
-    "address": null,
-    "area": null,
-    "date": "2026-11-06",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "viernes",
-    "start_time": null,
-    "end_time": null,
-    "prices": [],
-    "artists": [
-      "Banda de salsa de Quema Que Quema"
-    ],
-    "activities": [
-      "salsa en vivo",
-      "clásicos para cantar y bailar"
-    ],
-    "contact": "@quemaquequema",
-    "confidence": "high",
-    "doubts": [
-      "sin hora de inicio",
-      "sin precio",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
-    "id": "salsa-en-vivo-tributo-al-gran-combo-de-puerto-rico-6-nov",
-    "account": "quemaquequema",
-    "media": [
-      {
-        "post_id": "17966556483231433",
-        "permalink": "https://www.instagram.com/reel/Dfa3rNYPv6D/",
-        "media_type": "VIDEO",
-        "published": "2026-11-07T00:15:11+0000",
-        "flyer": "flyers/17966556483231433-0.webp",
-        "caption": "Fin de semana con Salsa en Vivo 🎶\n\nEl Hogar de la Salsa 🏠 comienza Noviembre escuchando al Gran Combo de Puerto Rico 🇵🇷 \n\nEste viernes 6 y sábado 7 🎤 nuestra banda de salsa interpretará los mejores clásicos 🎶 para cantar y bailar 🕺 \n\nY para ti ¿Noviembre con N de…? 🔥👇\n\n#restaurantequemaquequema #musicaenvivo #salsaenvivo #grancombodepuertorico #elgrancombodepuertorico",
-        "preview": null,
-        "slides": null
-      }
-    ],
-    "bar": true
-  },
-  {
     "title": "Santa Grooves Noche de Jefas",
     "event_type": "party",
     "is_recurring": false,
@@ -16352,6 +16304,51 @@
         "published": "2026-11-03T20:02:12+0000",
         "flyer": "flyers/18140881657619164-0.webp",
         "caption": "Metele salsita a este Noviembre con buena musica en vivo dannyrosalescastro quiebracombo",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Salsa en Vivo - Tributo al Gran Combo de Puerto Rico",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "@quemaquequema",
+    "venue": "Quema Que Quema",
+    "address": null,
+    "area": null,
+    "date": "2026-11-06",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "salsa en vivo",
+      "música en vivo"
+    ],
+    "contact": "@quemaquequema",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio",
+      "sin precio"
+    ],
+    "id": "salsa-en-vivo-tributo-al-gran-combo-de-puerto-rico-6-nov",
+    "account": "quemaquequema",
+    "media": [
+      {
+        "post_id": "17966556483231433",
+        "permalink": "https://www.instagram.com/reel/Dfa3rNYPv6D/",
+        "media_type": "VIDEO",
+        "published": "2026-11-07T00:15:11+0000",
+        "flyer": "flyers/17966556483231433-0.webp",
+        "caption": "Fin de semana con Salsa en Vivo 🎶\n\nEl Hogar de la Salsa 🏠 comienza Noviembre escuchando al Gran Combo de Puerto Rico 🇵🇷 \n\nEste viernes 6 y sábado 7 🎤 nuestra banda de salsa interpretará los mejores clásicos 🎶 para cantar y bailar 🕺 \n\nY para ti ¿Noviembre con N de…? 🔥👇\n\n#restaurantequemaquequema #musicaenvivo #salsaenvivo #grancombodepuertorico #elgrancombodepuertorico",
         "preview": null,
         "slides": null
       }
@@ -17203,6 +17200,16 @@
         "slides": null
       },
       {
+        "post_id": "18101191448548766",
+        "permalink": "https://www.instagram.com/reel/DfcvM-GsFzf/",
+        "media_type": "VIDEO",
+        "published": "2026-11-07T17:40:44+0000",
+        "flyer": "flyers/18101191448548766-0.webp",
+        "caption": "¡BOGOTÁ, HOY SE BAILA! 💃🔥\n\nFiesta del Caribe en Galería Café Libro 93. \n\nDesde Nueva York, Big Band San Fernando con 22 músicos en vivo. Pura SALSA, cumbia y todo el sabor del Caribe para bailar toda la noche. 🎺🌴\n\n✨ Ven con tu pinta costeña y participa por premio.\n\n🎟️ Cover: $50.000\n📍 http://galeriacafelibro.com.co o en taquilla\n\n¡Nos vemos hoy en Galería Café Libro, que hoy se goza!",
+        "preview": "previews/18101191448548766-0.mp4",
+        "slides": null
+      },
+      {
         "post_id": "18106869260249506",
         "permalink": "https://www.instagram.com/reel/DfVpDZARUUe/",
         "media_type": "VIDEO",
@@ -17316,54 +17323,6 @@
     "bar": true
   },
   {
-    "title": "Salsa en Vivo - Tributo al Gran Combo de Puerto Rico",
-    "event_type": "concert",
-    "is_recurring": false,
-    "styles": [
-      "salsa"
-    ],
-    "organizer": "@quemaquequema",
-    "venue": "Quema Que Quema",
-    "address": null,
-    "area": null,
-    "date": "2026-11-07",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "sábado",
-    "start_time": null,
-    "end_time": null,
-    "prices": [],
-    "artists": [
-      "Banda de salsa de Quema Que Quema"
-    ],
-    "activities": [
-      "salsa en vivo",
-      "clásicos para cantar y bailar"
-    ],
-    "contact": "@quemaquequema",
-    "confidence": "high",
-    "doubts": [
-      "sin hora de inicio",
-      "sin precio",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
-    "id": "salsa-en-vivo-tributo-al-gran-combo-de-puerto-rico-7-nov",
-    "account": "quemaquequema",
-    "media": [
-      {
-        "post_id": "17966556483231433",
-        "permalink": "https://www.instagram.com/reel/Dfa3rNYPv6D/",
-        "media_type": "VIDEO",
-        "published": "2026-11-07T00:15:11+0000",
-        "flyer": "flyers/17966556483231433-0.webp",
-        "caption": "Fin de semana con Salsa en Vivo 🎶\n\nEl Hogar de la Salsa 🏠 comienza Noviembre escuchando al Gran Combo de Puerto Rico 🇵🇷 \n\nEste viernes 6 y sábado 7 🎤 nuestra banda de salsa interpretará los mejores clásicos 🎶 para cantar y bailar 🕺 \n\nY para ti ¿Noviembre con N de…? 🔥👇\n\n#restaurantequemaquequema #musicaenvivo #salsaenvivo #grancombodepuertorico #elgrancombodepuertorico",
-        "preview": null,
-        "slides": null
-      }
-    ],
-    "bar": true
-  },
-  {
     "title": "Pachanghetto Volumen 2",
     "event_type": "party",
     "is_recurring": false,
@@ -17449,6 +17408,51 @@
         "published": "2026-11-03T20:02:12+0000",
         "flyer": "flyers/18140881657619164-0.webp",
         "caption": "Metele salsita a este Noviembre con buena musica en vivo dannyrosalescastro quiebracombo",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Salsa en Vivo - Tributo al Gran Combo de Puerto Rico",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "@quemaquequema",
+    "venue": "Quema Que Quema",
+    "address": null,
+    "area": null,
+    "date": "2026-11-07",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "salsa en vivo",
+      "música en vivo"
+    ],
+    "contact": "@quemaquequema",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio",
+      "sin precio"
+    ],
+    "id": "salsa-en-vivo-tributo-al-gran-combo-de-puerto-rico-7-nov",
+    "account": "quemaquequema",
+    "media": [
+      {
+        "post_id": "17966556483231433",
+        "permalink": "https://www.instagram.com/reel/Dfa3rNYPv6D/",
+        "media_type": "VIDEO",
+        "published": "2026-11-07T00:15:11+0000",
+        "flyer": "flyers/17966556483231433-0.webp",
+        "caption": "Fin de semana con Salsa en Vivo 🎶\n\nEl Hogar de la Salsa 🏠 comienza Noviembre escuchando al Gran Combo de Puerto Rico 🇵🇷 \n\nEste viernes 6 y sábado 7 🎤 nuestra banda de salsa interpretará los mejores clásicos 🎶 para cantar y bailar 🕺 \n\nY para ti ¿Noviembre con N de…? 🔥👇\n\n#restaurantequemaquequema #musicaenvivo #salsaenvivo #grancombodepuertorico #elgrancombodepuertorico",
         "preview": null,
         "slides": null
       }
@@ -20859,10 +20863,18 @@
     "end_date": null,
     "sessions": null,
     "weekday": "sábado",
-    "start_time": null,
+    "start_time": "16:30",
     "end_time": null,
-    "prices": [],
-    "artists": [],
+    "prices": [
+      {
+        "label": "Valor",
+        "amount_cop": 20000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Maria Camila Herrera"
+    ],
     "activities": [
       "taller de bachata",
       "perfecciona tu técnica"
@@ -20871,12 +20883,21 @@
     "confidence": "high",
     "doubts": [
       "sin horario",
-      "sin precios",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+      "sin precios"
     ],
     "id": "taller-especial-de-bachata-21-nov",
     "account": "imperiolatino",
     "media": [
+      {
+        "post_id": "18041728847842231",
+        "permalink": "https://www.instagram.com/p/DfcROWFvj20/",
+        "media_type": "IMAGE",
+        "published": "2026-11-07T13:19:41+0000",
+        "flyer": "flyers/18041728847842231-0.webp",
+        "caption": "¡La bachata se siente, se baila y se disfruta! ❤️‍🔥\n\nEn Imperio Latino seguimos creando espacios para aprender, conectar con la música y descubrir todo lo que nuestro cuerpo puede expresar a través del baile.\n\nPrepárate para vivir una experiencia llena de sabor, técnica, sensualidad y mucha energía. 🔥\n\n💃 TALLER ESPECIAL DE BACHATA\n📅 21 de noviembre\n⏰ 4:30 p. m.\n📍 Imperio Latino Dance Studio\n\n¡Inscripciones abiertas! Cupos disponibles.\n\nNo importa si estás comenzando o si ya tienes experiencia, lo importante es tener las ganas de bailar.\n\n¡Nos vemos en la pista! 🖤💛\n\n#ImperioLatino #bachata #tallerdebachata #BachataDance #bogotábaila",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "17978460681139527",
         "permalink": "https://www.instagram.com/p/DfTI9hjgvef/",
@@ -21690,6 +21711,16 @@
     "account": "bachatamania_bogota",
     "media": [
       {
+        "post_id": "18133386847742760",
+        "permalink": "https://www.instagram.com/p/DfJGWrSAhxe/",
+        "media_type": "IMAGE",
+        "published": "2026-11-07T14:00:04+0000",
+        "flyer": "flyers/18133386847742760-0.webp",
+        "caption": "Jean y Gaby ✨\n\nPenúltimo Bachatamania del 2026 y venimos con toda 🥳🥳🥳\n\nNo te pierdas la clase de Jean y Gaby a las 8 PM seguido de un social 100% Bachata a manos de DJ Duane para que disfrutes y bailes hasta que el cuerpo aguante 🤩🤩🤩\n\n🗓️ 28 de Noviembre\n📍 Distrito Social - CRA 29 68 - 18\n🕢 8:00 PM\n\nNo dejes que te lo cuenten, ven a bailar en el mejor social bachatero de Bogotá 🔥\n\nReserva tus boletas en nuestra web: \n\nappdanza.com",
+        "preview": null,
+        "slides": null
+      },
+      {
         "post_id": "18118338497022267",
         "permalink": "https://www.instagram.com/p/DfY4fYvgVxi/",
         "media_type": "IMAGE",
@@ -22039,7 +22070,18 @@
     "weekday": "domingo",
     "start_time": "16:00",
     "end_time": null,
-    "prices": [],
+    "prices": [
+      {
+        "label": "Pre-venta",
+        "amount_cop": 35000,
+        "condition": "hasta el 10 de diciembre"
+      },
+      {
+        "label": "Taquilla",
+        "amount_cop": 40000,
+        "condition": null
+      }
+    ],
     "artists": [],
     "activities": [
       "clausura",
@@ -22054,6 +22096,16 @@
     "id": "ecos-en-movimiento-clausura-mover-se-2026-13-dic",
     "account": "mover__se",
     "media": [
+      {
+        "post_id": "18150878863583861",
+        "permalink": "https://www.instagram.com/p/DfahT07hkj-/",
+        "media_type": "IMAGE",
+        "published": "2026-11-06T21:02:32+0000",
+        "flyer": "flyers/18150878863583861-0.webp",
+        "caption": "¡Ya tenemos el precio de nuestras entradas! 🎫\n.\n.\n.\nECOS EN MOVIMIENTO \nCLAUSURA Mover-sé 2026💜\n\nPre-venta = 35.000\nTaquilla = 40.000\n\n¡No te la puedes perder! ✨\n+info al 3138442219 💌",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18095873720432478",
         "permalink": "https://www.instagram.com/p/DdsFdkxNFCQ/",
