@@ -19134,11 +19134,13 @@
     "title": "VACÍO",
     "event_type": "show",
     "is_recurring": false,
-    "styles": [],
-    "organizer": "Laboratorio de Teatralidades Expandidas – ARTEFACTUM 2026",
+    "styles": [
+      "otro"
+    ],
+    "organizer": "Festival Danza en la Ciudad",
     "venue": "Cinemateca de Bogotá",
     "address": "Carrera 3 No. 19-10",
-    "area": "Centro",
+    "area": null,
     "date": "2026-11-10",
     "end_date": null,
     "sessions": null,
@@ -19150,15 +19152,13 @@
       "Jimmy Rangel"
     ],
     "activities": [
-      "creación transdisciplinar",
-      "danza",
-      "teatro y cine expandido"
+      "obra de danza",
+      "teatro",
+      "cine expandido"
     ],
-    "contact": null,
+    "contact": "@danzaenlaciudad",
     "confidence": "high",
-    "doubts": [
-      "sin precio"
-    ],
+    "doubts": [],
     "id": "vacio-10-nov",
     "account": "danzaenlaciudad",
     "media": [
@@ -19278,7 +19278,8 @@
     "event_type": "concert",
     "is_recurring": false,
     "styles": [
-      "salsa"
+      "salsa",
+      "otro"
     ],
     "organizer": "Galería Café Libro",
     "venue": "Galería Café Libro",
@@ -19307,10 +19308,10 @@
       "Sabra Collective"
     ],
     "activities": [
-      "concierto",
-      "remate con salsa"
+      "concierto en vivo",
+      "rumba con salsa de la casa"
     ],
-    "contact": "www.galeriacafelibro.com.co",
+    "contact": "3176608742",
     "confidence": "high",
     "doubts": [],
     "id": "raices-latinas-en-vivo-jazz-lab-big-band-y-sabra-11-nov",
@@ -19512,11 +19513,8 @@
     "contact": "@imperiolatino",
     "confidence": "high",
     "doubts": [
-      "sin horarios específicos",
-      "sin lugar específico",
-      "sin precios",
-      "estilos deducidos del texto o de la cuenta, no leídos en el post",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+      "sin hora de inicio",
+      "estilos deducidos del texto o de la cuenta, no leídos en el post"
     ],
     "id": "competencia-palo-pa-rumba-13-nov",
     "account": "imperiolatino",
@@ -19777,8 +19775,8 @@
     "styles": [
       "salsa"
     ],
-    "organizer": "Casa Van Der",
-    "venue": "Casa Van Der",
+    "organizer": "Van Der",
+    "venue": "Van Der",
     "address": "Cra 16 #35-08",
     "area": "Teusaquillo",
     "date": "2026-11-13",
@@ -19789,19 +19787,16 @@
     "end_time": null,
     "prices": [],
     "artists": [
-      "Ismael Rivera (tributo)",
-      "Fruko y sus tesos (tributo)"
+      "Fruko y sus Tesos",
+      "Ismael Rivera"
     ],
     "activities": [
-      "baile",
-      "tributo salsero",
-      "orquesta en vivo"
+      "orquesta en vivo",
+      "baile"
     ],
     "contact": "3011620492",
     "confidence": "high",
-    "doubts": [
-      "sin información de precios de entrada"
-    ],
+    "doubts": [],
     "id": "tributo-a-ismael-rivera-y-fruko-y-sus-tesos-13-nov",
     "account": "casavander_",
     "media": [
@@ -19829,7 +19824,7 @@
     ],
     "organizer": "Studio Latin Dance",
     "venue": "Studio Latin Dance – Sede Fontibón",
-    "address": "Carrera 99 # 17-20, tercer piso",
+    "address": "Carrera 99 #17-20, tercer piso",
     "area": "Fontibón",
     "date": "2026-11-13",
     "end_date": null,
@@ -19853,10 +19848,10 @@
       "Luis Borjas"
     ],
     "activities": [
-      "práctica social",
-      "baile social"
+      "baile social",
+      "práctica de baile"
     ],
-    "contact": "WhatsApp 3174479689  3144515708",
+    "contact": "WhatsApp 3174479689",
     "confidence": "high",
     "doubts": [],
     "id": "practica-social-13-nov",
@@ -20017,7 +20012,7 @@
     "styles": [
       "salsa"
     ],
-    "organizer": "bulevarsalsabar",
+    "organizer": "Bulevar Salsa Bar",
     "venue": "Bulevar Salsa Bar",
     "address": "Carrera 13 # 82 - 37",
     "area": "Zona T",
@@ -20029,13 +20024,11 @@
     "end_time": "18:00",
     "prices": [],
     "artists": [],
-    "activities": [
-      "tardeo salsero"
-    ],
-    "contact": "WhatsApp 3124245746",
+    "activities": [],
+    "contact": "312 424 5746",
     "confidence": "high",
     "doubts": [
-      "sin precio"
+      "precio no especificado"
     ],
     "id": "tardeo-salsero-14-nov",
     "account": "bulevarsalsabar",
@@ -21275,7 +21268,6 @@
     "event_type": "other",
     "is_recurring": false,
     "styles": [
-      "salsa",
       "bachata"
     ],
     "organizer": "Imperio Latino Dance Studio",
@@ -21297,15 +21289,13 @@
     ],
     "artists": [],
     "activities": [
-      "selección de talentos",
-      "audiciones para agrupaciones competitivas"
+      "audición de baile"
     ],
     "contact": "@imperiolatino",
     "confidence": "high",
     "doubts": [
-      "sin horario",
-      "sin precios",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+      "sin hora de inicio",
+      "estilos deducidos del texto o de la cuenta, no leídos en el post"
     ],
     "id": "convocatoria-2027-22-nov",
     "account": "imperiolatino",
