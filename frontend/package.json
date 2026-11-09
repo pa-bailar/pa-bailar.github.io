@@ -15,7 +15,7 @@
     "test:clock-ahead": "node scripts/test-clock-ahead.mjs"
   },
   "dependencies": {
-    "astro": "~7.4.4"
+    "astro": "~7.4.7"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.12",
@@ -24,7 +24,7 @@
     "satori": "0.63.2",
     "sharp": "^0.35.5",
     "typescript": "^6.0.3",
-    "vitest": "^5.0.5"
+    "vitest": "^5.1.0"
   },
   "engines": {
     "node": ">=24"
