@@ -117,5 +117,60 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "Workshop con Lil Andrew - Clase de Coreografía",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "urbano"
+    ],
+    "organizer": "Bureo Dance Studio",
+    "venue": "Bureo Dance Studio",
+    "address": null,
+    "area": "Sede 109",
+    "date": "2026-09-09",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "miércoles",
+    "start_time": "20:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Público",
+        "amount_cop": 35000,
+        "condition": null
+      },
+      {
+        "label": "Members Bureo",
+        "amount_cop": 30000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Lil Andrew"
+    ],
+    "activities": [
+      "clase de coreografía",
+      "workshop"
+    ],
+    "contact": "@bureodancestudio",
+    "confidence": "high",
+    "doubts": [],
+    "id": "workshop-con-lil-andrew-clase-de-coreografia-9-sep",
+    "account": "bureodancestudio",
+    "media": [
+      {
+        "post_id": "18475359718114255",
+        "permalink": "https://www.instagram.com/p/DdAxDa8CaOW/",
+        "media_type": "IMAGE",
+        "published": "2026-09-08T03:55:13+0000",
+        "flyer": "archive/flyers/18475359718114255-0.webp",
+        "caption": "🔥 WORKSHOP CON LIL ANDREW 🔥 lilandrewoficial \n\nUna clase para bailar, aprender y disfrutar el proceso. 🖤\n\nEste miércoles 9 de septiembre nos vemos en Bureo Dance Studio para una clase de coreografía con Lil Andrew, bailarín de Don Omar.\n\n📍 Sede 109\n🕗 8:00 PM\n💰 Público: $35.000\n✨ Members Bureo: $30.000\n\nCupos limitados. Reserva el tuyo y nos vemos en el salón. 🫶🏻",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
   }
 ]

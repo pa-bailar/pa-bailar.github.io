@@ -71,61 +71,6 @@
     "bar": false
   },
   {
-    "title": "Workshop con Lil Andrew - Clase de Coreografía",
-    "event_type": "workshop",
-    "is_recurring": false,
-    "styles": [
-      "urbano"
-    ],
-    "organizer": "Bureo Dance Studio",
-    "venue": "Bureo Dance Studio",
-    "address": null,
-    "area": "Sede 109",
-    "date": "2026-09-09",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "miércoles",
-    "start_time": "20:00",
-    "end_time": null,
-    "prices": [
-      {
-        "label": "Público",
-        "amount_cop": 35000,
-        "condition": null
-      },
-      {
-        "label": "Members Bureo",
-        "amount_cop": 30000,
-        "condition": null
-      }
-    ],
-    "artists": [
-      "Lil Andrew"
-    ],
-    "activities": [
-      "clase de coreografía",
-      "workshop"
-    ],
-    "contact": "@bureodancestudio",
-    "confidence": "high",
-    "doubts": [],
-    "id": "workshop-con-lil-andrew-clase-de-coreografia-9-sep",
-    "account": "bureodancestudio",
-    "media": [
-      {
-        "post_id": "18475359718114255",
-        "permalink": "https://www.instagram.com/p/DdAxDa8CaOW/",
-        "media_type": "IMAGE",
-        "published": "2026-09-08T03:55:13+0000",
-        "flyer": "flyers/18475359718114255-0.webp",
-        "caption": "🔥 WORKSHOP CON LIL ANDREW 🔥 lilandrewoficial \n\nUna clase para bailar, aprender y disfrutar el proceso. 🖤\n\nEste miércoles 9 de septiembre nos vemos en Bureo Dance Studio para una clase de coreografía con Lil Andrew, bailarín de Don Omar.\n\n📍 Sede 109\n🕗 8:00 PM\n💰 Público: $35.000\n✨ Members Bureo: $30.000\n\nCupos limitados. Reserva el tuyo y nos vemos en el salón. 🫶🏻",
-        "preview": null,
-        "slides": null
-      }
-    ],
-    "bar": false
-  },
-  {
     "title": "Ritmos Cruzados",
     "event_type": "workshop",
     "is_recurring": false,
@@ -18340,58 +18285,6 @@
     "bar": true
   },
   {
-    "title": "Mira, ven pa’ acá",
-    "event_type": "concert",
-    "is_recurring": false,
-    "styles": [
-      "salsa"
-    ],
-    "organizer": "Acá Parchamos",
-    "venue": "Acá Parchamos",
-    "address": "Calle 49 # 9-85",
-    "area": null,
-    "date": "2026-11-07",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "sábado",
-    "start_time": "19:00",
-    "end_time": null,
-    "prices": [
-      {
-        "label": "Cover",
-        "amount_cop": 20000,
-        "condition": null
-      }
-    ],
-    "artists": [
-      "Fabián Mora y Team Latino",
-      "Nelson Contreras"
-    ],
-    "activities": [
-      "clase de baile gratis",
-      "show de baile",
-      "música en vivo"
-    ],
-    "contact": "WhatsApp +57 310 8199393",
-    "confidence": "high",
-    "doubts": [],
-    "id": "mira-ven-pa-aca-7-nov",
-    "account": "acaparchamos",
-    "media": [
-      {
-        "post_id": "18002428787814167",
-        "permalink": "https://www.instagram.com/p/DfDUyOJotnW/",
-        "media_type": "IMAGE",
-        "published": "2026-10-28T20:57:20+0000",
-        "flyer": "flyers/18002428787814167-0.webp",
-        "caption": "¡Prepárate para vivir una noche inolvidable de puro sabor, baile y alegría! Te invitamos a “Mira, ven pa’ acá”, una fiesta que te transportará directamente a la auténtica energía de las calles salseras, pero esta vez con el parche de Bogotá.\n📅 Fecha: 07 de noviembre\n📍 Lugar: Acá Parchamos (Calle 49 # 9-85, Bogotá D.C.)\n🎟️ Cover: $20.000 pesos\n¿Qué vas a vivir?\n * 💃 Clase de baile GRATIS: De 7:00 p.m. a 8:00 p.m. para que calientes motores y saques los mejores pasos.\n * 🔥 Show de baile: Un espectáculo imperdible que te dejará sin aliento.\n * 🎺 Música en vivo: Con la tremenda presentación de Fabián Mora y Team Latino (Orquesta).\n * 🪩Coleccionistas de peso: El mejor selector de vinilos de la noche a cargo de Nelson Contreras.\n🎟️ ¡Asegura tu entrada en preventa!\nNo te quedes por fuera de este parche sabroso. Compra tus boletas escribiendo al WhatsApp +57 310 8199393.\n * Métodos de pago: Nequi y Llave Bre-B al mismo número (310 8199393).\n * Importante: Una vez realizado el pago, debes enviar el comprobante al WhatsApp junto con tu nombre completo, número de cédula y la cantidad de boletas que estás adquiriendo.\n¡Saca el cencerro, invita a tu pareja o combo favorito y ven a parchar con nosotros! ✨ #fiestasalsa #salsabogota #orquestasalsa #bailasalsa",
-        "preview": null,
-        "slides": null
-      }
-    ],
-    "bar": true
-  },
-  {
     "title": "Petra - XIX Festival Danza en la Ciudad",
     "event_type": "show",
     "is_recurring": false,
@@ -18527,6 +18420,70 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "Mira, ven pa’ acá",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Acá Parchamos",
+    "venue": "Acá Parchamos",
+    "address": "Calle 49 # 9-85",
+    "area": null,
+    "date": "2026-11-07",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "20:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 20000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Fabián Mora y Team Latino",
+      "Nelson Contreras"
+    ],
+    "activities": [
+      "clase de baile gratis",
+      "show de baile",
+      "música en vivo"
+    ],
+    "contact": "WhatsApp +57 310 8199393",
+    "confidence": "high",
+    "doubts": [
+      "sin precio"
+    ],
+    "id": "mira-ven-pa-aca-7-nov",
+    "account": "acaparchamos",
+    "media": [
+      {
+        "post_id": "18002428787814167",
+        "permalink": "https://www.instagram.com/p/DfDUyOJotnW/",
+        "media_type": "IMAGE",
+        "published": "2026-10-28T20:57:20+0000",
+        "flyer": "flyers/18002428787814167-0.webp",
+        "caption": "¡Prepárate para vivir una noche inolvidable de puro sabor, baile y alegría! Te invitamos a “Mira, ven pa’ acá”, una fiesta que te transportará directamente a la auténtica energía de las calles salseras, pero esta vez con el parche de Bogotá.\n📅 Fecha: 07 de noviembre\n📍 Lugar: Acá Parchamos (Calle 49 # 9-85, Bogotá D.C.)\n🎟️ Cover: $20.000 pesos\n¿Qué vas a vivir?\n * 💃 Clase de baile GRATIS: De 7:00 p.m. a 8:00 p.m. para que calientes motores y saques los mejores pasos.\n * 🔥 Show de baile: Un espectáculo imperdible que te dejará sin aliento.\n * 🎺 Música en vivo: Con la tremenda presentación de Fabián Mora y Team Latino (Orquesta).\n * 🪩Coleccionistas de peso: El mejor selector de vinilos de la noche a cargo de Nelson Contreras.\n🎟️ ¡Asegura tu entrada en preventa!\nNo te quedes por fuera de este parche sabroso. Compra tus boletas escribiendo al WhatsApp +57 310 8199393.\n * Métodos de pago: Nequi y Llave Bre-B al mismo número (310 8199393).\n * Importante: Una vez realizado el pago, debes enviar el comprobante al WhatsApp junto con tu nombre completo, número de cédula y la cantidad de boletas que estás adquiriendo.\n¡Saca el cencerro, invita a tu pareja o combo favorito y ven a parchar con nosotros! ✨ #fiestasalsa #salsabogota #orquestasalsa #bailasalsa",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18177042736456013",
+        "permalink": "https://www.instagram.com/reel/DfdemWeI0w0/",
+        "media_type": "VIDEO",
+        "published": "2026-11-08T00:44:44+0000",
+        "flyer": "flyers/18177042736456013-0.webp",
+        "caption": "SALSA CASINO, ORQUESTA, BAILE Y VINILOS. 💃 🕺\n\nHoy sábado 7 de NOVIEMBRE desde las 8:00 pm. \n\n\"Mira ven pa Acá\" con un combo de lujo:\n\n📀 Selección de vinilos a cargo de nel.son.co\n🎤 fabianmoratrom y su orquesta EN VIVO\n🕺 Clase de salsa con rafikontreras\n🪩 Show de baile de unteamcasino\n\nAgúzate en acaparchamos",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
   },
   {
     "title": "Segundo Aniversario Ebi Dance",
@@ -19600,8 +19557,8 @@
     "end_time": null,
     "prices": [
       {
-        "label": "Cover en taquilla",
-        "amount_cop": 35000,
+        "label": "Learning Day (un día de talleres)",
+        "amount_cop": 180000,
         "condition": null
       }
     ],
@@ -19630,6 +19587,26 @@
     "id": "festival-internacional-casinea-10-a-edicion-13-nov",
     "account": "casineafest",
     "media": [
+      {
+        "post_id": "17915983302506483",
+        "permalink": "https://www.instagram.com/p/DfgaDKmR37Y/",
+        "media_type": "IMAGE",
+        "published": "2026-11-09T03:51:16+0000",
+        "flyer": "flyers/17915983302506483-0.webp",
+        "caption": "🎓 LEARNING DAY CASINEA 2026: UN DÍA COMPLETO PARA APRENDER Y BAILAR.\n\n¿No puedes acompañarnos durante los dos días de talleres? ¡Tenemos una alternativa para ti!\n\nCon el LEARNING DAY puedes elegir un día completo de formación y sumergirte en la experiencia académica del Festival Internacional Casinea 2026: participa en los talleres, aprende de maestros nacionales e internacionales y explora diferentes ritmos, técnicas y expresiones de la cultura cubana.\n\n📅 Elige la fecha que mejor se ajuste a tu agenda:\n\nDomingo 15 de noviembre\n\nLunes 16 de noviembre\n\n🎟️ Valor: $180.000 COP por un día de talleres.\n\n📍 Dos espacios de formación:\n\nTeatro Faenza: Calle 22 #5-56.\n\nAuditorio Caja de Colores – Universidad Central: Carrera 4 #21-40.\n\nConsulta la parrilla de talleres en nuestras redes oficiales y descubre los contenidos, maestros y horarios de cada jornada.\n\n🎫 Adquiere tu entrada directamente en taquilla.\n\nUna oportunidad para vivir la experiencia formativa de Casinea, incluso si solo puedes acompañarnos uno de los dos días.\n\n¡Elige tu día y ven a aprender con nosotros!\n\n#Casinea2026 #LearningDay #FestivalInternacionalCasinea",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18120510514997795",
+        "permalink": "https://www.instagram.com/p/DfgR59CRF5R/",
+        "media_type": "IMAGE",
+        "published": "2026-11-09T02:40:07+0000",
+        "flyer": "flyers/18120510514997795-0.webp",
+        "caption": "🏆 ¡VIVE LA EMOCIÓN DE CASINEA 2026 CON EL FAN PASS!\n\n¿Quieres disfrutar de la energía de la competencia, apoyar a los bailarines y ser parte de uno de los momentos más esperados del Festival Internacional Casinea? Esta entrada es para ti.\n\nCon el FAN PASS, por solo $50.000 COP, podrás acceder a:\n\n🏆 Competencias: vive de cerca el talento, la técnica y la pasión de los participantes en las diferentes modalidades.\n✨ Show Time Casinea: disfruta de las presentaciones especiales que hacen parte de esta décima edición.\n🥇 Premiación: acompaña a los competidores en el reconocimiento de sus resultados y celebra con ellos cada logro.\n\n📅 Sábado 14 de noviembre de 2026\n📍 Teatro Crisanto Luque – Calle 20 #9-45, Bogotá.\n🚪 Apertura de puertas: 1:30 p. m.\n🎟️ Valor: $50.000 COP\n📌 Entradas disponibles directamente en taquilla.\n\nVen a apoyar a tus bailarines favoritos, disfruta del espectáculo y sé parte de la experiencia del Festival Internacional Casinea.\n\n¡La emoción también se vive desde el público!\n\n#Casinea2026 #FanPass #FestivalInternacionalCasinea #SalsaCasino",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18426103576153677",
         "permalink": "https://www.instagram.com/p/Dfc-MgqmBtW/",
@@ -19792,6 +19769,54 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "Tributo a Ismael Rivera y Fruko y sus Tesos",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Casa Van Der",
+    "venue": "Casa Van Der",
+    "address": "Cra 16 #35-08",
+    "area": "Teusaquillo",
+    "date": "2026-11-13",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "20:30",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Ismael Rivera (tributo)",
+      "Fruko y sus tesos (tributo)"
+    ],
+    "activities": [
+      "baile",
+      "tributo salsero",
+      "orquesta en vivo"
+    ],
+    "contact": "3011620492",
+    "confidence": "high",
+    "doubts": [
+      "sin información de precios de entrada"
+    ],
+    "id": "tributo-a-ismael-rivera-y-fruko-y-sus-tesos-13-nov",
+    "account": "casavander_",
+    "media": [
+      {
+        "post_id": "18363682270219729",
+        "permalink": "https://www.instagram.com/p/DffxusihVXv/",
+        "media_type": "IMAGE",
+        "published": "2026-11-08T22:00:43+0000",
+        "flyer": "flyers/18363682270219729-0.webp",
+        "caption": "Le quedan 7 viernes del 2026 para que venga a disfrutar de un verdadero tributo salsero.\n\nLa esquina más salsera de Teusaquillo vuelve con un tributo a Ismael Rivera y Fruko y sus tesos este viernes 13 de Noviembre. Una noche para los que aplauden, para los que bailan y para los que se la saben todas. \n\nAgéndese y reserve.",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
   },
   {
     "title": "Práctica Social",
