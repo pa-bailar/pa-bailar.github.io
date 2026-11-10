@@ -20963,6 +20963,52 @@
     "bar": false
   },
   {
+    "title": "The Big Jhony",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Galería Café Libro",
+    "venue": "Galería Café Libro 93",
+    "address": null,
+    "area": null,
+    "date": "2026-11-21",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "The Big Jhony"
+    ],
+    "activities": [
+      "salsa en vivo"
+    ],
+    "contact": "@galeriacafelibro",
+    "confidence": "high",
+    "doubts": [
+      "sin hora especificada",
+      "sin precio especificado"
+    ],
+    "id": "the-big-jhony-21-nov",
+    "account": "galeriacafelibro",
+    "media": [
+      {
+        "post_id": "18029107178922146",
+        "permalink": "https://www.instagram.com/reel/DfimXEOsxDk/",
+        "media_type": "VIDEO",
+        "published": "2026-11-10T00:19:44+0000",
+        "flyer": "flyers/18029107178922146-0.webp",
+        "caption": "🔥 ¡La salsa brava se toma Galería Café Libro!\nEste 21 de noviembre llega The Big Jhony, cantante bogotano con más de 20 años de trayectoria y ganador de Salsa al Parque 2026, para una noche de mucho golpe, sabor y puro tumbao. 💃🏽🕺🏽\n\nAlista tu parche salsero, porque aquí la salsa se vive, se siente y se baila como nos gusta. ❤️‍🔥\n\n📍 Galería Café Libro 93 📅 21 de noviembre\n¡Nos vemos en la pista, salseros! 🎶",
+        "preview": "previews/18029107178922146-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Taller Especial de Bachata",
     "event_type": "workshop",
     "is_recurring": false,
@@ -21142,7 +21188,7 @@
       {
         "label": "General",
         "amount_cop": 30000,
-        "condition": "Incluye clase de bachata + bebida"
+        "condition": "incluye clase de bachata + bebida"
       }
     ],
     "artists": [
@@ -21160,6 +21206,16 @@
     "id": "latinholic-night-21-nov",
     "account": "danceholicproject",
     "media": [
+      {
+        "post_id": "18110952749626569",
+        "permalink": "https://www.instagram.com/p/Dfih4acEbPz/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-09T23:38:09+0000",
+        "flyer": "flyers/18110952749626569-0.webp",
+        "caption": "LATINHOLIC🔥\n\n. \n💃🔥UNA NOCHE PARA BAILAR, CONECTAR CON MÁS\nGENTE Y PASARLA BUENO.\n\nEsta vez cambiamos el salón de clases por una noche de\nSALSA & BACHATA en Danceholic.🕺❤️\n\nNo importa si bailas hace años, si estás empezando o si simplemente quieres venir a disfrutar. Aquí vienes a bailar.\n\n🎶Salsa\n🎶Bachata\n🤲Social\n💫Showcases\n🔥Buena música\n❤️Mucha energía\n\nVen con tu parche, con tu pareja... o ven solo/a. Seguro terminas bailando con alguien.\n\n📍: DANCEHOLIC PROJECT\n: 🗓️SABADO 21 NOVIEMBRE\n: ⏰9:00PM\n💸30K ( Incluye clase de bachata +bebida)\n👗Dress Code: Blanco\n🎨 joup_music / joupvisuals \nDJS: frank.de.latorre camilo_barretto \n\nGuarda la fecha, invita a tu combo y nos vemos por la mansión🕺💃\n🚨NO OLVIDES RESERVAR POR DM🚨\n\n#DanceholicProject #Salsa #Bachata #SocialDance #bogota",
+        "preview": null,
+        "slides": 2
+      },
       {
         "post_id": "17911491282571617",
         "permalink": "https://www.instagram.com/p/DfYkrIFRT-X/",
@@ -22356,6 +22412,66 @@
         "published": "2026-11-09T01:46:55+0000",
         "flyer": "flyers/18180816733443976-0.webp",
         "caption": "🌀ECOS EN MOVIMIENTO🌀\n.\n.\n.\nClausura Mover-sé 2026 \n\n🗓️ Domingo 13 de Diciembre\n⏰ 4pm\n📍 Academia de baile Alma de tango\n🔖Adquiere tus entradas\n\n⭐️Falta poco⭐️",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Clausura 2026 Studio Latin Dance",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "Studio Latin Dance",
+    "venue": "Centro de Eventos y Convenciones Las Américas",
+    "address": "Av. Américas #50-15",
+    "area": "Las Américas",
+    "date": "2026-12-18",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "19:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Preventa Pareja",
+        "amount_cop": 80000,
+        "condition": "hasta el 10 de diciembre"
+      },
+      {
+        "label": "Preventa Individual",
+        "amount_cop": 45000,
+        "condition": "hasta el 10 de diciembre"
+      },
+      {
+        "label": "Taquilla por persona",
+        "amount_cop": 60000,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "clausura",
+      "baile",
+      "brindis",
+      "celebración"
+    ],
+    "contact": "317 447 9689",
+    "confidence": "high",
+    "doubts": [],
+    "id": "clausura-2026-studio-latin-dance-18-dic",
+    "account": "studiolatindance",
+    "media": [
+      {
+        "post_id": "17915963133515649",
+        "permalink": "https://www.instagram.com/p/DfiKVPoOG9Q/",
+        "media_type": "IMAGE",
+        "published": "2026-11-09T20:13:44+0000",
+        "flyer": "flyers/17915963133515649-0.webp",
+        "caption": "¡Cerramos el 2026 con una noche llena de ritmo, elegancia y celebración! ✨🥂🖤\n\nPrepárate para vivir una noche inolvidable junto a toda la familia STUDIO LATIN DANCE. 💃🕺\n\nUna celebración para brindar por los logros, los aprendizajes, las experiencias y, sobre todo, por la pasión que nos une: ¡EL BAILE! 🔥\n\n🎉 CLAUSURA 2026\n📅 Viernes 18 de diciembre\n🕖 Hora: 7:00 p. m.\n📍 Centro de Eventos y Convenciones Las Américas – Salón Bolívar, piso 1.\n🎟️ ¡PRECIOS DE PREVENTA HASTA EL 10 DE DICIEMBRE!\n❤️ Pareja: $80.000\n🖤 Individual: $45.000\n🎫 En taquilla: $60.000 por persona.\n📲 Reserva tu lugar:\n317 447 9689 – 302 720 3206\n\n¡No te quedes por fuera de esta gran celebración! Nos espera una noche para bailar, compartir y crear recuerdos inolvidables. 🥂✨\nSTUDIO LATIN DANCE – ¡Donde la pasión por el baile nos une! ❤",
         "preview": null,
         "slides": null
       }
