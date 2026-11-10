@@ -172,5 +172,61 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "Ritmos Cruzados",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "champeta",
+      "salsa"
+    ],
+    "organizer": "Esfera Latina",
+    "venue": "Esfera Latina",
+    "address": null,
+    "area": null,
+    "date": "2026-09-10",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "jueves",
+    "start_time": "18:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Estudiantes",
+        "amount_cop": 10000,
+        "condition": null
+      },
+      {
+        "label": "Extra",
+        "amount_cop": 15000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Diego (soydiegodanza)",
+      "Maik (maik_the_dancer)"
+    ],
+    "activities": [
+      "clase especial de champeta + salsa"
+    ],
+    "contact": "3135802345",
+    "confidence": "high",
+    "doubts": [],
+    "id": "ritmos-cruzados-10-sep",
+    "account": "esferalatinaoficial",
+    "media": [
+      {
+        "post_id": "17940141273086498",
+        "permalink": "https://www.instagram.com/p/Dc1loAmJxwo/",
+        "media_type": "IMAGE",
+        "published": "2026-09-05T01:00:09+0000",
+        "flyer": "archive/flyers/17940141273086498.webp",
+        "caption": "🔥 RITMOS CRUZADOS 🔥\n\n¿Estás listo para salir de la rutina y bailar algo diferente?\n\nEste jueves 10 de septiembre llega a Esfera Latina una clase especial de Champeta + Salsa, donde vamos a cruzar dos ritmos llenos de sabor, energía y movimiento.\n\n💥 Champeta + Salsa\n📅 Jueves 10 de septiembre\n⏰ 6:00 PM\n🎶 Con soydiegodanza & maik_the_dancer \n\nUna clase para aprender, disfrutar y dejarlo todo en la pista.\n\n¿Te animas a cruzar los ritmos?\n\nTe esperamos en Esfera Latina.",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
   }
 ]
