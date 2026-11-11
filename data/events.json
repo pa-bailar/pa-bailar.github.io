@@ -17918,6 +17918,16 @@
         "slides": 3
       },
       {
+        "post_id": "18646586344032980",
+        "permalink": "https://www.instagram.com/reel/Dfkb-5Qhg_j/",
+        "media_type": "VIDEO",
+        "published": "2026-11-10T17:33:24+0000",
+        "flyer": "flyers/18646586344032980-0.webp",
+        "caption": "Así se gozó la primera edición de Guabalosas y este sábado 14 de noviembre volvemos a darleee. 🔥❤️\n\nEsta segunda edición viene con todaaaa🔥\nPreparadas ? 👀👠\n\n#salsacaleña #salsacaleñastyle #salsa #caleñostyle #cali",
+        "preview": "previews/18646586344032980-0.mp4",
+        "slides": null
+      },
+      {
         "post_id": "17981688660129708",
         "permalink": "https://www.instagram.com/reel/DfVbtcRh_Sz/",
         "media_type": "VIDEO",
@@ -19566,10 +19576,22 @@
     ],
     "contact": "@galeriacafelibro",
     "confidence": "high",
-    "doubts": [],
+    "doubts": [
+      "sin hora de inicio anunciada"
+    ],
     "id": "sonido-70-12-nov",
     "account": "galeriacafelibro",
     "media": [
+      {
+        "post_id": "18131929987825336",
+        "permalink": "https://www.instagram.com/p/DfkhofBsZt7/",
+        "media_type": "IMAGE",
+        "published": "2026-11-10T18:17:51+0000",
+        "flyer": "flyers/18131929987825336-0.webp",
+        "caption": "Solo faltan 2️⃣ días para esta rumba salsera con el sonido de la época dorada de la salsa ⚡️ Este jueves 12 de noviembre, desde Medellín, truena en el escenario de Galeria Cafe Libro sonido.70 la orquesta de Las Leyendas Vivas de la Salsa 💃 \n\nVente a bailar con salsa, rumba y guaguancó que nos trae Sonido 70 este juernes 🎶 \n\n🎟️ $25.000 • Reservas por DM o 3176608742",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18148379041568227",
         "permalink": "https://www.instagram.com/p/DfUXSDJsEke/",
@@ -22524,6 +22546,54 @@
         "caption": "La danza sigue abriendo caminos para descubrir, experimentar y conectar con nuevas formas de expresión. 🍃\n\nEn noviembre y diciembre, La Casona de la Danza continúa siendo un punto de encuentro para quienes quieren acercarse al movimiento desde diferentes experiencias, explorar sus posibilidades y compartir alrededor del cuerpo y la creatividad. Cada espacio es una oportunidad para aprender algo nuevo y dejarse sorprender por lo que la danza tiene por contar. 💫\n\nAnímese a hacer parte de estas experiencias y encuentre en el movimiento una nueva forma de vivir el arte.\n\n📍 Deslice y conozca la programación que continúa durante noviembre.\n\n#CasonaDeLaDanza #BogotáMiCiudadMiCasa",
         "preview": null,
         "slides": 11
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Clausura 2026",
+    "event_type": "show",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "La Escuela Salsa & Ritmo Latino",
+    "venue": "CDC Timiza",
+    "address": "Cra. 74 #42-52 sur",
+    "area": "Timiza",
+    "date": "2026-11-28",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "16:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Entrada general",
+        "amount_cop": 30000,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "shows de alumnos",
+      "presentaciones en vivo"
+    ],
+    "contact": "WhatsApp 312 3363405",
+    "confidence": "high",
+    "doubts": [],
+    "id": "clausura-2026-28-nov",
+    "account": "salsayritmolatino",
+    "media": [
+      {
+        "post_id": "18648095137014408",
+        "permalink": "https://www.instagram.com/p/DfkLAaQigdP/",
+        "media_type": "IMAGE",
+        "published": "2026-11-10T14:56:52+0000",
+        "flyer": "flyers/18648095137014408-0.webp",
+        "caption": "💃✨ ¡La salsa se vive, se siente y se celebra! La Escuela Salsa & Ritmo Latino te invita a su Clausura 2026, una tarde llena de talento, baile y espectaculares presentaciones en vivo de nuestros alumnos. ❤️🔥\n\n📅 Sábado 28 de noviembre\n🕓 4:00 p. m.\n📍 CDC, Timiza. Cra. 74 #42-52 sur, Bogotá\n\n🎟️ Entrada general: $30.000.\n📢 ¡IMPORTANTE! VENTA DE BOLETERÍA SOLO EN LA ESCUELA.\n\n📲 Reserva o solicita información por WhatsApp: 312 3363405.\n¡Acompáñanos a celebrar el talento y la pasión por el baile! 🕺💃\n\n#Clausura2026 #SalsaEnBogotá #EscuelaDeBaileBogotá #SalsaRitmoYLatino",
+        "preview": null,
+        "slides": null
       }
     ],
     "bar": false
