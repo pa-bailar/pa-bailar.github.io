@@ -1,76 +1,5 @@
 [
   {
-    "title": "Hagámoslo Real - Semana de Clases",
-    "event_type": "workshop",
-    "is_recurring": false,
-    "styles": [
-      "heels",
-      "urbano",
-      "otro"
-    ],
-    "organizer": "Bureo Dance Studio",
-    "venue": "Bureo Dance Studio",
-    "address": "Sedes 109, 127 y Cajicá",
-    "area": null,
-    "date": "2026-09-07",
-    "end_date": "2026-09-11",
-    "sessions": null,
-    "weekday": "lunes",
-    "start_time": null,
-    "end_time": null,
-    "prices": [
-      {
-        "label": "Clase suelta Sede 109",
-        "amount_cop": 35000,
-        "condition": null
-      },
-      {
-        "label": "Clase suelta Sedes 127 y Cajicá",
-        "amount_cop": 50000,
-        "condition": null
-      }
-    ],
-    "artists": [
-      "Lu",
-      "Alejo Rivera",
-      "Alma",
-      "Víctor",
-      "Jujo",
-      "Diego",
-      "Maju",
-      "Vale",
-      "Ithan",
-      "Douglas"
-    ],
-    "activities": [
-      "clase de sexy style",
-      "clase de coreo",
-      "clase de heels",
-      "clase de reggaetón",
-      "videoclass"
-    ],
-    "contact": "@bureodancestudio",
-    "confidence": "high",
-    "doubts": [
-      "Discrepancia en precios de clase suelta entre imágenes de sedes individuales ($35.000 vs $50.000)"
-    ],
-    "id": "hagamoslo-real-semana-de-clases-7-sep",
-    "account": "bureodancestudio",
-    "media": [
-      {
-        "post_id": "18094649012398996",
-        "permalink": "https://www.instagram.com/p/Dc4zTdpnL9_/",
-        "media_type": "CAROUSEL_ALBUM",
-        "published": "2026-09-05T01:39:30+0000",
-        "flyer": "flyers/18094649012398996-0.webp",
-        "caption": "Hagámoslo REAL. 🔥  sai_______ \n\nDel 7 al 11 de septiembre, nos vemos en las tres sedes: 109, 127 y Cajicá.\n\nHeels, Sexy Style, Coreo y Reggaetón para bailar, sudar y disfrutar cada clase. 🖤\n\nClase suelta: $35.000\nO entra con tu paquete.\n\nDesliza, busca tu sede y reserva tu clase en la app.\n\nNos vemos en el estudio. ✨",
-        "preview": null,
-        "slides": null
-      }
-    ],
-    "bar": false
-  },
-  {
     "title": "Acro yoga y retrato",
     "event_type": "workshop",
     "is_recurring": false,
@@ -19801,6 +19730,62 @@
     "bar": true
   },
   {
+    "title": "Sonido 70 Orquesta",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "@casaquiebracanto",
+    "venue": "Casa Quiebra-Canto",
+    "address": null,
+    "area": null,
+    "date": "2026-11-13",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Sonido 70 Orquesta"
+    ],
+    "activities": [
+      "concierto",
+      "música en vivo"
+    ],
+    "contact": "@casaquiebracanto",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio"
+    ],
+    "id": "sonido-70-orquesta-13-nov",
+    "account": "casaquiebracanto",
+    "media": [
+      {
+        "post_id": "18134475418745804",
+        "permalink": "https://www.instagram.com/p/Dfj_26mRIrW/",
+        "media_type": "IMAGE",
+        "published": "2026-11-10T13:19:23+0000",
+        "flyer": "flyers/18134475418745804-0.webp",
+        "caption": "A casa Quiebra canto llagan dos excelentes agrupaciones del género salsero sonido.70  y alexrebambaramba .  Y vamo a gozar !\n\n#massalsaparatuvida #amorporlasalsa",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18134766142814473",
+        "permalink": "https://www.instagram.com/reel/DfljLjsxtcK/",
+        "media_type": "VIDEO",
+        "published": "2026-11-11T03:49:21+0000",
+        "flyer": "flyers/18134766142814473-0.webp",
+        "caption": "Candela es lo que hay este viernes 13 de noviembre con sonido.70 !  Vamo' a gozar !",
+        "preview": "previews/18134766142814473-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Festival Internacional Casinea - 10.ª Edición",
     "event_type": "congress",
     "is_recurring": false,
@@ -19823,8 +19808,8 @@
     "end_time": null,
     "prices": [
       {
-        "label": "Learning Day (un día de talleres)",
-        "amount_cop": 180000,
+        "label": "Cover en taquilla",
+        "amount_cop": 35000,
         "condition": null
       }
     ],
@@ -19853,6 +19838,26 @@
     "id": "festival-internacional-casinea-10-a-edicion-13-nov",
     "account": "casineafest",
     "media": [
+      {
+        "post_id": "18102579359430959",
+        "permalink": "https://www.instagram.com/p/DflDYyCRzrB/",
+        "media_type": "IMAGE",
+        "published": "2026-11-10T23:09:27+0000",
+        "flyer": "flyers/18102579359430959-0.webp",
+        "caption": "🌴🔥 ¡LA FIESTA NO TERMINA CON LAS COMPETENCIAS! LLEGA TROPICAL NIGHTS MUSIC SOCIAL.\n\nEste sábado 14 de noviembre, después de vivir toda la emoción de las competencias y el Show Time Casinea 2026, nos trasladamos a Pachanga y Pochola para continuar la celebración con una noche llena de música, baile y sabor tropical.\n\n🎶 Prepárate para disfrutar de una selección musical con salsa, timba, bachata y merengue. Una pista para encontrarnos, compartir con bailarines de diferentes lugares y seguir celebrando nuestra pasión por el baile.\n\n🌺 ¡La temática es tropical! Ponte tu mejor outfit tropical y ven con toda la energía para disfrutar de esta noche.\n\n📅 Sábado 14 de noviembre\n🕣 8:30 p. m.\n📍 Pachanga y Pochola\nCalle 73 #14-53, Bogotá.\n\n🎟️ Cover en taquilla: $35.000 COP\n✨ Incluido en los pases Full Pass y Experience Pass.\n🥤 El establecimiento cuenta con consumo mínimo.\n\n¡Más salsa, más timba, más sabor! Nos vemos en la pista de Tropical Nights Music Social. 🌴\n\n#Casinea2026 #TropicalNights #PachangaYPochola #SalsaCasino FestivalInternacionalCasinea",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18037499702909111",
+        "permalink": "https://www.instagram.com/p/DflCg3URdQE/",
+        "media_type": "IMAGE",
+        "published": "2026-11-10T23:01:49+0000",
+        "flyer": "flyers/18037499702909111-0.webp",
+        "caption": "🎭 ¡NOS VEMOS EN EL TEATRO CRISANTO LUQUE!\n\nEl escenario está listo para recibir toda la energía, el talento y la pasión de los bailarines que harán parte de las competencias y exhibiciones del Festival Internacional Casinea 2026.\n\nEste sábado 14 de noviembre, el Teatro Crisanto Luque será nuestra sede principal para vivir una jornada llena de emoción, talento y grandes momentos alrededor de la salsa casino y la cultura cubana.\n\n📅 Sábado 14 de noviembre de 2026 🕑 De 2:00 p. m. a 8:00 p. m. 📍 Teatro Crisanto Luque Calle 20 #9-45, Bogotá.\n\nInvitamos a competidores, artistas, acompañantes y amantes del baile a encontrarnos en este espacio para celebrar el talento de las delegaciones y disfrutar de las presentaciones de esta décima edición.\n\n📌 ¡Guarda esta información y comparte la ubicación con quienes te acompañarán!\n\n¡El escenario de Casinea te espera!\n\n#Casinea2026 #FestivalInternacionalCasinea #SalsaCasino #CompetenciasDeBaile",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "17915983302506483",
         "permalink": "https://www.instagram.com/p/DfgaDKmR37Y/",
@@ -20037,6 +20042,56 @@
     "bar": false
   },
   {
+    "title": "Sabor y Salsa con Tumbaqué",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Tributo Salsa y Jazz",
+    "venue": "Tributo Salsa y Jazz",
+    "address": "Av. Boyacá #64c - 97, ZONA 6",
+    "area": "Zona 6",
+    "date": "2026-11-13",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "18:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Aporte cultural",
+        "amount_cop": 15000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Orquesta Tumbaqué"
+    ],
+    "activities": [
+      "rumba",
+      "orquesta en vivo"
+    ],
+    "contact": "WhatsApp 310 5714 824",
+    "confidence": "high",
+    "doubts": [],
+    "id": "sabor-y-salsa-con-tumbaque-13-nov",
+    "account": "tributo.salsayjazz",
+    "media": [
+      {
+        "post_id": "18106114553570142",
+        "permalink": "https://www.instagram.com/p/Dfko-WcmUWB/",
+        "media_type": "IMAGE",
+        "published": "2026-11-10T19:18:37+0000",
+        "flyer": "flyers/18106114553570142-0.webp",
+        "caption": "¡LLEGÓ EL VIERNES DE SABOR Y SALSA! 💃🕺🔥 \nPorque el fin de semana se arranca con toda la sabrosura, te esperamos en tu casa: ¡Tributo Salsa y Jazz! \n\nEste viernes 13 de noviembre, prepárate para una rumba cargada de puro golpe, clave y la mejor energía. \n\nVen a disfrutar de un buen trago con tus amigos, alístate para azotar baldosa y déjate llevar por el poder y el sabor de la orquesta Tumbaqué en vivo. \n\n¡Pura candela para encender la pista! 🥂🎺🔥 \n\n📍 Lugar: Av. Boyacá #64c - 97, ZONA 6 ⏰ Apertura: 6:00 PM | Orquesta en vivo: 10:00 PM \n💵 Aporte cultural: $15.000 \n📲 Reservas: 310 5714 824 \n\n¡Asegura tu mesa antes de que se llene! RESERVA, arma tu parche salsero y nos vemos en la pista para gozar. 👇✨\n\nhttps://wa.me/573105714824",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Clase de baile con Teffa Murcia",
     "event_type": "workshop",
     "is_recurring": false,
@@ -20075,6 +20130,16 @@
     "account": "callejonsalsa",
     "media": [
       {
+        "post_id": "18220251622314969",
+        "permalink": "https://www.instagram.com/p/DflRclLBCSd/",
+        "media_type": "IMAGE",
+        "published": "2026-11-11T01:12:19+0000",
+        "flyer": "flyers/18220251622314969-0.webp",
+        "caption": "Música en vivo también el viernes, nada menos que con armandoquintanamusic entre amigos. Para que rematemos fuerte la noche que comenzará con la clase de salsa de la profesora teffa_mg y comenzar un puente verdaderamente festivo. \n📍Callejón Salsa & Mecato | Calle 12D #3-84 La Candelaria \n🕖 7:30 p.m. clase con Teffa Murcia - 10K\n🕖 11:00 p.m. concierto\n🎟️ 20K",
+        "preview": null,
+        "slides": null
+      },
+      {
         "post_id": "18011591999994531",
         "permalink": "https://www.instagram.com/p/Dfi4WPVx4kZ/",
         "media_type": "IMAGE",
@@ -20086,6 +20151,62 @@
       }
     ],
     "bar": true
+  },
+  {
+    "title": "Párchese La Salsa: Fiesta de Solxs",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Parche Bogotá",
+    "venue": "Viajero Bogotá",
+    "address": "Cra. 3 #20-35",
+    "area": null,
+    "date": "2026-11-13",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "20:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Preventa Individual",
+        "amount_cop": 25000,
+        "condition": "incluye cóctel de bienvenida por persona"
+      },
+      {
+        "label": "Preventa Pareja",
+        "amount_cop": 40000,
+        "condition": "incluye cóctel de bienvenida por persona"
+      }
+    ],
+    "artists": [
+      "Juancho Salsita",
+      "DJ Pinto"
+    ],
+    "activities": [
+      "clase de salsa",
+      "fiesta"
+    ],
+    "contact": "@parchexbogota",
+    "confidence": "high",
+    "doubts": [],
+    "id": "parchese-la-salsa-fiesta-de-solxs-13-nov",
+    "account": "parchexbogota",
+    "media": [
+      {
+        "post_id": "17989316697115326",
+        "permalink": "https://www.instagram.com/p/Dfke_lumiuh/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-10T17:51:24+0000",
+        "flyer": "flyers/17989316697115326-1.webp",
+        "caption": "Que rico usted y yo bailando salsa pegaditos. 💌\n\nEsta semana la clase de baile más parchada de Bogotá llega con su edición para solos y solas. Venga sin pareja, que aquí la encuentra en la pista. 🪩\n\n📍 El parche es en viajero.bogota (Cra. 3 #20-35), donde podrá conocer personas que andan viajando por Colombia y gente de Bogotá.\n\n🗓️ Viernes 13 de noviembre:\n\n8:00 p. m. · Clase de salsa con juancho__salsita \n9:30 p. m. · Fiesta con suamox.pinto \n\n🍹 Preventa: 25k individual y 40k pareja, incluye un cóctel de bienvenida por persona.\n\nLos cupos son limitados, así que reserve ahora escribiendo un mensaje directo a parchexbogota 💌",
+        "preview": null,
+        "slides": 2
+      }
+    ],
+    "bar": false
   },
   {
     "title": "Tributo a Ismael Rivera y Fruko y sus Tesos",
@@ -20209,7 +20330,7 @@
     "end_time": null,
     "prices": [
       {
-        "label": "Entrada",
+        "label": "Concierto",
         "amount_cop": 20000,
         "condition": null
       }
@@ -20230,6 +20351,16 @@
     "id": "salsa-y-son-en-vivo-con-armando-quintana-cuba-13-nov",
     "account": "callejonsalsa",
     "media": [
+      {
+        "post_id": "18220251622314969",
+        "permalink": "https://www.instagram.com/p/DflRclLBCSd/",
+        "media_type": "IMAGE",
+        "published": "2026-11-11T01:12:19+0000",
+        "flyer": "flyers/18220251622314969-0.webp",
+        "caption": "Música en vivo también el viernes, nada menos que con armandoquintanamusic entre amigos. Para que rematemos fuerte la noche que comenzará con la clase de salsa de la profesora teffa_mg y comenzar un puente verdaderamente festivo. \n📍Callejón Salsa & Mecato | Calle 12D #3-84 La Candelaria \n🕖 7:30 p.m. clase con Teffa Murcia - 10K\n🕖 11:00 p.m. concierto\n🎟️ 20K",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18011591999994531",
         "permalink": "https://www.instagram.com/p/Dfi4WPVx4kZ/",
@@ -20351,7 +20482,10 @@
     ],
     "contact": "320 3891286",
     "confidence": "high",
-    "doubts": [],
+    "doubts": [
+      "sin hora de inicio",
+      "sin precio"
+    ],
     "id": "oro-negro-con-mas-afinque-14-nov",
     "account": "oronegroclub",
     "media": [
@@ -20366,6 +20500,16 @@
         "slides": null
       },
       {
+        "post_id": "17963085378249539",
+        "permalink": "https://www.instagram.com/reel/DflM7GrpCtM/",
+        "media_type": "VIDEO",
+        "published": "2026-11-11T00:43:47+0000",
+        "flyer": "flyers/17963085378249539-0.webp",
+        "caption": "misterafinquesalsa se viste de ORO NEGRO “Con más Afinque” presentando en vivo a SALSABROSO y una nómina de lujo:\n• edwindjplasma\n• raizaldj \n• dylan_asprilla_ \n• johann_vasco10 \n• camiloselector \n\nTodo esto el próximo sábado 14 de noviembre\n ¡Reservas activas!",
+        "preview": "previews/17963085378249539-0.mp4",
+        "slides": null
+      },
+      {
         "post_id": "18098019269136574",
         "permalink": "https://www.instagram.com/reel/DfdoH0OJF_9/",
         "media_type": "VIDEO",
@@ -20373,6 +20517,49 @@
         "flyer": "flyers/18098019269136574-0.webp",
         "caption": "🔥 ¡PAREN TODO! 🔥\nLa pista en Bogotá se prende este 14 de noviembre con una descarga de sabor imperdible.\n🕺 Oro Negro Con Más Afinque llega para paralizar a los salseros de la capital:\n * 🎧 DJs en vivo\n * 🎺 Salsa en vivo\n * 🎶 Mucha gozadera y puro tumbao\n🎟️ ¡Separa tus entradas ya!\nEscríbenos al 320 389 1286 y asegura tu lugar. ¡Que no te lo cuenten!",
         "preview": "previews/18098019269136574-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Alex Rebambaramba y su orquesta",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "@casaquiebracanto",
+    "venue": "Casa Quiebra-Canto",
+    "address": null,
+    "area": null,
+    "date": "2026-11-14",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Alex Rebambaramba y su orquesta"
+    ],
+    "activities": [],
+    "contact": "@casaquiebracanto",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio"
+    ],
+    "id": "alex-rebambaramba-y-su-orquesta-14-nov",
+    "account": "casaquiebracanto",
+    "media": [
+      {
+        "post_id": "18134475418745804",
+        "permalink": "https://www.instagram.com/p/Dfj_26mRIrW/",
+        "media_type": "IMAGE",
+        "published": "2026-11-10T13:19:23+0000",
+        "flyer": "flyers/18134475418745804-0.webp",
+        "caption": "A casa Quiebra canto llagan dos excelentes agrupaciones del género salsero sonido.70  y alexrebambaramba .  Y vamo a gozar !\n\n#massalsaparatuvida #amorporlasalsa",
+        "preview": null,
         "slides": null
       }
     ],
@@ -21591,6 +21778,16 @@
         "slides": 4
       },
       {
+        "post_id": "18117462785029592",
+        "permalink": "https://www.instagram.com/reel/DflSNyhxpkI/",
+        "media_type": "VIDEO",
+        "published": "2026-11-11T01:23:21+0000",
+        "flyer": "flyers/18117462785029592-0.webp",
+        "caption": "“Ay soledad no te me vayas\r\nNo te me vayas negra que mi corazón se va a estallar…” 🎶\n\nFaltan solo 11 días (21 de noviembre 🗓️) para cantar “Soledad” a todo pulmón. ❤️ ¿Ya están listos? 🥳🎶\n.\n.\n.\n#la33 #la33orquesta #salsa #envivo #concierto",
+        "preview": "previews/18117462785029592-0.mp4",
+        "slides": null
+      },
+      {
         "post_id": "18096547922670671",
         "permalink": "https://www.instagram.com/reel/De0K8o5NSqs/",
         "media_type": "VIDEO",
@@ -21668,64 +21865,6 @@
       }
     ],
     "bar": true
-  },
-  {
-    "title": "Estrellas de Buenavista",
-    "event_type": "concert",
-    "is_recurring": false,
-    "styles": [
-      "son",
-      "salsa"
-    ],
-    "organizer": null,
-    "venue": "Teatro Jorge Eli\tcer Gait\tn",
-    "address": null,
-    "area": null,
-    "date": "2026-11-21",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "s&aacute;bado",
-    "start_time": null,
-    "end_time": null,
-    "prices": [],
-    "artists": [
-      "Estrellas de Buenavista"
-    ],
-    "activities": [
-      "concierto"
-    ],
-    "contact": null,
-    "confidence": "high",
-    "doubts": [
-      "sin hora de inicio",
-      "sin precio",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
-    "id": "estrellas-de-buenavista-21-nov",
-    "account": "fernandoespanadj",
-    "media": [
-      {
-        "post_id": "17971708788194232",
-        "permalink": "https://www.instagram.com/reel/DffR6ZdAjbZ/",
-        "media_type": "VIDEO",
-        "published": "2026-11-08T17:20:56+0000",
-        "flyer": "flyers/17971708788194232-0.webp",
-        "caption": "Noviembre Cubano en el Altiplano: Domingo 15, Tardeo en Pachanga y Pochola. Viernes 20, Orquesta Aragón en Chía. Y Sábado 21, Estrellas de Buenavista en el Teatro Jorge Eliécer Gaitán. Y nosotros presentes con Saca Las Bestias, Eddie Palmieri y La Rebelión del Bach Negro.",
-        "preview": null,
-        "slides": null
-      },
-      {
-        "post_id": "18132459670705219",
-        "permalink": "https://www.instagram.com/reel/DffQ-VPJpd4/",
-        "media_type": "VIDEO",
-        "published": "2026-11-08T17:12:45+0000",
-        "flyer": "flyers/18132459670705219-0.webp",
-        "caption": "Noviembre Cubano en el Altiplano: Domingo 15, Tardeo en Pachanga y Pochola. Viernes 20, Orquesta Aragón en Chía. Y Sábado 21, Estrellas de Buenavista en el Teatro Jorge Eliécer Gaitán. Y nosotros presentes con Saca Las Bestias, Eddie Palmieri y La Rebelión del Bach Negro.",
-        "preview": null,
-        "slides": null
-      }
-    ],
-    "bar": false
   },
   {
     "title": "Taller Especial de Bachata",
@@ -21927,6 +22066,74 @@
         "flyer": "flyers/18022353689736621-0.webp",
         "caption": "EL PENÚLTIMO DEL AÑO, BOGOTÁ! 😱🥹🔥\n\nY como siempre estamos buscando botar la casa por la ventana, para esta edición tenemos un INVITADO ESPECIAL😼 en el equipo.\n\nReserva tu cupo y prepárate para un rato sabroso!🥳",
         "preview": "previews/18022353689736621-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Estrellas de Buenavista",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "son",
+      "salsa"
+    ],
+    "organizer": "AGA Producciones Artísticas",
+    "venue": "Teatro Jorge Eli\tcer Gait\tn",
+    "address": null,
+    "area": null,
+    "date": "2026-11-21",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "20:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Estrellas de Buenavista"
+    ],
+    "activities": [
+      "concierto"
+    ],
+    "contact": "WhatsApp +57 601 5936300",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio",
+      "sin precio",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "estrellas-de-buenavista-21-nov",
+    "account": "fernandoespanadj",
+    "media": [
+      {
+        "post_id": "18119858447100973",
+        "permalink": "https://www.instagram.com/reel/Dfk_Dl0hu_t/",
+        "media_type": "VIDEO",
+        "published": "2026-11-10T22:31:37+0000",
+        "flyer": "flyers/18119858447100973-0.webp",
+        "caption": "FIN DE SEMANA CUBANO EN EL ALTIPLANO : La Orquesta Aragón el viernes 20 en Chía y las Estrellas de Buena Vista el sábado 21 en el Teatro Jorge Eliécer Gaitán.",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "17971708788194232",
+        "permalink": "https://www.instagram.com/reel/DffR6ZdAjbZ/",
+        "media_type": "VIDEO",
+        "published": "2026-11-08T17:20:56+0000",
+        "flyer": "flyers/17971708788194232-0.webp",
+        "caption": "Noviembre Cubano en el Altiplano: Domingo 15, Tardeo en Pachanga y Pochola. Viernes 20, Orquesta Aragón en Chía. Y Sábado 21, Estrellas de Buenavista en el Teatro Jorge Eliécer Gaitán. Y nosotros presentes con Saca Las Bestias, Eddie Palmieri y La Rebelión del Bach Negro.",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18132459670705219",
+        "permalink": "https://www.instagram.com/reel/DffQ-VPJpd4/",
+        "media_type": "VIDEO",
+        "published": "2026-11-08T17:12:45+0000",
+        "flyer": "flyers/18132459670705219-0.webp",
+        "caption": "Noviembre Cubano en el Altiplano: Domingo 15, Tardeo en Pachanga y Pochola. Viernes 20, Orquesta Aragón en Chía. Y Sábado 21, Estrellas de Buenavista en el Teatro Jorge Eliécer Gaitán. Y nosotros presentes con Saca Las Bestias, Eddie Palmieri y La Rebelión del Bach Negro.",
+        "preview": null,
         "slides": null
       }
     ],
@@ -23028,6 +23235,16 @@
         "published": "2026-09-15T23:44:00+0000",
         "flyer": "flyers/18104347286615308.webp",
         "caption": "⚜️ ELYSYUM MADYUM ⚜️\n\n05 de DICIEMBRE, una noche sin precedentes. Llega después de 5 años nuestro gran ANIVERSARIO MADYUM. Luego de múltiples experiencias, crecimiento, aprendizajes, adversidades, construcción de personas, procesos y evolución, nos reuniremos en una noche llena de celebración, baile, disfrute, manifestación y gran muestra de estos años de arduo trabajo. \n\nNos vemos pronto 🎤\n\n#aniversario #clausura #salsa #bachata #escueladebaile",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "17897498574427150",
+        "permalink": "https://www.instagram.com/reel/Dfk-YNthoxG/",
+        "media_type": "VIDEO",
+        "published": "2026-11-10T22:30:13+0000",
+        "flyer": "flyers/17897498574427150-0.webp",
+        "caption": "🥁 TEAM SALSA ALUMNOS 🥁\n\nPresentamos nuestro grupo oficial de Alumnos Salsa madyum 2026. Nos vemos pronto ⌛️\n\n#salsa #escueladebaile #dancing #aniversario #show",
         "preview": null,
         "slides": null
       },

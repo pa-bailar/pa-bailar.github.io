@@ -119,6 +119,77 @@
     "bar": false
   },
   {
+    "title": "Hagámoslo Real - Semana de Clases",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "heels",
+      "urbano",
+      "otro"
+    ],
+    "organizer": "Bureo Dance Studio",
+    "venue": "Bureo Dance Studio",
+    "address": "Sedes 109, 127 y Cajicá",
+    "area": null,
+    "date": "2026-09-07",
+    "end_date": "2026-09-11",
+    "sessions": null,
+    "weekday": "lunes",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Clase suelta Sede 109",
+        "amount_cop": 35000,
+        "condition": null
+      },
+      {
+        "label": "Clase suelta Sedes 127 y Cajicá",
+        "amount_cop": 50000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Lu",
+      "Alejo Rivera",
+      "Alma",
+      "Víctor",
+      "Jujo",
+      "Diego",
+      "Maju",
+      "Vale",
+      "Ithan",
+      "Douglas"
+    ],
+    "activities": [
+      "clase de sexy style",
+      "clase de coreo",
+      "clase de heels",
+      "clase de reggaetón",
+      "videoclass"
+    ],
+    "contact": "@bureodancestudio",
+    "confidence": "high",
+    "doubts": [
+      "Discrepancia en precios de clase suelta entre imágenes de sedes individuales ($35.000 vs $50.000)"
+    ],
+    "id": "hagamoslo-real-semana-de-clases-7-sep",
+    "account": "bureodancestudio",
+    "media": [
+      {
+        "post_id": "18094649012398996",
+        "permalink": "https://www.instagram.com/p/Dc4zTdpnL9_/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-09-05T01:39:30+0000",
+        "flyer": "archive/flyers/18094649012398996-0.webp",
+        "caption": "Hagámoslo REAL. 🔥  sai_______ \n\nDel 7 al 11 de septiembre, nos vemos en las tres sedes: 109, 127 y Cajicá.\n\nHeels, Sexy Style, Coreo y Reggaetón para bailar, sudar y disfrutar cada clase. 🖤\n\nClase suelta: $35.000\nO entra con tu paquete.\n\nDesliza, busca tu sede y reserva tu clase en la app.\n\nNos vemos en el estudio. ✨",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Workshop con Lil Andrew - Clase de Coreografía",
     "event_type": "workshop",
     "is_recurring": false,
