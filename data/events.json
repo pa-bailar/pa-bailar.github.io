@@ -19295,9 +19295,9 @@
     "end_time": null,
     "prices": [
       {
-        "label": "Clase (incluye 1 cerveza)",
+        "label": "Entrada",
         "amount_cop": 30000,
-        "condition": null
+        "condition": "incluye 1 cerveza"
       }
     ],
     "artists": [
@@ -19308,9 +19308,7 @@
     ],
     "contact": "@callejonsalsa",
     "confidence": "high",
-    "doubts": [
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
+    "doubts": [],
     "id": "clase-de-tango-con-ceci-urzola-11-nov",
     "account": "callejonsalsa",
     "media": [
@@ -19381,12 +19379,12 @@
     "event_type": "concert",
     "is_recurring": false,
     "styles": [
-      "son",
-      "salsa"
+      "salsa",
+      "son"
     ],
     "organizer": "Salsa Camará",
     "venue": "Salsa Camará",
-    "address": "Carrera 11 #70A - 22",
+    "address": "Carrera 11 #70A-22",
     "area": null,
     "date": "2026-11-12",
     "end_date": null,
@@ -19404,15 +19402,10 @@
     "artists": [
       "Charanga Premiere"
     ],
-    "activities": [
-      "Jueves de Son Gozón",
-      "música en vivo"
-    ],
+    "activities": [],
     "contact": "WhatsApp 313 830 8844",
     "confidence": "high",
-    "doubts": [
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
+    "doubts": [],
     "id": "charanga-premiere-12-nov",
     "account": "salsacamaraoficial",
     "media": [
@@ -19683,53 +19676,6 @@
     "bar": false
   },
   {
-    "title": "Lanzamiento del nuevo álbum de la Orquesta La Palabra",
-    "event_type": "concert",
-    "is_recurring": false,
-    "styles": [
-      "salsa"
-    ],
-    "organizer": "@pachanga_y_pochola",
-    "venue": "Pachanga y Pochola",
-    "address": null,
-    "area": null,
-    "date": "2026-11-13",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "viernes",
-    "start_time": null,
-    "end_time": null,
-    "prices": [],
-    "artists": [
-      "Orquesta La Palabra"
-    ],
-    "activities": [
-      "lanzamiento de álbum",
-      "concierto"
-    ],
-    "contact": "@pachanga_y_pochola",
-    "confidence": "high",
-    "doubts": [
-      "sin hora de inicio",
-      "sin precio de entrada"
-    ],
-    "id": "lanzamiento-del-nuevo-album-de-la-orquesta-la-13-nov",
-    "account": "pachanga_y_pochola",
-    "media": [
-      {
-        "post_id": "18146133592592644",
-        "permalink": "https://www.instagram.com/reel/Dfijr2ARvtt/",
-        "media_type": "VIDEO",
-        "published": "2026-11-09T23:59:34+0000",
-        "flyer": "flyers/18146133592592644-0.webp",
-        "caption": "Este 13  de noviembre (Viernes) 🔥🥳 la ruta  salserisimabogotaradio estará pasando por #pachanga en el lanzamiento del nuevo álbum de la orquestalapalabra 🥳🥳🥳. \n\nTe invitamos a ser parte de esto no te lo pierdas 🔥💃🏿💃🏿✨🥳",
-        "preview": "previews/18146133592592644-0.mp4",
-        "slides": null
-      }
-    ],
-    "bar": true
-  },
-  {
     "title": "Sonido 70 Orquesta",
     "event_type": "concert",
     "is_recurring": false,
@@ -19780,6 +19726,53 @@
         "flyer": "flyers/18134766142814473-0.webp",
         "caption": "Candela es lo que hay este viernes 13 de noviembre con sonido.70 !  Vamo' a gozar !",
         "preview": "previews/18134766142814473-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Lanzamiento del nuevo álbum de la Orquesta La Palabra",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "@pachanga_y_pochola",
+    "venue": "Pachanga y Pochola",
+    "address": null,
+    "area": null,
+    "date": "2026-11-13",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Orquesta La Palabra"
+    ],
+    "activities": [
+      "lanzamiento de álbum",
+      "música en vivo"
+    ],
+    "contact": "@pachanga_y_pochola",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio",
+      "sin precio"
+    ],
+    "id": "lanzamiento-del-nuevo-album-de-la-orquesta-la-13-nov",
+    "account": "pachanga_y_pochola",
+    "media": [
+      {
+        "post_id": "18146133592592644",
+        "permalink": "https://www.instagram.com/reel/Dfijr2ARvtt/",
+        "media_type": "VIDEO",
+        "published": "2026-11-09T23:59:34+0000",
+        "flyer": "flyers/18146133592592644-0.webp",
+        "caption": "Este 13  de noviembre (Viernes) 🔥🥳 la ruta  salserisimabogotaradio estará pasando por #pachanga en el lanzamiento del nuevo álbum de la orquestalapalabra 🥳🥳🥳. \n\nTe invitamos a ser parte de esto no te lo pierdas 🔥💃🏿💃🏿✨🥳",
+        "preview": "previews/18146133592592644-0.mp4",
         "slides": null
       }
     ],
@@ -20050,7 +20043,7 @@
     ],
     "organizer": "Tributo Salsa y Jazz",
     "venue": "Tributo Salsa y Jazz",
-    "address": "Av. Boyacá #64c - 97, ZONA 6",
+    "address": "Av. Boyacá #64c - 97",
     "area": "Zona 6",
     "date": "2026-11-13",
     "end_date": null,
@@ -20069,10 +20062,9 @@
       "Orquesta Tumbaqué"
     ],
     "activities": [
-      "rumba",
       "orquesta en vivo"
     ],
-    "contact": "WhatsApp 310 5714 824",
+    "contact": "WhatsApp 3105714824",
     "confidence": "high",
     "doubts": [],
     "id": "sabor-y-salsa-con-tumbaque-13-nov",
@@ -20110,7 +20102,7 @@
     "end_time": null,
     "prices": [
       {
-        "label": "Clase",
+        "label": "Entrada",
         "amount_cop": 10000,
         "condition": null
       }
@@ -20119,13 +20111,11 @@
       "Teffa Murcia"
     ],
     "activities": [
-      "clase de salsa"
+      "clase de baile"
     ],
     "contact": "@callejonsalsa",
     "confidence": "high",
-    "doubts": [
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
+    "doubts": [],
     "id": "clase-de-baile-con-teffa-murcia-13-nov",
     "account": "callejonsalsa",
     "media": [
@@ -20330,7 +20320,7 @@
     "end_time": null,
     "prices": [
       {
-        "label": "Concierto",
+        "label": "Entrada",
         "amount_cop": 20000,
         "condition": null
       }
@@ -20339,15 +20329,11 @@
       "Armando Quintana"
     ],
     "activities": [
-      "música en vivo",
-      "son",
-      "salsa"
+      "música en vivo"
     ],
     "contact": "@callejonsalsa",
     "confidence": "high",
-    "doubts": [
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
+    "doubts": [],
     "id": "salsa-y-son-en-vivo-con-armando-quintana-cuba-13-nov",
     "account": "callejonsalsa",
     "media": [
@@ -20675,7 +20661,7 @@
     ],
     "organizer": "Salsa Camará",
     "venue": "Salsa Camará",
-    "address": "Carrera 11 #70A - 22",
+    "address": "Carrera 11 #70A-22",
     "area": null,
     "date": "2026-11-14",
     "end_date": null,
@@ -20693,15 +20679,10 @@
     "artists": [
       "Sonido 70"
     ],
-    "activities": [
-      "Sábado de Orquesta y Sabor",
-      "música en vivo"
-    ],
+    "activities": [],
     "contact": "WhatsApp 313 830 8844",
     "confidence": "high",
-    "doubts": [
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
+    "doubts": [],
     "id": "sonido-70-14-nov",
     "account": "salsacamaraoficial",
     "media": [
