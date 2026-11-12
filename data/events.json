@@ -19655,13 +19655,13 @@
       "Son Legales"
     ],
     "activities": [
-      "m#sica en vivo"
+      "música en vivo"
     ],
     "contact": "@salsaysonoficial",
-    "confidence": "medium",
+    "confidence": "high",
     "doubts": [
       "sin hora de inicio",
-      "sin precio de entrada"
+      "sin precio especificado"
     ],
     "id": "son-legales-en-vivo-13-nov",
     "account": "salsaysonoficial",
@@ -20620,22 +20620,19 @@
       },
       {
         "label": "Taquilla",
-        "amount_cop": 3000,
+        "amount_cop": 30000,
         "condition": null
       }
     ],
     "artists": [],
     "activities": [
       "clase de baile",
-      "concurso de solteros",
-      "fiesta",
-      "premiación en efectivo"
+      "concurso del soltero y la soltera",
+      "fiesta"
     ],
     "contact": "WhatsApp 3114964964",
     "confidence": "high",
-    "doubts": [
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
+    "doubts": [],
     "id": "tinder-bailable-sala-de-emergencias-14-nov",
     "account": "bogotadanceclub",
     "media": [
@@ -21066,7 +21063,7 @@
   },
   {
     "title": "Domingo Súper Bailable",
-    "event_type": "social",
+    "event_type": "concert",
     "is_recurring": false,
     "styles": [
       "salsa",
@@ -21088,10 +21085,15 @@
         "label": "Cover",
         "amount_cop": 30000,
         "condition": null
+      },
+      {
+        "label": "Consumible",
+        "amount_cop": 10000,
+        "condition": null
       }
     ],
     "artists": [
-      "Orquesta Candombe"
+      "Orquesta Candombé"
     ],
     "activities": [
       "viejoteca",
@@ -21099,10 +21101,7 @@
     ],
     "contact": "WhatsApp 3114964964",
     "confidence": "high",
-    "doubts": [
-      "El post menciona un consumible de 10.000 adicional al cover",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
+    "doubts": [],
     "id": "domingo-super-bailable-15-nov",
     "account": "bogotadanceclub",
     "media": [
