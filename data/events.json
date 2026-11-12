@@ -1,363 +1,5 @@
 [
   {
-    "title": "Hagámoslo Real - Semana de Clases",
-    "event_type": "workshop",
-    "is_recurring": false,
-    "styles": [
-      "heels",
-      "urbano",
-      "otro"
-    ],
-    "organizer": "Bureo Dance Studio",
-    "venue": "Bureo Dance Studio",
-    "address": "Sedes 109, 127 y Cajicá",
-    "area": null,
-    "date": "2026-09-07",
-    "end_date": "2026-09-11",
-    "sessions": null,
-    "weekday": "lunes",
-    "start_time": null,
-    "end_time": null,
-    "prices": [
-      {
-        "label": "Clase suelta Sede 109",
-        "amount_cop": 35000,
-        "condition": null
-      },
-      {
-        "label": "Clase suelta Sedes 127 y Cajicá",
-        "amount_cop": 50000,
-        "condition": null
-      }
-    ],
-    "artists": [
-      "Lu",
-      "Alejo Rivera",
-      "Alma",
-      "Víctor",
-      "Jujo",
-      "Diego",
-      "Maju",
-      "Vale",
-      "Ithan",
-      "Douglas"
-    ],
-    "activities": [
-      "clase de sexy style",
-      "clase de coreo",
-      "clase de heels",
-      "clase de reggaetón",
-      "videoclass"
-    ],
-    "contact": "@bureodancestudio",
-    "confidence": "high",
-    "doubts": [
-      "Discrepancia en precios de clase suelta entre imágenes de sedes individuales ($35.000 vs $50.000)"
-    ],
-    "id": "hagamoslo-real-semana-de-clases-7-sep",
-    "account": "bureodancestudio",
-    "media": [
-      {
-        "post_id": "18094649012398996",
-        "permalink": "https://www.instagram.com/p/Dc4zTdpnL9_/",
-        "media_type": "CAROUSEL_ALBUM",
-        "published": "2026-09-05T01:39:30+0000",
-        "flyer": "flyers/18094649012398996-0.webp",
-        "caption": "Hagámoslo REAL. 🔥  sai_______ \n\nDel 7 al 11 de septiembre, nos vemos en las tres sedes: 109, 127 y Cajicá.\n\nHeels, Sexy Style, Coreo y Reggaetón para bailar, sudar y disfrutar cada clase. 🖤\n\nClase suelta: $35.000\nO entra con tu paquete.\n\nDesliza, busca tu sede y reserva tu clase en la app.\n\nNos vemos en el estudio. ✨",
-        "preview": null,
-        "slides": null
-      }
-    ],
-    "bar": false
-  },
-  {
-    "title": "Workshop con Lil Andrew - Clase de Coreografía",
-    "event_type": "workshop",
-    "is_recurring": false,
-    "styles": [
-      "urbano"
-    ],
-    "organizer": "Bureo Dance Studio",
-    "venue": "Bureo Dance Studio",
-    "address": null,
-    "area": "Sede 109",
-    "date": "2026-09-09",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "miércoles",
-    "start_time": "20:00",
-    "end_time": null,
-    "prices": [
-      {
-        "label": "Público",
-        "amount_cop": 35000,
-        "condition": null
-      },
-      {
-        "label": "Members Bureo",
-        "amount_cop": 30000,
-        "condition": null
-      }
-    ],
-    "artists": [
-      "Lil Andrew"
-    ],
-    "activities": [
-      "clase de coreografía",
-      "workshop"
-    ],
-    "contact": "@bureodancestudio",
-    "confidence": "high",
-    "doubts": [],
-    "id": "workshop-con-lil-andrew-clase-de-coreografia-9-sep",
-    "account": "bureodancestudio",
-    "media": [
-      {
-        "post_id": "18475359718114255",
-        "permalink": "https://www.instagram.com/p/DdAxDa8CaOW/",
-        "media_type": "IMAGE",
-        "published": "2026-09-08T03:55:13+0000",
-        "flyer": "flyers/18475359718114255-0.webp",
-        "caption": "🔥 WORKSHOP CON LIL ANDREW 🔥 lilandrewoficial \n\nUna clase para bailar, aprender y disfrutar el proceso. 🖤\n\nEste miércoles 9 de septiembre nos vemos en Bureo Dance Studio para una clase de coreografía con Lil Andrew, bailarín de Don Omar.\n\n📍 Sede 109\n🕗 8:00 PM\n💰 Público: $35.000\n✨ Members Bureo: $30.000\n\nCupos limitados. Reserva el tuyo y nos vemos en el salón. 🫶🏻",
-        "preview": null,
-        "slides": null
-      }
-    ],
-    "bar": false
-  },
-  {
-    "title": "Ritmos Cruzados",
-    "event_type": "workshop",
-    "is_recurring": false,
-    "styles": [
-      "champeta",
-      "salsa"
-    ],
-    "organizer": "Esfera Latina",
-    "venue": "Esfera Latina",
-    "address": null,
-    "area": null,
-    "date": "2026-09-10",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "jueves",
-    "start_time": "18:00",
-    "end_time": null,
-    "prices": [
-      {
-        "label": "Estudiantes",
-        "amount_cop": 10000,
-        "condition": null
-      },
-      {
-        "label": "Extra",
-        "amount_cop": 15000,
-        "condition": null
-      }
-    ],
-    "artists": [
-      "Diego (soydiegodanza)",
-      "Maik (maik_the_dancer)"
-    ],
-    "activities": [
-      "clase especial de champeta + salsa"
-    ],
-    "contact": "3135802345",
-    "confidence": "high",
-    "doubts": [],
-    "id": "ritmos-cruzados-10-sep",
-    "account": "esferalatinaoficial",
-    "media": [
-      {
-        "post_id": "17940141273086498",
-        "permalink": "https://www.instagram.com/p/Dc1loAmJxwo/",
-        "media_type": "IMAGE",
-        "published": "2026-09-05T01:00:09+0000",
-        "flyer": "flyers/17940141273086498.webp",
-        "caption": "🔥 RITMOS CRUZADOS 🔥\n\n¿Estás listo para salir de la rutina y bailar algo diferente?\n\nEste jueves 10 de septiembre llega a Esfera Latina una clase especial de Champeta + Salsa, donde vamos a cruzar dos ritmos llenos de sabor, energía y movimiento.\n\n💥 Champeta + Salsa\n📅 Jueves 10 de septiembre\n⏰ 6:00 PM\n🎶 Con soydiegodanza & maik_the_dancer \n\nUna clase para aprender, disfrutar y dejarlo todo en la pista.\n\n¿Te animas a cruzar los ritmos?\n\nTe esperamos en Esfera Latina.",
-        "preview": null,
-        "slides": null
-      }
-    ],
-    "bar": false
-  },
-  {
-    "title": "Acro yoga y retrato",
-    "event_type": "workshop",
-    "is_recurring": false,
-    "styles": [],
-    "organizer": "Espacio 64",
-    "venue": "Espacio 64",
-    "address": null,
-    "area": "Bogotá",
-    "date": "2026-09-12",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "sábado",
-    "start_time": null,
-    "end_time": null,
-    "prices": [],
-    "artists": [],
-    "activities": [
-      "taller de Acro Yoga",
-      "taller de retrato"
-    ],
-    "contact": "@espacio.64",
-    "confidence": "high",
-    "doubts": [
-      "sin precio",
-      "sin horario de inicio"
-    ],
-    "id": "acro-yoga-y-retrato-12-sep",
-    "account": "espacio.64",
-    "media": [
-      {
-        "post_id": "18445192954127928",
-        "permalink": "https://www.instagram.com/p/Dc_6anaGhEb/",
-        "media_type": "CAROUSEL_ALBUM",
-        "published": "2026-09-07T19:56:20+0000",
-        "flyer": "flyers/18445192954127928-1.webp",
-        "caption": "✦ SEPTIEMBRE EN ESPACIO 64 ✦\n\nEste mes queremos celebrar los vínculos: los que nos hacen reír, los que nos inspiran, los que nos transforman y también aquellos que todavía están por aparecer.\n\nEn septiembre nos encontramos alrededor de la escritura, la grafica, el movimiento, la música y la creación para celebrar el amor y la amistad de muchas maneras.\n\n💌 Sábado 12 — Amor en dos tiempos\nUna mañana para compartir en pareja: taller de Acro Yoga  y en la tarde un taller de retrato en el que cada quien dibujará al otro para descubrir cómo nos vemos cuando nos miran desde afuera. Y sí: habrá vino. 🍷\n\n❤️ Sábado 19 — Previa de Amor y Amistad\nUna mañana para que el a,le sea potencia: taller de arte postal, ven y escribe tu carta, crea tus sobres, postales y sellos.\nUna tarde-noche para encontrarnos: pop-up grafico junto a artistas increíbles tonraton sakoasko elarincon heitorcorreaart , carta de bebidas de autor y tapas, DJ set en vivo con manufediaz juegos, mensajes y sorpresas. Ven con alguien, ven solx, ven a ver qué pasa. 🫀\n\n✍️ Sábado 26 + 3 de octubre — Gateando la escritura \nDos sesiones de escritura creativa junto a Sebas García, escritor de refugiodelaescritura para indagar en las primeras intenciones a la hora de escribir 🖋️ \nNos vemos en Espacio 64. ♡\n\n📍 Bogotá · Espacio 64\n💌 Inscripciones abiertas",
-        "preview": null,
-        "slides": null
-      }
-    ],
-    "bar": false
-  },
-  {
-    "title": "Ángeles y Diablitos - Edición Tinder Bailable",
-    "event_type": "social",
-    "is_recurring": false,
-    "styles": [
-      "bachata"
-    ],
-    "organizer": "@bogotadanceclub",
-    "venue": "Bogotá Dance Club",
-    "address": "Calle 25F #36-15",
-    "area": null,
-    "date": "2026-09-12",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "sábado",
-    "start_time": "15:00",
-    "end_time": "22:00",
-    "prices": [
-      {
-        "label": "Preventa",
-        "amount_cop": 25000,
-        "condition": null
-      },
-      {
-        "label": "Taquilla",
-        "amount_cop": 30000,
-        "condition": null
-      }
-    ],
-    "artists": [],
-    "activities": [
-      "clase de pre fiesta de bachata"
-    ],
-    "contact": null,
-    "confidence": "high",
-    "doubts": [
-      "sin hora",
-      "sin precio",
-      "sin lugar"
-    ],
-    "id": "angeles-y-diablitos-edicion-tinder-bailable-12-sep",
-    "account": "bogotadanceclub",
-    "media": [
-      {
-        "post_id": "17921307081425313",
-        "permalink": "https://www.instagram.com/reel/DdKtWLZu7tg/",
-        "media_type": "VIDEO",
-        "published": "2026-09-12T00:35:15+0000",
-        "flyer": "flyers/17921307081425313-0.webp",
-        "caption": "💃🏻 Clasesita de bachata pre fiesta mañana sábado 12 de septiembre en nuestro 🔥TINDER BAILABLE🔥 edición: Angeles y Diablitos \n\nSi quieres más información escríbenos un mensaje 😈😇",
-        "preview": "previews/17921307081425313-0.mp4",
-        "slides": null
-      },
-      {
-        "post_id": "18367120918246405",
-        "permalink": "https://www.instagram.com/reel/DdIP7sjO0WG/",
-        "media_type": "VIDEO",
-        "published": "2026-09-11T01:40:43+0000",
-        "flyer": "flyers/18367120918246405-0.webp",
-        "caption": "Etiqueta a esa amiga que jamás encubriría una infidelidad 👩🏻‍🐰‍👩🏼\n\nY este sábado 12 de septiembre las esperamos en nuestro 🔥TINDER BAILABLE🔥 edición: 😇 Angeles o Diablitos 😈\n\nSi quieres más información comenta este video 👇🏻\n\n#planesenbogotá #amigas #tinder #bogotá #baile",
-        "preview": "previews/18367120918246405-0.mp4",
-        "slides": null
-      },
-      {
-        "post_id": "18017335922925427",
-        "permalink": "https://www.instagram.com/reel/DdC1usyuS0Q/",
-        "media_type": "VIDEO",
-        "published": "2026-09-08T23:20:19+0000",
-        "flyer": "flyers/18017335922925427-0.webp",
-        "caption": "DENUNCIA PÚBLICA EN BOGOTÁ 🤬\n\nQueremos dejar este video acá para hacer una denuncia pública de que el bailadero Bogotá Dance Club hace las mejores fiestas de Tinder Bailable de la ciudad 🔥😏\n\nY este sábado se viene edición 😇 Angeles y Diablitos 😈\n\n📢 Comunidad bailadora de 18 a 45 años ✨\n🗓️ 12 de septiembre 🕒 De 3PM A 10PM\n📍 Calle 25F #36-15 - Bogotá Dance Club\n\n🤓 Clase de pre fiesta de bachata (para romper el hielo)\n\n💵 Cover en preventa: $25.000\n💰 Cover en puerta: $30.000\n(Incluye aureola o cachitos + clase + 1 bebida)\n\nAnímate a desinstalar Tinder y comenzar a conocer gente en la vida real 😮‍💨\n\nSi quieres más información comenta este video 🔥👇🏻",
-        "preview": "previews/18017335922925427-0.mp4",
-        "slides": null
-      }
-    ],
-    "bar": false
-  },
-  {
-    "title": "Social Crossover y Talleres",
-    "event_type": "social",
-    "is_recurring": false,
-    "styles": [
-      "bachata",
-      "zouk"
-    ],
-    "organizer": "Show Stars Academia de Baile",
-    "venue": "Show Stars Academia de Baile",
-    "address": "Av. Calle 24 #75-25",
-    "area": null,
-    "date": "2026-09-12",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "sábado",
-    "start_time": "19:00",
-    "end_time": "01:00",
-    "prices": [
-      {
-        "label": "Individual",
-        "amount_cop": 30000,
-        "condition": null
-      },
-      {
-        "label": "Pareja",
-        "amount_cop": 50000,
-        "condition": null
-      }
-    ],
-    "artists": [
-      "Angel y Melany"
-    ],
-    "activities": [
-      "bachata tradicional",
-      "bachazouk",
-      "social crossover"
-    ],
-    "contact": "SOCIAL",
-    "confidence": "high",
-    "doubts": [],
-    "id": "social-crossover-y-talleres-12-sep",
-    "account": "showstarscol",
-    "media": [
-      {
-        "post_id": "18013505918746903",
-        "permalink": "https://www.instagram.com/reel/DdCb-uRxXxE/",
-        "media_type": "VIDEO",
-        "published": "2026-09-08T19:38:14+0000",
-        "flyer": "flyers/18013505918746903-0.webp",
-        "caption": "🔥🕺💃 ¡ESTE 12 DE SEPTIEMBRE TENEMOS PLAN! 💃🕺🔥\n\nPrepárate para vivir una noche llena de bachata, aprendizaje, baile y mucha conexión. ✨\n\nDe 7:00 PM a 8:00 PM tendremos Bachata Tradicional, donde trabajaremos la cultura y esencia de este hermoso ritmo. ❤️\n\nDe 8:00 PM a 9:00 PM, seguiremos con Bachazouk, trabajando técnica, soft following y un estilo diferente para seguir evolucionando en tu baile. 🔥\n\nY para terminar… 😎🔥\n\n🕘 9:00 PM a 1:00 AM — SOCIAL CROSSOVER\nUna noche para disfrutar, practicar, conocer personas y bailar sin parar. 💃🕺✨\n\n📍 Av. Calle 24 #75-25\n⭐ Show Stars Academia de Baile\n¿Quieres asistir y recibir toda la información? 👇\n\n📩 Escríbenos la palabra “SOCIAL” por mensaje directo y te enviamos todos los detalles. 🔥\n\n¡Nos vemos en la pista! ⭐✨\n\n#ShowStars #SocialCrossover #Bachata #BachataTradicional \n\n⭐ No importa tu nivel, solo trae tus ganas de bailar. ¡Nos vemos en el SOCIAL! 🔥🕺💃",
-        "preview": "previews/18013505918746903-0.mp4",
-        "slides": null
-      }
-    ],
-    "bar": false
-  },
-  {
     "title": "Salsa y Chontaduro - Taller intensivo de salsa caleña",
     "event_type": "workshop",
     "is_recurring": false,
@@ -18029,6 +17671,16 @@
         "slides": 3
       },
       {
+        "post_id": "18646586344032980",
+        "permalink": "https://www.instagram.com/reel/Dfkb-5Qhg_j/",
+        "media_type": "VIDEO",
+        "published": "2026-11-10T17:33:24+0000",
+        "flyer": "flyers/18646586344032980-0.webp",
+        "caption": "Así se gozó la primera edición de Guabalosas y este sábado 14 de noviembre volvemos a darleee. 🔥❤️\n\nEsta segunda edición viene con todaaaa🔥\nPreparadas ? 👀👠\n\n#salsacaleña #salsacaleñastyle #salsa #caleñostyle #cali",
+        "preview": "previews/18646586344032980-0.mp4",
+        "slides": null
+      },
+      {
         "post_id": "17981688660129708",
         "permalink": "https://www.instagram.com/reel/DfVbtcRh_Sz/",
         "media_type": "VIDEO",
@@ -18340,58 +17992,6 @@
     "bar": true
   },
   {
-    "title": "Mira, ven pa’ acá",
-    "event_type": "concert",
-    "is_recurring": false,
-    "styles": [
-      "salsa"
-    ],
-    "organizer": "Acá Parchamos",
-    "venue": "Acá Parchamos",
-    "address": "Calle 49 # 9-85",
-    "area": null,
-    "date": "2026-11-07",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "sábado",
-    "start_time": "19:00",
-    "end_time": null,
-    "prices": [
-      {
-        "label": "Cover",
-        "amount_cop": 20000,
-        "condition": null
-      }
-    ],
-    "artists": [
-      "Fabián Mora y Team Latino",
-      "Nelson Contreras"
-    ],
-    "activities": [
-      "clase de baile gratis",
-      "show de baile",
-      "música en vivo"
-    ],
-    "contact": "WhatsApp +57 310 8199393",
-    "confidence": "high",
-    "doubts": [],
-    "id": "mira-ven-pa-aca-7-nov",
-    "account": "acaparchamos",
-    "media": [
-      {
-        "post_id": "18002428787814167",
-        "permalink": "https://www.instagram.com/p/DfDUyOJotnW/",
-        "media_type": "IMAGE",
-        "published": "2026-10-28T20:57:20+0000",
-        "flyer": "flyers/18002428787814167-0.webp",
-        "caption": "¡Prepárate para vivir una noche inolvidable de puro sabor, baile y alegría! Te invitamos a “Mira, ven pa’ acá”, una fiesta que te transportará directamente a la auténtica energía de las calles salseras, pero esta vez con el parche de Bogotá.\n📅 Fecha: 07 de noviembre\n📍 Lugar: Acá Parchamos (Calle 49 # 9-85, Bogotá D.C.)\n🎟️ Cover: $20.000 pesos\n¿Qué vas a vivir?\n * 💃 Clase de baile GRATIS: De 7:00 p.m. a 8:00 p.m. para que calientes motores y saques los mejores pasos.\n * 🔥 Show de baile: Un espectáculo imperdible que te dejará sin aliento.\n * 🎺 Música en vivo: Con la tremenda presentación de Fabián Mora y Team Latino (Orquesta).\n * 🪩Coleccionistas de peso: El mejor selector de vinilos de la noche a cargo de Nelson Contreras.\n🎟️ ¡Asegura tu entrada en preventa!\nNo te quedes por fuera de este parche sabroso. Compra tus boletas escribiendo al WhatsApp +57 310 8199393.\n * Métodos de pago: Nequi y Llave Bre-B al mismo número (310 8199393).\n * Importante: Una vez realizado el pago, debes enviar el comprobante al WhatsApp junto con tu nombre completo, número de cédula y la cantidad de boletas que estás adquiriendo.\n¡Saca el cencerro, invita a tu pareja o combo favorito y ven a parchar con nosotros! ✨ #fiestasalsa #salsabogota #orquestasalsa #bailasalsa",
-        "preview": null,
-        "slides": null
-      }
-    ],
-    "bar": true
-  },
-  {
     "title": "Petra - XIX Festival Danza en la Ciudad",
     "event_type": "show",
     "is_recurring": false,
@@ -18527,6 +18127,70 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "Mira, ven pa’ acá",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Acá Parchamos",
+    "venue": "Acá Parchamos",
+    "address": "Calle 49 # 9-85",
+    "area": null,
+    "date": "2026-11-07",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "20:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 20000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Fabián Mora y Team Latino",
+      "Nelson Contreras"
+    ],
+    "activities": [
+      "clase de baile gratis",
+      "show de baile",
+      "música en vivo"
+    ],
+    "contact": "WhatsApp +57 310 8199393",
+    "confidence": "high",
+    "doubts": [
+      "sin precio"
+    ],
+    "id": "mira-ven-pa-aca-7-nov",
+    "account": "acaparchamos",
+    "media": [
+      {
+        "post_id": "18002428787814167",
+        "permalink": "https://www.instagram.com/p/DfDUyOJotnW/",
+        "media_type": "IMAGE",
+        "published": "2026-10-28T20:57:20+0000",
+        "flyer": "flyers/18002428787814167-0.webp",
+        "caption": "¡Prepárate para vivir una noche inolvidable de puro sabor, baile y alegría! Te invitamos a “Mira, ven pa’ acá”, una fiesta que te transportará directamente a la auténtica energía de las calles salseras, pero esta vez con el parche de Bogotá.\n📅 Fecha: 07 de noviembre\n📍 Lugar: Acá Parchamos (Calle 49 # 9-85, Bogotá D.C.)\n🎟️ Cover: $20.000 pesos\n¿Qué vas a vivir?\n * 💃 Clase de baile GRATIS: De 7:00 p.m. a 8:00 p.m. para que calientes motores y saques los mejores pasos.\n * 🔥 Show de baile: Un espectáculo imperdible que te dejará sin aliento.\n * 🎺 Música en vivo: Con la tremenda presentación de Fabián Mora y Team Latino (Orquesta).\n * 🪩Coleccionistas de peso: El mejor selector de vinilos de la noche a cargo de Nelson Contreras.\n🎟️ ¡Asegura tu entrada en preventa!\nNo te quedes por fuera de este parche sabroso. Compra tus boletas escribiendo al WhatsApp +57 310 8199393.\n * Métodos de pago: Nequi y Llave Bre-B al mismo número (310 8199393).\n * Importante: Una vez realizado el pago, debes enviar el comprobante al WhatsApp junto con tu nombre completo, número de cédula y la cantidad de boletas que estás adquiriendo.\n¡Saca el cencerro, invita a tu pareja o combo favorito y ven a parchar con nosotros! ✨ #fiestasalsa #salsabogota #orquestasalsa #bailasalsa",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18177042736456013",
+        "permalink": "https://www.instagram.com/reel/DfdemWeI0w0/",
+        "media_type": "VIDEO",
+        "published": "2026-11-08T00:44:44+0000",
+        "flyer": "flyers/18177042736456013-0.webp",
+        "caption": "SALSA CASINO, ORQUESTA, BAILE Y VINILOS. 💃 🕺\n\nHoy sábado 7 de NOVIEMBRE desde las 8:00 pm. \n\n\"Mira ven pa Acá\" con un combo de lujo:\n\n📀 Selección de vinilos a cargo de nel.son.co\n🎤 fabianmoratrom y su orquesta EN VIVO\n🕺 Clase de salsa con rafikontreras\n🪩 Show de baile de unteamcasino\n\nAgúzate en acaparchamos",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
   },
   {
     "title": "Segundo Aniversario Ebi Dance",
@@ -19174,14 +18838,66 @@
     "bar": false
   },
   {
+    "title": "Franja .MOV - Videodanza: See-through, Territorio Yuma, Ciudasis",
+    "event_type": "show",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "XIX Festival Danza en la Ciudad",
+    "venue": "Cinemateca de Bogotá",
+    "address": "Carrera 3 No. 19-10",
+    "area": null,
+    "date": "2026-11-10",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "martes",
+    "start_time": "16:30",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Adriana Cubides",
+      "Carolina Salamanca",
+      "Artefactum"
+    ],
+    "activities": [
+      "proyección de 'See-through - the film'",
+      "proyección de 'Territorio Yuma - Culturas anfibias de Colombia'",
+      "proyección de 'Ciudasis: del caos al oasis'"
+    ],
+    "contact": "@danzaenlaciudad",
+    "confidence": "high",
+    "doubts": [
+      "sin precio especificado",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "franja-mov-videodanza-see-through-territorio-yuma-10-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "17957683491031215",
+        "permalink": "https://www.instagram.com/p/Dfir24SEdQd/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-10T01:05:02+0000",
+        "flyer": "flyers/17957683491031215-0.webp",
+        "caption": "La danza trasciende los escenarios y explora nuevas formas de expresión a través de la pantalla en la Franja de Videodanza .MOV del XIX Festival Danza en la Ciudad 2026: Tejiendo movimiento, con la Franja de Videodanza .MOV. 🎥\n\nUna invitación a descubrir los cruces entre cuerpo, movimiento, imagen y lenguaje audiovisual, donde cada encuadre abre nuevas posibilidades para narrar y sentir la danza.\n\nEn esta franja se presentarán tres propuestas: ‘See-through - the film’, de Adriana Cubides; ‘Territorio Yuma - Culturas anfibias de Colombia’, de Carolina Salamanca; y ‘Ciudasis: del caos al oasis’, resultado del Laboratorio de Danza, Cuerpo y Ciudad de Artefactum 2026.\n\n✨ Una experiencia para explorar otras maneras de crear, narrar y habitar el movimiento desde el lenguaje audiovisual.\n\n📅 10 de noviembre 🕖4:30 p. m.\n📍 Cinemateca de Bogotá \n📌Carrera 3 No. 19-10.\n\n🎥 ¡Prográmese y descubra cómo la danza también se mueve a través de la pantalla!\n\n#FestivalDanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 4
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "VACÍO",
     "event_type": "show",
     "is_recurring": false,
-    "styles": [],
-    "organizer": "Laboratorio de Teatralidades Expandidas – ARTEFACTUM 2026",
+    "styles": [
+      "otro"
+    ],
+    "organizer": "Festival Danza en la Ciudad",
     "venue": "Cinemateca de Bogotá",
     "address": "Carrera 3 No. 19-10",
-    "area": "Centro",
+    "area": null,
     "date": "2026-11-10",
     "end_date": null,
     "sessions": null,
@@ -19193,18 +18909,29 @@
       "Jimmy Rangel"
     ],
     "activities": [
-      "creación transdisciplinar",
-      "danza",
-      "teatro y cine expandido"
+      "obra de danza",
+      "teatro",
+      "cine expandido"
     ],
-    "contact": null,
+    "contact": "@danzaenlaciudad",
     "confidence": "high",
     "doubts": [
-      "sin precio"
+      "sin precio especificado",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
     ],
     "id": "vacio-10-nov",
     "account": "danzaenlaciudad",
     "media": [
+      {
+        "post_id": "17957683491031215",
+        "permalink": "https://www.instagram.com/p/Dfir24SEdQd/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-10T01:05:02+0000",
+        "flyer": "flyers/17957683491031215-3.webp",
+        "caption": "La danza trasciende los escenarios y explora nuevas formas de expresión a través de la pantalla en la Franja de Videodanza .MOV del XIX Festival Danza en la Ciudad 2026: Tejiendo movimiento, con la Franja de Videodanza .MOV. 🎥\n\nUna invitación a descubrir los cruces entre cuerpo, movimiento, imagen y lenguaje audiovisual, donde cada encuadre abre nuevas posibilidades para narrar y sentir la danza.\n\nEn esta franja se presentarán tres propuestas: ‘See-through - the film’, de Adriana Cubides; ‘Territorio Yuma - Culturas anfibias de Colombia’, de Carolina Salamanca; y ‘Ciudasis: del caos al oasis’, resultado del Laboratorio de Danza, Cuerpo y Ciudad de Artefactum 2026.\n\n✨ Una experiencia para explorar otras maneras de crear, narrar y habitar el movimiento desde el lenguaje audiovisual.\n\n📅 10 de noviembre 🕖4:30 p. m.\n📍 Cinemateca de Bogotá \n📌Carrera 3 No. 19-10.\n\n🎥 ¡Prográmese y descubra cómo la danza también se mueve a través de la pantalla!\n\n#FestivalDanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 4
+      },
       {
         "post_id": "18108678101198957",
         "permalink": "https://www.instagram.com/p/DfZyKlHRq2S/",
@@ -19321,7 +19048,8 @@
     "event_type": "concert",
     "is_recurring": false,
     "styles": [
-      "salsa"
+      "salsa",
+      "otro"
     ],
     "organizer": "Galería Café Libro",
     "venue": "Galería Café Libro",
@@ -19335,7 +19063,7 @@
     "end_time": null,
     "prices": [
       {
-        "label": "Preventa y estudiantes",
+        "label": "Preventa y Estudiantes",
         "amount_cop": 25000,
         "condition": null
       },
@@ -19350,15 +19078,25 @@
       "Sabra Collective"
     ],
     "activities": [
-      "concierto",
-      "remate con salsa"
+      "concierto en vivo",
+      "rumba con salsa de la casa"
     ],
-    "contact": "www.galeriacafelibro.com.co",
+    "contact": "3176608742",
     "confidence": "high",
     "doubts": [],
     "id": "raices-latinas-en-vivo-jazz-lab-big-band-y-sabra-11-nov",
     "account": "galeriacafelibro",
     "media": [
+      {
+        "post_id": "17987979873092108",
+        "permalink": "https://www.instagram.com/p/DfmknTGDJHK/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-11T13:18:59+0000",
+        "flyer": "flyers/17987979873092108-2.webp",
+        "caption": "El poder de la salsa💃, los sonidos latinos🎷 y la alegría de la música caribeña se juntan esta semana para celebrar y anunciar el fin de año ✨🪅 \n\nEn vivo esta semana en Galeria Café Libro: gustavorodriguezsalsa rumbankere sonido.70 sabracollective_  y Jazz Lab Big Band 🔥\n\n🎧 Nuestros djs de la casa completan la rumba salsera\njohanancines elgordocastillo Beto Dj y Eduardo Moya\n\n#galeriacafelibro #salsa #caribe #bogotá",
+        "preview": null,
+        "slides": 11
+      },
       {
         "post_id": "18127181833897998",
         "permalink": "https://www.instagram.com/p/DfaG2bdMmKF/",
@@ -19366,6 +19104,55 @@
         "published": "2026-11-06T17:30:23+0000",
         "flyer": "flyers/18127181833897998-0.webp",
         "caption": "🎷Jazz Lab Big Band y Sabra Collective llegan a Galeria Cafe Libro con un concierto en el que nuestras raíces latinas son las protagonistas 🎺🌴\n\nMás de 20 músicos en escena representando el talento joven de nuestro país e interpretando latin jazz, boleros, música colombiana, latinoamericana y afrocubana 🔥 \n\nTe esperamos este miércoles 11 de noviembre a las 7pm ✨🎙️ Rematamos la noche con salsa de la casa💃 \n\n🎟️ Preventa y estudiantes: $25.000\n🎫 Taquilla: $30.000\nDisponibles en galeriacafelibro.com.co\n\n📍Cra 11A No. 93-42\n\n#concierto #latinjazz #bigband #galeriacafelibro #bogotá",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Clase de Tango con Ceci Urzola",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "tango"
+    ],
+    "organizer": "Callejón Salsa & Mecato",
+    "venue": "Callejón Salsa & Mecato",
+    "address": "Calle 12D # 3-84",
+    "area": "La Candelaria",
+    "date": "2026-11-11",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "miércoles",
+    "start_time": "19:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Entrada",
+        "amount_cop": 30000,
+        "condition": "incluye 1 cerveza"
+      }
+    ],
+    "artists": [
+      "Ceci Urzola"
+    ],
+    "activities": [
+      "clase de tango"
+    ],
+    "contact": "@callejonsalsa",
+    "confidence": "high",
+    "doubts": [],
+    "id": "clase-de-tango-con-ceci-urzola-11-nov",
+    "account": "callejonsalsa",
+    "media": [
+      {
+        "post_id": "18011591999994531",
+        "permalink": "https://www.instagram.com/p/Dfi4WPVx4kZ/",
+        "media_type": "IMAGE",
+        "published": "2026-11-10T02:54:30+0000",
+        "flyer": "flyers/18011591999994531-0.webp",
+        "caption": "Así va la semana en Callejón. \nSeguimos el miércoles con tango paso a paso con la profesora Ceci Urzola ceciurzolatangosobreviviente y la mejor música argentina. El jueves continuamos nuestros jueves de Jazz en vivo con este trío extraordinario James Holguín - piano, Juan Camilo Sánchez - batería, Julián Gómez - contrabajo. Y el viernes salsa de altos kilates, comenzando con la clase de la profe Teffa Murcia teffa_mg y a las 11:00 pm. armandoquintanamusic entre amigos para comenzar el puente con mucha salsa. \n📍 Callejón Salsa & Mecato | Calle 12D #3-84 La Candelaria.\n🗓️ Del 11 al 13 de noviembre",
         "preview": null,
         "slides": null
       }
@@ -19422,6 +19209,97 @@
     "bar": true
   },
   {
+    "title": "Charanga Premiere",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "son"
+    ],
+    "organizer": "Salsa Camará",
+    "venue": "Salsa Camará",
+    "address": "Carrera 11 #70A-22",
+    "area": null,
+    "date": "2026-11-12",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "jueves",
+    "start_time": "16:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Aporte cultural",
+        "amount_cop": 15000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Charanga Premiere"
+    ],
+    "activities": [],
+    "contact": "WhatsApp 313 830 8844",
+    "confidence": "high",
+    "doubts": [],
+    "id": "charanga-premiere-12-nov",
+    "account": "salsacamaraoficial",
+    "media": [
+      {
+        "post_id": "18113833910581771",
+        "permalink": "https://www.instagram.com/p/Dfidie2FbKO/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-09T23:00:02+0000",
+        "flyer": "flyers/18113833910581771-1.webp",
+        "caption": "Conoce nuestro repertorio salsero de este fin de semana de gozo salsero\n📆 Jueves 12 de Noviembre\n🎺 Charanga Premiere\n🎟️ Aporte cultural: 15K\n\n📆 Sábado 14 de Noviembre\n🎺 Sonido 70 \n🎟️ Aporte cultural: 25K\n\n⏳ Desde las 4 PM\n📍 Carrera 11 #70A-22\n📲 Reserva por WhatsApp: 313 830 8844",
+        "preview": "previews/18113833910581771-1.mp4",
+        "slides": 4
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Aurora",
+    "event_type": "show",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "Festival Danza en la Ciudad",
+    "venue": "Teatro El Parque",
+    "address": "Carrera 5 No. 36-05",
+    "area": null,
+    "date": "2026-11-12",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "jueves",
+    "start_time": "18:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Ensamble Intensivo de Danza Contemporánea de la Pontificia Universidad Javeriana"
+    ],
+    "activities": [
+      "obra de danza contemporánea"
+    ],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [],
+    "id": "aurora-12-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18211904125368549",
+        "permalink": "https://www.instagram.com/p/DfiFMIBJwwp/",
+        "media_type": "IMAGE",
+        "published": "2026-11-09T20:30:03+0000",
+        "flyer": "flyers/18211904125368549-0.webp",
+        "caption": "¿Qué habita en la mente de una poeta? ¿Qué recuerdos, deseos, miedos y heridas se entrelazan en su universo interior?\n\nLe invitamos a descubrir AURORA, una obra de danza contemporánea inspirada en el universo poético y humano de María Mercedes Carranza, que propone un recorrido por los pensamientos, las emociones y las contradicciones de una mujer atravesada por la realidad de un país marcado por la violencia.\n\nA través de la palabra y el movimiento, el Ensamble Intensivo de Danza Contemporánea de la Pontificia Universidad Javeriana construye una experiencia escénica colectiva en la que la rabia, el perdón, la empatía y la convivencia con la diferencia se convierten en caminos para la reflexión y la catarsis.\n\n✨ Porque incluso en medio de la incertidumbre, siempre hay una primera luz que nos recuerda la fuerza de la vida, la memoria y la libertad.\n\n¡Acompáñenos a vivir esta experiencia y a tejer movimiento!\n\n📅12 de noviembre 🕕6 p.m. \n📍 Teatro El Parque \n📌 Carrera 5 No. 36-05\n\n#FestivalDanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Sonido 70",
     "event_type": "concert",
     "is_recurring": false,
@@ -19454,10 +19332,32 @@
     ],
     "contact": "@galeriacafelibro",
     "confidence": "high",
-    "doubts": [],
+    "doubts": [
+      "sin hora de inicio anunciada"
+    ],
     "id": "sonido-70-12-nov",
     "account": "galeriacafelibro",
     "media": [
+      {
+        "post_id": "17987979873092108",
+        "permalink": "https://www.instagram.com/p/DfmknTGDJHK/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-11T13:18:59+0000",
+        "flyer": "flyers/17987979873092108-4.webp",
+        "caption": "El poder de la salsa💃, los sonidos latinos🎷 y la alegría de la música caribeña se juntan esta semana para celebrar y anunciar el fin de año ✨🪅 \n\nEn vivo esta semana en Galeria Café Libro: gustavorodriguezsalsa rumbankere sonido.70 sabracollective_  y Jazz Lab Big Band 🔥\n\n🎧 Nuestros djs de la casa completan la rumba salsera\njohanancines elgordocastillo Beto Dj y Eduardo Moya\n\n#galeriacafelibro #salsa #caribe #bogotá",
+        "preview": null,
+        "slides": 11
+      },
+      {
+        "post_id": "18131929987825336",
+        "permalink": "https://www.instagram.com/p/DfkhofBsZt7/",
+        "media_type": "IMAGE",
+        "published": "2026-11-10T18:17:51+0000",
+        "flyer": "flyers/18131929987825336-0.webp",
+        "caption": "Solo faltan 2️⃣ días para esta rumba salsera con el sonido de la época dorada de la salsa ⚡️ Este jueves 12 de noviembre, desde Medellín, truena en el escenario de Galeria Cafe Libro sonido.70 la orquesta de Las Leyendas Vivas de la Salsa 💃 \n\nVente a bailar con salsa, rumba y guaguancó que nos trae Sonido 70 este juernes 🎶 \n\n🎟️ $25.000 • Reservas por DM o 3176608742",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18148379041568227",
         "permalink": "https://www.instagram.com/p/DfUXSDJsEke/",
@@ -19480,6 +19380,51 @@
       }
     ],
     "bar": true
+  },
+  {
+    "title": "FUGA - Compañía Periferia",
+    "event_type": "show",
+    "is_recurring": false,
+    "styles": [
+      "urbano",
+      "otro"
+    ],
+    "organizer": "Festival Danza en la Ciudad",
+    "venue": "Teatro Municipal Jorge Eliécer Gaitán",
+    "address": "Carrera 7 No. 22-47",
+    "area": null,
+    "date": "2026-11-12",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "jueves",
+    "start_time": "20:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Compañía Periferia",
+      "Lobadys Pérez"
+    ],
+    "activities": [
+      "obra de danza contemporánea y urbana"
+    ],
+    "contact": "@danzaenlaciudad",
+    "confidence": "high",
+    "doubts": [],
+    "id": "fuga-compania-periferia-12-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18119850758327542",
+        "permalink": "https://www.instagram.com/p/DfiE33RpC24/",
+        "media_type": "IMAGE",
+        "published": "2026-11-09T20:00:04+0000",
+        "flyer": "flyers/18119850758327542-0.webp",
+        "caption": "¿Qué significa migrar, pertenecer y permanecer?\n\nLlega FUGA, una obra de danza contemporánea de la Compañía Periferia, creada y dirigida por Lobadys Pérez, que los invita a reflexionar sobre la movilidad humana, las migraciones y las fronteras que atraviesan nuestros cuerpos y nuestras vidas.\n\nA través del diálogo entre la danza contemporánea y los lenguajes urbanos, FUGA convierte el cuerpo en territorio de tránsito, resistencia y transformación. Una puesta en escena que explora las tensiones entre libertad y restricción, pertenencia y desarraigo, movimiento y permanencia.\n\nCon una trayectoria internacional en Latinoamérica, Asia y Europa, esta obra emblemática de Periferia propone un encuentro alrededor de la ciudadanía, la interculturalidad y la convivencia.\n\n📅12 de noviembre 🕗8 p.m. \n📍 Teatro Municipal Jorge Eliécer Gaitán \n📌 Carrera 7 No. 22-47\n\n#FestivalDanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
   },
   {
     "title": "Level Up Bachata Fusion Congress",
@@ -19555,11 +19500,8 @@
     "contact": "@imperiolatino",
     "confidence": "high",
     "doubts": [
-      "sin horarios específicos",
-      "sin lugar específico",
-      "sin precios",
-      "estilos deducidos del texto o de la cuenta, no leídos en el post",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+      "sin hora de inicio",
+      "estilos deducidos del texto o de la cuenta, no leídos en el post"
     ],
     "id": "competencia-palo-pa-rumba-13-nov",
     "account": "imperiolatino",
@@ -19576,6 +19518,166 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "Sonido 70 Orquesta",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "@casaquiebracanto",
+    "venue": "Casa Quiebra-Canto",
+    "address": null,
+    "area": null,
+    "date": "2026-11-13",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Sonido 70 Orquesta"
+    ],
+    "activities": [
+      "concierto",
+      "música en vivo"
+    ],
+    "contact": "@casaquiebracanto",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio"
+    ],
+    "id": "sonido-70-orquesta-13-nov",
+    "account": "casaquiebracanto",
+    "media": [
+      {
+        "post_id": "18014297189770058",
+        "permalink": "https://www.instagram.com/p/DfoFBsNxugE/",
+        "media_type": "IMAGE",
+        "published": "2026-11-12T03:21:30+0000",
+        "flyer": "flyers/18014297189770058-0.webp",
+        "caption": "Dos grandes exponentes de la salsa llegan a la casa en Bogota este viernes 13 y sábado 14 de noviembre!  Vamos a gozar",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18134475418745804",
+        "permalink": "https://www.instagram.com/p/Dfj_26mRIrW/",
+        "media_type": "IMAGE",
+        "published": "2026-11-10T13:19:23+0000",
+        "flyer": "flyers/18134475418745804-0.webp",
+        "caption": "A casa Quiebra canto llagan dos excelentes agrupaciones del género salsero sonido.70  y alexrebambaramba .  Y vamo a gozar !\n\n#massalsaparatuvida #amorporlasalsa",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18134766142814473",
+        "permalink": "https://www.instagram.com/reel/DfljLjsxtcK/",
+        "media_type": "VIDEO",
+        "published": "2026-11-11T03:49:21+0000",
+        "flyer": "flyers/18134766142814473-0.webp",
+        "caption": "Candela es lo que hay este viernes 13 de noviembre con sonido.70 !  Vamo' a gozar !",
+        "preview": "previews/18134766142814473-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Lanzamiento del nuevo álbum de la Orquesta La Palabra",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "@pachanga_y_pochola",
+    "venue": "Pachanga y Pochola",
+    "address": null,
+    "area": null,
+    "date": "2026-11-13",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Orquesta La Palabra"
+    ],
+    "activities": [
+      "lanzamiento de álbum",
+      "música en vivo"
+    ],
+    "contact": "@pachanga_y_pochola",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio",
+      "sin precio"
+    ],
+    "id": "lanzamiento-del-nuevo-album-de-la-orquesta-la-13-nov",
+    "account": "pachanga_y_pochola",
+    "media": [
+      {
+        "post_id": "18146133592592644",
+        "permalink": "https://www.instagram.com/reel/Dfijr2ARvtt/",
+        "media_type": "VIDEO",
+        "published": "2026-11-09T23:59:34+0000",
+        "flyer": "flyers/18146133592592644-0.webp",
+        "caption": "Este 13  de noviembre (Viernes) 🔥🥳 la ruta  salserisimabogotaradio estará pasando por #pachanga en el lanzamiento del nuevo álbum de la orquestalapalabra 🥳🥳🥳. \n\nTe invitamos a ser parte de esto no te lo pierdas 🔥💃🏿💃🏿✨🥳",
+        "preview": "previews/18146133592592644-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Son Legales en vivo",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "son"
+    ],
+    "organizer": "Salsa y Son",
+    "venue": "Salsa y Son",
+    "address": null,
+    "area": null,
+    "date": "2026-11-13",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Son Legales"
+    ],
+    "activities": [
+      "música en vivo"
+    ],
+    "contact": "@salsaysonoficial",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio",
+      "sin precio especificado"
+    ],
+    "id": "son-legales-en-vivo-13-nov",
+    "account": "salsaysonoficial",
+    "media": [
+      {
+        "post_id": "18124570948938466",
+        "permalink": "https://www.instagram.com/reel/DfngnHoA7oQ/",
+        "media_type": "VIDEO",
+        "published": "2026-11-11T22:04:53+0000",
+        "flyer": "flyers/18124570948938466-0.webp",
+        "caption": "¡La fiesta ahora tiene nuevas protagonistas! 💃🔥\n\nsonlegalesoficial llegan a Salsa y Son para ponerle sabor a tus noches. A partir de este próximo viernes, disfruta de sus voces y de toda la energía de la música en vivo. 🎶🍷\n\n🥂 ¿Ya estás planeando tu despedida de fin de año empresarial? Haz de tu celebración una noche inolvidable con nosotros.\n\n📲 Reserva tu fecha desde ya y celebra a lo grande en Salsa y Son.\n\n¡Nos vemos este viernes! ❤️‍🔥",
+        "preview": "previews/18124570948938466-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": true
   },
   {
     "title": "Festival Internacional Casinea - 10.ª Edición",
@@ -19630,6 +19732,56 @@
     "id": "festival-internacional-casinea-10-a-edicion-13-nov",
     "account": "casineafest",
     "media": [
+      {
+        "post_id": "18110617793223583",
+        "permalink": "https://www.instagram.com/p/DfoTCXrxvoC/",
+        "media_type": "IMAGE",
+        "published": "2026-11-12T05:23:56+0000",
+        "flyer": "flyers/18110617793223583-0.webp",
+        "caption": "🎭 ¡EL ANFITRIÓN OFICIAL DE CASINEA 2026 ESTÁ CONFIRMADO!\n\nLa energía, el carisma y el talento de Leo Fuentes vuelven a encontrarse con el Festival Internacional Casinea.\n\nActor y bailarín cubano, Leo será nuevamente el encargado de acompañarnos como anfitrión oficial durante esta décima edición, conectando al público, los artistas y los competidores con su presencia, espontaneidad y capacidad de darle vida a cada momento sobre el escenario.\n\nSu participación ya es parte de la identidad de Casinea. Su voz, su personalidad y esa manera tan particular de conducir cada encuentro hacen que el festival tenga una energía especial.\n\n📅 Del 13 al 16 de noviembre de 2026\n📍 Bogotá, Colombia\n\n¡Prepárense para disfrutar de cuatro días de baile, cultura y grandes encuentros con Leo Fuentes como nuestro anfitrión!\n\n¡Nos vemos en Casinea 2026!\n\n#Casinea2026 #LeoFuentes #AnfitriónOficial #FestivalInternacionalCasinea #SalsaCasino",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18102579359430959",
+        "permalink": "https://www.instagram.com/p/DflDYyCRzrB/",
+        "media_type": "IMAGE",
+        "published": "2026-11-10T23:09:27+0000",
+        "flyer": "flyers/18102579359430959-0.webp",
+        "caption": "🌴🔥 ¡LA FIESTA NO TERMINA CON LAS COMPETENCIAS! LLEGA TROPICAL NIGHTS MUSIC SOCIAL.\n\nEste sábado 14 de noviembre, después de vivir toda la emoción de las competencias y el Show Time Casinea 2026, nos trasladamos a Pachanga y Pochola para continuar la celebración con una noche llena de música, baile y sabor tropical.\n\n🎶 Prepárate para disfrutar de una selección musical con salsa, timba, bachata y merengue. Una pista para encontrarnos, compartir con bailarines de diferentes lugares y seguir celebrando nuestra pasión por el baile.\n\n🌺 ¡La temática es tropical! Ponte tu mejor outfit tropical y ven con toda la energía para disfrutar de esta noche.\n\n📅 Sábado 14 de noviembre\n🕣 8:30 p. m.\n📍 Pachanga y Pochola\nCalle 73 #14-53, Bogotá.\n\n🎟️ Cover en taquilla: $35.000 COP\n✨ Incluido en los pases Full Pass y Experience Pass.\n🥤 El establecimiento cuenta con consumo mínimo.\n\n¡Más salsa, más timba, más sabor! Nos vemos en la pista de Tropical Nights Music Social. 🌴\n\n#Casinea2026 #TropicalNights #PachangaYPochola #SalsaCasino FestivalInternacionalCasinea",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18037499702909111",
+        "permalink": "https://www.instagram.com/p/DflCg3URdQE/",
+        "media_type": "IMAGE",
+        "published": "2026-11-10T23:01:49+0000",
+        "flyer": "flyers/18037499702909111-0.webp",
+        "caption": "🎭 ¡NOS VEMOS EN EL TEATRO CRISANTO LUQUE!\n\nEl escenario está listo para recibir toda la energía, el talento y la pasión de los bailarines que harán parte de las competencias y exhibiciones del Festival Internacional Casinea 2026.\n\nEste sábado 14 de noviembre, el Teatro Crisanto Luque será nuestra sede principal para vivir una jornada llena de emoción, talento y grandes momentos alrededor de la salsa casino y la cultura cubana.\n\n📅 Sábado 14 de noviembre de 2026 🕑 De 2:00 p. m. a 8:00 p. m. 📍 Teatro Crisanto Luque Calle 20 #9-45, Bogotá.\n\nInvitamos a competidores, artistas, acompañantes y amantes del baile a encontrarnos en este espacio para celebrar el talento de las delegaciones y disfrutar de las presentaciones de esta décima edición.\n\n📌 ¡Guarda esta información y comparte la ubicación con quienes te acompañarán!\n\n¡El escenario de Casinea te espera!\n\n#Casinea2026 #FestivalInternacionalCasinea #SalsaCasino #CompetenciasDeBaile",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "17915983302506483",
+        "permalink": "https://www.instagram.com/p/DfgaDKmR37Y/",
+        "media_type": "IMAGE",
+        "published": "2026-11-09T03:51:16+0000",
+        "flyer": "flyers/17915983302506483-0.webp",
+        "caption": "🎓 LEARNING DAY CASINEA 2026: UN DÍA COMPLETO PARA APRENDER Y BAILAR.\n\n¿No puedes acompañarnos durante los dos días de talleres? ¡Tenemos una alternativa para ti!\n\nCon el LEARNING DAY puedes elegir un día completo de formación y sumergirte en la experiencia académica del Festival Internacional Casinea 2026: participa en los talleres, aprende de maestros nacionales e internacionales y explora diferentes ritmos, técnicas y expresiones de la cultura cubana.\n\n📅 Elige la fecha que mejor se ajuste a tu agenda:\n\nDomingo 15 de noviembre\n\nLunes 16 de noviembre\n\n🎟️ Valor: $180.000 COP por un día de talleres.\n\n📍 Dos espacios de formación:\n\nTeatro Faenza: Calle 22 #5-56.\n\nAuditorio Caja de Colores – Universidad Central: Carrera 4 #21-40.\n\nConsulta la parrilla de talleres en nuestras redes oficiales y descubre los contenidos, maestros y horarios de cada jornada.\n\n🎫 Adquiere tu entrada directamente en taquilla.\n\nUna oportunidad para vivir la experiencia formativa de Casinea, incluso si solo puedes acompañarnos uno de los dos días.\n\n¡Elige tu día y ven a aprender con nosotros!\n\n#Casinea2026 #LearningDay #FestivalInternacionalCasinea",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18120510514997795",
+        "permalink": "https://www.instagram.com/p/DfgR59CRF5R/",
+        "media_type": "IMAGE",
+        "published": "2026-11-09T02:40:07+0000",
+        "flyer": "flyers/18120510514997795-0.webp",
+        "caption": "🏆 ¡VIVE LA EMOCIÓN DE CASINEA 2026 CON EL FAN PASS!\n\n¿Quieres disfrutar de la energía de la competencia, apoyar a los bailarines y ser parte de uno de los momentos más esperados del Festival Internacional Casinea? Esta entrada es para ti.\n\nCon el FAN PASS, por solo $50.000 COP, podrás acceder a:\n\n🏆 Competencias: vive de cerca el talento, la técnica y la pasión de los participantes en las diferentes modalidades.\n✨ Show Time Casinea: disfruta de las presentaciones especiales que hacen parte de esta décima edición.\n🥇 Premiación: acompaña a los competidores en el reconocimiento de sus resultados y celebra con ellos cada logro.\n\n📅 Sábado 14 de noviembre de 2026\n📍 Teatro Crisanto Luque – Calle 20 #9-45, Bogotá.\n🚪 Apertura de puertas: 1:30 p. m.\n🎟️ Valor: $50.000 COP\n📌 Entradas disponibles directamente en taquilla.\n\nVen a apoyar a tus bailarines favoritos, disfruta del espectáculo y sé parte de la experiencia del Festival Internacional Casinea.\n\n¡La emoción también se vive desde el público!\n\n#Casinea2026 #FanPass #FestivalInternacionalCasinea #SalsaCasino",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18426103576153677",
         "permalink": "https://www.instagram.com/p/Dfc-MgqmBtW/",
@@ -19794,6 +19946,215 @@
     "bar": false
   },
   {
+    "title": "Sabor y Salsa con Tumbaqué",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Tributo Salsa y Jazz",
+    "venue": "Tributo Salsa y Jazz",
+    "address": "Av. Boyacá #64c - 97",
+    "area": "Zona 6",
+    "date": "2026-11-13",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "18:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Aporte cultural",
+        "amount_cop": 15000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Orquesta Tumbaqué"
+    ],
+    "activities": [
+      "orquesta en vivo"
+    ],
+    "contact": "WhatsApp 3105714824",
+    "confidence": "high",
+    "doubts": [],
+    "id": "sabor-y-salsa-con-tumbaque-13-nov",
+    "account": "tributo.salsayjazz",
+    "media": [
+      {
+        "post_id": "18106114553570142",
+        "permalink": "https://www.instagram.com/p/Dfko-WcmUWB/",
+        "media_type": "IMAGE",
+        "published": "2026-11-10T19:18:37+0000",
+        "flyer": "flyers/18106114553570142-0.webp",
+        "caption": "¡LLEGÓ EL VIERNES DE SABOR Y SALSA! 💃🕺🔥 \nPorque el fin de semana se arranca con toda la sabrosura, te esperamos en tu casa: ¡Tributo Salsa y Jazz! \n\nEste viernes 13 de noviembre, prepárate para una rumba cargada de puro golpe, clave y la mejor energía. \n\nVen a disfrutar de un buen trago con tus amigos, alístate para azotar baldosa y déjate llevar por el poder y el sabor de la orquesta Tumbaqué en vivo. \n\n¡Pura candela para encender la pista! 🥂🎺🔥 \n\n📍 Lugar: Av. Boyacá #64c - 97, ZONA 6 ⏰ Apertura: 6:00 PM | Orquesta en vivo: 10:00 PM \n💵 Aporte cultural: $15.000 \n📲 Reservas: 310 5714 824 \n\n¡Asegura tu mesa antes de que se llene! RESERVA, arma tu parche salsero y nos vemos en la pista para gozar. 👇✨\n\nhttps://wa.me/573105714824",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Clase de baile con Teffa Murcia",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Callejón Salsa & Mecato",
+    "venue": "Callejón Salsa & Mecato",
+    "address": "Calle 12D # 3-84",
+    "area": "La Candelaria",
+    "date": "2026-11-13",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "19:30",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Entrada",
+        "amount_cop": 10000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Teffa Murcia"
+    ],
+    "activities": [
+      "clase de baile"
+    ],
+    "contact": "@callejonsalsa",
+    "confidence": "high",
+    "doubts": [],
+    "id": "clase-de-baile-con-teffa-murcia-13-nov",
+    "account": "callejonsalsa",
+    "media": [
+      {
+        "post_id": "18220251622314969",
+        "permalink": "https://www.instagram.com/p/DflRclLBCSd/",
+        "media_type": "IMAGE",
+        "published": "2026-11-11T01:12:19+0000",
+        "flyer": "flyers/18220251622314969-0.webp",
+        "caption": "Música en vivo también el viernes, nada menos que con armandoquintanamusic entre amigos. Para que rematemos fuerte la noche que comenzará con la clase de salsa de la profesora teffa_mg y comenzar un puente verdaderamente festivo. \n📍Callejón Salsa & Mecato | Calle 12D #3-84 La Candelaria \n🕖 7:30 p.m. clase con Teffa Murcia - 10K\n🕖 11:00 p.m. concierto\n🎟️ 20K",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18011591999994531",
+        "permalink": "https://www.instagram.com/p/Dfi4WPVx4kZ/",
+        "media_type": "IMAGE",
+        "published": "2026-11-10T02:54:30+0000",
+        "flyer": "flyers/18011591999994531-0.webp",
+        "caption": "Así va la semana en Callejón. \nSeguimos el miércoles con tango paso a paso con la profesora Ceci Urzola ceciurzolatangosobreviviente y la mejor música argentina. El jueves continuamos nuestros jueves de Jazz en vivo con este trío extraordinario James Holguín - piano, Juan Camilo Sánchez - batería, Julián Gómez - contrabajo. Y el viernes salsa de altos kilates, comenzando con la clase de la profe Teffa Murcia teffa_mg y a las 11:00 pm. armandoquintanamusic entre amigos para comenzar el puente con mucha salsa. \n📍 Callejón Salsa & Mecato | Calle 12D #3-84 La Candelaria.\n🗓️ Del 11 al 13 de noviembre",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Párchese La Salsa: Fiesta de Solxs",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Parche Bogotá",
+    "venue": "Viajero Bogotá",
+    "address": "Cra. 3 #20-35",
+    "area": null,
+    "date": "2026-11-13",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "20:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Preventa Individual",
+        "amount_cop": 25000,
+        "condition": "incluye cóctel de bienvenida por persona"
+      },
+      {
+        "label": "Preventa Pareja",
+        "amount_cop": 40000,
+        "condition": "incluye cóctel de bienvenida por persona"
+      }
+    ],
+    "artists": [
+      "Juancho Salsita",
+      "DJ Pinto"
+    ],
+    "activities": [
+      "clase de salsa",
+      "fiesta"
+    ],
+    "contact": "@parchexbogota",
+    "confidence": "high",
+    "doubts": [],
+    "id": "parchese-la-salsa-fiesta-de-solxs-13-nov",
+    "account": "parchexbogota",
+    "media": [
+      {
+        "post_id": "17989316697115326",
+        "permalink": "https://www.instagram.com/p/Dfke_lumiuh/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-10T17:51:24+0000",
+        "flyer": "flyers/17989316697115326-1.webp",
+        "caption": "Que rico usted y yo bailando salsa pegaditos. 💌\n\nEsta semana la clase de baile más parchada de Bogotá llega con su edición para solos y solas. Venga sin pareja, que aquí la encuentra en la pista. 🪩\n\n📍 El parche es en viajero.bogota (Cra. 3 #20-35), donde podrá conocer personas que andan viajando por Colombia y gente de Bogotá.\n\n🗓️ Viernes 13 de noviembre:\n\n8:00 p. m. · Clase de salsa con juancho__salsita \n9:30 p. m. · Fiesta con suamox.pinto \n\n🍹 Preventa: 25k individual y 40k pareja, incluye un cóctel de bienvenida por persona.\n\nLos cupos son limitados, así que reserve ahora escribiendo un mensaje directo a parchexbogota 💌",
+        "preview": null,
+        "slides": 2
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Tributo a Ismael Rivera y Fruko y sus Tesos",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Van Der",
+    "venue": "Van Der",
+    "address": "Cra 16 #35-08",
+    "area": "Teusaquillo",
+    "date": "2026-11-13",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "20:30",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Fruko y sus Tesos",
+      "Ismael Rivera"
+    ],
+    "activities": [
+      "orquesta en vivo",
+      "baile"
+    ],
+    "contact": "3011620492",
+    "confidence": "high",
+    "doubts": [],
+    "id": "tributo-a-ismael-rivera-y-fruko-y-sus-tesos-13-nov",
+    "account": "casavander_",
+    "media": [
+      {
+        "post_id": "18363682270219729",
+        "permalink": "https://www.instagram.com/p/DffxusihVXv/",
+        "media_type": "IMAGE",
+        "published": "2026-11-08T22:00:43+0000",
+        "flyer": "flyers/18363682270219729-0.webp",
+        "caption": "Le quedan 7 viernes del 2026 para que venga a disfrutar de un verdadero tributo salsero.\n\nLa esquina más salsera de Teusaquillo vuelve con un tributo a Ismael Rivera y Fruko y sus tesos este viernes 13 de Noviembre. Una noche para los que aplauden, para los que bailan y para los que se la saben todas. \n\nAgéndese y reserve.",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Práctica Social",
     "event_type": "social",
     "is_recurring": false,
@@ -19804,7 +20165,7 @@
     ],
     "organizer": "Studio Latin Dance",
     "venue": "Studio Latin Dance – Sede Fontibón",
-    "address": "Carrera 99 # 17-20, tercer piso",
+    "address": "Carrera 99 #17-20, tercer piso",
     "area": "Fontibón",
     "date": "2026-11-13",
     "end_date": null,
@@ -19814,7 +20175,7 @@
     "end_time": null,
     "prices": [
       {
-        "label": "Inscritos",
+        "label": "Estudiantes inscritos",
         "amount_cop": 0,
         "condition": null
       },
@@ -19828,10 +20189,10 @@
       "Luis Borjas"
     ],
     "activities": [
-      "práctica social",
-      "baile social"
+      "baile social",
+      "práctica de baile"
     ],
-    "contact": "WhatsApp 3174479689  3144515708",
+    "contact": "WhatsApp 3174479689",
     "confidence": "high",
     "doubts": [],
     "id": "practica-social-13-nov",
@@ -19846,9 +20207,79 @@
         "caption": "❤️🔥 ¡LA PISTA TE ESPERA, SOLO FALTA QUE TE ANIMES! 💃🕺\n\nSabemos que aprender pasos en clase es una cosa… ¡pero atreverse a bailarlos es otra historia! 😅❤️\n\nA veces nos gana la pena, el miedo a equivocarnos o sentimos que todavía no estamos listos.\n\n¡Pero no necesitas bailar perfecto para empezar a disfrutar! ✨\n\nEn Studio Latin Dance queremos que te sueltes, experimentes, te equivoques, vuelvas a intentarlo y descubras de lo que eres capaz.\n\nPor eso llega nuestra PRÁCTICA SOCIAL. 🔥\n\nUn espacio seguro, sin presiones ni juicios, donde todos son bienvenidos, sin importar su nivel de experiencia. Aquí venimos a practicar, conocer personas, ganar confianza y, sobre todo, ¡GOZARNOS EL BAILE! ❤️\n\n🎶 SALSA | BACHATA | MERENGUE\n\n🎤 Dirige: Luis Borjas \n\n📅 Viernes 13 de noviembre\n🕘 9:10 p. m.\n📍 Studio Latin Dance – Sede Fontibón\nCarrera 99 #17-20, tercer piso.\n\n🎟️ ENTRADAS\n✅ Estudiantes inscritos: ¡GRATIS!\n🔥 No inscritos: $10.000 por persona\n\n🚨 ¡NO TE QUEDES CON LAS GANAS, RESERVA TU LUGAR AHORA!\n\nNo dejes que la pena decida por ti. Escríbenos hoy mismo, confirma tu asistencia y prepárate para disfrutar de una noche llena de baile. 💃🕺\n\n📲 ¡RESERVA AQUÍ!\nWhatsApp: 317 447 9689 | 314 451 5708\n\n❤️ ¡Da el primer paso, nosotros ponemos la música!\n\nBAILA. CONECTA. DISFRUTA. 🔥\n\n#StudioLatinDance #PracticaSocial #Salsa #Bachata Merengue BaileSocial Fontibon",
         "preview": null,
         "slides": null
+      },
+      {
+        "post_id": "17936946237408728",
+        "permalink": "https://www.instagram.com/reel/DfnGHPiuSZm/",
+        "media_type": "VIDEO",
+        "published": "2026-11-11T18:14:24+0000",
+        "flyer": "flyers/17936946237408728-0.webp",
+        "caption": "¡ESTE VIERNES PRÁCTICA SOCIAL!🔥\n\nUn espacio seguro, sin presiones ni juicios, donde todos son bienvenidos, sin importar su nivel de experiencia. Aquí venimos a practicar, conocer personas, ganar confianza y, sobre todo, ¡GOZARNOS EL BAILE! ❤️\n\n🎶 SALSA | BACHATA | MERENGUE\n\n🎤 Dirige: Luis Borjas\n\n📅 Viernes 13 de noviembre\n🕘 9:10 p. m.\n📍 Studio Latin Dance – Sede Fontibón\nCarrera 99 #17-20, tercer piso.\n\n🎟️ ENTRADAS\n✅ Estudiantes inscritos: ¡GRATIS!\n🔥 No inscritos: $10.000 por persona\n\n🚨 ¡NO TE QUEDES CON LAS GANAS, RESERVA TU LUGAR AHORA!\n\nNo dejes que la pena decida por ti. Escríbenos hoy mismo, confirma tu asistencia y prepárate para disfrutar de una noche llena de baile. 💃🕺\n\n📲 ¡RESERVA AQUÍ!\nWhatsApp: 317 447 9689 | 314 451 5708\n\n❤️ ¡Da el primer paso, nosotros ponemos la música!",
+        "preview": "previews/17936946237408728-0.mp4",
+        "slides": null
       }
     ],
     "bar": false
+  },
+  {
+    "title": "Salsa y Son en vivo con Armando Quintana (Cuba) Entre Amigos",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "son"
+    ],
+    "organizer": "Callejón Salsa & Mecato",
+    "venue": "Callejón Salsa & Mecato",
+    "address": "Calle 12D # 3-84",
+    "area": "La Candelaria",
+    "date": "2026-11-13",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "23:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Entrada",
+        "amount_cop": 20000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Armando Quintana"
+    ],
+    "activities": [
+      "música en vivo"
+    ],
+    "contact": "@callejonsalsa",
+    "confidence": "high",
+    "doubts": [],
+    "id": "salsa-y-son-en-vivo-con-armando-quintana-cuba-13-nov",
+    "account": "callejonsalsa",
+    "media": [
+      {
+        "post_id": "18220251622314969",
+        "permalink": "https://www.instagram.com/p/DflRclLBCSd/",
+        "media_type": "IMAGE",
+        "published": "2026-11-11T01:12:19+0000",
+        "flyer": "flyers/18220251622314969-0.webp",
+        "caption": "Música en vivo también el viernes, nada menos que con armandoquintanamusic entre amigos. Para que rematemos fuerte la noche que comenzará con la clase de salsa de la profesora teffa_mg y comenzar un puente verdaderamente festivo. \n📍Callejón Salsa & Mecato | Calle 12D #3-84 La Candelaria \n🕖 7:30 p.m. clase con Teffa Murcia - 10K\n🕖 11:00 p.m. concierto\n🎟️ 20K",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18011591999994531",
+        "permalink": "https://www.instagram.com/p/Dfi4WPVx4kZ/",
+        "media_type": "IMAGE",
+        "published": "2026-11-10T02:54:30+0000",
+        "flyer": "flyers/18011591999994531-0.webp",
+        "caption": "Así va la semana en Callejón. \nSeguimos el miércoles con tango paso a paso con la profesora Ceci Urzola ceciurzolatangosobreviviente y la mejor música argentina. El jueves continuamos nuestros jueves de Jazz en vivo con este trío extraordinario James Holguín - piano, Juan Camilo Sánchez - batería, Julián Gómez - contrabajo. Y el viernes salsa de altos kilates, comenzando con la clase de la profe Teffa Murcia teffa_mg y a las 11:00 pm. armandoquintanamusic entre amigos para comenzar el puente con mucha salsa. \n📍 Callejón Salsa & Mecato | Calle 12D #3-84 La Candelaria.\n🗓️ Del 11 al 13 de noviembre",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
   },
   {
     "title": "Fiesta de fin de año con Gustavo Rodríguez y Danny Rosales",
@@ -19891,6 +20322,16 @@
     "account": "galeriacafelibro",
     "media": [
       {
+        "post_id": "17987979873092108",
+        "permalink": "https://www.instagram.com/p/DfmknTGDJHK/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-11T13:18:59+0000",
+        "flyer": "flyers/17987979873092108-8.webp",
+        "caption": "El poder de la salsa💃, los sonidos latinos🎷 y la alegría de la música caribeña se juntan esta semana para celebrar y anunciar el fin de año ✨🪅 \n\nEn vivo esta semana en Galeria Café Libro: gustavorodriguezsalsa rumbankere sonido.70 sabracollective_  y Jazz Lab Big Band 🔥\n\n🎧 Nuestros djs de la casa completan la rumba salsera\njohanancines elgordocastillo Beto Dj y Eduardo Moya\n\n#galeriacafelibro #salsa #caribe #bogotá",
+        "preview": null,
+        "slides": 11
+      },
+      {
         "post_id": "18475047097138729",
         "permalink": "https://www.instagram.com/p/DfYA0BWM8Lz/",
         "media_type": "IMAGE",
@@ -19898,6 +20339,16 @@
         "flyer": "flyers/18475047097138729-0.webp",
         "caption": "El próximo 14 de noviembre tenemos una cita con el gran Gustavo Rodríguez y La Salsa Caleña 💥🎙️ \n\nUna noche para gozarnos lo mejor de la salsa y la música de diciembre 🎄para que celebres desde ya tus fiestas de fin de año con empresa, familia o amigos 🥂✨\n\nVamos a bailar hasta la madrugada con todos los éxitos del repertorio en la voz de uno de los grandes artistas de nuestra tierra 🇨🇴 \n\n📍Galeria Cafe Libro 93: Cra 11A#93-42 \n\n🎟️ $30.000 • disponibles en galeriacafelibro.com.co y en taquilla\n\n➡️ Info y Reservas: DM / 3176608742 / 6012851794",
         "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18138619951662237",
+        "permalink": "https://www.instagram.com/reel/Dfnuao9sMrf/",
+        "media_type": "VIDEO",
+        "published": "2026-11-12T00:04:42+0000",
+        "flyer": "flyers/18138619951662237-0.webp",
+        "caption": "¡Bogotá se prepara para una noche con mucho sabor a salsa! 💃🏻🔥\n\nEste 14 de noviembre llega a Galería Café Libro 93 Gustavo Rodríguez junto a La Salsa Caleña, para regalarnos una noche llena de ritmo, grandes éxitos y ese ambiente salsero que tanto nos gusta. 🎶\n\n¡Desde ya empezamos a celebrar diciembre! Reúne a tu empresa, familia o amigos y prepárate para bailar y disfrutar hasta la madrugada. 🎄🥂\n\n📍 Galería Café Libro 93: Cra. 11A #93-42\n\n🎟️ Cover: $30.000\nConsigue tus entradas en galeriacafelibro.com.co o directamente en taquilla.\n\n➡️ Información y reservas: DM / 3176608742 / 6012851794",
+        "preview": "previews/18138619951662237-0.mp4",
         "slides": null
       },
       {
@@ -19958,7 +20409,10 @@
     ],
     "contact": "320 3891286",
     "confidence": "high",
-    "doubts": [],
+    "doubts": [
+      "sin hora de inicio",
+      "sin precio"
+    ],
     "id": "oro-negro-con-mas-afinque-14-nov",
     "account": "oronegroclub",
     "media": [
@@ -19970,6 +20424,16 @@
         "flyer": "flyers/18238530307321402-0.webp",
         "caption": "🔥¡ORO NEGRO CON MÁS AFINQUE!🎶\n\nEste sábado 14 de noviembre, nos tomamos la pista de misterafinquesalsa con una noche cargada de sabor, gozadera y mucha sabrosura.\n\n🥁 Percusión en vivo\n🎶 Melodía selecta para los verdaderos amantes de la salsa.\n🥃 Los mejores licores para brindar como se debe.\n\nPrepárate para sentir el golpe de la campana, el sabor del cuero y la magia de una noche hecha para los que llevan la salsa en la sangre. 🔥\n\n📍 Discoteca Mr. Afinque\n🎟️ Cover: $10.000\n\n¡Nos vemos en la pista! Porque cuando se junta Oro Negro con Mr. Afinque… ¡el afinque se siente de verdad!🔥\n\n#ponteon",
         "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "17963085378249539",
+        "permalink": "https://www.instagram.com/reel/DflM7GrpCtM/",
+        "media_type": "VIDEO",
+        "published": "2026-11-11T00:43:47+0000",
+        "flyer": "flyers/17963085378249539-0.webp",
+        "caption": "misterafinquesalsa se viste de ORO NEGRO “Con más Afinque” presentando en vivo a SALSABROSO y una nómina de lujo:\n• edwindjplasma\n• raizaldj \n• dylan_asprilla_ \n• johann_vasco10 \n• camiloselector \n\nTodo esto el próximo sábado 14 de noviembre\n ¡Reservas activas!",
+        "preview": "previews/17963085378249539-0.mp4",
         "slides": null
       },
       {
@@ -19986,13 +20450,115 @@
     "bar": true
   },
   {
+    "title": "Alex Rebambaramba y su orquesta",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "@casaquiebracanto",
+    "venue": "Casa Quiebra-Canto",
+    "address": null,
+    "area": null,
+    "date": "2026-11-14",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Alex Rebambaramba y su orquesta"
+    ],
+    "activities": [
+      "concierto de salsa"
+    ],
+    "contact": "@casaquiebracanto",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio"
+    ],
+    "id": "alex-rebambaramba-y-su-orquesta-14-nov",
+    "account": "casaquiebracanto",
+    "media": [
+      {
+        "post_id": "18014297189770058",
+        "permalink": "https://www.instagram.com/p/DfoFBsNxugE/",
+        "media_type": "IMAGE",
+        "published": "2026-11-12T03:21:30+0000",
+        "flyer": "flyers/18014297189770058-0.webp",
+        "caption": "Dos grandes exponentes de la salsa llegan a la casa en Bogota este viernes 13 y sábado 14 de noviembre!  Vamos a gozar",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18134475418745804",
+        "permalink": "https://www.instagram.com/p/Dfj_26mRIrW/",
+        "media_type": "IMAGE",
+        "published": "2026-11-10T13:19:23+0000",
+        "flyer": "flyers/18134475418745804-0.webp",
+        "caption": "A casa Quiebra canto llagan dos excelentes agrupaciones del género salsero sonido.70  y alexrebambaramba .  Y vamo a gozar !\n\n#massalsaparatuvida #amorporlasalsa",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Rumbankere en vivo",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Galería Café Libro",
+    "venue": "Galería Café Libro - Sede Palermo",
+    "address": "Transv. 15B # 46-38",
+    "area": "Palermo",
+    "date": "2026-11-14",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Rumbankere"
+    ],
+    "activities": [
+      "concierto",
+      "música en vivo"
+    ],
+    "contact": "3176608742",
+    "confidence": "high",
+    "doubts": [
+      "sin precio de entrada especifico",
+      "sin hora exacta de inicio"
+    ],
+    "id": "rumbankere-en-vivo-14-nov",
+    "account": "galeriacafelibro",
+    "media": [
+      {
+        "post_id": "17987979873092108",
+        "permalink": "https://www.instagram.com/p/DfmknTGDJHK/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-11T13:18:59+0000",
+        "flyer": "flyers/17987979873092108-9.webp",
+        "caption": "El poder de la salsa💃, los sonidos latinos🎷 y la alegría de la música caribeña se juntan esta semana para celebrar y anunciar el fin de año ✨🪅 \n\nEn vivo esta semana en Galeria Café Libro: gustavorodriguezsalsa rumbankere sonido.70 sabracollective_  y Jazz Lab Big Band 🔥\n\n🎧 Nuestros djs de la casa completan la rumba salsera\njohanancines elgordocastillo Beto Dj y Eduardo Moya\n\n#galeriacafelibro #salsa #caribe #bogotá",
+        "preview": null,
+        "slides": 11
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Tardeo Salsero",
     "event_type": "party",
     "is_recurring": false,
     "styles": [
       "salsa"
     ],
-    "organizer": "bulevarsalsabar",
+    "organizer": "Bulevar Salsa Bar",
     "venue": "Bulevar Salsa Bar",
     "address": "Carrera 13 # 82 - 37",
     "area": "Zona T",
@@ -20004,13 +20570,11 @@
     "end_time": "18:00",
     "prices": [],
     "artists": [],
-    "activities": [
-      "tardeo salsero"
-    ],
-    "contact": "WhatsApp 3124245746",
+    "activities": [],
+    "contact": "312 424 5746",
     "confidence": "high",
     "doubts": [
-      "sin precio"
+      "precio no especificado"
     ],
     "id": "tardeo-salsero-14-nov",
     "account": "bulevarsalsabar",
@@ -20027,6 +20591,175 @@
       }
     ],
     "bar": true
+  },
+  {
+    "title": "Tinder Bailable: Sala de Emergencias",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "bachata",
+      "merengue",
+      "urbano"
+    ],
+    "organizer": "Bogotá Dance Club",
+    "venue": "Bogotá Dance Club",
+    "address": "Calle 25F #36-15",
+    "area": null,
+    "date": "2026-11-14",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "15:00",
+    "end_time": "22:00",
+    "prices": [
+      {
+        "label": "Preventa",
+        "amount_cop": 25000,
+        "condition": null
+      },
+      {
+        "label": "Taquilla",
+        "amount_cop": 30000,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "clase de baile",
+      "concurso del soltero y la soltera",
+      "fiesta"
+    ],
+    "contact": "WhatsApp 3114964964",
+    "confidence": "high",
+    "doubts": [],
+    "id": "tinder-bailable-sala-de-emergencias-14-nov",
+    "account": "bogotadanceclub",
+    "media": [
+      {
+        "post_id": "18121816640325993",
+        "permalink": "https://www.instagram.com/p/DfipzzPDkY9/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-10T00:47:26+0000",
+        "flyer": "flyers/18121816640325993-0.webp",
+        "caption": "🔥 ¡Este fin de semana en Bogotá Dance Club tenemos dos parches imperdibles!\n\n🚨 SÁBADO 14 DE NOVIEMBRE | TINDER BAILABLE: SALA DE EMERGENCIAS 🩺❤️‍🩹\n\n🕒 De 3:00 p.m. a 10:00 p.m.\n🏆 Concurso del soltero y la soltera de la noche, ¡con premio en efectivo!\n🎟️ Preventa: $25.000 | Taquilla: $30.000.\n🥤 Incluye clase de baile prefiesta, una bebida y fiesta.\n\n🎺 DOMINGO 15 DE NOVIEMBRE | DOMINGO SÚPER BAILABLE\n\n¡Vuelve nuestra clásica viejoteca! Esta vez con la orquesta invitada Candombe para poner a bailar a todo el mundo. 🔥\n\n🕒 De 3:00 p.m. a 10:00 p.m.\n🎟️ Cover: $30.000 + consumible de $10.000.\n🪑 Mesas compartidas por orden de llegada.\n\n📍 Calle 25F #36-15 | Bogotá Dance Club.\n\n¿Tienes alguna duda? Déjanos un comentario o escríbenos un mensajito por interno 💌\n\n¡Nos vemos este fin de semana! ❤️‍🔥\n\n#planesenbogotá #bogotá #bailar #viejoteca",
+        "preview": null,
+        "slides": 2
+      },
+      {
+        "post_id": "18222082219348503",
+        "permalink": "https://www.instagram.com/reel/Dfn98FOu_jv/",
+        "media_type": "VIDEO",
+        "published": "2026-11-12T02:21:09+0000",
+        "flyer": "flyers/18222082219348503-0.webp",
+        "caption": "¿Otro año sin tener con quién prender velitas? 👀🎄\n\n¡Que este diciembre no te toque responder otra vez que sigues soltero/a! 😂❤️\n\nEste sábado 14 de noviembre llega Tinder Bailable: Sala de Emergencias 🚨💉 Una tarde para bailar, conocer gente nueva y dejar que la química haga lo suyo.\n\nPorque nunca se sabe… ¡quizás este año sí tengas con quién prender las velitas! 🕯️🔥\n\nEtiqueta a ese amigo que necesita una cita de urgencias 😂\n\n#baile #planesenbogota #tinder #salsa #solteros",
+        "preview": "previews/18222082219348503-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Sonido 70",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Salsa Camará",
+    "venue": "Salsa Camará",
+    "address": "Carrera 11 #70A-22",
+    "area": null,
+    "date": "2026-11-14",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "16:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Aporte cultural",
+        "amount_cop": 25000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Sonido 70"
+    ],
+    "activities": [],
+    "contact": "WhatsApp 313 830 8844",
+    "confidence": "high",
+    "doubts": [],
+    "id": "sonido-70-14-nov",
+    "account": "salsacamaraoficial",
+    "media": [
+      {
+        "post_id": "18113833910581771",
+        "permalink": "https://www.instagram.com/p/Dfidie2FbKO/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-09T23:00:02+0000",
+        "flyer": "flyers/18113833910581771-3.webp",
+        "caption": "Conoce nuestro repertorio salsero de este fin de semana de gozo salsero\n📆 Jueves 12 de Noviembre\n🎺 Charanga Premiere\n🎟️ Aporte cultural: 15K\n\n📆 Sábado 14 de Noviembre\n🎺 Sonido 70 \n🎟️ Aporte cultural: 25K\n\n⏳ Desde las 4 PM\n📍 Carrera 11 #70A-22\n📲 Reserva por WhatsApp: 313 830 8844",
+        "preview": "previews/18113833910581771-3.mp4",
+        "slides": 4
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "El Viaje",
+    "event_type": "show",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "Festival Danza en la Ciudad",
+    "venue": "Centro Felicidad Chapinero",
+    "address": "Calle 82 No. 10-69",
+    "area": "Chapinero",
+    "date": "2026-11-14",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "16:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Tejiendo el Azar Danza"
+    ],
+    "activities": [
+      "obra de danza folclórica"
+    ],
+    "contact": "@danzaenlaciudad",
+    "confidence": "high",
+    "doubts": [
+      "entrada libre o boletería no especificada"
+    ],
+    "id": "el-viaje-14-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18129814492938895",
+        "permalink": "https://www.instagram.com/p/DfmaGnjxgjB/",
+        "media_type": "IMAGE",
+        "published": "2026-11-11T16:15:03+0000",
+        "flyer": "flyers/18129814492938895-0.webp",
+        "caption": "En el marco del XIX Festival Danza en la Ciudad: Tejiendo Movimiento, la Asociación Folclórica Mis Memorias invita a vivir un recorrido por la riqueza cultural e histórica de Cartagena de Indias, la Heroica, a través de una puesta en escena llena de música, danza y tradición.\n\nLa India Catalina, las coloridas palenqueras, la alegría de las fiestas de independencia y el ritmo de la cumbia serán protagonistas de este homenaje a la identidad cartagenera. Al compás de canciones como ‘Las mujeres de mi tierra’ y ‘Tumba Catre’, los asistentes disfrutarán de la picardía, el jolgorio y la esencia festiva del Caribe colombiano.\n\nFundada en Bogotá en 2003, Mis Memorias encuentra en la danza un espacio para preservar el folclor colombiano, compartir saberes y demostrar que el arte no tiene edad. Sus artistas, personas mayores que mantienen vivas nuestras tradiciones, nos recuerdan que la memoria también se baila y que la cultura sigue tejiendo generaciones.\n\n📅 14 de noviembre 🕓 4 p.m. \n📍 Centro Felicidad Chapinero \n📌 Calle 82 No. 10-69\n\n#FestivalDanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18135773116703464",
+        "permalink": "https://www.instagram.com/p/Dfl1jkhxO5z/",
+        "media_type": "IMAGE",
+        "published": "2026-11-11T14:00:03+0000",
+        "flyer": "flyers/18135773116703464-0.webp",
+        "caption": "💃🏽 ¡La tradición antioqueña se viste de danza y recorre nuevos territorios!\n\nEn el marco del XIX Festival Danza en la Ciudad: Tejiendo Movimiento, llega a Bogotá ‘El Viaje’, una obra de danza folclórica colombiana de la agrupación Tejiendo el Azar, ganadores convocatoria de circulación\nEstrategia: Artes que conectan territorios SCRD Bogotá - Secretaría de Cultura Ciudadana Medellín - IDARTES, escena que invita a recorrer los caminos de la identidad antioqueña a través de la figura del arriero\n\n☕🐴 Entre el aroma del café, los caminos del campo, las tradiciones religiosas y la alegría de la fonda, esta puesta en escena se desarrolla a lo largo de tres momentos que evocan la memoria, las costumbres y los encuentros que han contribuido a construir la identidad cultural antioqueña.\n\nCon más de 20 años de trayectoria, Tejiendo el Azar investiga, crea y comparte las tradiciones dancísticas y musicales de Colombia, conectando la herencia cultural con nuevos lenguajes escénicos.\n\nUna invitación a reconocer nuestras raíces, celebrar la diversidad y descubrir la tradición como una memoria viva que sigue tejiendo historias y territorios.\n\n 📅 14 de noviembre 🕓 4 p.m. \n📍Centro Felicidad Chapinero \n📌 Calle 82 No. 10-69\n\n#FestivalDanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
   },
   {
     "title": "Latin Sessions con Trío Bilonguero",
@@ -20079,6 +20812,51 @@
     "bar": true
   },
   {
+    "title": "Carne de mi carne",
+    "event_type": "show",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "ANOMALÍA PROJECT",
+    "venue": "Museo Nacional - Auditorio Teresa Cuervo Borda",
+    "address": "Av. Carrera 7 No. 28-66",
+    "area": null,
+    "date": "2026-11-14",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "17:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "ANOMALÍA PROJECT"
+    ],
+    "activities": [
+      "presentación de danza"
+    ],
+    "contact": "@danzaenlaciudad",
+    "confidence": "high",
+    "doubts": [
+      "sin información sobre costo de entrada"
+    ],
+    "id": "carne-de-mi-carne-14-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "17897783319427693",
+        "permalink": "https://www.instagram.com/p/Dfl6OycROD9/",
+        "media_type": "IMAGE",
+        "published": "2026-11-11T15:30:01+0000",
+        "flyer": "flyers/17897783319427693-0.webp",
+        "caption": "En ‘Carne de mi carne’, ANOMALÍA PROJECT, iniciativa ganadora de la Invitación Cultural: Bogotá danza: la ciudad en movimiento, de la SCRD, propone una experiencia escénico-visual que explora la piel como frontera sensible, territorio mutable y espacio de encuentro con el otro.\n\nA través de proyecciones de piel sobre piel, los cuerpos se pliegan, se superponen y se transforman para dar lugar a un tercer cuerpo: uno que emerge en la relación, que se activa en la proximidad y que existe entre lo que se cubre y se descubre.\n\nEl tacto, la presencia, la distancia y la vulnerabilidad atraviesan esta investigación, en la que la piel se convierte en puente comunicador y el cuerpo en territorio de exploración, memoria y transformación.\n\n✨ Una invitación a percibir el cuerpo desde otros lugares y a descubrir las posibilidades poéticas de su materialidad.\n\n📅 14 de noviembre 🕔 5 p.m. \n📍 Museo Nacional de Colombia Auditorio Teresa Cuervo Borda Av. \n📌 Carrera 7 No. 28-66\n\n#FestivalDanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Duelo Salsero: Colombia vs Nueva York",
     "event_type": "concert",
     "is_recurring": false,
@@ -20122,6 +20900,105 @@
       }
     ],
     "bar": true
+  },
+  {
+    "title": "CLAN",
+    "event_type": "show",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "Pauta Corpórea",
+    "venue": "Teatro El Parque",
+    "address": "Carrera 5 No. 36-05",
+    "area": null,
+    "date": "2026-11-14",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "19:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Pauta Corpórea"
+    ],
+    "activities": [
+      "presentación de danza contemporánea"
+    ],
+    "contact": "@danzaenlaciudad",
+    "confidence": "high",
+    "doubts": [],
+    "id": "clan-14-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18103885037109507",
+        "permalink": "https://www.instagram.com/p/Dfm-AoEEc__/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-11T17:00:03+0000",
+        "flyer": "flyers/18103885037109507-0.webp",
+        "caption": "En el XIX Festival Danza en la Ciudad, el movimiento se convierte en una forma de expresión, memoria y transformación social con dos propuestas de la Mesa Local Street Dance Zona 15.\n\n✨ ‘Movimiento Raíz: Ecos de un territorio en resistencia’ pone en escena las relaciones entre los cuerpos, la ciudad y sus eecosistemas, invitando a reflexionar sobre las transformaciones urbanas, el cuidado del entorno y las formas comunitarias de defender la vida.\n\n🔥 ‘La voz del pueblo’, de Colombian Rockers, lleva el breakin’ y las danzas urbanas al escenario para compartir reflexiones sobre la convivencia, la memoria colectiva y la construcción de paz.\n\nDos propuestas que reconocen la fuerza de la cultura hip hop, las experiencias comunitarias y el arte como motor de transformación.\n\n📅 14 de noviembre 🕖 7 p.m.\n📍 Teatro Villa Mayor \n📌 Cra. 34B No. 36 Sur\n\n¡Prográmese y descubra cómo la danza teje historias, territorios y comunidades!\n\n#FestivalDanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 2
+      },
+      {
+        "post_id": "18130718449860839",
+        "permalink": "https://www.instagram.com/p/Dfl198QxwsH/",
+        "media_type": "IMAGE",
+        "published": "2026-11-11T14:45:02+0000",
+        "flyer": "flyers/18130718449860839-0.webp",
+        "caption": "CLAN’, de Pauta Corpórea, iniciativa ganadora de la Invitación Cultural: Bogotá danza: la ciudad en movimiento, de la SCRD, llega al XIX Festival Danza en la Ciudad con una propuesta de danza contemporánea que integra videomapping y material documental autoetnográfico para explorar la familia como territorio de memorias, afectos, identidades y patrones heredados.\n\nA través del movimiento y de microhistorias que evocan experiencias familiares, esta obra nos invita a cuestionar aquello que hemos naturalizado, reconocer los vínculos que nos constituyen y descubrir nuevas posibilidades de transformación.\n\nUna experiencia escénica para encontrarnos con nuestras historias y reflexionar sobre aquello que nos une.\n\n📅 14 de noviembre 🕖 7 p.m. \n📍 Teatro El Parque \n📌 Carrera 5 No. 36-05\n\n#FestivalDanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "La voz del pueblo",
+    "event_type": "show",
+    "is_recurring": false,
+    "styles": [
+      "urbano"
+    ],
+    "organizer": "Festival Danza en la Ciudad",
+    "venue": "Teatro Villa Mayor",
+    "address": "Cra. 34b No. 36 Sur",
+    "area": null,
+    "date": "2026-11-14",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "19:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Mesa Local Street Dance Zona 15",
+      "Colombian Rockers"
+    ],
+    "activities": [
+      "show",
+      "gala jóvenes danza urbana",
+      "breakin'"
+    ],
+    "contact": "@danzaenlaciudad",
+    "confidence": "high",
+    "doubts": [],
+    "id": "la-voz-del-pueblo-14-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18103885037109507",
+        "permalink": "https://www.instagram.com/p/Dfm-AoEEc__/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-11T17:00:03+0000",
+        "flyer": "flyers/18103885037109507-1.webp",
+        "caption": "En el XIX Festival Danza en la Ciudad, el movimiento se convierte en una forma de expresión, memoria y transformación social con dos propuestas de la Mesa Local Street Dance Zona 15.\n\n✨ ‘Movimiento Raíz: Ecos de un territorio en resistencia’ pone en escena las relaciones entre los cuerpos, la ciudad y sus eecosistemas, invitando a reflexionar sobre las transformaciones urbanas, el cuidado del entorno y las formas comunitarias de defender la vida.\n\n🔥 ‘La voz del pueblo’, de Colombian Rockers, lleva el breakin’ y las danzas urbanas al escenario para compartir reflexiones sobre la convivencia, la memoria colectiva y la construcción de paz.\n\nDos propuestas que reconocen la fuerza de la cultura hip hop, las experiencias comunitarias y el arte como motor de transformación.\n\n📅 14 de noviembre 🕖 7 p.m.\n📍 Teatro Villa Mayor \n📌 Cra. 34B No. 36 Sur\n\n¡Prográmese y descubra cómo la danza teje historias, territorios y comunidades!\n\n#FestivalDanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 2
+      }
+    ],
+    "bar": false
   },
   {
     "title": "Son Pimienta en vivo",
@@ -20183,6 +21060,282 @@
       }
     ],
     "bar": true
+  },
+  {
+    "title": "Domingo Súper Bailable",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "merengue",
+      "otro"
+    ],
+    "organizer": "Bogotá Dance Club",
+    "venue": "Bogotá Dance Club",
+    "address": "Calle 25F #36-15",
+    "area": null,
+    "date": "2026-11-15",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "15:00",
+    "end_time": "22:00",
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 30000,
+        "condition": null
+      },
+      {
+        "label": "Consumible",
+        "amount_cop": 10000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Orquesta Candombé"
+    ],
+    "activities": [
+      "viejoteca",
+      "música en vivo"
+    ],
+    "contact": "WhatsApp 3114964964",
+    "confidence": "high",
+    "doubts": [],
+    "id": "domingo-super-bailable-15-nov",
+    "account": "bogotadanceclub",
+    "media": [
+      {
+        "post_id": "18121816640325993",
+        "permalink": "https://www.instagram.com/p/DfipzzPDkY9/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-10T00:47:26+0000",
+        "flyer": "flyers/18121816640325993-1.webp",
+        "caption": "🔥 ¡Este fin de semana en Bogotá Dance Club tenemos dos parches imperdibles!\n\n🚨 SÁBADO 14 DE NOVIEMBRE | TINDER BAILABLE: SALA DE EMERGENCIAS 🩺❤️‍🩹\n\n🕒 De 3:00 p.m. a 10:00 p.m.\n🏆 Concurso del soltero y la soltera de la noche, ¡con premio en efectivo!\n🎟️ Preventa: $25.000 | Taquilla: $30.000.\n🥤 Incluye clase de baile prefiesta, una bebida y fiesta.\n\n🎺 DOMINGO 15 DE NOVIEMBRE | DOMINGO SÚPER BAILABLE\n\n¡Vuelve nuestra clásica viejoteca! Esta vez con la orquesta invitada Candombe para poner a bailar a todo el mundo. 🔥\n\n🕒 De 3:00 p.m. a 10:00 p.m.\n🎟️ Cover: $30.000 + consumible de $10.000.\n🪑 Mesas compartidas por orden de llegada.\n\n📍 Calle 25F #36-15 | Bogotá Dance Club.\n\n¿Tienes alguna duda? Déjanos un comentario o escríbenos un mensajito por interno 💌\n\n¡Nos vemos este fin de semana! ❤️‍🔥\n\n#planesenbogotá #bogotá #bailar #viejoteca",
+        "preview": null,
+        "slides": 2
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Tropicana Ensamble",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Salsa Camará",
+    "venue": "Salsa Camará",
+    "address": "Carrera 11 #70A - 22",
+    "area": null,
+    "date": "2026-11-15",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "16:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Aporte cultural",
+        "amount_cop": 15000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Tropicana Ensamble"
+    ],
+    "activities": [
+      "concierto de salsa"
+    ],
+    "contact": "WhatsApp 313 830 8844",
+    "confidence": "high",
+    "doubts": [],
+    "id": "tropicana-ensamble-15-nov",
+    "account": "salsacamaraoficial",
+    "media": [
+      {
+        "post_id": "18138048838781991",
+        "permalink": "https://www.instagram.com/p/DfngVcuIDJo/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-11T22:00:02+0000",
+        "flyer": "flyers/18138048838781991-0.webp",
+        "caption": "El lunes es feriado así que el domingo se goza 💃🏻🕺🏻🔥\n\n⌛️Desde las 4 PM\n📍Carrera 11 #70A-22\n📲Reserva por WhatsApp: 313 830 8844",
+        "preview": null,
+        "slides": 2
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "TARDEO Salsa ALL STARS",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "salsa cubana",
+      "otro"
+    ],
+    "organizer": "Pachanga y Pochola",
+    "venue": "Pachanga y Pochola",
+    "address": "calle 73 # 14 - 53",
+    "area": null,
+    "date": "2026-11-15",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "17:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "pre-venta",
+        "amount_cop": 25000,
+        "condition": null
+      },
+      {
+        "label": "taquilla",
+        "amount_cop": 35000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "DJ Jeison",
+      "Miss Timba",
+      "DJ Qba",
+      "DJ Nando",
+      "DJ Fernando Espa\ta",
+      "DJ Chepe"
+    ],
+    "activities": [
+      "tardeo"
+    ],
+    "contact": "WhatsApp 3004506002",
+    "confidence": "high",
+    "doubts": [
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "tardeo-salsa-all-stars-15-nov",
+    "account": "fernandoespanadj",
+    "media": [
+      {
+        "post_id": "18137361484780764",
+        "permalink": "https://www.instagram.com/reel/Dfm8iAOBCs9/",
+        "media_type": "VIDEO",
+        "published": "2026-11-11T16:48:04+0000",
+        "flyer": "flyers/18137361484780764-0.webp",
+        "caption": "Les esperamos este domingo 15 de noviembre en Pachanga y Pochola a rumbear con los mejores discjockeys alternativos de la capital. Tardeo Salsa All Stars. Vive la salsa!",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "17971708788194232",
+        "permalink": "https://www.instagram.com/reel/DffR6ZdAjbZ/",
+        "media_type": "VIDEO",
+        "published": "2026-11-08T17:20:56+0000",
+        "flyer": "flyers/17971708788194232-0.webp",
+        "caption": "Noviembre Cubano en el Altiplano: Domingo 15, Tardeo en Pachanga y Pochola. Viernes 20, Orquesta Aragón en Chía. Y Sábado 21, Estrellas de Buenavista en el Teatro Jorge Eliécer Gaitán. Y nosotros presentes con Saca Las Bestias, Eddie Palmieri y La Rebelión del Bach Negro.",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18132459670705219",
+        "permalink": "https://www.instagram.com/reel/DffQ-VPJpd4/",
+        "media_type": "VIDEO",
+        "published": "2026-11-08T17:12:45+0000",
+        "flyer": "flyers/18132459670705219-0.webp",
+        "caption": "Noviembre Cubano en el Altiplano: Domingo 15, Tardeo en Pachanga y Pochola. Viernes 20, Orquesta Aragón en Chía. Y Sábado 21, Estrellas de Buenavista en el Teatro Jorge Eliécer Gaitán. Y nosotros presentes con Saca Las Bestias, Eddie Palmieri y La Rebelión del Bach Negro.",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Esquirlas de un beso: fragmentos de un acto de amor",
+    "event_type": "show",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "Festival Danza en la Ciudad",
+    "venue": "La Factoría - Tino Fernández",
+    "address": "Carrera 25 No. 50-34",
+    "area": null,
+    "date": "2026-11-15",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "18:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Compañía Valiente Danza"
+    ],
+    "activities": [
+      "obra de danza contemporánea"
+    ],
+    "contact": "@danzaenlaciudad",
+    "confidence": "high",
+    "doubts": [
+      "sin información de precio"
+    ],
+    "id": "esquirlas-de-un-beso-fragmentos-de-un-acto-de-amor-15-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18158357533521449",
+        "permalink": "https://www.instagram.com/p/DfnYwk1SGDf/",
+        "media_type": "IMAGE",
+        "published": "2026-11-11T20:55:26+0000",
+        "flyer": "flyers/18158357533521449-0.webp",
+        "caption": "En el marco del XIX Festival Danza en la Ciudad: Tejiendo Movimiento, seguimos celebrando el poder del cuerpo como territorio de expresión, memoria y encuentro. Una invitación a vivir la danza contemporánea, descubrir nuevas miradas y conectar con las historias que habitan el movimiento.\n\nEn esta edición, presentamos ‘Esquirlas de un beso: Fragmentos de un acto de amor’, una creación de la Compañía Valiente Danza que explora la memoria afectiva, el deseo y la fragilidad de los vínculos humanos.\n\nA través de una dramaturgia física sensible, los cuerpos evocan los fragmentos que deja el amor: aquello que se rompe, lo que permanece y las emociones que siguen habitándonos. Una experiencia escénica inspiradaen el libro ‘¿Qué ruido hace un beso?’ de Sebastián Giraldo.\n\n📅 15 de noviembre 🕕 6 p.m. \n📍 La Factoría – Tino Fernández \n📌 Carrera 25 No. 50-34\n\n#FestivalDanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Gala Clásica y Romántica",
+    "event_type": "show",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "Ballet Capital",
+    "venue": "Teatro El Parque",
+    "address": "Carrera 5 No. 36-05",
+    "area": null,
+    "date": "2026-11-16",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "lunes",
+    "start_time": "15:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Ballet Capital"
+    ],
+    "activities": [
+      "gala de ballet"
+    ],
+    "contact": "@danzaenlaciudad",
+    "confidence": "high",
+    "doubts": [],
+    "id": "gala-clasica-y-romantica-16-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18116399297612693",
+        "permalink": "https://www.instagram.com/p/DfmcCP7ROqG/",
+        "media_type": "IMAGE",
+        "published": "2026-11-11T17:45:03+0000",
+        "flyer": "flyers/18116399297612693-0.webp",
+        "caption": "✨ ¡La danza clásica y romántica se toman el escenario! \n\nEn el marco del XIX Festival Danza en la Ciudad: Tejiendo Movimiento, llega Gala Clásica & Romántica, una puesta en escena de alto nivel técnico y artístico a cargo de Ballet Capital – Ballet de Cámara de Cali,  ganadores de la convocatoria de circulación Estrategia: Artes que conectan territorios SCRD Bogotá - Secretaría de Cultura de Cali - IDARTES,\n\nDéjese envolver por dos grandes joyas del repertorio universal del ballet: del ballet: ‘La Sílfide y el Escocés’, un viaje al mundo romántico de la fantasía, la delicadeza y los movimientos que desafían la gravedad; y ‘Paquita (Grand Pas Classique)’, una celebración del virtuosismo, la precisión y la elegancia de la danza académica.\n\nDiez artistas en escena darán vida a estos dos universos coreográficos en un encuentro donde la técnica, la expresión y la emoción se convierten en movimiento.\n\n📅 16 de noviembre 🕒 3 p.m. \n📍 Teatro El Parque \n📌 Carrera 5 No. 36-05\n\n#FestivalDanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
   },
   {
     "title": "La Máquina del Tiempo",
@@ -20753,6 +21906,55 @@
     "bar": false
   },
   {
+    "title": "Orquesta Arag&oacute;n de Cuba - Charanga en la Luna",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Fundaci&oacute;n Arte Luz",
+    "venue": "Auditorio Jorge Arango Tamayo - UNICOC",
+    "address": "Autopista Norte, en la sabana de Bogot&aacute; (Entrada de Ch&iacute;a)",
+    "area": "Ch&iacute;a",
+    "date": "2026-11-20",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "17:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Orquesta Arag&oacute;n de Cuba",
+      "Se&ntilde;or Moon"
+    ],
+    "activities": [
+      "concierto",
+      "vinyl selector"
+    ],
+    "contact": "WhatsApp 311 855 3948",
+    "confidence": "high",
+    "doubts": [
+      "sin precio",
+      "ubicado en Ch&iacute;a",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "orquesta-arag-oacute-n-de-cuba-charanga-en-la-luna-20-nov",
+    "account": "fernandoespanadj",
+    "media": [
+      {
+        "post_id": "17971708788194232",
+        "permalink": "https://www.instagram.com/reel/DffR6ZdAjbZ/",
+        "media_type": "VIDEO",
+        "published": "2026-11-08T17:20:56+0000",
+        "flyer": "flyers/17971708788194232-0.webp",
+        "caption": "Noviembre Cubano en el Altiplano: Domingo 15, Tardeo en Pachanga y Pochola. Viernes 20, Orquesta Aragón en Chía. Y Sábado 21, Estrellas de Buenavista en el Teatro Jorge Eliécer Gaitán. Y nosotros presentes con Saca Las Bestias, Eddie Palmieri y La Rebelión del Bach Negro.",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Tributo a Ismael Rivera",
     "event_type": "concert",
     "is_recurring": false,
@@ -20912,6 +22114,16 @@
         "slides": 4
       },
       {
+        "post_id": "18117462785029592",
+        "permalink": "https://www.instagram.com/reel/DflSNyhxpkI/",
+        "media_type": "VIDEO",
+        "published": "2026-11-11T01:23:21+0000",
+        "flyer": "flyers/18117462785029592-0.webp",
+        "caption": "“Ay soledad no te me vayas\r\nNo te me vayas negra que mi corazón se va a estallar…” 🎶\n\nFaltan solo 11 días (21 de noviembre 🗓️) para cantar “Soledad” a todo pulmón. ❤️ ¿Ya están listos? 🥳🎶\n.\n.\n.\n#la33 #la33orquesta #salsa #envivo #concierto",
+        "preview": "previews/18117462785029592-0.mp4",
+        "slides": null
+      },
+      {
         "post_id": "18096547922670671",
         "permalink": "https://www.instagram.com/reel/De0K8o5NSqs/",
         "media_type": "VIDEO",
@@ -20945,6 +22157,52 @@
     "bar": false
   },
   {
+    "title": "The Big Jhony",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Galería Café Libro",
+    "venue": "Galería Café Libro 93",
+    "address": null,
+    "area": null,
+    "date": "2026-11-21",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "The Big Jhony"
+    ],
+    "activities": [
+      "salsa en vivo"
+    ],
+    "contact": "@galeriacafelibro",
+    "confidence": "high",
+    "doubts": [
+      "sin hora especificada",
+      "sin precio especificado"
+    ],
+    "id": "the-big-jhony-21-nov",
+    "account": "galeriacafelibro",
+    "media": [
+      {
+        "post_id": "18029107178922146",
+        "permalink": "https://www.instagram.com/reel/DfimXEOsxDk/",
+        "media_type": "VIDEO",
+        "published": "2026-11-10T00:19:44+0000",
+        "flyer": "flyers/18029107178922146-0.webp",
+        "caption": "🔥 ¡La salsa brava se toma Galería Café Libro!\nEste 21 de noviembre llega The Big Jhony, cantante bogotano con más de 20 años de trayectoria y ganador de Salsa al Parque 2026, para una noche de mucho golpe, sabor y puro tumbao. 💃🏽🕺🏽\n\nAlista tu parche salsero, porque aquí la salsa se vive, se siente y se baila como nos gusta. ❤️‍🔥\n\n📍 Galería Café Libro 93 📅 21 de noviembre\n¡Nos vemos en la pista, salseros! 🎶",
+        "preview": "previews/18029107178922146-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Taller Especial de Bachata",
     "event_type": "workshop",
     "is_recurring": false,
@@ -20953,7 +22211,7 @@
     ],
     "organizer": "Imperio Latino Dance Studio",
     "venue": "Imperio Latino Dance Studio",
-    "address": null,
+    "address": "Calle 72 # 80-23, piso 2",
     "area": null,
     "date": "2026-11-21",
     "end_date": null,
@@ -20984,6 +22242,16 @@
     "id": "taller-especial-de-bachata-21-nov",
     "account": "imperiolatino",
     "media": [
+      {
+        "post_id": "17992893945066881",
+        "permalink": "https://www.instagram.com/p/DfnkCfIvdp2/",
+        "media_type": "IMAGE",
+        "published": "2026-11-11T22:34:05+0000",
+        "flyer": "flyers/17992893945066881-0.webp",
+        "caption": "💛🖤 ¡EN IMPERIO LATINO SIEMPRE HAY ALGO NUEVO POR VIVIR! 🧡\n\nNuestra familia sigue creciendo y queremos que tú hagas parte de todo lo que viene. ✨\n\nTenemos grandes experiencias preparadas para cerrar el año y comenzar el 2027 con toda la energía:\n\n🔥 CONSERVA TUS TARIFAS 2026: paga diciembre + enero y disfruta de este beneficio especial.\n\n💃 TALLER ESPECIAL DE BACHATA: prepárate para aprender, disfrutar y fortalecer tu baile junto a María Camila Herrera. ¡21 de noviembre!\n\n🏆 CONVOCATORIA 2027: buscamos nuevos talentos para nuestras agrupaciones competitivas. ¡El 22 de noviembre puede comenzar una gran historia para ti!\n\nEn Imperio Latino no solo enseñamos a bailar… creamos experiencias, formamos talentos, compartimos sueños y construimos una familia.\n\n❤️ Tu talento tiene un lugar. Tu pasión tiene una casa.\n\n📍 Calle 72 # 80-23, piso 2.\n📲 WhatsApp: 316 450 1010.\n\n¡VEN, BAILA, APRENDE Y CRECE CON NOSOTROS!\n\n#ImperioLatino #FamiliaImperio #Salsa #Bachata Convocatoria2027 DanceStudio BogotáBaila",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18041728847842231",
         "permalink": "https://www.instagram.com/p/DfcROWFvj20/",
@@ -21103,6 +22371,121 @@
     "bar": false
   },
   {
+    "title": "Salsadentro Nov: Clase de salsa para las fiestas",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Clandisfrute",
+    "venue": null,
+    "address": "Cra 27A #52-31",
+    "area": "Galerías",
+    "date": "2026-11-21",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "19:00",
+    "end_time": "21:00",
+    "prices": [
+      {
+        "label": "Preventa",
+        "amount_cop": 40000,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "clase de salsa"
+    ],
+    "contact": "3108519066",
+    "confidence": "high",
+    "doubts": [],
+    "id": "salsadentro-nov-clase-de-salsa-para-las-fiestas-21-nov",
+    "account": "clandisfrute",
+    "media": [
+      {
+        "post_id": "18022353689736621",
+        "permalink": "https://www.instagram.com/reel/Dfh6jcqSvF7/",
+        "media_type": "VIDEO",
+        "published": "2026-11-09T17:57:01+0000",
+        "flyer": "flyers/18022353689736621-0.webp",
+        "caption": "EL PENÚLTIMO DEL AÑO, BOGOTÁ! 😱🥹🔥\n\nY como siempre estamos buscando botar la casa por la ventana, para esta edición tenemos un INVITADO ESPECIAL😼 en el equipo.\n\nReserva tu cupo y prepárate para un rato sabroso!🥳",
+        "preview": "previews/18022353689736621-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Estrellas de Buenavista",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "son",
+      "salsa"
+    ],
+    "organizer": "AGA Producciones Artísticas",
+    "venue": "Teatro Jorge Eli\tcer Gait\tn",
+    "address": null,
+    "area": null,
+    "date": "2026-11-21",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "20:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Estrellas de Buenavista"
+    ],
+    "activities": [
+      "concierto"
+    ],
+    "contact": "WhatsApp +57 601 5936300",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio",
+      "sin precio",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "estrellas-de-buenavista-21-nov",
+    "account": "fernandoespanadj",
+    "media": [
+      {
+        "post_id": "18119858447100973",
+        "permalink": "https://www.instagram.com/reel/Dfk_Dl0hu_t/",
+        "media_type": "VIDEO",
+        "published": "2026-11-10T22:31:37+0000",
+        "flyer": "flyers/18119858447100973-0.webp",
+        "caption": "FIN DE SEMANA CUBANO EN EL ALTIPLANO : La Orquesta Aragón el viernes 20 en Chía y las Estrellas de Buena Vista el sábado 21 en el Teatro Jorge Eliécer Gaitán.",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "17971708788194232",
+        "permalink": "https://www.instagram.com/reel/DffR6ZdAjbZ/",
+        "media_type": "VIDEO",
+        "published": "2026-11-08T17:20:56+0000",
+        "flyer": "flyers/17971708788194232-0.webp",
+        "caption": "Noviembre Cubano en el Altiplano: Domingo 15, Tardeo en Pachanga y Pochola. Viernes 20, Orquesta Aragón en Chía. Y Sábado 21, Estrellas de Buenavista en el Teatro Jorge Eliécer Gaitán. Y nosotros presentes con Saca Las Bestias, Eddie Palmieri y La Rebelión del Bach Negro.",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18132459670705219",
+        "permalink": "https://www.instagram.com/reel/DffQ-VPJpd4/",
+        "media_type": "VIDEO",
+        "published": "2026-11-08T17:12:45+0000",
+        "flyer": "flyers/18132459670705219-0.webp",
+        "caption": "Noviembre Cubano en el Altiplano: Domingo 15, Tardeo en Pachanga y Pochola. Viernes 20, Orquesta Aragón en Chía. Y Sábado 21, Estrellas de Buenavista en el Teatro Jorge Eliécer Gaitán. Y nosotros presentes con Saca Las Bestias, Eddie Palmieri y La Rebelión del Bach Negro.",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Latinholic Night",
     "event_type": "social",
     "is_recurring": false,
@@ -21124,7 +22507,7 @@
       {
         "label": "General",
         "amount_cop": 30000,
-        "condition": "Incluye clase de bachata + bebida"
+        "condition": "incluye clase de bachata + bebida"
       }
     ],
     "artists": [
@@ -21142,6 +22525,16 @@
     "id": "latinholic-night-21-nov",
     "account": "danceholicproject",
     "media": [
+      {
+        "post_id": "18110952749626569",
+        "permalink": "https://www.instagram.com/p/Dfih4acEbPz/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-09T23:38:09+0000",
+        "flyer": "flyers/18110952749626569-0.webp",
+        "caption": "LATINHOLIC🔥\n\n. \n💃🔥UNA NOCHE PARA BAILAR, CONECTAR CON MÁS\nGENTE Y PASARLA BUENO.\n\nEsta vez cambiamos el salón de clases por una noche de\nSALSA & BACHATA en Danceholic.🕺❤️\n\nNo importa si bailas hace años, si estás empezando o si simplemente quieres venir a disfrutar. Aquí vienes a bailar.\n\n🎶Salsa\n🎶Bachata\n🤲Social\n💫Showcases\n🔥Buena música\n❤️Mucha energía\n\nVen con tu parche, con tu pareja... o ven solo/a. Seguro terminas bailando con alguien.\n\n📍: DANCEHOLIC PROJECT\n: 🗓️SABADO 21 NOVIEMBRE\n: ⏰9:00PM\n💸30K ( Incluye clase de bachata +bebida)\n👗Dress Code: Blanco\n🎨 joup_music / joupvisuals \nDJS: frank.de.latorre camilo_barretto \n\nGuarda la fecha, invita a tu combo y nos vemos por la mansión🕺💃\n🚨NO OLVIDES RESERVAR POR DM🚨\n\n#DanceholicProject #Salsa #Bachata #SocialDance #bogota",
+        "preview": null,
+        "slides": 2
+      },
       {
         "post_id": "17911491282571617",
         "permalink": "https://www.instagram.com/p/DfYkrIFRT-X/",
@@ -21255,7 +22648,7 @@
     ],
     "organizer": "Imperio Latino Dance Studio",
     "venue": "Imperio Latino Dance Studio",
-    "address": null,
+    "address": "Calle 72 # 80-23, piso 2",
     "area": null,
     "date": "2026-11-22",
     "end_date": null,
@@ -21265,26 +22658,33 @@
     "end_time": null,
     "prices": [
       {
-        "label": "Participación",
+        "label": "General",
         "amount_cop": 0,
         "condition": null
       }
     ],
     "artists": [],
     "activities": [
-      "selección de talentos",
-      "audiciones para agrupaciones competitivas"
+      "audición de baile"
     ],
     "contact": "@imperiolatino",
     "confidence": "high",
     "doubts": [
-      "sin horario",
-      "sin precios",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+      "sin hora de inicio"
     ],
     "id": "convocatoria-2027-22-nov",
     "account": "imperiolatino",
     "media": [
+      {
+        "post_id": "17992893945066881",
+        "permalink": "https://www.instagram.com/p/DfnkCfIvdp2/",
+        "media_type": "IMAGE",
+        "published": "2026-11-11T22:34:05+0000",
+        "flyer": "flyers/17992893945066881-0.webp",
+        "caption": "💛🖤 ¡EN IMPERIO LATINO SIEMPRE HAY ALGO NUEVO POR VIVIR! 🧡\n\nNuestra familia sigue creciendo y queremos que tú hagas parte de todo lo que viene. ✨\n\nTenemos grandes experiencias preparadas para cerrar el año y comenzar el 2027 con toda la energía:\n\n🔥 CONSERVA TUS TARIFAS 2026: paga diciembre + enero y disfruta de este beneficio especial.\n\n💃 TALLER ESPECIAL DE BACHATA: prepárate para aprender, disfrutar y fortalecer tu baile junto a María Camila Herrera. ¡21 de noviembre!\n\n🏆 CONVOCATORIA 2027: buscamos nuevos talentos para nuestras agrupaciones competitivas. ¡El 22 de noviembre puede comenzar una gran historia para ti!\n\nEn Imperio Latino no solo enseñamos a bailar… creamos experiencias, formamos talentos, compartimos sueños y construimos una familia.\n\n❤️ Tu talento tiene un lugar. Tu pasión tiene una casa.\n\n📍 Calle 72 # 80-23, piso 2.\n📲 WhatsApp: 316 450 1010.\n\n¡VEN, BAILA, APRENDE Y CRECE CON NOSOTROS!\n\n#ImperioLatino #FamiliaImperio #Salsa #Bachata Convocatoria2027 DanceStudio BogotáBaila",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18083257100375924",
         "permalink": "https://www.instagram.com/p/DfTLNE6Ace3/",
@@ -21709,6 +23109,54 @@
         "caption": "La danza sigue abriendo caminos para descubrir, experimentar y conectar con nuevas formas de expresión. 🍃\n\nEn noviembre y diciembre, La Casona de la Danza continúa siendo un punto de encuentro para quienes quieren acercarse al movimiento desde diferentes experiencias, explorar sus posibilidades y compartir alrededor del cuerpo y la creatividad. Cada espacio es una oportunidad para aprender algo nuevo y dejarse sorprender por lo que la danza tiene por contar. 💫\n\nAnímese a hacer parte de estas experiencias y encuentre en el movimiento una nueva forma de vivir el arte.\n\n📍 Deslice y conozca la programación que continúa durante noviembre.\n\n#CasonaDeLaDanza #BogotáMiCiudadMiCasa",
         "preview": null,
         "slides": 11
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Clausura 2026",
+    "event_type": "show",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "La Escuela Salsa & Ritmo Latino",
+    "venue": "CDC Timiza",
+    "address": "Cra. 74 #42-52 sur",
+    "area": "Timiza",
+    "date": "2026-11-28",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "16:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Entrada general",
+        "amount_cop": 30000,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "shows de alumnos",
+      "presentaciones en vivo"
+    ],
+    "contact": "WhatsApp 312 3363405",
+    "confidence": "high",
+    "doubts": [],
+    "id": "clausura-2026-28-nov",
+    "account": "salsayritmolatino",
+    "media": [
+      {
+        "post_id": "18648095137014408",
+        "permalink": "https://www.instagram.com/p/DfkLAaQigdP/",
+        "media_type": "IMAGE",
+        "published": "2026-11-10T14:56:52+0000",
+        "flyer": "flyers/18648095137014408-0.webp",
+        "caption": "💃✨ ¡La salsa se vive, se siente y se celebra! La Escuela Salsa & Ritmo Latino te invita a su Clausura 2026, una tarde llena de talento, baile y espectaculares presentaciones en vivo de nuestros alumnos. ❤️🔥\n\n📅 Sábado 28 de noviembre\n🕓 4:00 p. m.\n📍 CDC, Timiza. Cra. 74 #42-52 sur, Bogotá\n\n🎟️ Entrada general: $30.000.\n📢 ¡IMPORTANTE! VENTA DE BOLETERÍA SOLO EN LA ESCUELA.\n\n📲 Reserva o solicita información por WhatsApp: 312 3363405.\n¡Acompáñanos a celebrar el talento y la pasión por el baile! 🕺💃\n\n#Clausura2026 #SalsaEnBogotá #EscuelaDeBaileBogotá #SalsaRitmoYLatino",
+        "preview": null,
+        "slides": null
       }
     ],
     "bar": false
@@ -22147,6 +23595,16 @@
         "slides": null
       },
       {
+        "post_id": "17897498574427150",
+        "permalink": "https://www.instagram.com/reel/Dfk-YNthoxG/",
+        "media_type": "VIDEO",
+        "published": "2026-11-10T22:30:13+0000",
+        "flyer": "flyers/17897498574427150-0.webp",
+        "caption": "🥁 TEAM SALSA ALUMNOS 🥁\n\nPresentamos nuestro grupo oficial de Alumnos Salsa madyum 2026. Nos vemos pronto ⌛️\n\n#salsa #escueladebaile #dancing #aniversario #show",
+        "preview": null,
+        "slides": null
+      },
+      {
         "post_id": "18647308672026349",
         "permalink": "https://www.instagram.com/reel/DfcoLaDBFl6/",
         "media_type": "VIDEO",
@@ -22341,6 +23799,66 @@
         "published": "2026-11-09T01:46:55+0000",
         "flyer": "flyers/18180816733443976-0.webp",
         "caption": "🌀ECOS EN MOVIMIENTO🌀\n.\n.\n.\nClausura Mover-sé 2026 \n\n🗓️ Domingo 13 de Diciembre\n⏰ 4pm\n📍 Academia de baile Alma de tango\n🔖Adquiere tus entradas\n\n⭐️Falta poco⭐️",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Clausura 2026 Studio Latin Dance",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "Studio Latin Dance",
+    "venue": "Centro de Eventos y Convenciones Las Américas",
+    "address": "Av. Américas #50-15",
+    "area": "Las Américas",
+    "date": "2026-12-18",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "19:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Preventa Pareja",
+        "amount_cop": 80000,
+        "condition": "hasta el 10 de diciembre"
+      },
+      {
+        "label": "Preventa Individual",
+        "amount_cop": 45000,
+        "condition": "hasta el 10 de diciembre"
+      },
+      {
+        "label": "Taquilla por persona",
+        "amount_cop": 60000,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "clausura",
+      "baile",
+      "brindis",
+      "celebración"
+    ],
+    "contact": "317 447 9689",
+    "confidence": "high",
+    "doubts": [],
+    "id": "clausura-2026-studio-latin-dance-18-dic",
+    "account": "studiolatindance",
+    "media": [
+      {
+        "post_id": "17915963133515649",
+        "permalink": "https://www.instagram.com/p/DfiKVPoOG9Q/",
+        "media_type": "IMAGE",
+        "published": "2026-11-09T20:13:44+0000",
+        "flyer": "flyers/17915963133515649-0.webp",
+        "caption": "¡Cerramos el 2026 con una noche llena de ritmo, elegancia y celebración! ✨🥂🖤\n\nPrepárate para vivir una noche inolvidable junto a toda la familia STUDIO LATIN DANCE. 💃🕺\n\nUna celebración para brindar por los logros, los aprendizajes, las experiencias y, sobre todo, por la pasión que nos une: ¡EL BAILE! 🔥\n\n🎉 CLAUSURA 2026\n📅 Viernes 18 de diciembre\n🕖 Hora: 7:00 p. m.\n📍 Centro de Eventos y Convenciones Las Américas – Salón Bolívar, piso 1.\n🎟️ ¡PRECIOS DE PREVENTA HASTA EL 10 DE DICIEMBRE!\n❤️ Pareja: $80.000\n🖤 Individual: $45.000\n🎫 En taquilla: $60.000 por persona.\n📲 Reserva tu lugar:\n317 447 9689 – 302 720 3206\n\n¡No te quedes por fuera de esta gran celebración! Nos espera una noche para bailar, compartir y crear recuerdos inolvidables. 🥂✨\nSTUDIO LATIN DANCE – ¡Donde la pasión por el baile nos une! ❤",
         "preview": null,
         "slides": null
       }

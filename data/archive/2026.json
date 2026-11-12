@@ -117,5 +117,363 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "Hagámoslo Real - Semana de Clases",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "heels",
+      "urbano",
+      "otro"
+    ],
+    "organizer": "Bureo Dance Studio",
+    "venue": "Bureo Dance Studio",
+    "address": "Sedes 109, 127 y Cajicá",
+    "area": null,
+    "date": "2026-09-07",
+    "end_date": "2026-09-11",
+    "sessions": null,
+    "weekday": "lunes",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Clase suelta Sede 109",
+        "amount_cop": 35000,
+        "condition": null
+      },
+      {
+        "label": "Clase suelta Sedes 127 y Cajicá",
+        "amount_cop": 50000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Lu",
+      "Alejo Rivera",
+      "Alma",
+      "Víctor",
+      "Jujo",
+      "Diego",
+      "Maju",
+      "Vale",
+      "Ithan",
+      "Douglas"
+    ],
+    "activities": [
+      "clase de sexy style",
+      "clase de coreo",
+      "clase de heels",
+      "clase de reggaetón",
+      "videoclass"
+    ],
+    "contact": "@bureodancestudio",
+    "confidence": "high",
+    "doubts": [
+      "Discrepancia en precios de clase suelta entre imágenes de sedes individuales ($35.000 vs $50.000)"
+    ],
+    "id": "hagamoslo-real-semana-de-clases-7-sep",
+    "account": "bureodancestudio",
+    "media": [
+      {
+        "post_id": "18094649012398996",
+        "permalink": "https://www.instagram.com/p/Dc4zTdpnL9_/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-09-05T01:39:30+0000",
+        "flyer": "archive/flyers/18094649012398996-0.webp",
+        "caption": "Hagámoslo REAL. 🔥  sai_______ \n\nDel 7 al 11 de septiembre, nos vemos en las tres sedes: 109, 127 y Cajicá.\n\nHeels, Sexy Style, Coreo y Reggaetón para bailar, sudar y disfrutar cada clase. 🖤\n\nClase suelta: $35.000\nO entra con tu paquete.\n\nDesliza, busca tu sede y reserva tu clase en la app.\n\nNos vemos en el estudio. ✨",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Workshop con Lil Andrew - Clase de Coreografía",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "urbano"
+    ],
+    "organizer": "Bureo Dance Studio",
+    "venue": "Bureo Dance Studio",
+    "address": null,
+    "area": "Sede 109",
+    "date": "2026-09-09",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "miércoles",
+    "start_time": "20:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Público",
+        "amount_cop": 35000,
+        "condition": null
+      },
+      {
+        "label": "Members Bureo",
+        "amount_cop": 30000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Lil Andrew"
+    ],
+    "activities": [
+      "clase de coreografía",
+      "workshop"
+    ],
+    "contact": "@bureodancestudio",
+    "confidence": "high",
+    "doubts": [],
+    "id": "workshop-con-lil-andrew-clase-de-coreografia-9-sep",
+    "account": "bureodancestudio",
+    "media": [
+      {
+        "post_id": "18475359718114255",
+        "permalink": "https://www.instagram.com/p/DdAxDa8CaOW/",
+        "media_type": "IMAGE",
+        "published": "2026-09-08T03:55:13+0000",
+        "flyer": "archive/flyers/18475359718114255-0.webp",
+        "caption": "🔥 WORKSHOP CON LIL ANDREW 🔥 lilandrewoficial \n\nUna clase para bailar, aprender y disfrutar el proceso. 🖤\n\nEste miércoles 9 de septiembre nos vemos en Bureo Dance Studio para una clase de coreografía con Lil Andrew, bailarín de Don Omar.\n\n📍 Sede 109\n🕗 8:00 PM\n💰 Público: $35.000\n✨ Members Bureo: $30.000\n\nCupos limitados. Reserva el tuyo y nos vemos en el salón. 🫶🏻",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Ritmos Cruzados",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "champeta",
+      "salsa"
+    ],
+    "organizer": "Esfera Latina",
+    "venue": "Esfera Latina",
+    "address": null,
+    "area": null,
+    "date": "2026-09-10",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "jueves",
+    "start_time": "18:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Estudiantes",
+        "amount_cop": 10000,
+        "condition": null
+      },
+      {
+        "label": "Extra",
+        "amount_cop": 15000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Diego (soydiegodanza)",
+      "Maik (maik_the_dancer)"
+    ],
+    "activities": [
+      "clase especial de champeta + salsa"
+    ],
+    "contact": "3135802345",
+    "confidence": "high",
+    "doubts": [],
+    "id": "ritmos-cruzados-10-sep",
+    "account": "esferalatinaoficial",
+    "media": [
+      {
+        "post_id": "17940141273086498",
+        "permalink": "https://www.instagram.com/p/Dc1loAmJxwo/",
+        "media_type": "IMAGE",
+        "published": "2026-09-05T01:00:09+0000",
+        "flyer": "archive/flyers/17940141273086498.webp",
+        "caption": "🔥 RITMOS CRUZADOS 🔥\n\n¿Estás listo para salir de la rutina y bailar algo diferente?\n\nEste jueves 10 de septiembre llega a Esfera Latina una clase especial de Champeta + Salsa, donde vamos a cruzar dos ritmos llenos de sabor, energía y movimiento.\n\n💥 Champeta + Salsa\n📅 Jueves 10 de septiembre\n⏰ 6:00 PM\n🎶 Con soydiegodanza & maik_the_dancer \n\nUna clase para aprender, disfrutar y dejarlo todo en la pista.\n\n¿Te animas a cruzar los ritmos?\n\nTe esperamos en Esfera Latina.",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Acro yoga y retrato",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [],
+    "organizer": "Espacio 64",
+    "venue": "Espacio 64",
+    "address": null,
+    "area": "Bogotá",
+    "date": "2026-09-12",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "taller de Acro Yoga",
+      "taller de retrato"
+    ],
+    "contact": "@espacio.64",
+    "confidence": "high",
+    "doubts": [
+      "sin precio",
+      "sin horario de inicio"
+    ],
+    "id": "acro-yoga-y-retrato-12-sep",
+    "account": "espacio.64",
+    "media": [
+      {
+        "post_id": "18445192954127928",
+        "permalink": "https://www.instagram.com/p/Dc_6anaGhEb/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-09-07T19:56:20+0000",
+        "flyer": "archive/flyers/18445192954127928-1.webp",
+        "caption": "✦ SEPTIEMBRE EN ESPACIO 64 ✦\n\nEste mes queremos celebrar los vínculos: los que nos hacen reír, los que nos inspiran, los que nos transforman y también aquellos que todavía están por aparecer.\n\nEn septiembre nos encontramos alrededor de la escritura, la grafica, el movimiento, la música y la creación para celebrar el amor y la amistad de muchas maneras.\n\n💌 Sábado 12 — Amor en dos tiempos\nUna mañana para compartir en pareja: taller de Acro Yoga  y en la tarde un taller de retrato en el que cada quien dibujará al otro para descubrir cómo nos vemos cuando nos miran desde afuera. Y sí: habrá vino. 🍷\n\n❤️ Sábado 19 — Previa de Amor y Amistad\nUna mañana para que el a,le sea potencia: taller de arte postal, ven y escribe tu carta, crea tus sobres, postales y sellos.\nUna tarde-noche para encontrarnos: pop-up grafico junto a artistas increíbles tonraton sakoasko elarincon heitorcorreaart , carta de bebidas de autor y tapas, DJ set en vivo con manufediaz juegos, mensajes y sorpresas. Ven con alguien, ven solx, ven a ver qué pasa. 🫀\n\n✍️ Sábado 26 + 3 de octubre — Gateando la escritura \nDos sesiones de escritura creativa junto a Sebas García, escritor de refugiodelaescritura para indagar en las primeras intenciones a la hora de escribir 🖋️ \nNos vemos en Espacio 64. ♡\n\n📍 Bogotá · Espacio 64\n💌 Inscripciones abiertas",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Ángeles y Diablitos - Edición Tinder Bailable",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "bachata"
+    ],
+    "organizer": "@bogotadanceclub",
+    "venue": "Bogotá Dance Club",
+    "address": "Calle 25F #36-15",
+    "area": null,
+    "date": "2026-09-12",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "15:00",
+    "end_time": "22:00",
+    "prices": [
+      {
+        "label": "Preventa",
+        "amount_cop": 25000,
+        "condition": null
+      },
+      {
+        "label": "Taquilla",
+        "amount_cop": 30000,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "clase de pre fiesta de bachata"
+    ],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [
+      "sin hora",
+      "sin precio",
+      "sin lugar"
+    ],
+    "id": "angeles-y-diablitos-edicion-tinder-bailable-12-sep",
+    "account": "bogotadanceclub",
+    "media": [
+      {
+        "post_id": "17921307081425313",
+        "permalink": "https://www.instagram.com/reel/DdKtWLZu7tg/",
+        "media_type": "VIDEO",
+        "published": "2026-09-12T00:35:15+0000",
+        "flyer": "archive/flyers/17921307081425313-0.webp",
+        "caption": "💃🏻 Clasesita de bachata pre fiesta mañana sábado 12 de septiembre en nuestro 🔥TINDER BAILABLE🔥 edición: Angeles y Diablitos \n\nSi quieres más información escríbenos un mensaje 😈😇",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18367120918246405",
+        "permalink": "https://www.instagram.com/reel/DdIP7sjO0WG/",
+        "media_type": "VIDEO",
+        "published": "2026-09-11T01:40:43+0000",
+        "flyer": "archive/flyers/18367120918246405-0.webp",
+        "caption": "Etiqueta a esa amiga que jamás encubriría una infidelidad 👩🏻‍🐰‍👩🏼\n\nY este sábado 12 de septiembre las esperamos en nuestro 🔥TINDER BAILABLE🔥 edición: 😇 Angeles o Diablitos 😈\n\nSi quieres más información comenta este video 👇🏻\n\n#planesenbogotá #amigas #tinder #bogotá #baile",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18017335922925427",
+        "permalink": "https://www.instagram.com/reel/DdC1usyuS0Q/",
+        "media_type": "VIDEO",
+        "published": "2026-09-08T23:20:19+0000",
+        "flyer": "archive/flyers/18017335922925427-0.webp",
+        "caption": "DENUNCIA PÚBLICA EN BOGOTÁ 🤬\n\nQueremos dejar este video acá para hacer una denuncia pública de que el bailadero Bogotá Dance Club hace las mejores fiestas de Tinder Bailable de la ciudad 🔥😏\n\nY este sábado se viene edición 😇 Angeles y Diablitos 😈\n\n📢 Comunidad bailadora de 18 a 45 años ✨\n🗓️ 12 de septiembre 🕒 De 3PM A 10PM\n📍 Calle 25F #36-15 - Bogotá Dance Club\n\n🤓 Clase de pre fiesta de bachata (para romper el hielo)\n\n💵 Cover en preventa: $25.000\n💰 Cover en puerta: $30.000\n(Incluye aureola o cachitos + clase + 1 bebida)\n\nAnímate a desinstalar Tinder y comenzar a conocer gente en la vida real 😮‍💨\n\nSi quieres más información comenta este video 🔥👇🏻",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Social Crossover y Talleres",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "bachata",
+      "zouk"
+    ],
+    "organizer": "Show Stars Academia de Baile",
+    "venue": "Show Stars Academia de Baile",
+    "address": "Av. Calle 24 #75-25",
+    "area": null,
+    "date": "2026-09-12",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "19:00",
+    "end_time": "01:00",
+    "prices": [
+      {
+        "label": "Individual",
+        "amount_cop": 30000,
+        "condition": null
+      },
+      {
+        "label": "Pareja",
+        "amount_cop": 50000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Angel y Melany"
+    ],
+    "activities": [
+      "bachata tradicional",
+      "bachazouk",
+      "social crossover"
+    ],
+    "contact": "SOCIAL",
+    "confidence": "high",
+    "doubts": [],
+    "id": "social-crossover-y-talleres-12-sep",
+    "account": "showstarscol",
+    "media": [
+      {
+        "post_id": "18013505918746903",
+        "permalink": "https://www.instagram.com/reel/DdCb-uRxXxE/",
+        "media_type": "VIDEO",
+        "published": "2026-09-08T19:38:14+0000",
+        "flyer": "archive/flyers/18013505918746903-0.webp",
+        "caption": "🔥🕺💃 ¡ESTE 12 DE SEPTIEMBRE TENEMOS PLAN! 💃🕺🔥\n\nPrepárate para vivir una noche llena de bachata, aprendizaje, baile y mucha conexión. ✨\n\nDe 7:00 PM a 8:00 PM tendremos Bachata Tradicional, donde trabajaremos la cultura y esencia de este hermoso ritmo. ❤️\n\nDe 8:00 PM a 9:00 PM, seguiremos con Bachazouk, trabajando técnica, soft following y un estilo diferente para seguir evolucionando en tu baile. 🔥\n\nY para terminar… 😎🔥\n\n🕘 9:00 PM a 1:00 AM — SOCIAL CROSSOVER\nUna noche para disfrutar, practicar, conocer personas y bailar sin parar. 💃🕺✨\n\n📍 Av. Calle 24 #75-25\n⭐ Show Stars Academia de Baile\n¿Quieres asistir y recibir toda la información? 👇\n\n📩 Escríbenos la palabra “SOCIAL” por mensaje directo y te enviamos todos los detalles. 🔥\n\n¡Nos vemos en la pista! ⭐✨\n\n#ShowStars #SocialCrossover #Bachata #BachataTradicional \n\n⭐ No importa tu nivel, solo trae tus ganas de bailar. ¡Nos vemos en el SOCIAL! 🔥🕺💃",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
   }
 ]
