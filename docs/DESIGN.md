@@ -132,7 +132,8 @@ few set from scripts are listed there).
   `--period-rule-height` 3px.
 - The page's column: `--content-width` 1120px.
 - Controls: `--control-height` 40px (buttons, toggle), `--chip-height` 32px, `--sticker-size` 60px; the filter
-  sheet's switch, `--switch-width` × `--switch-height` 44×24px.
+  sheet's switch, `--switch-width` × `--switch-height` 44×24px; the tall sheets (the install steps' clip, a post's
+  player) stop at `--sheet-tall-max`, leaving a strip of the page above.
 - Touch: `--touch-target` 44px for every control. A control drawn smaller gets an invisible `::after` that makes up the
   difference, so the target is met without making its row taller.
 - The phone bars: `--jump-bar-height` 56px, `--filter-line-height` 40px (the line under it while filtering);
@@ -737,7 +738,7 @@ An event can be announced by several Instagram posts (a flyer, then a video, a r
     2026: WebKit holds the second click back, and past 450 it opened what the first had drawn there). Before, it
     landed on them: Compartir, the account's profile, or the dim area that closed them again (20 of 20 emulated
     double-taps, the audit of 7 Oct 2026). A desktop double-click likewise keeps the image and the details open.
-    The same holds for anything a tap opens or changes under the finger ("Ver N más", "Ver las 6 publicaciones", the
+    The same holds for anything a tap opens or changes under the finger ("Ver los 23 eventos", "Ver las 6 publicaciones", the
     Instagram button, a notice's button, an event page's flyer): a second tap that lands on another control than the
     first is dropped; the same control twice (a month's arrow, a carousel's) still counts twice (the bug hunt of 7 Oct
     2026). (`lib/secondTap.ts`, `views/secondTaps.ts`.)

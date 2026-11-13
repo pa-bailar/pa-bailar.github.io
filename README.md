@@ -10,8 +10,8 @@ data/       events.json, meta.json and archive/ (past events), updated by pull r
 docs/       architecture (ARCHITECTURE.md), design system (DESIGN.md) and data contract (DATA.md)
 ```
 
-The data comes from a separate backend, `pa-bailar/backend` (Instagram → Gemini). It sweeps twice a day (6:30 AM
-and 9 PM Bogotá time; most accounts once a day, quiet ones less often) and opens a pull request here when the
+The data comes from a separate backend, `pa-bailar/backend` (Instagram → Gemini). It sweeps three times a day (3:00 AM,
+6:30 AM and 9 PM Bogotá time; most accounts once a day, quiet ones less often) and opens a pull request here when the
 events change. This repository only builds and publishes the site.
 
 **How the site gets its data, is built, published and works in the browser, with diagrams:
@@ -44,7 +44,7 @@ subscriptions). The build fails if an event's preview is missing or weighs over 
 
 | Workflow | When | What |
 |---|---|---|
-| `ci` | Every pull request | PR title format, data format check, type check, color contrast, CSS custom properties, tests, build. The required check on `main`. |
+| `ci` | Every pull request | PR title format, data format check, type check, color contrast, CSS custom properties, tests (not on a PR that changes only `data/`), build. The required check on `main`. |
 | `deploy` | Push to `main`, a backend sweep that changed nothing, or *Run workflow* | Checks and builds the site, publishes it to GitHub Pages, then tags the new version and publishes its release (see [Versions](#versions)) |
 
 The workflows use only GitHub's own actions (`actions/*`), by major version tag (`@v7`): GitHub maintains them
