@@ -12,7 +12,7 @@ Related documents in this repository:
 - [`DATA.md`](DATA.md): the data contract, every field of `events.json`.
 - [`DESIGN.md`](DESIGN.md): the design system, every visual rule.
 
-Last reviewed: 8 October 2026.
+Last reviewed: 12 November 2026.
 
 Contents:
 
@@ -38,7 +38,7 @@ backend updates through pull requests.
 ```mermaid
 flowchart LR
     subgraph Backend["pa-bailar/backend"]
-        SW["sweep, twice a day<br/>Instagram → Gemini"]
+        SW["sweep, three times a day<br/>Instagram → Gemini"]
     end
 
     MEDIA[("pa-bailar/media<br/>flyers and clips")]
@@ -55,7 +55,7 @@ flowchart LR
     GC["GoatCounter<br/>(visit statistics)"]
     GF["Google Fonts"]
 
-    SW -- "twice a day, when events changed" --> PR
+    SW -- "when events changed" --> PR
     SW -- "new and changed images" --> MEDIA
     MEDIA -. "copied into data/<br/>before checks and builds" .-> CI
     MEDIA -.-> DEP
@@ -77,8 +77,8 @@ flowchart LR
 
 ## 2. How data reaches the site
 
-The backend's sweep runs twice a day, at 6:30 AM and 9 PM Bogotá time (cron-job.org starts its workflow), and
-reads most accounts once a day (quiet ones less often). It works on a checkout of this repository and writes
+The backend's sweep runs three times a day, at 3:00 AM, 6:30 AM and 9 PM Bogotá time (cron-job.org starts its
+workflow), and reads most accounts once a day (quiet ones less often), about a third of them each time. It works on a checkout of this repository and writes
 `data/` exactly as described in [`DATA.md`](DATA.md).
 
 ```mermaid
@@ -97,7 +97,7 @@ sequenceDiagram
         B->>R: push branch data/sweep-<day>-<run> (as pa-bailar-bot)
         B->>R: open PR "chore(data): daily sweep <day>", label data, enable auto-merge
         R->>CI: pull_request
-        CI->>CI: check-data, astro check, contrast, CSS properties, tests, build
+        CI->>CI: check-data, astro check, contrast, CSS properties, build (data only: no unit tests)
         CI-->>R: ci passed
         R->>R: squash merge (ruleset: ci required), delete branch
         R->>D: push to main
@@ -146,7 +146,7 @@ Notes:
 - `markdown.syntaxHighlight: false`: there's no Markdown, and Shiki's highlighting needs `style` attributes,
   which the policy blocks.
 
-Astro is pinned to its minor version (`~7.3.5` in `package.json`, patches only): the policy's `<meta>` and
+Astro is pinned to its minor version (a `~` range in `package.json`, patches only): the policy's `<meta>` and
 hashes come from Astro's `security.csp`, so a minor update can change what `csp-meta.mjs` reads. Update it on
 purpose, then build and check the console.
 
@@ -727,7 +727,8 @@ only Instagram content it loads is a post's player or an account's profile embed
 | Unit tests | One file per module or feature. Kinds: pure logic in `lib/` (dates, holidays, filtering, formatting, search, link previews, the calendar feed…); the views' models (the filter chips and pills, the drawer's geometry, Guardados, the bar at the bottom, the card each arrow lands on); history between screens and overlays, on a fake history (`fakeHistory.ts`); the service worker, on fake caches (`images.test.ts`); the notice, on a fake page (`notice.test.ts`); saves shared by tabs, on a fake storage (`saved.test.ts`); the build's checks and integrations; values that must match the CSS (the drawer's numbers, the motion tokens, the brand's colors against `tokens.css`, the colors for iOS 16's Safari: `lightDarkFallback.test.ts`). **Guard tests** fail if a fixed bug's pattern comes back: a page-level `data-*` control attribute (`savedView.test.ts`), a path that shows events without `matchesFilters` (`hideBars.test.ts`), a hand-written profile link (`accountLink.test.ts`), chip rows back in the toolbar (`filterPills.test.ts`), the bar at the bottom's items and scope (`bottomNav.test.ts`), the tap's flash coming back, or the pressed look on a card (`baseStyles.test.ts`), an event type missing from `TYPE_ORDER` (`filters.test.ts`) or a rhythm without a family (`styleFamilies.test.ts`), the images' copy failing on a missing folder (`mediaCopy.test.ts`) | `frontend/tests/*.test.ts` (Vitest; test events in `factories.ts`) |
 | Build | Every page, image and feed is generated; the Content Security Policy checks (section 3.3); the link previews' checks (section 3.4) | `npm run build`, `frontend/scripts/csp-meta.mjs`, `frontend/scripts/og-check.mjs`, `frontend/scripts/sw-precache.mjs` (fails if `sw.js` has no list to fill in) |
 
-All six run in `ci` on every pull request, and the ruleset requires `ci` before merging.
+All six run in `ci` on every pull request (one that changes only `data/` skips the unit tests, section 4.1), and the
+ruleset requires `ci` before merging.
 
 ---
 
@@ -743,8 +744,9 @@ frontend/
                           og-site.html (draws the home page's link preview); csp-meta.mjs (the policy, after
                           the build); og-check.mjs (the events' link previews, after the build); sw-precache.mjs (the build's
                           files, written into sw.js); module-preload.mjs (each page's script and its chunks, preloaded);
-                          light-dark-fallback.mjs (writes styles/tokens-fallback.css: the colors for iOS 16's Safari)
-  tests/                  Vitest tests, factories.ts (test events, a story-only one, a workshop series), checkData.test.ts (the data contract), fakeHistory.ts (history and popstate in Node)
+                          light-dark-fallback.mjs (writes styles/tokens-fallback.css: the colors for iOS 16's Safari);
+                          test-clock-ahead.mjs (npm run test:clock-ahead: the unit tests with the clock moved ahead)
+  tests/                  Vitest tests, factories.ts (test events, a story-only one, a workshop series), checkData.test.ts (the data contract), fakeHistory.ts (history and popstate in Node), shiftedClock.ts (`CLOCK_AT`: the tests at any moment)
   src/
     data.ts               the data, typed, with the posts shown, flyer sizes and versions (build time only)
     csp.ts                allowInlineScript(): an inline script, allowed by its hash (build time only)
@@ -867,6 +869,7 @@ npm run media     # the flyers and clips from pa-bailar/media, copied into data/
 npm run dev       # http://localhost:4321, with the current data/
 npm run check     # data contract, types, contrast, CSS custom properties
 npm test
+npm run test:clock-ahead   # the unit tests again a week, a month and months ahead
 npm run build     # frontend/dist/
 npm run preview   # the build, as published (with its Content Security Policy)
 ```
