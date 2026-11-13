@@ -1,235 +1,5 @@
 [
   {
-    "title": "Salsa y Chontaduro - Taller intensivo de salsa caleña",
-    "event_type": "workshop",
-    "is_recurring": false,
-    "styles": [
-      "salsa caleña"
-    ],
-    "organizer": "Distrito Social",
-    "venue": null,
-    "address": null,
-    "area": null,
-    "date": "2026-09-13",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "domingo",
-    "start_time": "13:00",
-    "end_time": null,
-    "prices": [],
-    "artists": [
-      "Jenssy Gonzáles",
-      "Felipe Romero"
-    ],
-    "activities": [
-      "taller intensivo de salsa caleña"
-    ],
-    "contact": null,
-    "confidence": "high",
-    "doubts": [
-      "sin precio"
-    ],
-    "id": "salsa-y-chontaduro-taller-intensivo-de-salsa-13-sep",
-    "account": "distritosocialbog",
-    "media": [
-      {
-        "post_id": "18409856125080489",
-        "permalink": "https://www.instagram.com/p/Dc6W0owRIod/",
-        "media_type": "IMAGE",
-        "published": "2026-09-05T16:09:09+0000",
-        "flyer": "flyers/18409856125080489-0.webp",
-        "caption": "Septiembre ✨\n\nTe dejamos nuestra programación de eventos del mes de Septiembre dónde tendrás mucho baile, aprendizaje y gozadera 🥳🥳🥳\n\n🔸 Domingo 13: Iniciamos a la 1PM con un Intensivo de Salsa Caleña dictada por Jenssy Gonzáles y Felipe Romero\n\n🔸Domingo 13: Seguimos ese mismo día a las 3:30 PM con un Intensivo de Jack & Jill Bachata dictado por Angel y Melanny \n\n🔸 Sábado 19: Iniciamos a las 7 PM con nuestra clasificatoria de Bachatamania Master League dónde pondrán a prueba todas sus habilidades \n\n🔸Sábado 19: Seguimos este día desde las 8:30 PM con clase de Bachata y social 100% Bachatero\n\n🔸Domingo 20: Como nunca es suficiente Bachata nos vamos a partir de las 4 PM a una clase Intensiva de Bachata Dominicana dictada por Adriana Tibaduiza\n\n🔸Sábado 26: El último sábado del mes es para bailar y nos vamos con SBK (Salsa, Bachata, Kizomba) desde las 7 PM con doble clase y un social increíble \n\n🔸 Miércoles 30: Cerramos el mes con la culminación de l segundo corte de nuestro aniversario que será el mes de Noviembre 🤩🤩🤩\n\nNo dejes que te lo cuenten reserva en nuestras Webs:\n\ndistrito-social-academy.com/eventos\nappdanza.com",
-        "preview": null,
-        "slides": null
-      }
-    ],
-    "bar": false
-  },
-  {
-    "title": "Gala Premio Danza K-POP 2026",
-    "event_type": "show",
-    "is_recurring": false,
-    "styles": [
-      "urbano"
-    ],
-    "organizer": "lpvive / Idartes",
-    "venue": "Teatro El Parque",
-    "address": "Cra. 5 # 36-05",
-    "area": null,
-    "date": "2026-09-13",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "domingo",
-    "start_time": "15:00",
-    "end_time": null,
-    "prices": [
-      {
-        "label": "Entrada libre",
-        "amount_cop": 0,
-        "condition": "hasta completar aforo"
-      }
-    ],
-    "artists": [
-      "REBEL BOYS",
-      "BLYSS",
-      "E-NOXE",
-      "STARIX",
-      "NYXIUS",
-      "BLACK DIAMONDS",
-      "PURPLE CROWN",
-      "LAWLESS",
-      "AGRUPACIÓN ARTÍSTICA Y CULTURAL MORISOT",
-      "SOLARIS",
-      "BLOODLINE",
-      "BLING",
-      "STARDUST"
-    ],
-    "activities": [
-      "gala de danza K-POP"
-    ],
-    "contact": null,
-    "confidence": "high",
-    "doubts": [],
-    "id": "gala-premio-danza-k-pop-2026-13-sep",
-    "account": "danzaenlaciudad",
-    "media": [
-      {
-        "post_id": "17983015014118680",
-        "permalink": "https://www.instagram.com/p/DdIB4EQiYJ1/",
-        "media_type": "CAROUSEL_ALBUM",
-        "published": "2026-09-10T23:35:02+0000",
-        "flyer": "flyers/17983015014118680-0.webp",
-        "caption": "✨ Más talento y más K-POP se suman a la Gala Premio Danza K-POP 2026. 💜\n\nEstas agrupaciones demuestran una misma pasión: bailar, crear y compartir el movimiento K-POP sobre el escenario. 🎶🔥\n\n🔥 Lawless — creatividad, conceptos únicos y mucha fuerza en escena.\n\n💫 Agrupación Artística y Cultural Morisot — más de 14 años de trayectoria en la danza y una nueva apuesta por el K-POP.\n\n☀️ Solaris — energía, formación y pasión por explorar nuevos lenguajes de la danza.\n\n🩸 Bloodline — disciplina, versatilidad y trabajo en equipo.\n\n✨ Bling — coordinación, sinergia, fuerza y elegancia en cada puesta en escena.\n\n🌟 Stardust — carisma y energía que han marcado su camino en el dance cover.\n\n💃🏻 Seis agrupaciones listas para hacer vibrar el escenario. ¿Te las vas a perder? 💜✨\n\n📍 Teatro El Parque\nCarrera 5 N.° 36-05\n🗓️ 13 de septiembre\n⏰ 3:00 p. m.\n🎟️ Entrada libre hasta completar aforo\n\n📹 lpvive / Idartes \n\n¡Nos vemos en la Gala! 💜\n\n#GalaPremioDanzaKPOP2026 #BogotáMiCiudadMiCasa",
-        "preview": "previews/17983015014118680-0.mp4",
-        "slides": 6
-      },
-      {
-        "post_id": "18144839581576733",
-        "permalink": "https://www.instagram.com/p/DdH0MqyCeh5/",
-        "media_type": "CAROUSEL_ALBUM",
-        "published": "2026-09-10T21:35:02+0000",
-        "flyer": "flyers/18144839581576733-0.webp",
-        "caption": "✨ El escenario se enciende y el K-POP se toma Bogotá. ✨\n\nEstas agrupaciones llegan para demostrar que el talento, la disciplina, la pasión y el trabajo en equipo se convierten en una experiencia inolvidable sobre el escenario:\n\n🔥 Rebel Boys — 3 años de trayectoria, energía y perseverancia para llevar cada coreografía al máximo.\n\n💫 Blyss — cinco bailarinas unidas por su pasión por el K-POP, con actitud, energía y dos segundos lugares que reflejan su crecimiento.\n\n⚡ E-NOXE — alrededor de 6 años de trayectoria y experiencia nacional, fusionando K-pop con estilos urbanos para crear puestas en escena llenas de coordinación, presencia y performance.\n\n🌟 Starix — compromiso, disciplina y trabajo en equipo que los llevó a conquistar el segundo lugar en Iconic Old K-POP 2026.\n\n🖤 Nyxius — desde 2023 llevando el dance cover a escenarios y proyectos audiovisuales, explorando también estilos urbanos como Hip-Hop, Afro y Locking.\n\n💎 Black Diamonds — 7 años de experiencia, grandes logros en competencias distritales y nacionales, y el orgullo de haber representado a Colombia en Corea del Sur.\n\n👑 Purple Crown — 5 años de trayectoria, destacándose por su unión, coordinación, expresión y una energía que no pasa desapercibida.\n\nUn encuentro para celebrar la danza, el K-POP y el talento que crece en Colombia.✨\n\n📍 Teatro El Parque\nCarrera 5 N.° 36-05\n🗓️ 13 de septiembre\n⏰ 3:00 p. m.\n🎟️ Entrada libre hasta completar aforo\n\n📹 lpvive \n\n¡Nos vemos en la Gala! 💜\n\n#GalaPremioDanzaKPOP2026 #BogotáMiCiudadMiCasa",
-        "preview": "previews/18144839581576733-0.mp4",
-        "slides": 7
-      },
-      {
-        "post_id": "18022032923914011",
-        "permalink": "https://www.instagram.com/p/DdEgqL_kXQM/",
-        "media_type": "CAROUSEL_ALBUM",
-        "published": "2026-09-09T14:47:28+0000",
-        "flyer": "flyers/18022032923914011-1.webp",
-        "caption": "💜✨ ¡EL ESCENARIO ESTÁ LISTO! ✨💜\n\nLa energía, el ritmo y el talento del K-POP bogotano llegan al escenario en la Gala Premio Danza K-POP 2026. 🔥🎶\n\nLas agrupaciones habilitadas ya están preparadas para dejarlo todo en escena y demostrar su creatividad, técnica y estilo en una gala que celebra la fuerza del movimiento K-POP en Bogotá. 💃🏻🕺🏻⚡\n\n📅 13 de septiembre\n⏰ 3:00 p. m.\n📍 Teatro El Parque\nCra. 5 # 36-05\n🎟️ Entrada libre hasta completar aforo\n\n🌟 ¿Quién se llevará el Premio Danza K-POP 2026? Los leemos en comentarios.\n\n#GalaPremioDanzaKPOP2026 #BogotáMiCiudadMiCasa",
-        "preview": null,
-        "slides": 2
-      }
-    ],
-    "bar": false
-  },
-  {
-    "title": "Intensivo Jack & Jill - Taller enfocado en la improvisación en bachata",
-    "event_type": "workshop",
-    "is_recurring": false,
-    "styles": [
-      "bachata"
-    ],
-    "organizer": "Distrito Social",
-    "venue": "Distrito Social",
-    "address": null,
-    "area": null,
-    "date": "2026-09-13",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "domingo",
-    "start_time": "15:30",
-    "end_time": "18:00",
-    "prices": [],
-    "artists": [
-      "Angel",
-      "Melanny"
-    ],
-    "activities": [
-      "taller intensivo de jack & jill bachata"
-    ],
-    "contact": null,
-    "confidence": "high",
-    "doubts": [
-      "sin precio"
-    ],
-    "id": "intensivo-jack-jill-taller-enfocado-en-la-13-sep",
-    "account": "distritosocialbog",
-    "media": [
-      {
-        "post_id": "18409856125080489",
-        "permalink": "https://www.instagram.com/p/Dc6W0owRIod/",
-        "media_type": "IMAGE",
-        "published": "2026-09-05T16:09:09+0000",
-        "flyer": "flyers/18409856125080489-0.webp",
-        "caption": "Septiembre ✨\n\nTe dejamos nuestra programación de eventos del mes de Septiembre dónde tendrás mucho baile, aprendizaje y gozadera 🥳🥳🥳\n\n🔸 Domingo 13: Iniciamos a la 1PM con un Intensivo de Salsa Caleña dictada por Jenssy Gonzáles y Felipe Romero\n\n🔸Domingo 13: Seguimos ese mismo día a las 3:30 PM con un Intensivo de Jack & Jill Bachata dictado por Angel y Melanny \n\n🔸 Sábado 19: Iniciamos a las 7 PM con nuestra clasificatoria de Bachatamania Master League dónde pondrán a prueba todas sus habilidades \n\n🔸Sábado 19: Seguimos este día desde las 8:30 PM con clase de Bachata y social 100% Bachatero\n\n🔸Domingo 20: Como nunca es suficiente Bachata nos vamos a partir de las 4 PM a una clase Intensiva de Bachata Dominicana dictada por Adriana Tibaduiza\n\n🔸Sábado 26: El último sábado del mes es para bailar y nos vamos con SBK (Salsa, Bachata, Kizomba) desde las 7 PM con doble clase y un social increíble \n\n🔸 Miércoles 30: Cerramos el mes con la culminación de l segundo corte de nuestro aniversario que será el mes de Noviembre 🤩🤩🤩\n\nNo dejes que te lo cuenten reserva en nuestras Webs:\n\ndistrito-social-academy.com/eventos\nappdanza.com",
-        "preview": null,
-        "slides": null
-      },
-      {
-        "post_id": "18101050046369055",
-        "permalink": "https://www.instagram.com/reel/DdB-rJXR9MV/",
-        "media_type": "VIDEO",
-        "published": "2026-09-08T15:14:33+0000",
-        "flyer": "flyers/18101050046369055-0.webp",
-        "caption": "Angel y Melanny ✨\n\nDirectamente desde la ciudad de Medellín llegan estos increíbles bailarines a enseñarnos y darnos una clase magistral de Jack and Jill dónde potenciarán sus habilidades al máximo 🔥\n\n🗓️ 13 de Septiembre\n🕗 3:30 PM a 6 PM\n📍 Distrito Social\n\nNo dejes que te lo cuenten, adquiere tus boletas en nuestra web:\n\nappdanza.com",
-        "preview": null,
-        "slides": null
-      }
-    ],
-    "bar": false
-  },
-  {
-    "title": "TARDEO DE AMOR Y AMISTAD",
-    "event_type": "social",
-    "is_recurring": false,
-    "styles": [],
-    "organizer": "dlivingstudio",
-    "venue": "Dliving Studio",
-    "address": "Av. cll 25 # 27b-83",
-    "area": null,
-    "date": "2026-09-13",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "domingo",
-    "start_time": "16:00",
-    "end_time": null,
-    "prices": [
-      {
-        "label": "Entrada libre",
-        "amount_cop": 10000,
-        "condition": "10k"
-      }
-    ],
-    "artists": [],
-    "activities": [
-      "baile",
-      "Amigo secreto sorpresa",
-      "Cumpleaños de abril a septiembre"
-    ],
-    "contact": "@dlivingstudio",
-    "confidence": "high",
-    "doubts": [],
-    "id": "tardeo-de-amor-y-amistad-13-sep",
-    "account": "dlivingstudio",
-    "media": [
-      {
-        "post_id": "17888929371612645",
-        "permalink": "https://www.instagram.com/reel/DdDNn3YPL-7/",
-        "media_type": "VIDEO",
-        "published": "2026-09-09T02:45:31+0000",
-        "flyer": "flyers/17888929371612645-0.webp",
-        "caption": "Este domingo se viene un tardeo de esos que terminan siendo el plan que no querías que se acabara. 🪩✨\n\n🎁 Amigo secreto sorpresa (trae tu regalo de 20-30k)\n🎂 Cumpleaños de abril a septiembre para estudiantes (Ven por tu sorpresa)\n💃 Mucho baile, música y ganas de pasarla bueno\n🥳 Y, sobre todo, un domingo para encontrarnos, celebrar y disfrutar juntos.\n\n¿Ya tienes tu plan? Porque este domingo… el plan es en dlivingstudio 🫶🏻\n\nNos vemos para bailar, celebrar y pasarla bueno. 🔥",
-        "preview": null,
-        "slides": null
-      }
-    ],
-    "bar": false
-  },
-  {
     "title": "Workshop Kirsten Dodgen - Etapa Bogotá",
     "event_type": "workshop",
     "is_recurring": false,
@@ -19743,6 +19513,16 @@
     "account": "casineafest",
     "media": [
       {
+        "post_id": "17971546055965726",
+        "permalink": "https://www.instagram.com/p/DfpXQd4ERy7/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-12T15:20:00+0000",
+        "flyer": "flyers/17971546055965726-0.webp",
+        "caption": "🏆 ¡EL ORDEN DE PARTICIPACIÓN DE CASINEA 2026 YA ESTÁ AQUÍ!\n\nCompetidores, llegó el momento de prepararse para salir a escena. En este carrusel encontrarán el orden de participación de las diferentes modalidades y categorías de nuestra décima edición.\n\nDesliza, identifica tu modalidad, ubica tu nombre o agrupación y toma nota de tu posición en el escenario. ¡Queremos que todos estén preparados para vivir esta experiencia al máximo!\n\n📢 RECOMENDACIONES IMPORTANTES PARA LOS COMPETIDORES:\n\n⏰ Puntualidad: llega con suficiente anticipación al Teatro Crisanto Luque. No esperes a que se acerque tu turno para llegar al recinto. Debes estar disponible y preparado cuando el equipo de producción lo indique.\n\n📲 Atención al grupo de WhatsApp: mantente pendiente del grupo de difusión para competidores. Allí compartiremos indicaciones, novedades y cualquier información importante relacionada con el desarrollo de las competencias.\n\n👗 Prepara tu vestuario: haz un checklist de todo lo que necesitas para tu presentación. Revisa vestuario, calzado, accesorios, maquillaje y cualquier elemento adicional. ¡Que no se quede nada en casa!\n\n🎵 Lleva un backup de tu música: aunque la revisión de pistas se realizará el viernes durante la acreditación, te recomendamos llevar una copia de seguridad de tu pista musical en tu celular, memoria USB u otro dispositivo. ¡Siempre es mejor estar preparado ante cualquier imprevisto!\n\n💃 Calentamiento y preparación: organiza tu tiempo para realizar un calentamiento adecuado antes de salir a escena.\n\n🔥 Lleva tu mejor energía: disfruta el proceso, respeta a los demás competidores, apoya a tus compañeros y recuerda que cada presentación es una oportunidad para compartir tu talento y tu pasión por el baile.\n\n¡El escenario está listo y queremos verlos brillar!\n\nNos encontramos este sábado 14 de noviembre en el Teatro Crisanto Luque, Bogotá.\n\n¡Muchos éxitos a todos los competidores! 💜\n\n#Casinea2026 #FestivalInternacionalCasinea #CompetidoresCasinea #SalsaCasino #BogotáBaila",
+        "preview": null,
+        "slides": 7
+      },
+      {
         "post_id": "18110617793223583",
         "permalink": "https://www.instagram.com/p/DfoTCXrxvoC/",
         "media_type": "IMAGE",
@@ -19890,6 +19670,16 @@
         "flyer": "flyers/18073448372447981-0.webp",
         "caption": "🔥 JESÚS CASTILLO LLEGA A CASINEA 2026\n\nDesde Venezuela hasta Colombia, Jesús Castillo ha construido una trayectoria como instructor, coreógrafo y bailarín, convirtiéndose en un explorador constante de las nuevas expresiones del movimiento cubano. 🇻🇪🇨🇴\n\nSu fortaleza está en la capacidad de interpretar y desarrollar diferentes lenguajes de la música cubana, con especial dominio del reparto cubano, el cubatón y los ritmos urbanos, sin dejar de lado la riqueza del folclor afrocubano.\n\nJesús es de esos artistas que no se quedan quietos: investiga, explora y transforma lo que escucha en movimiento, buscando nuevas maneras de interpretar los ritmos que hacen parte de la Cuba contemporánea.\n\nY antes de estar del otro lado como instructor y coreógrafo, también conoció de cerca la competencia. 🏆\n\nDurante sus años como competidor, Jesús alcanzó múltiples podios en el Festival Internacional Casinea y en otras competencias de Colombia y Venezuela, construyendo una experiencia que hoy reúne el conocimiento técnico, la experiencia escénica y la mirada del competidor.\n\nEn Casinea 2026, tendremos la oportunidad de aprender de un artista que entiende el movimiento desde diferentes lugares: la competencia, la creación, la enseñanza, el folclor y la exploración de los ritmos urbanos cubanos. 🔥\n\n📅 13 al 16 de noviembre de 2026\n📍 Bogotá, Colombia\n\nJesús Castillo, nos vemos en Casinea.\n\n#FestivalCasinea #Casinea2026 #RepartoCubano #Cubatón #IléDanza",
         "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18128251804898809",
+        "permalink": "https://www.instagram.com/reel/Dfp7OFYuhsW/",
+        "media_type": "VIDEO",
+        "published": "2026-11-12T20:38:54+0000",
+        "flyer": "flyers/18128251804898809-0.webp",
+        "caption": "💃 ¡EL ESTILO FEMENINO TAMBIÉN SE VIVE EN CASINEA 2026!\n\nEn esta décima edición tenemos el privilegio de contar con Viviana Sierra, una gran referente del estilo femenino en la escena salsera de Bogotá, quien nos invita a encontrarnos en el Festival Internacional Casinea para compartir una experiencia de aprendizaje, expresión y movimiento.\n\nSu taller será un espacio para explorar la feminidad en el baile, trabajar la soltura, la musicalidad, la interpretación y descubrir nuevas posibilidades para expresar nuestra identidad a través del movimiento.\n\n✨ Si quieres enriquecer tu baile, fortalecer tu estilo y aprender de una artista con una importante trayectoria en la escena bogotana, ¡este encuentro es para ti!\n\n📅 15 de noviembre de 2026\n📍 Festival Internacional Casinea – Bogotá.\n\n🎟️ Consulta nuestros pases y asegura tu participación en los talleres.\n\n¡Acepta la invitación de Vivi Sierra y nos vemos en la pista!\n\n#Casinea2026 #VivianaSierra #EstiloFemenino #FestivalInternacionalCasinea #SalsaCasino",
+        "preview": "previews/18128251804898809-0.mp4",
         "slides": null
       },
       {
@@ -20716,7 +20506,7 @@
     "organizer": "Bogotá Dance Club",
     "venue": "Bogotá Dance Club",
     "address": "Calle 25F #36-15",
-    "area": null,
+    "area": "Teusaquillo",
     "date": "2026-11-14",
     "end_date": null,
     "sessions": null,
@@ -20756,6 +20546,16 @@
         "caption": "🔥 ¡Este fin de semana en Bogotá Dance Club tenemos dos parches imperdibles!\n\n🚨 SÁBADO 14 DE NOVIEMBRE | TINDER BAILABLE: SALA DE EMERGENCIAS 🩺❤️‍🩹\n\n🕒 De 3:00 p.m. a 10:00 p.m.\n🏆 Concurso del soltero y la soltera de la noche, ¡con premio en efectivo!\n🎟️ Preventa: $25.000 | Taquilla: $30.000.\n🥤 Incluye clase de baile prefiesta, una bebida y fiesta.\n\n🎺 DOMINGO 15 DE NOVIEMBRE | DOMINGO SÚPER BAILABLE\n\n¡Vuelve nuestra clásica viejoteca! Esta vez con la orquesta invitada Candombe para poner a bailar a todo el mundo. 🔥\n\n🕒 De 3:00 p.m. a 10:00 p.m.\n🎟️ Cover: $30.000 + consumible de $10.000.\n🪑 Mesas compartidas por orden de llegada.\n\n📍 Calle 25F #36-15 | Bogotá Dance Club.\n\n¿Tienes alguna duda? Déjanos un comentario o escríbenos un mensajito por interno 💌\n\n¡Nos vemos este fin de semana! ❤️‍🔥\n\n#planesenbogotá #bogotá #bailar #viejoteca",
         "preview": null,
         "slides": 2
+      },
+      {
+        "post_id": "18136533214775625",
+        "permalink": "https://www.instagram.com/reel/Dfqay9BuvG_/",
+        "media_type": "VIDEO",
+        "published": "2026-11-13T01:15:13+0000",
+        "flyer": "flyers/18136533214775625-0.webp",
+        "caption": "🚨 ¡ATENCIÓN, ATENCIÓN! ¡Hay demasiadas personas en Bogotá llegando solter@s a diciembre!\n\n¿Otro año sin tener con quien prender velitas? 👀🎄\n\n🚑 ¡Tenemos el tratamiento que necesitas! Este sábado regresa TINDER BAILABLE: SALA DE EMERGENCIAS. Una tarde para bailar, conocer gente y quién sabe… ¡conseguir acompañante para las novenas! 😼🔥\n\n📢 Comunidad bailadora de 18 a 45 años\n🗓️ 14 de noviembre | 🕒 De 3 PM a 10 PM\n📍 Calle 25F #36-15 - Bogotá Dance Club\n\n🏆 Concurso del soltero y la soltera de la noche con premio en efectivo\n\n💵 Preventa: $25.000\n💰 Taquilla: $30.000\n(Incluye clase de baile prefiesta + una bebida + fiesta)\n\n🎟️ ¡Cupos limitados para pacientes con síntomas de soltería!\n\n#humor #bogota #planesenbogotá #baile",
+        "preview": null,
+        "slides": null
       },
       {
         "post_id": "18222082219348503",
@@ -21173,6 +20973,51 @@
     "bar": true
   },
   {
+    "title": "El Golazo de Bulevar",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Bulevar Salsa Bar",
+    "venue": "Bulevar Salsa Bar",
+    "address": "Calle 51 # 7 - 57",
+    "area": "Chapinero",
+    "date": "2026-11-15",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "bebidas al 50%",
+      "ingreso de bebidas con pago de cover"
+    ],
+    "contact": "322 437 6825",
+    "confidence": "high",
+    "doubts": [
+      "sin precio del cover",
+      "sin hora de inicio"
+    ],
+    "id": "el-golazo-de-bulevar-15-nov",
+    "account": "bulevarsalsabar",
+    "media": [
+      {
+        "post_id": "18133797121761402",
+        "permalink": "https://www.instagram.com/reel/DfqfqYFA1Jq/",
+        "media_type": "VIDEO",
+        "published": "2026-11-13T01:55:35+0000",
+        "flyer": "flyers/18133797121761402-0.webp",
+        "caption": "El Golazo de Bulevar, pagas el cover e ingresas todas tus bebidas una única vez 🥃🥳\n\nDomingo 15 Noviembre\nBULEVAR SALSA BAR ( Chapinero )\n📍Calle 51 # 7 - 57",
+        "preview": "previews/18133797121761402-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Domingo Súper Bailable",
     "event_type": "concert",
     "is_recurring": false,
@@ -21223,6 +21068,115 @@
         "published": "2026-11-10T00:47:26+0000",
         "flyer": "flyers/18121816640325993-1.webp",
         "caption": "🔥 ¡Este fin de semana en Bogotá Dance Club tenemos dos parches imperdibles!\n\n🚨 SÁBADO 14 DE NOVIEMBRE | TINDER BAILABLE: SALA DE EMERGENCIAS 🩺❤️‍🩹\n\n🕒 De 3:00 p.m. a 10:00 p.m.\n🏆 Concurso del soltero y la soltera de la noche, ¡con premio en efectivo!\n🎟️ Preventa: $25.000 | Taquilla: $30.000.\n🥤 Incluye clase de baile prefiesta, una bebida y fiesta.\n\n🎺 DOMINGO 15 DE NOVIEMBRE | DOMINGO SÚPER BAILABLE\n\n¡Vuelve nuestra clásica viejoteca! Esta vez con la orquesta invitada Candombe para poner a bailar a todo el mundo. 🔥\n\n🕒 De 3:00 p.m. a 10:00 p.m.\n🎟️ Cover: $30.000 + consumible de $10.000.\n🪑 Mesas compartidas por orden de llegada.\n\n📍 Calle 25F #36-15 | Bogotá Dance Club.\n\n¿Tienes alguna duda? Déjanos un comentario o escríbenos un mensajito por interno 💌\n\n¡Nos vemos este fin de semana! ❤️‍🔥\n\n#planesenbogotá #bogotá #bailar #viejoteca",
+        "preview": null,
+        "slides": 2
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "El Potro",
+    "event_type": "show",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "Compañía de Danza Orkéseos",
+    "venue": "Teatro La Candelaria",
+    "address": "Calle 12 No. 2-59",
+    "area": "La Candelaria",
+    "date": "2026-11-15",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "15:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Compañía de Danza Orkéseos"
+    ],
+    "activities": [
+      "obra de danza",
+      "danza tradicional"
+    ],
+    "contact": "@danzaenlaciudad",
+    "confidence": "high",
+    "doubts": [
+      "no se especifica precio (comúnmente entrada libre en estos espacios)"
+    ],
+    "id": "el-potro-15-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18649115851002241",
+        "permalink": "https://www.instagram.com/p/DfqNASFRTAg/",
+        "media_type": "IMAGE",
+        "published": "2026-11-13T01:00:03+0000",
+        "flyer": "flyers/18649115851002241-0.webp",
+        "caption": "💃🏽✨ ¡Colombia se encuentra, se reconoce y se celebra a través de la danza!\n\nLa diversidad cultural es el hilo que nos une como país, un tejido vivo de ritmos, músicas, cantos y tradiciones que narran nuestra historia y celebran nuestras diferencias.\n\nEn el marco del XIX Festival Danza en la Ciudad: Tejiendo Movimiento, los invitamos a conmemorar los 100 años del natalicio de Delia Zapata Olivella, con una muestra que honra su legado y el de Edelmira Massa Zapata, y que en su versión 2026 incorpora nuevas propuestas para seguir tejiendo la riqueza multicultural de Colombia. ❤️💛💙\n\n📅 15 de noviembre 🕒 3 p.m. \n📍 Centro Felicidad Chapinero \n📌 Calle 82 No. 10-69\n\n#FestivalDanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18147520486587257",
+        "permalink": "https://www.instagram.com/p/DfqMqRtEQW1/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-12T23:06:39+0000",
+        "flyer": "flyers/18147520486587257-0.webp",
+        "caption": "En el XIX Festival Danza en la Ciudad, las historias y experiencias de las personas mayores toman el escenario con dos propuestas que celebran la identidad cultural y la vida en comunidad.\n\n🌾 ‘Chapoleando’, del Grupo de Danzas Edu Frei, rinde homenaje a las mujeres recolectoras de café y a las tradiciones de la región cafetera. A través de ritmos como el danzón y el pasillo, esta puesta en escena destaca la fuerza, el trabajo y la memoria de las mujeres campesinas.\n\n💃 ¡Aquí no se salva nadie!’, de la Compañía de Danza Alma Folclórica, presenta con humor las situaciones, los secretos y las tensiones que surgen en la vida cotidiana de un barrio, convirtiendo las relaciones entre vecinos en una divertida historia de danza.\n\nDos agrupaciones de personas mayores que demuestran que el arte, la experiencia y el movimiento siguen tejiendo historias y transformando comunidades.\n\n📅 15 de noviembre 🕒 3 p.m.\n📍 Teatro Villa Mayor \n📌 Cra. 34B No. 36 Sur\n\n#FestivalDanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 2
+      },
+      {
+        "post_id": "18113519702208473",
+        "permalink": "https://www.instagram.com/p/Dfpx5w8Arua/",
+        "media_type": "IMAGE",
+        "published": "2026-11-12T19:35:27+0000",
+        "flyer": "flyers/18113519702208473-0.webp",
+        "caption": "Este 15 de noviembre, llega al XIX Festival Danza en la Ciudad: Tejiendo Movimiento ‘El Potro’, una, creación de la Compañía de Danza Orkéseos, iniciativa ganadora de la Invitación Cultural: Bogotá danza: la ciudad en movimiento, de la SCRD, que invita a recorrer la memoria cultural de Colombia a través del cuerpo, el movimiento y la danza tradicional.\n\nA 50 años de la creación de ‘El Potro Azul’ (1975), esta pieza retoma el legado del maestro Jacinto Jaramillo para proponer una nueva mirada sobre nuestra historia, sus memorias y sus realidades sociales y políticas. No es una reposición, es una relectura que pone el cuerpo en movimiento para resignificar el pasado y abrir nuevas narrativas desde la tradición.\n\nCon más de 30 años de trayectoria, Orkéseos continúa explorando las tradiciones como territorios vivos de conocimiento, identidad y transmisión de saberes.\n\n📅 15 de noviembre 🕒 3 p.m. \n📍 Teatro La Candelaria \n📌 Calle 12 No. 2-59\n\n#FestivalDanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "¡Aquí no se salva nadie!",
+    "event_type": "show",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "Compañía de Danza Alma Folclórica",
+    "venue": "Teatro Villa Mayor",
+    "address": "Cra. 34b No. 36 Sur",
+    "area": "Antonio Nariño",
+    "date": "2026-11-15",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "15:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Compañía de Danza Alma Folclórica"
+    ],
+    "activities": [
+      "show de danza folclórica"
+    ],
+    "contact": "@danzaenlaciudad",
+    "confidence": "high",
+    "doubts": [],
+    "id": "aqui-no-se-salva-nadie-15-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18147520486587257",
+        "permalink": "https://www.instagram.com/p/DfqMqRtEQW1/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-12T23:06:39+0000",
+        "flyer": "flyers/18147520486587257-1.webp",
+        "caption": "En el XIX Festival Danza en la Ciudad, las historias y experiencias de las personas mayores toman el escenario con dos propuestas que celebran la identidad cultural y la vida en comunidad.\n\n🌾 ‘Chapoleando’, del Grupo de Danzas Edu Frei, rinde homenaje a las mujeres recolectoras de café y a las tradiciones de la región cafetera. A través de ritmos como el danzón y el pasillo, esta puesta en escena destaca la fuerza, el trabajo y la memoria de las mujeres campesinas.\n\n💃 ¡Aquí no se salva nadie!’, de la Compañía de Danza Alma Folclórica, presenta con humor las situaciones, los secretos y las tensiones que surgen en la vida cotidiana de un barrio, convirtiendo las relaciones entre vecinos en una divertida historia de danza.\n\nDos agrupaciones de personas mayores que demuestran que el arte, la experiencia y el movimiento siguen tejiendo historias y transformando comunidades.\n\n📅 15 de noviembre 🕒 3 p.m.\n📍 Teatro Villa Mayor \n📌 Cra. 34B No. 36 Sur\n\n#FestivalDanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
         "preview": null,
         "slides": 2
       }
@@ -22223,6 +22177,16 @@
         "caption": "BOGOTÁ, nos vemos en el royalbogota \r𝗟𝗼𝘀 𝟮𝟱 𝗱𝗲 𝗹𝗮-𝟯𝟯, se celebran a lo grande 🎉🇨🇴🔥\r\n\r\nEste 21 de noviembre nos encontramos para celebrar 25 años de historia, música y salsa. LA-33 EN VIVO + invitados especiales\r\n\r\nY la celebración se prende aún más con loscorralerosdemajagual_ una de las agrupaciones más emblemáticas de la música tropical colombiana 🥳🔥🔥\r\n\r\n🗓️ Fecha: Sábado 21 de noviembre de 2026\r\n📍Lugar: royalbogota (Cra 13 # 66-80 Bogotá) 🇨🇴\r\n🔥 DJ´S: loa_malbec y rivas_santiago \r\n\r\n🎟️ Entradas en: royalcenter.com.co (el enlace en la bio)\r\n🎟️ 2da etapa $135.000 + servicio, hasta el 5 de octubre\r\n*Aplican términos y condiciones*\r\n\r\nNo dejes que te lo cuenten. Ven a celebrar con nosotros. 🔥🥳💃🕺\r📲 Informes al: 317 331 3956 – 300 660 1156\n.\n.\n.\n🌟 Arte: sebastianbravoguerrero",
         "preview": null,
         "slides": 4
+      },
+      {
+        "post_id": "18067502603535259",
+        "permalink": "https://www.instagram.com/reel/DfqdMWbsGll/",
+        "media_type": "VIDEO",
+        "published": "2026-11-13T01:34:25+0000",
+        "flyer": "flyers/18067502603535259-0.webp",
+        "caption": "Bogotá 🇨🇴\r\n¿Todavía no tienes tu boleta? 🥳🎟️\r\n\r\nTe quedan solo 9 días para vivir Los 25 de La-33. 🔥\r\nY atención: ¡quedan las 𝘂́𝗹𝘁𝗶𝗺𝗮𝘀 𝗯𝗼𝗹𝗲𝘁𝗮𝘀! 🚨(zona bailadores) 💃🕺\r\n\r\nEste 21 de noviembre nos vemos en el royalbogota para cantar, bailar y celebrar 25 años de pura gozadera. ❤️‍🔥🔥🥳\n\r\n🎟️ Consigue la tuya en royalcenter.com.co (link en bio)\r\n¡Que nadie se quede por fuera de esta fiesta! 💃🏽🕺🏽\r\n\r\n📲 Informes al: 317 331 3956 – 300 660 1156",
+        "preview": null,
+        "slides": null
       },
       {
         "post_id": "18117462785029592",
@@ -23801,6 +23765,16 @@
         "published": "2026-09-15T23:44:00+0000",
         "flyer": "flyers/18104347286615308.webp",
         "caption": "⚜️ ELYSYUM MADYUM ⚜️\n\n05 de DICIEMBRE, una noche sin precedentes. Llega después de 5 años nuestro gran ANIVERSARIO MADYUM. Luego de múltiples experiencias, crecimiento, aprendizajes, adversidades, construcción de personas, procesos y evolución, nos reuniremos en una noche llena de celebración, baile, disfrute, manifestación y gran muestra de estos años de arduo trabajo. \n\nNos vemos pronto 🎤\n\n#aniversario #clausura #salsa #bachata #escueladebaile",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "17922185934452219",
+        "permalink": "https://www.instagram.com/reel/DfqNjKQNp-9/",
+        "media_type": "VIDEO",
+        "published": "2026-11-12T23:18:59+0000",
+        "flyer": "flyers/17922185934452219-0.webp",
+        "caption": "💃 TEAM LADIES MOVERSE 💃\n\nPresentamos nuestro gran Show invitado de la noche para nuestro aniversario este 05 de diciembre 🥂\n\nNos vemos pronto ⏳\n\n#salsa #show #aniversario #madelena #escueladebaile",
         "preview": null,
         "slides": null
       },
