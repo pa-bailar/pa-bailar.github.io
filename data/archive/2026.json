@@ -475,5 +475,235 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "Salsa y Chontaduro - Taller intensivo de salsa caleña",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa caleña"
+    ],
+    "organizer": "Distrito Social",
+    "venue": null,
+    "address": null,
+    "area": null,
+    "date": "2026-09-13",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "13:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Jenssy Gonzáles",
+      "Felipe Romero"
+    ],
+    "activities": [
+      "taller intensivo de salsa caleña"
+    ],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [
+      "sin precio"
+    ],
+    "id": "salsa-y-chontaduro-taller-intensivo-de-salsa-13-sep",
+    "account": "distritosocialbog",
+    "media": [
+      {
+        "post_id": "18409856125080489",
+        "permalink": "https://www.instagram.com/p/Dc6W0owRIod/",
+        "media_type": "IMAGE",
+        "published": "2026-09-05T16:09:09+0000",
+        "flyer": "archive/flyers/18409856125080489-0.webp",
+        "caption": "Septiembre ✨\n\nTe dejamos nuestra programación de eventos del mes de Septiembre dónde tendrás mucho baile, aprendizaje y gozadera 🥳🥳🥳\n\n🔸 Domingo 13: Iniciamos a la 1PM con un Intensivo de Salsa Caleña dictada por Jenssy Gonzáles y Felipe Romero\n\n🔸Domingo 13: Seguimos ese mismo día a las 3:30 PM con un Intensivo de Jack & Jill Bachata dictado por Angel y Melanny \n\n🔸 Sábado 19: Iniciamos a las 7 PM con nuestra clasificatoria de Bachatamania Master League dónde pondrán a prueba todas sus habilidades \n\n🔸Sábado 19: Seguimos este día desde las 8:30 PM con clase de Bachata y social 100% Bachatero\n\n🔸Domingo 20: Como nunca es suficiente Bachata nos vamos a partir de las 4 PM a una clase Intensiva de Bachata Dominicana dictada por Adriana Tibaduiza\n\n🔸Sábado 26: El último sábado del mes es para bailar y nos vamos con SBK (Salsa, Bachata, Kizomba) desde las 7 PM con doble clase y un social increíble \n\n🔸 Miércoles 30: Cerramos el mes con la culminación de l segundo corte de nuestro aniversario que será el mes de Noviembre 🤩🤩🤩\n\nNo dejes que te lo cuenten reserva en nuestras Webs:\n\ndistrito-social-academy.com/eventos\nappdanza.com",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Gala Premio Danza K-POP 2026",
+    "event_type": "show",
+    "is_recurring": false,
+    "styles": [
+      "urbano"
+    ],
+    "organizer": "lpvive / Idartes",
+    "venue": "Teatro El Parque",
+    "address": "Cra. 5 # 36-05",
+    "area": null,
+    "date": "2026-09-13",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "15:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Entrada libre",
+        "amount_cop": 0,
+        "condition": "hasta completar aforo"
+      }
+    ],
+    "artists": [
+      "REBEL BOYS",
+      "BLYSS",
+      "E-NOXE",
+      "STARIX",
+      "NYXIUS",
+      "BLACK DIAMONDS",
+      "PURPLE CROWN",
+      "LAWLESS",
+      "AGRUPACIÓN ARTÍSTICA Y CULTURAL MORISOT",
+      "SOLARIS",
+      "BLOODLINE",
+      "BLING",
+      "STARDUST"
+    ],
+    "activities": [
+      "gala de danza K-POP"
+    ],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [],
+    "id": "gala-premio-danza-k-pop-2026-13-sep",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "17983015014118680",
+        "permalink": "https://www.instagram.com/p/DdIB4EQiYJ1/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-09-10T23:35:02+0000",
+        "flyer": "archive/flyers/17983015014118680-0.webp",
+        "caption": "✨ Más talento y más K-POP se suman a la Gala Premio Danza K-POP 2026. 💜\n\nEstas agrupaciones demuestran una misma pasión: bailar, crear y compartir el movimiento K-POP sobre el escenario. 🎶🔥\n\n🔥 Lawless — creatividad, conceptos únicos y mucha fuerza en escena.\n\n💫 Agrupación Artística y Cultural Morisot — más de 14 años de trayectoria en la danza y una nueva apuesta por el K-POP.\n\n☀️ Solaris — energía, formación y pasión por explorar nuevos lenguajes de la danza.\n\n🩸 Bloodline — disciplina, versatilidad y trabajo en equipo.\n\n✨ Bling — coordinación, sinergia, fuerza y elegancia en cada puesta en escena.\n\n🌟 Stardust — carisma y energía que han marcado su camino en el dance cover.\n\n💃🏻 Seis agrupaciones listas para hacer vibrar el escenario. ¿Te las vas a perder? 💜✨\n\n📍 Teatro El Parque\nCarrera 5 N.° 36-05\n🗓️ 13 de septiembre\n⏰ 3:00 p. m.\n🎟️ Entrada libre hasta completar aforo\n\n📹 lpvive / Idartes \n\n¡Nos vemos en la Gala! 💜\n\n#GalaPremioDanzaKPOP2026 #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 6
+      },
+      {
+        "post_id": "18144839581576733",
+        "permalink": "https://www.instagram.com/p/DdH0MqyCeh5/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-09-10T21:35:02+0000",
+        "flyer": "archive/flyers/18144839581576733-0.webp",
+        "caption": "✨ El escenario se enciende y el K-POP se toma Bogotá. ✨\n\nEstas agrupaciones llegan para demostrar que el talento, la disciplina, la pasión y el trabajo en equipo se convierten en una experiencia inolvidable sobre el escenario:\n\n🔥 Rebel Boys — 3 años de trayectoria, energía y perseverancia para llevar cada coreografía al máximo.\n\n💫 Blyss — cinco bailarinas unidas por su pasión por el K-POP, con actitud, energía y dos segundos lugares que reflejan su crecimiento.\n\n⚡ E-NOXE — alrededor de 6 años de trayectoria y experiencia nacional, fusionando K-pop con estilos urbanos para crear puestas en escena llenas de coordinación, presencia y performance.\n\n🌟 Starix — compromiso, disciplina y trabajo en equipo que los llevó a conquistar el segundo lugar en Iconic Old K-POP 2026.\n\n🖤 Nyxius — desde 2023 llevando el dance cover a escenarios y proyectos audiovisuales, explorando también estilos urbanos como Hip-Hop, Afro y Locking.\n\n💎 Black Diamonds — 7 años de experiencia, grandes logros en competencias distritales y nacionales, y el orgullo de haber representado a Colombia en Corea del Sur.\n\n👑 Purple Crown — 5 años de trayectoria, destacándose por su unión, coordinación, expresión y una energía que no pasa desapercibida.\n\nUn encuentro para celebrar la danza, el K-POP y el talento que crece en Colombia.✨\n\n📍 Teatro El Parque\nCarrera 5 N.° 36-05\n🗓️ 13 de septiembre\n⏰ 3:00 p. m.\n🎟️ Entrada libre hasta completar aforo\n\n📹 lpvive \n\n¡Nos vemos en la Gala! 💜\n\n#GalaPremioDanzaKPOP2026 #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 7
+      },
+      {
+        "post_id": "18022032923914011",
+        "permalink": "https://www.instagram.com/p/DdEgqL_kXQM/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-09-09T14:47:28+0000",
+        "flyer": "archive/flyers/18022032923914011-1.webp",
+        "caption": "💜✨ ¡EL ESCENARIO ESTÁ LISTO! ✨💜\n\nLa energía, el ritmo y el talento del K-POP bogotano llegan al escenario en la Gala Premio Danza K-POP 2026. 🔥🎶\n\nLas agrupaciones habilitadas ya están preparadas para dejarlo todo en escena y demostrar su creatividad, técnica y estilo en una gala que celebra la fuerza del movimiento K-POP en Bogotá. 💃🏻🕺🏻⚡\n\n📅 13 de septiembre\n⏰ 3:00 p. m.\n📍 Teatro El Parque\nCra. 5 # 36-05\n🎟️ Entrada libre hasta completar aforo\n\n🌟 ¿Quién se llevará el Premio Danza K-POP 2026? Los leemos en comentarios.\n\n#GalaPremioDanzaKPOP2026 #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 2
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Intensivo Jack & Jill - Taller enfocado en la improvisación en bachata",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "bachata"
+    ],
+    "organizer": "Distrito Social",
+    "venue": "Distrito Social",
+    "address": null,
+    "area": null,
+    "date": "2026-09-13",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "15:30",
+    "end_time": "18:00",
+    "prices": [],
+    "artists": [
+      "Angel",
+      "Melanny"
+    ],
+    "activities": [
+      "taller intensivo de jack & jill bachata"
+    ],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [
+      "sin precio"
+    ],
+    "id": "intensivo-jack-jill-taller-enfocado-en-la-13-sep",
+    "account": "distritosocialbog",
+    "media": [
+      {
+        "post_id": "18409856125080489",
+        "permalink": "https://www.instagram.com/p/Dc6W0owRIod/",
+        "media_type": "IMAGE",
+        "published": "2026-09-05T16:09:09+0000",
+        "flyer": "archive/flyers/18409856125080489-0.webp",
+        "caption": "Septiembre ✨\n\nTe dejamos nuestra programación de eventos del mes de Septiembre dónde tendrás mucho baile, aprendizaje y gozadera 🥳🥳🥳\n\n🔸 Domingo 13: Iniciamos a la 1PM con un Intensivo de Salsa Caleña dictada por Jenssy Gonzáles y Felipe Romero\n\n🔸Domingo 13: Seguimos ese mismo día a las 3:30 PM con un Intensivo de Jack & Jill Bachata dictado por Angel y Melanny \n\n🔸 Sábado 19: Iniciamos a las 7 PM con nuestra clasificatoria de Bachatamania Master League dónde pondrán a prueba todas sus habilidades \n\n🔸Sábado 19: Seguimos este día desde las 8:30 PM con clase de Bachata y social 100% Bachatero\n\n🔸Domingo 20: Como nunca es suficiente Bachata nos vamos a partir de las 4 PM a una clase Intensiva de Bachata Dominicana dictada por Adriana Tibaduiza\n\n🔸Sábado 26: El último sábado del mes es para bailar y nos vamos con SBK (Salsa, Bachata, Kizomba) desde las 7 PM con doble clase y un social increíble \n\n🔸 Miércoles 30: Cerramos el mes con la culminación de l segundo corte de nuestro aniversario que será el mes de Noviembre 🤩🤩🤩\n\nNo dejes que te lo cuenten reserva en nuestras Webs:\n\ndistrito-social-academy.com/eventos\nappdanza.com",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18101050046369055",
+        "permalink": "https://www.instagram.com/reel/DdB-rJXR9MV/",
+        "media_type": "VIDEO",
+        "published": "2026-09-08T15:14:33+0000",
+        "flyer": "archive/flyers/18101050046369055-0.webp",
+        "caption": "Angel y Melanny ✨\n\nDirectamente desde la ciudad de Medellín llegan estos increíbles bailarines a enseñarnos y darnos una clase magistral de Jack and Jill dónde potenciarán sus habilidades al máximo 🔥\n\n🗓️ 13 de Septiembre\n🕗 3:30 PM a 6 PM\n📍 Distrito Social\n\nNo dejes que te lo cuenten, adquiere tus boletas en nuestra web:\n\nappdanza.com",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "TARDEO DE AMOR Y AMISTAD",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [],
+    "organizer": "dlivingstudio",
+    "venue": "Dliving Studio",
+    "address": "Av. cll 25 # 27b-83",
+    "area": null,
+    "date": "2026-09-13",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "16:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Entrada libre",
+        "amount_cop": 10000,
+        "condition": "10k"
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "baile",
+      "Amigo secreto sorpresa",
+      "Cumpleaños de abril a septiembre"
+    ],
+    "contact": "@dlivingstudio",
+    "confidence": "high",
+    "doubts": [],
+    "id": "tardeo-de-amor-y-amistad-13-sep",
+    "account": "dlivingstudio",
+    "media": [
+      {
+        "post_id": "17888929371612645",
+        "permalink": "https://www.instagram.com/reel/DdDNn3YPL-7/",
+        "media_type": "VIDEO",
+        "published": "2026-09-09T02:45:31+0000",
+        "flyer": "archive/flyers/17888929371612645-0.webp",
+        "caption": "Este domingo se viene un tardeo de esos que terminan siendo el plan que no querías que se acabara. 🪩✨\n\n🎁 Amigo secreto sorpresa (trae tu regalo de 20-30k)\n🎂 Cumpleaños de abril a septiembre para estudiantes (Ven por tu sorpresa)\n💃 Mucho baile, música y ganas de pasarla bueno\n🥳 Y, sobre todo, un domingo para encontrarnos, celebrar y disfrutar juntos.\n\n¿Ya tienes tu plan? Porque este domingo… el plan es en dlivingstudio 🫶🏻\n\nNos vemos para bailar, celebrar y pasarla bueno. 🔥",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
   }
 ]
