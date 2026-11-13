@@ -19369,6 +19369,16 @@
         "slides": null
       },
       {
+        "post_id": "17982695826137441",
+        "permalink": "https://www.instagram.com/reel/DfpgRrds8uR/",
+        "media_type": "VIDEO",
+        "published": "2026-11-12T16:39:40+0000",
+        "flyer": "flyers/17982695826137441-0.webp",
+        "caption": "🔥🎺 ¡HOY BOGOTÁ SE BAILA A RITMO DE SALSA BRAVA! 🎺🔥\n\nLos verdaderos salseros tienen una cita imperdible esta noche en Galería Café Libro con SONIDO 70, las leyendas vivas de la salsa. ❤️‍🔥💃🏻🕺🏻\n\nPrepárate para una descarga de sabor con los sonidos neoyorquinos, puertorriqueños y colombianos que ponen a vibrar la pista. Una noche para melómanos, bailadores y todos los que llevan la salsa en el corazón. 🎶🔥\n\n📅 Hoy, jueves 12 de noviembre\n🕖 7:00 p. m.\n📍 Galería Café Libro 93 | Cra. 11A #93-42\n🎟️ Cover: $25.000\n\n¡Arma tu parche, alista los zapatos y nos vemos esta noche para gozarnos la salsa como se debe! ❤️‍🔥\n\n#GaleríaCaféLibro #Sonido70 #SalsaBrava #salsaenbogotá",
+        "preview": "previews/17982695826137441-0.mp4",
+        "slides": null
+      },
+      {
         "post_id": "18358881070271223",
         "permalink": "https://www.instagram.com/reel/De75UUnMJAG/",
         "media_type": "VIDEO",
@@ -20110,6 +20120,58 @@
     "bar": false
   },
   {
+    "title": "Golazo",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "El Panteón de la Salsa",
+    "venue": "El Panteón de la Salsa",
+    "address": "Carrera 71D No. 2A - 13 Sur, Piso 2",
+    "area": "Plaza de las Américas",
+    "date": "2026-11-13",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "20:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 25000,
+        "condition": null
+      },
+      {
+        "label": "Cumpleañeros de noviembre",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Negro Salsero"
+    ],
+    "activities": [],
+    "contact": "@el_panteon_de_la_salsa",
+    "confidence": "high",
+    "doubts": [],
+    "id": "golazo-13-nov",
+    "account": "el_panteon_de_la_salsa",
+    "media": [
+      {
+        "post_id": "18255613186309490",
+        "permalink": "https://www.instagram.com/reel/DfqSufasmCF/",
+        "media_type": "VIDEO",
+        "published": "2026-11-13T00:00:34+0000",
+        "flyer": "flyers/18255613186309490-0.webp",
+        "caption": "Golazo\nNoviembre \nProgramando negro_salsero",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Tributo a Ismael Rivera y Fruko y sus Tesos",
     "event_type": "concert",
     "is_recurring": false,
@@ -20550,6 +20612,55 @@
       }
     ],
     "bar": true
+  },
+  {
+    "title": "VALKANDELA 2026 en El Co. Laboratorio",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "afro"
+    ],
+    "organizer": "Valkandela",
+    "venue": "El Co. Laboratorio",
+    "address": null,
+    "area": null,
+    "date": "2026-11-14",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Valkandela"
+    ],
+    "activities": [
+      "DJ set",
+      "baile"
+    ],
+    "contact": "@valkandela",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio",
+      "sin precio",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "valkandela-2026-en-el-co-laboratorio-14-nov",
+    "account": "valkandela",
+    "media": [
+      {
+        "post_id": "17904025728378007",
+        "permalink": "https://www.instagram.com/p/Dfp-y00Gkit/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-12T21:05:29+0000",
+        "flyer": "flyers/17904025728378007-0.webp",
+        "caption": "⭐️La Guilla, la preguilla, la posguilla y mi posguerra ⭐️\nLes quiero, de coração pra coração.\n🖍️: mury.yo",
+        "preview": "previews/17904025728378007-0.mp4",
+        "slides": 19
+      }
+    ],
+    "bar": false
   },
   {
     "title": "Tardeo Salsero",
@@ -22203,6 +22314,55 @@
     "bar": true
   },
   {
+    "title": "VALKANDELA 2026 en Galería Café Libro Club",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "afro"
+    ],
+    "organizer": "Valkandela",
+    "venue": "Galería Café Libro Club",
+    "address": null,
+    "area": null,
+    "date": "2026-11-21",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Valkandela"
+    ],
+    "activities": [
+      "DJ set",
+      "baile"
+    ],
+    "contact": "@valkandela",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio",
+      "sin precio",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "valkandela-2026-en-galeria-cafe-libro-club-21-nov",
+    "account": "valkandela",
+    "media": [
+      {
+        "post_id": "17904025728378007",
+        "permalink": "https://www.instagram.com/p/Dfp-y00Gkit/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-12T21:05:29+0000",
+        "flyer": "flyers/17904025728378007-0.webp",
+        "caption": "⭐️La Guilla, la preguilla, la posguilla y mi posguerra ⭐️\nLes quiero, de coração pra coração.\n🖍️: mury.yo",
+        "preview": "previews/17904025728378007-0.mp4",
+        "slides": 19
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Taller Especial de Bachata",
     "event_type": "workshop",
     "is_recurring": false,
@@ -22212,7 +22372,7 @@
     "organizer": "Imperio Latino Dance Studio",
     "venue": "Imperio Latino Dance Studio",
     "address": "Calle 72 # 80-23, piso 2",
-    "area": null,
+    "area": "Engativá",
     "date": "2026-11-21",
     "end_date": null,
     "sessions": null,
@@ -22221,7 +22381,7 @@
     "end_time": null,
     "prices": [
       {
-        "label": "Valor",
+        "label": "General",
         "amount_cop": 20000,
         "condition": null
       }
@@ -22248,7 +22408,7 @@
         "media_type": "IMAGE",
         "published": "2026-11-11T22:34:05+0000",
         "flyer": "flyers/17992893945066881-0.webp",
-        "caption": "💛🖤 ¡EN IMPERIO LATINO SIEMPRE HAY ALGO NUEVO POR VIVIR! 🧡\n\nNuestra familia sigue creciendo y queremos que tú hagas parte de todo lo que viene. ✨\n\nTenemos grandes experiencias preparadas para cerrar el año y comenzar el 2027 con toda la energía:\n\n🔥 CONSERVA TUS TARIFAS 2026: paga diciembre + enero y disfruta de este beneficio especial.\n\n💃 TALLER ESPECIAL DE BACHATA: prepárate para aprender, disfrutar y fortalecer tu baile junto a María Camila Herrera. ¡21 de noviembre!\n\n🏆 CONVOCATORIA 2027: buscamos nuevos talentos para nuestras agrupaciones competitivas. ¡El 22 de noviembre puede comenzar una gran historia para ti!\n\nEn Imperio Latino no solo enseñamos a bailar… creamos experiencias, formamos talentos, compartimos sueños y construimos una familia.\n\n❤️ Tu talento tiene un lugar. Tu pasión tiene una casa.\n\n📍 Calle 72 # 80-23, piso 2.\n📲 WhatsApp: 316 450 1010.\n\n¡VEN, BAILA, APRENDE Y CRECE CON NOSOTROS!\n\n#ImperioLatino #FamiliaImperio #Salsa #Bachata Convocatoria2027 DanceStudio BogotáBaila",
+        "caption": "💛🖤 ¡EN IMPERIO LATINO SIEMPRE HAY ALGO NUEVO POR VIVIR! 🧡\n\nNuestra familia sigue creciendo y queremos que tú hagas parte de todo lo que viene. ✨\n\nTenemos grandes experiencias preparadas para cerrar el año y comenzar el 2027 con toda la energía:\n\n🔥 CONSERVA TUS TARIFAS 2026: paga diciembre + enero y disfruta de este beneficio especial.\n\n💃 TALLER ESPECIAL DE BACHATA: prepárate para aprender, disfrutar y fortalecer tu baile junto a María Camila Herrera. ¡21 de noviembre!\n\n🏆 CONVOCATORIA 2027: buscamos nuevos talentos para nuestras agrupaciones competitivas. ¡El 22 de noviembre puede comenzar una gran historia para ti!\n\nEn Imperio Latino no solo enseñamos a bailar… creamos experiencias, formamos talentos, compartimos sueños y construimos una familia.\n\n❤️ Tu talento tiene un lugar. Tu pasión tiene una casa.\n\n📍 Calle 72 # 80-23, piso 2.\n📲 WhatsApp: 316 450 1010.\n\n¡VEN, BAILA, APRENDE Y CRECE CON NOSOTROS!\n\n#ImperioLatino #FamiliaImperio #Salsa #Bachata Convocatoria2027 DanceStudio BogotáBailak",
         "preview": null,
         "slides": null
       },
@@ -22649,7 +22809,7 @@
     "organizer": "Imperio Latino Dance Studio",
     "venue": "Imperio Latino Dance Studio",
     "address": "Calle 72 # 80-23, piso 2",
-    "area": null,
+    "area": "Engativá",
     "date": "2026-11-22",
     "end_date": null,
     "sessions": null,
@@ -22658,7 +22818,7 @@
     "end_time": null,
     "prices": [
       {
-        "label": "General",
+        "label": "Inscripción",
         "amount_cop": 0,
         "condition": null
       }
@@ -22681,7 +22841,7 @@
         "media_type": "IMAGE",
         "published": "2026-11-11T22:34:05+0000",
         "flyer": "flyers/17992893945066881-0.webp",
-        "caption": "💛🖤 ¡EN IMPERIO LATINO SIEMPRE HAY ALGO NUEVO POR VIVIR! 🧡\n\nNuestra familia sigue creciendo y queremos que tú hagas parte de todo lo que viene. ✨\n\nTenemos grandes experiencias preparadas para cerrar el año y comenzar el 2027 con toda la energía:\n\n🔥 CONSERVA TUS TARIFAS 2026: paga diciembre + enero y disfruta de este beneficio especial.\n\n💃 TALLER ESPECIAL DE BACHATA: prepárate para aprender, disfrutar y fortalecer tu baile junto a María Camila Herrera. ¡21 de noviembre!\n\n🏆 CONVOCATORIA 2027: buscamos nuevos talentos para nuestras agrupaciones competitivas. ¡El 22 de noviembre puede comenzar una gran historia para ti!\n\nEn Imperio Latino no solo enseñamos a bailar… creamos experiencias, formamos talentos, compartimos sueños y construimos una familia.\n\n❤️ Tu talento tiene un lugar. Tu pasión tiene una casa.\n\n📍 Calle 72 # 80-23, piso 2.\n📲 WhatsApp: 316 450 1010.\n\n¡VEN, BAILA, APRENDE Y CRECE CON NOSOTROS!\n\n#ImperioLatino #FamiliaImperio #Salsa #Bachata Convocatoria2027 DanceStudio BogotáBaila",
+        "caption": "💛🖤 ¡EN IMPERIO LATINO SIEMPRE HAY ALGO NUEVO POR VIVIR! 🧡\n\nNuestra familia sigue creciendo y queremos que tú hagas parte de todo lo que viene. ✨\n\nTenemos grandes experiencias preparadas para cerrar el año y comenzar el 2027 con toda la energía:\n\n🔥 CONSERVA TUS TARIFAS 2026: paga diciembre + enero y disfruta de este beneficio especial.\n\n💃 TALLER ESPECIAL DE BACHATA: prepárate para aprender, disfrutar y fortalecer tu baile junto a María Camila Herrera. ¡21 de noviembre!\n\n🏆 CONVOCATORIA 2027: buscamos nuevos talentos para nuestras agrupaciones competitivas. ¡El 22 de noviembre puede comenzar una gran historia para ti!\n\nEn Imperio Latino no solo enseñamos a bailar… creamos experiencias, formamos talentos, compartimos sueños y construimos una familia.\n\n❤️ Tu talento tiene un lugar. Tu pasión tiene una casa.\n\n📍 Calle 72 # 80-23, piso 2.\n📲 WhatsApp: 316 450 1010.\n\n¡VEN, BAILA, APRENDE Y CRECE CON NOSOTROS!\n\n#ImperioLatino #FamiliaImperio #Salsa #Bachata Convocatoria2027 DanceStudio BogotáBailak",
         "preview": null,
         "slides": null
       },
@@ -23336,6 +23496,56 @@
         "caption": "Bachatamania Noviembre ✨\n\nPenúltimo Bachatamania del 2026 y venimos con toda 🥳🥳🥳\n\nNo te pierdas la clase de Jean y Gaby a las 8 PM seguido de un social 100% Bachata a manos de DJ Duane para que disfrutes y bailes hasta que el cuerpo aguante 🤩🤩🤩\n\n🗓️ 28 de Noviembre\n📍 Distrito Social - CRA 29 68 - 18\n🕢 8:00 PM\n\nNo dejes que te lo cuenten, ven a bailar en el mejor social bachatero de Bogotá 🔥\n\nReserva tus boletas en nuestra web: \n\nappdanza.com",
         "preview": null,
         "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "VALKANDELA 2026 en Plazoleta del Panamericano",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "afro"
+    ],
+    "organizer": "Valkandela",
+    "venue": "Plazoleta del Panamericano",
+    "address": null,
+    "area": null,
+    "date": "2026-11-29",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Valkandela"
+    ],
+    "activities": [
+      "DJ set",
+      "baile"
+    ],
+    "contact": "@valkandela",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio",
+      "sin precio",
+      "la Plazoleta del Panamericano suele estar en Pasto, pero el flyer indica Bogotá",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "valkandela-2026-en-plazoleta-del-panamericano-29-nov",
+    "account": "valkandela",
+    "media": [
+      {
+        "post_id": "17904025728378007",
+        "permalink": "https://www.instagram.com/p/Dfp-y00Gkit/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-12T21:05:29+0000",
+        "flyer": "flyers/17904025728378007-0.webp",
+        "caption": "⭐️La Guilla, la preguilla, la posguilla y mi posguerra ⭐️\nLes quiero, de coração pra coração.\n🖍️: mury.yo",
+        "preview": "previews/17904025728378007-0.mp4",
+        "slides": 19
       }
     ],
     "bar": false
