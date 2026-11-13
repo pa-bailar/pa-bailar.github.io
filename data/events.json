@@ -20407,11 +20407,8 @@
     "title": "VALKANDELA 2026 en El Co. Laboratorio",
     "event_type": "party",
     "is_recurring": false,
-    "styles": [
-      "salsa",
-      "afro"
-    ],
-    "organizer": "Valkandela",
+    "styles": [],
+    "organizer": "@valkandela",
     "venue": "El Co. Laboratorio",
     "address": null,
     "area": null,
@@ -20425,17 +20422,10 @@
     "artists": [
       "Valkandela"
     ],
-    "activities": [
-      "DJ set",
-      "baile"
-    ],
+    "activities": [],
     "contact": "@valkandela",
     "confidence": "high",
-    "doubts": [
-      "sin hora de inicio",
-      "sin precio",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
+    "doubts": [],
     "id": "valkandela-2026-en-el-co-laboratorio-14-nov",
     "account": "valkandela",
     "media": [
@@ -20979,7 +20969,7 @@
     "styles": [
       "salsa"
     ],
-    "organizer": "Bulevar Salsa Bar",
+    "organizer": "@bulevarsalsabar",
     "venue": "Bulevar Salsa Bar",
     "address": "Calle 51 # 7 - 57",
     "area": "Chapinero",
@@ -20991,15 +20981,12 @@
     "end_time": null,
     "prices": [],
     "artists": [],
-    "activities": [
-      "bebidas al 50%",
-      "ingreso de bebidas con pago de cover"
-    ],
+    "activities": [],
     "contact": "322 437 6825",
     "confidence": "high",
     "doubts": [
-      "sin precio del cover",
-      "sin hora de inicio"
+      "hora de inicio no especificada",
+      "precio del cover no especificado"
     ],
     "id": "el-golazo-de-bulevar-15-nov",
     "account": "bulevarsalsabar",
@@ -21211,9 +21198,9 @@
       "Tropicana Ensamble"
     ],
     "activities": [
-      "concierto de salsa"
+      "música en vivo"
     ],
-    "contact": "WhatsApp 313 830 8844",
+    "contact": "WhatsApp 3138308844",
     "confidence": "high",
     "doubts": [],
     "id": "tropicana-ensamble-15-nov",
@@ -21237,8 +21224,7 @@
     "event_type": "social",
     "is_recurring": false,
     "styles": [
-      "salsa cubana",
-      "otro"
+      "salsa"
     ],
     "organizer": "Pachanga y Pochola",
     "venue": "Pachanga y Pochola",
@@ -21275,9 +21261,7 @@
     ],
     "contact": "WhatsApp 3004506002",
     "confidence": "high",
-    "doubts": [
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
+    "doubts": [],
     "id": "tardeo-salsa-all-stars-15-nov",
     "account": "fernandoespanadj",
     "media": [
@@ -21971,55 +21955,6 @@
     "bar": false
   },
   {
-    "title": "Orquesta Arag&oacute;n de Cuba - Charanga en la Luna",
-    "event_type": "concert",
-    "is_recurring": false,
-    "styles": [
-      "salsa"
-    ],
-    "organizer": "Fundaci&oacute;n Arte Luz",
-    "venue": "Auditorio Jorge Arango Tamayo - UNICOC",
-    "address": "Autopista Norte, en la sabana de Bogot&aacute; (Entrada de Ch&iacute;a)",
-    "area": "Ch&iacute;a",
-    "date": "2026-11-20",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "viernes",
-    "start_time": "17:00",
-    "end_time": null,
-    "prices": [],
-    "artists": [
-      "Orquesta Arag&oacute;n de Cuba",
-      "Se&ntilde;or Moon"
-    ],
-    "activities": [
-      "concierto",
-      "vinyl selector"
-    ],
-    "contact": "WhatsApp 311 855 3948",
-    "confidence": "high",
-    "doubts": [
-      "sin precio",
-      "ubicado en Ch&iacute;a",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
-    "id": "orquesta-arag-oacute-n-de-cuba-charanga-en-la-luna-20-nov",
-    "account": "fernandoespanadj",
-    "media": [
-      {
-        "post_id": "17971708788194232",
-        "permalink": "https://www.instagram.com/reel/DffR6ZdAjbZ/",
-        "media_type": "VIDEO",
-        "published": "2026-11-08T17:20:56+0000",
-        "flyer": "flyers/17971708788194232-0.webp",
-        "caption": "Noviembre Cubano en el Altiplano: Domingo 15, Tardeo en Pachanga y Pochola. Viernes 20, Orquesta Aragón en Chía. Y Sábado 21, Estrellas de Buenavista en el Teatro Jorge Eliécer Gaitán. Y nosotros presentes con Saca Las Bestias, Eddie Palmieri y La Rebelión del Bach Negro.",
-        "preview": null,
-        "slides": null
-      }
-    ],
-    "bar": false
-  },
-  {
     "title": "Tributo a Ismael Rivera",
     "event_type": "concert",
     "is_recurring": false,
@@ -22279,13 +22214,10 @@
   },
   {
     "title": "VALKANDELA 2026 en Galería Café Libro Club",
-    "event_type": "social",
+    "event_type": "party",
     "is_recurring": false,
-    "styles": [
-      "salsa",
-      "afro"
-    ],
-    "organizer": "Valkandela",
+    "styles": [],
+    "organizer": "@valkandela",
     "venue": "Galería Café Libro Club",
     "address": null,
     "area": null,
@@ -22299,17 +22231,10 @@
     "artists": [
       "Valkandela"
     ],
-    "activities": [
-      "DJ set",
-      "baile"
-    ],
+    "activities": [],
     "contact": "@valkandela",
     "confidence": "high",
-    "doubts": [
-      "sin hora de inicio",
-      "sin precio",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
+    "doubts": [],
     "id": "valkandela-2026-en-galeria-cafe-libro-club-21-nov",
     "account": "valkandela",
     "media": [
@@ -22546,11 +22471,11 @@
     "event_type": "concert",
     "is_recurring": false,
     "styles": [
-      "son",
-      "salsa"
+      "salsa cubana",
+      "son"
     ],
     "organizer": "AGA Producciones Artísticas",
-    "venue": "Teatro Jorge Eli\tcer Gait\tn",
+    "venue": "Teatro Jorge Eliécer Gaitán",
     "address": null,
     "area": null,
     "date": "2026-11-21",
@@ -22570,8 +22495,7 @@
     "confidence": "high",
     "doubts": [
       "sin hora de inicio",
-      "sin precio",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+      "sin precio"
     ],
     "id": "estrellas-de-buenavista-21-nov",
     "account": "fernandoespanadj",
@@ -22592,16 +22516,6 @@
         "media_type": "VIDEO",
         "published": "2026-11-08T17:20:56+0000",
         "flyer": "flyers/17971708788194232-0.webp",
-        "caption": "Noviembre Cubano en el Altiplano: Domingo 15, Tardeo en Pachanga y Pochola. Viernes 20, Orquesta Aragón en Chía. Y Sábado 21, Estrellas de Buenavista en el Teatro Jorge Eliécer Gaitán. Y nosotros presentes con Saca Las Bestias, Eddie Palmieri y La Rebelión del Bach Negro.",
-        "preview": null,
-        "slides": null
-      },
-      {
-        "post_id": "18132459670705219",
-        "permalink": "https://www.instagram.com/reel/DffQ-VPJpd4/",
-        "media_type": "VIDEO",
-        "published": "2026-11-08T17:12:45+0000",
-        "flyer": "flyers/18132459670705219-0.webp",
         "caption": "Noviembre Cubano en el Altiplano: Domingo 15, Tardeo en Pachanga y Pochola. Viernes 20, Orquesta Aragón en Chía. Y Sábado 21, Estrellas de Buenavista en el Teatro Jorge Eliécer Gaitán. Y nosotros presentes con Saca Las Bestias, Eddie Palmieri y La Rebelión del Bach Negro.",
         "preview": null,
         "slides": null
@@ -23468,11 +23382,8 @@
     "title": "VALKANDELA 2026 en Plazoleta del Panamericano",
     "event_type": "party",
     "is_recurring": false,
-    "styles": [
-      "salsa",
-      "afro"
-    ],
-    "organizer": "Valkandela",
+    "styles": [],
+    "organizer": "@valkandela",
     "venue": "Plazoleta del Panamericano",
     "address": null,
     "area": null,
@@ -23486,18 +23397,10 @@
     "artists": [
       "Valkandela"
     ],
-    "activities": [
-      "DJ set",
-      "baile"
-    ],
+    "activities": [],
     "contact": "@valkandela",
     "confidence": "high",
-    "doubts": [
-      "sin hora de inicio",
-      "sin precio",
-      "la Plazoleta del Panamericano suele estar en Pasto, pero el flyer indica Bogotá",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
+    "doubts": [],
     "id": "valkandela-2026-en-plazoleta-del-panamericano-29-nov",
     "account": "valkandela",
     "media": [
@@ -23993,13 +23896,11 @@
     "title": "Clausura 2026 Studio Latin Dance",
     "event_type": "social",
     "is_recurring": false,
-    "styles": [
-      "otro"
-    ],
+    "styles": [],
     "organizer": "Studio Latin Dance",
     "venue": "Centro de Eventos y Convenciones Las Américas",
-    "address": "Av. Américas #50-15",
-    "area": "Las Américas",
+    "address": "Av Américas #50-15",
+    "area": null,
     "date": "2026-12-18",
     "end_date": null,
     "sessions": null,
@@ -24024,12 +23925,7 @@
       }
     ],
     "artists": [],
-    "activities": [
-      "clausura",
-      "baile",
-      "brindis",
-      "celebración"
-    ],
+    "activities": [],
     "contact": "317 447 9689",
     "confidence": "high",
     "doubts": [],
