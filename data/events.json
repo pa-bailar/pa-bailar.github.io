@@ -19795,6 +19795,114 @@
     "bar": true
   },
   {
+    "title": "Fucking Session con Fucking David",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "urbano"
+    ],
+    "organizer": "Danceholic Project",
+    "venue": "La Mansión",
+    "address": null,
+    "area": null,
+    "date": "2026-11-13",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "18:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "1 clase",
+        "amount_cop": 35000,
+        "condition": null
+      },
+      {
+        "label": "3 clases",
+        "amount_cop": 70000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Fucking David"
+    ],
+    "activities": [
+      "taller de baile"
+    ],
+    "contact": "@danceholicproject",
+    "confidence": "high",
+    "doubts": [],
+    "id": "fucking-session-con-fucking-david-13-nov",
+    "account": "danceholicproject",
+    "media": [
+      {
+        "post_id": "17957936937266687",
+        "permalink": "https://www.instagram.com/p/Dfqk9Z5EQjt/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-13T02:38:58+0000",
+        "flyer": "flyers/17957936937266687-0.webp",
+        "caption": "VIERNES EN LA MANSIÓN 🔥\n\nSeguimos con las sorpresas en la mansión , y mañana tenemos estas 3 clasesotas con estos 3 maestros ! 🔥🔥\n\nFUCKING SESSION 6PM - itsfuckingdavidd 🔥\nHOUSE 7PM - joup_music 🔥\nCONTEMPO FUSION 8PM - joserinconr 🔥\n\n1 CLASE / 35k \n3 CLASES / 70K \n( solo por mañana ) \n\nPost : Las personas inscritas a Danceholic Project pueden tomar las clases con su carnet , no olvide reservar! 🔥\n#danceholicproject",
+        "preview": null,
+        "slides": 3
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "House con Joup",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "urbano"
+    ],
+    "organizer": "Danceholic Project",
+    "venue": "La Mansión",
+    "address": null,
+    "area": null,
+    "date": "2026-11-13",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "19:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "1 clase",
+        "amount_cop": 35000,
+        "condition": null
+      },
+      {
+        "label": "3 clases",
+        "amount_cop": 70000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Joup"
+    ],
+    "activities": [
+      "clase de house"
+    ],
+    "contact": "@danceholicproject",
+    "confidence": "high",
+    "doubts": [],
+    "id": "house-con-joup-13-nov",
+    "account": "danceholicproject",
+    "media": [
+      {
+        "post_id": "17957936937266687",
+        "permalink": "https://www.instagram.com/p/Dfqk9Z5EQjt/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-13T02:38:58+0000",
+        "flyer": "flyers/17957936937266687-1.webp",
+        "caption": "VIERNES EN LA MANSIÓN 🔥\n\nSeguimos con las sorpresas en la mansión , y mañana tenemos estas 3 clasesotas con estos 3 maestros ! 🔥🔥\n\nFUCKING SESSION 6PM - itsfuckingdavidd 🔥\nHOUSE 7PM - joup_music 🔥\nCONTEMPO FUSION 8PM - joserinconr 🔥\n\n1 CLASE / 35k \n3 CLASES / 70K \n( solo por mañana ) \n\nPost : Las personas inscritas a Danceholic Project pueden tomar las clases con su carnet , no olvide reservar! 🔥\n#danceholicproject",
+        "preview": null,
+        "slides": 3
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Clase de baile con Teffa Murcia",
     "event_type": "workshop",
     "is_recurring": false,
@@ -19960,6 +20068,60 @@
       }
     ],
     "bar": true
+  },
+  {
+    "title": "Contempo Fusion con Jose Rincon",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "Danceholic Project",
+    "venue": "La Mansión",
+    "address": null,
+    "area": null,
+    "date": "2026-11-13",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "20:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "1 clase",
+        "amount_cop": 35000,
+        "condition": null
+      },
+      {
+        "label": "3 clases",
+        "amount_cop": 70000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Jose Rincon"
+    ],
+    "activities": [
+      "clase de contempo fusion"
+    ],
+    "contact": "@danceholicproject",
+    "confidence": "high",
+    "doubts": [],
+    "id": "contempo-fusion-con-jose-rincon-13-nov",
+    "account": "danceholicproject",
+    "media": [
+      {
+        "post_id": "17957936937266687",
+        "permalink": "https://www.instagram.com/p/Dfqk9Z5EQjt/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-13T02:38:58+0000",
+        "flyer": "flyers/17957936937266687-2.webp",
+        "caption": "VIERNES EN LA MANSIÓN 🔥\n\nSeguimos con las sorpresas en la mansión , y mañana tenemos estas 3 clasesotas con estos 3 maestros ! 🔥🔥\n\nFUCKING SESSION 6PM - itsfuckingdavidd 🔥\nHOUSE 7PM - joup_music 🔥\nCONTEMPO FUSION 8PM - joserinconr 🔥\n\n1 CLASE / 35k \n3 CLASES / 70K \n( solo por mañana ) \n\nPost : Las personas inscritas a Danceholic Project pueden tomar las clases con su carnet , no olvide reservar! 🔥\n#danceholicproject",
+        "preview": null,
+        "slides": 3
+      }
+    ],
+    "bar": false
   },
   {
     "title": "Tributo a Ismael Rivera y Fruko y sus Tesos",
@@ -21342,6 +21504,51 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "Rosa se puso brava: Salsa Rosa vs Salsa Brava",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "El Bochinche Café - Bar",
+    "venue": "El Bochinche Café - Bar",
+    "address": "Calle 22 # 01-26",
+    "area": null,
+    "date": "2026-11-15",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "19:30",
+    "end_time": "02:30",
+    "prices": [
+      {
+        "label": "Entrada libre",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [],
+    "contact": "@el_bochinche_cafe_",
+    "confidence": "high",
+    "doubts": [],
+    "id": "rosa-se-puso-brava-salsa-rosa-vs-salsa-brava-15-nov",
+    "account": "el_bochinche_cafe_",
+    "media": [
+      {
+        "post_id": "18140035172510005",
+        "permalink": "https://www.instagram.com/p/Dfsp6ZmAR3K/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-13T22:00:02+0000",
+        "flyer": "flyers/18140035172510005-0.webp",
+        "caption": "🚨 ¡ATENCIÓN, QUE ROSA SE PUSO BRAVA! 🚨\n\nUna viene suave, coqueta y peligrosa… la otra llega con tumbao, calle y sabor del bueno. 😏\nEsta vez no hay medias tintas: \n\nSALSA BRAVA VS SALSA ROSADA.🌹💃\n\n¿Team elegancia o team candela? ¿Team romanticismo o team azote de baldosa?\n\n📅 Domingo 15 de noviembre\n🕗 8:00 PM\n🕝 Hasta las 2:30 AM\n🎟️ ENTRADA LIBRE.",
+        "preview": "previews/18140035172510005-0.mp4",
+        "slides": 2
+      }
+    ],
+    "bar": true
   },
   {
     "title": "Gala Clásica y Romántica",
