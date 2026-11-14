@@ -705,5 +705,103 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "Workshop Kirsten Dodgen - Etapa Bogotá",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "Bureo Dance Studio",
+    "venue": "Coliseo El Otoño",
+    "address": null,
+    "area": null,
+    "date": "2026-09-14",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "lunes",
+    "start_time": "10:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Precio",
+        "amount_cop": 250000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Kirsten Dodgen"
+    ],
+    "activities": [
+      "clase de danza",
+      "entrenamiento de danza"
+    ],
+    "contact": "350-537-2687",
+    "confidence": "high",
+    "doubts": [
+      "No se especifica explícitamente el estilo de danza en el texto (Kirsten Dodgen es reconocida en danza urbana/hip-hop)"
+    ],
+    "id": "workshop-kirsten-dodgen-etapa-bogota-14-sep",
+    "account": "bureodancestudio",
+    "media": [
+      {
+        "post_id": "17939885055096850",
+        "permalink": "https://www.instagram.com/p/DdFeUdvnKUu/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-09-09T23:46:16+0000",
+        "flyer": "archive/flyers/17939885055096850-0.webp",
+        "caption": "🔥 BOGOTÁ, ES MOMENTO DE ENTRENAR DIFERENTE 🔥\n\nLlega KIRSTEN DODGEN kirstendodgen a Bureo para una experiencia que no te vas a querer perder. Una oportunidad para aprender, conectar y llevar tu danza a otro nivel. 🖤\n\nEn alianza con Z Dance Cup zdancecup seguimos creando espacios para que nuestra comunidad entrene con grandes artistas y viva experiencias que inspiran.\n\n📍 Coliseo El Otoño — Bogotá\n🗓 Lunes 14 de septiembre\n🕙 10:00 a.m inicio (recomendamos llegar 20 minutos antes)\n💰 $250.000\n\n⚠️ CUPOS LIMITADOS.\n\n¿Estás listo para vivir esta experiencia? 🔥\n\nInformación al DM o WhatsApp 350-537-2687",
+        "preview": null,
+        "slides": 2
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Clase Abierta Jazz Multinivel",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "Alma de Tango",
+    "venue": null,
+    "address": null,
+    "area": null,
+    "date": "2026-09-14",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "lunes",
+    "start_time": "18:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Alejandro Díaz"
+    ],
+    "activities": [
+      "clase abierta de jazz"
+    ],
+    "contact": "@academiaalmadetangoe",
+    "confidence": "high",
+    "doubts": [
+      "sin precio",
+      "sin lugar especificado"
+    ],
+    "id": "clase-abierta-jazz-multinivel-14-sep",
+    "account": "academiaalmadetangoe",
+    "media": [
+      {
+        "post_id": "18114810215075112",
+        "permalink": "https://www.instagram.com/p/DdMW4VhxwH5/",
+        "media_type": "IMAGE",
+        "published": "2026-09-12T15:55:59+0000",
+        "flyer": "archive/flyers/18114810215075112-0.webp",
+        "caption": "✨ CLASE ABIERTA ✨\n\nEste lunes nos dejamos llevar por el movimiento, la música y la expresión.\n\n🔥 JAZZ MULTINIVEL\ncon Alejandro Díaz \n\nUna clase para disfrutar, explorar y conectar con tu cuerpo, sin importar tu nivel.\n\n📅 Lunes 14 de septiembre\n🕕 6:00 PM\n\nVen a bailar, aprender y disfrutar.\n¡No te lo puedes perder! ❤️‍🔥",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
   }
 ]
