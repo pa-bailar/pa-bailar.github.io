@@ -20527,6 +20527,51 @@
     "bar": false
   },
   {
+    "title": "Salsa en Vivo",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Quema",
+    "venue": "Quema",
+    "address": null,
+    "area": null,
+    "date": "2026-11-14",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "música en vivo",
+      "baile"
+    ],
+    "contact": "@quemaquequema",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio dada",
+      "sin precio de entrada especificado"
+    ],
+    "id": "salsa-en-vivo-14-nov",
+    "account": "quemaquequema",
+    "media": [
+      {
+        "post_id": "18239026552325712",
+        "permalink": "https://www.instagram.com/p/DfvNVu_GnUk/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-14T21:48:47+0000",
+        "flyer": "flyers/18239026552325712-3.webp",
+        "caption": "Hoy Salsa en Vivo en Quema 🔥\n\nRevive los clásicos del género 🎶 nuestra banda te hará cantar y bailar 🕺 \n\n¿Ya sabes qué cóctel vas a pedir para brindar? Cuéntanos en los comentarios 🍹👇\n\nNos vemos esta noche en Quema 🔥\n\n#restaurantequemaquequema #salsa #salsaenvivo #musicaenvivo #nochedesalsa",
+        "preview": null,
+        "slides": 4
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Tardeo Salsero",
     "event_type": "party",
     "is_recurring": false,
@@ -23325,6 +23370,57 @@
     "bar": true
   },
   {
+    "title": "Candelaria Salsa Groove en vivo",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Casa de Citas",
+    "venue": "Casa de Citas",
+    "address": "Cra 3 #12B - 35",
+    "area": "La Candelaria",
+    "date": "2026-11-27",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "20:30",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 15000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Candelaria Salsa Groove",
+      "DJ Carlos"
+    ],
+    "activities": [
+      "música en vivo",
+      "rumba caribe"
+    ],
+    "contact": "315 212 5733",
+    "confidence": "high",
+    "doubts": [],
+    "id": "candelaria-salsa-groove-en-vivo-27-nov",
+    "account": "restaurantecasadecitas",
+    "media": [
+      {
+        "post_id": "17969097345208526",
+        "permalink": "https://www.instagram.com/p/Dfuu3X-vECI/",
+        "media_type": "IMAGE",
+        "published": "2026-11-14T17:22:33+0000",
+        "flyer": "flyers/17969097345208526-0.webp",
+        "caption": "Viernes 27 de Noviembre: NOCHE DE SALSA🔥\nEn vivo: Candelaria Salsa Groove\n🎟️15K\nLes esperamos 🍷✨\n.\n#LaCandelaria #bogota #salsa #Musicaenvivo #rumba",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "El Tour de la Salsa: Luna Llena Salsa Band en vivo",
     "event_type": "concert",
     "is_recurring": false,
@@ -23448,6 +23544,63 @@
         "caption": "🔥 ¡BOGOTÁ, SE VIENE EL PARCHE QUE NO TE PUEDES PERDER! 🔥\n\n💃🕺 SOCIAL PAL PARCHE CON  REMATE DE SALSA AL PARQUE 💃🏼💃🏾\n\nUna noche para bailar sin parar, sacar los mejores pasos y disfrutar de la mejor energía del baile. ❤️‍🔥\n\n🎶 SOCIAL | SALSA | BACHATA | URBANO\n\nDjs camilo_barretto frank.de.latorre djfeyder \n\nClase salsa caleña por el mejor 🔥\n danitello22 \nClase de bachata por el multicampeon 🔥 juanesksallas.lafabrica \n\nMini competencia salsa caleña 1Vs1 El publico decide desde su celular \n\nPremio  en efectivo\n💰 \n\n📅 28 DE NOVIEMBRE\n📍 campusbeta.bogota – Calle 47 #14-22\n\n🎟️ ¡ASEGURA TU ENTRADA EN PREVENTA!\n\n🔥 Preventa: $25.000\n🔥 Taquilla: $40.000\n\n⚠️ ¡No esperes hasta el último momento! Compra tu preventa y ahorra $15.000.\n\nEtiqueta a tu parche de baile, comparte este post y alista los zapatos… ¡porque esa noche se baila hasta que el cuerpo aguante! 💥\n\n📲 Escríbenos por DM para asegurar tu entrada.\n\n#SocialPalParche #Jaleo #SalsaCalena SalsaBogota BachataBogota SocialDeBaile BogotaBaila",
         "preview": null,
         "slides": 5
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Salsa al Parque 2026",
+    "event_type": "festival",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Idartes",
+    "venue": "Parque Metropolitano Simón Bolívar",
+    "address": null,
+    "area": null,
+    "date": "2026-11-28",
+    "end_date": "2026-11-29",
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Entrada libre",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [],
+    "contact": "@festivalsalsaalparque",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio"
+    ],
+    "id": "salsa-al-parque-2026-28-nov",
+    "account": "festivalsalsaalparque",
+    "media": [
+      {
+        "post_id": "18084122360430436",
+        "permalink": "https://www.instagram.com/reel/Dfum-_XtfF9/",
+        "media_type": "VIDEO",
+        "published": "2026-11-14T16:14:35+0000",
+        "flyer": "flyers/18084122360430436-0.webp",
+        "caption": "💃 Bogotá tiene una historia que también se cuenta al ritmo de la salsa. Durante décadas, este género ha acompañado a la ciudad, ha reunido generaciones y ha encontrado nuevas voces que mantienen su música en movimiento.\n\nEn su edición 27, Salsa al Parque reconoce a quienes han construido esta historia y a los artistas y públicos que hoy la transforman, exploran nuevos sonidos y mantienen viva su conexión con la ciudad. 💥\n\n Este 28 y 29 de noviembre, celebremos la salsa en todas sus expresiones en el Parque Metropolitano Simón Bolívar. \n\n🎟️ Entrada libre | 🔞 Evento para mayores de edad. \n\n🎥 juanneva_ /  nicolas_ortizp / Idartes\n\n#SalsaAlParque2026 #LaRevoluciónQueNuncaDejaDeSonar #BogotáMiCiudadMiCasa",
+        "preview": "previews/18084122360430436-0.mp4",
+        "slides": null
+      },
+      {
+        "post_id": "18100870454395843",
+        "permalink": "https://www.instagram.com/reel/DfsxIC3BNVn/",
+        "media_type": "VIDEO",
+        "published": "2026-11-13T23:05:14+0000",
+        "flyer": "flyers/18100870454395843-0.webp",
+        "caption": "🎺 ¡La revolución que nunca deja de sonar!\n\nDurante más de dos décadas, Salsa al Parque ha sido escenario de grandes orquestas, nuevos talentos y encuentros que han marcado la historia musical de Bogotá. Un festival que ha acompañado a distintas generaciones y que sigue abriendo espacio para la evolución de la salsa.\n\nHoy presentamos la imagen oficial de #SalsaAlParque2026, una edición que celebra las raíces de este género y sus nuevas formas de expresión.\n\n🔥 La cita es este 28 y 29 de noviembre en el Parque Metropolitano Simón Bolívar.\n\n🎟️ Entrada libre | 🔞 Evento para mayores de edad. \n\n🎨 criscontreras_art / 💻 juanneva_ Idartes \n\n#LaRevoluciónQueNuncaDejaDeSonar #BogotáMiCiudadMiCasa",
+        "preview": "previews/18100870454395843-0.mp4",
+        "slides": null
       }
     ],
     "bar": false
@@ -23616,14 +23769,9 @@
     "end_time": null,
     "prices": [
       {
-        "label": "Individual",
-        "amount_cop": 30000,
-        "condition": null
-      },
-      {
-        "label": "Pareja",
-        "amount_cop": 50000,
-        "condition": null
+        "label": "Preventa especial",
+        "amount_cop": 20000,
+        "condition": "antes del 25 de noviembre"
       }
     ],
     "artists": [],
@@ -23633,7 +23781,10 @@
     ],
     "contact": "3118344120",
     "confidence": "high",
-    "doubts": [],
+    "doubts": [
+      "sin lugar confirmado",
+      "hora tomada del evento conocido"
+    ],
     "id": "clausura-showstars-28-nov",
     "account": "showstarscol",
     "media": [
@@ -23645,6 +23796,16 @@
         "flyer": "flyers/18127983739925428-0.webp",
         "caption": "✨ ¡LA NOCHE EN QUE EL BAILE SE VISTE DE BRILLO! ✨🪩\n\n¿Estás listo para una noche fuera de lo común? 👀🔥\n\nEste sábado 28 de noviembre, Show Stars se transforma para vivir una clausura llena de ritmo, sorpresas, buena energía y mucha bachata. 💃🕺\n\nPreparamos una experiencia especial para que vengas a disfrutar, aprender, compartir y dejarte sorprender.\n\n🌟 Talleres de bachata\n🎁 Sorpresas especiales\n🪩 Una noche para bailar y disfrutar.\n\n📅 Sábado 28 de noviembre\n🕖 7:00 p. m.\n\nENTRADAS:\n🕺 Individual: $30.000\n❤️ Pareja: $50.000\n\n⚠️ ¡No esperes a que te cuenten cómo estuvo!\n\n📲 Reserva tu cupo desde ahora: 311 834 4120.\n\nVen con tu pareja, tus amigos o con todas las ganas de bailar. Nosotros ponemos la música, tú pones la actitud. 🔥\n\nSHOW STARS: una noche, muchas sorpresas y recuerdos que se quedan contigo. ⭐\n\n#ShowStars #ClausuraShowStars #NocheDeBachata #BachataBogotá #BachataLovers",
         "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18056422355806698",
+        "permalink": "https://www.instagram.com/reel/DfvPnHBBuZ1/",
+        "media_type": "VIDEO",
+        "published": "2026-11-14T22:10:43+0000",
+        "flyer": "flyers/18056422355806698-0.webp",
+        "caption": "Este 28 de noviembre queremos que seas parte de una experiencia llena de música, emociones, talento y mucho brillo. 🌟\n\n🎟️ ¡PREVENTA ESPECIAL!\nAdquiere tu entrada por tan solo $20.000 antes del 25 de noviembre.\n\n¡No dejes pasar esta oportunidad! Después de esta fecha, el valor de la entrada puede cambiar.\n\nEn Show Stars no solo bailamos, creamos momentos que se quedan en el corazón. ❤️\n\n📍 ¡Te esperamos para vivir una noche inolvidable!",
+        "preview": "previews/18056422355806698-0.mp4",
         "slides": null
       }
     ],
@@ -24493,6 +24654,16 @@
         "flyer": "flyers/18064275404674703-0.webp",
         "caption": "🚨 BACHATA SOCIAL CONGRESS 2027 🚨\n\nWE ARE BACK! 🔥🇨🇴\n\nUna nueva edición está en camino y queremos que seas parte de esta historia.\n\n🌎 Artistas internacionales\n\n🎶 Workshops & Social Dancing\n\n🏆 Bachata Jam Session\n\n❤️ Una comunidad, una pasión.\n\nCOMING SOON… 🔜\n\n👇 ¿Desde qué país nos acompañarías?\n\n#BachataSocialCongress #BSC2027 #BachataJamSession #BachataColombia",
         "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18108079946249905",
+        "permalink": "https://www.instagram.com/reel/Dfuin_qR74Q/",
+        "media_type": "VIDEO",
+        "published": "2026-11-14T15:37:03+0000",
+        "flyer": "flyers/18108079946249905-0.webp",
+        "caption": "🇩🇴🔥 ¡DESDE REPÚBLICA DOMINICANA, LLEGA LA REINA DE LAS CADERAS! 👑\n\nEl sabor dominicano, la energía y el movimiento que hipnotiza llegan al BACHATA SOCIAL CONGRESS 2027. 💎\n\nCon ustedes, nuestra primera artista internacional confirmada… ¡ESMERALDA BACHATA! 🔥\n\nPrepárense para aprender, disfrutar y vivir la bachata con una artista que lleva el movimiento de caderas a otro nivel. ❤️‍🔥\n\n🇩🇴 ¡REPÚBLICA DOMINICANA EN LA CASA!\n👑 esmeraldabachata \n\n💬 ¿Quién está listo para aprender de la reina de las caderas? 👀🔥 \n\nPara más información y compras comunícate al +57 3212499241 o \nal + 57 3203302008, también puedes enviar un mensaje al inbox 📨 y te daremos toda la info 🥹😍\n\n#BachataSocialCongress #BSC2027 #EsmeraldaBachata #BachataSocialStyle #BachataDominicana",
+        "preview": "previews/18108079946249905-0.mp4",
         "slides": null
       }
     ],
