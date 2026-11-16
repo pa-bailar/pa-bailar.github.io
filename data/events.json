@@ -21593,7 +21593,7 @@
     "end_date": null,
     "sessions": null,
     "weekday": "lunes",
-    "start_time": "15:00",
+    "start_time": "11:00",
     "end_time": null,
     "prices": [],
     "artists": [
@@ -21617,7 +21617,7 @@
         "media_type": "IMAGE",
         "published": "2026-11-13T19:08:47+0000",
         "flyer": "flyers/18187767067420809-0.webp",
-        "caption": "En el marco del XIX Festival Danza en la Ciudad: Tejiendo movimiento,  llega ‘Impulsos’, una iniciativa ganadora de la Invitación Cultural: Bogotá danza: la ciudad en movimiento, de la SCRD, con una propuesta de danza contemporánea que explora el movimiento como un acto de afirmación, resistencia y reinvención frente a todo aquello que intenta silenciar la existencia.\n\nA través del cuerpo, el gesto y el diseño escénico, esta obra invita a reconocer la fuerza de lo diverso, las memorias y las identidades que habitan el territorio sudamericano. Una apuesta por el movimiento como lenguaje de transformación y posibilidad.\n\n🤝 Resultado de la coproducción entre Pseudónimo Cía (Chile) y Departamento Coreográfico (Colombia), con el apoyo de Iberescena 2025 y el Ministerio de las Culturas, las Artes y los Saberes de Colombia.\n\n📅 16 de noviembre 🕒 3 p.m.\n📍 Parque Santander \n📌 Carrera 7 con calle 15\n\n#FestivalDanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
+        "caption": "En el marco del XIX Festival Danza en la Ciudad: Tejiendo movimiento,  llega ‘Impulsos’, una iniciativa ganadora de la Invitación Cultural: Bogotá danza: la ciudad en movimiento, de la SCRD, con una propuesta de danza contemporánea que explora el movimiento como un acto de afirmación, resistencia y reinvención frente a todo aquello que intenta silenciar la existencia.\n\nA través del cuerpo, el gesto y el diseño escénico, esta obra invita a reconocer la fuerza de lo diverso, las memorias y las identidades que habitan el territorio sudamericano. Una apuesta por el movimiento como lenguaje de transformación y posibilidad.\n\n🤝 Resultado de la coproducción entre Pseudónimo Cía (Chile) y Departamento Coreográfico (Colombia), con el apoyo de Iberescena 2025 y el Ministerio de las Culturas, las Artes y los Saberes de Colombia.\n\n📅 16 de noviembre 🕒 11 a.m. \n📍 Parque Santander \n📌 Carrera 7 con calle 15\n\n#FestivalDanzaEnLaCiudad2026 #TejiendoMovimiento #BogotáMiCiudadMiCasa",
         "preview": null,
         "slides": null
       },
@@ -22414,6 +22414,16 @@
     "account": "la33orquesta",
     "media": [
       {
+        "post_id": "18151713091584295",
+        "permalink": "https://www.instagram.com/p/Dfx9iSTldG-/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-15T23:28:24+0000",
+        "flyer": "flyers/18151713091584295-0.webp",
+        "caption": "Bogotá 🇨🇴\r\n𝗜𝗻𝘃𝗶𝘁𝗮𝗱𝗼 𝗲𝘀𝗽𝗲𝗰𝗶𝗮𝗹: Juan Pablo Vega\r\n¡Se suma una voz bogotana a esta gran celebración! 🎶❤️‍🔥\n\r\njuanpablovega será nuestro invitado especial en Los 25 de la-33 y nos reencontraremos en vivo con “Nada Que Me Pagan”, una canción y una historia que nos recuerdan las vueltas y dificultades de este oficio. 🔥🤯\r\n\r\nQué alegría compartir esta fiesta contigo, Mi Lord. 🔥\r\n\nLa cita es el 21 de noviembre en el royalbogota 🥳\r\n🎟️ Últimas entradas en royalcenter.com.co (Link en bio) \r\n📲 Informes al: 317 331 3956 – 300 660 1156\r\n\r\n¡Nos vemos para celebrar 25 años de gozadera! 🥳🔥💃🕺\n.\n.\n.\n🌟 Arte: sebastianbravoguerrero",
+        "preview": null,
+        "slides": 5
+      },
+      {
         "post_id": "18152247310547501",
         "permalink": "https://www.instagram.com/p/DfTFIHoFbO0/",
         "media_type": "CAROUSEL_ALBUM",
@@ -23023,6 +23033,79 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "Bogotá Distrito Carnaval",
+    "event_type": "festival",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "son"
+    ],
+    "organizer": "@aseismanos",
+    "venue": "A Seis Manos, La Piel Roja, Meeting House",
+    "address": "Calle 22 # 8 - 60",
+    "area": "Centro",
+    "date": "2026-11-21",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "21:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Pasaporte Carnavalero",
+        "amount_cop": 50000,
+        "condition": "Entrada a los 3 espacios + recorrido chiva"
+      },
+      {
+        "label": "Pase Monocuco",
+        "amount_cop": 35000,
+        "condition": "Entrada a los 3 espacios"
+      },
+      {
+        "label": "Entrada individual a cada sitio",
+        "amount_cop": 20000,
+        "condition": "En puerta"
+      }
+    ],
+    "artists": [
+      "Bandejas Espaciales",
+      "Linaje del Son"
+    ],
+    "activities": [
+      "música en vivo",
+      "recorrido en chiva",
+      "remate fiestero"
+    ],
+    "contact": "@aseismanos",
+    "confidence": "high",
+    "doubts": [],
+    "id": "bogota-distrito-carnaval-21-nov",
+    "account": "aseismanos",
+    "media": [
+      {
+        "post_id": "18022467113954917",
+        "permalink": "https://www.instagram.com/p/DfxziL6G5F5/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-15T22:01:01+0000",
+        "flyer": "flyers/18022467113954917-0.webp",
+        "caption": "Sábado 21 de Noviembre 🎉🚎\nVive la ruta de BOGOTÁ DISTRITO CARNAVAL\n2.600 metros más cerca de todos. Por tres escenarios y una recorrido en chiva, para que viajes por toda colombia sin salir del centro de Bogotá.\n\n9:00 p. m. | A Seis Manos 📍 calle 22 # 8 - 60\n🚀BANDEJAS ESPACIALES — Combo bogotano que se aproxima a las músicas tropicales desde una óptica distorsionada y psicodélica. Dub, improvisación y ecos envolventes marcan un sonido altamente bailable que ha circulado durante 10 años por la escena musical contemporáneas. bandejas_espaciales\n\n12:00 a.m. | La Piel Roja 📍 TV. 6 # 27 - 57\n🎷LINAJE DEL SON —  Propuesta artística que reúne son cubano y salsa brava desde una identidad colombiana, construyendo un sonido colectivo donde convergen distintas raíces y trayectorias musicales. linajedelson\nlapielroja\n\n🎉 Remate fiestero | Meeting House 📍 AC. 32 #6b - 43 Tercer piso \nEl punto de encuentro para cerrar la ruta con toda la energía carnavalera.\nmeetinghousebogota\n\n🎟️ $50.000 Pasaporte Carnavalero (Entrada a los 3 sitios + recorrido en chiva)\n🎟️ $35.000 Pase Monocuco (Entrada a los 3 espacios)\n🎟️ $20.000 Entrada a cada sitio individual (En puerta)\n\nEntradas link en la BIO de aseismanos\nEntradas link vivelo.col\n\nTres espacios, tres paradas y un mismo espíritu festivo: una ruta cultural donde la música conecta territorios, culturas y formas de celebrar la vida. ❤️‍🔥\nTres escenarios, 14 agrupaciones y un viaje musical por la diversidad de Colombia. 🇨🇴\n\n📍 El centro se convierte en territorio de encuentro. Camina la ruta, recórrela en chiva, descubre nuevos y déjate llevar por el carnaval.\nsonidos\nBOGOTÁ DISTRITO CARNAVAL\n✨ 2.600 METROS MÁS CERCA DE TODOS.",
+        "preview": null,
+        "slides": 2
+      },
+      {
+        "post_id": "18113597018261198",
+        "permalink": "https://www.instagram.com/p/DfxPhCalQ-Q/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-15T16:46:17+0000",
+        "flyer": "flyers/18113597018261198-0.webp",
+        "caption": "Sábado 21 de Noviembre 🎉🚎\nVive la ruta de BOGOTÁ DISTRITO CARNAVAL\n2.600 metros más cerca de todos. Por tres escenarios y una recorrido en chiva, para que viajes por toda colombia sin salir del centro de Bogotá.\n\n9:00 p. m. | A Seis Manos 📍 calle 22 # 8 - 60\n🚀BANDEJAS ESPACIALES — Combo bogotano que se aproxima a las músicas tropicales desde una óptica distorsionada y psicodélica. Dub, improvisación y ecos envolventes marcan un sonido altamente bailable que ha circulado durante 10 años por la escena musical contemporáneas. bandejas_espaciales\n\n12:00 a.m. | La Piel Roja 📍 TV. 6 # 27 - 57\n🎷LINAJE DEL SON —  Propuesta artística que reúne son cubano y salsa brava desde una identidad colombiana, construyendo un sonido colectivo donde convergen distintas raíces y trayectorias musicales. linajedelson\nlapielroja\n🎉 Remate fiestero | Meeting House 📍 AC. 32 #6b - 43 Tercer piso \nEl punto de encuentro para cerrar la ruta con toda la energía carnavalera.\nmeetinghousebogota\n\n🎟️ $50.000 Pasaporte Carnavalero (Entrada a los 3 sitios + recorrido en chiva)\n🎟️ $35.000 Pase Monocuco (Entrada a los 3 espacios)\n🎟️ $20.000 Entrada a cada sitio individual (En puerta)\n\nEntradas link en la BIO de aseismanos\nEntradas link vivelo.col\n\nTres espacios, tres paradas y un mismo espíritu festivo: una ruta cultural donde la música conecta territorios, culturas y formas de celebrar la vida. ❤️‍🔥\nTres escenarios, 14 agrupaciones y un viaje musical por la diversidad de Colombia. 🇨🇴\n\n📍 El centro se convierte en territorio de encuentro. Camina la ruta, recórrela en chiva, descubre nuevos sonidos y déjate llevar por el carnaval.\n\nBOGOTÁ DISTRITO CARNAVAL\n✨ 2.600 METROS MÁS CERCA DE TODOS.",
+        "preview": null,
+        "slides": 3
+      }
+    ],
+    "bar": true
   },
   {
     "title": "Intensivo 2026 4.0 - Salsa en línea",
