@@ -15,7 +15,7 @@
     "test:clock-ahead": "node scripts/test-clock-ahead.mjs"
   },
   "dependencies": {
-    "astro": "~7.4.7"
+    "astro": "~7.4.11"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.12",
