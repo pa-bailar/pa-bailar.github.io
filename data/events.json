@@ -21483,6 +21483,57 @@
     "bar": false
   },
   {
+    "title": "Zafra Son",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "son"
+    ],
+    "organizer": "Galería Café Libro",
+    "venue": "Galería Café Libro - Sede Parque 93",
+    "address": "Cra 11A # 93-42",
+    "area": "Parque 93",
+    "date": "2026-11-15",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "18:00",
+    "end_time": "03:00",
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 25000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Zafra Son"
+    ],
+    "activities": [
+      "concierto",
+      "música en vivo"
+    ],
+    "contact": "3176608742",
+    "confidence": "high",
+    "doubts": [],
+    "id": "zafra-son-15-nov",
+    "account": "galeriacafelibro",
+    "media": [
+      {
+        "post_id": "18038713883850420",
+        "permalink": "https://www.instagram.com/p/Dfxq-bKs-7s/",
+        "media_type": "IMAGE",
+        "published": "2026-11-15T21:30:03+0000",
+        "flyer": "flyers/18038713883850420-0.webp",
+        "caption": "Domingo de gozadera 💃 Nos vemos en sede Parque 93 con zafra_orquesta para rematar la semana con SALSA ✨\n\n⏰6pm a 3 am \n🎟️ $25.000",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Rosa se puso brava: Salsa Rosa vs Salsa Brava",
     "event_type": "party",
     "is_recurring": false,
@@ -23083,7 +23134,7 @@
     "end_time": null,
     "prices": [
       {
-        "label": "Inscripción",
+        "label": "Gratuitas",
         "amount_cop": 0,
         "condition": null
       }
@@ -23901,7 +23952,7 @@
     "end_time": null,
     "prices": [
       {
-        "label": "Preventa especial",
+        "label": "Preventa",
         "amount_cop": 20000,
         "condition": "antes del 25 de noviembre"
       }
@@ -24101,6 +24152,68 @@
         "caption": "La danza sigue abriendo caminos para descubrir, experimentar y conectar con nuevas formas de expresión. 🍃\n\nEn noviembre y diciembre, La Casona de la Danza continúa siendo un punto de encuentro para quienes quieren acercarse al movimiento desde diferentes experiencias, explorar sus posibilidades y compartir alrededor del cuerpo y la creatividad. Cada espacio es una oportunidad para aprender algo nuevo y dejarse sorprender por lo que la danza tiene por contar. 💫\n\nAnímese a hacer parte de estas experiencias y encuentre en el movimiento una nueva forma de vivir el arte.\n\n📍 Deslice y conozca la programación que continúa durante noviembre.\n\n#CasonaDeLaDanza #BogotáMiCiudadMiCasa",
         "preview": null,
         "slides": 11
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Conspiraciones - Encuentro de cuerpo y memoria",
+    "event_type": "congress",
+    "is_recurring": false,
+    "styles": [
+      "dancehall",
+      "afro",
+      "otro"
+    ],
+    "organizer": "Fogal",
+    "venue": "La Tela Amarilla y Casa de las Flores",
+    "address": null,
+    "area": null,
+    "date": "2026-12-03",
+    "end_date": "2026-12-06",
+    "sessions": null,
+    "weekday": "jueves",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Actividades / Combos",
+        "amount_cop": 20000,
+        "condition": "de $20.000 a $30.000"
+      }
+    ],
+    "artists": [
+      "Wiwa",
+      "Danza Anfibia",
+      "Maga Sarmiento",
+      "Entramada Creadora",
+      "Caracola Lunar",
+      "CuerpoFónico",
+      "Chonta.56",
+      "Maju Sarmiento",
+      "Li Azul"
+    ],
+    "activities": [
+      "talleres",
+      "laboratorios",
+      "jams",
+      "fiesta cumbiera"
+    ],
+    "contact": "WhatsApp 3014407419",
+    "confidence": "high",
+    "doubts": [],
+    "id": "conspiraciones-encuentro-de-cuerpo-y-memoria-3-dic",
+    "account": "fogal_arte",
+    "media": [
+      {
+        "post_id": "18059895461574109",
+        "permalink": "https://www.instagram.com/p/DfyKCx9oAbT/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-16T01:17:42+0000",
+        "flyer": "flyers/18059895461574109-0.webp",
+        "caption": "Unámonos a conspirar nuevos posibles cuerpos, más sensibles, más libres, más humanos~ \n\nLlega Conspiraciones 👋🏼 Un encuentro que reúne a más de 8 colectivos, bajo la misma premisa “¿cómo soltar y transformar aquello que he callado y heredado en mí?” \n\nPrográmate para el fin de semana del 3 al 6 de diciembre✨con: \n• 3 jams abiertas con aporte voluntario 🔥 a cargo de cuerpofonico chonta.56 anfibia_danza & entramadacreadora \n• 3 laboratorios a cargo de julianadetalparacual maga.sarmiento29 march.rgz & maju_aerea_ 🌀\n• 2 talleres a cargo de caracolalunar & power_wine 💪🏼\n• Finalizando con ceramica.nubebebe en escritura creativa ✍️\n\nEspacios aliados: lacasadelasflores_cultural la_telamarilla7 \n\nEscribe YO para más info. e inscripciones 🌞!!! \n\nUn proyecto de fogal_arte ❤️‍🔥",
+        "preview": null,
+        "slides": 6
       }
     ],
     "bar": false
@@ -24527,6 +24640,49 @@
         "published": "2026-11-09T01:46:55+0000",
         "flyer": "flyers/18180816733443976-0.webp",
         "caption": "🌀ECOS EN MOVIMIENTO🌀\n.\n.\n.\nClausura Mover-sé 2026 \n\n🗓️ Domingo 13 de Diciembre\n⏰ 4pm\n📍 Academia de baile Alma de tango\n🔖Adquiere tus entradas\n\n⭐️Falta poco⭐️",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Cirque by EFA",
+    "event_type": "show",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "EFA Danza",
+    "venue": "Teatro Astor Plaza",
+    "address": null,
+    "area": null,
+    "date": "2026-12-14",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "lunes",
+    "start_time": "18:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "show de danza"
+    ],
+    "contact": "@efadanza",
+    "confidence": "high",
+    "doubts": [
+      "precio de la boletería no especificado"
+    ],
+    "id": "cirque-by-efa-14-dic",
+    "account": "efadanza",
+    "media": [
+      {
+        "post_id": "17992321905119592",
+        "permalink": "https://www.instagram.com/p/Dfu9DbIyGfD/",
+        "media_type": "IMAGE",
+        "published": "2026-11-14T19:28:35+0000",
+        "flyer": "flyers/17992321905119592-0.webp",
+        "caption": "🎠✨ ¡SEÑORAS Y SEÑORES, GRANDES Y PEQUEÑOS… EL ESPECTÁCULO ESTÁ POR COMENZAR! ✨🎠\n\n¡EFA DANZA presenta CIRQUE by EFA! Una noche donde la magia del circo, la danza y el talento se unen para crear un espectáculo inolvidable. ❤️🎭\n\nPrepárate para disfrutar de una experiencia llena de luces, música, emociones y mucha magia en un escenario muy especial: 🎪 ¡EL TEATRO ASTOR PLAZA! 🎪\n\n🤹🏻 Nuestros bailarines, artistas invitados y shows especiales se tomarán el escenario con increíbles presentaciones y muchas sorpresas más.\n\n🎪 ¿CUÁNDO Y DÓNDE?\n\n📅 14 de diciembre\n🕕 6:00 p. m.\n📍 Teatro Astor Plaza\n\n🎟️ ¡ADQUIERE TUS BOLETAS!\nDisponibles directamente en EFA DANZA a partir del 20 de noviembre.\n\nUna invitación para nuestros alumnos, familiares, amigos y para todos los que quieran vivir una noche diferente, apoyar el talento artístico y dejarse sorprender.\n\n🎭 CIRQUE by EFA\n¡No solo venimos a bailar… venimos a hacer historia sobre el escenario!\n\n❤️ ¡Te esperamos! No te puedes perder esta función.",
         "preview": null,
         "slides": null
       }
