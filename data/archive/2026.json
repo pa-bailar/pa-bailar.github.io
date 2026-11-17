@@ -803,5 +803,65 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "Workshop Like a Pro - Tini Dancers",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "urbano"
+    ],
+    "organizer": "Bureo Dance Studio",
+    "venue": "Bureo Dance Studio - Sede 109",
+    "address": null,
+    "area": null,
+    "date": "2026-09-17",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "jueves",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "1 clase",
+        "amount_cop": 50000,
+        "condition": null
+      },
+      {
+        "label": "Las 3 clases",
+        "amount_cop": 100000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "angellmfranco",
+      "valutoranzo",
+      "jusslombardi"
+    ],
+    "activities": [
+      "stage performance",
+      "coreografía",
+      "reggaetón"
+    ],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [
+      "hora de inicio no especificada"
+    ],
+    "id": "workshop-like-a-pro-tini-dancers-17-sep",
+    "account": "bureodancestudio",
+    "media": [
+      {
+        "post_id": "18207044776366939",
+        "permalink": "https://www.instagram.com/reel/Dc1-cpWi-p_/",
+        "media_type": "VIDEO",
+        "published": "2026-09-03T23:31:38+0000",
+        "flyer": "archive/flyers/18207044776366939-0.webp",
+        "caption": "🔥 WORKSHOP LIKE A PRO 🔥\n\n3 clases. 3 estilos. Una experiencia de escenario. \n\nEste 17 de septiembre nos vemos en BUREO, sede 109, para bailar, aprender y vivir el escenario como se debe.\n\nCon angellmfranco , valutoranzo y jusslombardi , prepárate para una tarde de movimiento, energía y mucha actitud. 🕺🏻\n\n✨ Stage Performance\n✨ Coreografía\n✨ Reggaetón\n\n1 clase: $50K\nLas 3 clases: $100K\n\n📍 Sede 109\n📅 17 de septiembre\n⚡ Cupos limitados\n\n¿Vas a vivir la experiencia completa o te quedas con una sola? \n\nReserva tu cupo por WhatsApp.",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
   }
 ]
