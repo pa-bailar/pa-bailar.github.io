@@ -1,65 +1,5 @@
 [
   {
-    "title": "Workshop Like a Pro - Tini Dancers",
-    "event_type": "workshop",
-    "is_recurring": false,
-    "styles": [
-      "urbano"
-    ],
-    "organizer": "Bureo Dance Studio",
-    "venue": "Bureo Dance Studio - Sede 109",
-    "address": null,
-    "area": null,
-    "date": "2026-09-17",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "jueves",
-    "start_time": null,
-    "end_time": null,
-    "prices": [
-      {
-        "label": "1 clase",
-        "amount_cop": 50000,
-        "condition": null
-      },
-      {
-        "label": "Las 3 clases",
-        "amount_cop": 100000,
-        "condition": null
-      }
-    ],
-    "artists": [
-      "angellmfranco",
-      "valutoranzo",
-      "jusslombardi"
-    ],
-    "activities": [
-      "stage performance",
-      "coreografía",
-      "reggaetón"
-    ],
-    "contact": null,
-    "confidence": "high",
-    "doubts": [
-      "hora de inicio no especificada"
-    ],
-    "id": "workshop-like-a-pro-tini-dancers-17-sep",
-    "account": "bureodancestudio",
-    "media": [
-      {
-        "post_id": "18207044776366939",
-        "permalink": "https://www.instagram.com/reel/Dc1-cpWi-p_/",
-        "media_type": "VIDEO",
-        "published": "2026-09-03T23:31:38+0000",
-        "flyer": "flyers/18207044776366939-0.webp",
-        "caption": "🔥 WORKSHOP LIKE A PRO 🔥\n\n3 clases. 3 estilos. Una experiencia de escenario. \n\nEste 17 de septiembre nos vemos en BUREO, sede 109, para bailar, aprender y vivir el escenario como se debe.\n\nCon angellmfranco , valutoranzo y jusslombardi , prepárate para una tarde de movimiento, energía y mucha actitud. 🕺🏻\n\n✨ Stage Performance\n✨ Coreografía\n✨ Reggaetón\n\n1 clase: $50K\nLas 3 clases: $100K\n\n📍 Sede 109\n📅 17 de septiembre\n⚡ Cupos limitados\n\n¿Vas a vivir la experiencia completa o te quedas con una sola? \n\nReserva tu cupo por WhatsApp.",
-        "preview": null,
-        "slides": null
-      }
-    ],
-    "bar": false
-  },
-  {
     "title": "Taller de Arte Postal",
     "event_type": "workshop",
     "is_recurring": false,
@@ -21978,6 +21918,56 @@
     "bar": false
   },
   {
+    "title": "Jueves de Son Gozón - Grupo La Clave",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "son",
+      "salsa"
+    ],
+    "organizer": "Salsa Camará",
+    "venue": "Salsa Camará",
+    "address": "Carrera 11 #70A-22",
+    "area": null,
+    "date": "2026-11-19",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "jueves",
+    "start_time": "16:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Aporte cultural",
+        "amount_cop": 15000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Grupo La Clave"
+    ],
+    "activities": [
+      "concierto"
+    ],
+    "contact": "WhatsApp 313 830 8844",
+    "confidence": "high",
+    "doubts": [],
+    "id": "jueves-de-son-gozon-grupo-la-clave-19-nov",
+    "account": "salsacamaraoficial",
+    "media": [
+      {
+        "post_id": "18359279173301814",
+        "permalink": "https://www.instagram.com/p/Df0fFP8mIDu/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-16T23:00:04+0000",
+        "flyer": "flyers/18359279173301814-0.webp",
+        "caption": "Conoce nuestro repertorio salsero de este fin de semana 💃🏻🕺🏻\n🎺 Grupo La Clave\n📆 Jueves 19 de Noviembre\n🎟️ Aporte cultural: 15K\n\nLa Orquesta insignia de la salsa bogotana\n🎺 Charanga New York\n📆 Sábado 21 de Noviembre\n🎟️ Aporte cultural: 20K\n\n⏳ Desde las 4 PM\n📍 Carrera 11 #70A-22\n📲 Reserva por WhatsApp: 313 830 8844",
+        "preview": null,
+        "slides": 4
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Jack and Jill",
     "event_type": "congress",
     "is_recurring": false,
@@ -22361,6 +22351,145 @@
     "bar": false
   },
   {
+    "title": "Noche de Tributo: Rubén Blades & Oscar D'León",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Van Der",
+    "venue": "Van Der",
+    "address": "Cra 16 #35-08",
+    "area": null,
+    "date": "2026-11-20",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "20:30",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Orquesta Media Vista"
+    ],
+    "activities": [
+      "concierto",
+      "música en vivo"
+    ],
+    "contact": "3011620492",
+    "confidence": "high",
+    "doubts": [
+      "sin precio"
+    ],
+    "id": "noche-de-tributo-ruben-blades-oscar-d-leon-20-nov",
+    "account": "casavander_",
+    "media": [
+      {
+        "post_id": "18041461964901696",
+        "permalink": "https://www.instagram.com/p/Df0iCk8M1jD/",
+        "media_type": "IMAGE",
+        "published": "2026-11-16T23:28:54+0000",
+        "flyer": "flyers/18041461964901696-0.webp",
+        "caption": "La dupla y viene un artista de ñapa. (Se lo dejamos a los suertudos) empieza la cuenta regresiva del 2026, las últimas parrandas, las últimas frases “cuando nos vemos” ya casi se acaba el año, así que Ud ponga el punto de encuentro. \n\nPara los que cantan, los que bailan, los que gozan. \nGran tributo con la orquesta Media Vista a dos tesos de la salsa #rubenblades y #oscardleon \n\nReservas al DM.",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Bogotá Distrito Carnaval",
+    "event_type": "festival",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "son"
+    ],
+    "organizer": "@aseismanos",
+    "venue": "A Seis Manos, La Piel Roja, Meeting House",
+    "address": "Calle 22 # 8 - 60",
+    "area": "Centro",
+    "date": "2026-11-20",
+    "end_date": "2026-11-21",
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "21:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Pasaporte Carnavalero",
+        "amount_cop": 50000,
+        "condition": "entrada a los 3 sitios + recorrido en chiva"
+      },
+      {
+        "label": "Pase Monocuco",
+        "amount_cop": 35000,
+        "condition": "entrada a los 3 espacios"
+      },
+      {
+        "label": "Entrada individual",
+        "amount_cop": 20000,
+        "condition": "en puerta"
+      }
+    ],
+    "artists": [
+      "Bandejas Espaciales",
+      "Linaje del Son"
+    ],
+    "activities": [
+      "música en vivo",
+      "recorrido en chiva",
+      "remate fiestero"
+    ],
+    "contact": "@aseismanos",
+    "confidence": "high",
+    "doubts": [],
+    "id": "bogota-distrito-carnaval-21-nov",
+    "account": "aseismanos",
+    "media": [
+      {
+        "post_id": "18022467113954917",
+        "permalink": "https://www.instagram.com/p/DfxziL6G5F5/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-15T22:01:01+0000",
+        "flyer": "flyers/18022467113954917-0.webp",
+        "caption": "Sábado 21 de Noviembre 🎉🚎\nVive la ruta de BOGOTÁ DISTRITO CARNAVAL\n2.600 metros más cerca de todos. Por tres escenarios y una recorrido en chiva, para que viajes por toda colombia sin salir del centro de Bogotá.\n\n9:00 p. m. | A Seis Manos 📍 calle 22 # 8 - 60\n🚀BANDEJAS ESPACIALES — Combo bogotano que se aproxima a las músicas tropicales desde una óptica distorsionada y psicodélica. Dub, improvisación y ecos envolventes marcan un sonido altamente bailable que ha circulado durante 10 años por la escena musical contemporáneas. bandejas_espaciales\n\n12:00 a.m. | La Piel Roja 📍 TV. 6 # 27 - 57\n🎷LINAJE DEL SON —  Propuesta artística que reúne son cubano y salsa brava desde una identidad colombiana, construyendo un sonido colectivo donde convergen distintas raíces y trayectorias musicales. linajedelson\nlapielroja\n\n🎉 Remate fiestero | Meeting House 📍 AC. 32 #6b - 43 Tercer piso \nEl punto de encuentro para cerrar la ruta con toda la energía carnavalera.\nmeetinghousebogota\n\n🎟️ $50.000 Pasaporte Carnavalero (Entrada a los 3 sitios + recorrido en chiva)\n🎟️ $35.000 Pase Monocuco (Entrada a los 3 espacios)\n🎟️ $20.000 Entrada a cada sitio individual (En puerta)\n\nEntradas link en la BIO de aseismanos\nEntradas link vivelo.col\n\nTres espacios, tres paradas y un mismo espíritu festivo: una ruta cultural donde la música conecta territorios, culturas y formas de celebrar la vida. ❤️‍🔥\nTres escenarios, 14 agrupaciones y un viaje musical por la diversidad de Colombia. 🇨🇴\n\n📍 El centro se convierte en territorio de encuentro. Camina la ruta, recórrela en chiva, descubre nuevos y déjate llevar por el carnaval.\nsonidos\nBOGOTÁ DISTRITO CARNAVAL\n✨ 2.600 METROS MÁS CERCA DE TODOS.",
+        "preview": null,
+        "slides": 2
+      },
+      {
+        "post_id": "18113597018261198",
+        "permalink": "https://www.instagram.com/p/DfxPhCalQ-Q/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-15T16:46:17+0000",
+        "flyer": "flyers/18113597018261198-0.webp",
+        "caption": "Sábado 21 de Noviembre 🎉🚎\nVive la ruta de BOGOTÁ DISTRITO CARNAVAL\n2.600 metros más cerca de todos. Por tres escenarios y una recorrido en chiva, para que viajes por toda colombia sin salir del centro de Bogotá.\n\n9:00 p. m. | A Seis Manos 📍 calle 22 # 8 - 60\n🚀BANDEJAS ESPACIALES — Combo bogotano que se aproxima a las músicas tropicales desde una óptica distorsionada y psicodélica. Dub, improvisación y ecos envolventes marcan un sonido altamente bailable que ha circulado durante 10 años por la escena musical contemporáneas. bandejas_espaciales\n\n12:00 a.m. | La Piel Roja 📍 TV. 6 # 27 - 57\n🎷LINAJE DEL SON —  Propuesta artística que reúne son cubano y salsa brava desde una identidad colombiana, construyendo un sonido colectivo donde convergen distintas raíces y trayectorias musicales. linajedelson\nlapielroja\n🎉 Remate fiestero | Meeting House 📍 AC. 32 #6b - 43 Tercer piso \nEl punto de encuentro para cerrar la ruta con toda la energía carnavalera.\nmeetinghousebogota\n\n🎟️ $50.000 Pasaporte Carnavalero (Entrada a los 3 sitios + recorrido en chiva)\n🎟️ $35.000 Pase Monocuco (Entrada a los 3 espacios)\n🎟️ $20.000 Entrada a cada sitio individual (En puerta)\n\nEntradas link en la BIO de aseismanos\nEntradas link vivelo.col\n\nTres espacios, tres paradas y un mismo espíritu festivo: una ruta cultural donde la música conecta territorios, culturas y formas de celebrar la vida. ❤️‍🔥\nTres escenarios, 14 agrupaciones y un viaje musical por la diversidad de Colombia. 🇨🇴\n\n📍 El centro se convierte en territorio de encuentro. Camina la ruta, recórrela en chiva, descubre nuevos sonidos y déjate llevar por el carnaval.\n\nBOGOTÁ DISTRITO CARNAVAL\n✨ 2.600 METROS MÁS CERCA DE TODOS.",
+        "preview": null,
+        "slides": 3
+      },
+      {
+        "post_id": "18500871664105296",
+        "permalink": "https://www.instagram.com/reel/Df08nFVx4v-/",
+        "media_type": "VIDEO",
+        "published": "2026-11-17T03:19:09+0000",
+        "flyer": "flyers/18500871664105296-0.webp",
+        "caption": "Sábado 21 de Noviembre 🎉🚎\nVive la ruta de BOGOTÁ DISTRITO CARNAVAL\n2.600 metros más cerca de todos. Por tres escenarios y una recorrido en chiva, para que viajes por toda colombia sin salir del centro de Bogotá.\n\n12:00 a.m. | La Piel Roja 📍 TV. 6 # 27 - 57\n🎷LINAJE DEL SON —  Propuesta artística que reúne son cubano y salsa brava desde una identidad colombiana, construyendo un sonido colectivo donde convergen distintas raíces y trayectorias musicales. linajedelson\nlapielroja\n\n9:00 p. m. | A Seis Manos 📍 calle 22 # 8 - 60\n🚀BANDEJAS ESPACIALES — Combo bogotano que se aproxima a las músicas tropicales desde una óptica distorsionada y psicodélica. Dub, improvisación y ecos envolventes marcan un sonido altamente bailable que ha circulado durante 10 años por la escena musical contemporáneas. bandejas_espaciales\n\n🎉 Remate fiestero | Meeting House 📍 AC. 32 #6b - 43 Tercer piso \nEl punto de encuentro para cerrar la ruta con toda la energía carnavalera.\nmeetinghousebogota\n\n🎟️ $50.000 Pasaporte Carnavalero (Entrada a los 3 sitios + recorrido en chiva)\n🎟️ $35.000 Pase Monocuco (Entrada a los 3 espacios)\n🎟️ $20.000 Entrada a cada sitio individual (En puerta)\n\nEntradas link en la BIO de aseismanos\nEntradas link vivelo.col\n\nTres espacios, tres paradas y un mismo espíritu festivo: una ruta cultural donde la música conecta territorios, culturas y formas de celebrar la vida. ❤️‍🔥\nTres escenarios, 14 agrupaciones y un viaje musical por la diversidad de Colombia. 🇨🇴\n\n📍 El centro se convierte en territorio de encuentro. Camina la ruta, recórrela en chiva, descubre nuevos y déjate llevar por el carnaval.\nsonidos\nBOGOTÁ DISTRITO CARNAVAL\n✨ 2.600 METROS MÁS CERCA DE TODOS.",
+        "preview": "previews/18500871664105296-0.mp4",
+        "slides": null
+      },
+      {
+        "post_id": "17916179520284895",
+        "permalink": "https://www.instagram.com/reel/Df0ft1zR55b/",
+        "media_type": "VIDEO",
+        "published": "2026-11-16T23:09:07+0000",
+        "flyer": "flyers/17916179520284895-0.webp",
+        "caption": "20 y 21 de Noviembre, Vive la ruta de BOGOTÁ DISTRITO CARNAVAL 2.600 metros más cerca de todos. Por tres escenarios y una recorrido en chiva, para que viajes por toda colombia sin salir del centro de Bogotá.\n\nViernes 20 de Noviembre \n\n9:00 p. m. | A Seis Manos 📍 calle 22 # 8 - 60\n🌴 LA MORENA DEL CHICAMOCHA — Proyecto musical liderado por la cantautora afrotravesti Magdalena Moreno, presenta una apuesta distinta en las músicas de tradición de la costa caribe Colombiana.\nlamorenadelchicamocha\n\n12:00 a.m. | Meeting House 📍 AC. 32 #6b - 43 Tercer piso \n🎷EL LEOPARDO PSICODÉLICO —  A través de su música y performance fusiona vibraciones naturales y del mundo con sonidos electrónicos, ejecutando instrumentos tradicionales en vivo como la gaita Colombiana, el saxofón y el acordeón. \nlp.leopardopsicodelico\nmeetinghousebogota\n\n🎉 Remate fiestero | La Piel Roja 📍 TV. 6 # 27 - 57\nEl punto de encuentro para cerrar la ruta con toda la energía carnavalera.\nlapielroja\n\nSábado 21 de Noviembre 🎉🚎\n\n9:00 p. m. | A Seis Manos 📍 calle 22 # 8 - 60\n🚀BANDEJAS ESPACIALES — Combo bogotano que se aproxima a las músicas tropicales desde una óptica distorsionada y psicodélica. Dub, improvisación y ecos envolventes marcan un sonido altamente bailable que ha circulado durante 10 años por la escena musical contemporáneas. bandejas_espaciales\n\n12:00 a.m. | La Piel Roja 📍 TV. 6 # 27 - 57\n🎷LINAJE DEL SON —  Propuesta artística que reúne son cubano y salsa brava desde una identidad colombiana, construyendo un sonido colectivo donde convergen distintas raíces y trayectorias musicales. linajedelson\nlapielroja\n\n🎉 Remate fiestero | Meeting House 📍 AC. 32 #6b - 43 Tercer piso \nEl punto de encuentro para cerrar la ruta con toda la energía carnavalera.\nmeetinghousebogota\n\n🎟️ $50.000 Pasaporte Carnavalero (Entrada a los 3 sitios + recorrido en chiva)\n🎟️ $35.000 Pase Monocuco (Entrada a los 3 espacios)\n🎟️ $20.000 Entrada a cada sitio individual (En puerta)\n\nEntradas link en la BIO de aseismanos\nEntradas link vivelo.co",
+        "preview": "previews/17916179520284895-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Los 25 de la-33",
     "event_type": "concert",
     "is_recurring": false,
@@ -22640,6 +22769,55 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "Sábado de Orquesta y Sabor - Charanga New York",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Salsa Camará",
+    "venue": "Salsa Camará",
+    "address": "Carrera 11 #70A-22",
+    "area": null,
+    "date": "2026-11-21",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "16:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Aporte cultural",
+        "amount_cop": 20000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Charanga New York"
+    ],
+    "activities": [
+      "concierto"
+    ],
+    "contact": "WhatsApp 313 830 8844",
+    "confidence": "high",
+    "doubts": [],
+    "id": "sabado-de-orquesta-y-sabor-charanga-new-york-21-nov",
+    "account": "salsacamaraoficial",
+    "media": [
+      {
+        "post_id": "18359279173301814",
+        "permalink": "https://www.instagram.com/p/Df0fFP8mIDu/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-16T23:00:04+0000",
+        "flyer": "flyers/18359279173301814-2.webp",
+        "caption": "Conoce nuestro repertorio salsero de este fin de semana 💃🏻🕺🏻\n🎺 Grupo La Clave\n📆 Jueves 19 de Noviembre\n🎟️ Aporte cultural: 15K\n\nLa Orquesta insignia de la salsa bogotana\n🎺 Charanga New York\n📆 Sábado 21 de Noviembre\n🎟️ Aporte cultural: 20K\n\n⏳ Desde las 4 PM\n📍 Carrera 11 #70A-22\n📲 Reserva por WhatsApp: 313 830 8844",
+        "preview": null,
+        "slides": 4
+      }
+    ],
+    "bar": true
   },
   {
     "title": "Taller Especial de Bachata",
@@ -23043,79 +23221,6 @@
       }
     ],
     "bar": false
-  },
-  {
-    "title": "Bogotá Distrito Carnaval",
-    "event_type": "festival",
-    "is_recurring": false,
-    "styles": [
-      "salsa",
-      "son"
-    ],
-    "organizer": "@aseismanos",
-    "venue": "A Seis Manos, La Piel Roja, Meeting House",
-    "address": "Calle 22 # 8 - 60",
-    "area": "Centro",
-    "date": "2026-11-21",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "sábado",
-    "start_time": "21:00",
-    "end_time": null,
-    "prices": [
-      {
-        "label": "Pasaporte Carnavalero",
-        "amount_cop": 50000,
-        "condition": "Entrada a los 3 espacios + recorrido chiva"
-      },
-      {
-        "label": "Pase Monocuco",
-        "amount_cop": 35000,
-        "condition": "Entrada a los 3 espacios"
-      },
-      {
-        "label": "Entrada individual a cada sitio",
-        "amount_cop": 20000,
-        "condition": "En puerta"
-      }
-    ],
-    "artists": [
-      "Bandejas Espaciales",
-      "Linaje del Son"
-    ],
-    "activities": [
-      "música en vivo",
-      "recorrido en chiva",
-      "remate fiestero"
-    ],
-    "contact": "@aseismanos",
-    "confidence": "high",
-    "doubts": [],
-    "id": "bogota-distrito-carnaval-21-nov",
-    "account": "aseismanos",
-    "media": [
-      {
-        "post_id": "18022467113954917",
-        "permalink": "https://www.instagram.com/p/DfxziL6G5F5/",
-        "media_type": "CAROUSEL_ALBUM",
-        "published": "2026-11-15T22:01:01+0000",
-        "flyer": "flyers/18022467113954917-0.webp",
-        "caption": "Sábado 21 de Noviembre 🎉🚎\nVive la ruta de BOGOTÁ DISTRITO CARNAVAL\n2.600 metros más cerca de todos. Por tres escenarios y una recorrido en chiva, para que viajes por toda colombia sin salir del centro de Bogotá.\n\n9:00 p. m. | A Seis Manos 📍 calle 22 # 8 - 60\n🚀BANDEJAS ESPACIALES — Combo bogotano que se aproxima a las músicas tropicales desde una óptica distorsionada y psicodélica. Dub, improvisación y ecos envolventes marcan un sonido altamente bailable que ha circulado durante 10 años por la escena musical contemporáneas. bandejas_espaciales\n\n12:00 a.m. | La Piel Roja 📍 TV. 6 # 27 - 57\n🎷LINAJE DEL SON —  Propuesta artística que reúne son cubano y salsa brava desde una identidad colombiana, construyendo un sonido colectivo donde convergen distintas raíces y trayectorias musicales. linajedelson\nlapielroja\n\n🎉 Remate fiestero | Meeting House 📍 AC. 32 #6b - 43 Tercer piso \nEl punto de encuentro para cerrar la ruta con toda la energía carnavalera.\nmeetinghousebogota\n\n🎟️ $50.000 Pasaporte Carnavalero (Entrada a los 3 sitios + recorrido en chiva)\n🎟️ $35.000 Pase Monocuco (Entrada a los 3 espacios)\n🎟️ $20.000 Entrada a cada sitio individual (En puerta)\n\nEntradas link en la BIO de aseismanos\nEntradas link vivelo.col\n\nTres espacios, tres paradas y un mismo espíritu festivo: una ruta cultural donde la música conecta territorios, culturas y formas de celebrar la vida. ❤️‍🔥\nTres escenarios, 14 agrupaciones y un viaje musical por la diversidad de Colombia. 🇨🇴\n\n📍 El centro se convierte en territorio de encuentro. Camina la ruta, recórrela en chiva, descubre nuevos y déjate llevar por el carnaval.\nsonidos\nBOGOTÁ DISTRITO CARNAVAL\n✨ 2.600 METROS MÁS CERCA DE TODOS.",
-        "preview": null,
-        "slides": 2
-      },
-      {
-        "post_id": "18113597018261198",
-        "permalink": "https://www.instagram.com/p/DfxPhCalQ-Q/",
-        "media_type": "CAROUSEL_ALBUM",
-        "published": "2026-11-15T16:46:17+0000",
-        "flyer": "flyers/18113597018261198-0.webp",
-        "caption": "Sábado 21 de Noviembre 🎉🚎\nVive la ruta de BOGOTÁ DISTRITO CARNAVAL\n2.600 metros más cerca de todos. Por tres escenarios y una recorrido en chiva, para que viajes por toda colombia sin salir del centro de Bogotá.\n\n9:00 p. m. | A Seis Manos 📍 calle 22 # 8 - 60\n🚀BANDEJAS ESPACIALES — Combo bogotano que se aproxima a las músicas tropicales desde una óptica distorsionada y psicodélica. Dub, improvisación y ecos envolventes marcan un sonido altamente bailable que ha circulado durante 10 años por la escena musical contemporáneas. bandejas_espaciales\n\n12:00 a.m. | La Piel Roja 📍 TV. 6 # 27 - 57\n🎷LINAJE DEL SON —  Propuesta artística que reúne son cubano y salsa brava desde una identidad colombiana, construyendo un sonido colectivo donde convergen distintas raíces y trayectorias musicales. linajedelson\nlapielroja\n🎉 Remate fiestero | Meeting House 📍 AC. 32 #6b - 43 Tercer piso \nEl punto de encuentro para cerrar la ruta con toda la energía carnavalera.\nmeetinghousebogota\n\n🎟️ $50.000 Pasaporte Carnavalero (Entrada a los 3 sitios + recorrido en chiva)\n🎟️ $35.000 Pase Monocuco (Entrada a los 3 espacios)\n🎟️ $20.000 Entrada a cada sitio individual (En puerta)\n\nEntradas link en la BIO de aseismanos\nEntradas link vivelo.col\n\nTres espacios, tres paradas y un mismo espíritu festivo: una ruta cultural donde la música conecta territorios, culturas y formas de celebrar la vida. ❤️‍🔥\nTres escenarios, 14 agrupaciones y un viaje musical por la diversidad de Colombia. 🇨🇴\n\n📍 El centro se convierte en territorio de encuentro. Camina la ruta, recórrela en chiva, descubre nuevos sonidos y déjate llevar por el carnaval.\n\nBOGOTÁ DISTRITO CARNAVAL\n✨ 2.600 METROS MÁS CERCA DE TODOS.",
-        "preview": null,
-        "slides": 3
-      }
-    ],
-    "bar": true
   },
   {
     "title": "Intensivo 2026 4.0 - Salsa en línea",
@@ -23761,7 +23866,7 @@
     "organizer": "Jaleo",
     "venue": "Campus Beta",
     "address": "Calle 47 #14-22",
-    "area": null,
+    "area": "Teusaquillo",
     "date": "2026-11-28",
     "end_date": null,
     "sessions": null,
@@ -23802,6 +23907,16 @@
     "account": "jaleocompetencia_",
     "media": [
       {
+        "post_id": "18068262998685769",
+        "permalink": "https://www.instagram.com/p/DfzpowQFkFr/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-16T15:13:00+0000",
+        "flyer": "flyers/18068262998685769-1.webp",
+        "caption": "🔥 ¡NO PUEDES FALTAR ESTE 28 DE NOVIEMBRE! 💃🕺\n\nSOCIAL CON REMATE SALSA AL PARQUE\n\n📍 campusbeta.bogota | Calle 47 #14-22\n🎟️ Preventa: $25K | Taquilla: $40K\n\n🎶 SALSA • BACHATA • URBANO\n🎧 DJs: camilo_barretto frank.de.latorre djfeyder\n💃 Clase de salsa caleña + clase de bachata.\n🏆 Competencia de salsa caleña 1 vs. 1 con votación del público y premio en efectivo.\n\n🔥 ¡Compra tu preventa y ahorra $15K!\n📲 Escríbenos por DM.\n\nUna noche para bailar, sacar los mejores pasos y disfrutar con tu parche. ❤️‍🔥 ¡Nos vemos en la pista!\n\n#SocialPalParche #SalsaBogotá #BachataBogotá #SalsaCaleña BogotáBaila",
+        "preview": null,
+        "slides": 2
+      },
+      {
         "post_id": "18136882285676034",
         "permalink": "https://www.instagram.com/p/DfvgDnEFjMo/",
         "media_type": "CAROUSEL_ALBUM",
@@ -23817,7 +23932,7 @@
         "media_type": "CAROUSEL_ALBUM",
         "published": "2026-11-13T22:37:06+0000",
         "flyer": "flyers/17921743377457046-0.webp",
-        "caption": "🔥 ¡BOGOTÁ, SE VIENE EL PARCHE QUE NO TE PUEDES PERDER! 🔥\n\n💃🕺 SOCIAL PAL PARCHE CON  REMATE DE SALSA AL PARQUE 💃🏼💃🏾\n\nUna noche para bailar sin parar, sacar los mejores pasos y disfrutar de la mejor energía del baile. ❤️‍🔥\n\n🎶 SOCIAL | SALSA | BACHATA | URBANO\n\nDjs camilo_barretto frank.de.latorre djfeyder \n\nClase salsa caleña por el mejor 🔥\n danitello22 \nClase de bachata por el multicampeon 🔥 juanesksallas.lafabrica \n\nMini competencia salsa caleña 1Vs1 El publico decide desde su celular \n\nPremio  en efectivo\n💰 \n\n📅 28 DE NOVIEMBRE\n📍 campusbeta.bogota – Calle 47 #14-22\n\n🎟️ ¡ASEGURA TU ENTRADA EN PREVENTA!\n\n🔥 Preventa: $25.000\n🔥 Taquilla: $40.000\n\n⚠️ ¡No esperes hasta el último momento! Compra tu preventa y ahorra $15.000.\n\nEtiqueta a tu parche de baile, comparte este post y alista los zapatos… ¡porque esa noche se baila hasta que el cuerpo aguante! 💥\n\n📲 Escríbenos por DM para asegurar tu entrada.\n\n#SocialPalParche #Jaleo #SalsaCalena SalsaBogota BachataBogota SocialDeBaile BogotaBaila",
+        "caption": "🔥 ¡BOGOTÁ, SE VIENE EL PARCHE QUE NO TE PUEDES PERDER! 🔥\n\n💃🕺 SOCIAL PAL PARCHE CON  REMATE DE SALSA AL PARQUE 💃🏼💃🏾\n\nUna noche para bailar sin parar, sacar los mejores pasos y disfrutar de la mejor energía del baile. ❤️‍🔥\n\n🎶 SOCIAL | SALSA | BACHATA | URBANO\n\nDjs camilo_barretto  djfeyder \n\nClase salsa caleña por el mejor 🔥\n danitello22 \nClase de bachata por el multicampeon 🔥 juanesksallas.lafabrica \n\nMini competencia salsa caleña 1Vs1 El publico decide desde su celular \n\nPremio  en efectivo\n💰 \n\n📅 28 DE NOVIEMBRE\n📍 campusbeta.bogota – Calle 47 #14-22\n\n🎟️ ¡ASEGURA TU ENTRADA EN PREVENTA!\n\n🔥 Preventa: $25.000\n🔥 Taquilla: $40.000\n\n⚠️ ¡No esperes hasta el último momento! Compra tu preventa y ahorra $15.000.\n\nEtiqueta a tu parche de baile, comparte este post y alista los zapatos… ¡porque esa noche se baila hasta que el cuerpo aguante! 💥\n\n📲 Escríbenos por DM para asegurar tu entrada.\n\n#SocialPalParche #Jaleo #SalsaCalena SalsaBogota BachataBogota SocialDeBaile BogotaBaila",
         "preview": null,
         "slides": 5
       }
