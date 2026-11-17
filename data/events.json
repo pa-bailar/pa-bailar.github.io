@@ -22580,6 +22580,16 @@
     "account": "galeriacafelibro",
     "media": [
       {
+        "post_id": "18089618408313452",
+        "permalink": "https://www.instagram.com/reel/Df0ngqhsoRb/",
+        "media_type": "VIDEO",
+        "published": "2026-11-17T00:16:36+0000",
+        "flyer": "flyers/18089618408313452-0.webp",
+        "caption": "🔥 ¡La salsa brava tiene una cita en Galería Café Libro!\n\nEste 21 de noviembre nos vamos de frente con el sabor de The Big Jhony, cantante bogotano con más de 20 años de trayectoria y ganador de Salsa al Parque 2026. 🎶\n\nUna noche pa’ los que llevan la salsa en las venas, disfrutan del buen golpe y no se quedan sentados cuando suena la clave. ¡Aquí se viene a bailar, a gozar y a sacar los mejores pasos!\n\n#GaleríaCaféLibro #TheBigJhony #SalsaBrava #bogotásalsera",
+        "preview": "previews/18089618408313452-0.mp4",
+        "slides": null
+      },
+      {
         "post_id": "18029107178922146",
         "permalink": "https://www.instagram.com/reel/DfimXEOsxDk/",
         "media_type": "VIDEO",
@@ -24240,68 +24250,6 @@
     "bar": false
   },
   {
-    "title": "Conspiraciones - Encuentro de cuerpo y memoria",
-    "event_type": "congress",
-    "is_recurring": false,
-    "styles": [
-      "dancehall",
-      "afro",
-      "otro"
-    ],
-    "organizer": "Fogal",
-    "venue": "La Tela Amarilla y Casa de las Flores",
-    "address": null,
-    "area": null,
-    "date": "2026-12-03",
-    "end_date": "2026-12-06",
-    "sessions": null,
-    "weekday": "jueves",
-    "start_time": null,
-    "end_time": null,
-    "prices": [
-      {
-        "label": "Actividades / Combos",
-        "amount_cop": 20000,
-        "condition": "de $20.000 a $30.000"
-      }
-    ],
-    "artists": [
-      "Wiwa",
-      "Danza Anfibia",
-      "Maga Sarmiento",
-      "Entramada Creadora",
-      "Caracola Lunar",
-      "CuerpoFónico",
-      "Chonta.56",
-      "Maju Sarmiento",
-      "Li Azul"
-    ],
-    "activities": [
-      "talleres",
-      "laboratorios",
-      "jams",
-      "fiesta cumbiera"
-    ],
-    "contact": "WhatsApp 3014407419",
-    "confidence": "high",
-    "doubts": [],
-    "id": "conspiraciones-encuentro-de-cuerpo-y-memoria-3-dic",
-    "account": "fogal_arte",
-    "media": [
-      {
-        "post_id": "18059895461574109",
-        "permalink": "https://www.instagram.com/p/DfyKCx9oAbT/",
-        "media_type": "CAROUSEL_ALBUM",
-        "published": "2026-11-16T01:17:42+0000",
-        "flyer": "flyers/18059895461574109-0.webp",
-        "caption": "Unámonos a conspirar nuevos posibles cuerpos, más sensibles, más libres, más humanos~ \n\nLlega Conspiraciones 👋🏼 Un encuentro que reúne a más de 8 colectivos, bajo la misma premisa “¿cómo soltar y transformar aquello que he callado y heredado en mí?” \n\nPrográmate para el fin de semana del 3 al 6 de diciembre✨con: \n• 3 jams abiertas con aporte voluntario 🔥 a cargo de cuerpofonico chonta.56 anfibia_danza & entramadacreadora \n• 3 laboratorios a cargo de julianadetalparacual maga.sarmiento29 march.rgz & maju_aerea_ 🌀\n• 2 talleres a cargo de caracolalunar & power_wine 💪🏼\n• Finalizando con ceramica.nubebebe en escritura creativa ✍️\n\nEspacios aliados: lacasadelasflores_cultural la_telamarilla7 \n\nEscribe YO para más info. e inscripciones 🌞!!! \n\nUn proyecto de fogal_arte ❤️‍🔥",
-        "preview": null,
-        "slides": 6
-      }
-    ],
-    "bar": false
-  },
-  {
     "title": "Taller - Las fábulas de Tamalameque",
     "event_type": "workshop",
     "is_recurring": false,
@@ -24338,6 +24286,78 @@
         "caption": "La danza sigue abriendo caminos para descubrir, experimentar y conectar con nuevas formas de expresión. 🍃\n\nEn noviembre y diciembre, La Casona de la Danza continúa siendo un punto de encuentro para quienes quieren acercarse al movimiento desde diferentes experiencias, explorar sus posibilidades y compartir alrededor del cuerpo y la creatividad. Cada espacio es una oportunidad para aprender algo nuevo y dejarse sorprender por lo que la danza tiene por contar. 💫\n\nAnímese a hacer parte de estas experiencias y encuentre en el movimiento una nueva forma de vivir el arte.\n\n📍 Deslice y conozca la programación que continúa durante noviembre.\n\n#CasonaDeLaDanza #BogotáMiCiudadMiCasa",
         "preview": null,
         "slides": 11
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Conspiraciones - Encuentro de cuerpo y memoria",
+    "event_type": "congress",
+    "is_recurring": false,
+    "styles": [
+      "dancehall",
+      "afro",
+      "otro"
+    ],
+    "organizer": "Fogal",
+    "venue": "La Tela Amarilla y Casa de las Flores",
+    "address": "Diagonal 59 # 22-33",
+    "area": null,
+    "date": "2026-12-03",
+    "end_date": "2026-12-06",
+    "sessions": null,
+    "weekday": "jueves",
+    "start_time": "20:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Aporte voluntario",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Wiwa",
+      "Danza Anfibia",
+      "Maga Sarmiento",
+      "Entramada Creadora",
+      "Caracola Lunar",
+      "CuerpoFónico",
+      "Chonta.56",
+      "Maju Sarmiento",
+      "Li Azul"
+    ],
+    "activities": [
+      "talleres",
+      "laboratorios",
+      "jams",
+      "fiesta cumbiera"
+    ],
+    "contact": "WhatsApp 3014407419",
+    "confidence": "high",
+    "doubts": [],
+    "id": "conspiraciones-encuentro-de-cuerpo-y-memoria-3-dic",
+    "account": "fogal_arte",
+    "media": [
+      {
+        "post_id": "18650906548054657",
+        "permalink": "https://www.instagram.com/p/Dfz2ctcoP7N/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-16T17:04:58+0000",
+        "flyer": "flyers/18650906548054657-0.webp",
+        "caption": "Exploremos como unir la voz y el cuerpo junto a yonnalizzouli cuerpofonico; entre los sonidos de mar y río propuestos por chonta.56 🌊\n\nConspiraciones nace de la idea cuestionar la fragmentación de nuestras cuerpas y memorias, preguntarnos en cómo volver a ellas y encontrarlas a través de prácticas corpóreas y creativas. Resignicando nuestra rabia, indignación, miedos en un canto colectivo y un movimiento sinérgico. \n\nLas y los esperamos a ser parte de la apertura del Encuentro el Jueves 3 de diciembre en lacasadelasflores_cultural \nInscripciones con aporte voluntario a través de fogal_arte o el número 3014407419.\n\nUn espacio para todas las cuerpas con o sin experiencia 🌸",
+        "preview": null,
+        "slides": 3
+      },
+      {
+        "post_id": "18059895461574109",
+        "permalink": "https://www.instagram.com/p/DfyKCx9oAbT/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-16T01:17:42+0000",
+        "flyer": "flyers/18059895461574109-0.webp",
+        "caption": "Unámonos a conspirar nuevos posibles cuerpos, más sensibles, más libres, más humanos~ \n\nLlega Conspiraciones 👋🏼 Un encuentro que reúne a más de 8 colectivos, bajo la misma premisa “¿cómo soltar y transformar aquello que he callado y heredado en mí?” \n\nPrográmate para el fin de semana del 3 al 6 de diciembre✨con: \n• 3 jams abiertas con aporte voluntario 🔥 a cargo de cuerpofonico chonta.56 anfibia_danza & entramadacreadora \n• 3 laboratorios a cargo de julianadetalparacual maga.sarmiento29 march.rgz & maju_aerea_ 🌀\n• 2 talleres a cargo de caracolalunar & power_wine 💪🏼\n• Finalizando con ceramica.nubebebe en escritura creativa ✍️\n\nEspacios aliados: lacasadelasflores_cultural la_telamarilla7 \n\nEscribe YO para más info. e inscripciones 🌞!!! \n\nUn proyecto de fogal_arte ❤️‍🔥",
+        "preview": null,
+        "slides": 6
       }
     ],
     "bar": false
@@ -25025,6 +25045,16 @@
         "flyer": "flyers/18064275404674703-0.webp",
         "caption": "🚨 BACHATA SOCIAL CONGRESS 2027 🚨\n\nWE ARE BACK! 🔥🇨🇴\n\nUna nueva edición está en camino y queremos que seas parte de esta historia.\n\n🌎 Artistas internacionales\n\n🎶 Workshops & Social Dancing\n\n🏆 Bachata Jam Session\n\n❤️ Una comunidad, una pasión.\n\nCOMING SOON… 🔜\n\n👇 ¿Desde qué país nos acompañarías?\n\n#BachataSocialCongress #BSC2027 #BachataJamSession #BachataColombia",
         "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18103847261436519",
+        "permalink": "https://www.instagram.com/reel/Df0XeyExkJn/",
+        "media_type": "VIDEO",
+        "published": "2026-11-16T21:56:39+0000",
+        "flyer": "flyers/18103847261436519-0.webp",
+        "caption": "🇪🇸🔥 ¡DESDE BARCELONA, ESPAÑA, POR PRIMERA VEZ EN COLOMBIA! 🇨🇴\n\n💎 ¡ alonsoynoelia CONFIRMADOS PARA BACHATA SOCIAL CONGRESS 2027! 💜\n\n¡Seguimos elevando el nivel de nuestro congreso! 🌎✨\n\nDirectamente desde Barcelona llegan dos grandes referentes internacionales de la bachata sensual, reconocidos por su increíble fluidez, elegancia, conexión y calidad de movimiento. 🔥\n\n🏆 Bicampeones nacionales de España y subcampeones mundiales, llegan para compartir toda su experiencia y talento con nuestra comunidad.\n\n💃 FOLLOWERS, ¡PREPÁRENSE! noeliaoterobs nos deleitará con su sensualidad, delicadeza y elegancia, compartiendo herramientas para mejorar su técnica, fluidez y expresión corporal.\n\n🕺 LEADERS, ¡ESTO TAMBIÉN ES PARA USTEDES! alonso.bachata traerá su estilo, técnica y conocimientos para llevar su conexión, conducción y calidad de movimiento a otro nivel.\n\n✨ ¡Una pareja que no solo van a querer ver bailar, sino de la que van a querer aprender!\n\n🇨🇴 ¡Colombia los espera con los brazos abiertos!\n\n💜 BACHATA SOCIAL CONGRESS 2027\n🌎 Different Styles, One Passion.\n\n#bachatasocialcongress #BSC2027 #alonsoynoelia #bachatasensual #bachatacolombia",
+        "preview": "previews/18103847261436519-0.mp4",
         "slides": null
       },
       {
