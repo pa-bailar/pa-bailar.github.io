@@ -19844,12 +19844,22 @@
       {
         "label": "Preventa Individual",
         "amount_cop": 25000,
-        "condition": "incluye cóctel de bienvenida por persona"
+        "condition": null
       },
       {
         "label": "Preventa Pareja",
         "amount_cop": 40000,
-        "condition": "incluye cóctel de bienvenida por persona"
+        "condition": null
+      },
+      {
+        "label": "Taquilla Individual",
+        "amount_cop": 30000,
+        "condition": null
+      },
+      {
+        "label": "Taquilla Pareja",
+        "amount_cop": 50000,
+        "condition": null
       }
     ],
     "artists": [
@@ -19866,6 +19876,16 @@
     "id": "parchese-la-salsa-fiesta-de-solxs-13-nov",
     "account": "parchexbogota",
     "media": [
+      {
+        "post_id": "18028689701919184",
+        "permalink": "https://www.instagram.com/p/DfpHVvLGkjm/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-12T13:00:01+0000",
+        "flyer": "flyers/18028689701919184-1.webp",
+        "caption": "Una bailadita y se reinicia la vida 🪄\n\nPrográmese en noviembre con los viernes de salsa más parchados de Bogotá. ❣️\nLxs esperamos para mover el cuerpo y conectar! \n\nSon cupos limitados y la entrada incluye una bebida de bienvenida. 🍹\n\nPreventa 25k individual y 40k pareja. \nTaquilla 30k individual y 50k pareja. \n(Ingreso incluye bebida por persona). \n\nReserve su cupo escribiendo un mensaje directo a parchexbogota 💬",
+        "preview": null,
+        "slides": 2
+      },
       {
         "post_id": "17989316697115326",
         "permalink": "https://www.instagram.com/p/Dfke_lumiuh/",
@@ -21702,7 +21722,13 @@
     "weekday": "miércoles",
     "start_time": "16:00",
     "end_time": "18:00",
-    "prices": [],
+    "prices": [
+      {
+        "label": "Inscripción previa",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
     "artists": [],
     "activities": [
       "taller"
@@ -21713,6 +21739,16 @@
     "id": "taller-cali-es-cali-lo-demas-es-loma-18-nov",
     "account": "danzaenlaciudad",
     "media": [
+      {
+        "post_id": "17979996396154299",
+        "permalink": "https://www.instagram.com/p/Df2dcoflOiL/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-17T17:24:13+0000",
+        "flyer": "flyers/17979996396154299-3.webp",
+        "caption": "En el marco de #SalsaAlParque2026, Bogotá abre espacios para explorar los ritmos que hacen vibrar la pista, descubrir nuevas formas de bailar y encontrarse con la música desde el cuerpo.\n\nLa franja académica de danza propone experiencias para acercarse a diferentes expresiones del baile y reconocer la riqueza de la cultura salsera.\n\n¡Súmese a esta programación inscribiéndose en el link de la bio y deje que el ritmo marque el encuentro! 🔥\n\n#LaRevoluciónQueNuncaDejaDeSonar #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 5
+      },
       {
         "post_id": "18092653832232787",
         "permalink": "https://www.instagram.com/p/DfXW4_6kYzs/",
@@ -21822,6 +21858,55 @@
         "caption": "✨🔥 ¡DOS RITMOS, UNA EXPERIENCIA ÚNICA! 🔥✨\n\nLa elegancia, sensualidad y movimientos del Belly Dance se fusionan con la pasión y el sabor de la Bachata. 💃🏻\n\nUna clase diferente para explorar nuevos movimientos, conectar con tu cuerpo y dejarte llevar por la música.\n\n🔥 ¡Atrévete a vivir esta fusión en Esfera Latina!\n\nReserva tu cupo y no te quedes por fuera.\n📲 3135802345",
         "preview": null,
         "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Taller Salón de Baile de Salsa Casino",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa cubana"
+    ],
+    "organizer": "Salsa al Parque",
+    "venue": "Tienda Esperanza - Sede San Felipe",
+    "address": "Carrera 22 No. 74-30",
+    "area": "San Felipe",
+    "date": "2026-11-18",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "miércoles",
+    "start_time": "19:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Entrada libre",
+        "amount_cop": 0,
+        "condition": "hasta completar aforo"
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "taller de salsa casino"
+    ],
+    "contact": "@danzaenlaciudad",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de finalización"
+    ],
+    "id": "taller-salon-de-baile-de-salsa-casino-18-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "17979996396154299",
+        "permalink": "https://www.instagram.com/p/Df2dcoflOiL/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-17T17:24:13+0000",
+        "flyer": "flyers/17979996396154299-1.webp",
+        "caption": "En el marco de #SalsaAlParque2026, Bogotá abre espacios para explorar los ritmos que hacen vibrar la pista, descubrir nuevas formas de bailar y encontrarse con la música desde el cuerpo.\n\nLa franja académica de danza propone experiencias para acercarse a diferentes expresiones del baile y reconocer la riqueza de la cultura salsera.\n\n¡Súmese a esta programación inscribiéndose en el link de la bio y deje que el ritmo marque el encuentro! 🔥\n\n#LaRevoluciónQueNuncaDejaDeSonar #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 5
       }
     ],
     "bar": false
@@ -22346,6 +22431,16 @@
         "caption": "🚨 ÚLTIMA HORA | Testigos reportan movimientos de cadera no autorizados, vueltas sin previo aviso y parejas que no se soltaron en toda la canción en pleno centro de Bogotá.\n\nSegún fuentes cercanas al parche, el foco de la emergencia está en viajero.bogota (Cra. 3 #20-35), donde cada viernes se reúne gente de Bogotá y personas que andan viajando por Colombia para aprender salsa y quedarse de fiesta.\n\nLas autoridades del parche recomiendan no resistirse: salir a bailar y salir a parchar. \n\n🗓️ Próximo reporte: viernes 20 de noviembre · Salsa vs Dancehall \n8:00 p. m. · Clase de salsa con Juancho Salsita y Niko\n9:30 p. m. · Fiesta con DJ Andrade \n\n🍹 Preventa: 25k individual y 40k pareja, incluye un cóctel de bienvenida por persona.\n\nCupos limitados. Reserve ahora escribiendo a nuestro WhatsApp o por mensaje directo a parchexbogota 💌",
         "preview": null,
         "slides": 2
+      },
+      {
+        "post_id": "18028689701919184",
+        "permalink": "https://www.instagram.com/p/DfpHVvLGkjm/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-12T13:00:01+0000",
+        "flyer": "flyers/18028689701919184-1.webp",
+        "caption": "Una bailadita y se reinicia la vida 🪄\n\nPrográmese en noviembre con los viernes de salsa más parchados de Bogotá. ❣️\nLxs esperamos para mover el cuerpo y conectar! \n\nSon cupos limitados y la entrada incluye una bebida de bienvenida. 🍹\n\nPreventa 25k individual y 40k pareja. \nTaquilla 30k individual y 50k pareja. \n(Ingreso incluye bebida por persona). \n\nReserve su cupo escribiendo un mensaje directo a parchexbogota 💬",
+        "preview": null,
+        "slides": 2
       }
     ],
     "bar": false
@@ -22771,6 +22866,65 @@
     "bar": false
   },
   {
+    "title": "Concurso de Chicas BDC",
+    "event_type": "competition",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Bogotá Dance Club",
+    "venue": "Bogotá Dance Club",
+    "address": "Calle 25F #36-15",
+    "area": null,
+    "date": "2026-11-21",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "15:00",
+    "end_time": "22:00",
+    "prices": [
+      {
+        "label": "Preventa",
+        "amount_cop": 25000,
+        "condition": null
+      },
+      {
+        "label": "Taquilla",
+        "amount_cop": 30000,
+        "condition": null
+      },
+      {
+        "label": "Inscripción concurso",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "concurso de chicas BDC",
+      "clase de baile prefiesta",
+      "fiesta"
+    ],
+    "contact": "@bogotadanceclub",
+    "confidence": "high",
+    "doubts": [],
+    "id": "concurso-de-chicas-bdc-21-nov",
+    "account": "bogotadanceclub",
+    "media": [
+      {
+        "post_id": "18150497908585399",
+        "permalink": "https://www.instagram.com/reel/Df3Ez13gfeO/",
+        "media_type": "VIDEO",
+        "published": "2026-11-17T23:09:10+0000",
+        "flyer": "flyers/18150497908585399-0.webp",
+        "caption": "💃🏻 ¡BOGOTÁ ESTÁ BUSCANDO A SUS PRÓXIMAS CHICAS BDC! ✨🔥\n\n¿Tienes actitud, carisma y amas bailar? ¡Esta es tu oportunidad de brillar! 💖 Ya están abiertas las inscripciones para la primera edición de CHICAS BDC. Anímate a participar y demuestra todo lo que tienes para conquistar la pista. 👠\n\nY si no vas a participar, ¡también queremos verte ahí! Invita a tus amigos, ven a disfrutar y apoya a tu Chica BDC favorita. 🏆\n\n📢 Comunidad bailadora de 18 a 45 años\n🗓️ 21 de noviembre | 🕒 De 3 PM a 10 PM\n📍 Calle 25F #36-15 - Bogotá Dance Club\n\n🏆 Concurso de Chicas BDC ✨💃🏻\n\n💵 Preventa: $25.000\n💰 Taquilla: $30.000\n(Incluye clase de baile prefiesta + una bebida + fiesta)\n\n🚨 ¡Recuerda que participar en el concurso es TOTALMENTE GRATIS! Encuentra el link de inscripción en nuestras historias destacadas.\n\n¡Nos vemos en la pista! 🔥\n\n#baile #planesenbogotá #concursobogotá #salsa",
+        "preview": "previews/18150497908585399-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Sábado de Orquesta y Sabor - Charanga New York",
     "event_type": "concert",
     "is_recurring": false,
@@ -23137,6 +23291,16 @@
     "account": "fernandoespanadj",
     "media": [
       {
+        "post_id": "18120436511100805",
+        "permalink": "https://www.instagram.com/reel/Df14CaMuLje/",
+        "media_type": "VIDEO",
+        "published": "2026-11-17T11:57:23+0000",
+        "flyer": "flyers/18120436511100805-0.webp",
+        "caption": "SON CUBANO Y CULTURA : Este fin de semana la música cubana se toma el altiplano. El viernes 20, la Orquesta Aragón en Chía, la Ciudad de la Luna, y el sábado 21, las Estrellas del Buena Vista en el bogotanísimo Teatro Jorge Eliécer Gaitán. Compren sus boletas por adelantado porqué se agotan. Y en ambos conciertos estaremos con los libros de Fernando España expuestos y a la venta. Salsa y Cultura.",
+        "preview": null,
+        "slides": null
+      },
+      {
         "post_id": "18119858447100973",
         "permalink": "https://www.instagram.com/reel/Dfk_Dl0hu_t/",
         "media_type": "VIDEO",
@@ -23210,6 +23374,49 @@
         "published": "2026-11-17T12:10:38+0000",
         "flyer": "flyers/18161172190514215-0.webp",
         "caption": "Músicas Populares de Brasil 🇧🇷\nDúo Marsiglia - Aranguren \nEste sábado 21 de noviembre. 8PM\n🎟️ 20K Preventa \n🎟️ 25K Taquilla \nLes esperamos 🍷✨🎶",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "33 Revoluciones Salseras",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Van Der",
+    "venue": "Van Der",
+    "address": null,
+    "area": null,
+    "date": "2026-11-21",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "20:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Chico Latino"
+    ],
+    "activities": [],
+    "contact": "3011620492",
+    "confidence": "high",
+    "doubts": [
+      "sin información de cover o precio"
+    ],
+    "id": "33-revoluciones-salseras-21-nov",
+    "account": "casavander_",
+    "media": [
+      {
+        "post_id": "18001816275044409",
+        "permalink": "https://www.instagram.com/p/Df2_ymYBuAe/",
+        "media_type": "IMAGE",
+        "published": "2026-11-17T22:25:54+0000",
+        "flyer": "flyers/18001816275044409-0.webp",
+        "caption": "Sabes por qué 33? \nTe leemos. Mientras tanto te recordamos que cerrando año nosotros apretamos la agenda para sacarle el mayor provecho a los últimas semanas, nada más sabroso que comer rico y echar chisme al son de un buen Vinilero. \n\nChico Latino en las Tornas este sábado 21 de Noviembre. \nArme el combo, disfrute y goce!",
         "preview": null,
         "slides": null
       }
@@ -23472,7 +23679,13 @@
     "weekday": "lunes",
     "start_time": "14:00",
     "end_time": "16:00",
-    "prices": [],
+    "prices": [
+      {
+        "label": "Inscripción previa",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
     "artists": [],
     "activities": [
       "taller de salsa casino",
@@ -23485,6 +23698,16 @@
     "id": "taller-en-clave-de-casino-fundamentos-para-23-nov",
     "account": "danzaenlaciudad",
     "media": [
+      {
+        "post_id": "17979996396154299",
+        "permalink": "https://www.instagram.com/p/Df2dcoflOiL/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-17T17:24:13+0000",
+        "flyer": "flyers/17979996396154299-4.webp",
+        "caption": "En el marco de #SalsaAlParque2026, Bogotá abre espacios para explorar los ritmos que hacen vibrar la pista, descubrir nuevas formas de bailar y encontrarse con la música desde el cuerpo.\n\nLa franja académica de danza propone experiencias para acercarse a diferentes expresiones del baile y reconocer la riqueza de la cultura salsera.\n\n¡Súmese a esta programación inscribiéndose en el link de la bio y deje que el ritmo marque el encuentro! 🔥\n\n#LaRevoluciónQueNuncaDejaDeSonar #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 5
+      },
       {
         "post_id": "18154494292539250",
         "permalink": "https://www.instagram.com/p/DfXTa6yEV46/",
@@ -23583,7 +23806,13 @@
     "weekday": "lunes",
     "start_time": "16:00",
     "end_time": "18:00",
-    "prices": [],
+    "prices": [
+      {
+        "label": "Inscripción previa",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
     "artists": [],
     "activities": [
       "taller"
@@ -23594,6 +23823,16 @@
     "id": "taller-a-mover-la-cintura-que-llego-la-sabrosura-23-nov",
     "account": "danzaenlaciudad",
     "media": [
+      {
+        "post_id": "17979996396154299",
+        "permalink": "https://www.instagram.com/p/Df2dcoflOiL/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-17T17:24:13+0000",
+        "flyer": "flyers/17979996396154299-0.webp",
+        "caption": "En el marco de #SalsaAlParque2026, Bogotá abre espacios para explorar los ritmos que hacen vibrar la pista, descubrir nuevas formas de bailar y encontrarse con la música desde el cuerpo.\n\nLa franja académica de danza propone experiencias para acercarse a diferentes expresiones del baile y reconocer la riqueza de la cultura salsera.\n\n¡Súmese a esta programación inscribiéndose en el link de la bio y deje que el ritmo marque el encuentro! 🔥\n\n#LaRevoluciónQueNuncaDejaDeSonar #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 5
+      },
       {
         "post_id": "18092653832232787",
         "permalink": "https://www.instagram.com/p/DfXW4_6kYzs/",
@@ -23635,7 +23874,13 @@
     "weekday": "martes",
     "start_time": "16:00",
     "end_time": "18:00",
-    "prices": [],
+    "prices": [
+      {
+        "label": "Inscripción previa",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
     "artists": [],
     "activities": [
       "taller"
@@ -23646,6 +23891,16 @@
     "id": "taller-azucar-tumbao-y-sabor-24-nov",
     "account": "danzaenlaciudad",
     "media": [
+      {
+        "post_id": "17979996396154299",
+        "permalink": "https://www.instagram.com/p/Df2dcoflOiL/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-17T17:24:13+0000",
+        "flyer": "flyers/17979996396154299-2.webp",
+        "caption": "En el marco de #SalsaAlParque2026, Bogotá abre espacios para explorar los ritmos que hacen vibrar la pista, descubrir nuevas formas de bailar y encontrarse con la música desde el cuerpo.\n\nLa franja académica de danza propone experiencias para acercarse a diferentes expresiones del baile y reconocer la riqueza de la cultura salsera.\n\n¡Súmese a esta programación inscribiéndose en el link de la bio y deje que el ritmo marque el encuentro! 🔥\n\n#LaRevoluciónQueNuncaDejaDeSonar #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 5
+      },
       {
         "post_id": "18092653832232787",
         "permalink": "https://www.instagram.com/p/DfXW4_6kYzs/",
@@ -23796,6 +24051,73 @@
       }
     ],
     "bar": true
+  },
+  {
+    "title": "Párchese La Salsa: Salsa vs Champeta",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "champeta"
+    ],
+    "organizer": "@parchexbogota",
+    "venue": "Viajero Bogotá",
+    "address": "Cra. 3 #20-35",
+    "area": null,
+    "date": "2026-11-27",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "20:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Preventa Individual",
+        "amount_cop": 25000,
+        "condition": null
+      },
+      {
+        "label": "Preventa Pareja",
+        "amount_cop": 40000,
+        "condition": null
+      },
+      {
+        "label": "Taquilla Individual",
+        "amount_cop": 30000,
+        "condition": null
+      },
+      {
+        "label": "Taquilla Pareja",
+        "amount_cop": 50000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "DJ Roman",
+      "Profe Juancho Salsita"
+    ],
+    "activities": [
+      "clase de salsa",
+      "fiesta"
+    ],
+    "contact": "@parchexbogota",
+    "confidence": "high",
+    "doubts": [],
+    "id": "parchese-la-salsa-salsa-vs-champeta-27-nov",
+    "account": "parchexbogota",
+    "media": [
+      {
+        "post_id": "18028689701919184",
+        "permalink": "https://www.instagram.com/p/DfpHVvLGkjm/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-12T13:00:01+0000",
+        "flyer": "flyers/18028689701919184-1.webp",
+        "caption": "Una bailadita y se reinicia la vida 🪄\n\nPrográmese en noviembre con los viernes de salsa más parchados de Bogotá. ❣️\nLxs esperamos para mover el cuerpo y conectar! \n\nSon cupos limitados y la entrada incluye una bebida de bienvenida. 🍹\n\nPreventa 25k individual y 40k pareja. \nTaquilla 30k individual y 50k pareja. \n(Ingreso incluye bebida por persona). \n\nReserve su cupo escribiendo un mensaje directo a parchexbogota 💬",
+        "preview": null,
+        "slides": 2
+      }
+    ],
+    "bar": false
   },
   {
     "title": "Candelaria Salsa Groove en vivo",
@@ -23979,7 +24301,7 @@
         "media_type": "CAROUSEL_ALBUM",
         "published": "2026-11-15T00:32:20+0000",
         "flyer": "flyers/18136882285676034-0.webp",
-        "caption": "🕺APRENDE A BAILAR EN SOCIAL PAL PARCHE – REMATE SALSA AL PARQUE💃🏻\n\nNo importa si no sabes!!\nAqui te enseñamos, con los mejores⭐️\n\ndanitello22 salsa caleño basico \njuanesksallas.lafabrica  bachata basico \n\n🎶 SOCIAL | SALSA | BACHATA | URBANO\n\nDjs camilo_barretto frank.de.latorre djfeyder \n\n📅 28 DE NOVIEMBRE\n📍 campusbeta.bogota – Calle 47 #14-22\n\n🎟️ ¡ASEGURA TU ENTRADA EN PREVENTA!\n🔥 Preventa: $25.000\n🔥 Taquilla: $40.000\n\n⚠️ ¡No esperes hasta el último momento! Compra tu preventa y ahorra $15.000.\nEtiqueta a tu parche de baile, comparte este post y alista los zapatos… ¡porque esa noche se baila hasta que el cuerpo aguante! 💥\n\n📲 Escríbenos por DM para asegurar tu entrada.\n\n#SocialPalParche #Jaleo SalsaCalena SalsaBogota BachataBogota SocialDeBaile BogotaBaila",
+        "caption": "🕺APRENDE A BAILAR EN SOCIAL PAL PARCHE – REMATE SALSA AL PARQUE💃🏻\n\nNo importa si no sabes!!\nAqui te enseñamos, con los mejores⭐️\n\ndanitello22 salsa caleño basico \njuanesksallas.lafabrica  bachata basico \n\n🎶 SOCIAL | SALSA | BACHATA | URBANO\n\nDjs camilo_barretto  djfeyder \n\n📅 28 DE NOVIEMBRE\n📍 campusbeta.bogota – Calle 47 #14-22\n\n🎟️ ¡ASEGURA TU ENTRADA EN PREVENTA!\n🔥 Preventa: $25.000\n🔥 Taquilla: $40.000\n\n⚠️ ¡No esperes hasta el último momento! Compra tu preventa y ahorra $15.000.\nEtiqueta a tu parche de baile, comparte este post y alista los zapatos… ¡porque esa noche se baila hasta que el cuerpo aguante! 💥\n\n📲 Escríbenos por DM para asegurar tu entrada.\n\n#SocialPalParche #Jaleo SalsaCalena SalsaBogota BachataBogota SocialDeBaile BogotaBaila",
         "preview": null,
         "slides": 2
       },
@@ -24582,6 +24904,16 @@
     "id": "luigi-texidor-en-pachanga-4-dic",
     "account": "pachanga_y_pochola",
     "media": [
+      {
+        "post_id": "18025785785941251",
+        "permalink": "https://www.instagram.com/p/Df3DviwhZmw/",
+        "media_type": "IMAGE",
+        "published": "2026-11-17T23:00:07+0000",
+        "flyer": "flyers/18025785785941251-0.webp",
+        "caption": "En Pachanga 🔥queremos llevar alegría, amor y muchas sonrisas a los niños del Pacífico. ❤️🌊\n\nJunto a nuestro invitado especial  luiguitexidorpr que estará con todos sus éxitos que nos a puesto a bailar por tanto tiempo …\n\nAdemás se unen con todo el flow djchuchosalsa  y jeisson_dj_salsa \nTe  invitamos a sumarte a esta campaña de recolección de regalos.\n✨🔥🙏🏿\n\n🎟️ +57 313 2891788 - +57 314 4822623 Boletos.  #pachanga #lasalsavuelveabrillar",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "17946834672366992",
         "permalink": "https://www.instagram.com/p/DfdfD7-xFzD/",
