@@ -22290,6 +22290,53 @@
     "bar": false
   },
   {
+    "title": "Barakatanga",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "El Goce Pagano",
+    "venue": "El Goce Pagano",
+    "address": "Diagonal 20A N. 0-82",
+    "area": null,
+    "date": "2026-11-20",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Barakatanga"
+    ],
+    "activities": [
+      "concierto",
+      "salsa en vivo"
+    ],
+    "contact": "WhatsApp 3168710646",
+    "confidence": "high",
+    "doubts": [
+      "sin hora especifica",
+      "sin precio confirmado"
+    ],
+    "id": "barakatanga-20-nov",
+    "account": "elgocepagano",
+    "media": [
+      {
+        "post_id": "18123232838067183",
+        "permalink": "https://www.instagram.com/p/Df3PgLoDlyV/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-18T00:41:36+0000",
+        "flyer": "flyers/18123232838067183-1.webp",
+        "caption": "🔥Concierto salsero, en elgocepagano 🔥\nSalsa bogotana, sabor, calle y goce en una sola noche\n\n🕔 Puertas: 6 pm | 🎶 Shows: 11 pm y 1 am\n📍 Diagonal 20A No. 82 – Bogotá\n\n✨🔥¡A bailar!🔥✨\nCover 20k\n#salsaenvivo #salsa\n#concierto #envivo\n#conciertobogota #salsaenbogotá",
+        "preview": null,
+        "slides": 2
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "VI Encuentro sobre las pedagogías danzarias entramados sensibles: cuerpos, saberes y pedagogías",
     "event_type": "congress",
     "is_recurring": false,
@@ -23165,6 +23212,56 @@
     "bar": false
   },
   {
+    "title": "El Ciclón",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "El Goce Pagano",
+    "venue": "El Goce Pagano",
+    "address": "Diagonal 20A N. 0-82",
+    "area": null,
+    "date": "2026-11-21",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "17:30",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 20000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "El Ciclón"
+    ],
+    "activities": [
+      "concierto",
+      "salsa en vivo"
+    ],
+    "contact": "WhatsApp 3168710646",
+    "confidence": "high",
+    "doubts": [],
+    "id": "el-ciclon-21-nov",
+    "account": "elgocepagano",
+    "media": [
+      {
+        "post_id": "18123232838067183",
+        "permalink": "https://www.instagram.com/p/Df3PgLoDlyV/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-18T00:41:36+0000",
+        "flyer": "flyers/18123232838067183-0.webp",
+        "caption": "🔥Concierto salsero, en elgocepagano 🔥\nSalsa bogotana, sabor, calle y goce en una sola noche\n\n🕔 Puertas: 6 pm | 🎶 Shows: 11 pm y 1 am\n📍 Diagonal 20A No. 82 – Bogotá\n\n✨🔥¡A bailar!🔥✨\nCover 20k\n#salsaenvivo #salsa\n#concierto #envivo\n#conciertobogota #salsaenbogotá",
+        "preview": null,
+        "slides": 2
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Gran Taller: Salsa Corporalidad",
     "event_type": "workshop",
     "is_recurring": false,
@@ -23324,63 +23421,6 @@
     "bar": false
   },
   {
-    "title": "M\u0000sicas Populares de Brasil",
-    "event_type": "concert",
-    "is_recurring": false,
-    "styles": [
-      "salsa",
-      "otro"
-    ],
-    "organizer": "Casa de Citas",
-    "venue": "Casa de Citas",
-    "address": "Cra 3 #12B - 35",
-    "area": "La Candelaria",
-    "date": "2026-11-21",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "s\u0000bado",
-    "start_time": "20:00",
-    "end_time": "03:00",
-    "prices": [
-      {
-        "label": "Preventa",
-        "amount_cop": 20000,
-        "condition": null
-      },
-      {
-        "label": "Taquilla",
-        "amount_cop": 25000,
-        "condition": null
-      }
-    ],
-    "artists": [
-      "D\u0000o Marsiglia - Aranguren",
-      "DJ Carlos"
-    ],
-    "activities": [
-      "m\u0000sica en vivo",
-      "rumba caribe"
-    ],
-    "contact": "315 212 5733",
-    "confidence": "high",
-    "doubts": [],
-    "id": "m-sicas-populares-de-brasil-21-nov",
-    "account": "restaurantecasadecitas",
-    "media": [
-      {
-        "post_id": "18161172190514215",
-        "permalink": "https://www.instagram.com/p/Df15jhNv3cZ/",
-        "media_type": "IMAGE",
-        "published": "2026-11-17T12:10:38+0000",
-        "flyer": "flyers/18161172190514215-0.webp",
-        "caption": "Músicas Populares de Brasil 🇧🇷\nDúo Marsiglia - Aranguren \nEste sábado 21 de noviembre. 8PM\n🎟️ 20K Preventa \n🎟️ 25K Taquilla \nLes esperamos 🍷✨🎶",
-        "preview": null,
-        "slides": null
-      }
-    ],
-    "bar": true
-  },
-  {
     "title": "33 Revoluciones Salseras",
     "event_type": "party",
     "is_recurring": false,
@@ -23417,6 +23457,61 @@
         "published": "2026-11-17T22:25:54+0000",
         "flyer": "flyers/18001816275044409-0.webp",
         "caption": "Sabes por qué 33? \nTe leemos. Mientras tanto te recordamos que cerrando año nosotros apretamos la agenda para sacarle el mayor provecho a los últimas semanas, nada más sabroso que comer rico y echar chisme al son de un buen Vinilero. \n\nChico Latino en las Tornas este sábado 21 de Noviembre. \nArme el combo, disfrute y goce!",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Músicas Populares de Brasil",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "Casa de Citas",
+    "venue": "Casa de Citas",
+    "address": "Cra 3 # 12B - 35",
+    "area": "La Candelaria",
+    "date": "2026-11-21",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "20:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Preventa",
+        "amount_cop": 20000,
+        "condition": null
+      },
+      {
+        "label": "Taquilla",
+        "amount_cop": 25000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Dúo Marsiglia - Aranguren",
+      "DJ Carlos"
+    ],
+    "activities": [
+      "música en vivo"
+    ],
+    "contact": "3152125733",
+    "confidence": "high",
+    "doubts": [],
+    "id": "m-sicas-populares-de-brasil-21-nov",
+    "account": "restaurantecasadecitas",
+    "media": [
+      {
+        "post_id": "18161172190514215",
+        "permalink": "https://www.instagram.com/p/Df15jhNv3cZ/",
+        "media_type": "IMAGE",
+        "published": "2026-11-17T12:10:38+0000",
+        "flyer": "flyers/18161172190514215-0.webp",
+        "caption": "Músicas Populares de Brasil 🇧🇷\nDúo Marsiglia - Aranguren \nEste sábado 21 de noviembre. 8PM\n🎟️ 20K Preventa \n🎟️ 25K Taquilla \nLes esperamos 🍷✨🎶",
         "preview": null,
         "slides": null
       }
@@ -24053,6 +24148,53 @@
     "bar": true
   },
   {
+    "title": "La Rebega Groove",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "El Goce Pagano",
+    "venue": "El Goce Pagano",
+    "address": "Diagonal 20A N. 0-82",
+    "area": null,
+    "date": "2026-11-27",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "La Rebega Groove"
+    ],
+    "activities": [
+      "concierto",
+      "salsa en vivo"
+    ],
+    "contact": "WhatsApp 3168710646",
+    "confidence": "high",
+    "doubts": [
+      "sin hora especifica",
+      "sin precio confirmado"
+    ],
+    "id": "la-rebega-groove-27-nov",
+    "account": "elgocepagano",
+    "media": [
+      {
+        "post_id": "18123232838067183",
+        "permalink": "https://www.instagram.com/p/Df3PgLoDlyV/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-18T00:41:36+0000",
+        "flyer": "flyers/18123232838067183-1.webp",
+        "caption": "🔥Concierto salsero, en elgocepagano 🔥\nSalsa bogotana, sabor, calle y goce en una sola noche\n\n🕔 Puertas: 6 pm | 🎶 Shows: 11 pm y 1 am\n📍 Diagonal 20A No. 82 – Bogotá\n\n✨🔥¡A bailar!🔥✨\nCover 20k\n#salsaenvivo #salsa\n#concierto #envivo\n#conciertobogota #salsaenbogotá",
+        "preview": null,
+        "slides": 2
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Párchese La Salsa: Salsa vs Champeta",
     "event_type": "social",
     "is_recurring": false,
@@ -24374,6 +24516,53 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "Ger Band Latin Group",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "El Goce Pagano",
+    "venue": "El Goce Pagano",
+    "address": "Diagonal 20A N. 0-82",
+    "area": null,
+    "date": "2026-11-28",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Ger Band Latin Group"
+    ],
+    "activities": [
+      "concierto",
+      "salsa en vivo"
+    ],
+    "contact": "WhatsApp 3168710646",
+    "confidence": "high",
+    "doubts": [
+      "sin hora especifica",
+      "sin precio confirmado"
+    ],
+    "id": "ger-band-latin-group-28-nov",
+    "account": "elgocepagano",
+    "media": [
+      {
+        "post_id": "18123232838067183",
+        "permalink": "https://www.instagram.com/p/Df3PgLoDlyV/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-18T00:41:36+0000",
+        "flyer": "flyers/18123232838067183-1.webp",
+        "caption": "🔥Concierto salsero, en elgocepagano 🔥\nSalsa bogotana, sabor, calle y goce en una sola noche\n\n🕔 Puertas: 6 pm | 🎶 Shows: 11 pm y 1 am\n📍 Diagonal 20A No. 82 – Bogotá\n\n✨🔥¡A bailar!🔥✨\nCover 20k\n#salsaenvivo #salsa\n#concierto #envivo\n#conciertobogota #salsaenbogotá",
+        "preview": null,
+        "slides": 2
+      }
+    ],
+    "bar": true
   },
   {
     "title": "Muestra educativa Adiós Bogotá",
