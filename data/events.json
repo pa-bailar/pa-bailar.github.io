@@ -23160,6 +23160,63 @@
     "bar": false
   },
   {
+    "title": "M\u0000sicas Populares de Brasil",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "otro"
+    ],
+    "organizer": "Casa de Citas",
+    "venue": "Casa de Citas",
+    "address": "Cra 3 #12B - 35",
+    "area": "La Candelaria",
+    "date": "2026-11-21",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "s\u0000bado",
+    "start_time": "20:00",
+    "end_time": "03:00",
+    "prices": [
+      {
+        "label": "Preventa",
+        "amount_cop": 20000,
+        "condition": null
+      },
+      {
+        "label": "Taquilla",
+        "amount_cop": 25000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "D\u0000o Marsiglia - Aranguren",
+      "DJ Carlos"
+    ],
+    "activities": [
+      "m\u0000sica en vivo",
+      "rumba caribe"
+    ],
+    "contact": "315 212 5733",
+    "confidence": "high",
+    "doubts": [],
+    "id": "m-sicas-populares-de-brasil-21-nov",
+    "account": "restaurantecasadecitas",
+    "media": [
+      {
+        "post_id": "18161172190514215",
+        "permalink": "https://www.instagram.com/p/Df15jhNv3cZ/",
+        "media_type": "IMAGE",
+        "published": "2026-11-17T12:10:38+0000",
+        "flyer": "flyers/18161172190514215-0.webp",
+        "caption": "Músicas Populares de Brasil 🇧🇷\nDúo Marsiglia - Aranguren \nEste sábado 21 de noviembre. 8PM\n🎟️ 20K Preventa \n🎟️ 25K Taquilla \nLes esperamos 🍷✨🎶",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Latinholic Night",
     "event_type": "social",
     "is_recurring": false,
@@ -24426,8 +24483,13 @@
     "end_time": null,
     "prices": [
       {
-        "label": "Aporte voluntario",
-        "amount_cop": 0,
+        "label": "Clase suelta",
+        "amount_cop": 30000,
+        "condition": null
+      },
+      {
+        "label": "Full Pass Encuentro",
+        "amount_cop": 130000,
         "condition": null
       }
     ],
@@ -24454,6 +24516,16 @@
     "id": "conspiraciones-encuentro-de-cuerpo-y-memoria-3-dic",
     "account": "fogal_arte",
     "media": [
+      {
+        "post_id": "18136062829858385",
+        "permalink": "https://www.instagram.com/p/Df3Pf7ZPMJ1/",
+        "media_type": "IMAGE",
+        "published": "2026-11-18T00:51:40+0000",
+        "flyer": "flyers/18136062829858385-0.webp",
+        "caption": "La rabia es un juego atrevido y del cual poco se habla. Como dice Audre Lorde, la rabia está llena de información y energía. A través de juegos de improvisación danzada y técnicas somáticas, despertaremos a ese monstruo dormido que habita en tu cuerpo. Ven, sé y atrévete!!!\n\nUna investigación de fogal_arte dirigida por julianadetalparacual & maga.sarmiento29 ❤️‍🔥\nEl primer laboratorio de Conspiraciones~ el viernes 4 de diciembre en la_telamarilla7 ✨\n\nClase suelta 30k\nFull Pass Encuentro 130k\n\nEscríbe YO para más info. e inscripciones 🔥",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18650906548054657",
         "permalink": "https://www.instagram.com/p/Dfz2ctcoP7N/",

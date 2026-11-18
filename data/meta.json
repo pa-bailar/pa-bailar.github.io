@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-17T03:22:44-05:00",
+  "generated_at": "2026-11-17T21:17:16-05:00",
   "accounts": [
     "_olorumcongress",
     "academia_cowork",
@@ -135,35 +135,35 @@
     "zaimora24"
   ],
   "stats": {
-    "accounts": 39,
+    "accounts": 43,
     "posts_analyzed": 13,
-    "posts_triaged_out": 7,
-    "events_new": 3,
-    "events_merged": 4,
+    "posts_triaged_out": 10,
+    "events_new": 1,
+    "events_merged": 1,
     "events_discarded": 0,
-    "provisional": 1,
+    "provisional": 3,
     "upgraded": 0,
     "upgrade_reads": 0,
     "upgrade_misses": 0,
     "upgrade_changes": {},
     "triage_checked": 0,
     "triage_misses": 0,
-    "reanalyzed": 1,
+    "reanalyzed": 0,
     "batch_requests": 0,
     "batched_posts": 0,
     "batch_rereads": 0,
     "pending": 0,
-    "errors": 0,
-    "events_expired": 1,
-    "processed_forgotten": 0,
-    "flyers_removed": 1,
+    "errors": 1,
+    "events_expired": 0,
+    "processed_forgotten": 107,
+    "flyers_removed": 0,
     "rate_limited": false,
     "out_of_time": false,
     "gemini_requests": {
-      "gemini-3.5-flash-lite": 11,
-      "gemini-3.8-flash": 6,
-      "gemini-3.6-flash": 6,
-      "gemini-3-flash-preview": 1
+      "gemini-3.5-flash-lite": 12,
+      "gemini-3.8-flash": 3,
+      "gemini-3.6-flash": 3,
+      "gemini-3-flash-preview": 3
     },
     "models_unavailable": [],
     "external": {
@@ -172,68 +172,112 @@
       "problems": {}
     },
     "due_accounts": [
-      "andonybaron",
-      "chanchanlatino",
-      "clandisfrute",
-      "ebi_dancecompany",
-      "reyesdelasalsa.col",
-      "meetinghousebogota",
-      "esferalatinaoficial",
-      "germanbaila",
-      "sarasandoval.oficial",
-      "lamecanica_original",
-      "proyectourbandance",
-      "danzaenlaciudad",
-      "bogotadanceclub",
-      "sondehabana",
-      "zafradance",
-      "casineafest",
-      "soywiwioficial",
-      "frank.de.latorre",
-      "and1erita",
-      "la33orquesta",
-      "ilhehabana",
-      "parchexbogota",
-      "casaquiebracanto",
-      "salsacamaraoficial",
-      "bilongocolombia",
-      "casavander_",
-      "callejonsalsa",
-      "tributo.salsayjazz",
-      "aseismanos",
-      "madyumdance",
-      "salsaysonoficial",
-      "pachanga_y_pochola",
-      "bulevarsalsabar",
-      "oronegroclub",
-      "fernandoespanadj",
-      "juancho__salsita",
-      "salsaculto",
-      "jaleocompetencia_",
-      "herencialatinad.c"
+      "academyfeel",
+      "originalstepdance",
+      "danceholicproject",
+      "quemaquequema",
+      "galeriacafelibro",
+      "terrazasalsera",
+      "el_panteon_de_la_salsa",
+      "festivalsalsaalparque",
+      "ritmomoderno",
+      "elratonsalsaclub",
+      "el_bochinche_cafe_",
+      "salsalatina.alsacia",
+      "teffa_mg",
+      "danceinmotionclub",
+      "sonrumbero",
+      "iledanza",
+      "alejochacon.co",
+      "mambo_y_control",
+      "guadalupebar751",
+      "fogal_arte",
+      "restaurantecasadecitas",
+      "bogotadanceclub.academy",
+      "salsayritmolatino",
+      "bachatasocialcongresss",
+      "bachatamania_bogota",
+      "showstarscol",
+      "jen.ssy",
+      "bureodancestudio",
+      "academiaalmadetangoe",
+      "valkandela",
+      "studiolatindance",
+      "imperiolatino",
+      "mover__se",
+      "distritosocialbog",
+      "efadanza",
+      "zafiro_project_team",
+      "bailarito",
+      "cordillerafestival",
+      "arrollando.dc",
+      "tibaduiza__",
+      "latrinidaddelasalsa",
+      "babou_candelaria",
+      "jackandjilloficial"
     ],
-    "instagram_usage": 46,
+    "instagram_usage": 58,
     "instagram_usage_detail": {
-      "call_count": 15,
+      "call_count": 17,
       "total_cputime": 0,
-      "total_time": 46
+      "total_time": 58
     },
     "instagram_reads": {
-      "accounts": 39,
-      "mean_seconds": 2.08,
-      "median_seconds": 1.53,
-      "max_seconds": 6.16,
-      "mean_cost": 1.21,
-      "max_cost": 3,
-      "max_cost_account": "aseismanos",
+      "accounts": 43,
+      "mean_seconds": 2.07,
+      "median_seconds": 1.75,
+      "max_seconds": 5.46,
+      "mean_cost": 1.38,
+      "max_cost": 4,
+      "max_cost_account": "academiaalmadetangoe",
       "headers": {
-        "X-App-Usage": 39
+        "X-App-Usage": 43
       },
-      "expected_cost": 2
+      "expected_cost": 3
     },
     "instagram_stop": null,
     "by_account": {
-      "andonybaron": {
+      "academyfeel": {
+        "posts_analyzed": 0,
+        "events_new": 0,
+        "events_merged": 0,
+        "pending": 0,
+        "errors": 0,
+        "backfill": false,
+        "fetch_failed": false,
+        "latest_post": "2026-11-08"
+      },
+      "originalstepdance": {
+        "posts_analyzed": 0,
+        "events_new": 0,
+        "events_merged": 0,
+        "pending": 0,
+        "errors": 0,
+        "backfill": false,
+        "fetch_failed": false,
+        "latest_post": "2026-11-04"
+      },
+      "danceholicproject": {
+        "posts_analyzed": 0,
+        "events_new": 0,
+        "events_merged": 0,
+        "pending": 0,
+        "errors": 0,
+        "backfill": false,
+        "fetch_failed": false,
+        "latest_post": "2026-11-12"
+      },
+      "quemaquequema": {
+        "posts_analyzed": 2,
+        "events_new": 0,
+        "events_merged": 0,
+        "pending": 0,
+        "errors": 0,
+        "backfill": false,
+        "fetch_failed": false,
+        "latest_post": "2026-11-17"
+      },
+      "galeriacafelibro": {
         "posts_analyzed": 1,
         "events_new": 0,
         "events_merged": 0,
@@ -241,9 +285,89 @@
         "errors": 0,
         "backfill": false,
         "fetch_failed": false,
-        "latest_post": "2026-11-16"
+        "latest_post": "2026-11-17"
       },
-      "chanchanlatino": {
+      "terrazasalsera": {
+        "posts_analyzed": 0,
+        "events_new": 0,
+        "events_merged": 0,
+        "pending": 0,
+        "errors": 0,
+        "backfill": false,
+        "fetch_failed": false,
+        "latest_post": "2025-12-10"
+      },
+      "el_panteon_de_la_salsa": {
+        "posts_analyzed": 0,
+        "events_new": 0,
+        "events_merged": 0,
+        "pending": 0,
+        "errors": 1,
+        "backfill": false,
+        "fetch_failed": true,
+        "latest_post": null
+      },
+      "festivalsalsaalparque": {
+        "posts_analyzed": 1,
+        "events_new": 0,
+        "events_merged": 0,
+        "pending": 0,
+        "errors": 0,
+        "backfill": false,
+        "fetch_failed": false,
+        "latest_post": "2026-11-17"
+      },
+      "ritmomoderno": {
+        "posts_analyzed": 1,
+        "events_new": 0,
+        "events_merged": 0,
+        "pending": 0,
+        "errors": 0,
+        "backfill": false,
+        "fetch_failed": false,
+        "latest_post": "2026-11-17"
+      },
+      "elratonsalsaclub": {
+        "posts_analyzed": 0,
+        "events_new": 0,
+        "events_merged": 0,
+        "pending": 0,
+        "errors": 0,
+        "backfill": false,
+        "fetch_failed": false,
+        "latest_post": "2026-11-12"
+      },
+      "el_bochinche_cafe_": {
+        "posts_analyzed": 1,
+        "events_new": 0,
+        "events_merged": 0,
+        "pending": 0,
+        "errors": 0,
+        "backfill": false,
+        "fetch_failed": false,
+        "latest_post": "2026-11-17"
+      },
+      "salsalatina.alsacia": {
+        "posts_analyzed": 0,
+        "events_new": 0,
+        "events_merged": 0,
+        "pending": 0,
+        "errors": 0,
+        "backfill": false,
+        "fetch_failed": false,
+        "latest_post": "2026-11-14"
+      },
+      "teffa_mg": {
+        "posts_analyzed": 1,
+        "events_new": 0,
+        "events_merged": 0,
+        "pending": 0,
+        "errors": 0,
+        "backfill": false,
+        "fetch_failed": false,
+        "latest_post": "2026-11-17"
+      },
+      "danceinmotionclub": {
         "posts_analyzed": 0,
         "events_new": 0,
         "events_merged": 0,
@@ -253,17 +377,7 @@
         "fetch_failed": false,
         "latest_post": "2026-10-31"
       },
-      "clandisfrute": {
-        "posts_analyzed": 2,
-        "events_new": 0,
-        "events_merged": 0,
-        "pending": 0,
-        "errors": 0,
-        "backfill": false,
-        "fetch_failed": false,
-        "latest_post": "2026-11-16"
-      },
-      "ebi_dancecompany": {
+      "sonrumbero": {
         "posts_analyzed": 0,
         "events_new": 0,
         "events_merged": 0,
@@ -271,9 +385,9 @@
         "errors": 0,
         "backfill": false,
         "fetch_failed": false,
-        "latest_post": "2026-11-15"
+        "latest_post": "2026-10-26"
       },
-      "reyesdelasalsa.col": {
+      "iledanza": {
         "posts_analyzed": 0,
         "events_new": 0,
         "events_merged": 0,
@@ -281,9 +395,9 @@
         "errors": 0,
         "backfill": false,
         "fetch_failed": false,
-        "latest_post": "2026-11-05"
+        "latest_post": "2026-10-29"
       },
-      "meetinghousebogota": {
+      "alejochacon.co": {
         "posts_analyzed": 0,
         "events_new": 0,
         "events_merged": 0,
@@ -291,9 +405,9 @@
         "errors": 0,
         "backfill": false,
         "fetch_failed": false,
-        "latest_post": "2026-11-12"
+        "latest_post": "2026-10-14"
       },
-      "esferalatinaoficial": {
+      "mambo_y_control": {
         "posts_analyzed": 0,
         "events_new": 0,
         "events_merged": 0,
@@ -301,9 +415,9 @@
         "errors": 0,
         "backfill": false,
         "fetch_failed": false,
-        "latest_post": "2026-11-13"
+        "latest_post": "2026-10-14"
       },
-      "germanbaila": {
+      "guadalupebar751": {
         "posts_analyzed": 0,
         "events_new": 0,
         "events_merged": 0,
@@ -311,179 +425,19 @@
         "errors": 0,
         "backfill": false,
         "fetch_failed": false,
-        "latest_post": "2026-11-12"
+        "latest_post": "2026-10-18"
       },
-      "sarasandoval.oficial": {
-        "posts_analyzed": 0,
-        "events_new": 0,
-        "events_merged": 0,
-        "pending": 0,
-        "errors": 0,
-        "backfill": false,
-        "fetch_failed": false,
-        "latest_post": "2026-11-02"
-      },
-      "lamecanica_original": {
-        "posts_analyzed": 0,
-        "events_new": 0,
-        "events_merged": 0,
-        "pending": 0,
-        "errors": 0,
-        "backfill": false,
-        "fetch_failed": false,
-        "latest_post": "2026-11-04"
-      },
-      "proyectourbandance": {
-        "posts_analyzed": 0,
-        "events_new": 0,
-        "events_merged": 0,
-        "pending": 0,
-        "errors": 0,
-        "backfill": false,
-        "fetch_failed": false,
-        "latest_post": "2026-11-04"
-      },
-      "danzaenlaciudad": {
-        "posts_analyzed": 0,
-        "events_new": 0,
-        "events_merged": 0,
-        "pending": 0,
-        "errors": 0,
-        "backfill": false,
-        "fetch_failed": false,
-        "latest_post": "2026-11-15"
-      },
-      "bogotadanceclub": {
-        "posts_analyzed": 0,
-        "events_new": 0,
-        "events_merged": 0,
-        "pending": 0,
-        "errors": 0,
-        "backfill": false,
-        "fetch_failed": false,
-        "latest_post": "2026-11-13"
-      },
-      "sondehabana": {
+      "fogal_arte": {
         "posts_analyzed": 1,
         "events_new": 0,
-        "events_merged": 0,
+        "events_merged": 1,
         "pending": 0,
         "errors": 0,
         "backfill": false,
         "fetch_failed": false,
-        "latest_post": "2026-11-16"
+        "latest_post": "2026-11-17"
       },
-      "zafradance": {
-        "posts_analyzed": 0,
-        "events_new": 0,
-        "events_merged": 0,
-        "pending": 0,
-        "errors": 0,
-        "backfill": false,
-        "fetch_failed": false,
-        "latest_post": "2026-11-10"
-      },
-      "casineafest": {
-        "posts_analyzed": 0,
-        "events_new": 0,
-        "events_merged": 0,
-        "pending": 0,
-        "errors": 0,
-        "backfill": false,
-        "fetch_failed": false,
-        "latest_post": "2026-11-14"
-      },
-      "soywiwioficial": {
-        "posts_analyzed": 0,
-        "events_new": 0,
-        "events_merged": 0,
-        "pending": 0,
-        "errors": 0,
-        "backfill": false,
-        "fetch_failed": false,
-        "latest_post": "2026-11-14"
-      },
-      "frank.de.latorre": {
-        "posts_analyzed": 0,
-        "events_new": 0,
-        "events_merged": 0,
-        "pending": 0,
-        "errors": 0,
-        "backfill": false,
-        "fetch_failed": false,
-        "latest_post": "2026-11-13"
-      },
-      "and1erita": {
-        "posts_analyzed": 0,
-        "events_new": 0,
-        "events_merged": 0,
-        "pending": 0,
-        "errors": 0,
-        "backfill": false,
-        "fetch_failed": false,
-        "latest_post": "2026-11-13"
-      },
-      "la33orquesta": {
-        "posts_analyzed": 0,
-        "events_new": 0,
-        "events_merged": 0,
-        "pending": 0,
-        "errors": 0,
-        "backfill": false,
-        "fetch_failed": false,
-        "latest_post": "2026-11-15"
-      },
-      "ilhehabana": {
-        "posts_analyzed": 0,
-        "events_new": 0,
-        "events_merged": 0,
-        "pending": 0,
-        "errors": 0,
-        "backfill": false,
-        "fetch_failed": false,
-        "latest_post": "2026-11-13"
-      },
-      "parchexbogota": {
-        "posts_analyzed": 1,
-        "events_new": 0,
-        "events_merged": 0,
-        "pending": 0,
-        "errors": 0,
-        "backfill": false,
-        "fetch_failed": false,
-        "latest_post": "2026-11-16"
-      },
-      "casaquiebracanto": {
-        "posts_analyzed": 1,
-        "events_new": 0,
-        "events_merged": 0,
-        "pending": 0,
-        "errors": 0,
-        "backfill": false,
-        "fetch_failed": false,
-        "latest_post": "2026-11-16"
-      },
-      "salsacamaraoficial": {
-        "posts_analyzed": 1,
-        "events_new": 2,
-        "events_merged": 0,
-        "pending": 0,
-        "errors": 0,
-        "backfill": false,
-        "fetch_failed": false,
-        "latest_post": "2026-11-16"
-      },
-      "bilongocolombia": {
-        "posts_analyzed": 1,
-        "events_new": 0,
-        "events_merged": 0,
-        "pending": 0,
-        "errors": 0,
-        "backfill": false,
-        "fetch_failed": false,
-        "latest_post": "2026-11-16"
-      },
-      "casavander_": {
+      "restaurantecasadecitas": {
         "posts_analyzed": 1,
         "events_new": 1,
         "events_merged": 0,
@@ -491,9 +445,59 @@
         "errors": 0,
         "backfill": false,
         "fetch_failed": false,
+        "latest_post": "2026-11-17"
+      },
+      "bogotadanceclub.academy": {
+        "posts_analyzed": 1,
+        "events_new": 0,
+        "events_merged": 0,
+        "pending": 0,
+        "errors": 0,
+        "backfill": false,
+        "fetch_failed": false,
+        "latest_post": "2026-11-17"
+      },
+      "salsayritmolatino": {
+        "posts_analyzed": 0,
+        "events_new": 0,
+        "events_merged": 0,
+        "pending": 0,
+        "errors": 0,
+        "backfill": false,
+        "fetch_failed": false,
+        "latest_post": "2026-11-11"
+      },
+      "bachatasocialcongresss": {
+        "posts_analyzed": 0,
+        "events_new": 0,
+        "events_merged": 0,
+        "pending": 0,
+        "errors": 0,
+        "backfill": false,
+        "fetch_failed": false,
         "latest_post": "2026-11-16"
       },
-      "callejonsalsa": {
+      "bachatamania_bogota": {
+        "posts_analyzed": 0,
+        "events_new": 0,
+        "events_merged": 0,
+        "pending": 0,
+        "errors": 0,
+        "backfill": false,
+        "fetch_failed": false,
+        "latest_post": "2026-11-11"
+      },
+      "showstarscol": {
+        "posts_analyzed": 1,
+        "events_new": 0,
+        "events_merged": 0,
+        "pending": 0,
+        "errors": 0,
+        "backfill": false,
+        "fetch_failed": false,
+        "latest_post": "2026-11-17"
+      },
+      "jen.ssy": {
         "posts_analyzed": 0,
         "events_new": 0,
         "events_merged": 0,
@@ -503,7 +507,17 @@
         "fetch_failed": false,
         "latest_post": "2026-11-10"
       },
-      "tributo.salsayjazz": {
+      "bureodancestudio": {
+        "posts_analyzed": 0,
+        "events_new": 0,
+        "events_merged": 0,
+        "pending": 0,
+        "errors": 0,
+        "backfill": false,
+        "fetch_failed": false,
+        "latest_post": "2026-11-14"
+      },
+      "academiaalmadetangoe": {
         "posts_analyzed": 0,
         "events_new": 0,
         "events_merged": 0,
@@ -513,17 +527,7 @@
         "fetch_failed": false,
         "latest_post": "2026-11-10"
       },
-      "aseismanos": {
-        "posts_analyzed": 2,
-        "events_new": 0,
-        "events_merged": 2,
-        "pending": 0,
-        "errors": 0,
-        "backfill": false,
-        "fetch_failed": false,
-        "latest_post": "2026-11-16"
-      },
-      "madyumdance": {
+      "valkandela": {
         "posts_analyzed": 0,
         "events_new": 0,
         "events_merged": 0,
@@ -531,9 +535,39 @@
         "errors": 0,
         "backfill": false,
         "fetch_failed": false,
-        "latest_post": "2026-11-12"
+        "latest_post": "2026-11-16"
       },
-      "salsaysonoficial": {
+      "studiolatindance": {
+        "posts_analyzed": 0,
+        "events_new": 0,
+        "events_merged": 0,
+        "pending": 0,
+        "errors": 0,
+        "backfill": false,
+        "fetch_failed": false,
+        "latest_post": "2026-11-13"
+      },
+      "imperiolatino": {
+        "posts_analyzed": 1,
+        "events_new": 0,
+        "events_merged": 0,
+        "pending": 0,
+        "errors": 0,
+        "backfill": false,
+        "fetch_failed": false,
+        "latest_post": "2026-11-17"
+      },
+      "mover__se": {
+        "posts_analyzed": 0,
+        "events_new": 0,
+        "events_merged": 0,
+        "pending": 0,
+        "errors": 0,
+        "backfill": false,
+        "fetch_failed": false,
+        "latest_post": "2026-11-08"
+      },
+      "distritosocialbog": {
         "posts_analyzed": 0,
         "events_new": 0,
         "events_merged": 0,
@@ -543,7 +577,47 @@
         "fetch_failed": false,
         "latest_post": "2026-11-15"
       },
-      "pachanga_y_pochola": {
+      "efadanza": {
+        "posts_analyzed": 0,
+        "events_new": 0,
+        "events_merged": 0,
+        "pending": 0,
+        "errors": 0,
+        "backfill": false,
+        "fetch_failed": false,
+        "latest_post": "2026-11-14"
+      },
+      "zafiro_project_team": {
+        "posts_analyzed": 0,
+        "events_new": 0,
+        "events_merged": 0,
+        "pending": 0,
+        "errors": 0,
+        "backfill": false,
+        "fetch_failed": false,
+        "latest_post": "2026-07-18"
+      },
+      "bailarito": {
+        "posts_analyzed": 0,
+        "events_new": 0,
+        "events_merged": 0,
+        "pending": 0,
+        "errors": 0,
+        "backfill": false,
+        "fetch_failed": false,
+        "latest_post": "2026-07-31"
+      },
+      "cordillerafestival": {
+        "posts_analyzed": 0,
+        "events_new": 0,
+        "events_merged": 0,
+        "pending": 0,
+        "errors": 0,
+        "backfill": false,
+        "fetch_failed": false,
+        "latest_post": "2026-10-07"
+      },
+      "arrollando.dc": {
         "posts_analyzed": 0,
         "events_new": 0,
         "events_merged": 0,
@@ -553,7 +627,7 @@
         "fetch_failed": false,
         "latest_post": "2026-11-12"
       },
-      "bulevarsalsabar": {
+      "tibaduiza__": {
         "posts_analyzed": 0,
         "events_new": 0,
         "events_merged": 0,
@@ -561,9 +635,9 @@
         "errors": 0,
         "backfill": false,
         "fetch_failed": false,
-        "latest_post": "2026-11-12"
+        "latest_post": "2026-09-20"
       },
-      "oronegroclub": {
+      "latrinidaddelasalsa": {
         "posts_analyzed": 0,
         "events_new": 0,
         "events_merged": 0,
@@ -571,49 +645,19 @@
         "errors": 0,
         "backfill": false,
         "fetch_failed": false,
-        "latest_post": "2026-11-10"
+        "latest_post": "2026-10-20"
       },
-      "fernandoespanadj": {
-        "posts_analyzed": 0,
+      "babou_candelaria": {
+        "posts_analyzed": 1,
         "events_new": 0,
         "events_merged": 0,
-        "pending": 0,
-        "errors": 0,
-        "backfill": false,
-        "fetch_failed": false,
-        "latest_post": "2026-11-11"
-      },
-      "juancho__salsita": {
-        "posts_analyzed": 0,
-        "events_new": 0,
-        "events_merged": 0,
-        "pending": 0,
-        "errors": 0,
-        "backfill": false,
-        "fetch_failed": false,
-        "latest_post": "2026-11-11"
-      },
-      "salsaculto": {
-        "posts_analyzed": 0,
-        "events_new": 0,
-        "events_merged": 0,
-        "pending": 0,
-        "errors": 0,
-        "backfill": false,
-        "fetch_failed": false,
-        "latest_post": "2026-11-12"
-      },
-      "jaleocompetencia_": {
-        "posts_analyzed": 2,
-        "events_new": 0,
-        "events_merged": 2,
         "pending": 0,
         "errors": 0,
         "backfill": false,
         "fetch_failed": false,
         "latest_post": "2026-11-16"
       },
-      "herencialatinad.c": {
+      "jackandjilloficial": {
         "posts_analyzed": 0,
         "events_new": 0,
         "events_merged": 0,
@@ -621,7 +665,7 @@
         "errors": 0,
         "backfill": false,
         "fetch_failed": false,
-        "latest_post": "2026-11-12"
+        "latest_post": "2024-11-15"
       }
     }
   }
