@@ -22493,6 +22493,55 @@
     "bar": false
   },
   {
+    "title": "Salsa VS Reggaetón",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "urbano"
+    ],
+    "organizer": "El Bochinche Café - Bar",
+    "venue": "El Bochinche Café - Bar",
+    "address": "Calle 22 # 01 - 26",
+    "area": null,
+    "date": "2026-11-20",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "20:00",
+    "end_time": "02:30",
+    "prices": [
+      {
+        "label": "Entrada Libre",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "baile de salsa",
+      "perreo"
+    ],
+    "contact": "@el_bochinche_cafe_",
+    "confidence": "high",
+    "doubts": [],
+    "id": "salsa-vs-reggaeton-20-nov",
+    "account": "el_bochinche_cafe_",
+    "media": [
+      {
+        "post_id": "18111403001353957",
+        "permalink": "https://www.instagram.com/p/Df5h2VAAS9K/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-18T22:00:01+0000",
+        "flyer": "flyers/18111403001353957-0.webp",
+        "caption": "🚨 ¡SE BUSCAN EXPERTXS EN AZOTAR BALDOSA Y PERREAR SIN REMORDIMIENTO! 🚨\n\nNo importa si eres de lxs que bailan pegadito con una salsita sabrosa o de lxs que se van hasta abajo cuando suena el reggaetón delicioso.\n\n¡Esta noche es para todes lxs que llevan el sabor en el cuerpo! 💃\n\n🎧 SALSA VS REGGAETÓN.\n\n📅 Viernes 20 de noviembre.\n🕗 8:00 PM – 2:30 AM.\n📍 Calle 22 #01-26, El Bochinche Café-Bar.\n🎟️ ENTRADA LIBRE.\n\nEtiqueta a tu pareja de batalla, reúne a tu combo y cae con toda la actitud. ¡La pista no se va a romper sola! 🍻🔥",
+        "preview": null,
+        "slides": 3
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Noche de Tributo: Rubén Blades & Oscar D'León",
     "event_type": "concert",
     "is_recurring": false,
@@ -24484,8 +24533,39 @@
         "condition": null
       }
     ],
-    "artists": [],
-    "activities": [],
+    "artists": [
+      "Cris en la Salsa Band",
+      "El Turco Perro",
+      "Kabala Ensamble",
+      "Kaona Orquesta",
+      "The Big Jhony",
+      "Jeimy Mora",
+      "Anderson Laguna",
+      "David",
+      "Ana",
+      "Joseth",
+      "Juliana",
+      "Sebastian",
+      "Katty",
+      "Jesús",
+      "Milena",
+      "Camilo",
+      "Erlibeth",
+      "Sebas",
+      "Valentina",
+      "Christian",
+      "Karyna",
+      "Jeff",
+      "Lau",
+      "Salsa Latina Ciudad Alsacia",
+      "Mi Swing Dance Company",
+      "Okan Dance Academy",
+      "Bongó"
+    ],
+    "activities": [
+      "conciertos",
+      "shows de danza"
+    ],
     "contact": "@festivalsalsaalparque",
     "confidence": "high",
     "doubts": [
@@ -24494,6 +24574,26 @@
     "id": "salsa-al-parque-2026-28-nov",
     "account": "festivalsalsaalparque",
     "media": [
+      {
+        "post_id": "18117015176272199",
+        "permalink": "https://www.instagram.com/p/Df5iYohlLPx/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-18T22:05:05+0000",
+        "flyer": "flyers/18117015176272199-0.webp",
+        "caption": "🤔 ¿Qué hace de Bogotá una ciudad salsera? Su historia, sus orquestas, sus melómanos, sus espacios de encuentro y las generaciones que han hecho de este género parte de la identidad musical de la ciudad. 💃\n\nLa salsa se escucha, se baila, se investiga y se transforma en Bogotá. Conozca 4 razones que explican por qué esta ciudad tiene tanto que contar al ritmo de este género.\n\nNos vemos en #SalsaAlParque2026, este 28 y 29 de noviembre en el Parque Metropolitano Simón Bolívar.\n\n🎟️ Entrada libre | 🔞 Evento para mayores de edad. \n\n #LaRevoluciónQueNuncaDejaDeSonar #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 5
+      },
+      {
+        "post_id": "18154345759537343",
+        "permalink": "https://www.instagram.com/p/Df45UliEdfE/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-18T16:06:16+0000",
+        "flyer": "flyers/18154345759537343-0.webp",
+        "caption": "¡Bogotá tiene nuevos protagonistas para #SalsaAlParque2026! 💃🏽🕺🏽\n\nConozca los artistas distritales seleccionados a través de la Beca Festival Salsa al Parque 2026 - Bogotá Ciudad Creativa de la Música y las parejas de bailarines y agrupaciones ganadoras de la Invitación Cultural Danza en el Festival Salsa al Parque 2026.\n\nEl talento local se toma el escenario de uno de los festivales más esperados de la ciudad. ¡Prepárese para bailar al ritmo de la salsa!\n\n📍 28 y 29 de noviembre | Parque Metropolitano Simón Bolívar.\n🎟️ Entrada libre | 🔞 Evento para mayores de edad.\n\n #LaRevoluciónQueNuncaDejaDeSonar",
+        "preview": null,
+        "slides": 2
+      },
       {
         "post_id": "18084122360430436",
         "permalink": "https://www.instagram.com/reel/Dfum-_XtfF9/",
@@ -25023,10 +25123,22 @@
     ],
     "contact": "WhatsApp 3014407419",
     "confidence": "high",
-    "doubts": [],
+    "doubts": [
+      "sin hora de inicio"
+    ],
     "id": "conspiraciones-encuentro-de-cuerpo-y-memoria-3-dic",
     "account": "fogal_arte",
     "media": [
+      {
+        "post_id": "17918656821551448",
+        "permalink": "https://www.instagram.com/p/Df5qSCroADT/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-18T23:14:05+0000",
+        "flyer": "flyers/17918656821551448-0.webp",
+        "caption": "La rabia es un juego atrevido y del cual poco se habla. Como dice Audre Lorde, la rabia está llena de información y energía. A través de juegos de improvisación danzada y técnicas somáticas, despertaremos a ese monstruo dormido que habita en tu cuerpo. Ven, sé y atrévete!!!\n\nUna investigación de fogal_arte dirigida por julianadetalparacual & maga.sarmiento29 ❤️‍🔥\nEl primer laboratorio de Conspiraciones~ el viernes 4 de diciembre en la_telamarilla7 ✨\n\nClase suelta 30k\nFull Pass Encuentro 130k\nDesc. combo “amigas”\n\nEscríbe YO para más info. e inscripciones 🔥",
+        "preview": null,
+        "slides": 3
+      },
       {
         "post_id": "18136062829858385",
         "permalink": "https://www.instagram.com/p/Df3Pf7ZPMJ1/",
@@ -25056,6 +25168,16 @@
         "caption": "Unámonos a conspirar nuevos posibles cuerpos, más sensibles, más libres, más humanos~ \n\nLlega Conspiraciones 👋🏼 Un encuentro que reúne a más de 8 colectivos, bajo la misma premisa “¿cómo soltar y transformar aquello que he callado y heredado en mí?” \n\nPrográmate para el fin de semana del 3 al 6 de diciembre✨con: \n• 3 jams abiertas con aporte voluntario 🔥 a cargo de cuerpofonico chonta.56 anfibia_danza & entramadacreadora \n• 3 laboratorios a cargo de julianadetalparacual maga.sarmiento29 march.rgz & maju_aerea_ 🌀\n• 2 talleres a cargo de caracolalunar & power_wine 💪🏼\n• Finalizando con ceramica.nubebebe en escritura creativa ✍️\n\nEspacios aliados: lacasadelasflores_cultural la_telamarilla7 \n\nEscribe YO para más info. e inscripciones 🌞!!! \n\nUn proyecto de fogal_arte ❤️‍🔥",
         "preview": null,
         "slides": 6
+      },
+      {
+        "post_id": "18104274791436821",
+        "permalink": "https://www.instagram.com/reel/Df4_hw8hnJp/",
+        "media_type": "VIDEO",
+        "published": "2026-11-18T17:00:05+0000",
+        "flyer": "flyers/18104274791436821-0.webp",
+        "caption": "¿Hay algo que quieras decir, y aún no sabes cómo? Pues llega CONSPIRACIONES 👋🏼 Encuentro de Cuerpo y Memoria. Del 3 al 6 de diciembre en lacasadelasflores_cultural y la_telamarilla7 ✨ \n\nUn espacio intensivo y amigable en donde podrás reconectar con tu voz y fuerza, a través de prácticas diversas de movimiento y arte. Habrá: \n\n• 3 Jams con música en vivo, muestras escénicas y fiesta. Inmersos en la cumbia, el afro y la electrónica. \n• 3 laboratorios somáticos de improvisación danzada, cumbia y danza aérea. \n• 2 talleres de dancehall female y la danza espiral del útero. \n• 1 ejercicio de Escritura Creativa.\n\nConoce la programación en fogal_arte ✨ y reserva tú cupo en Combos: \n\n• 1 clase suelta 30k\n• Full Pass 130k\n* desc. si vienes en pareja * \n\nInvita a tu mamá, a tu prima, tía, novi@ 🌞 a cerrar el año con intención y movimiento 🔥 ¡un espacio para todes las cuerpas! Les esperamos 🫀👋🏼",
+        "preview": "previews/18104274791436821-0.mp4",
+        "slides": null
       }
     ],
     "bar": false
@@ -25153,6 +25275,57 @@
         "caption": "La danza sigue abriendo caminos para descubrir, experimentar y conectar con nuevas formas de expresión. 🍃\n\nEn noviembre y diciembre, La Casona de la Danza continúa siendo un punto de encuentro para quienes quieren acercarse al movimiento desde diferentes experiencias, explorar sus posibilidades y compartir alrededor del cuerpo y la creatividad. Cada espacio es una oportunidad para aprender algo nuevo y dejarse sorprender por lo que la danza tiene por contar. 💫\n\nAnímese a hacer parte de estas experiencias y encuentre en el movimiento una nueva forma de vivir el arte.\n\n📍 Deslice y conozca la programación que continúa durante noviembre.\n\n#CasonaDeLaDanza #BogotáMiCiudadMiCasa",
         "preview": null,
         "slides": 11
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Fiesta Cumbiera",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "Fogal & Anfibia Danza",
+    "venue": "La Telamarilla",
+    "address": null,
+    "area": null,
+    "date": "2026-12-04",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "18:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Anfibia Danza",
+      "Maga Sarmiento",
+      "Latinoamérica Ruge",
+      "El Wicho"
+    ],
+    "activities": [
+      "muestras escénicas",
+      "música en vivo",
+      "jam",
+      "fiesta"
+    ],
+    "contact": "@fogal_arte",
+    "confidence": "high",
+    "doubts": [
+      "sin información de precios"
+    ],
+    "id": "fiesta-cumbiera-4-dic",
+    "account": "fogal_arte",
+    "media": [
+      {
+        "post_id": "17960161020295308",
+        "permalink": "https://www.instagram.com/p/Df3atR_P_cp/",
+        "media_type": "IMAGE",
+        "published": "2026-11-18T02:28:35+0000",
+        "flyer": "flyers/17960161020295308-0.webp",
+        "caption": "Llegó diciembre con su cumbia y sabrosura. En este Jam se juntan las expresiones tradicionales con las sonoridades electrónicas del río, acompañadas de muestras escénicas por parte de: anfibia_danza & maga.sarmiento29 alrededor del agua y la memoria. Y la música en vivo de latinoamericaruge elwi_cho ~ \n\nLlega sin prejuicios y déjate llevar por el ritmo de la Cumbia 🔥",
+        "preview": null,
+        "slides": null
       }
     ],
     "bar": false
@@ -25508,7 +25681,7 @@
     "organizer": "Studio Latin Dance",
     "venue": "Centro de Eventos y Convenciones Las Américas",
     "address": "Av Américas #50-15",
-    "area": null,
+    "area": "Salón Bolívar",
     "date": "2026-12-18",
     "end_date": null,
     "sessions": null,
@@ -25527,13 +25700,16 @@
         "condition": "hasta el 10 de diciembre"
       },
       {
-        "label": "Taquilla por persona",
+        "label": "Taquilla",
         "amount_cop": 60000,
-        "condition": null
+        "condition": "por persona"
       }
     ],
     "artists": [],
-    "activities": [],
+    "activities": [
+      "celebración",
+      "baile"
+    ],
     "contact": "317 447 9689",
     "confidence": "high",
     "doubts": [],
@@ -25549,9 +25725,72 @@
         "caption": "¡Cerramos el 2026 con una noche llena de ritmo, elegancia y celebración! ✨🥂🖤\n\nPrepárate para vivir una noche inolvidable junto a toda la familia STUDIO LATIN DANCE. 💃🕺\n\nUna celebración para brindar por los logros, los aprendizajes, las experiencias y, sobre todo, por la pasión que nos une: ¡EL BAILE! 🔥\n\n🎉 CLAUSURA 2026\n📅 Viernes 18 de diciembre\n🕖 Hora: 7:00 p. m.\n📍 Centro de Eventos y Convenciones Las Américas – Salón Bolívar, piso 1.\n🎟️ ¡PRECIOS DE PREVENTA HASTA EL 10 DE DICIEMBRE!\n❤️ Pareja: $80.000\n🖤 Individual: $45.000\n🎫 En taquilla: $60.000 por persona.\n📲 Reserva tu lugar:\n317 447 9689 – 302 720 3206\n\n¡No te quedes por fuera de esta gran celebración! Nos espera una noche para bailar, compartir y crear recuerdos inolvidables. 🥂✨\nSTUDIO LATIN DANCE – ¡Donde la pasión por el baile nos une! ❤",
         "preview": null,
         "slides": null
+      },
+      {
+        "post_id": "17916707553517202",
+        "permalink": "https://www.instagram.com/reel/Df5YhL3usi0/",
+        "media_type": "VIDEO",
+        "published": "2026-11-18T20:40:19+0000",
+        "flyer": "flyers/17916707553517202-0.webp",
+        "caption": "¡SEGUIMOS EN PREVENTA! 🔥\n\nPrepárate para vivir una noche inolvidable junto a toda la familia STUDIO LATIN DANCE. 💃🕺\n\nUna celebración para brindar por los logros, los aprendizajes, las experiencias y, sobre todo, por la pasión que nos une: ¡EL BAILE! 🔥\n\n🎉 CLAUSURA 2026\n📅 Viernes 18 de diciembre\n🕖 Hora: 7:00 p. m.\n📍 Centro de Eventos y Convenciones Las Américas – Salón Bolívar, piso 1.\n🎟️ ¡PRECIOS DE PREVENTA HASTA EL 10 DE DICIEMBRE!\n❤️ Pareja: $80.000\n🖤 Individual: $45.000\n🎫 En taquilla: $60.000 por persona.\n📲 Reserva tu lugar:\n317 447 9689 – 302 720 3206\n\n¡No te quedes por fuera de esta gran celebración! Nos espera una noche para bailar, compartir y crear recuerdos inolvidables. 🥂✨\nSTUDIO LATIN DANCE – ¡Donde la pasión por el baile nos une! ❤",
+        "preview": "previews/17916707553517202-0.mp4",
+        "slides": null
       }
     ],
     "bar": false
+  },
+  {
+    "title": "Los Melódicos",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "merengue"
+    ],
+    "organizer": "Galería Café Libro",
+    "venue": "Galería Café Libro",
+    "address": "Cra 11A # 93-42",
+    "area": "Parque 93",
+    "date": "2026-12-19",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Boletas",
+        "amount_cop": 150000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Los Melódicos"
+    ],
+    "activities": [
+      "concierto",
+      "música tropical en vivo"
+    ],
+    "contact": "3176608742",
+    "confidence": "high",
+    "doubts": [
+      "hora de inicio no especificada"
+    ],
+    "id": "los-melodicos-19-dic",
+    "account": "galeriacafelibro",
+    "media": [
+      {
+        "post_id": "18131584735879914",
+        "permalink": "https://www.instagram.com/p/Df49Pr4MF7N/",
+        "media_type": "IMAGE",
+        "published": "2026-11-19T00:05:04+0000",
+        "flyer": "flyers/18131584735879914-0.webp",
+        "caption": "✨ LOS MELÓDICOS EN BOGOTÁ\n\nUna noche de lujo, elegancia y tradición tropical. \n\nEste 19 de diciembre Galería Café Libro recibe por primera vez a Los Melódicos para vivir una experiencia musical inolvidable, con sus grandes éxitos y el encanto de la música que ha hecho historia. ¡Una cita imperdible para celebrar diciembre!\n\n📍 Cra 11A#93-42\n🎟️ $150.000 Boletas disponibles en galeriacafelibro.com.co • 3176608742",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
   },
   {
     "title": "Reyes de la Salsa 2027",
@@ -25697,7 +25936,7 @@
     "date": "2027-06-24",
     "end_date": "2027-06-28",
     "sessions": null,
-    "weekday": "miércoles",
+    "weekday": "jueves",
     "start_time": null,
     "end_time": null,
     "prices": [
@@ -25753,6 +25992,16 @@
         "flyer": "flyers/18064275404674703-0.webp",
         "caption": "🚨 BACHATA SOCIAL CONGRESS 2027 🚨\n\nWE ARE BACK! 🔥🇨🇴\n\nUna nueva edición está en camino y queremos que seas parte de esta historia.\n\n🌎 Artistas internacionales\n\n🎶 Workshops & Social Dancing\n\n🏆 Bachata Jam Session\n\n❤️ Una comunidad, una pasión.\n\nCOMING SOON… 🔜\n\n👇 ¿Desde qué país nos acompañarías?\n\n#BachataSocialCongress #BSC2027 #BachataJamSession #BachataColombia",
         "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18105384614042403",
+        "permalink": "https://www.instagram.com/reel/Df4vErNttJQ/",
+        "media_type": "VIDEO",
+        "published": "2026-11-18T14:43:05+0000",
+        "flyer": "flyers/18105384614042403-0.webp",
+        "caption": "🇪🇸🔥 ¡DESDE TENERIFE, ESPAÑA, DIRECTAMENTE AL BACHATA SOCIAL CONGRESS 2027! 🇨🇴\n\n💎 ¡ darioysaraoficial CONFIRMADOS PARA BACHATA SOCIAL CONGRESS 2027! 💜\n\n🌎✨ ¡Seguimos reuniendo grandes referentes internacionales para llevar nuestro congreso a otro nivel!\n\n🔥 Desde las Islas Canarias llega una de las parejas más creativas y reconocidas de la bachata sensual internacional: DARÍO Y SARA.\n\nUna pareja que ha conquistado las pistas y las redes sociales con su estilo único, combinando creatividad, sensualidad, musicalidad y movimientos que sorprenden en cada baile. 🔥\n\n🌍 Con una trayectoria que los ha llevado a importantes congresos alrededor del mundo, llegan a Colombia para compartir su experiencia, su esencia y esa forma tan particular de interpretar la bachata.\n\n💃 FOLLOWERS, ¡PREPÁRENSE! saralinaza nos compartirá su sensualidad, elegancia y expresión corporal, con herramientas para desarrollar una mayor fluidez, conexión y libertad de movimiento.\n\n🕺 LEADERS, ¡ESTO TAMBIÉN ES PARA USTEDES! dadysan llega con su creatividad, técnica y recursos para explorar nuevas posibilidades en la conducción, la interpretación musical y la conexión en pareja.\n\n✨ ¡Una pareja que demuestra que la bachata no tiene límites cuando la creatividad y la conexión se encuentran!\n\n🇨🇴 ¡Tenerife y Colombia se unen a través de la bachata! ¡Los esperamos con los brazos abiertos!\n\n💜 BACHATA SOCIAL CONGRESS 2027\n🌎 Different Styles, One Passion.\n\n#bachatasocialcongress #BSC2027\n #darioysara #bachatasensual #bachatacolombia",
+        "preview": "previews/18105384614042403-0.mp4",
         "slides": null
       },
       {
