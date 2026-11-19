@@ -22046,15 +22046,13 @@
       "Real Charanga"
     ],
     "activities": [
-      "música en vivo",
-      "rumba"
+      "música en vivo"
     ],
     "contact": "@casaquiebracanto",
     "confidence": "high",
     "doubts": [
       "sin hora de inicio",
-      "sin precio",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+      "sin precio"
     ],
     "id": "real-charanga-en-casa-quiebra-canto-20-nov",
     "account": "casaquiebracanto",
@@ -22718,7 +22716,7 @@
     "date": "2026-11-21",
     "end_date": null,
     "sessions": null,
-    "weekday": "sabado",
+    "weekday": "sábado",
     "start_time": null,
     "end_time": null,
     "prices": [],
@@ -22726,15 +22724,13 @@
       "La Llave Orquesta"
     ],
     "activities": [
-      "música en vivo",
-      "rumba"
+      "música en vivo"
     ],
     "contact": "@casaquiebracanto",
     "confidence": "high",
     "doubts": [
       "sin hora de inicio",
-      "sin precio",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+      "sin precio"
     ],
     "id": "la-llave-orquesta-en-casa-quiebra-canto-21-nov",
     "account": "casaquiebracanto",
@@ -25557,7 +25553,7 @@
       "merengue"
     ],
     "organizer": "Galería Café Libro",
-    "venue": "Galería Café Libro",
+    "venue": "Galería Café Libro - Sede Parque 93",
     "address": "Cra 11A # 93-42",
     "area": "Parque 93",
     "date": "2026-12-19",
@@ -25577,13 +25573,12 @@
       "Los Melódicos"
     ],
     "activities": [
-      "concierto",
-      "música tropical en vivo"
+      "concierto de música tropical"
     ],
     "contact": "3176608742",
     "confidence": "high",
     "doubts": [
-      "hora de inicio no especificada"
+      "sin hora de inicio"
     ],
     "id": "los-melodicos-19-dic",
     "account": "galeriacafelibro",
