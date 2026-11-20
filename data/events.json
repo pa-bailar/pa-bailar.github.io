@@ -22616,15 +22616,21 @@
     ],
     "organizer": "Galería Café Libro",
     "venue": "Galería Café Libro 93",
-    "address": null,
-    "area": null,
+    "address": "Cra 11A # 93-42",
+    "area": "Parque 93",
     "date": "2026-11-21",
     "end_date": null,
     "sessions": null,
     "weekday": "sábado",
     "start_time": null,
     "end_time": null,
-    "prices": [],
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 25000,
+        "condition": null
+      }
+    ],
     "artists": [
       "The Big Jhony"
     ],
@@ -22640,6 +22646,16 @@
     "id": "the-big-jhony-21-nov",
     "account": "galeriacafelibro",
     "media": [
+      {
+        "post_id": "18059704490652184",
+        "permalink": "https://www.instagram.com/p/Df7F87RjHOY/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-19T12:35:02+0000",
+        "flyer": "flyers/18059704490652184-4.webp",
+        "caption": "💃 Nos vemos viernes y sábado en todas nuestras sedes ✨ Así es la agenda salsera para este fin de semana en Galeria Cafe Libro \n\nEn vivo: thebigjhony panterafierabrass valkandela 🔥 \n\n#Salsa #SalsaEnBogota #GaleriaCafeLibro #Rumba #VidaNocturna",
+        "preview": null,
+        "slides": 7
+      },
       {
         "post_id": "18089618408313452",
         "permalink": "https://www.instagram.com/reel/Df0ngqhsoRb/",
@@ -23426,6 +23442,52 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "La Ruta Pagana: Festival de Salsa",
+    "event_type": "festival",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Galería Café Libro",
+    "venue": "Galería Café Libro - Palermo",
+    "address": "Trv 15B N 46-38",
+    "area": "Teusaquillo",
+    "date": "2026-11-21",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "21:00",
+    "end_time": "01:00",
+    "prices": [],
+    "artists": [
+      "El Pantera Orquesta",
+      "DJ Valkandela",
+      "Fernando Rojas",
+      "La Salsamentaria del Barrio"
+    ],
+    "activities": [],
+    "contact": "WhatsApp 3053281125",
+    "confidence": "high",
+    "doubts": [
+      "sin precio"
+    ],
+    "id": "la-ruta-pagana-festival-de-salsa-21-nov",
+    "account": "galeriacafelibro",
+    "media": [
+      {
+        "post_id": "18059704490652184",
+        "permalink": "https://www.instagram.com/p/Df7F87RjHOY/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-19T12:35:02+0000",
+        "flyer": "flyers/18059704490652184-5.webp",
+        "caption": "💃 Nos vemos viernes y sábado en todas nuestras sedes ✨ Así es la agenda salsera para este fin de semana en Galeria Cafe Libro \n\nEn vivo: thebigjhony panterafierabrass valkandela 🔥 \n\n#Salsa #SalsaEnBogota #GaleriaCafeLibro #Rumba #VidaNocturna",
+        "preview": null,
+        "slides": 7
+      }
+    ],
+    "bar": true
   },
   {
     "title": "Intensivo 2026 4.0 - Salsa en línea",
@@ -24392,6 +24454,16 @@
         "slides": 2
       },
       {
+        "post_id": "18139156495734274",
+        "permalink": "https://www.instagram.com/reel/Df7zPOWthGV/",
+        "media_type": "VIDEO",
+        "published": "2026-11-19T19:12:06+0000",
+        "flyer": "flyers/18139156495734274-0.webp",
+        "caption": "🎶 ¡El Turco Perro llega a #SalsaAlParque2026!\n\nEl proyecto de Mauricio Byfield mezcla los sonidos tropicales y del Caribe con el punk. Esta vez, incorpora la salsa a su universo musical con 'El Amor es la Clave', una propuesta para disfrutar del acordeón, el baile y el tambor.\n\n📍 28 y 29 de noviembre | Parque Metropolitano Simón Bolívar.\n🎟️ Entrada libre | 🔞 Evento para mayores de edad.\n\n#LaRevoluciónQueNuncaDejaDeSonar #BogotáMiCiudadMiCasa",
+        "preview": "previews/18139156495734274-0.mp4",
+        "slides": null
+      },
+      {
         "post_id": "18084122360430436",
         "permalink": "https://www.instagram.com/reel/Dfum-_XtfF9/",
         "media_type": "VIDEO",
@@ -24527,7 +24599,7 @@
     "end_time": null,
     "prices": [
       {
-        "label": "Entrada general",
+        "label": "Boleta",
         "amount_cop": 30000,
         "condition": null
       }
@@ -24539,10 +24611,22 @@
     ],
     "contact": "WhatsApp 312 3363405",
     "confidence": "high",
-    "doubts": [],
+    "doubts": [
+      "fecha y hora no mencionadas explícitamente en esta publicación, tomadas del evento ya conocido"
+    ],
     "id": "clausura-2026-28-nov",
     "account": "salsayritmolatino",
     "media": [
+      {
+        "post_id": "18036034955677180",
+        "permalink": "https://www.instagram.com/p/Df7SHjshuND/",
+        "media_type": "IMAGE",
+        "published": "2026-11-19T14:21:28+0000",
+        "flyer": "flyers/18036034955677180-0.webp",
+        "caption": "✨💃 ¡La cuenta regresiva para nuestra gran Clausura 2026 ha comenzado! ❤️‍🔥 Prepárate para vivir una noche llena de música, baile, talento y mucha pasión por la salsa. 🎶🔥\n\n¡No te quedes por fuera de esta celebración especial!\n🎟️ Adquiere tu boleta por solo $30.000.\n\n📲 Solicita información por WhatsApp: 312 336 3405 o directamente en nuestra Escuela de Baile Salsa & Ritmo Latino.\n\n¡Ven a celebrar con nosotros y disfruta de una noche inolvidable! 🥳\n\n#Clausura2026 #SalsaYRitmoLatino #PasiónPorLaSalsa #EscuelaDeBaile #SalsaEnBogotá",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18648095137014408",
         "permalink": "https://www.instagram.com/p/DfkLAaQigdP/",
@@ -24896,8 +24980,13 @@
         "condition": null
       },
       {
-        "label": "Full Pass Encuentro",
+        "label": "Combo Full Pass",
         "amount_cop": 130000,
+        "condition": null
+      },
+      {
+        "label": "Clase suelta combo amigas",
+        "amount_cop": 50000,
         "condition": null
       }
     ],
@@ -24926,6 +25015,16 @@
     "id": "conspiraciones-encuentro-de-cuerpo-y-memoria-3-dic",
     "account": "fogal_arte",
     "media": [
+      {
+        "post_id": "18098543759556574",
+        "permalink": "https://www.instagram.com/p/Df7lSDsoIiM/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-19T17:08:53+0000",
+        "flyer": "flyers/18098543759556574-0.webp",
+        "caption": "Anfibia Danza integra el ser y el saber de las danzas tradicionales colombianas y la experimentación en danza contemporánea para que los cuerpos narren su propia historia 🌀\n\nEs una apuesta por la identidad y la alteridad, donde el movimiento construye seguridad, confianza y pertenencia al territorio.\n\nTe invitamos el Sábado 5 de diciembre, a las 12 pm en la_telamarilla7 ✨ a ser parte de este Encuentro con anfibia_danza. Habrá música en vivo 🪘!!!\n\nClase suelta 30k \nCombo Full Pass 130k\nClase suelta combo “amigas” 50k \n\nInscríbete en fogal_arte o escribe al 3014407419 para más info. 🔥\n\nEsta propuesta se fundamenta en la investigación - creación, abordando el cuerpo como un\narchivo vivo que custodia y reactiva la memoria colectiva. Inspirada en la teoría Sentipensante y Cultura Anfibia de Orlando Fals Borda, esta metodología busca la armonía\nentre la razón y el corazón, reconociendo que el conocimiento profundo nace de la vivencia\nen el territorio 🫀\n\nMarcela Rodríguez march.rgz es investigadora, creadora y docente de danza vinculada a procesos de memorias corporales. Actualmente su trabajo artístico y pedagógico se desarrolla entre Medellín, Mompox y el\ncorregimiento de Loma de Simón, donde he acompañado procesos comunitarios en torno a la documentación en la transmisión intergeneracional de la Danza de Indios Malibúes.\n\nConoce más sobre Marce y su práctica en el Linktree de fogal_arte ✨🌞",
+        "preview": null,
+        "slides": 3
+      },
       {
         "post_id": "17918656821551448",
         "permalink": "https://www.instagram.com/p/Df5qSCroADT/",
@@ -25436,6 +25535,71 @@
     "bar": false
   },
   {
+    "title": "Curso Intensivo 2 - Salsa desde cero",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Son Rumbero",
+    "venue": null,
+    "address": "Av. Ciudad de Lima # 6-21",
+    "area": "Centro",
+    "date": "2026-12-14",
+    "end_date": "2026-12-18",
+    "sessions": [
+      {
+        "date": "2026-12-14",
+        "start_time": null,
+        "end_time": null
+      },
+      {
+        "date": "2026-12-16",
+        "start_time": null,
+        "end_time": null
+      },
+      {
+        "date": "2026-12-18",
+        "start_time": null,
+        "end_time": null
+      }
+    ],
+    "weekday": "lunes",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Inversión única",
+        "amount_cop": 120000,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "clase de salsa"
+    ],
+    "contact": "WhatsApp +57 302 258 2306",
+    "confidence": "high",
+    "doubts": [
+      "sin hora especificada"
+    ],
+    "id": "curso-intensivo-2-salsa-desde-cero-14-dic",
+    "account": "sonrumbero",
+    "media": [
+      {
+        "post_id": "18128433052927470",
+        "permalink": "https://www.instagram.com/p/Df46qQKFJc0/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-18T16:17:58+0000",
+        "flyer": "flyers/18128433052927470-2.webp",
+        "caption": "​🔥 ¡NO TE QUEDES SENTADO EN LAS FIESTAS ESTE DICIEMBRE! 🎄💃🕺\n\n​Aprende a bailar Salsa desde cero en solo 6 horas y cierra el 2026 con todo el swing. 👉 Desliza para ver los detalles ➡️\n\n​🗓️ Fechas: 14 al 19 de Diciembre\n\n​Intensivo 1: Martes (2h), Jueves (2h) y Sábado (2h)\n\n​Intensivo 2: Lunes (2h), Miércoles (2h) y Viernes (2h)\n\n​✅ ¿Por qué elegirnos?\n\n​100% práctico: Bailas en pareja desde la primera clase, sin experiencia previa.\n\n​Ven solo/a o acompañado/a: Aquí rotamos en clase.\n\n​Resultados rápidos: Pasos base, ritmo y vueltas esenciales para defenderte en cualquier pista.\n\n​📍 Sede Centro: Av. Ciudad de Lima # 6-21, Bogotá\n\n💰 Inversión única: $120.000 COP (Sin mensualidades ni matrículas)\n\n​⚠️ ¡CUPOS LIMITADOS!\n\n📲 Haz clic en \"Enviar mensaje\" o escríbenos al WhatsApp +57 302 258 2306 para apartar tu cupo hoy mismo. 👣✨",
+        "preview": null,
+        "slides": 3
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Cirque by EFA",
     "event_type": "show",
     "is_recurring": false,
@@ -25474,6 +25638,71 @@
         "caption": "🎠✨ ¡SEÑORAS Y SEÑORES, GRANDES Y PEQUEÑOS… EL ESPECTÁCULO ESTÁ POR COMENZAR! ✨🎠\n\n¡EFA DANZA presenta CIRQUE by EFA! Una noche donde la magia del circo, la danza y el talento se unen para crear un espectáculo inolvidable. ❤️🎭\n\nPrepárate para disfrutar de una experiencia llena de luces, música, emociones y mucha magia en un escenario muy especial: 🎪 ¡EL TEATRO ASTOR PLAZA! 🎪\n\n🤹🏻 Nuestros bailarines, artistas invitados y shows especiales se tomarán el escenario con increíbles presentaciones y muchas sorpresas más.\n\n🎪 ¿CUÁNDO Y DÓNDE?\n\n📅 14 de diciembre\n🕕 6:00 p. m.\n📍 Teatro Astor Plaza\n\n🎟️ ¡ADQUIERE TUS BOLETAS!\nDisponibles directamente en EFA DANZA a partir del 20 de noviembre.\n\nUna invitación para nuestros alumnos, familiares, amigos y para todos los que quieran vivir una noche diferente, apoyar el talento artístico y dejarse sorprender.\n\n🎭 CIRQUE by EFA\n¡No solo venimos a bailar… venimos a hacer historia sobre el escenario!\n\n❤️ ¡Te esperamos! No te puedes perder esta función.",
         "preview": null,
         "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Curso Intensivo 1 - Salsa desde cero",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Son Rumbero",
+    "venue": null,
+    "address": "Av. Ciudad de Lima # 6-21",
+    "area": "Centro",
+    "date": "2026-12-15",
+    "end_date": "2026-12-19",
+    "sessions": [
+      {
+        "date": "2026-12-15",
+        "start_time": null,
+        "end_time": null
+      },
+      {
+        "date": "2026-12-17",
+        "start_time": null,
+        "end_time": null
+      },
+      {
+        "date": "2026-12-19",
+        "start_time": null,
+        "end_time": null
+      }
+    ],
+    "weekday": "martes",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Inversión única",
+        "amount_cop": 120000,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "clase de salsa"
+    ],
+    "contact": "WhatsApp +57 302 258 2306",
+    "confidence": "high",
+    "doubts": [
+      "sin hora especificada"
+    ],
+    "id": "curso-intensivo-1-salsa-desde-cero-15-dic",
+    "account": "sonrumbero",
+    "media": [
+      {
+        "post_id": "18128433052927470",
+        "permalink": "https://www.instagram.com/p/Df46qQKFJc0/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-18T16:17:58+0000",
+        "flyer": "flyers/18128433052927470-2.webp",
+        "caption": "​🔥 ¡NO TE QUEDES SENTADO EN LAS FIESTAS ESTE DICIEMBRE! 🎄💃🕺\n\n​Aprende a bailar Salsa desde cero en solo 6 horas y cierra el 2026 con todo el swing. 👉 Desliza para ver los detalles ➡️\n\n​🗓️ Fechas: 14 al 19 de Diciembre\n\n​Intensivo 1: Martes (2h), Jueves (2h) y Sábado (2h)\n\n​Intensivo 2: Lunes (2h), Miércoles (2h) y Viernes (2h)\n\n​✅ ¿Por qué elegirnos?\n\n​100% práctico: Bailas en pareja desde la primera clase, sin experiencia previa.\n\n​Ven solo/a o acompañado/a: Aquí rotamos en clase.\n\n​Resultados rápidos: Pasos base, ritmo y vueltas esenciales para defenderte en cualquier pista.\n\n​📍 Sede Centro: Av. Ciudad de Lima # 6-21, Bogotá\n\n💰 Inversión única: $120.000 COP (Sin mensualidades ni matrículas)\n\n​⚠️ ¡CUPOS LIMITADOS!\n\n📲 Haz clic en \"Enviar mensaje\" o escríbenos al WhatsApp +57 302 258 2306 para apartar tu cupo hoy mismo. 👣✨",
+        "preview": null,
+        "slides": 3
       }
     ],
     "bar": false
