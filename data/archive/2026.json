@@ -1175,5 +1175,76 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "Estilo Carrandales - Intensivo de bachata tradicional",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "bachata dominicana"
+    ],
+    "organizer": "Distrito Social",
+    "venue": "Distrito Social",
+    "address": null,
+    "area": null,
+    "date": "2026-09-20",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "16:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Especial",
+        "amount_cop": 60000,
+        "condition": "si asistes a Bachatamania – Jack & Jill el 19 de septiembre"
+      },
+      {
+        "label": "En puerta individual",
+        "amount_cop": 80000,
+        "condition": null
+      },
+      {
+        "label": "En puerta pareja",
+        "amount_cop": 100000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Adriana Tibaduiza"
+    ],
+    "activities": [
+      "clase intensiva de bachata tradicional"
+    ],
+    "contact": "@tibaduiza__",
+    "confidence": "high",
+    "doubts": [
+      "sin precio"
+    ],
+    "id": "estilo-carrandales-intensivo-de-bachata-20-sep",
+    "account": "distritosocialbog",
+    "media": [
+      {
+        "post_id": "18409856125080489",
+        "permalink": "https://www.instagram.com/p/Dc6W0owRIod/",
+        "media_type": "IMAGE",
+        "published": "2026-09-05T16:09:09+0000",
+        "flyer": "archive/flyers/18409856125080489-0.webp",
+        "caption": "Septiembre ✨\n\nTe dejamos nuestra programación de eventos del mes de Septiembre dónde tendrás mucho baile, aprendizaje y gozadera 🥳🥳🥳\n\n🔸 Domingo 13: Iniciamos a la 1PM con un Intensivo de Salsa Caleña dictada por Jenssy Gonzáles y Felipe Romero\n\n🔸Domingo 13: Seguimos ese mismo día a las 3:30 PM con un Intensivo de Jack & Jill Bachata dictado por Angel y Melanny \n\n🔸 Sábado 19: Iniciamos a las 7 PM con nuestra clasificatoria de Bachatamania Master League dónde pondrán a prueba todas sus habilidades \n\n🔸Sábado 19: Seguimos este día desde las 8:30 PM con clase de Bachata y social 100% Bachatero\n\n🔸Domingo 20: Como nunca es suficiente Bachata nos vamos a partir de las 4 PM a una clase Intensiva de Bachata Dominicana dictada por Adriana Tibaduiza\n\n🔸Sábado 26: El último sábado del mes es para bailar y nos vamos con SBK (Salsa, Bachata, Kizomba) desde las 7 PM con doble clase y un social increíble \n\n🔸 Miércoles 30: Cerramos el mes con la culminación de l segundo corte de nuestro aniversario que será el mes de Noviembre 🤩🤩🤩\n\nNo dejes que te lo cuenten reserva en nuestras Webs:\n\ndistrito-social-academy.com/eventos\nappdanza.com",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18074575166426657",
+        "permalink": "https://www.instagram.com/reel/DdPDHFLBSXK/",
+        "media_type": "VIDEO",
+        "published": "2026-09-13T17:00:06+0000",
+        "flyer": "archive/flyers/18074575166426657-0.webp",
+        "caption": "🚨 ¡ATENCIÓN, BACHATEROS! 🇩🇴🇨🇴\n\nSE ACERCA EL 1.er INTENSIVO DE BACHATA ESTILO CARRANDALES 🔥\n\n✨ ¡APROVECHA ESTA OFERTA ESPECIAL! ✨\n\nSi asistes a BACHATAMANIA – JACK & JILL este 19 de septiembre en Distrito Social, disfruta de nuestro precio especial. 🫶🏽\n\n🔥 INTENSIVO DE BACHATA EN PAREJA – ESTILO CARRANDALES\n\n💥 $60.000 POR PERSONA\n\n📍 BOGOTÁ – DISTRITO SOCIAL\n📅 Próximo domingo 20 de septiembre\n\nAprende la rapidez de la bachata dominicana, la creatividad EN PAREJA, la soltura y el fuego del Carrandales. 💃🏻🕺🏻🇩🇴\n\n🎟️ EN PUERTA:\n$80.000 individual | $100.000 pareja\n\n🔥 ¡Aprovecha el precio especial y nos vemos en la pista!",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
   }
 ]
