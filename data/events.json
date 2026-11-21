@@ -24683,7 +24683,7 @@
     "styles": [
       "salsa"
     ],
-    "organizer": "@bulevarsalsabar",
+    "organizer": "Bulevar Rooftop",
     "venue": "Bulevar Rooftop",
     "address": "Carrera 13 # 82 - 37",
     "area": "Zona T",
@@ -24695,14 +24695,10 @@
     "end_time": "18:00",
     "prices": [],
     "artists": [],
-    "activities": [
-      "tardeo"
-    ],
+    "activities": [],
     "contact": "3124245746",
     "confidence": "high",
-    "doubts": [
-      "sin precio"
-    ],
+    "doubts": [],
     "id": "tardeo-de-bulevar-28-nov",
     "account": "bulevarsalsabar",
     "media": [
