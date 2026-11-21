@@ -22578,6 +22578,16 @@
     "account": "galeriacafelibro",
     "media": [
       {
+        "post_id": "17957158026293409",
+        "permalink": "https://www.instagram.com/p/Df95RNNsHXn/",
+        "media_type": "IMAGE",
+        "published": "2026-11-20T14:42:41+0000",
+        "flyer": "flyers/17957158026293409-0.webp",
+        "caption": "🔥 ¡Este sábado la salsa brava se toma Galería Café Libro!\n\nLlega The Big Jhony a nuestra sede Parque 93 para ponerle todo el sabor a la noche. Prepárate para cantar, bailar y disfrutar de una presentación llena de salsa y mucho tumbao. 💃🏽🕺🏽\n\n📅 Sábado 21 de noviembre\\\n📍 Parque 93 – Cra. 11A #93-42\\\n🎟️ Cover: $25.000\n\n¡Arma tu combo salsero y ven a disfrutar esta noche con nosotros!\n\n📲 Info y reservas: 317 660 8742 – 601 285 1794\n\n#GaleríaCaféLibro #TheBigJhony #SalsaEnBogotá",
+        "preview": null,
+        "slides": null
+      },
+      {
         "post_id": "18059704490652184",
         "permalink": "https://www.instagram.com/p/Df7F87RjHOY/",
         "media_type": "CAROUSEL_ALBUM",
@@ -24400,7 +24410,7 @@
       {
         "label": "Entrada libre",
         "amount_cop": 0,
-        "condition": null
+        "condition": "mayores de edad"
       }
     ],
     "artists": [
@@ -24463,6 +24473,16 @@
         "caption": "¡Bogotá tiene nuevos protagonistas para #SalsaAlParque2026! 💃🏽🕺🏽\n\nConozca los artistas distritales seleccionados a través de la Beca Festival Salsa al Parque 2026 - Bogotá Ciudad Creativa de la Música y las parejas de bailarines y agrupaciones ganadoras de la Invitación Cultural Danza en el Festival Salsa al Parque 2026.\n\nEl talento local se toma el escenario de uno de los festivales más esperados de la ciudad. ¡Prepárese para bailar al ritmo de la salsa!\n\n📍 28 y 29 de noviembre | Parque Metropolitano Simón Bolívar.\n🎟️ Entrada libre | 🔞 Evento para mayores de edad.\n\n #LaRevoluciónQueNuncaDejaDeSonar",
         "preview": null,
         "slides": 2
+      },
+      {
+        "post_id": "18112308023204466",
+        "permalink": "https://www.instagram.com/reel/Df-EC9TxOX6/",
+        "media_type": "VIDEO",
+        "published": "2026-11-20T16:17:09+0000",
+        "flyer": "flyers/18112308023204466-0.webp",
+        "caption": "🥁 ¡Cris en la Salsa Band estará en #SalsaAlParque2026!\n\nLiderado por el cantante colombiano Cristhian Torres, conocido como \"El rolo de la salsa choque\", este proyecto fusiona la esencia de la salsa con los sonidos del Pacífico colombiano y la música urbana. Una propuesta que conecta generaciones, explora nuevas expresiones sonoras y acerca la salsa a públicos jóvenes sin perder sus raíces.\n\n📅 28 y 29 de noviembre\n📍 Parque Metropolitano Simón Bolívar.\n🎟️ Entrada libre | 🔞 Evento para mayores de edad.\n\n#LaRevoluciónQueNuncaDejaDeSonar #BogotáMiCiudadMiCasa",
+        "preview": "previews/18112308023204466-0.mp4",
+        "slides": null
       },
       {
         "post_id": "18139156495734274",
@@ -25246,6 +25266,65 @@
     "bar": false
   },
   {
+    "title": "Taller Dancehall Female: Cuerpos y resistencia",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "dancehall"
+    ],
+    "organizer": "@fogal_arte",
+    "venue": "La Telamarilla",
+    "address": null,
+    "area": null,
+    "date": "2026-12-05",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "14:30",
+    "end_time": "16:00",
+    "prices": [
+      {
+        "label": "Inscripción taller",
+        "amount_cop": 30000,
+        "condition": null
+      },
+      {
+        "label": "Combo x3 talleres",
+        "amount_cop": 75000,
+        "condition": null
+      },
+      {
+        "label": "Full Pass x 10 actividades",
+        "amount_cop": 130000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Power Wine"
+    ],
+    "activities": [
+      "taller de dancehall"
+    ],
+    "contact": "@fogal_arte",
+    "confidence": "high",
+    "doubts": [],
+    "id": "taller-dancehall-female-cuerpos-y-resistencia-5-dic",
+    "account": "fogal_arte",
+    "media": [
+      {
+        "post_id": "18187487188425292",
+        "permalink": "https://www.instagram.com/p/Df-We_rPA_f/",
+        "media_type": "IMAGE",
+        "published": "2026-11-20T18:58:15+0000",
+        "flyer": "flyers/18187487188425292-0.webp",
+        "caption": "Desde la perspectiva de power_wine entendemos la danza como una práctica de reconocimiento, resistencia, disfrute y construcción colectiva. Por eso, este espacio está dirigido a todas las mujeres y personas no binarias que deseen acercarse al Female Dancehall, explorar sus posibilidades corporales y habitar el movimiento desde la confianza, la presencia y la complicidad colectiva.\n\nSé parte de este Taller de 1h30 haciendo una inscripción de 30k. Adquiere tu Combo x3 talleres a 75K. O pilla la opción FULL PASS x 10 actividades a 130k 🔥\n\nMás info. en fogal_arte ✨",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Elysium Madyum Gran Aniversario 2026",
     "event_type": "social",
     "is_recurring": false,
@@ -25804,7 +25883,7 @@
       {
         "label": "Taquilla",
         "amount_cop": 60000,
-        "condition": "por persona"
+        "condition": null
       }
     ],
     "artists": [],
