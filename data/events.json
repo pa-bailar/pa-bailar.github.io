@@ -22102,18 +22102,28 @@
     "end_date": null,
     "sessions": null,
     "weekday": "viernes",
-    "start_time": "19:00",
+    "start_time": "20:00",
     "end_time": null,
     "prices": [
       {
         "label": "Preventa Individual",
         "amount_cop": 25000,
-        "condition": "incluye cóctel de bienvenida por persona"
+        "condition": null
       },
       {
         "label": "Preventa Pareja",
         "amount_cop": 40000,
-        "condition": "incluye cóctel de bienvenida por persona"
+        "condition": null
+      },
+      {
+        "label": "Taquilla Individual",
+        "amount_cop": 30000,
+        "condition": null
+      },
+      {
+        "label": "Taquilla Pareja",
+        "amount_cop": 50000,
+        "condition": null
       }
     ],
     "artists": [
@@ -22132,6 +22142,16 @@
     "id": "salsa-vs-dancehall-20-nov",
     "account": "parchexbogota",
     "media": [
+      {
+        "post_id": "18036185276891405",
+        "permalink": "https://www.instagram.com/p/Df57CmIlXN1/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-18T15:10:30+0000",
+        "flyer": "flyers/18036185276891405-1.webp",
+        "caption": "Invíteme a bailar, ya sabe mi estado civil. 🌶️\n\nAsí pintan los próximos días de noviembre en los viernes de salsa más parchados de Bogotá. ❣️\n\nSon cupos limitados y la entrada incluye una bebida de bienvenida. 🍹\n\nPreventa 25k individual y 40k pareja. \nTaquilla 30k individual y 50k pareja. \n(Ingreso incluye bebida por persona). \n\nReserve su cupo escribiendo un mensaje directo a parchexbogota 💬",
+        "preview": null,
+        "slides": 2
+      },
       {
         "post_id": "17958807102328270",
         "permalink": "https://www.instagram.com/p/DfuUTbMlWrX/",
@@ -22356,7 +22376,7 @@
     "date": "2026-11-21",
     "end_date": null,
     "sessions": null,
-    "weekday": "sábado",
+    "weekday": "s3bado",
     "start_time": null,
     "end_time": null,
     "prices": [
@@ -22464,6 +22484,26 @@
         "caption": "BOGOTÁ, nos vemos en el royalbogota \r𝗟𝗼𝘀 𝟮𝟱 𝗱𝗲 𝗹𝗮-𝟯𝟯, se celebran a lo grande 🎉🇨🇴🔥\r\n\r\nEste 21 de noviembre nos encontramos para celebrar 25 años de historia, música y salsa. LA-33 EN VIVO + invitados especiales\r\n\r\nY la celebración se prende aún más con loscorralerosdemajagual_ una de las agrupaciones más emblemáticas de la música tropical colombiana 🥳🔥🔥\r\n\r\n🗓️ Fecha: Sábado 21 de noviembre de 2026\r\n📍Lugar: royalbogota (Cra 13 # 66-80 Bogotá) 🇨🇴\r\n🔥 DJ´S: loa_malbec y rivas_santiago \r\n\r\n🎟️ Entradas en: royalcenter.com.co (el enlace en la bio)\r\n🎟️ 2da etapa $135.000 + servicio, hasta el 5 de octubre\r\n*Aplican términos y condiciones*\r\n\r\nNo dejes que te lo cuenten. Ven a celebrar con nosotros. 🔥🥳💃🕺\r📲 Informes al: 317 331 3956 – 300 660 1156\n.\n.\n.\n🌟 Arte: sebastianbravoguerrero",
         "preview": null,
         "slides": 4
+      },
+      {
+        "post_id": "18141204265669764",
+        "permalink": "https://www.instagram.com/reel/Df-ThEIBIys/",
+        "media_type": "VIDEO",
+        "published": "2026-11-20T18:35:28+0000",
+        "flyer": "flyers/18141204265669764-0.webp",
+        "caption": "¿Y con quién se fue? 👀❤️ “Soledad”.\n\r\nUna canción que hace parte de nuestra historia desde el primer disco y que todos hemos cantado alguna vez. 🎶🎤🥳\n\r\nMañana la cantamos juntos para celebrar nuestros 25 años 🥳🔥\r\n\n🗓️ 21 de noviembre - royalbogota 🥳\r\n¡Falta 1 día! Que nadie se quede por fuera de esta fiesta. 🔥💃🕺\n🎟️ Últimas entradas: royalcenter.com.co (Link en bio)\n.\n.\n.\r\n✍️ Guión: Susana Silva\r\n🎥 Dirección y realización: bretonamadeus \r\n.\r\n#la33 #la33orquesta #salsa #cancion #soledad",
+        "preview": "previews/18141204265669764-0.mp4",
+        "slides": null
+      },
+      {
+        "post_id": "17934360087427028",
+        "permalink": "https://www.instagram.com/reel/Df9wAWEhrbc/",
+        "media_type": "VIDEO",
+        "published": "2026-11-20T13:24:31+0000",
+        "flyer": "flyers/17934360087427028-0.webp",
+        "caption": "¡Ojo con esta info para nuestra celebración! 👀🚨\r\n🗓️ 21 de noviembre en el royalbogota 🥳 \r\nVamos a leer la letra pequeña por ti 👀\r\n\r\n• Todas las localidades son de admisión general.\r\n• La asignación de mesas y/o asientos se realizará de acuerdo con la reserva efectuada al momento de la compra y estará sujeta a disponibilidad.\r\n• La reserva de mesa será válida únicamente hasta las 9:00 p. m. del día del evento.\r\n• En caso de que el titular de la reserva no haya ingresado antes de las 9:00 p. m., el establecimiento se reserva el derecho de liberar y reasignar la mesa, sin que ello afecte la validez de la entrada para el evento.\r\n\r\nVer términos y condiciones en: royalcenter.com.co (Link en bio) 🎟️",
+        "preview": "previews/17934360087427028-0.mp4",
+        "slides": null
       },
       {
         "post_id": "18110820656361360",
@@ -22716,6 +22756,55 @@
     "bar": true
   },
   {
+    "title": "Misión: Exótico & Salsa",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "otro"
+    ],
+    "organizer": "Pachanga & Pochola",
+    "venue": "Pachanga & Pochola",
+    "address": "Calle 73 #14-53",
+    "area": null,
+    "date": "2026-11-21",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Nelson DJ",
+      "Jeisson DJ Salsa"
+    ],
+    "activities": [
+      "DJ set"
+    ],
+    "contact": "314 4822623",
+    "confidence": "high",
+    "doubts": [
+      "sin precio explícito",
+      "sin hora de inicio",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "mision-exotico-salsa-21-nov",
+    "account": "pachanga_y_pochola",
+    "media": [
+      {
+        "post_id": "18137096560786795",
+        "permalink": "https://www.instagram.com/reel/Df-PIchh45K/",
+        "media_type": "VIDEO",
+        "published": "2026-11-20T17:56:47+0000",
+        "flyer": "flyers/18137096560786795-0.webp",
+        "caption": "Nuestro fin de semana AL MEJOR ESTILO DE GTA 🎮🔥💪🏾\n\nHoy viernes- Misión aprender a bailar salsa  a cargo de ritmosacademiadebaile \n\nSábado 21 - jeisson_dj_salsa  nelsondj_oficial \n\nCumple con tu misión, te esperamos 🔥🎮🤩\n\n📲 314 4822623",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Concurso de Chicas BDC",
     "event_type": "competition",
     "is_recurring": false,
@@ -22757,10 +22846,23 @@
     ],
     "contact": "@bogotadanceclub",
     "confidence": "high",
-    "doubts": [],
+    "doubts": [
+      "sin lugar exacto",
+      "sin precio"
+    ],
     "id": "concurso-de-chicas-bdc-21-nov",
     "account": "bogotadanceclub",
     "media": [
+      {
+        "post_id": "18136488817665136",
+        "permalink": "https://www.instagram.com/reel/Df_IFePDJ0z/",
+        "media_type": "VIDEO",
+        "published": "2026-11-21T02:11:35+0000",
+        "flyer": "flyers/18136488817665136-0.webp",
+        "caption": "💃 ¿Qué es una Chica BDC? 👑\nEsa es la pregunta que muchas se están haciendo… ¡Y qué mejor que nuestras comunidad BDC para responderla! ❤️🔥\n🎉 ¡Mañana tenemos TARDEO LATINO! Y viene cargado de baile, sabor, buena música y chicas con mucha actitud. 💃✨\nAdemás, viviremos la elección de nuestras próximas Chicas BDC 👑\n🔥 Ven a bailar, disfrutar de la fiesta y apoyar a tu Chica BDC favorita.\n💬 Comenta FIESTA y te enviamos el enlace con toda la información.\n¡Nos vemos en la pista! 💋\n\n#planesenbogotá #baile #concursobogotá #salsa #mujeres",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "17908413774600266",
         "permalink": "https://www.instagram.com/reel/Df5vS4xu09i/",
@@ -24108,6 +24210,16 @@
     "account": "parchexbogota",
     "media": [
       {
+        "post_id": "18036185276891405",
+        "permalink": "https://www.instagram.com/p/Df57CmIlXN1/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-18T15:10:30+0000",
+        "flyer": "flyers/18036185276891405-1.webp",
+        "caption": "Invíteme a bailar, ya sabe mi estado civil. 🌶️\n\nAsí pintan los próximos días de noviembre en los viernes de salsa más parchados de Bogotá. ❣️\n\nSon cupos limitados y la entrada incluye una bebida de bienvenida. 🍹\n\nPreventa 25k individual y 40k pareja. \nTaquilla 30k individual y 50k pareja. \n(Ingreso incluye bebida por persona). \n\nReserve su cupo escribiendo un mensaje directo a parchexbogota 💬",
+        "preview": null,
+        "slides": 2
+      },
+      {
         "post_id": "18028689701919184",
         "permalink": "https://www.instagram.com/p/DfpHVvLGkjm/",
         "media_type": "CAROUSEL_ALBUM",
@@ -24560,6 +24672,49 @@
         "caption": "🔥Concierto salsero, en elgocepagano 🔥\nSalsa bogotana, sabor, calle y goce en una sola noche\n\n🕔 Puertas: 6 pm | 🎶 Shows: 11 pm y 1 am\n📍 Diagonal 20A No. 82 – Bogotá\n\n✨🔥¡A bailar!🔥✨\nCover 20k\n#salsaenvivo #salsa\n#concierto #envivo\n#conciertobogota #salsaenbogotá",
         "preview": null,
         "slides": 2
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Tardeo de Bulevar",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "@bulevarsalsabar",
+    "venue": "Bulevar Rooftop",
+    "address": "Carrera 13 # 82 - 37",
+    "area": "Zona T",
+    "date": "2026-11-28",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "13:00",
+    "end_time": "18:00",
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "tardeo"
+    ],
+    "contact": "3124245746",
+    "confidence": "high",
+    "doubts": [
+      "sin precio"
+    ],
+    "id": "tardeo-de-bulevar-28-nov",
+    "account": "bulevarsalsabar",
+    "media": [
+      {
+        "post_id": "18140032474652468",
+        "permalink": "https://www.instagram.com/reel/Df-EUBdAv2H/",
+        "media_type": "VIDEO",
+        "published": "2026-11-20T16:21:02+0000",
+        "flyer": "flyers/18140032474652468-0.webp",
+        "caption": "Nos vemos en el Tardeo ☀️🎶🌇\n\nSábado 28 Noviembre\nDesde la 1PM hasta las 6PM\nBULEVAR ROOFTOP\n📍Carrera 13 # 82 - 37 ( Zona T )",
+        "preview": "previews/18140032474652468-0.mp4",
+        "slides": null
       }
     ],
     "bar": true
