@@ -22756,12 +22756,56 @@
     "bar": true
   },
   {
+    "title": "Remate Oficial Rubén Blades",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Quema Que Quema",
+    "venue": "Quema Que Quema",
+    "address": null,
+    "area": null,
+    "date": "2026-11-21",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": "03:00",
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "música en vivo",
+      "rumba"
+    ],
+    "contact": "@quemaquequema",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio",
+      "sin información de cover o precio"
+    ],
+    "id": "remate-oficial-ruben-blades-21-nov",
+    "account": "quemaquequema",
+    "media": [
+      {
+        "post_id": "18087085079528023",
+        "permalink": "https://www.instagram.com/reel/DgA8oJsvWht/",
+        "media_type": "VIDEO",
+        "published": "2026-11-21T19:09:38+0000",
+        "flyer": "flyers/18087085079528023-0.webp",
+        "caption": "¡Esta noche Remate Oficial 🎤 Rubén Blades 🔥\n\nDespués del concierto, la rumba sigue 🕺 Hoy Sábado 21 de Noviembre\n\nLos esperamos en el Hogar de la Salsa 🏠 Banda de salsa en vivo hasta las 3 AM 🎺🔥\n\nVen a terminar la noche cantando y bailando Salsa 🎶\n\n#restaurantequemaquequema #rubenblades #decisiones #salsa #salseros",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Misión: Exótico & Salsa",
     "event_type": "party",
     "is_recurring": false,
     "styles": [
-      "salsa",
-      "otro"
+      "salsa"
     ],
     "organizer": "Pachanga & Pochola",
     "venue": "Pachanga & Pochola",
@@ -22776,17 +22820,14 @@
     "prices": [],
     "artists": [
       "Nelson DJ",
-      "Jeisson DJ Salsa"
+      "DJ Jeisson"
     ],
-    "activities": [
-      "DJ set"
-    ],
-    "contact": "314 4822623",
+    "activities": [],
+    "contact": "WhatsApp 3144822623",
     "confidence": "high",
     "doubts": [
-      "sin precio explícito",
       "sin hora de inicio",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+      "sin precio"
     ],
     "id": "mision-exotico-salsa-21-nov",
     "account": "pachanga_y_pochola",
@@ -23903,6 +23944,63 @@
     "bar": false
   },
   {
+    "title": "Clase de Salsa con Bryan Jerez",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Bureo Dance Studio",
+    "venue": "Bureo Dance Studio - Sede 109",
+    "address": null,
+    "area": null,
+    "date": "2026-11-23",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "lunes",
+    "start_time": "20:00",
+    "end_time": "21:30",
+    "prices": [
+      {
+        "label": "1 persona",
+        "amount_cop": 50000,
+        "condition": null
+      },
+      {
+        "label": "2 personas",
+        "amount_cop": 60000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Bryan Jerez",
+      "Cali Flow"
+    ],
+    "activities": [
+      "clase de salsa"
+    ],
+    "contact": "@bureodancestudio",
+    "confidence": "high",
+    "doubts": [
+      "ciudad sin confirmar: ¿es en Bogotá?"
+    ],
+    "id": "clase-de-salsa-con-bryan-jerez-23-nov",
+    "account": "bureodancestudio",
+    "media": [
+      {
+        "post_id": "18128160109910578",
+        "permalink": "https://www.instagram.com/p/DgApHRHlAY7/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-21T16:18:34+0000",
+        "flyer": "flyers/18128160109910578-0.webp",
+        "caption": "🔥 LOS DUEÑOS DE LA SALSA CHOKE 🔥\n\nCali Flow llega a Bureo para poner la casa a bailar y gozar como se debe. 🕺🏽💥\n\n📅 23 de noviembre\n📍 Sede 109\n⏰ 8:00 PM – 9:30 PM\n\n💰 1 persona: $50.000\n👯‍♀️ 2 personas: $60.000\n✨ También puedes entrar con tu paquete de clases.\n\nNos vemos en la pista. 🔥\n¿Quién se apunta?",
+        "preview": null,
+        "slides": 3
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Taller - Azúcar, tumbao y sabor",
     "event_type": "workshop",
     "is_recurring": false,
@@ -24279,6 +24377,16 @@
         "caption": "Viernes 27 de Noviembre: NOCHE DE SALSA🔥\nEn vivo: Candelaria Salsa Groove\n🎟️15K\nLes esperamos 🍷✨\n.\n#LaCandelaria #bogota #salsa #Musicaenvivo #rumba",
         "preview": null,
         "slides": null
+      },
+      {
+        "post_id": "18121120091012518",
+        "permalink": "https://www.instagram.com/reel/DgAgXR9vxrM/",
+        "media_type": "VIDEO",
+        "published": "2026-11-21T15:04:37+0000",
+        "flyer": "flyers/18121120091012518-0.webp",
+        "caption": "Viernes 27 de Noviembre: NOCHE DE SALSA🔥\nEn vivo: Candelaria Salsa Groove\n🎟️15K\nLes esperamos 🍷✨\n.\n#LaCandelaria #bogota #salsa #Musicaenvivo #rumba",
+        "preview": "previews/18121120091012518-0.mp4",
+        "slides": null
       }
     ],
     "bar": true
@@ -24522,7 +24630,7 @@
       {
         "label": "Entrada libre",
         "amount_cop": 0,
-        "condition": "mayores de edad"
+        "condition": null
       }
     ],
     "artists": [
@@ -24585,6 +24693,26 @@
         "caption": "¡Bogotá tiene nuevos protagonistas para #SalsaAlParque2026! 💃🏽🕺🏽\n\nConozca los artistas distritales seleccionados a través de la Beca Festival Salsa al Parque 2026 - Bogotá Ciudad Creativa de la Música y las parejas de bailarines y agrupaciones ganadoras de la Invitación Cultural Danza en el Festival Salsa al Parque 2026.\n\nEl talento local se toma el escenario de uno de los festivales más esperados de la ciudad. ¡Prepárese para bailar al ritmo de la salsa!\n\n📍 28 y 29 de noviembre | Parque Metropolitano Simón Bolívar.\n🎟️ Entrada libre | 🔞 Evento para mayores de edad.\n\n #LaRevoluciónQueNuncaDejaDeSonar",
         "preview": null,
         "slides": 2
+      },
+      {
+        "post_id": "18122904082752528",
+        "permalink": "https://www.instagram.com/reel/DgA8h9QuhH3/",
+        "media_type": "VIDEO",
+        "published": "2026-11-21T19:08:46+0000",
+        "flyer": "flyers/18122904082752528-0.webp",
+        "caption": "🎷 ¡La salsa bogotana sigue explorando nuevos sonidos! Kaona Orquesta será parte de #SalsaAlParque2026 con una propuesta que conecta la tradición salsera con elementos contemporáneos, como sintetizadores, guitarra eléctrica y una potente sección de vientos.\n\nDirigida por César González, la orquesta ha construido un sonido propio con canciones como ‘Dime que sí’, ‘Tormento’ y ‘Zalamera’, en las que combina la salsa de golpe con los ritmos románticos. \n\n¡Prepárese para disfrutar de esta propuesta hecha en la capital!\n\n📅 28 y 29 de noviembre\n📍 Parque Metropolitano Simón Bolívar.\n🎟️ Entrada libre | 🔞 Evento para mayores de edad.\n\n#LaRevoluciónQueNuncaDejaDeSonar #BogotáMiCiudadMiCasa",
+        "preview": "previews/18122904082752528-0.mp4",
+        "slides": null
+      },
+      {
+        "post_id": "18113761073184072",
+        "permalink": "https://www.instagram.com/reel/DgAn3eshgpr/",
+        "media_type": "VIDEO",
+        "published": "2026-11-21T16:08:14+0000",
+        "flyer": "flyers/18113761073184072-0.webp",
+        "caption": "🎺 ¡Kábala Ensamble se suma a #SalsaAlParque2026!\n\nEsta orquesta, fundada en 2014 y dirigida por Edwin Pinzón, propone un encuentro entre la salsa tradicional y afrocaribeña, la timba y los sonidos contemporáneos. Con arreglos originales, fuerza vocal y una puesta en escena llena de energía, construye una identidad musical que conecta la tradición del Caribe con las nuevas expresiones de la salsa en la capital.\n\n📅 28 y 29 de noviembre\n📍 Parque Metropolitano Simón Bolívar.\n🎟️ Entrada libre | 🔞 Evento para mayores de edad.\n\n¡Prepárese para disfrutar de su sonido en el Parque Simón Bolívar!\n\n#LaRevoluciónQueNuncaDejaDeSonar #BogotáMiCiudadMiCasa",
+        "preview": "previews/18113761073184072-0.mp4",
+        "slides": null
       },
       {
         "post_id": "18112308023204466",
@@ -26091,7 +26219,7 @@
     "end_time": null,
     "prices": [
       {
-        "label": "Boletas",
+        "label": "Entrada",
         "amount_cop": 150000,
         "condition": null
       }
@@ -26118,6 +26246,16 @@
         "flyer": "flyers/18131584735879914-0.webp",
         "caption": "✨ LOS MELÓDICOS EN BOGOTÁ\n\nUna noche de lujo, elegancia y tradición tropical. \n\nEste 19 de diciembre Galería Café Libro recibe por primera vez a Los Melódicos para vivir una experiencia musical inolvidable, con sus grandes éxitos y el encanto de la música que ha hecho historia. ¡Una cita imperdible para celebrar diciembre!\n\n📍 Cra 11A#93-42\n🎟️ $150.000 Boletas disponibles en galeriacafelibro.com.co • 3176608742",
         "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18200558635387891",
+        "permalink": "https://www.instagram.com/reel/DgBjkM7sfC8/",
+        "media_type": "VIDEO",
+        "published": "2026-11-22T00:50:12+0000",
+        "flyer": "flyers/18200558635387891-0.webp",
+        "caption": "✨ ¡LOS MELÓDICOS LLEGAN A BOGOTÁ!\n\nDiciembre se viste de fiesta con una noche para disfrutar de la buena música y los grandes clásicos de la música tropical. 🎶💃\n\nEste próximo 19 de diciembre, Galería Café Libro abre sus puertas por primera vez a Los Melódicos, en un encuentro lleno de ritmo, nostalgia y esos éxitos que nunca pasan de moda.\n\n¡Prepárate para cantar, bailar y celebrar diciembre como se merece! 🥂\n\n📍 Cra. 11A #93-42\n🎟️ $150.000\n\nAdquiere tus boletas en galeriacafelibro.com.co o al 317 660 8742.",
+        "preview": "previews/18200558635387891-0.mp4",
         "slides": null
       }
     ],
