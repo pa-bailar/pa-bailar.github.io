@@ -1301,5 +1301,60 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "Social Salsa y Bachata Workshop - Sede Cajicá",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "bachata"
+    ],
+    "organizer": "Bureo",
+    "venue": "Bureo Sede Cajicá",
+    "address": null,
+    "area": "Cajicá",
+    "date": "2026-09-23",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "miércoles",
+    "start_time": "17:00",
+    "end_time": "19:00",
+    "prices": [
+      {
+        "label": "1 persona",
+        "amount_cop": 70000,
+        "condition": null
+      },
+      {
+        "label": "Pareja",
+        "amount_cop": 80000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Bryan Jerez"
+    ],
+    "activities": [
+      "workshop de salsa y bachata"
+    ],
+    "contact": "@bureodancestudio",
+    "confidence": "high",
+    "doubts": [],
+    "id": "social-salsa-y-bachata-workshop-sede-cajica-23-sep",
+    "account": "bureodancestudio",
+    "media": [
+      {
+        "post_id": "18124895125860558",
+        "permalink": "https://www.instagram.com/p/DdbzZpcHMRt/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-09-18T15:53:46+0000",
+        "flyer": "archive/flyers/18124895125860558-0.webp",
+        "caption": "❤️‍🔥 CELEBREMOS AMOR Y AMISTAD BAILANDO\n\nLlega SOCIAL · Salsa y Bachata, un workshop para conectar, disfrutar y bailar con Bryan Jerez. 🕺🏻\n\nUna experiencia para todos los niveles, porque no importa con quién vengas… lo importante es venir a bailar. ❤️\n\n📅 MARTES 22\n🕔 5:00 – 7:00 PM\n📍 Sede 127\n\n📅 MIÉRCOLES 23\n🕔 5:00 – 7:00 PM\n📍 Sede Cajicá\n\n📅 JUEVES 24\n🕔 5:00 – 7:00 PM\n📍 Sede 109\n\nVALOR:\n✨ $70.000 · 1 persona\n❤️ $80.000 · Pareja\n\n¿Eres Member Bureo? Puedes usar tu paquete activo para reservar tu clase.\n\nVen solo, con tu pareja o con tus amigos.\nConecta. Baila. Celebra.\n\n📲 Reserva tu cupo por WhatsApp.",
+        "preview": null,
+        "slides": 4
+      }
+    ],
+    "bar": false
   }
 ]
