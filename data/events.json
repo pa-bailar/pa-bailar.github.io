@@ -1,60 +1,5 @@
 [
   {
-    "title": "Social Salsa y Bachata Workshop - Sede Cajicá",
-    "event_type": "workshop",
-    "is_recurring": false,
-    "styles": [
-      "salsa",
-      "bachata"
-    ],
-    "organizer": "Bureo",
-    "venue": "Bureo Sede Cajicá",
-    "address": null,
-    "area": "Cajicá",
-    "date": "2026-09-23",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "miércoles",
-    "start_time": "17:00",
-    "end_time": "19:00",
-    "prices": [
-      {
-        "label": "1 persona",
-        "amount_cop": 70000,
-        "condition": null
-      },
-      {
-        "label": "Pareja",
-        "amount_cop": 80000,
-        "condition": null
-      }
-    ],
-    "artists": [
-      "Bryan Jerez"
-    ],
-    "activities": [
-      "workshop de salsa y bachata"
-    ],
-    "contact": "@bureodancestudio",
-    "confidence": "high",
-    "doubts": [],
-    "id": "social-salsa-y-bachata-workshop-sede-cajica-23-sep",
-    "account": "bureodancestudio",
-    "media": [
-      {
-        "post_id": "18124895125860558",
-        "permalink": "https://www.instagram.com/p/DdbzZpcHMRt/",
-        "media_type": "CAROUSEL_ALBUM",
-        "published": "2026-09-18T15:53:46+0000",
-        "flyer": "flyers/18124895125860558-0.webp",
-        "caption": "❤️‍🔥 CELEBREMOS AMOR Y AMISTAD BAILANDO\n\nLlega SOCIAL · Salsa y Bachata, un workshop para conectar, disfrutar y bailar con Bryan Jerez. 🕺🏻\n\nUna experiencia para todos los niveles, porque no importa con quién vengas… lo importante es venir a bailar. ❤️\n\n📅 MARTES 22\n🕔 5:00 – 7:00 PM\n📍 Sede 127\n\n📅 MIÉRCOLES 23\n🕔 5:00 – 7:00 PM\n📍 Sede Cajicá\n\n📅 JUEVES 24\n🕔 5:00 – 7:00 PM\n📍 Sede 109\n\nVALOR:\n✨ $70.000 · 1 persona\n❤️ $80.000 · Pareja\n\n¿Eres Member Bureo? Puedes usar tu paquete activo para reservar tu clase.\n\nVen solo, con tu pareja o con tus amigos.\nConecta. Baila. Celebra.\n\n📲 Reserva tu cupo por WhatsApp.",
-        "preview": null,
-        "slides": 4
-      }
-    ],
-    "bar": false
-  },
-  {
     "title": "Social Salsa y Bachata Workshop - Sede 109",
     "event_type": "workshop",
     "is_recurring": false,
@@ -24347,6 +24292,50 @@
     "bar": true
   },
   {
+    "title": "Tributo Fania y La Previa Decembrina",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Casa Van Der",
+    "venue": "Casa Van Der",
+    "address": "Cra 16 #35-08",
+    "area": "Teusaquillo",
+    "date": "2026-11-27",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "20:30",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Orquesta Cien Fuegos"
+    ],
+    "activities": [
+      "concierto de salsa en vivo",
+      "tributo a Fania All Stars"
+    ],
+    "contact": "WhatsApp 3011620492",
+    "confidence": "high",
+    "doubts": [],
+    "id": "tributo-fania-y-la-previa-decembrina-27-nov",
+    "account": "casavander_",
+    "media": [
+      {
+        "post_id": "18120816059067393",
+        "permalink": "https://www.instagram.com/p/DgD8_zuMnUd/",
+        "media_type": "IMAGE",
+        "published": "2026-11-22T23:14:36+0000",
+        "flyer": "flyers/18120816059067393-0.webp",
+        "caption": "El Gran Tributo a Fania All Stars y la verdadera previa navideña. \n\nEste 27 de Noviembre, el último viernes de Nov cerramos con la presentación en vivo de la Orquesta Cien Fuegos en nuestra casa, la unión de la buena comida, la buena Pola y por supuesto la buena música. \n\nEstamos en el marco de Teusaquillo Sabe a Pola y en Licor Master así que llénese de motivos. \n\nYa deje de improvisar sus viernes y caiga al sitio fijo.\nReservas en el link de WhatsApp.",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Social Decembrino",
     "event_type": "social",
     "is_recurring": false,
@@ -24475,91 +24464,6 @@
         "caption": "Una salsita brava, orquesta en vivo… ¿usted y yo toda la noche? 👀 ¡Piénselo! 🔥\n\nLa noche más dura de noviembre llega a El Ratón Salsa Club, en el corazón de la Zona Rosa. El plan perfecto para sacar los mejores pasos y cerrar la primera ruta del Tour de la Salsa. 💃🕺\n\n🎺 Luna Llena Salsa Band en vivo\n🎧 DJ: Hermanos Baez\n📅 Sábado 28 de noviembre\n📍 Cra. 14A # 82-14, 3er piso\n\n🎟️ Preventa: $35.000 individual · $50.000 la pareja\n🚪 En taquilla: $45.000… mejor no lo deje para última hora 😉\n\n📲 Reserve por WhatsApp: +57 300 257 7024\n🌐 O en salsaculto.com (link en la bio)\n\n#SalsaBrava #SalsaEnBogotá #RumbaSalsera #OrquestaEnVivo",
         "preview": "previews/18075308501775687-0.mp4",
         "slides": null
-      }
-    ],
-    "bar": false
-  },
-  {
-    "title": "Social Pal Parche",
-    "event_type": "social",
-    "is_recurring": false,
-    "styles": [
-      "salsa caleña",
-      "bachata",
-      "urbano"
-    ],
-    "organizer": "Jaleo",
-    "venue": "Campus Beta",
-    "address": "Calle 47 #14-22",
-    "area": "Teusaquillo",
-    "date": "2026-11-28",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "sábado",
-    "start_time": null,
-    "end_time": null,
-    "prices": [
-      {
-        "label": "Preventa",
-        "amount_cop": 25000,
-        "condition": null
-      },
-      {
-        "label": "Taquilla",
-        "amount_cop": 40000,
-        "condition": null
-      }
-    ],
-    "artists": [
-      "@camilo_barretto",
-      "@frank.de.latorre",
-      "@djfeyder",
-      "@danitello22",
-      "@juanesksallas.lafabrica"
-    ],
-    "activities": [
-      "clase de salsa caleña",
-      "clase de bachata",
-      "mini competencia salsa caleña 1vs1",
-      "social"
-    ],
-    "contact": "@jaleocompetencia_",
-    "confidence": "high",
-    "doubts": [
-      "sin hora de inicio"
-    ],
-    "id": "social-pal-parche-28-nov",
-    "account": "jaleocompetencia_",
-    "media": [
-      {
-        "post_id": "18068262998685769",
-        "permalink": "https://www.instagram.com/p/DfzpowQFkFr/",
-        "media_type": "CAROUSEL_ALBUM",
-        "published": "2026-11-16T15:13:00+0000",
-        "flyer": "flyers/18068262998685769-1.webp",
-        "caption": "🔥 ¡NO PUEDES FALTAR ESTE 28 DE NOVIEMBRE! 💃🕺\n\nSOCIAL CON REMATE SALSA AL PARQUE\n\n📍 campusbeta.bogota | Calle 47 #14-22\n🎟️ Preventa: $25K | Taquilla: $40K\n\n🎶 SALSA • BACHATA • URBANO\n🎧 DJs: camilo_barretto  djfeyder\n💃 Clase de salsa caleña + clase de bachata.\n🏆 Competencia de salsa caleña 1 vs. 1 con votación del público y premio en efectivo.\n\n🔥 ¡Compra tu preventa y ahorra $15K!\n📲 Escríbenos por DM.\n\nUna noche para bailar, sacar los mejores pasos y disfrutar con tu parche. ❤️‍🔥 ¡Nos vemos en la pista!\n\n#SocialPalParche #SalsaBogotá #BachataBogotá #SalsaCaleña BogotáBaila",
-        "preview": null,
-        "slides": 2
-      },
-      {
-        "post_id": "18136882285676034",
-        "permalink": "https://www.instagram.com/p/DfvgDnEFjMo/",
-        "media_type": "CAROUSEL_ALBUM",
-        "published": "2026-11-15T00:32:20+0000",
-        "flyer": "flyers/18136882285676034-0.webp",
-        "caption": "🕺APRENDE A BAILAR EN SOCIAL PAL PARCHE – REMATE SALSA AL PARQUE💃🏻\n\nNo importa si no sabes!!\nAqui te enseñamos, con los mejores⭐️\n\ndanitello22 salsa caleño basico \njuanesksallas.lafabrica  bachata basico \n\n🎶 SOCIAL | SALSA | BACHATA | URBANO\n\nDjs camilo_barretto  djfeyder \n\n📅 28 DE NOVIEMBRE\n📍 campusbeta.bogota – Calle 47 #14-22\n\n🎟️ ¡ASEGURA TU ENTRADA EN PREVENTA!\n🔥 Preventa: $25.000\n🔥 Taquilla: $40.000\n\n⚠️ ¡No esperes hasta el último momento! Compra tu preventa y ahorra $15.000.\nEtiqueta a tu parche de baile, comparte este post y alista los zapatos… ¡porque esa noche se baila hasta que el cuerpo aguante! 💥\n\n📲 Escríbenos por DM para asegurar tu entrada.\n\n#SocialPalParche #Jaleo SalsaCalena SalsaBogota BachataBogota SocialDeBaile BogotaBaila",
-        "preview": null,
-        "slides": 2
-      },
-      {
-        "post_id": "17921743377457046",
-        "permalink": "https://www.instagram.com/p/DfsxVLfFtzF/",
-        "media_type": "CAROUSEL_ALBUM",
-        "published": "2026-11-13T22:37:06+0000",
-        "flyer": "flyers/17921743377457046-0.webp",
-        "caption": "🔥 ¡BOGOTÁ, SE VIENE EL PARCHE QUE NO TE PUEDES PERDER! 🔥\n\n💃🕺 SOCIAL PAL PARCHE CON  REMATE DE SALSA AL PARQUE 💃🏼💃🏾\n\nUna noche para bailar sin parar, sacar los mejores pasos y disfrutar de la mejor energía del baile. ❤️‍🔥\n\n🎶 SOCIAL | SALSA | BACHATA | URBANO\n\nDjs camilo_barretto  djfeyder \n\nClase salsa caleña por el mejor 🔥\n danitello22 \nClase de bachata por el multicampeon 🔥 juanesksallas.lafabrica \n\nMini competencia salsa caleña 1Vs1 El publico decide desde su celular \n\nPremio  en efectivo\n💰 \n\n📅 28 DE NOVIEMBRE\n📍 campusbeta.bogota – Calle 47 #14-22\n\n🎟️ ¡ASEGURA TU ENTRADA EN PREVENTA!\n\n🔥 Preventa: $25.000\n🔥 Taquilla: $40.000\n\n⚠️ ¡No esperes hasta el último momento! Compra tu preventa y ahorra $15.000.\n\nEtiqueta a tu parche de baile, comparte este post y alista los zapatos… ¡porque esa noche se baila hasta que el cuerpo aguante! 💥\n\n📲 Escríbenos por DM para asegurar tu entrada.\n\n#SocialPalParche #Jaleo #SalsaCalena SalsaBogota BachataBogota SocialDeBaile BogotaBaila",
-        "preview": null,
-        "slides": 5
       }
     ],
     "bar": false
@@ -25108,6 +25012,101 @@
         "caption": "Bachatamania Noviembre ✨\n\nPenúltimo Bachatamania del 2026 y venimos con toda 🥳🥳🥳\n\nNo te pierdas la clase de Jean y Gaby a las 8 PM seguido de un social 100% Bachata a manos de DJ Duane para que disfrutes y bailes hasta que el cuerpo aguante 🤩🤩🤩\n\n🗓️ 28 de Noviembre\n📍 Distrito Social - CRA 29 68 - 18\n🕢 8:00 PM\n\nNo dejes que te lo cuenten, ven a bailar en el mejor social bachatero de Bogotá 🔥\n\nReserva tus boletas en nuestra web: \n\nappdanza.com",
         "preview": null,
         "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Social Pal Parche",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "salsa caleña",
+      "bachata",
+      "urbano"
+    ],
+    "organizer": "Jaleo",
+    "venue": "Campus Beta",
+    "address": "Calle 47 #14-22",
+    "area": "Teusaquillo",
+    "date": "2026-11-28",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "20:30",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Preventa",
+        "amount_cop": 25000,
+        "condition": null
+      },
+      {
+        "label": "Taquilla",
+        "amount_cop": 40000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "@camilo_barretto",
+      "@frank.de.latorre",
+      "@djfeyder",
+      "@danitello22",
+      "@juanesksallas.lafabrica"
+    ],
+    "activities": [
+      "clase de salsa caleña",
+      "clase de bachata",
+      "mini competencia salsa caleña 1vs1",
+      "social"
+    ],
+    "contact": "@jaleocompetencia_",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio"
+    ],
+    "id": "social-pal-parche-28-nov",
+    "account": "jaleocompetencia_",
+    "media": [
+      {
+        "post_id": "17961015027322910",
+        "permalink": "https://www.instagram.com/p/DgD1Elllr0X/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-22T22:00:47+0000",
+        "flyer": "flyers/17961015027322910-0.webp",
+        "caption": "C͟R͟O͟N͟O͟G͟R͟A͟M͟A͟ ͟S͟O͟C͟I͟A͟L͟ ͟P͟A͟’͟L͟ ͟P͟A͟R͟C͟H͟E͟ ͟͟P͟A͟S͟O͟ ͟A͟ ͟P͟A͟S͟O͟ 🔥͟C͟O͟M͟P͟E͟T͟E͟N͟C͟I͟A͟ ͟I͟M͟P͟R͟O͟ ͟C͟A͟L͟E͟Ñ͟O͟ ͟1͟V͟S͟1͟ ͟🔥\n\nEl próximo sábado 28 disfruta de lo mejor !!\n\nSi no vas a salsa al parque llega temprano y aprende a bailar \n\nSi vas a salsa al parque te tenemos el súper remate con la mejor fiesta 💯 % sello Jaleo 🔥\n\nTalleres \nSocial \nMini competencia \nSet urbano \n\nTodo en un mismo lugar campusbeta.bogota \n\nCompra de entradas en preventa!!\n-\n-\n-\n-\n-\n#social #jaleo #socialdance #bogota",
+        "preview": null,
+        "slides": 2
+      },
+      {
+        "post_id": "18068262998685769",
+        "permalink": "https://www.instagram.com/p/DfzpowQFkFr/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-16T15:13:00+0000",
+        "flyer": "flyers/18068262998685769-1.webp",
+        "caption": "🔥 ¡NO PUEDES FALTAR ESTE 28 DE NOVIEMBRE! 💃🕺\n\nSOCIAL CON REMATE SALSA AL PARQUE\n\n📍 campusbeta.bogota | Calle 47 #14-22\n🎟️ Preventa: $25K | Taquilla: $40K\n\n🎶 SALSA • BACHATA • URBANO\n🎧 DJs: camilo_barretto  djfeyder\n💃 Clase de salsa caleña + clase de bachata.\n🏆 Competencia de salsa caleña 1 vs. 1 con votación del público y premio en efectivo.\n\n🔥 ¡Compra tu preventa y ahorra $15K!\n📲 Escríbenos por DM.\n\nUna noche para bailar, sacar los mejores pasos y disfrutar con tu parche. ❤️‍🔥 ¡Nos vemos en la pista!\n\n#SocialPalParche #SalsaBogotá #BachataBogotá #SalsaCaleña BogotáBaila",
+        "preview": null,
+        "slides": 2
+      },
+      {
+        "post_id": "18136882285676034",
+        "permalink": "https://www.instagram.com/p/DfvgDnEFjMo/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-15T00:32:20+0000",
+        "flyer": "flyers/18136882285676034-0.webp",
+        "caption": "🕺APRENDE A BAILAR EN SOCIAL PAL PARCHE – REMATE SALSA AL PARQUE💃🏻\n\nNo importa si no sabes!!\nAqui te enseñamos, con los mejores⭐️\n\ndanitello22 salsa caleño basico \njuanesksallas.lafabrica  bachata basico \n\n🎶 SOCIAL | SALSA | BACHATA | URBANO\n\nDjs camilo_barretto  djfeyder \n\n📅 28 DE NOVIEMBRE\n📍 campusbeta.bogota – Calle 47 #14-22\n\n🎟️ ¡ASEGURA TU ENTRADA EN PREVENTA!\n🔥 Preventa: $25.000\n🔥 Taquilla: $40.000\n\n⚠️ ¡No esperes hasta el último momento! Compra tu preventa y ahorra $15.000.\nEtiqueta a tu parche de baile, comparte este post y alista los zapatos… ¡porque esa noche se baila hasta que el cuerpo aguante! 💥\n\n📲 Escríbenos por DM para asegurar tu entrada.\n\n#SocialPalParche #Jaleo SalsaCalena SalsaBogota BachataBogota SocialDeBaile BogotaBaila",
+        "preview": null,
+        "slides": 2
+      },
+      {
+        "post_id": "17921743377457046",
+        "permalink": "https://www.instagram.com/p/DfsxVLfFtzF/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-13T22:37:06+0000",
+        "flyer": "flyers/17921743377457046-0.webp",
+        "caption": "🔥 ¡BOGOTÁ, SE VIENE EL PARCHE QUE NO TE PUEDES PERDER! 🔥\n\n💃🕺 SOCIAL PAL PARCHE CON  REMATE DE SALSA AL PARQUE 💃🏼💃🏾\n\nUna noche para bailar sin parar, sacar los mejores pasos y disfrutar de la mejor energía del baile. ❤️‍🔥\n\n🎶 SOCIAL | SALSA | BACHATA | URBANO\n\nDjs camilo_barretto  djfeyder \n\nClase salsa caleña por el mejor 🔥\n danitello22 \nClase de bachata por el multicampeon 🔥 juanesksallas.lafabrica \n\nMini competencia salsa caleña 1Vs1 El publico decide desde su celular \n\nPremio  en efectivo\n💰 \n\n📅 28 DE NOVIEMBRE\n📍 campusbeta.bogota – Calle 47 #14-22\n\n🎟️ ¡ASEGURA TU ENTRADA EN PREVENTA!\n\n🔥 Preventa: $25.000\n🔥 Taquilla: $40.000\n\n⚠️ ¡No esperes hasta el último momento! Compra tu preventa y ahorra $15.000.\n\nEtiqueta a tu parche de baile, comparte este post y alista los zapatos… ¡porque esa noche se baila hasta que el cuerpo aguante! 💥\n\n📲 Escríbenos por DM para asegurar tu entrada.\n\n#SocialPalParche #Jaleo #SalsaCalena SalsaBogota BachataBogota SocialDeBaile BogotaBaila",
+        "preview": null,
+        "slides": 5
       }
     ],
     "bar": false
