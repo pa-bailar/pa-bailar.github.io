@@ -24058,6 +24058,49 @@
     "bar": false
   },
   {
+    "title": "Sarau Cultural - Juntaza Brasileña / Colombiana",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "El Bochinche Café - Bar",
+    "venue": "El Bochinche Café - Bar",
+    "address": "Calle 22 # 01 - 26",
+    "area": null,
+    "date": "2026-11-25",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "miércoles",
+    "start_time": "19:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "poesía",
+      "danza",
+      "música"
+    ],
+    "contact": "@el_bochinche_cafe_",
+    "confidence": "high",
+    "doubts": [],
+    "id": "sarau-cultural-juntaza-brasilena-colombiana-25-nov",
+    "account": "el_bochinche_cafe_",
+    "media": [
+      {
+        "post_id": "18123256219995762",
+        "permalink": "https://www.instagram.com/p/DgGrBZTNVqK/",
+        "media_type": "IMAGE",
+        "published": "2026-11-24T00:33:34+0000",
+        "flyer": "flyers/18123256219995762-0.webp",
+        "caption": "🇧🇷🇨🇴 ¡Brasil y Colombia se encuentran en El Bochinche!\n\nNos juntamos para celebrar todo eso que nos conecta: nuestras raíces, nuestras historias, los saberes que compartimos y las muchas formas que tenemos de vivir y expresarnos. ❤️‍🔥\n\nUna noche para encontrarnos a través del arte, la música, la palabra, el baile y, por supuesto, la alegría de celebrar la vida.\n\nDos tierras, un montón de historias y muchas razones para celebrar. 🌴🥁✨\n\n📅 Miércoles 25 de noviembre.\n🕗 7:00 PM \n📍 Calle 22 # 01-26, El Bochinche Café-Bar.",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Dos Costas en un Solo País",
     "event_type": "concert",
     "is_recurring": false,
@@ -24469,6 +24512,92 @@
     "bar": false
   },
   {
+    "title": "Ger Band Latin Group",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "El Goce Pagano",
+    "venue": "El Goce Pagano",
+    "address": "Diagonal 20A N. 0-82",
+    "area": null,
+    "date": "2026-11-28",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Ger Band Latin Group"
+    ],
+    "activities": [
+      "concierto",
+      "salsa en vivo"
+    ],
+    "contact": "WhatsApp 3168710646",
+    "confidence": "high",
+    "doubts": [
+      "sin hora especifica",
+      "sin precio confirmado"
+    ],
+    "id": "ger-band-latin-group-28-nov",
+    "account": "elgocepagano",
+    "media": [
+      {
+        "post_id": "18123232838067183",
+        "permalink": "https://www.instagram.com/p/Df3PgLoDlyV/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-18T00:41:36+0000",
+        "flyer": "flyers/18123232838067183-1.webp",
+        "caption": "🔥Concierto salsero, en elgocepagano 🔥\nSalsa bogotana, sabor, calle y goce en una sola noche\n\n🕔 Puertas: 6 pm | 🎶 Shows: 11 pm y 1 am\n📍 Diagonal 20A No. 82 – Bogotá\n\n✨🔥¡A bailar!🔥✨\nCover 20k\n#salsaenvivo #salsa\n#concierto #envivo\n#conciertobogota #salsaenbogotá",
+        "preview": null,
+        "slides": 2
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Tardeo de Bulevar",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Bulevar Rooftop",
+    "venue": "Bulevar Rooftop",
+    "address": "Carrera 13 # 82 - 37",
+    "area": "Zona T",
+    "date": "2026-11-28",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "13:00",
+    "end_time": "18:00",
+    "prices": [],
+    "artists": [],
+    "activities": [],
+    "contact": "3124245746",
+    "confidence": "high",
+    "doubts": [],
+    "id": "tardeo-de-bulevar-28-nov",
+    "account": "bulevarsalsabar",
+    "media": [
+      {
+        "post_id": "18140032474652468",
+        "permalink": "https://www.instagram.com/reel/Df-EUBdAv2H/",
+        "media_type": "VIDEO",
+        "published": "2026-11-20T16:21:02+0000",
+        "flyer": "flyers/18140032474652468-0.webp",
+        "caption": "Nos vemos en el Tardeo ☀️🎶🌇\n\nSábado 28 Noviembre\nDesde la 1PM hasta las 6PM\nBULEVAR ROOFTOP\n📍Carrera 13 # 82 - 37 ( Zona T )",
+        "preview": "previews/18140032474652468-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Salsa al Parque 2026",
     "event_type": "festival",
     "is_recurring": false,
@@ -24483,7 +24612,7 @@
     "end_date": "2026-11-29",
     "sessions": null,
     "weekday": "sábado",
-    "start_time": null,
+    "start_time": "14:00",
     "end_time": null,
     "prices": [
       {
@@ -24533,6 +24662,16 @@
     "id": "salsa-al-parque-2026-28-nov",
     "account": "festivalsalsaalparque",
     "media": [
+      {
+        "post_id": "18135504769812469",
+        "permalink": "https://www.instagram.com/p/DgGncrljafU/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-23T23:59:27+0000",
+        "flyer": "flyers/18135504769812469-0.webp",
+        "caption": "¡Ya está aquí la programación por días de #SalsaAlParque2026! 🤩\n\nConozca cuándo se presentará cada agrupación y prepárese para dos jornadas de salsa en Bogotá. Esta edición también pone en primer plano el talento distrital con El Turco Perro, Cris en la Salsa Band, Kabala Ensamble, Kaona Orquesta y The Big Jhony, junto a grandes exponentes nacionales e internacionales que llegan con distintos sonidos.\n\n👉 Revise la programación, organice su parche y elija sus imperdibles. ¡La revolución que nunca deja de sonar nos espera!\n\n📍 28 y 29 de noviembre | Parque Metropolitano Simón Bolívar.\n🎟️ Entrada libre | 🔞 Evento para mayores de edad. \n\n#LaRevoluciónQueNuncaDejaDeSonar #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 2
+      },
       {
         "post_id": "18155565457547094",
         "permalink": "https://www.instagram.com/p/DgECqaARqCH/",
@@ -24635,92 +24774,6 @@
       }
     ],
     "bar": false
-  },
-  {
-    "title": "Ger Band Latin Group",
-    "event_type": "concert",
-    "is_recurring": false,
-    "styles": [
-      "salsa"
-    ],
-    "organizer": "El Goce Pagano",
-    "venue": "El Goce Pagano",
-    "address": "Diagonal 20A N. 0-82",
-    "area": null,
-    "date": "2026-11-28",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "sábado",
-    "start_time": null,
-    "end_time": null,
-    "prices": [],
-    "artists": [
-      "Ger Band Latin Group"
-    ],
-    "activities": [
-      "concierto",
-      "salsa en vivo"
-    ],
-    "contact": "WhatsApp 3168710646",
-    "confidence": "high",
-    "doubts": [
-      "sin hora especifica",
-      "sin precio confirmado"
-    ],
-    "id": "ger-band-latin-group-28-nov",
-    "account": "elgocepagano",
-    "media": [
-      {
-        "post_id": "18123232838067183",
-        "permalink": "https://www.instagram.com/p/Df3PgLoDlyV/",
-        "media_type": "CAROUSEL_ALBUM",
-        "published": "2026-11-18T00:41:36+0000",
-        "flyer": "flyers/18123232838067183-1.webp",
-        "caption": "🔥Concierto salsero, en elgocepagano 🔥\nSalsa bogotana, sabor, calle y goce en una sola noche\n\n🕔 Puertas: 6 pm | 🎶 Shows: 11 pm y 1 am\n📍 Diagonal 20A No. 82 – Bogotá\n\n✨🔥¡A bailar!🔥✨\nCover 20k\n#salsaenvivo #salsa\n#concierto #envivo\n#conciertobogota #salsaenbogotá",
-        "preview": null,
-        "slides": 2
-      }
-    ],
-    "bar": true
-  },
-  {
-    "title": "Tardeo de Bulevar",
-    "event_type": "party",
-    "is_recurring": false,
-    "styles": [
-      "salsa"
-    ],
-    "organizer": "Bulevar Rooftop",
-    "venue": "Bulevar Rooftop",
-    "address": "Carrera 13 # 82 - 37",
-    "area": "Zona T",
-    "date": "2026-11-28",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "sábado",
-    "start_time": "13:00",
-    "end_time": "18:00",
-    "prices": [],
-    "artists": [],
-    "activities": [],
-    "contact": "3124245746",
-    "confidence": "high",
-    "doubts": [],
-    "id": "tardeo-de-bulevar-28-nov",
-    "account": "bulevarsalsabar",
-    "media": [
-      {
-        "post_id": "18140032474652468",
-        "permalink": "https://www.instagram.com/reel/Df-EUBdAv2H/",
-        "media_type": "VIDEO",
-        "published": "2026-11-20T16:21:02+0000",
-        "flyer": "flyers/18140032474652468-0.webp",
-        "caption": "Nos vemos en el Tardeo ☀️🎶🌇\n\nSábado 28 Noviembre\nDesde la 1PM hasta las 6PM\nBULEVAR ROOFTOP\n📍Carrera 13 # 82 - 37 ( Zona T )",
-        "preview": "previews/18140032474652468-0.mp4",
-        "slides": null
-      }
-    ],
-    "bar": true
   },
   {
     "title": "Muestra educativa Adiós Bogotá",
@@ -24889,7 +24942,7 @@
     "organizer": "Academia de Baile Showstars",
     "venue": "Academia de Baile Showstars",
     "address": null,
-    "area": null,
+    "area": "Modelia",
     "date": "2026-11-28",
     "end_date": null,
     "sessions": null,
@@ -24900,10 +24953,22 @@
       {
         "label": "Preventa",
         "amount_cop": 20000,
-        "condition": "antes del 25 de noviembre"
+        "condition": null
+      },
+      {
+        "label": "Individual",
+        "amount_cop": 30000,
+        "condition": null
+      },
+      {
+        "label": "Pareja",
+        "amount_cop": 50000,
+        "condition": null
       }
     ],
-    "artists": [],
+    "artists": [
+      "Luis & Cami"
+    ],
     "activities": [
       "talleres de bachata",
       "sorpresas"
@@ -24917,6 +24982,16 @@
     "id": "clausura-showstars-28-nov",
     "account": "showstarscol",
     "media": [
+      {
+        "post_id": "18090655649330364",
+        "permalink": "https://www.instagram.com/p/DgGjHlctqDB/",
+        "media_type": "IMAGE",
+        "published": "2026-11-23T23:23:44+0000",
+        "flyer": "flyers/18090655649330364-0.webp",
+        "caption": "🔥 ¡CERRAMOS EL AÑO BAILANDO POR TODO LO ALTO! 💃🕺\n\nEste 28 de noviembre vive una noche llena de ritmo, conexión y pasión por el baile junto a Luis & Cami. 🌟\n\n❤️ ¡Ven a aprender, disfrutar y compartir en la pista!\n\n📅 Sábado 28 de noviembre | 🕖 7:00 p. m.\n📍 Show Stars – Modelia\n\n🎟️ PREVENTA: $20.000\nIndividual: $30.000 | Pareja: $50.000.\n\n📲 ¡Reserva tu cupo ahora! 311 834 4120\n\n¡No te quedes por fuera de esta gran celebración! 🔥\n\n#ShowStars #ClausuraShowStars #Bachata #BaileEnPareja #Salsa BailarEsVivir BaileBogota ModeliaBogota",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18127983739925428",
         "permalink": "https://www.instagram.com/p/Dfe_0dVRzBs/",
