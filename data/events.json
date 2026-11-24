@@ -1,60 +1,5 @@
 [
   {
-    "title": "Social Salsa y Bachata Workshop - Sede 109",
-    "event_type": "workshop",
-    "is_recurring": false,
-    "styles": [
-      "salsa",
-      "bachata"
-    ],
-    "organizer": "Bureo",
-    "venue": "Bureo Sede 109",
-    "address": null,
-    "area": "Sede 109",
-    "date": "2026-09-24",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "jueves",
-    "start_time": "17:00",
-    "end_time": "19:00",
-    "prices": [
-      {
-        "label": "1 persona",
-        "amount_cop": 70000,
-        "condition": null
-      },
-      {
-        "label": "Pareja",
-        "amount_cop": 80000,
-        "condition": null
-      }
-    ],
-    "artists": [
-      "Bryan Jerez"
-    ],
-    "activities": [
-      "workshop de salsa y bachata"
-    ],
-    "contact": "@bureodancestudio",
-    "confidence": "high",
-    "doubts": [],
-    "id": "social-salsa-y-bachata-workshop-sede-109-24-sep",
-    "account": "bureodancestudio",
-    "media": [
-      {
-        "post_id": "18124895125860558",
-        "permalink": "https://www.instagram.com/p/DdbzZpcHMRt/",
-        "media_type": "CAROUSEL_ALBUM",
-        "published": "2026-09-18T15:53:46+0000",
-        "flyer": "flyers/18124895125860558-0.webp",
-        "caption": "❤️‍🔥 CELEBREMOS AMOR Y AMISTAD BAILANDO\n\nLlega SOCIAL · Salsa y Bachata, un workshop para conectar, disfrutar y bailar con Bryan Jerez. 🕺🏻\n\nUna experiencia para todos los niveles, porque no importa con quién vengas… lo importante es venir a bailar. ❤️\n\n📅 MARTES 22\n🕔 5:00 – 7:00 PM\n📍 Sede 127\n\n📅 MIÉRCOLES 23\n🕔 5:00 – 7:00 PM\n📍 Sede Cajicá\n\n📅 JUEVES 24\n🕔 5:00 – 7:00 PM\n📍 Sede 109\n\nVALOR:\n✨ $70.000 · 1 persona\n❤️ $80.000 · Pareja\n\n¿Eres Member Bureo? Puedes usar tu paquete activo para reservar tu clase.\n\nVen solo, con tu pareja o con tus amigos.\nConecta. Baila. Celebra.\n\n📲 Reserva tu cupo por WhatsApp.",
-        "preview": null,
-        "slides": 4
-      }
-    ],
-    "bar": false
-  },
-  {
     "title": "Clase y fiesta pre concierto",
     "event_type": "social",
     "is_recurring": false,
@@ -24061,9 +24006,7 @@
     "title": "Sarau Cultural - Juntaza Brasileña / Colombiana",
     "event_type": "party",
     "is_recurring": false,
-    "styles": [
-      "otro"
-    ],
+    "styles": [],
     "organizer": "El Bochinche Café - Bar",
     "venue": "El Bochinche Café - Bar",
     "address": "Calle 22 # 01 - 26",
@@ -24951,7 +24894,7 @@
     "end_time": null,
     "prices": [
       {
-        "label": "Preventa",
+        "label": "Pre-Venta",
         "amount_cop": 20000,
         "condition": null
       },
@@ -25268,6 +25211,162 @@
         "caption": "La danza sigue abriendo caminos para descubrir, experimentar y conectar con nuevas formas de expresión. 🍃\n\nEn noviembre y diciembre, La Casona de la Danza continúa siendo un punto de encuentro para quienes quieren acercarse al movimiento desde diferentes experiencias, explorar sus posibilidades y compartir alrededor del cuerpo y la creatividad. Cada espacio es una oportunidad para aprender algo nuevo y dejarse sorprender por lo que la danza tiene por contar. 💫\n\nAnímese a hacer parte de estas experiencias y encuentre en el movimiento una nueva forma de vivir el arte.\n\n📍 Deslice y conozca la programación que continúa durante noviembre.\n\n#CasonaDeLaDanza #BogotáMiCiudadMiCasa",
         "preview": null,
         "slides": 11
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Curso 1: Salsa y Bachata",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "bachata"
+    ],
+    "organizer": "Son Rumbero",
+    "venue": "Son Rumbero Sede Centro",
+    "address": "Av. Ciudad de Lima # 6-21",
+    "area": "Centro",
+    "date": "2026-12-02",
+    "end_date": "2026-12-11",
+    "sessions": [
+      {
+        "date": "2026-12-02",
+        "start_time": "17:00",
+        "end_time": "19:00"
+      },
+      {
+        "date": "2026-12-04",
+        "start_time": "17:00",
+        "end_time": "19:00"
+      },
+      {
+        "date": "2026-12-09",
+        "start_time": "17:00",
+        "end_time": "19:00"
+      },
+      {
+        "date": "2026-12-11",
+        "start_time": "17:00",
+        "end_time": "19:00"
+      }
+    ],
+    "weekday": "miércoles",
+    "start_time": "17:00",
+    "end_time": "19:00",
+    "prices": [
+      {
+        "label": "Inscripci\u0001on",
+        "amount_cop": 0,
+        "condition": null
+      },
+      {
+        "label": "Un solo pago",
+        "amount_cop": 100000,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "clase de salsa",
+      "clase de bachata",
+      "baile en pareja"
+    ],
+    "contact": "WhatsApp +57 302 258 2306",
+    "confidence": "high",
+    "doubts": [
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "curso-1-salsa-y-bachata-2-dic",
+    "account": "sonrumbero",
+    "media": [
+      {
+        "post_id": "18226051603344808",
+        "permalink": "https://www.instagram.com/reel/DgFopqft1o7/",
+        "media_type": "VIDEO",
+        "published": "2026-11-23T14:51:08+0000",
+        "flyer": "flyers/18226051603344808-0.webp",
+        "caption": "🎁​¡BLACK FRIDAY EN SON RUMBERO!🎁\n Cierra el 2026 bailando Salsa y Bachata sí o sí 🔥🎄💃🕺\n\n​¿Aún te da pena salir a bailar en las novenas, la fiesta de la empresa o el 24 y 31? \n\nEsta es tu última oportunidad del año para aprender desde cero en pareja, rápido y sin complicaciones.\n\n​🗓️ Iniciamos el Miércoles 02 de Diciembre (2 semanas intensivas — 8 horas en total).\n\n📍 Días: Miércoles y Viernes (2 horas por sesión)\n\n​⏰ Elige tu horario:\n\n​Curso 1: 5:00 p.m. a 7:00 p.m.\n\n​Curso 2: 6:00 p.m. a 8:00 p.m.\n\n​✅ ¿Qué vas a lograr?\n\n​Aprender los pasos base, ritmo y vueltas esenciales de Salsa y Bachata para defenderte en cualquier pista.\n\n​Bailar en pareja desde el primer día (puedes venir solo/a o acompañado/a).\n\n​Aprovechar nuestra promo especial de cierre de año antes de que se agoten los cupos.\n\n​📍 Lugar: Sede Centro – Av. Ciudad de Lima # 6-21, Bogotá\n\n​⚠️ ¡CUPOS LIMITADOS POR GRUPO!\n\n📒 Inscripción 0$ (Gratis)\n💰Un solo pago, $100.000\n\n📲 Comenta \"DICIEMBRE\" o escríbenos ya al WhatsApp +57 302 258 2306 para apartar tu lugar antes de que se llenen ambos horarios.",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Curso 2: Salsa y Bachata",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "bachata"
+    ],
+    "organizer": "Son Rumbero",
+    "venue": "Son Rumbero Sede Centro",
+    "address": "Av. Ciudad de Lima # 6-21",
+    "area": "Centro",
+    "date": "2026-12-02",
+    "end_date": "2026-12-11",
+    "sessions": [
+      {
+        "date": "2026-12-02",
+        "start_time": "18:00",
+        "end_time": "20:00"
+      },
+      {
+        "date": "2026-12-04",
+        "start_time": "18:00",
+        "end_time": "20:00"
+      },
+      {
+        "date": "2026-12-09",
+        "start_time": "18:00",
+        "end_time": "20:00"
+      },
+      {
+        "date": "2026-12-11",
+        "start_time": "18:00",
+        "end_time": "20:00"
+      }
+    ],
+    "weekday": "miércoles",
+    "start_time": "18:00",
+    "end_time": "20:00",
+    "prices": [
+      {
+        "label": "Inscripci\u0001on",
+        "amount_cop": 0,
+        "condition": null
+      },
+      {
+        "label": "Un solo pago",
+        "amount_cop": 100000,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "clase de salsa",
+      "clase de bachata",
+      "baile en pareja"
+    ],
+    "contact": "WhatsApp +57 302 258 2306",
+    "confidence": "high",
+    "doubts": [
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "curso-2-salsa-y-bachata-2-dic",
+    "account": "sonrumbero",
+    "media": [
+      {
+        "post_id": "18226051603344808",
+        "permalink": "https://www.instagram.com/reel/DgFopqft1o7/",
+        "media_type": "VIDEO",
+        "published": "2026-11-23T14:51:08+0000",
+        "flyer": "flyers/18226051603344808-0.webp",
+        "caption": "🎁​¡BLACK FRIDAY EN SON RUMBERO!🎁\n Cierra el 2026 bailando Salsa y Bachata sí o sí 🔥🎄💃🕺\n\n​¿Aún te da pena salir a bailar en las novenas, la fiesta de la empresa o el 24 y 31? \n\nEsta es tu última oportunidad del año para aprender desde cero en pareja, rápido y sin complicaciones.\n\n​🗓️ Iniciamos el Miércoles 02 de Diciembre (2 semanas intensivas — 8 horas en total).\n\n📍 Días: Miércoles y Viernes (2 horas por sesión)\n\n​⏰ Elige tu horario:\n\n​Curso 1: 5:00 p.m. a 7:00 p.m.\n\n​Curso 2: 6:00 p.m. a 8:00 p.m.\n\n​✅ ¿Qué vas a lograr?\n\n​Aprender los pasos base, ritmo y vueltas esenciales de Salsa y Bachata para defenderte en cualquier pista.\n\n​Bailar en pareja desde el primer día (puedes venir solo/a o acompañado/a).\n\n​Aprovechar nuestra promo especial de cierre de año antes de que se agoten los cupos.\n\n​📍 Lugar: Sede Centro – Av. Ciudad de Lima # 6-21, Bogotá\n\n​⚠️ ¡CUPOS LIMITADOS POR GRUPO!\n\n📒 Inscripción 0$ (Gratis)\n💰Un solo pago, $100.000\n\n📲 Comenta \"DICIEMBRE\" o escríbenos ya al WhatsApp +57 302 258 2306 para apartar tu lugar antes de que se llenen ambos horarios.",
+        "preview": null,
+        "slides": null
       }
     ],
     "bar": false
