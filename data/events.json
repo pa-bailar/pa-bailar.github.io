@@ -1,182 +1,5 @@
 [
   {
-    "title": "Clase y fiesta pre concierto",
-    "event_type": "social",
-    "is_recurring": false,
-    "styles": [
-      "bachata"
-    ],
-    "organizer": "theking_colombia",
-    "venue": "Bogota Dance Club Academy",
-    "address": null,
-    "area": null,
-    "date": "2026-09-25",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "viernes",
-    "start_time": null,
-    "end_time": null,
-    "prices": [],
-    "artists": [],
-    "activities": [
-      "clase",
-      "fiesta pre concierto"
-    ],
-    "contact": "@bogotadanceclub.academy",
-    "confidence": "medium",
-    "doubts": [
-      "falta hora de inicio",
-      "sin precio"
-    ],
-    "id": "clase-y-fiesta-pre-concierto-25-sep",
-    "account": "germanbaila",
-    "media": [
-      {
-        "post_id": "18100759811377405",
-        "permalink": "https://www.instagram.com/reel/DdsIEA3ONkX/",
-        "media_type": "VIDEO",
-        "published": "2026-09-25T00:07:24+0000",
-        "flyer": "flyers/18100759811377405-0.webp",
-        "caption": "Nos vemos este viernes para la clase y la fiesta pre concierto de theking_colombia en bogotadanceclub.academy \n#betterlatethannever #RomeoSantos #princeroyce #Bachata",
-        "preview": "previews/18100759811377405-0.mp4",
-        "slides": null
-      }
-    ],
-    "bar": false
-  },
-  {
-    "title": "Viernes para Bailadores - Edición 2: Amor + Amistad",
-    "event_type": "social",
-    "is_recurring": false,
-    "styles": [
-      "salsa en línea",
-      "salsa cubana"
-    ],
-    "organizer": "Son de Habana",
-    "venue": "Son de Habana Academia de Baile",
-    "address": null,
-    "area": null,
-    "date": "2026-09-25",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "viernes",
-    "start_time": "20:00",
-    "end_time": null,
-    "prices": [
-      {
-        "label": "Preventa Individual",
-        "amount_cop": 30000,
-        "condition": null
-      },
-      {
-        "label": "Preventa Pareja",
-        "amount_cop": 50000,
-        "condition": null
-      },
-      {
-        "label": "Taquilla Individual",
-        "amount_cop": 35000,
-        "condition": null
-      },
-      {
-        "label": "Taquilla Pareja",
-        "amount_cop": 60000,
-        "condition": null
-      }
-    ],
-    "artists": [
-      "Jepherson Macsene",
-      "Paula Popayán"
-    ],
-    "activities": [
-      "taller de 1 hora y media",
-      "práctica social de 1 hora y media"
-    ],
-    "contact": "WhatsApp 3176610567",
-    "confidence": "high",
-    "doubts": [],
-    "id": "viernes-para-bailadores-edicion-2-amor-amistad-25-sep",
-    "account": "sondehabana",
-    "media": [
-      {
-        "post_id": "18044150648816300",
-        "permalink": "https://www.instagram.com/p/DdZ3-nYKaFT/",
-        "media_type": "IMAGE",
-        "published": "2026-09-17T23:00:06+0000",
-        "flyer": "flyers/18044150648816300-0.webp",
-        "caption": "ESTE VIERNES 25 DE SEPTIEMBRE 🚨 taller de 1 hora y media más práctica social de 1 hora y media junto a los maestros paulapopayancortes y jepherson_mc 😍\n\nPodrás aprender diferentes pasos de salsa en línea y salsa cubana y cómo aplicarlos al social 🔥 te esperamos 8pm aquí en nuestra sede sondehabana \n\n#salsa #estilocubano #baile #parches #amoryamistad",
-        "preview": null,
-        "slides": null
-      }
-    ],
-    "bar": false
-  },
-  {
-    "title": "Social Amor y Amistad",
-    "event_type": "social",
-    "is_recurring": false,
-    "styles": [
-      "salsa",
-      "bachata"
-    ],
-    "organizer": "Academia Esfera Latina",
-    "venue": "Esfera Latina",
-    "address": null,
-    "area": null,
-    "date": "2026-09-25",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "viernes",
-    "start_time": "21:00",
-    "end_time": null,
-    "prices": [
-      {
-        "label": "Alumnos Esfera Latina",
-        "amount_cop": 10000,
-        "condition": null
-      },
-      {
-        "label": "Preventa",
-        "amount_cop": 15000,
-        "condition": "hasta el 24 de septiembre"
-      },
-      {
-        "label": "Taquilla",
-        "amount_cop": 20000,
-        "condition": null
-      }
-    ],
-    "artists": [
-      "Duane"
-    ],
-    "activities": [
-      "gran clase de bachata social",
-      "presentaciones de nuestros Challenge del mes",
-      "baile social"
-    ],
-    "contact": "3135802345",
-    "confidence": "high",
-    "doubts": [
-      "No se especifica la dirección exacta de la sede de Esfera Latina",
-      "No se indica la hora de finalización del evento"
-    ],
-    "id": "social-amor-y-amistad-25-sep",
-    "account": "esferalatinaoficial",
-    "media": [
-      {
-        "post_id": "17985388479076791",
-        "permalink": "https://www.instagram.com/p/DdWtU6jtm-6/",
-        "media_type": "IMAGE",
-        "published": "2026-09-16T18:00:04+0000",
-        "flyer": "flyers/17985388479076791.webp",
-        "caption": "🔥 ¡NOS VEMOS ESTE 25 DE SEPTIEMBRE! 🔥\n\nEs hora de bailar, disfrutar y compartir en nuestro Social Amor y Amistad.\n\n💃 Presentaciones de nuestros Challege del mes \n🔥 Bachata social con Duane\n🎶 Salsa, bachata y mucha música\n\n📅 Viernes 25 de septiembre\n📍 Esfera Latina\n\n¡No te lo pierdas! Te esperamos para bailar.",
-        "preview": null,
-        "slides": null
-      }
-    ],
-    "bar": false
-  },
-  {
     "title": "Gateando la escritura",
     "event_type": "workshop",
     "is_recurring": false,
@@ -24103,6 +23926,54 @@
     "bar": true
   },
   {
+    "title": "Taller Salón de Baile Salsa Colombiana",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Salsa al Parque 2026",
+    "venue": "Tienda Esperanza - Sede San Felipe",
+    "address": "Carrera 22 No. 74-30",
+    "area": "San Felipe",
+    "date": "2026-11-25",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "miércoles",
+    "start_time": "19:00",
+    "end_time": "21:00",
+    "prices": [
+      {
+        "label": "Entrada libre",
+        "amount_cop": 0,
+        "condition": "hasta completar aforo"
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "taller de salón de baile",
+      "taller de salsa colombiana"
+    ],
+    "contact": "@danzaenlaciudad",
+    "confidence": "high",
+    "doubts": [],
+    "id": "taller-salon-de-baile-salsa-colombiana-25-nov",
+    "account": "danzaenlaciudad",
+    "media": [
+      {
+        "post_id": "18117941590858613",
+        "permalink": "https://www.instagram.com/p/DgIj61XSlGR/",
+        "media_type": "IMAGE",
+        "published": "2026-11-24T18:08:28+0000",
+        "flyer": "flyers/18117941590858613-0.webp",
+        "caption": "¡Ustedes pidieron más y se les dará más, por que el ritmo de la salsa colombiana se toma la ciudad! 💃🔥\n\nEn la Franja Académica de #SalsaAlParque2026, el baile es protagonista con un taller de salón de baile y salsa colombiana, un espacio para conectar con el movimiento, reconocer nuestras raíces y vivir la música desde el cuerpo.\n\n📍 Tienda Esperanza – Sede San Felipe (Carrera 22 No. 74-30).\n📅 25 de noviembre | 7 p.m. a 9 p.m.\n🎟️ Entrada libre hasta completar aforo.\n\n#LaRevoluciónQueNuncaDejaDeSonar #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Dos Costas en un Solo País",
     "event_type": "concert",
     "is_recurring": false,
@@ -24244,6 +24115,53 @@
         "caption": "🔥Concierto salsero, en elgocepagano 🔥\nSalsa bogotana, sabor, calle y goce en una sola noche\n\n🕔 Puertas: 6 pm | 🎶 Shows: 11 pm y 1 am\n📍 Diagonal 20A No. 82 – Bogotá\n\n✨🔥¡A bailar!🔥✨\nCover 20k\n#salsaenvivo #salsa\n#concierto #envivo\n#conciertobogota #salsaenbogotá",
         "preview": null,
         "slides": 2
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Guajeo Orquesta",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Casa Quiebra-Canto",
+    "venue": "Casa Quiebra-Canto",
+    "address": null,
+    "area": null,
+    "date": "2026-11-27",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Guajeo Orquesta"
+    ],
+    "activities": [
+      "concierto de salsa"
+    ],
+    "contact": "@casaquiebracanto",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio",
+      "sin precio",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "guajeo-orquesta-27-nov",
+    "account": "casaquiebracanto",
+    "media": [
+      {
+        "post_id": "18480572683138902",
+        "permalink": "https://www.instagram.com/p/DgJayMlR-U6/",
+        "media_type": "IMAGE",
+        "published": "2026-11-25T02:06:34+0000",
+        "flyer": "flyers/18480572683138902-0.webp",
+        "caption": "Vamos a echarle salsita al cuerpo , a la vida con dos excelentes grupos  guajeorumba  y nandolopezpty\n #massalsaparatuvida #amorporlasalsa #echalesalsita",
+        "preview": null,
+        "slides": null
       }
     ],
     "bar": true
@@ -24611,6 +24529,118 @@
     "bar": true
   },
   {
+    "title": "Salsa al Parque 2026",
+    "event_type": "festival",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Idartes",
+    "venue": "Parque Simón Bolívar",
+    "address": null,
+    "area": null,
+    "date": "2026-11-28",
+    "end_date": "2026-11-29",
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Entrada",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Alfredo de la Fé",
+      "Orquesta Aragón",
+      "Roberto Blades",
+      "Herman Olivera",
+      "Los Satélites",
+      "Willy García",
+      "La-33",
+      "David Zahan",
+      "La Eterna",
+      "Manyoma Brothers",
+      "El Turco Perro",
+      "Cris En La Salsa",
+      "Kábala Ensamble",
+      "Kaona Orquesta",
+      "The Big Jhony"
+    ],
+    "activities": [
+      "conciertos de salsa"
+    ],
+    "contact": "parchexbogota.com",
+    "confidence": "high",
+    "doubts": [
+      "sin horarios específicos por artista"
+    ],
+    "id": "salsa-al-parque-2026-28-nov-2",
+    "account": "parchexbogota",
+    "media": [
+      {
+        "post_id": "18573524353077892",
+        "permalink": "https://www.instagram.com/p/DgIPx-zFduC/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-24T15:11:08+0000",
+        "flyer": "flyers/18573524353077892-0.webp",
+        "caption": "¡Empieza el fin de semana más salsero de Bogotá! 💃🕺\n\nSalsa al Parque 2026 llega a su edición XXVII el sábado 28 y el domingo 29 de noviembre al Parque Simón Bolívar, con entrada libre. Este año el festival junta a leyendas que hicieron la historia de la salsa con orquestas colombianas y proyectos bogotanos que buscan sonidos nuevos.\n\n🎺 Internacionales: Alfredo de la Fé, Orquesta Aragón, Roberto Blades, Herman Olivera y Los Satélites.\n🇨🇴 Nacionales: Willy García, La-33, David Zahan, La Eterna y Manyoma Brothers.\n⭐ De Bogotá: El Turco Perro, Cris En La Salsa, Kábala Ensamble, Kaona Orquesta y The Big Jhony.\n\nParche x Bogotá y Salsa Culto nos juntamos para que no se pierda nada: prográmese los dos días y arme su agenda con el cartel completo y la ficha de cada artista en parchexbogota.com. Enlace en la bio 🔗\n\n📍 Parque Simón Bolívar · Entrada libre · Solo mayores de 18, lleve su documento.\n\n¿A quién no se pierde? Cuéntenos en los comentarios y etiquete a su pareja de baile 👇",
+        "preview": null,
+        "slides": 5
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Nando Lopez & Orquesta",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Casa Quiebra-Canto",
+    "venue": "Casa Quiebra-Canto",
+    "address": null,
+    "area": null,
+    "date": "2026-11-28",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sabado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Nando Lopez & Orquesta"
+    ],
+    "activities": [
+      "concierto de salsa"
+    ],
+    "contact": "@casaquiebracanto",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio",
+      "sin precio",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "nando-lopez-orquesta-28-nov",
+    "account": "casaquiebracanto",
+    "media": [
+      {
+        "post_id": "18480572683138902",
+        "permalink": "https://www.instagram.com/p/DgJayMlR-U6/",
+        "media_type": "IMAGE",
+        "published": "2026-11-25T02:06:34+0000",
+        "flyer": "flyers/18480572683138902-0.webp",
+        "caption": "Vamos a echarle salsita al cuerpo , a la vida con dos excelentes grupos  guajeorumba  y nandolopezpty\n #massalsaparatuvida #amorporlasalsa #echalesalsita",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Tardeo de Bulevar",
     "event_type": "party",
     "is_recurring": false,
@@ -24660,184 +24690,6 @@
     "bar": true
   },
   {
-    "title": "Salsa al Parque 2026",
-    "event_type": "festival",
-    "is_recurring": false,
-    "styles": [
-      "salsa"
-    ],
-    "organizer": "Idartes",
-    "venue": "Parque Metropolitano Simón Bolívar",
-    "address": null,
-    "area": null,
-    "date": "2026-11-28",
-    "end_date": "2026-11-29",
-    "sessions": null,
-    "weekday": "sábado",
-    "start_time": "14:00",
-    "end_time": null,
-    "prices": [
-      {
-        "label": "Entrada libre",
-        "amount_cop": 0,
-        "condition": null
-      }
-    ],
-    "artists": [
-      "Cris en la Salsa Band",
-      "El Turco Perro",
-      "Kabala Ensamble",
-      "Kaona Orquesta",
-      "The Big Jhony",
-      "Jeimy Mora",
-      "Anderson Laguna",
-      "David",
-      "Ana",
-      "Joseth",
-      "Juliana",
-      "Sebastian",
-      "Katty",
-      "Jesús",
-      "Milena",
-      "Camilo",
-      "Erlibeth",
-      "Sebas",
-      "Valentina",
-      "Christian",
-      "Karyna",
-      "Jeff",
-      "Lau",
-      "Salsa Latina Ciudad Alsacia",
-      "Mi Swing Dance Company",
-      "Okan Dance Academy",
-      "Bongó"
-    ],
-    "activities": [
-      "conciertos",
-      "shows de danza"
-    ],
-    "contact": "@festivalsalsaalparque",
-    "confidence": "high",
-    "doubts": [
-      "sin hora de inicio"
-    ],
-    "id": "salsa-al-parque-2026-28-nov",
-    "account": "festivalsalsaalparque",
-    "media": [
-      {
-        "post_id": "18135504769812469",
-        "permalink": "https://www.instagram.com/p/DgGncrljafU/",
-        "media_type": "CAROUSEL_ALBUM",
-        "published": "2026-11-23T23:59:27+0000",
-        "flyer": "flyers/18135504769812469-0.webp",
-        "caption": "¡Ya está aquí la programación por días de #SalsaAlParque2026! 🤩\n\nConozca cuándo se presentará cada agrupación y prepárese para dos jornadas de salsa en Bogotá. Esta edición también pone en primer plano el talento distrital con El Turco Perro, Cris en la Salsa Band, Kabala Ensamble, Kaona Orquesta y The Big Jhony, junto a grandes exponentes nacionales e internacionales que llegan con distintos sonidos.\n\n👉 Revise la programación, organice su parche y elija sus imperdibles. ¡La revolución que nunca deja de sonar nos espera!\n\n📍 28 y 29 de noviembre | Parque Metropolitano Simón Bolívar.\n🎟️ Entrada libre | 🔞 Evento para mayores de edad. \n\n#LaRevoluciónQueNuncaDejaDeSonar #BogotáMiCiudadMiCasa",
-        "preview": null,
-        "slides": 2
-      },
-      {
-        "post_id": "18155565457547094",
-        "permalink": "https://www.instagram.com/p/DgECqaARqCH/",
-        "media_type": "IMAGE",
-        "published": "2026-11-22T23:59:35+0000",
-        "flyer": "flyers/18155565457547094-0.webp",
-        "caption": "¡La espera terminó! 🔥💃🕺\n\nBogotá ya tiene el cartel oficial de #SalsaAlParque2026. 🎶 Conozca las agrupaciones y artistas que se darán cita este 28 y 29 de noviembre en el Parque Metropolitano Simón Bolívar para vivir dos días al ritmo de la salsa.\n\n🎟️ Entrada libre | 🔞 Evento para mayores de edad.\n\n¡Prepare los pasos y aliste los zapatos para bailar! ❤️‍🔥\n\n#LaRevoluciónQueNuncaDejaDeSonar #BogotáMiCiudadMiCasa",
-        "preview": null,
-        "slides": null
-      },
-      {
-        "post_id": "18117015176272199",
-        "permalink": "https://www.instagram.com/p/Df5iYohlLPx/",
-        "media_type": "CAROUSEL_ALBUM",
-        "published": "2026-11-18T22:05:05+0000",
-        "flyer": "flyers/18117015176272199-0.webp",
-        "caption": "🤔 ¿Qué hace de Bogotá una ciudad salsera? Su historia, sus orquestas, sus melómanos, sus espacios de encuentro y las generaciones que han hecho de este género parte de la identidad musical de la ciudad. 💃\n\nLa salsa se escucha, se baila, se investiga y se transforma en Bogotá. Conozca 4 razones que explican por qué esta ciudad tiene tanto que contar al ritmo de este género.\n\nNos vemos en #SalsaAlParque2026, este 28 y 29 de noviembre en el Parque Metropolitano Simón Bolívar.\n\n🎟️ Entrada libre | 🔞 Evento para mayores de edad. \n\n #LaRevoluciónQueNuncaDejaDeSonar #BogotáMiCiudadMiCasa",
-        "preview": null,
-        "slides": 5
-      },
-      {
-        "post_id": "18154345759537343",
-        "permalink": "https://www.instagram.com/p/Df45UliEdfE/",
-        "media_type": "CAROUSEL_ALBUM",
-        "published": "2026-11-18T16:06:16+0000",
-        "flyer": "flyers/18154345759537343-0.webp",
-        "caption": "¡Bogotá tiene nuevos protagonistas para #SalsaAlParque2026! 💃🏽🕺🏽\n\nConozca los artistas distritales seleccionados a través de la Beca Festival Salsa al Parque 2026 - Bogotá Ciudad Creativa de la Música y las parejas de bailarines y agrupaciones ganadoras de la Invitación Cultural Danza en el Festival Salsa al Parque 2026.\n\nEl talento local se toma el escenario de uno de los festivales más esperados de la ciudad. ¡Prepárese para bailar al ritmo de la salsa!\n\n📍 28 y 29 de noviembre | Parque Metropolitano Simón Bolívar.\n🎟️ Entrada libre | 🔞 Evento para mayores de edad.\n\n #LaRevoluciónQueNuncaDejaDeSonar",
-        "preview": null,
-        "slides": 2
-      },
-      {
-        "post_id": "18091770635281917",
-        "permalink": "https://www.instagram.com/reel/DgDGJVAR8Qe/",
-        "media_type": "VIDEO",
-        "published": "2026-11-22T15:11:16+0000",
-        "flyer": "flyers/18091770635281917-0.webp",
-        "caption": "🔥 ¡The Big Jhony regresa a #SalsaAlParque2026!\n\nCon una propuesta de salsa contemporánea y más de siete años de trayectoria, esta orquesta bogotana ha construido un repertorio de 42 canciones y cinco producciones discográficas, alcanzando más de 50 mil reproducciones en plataformas digitales y llegando a audiencias de más de 115 países.\n\n📅 28 y 29 de noviembre\n📍 Parque Metropolitano Simón Bolívar.\n🎟️ Entrada libre | 🔞 Evento para mayores de edad.\n\n#LaRevoluciónQueNuncaDejaDeSonar #BogotáMiCiudadMiCasa",
-        "preview": "previews/18091770635281917-0.mp4",
-        "slides": null
-      },
-      {
-        "post_id": "18122904082752528",
-        "permalink": "https://www.instagram.com/reel/DgA8h9QuhH3/",
-        "media_type": "VIDEO",
-        "published": "2026-11-21T19:08:46+0000",
-        "flyer": "flyers/18122904082752528-0.webp",
-        "caption": "🎷 ¡La salsa bogotana sigue explorando nuevos sonidos! Kaona Orquesta será parte de #SalsaAlParque2026 con una propuesta que conecta la tradición salsera con elementos contemporáneos, como sintetizadores, guitarra eléctrica y una potente sección de vientos.\n\nDirigida por César González, la orquesta ha construido un sonido propio con canciones como ‘Dime que sí’, ‘Tormento’ y ‘Zalamera’, en las que combina la salsa de golpe con los ritmos románticos. \n\n¡Prepárese para disfrutar de esta propuesta hecha en la capital!\n\n📅 28 y 29 de noviembre\n📍 Parque Metropolitano Simón Bolívar.\n🎟️ Entrada libre | 🔞 Evento para mayores de edad.\n\n#LaRevoluciónQueNuncaDejaDeSonar #BogotáMiCiudadMiCasa",
-        "preview": "previews/18122904082752528-0.mp4",
-        "slides": null
-      },
-      {
-        "post_id": "18113761073184072",
-        "permalink": "https://www.instagram.com/reel/DgAn3eshgpr/",
-        "media_type": "VIDEO",
-        "published": "2026-11-21T16:08:14+0000",
-        "flyer": "flyers/18113761073184072-0.webp",
-        "caption": "🎺 ¡Kábala Ensamble se suma a #SalsaAlParque2026!\n\nEsta orquesta, fundada en 2014 y dirigida por Edwin Pinzón, propone un encuentro entre la salsa tradicional y afrocaribeña, la timba y los sonidos contemporáneos. Con arreglos originales, fuerza vocal y una puesta en escena llena de energía, construye una identidad musical que conecta la tradición del Caribe con las nuevas expresiones de la salsa en la capital.\n\n📅 28 y 29 de noviembre\n📍 Parque Metropolitano Simón Bolívar.\n🎟️ Entrada libre | 🔞 Evento para mayores de edad.\n\n¡Prepárese para disfrutar de su sonido en el Parque Simón Bolívar!\n\n#LaRevoluciónQueNuncaDejaDeSonar #BogotáMiCiudadMiCasa",
-        "preview": "previews/18113761073184072-0.mp4",
-        "slides": null
-      },
-      {
-        "post_id": "18112308023204466",
-        "permalink": "https://www.instagram.com/reel/Df-EC9TxOX6/",
-        "media_type": "VIDEO",
-        "published": "2026-11-20T16:17:09+0000",
-        "flyer": "flyers/18112308023204466-0.webp",
-        "caption": "🥁 ¡Cris en la Salsa Band estará en #SalsaAlParque2026!\n\nLiderado por el cantante colombiano Cristhian Torres, conocido como \"El rolo de la salsa choque\", este proyecto fusiona la esencia de la salsa con los sonidos del Pacífico colombiano y la música urbana. Una propuesta que conecta generaciones, explora nuevas expresiones sonoras y acerca la salsa a públicos jóvenes sin perder sus raíces.\n\n📅 28 y 29 de noviembre\n📍 Parque Metropolitano Simón Bolívar.\n🎟️ Entrada libre | 🔞 Evento para mayores de edad.\n\n#LaRevoluciónQueNuncaDejaDeSonar #BogotáMiCiudadMiCasa",
-        "preview": "previews/18112308023204466-0.mp4",
-        "slides": null
-      },
-      {
-        "post_id": "18139156495734274",
-        "permalink": "https://www.instagram.com/reel/Df7zPOWthGV/",
-        "media_type": "VIDEO",
-        "published": "2026-11-19T19:12:06+0000",
-        "flyer": "flyers/18139156495734274-0.webp",
-        "caption": "🎶 ¡El Turco Perro llega a #SalsaAlParque2026!\n\nEl proyecto de Mauricio Byfield mezcla los sonidos tropicales y del Caribe con el punk. Esta vez, incorpora la salsa a su universo musical con 'El Amor es la Clave', una propuesta para disfrutar del acordeón, el baile y el tambor.\n\n📍 28 y 29 de noviembre | Parque Metropolitano Simón Bolívar.\n🎟️ Entrada libre | 🔞 Evento para mayores de edad.\n\n#LaRevoluciónQueNuncaDejaDeSonar #BogotáMiCiudadMiCasa",
-        "preview": "previews/18139156495734274-0.mp4",
-        "slides": null
-      },
-      {
-        "post_id": "18084122360430436",
-        "permalink": "https://www.instagram.com/reel/Dfum-_XtfF9/",
-        "media_type": "VIDEO",
-        "published": "2026-11-14T16:14:35+0000",
-        "flyer": "flyers/18084122360430436-0.webp",
-        "caption": "💃 Bogotá tiene una historia que también se cuenta al ritmo de la salsa. Durante décadas, este género ha acompañado a la ciudad, ha reunido generaciones y ha encontrado nuevas voces que mantienen su música en movimiento.\n\nEn su edición 27, Salsa al Parque reconoce a quienes han construido esta historia y a los artistas y públicos que hoy la transforman, exploran nuevos sonidos y mantienen viva su conexión con la ciudad. 💥\n\n Este 28 y 29 de noviembre, celebremos la salsa en todas sus expresiones en el Parque Metropolitano Simón Bolívar. \n\n🎟️ Entrada libre | 🔞 Evento para mayores de edad. \n\n🎥 juanneva_ /  nicolas_ortizp / Idartes\n\n#SalsaAlParque2026 #LaRevoluciónQueNuncaDejaDeSonar #BogotáMiCiudadMiCasa",
-        "preview": "previews/18084122360430436-0.mp4",
-        "slides": null
-      },
-      {
-        "post_id": "18100870454395843",
-        "permalink": "https://www.instagram.com/reel/DfsxIC3BNVn/",
-        "media_type": "VIDEO",
-        "published": "2026-11-13T23:05:14+0000",
-        "flyer": "flyers/18100870454395843-0.webp",
-        "caption": "🎺 ¡La revolución que nunca deja de sonar!\n\nDurante más de dos décadas, Salsa al Parque ha sido escenario de grandes orquestas, nuevos talentos y encuentros que han marcado la historia musical de Bogotá. Un festival que ha acompañado a distintas generaciones y que sigue abriendo espacio para la evolución de la salsa.\n\nHoy presentamos la imagen oficial de #SalsaAlParque2026, una edición que celebra las raíces de este género y sus nuevas formas de expresión.\n\n🔥 La cita es este 28 y 29 de noviembre en el Parque Metropolitano Simón Bolívar.\n\n🎟️ Entrada libre | 🔞 Evento para mayores de edad. \n\n🎨 criscontreras_art / 💻 juanneva_ Idartes \n\n#LaRevoluciónQueNuncaDejaDeSonar #BogotáMiCiudadMiCasa",
-        "preview": "previews/18100870454395843-0.mp4",
-        "slides": null
-      }
-    ],
-    "bar": false
-  },
-  {
     "title": "Muestra educativa Adiós Bogotá",
     "event_type": "show",
     "is_recurring": false,
@@ -24880,6 +24732,64 @@
         "caption": "La danza sigue abriendo caminos para descubrir, experimentar y conectar con nuevas formas de expresión. 🍃\n\nEn noviembre y diciembre, La Casona de la Danza continúa siendo un punto de encuentro para quienes quieren acercarse al movimiento desde diferentes experiencias, explorar sus posibilidades y compartir alrededor del cuerpo y la creatividad. Cada espacio es una oportunidad para aprender algo nuevo y dejarse sorprender por lo que la danza tiene por contar. 💫\n\nAnímese a hacer parte de estas experiencias y encuentre en el movimiento una nueva forma de vivir el arte.\n\n📍 Deslice y conozca la programación que continúa durante noviembre.\n\n#CasonaDeLaDanza #BogotáMiCiudadMiCasa",
         "preview": null,
         "slides": 11
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Simulacro Navideño",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "otro"
+    ],
+    "organizer": "Bogotá Dance Club",
+    "venue": "Bogotá Dance Club",
+    "address": "Calle 25F #36-15",
+    "area": null,
+    "date": "2026-11-28",
+    "end_date": "2026-11-29",
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "15:00",
+    "end_time": "22:00",
+    "prices": [
+      {
+        "label": "Preventa sábado",
+        "amount_cop": 25000,
+        "condition": null
+      },
+      {
+        "label": "Taquilla",
+        "amount_cop": 30000,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "clase de baile navideña",
+      "tardeo latino",
+      "viejoteca",
+      "batalla de DJ's",
+      "clásicos decembrinos",
+      "plato navideño",
+      "accesorio navideño"
+    ],
+    "contact": "@bogotadanceclub",
+    "confidence": "high",
+    "doubts": [],
+    "id": "simulacro-navideno-28-nov",
+    "account": "bogotadanceclub",
+    "media": [
+      {
+        "post_id": "18173435458474787",
+        "permalink": "https://www.instagram.com/reel/DgJDroMOBw7/",
+        "media_type": "VIDEO",
+        "published": "2026-11-24T22:45:12+0000",
+        "flyer": "flyers/18173435458474787-0.webp",
+        "caption": "🎄 Si usted ya no se aguanta las ganas de que llegue diciembre, de comer natilla, buñuelos y bailar esos clásicos navideños… ¡Este es su lugar indicado! 💃🏻🕺🏻\n\n🎅🏼 SIMULACRO NAVIDEÑO\n\n📢 Comunidad bailadora\n🗓️ 28 y 29 de noviembre | 🕒 De 3 PM a 10 PM\n📍 Calle 25F #36-15 – Bogotá Dance Club\n\n✨ Ambos días incluyen:\n🍮 Plato navideño (natilla y buñuelo)\n🎅🏼 Accesorio navideño\n\nY recuerda:\n💃🏻 Sábado: Tardeo Latino con clase de baile navideña.\n🎶 Domingo: Viejoteca con batalla de DJ's y los mejores clásicos decembrinos.\n\n🎟️ Preventa exclusiva del sábado: $25.000\n💰 Taquilla sábado y domingo: $30.000\n\n¡No se lo pueden perder! Este 28 y 29 de noviembre adelantamos la Navidad en Bogotá Dance Club. 🎄\n\n¡Ven a bailar y celebrar con nosotros!",
+        "preview": "previews/18173435458474787-0.mp4",
+        "slides": null
       }
     ],
     "bar": false
@@ -25121,6 +25031,16 @@
     "account": "bachatamania_bogota",
     "media": [
       {
+        "post_id": "18148542811596647",
+        "permalink": "https://www.instagram.com/p/DgI2PioAanO/",
+        "media_type": "IMAGE",
+        "published": "2026-11-24T20:47:16+0000",
+        "flyer": "flyers/18148542811596647-0.webp",
+        "caption": "Show Invitado ✨\n\nBachatamania viene con todo 🤩🤩 traemos un show invitado que los dejará con la boca abierta 😎\n\nVen a disfrutar de nuestro increíble social 100% Bachata con clase + shows 🔥🔥\n\nReserva en nuestra web: appdanza.com\n\n#bachatadancing #bogota #bachata #bachatadance",
+        "preview": null,
+        "slides": null
+      },
+      {
         "post_id": "18097428221152794",
         "permalink": "https://www.instagram.com/p/DfJGsadAXRA/",
         "media_type": "IMAGE",
@@ -25148,6 +25068,204 @@
         "flyer": "flyers/18118338497022267-0.webp",
         "caption": "Bachatamania Noviembre ✨\n\nPenúltimo Bachatamania del 2026 y venimos con toda 🥳🥳🥳\n\nNo te pierdas la clase de Jean y Gaby a las 8 PM seguido de un social 100% Bachata a manos de DJ Duane para que disfrutes y bailes hasta que el cuerpo aguante 🤩🤩🤩\n\n🗓️ 28 de Noviembre\n📍 Distrito Social - CRA 29 68 - 18\n🕢 8:00 PM\n\nNo dejes que te lo cuenten, ven a bailar en el mejor social bachatero de Bogotá 🔥\n\nReserva tus boletas en nuestra web: \n\nappdanza.com",
         "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Salsa al Parque 2026",
+    "event_type": "festival",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Idartes",
+    "venue": "Parque Metropolitano Simón Bolívar",
+    "address": null,
+    "area": null,
+    "date": "2026-11-28",
+    "end_date": "2026-11-29",
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "20:30",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Entrada libre",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Cris en la Salsa Band",
+      "El Turco Perro",
+      "Kabala Ensamble",
+      "Kaona Orquesta",
+      "The Big Jhony",
+      "Jeimy Mora",
+      "Anderson Laguna",
+      "David",
+      "Ana",
+      "Joseth",
+      "Juliana",
+      "Sebastian",
+      "Katty",
+      "Jesús",
+      "Milena",
+      "Camilo",
+      "Erlibeth",
+      "Sebas",
+      "Valentina",
+      "Christian",
+      "Karyna",
+      "Jeff",
+      "Lau",
+      "Salsa Latina Ciudad Alsacia",
+      "Mi Swing Dance Company",
+      "Okan Dance Academy",
+      "Bongó"
+    ],
+    "activities": [
+      "conciertos",
+      "shows de danza"
+    ],
+    "contact": "@festivalsalsaalparque",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio"
+    ],
+    "id": "salsa-al-parque-2026-28-nov",
+    "account": "festivalsalsaalparque",
+    "media": [
+      {
+        "post_id": "18651059083017717",
+        "permalink": "https://www.instagram.com/p/DgJPkjaRzqq/",
+        "media_type": "IMAGE",
+        "published": "2026-11-25T00:28:37+0000",
+        "flyer": "flyers/18651059083017717-0.webp",
+        "caption": "💯 ¡La salsa panameña tendrá un representante de lujo en #SalsaAlParque2026!\n\nEl cantante y compositor Roberto Blades, referente de la salsa latinoamericana y ganador de dos premios Grammy, hará parte de esta edición del festival con un repertorio que recoge historias de amor, desamor y vivencias convertidas en canciones.\n\nEl público podrá disfrutar de clásicos como ‘Lágrimas’ y ‘Ya no regreso contigo’, temas que han dejado huella en la historia de la salsa y siguen conquistando a diferentes generaciones.\n\n📅 28 de noviembre a las 8:30 p.m. \n📍 Parque Metropolitano Simón Bolívar.\n🎟️ Entrada libre | 🔞 Evento para mayores de edad.\n\n#LaRevoluciónQueNuncaDejaDeSonar #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18092696237266842",
+        "permalink": "https://www.instagram.com/p/DgIqFtUGJ4n/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-24T19:01:01+0000",
+        "flyer": "flyers/18092696237266842-0.webp",
+        "caption": "¡Diez canciones para ir calentando motores rumbo a #SalsaAlParque2026! \n\nDe Roberto Blades a La 33, esta selección reúne canciones para cantar, bailar y empezar a vivir el festival desde ahora.\n\n🎶 Recorra el carrusel, escuche la selección y cuéntenos: ¿cuál no puede faltar en su lista?\n\n📍 28 y 29 de noviembre | Parque Metropolitano Simón Bolívar.\n🎟️ Entrada libre | 🔞 Evento para mayores de edad. \n\n#LaRevoluciónQueNuncaDejaDeSonar",
+        "preview": "previews/18092696237266842-0.mp4",
+        "slides": 11
+      },
+      {
+        "post_id": "18135504769812469",
+        "permalink": "https://www.instagram.com/p/DgGncrljafU/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-23T23:59:27+0000",
+        "flyer": "flyers/18135504769812469-0.webp",
+        "caption": "¡Ya está aquí la programación por días de #SalsaAlParque2026! 🤩\n\nConozca cuándo se presentará cada agrupación y prepárese para dos jornadas de salsa en Bogotá. Esta edición también pone en primer plano el talento distrital con El Turco Perro, Cris en la Salsa Band, Kabala Ensamble, Kaona Orquesta y The Big Jhony, junto a grandes exponentes nacionales e internacionales que llegan con distintos sonidos.\n\n👉 Revise la programación, organice su parche y elija sus imperdibles. ¡La revolución que nunca deja de sonar nos espera!\n\n📍 28 y 29 de noviembre | Parque Metropolitano Simón Bolívar.\n🎟️ Entrada libre | 🔞 Evento para mayores de edad\n\n#LaRevoluciónQueNuncaDejaDeSonar #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 2
+      },
+      {
+        "post_id": "18155565457547094",
+        "permalink": "https://www.instagram.com/p/DgECqaARqCH/",
+        "media_type": "IMAGE",
+        "published": "2026-11-22T23:59:35+0000",
+        "flyer": "flyers/18155565457547094-0.webp",
+        "caption": "¡La espera terminó! 🔥💃🕺\n\nBogotá ya tiene el cartel oficial de #SalsaAlParque2026. 🎶 Conozca las agrupaciones y artistas que se darán cita este 28 y 29 de noviembre en el Parque Metropolitano Simón Bolívar para vivir dos días al ritmo de la salsa.\n\n🎟️ Entrada libre | 🔞 Evento para mayores de edad.\n\n¡Prepare los pasos y aliste los zapatos para bailar! ❤️‍🔥\n\n#LaRevoluciónQueNuncaDejaDeSonar #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18117015176272199",
+        "permalink": "https://www.instagram.com/p/Df5iYohlLPx/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-18T22:05:05+0000",
+        "flyer": "flyers/18117015176272199-0.webp",
+        "caption": "🤔 ¿Qué hace de Bogotá una ciudad salsera? Su historia, sus orquestas, sus melómanos, sus espacios de encuentro y las generaciones que han hecho de este género parte de la identidad musical de la ciudad. 💃\n\nLa salsa se escucha, se baila, se investiga y se transforma en Bogotá. Conozca 4 razones que explican por qué esta ciudad tiene tanto que contar al ritmo de este género.\n\nNos vemos en #SalsaAlParque2026, este 28 y 29 de noviembre en el Parque Metropolitano Simón Bolívar.\n\n🎟️ Entrada libre | 🔞 Evento para mayores de edad. \n\n #LaRevoluciónQueNuncaDejaDeSonar #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 5
+      },
+      {
+        "post_id": "18154345759537343",
+        "permalink": "https://www.instagram.com/p/Df45UliEdfE/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-18T16:06:16+0000",
+        "flyer": "flyers/18154345759537343-0.webp",
+        "caption": "¡Bogotá tiene nuevos protagonistas para #SalsaAlParque2026! 💃🏽🕺🏽\n\nConozca los artistas distritales seleccionados a través de la Beca Festival Salsa al Parque 2026 - Bogotá Ciudad Creativa de la Música y las parejas de bailarines y agrupaciones ganadoras de la Invitación Cultural Danza en el Festival Salsa al Parque 2026.\n\nEl talento local se toma el escenario de uno de los festivales más esperados de la ciudad. ¡Prepárese para bailar al ritmo de la salsa!\n\n📍 28 y 29 de noviembre | Parque Metropolitano Simón Bolívar.\n🎟️ Entrada libre | 🔞 Evento para mayores de edad.\n\n #LaRevoluciónQueNuncaDejaDeSonar",
+        "preview": null,
+        "slides": 2
+      },
+      {
+        "post_id": "18091770635281917",
+        "permalink": "https://www.instagram.com/reel/DgDGJVAR8Qe/",
+        "media_type": "VIDEO",
+        "published": "2026-11-22T15:11:16+0000",
+        "flyer": "flyers/18091770635281917-0.webp",
+        "caption": "🔥 ¡The Big Jhony regresa a #SalsaAlParque2026!\n\nCon una propuesta de salsa contemporánea y más de siete años de trayectoria, esta orquesta bogotana ha construido un repertorio de 42 canciones y cinco producciones discográficas, alcanzando más de 50 mil reproducciones en plataformas digitales y llegando a audiencias de más de 115 países.\n\n📅 28 y 29 de noviembre\n📍 Parque Metropolitano Simón Bolívar.\n🎟️ Entrada libre | 🔞 Evento para mayores de edad.\n\n#LaRevoluciónQueNuncaDejaDeSonar #BogotáMiCiudadMiCasa",
+        "preview": "previews/18091770635281917-0.mp4",
+        "slides": null
+      },
+      {
+        "post_id": "18122904082752528",
+        "permalink": "https://www.instagram.com/reel/DgA8h9QuhH3/",
+        "media_type": "VIDEO",
+        "published": "2026-11-21T19:08:46+0000",
+        "flyer": "flyers/18122904082752528-0.webp",
+        "caption": "🎷 ¡La salsa bogotana sigue explorando nuevos sonidos! Kaona Orquesta será parte de #SalsaAlParque2026 con una propuesta que conecta la tradición salsera con elementos contemporáneos, como sintetizadores, guitarra eléctrica y una potente sección de vientos.\n\nDirigida por César González, la orquesta ha construido un sonido propio con canciones como ‘Dime que sí’, ‘Tormento’ y ‘Zalamera’, en las que combina la salsa de golpe con los ritmos románticos. \n\n¡Prepárese para disfrutar de esta propuesta hecha en la capital!\n\n📅 28 y 29 de noviembre\n📍 Parque Metropolitano Simón Bolívar.\n🎟️ Entrada libre | 🔞 Evento para mayores de edad.\n\n#LaRevoluciónQueNuncaDejaDeSonar #BogotáMiCiudadMiCasa",
+        "preview": "previews/18122904082752528-0.mp4",
+        "slides": null
+      },
+      {
+        "post_id": "18113761073184072",
+        "permalink": "https://www.instagram.com/reel/DgAn3eshgpr/",
+        "media_type": "VIDEO",
+        "published": "2026-11-21T16:08:14+0000",
+        "flyer": "flyers/18113761073184072-0.webp",
+        "caption": "🎺 ¡Kábala Ensamble se suma a #SalsaAlParque2026!\n\nEsta orquesta, fundada en 2014 y dirigida por Edwin Pinzón, propone un encuentro entre la salsa tradicional y afrocaribeña, la timba y los sonidos contemporáneos. Con arreglos originales, fuerza vocal y una puesta en escena llena de energía, construye una identidad musical que conecta la tradición del Caribe con las nuevas expresiones de la salsa en la capital.\n\n📅 28 y 29 de noviembre\n📍 Parque Metropolitano Simón Bolívar.\n🎟️ Entrada libre | 🔞 Evento para mayores de edad.\n\n¡Prepárese para disfrutar de su sonido en el Parque Simón Bolívar!\n\n#LaRevoluciónQueNuncaDejaDeSonar #BogotáMiCiudadMiCasa",
+        "preview": "previews/18113761073184072-0.mp4",
+        "slides": null
+      },
+      {
+        "post_id": "18112308023204466",
+        "permalink": "https://www.instagram.com/reel/Df-EC9TxOX6/",
+        "media_type": "VIDEO",
+        "published": "2026-11-20T16:17:09+0000",
+        "flyer": "flyers/18112308023204466-0.webp",
+        "caption": "🥁 ¡Cris en la Salsa Band estará en #SalsaAlParque2026!\n\nLiderado por el cantante colombiano Cristhian Torres, conocido como \"El rolo de la salsa choque\", este proyecto fusiona la esencia de la salsa con los sonidos del Pacífico colombiano y la música urbana. Una propuesta que conecta generaciones, explora nuevas expresiones sonoras y acerca la salsa a públicos jóvenes sin perder sus raíces.\n\n📅 28 y 29 de noviembre\n📍 Parque Metropolitano Simón Bolívar.\n🎟️ Entrada libre | 🔞 Evento para mayores de edad.\n\n#LaRevoluciónQueNuncaDejaDeSonar #BogotáMiCiudadMiCasa",
+        "preview": "previews/18112308023204466-0.mp4",
+        "slides": null
+      },
+      {
+        "post_id": "18139156495734274",
+        "permalink": "https://www.instagram.com/reel/Df7zPOWthGV/",
+        "media_type": "VIDEO",
+        "published": "2026-11-19T19:12:06+0000",
+        "flyer": "flyers/18139156495734274-0.webp",
+        "caption": "🎶 ¡El Turco Perro llega a #SalsaAlParque2026!\n\nEl proyecto de Mauricio Byfield mezcla los sonidos tropicales y del Caribe con el punk. Esta vez, incorpora la salsa a su universo musical con 'El Amor es la Clave', una propuesta para disfrutar del acordeón, el baile y el tambor.\n\n📍 28 y 29 de noviembre | Parque Metropolitano Simón Bolívar.\n🎟️ Entrada libre | 🔞 Evento para mayores de edad.\n\n#LaRevoluciónQueNuncaDejaDeSonar #BogotáMiCiudadMiCasa",
+        "preview": "previews/18139156495734274-0.mp4",
+        "slides": null
+      },
+      {
+        "post_id": "18084122360430436",
+        "permalink": "https://www.instagram.com/reel/Dfum-_XtfF9/",
+        "media_type": "VIDEO",
+        "published": "2026-11-14T16:14:35+0000",
+        "flyer": "flyers/18084122360430436-0.webp",
+        "caption": "💃 Bogotá tiene una historia que también se cuenta al ritmo de la salsa. Durante décadas, este género ha acompañado a la ciudad, ha reunido generaciones y ha encontrado nuevas voces que mantienen su música en movimiento.\n\nEn su edición 27, Salsa al Parque reconoce a quienes han construido esta historia y a los artistas y públicos que hoy la transforman, exploran nuevos sonidos y mantienen viva su conexión con la ciudad. 💥\n\n Este 28 y 29 de noviembre, celebremos la salsa en todas sus expresiones en el Parque Metropolitano Simón Bolívar. \n\n🎟️ Entrada libre | 🔞 Evento para mayores de edad. \n\n🎥 juanneva_ /  nicolas_ortizp / Idartes\n\n#SalsaAlParque2026 #LaRevoluciónQueNuncaDejaDeSonar #BogotáMiCiudadMiCasa",
+        "preview": "previews/18084122360430436-0.mp4",
+        "slides": null
+      },
+      {
+        "post_id": "18100870454395843",
+        "permalink": "https://www.instagram.com/reel/DfsxIC3BNVn/",
+        "media_type": "VIDEO",
+        "published": "2026-11-13T23:05:14+0000",
+        "flyer": "flyers/18100870454395843-0.webp",
+        "caption": "🎺 ¡La revolución que nunca deja de sonar!\n\nDurante más de dos décadas, Salsa al Parque ha sido escenario de grandes orquestas, nuevos talentos y encuentros que han marcado la historia musical de Bogotá. Un festival que ha acompañado a distintas generaciones y que sigue abriendo espacio para la evolución de la salsa.\n\nHoy presentamos la imagen oficial de #SalsaAlParque2026, una edición que celebra las raíces de este género y sus nuevas formas de expresión.\n\n🔥 La cita es este 28 y 29 de noviembre en el Parque Metropolitano Simón Bolívar.\n\n🎟️ Entrada libre | 🔞 Evento para mayores de edad. \n\n🎨 criscontreras_art / 💻 juanneva_ Idartes \n\n#LaRevoluciónQueNuncaDejaDeSonar #BogotáMiCiudadMiCasa",
+        "preview": "previews/18100870454395843-0.mp4",
         "slides": null
       }
     ],
@@ -25582,6 +25700,16 @@
     "account": "fogal_arte",
     "media": [
       {
+        "post_id": "18660636766041424",
+        "permalink": "https://www.instagram.com/p/DgJQmJjxrbw/",
+        "media_type": "IMAGE",
+        "published": "2026-11-25T00:44:03+0000",
+        "flyer": "flyers/18660636766041424-0.webp",
+        "caption": "Atrévete a mover 💫 No necesitas experiencia previa, no necesitas ropa especial ni venir con alguien 🫀 Aquí encontrarás una comunidad dispuesta a acompañarte a descubrir los lugares más auténticos y por qué no, sensibles de ti mismx.\n\nVen a reconocerte en tu propia piel 👋🏼\n\nSi tienes dudas no dudes en escribirnos!",
+        "preview": null,
+        "slides": null
+      },
+      {
         "post_id": "18117917483594562",
         "permalink": "https://www.instagram.com/p/DgD76qcD032/",
         "media_type": "CAROUSEL_ALBUM",
@@ -25780,7 +25908,7 @@
     ],
     "organizer": "Fogal & Anfibia Danza",
     "venue": "La Telamarilla",
-    "address": null,
+    "address": "Cra. 35 # 25a-54",
     "area": null,
     "date": "2026-12-04",
     "end_date": null,
@@ -25807,6 +25935,16 @@
     "id": "fiesta-cumbiera-4-dic",
     "account": "fogal_arte",
     "media": [
+      {
+        "post_id": "18660636766041424",
+        "permalink": "https://www.instagram.com/p/DgJQmJjxrbw/",
+        "media_type": "IMAGE",
+        "published": "2026-11-25T00:44:03+0000",
+        "flyer": "flyers/18660636766041424-0.webp",
+        "caption": "Atrévete a mover 💫 No necesitas experiencia previa, no necesitas ropa especial ni venir con alguien 🫀 Aquí encontrarás una comunidad dispuesta a acompañarte a descubrir los lugares más auténticos y por qué no, sensibles de ti mismx.\n\nVen a reconocerte en tu propia piel 👋🏼\n\nSi tienes dudas no dudes en escribirnos!",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "17960161020295308",
         "permalink": "https://www.instagram.com/p/Df3atR_P_cp/",
@@ -26725,6 +26863,52 @@
     "bar": true
   },
   {
+    "title": "El último Vacilón del año",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [],
+    "organizer": "D'Living Studio",
+    "venue": "D'Living Studio",
+    "address": null,
+    "area": null,
+    "date": "2026-12-19",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "18:00",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "camilo_barretto"
+    ],
+    "activities": [
+      "Gallito d’Living",
+      "shows especiales",
+      "social para bailar"
+    ],
+    "contact": "@dlivingstudio",
+    "confidence": "high",
+    "doubts": [
+      "sin estilos de baile explícitos",
+      "sin precio"
+    ],
+    "id": "el-ultimo-vacilon-del-ano-19-dic",
+    "account": "dlivingstudio",
+    "media": [
+      {
+        "post_id": "18118235822469472",
+        "permalink": "https://www.instagram.com/p/DgJHADRP_pW/",
+        "media_type": "IMAGE",
+        "published": "2026-11-24T23:16:27+0000",
+        "flyer": "flyers/18118235822469472-0.webp",
+        "caption": "¡EL ÚLTIMO VACILÓN DEL AÑO! ❤️‍🔥🪩\n\nEste 19 de diciembre nos vemos para vivir una noche llena de sabor, buena música y mucha gozadera con:\n\n🐓 ¡Gallito d’Living!\n💃 Shows especiales.\n🪩 Social para bailar hasta que el cuerpo aguante.\n\n📅 19 de diciembre\n🕕 Desde las 6:00 p. m.\n💿 camilo_barretto \n\n¡Vamos a despedir el año como se debe! Reúne a tu parche, prepara los pasos y ven a vivir el último Vacilón del 2026.\n\n¡Nos vemos en la pista! ❤️‍🔥\n\n🖌️ catalina_05c 💞",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Gran Clausura 2026 - 12° Aniversario",
     "event_type": "show",
     "is_recurring": false,
@@ -26814,6 +26998,16 @@
     "id": "reyes-de-la-salsa-2027-19-mar",
     "account": "reyesdelasalsa.col",
     "media": [
+      {
+        "post_id": "18647724286008957",
+        "permalink": "https://www.instagram.com/p/DgIgAu8RtY9/",
+        "media_type": "IMAGE",
+        "published": "2026-11-24T17:33:19+0000",
+        "flyer": "flyers/18647724286008957-0.webp",
+        "caption": "👑 ¿Quién se lleva la corona en Bogotá? 🔥\n\nDel 19 al 21 de marzo de 2027, bailarines de Colombia y del mundo tienen una cita en la Competencia Internacional Reyes de la Salsa. Si lo tuyo es la salsa, la bachata o el urbano, ¡te esperamos en la pista! 🇨🇴\n\n📲 ¡Ya puedes pedir el reglamento oficial! Escríbenos por WhatsApp al +57 319 798 7486, conoce tu categoría y empieza a preparar tu coreografía.\n\n📸 Sigue la competencia en Instagram reyesdelasalsa.col\n✨ Productor · Alejandro Hernández",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18273583432305569",
         "permalink": "https://www.instagram.com/p/Df8PClKsMe8/",
@@ -26987,6 +27181,16 @@
         "flyer": "flyers/18064275404674703-0.webp",
         "caption": "🚨 BACHATA SOCIAL CONGRESS 2027 🚨\n\nWE ARE BACK! 🔥🇨🇴\n\nUna nueva edición está en camino y queremos que seas parte de esta historia.\n\n🌎 Artistas internacionales\n\n🎶 Workshops & Social Dancing\n\n🏆 Bachata Jam Session\n\n❤️ Una comunidad, una pasión.\n\nCOMING SOON… 🔜\n\n👇 ¿Desde qué país nos acompañarías?\n\n#BachataSocialCongress #BSC2027 #BachataJamSession #BachataColombia",
         "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "17914768200589432",
+        "permalink": "https://www.instagram.com/reel/DgIMRauvzq-/",
+        "media_type": "VIDEO",
+        "published": "2026-11-24T14:40:04+0000",
+        "flyer": "flyers/17914768200589432-0.webp",
+        "caption": "🇪🇸🔥 ¡DESDE ESPAÑA, DIRECTAMENTE AL BACHATA SOCIAL CONGRESS 2027! 🇨🇴\n\n💎 ¡ELWIN Y GABY CONFIRMADOS PARA BACHATA SOCIAL CONGRESS 2027! 💜\n\n🔥 Desde España llegan ELWIN Y GABY, una pareja que destaca por su estilo, musicalidad y la conexión que transmiten en cada baile.\n\n💃🕺 Con su energía, creatividad y forma de interpretar la bachata, llegan a Colombia para compartir sus conocimientos y disfrutar junto a toda nuestra comunidad.\n\n💃 FOLLOWERS, Gaby nos compartirá su estilo, técnica y herramientas para mejorar la fluidez, la expresión corporal y la conexión.\n\n🕺 LEADERS, Elwin llega con recursos para trabajar la conducción, la musicalidad y nuevas posibilidades en el baile en pareja.\n\n🔥 ¡Estamos muy felices de tenerlos con nosotros en esta edición! Estamos seguros de que disfrutaremos muchísimo sus clases y su energía en los sociales.\n\n🇨🇴💜 ¡Bienvenidos a Colombia, Elwin y Gaby!\n\n💜 BACHATA SOCIAL CONGRESS 2027\n\n#bachatasocialcongress #BSC2027 #ElwinYGaby #BachataEspaña #BachataColombia",
+        "preview": "previews/17914768200589432-0.mp4",
         "slides": null
       },
       {

@@ -1411,5 +1411,182 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "Clase y fiesta pre concierto",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "bachata"
+    ],
+    "organizer": "theking_colombia",
+    "venue": "Bogota Dance Club Academy",
+    "address": null,
+    "area": null,
+    "date": "2026-09-25",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "clase",
+      "fiesta pre concierto"
+    ],
+    "contact": "@bogotadanceclub.academy",
+    "confidence": "medium",
+    "doubts": [
+      "falta hora de inicio",
+      "sin precio"
+    ],
+    "id": "clase-y-fiesta-pre-concierto-25-sep",
+    "account": "germanbaila",
+    "media": [
+      {
+        "post_id": "18100759811377405",
+        "permalink": "https://www.instagram.com/reel/DdsIEA3ONkX/",
+        "media_type": "VIDEO",
+        "published": "2026-09-25T00:07:24+0000",
+        "flyer": "archive/flyers/18100759811377405-0.webp",
+        "caption": "Nos vemos este viernes para la clase y la fiesta pre concierto de theking_colombia en bogotadanceclub.academy \n#betterlatethannever #RomeoSantos #princeroyce #Bachata",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Viernes para Bailadores - Edición 2: Amor + Amistad",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "salsa en línea",
+      "salsa cubana"
+    ],
+    "organizer": "Son de Habana",
+    "venue": "Son de Habana Academia de Baile",
+    "address": null,
+    "area": null,
+    "date": "2026-09-25",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "20:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Preventa Individual",
+        "amount_cop": 30000,
+        "condition": null
+      },
+      {
+        "label": "Preventa Pareja",
+        "amount_cop": 50000,
+        "condition": null
+      },
+      {
+        "label": "Taquilla Individual",
+        "amount_cop": 35000,
+        "condition": null
+      },
+      {
+        "label": "Taquilla Pareja",
+        "amount_cop": 60000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Jepherson Macsene",
+      "Paula Popayán"
+    ],
+    "activities": [
+      "taller de 1 hora y media",
+      "práctica social de 1 hora y media"
+    ],
+    "contact": "WhatsApp 3176610567",
+    "confidence": "high",
+    "doubts": [],
+    "id": "viernes-para-bailadores-edicion-2-amor-amistad-25-sep",
+    "account": "sondehabana",
+    "media": [
+      {
+        "post_id": "18044150648816300",
+        "permalink": "https://www.instagram.com/p/DdZ3-nYKaFT/",
+        "media_type": "IMAGE",
+        "published": "2026-09-17T23:00:06+0000",
+        "flyer": "archive/flyers/18044150648816300-0.webp",
+        "caption": "ESTE VIERNES 25 DE SEPTIEMBRE 🚨 taller de 1 hora y media más práctica social de 1 hora y media junto a los maestros paulapopayancortes y jepherson_mc 😍\n\nPodrás aprender diferentes pasos de salsa en línea y salsa cubana y cómo aplicarlos al social 🔥 te esperamos 8pm aquí en nuestra sede sondehabana \n\n#salsa #estilocubano #baile #parches #amoryamistad",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Social Amor y Amistad",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "bachata"
+    ],
+    "organizer": "Academia Esfera Latina",
+    "venue": "Esfera Latina",
+    "address": null,
+    "area": null,
+    "date": "2026-09-25",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "21:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Alumnos Esfera Latina",
+        "amount_cop": 10000,
+        "condition": null
+      },
+      {
+        "label": "Preventa",
+        "amount_cop": 15000,
+        "condition": "hasta el 24 de septiembre"
+      },
+      {
+        "label": "Taquilla",
+        "amount_cop": 20000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Duane"
+    ],
+    "activities": [
+      "gran clase de bachata social",
+      "presentaciones de nuestros Challenge del mes",
+      "baile social"
+    ],
+    "contact": "3135802345",
+    "confidence": "high",
+    "doubts": [
+      "No se especifica la dirección exacta de la sede de Esfera Latina",
+      "No se indica la hora de finalización del evento"
+    ],
+    "id": "social-amor-y-amistad-25-sep",
+    "account": "esferalatinaoficial",
+    "media": [
+      {
+        "post_id": "17985388479076791",
+        "permalink": "https://www.instagram.com/p/DdWtU6jtm-6/",
+        "media_type": "IMAGE",
+        "published": "2026-09-16T18:00:04+0000",
+        "flyer": "archive/flyers/17985388479076791.webp",
+        "caption": "🔥 ¡NOS VEMOS ESTE 25 DE SEPTIEMBRE! 🔥\n\nEs hora de bailar, disfrutar y compartir en nuestro Social Amor y Amistad.\n\n💃 Presentaciones de nuestros Challege del mes \n🔥 Bachata social con Duane\n🎶 Salsa, bachata y mucha música\n\n📅 Viernes 25 de septiembre\n📍 Esfera Latina\n\n¡No te lo pierdas! Te esperamos para bailar.",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
   }
 ]
