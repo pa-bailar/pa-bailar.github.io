@@ -26216,6 +26216,77 @@
     "bar": false
   },
   {
+    "title": "Aguinaldo Navideño - Social SBK",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "salsa en línea",
+      "bachata",
+      "kizomba",
+      "otro"
+    ],
+    "organizer": "Distrito Social",
+    "venue": "Distrito Social",
+    "address": "Carrera 29 # 68-18",
+    "area": null,
+    "date": "2026-12-12",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "19:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Entrada general (sin regalo) - Preventa",
+        "amount_cop": 30000,
+        "condition": null
+      },
+      {
+        "label": "Entrada general (sin regalo) - Taquilla",
+        "amount_cop": 35000,
+        "condition": null
+      },
+      {
+        "label": "Entrada navideña (con regalo) - Preventa",
+        "amount_cop": 20000,
+        "condition": "trayendo un regalo"
+      },
+      {
+        "label": "Entrada navideña (con regalo) - Taquilla",
+        "amount_cop": 25000,
+        "condition": "trayendo un regalo"
+      }
+    ],
+    "artists": [
+      "Diego y Heidy",
+      "Mafe Sandunguera",
+      "DJ Duane"
+    ],
+    "activities": [
+      "clase de bachata",
+      "clase de salsa en línea",
+      "social SBK"
+    ],
+    "contact": "https://distrito-social-academy.com/",
+    "confidence": "high",
+    "doubts": [],
+    "id": "aguinaldo-navideno-social-sbk-12-dic",
+    "account": "distritosocialbog",
+    "media": [
+      {
+        "post_id": "17904977133378666",
+        "permalink": "https://www.instagram.com/p/DgHOumZJ1cv/",
+        "media_type": "IMAGE",
+        "published": "2026-11-24T05:42:43+0000",
+        "flyer": "flyers/17904977133378666-0.webp",
+        "caption": "🎄✨ AGUINALDO NAVIDEÑO | SOCIAL SBK ✨🎄\n\n¡Despidamos el 2026 haciendo lo que más nos gusta: BAILAR! ❤️\n\nQueremos invitar a toda nuestra comunidad de baile a celebrar el último Social SBK del año de Distrito Social. Una noche para compartir, reencontrarnos y agradecer por todos los momentos que vivimos juntos durante este año.\n\n🔥 CLASES ESPECIALES\n\n🕖 7:00 p. m. | Bachata con Diego y Heidy.\n diegoyheidy\n\n🕗 8:00 p. m. | Salsa On1 con Mafe Sandunguera. mafe_sandunguera\n\n 🎧 9:00 p. m. | Social SBK con DJ Duane bachataduane\n\nDisfrutaremos de una noche llena de Salsa, Bachata, Kizomba y, por supuesto, ¡Chucu Chucu navideño! 🥳\n\n🎁 BAILEMOS CON UN PROPÓSITO\n\nEn esta ocasión queremos llevar alegría a niños de bajos recursos. Por eso, tendremos dos modalidades de entrada:\n\n🎟️ Entrada general (sin regalo) • Preventa: $30.000 • Taquilla: $35.000\n\n🎁 Entrada navideña (trayendo un regalo) • Preventa: $20.000 + regalo • Taquilla: $25.000 + regalo\n\nTodos los regalos serán donados a niños de bajos recursos. No tiene que ser un regalo costoso, un detalle sencillo puede hacer feliz a un niño. ❤️\n\n📅 Sábado 12 de diciembre 🕖 Desde las 7:00 p. m. 📍 Distrito Social – Carrera 29 #68-18, Bogotá.\n\n🌐 Compra tus entradas en nuestra página web:\n\n https://distrito-social-academy.com/\n\nWhatsApp: + 57 311 2455630\n\nCerremos el año entre amigos, abrazos, buena música y mucho baile.\n\n¡Que nuestro último baile del año también sea una oportunidad para regalar sonrisas! 🎄❤️\n\n#DistritoSocial #AguinaldoNavideño #SocialSBK #bogotabaila",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Salsa al Aire Libre",
     "event_type": "social",
     "is_recurring": false,
