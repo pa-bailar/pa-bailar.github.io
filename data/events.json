@@ -23926,13 +23926,68 @@
     "bar": true
   },
   {
+    "title": "Miércoles de Tango: Clase Tango paso a paso con Ceci Urzola",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "tango"
+    ],
+    "organizer": "Callejón Salsa & Mecato",
+    "venue": "Callejón Salsa & Mecato",
+    "address": "Calle 12D # 3-84",
+    "area": "La Candelaria",
+    "date": "2026-11-25",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "miércoles",
+    "start_time": "19:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Individual",
+        "amount_cop": 30000,
+        "condition": null
+      },
+      {
+        "label": "Pareja",
+        "amount_cop": 55000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Ceci Urzola"
+    ],
+    "activities": [
+      "clase de tango",
+      "noche de tango"
+    ],
+    "contact": "@callejonsalsa",
+    "confidence": "high",
+    "doubts": [],
+    "id": "miercoles-de-tango-clase-tango-paso-a-paso-con-25-nov",
+    "account": "callejonsalsa",
+    "media": [
+      {
+        "post_id": "18171739069463853",
+        "permalink": "https://www.instagram.com/p/DgI4jCQtfUu/",
+        "media_type": "IMAGE",
+        "published": "2026-11-24T21:07:24+0000",
+        "flyer": "flyers/18171739069463853-0.webp",
+        "caption": "Último miércoles de Tango en Callejón. Clase tango paso a paso con la profesora ceciurzolatangosobreviviente y el resto de la noche tangos inspirados en la selección de cafetindebuenos y elviejoalmacentango \n\n📍Callejón Salsa & Mecato | Calle 12D #3-84 La Candelaria.\n🗓️ 25 de noviembre \n🕖 7:00 p.m.\n🎟️ 30K individual o 55K pareja",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Taller Salón de Baile Salsa Colombiana",
     "event_type": "workshop",
     "is_recurring": false,
     "styles": [
       "salsa"
     ],
-    "organizer": "Salsa al Parque 2026",
+    "organizer": "Salsa al Parque",
     "venue": "Tienda Esperanza - Sede San Felipe",
     "address": "Carrera 22 No. 74-30",
     "area": "San Felipe",
@@ -23951,7 +24006,6 @@
     ],
     "artists": [],
     "activities": [
-      "taller de salón de baile",
       "taller de salsa colombiana"
     ],
     "contact": "@danzaenlaciudad",
@@ -24140,15 +24194,12 @@
     "artists": [
       "Guajeo Orquesta"
     ],
-    "activities": [
-      "concierto de salsa"
-    ],
-    "contact": "@casaquiebracanto",
+    "activities": [],
+    "contact": null,
     "confidence": "high",
     "doubts": [
       "sin hora de inicio",
-      "sin precio",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+      "sin precio"
     ],
     "id": "guajeo-orquesta-27-nov",
     "account": "casaquiebracanto",
@@ -24409,6 +24460,56 @@
     "bar": false
   },
   {
+    "title": "4ta Edicion de Los Titanes de la Salsa",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Hoja al Viento",
+    "venue": "Hoja al Viento",
+    "address": "Cra 15 Bis # 45-07",
+    "area": null,
+    "date": "2026-11-27",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "21:00",
+    "end_time": "03:00",
+    "prices": [
+      {
+        "label": "Preventa",
+        "amount_cop": 20000,
+        "condition": "con derecho a una cerveza"
+      },
+      {
+        "label": "Cover",
+        "amount_cop": 25000,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [],
+    "contact": "3237992727",
+    "confidence": "high",
+    "doubts": [],
+    "id": "4ta-edicion-de-los-titanes-de-la-salsa-27-nov",
+    "account": "fernandoespanadj",
+    "media": [
+      {
+        "post_id": "18161971804513944",
+        "permalink": "https://www.instagram.com/reel/DgH7rwml5iC/",
+        "media_type": "VIDEO",
+        "published": "2026-11-24T12:15:33+0000",
+        "flyer": "flyers/18161971804513944-0.webp",
+        "caption": null,
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "El Tour de la Salsa: Luna Llena Salsa Band en vivo",
     "event_type": "concert",
     "is_recurring": false,
@@ -24529,6 +24630,50 @@
     "bar": true
   },
   {
+    "title": "Nando Lopez & Orquesta",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Casa Quiebra-Canto",
+    "venue": "Casa Quiebra-Canto",
+    "address": null,
+    "area": null,
+    "date": "2026-11-28",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "Nando Lopez & Orquesta"
+    ],
+    "activities": [],
+    "contact": null,
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio",
+      "sin precio"
+    ],
+    "id": "nando-lopez-orquesta-28-nov",
+    "account": "casaquiebracanto",
+    "media": [
+      {
+        "post_id": "18480572683138902",
+        "permalink": "https://www.instagram.com/p/DgJayMlR-U6/",
+        "media_type": "IMAGE",
+        "published": "2026-11-25T02:06:34+0000",
+        "flyer": "flyers/18480572683138902-0.webp",
+        "caption": "Vamos a echarle salsita al cuerpo , a la vida con dos excelentes grupos  guajeorumba  y nandolopezpty\n #massalsaparatuvida #amorporlasalsa #echalesalsita",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Salsa al Parque 2026",
     "event_type": "festival",
     "is_recurring": false,
@@ -24547,7 +24692,7 @@
     "end_time": null,
     "prices": [
       {
-        "label": "Entrada",
+        "label": "Entrada libre",
         "amount_cop": 0,
         "condition": null
       }
@@ -24569,14 +24714,10 @@
       "Kaona Orquesta",
       "The Big Jhony"
     ],
-    "activities": [
-      "conciertos de salsa"
-    ],
-    "contact": "parchexbogota.com",
+    "activities": [],
+    "contact": "@parchexbogota",
     "confidence": "high",
-    "doubts": [
-      "sin horarios específicos por artista"
-    ],
+    "doubts": [],
     "id": "salsa-al-parque-2026-28-nov-2",
     "account": "parchexbogota",
     "media": [
@@ -24592,53 +24733,6 @@
       }
     ],
     "bar": false
-  },
-  {
-    "title": "Nando Lopez & Orquesta",
-    "event_type": "concert",
-    "is_recurring": false,
-    "styles": [
-      "salsa"
-    ],
-    "organizer": "Casa Quiebra-Canto",
-    "venue": "Casa Quiebra-Canto",
-    "address": null,
-    "area": null,
-    "date": "2026-11-28",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "sabado",
-    "start_time": null,
-    "end_time": null,
-    "prices": [],
-    "artists": [
-      "Nando Lopez & Orquesta"
-    ],
-    "activities": [
-      "concierto de salsa"
-    ],
-    "contact": "@casaquiebracanto",
-    "confidence": "high",
-    "doubts": [
-      "sin hora de inicio",
-      "sin precio",
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
-    "id": "nando-lopez-orquesta-28-nov",
-    "account": "casaquiebracanto",
-    "media": [
-      {
-        "post_id": "18480572683138902",
-        "permalink": "https://www.instagram.com/p/DgJayMlR-U6/",
-        "media_type": "IMAGE",
-        "published": "2026-11-25T02:06:34+0000",
-        "flyer": "flyers/18480572683138902-0.webp",
-        "caption": "Vamos a echarle salsita al cuerpo , a la vida con dos excelentes grupos  guajeorumba  y nandolopezpty\n #massalsaparatuvida #amorporlasalsa #echalesalsita",
-        "preview": null,
-        "slides": null
-      }
-    ],
-    "bar": true
   },
   {
     "title": "Tardeo de Bulevar",
@@ -24741,7 +24835,7 @@
     "event_type": "social",
     "is_recurring": false,
     "styles": [
-      "otro"
+      "salsa"
     ],
     "organizer": "Bogotá Dance Club",
     "venue": "Bogotá Dance Club",
@@ -24755,12 +24849,12 @@
     "end_time": "22:00",
     "prices": [
       {
-        "label": "Preventa sábado",
+        "label": "Preventa exclusiva del sábado",
         "amount_cop": 25000,
         "condition": null
       },
       {
-        "label": "Taquilla",
+        "label": "Taquilla sábado y domingo",
         "amount_cop": 30000,
         "condition": null
       }
@@ -24770,14 +24864,13 @@
       "clase de baile navideña",
       "tardeo latino",
       "viejoteca",
-      "batalla de DJ's",
-      "clásicos decembrinos",
-      "plato navideño",
-      "accesorio navideño"
+      "batalla de DJs"
     ],
     "contact": "@bogotadanceclub",
     "confidence": "high",
-    "doubts": [],
+    "doubts": [
+      "estilos deducidos del texto o de la cuenta, no leídos en el post"
+    ],
     "id": "simulacro-navideno-28-nov",
     "account": "bogotadanceclub",
     "media": [
