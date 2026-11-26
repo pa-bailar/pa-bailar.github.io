@@ -23508,10 +23508,22 @@
     ],
     "contact": "@callejonsalsa",
     "confidence": "high",
-    "doubts": [],
+    "doubts": [
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
     "id": "miercoles-de-tango-clase-tango-paso-a-paso-con-25-nov",
     "account": "callejonsalsa",
     "media": [
+      {
+        "post_id": "18148701925590597",
+        "permalink": "https://www.instagram.com/p/DgL3VBhG1w-/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-26T00:54:25+0000",
+        "flyer": "flyers/18148701925590597-1.webp",
+        "caption": "Semana de despedida. Callejón cierra aquí las puertas de esta corta pero significativa historia. Y hemos preparado una semana bonita, con tango hoy, Jazz en vivo mañana jueves con pipesilvaq juancamilobateriasxx y juliangomezcontrabajo \nFiesta de calentamiento para salsa al parque el viernes con bailentina_selectora \nY sábado y domingo conciertos de salsa en vivo como remates de salsa al parque, porque en Callejón reivindicamos a las y los ausentes. Que no hay presencia femenina en el festival, pues en Callejón sí, y por eso el sábado el remate es con abakua_son.colombiano \nY el domingo para el final final no va más, la agrupación que todos nos quedamos esperando en el festival porque además fue la que quedó de primera con el mayor puntaje de la convocatoria distrital, pero que por asuntos administrativos no se presentará, y para que no se queden con las ganas de verla y escucharla, la tendremos aquí en Callejón, ns.orquesta \nVengan, y despidamos este espacio con amor y buena música!!!",
+        "preview": null,
+        "slides": 6
+      },
       {
         "post_id": "18171739069463853",
         "permalink": "https://www.instagram.com/p/DgI4jCQtfUu/",
@@ -23772,48 +23784,65 @@
     "bar": true
   },
   {
-    "title": "La Rebega Groove",
+    "title": "Callejeros Jazz Trío en vivo",
     "event_type": "concert",
     "is_recurring": false,
     "styles": [
-      "salsa"
+      "otro"
     ],
-    "organizer": "El Goce Pagano",
-    "venue": "El Goce Pagano",
-    "address": "Diagonal 20A N. 0-82",
-    "area": null,
-    "date": "2026-11-27",
+    "organizer": "Callejón Salsa & Mecato",
+    "venue": "Callejón Salsa & Mecato",
+    "address": "Calle 12D # 3-84",
+    "area": "La Candelaria",
+    "date": "2026-11-26",
     "end_date": null,
     "sessions": null,
-    "weekday": "viernes",
-    "start_time": null,
+    "weekday": "jueves",
+    "start_time": "21:30",
     "end_time": null,
-    "prices": [],
+    "prices": [
+      {
+        "label": "General",
+        "amount_cop": 15000,
+        "condition": null
+      }
+    ],
     "artists": [
-      "La Rebega Groove"
+      "Callejeros Jazz Trío",
+      "Felipe Silva",
+      "Juan Camilo",
+      "Julián Gómez"
     ],
     "activities": [
-      "concierto",
-      "salsa en vivo"
+      "Jazz en vivo"
     ],
-    "contact": "WhatsApp 3168710646",
+    "contact": "@callejonsalsa",
     "confidence": "high",
     "doubts": [
-      "sin hora especifica",
-      "sin precio confirmado"
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
     ],
-    "id": "la-rebega-groove-27-nov",
-    "account": "elgocepagano",
+    "id": "callejeros-jazz-trio-en-vivo-26-nov",
+    "account": "callejonsalsa",
     "media": [
       {
-        "post_id": "18123232838067183",
-        "permalink": "https://www.instagram.com/p/Df3PgLoDlyV/",
+        "post_id": "18148701925590597",
+        "permalink": "https://www.instagram.com/p/DgL3VBhG1w-/",
         "media_type": "CAROUSEL_ALBUM",
-        "published": "2026-11-18T00:41:36+0000",
-        "flyer": "flyers/18123232838067183-1.webp",
-        "caption": "🔥Concierto salsero, en elgocepagano 🔥\nSalsa bogotana, sabor, calle y goce en una sola noche\n\n🕔 Puertas: 6 pm | 🎶 Shows: 11 pm y 1 am\n📍 Diagonal 20A No. 82 – Bogotá\n\n✨🔥¡A bailar!🔥✨\nCover 20k\n#salsaenvivo #salsa\n#concierto #envivo\n#conciertobogota #salsaenbogotá",
+        "published": "2026-11-26T00:54:25+0000",
+        "flyer": "flyers/18148701925590597-2.webp",
+        "caption": "Semana de despedida. Callejón cierra aquí las puertas de esta corta pero significativa historia. Y hemos preparado una semana bonita, con tango hoy, Jazz en vivo mañana jueves con pipesilvaq juancamilobateriasxx y juliangomezcontrabajo \nFiesta de calentamiento para salsa al parque el viernes con bailentina_selectora \nY sábado y domingo conciertos de salsa en vivo como remates de salsa al parque, porque en Callejón reivindicamos a las y los ausentes. Que no hay presencia femenina en el festival, pues en Callejón sí, y por eso el sábado el remate es con abakua_son.colombiano \nY el domingo para el final final no va más, la agrupación que todos nos quedamos esperando en el festival porque además fue la que quedó de primera con el mayor puntaje de la convocatoria distrital, pero que por asuntos administrativos no se presentará, y para que no se queden con las ganas de verla y escucharla, la tendremos aquí en Callejón, ns.orquesta \nVengan, y despidamos este espacio con amor y buena música!!!",
         "preview": null,
-        "slides": 2
+        "slides": 6
+      },
+      {
+        "post_id": "18032601455920027",
+        "permalink": "https://www.instagram.com/p/DgKgk9oRSBh/",
+        "media_type": "IMAGE",
+        "published": "2026-11-25T12:16:25+0000",
+        "flyer": "flyers/18032601455920027-0.webp",
+        "caption": "Último jueves de noviembre y nos encontramos de nuevo con \"Callejeros Jazz Trío\" que en esta ocasión tiene como invitado especial a Felipe Silva en el saxofón. Además de los duros de la cuestión juancamilobateriasxx y juliangomezcontrabajo \nPara esta noche especial de buen Jazz en vivo.\n\n📍Callejón Salsa & Mecato | Calle 12D #3-84 La Candelaria.\n🗓️ Jueves 26 de noviembre \n🕖 9:30 p.m.\n🎟️ 15K",
+        "preview": null,
+        "slides": null
       }
     ],
     "bar": true
@@ -23856,6 +23885,130 @@
         "published": "2026-11-25T02:06:34+0000",
         "flyer": "flyers/18480572683138902-0.webp",
         "caption": "Vamos a echarle salsita al cuerpo , a la vida con dos excelentes grupos  guajeorumba  y nandolopezpty\n #massalsaparatuvida #amorporlasalsa #echalesalsita",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "La Rebega Groove",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "El Goce Pagano",
+    "venue": "El Goce Pagano",
+    "address": "Diagonal 20A N. 0-82",
+    "area": null,
+    "date": "2026-11-27",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "18:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 20000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "La Rebega Groove"
+    ],
+    "activities": [
+      "concierto",
+      "salsa en vivo"
+    ],
+    "contact": "WhatsApp 3168710646",
+    "confidence": "high",
+    "doubts": [
+      "sin hora especifica",
+      "sin precio confirmado"
+    ],
+    "id": "la-rebega-groove-27-nov",
+    "account": "elgocepagano",
+    "media": [
+      {
+        "post_id": "18115921370463899",
+        "permalink": "https://www.instagram.com/p/DgLDcmaGlN8/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-25T17:21:04+0000",
+        "flyer": "flyers/18115921370463899-0.webp",
+        "caption": "🔥Concierto salsero, en elgocepagano 🔥\nSalsa bogotana, sabor, calle y goce en una sola noche\n\n🕔 Puertas: 6 pm | 🎶 Shows: 11 pm y 1 am\n📍 Diagonal 20A No. 82 – Bogotá\n\n✨🔥¡A bailar!🔥✨\nCover 20k\n#salsaenvivo #salsa\n#concierto #envivo\n#conciertobogota #salsaenbogotá",
+        "preview": null,
+        "slides": 2
+      },
+      {
+        "post_id": "18123232838067183",
+        "permalink": "https://www.instagram.com/p/Df3PgLoDlyV/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-18T00:41:36+0000",
+        "flyer": "flyers/18123232838067183-1.webp",
+        "caption": "🔥Concierto salsero, en elgocepagano 🔥\nSalsa bogotana, sabor, calle y goce en una sola noche\n\n🕔 Puertas: 6 pm | 🎶 Shows: 11 pm y 1 am\n📍 Diagonal 20A No. 82 – Bogotá\n\n✨🔥¡A bailar!🔥✨\nCover 20k\n#salsaenvivo #salsa\n#concierto #envivo\n#conciertobogota #salsaenbogotá",
+        "preview": null,
+        "slides": 2
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Clase de salsa con Teffa MG",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Callejón Salsa & Mecato",
+    "venue": "Callejón Salsa & Mecato",
+    "address": "Calle 12D # 3-84",
+    "area": "La Candelaria",
+    "date": "2026-11-27",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "19:30",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "General",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Teffa MG"
+    ],
+    "activities": [
+      "clase de salsa"
+    ],
+    "contact": "@callejonsalsa",
+    "confidence": "high",
+    "doubts": [
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "clase-de-salsa-con-teffa-mg-27-nov",
+    "account": "callejonsalsa",
+    "media": [
+      {
+        "post_id": "18148701925590597",
+        "permalink": "https://www.instagram.com/p/DgL3VBhG1w-/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-26T00:54:25+0000",
+        "flyer": "flyers/18148701925590597-0.webp",
+        "caption": "Semana de despedida. Callejón cierra aquí las puertas de esta corta pero significativa historia. Y hemos preparado una semana bonita, con tango hoy, Jazz en vivo mañana jueves con pipesilvaq juancamilobateriasxx y juliangomezcontrabajo \nFiesta de calentamiento para salsa al parque el viernes con bailentina_selectora \nY sábado y domingo conciertos de salsa en vivo como remates de salsa al parque, porque en Callejón reivindicamos a las y los ausentes. Que no hay presencia femenina en el festival, pues en Callejón sí, y por eso el sábado el remate es con abakua_son.colombiano \nY el domingo para el final final no va más, la agrupación que todos nos quedamos esperando en el festival porque además fue la que quedó de primera con el mayor puntaje de la convocatoria distrital, pero que por asuntos administrativos no se presentará, y para que no se queden con las ganas de verla y escucharla, la tendremos aquí en Callejón, ns.orquesta \nVengan, y despidamos este espacio con amor y buena música!!!",
+        "preview": null,
+        "slides": 6
+      },
+      {
+        "post_id": "18101343215541946",
+        "permalink": "https://www.instagram.com/p/DgLQoQVB0t0/",
+        "media_type": "IMAGE",
+        "published": "2026-11-25T19:16:18+0000",
+        "flyer": "flyers/18101343215541946-0.webp",
+        "caption": "¿Buscando vacilón calientamotores para Salsa al Parque? Le tenemos la previa que lo va a dejar listo para ir al Festival. Caiga a Callejón, el rincón perfecto pa' que sintonice el oído, haga tertulia y azote baldosa. Estará con todos ustedes bailentina_selectora desde las 9:00 p.m.\nPero comenzamos con la clase de salsa con la profesora teffa_mg  a las 7:30 p.m. 10K. \n\nLos esperamos el viernes 27 de noviembre en Callejón Salsa & Mecato. ENTRADA LIBRE!!!\n\n📍Callejón Salsa & Mecato | Calle 12D #3-84 La Candelaria.",
         "preview": null,
         "slides": null
       }
@@ -24201,6 +24354,69 @@
     "bar": false
   },
   {
+    "title": "Salsa en la NEVERA: Previa Salsa al Parque",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Callejón Salsa & Mecato",
+    "venue": "Callejón Salsa & Mecato",
+    "address": "Calle 12D # 3-84",
+    "area": "La Candelaria",
+    "date": "2026-11-27",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "viernes",
+    "start_time": "21:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "General",
+        "amount_cop": 0,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Bailentina Selectora"
+    ],
+    "activities": [
+      "rumba",
+      "tertulia",
+      "azote baldosa"
+    ],
+    "contact": "@callejonsalsa",
+    "confidence": "high",
+    "doubts": [
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "salsa-en-la-nevera-previa-salsa-al-parque-27-nov",
+    "account": "callejonsalsa",
+    "media": [
+      {
+        "post_id": "18148701925590597",
+        "permalink": "https://www.instagram.com/p/DgL3VBhG1w-/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-26T00:54:25+0000",
+        "flyer": "flyers/18148701925590597-3.webp",
+        "caption": "Semana de despedida. Callejón cierra aquí las puertas de esta corta pero significativa historia. Y hemos preparado una semana bonita, con tango hoy, Jazz en vivo mañana jueves con pipesilvaq juancamilobateriasxx y juliangomezcontrabajo \nFiesta de calentamiento para salsa al parque el viernes con bailentina_selectora \nY sábado y domingo conciertos de salsa en vivo como remates de salsa al parque, porque en Callejón reivindicamos a las y los ausentes. Que no hay presencia femenina en el festival, pues en Callejón sí, y por eso el sábado el remate es con abakua_son.colombiano \nY el domingo para el final final no va más, la agrupación que todos nos quedamos esperando en el festival porque además fue la que quedó de primera con el mayor puntaje de la convocatoria distrital, pero que por asuntos administrativos no se presentará, y para que no se queden con las ganas de verla y escucharla, la tendremos aquí en Callejón, ns.orquesta \nVengan, y despidamos este espacio con amor y buena música!!!",
+        "preview": null,
+        "slides": 6
+      },
+      {
+        "post_id": "18101343215541946",
+        "permalink": "https://www.instagram.com/p/DgLQoQVB0t0/",
+        "media_type": "IMAGE",
+        "published": "2026-11-25T19:16:18+0000",
+        "flyer": "flyers/18101343215541946-0.webp",
+        "caption": "¿Buscando vacilón calientamotores para Salsa al Parque? Le tenemos la previa que lo va a dejar listo para ir al Festival. Caiga a Callejón, el rincón perfecto pa' que sintonice el oído, haga tertulia y azote baldosa. Estará con todos ustedes bailentina_selectora desde las 9:00 p.m.\nPero comenzamos con la clase de salsa con la profesora teffa_mg  a las 7:30 p.m. 10K. \n\nLos esperamos el viernes 27 de noviembre en Callejón Salsa & Mecato. ENTRADA LIBRE!!!\n\n📍Callejón Salsa & Mecato | Calle 12D #3-84 La Candelaria.",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "El Tour de la Salsa: Luna Llena Salsa Band en vivo",
     "event_type": "concert",
     "is_recurring": false,
@@ -24307,6 +24523,16 @@
     "id": "ger-band-latin-group-28-nov",
     "account": "elgocepagano",
     "media": [
+      {
+        "post_id": "18115921370463899",
+        "permalink": "https://www.instagram.com/p/DgLDcmaGlN8/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-25T17:21:04+0000",
+        "flyer": "flyers/18115921370463899-1.webp",
+        "caption": "🔥Concierto salsero, en elgocepagano 🔥\nSalsa bogotana, sabor, calle y goce en una sola noche\n\n🕔 Puertas: 6 pm | 🎶 Shows: 11 pm y 1 am\n📍 Diagonal 20A No. 82 – Bogotá\n\n✨🔥¡A bailar!🔥✨\nCover 20k\n#salsaenvivo #salsa\n#concierto #envivo\n#conciertobogota #salsaenbogotá",
+        "preview": null,
+        "slides": 2
+      },
       {
         "post_id": "18123232838067183",
         "permalink": "https://www.instagram.com/p/Df3PgLoDlyV/",
@@ -25335,6 +25561,102 @@
     "bar": false
   },
   {
+    "title": "Fuego Salsero - Noche de Salsa en Vinilos",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "@casavander_",
+    "venue": "Van Der",
+    "address": "Cra 16 #35-08",
+    "area": "Teusaquillo",
+    "date": "2026-11-28",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "20:30",
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "@chico_latino92"
+    ],
+    "activities": [
+      "salsa en vinilos"
+    ],
+    "contact": "3011620492",
+    "confidence": "high",
+    "doubts": [],
+    "id": "fuego-salsero-noche-de-salsa-en-vinilos-28-nov",
+    "account": "casavander_",
+    "media": [
+      {
+        "post_id": "18194299087407541",
+        "permalink": "https://www.instagram.com/p/DgL7zq3MN4s/",
+        "media_type": "IMAGE",
+        "published": "2026-11-26T01:37:57+0000",
+        "flyer": "flyers/18194299087407541-0.webp",
+        "caption": "🔥 Arden las tornas 🔥 con la selección salsera de chico_latino92 un plan para todo el mundo, el que se las sabe todas, el que quiere bailar, el que quiere escuchar buena salsa y disfrutar de una cerveza 🍻 porque además estamos en la segunda edición de Teusaquillo sabe a Pola teusaquillo_dc \n\nNos vemos este sábado a las 8 p.m.\n\n#cerveza #salsa #salsaenbogota",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Remate de Salsa al Parque con Abakuá",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa",
+      "son"
+    ],
+    "organizer": "Callejón Salsa & Mecato",
+    "venue": "Callejón Salsa & Mecato",
+    "address": "Calle 12D # 3-84",
+    "area": "La Candelaria",
+    "date": "2026-11-28",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "22:30",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "General",
+        "amount_cop": 20000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Abakuá son colombiano"
+    ],
+    "activities": [
+      "concierto de salsa en vivo",
+      "remate de salsa al parque"
+    ],
+    "contact": "@callejonsalsa",
+    "confidence": "high",
+    "doubts": [
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "remate-de-salsa-al-parque-con-abakua-28-nov",
+    "account": "callejonsalsa",
+    "media": [
+      {
+        "post_id": "18148701925590597",
+        "permalink": "https://www.instagram.com/p/DgL3VBhG1w-/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-26T00:54:25+0000",
+        "flyer": "flyers/18148701925590597-4.webp",
+        "caption": "Semana de despedida. Callejón cierra aquí las puertas de esta corta pero significativa historia. Y hemos preparado una semana bonita, con tango hoy, Jazz en vivo mañana jueves con pipesilvaq juancamilobateriasxx y juliangomezcontrabajo \nFiesta de calentamiento para salsa al parque el viernes con bailentina_selectora \nY sábado y domingo conciertos de salsa en vivo como remates de salsa al parque, porque en Callejón reivindicamos a las y los ausentes. Que no hay presencia femenina en el festival, pues en Callejón sí, y por eso el sábado el remate es con abakua_son.colombiano \nY el domingo para el final final no va más, la agrupación que todos nos quedamos esperando en el festival porque además fue la que quedó de primera con el mayor puntaje de la convocatoria distrital, pero que por asuntos administrativos no se presentará, y para que no se queden con las ganas de verla y escucharla, la tendremos aquí en Callejón, ns.orquesta \nVengan, y despidamos este espacio con amor y buena música!!!",
+        "preview": null,
+        "slides": 6
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "VALKANDELA 2026 en Plazoleta del Panamericano",
     "event_type": "party",
     "is_recurring": false,
@@ -25568,6 +25890,58 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "Remate de Salsa al Parque con NS Orquesta",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Callejón Salsa & Mecato",
+    "venue": "Callejón Salsa & Mecato",
+    "address": "Calle 12D # 3-84",
+    "area": "La Candelaria",
+    "date": "2026-11-29",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "22:30",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Aporte cultural",
+        "amount_cop": 20000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "NS Orquesta"
+    ],
+    "activities": [
+      "concierto de salsa en vivo",
+      "fiesta de remate"
+    ],
+    "contact": "@callejonsalsa",
+    "confidence": "high",
+    "doubts": [
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "remate-de-salsa-al-parque-con-ns-orquesta-29-nov",
+    "account": "callejonsalsa",
+    "media": [
+      {
+        "post_id": "18148701925590597",
+        "permalink": "https://www.instagram.com/p/DgL3VBhG1w-/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-26T00:54:25+0000",
+        "flyer": "flyers/18148701925590597-5.webp",
+        "caption": "Semana de despedida. Callejón cierra aquí las puertas de esta corta pero significativa historia. Y hemos preparado una semana bonita, con tango hoy, Jazz en vivo mañana jueves con pipesilvaq juancamilobateriasxx y juliangomezcontrabajo \nFiesta de calentamiento para salsa al parque el viernes con bailentina_selectora \nY sábado y domingo conciertos de salsa en vivo como remates de salsa al parque, porque en Callejón reivindicamos a las y los ausentes. Que no hay presencia femenina en el festival, pues en Callejón sí, y por eso el sábado el remate es con abakua_son.colombiano \nY el domingo para el final final no va más, la agrupación que todos nos quedamos esperando en el festival porque además fue la que quedó de primera con el mayor puntaje de la convocatoria distrital, pero que por asuntos administrativos no se presentará, y para que no se queden con las ganas de verla y escucharla, la tendremos aquí en Callejón, ns.orquesta \nVengan, y despidamos este espacio con amor y buena música!!!",
+        "preview": null,
+        "slides": 6
+      }
+    ],
+    "bar": true
   },
   {
     "title": "Curso 1: Salsa y Bachata",
@@ -26076,6 +26450,58 @@
     "bar": false
   },
   {
+    "title": "Fiesta de Blanco",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Pachanga & Pochola",
+    "venue": "Pachanga & Pochola",
+    "address": null,
+    "area": "Bogotá",
+    "date": "2026-12-05",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "jueves",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [
+      "San Los de la T",
+      "DJ Wilo",
+      "JMilo",
+      "Joel",
+      "Chilo",
+      "DJ Jeisson"
+    ],
+    "activities": [
+      "rumba",
+      "recibiendo regalos para los niños del Pacífico"
+    ],
+    "contact": "WhatsApp 313 289 1788",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio",
+      "sin precio de entrada"
+    ],
+    "id": "fiesta-de-blanco-5-dic",
+    "account": "pachanga_y_pochola",
+    "media": [
+      {
+        "post_id": "17928920538201336",
+        "permalink": "https://www.instagram.com/p/DgKok6FxgKj/",
+        "media_type": "IMAGE",
+        "published": "2026-11-25T13:29:35+0000",
+        "flyer": "flyers/17928920538201336-0.webp",
+        "caption": "🤍🔥 ¡BOGOTÁ, NOS VAMOS DE BLANCO! 🔥🤍\n\nEste 5 de diciembre  llega a Pachanga & Pochola una noche para bailar, disfrutar y vivir la rumba como se debe. 🎶🥂\n\nUna nómina de lujo para poner a vibrar la pista:\n🎧 San Los de la T\n🎧 DJ Wilo\n🎧 JMilo\n🎧 Joel\n🎧 Chilo\n🔥 DJ Jeisson\n\n🎁 Y esta noche también tiene un propósito especial: estaremos recibiendo regalos para llevar alegría a los niños del Pacífico. ❤️🌊\n\n🤍 Prepara tu mejor outfit blanco, invita a tu parche y ven a vivir una noche inolvidable.\n\n📲 Reservas: 313 289 1788 – 314 482 2623",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Taller Dancehall Female: Cuerpos y resistencia",
     "event_type": "workshop",
     "is_recurring": false,
@@ -26266,6 +26692,16 @@
         "published": "2026-09-15T23:44:00+0000",
         "flyer": "flyers/18104347286615308.webp",
         "caption": "⚜️ ELYSYUM MADYUM ⚜️\n\n05 de DICIEMBRE, una noche sin precedentes. Llega después de 5 años nuestro gran ANIVERSARIO MADYUM. Luego de múltiples experiencias, crecimiento, aprendizajes, adversidades, construcción de personas, procesos y evolución, nos reuniremos en una noche llena de celebración, baile, disfrute, manifestación y gran muestra de estos años de arduo trabajo. \n\nNos vemos pronto 🎤\n\n#aniversario #clausura #salsa #bachata #escueladebaile",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18099251504141226",
+        "permalink": "https://www.instagram.com/reel/DgKwxISxOm-/",
+        "media_type": "VIDEO",
+        "published": "2026-11-25T14:47:05+0000",
+        "flyer": "flyers/18099251504141226-0.webp",
+        "caption": "🥤CATERING MADYUM 🥤\n\nUna noche en la que también podrás disfrutar de comida y bebidas. Nos vemos este 05 de Diciembre \n\n#catering #madelena #escueladebaile #aprenderabailar #aniversario",
         "preview": null,
         "slides": null
       },
