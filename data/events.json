@@ -24077,6 +24077,59 @@
     "bar": true
   },
   {
+    "title": "Rumba salsera con Nick Salas Orquesta",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Galería Café Libro",
+    "venue": "Galería Café Libro",
+    "address": "Cra 11A # 93-42",
+    "area": "Parque 93",
+    "date": "2026-11-26",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "jueves",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 20000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Nick Salas Orquesta"
+    ],
+    "activities": [
+      "música en vivo",
+      "rumba salsera"
+    ],
+    "contact": "3176608742",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio exacta",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "rumba-salsera-con-nick-salas-orquesta-26-nov",
+    "account": "galeriacafelibro",
+    "media": [
+      {
+        "post_id": "18121648691106328",
+        "permalink": "https://www.instagram.com/p/DgK1pHuDL8s/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-25T15:20:27+0000",
+        "flyer": "flyers/18121648691106328-3.webp",
+        "caption": "Positivo para salseros ❤️‍🔥 Esta semana rematamos noviembre con todos los poderes 🎶 Y dice así:\n\nEn vivo: lacharanganewyork orquestapuntobare ns.orquesta septimba_salsa_javeriana 🎹\n\n💿 En el tornamesa: los djs de la casa 🏠 johanancines elgordocastillo Beto DJ y Eduardo Moya\n\n¡Nos vemos para gozarnos la semanita! 💃",
+        "preview": null,
+        "slides": 8
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Jueves de Son Gozón con Gerband",
     "event_type": "concert",
     "is_recurring": false,
@@ -24122,6 +24175,57 @@
         "caption": "Conoce nuestro repertorio salsero de este 📆 Jueves 26 de Noviembre + información importante ❗️\n\n🎺 Gerband\n🎟️ Aporte cultural: 15K\n\n⏳ Desde las 4 PM\n📍 Carrera 11 #70A-22\n📲 Reserva por WhatsApp: 313 830 8844",
         "preview": null,
         "slides": 5
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Septimba, salsa en vivo",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Galería Café Libro",
+    "venue": "Galería Café Libro",
+    "address": "Transv. 15B # 46-38",
+    "area": "Palermo",
+    "date": "2026-11-26",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "jueves",
+    "start_time": "21:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 20000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Septimba"
+    ],
+    "activities": [
+      "música en vivo"
+    ],
+    "contact": "3176608742",
+    "confidence": "high",
+    "doubts": [
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "septimba-salsa-en-vivo-26-nov",
+    "account": "galeriacafelibro",
+    "media": [
+      {
+        "post_id": "18121648691106328",
+        "permalink": "https://www.instagram.com/p/DgK1pHuDL8s/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-25T15:20:27+0000",
+        "flyer": "flyers/18121648691106328-4.webp",
+        "caption": "Positivo para salseros ❤️‍🔥 Esta semana rematamos noviembre con todos los poderes 🎶 Y dice así:\n\nEn vivo: lacharanganewyork orquestapuntobare ns.orquesta septimba_salsa_javeriana 🎹\n\n💿 En el tornamesa: los djs de la casa 🏠 johanancines elgordocastillo Beto DJ y Eduardo Moya\n\n¡Nos vemos para gozarnos la semanita! 💃",
+        "preview": null,
+        "slides": 8
       }
     ],
     "bar": true
@@ -24733,6 +24837,110 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "La Charanga New York",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Galería Café Libro",
+    "venue": "Galería Café Libro",
+    "address": "Cra 11A # 93-42",
+    "area": "Parque 93",
+    "date": "2026-11-28",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 25000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "La Charanga New York"
+    ],
+    "activities": [
+      "música en vivo"
+    ],
+    "contact": "3176608742",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "la-charanga-new-york-28-nov",
+    "account": "galeriacafelibro",
+    "media": [
+      {
+        "post_id": "18121648691106328",
+        "permalink": "https://www.instagram.com/p/DgK1pHuDL8s/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-25T15:20:27+0000",
+        "flyer": "flyers/18121648691106328-6.webp",
+        "caption": "Positivo para salseros ❤️‍🔥 Esta semana rematamos noviembre con todos los poderes 🎶 Y dice así:\n\nEn vivo: lacharanganewyork orquestapuntobare ns.orquesta septimba_salsa_javeriana 🎹\n\n💿 En el tornamesa: los djs de la casa 🏠 johanancines elgordocastillo Beto DJ y Eduardo Moya\n\n¡Nos vemos para gozarnos la semanita! 💃",
+        "preview": null,
+        "slides": 8
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Orquesta Punto Baré",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Galería Café Libro",
+    "venue": "Galería Café Libro",
+    "address": "Transv. 15B # 46-38",
+    "area": "Palermo",
+    "date": "2026-11-28",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 20000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Orquesta Punto Baré"
+    ],
+    "activities": [
+      "música en vivo"
+    ],
+    "contact": "3176608742",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio",
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "orquesta-punto-bare-28-nov",
+    "account": "galeriacafelibro",
+    "media": [
+      {
+        "post_id": "18121648691106328",
+        "permalink": "https://www.instagram.com/p/DgK1pHuDL8s/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-25T15:20:27+0000",
+        "flyer": "flyers/18121648691106328-7.webp",
+        "caption": "Positivo para salseros ❤️‍🔥 Esta semana rematamos noviembre con todos los poderes 🎶 Y dice así:\n\nEn vivo: lacharanganewyork orquestapuntobare ns.orquesta septimba_salsa_javeriana 🎹\n\n💿 En el tornamesa: los djs de la casa 🏠 johanancines elgordocastillo Beto DJ y Eduardo Moya\n\n¡Nos vemos para gozarnos la semanita! 💃",
+        "preview": null,
+        "slides": 8
+      }
+    ],
+    "bar": true
   },
   {
     "title": "Tardeo de Bulevar",
