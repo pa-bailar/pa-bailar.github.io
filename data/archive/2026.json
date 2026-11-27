@@ -2043,5 +2043,64 @@
       }
     ],
     "bar": false
+  },
+  {
+    "title": "Super Clase Champeta",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "champeta"
+    ],
+    "organizer": "Zafra Dance Company",
+    "venue": "Zafra Dance Company",
+    "address": "Carrera 27 A #52-31",
+    "area": "Galerías",
+    "date": "2026-09-27",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "10:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "1 Persona",
+        "amount_cop": 35000,
+        "condition": null
+      },
+      {
+        "label": "2 Personas",
+        "amount_cop": 60000,
+        "condition": "2 personas"
+      },
+      {
+        "label": "Estudiantes Zafra",
+        "amount_cop": 25000,
+        "condition": "estudiantes Zafra"
+      }
+    ],
+    "artists": [
+      "Polen"
+    ],
+    "activities": [
+      "super clase champeta"
+    ],
+    "contact": "3164952960",
+    "confidence": "high",
+    "doubts": [],
+    "id": "super-clase-champeta-27-sep",
+    "account": "zafradance",
+    "media": [
+      {
+        "post_id": "18379762747224169",
+        "permalink": "https://www.instagram.com/p/Ddpd9NugQdf/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-09-23T23:15:01+0000",
+        "flyer": "archive/flyers/18379762747224169.webp",
+        "caption": "CHAMPETA este domingo desde las 10am. \nProfe amayapolen \n\nSepara tu cupo. \n\nEscríbenos para más información ✏️ \n\n#champeta #champetaenbogota",
+        "preview": null,
+        "slides": 2
+      }
+    ],
+    "bar": false
   }
 ]

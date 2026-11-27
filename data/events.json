@@ -1,64 +1,5 @@
 [
   {
-    "title": "Super Clase Champeta",
-    "event_type": "workshop",
-    "is_recurring": false,
-    "styles": [
-      "champeta"
-    ],
-    "organizer": "Zafra Dance Company",
-    "venue": "Zafra Dance Company",
-    "address": "Carrera 27 A #52-31",
-    "area": "Galerías",
-    "date": "2026-09-27",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "domingo",
-    "start_time": "10:00",
-    "end_time": null,
-    "prices": [
-      {
-        "label": "1 Persona",
-        "amount_cop": 35000,
-        "condition": null
-      },
-      {
-        "label": "2 Personas",
-        "amount_cop": 60000,
-        "condition": "2 personas"
-      },
-      {
-        "label": "Estudiantes Zafra",
-        "amount_cop": 25000,
-        "condition": "estudiantes Zafra"
-      }
-    ],
-    "artists": [
-      "Polen"
-    ],
-    "activities": [
-      "super clase champeta"
-    ],
-    "contact": "3164952960",
-    "confidence": "high",
-    "doubts": [],
-    "id": "super-clase-champeta-27-sep",
-    "account": "zafradance",
-    "media": [
-      {
-        "post_id": "18379762747224169",
-        "permalink": "https://www.instagram.com/p/Ddpd9NugQdf/",
-        "media_type": "CAROUSEL_ALBUM",
-        "published": "2026-09-23T23:15:01+0000",
-        "flyer": "flyers/18379762747224169.webp",
-        "caption": "CHAMPETA este domingo desde las 10am. \nProfe amayapolen \n\nSepara tu cupo. \n\nEscríbenos para más información ✏️ \n\n#champeta #champetaenbogota",
-        "preview": null,
-        "slides": 2
-      }
-    ],
-    "bar": false
-  },
-  {
     "title": "Taller de Juzgamiento para la Improvisación - Bachata",
     "event_type": "workshop",
     "is_recurring": false,
@@ -25075,6 +25016,167 @@
     "bar": true
   },
   {
+    "title": "Taller de Heels + Video Class",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "heels"
+    ],
+    "organizer": null,
+    "venue": null,
+    "address": null,
+    "area": null,
+    "date": "2026-11-28",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "18:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "1 persona",
+        "amount_cop": 20000,
+        "condition": null
+      },
+      {
+        "label": "2 personas",
+        "amount_cop": 35000,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "taller de heels",
+      "video class"
+    ],
+    "contact": "@soondanz_company",
+    "confidence": "high",
+    "doubts": [],
+    "id": "taller-de-heels-video-class-28-nov",
+    "account": "soondanz_company",
+    "media": [
+      {
+        "post_id": "17970956799220522",
+        "permalink": "https://www.instagram.com/reel/DgLC1YUvTmF/",
+        "media_type": "VIDEO",
+        "published": "2026-11-25T17:15:36+0000",
+        "flyer": "flyers/17970956799220522-0.webp",
+        "caption": "🔥 ¡Este sábado es de HEELS! 💃❤️. \n\nPrepárate para una clase llena de sensualidad, técnica y mucha actitud. \n\n✨ TALLER DE HEELS + VIDEO CLASS 🎥\n\n¡Aprende, disfruta y llévate tu video del taller como recuerdo de la experiencia!\n\n📅 Este sábado | 🕕 6:00 p. m.\n📍 Academia de Baile\n💰 1 persona: $20.000\n👯‍♀️ 2 personas: $35.000\n\n¡Ven con tu amiga, saca tu mejor actitud y brilla frente a la cámara! 🔥\n\n📲 ¡Reserva tu cupo!",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Clausura Showstars",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "bachata"
+    ],
+    "organizer": "Academia de Baile Showstars",
+    "venue": "Academia de Baile Showstars",
+    "address": null,
+    "area": "Modelia",
+    "date": "2026-11-28",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "19:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Individual",
+        "amount_cop": 30000,
+        "condition": null
+      },
+      {
+        "label": "Pareja",
+        "amount_cop": 50000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Luis & Cami"
+    ],
+    "activities": [
+      "talleres de bachata",
+      "sorpresas"
+    ],
+    "contact": "3118344120",
+    "confidence": "high",
+    "doubts": [
+      "sin lugar confirmado",
+      "hora tomada del evento conocido"
+    ],
+    "id": "clausura-showstars-28-nov",
+    "account": "showstarscol",
+    "media": [
+      {
+        "post_id": "18351944245265490",
+        "permalink": "https://www.instagram.com/p/DgLrkYUtifM/",
+        "media_type": "IMAGE",
+        "published": "2026-11-25T23:16:37+0000",
+        "flyer": "flyers/18351944245265490-0.webp",
+        "caption": "🎉✨ ¡ 28 de noviembre celebramos mucho más que un cumpleaños, celebramos a quien hace parte importante de esta gran familia! 🥳🎂\n\nCerramos esta etapa con alegría y gratitud, compartiendo un momento especial para celebrar la vida de nuestro director. Que este nuevo año esté lleno de éxitos, sueños cumplidos y muchas bendiciones. 🥂🎈\n\nGracias por inspirar y liderar este gran proyecto . 🖤💛\n\n#FelizCumpleaños #CelebraciónEspecial #NuestroDirector #familiashowstars",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18090655649330364",
+        "permalink": "https://www.instagram.com/p/DgGjHlctqDB/",
+        "media_type": "IMAGE",
+        "published": "2026-11-23T23:23:44+0000",
+        "flyer": "flyers/18090655649330364-0.webp",
+        "caption": "🔥 ¡CERRAMOS EL AÑO BAILANDO POR TODO LO ALTO! 💃🕺\n\nEste 28 de noviembre vive una noche llena de ritmo, conexión y pasión por el baile junto a Luis & Cami. 🌟\n\n❤️ ¡Ven a aprender, disfrutar y compartir en la pista!\n\n📅 Sábado 28 de noviembre | 🕖 7:00 p. m.\n📍 Show Stars – Modelia\n\n🎟️ PREVENTA: $20.000\nIndividual: $30.000 | Pareja: $50.000.\n\n📲 ¡Reserva tu cupo ahora! 311 834 4120\n\n¡No te quedes por fuera de esta gran celebración! 🔥\n\n#ShowStars #ClausuraShowStars #Bachata #BaileEnPareja #Salsa BailarEsVivir BaileBogota ModeliaBogota",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18127983739925428",
+        "permalink": "https://www.instagram.com/p/Dfe_0dVRzBs/",
+        "media_type": "IMAGE",
+        "published": "2026-11-08T14:44:30+0000",
+        "flyer": "flyers/18127983739925428-0.webp",
+        "caption": "✨ ¡LA NOCHE EN QUE EL BAILE SE VISTE DE BRILLO! ✨🪩\n\n¿Estás listo para una noche fuera de lo común? 👀🔥\n\nEste sábado 28 de noviembre, Show Stars se transforma para vivir una clausura llena de ritmo, sorpresas, buena energía y mucha bachata. 💃🕺\n\nPreparamos una experiencia especial para que vengas a disfrutar, aprender, compartir y dejarte sorprender.\n\n🌟 Talleres de bachata\n🎁 Sorpresas especiales\n🪩 Una noche para bailar y disfrutar.\n\n📅 Sábado 28 de noviembre\n🕖 7:00 p. m.\n\nENTRADAS:\n🕺 Individual: $30.000\n❤️ Pareja: $50.000\n\n⚠️ ¡No esperes a que te cuenten cómo estuvo!\n\n📲 Reserva tu cupo desde ahora: 311 834 4120.\n\nVen con tu pareja, tus amigos o con todas las ganas de bailar. Nosotros ponemos la música, tú pones la actitud. 🔥\n\nSHOW STARS: una noche, muchas sorpresas y recuerdos que se quedan contigo. ⭐\n\n#ShowStars #ClausuraShowStars #NocheDeBachata #BachataBogotá #BachataLovers",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18197622208397022",
+        "permalink": "https://www.instagram.com/reel/DgOUkizt4Tc/",
+        "media_type": "VIDEO",
+        "published": "2026-11-26T23:48:55+0000",
+        "flyer": "flyers/18197622208397022-0.webp",
+        "caption": "✨ ¡LLEGÓ LA GRAN CLAUSURA DE SHOW STARS! 💃🕺\n\nPrepárate para una noche diferente, llena de ritmo, sorpresas y mucha bachata. 🔥\n\nEste sábado 28 de noviembre a las 7:00 p. m. tendremos una experiencia especial con talleres de bachata sorpresa, música y el mejor ambiente para compartir y disfrutar. 🪩\n\n💰 Individual: $30.000\n💰 Pareja: $50.000\n\n📲 ¡Los cupos son limitados! Reserva el tuyo al 311 834 4120.\n\n¡No te quedes por fuera! Nos vemos en la pista. 🌟\n\n#ShowStars #ClausuraShowStars #Bachata #BogotáBaila",
+        "preview": "previews/18197622208397022-0.mp4",
+        "slides": null
+      },
+      {
+        "post_id": "17930671944432726",
+        "permalink": "https://www.instagram.com/reel/DgOT_GvNpIv/",
+        "media_type": "VIDEO",
+        "published": "2026-11-26T23:47:50+0000",
+        "flyer": "flyers/17930671944432726-0.webp",
+        "caption": "✨ ¡LLEGÓ LA GRAN CLAUSURA DE SHOW STARS! 💃🕺\n\nPrepárate para una noche diferente, llena de ritmo, sorpresas y mucha bachata. 🔥\n\nEste sábado 28 de noviembre a las 7:00 p. m. tendremos una experiencia especial con talleres de bachata sorpresa, música y el mejor ambiente para compartir y disfrutar. 🪩\n\n💰 Individual: $30.000\n💰 Pareja: $50.000\n\n📲 ¡Los cupos son limitados! Reserva el tuyo al 311 834 4120.\n\n¡No te quedes por fuera! Nos vemos en la pista. 🌟\n\n#ShowStars #ClausuraShowStars #Bachata #BogotáBaila",
+        "preview": "previews/17930671944432726-0.mp4",
+        "slides": null
+      },
+      {
+        "post_id": "18056422355806698",
+        "permalink": "https://www.instagram.com/reel/DfvPnHBBuZ1/",
+        "media_type": "VIDEO",
+        "published": "2026-11-14T22:10:43+0000",
+        "flyer": "flyers/18056422355806698-0.webp",
+        "caption": "Este 28 de noviembre queremos que seas parte de una experiencia llena de música, emociones, talento y mucho brillo. 🌟\n\n🎟️ ¡PREVENTA ESPECIAL!\nAdquiere tu entrada por tan solo $20.000 antes del 25 de noviembre.\n\n¡No dejes pasar esta oportunidad! Después de esta fecha, el valor de la entrada puede cambiar.\n\nEn Show Stars no solo bailamos, creamos momentos que se quedan en el corazón. ❤️\n\n📍 ¡Te esperamos para vivir una noche inolvidable!",
+        "preview": "previews/18056422355806698-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Salsa al Parque 2026",
     "event_type": "festival",
     "is_recurring": false,
@@ -25089,13 +25191,13 @@
     "end_date": "2026-11-29",
     "sessions": null,
     "weekday": "sábado",
-    "start_time": "17:00",
+    "start_time": "19:10",
     "end_time": null,
     "prices": [
       {
-        "label": "Entrada",
+        "label": "Entrada libre",
         "amount_cop": 0,
-        "condition": "libre"
+        "condition": null
       }
     ],
     "artists": [
@@ -25139,6 +25241,56 @@
     "id": "salsa-al-parque-2026-28-nov",
     "account": "festivalsalsaalparque",
     "media": [
+      {
+        "post_id": "18012580545004641",
+        "permalink": "https://www.instagram.com/p/DgOA52gSnaQ/",
+        "media_type": "IMAGE",
+        "published": "2026-11-26T20:56:38+0000",
+        "flyer": "flyers/18012580545004641-0.webp",
+        "caption": "💃🏽🎶 ¡Las mujeres ponen el ritmo en #SalsaAlParque2026!\n\nEl Mano a Mano tendrá como protagonistas a cuatro selectoras que, desde sus recorridos y conocimientos musicales, mantienen viva la cultura salsera.\n\n🎧 djcaroguzman: desde Cali, con nueve años de trayectoria, compartirá su gusto por la salsa de golpe y romántica.\n\n🎧 rollergal_ : DJ e investigadora musical que conecta la salsa con el latin soul, el disco y el funk.\n\n🎧 laguancona: selectora y promotora de la cultura salsera en Bogotá, con una propuesta que recorre la salsa, los ritmos cubanos, el bolero y el latin jazz.\n\n🎧 lapelinegrita_de_la_salsa: con cinco años de trayectoria, combina la salsa y los sonidos crossover con una puesta en escena llena de energía.\n\n📍 28 y 29 de noviembre | Parque Metropolitano Simón Bolívar.\n🎟️ Entrada libre | 🔞 Evento para mayores de edad. \n\n#LaRevoluciónQueNuncaDejaDeSonar #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18132846359311619",
+        "permalink": "https://www.instagram.com/p/DgN3pTnyvVY/",
+        "media_type": "IMAGE",
+        "published": "2026-11-26T19:35:43+0000",
+        "flyer": "flyers/18132846359311619-0.webp",
+        "caption": "🎶 ¡Los Satélites de Venezuela llegan a #SalsaAlParque2026!\n\nFundada en Maracaibo en 1966 por el maestro José Rafael \"Cheché\" Mendoza, esta orquesta continúa llevando su salsa y guaracha a escenarios nacionales e internacionales. Actualmente, bajo la dirección artística de Andy Mendoza, reúne a 15 músicos en escena con un sonido marcado por trompetas, trombones, saxofones y órgano.\n\nEl público podrá disfrutar de clásicos como ‘Pensando en ti’, ‘Las estrellas brillarán’, ‘Cimarrón’, ‘Arrepentida’, ‘Traicionera’ y ‘El borracho’, en un recorrido por seis décadas de historia salsera.\n\n📅 28 de noviembre a las 7:10 p.m.\n📍 Parque Metropolitano Simón Bolívar\n🎟️ Entrada libre | 🔞 Evento para mayores de edad.\n\n#LaRevoluciónQueNuncaDejaDeSonar #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18143143492626595",
+        "permalink": "https://www.instagram.com/p/DgNv--qSByG/",
+        "media_type": "IMAGE",
+        "published": "2026-11-26T18:28:47+0000",
+        "flyer": "flyers/18143143492626595-0.webp",
+        "caption": "💥 ¡La Orquesta La Eterna, desde Medellín, se suma a #SalsaAlParque2026!\n\nEsta agrupación de salsa brava llega con una propuesta que reúne rumba, calle y sabor. Desde la capital antioqueña, trae a Bogotá una descarga salsera para encontrarse con el público y poner a bailar el Parque Simón Bolívar.\n\n📅 29 de noviembre a las 3:45 p.m.\n📍 Parque Metropolitano Simón Bolívar\n🎟️ Entrada libre | 🔞 Evento para mayores de edad.\n\n#LaRevoluciónQueNuncaDejaDeSonar #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18235829146336020",
+        "permalink": "https://www.instagram.com/p/DgNgbPApVBR/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-26T16:12:46+0000",
+        "flyer": "flyers/18235829146336020-0.webp",
+        "caption": "🎻 Del violín de Alfredo de la Fe, pionero en llevar este instrumento a las orquestas de salsa, a la charanga cubana de la Orquesta Aragón; de la historia de Los Satélites, referentes de la salsa venezolana, a la voz romántica de Roberto Blades. Cuatro leyendas llegan a #SalsaAlParque2026. \n\n👉 Deslice y conozca sus historias, sus aportes al género y las canciones que siguen sonando en la memoria salsera.\n\n¿Cuál de estos artistas espera ver en el festival?\n\n📍 28 y 29 de noviembre | Parque Metropolitano Simón Bolívar.\n🎟️ Entrada libre | 🔞 Evento para mayores de edad. \n\n#LaRevoluciónQueNuncaDejaDeSonar #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": 5
+      },
+      {
+        "post_id": "18027784430946037",
+        "permalink": "https://www.instagram.com/p/DgNRi7VxBZe/",
+        "media_type": "IMAGE",
+        "published": "2026-11-26T14:02:48+0000",
+        "flyer": "flyers/18027784430946037-0.webp",
+        "caption": "🎺 ¡La 33 será parte de #SalsaAlParque2026!\n\nEsta orquesta ha construido un sonido propio a partir de la salsa neoyorquina de los años setenta, con influencias del rock, letras originales y arreglos que la identifican. Fundada por los hermanos Sergio y Santiago Mejía, suma más de 1.500 conciertos y presentaciones en los cinco continentes, llevando la salsa bogotana a escenarios internacionales.\n\n📅 29 de noviembre a las 2:35 p.m.\n📍 Parque Metropolitano Simón Bolívar\n🎟️ Entrada libre | 🔞 Evento para mayores de edad.\n\n#LaRevoluciónQueNuncaDejaDeSonar #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18098803751477558",
         "permalink": "https://www.instagram.com/p/DgK6R5WRE4z/",
@@ -25287,152 +25439,6 @@
         "flyer": "flyers/18100870454395843-0.webp",
         "caption": "🎺 ¡La revolución que nunca deja de sonar!\n\nDurante más de dos décadas, Salsa al Parque ha sido escenario de grandes orquestas, nuevos talentos y encuentros que han marcado la historia musical de Bogotá. Un festival que ha acompañado a distintas generaciones y que sigue abriendo espacio para la evolución de la salsa.\n\nHoy presentamos la imagen oficial de #SalsaAlParque2026, una edición que celebra las raíces de este género y sus nuevas formas de expresión.\n\n🔥 La cita es este 28 y 29 de noviembre en el Parque Metropolitano Simón Bolívar.\n\n🎟️ Entrada libre | 🔞 Evento para mayores de edad. \n\n🎨 criscontreras_art / 💻 juanneva_ Idartes \n\n#LaRevoluciónQueNuncaDejaDeSonar #BogotáMiCiudadMiCasa",
         "preview": "previews/18100870454395843-0.mp4",
-        "slides": null
-      }
-    ],
-    "bar": false
-  },
-  {
-    "title": "Taller de Heels + Video Class",
-    "event_type": "workshop",
-    "is_recurring": false,
-    "styles": [
-      "heels"
-    ],
-    "organizer": null,
-    "venue": null,
-    "address": null,
-    "area": null,
-    "date": "2026-11-28",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "sábado",
-    "start_time": "18:00",
-    "end_time": null,
-    "prices": [
-      {
-        "label": "1 persona",
-        "amount_cop": 20000,
-        "condition": null
-      },
-      {
-        "label": "2 personas",
-        "amount_cop": 35000,
-        "condition": null
-      }
-    ],
-    "artists": [],
-    "activities": [
-      "taller de heels",
-      "video class"
-    ],
-    "contact": "@soondanz_company",
-    "confidence": "high",
-    "doubts": [],
-    "id": "taller-de-heels-video-class-28-nov",
-    "account": "soondanz_company",
-    "media": [
-      {
-        "post_id": "17970956799220522",
-        "permalink": "https://www.instagram.com/reel/DgLC1YUvTmF/",
-        "media_type": "VIDEO",
-        "published": "2026-11-25T17:15:36+0000",
-        "flyer": "flyers/17970956799220522-0.webp",
-        "caption": "🔥 ¡Este sábado es de HEELS! 💃❤️. \n\nPrepárate para una clase llena de sensualidad, técnica y mucha actitud. \n\n✨ TALLER DE HEELS + VIDEO CLASS 🎥\n\n¡Aprende, disfruta y llévate tu video del taller como recuerdo de la experiencia!\n\n📅 Este sábado | 🕕 6:00 p. m.\n📍 Academia de Baile\n💰 1 persona: $20.000\n👯‍♀️ 2 personas: $35.000\n\n¡Ven con tu amiga, saca tu mejor actitud y brilla frente a la cámara! 🔥\n\n📲 ¡Reserva tu cupo!",
-        "preview": null,
-        "slides": null
-      }
-    ],
-    "bar": false
-  },
-  {
-    "title": "Clausura Showstars",
-    "event_type": "social",
-    "is_recurring": false,
-    "styles": [
-      "bachata"
-    ],
-    "organizer": "Academia de Baile Showstars",
-    "venue": "Academia de Baile Showstars",
-    "address": null,
-    "area": "Modelia",
-    "date": "2026-11-28",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "viernes",
-    "start_time": "19:00",
-    "end_time": null,
-    "prices": [
-      {
-        "label": "Pre-Venta",
-        "amount_cop": 20000,
-        "condition": null
-      },
-      {
-        "label": "Individual",
-        "amount_cop": 30000,
-        "condition": null
-      },
-      {
-        "label": "Pareja",
-        "amount_cop": 50000,
-        "condition": null
-      }
-    ],
-    "artists": [
-      "Luis & Cami"
-    ],
-    "activities": [
-      "talleres de bachata",
-      "sorpresas"
-    ],
-    "contact": "3118344120",
-    "confidence": "high",
-    "doubts": [
-      "sin lugar confirmado",
-      "hora tomada del evento conocido"
-    ],
-    "id": "clausura-showstars-28-nov",
-    "account": "showstarscol",
-    "media": [
-      {
-        "post_id": "18351944245265490",
-        "permalink": "https://www.instagram.com/p/DgLrkYUtifM/",
-        "media_type": "IMAGE",
-        "published": "2026-11-25T23:16:37+0000",
-        "flyer": "flyers/18351944245265490-0.webp",
-        "caption": "🎉✨ ¡ 28 de noviembre celebramos mucho más que un cumpleaños, celebramos a quien hace parte importante de esta gran familia! 🥳🎂\n\nCerramos esta etapa con alegría y gratitud, compartiendo un momento especial para celebrar la vida de nuestro director. Que este nuevo año esté lleno de éxitos, sueños cumplidos y muchas bendiciones. 🥂🎈\n\nGracias por inspirar y liderar este gran proyecto . 🖤💛\n\n#FelizCumpleaños #CelebraciónEspecial #NuestroDirector #familiashowstars",
-        "preview": null,
-        "slides": null
-      },
-      {
-        "post_id": "18090655649330364",
-        "permalink": "https://www.instagram.com/p/DgGjHlctqDB/",
-        "media_type": "IMAGE",
-        "published": "2026-11-23T23:23:44+0000",
-        "flyer": "flyers/18090655649330364-0.webp",
-        "caption": "🔥 ¡CERRAMOS EL AÑO BAILANDO POR TODO LO ALTO! 💃🕺\n\nEste 28 de noviembre vive una noche llena de ritmo, conexión y pasión por el baile junto a Luis & Cami. 🌟\n\n❤️ ¡Ven a aprender, disfrutar y compartir en la pista!\n\n📅 Sábado 28 de noviembre | 🕖 7:00 p. m.\n📍 Show Stars – Modelia\n\n🎟️ PREVENTA: $20.000\nIndividual: $30.000 | Pareja: $50.000.\n\n📲 ¡Reserva tu cupo ahora! 311 834 4120\n\n¡No te quedes por fuera de esta gran celebración! 🔥\n\n#ShowStars #ClausuraShowStars #Bachata #BaileEnPareja #Salsa BailarEsVivir BaileBogota ModeliaBogota",
-        "preview": null,
-        "slides": null
-      },
-      {
-        "post_id": "18127983739925428",
-        "permalink": "https://www.instagram.com/p/Dfe_0dVRzBs/",
-        "media_type": "IMAGE",
-        "published": "2026-11-08T14:44:30+0000",
-        "flyer": "flyers/18127983739925428-0.webp",
-        "caption": "✨ ¡LA NOCHE EN QUE EL BAILE SE VISTE DE BRILLO! ✨🪩\n\n¿Estás listo para una noche fuera de lo común? 👀🔥\n\nEste sábado 28 de noviembre, Show Stars se transforma para vivir una clausura llena de ritmo, sorpresas, buena energía y mucha bachata. 💃🕺\n\nPreparamos una experiencia especial para que vengas a disfrutar, aprender, compartir y dejarte sorprender.\n\n🌟 Talleres de bachata\n🎁 Sorpresas especiales\n🪩 Una noche para bailar y disfrutar.\n\n📅 Sábado 28 de noviembre\n🕖 7:00 p. m.\n\nENTRADAS:\n🕺 Individual: $30.000\n❤️ Pareja: $50.000\n\n⚠️ ¡No esperes a que te cuenten cómo estuvo!\n\n📲 Reserva tu cupo desde ahora: 311 834 4120.\n\nVen con tu pareja, tus amigos o con todas las ganas de bailar. Nosotros ponemos la música, tú pones la actitud. 🔥\n\nSHOW STARS: una noche, muchas sorpresas y recuerdos que se quedan contigo. ⭐\n\n#ShowStars #ClausuraShowStars #NocheDeBachata #BachataBogotá #BachataLovers",
-        "preview": null,
-        "slides": null
-      },
-      {
-        "post_id": "18056422355806698",
-        "permalink": "https://www.instagram.com/reel/DfvPnHBBuZ1/",
-        "media_type": "VIDEO",
-        "published": "2026-11-14T22:10:43+0000",
-        "flyer": "flyers/18056422355806698-0.webp",
-        "caption": "Este 28 de noviembre queremos que seas parte de una experiencia llena de música, emociones, talento y mucho brillo. 🌟\n\n🎟️ ¡PREVENTA ESPECIAL!\nAdquiere tu entrada por tan solo $20.000 antes del 25 de noviembre.\n\n¡No dejes pasar esta oportunidad! Después de esta fecha, el valor de la entrada puede cambiar.\n\nEn Show Stars no solo bailamos, creamos momentos que se quedan en el corazón. ❤️\n\n📍 ¡Te esperamos para vivir una noche inolvidable!",
-        "preview": "previews/18056422355806698-0.mp4",
         "slides": null
       }
     ],
@@ -25773,10 +25779,17 @@
       {
         "label": "Entrada libre",
         "amount_cop": 0,
-        "condition": null
+        "condition": "hasta completar aforo"
       }
     ],
-    "artists": [],
+    "artists": [
+      "Ilé Danza",
+      "Orquesta Aragón",
+      "The Big Jhony",
+      "La 33",
+      "El Turco Perro",
+      "Willy García"
+    ],
     "activities": [
       "muestra"
     ],
@@ -25786,6 +25799,16 @@
     "id": "muestra-en-el-museo-colonial-29-nov",
     "account": "danzaenlaciudad",
     "media": [
+      {
+        "post_id": "18081292373734577",
+        "permalink": "https://www.instagram.com/p/DgNWOUSRicZ/",
+        "media_type": "IMAGE",
+        "published": "2026-11-26T14:45:26+0000",
+        "flyer": "flyers/18081292373734577-0.webp",
+        "caption": "💃🎶 ¡La salsa se vive desde mediodía en el Parque Simón Bolívar!\n\nEste domingo,  desde las 12:00 m.  le invitamos a disfrutar de la Rueda de Casino con Ilé Danza, un espacio para compartir, bailar y dejarse llevar por el sabor de este encuentro.\n\nDespués, no se pierda la programación musical, que iniciará con la Orquesta Aragón y continuará con agrupaciones como The Big Jhony, La 33, El Turco Perro, Willy García, entre otros.\n\n¡Prográmese para disfrutar de un domingo al ritmo de la salsa! ❤️🔥\n\n📅 29 de noviembre\n📍 Parque Simón Bolívar\n🎟️ Entrada libre \n\n#LaRevoluciónQueNuncaDejaDeSonar #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18092653832232787",
         "permalink": "https://www.instagram.com/p/DfXW4_6kYzs/",
@@ -25994,6 +26017,59 @@
         "caption": "Semana de despedida. Callejón cierra aquí las puertas de esta corta pero significativa historia. Y hemos preparado una semana bonita, con tango hoy, Jazz en vivo mañana jueves con pipesilvaq juancamilobateriasxx y juliangomezcontrabajo \nFiesta de calentamiento para salsa al parque el viernes con bailentina_selectora \nY sábado y domingo conciertos de salsa en vivo como remates de salsa al parque, porque en Callejón reivindicamos a las y los ausentes. Que no hay presencia femenina en el festival, pues en Callejón sí, y por eso el sábado el remate es con abakua_son.colombiano \nY el domingo para el final final no va más, la agrupación que todos nos quedamos esperando en el festival porque además fue la que quedó de primera con el mayor puntaje de la convocatoria distrital, pero que por asuntos administrativos no se presentará, y para que no se queden con las ganas de verla y escucharla, la tendremos aquí en Callejón, ns.orquesta \nVengan, y despidamos este espacio con amor y buena música!!!",
         "preview": null,
         "slides": 6
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Pegar un grito vagabundo",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Bilongo",
+    "venue": "Bilongo",
+    "address": null,
+    "area": null,
+    "date": "2026-12-02",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "miércoles",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 25000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Triana Music",
+      "La Guabalosa"
+    ],
+    "activities": [
+      "música en vivo",
+      "cantar"
+    ],
+    "contact": "@bilongocolombia",
+    "confidence": "high",
+    "doubts": [
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "pegar-un-grito-vagabundo-2-dic",
+    "account": "bilongocolombia",
+    "media": [
+      {
+        "post_id": "18001748325018235",
+        "permalink": "https://www.instagram.com/p/DgOSU1ABNI7/",
+        "media_type": "IMAGE",
+        "published": "2026-11-26T23:29:25+0000",
+        "flyer": "flyers/18001748325018235-0.webp",
+        "caption": "LOS MIÉRCOLES DE DICIEMBRE SE PEGA EL GRITO, VE. 🥃🔥\n\nPa’l que se gozó el año y pa’l que le tocó llorarlo: guaro y canciones pa’ cantarle a todo lo vivido.\n\nCaiga los MIÉRCOLES a “Pegar un grito vagabundo” en Bilongo.\n\nCover 25k\nReservas por DM 📩\n\n#DiciembreSalsero #MúsicaDecembrina #SalsaBogotá #Bilongo",
+        "preview": null,
+        "slides": null
       }
     ],
     "bar": true
@@ -26915,6 +26991,110 @@
     "bar": false
   },
   {
+    "title": "Coca-Cola Bailable",
+    "event_type": "social",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Germán Baila y El Goce Pagano",
+    "venue": "El Goce Pagano",
+    "address": "Diag. 20A #0-82",
+    "area": "Centro",
+    "date": "2026-12-06",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "domingo",
+    "start_time": "14:00",
+    "end_time": "21:00",
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 20000,
+        "condition": "incluye clase y bebida"
+      }
+    ],
+    "artists": [
+      "Germán Baila"
+    ],
+    "activities": [
+      "clase de salsa",
+      "fiesta familiar",
+      "tarde de baile"
+    ],
+    "contact": "tubaile.com/eventos",
+    "confidence": "high",
+    "doubts": [],
+    "id": "coca-cola-bailable-6-dic",
+    "account": "germanbaila",
+    "media": [
+      {
+        "post_id": "18131335391475991",
+        "permalink": "https://www.instagram.com/reel/DgNmTgwh8Nr/",
+        "media_type": "VIDEO",
+        "published": "2026-11-26T17:05:07+0000",
+        "flyer": "flyers/18131335391475991-0.webp",
+        "caption": "En Bogotá las familias tienen un lugar donde bailar en cada mes y es la Coca-Cola bailable de Germán Baila y El Goce Pagano.\n💃. Nuestro próximo encuentro será el domingo 6 de diciembre 📅 celebrando la llegada de la temporada de Navidad 🎄. Ven con tu familia 👨‍👩‍👧‍👦 y disfruta de una tarde de baile 🕺 y alegría con clase y actividades para todos \n✨. Cover $20,000 incluye clase y una bebida 🥤. Consigue tu entrada en tubaile.com/eventos; cupos limitados 🎟️.",
+        "preview": "previews/18131335391475991-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
+    "title": "Pegar un grito vagabundo",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Bilongo",
+    "venue": "Bilongo",
+    "address": null,
+    "area": null,
+    "date": "2026-12-09",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "miércoles",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 25000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Triana Music",
+      "La Guabalosa"
+    ],
+    "activities": [
+      "música en vivo",
+      "cantar"
+    ],
+    "contact": "@bilongocolombia",
+    "confidence": "high",
+    "doubts": [
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "pegar-un-grito-vagabundo-9-dic",
+    "account": "bilongocolombia",
+    "media": [
+      {
+        "post_id": "18001748325018235",
+        "permalink": "https://www.instagram.com/p/DgOSU1ABNI7/",
+        "media_type": "IMAGE",
+        "published": "2026-11-26T23:29:25+0000",
+        "flyer": "flyers/18001748325018235-0.webp",
+        "caption": "LOS MIÉRCOLES DE DICIEMBRE SE PEGA EL GRITO, VE. 🥃🔥\n\nPa’l que se gozó el año y pa’l que le tocó llorarlo: guaro y canciones pa’ cantarle a todo lo vivido.\n\nCaiga los MIÉRCOLES a “Pegar un grito vagabundo” en Bilongo.\n\nCover 25k\nReservas por DM 📩\n\n#DiciembreSalsero #MúsicaDecembrina #SalsaBogotá #Bilongo",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Baila Que Baila",
     "event_type": "social",
     "is_recurring": false,
@@ -26948,6 +27128,16 @@
     "id": "baila-que-baila-12-dic",
     "account": "academiadebailepasolatino",
     "media": [
+      {
+        "post_id": "17961389727267580",
+        "permalink": "https://www.instagram.com/reel/DgOdAUVq-qq/",
+        "media_type": "VIDEO",
+        "published": "2026-11-27T01:13:24+0000",
+        "flyer": "flyers/17961389727267580-0.webp",
+        "caption": "🔥 HAY HISTORIAS QUE NO SE CUENTAN… ¡SE BAILAN! 💃🕺\n\nDetrás de cada coreografía hay horas de ensayo, retos, aprendizajes, emociones y sueños que poco a poco se convierten en realidad.\n\nHoy Carlos Vega, uno de nuestros alumnos nos comparte lo que ha significado vivir esta experiencia y ser parte de BAILA QUE BAILA 2026. Porque no se trata solamente de aprender pasos, sino de superar límites, crecer y descubrir de qué somos capaces cuando nos atrevemos a más. ❤️\n\n✨ ¡Y esta historia merece celebrarse a lo grande!\n\n🎉 CLAUSURA PASO LATINO 2026 – BAILA QUE BAILA\n\n📅 12 de diciembre\n📍 Pachanga y Pochola – Calle 73 #14-53\n🕖 7:00 p. m.\n\n🔥 Orquesta en vivo: REAL CHARANGA\n💃 Shows y muestras de baile\n🎧 DJs profesionales\n🎁 ¡Muchas sorpresas!\n\nUna noche para celebrar el talento, la pasión y todo lo que somos capaces de lograr bailando.\n\n¡Nos vemos en la pista!\n\n#pasolatinoforce #bailaquebaila2026 #clausurapasolatino #salsa",
+        "preview": "previews/17961389727267580-0.mp4",
+        "slides": null
+      },
       {
         "post_id": "18113414819222955",
         "permalink": "https://www.instagram.com/reel/Df8SeF9qovM/",
@@ -27333,6 +27523,59 @@
     "bar": false
   },
   {
+    "title": "Pegar un grito vagabundo",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Bilongo",
+    "venue": "Bilongo",
+    "address": null,
+    "area": null,
+    "date": "2026-12-16",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "miércoles",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 25000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Triana Music",
+      "La Guabalosa"
+    ],
+    "activities": [
+      "música en vivo",
+      "cantar"
+    ],
+    "contact": "@bilongocolombia",
+    "confidence": "high",
+    "doubts": [
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "pegar-un-grito-vagabundo-16-dic",
+    "account": "bilongocolombia",
+    "media": [
+      {
+        "post_id": "18001748325018235",
+        "permalink": "https://www.instagram.com/p/DgOSU1ABNI7/",
+        "media_type": "IMAGE",
+        "published": "2026-11-26T23:29:25+0000",
+        "flyer": "flyers/18001748325018235-0.webp",
+        "caption": "LOS MIÉRCOLES DE DICIEMBRE SE PEGA EL GRITO, VE. 🥃🔥\n\nPa’l que se gozó el año y pa’l que le tocó llorarlo: guaro y canciones pa’ cantarle a todo lo vivido.\n\nCaiga los MIÉRCOLES a “Pegar un grito vagabundo” en Bilongo.\n\nCover 25k\nReservas por DM 📩\n\n#DiciembreSalsero #MúsicaDecembrina #SalsaBogotá #Bilongo",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Clausura 2026 Studio Latin Dance",
     "event_type": "social",
     "is_recurring": false,
@@ -27577,6 +27820,59 @@
     "bar": false
   },
   {
+    "title": "Pegar un grito vagabundo",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Bilongo",
+    "venue": "Bilongo",
+    "address": null,
+    "area": null,
+    "date": "2026-12-23",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "miércoles",
+    "start_time": null,
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 25000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Triana Music",
+      "La Guabalosa"
+    ],
+    "activities": [
+      "música en vivo",
+      "cantar"
+    ],
+    "contact": "@bilongocolombia",
+    "confidence": "high",
+    "doubts": [
+      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+    ],
+    "id": "pegar-un-grito-vagabundo-23-dic",
+    "account": "bilongocolombia",
+    "media": [
+      {
+        "post_id": "18001748325018235",
+        "permalink": "https://www.instagram.com/p/DgOSU1ABNI7/",
+        "media_type": "IMAGE",
+        "published": "2026-11-26T23:29:25+0000",
+        "flyer": "flyers/18001748325018235-0.webp",
+        "caption": "LOS MIÉRCOLES DE DICIEMBRE SE PEGA EL GRITO, VE. 🥃🔥\n\nPa’l que se gozó el año y pa’l que le tocó llorarlo: guaro y canciones pa’ cantarle a todo lo vivido.\n\nCaiga los MIÉRCOLES a “Pegar un grito vagabundo” en Bilongo.\n\nCover 25k\nReservas por DM 📩\n\n#DiciembreSalsero #MúsicaDecembrina #SalsaBogotá #Bilongo",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Reyes de la Salsa 2027",
     "event_type": "competition",
     "is_recurring": false,
@@ -27806,6 +28102,16 @@
         "flyer": "flyers/18064275404674703-0.webp",
         "caption": "🚨 BACHATA SOCIAL CONGRESS 2027 🚨\n\nWE ARE BACK! 🔥🇨🇴\n\nUna nueva edición está en camino y queremos que seas parte de esta historia.\n\n🌎 Artistas internacionales\n\n🎶 Workshops & Social Dancing\n\n🏆 Bachata Jam Session\n\n❤️ Una comunidad, una pasión.\n\nCOMING SOON… 🔜\n\n👇 ¿Desde qué país nos acompañarías?\n\n#BachataSocialCongress #BSC2027 #BachataJamSession #BachataColombia",
         "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18204250339342177",
+        "permalink": "https://www.instagram.com/reel/DgNr2ucRRZv/",
+        "media_type": "VIDEO",
+        "published": "2026-11-26T17:54:37+0000",
+        "flyer": "flyers/18204250339342177-0.webp",
+        "caption": "🇻🇪🔥 ¡DESDE VENEZUELA, DIRECTAMENTE AL BACHATA SOCIAL CONGRESS 2027! 🇨🇴\n\n💎 ¡ iververde31 CONFIRMADO PARA BACHATA SOCIAL CONGRESS 2027! 💜\n\n¡Seguimos anunciando a los artistas que nos acompañarán en esta gran edición!\n\n🔥 Desde Venezuela llega IVERSON, un excelente bailarín que destaca por su estilo masculino, musicalidad y gran capacidad de improvisación.\n\nSu creatividad, flow y forma de interpretar la música hacen que cada uno de sus bailes tenga una personalidad diferente.\n\n🕺 LEADERS, ¡ESTA ES UNA GRAN OPORTUNIDAD PARA USTEDES! Podrán aprender nuevas herramientas de estilo masculino, enriquecer sus recursos de improvisación y explorar diferentes formas de jugar con la música.\n\nEstamos muy felices de contar con su talento y de seguir abriendo espacios para grandes artistas latinoamericanos. 🙌\n\n🇻🇪🇨🇴 ¡Bienvenido a Colombia, Iverson! Nos vemos en la pista de baile. 🔥\n\n💜 BACHATA SOCIAL CONGRESS 2027\n🌎 Different Styles, One Passion.\n\n#bachatasocialcongress #BSC2027 #bachatavenezuela #bachatacolombia",
+        "preview": "previews/18204250339342177-0.mp4",
         "slides": null
       },
       {
