@@ -23508,9 +23508,7 @@
     ],
     "contact": "@callejonsalsa",
     "confidence": "high",
-    "doubts": [
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
+    "doubts": [],
     "id": "miercoles-de-tango-clase-tango-paso-a-paso-con-25-nov",
     "account": "callejonsalsa",
     "media": [
@@ -23666,7 +23664,9 @@
     ],
     "contact": "3176608742",
     "confidence": "high",
-    "doubts": [],
+    "doubts": [
+      "hora de inicio no especificada"
+    ],
     "id": "rumba-salsera-con-nick-salas-orquesta-26-nov",
     "account": "galeriacafelibro",
     "media": [
@@ -23679,6 +23679,16 @@
         "caption": "Positivo para salseros ❤️‍🔥 Esta semana rematamos noviembre con todos los poderes 🎶 Y dice así:\n\nEn vivo: lacharanganewyork orquestapuntobare ns.orquesta septimba_salsa_javeriana 🎹\n\n💿 En el tornamesa: los djs de la casa 🏠 johanancines elgordocastillo Beto DJ y Eduardo Moya\n\n¡Nos vemos para gozarnos la semanita! 💃",
         "preview": null,
         "slides": 8
+      },
+      {
+        "post_id": "17945398452368472",
+        "permalink": "https://www.instagram.com/reel/DgNqUHisk3n/",
+        "media_type": "VIDEO",
+        "published": "2026-11-26T17:39:45+0000",
+        "flyer": "flyers/17945398452368472-0.webp",
+        "caption": "🚨 ¡QUE NO TE CUENTEN LA RUMBA DE ESTA NOCHE!\n\nHoy la salsa tiene nombre propio: Nick Salas. 🎺🔥\n\nNos vemos en Galería Café Libro para cantar, bailar y disfrutar de una noche con toda la energía de la música en vivo.\n\n💃🏻 ¡HOY SE BAILA EN GALERÍA! ❤️",
+        "preview": "previews/17945398452368472-0.mp4",
+        "slides": null
       }
     ],
     "bar": true
@@ -23802,7 +23812,7 @@
     "end_time": null,
     "prices": [
       {
-        "label": "General",
+        "label": "Entrada",
         "amount_cop": 15000,
         "condition": null
       }
@@ -23810,17 +23820,15 @@
     "artists": [
       "Callejeros Jazz Trío",
       "Felipe Silva",
-      "Juan Camilo",
-      "Julián Gómez"
+      "juancamilobateriasxx",
+      "juliangomezcontrabajo"
     ],
     "activities": [
-      "Jazz en vivo"
+      "concierto de jazz en vivo"
     ],
     "contact": "@callejonsalsa",
     "confidence": "high",
-    "doubts": [
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
+    "doubts": [],
     "id": "callejeros-jazz-trio-en-vivo-26-nov",
     "account": "callejonsalsa",
     "media": [
@@ -23955,7 +23963,7 @@
     "bar": true
   },
   {
-    "title": "Clase de salsa con Teffa MG",
+    "title": "Clase de salsa con Teffa Murcia",
     "event_type": "workshop",
     "is_recurring": false,
     "styles": [
@@ -23979,7 +23987,7 @@
       }
     ],
     "artists": [
-      "Teffa MG"
+      "Teffa Murcia"
     ],
     "activities": [
       "clase de salsa"
@@ -23987,7 +23995,7 @@
     "contact": "@callejonsalsa",
     "confidence": "high",
     "doubts": [
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
+      "sin precio especificado para la clase"
     ],
     "id": "clase-de-salsa-con-teffa-mg-27-nov",
     "account": "callejonsalsa",
@@ -24119,7 +24127,7 @@
     ],
     "artists": [],
     "activities": [],
-    "contact": null,
+    "contact": "@el_bochinche_cafe_",
     "confidence": "high",
     "doubts": [],
     "id": "salsa-vs-reggaeton-27-nov",
@@ -24372,7 +24380,7 @@
     "end_time": null,
     "prices": [
       {
-        "label": "General",
+        "label": "Entrada libre",
         "amount_cop": 0,
         "condition": null
       }
@@ -24387,9 +24395,7 @@
     ],
     "contact": "@callejonsalsa",
     "confidence": "high",
-    "doubts": [
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
+    "doubts": [],
     "id": "salsa-en-la-nevera-previa-salsa-al-parque-27-nov",
     "account": "callejonsalsa",
     "media": [
@@ -24652,50 +24658,6 @@
     "bar": false
   },
   {
-    "title": "Salsa al Parque en Babou",
-    "event_type": "party",
-    "is_recurring": false,
-    "styles": [
-      "salsa"
-    ],
-    "organizer": "Babou",
-    "venue": "Babou",
-    "address": "Cra. 2 # 12B - 31",
-    "area": "Chorro de Quevedo",
-    "date": "2026-11-28",
-    "end_date": "2026-11-29",
-    "sessions": null,
-    "weekday": "viernes",
-    "start_time": null,
-    "end_time": null,
-    "prices": [],
-    "artists": [],
-    "activities": [
-      "rumba",
-      "música y baile"
-    ],
-    "contact": "WhatsApp 3115302604",
-    "confidence": "high",
-    "doubts": [
-      "sin hora de inicio ni precio"
-    ],
-    "id": "salsa-al-parque-en-babou-28-nov",
-    "account": "babou_candelaria",
-    "media": [
-      {
-        "post_id": "18133052731877331",
-        "permalink": "https://www.instagram.com/reel/DgJINlFhVza/",
-        "media_type": "VIDEO",
-        "published": "2026-11-24T23:24:52+0000",
-        "flyer": "flyers/18133052731877331-0.webp",
-        "caption": "💃🏽🎶 ¡La salsa no termina cuando acaba el festival!\n\nEste 28 y 29 de noviembre, después de disfrutar Salsa al Parque, cambia de escenario y continúa la rumba en Babou. Te esperamos en el Chorro de Quevedo con música, baile y toda la energía salsera que se vive en Bogotá.\n\n¡Que siga la salsa, que la noche es joven! ❤️\n\n📲 Reserva tu mesa: 311 530 2604 | 📍 Babou – Cra. 2 # 12B - 31, Chorro de Quevedo 🎶\n\n#SalsaAlParque #SalsaEnBogotá #ChorroDeQuevedo #LaCandelaria elespíritudelmundo",
-        "preview": "previews/18133052731877331-0.mp4",
-        "slides": null
-      }
-    ],
-    "bar": true
-  },
-  {
     "title": "La Charanga New York",
     "event_type": "concert",
     "is_recurring": false,
@@ -24791,6 +24753,50 @@
         "caption": "Positivo para salseros ❤️‍🔥 Esta semana rematamos noviembre con todos los poderes 🎶 Y dice así:\n\nEn vivo: lacharanganewyork orquestapuntobare ns.orquesta septimba_salsa_javeriana 🎹\n\n💿 En el tornamesa: los djs de la casa 🏠 johanancines elgordocastillo Beto DJ y Eduardo Moya\n\n¡Nos vemos para gozarnos la semanita! 💃",
         "preview": null,
         "slides": 8
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Salsa al Parque en Babou",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Babou",
+    "venue": "Babou",
+    "address": "Cra. 2 # 12B - 31",
+    "area": "La Candelaria",
+    "date": "2026-11-28",
+    "end_date": "2026-11-29",
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": null,
+    "end_time": null,
+    "prices": [],
+    "artists": [],
+    "activities": [
+      "rumba",
+      "baile"
+    ],
+    "contact": "311 530 2604",
+    "confidence": "high",
+    "doubts": [
+      "sin hora de inicio"
+    ],
+    "id": "salsa-al-parque-en-babou-28-nov",
+    "account": "babou_candelaria",
+    "media": [
+      {
+        "post_id": "18133052731877331",
+        "permalink": "https://www.instagram.com/reel/DgJINlFhVza/",
+        "media_type": "VIDEO",
+        "published": "2026-11-24T23:24:52+0000",
+        "flyer": "flyers/18133052731877331-0.webp",
+        "caption": "💃🏽🎶 ¡La salsa no termina cuando acaba el festival!\n\nEste 28 y 29 de noviembre, después de disfrutar Salsa al Parque, cambia de escenario y continúa la rumba en Babou. Te esperamos en el Chorro de Quevedo con música, baile y toda la energía salsera que se vive en Bogotá.\n\n¡Que siga la salsa, que la noche es joven! ❤️\n\n📲 Reserva tu mesa: 311 530 2604 | 📍 Babou – Cra. 2 # 12B - 31, Chorro de Quevedo 🎶\n\n#SalsaAlParque #SalsaEnBogotá #ChorroDeQuevedo #LaCandelaria elespíritudelmundo",
+        "preview": "previews/18133052731877331-0.mp4",
+        "slides": null
       }
     ],
     "bar": true
@@ -25287,6 +25293,59 @@
     "bar": false
   },
   {
+    "title": "Taller de Heels + Video Class",
+    "event_type": "workshop",
+    "is_recurring": false,
+    "styles": [
+      "heels"
+    ],
+    "organizer": null,
+    "venue": null,
+    "address": null,
+    "area": null,
+    "date": "2026-11-28",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "18:00",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "1 persona",
+        "amount_cop": 20000,
+        "condition": null
+      },
+      {
+        "label": "2 personas",
+        "amount_cop": 35000,
+        "condition": null
+      }
+    ],
+    "artists": [],
+    "activities": [
+      "taller de heels",
+      "video class"
+    ],
+    "contact": "@soondanz_company",
+    "confidence": "high",
+    "doubts": [],
+    "id": "taller-de-heels-video-class-28-nov",
+    "account": "soondanz_company",
+    "media": [
+      {
+        "post_id": "17970956799220522",
+        "permalink": "https://www.instagram.com/reel/DgLC1YUvTmF/",
+        "media_type": "VIDEO",
+        "published": "2026-11-25T17:15:36+0000",
+        "flyer": "flyers/17970956799220522-0.webp",
+        "caption": "🔥 ¡Este sábado es de HEELS! 💃❤️. \n\nPrepárate para una clase llena de sensualidad, técnica y mucha actitud. \n\n✨ TALLER DE HEELS + VIDEO CLASS 🎥\n\n¡Aprende, disfruta y llévate tu video del taller como recuerdo de la experiencia!\n\n📅 Este sábado | 🕕 6:00 p. m.\n📍 Academia de Baile\n💰 1 persona: $20.000\n👯‍♀️ 2 personas: $35.000\n\n¡Ven con tu amiga, saca tu mejor actitud y brilla frente a la cámara! 🔥\n\n📲 ¡Reserva tu cupo!",
+        "preview": null,
+        "slides": null
+      }
+    ],
+    "bar": false
+  },
+  {
     "title": "Clausura Showstars",
     "event_type": "social",
     "is_recurring": false,
@@ -25623,23 +25682,21 @@
     "end_time": null,
     "prices": [
       {
-        "label": "General",
+        "label": "Entrada",
         "amount_cop": 20000,
         "condition": null
       }
     ],
     "artists": [
-      "Abakuá son colombiano"
+      "Abakuá"
     ],
     "activities": [
-      "concierto de salsa en vivo",
-      "remate de salsa al parque"
+      "concierto",
+      "música en vivo"
     ],
-    "contact": "@callejonsalsa",
+    "contact": null,
     "confidence": "high",
-    "doubts": [
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
+    "doubts": [],
     "id": "remate-de-salsa-al-parque-con-abakua-28-nov",
     "account": "callejonsalsa",
     "media": [
@@ -25919,14 +25976,12 @@
       "NS Orquesta"
     ],
     "activities": [
-      "concierto de salsa en vivo",
-      "fiesta de remate"
+      "concierto",
+      "música en vivo"
     ],
-    "contact": "@callejonsalsa",
+    "contact": null,
     "confidence": "high",
-    "doubts": [
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
+    "doubts": [],
     "id": "remate-de-salsa-al-parque-con-ns-orquesta-29-nov",
     "account": "callejonsalsa",
     "media": [
