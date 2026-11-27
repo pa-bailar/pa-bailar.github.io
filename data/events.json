@@ -23881,6 +23881,16 @@
     "account": "elgocepagano",
     "media": [
       {
+        "post_id": "18136715890662313",
+        "permalink": "https://www.instagram.com/p/DgNdY-gjuFY/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-26T15:46:15+0000",
+        "flyer": "flyers/18136715890662313-1.webp",
+        "caption": "🔥Concierto salsero, en elgocepagano 🔥\nSalsa bogotana, sabor, calle y goce en una sola noche\n\n🕔 Puertas: 6 pm | 🎶 Shows: 11 pm y 1 am\n📍 Diagonal 20A No. 82 – Bogotá\n\n✨🔥¡A bailar!🔥✨\nCover 20k\n#salsaenvivo #salsa\n#concierto #envivo\n#conciertobogota #salsaenbogotá",
+        "preview": null,
+        "slides": 2
+      },
+      {
         "post_id": "18115921370463899",
         "permalink": "https://www.instagram.com/p/DgLDcmaGlN8/",
         "media_type": "CAROUSEL_ALBUM",
@@ -24281,7 +24291,10 @@
         "condition": null
       }
     ],
-    "artists": [],
+    "artists": [
+      "Chepe",
+      "Dj Nando"
+    ],
     "activities": [],
     "contact": "3237992727",
     "confidence": "high",
@@ -24289,6 +24302,16 @@
     "id": "4ta-edicion-de-los-titanes-de-la-salsa-27-nov",
     "account": "fernandoespanadj",
     "media": [
+      {
+        "post_id": "18443419831195378",
+        "permalink": "https://www.instagram.com/reel/DgNpJwzSpPq/",
+        "media_type": "VIDEO",
+        "published": "2026-11-26T17:29:05+0000",
+        "flyer": "flyers/18443419831195378-0.webp",
+        "caption": "LA SALSA ES CULTURA : Hoy jueves 26 en la Biblioteca Nacional, 5 pm. Crónicas de la Salsa en Bogotá y Colombia con Omar Antonio, Guido Granadillo, Petrit Baquero y La Guancona. Mañana viernes 27 en Hoja al Viento, 9 pm, con Chepe y Dj Nando, Los Titanes de la Salsa. En ambos lugares, exposición, venta y firma de libros de Fernando España. Les esperamos.",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18161971804513944",
         "permalink": "https://www.instagram.com/reel/DgH7rwml5iC/",
@@ -24377,22 +24400,22 @@
     "date": "2026-11-28",
     "end_date": null,
     "sessions": null,
-    "weekday": "s1bado",
+    "weekday": "s\u0001bado",
     "start_time": null,
     "end_time": null,
     "prices": [
       {
-        "label": "Individual en l2nea",
+        "label": "En l\u0002nea individual",
         "amount_cop": 35000,
         "condition": null
       },
       {
-        "label": "Pareja en l2nea",
+        "label": "En l\u0002nea la pareja",
         "amount_cop": 50000,
         "condition": null
       },
       {
-        "label": "Taquilla",
+        "label": "En taquilla",
         "amount_cop": 45000,
         "condition": null
       }
@@ -24413,6 +24436,16 @@
     "id": "el-tour-de-la-salsa-luna-llena-salsa-band-en-vivo-28-nov",
     "account": "salsaculto",
     "media": [
+      {
+        "post_id": "18101939210426046",
+        "permalink": "https://www.instagram.com/p/DgNWC1uEZ0u/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-26T14:42:04+0000",
+        "flyer": "flyers/18101939210426046-0.webp",
+        "caption": "Hay salsa para escuchar y salsa para sudar. Esta es de la segunda. 🔥🎺\n\nTe armamos un playlist de salsa brava, la salsa dura de toda la vida: metales que entran de frente, timbal y campana marcando el paso, coros que le responden al sonero y descargas largas para no salir de la pista. Nació en los barrios latinos de Nueva York en los setenta, pero en Bogotá se quedó a vivir, en las salsotecas donde la música manda y nadie se fija en cómo baila el otro.\n\nDale play, súbele el volumen… y guarda energía, que esto se baila en vivo este sábado. 👇\n\n🌕 NOCHE DE SALSA BRAVA VOL. 1\n📅 Este sábado 28 de noviembre\n📍 Ratón de la Salsa · Cra. 14A # 82-14, 3er piso · Zona Rosa\n🎺 Orquesta en vivo + 🎧 Hermanos Baez DJ\n\n🎟️ En línea: $35.000 individual · $50.000 la pareja\nEn taquilla: $45.000. Compra antes y ahorra; la entrada te llega al correo con QR.\n🛂 ¿Tienes el Pasaporte salsero? Entras con él.\n\nLlega temprano, coge puesto cerca de la tarima y trae con quién bailar (o consíguelo esa noche). Link en la bio. 💃🕺\n\nGuarda el playlist y etiqueta a esa persona que no te suelta en la pista. 👀\n\n#SalsaBrava #SalsaDura #SalsaEnBogotá #PlaylistSalsera",
+        "preview": null,
+        "slides": 9
+      },
       {
         "post_id": "18144424963718332",
         "permalink": "https://www.instagram.com/p/Df7OxQeEVYe/",
@@ -24435,63 +24468,6 @@
       }
     ],
     "bar": false
-  },
-  {
-    "title": "Ger Band Latin Group",
-    "event_type": "concert",
-    "is_recurring": false,
-    "styles": [
-      "salsa"
-    ],
-    "organizer": "El Goce Pagano",
-    "venue": "El Goce Pagano",
-    "address": "Diagonal 20A N. 0-82",
-    "area": null,
-    "date": "2026-11-28",
-    "end_date": null,
-    "sessions": null,
-    "weekday": "sábado",
-    "start_time": null,
-    "end_time": null,
-    "prices": [],
-    "artists": [
-      "Ger Band Latin Group"
-    ],
-    "activities": [
-      "concierto",
-      "salsa en vivo"
-    ],
-    "contact": "WhatsApp 3168710646",
-    "confidence": "high",
-    "doubts": [
-      "sin hora especifica",
-      "sin precio confirmado"
-    ],
-    "id": "ger-band-latin-group-28-nov",
-    "account": "elgocepagano",
-    "media": [
-      {
-        "post_id": "18115921370463899",
-        "permalink": "https://www.instagram.com/p/DgLDcmaGlN8/",
-        "media_type": "CAROUSEL_ALBUM",
-        "published": "2026-11-25T17:21:04+0000",
-        "flyer": "flyers/18115921370463899-1.webp",
-        "caption": "🔥Concierto salsero, en elgocepagano 🔥\nSalsa bogotana, sabor, calle y goce en una sola noche\n\n🕔 Puertas: 6 pm | 🎶 Shows: 11 pm y 1 am\n📍 Diagonal 20A No. 82 – Bogotá\n\n✨🔥¡A bailar!🔥✨\nCover 20k\n#salsaenvivo #salsa\n#concierto #envivo\n#conciertobogota #salsaenbogotá",
-        "preview": null,
-        "slides": 2
-      },
-      {
-        "post_id": "18123232838067183",
-        "permalink": "https://www.instagram.com/p/Df3PgLoDlyV/",
-        "media_type": "CAROUSEL_ALBUM",
-        "published": "2026-11-18T00:41:36+0000",
-        "flyer": "flyers/18123232838067183-1.webp",
-        "caption": "🔥Concierto salsero, en elgocepagano 🔥\nSalsa bogotana, sabor, calle y goce en una sola noche\n\n🕔 Puertas: 6 pm | 🎶 Shows: 11 pm y 1 am\n📍 Diagonal 20A No. 82 – Bogotá\n\n✨🔥¡A bailar!🔥✨\nCover 20k\n#salsaenvivo #salsa\n#concierto #envivo\n#conciertobogota #salsaenbogotá",
-        "preview": null,
-        "slides": 2
-      }
-    ],
-    "bar": true
   },
   {
     "title": "Nando Lopez & Orquesta",
@@ -25011,6 +24987,79 @@
         "caption": "LOS SÁBADOS ACÁ SE SIENTEN DISTINTO. ❤️‍🔥\n\nAmbiente sabroso desde las 5 y el trío bilonguero tocando salsa pa’ gozársela lento y sabroso. 👀\n\nCaiga a los Latin Sessions y nos cuenta.\n\nCover 25k\nReservas por DM 📩\n\n#LatinSessions #SalsaBogotá #SalsaEnVivo #Bilongo",
         "preview": null,
         "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
+    "title": "Ger Band Latin Group",
+    "event_type": "concert",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "El Goce Pagano",
+    "venue": "El Goce Pagano",
+    "address": "Diagonal 20A N. 0-82",
+    "area": null,
+    "date": "2026-11-28",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "17:30",
+    "end_time": null,
+    "prices": [
+      {
+        "label": "Cover",
+        "amount_cop": 20000,
+        "condition": null
+      }
+    ],
+    "artists": [
+      "Ger Band Latin Group"
+    ],
+    "activities": [
+      "concierto",
+      "salsa en vivo"
+    ],
+    "contact": "WhatsApp 3168710646",
+    "confidence": "high",
+    "doubts": [
+      "sin hora especifica",
+      "sin precio confirmado"
+    ],
+    "id": "ger-band-latin-group-28-nov",
+    "account": "elgocepagano",
+    "media": [
+      {
+        "post_id": "18136715890662313",
+        "permalink": "https://www.instagram.com/p/DgNdY-gjuFY/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-26T15:46:15+0000",
+        "flyer": "flyers/18136715890662313-0.webp",
+        "caption": "🔥Concierto salsero, en elgocepagano 🔥\nSalsa bogotana, sabor, calle y goce en una sola noche\n\n🕔 Puertas: 6 pm | 🎶 Shows: 11 pm y 1 am\n📍 Diagonal 20A No. 82 – Bogotá\n\n✨🔥¡A bailar!🔥✨\nCover 20k\n#salsaenvivo #salsa\n#concierto #envivo\n#conciertobogota #salsaenbogotá",
+        "preview": null,
+        "slides": 2
+      },
+      {
+        "post_id": "18115921370463899",
+        "permalink": "https://www.instagram.com/p/DgLDcmaGlN8/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-25T17:21:04+0000",
+        "flyer": "flyers/18115921370463899-1.webp",
+        "caption": "🔥Concierto salsero, en elgocepagano 🔥\nSalsa bogotana, sabor, calle y goce en una sola noche\n\n🕔 Puertas: 6 pm | 🎶 Shows: 11 pm y 1 am\n📍 Diagonal 20A No. 82 – Bogotá\n\n✨🔥¡A bailar!🔥✨\nCover 20k\n#salsaenvivo #salsa\n#concierto #envivo\n#conciertobogota #salsaenbogotá",
+        "preview": null,
+        "slides": 2
+      },
+      {
+        "post_id": "18123232838067183",
+        "permalink": "https://www.instagram.com/p/Df3PgLoDlyV/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-18T00:41:36+0000",
+        "flyer": "flyers/18123232838067183-1.webp",
+        "caption": "🔥Concierto salsero, en elgocepagano 🔥\nSalsa bogotana, sabor, calle y goce en una sola noche\n\n🕔 Puertas: 6 pm | 🎶 Shows: 11 pm y 1 am\n📍 Diagonal 20A No. 82 – Bogotá\n\n✨🔥¡A bailar!🔥✨\nCover 20k\n#salsaenvivo #salsa\n#concierto #envivo\n#conciertobogota #salsaenbogotá",
+        "preview": null,
+        "slides": 2
       }
     ],
     "bar": true
@@ -25688,7 +25737,7 @@
     "end_time": null,
     "prices": [
       {
-        "label": "Entrada",
+        "label": "General",
         "amount_cop": 20000,
         "condition": null
       }
@@ -25700,12 +25749,22 @@
       "concierto",
       "música en vivo"
     ],
-    "contact": null,
+    "contact": "@callejonsalsa",
     "confidence": "high",
     "doubts": [],
     "id": "remate-de-salsa-al-parque-con-abakua-28-nov",
     "account": "callejonsalsa",
     "media": [
+      {
+        "post_id": "18139802881560684",
+        "permalink": "https://www.instagram.com/p/DgN621GyaNm/",
+        "media_type": "IMAGE",
+        "published": "2026-11-26T20:03:47+0000",
+        "flyer": "flyers/18139802881560684-0.webp",
+        "caption": "Que no hay representación femenina en salsa al parque... Bueno, pues en Callejón tenemos el remate perfecto de la primera jornada del festival, con abakua_son.colombiano y le hacemos justicia a la maravillosa escena salsera y sonera de mujeres en Bogotá. Así que vengan, y rematamos del parque al ritmo de Abakuá. \n\n📍 Callejón Salsa & Mecato | Calle 12D #3-84 La Candelaria.\n🗓️ Sábado 28 de noviembre\n🕖 10:30 p.m. \n🎟️ 20K",
+        "preview": null,
+        "slides": null
+      },
       {
         "post_id": "18148701925590597",
         "permalink": "https://www.instagram.com/p/DgL3VBhG1w-/",
@@ -26633,6 +26692,47 @@
     "bar": true
   },
   {
+    "title": "Tardeo Salsero - Simulacro Decembrino",
+    "event_type": "party",
+    "is_recurring": false,
+    "styles": [
+      "salsa"
+    ],
+    "organizer": "Bulevar Rooftop",
+    "venue": "Bulevar Rooftop",
+    "address": "Carrera 13 # 82 - 37",
+    "area": "Zona T",
+    "date": "2026-12-05",
+    "end_date": null,
+    "sessions": null,
+    "weekday": "sábado",
+    "start_time": "13:00",
+    "end_time": "18:00",
+    "prices": [],
+    "artists": [],
+    "activities": [],
+    "contact": "WhatsApp 3124245746",
+    "confidence": "high",
+    "doubts": [
+      "sin valor de boletería especificado"
+    ],
+    "id": "tardeo-salsero-simulacro-decembrino-5-dic",
+    "account": "bulevarsalsabar",
+    "media": [
+      {
+        "post_id": "18080886794438439",
+        "permalink": "https://www.instagram.com/reel/DgORQ1OAp8P/",
+        "media_type": "VIDEO",
+        "published": "2026-11-26T23:22:33+0000",
+        "flyer": "flyers/18080886794438439-0.webp",
+        "caption": "Tardeo de Bulevar 5 Diciembre 🌇🎄\n\nSábado 5 diciembre\nDesde la 1 PM hasta las 6 PM\nBULEVAR ROOFTOP\n📍 Carrera 13 # 82 - 37 \n\nENTRADAS 312 424 5746📲",
+        "preview": "previews/18080886794438439-0.mp4",
+        "slides": null
+      }
+    ],
+    "bar": true
+  },
+  {
     "title": "Taller Dancehall Female: Cuerpos y resistencia",
     "event_type": "workshop",
     "is_recurring": false,
@@ -26823,6 +26923,16 @@
         "published": "2026-09-15T23:44:00+0000",
         "flyer": "flyers/18104347286615308.webp",
         "caption": "⚜️ ELYSYUM MADYUM ⚜️\n\n05 de DICIEMBRE, una noche sin precedentes. Llega después de 5 años nuestro gran ANIVERSARIO MADYUM. Luego de múltiples experiencias, crecimiento, aprendizajes, adversidades, construcción de personas, procesos y evolución, nos reuniremos en una noche llena de celebración, baile, disfrute, manifestación y gran muestra de estos años de arduo trabajo. \n\nNos vemos pronto 🎤\n\n#aniversario #clausura #salsa #bachata #escueladebaile",
+        "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "17874915492645206",
+        "permalink": "https://www.instagram.com/reel/DgNjtk3twyu/",
+        "media_type": "VIDEO",
+        "published": "2026-11-26T16:46:37+0000",
+        "flyer": "flyers/17874915492645206-0.webp",
+        "caption": "👟 TEAM REGGAETON ALUMNOS 👟\n\nPresentamos un show Madyum de infarto para nuestro aniversario este 05 de diciembre. Te esperamos ⏳\n\n#aniversario #reggaeton #coreografia #show #alumnos",
         "preview": null,
         "slides": null
       },
