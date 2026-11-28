@@ -25883,28 +25883,28 @@
   },
   {
     "title": "Orquesta Aragón en Salsa al Parque 2026",
-    "event_type": "festival",
+    "event_type": "concert",
     "is_recurring": false,
     "styles": [
       "salsa",
       "cha cha chá",
       "son"
     ],
-    "organizer": "Alcaldía Mayor de Bogotá",
+    "organizer": null,
     "venue": "Parque Metropolitano Simón Bolívar",
     "address": null,
-    "area": "Engativá / Teusaquillo",
+    "area": null,
     "date": "2026-11-29",
     "end_date": null,
     "sessions": null,
-    "weekday": "sábado",
+    "weekday": "domingo",
     "start_time": "12:30",
     "end_time": null,
     "prices": [
       {
-        "label": "Entrada",
+        "label": "Entrada libre",
         "amount_cop": 0,
-        "condition": "Entrada libre"
+        "condition": "mayores de edad"
       }
     ],
     "artists": [
@@ -25913,7 +25913,7 @@
     "activities": [
       "concierto"
     ],
-    "contact": null,
+    "contact": "@festivalsalsaalparque",
     "confidence": "high",
     "doubts": [],
     "id": "orquesta-aragon-en-salsa-al-parque-2026-29-nov",
@@ -25939,7 +25939,7 @@
     "styles": [
       "salsa"
     ],
-    "organizer": null,
+    "organizer": "@festivalsalsaalparque",
     "venue": "Parque Metropolitano Simón Bolívar",
     "address": null,
     "area": null,
@@ -25959,10 +25959,8 @@
     "artists": [
       "David Zahan"
     ],
-    "activities": [
-      "concierto"
-    ],
-    "contact": null,
+    "activities": [],
+    "contact": "@festivalsalsaalparque",
     "confidence": "high",
     "doubts": [],
     "id": "david-zahan-en-salsa-al-parque-2026-29-nov",
@@ -25983,15 +25981,15 @@
   },
   {
     "title": "Willy García en Salsa al Parque 2026",
-    "event_type": "festival",
+    "event_type": "concert",
     "is_recurring": false,
     "styles": [
       "salsa"
     ],
-    "organizer": "Alcaldía Mayor de Bogotá",
+    "organizer": "Salsa al Parque",
     "venue": "Parque Metropolitano Simón Bolívar",
-    "address": "Calle 63 y Transversal 48",
-    "area": "Engativá",
+    "address": null,
+    "area": null,
     "date": "2026-11-29",
     "end_date": null,
     "sessions": null,
@@ -26002,7 +26000,7 @@
       {
         "label": "Entrada libre",
         "amount_cop": 0,
-        "condition": null
+        "condition": "evento para mayores de edad"
       }
     ],
     "artists": [
@@ -26011,7 +26009,7 @@
     "activities": [
       "concierto"
     ],
-    "contact": null,
+    "contact": "@festivalsalsaalparque",
     "confidence": "high",
     "doubts": [],
     "id": "willy-garcia-en-salsa-al-parque-2026-29-nov",
@@ -26082,7 +26080,7 @@
   },
   {
     "title": "Pegar un grito vagabundo",
-    "event_type": "concert",
+    "event_type": "party",
     "is_recurring": false,
     "styles": [
       "salsa"
@@ -26108,15 +26106,10 @@
       "Triana Music",
       "La Guabalosa"
     ],
-    "activities": [
-      "música en vivo",
-      "cantar"
-    ],
+    "activities": [],
     "contact": "@bilongocolombia",
     "confidence": "high",
-    "doubts": [
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
+    "doubts": [],
     "id": "pegar-un-grito-vagabundo-2-dic",
     "account": "bilongocolombia",
     "media": [
@@ -26643,17 +26636,15 @@
     "title": "Fiesta de Blanco",
     "event_type": "party",
     "is_recurring": false,
-    "styles": [
-      "salsa"
-    ],
+    "styles": [],
     "organizer": "Pachanga & Pochola",
     "venue": "Pachanga & Pochola",
     "address": null,
-    "area": "Bogotá",
+    "area": null,
     "date": "2026-12-05",
     "end_date": null,
     "sessions": null,
-    "weekday": "jueves",
+    "weekday": "sábado",
     "start_time": null,
     "end_time": null,
     "prices": [],
@@ -26666,14 +26657,13 @@
       "DJ Jeisson"
     ],
     "activities": [
-      "rumba",
-      "recibiendo regalos para los niños del Pacífico"
+      "recogida de regalos"
     ],
-    "contact": "WhatsApp 313 289 1788",
+    "contact": "WhatsApp 313 2891788",
     "confidence": "high",
     "doubts": [
       "sin hora de inicio",
-      "sin precio de entrada"
+      "sin precio"
     ],
     "id": "fiesta-de-blanco-5-dic",
     "account": "pachanga_y_pochola",
@@ -27107,7 +27097,7 @@
     "styles": [
       "salsa"
     ],
-    "organizer": "Germán Baila y El Goce Pagano",
+    "organizer": "Germán Baila",
     "venue": "El Goce Pagano",
     "address": "Diag. 20A #0-82",
     "area": "Centro",
@@ -27124,13 +27114,10 @@
         "condition": "incluye clase y bebida"
       }
     ],
-    "artists": [
-      "Germán Baila"
-    ],
+    "artists": [],
     "activities": [
       "clase de salsa",
-      "fiesta familiar",
-      "tarde de baile"
+      "fiesta familiar"
     ],
     "contact": "tubaile.com/eventos",
     "confidence": "high",
@@ -27153,7 +27140,7 @@
   },
   {
     "title": "Pegar un grito vagabundo",
-    "event_type": "concert",
+    "event_type": "party",
     "is_recurring": false,
     "styles": [
       "salsa"
@@ -27179,15 +27166,10 @@
       "Triana Music",
       "La Guabalosa"
     ],
-    "activities": [
-      "música en vivo",
-      "cantar"
-    ],
+    "activities": [],
     "contact": "@bilongocolombia",
     "confidence": "high",
-    "doubts": [
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
+    "doubts": [],
     "id": "pegar-un-grito-vagabundo-9-dic",
     "account": "bilongocolombia",
     "media": [
@@ -27634,7 +27616,7 @@
   },
   {
     "title": "Pegar un grito vagabundo",
-    "event_type": "concert",
+    "event_type": "party",
     "is_recurring": false,
     "styles": [
       "salsa"
@@ -27660,15 +27642,10 @@
       "Triana Music",
       "La Guabalosa"
     ],
-    "activities": [
-      "música en vivo",
-      "cantar"
-    ],
+    "activities": [],
     "contact": "@bilongocolombia",
     "confidence": "high",
-    "doubts": [
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
+    "doubts": [],
     "id": "pegar-un-grito-vagabundo-16-dic",
     "account": "bilongocolombia",
     "media": [
@@ -27931,7 +27908,7 @@
   },
   {
     "title": "Pegar un grito vagabundo",
-    "event_type": "concert",
+    "event_type": "party",
     "is_recurring": false,
     "styles": [
       "salsa"
@@ -27957,15 +27934,10 @@
       "Triana Music",
       "La Guabalosa"
     ],
-    "activities": [
-      "música en vivo",
-      "cantar"
-    ],
+    "activities": [],
     "contact": "@bilongocolombia",
     "confidence": "high",
-    "doubts": [
-      "varios eventos en una publicación, leída por un modelo ligero: confirma horas y precios"
-    ],
+    "doubts": [],
     "id": "pegar-un-grito-vagabundo-23-dic",
     "account": "bilongocolombia",
     "media": [
