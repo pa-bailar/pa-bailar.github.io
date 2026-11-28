@@ -24830,7 +24830,7 @@
     "date": "2026-11-28",
     "end_date": "2026-11-29",
     "sessions": null,
-    "weekday": "viernes",
+    "weekday": "sábado",
     "start_time": "15:00",
     "end_time": "22:00",
     "prices": [
@@ -24854,10 +24854,23 @@
     ],
     "contact": "@bogotadanceclub",
     "confidence": "high",
-    "doubts": [],
+    "doubts": [
+      "sin precio",
+      "sin dirección exacta"
+    ],
     "id": "simulacro-navideno-28-nov",
     "account": "bogotadanceclub",
     "media": [
+      {
+        "post_id": "18289999477288374",
+        "permalink": "https://www.instagram.com/reel/DgQ3oIDuNUu/",
+        "media_type": "VIDEO",
+        "published": "2026-11-27T23:34:12+0000",
+        "flyer": "flyers/18289999477288374-0.webp",
+        "caption": "¿Ya estás en modo Navidad? 🎄😂 ¡Nosotros también, pero primero toca el simulacro!\n\nSi tú tampoco te aguantas las ganas de que llegue diciembre, ven a nuestro Simulacro Navideño este sábado y domingo en Bogotá Dance Club. 🪇\n\n🕒 De 3:00 p. m. a 10:00 p. m.\n\n¡Que empiece la Navidad, pero con mucho swing! 💃🕺\n\n#planesenbogotá #navidad #simulacronavideño #baile",
+        "preview": "previews/18289999477288374-0.mp4",
+        "slides": null
+      },
       {
         "post_id": "17922245775462042",
         "permalink": "https://www.instagram.com/reel/DgLuMBfOOuf/",
@@ -25291,6 +25304,36 @@
     "account": "festivalsalsaalparque",
     "media": [
       {
+        "post_id": "17982423266915919",
+        "permalink": "https://www.instagram.com/p/DgQUY8cEttY/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-27T18:25:19+0000",
+        "flyer": "flyers/17982423266915919-0.webp",
+        "caption": "🎶 En #SalsaAlParque2026 trabajamos para que todas las personas puedan disfrutar de la música y el baile en condiciones de seguridad, comodidad y accesibilidad.\n\nConozca las medidas y los servicios de accesibilidad y bienestar disponibles durante el festival. Si requiere estos apoyos, realice su prerregistro ingresando al link de la BIO 👆 \n\n¡La salsa es para todos!\n\n#BogotáMiCiudadMiCasa #LaRevoluciónQueNuncaDejaDeSonar",
+        "preview": null,
+        "slides": 3
+      },
+      {
+        "post_id": "18050480777684439",
+        "permalink": "https://www.instagram.com/p/DgQHtl6kT-h/",
+        "media_type": "CAROUSEL_ALBUM",
+        "published": "2026-11-27T16:34:33+0000",
+        "flyer": "flyers/18050480777684439-0.webp",
+        "caption": "💃 Bogotá es una ciudad salsera y este 28 y 29 de noviembre lo demostrará en #SalsaAlParque2026.\n\nLa cita es en el Parque Metropolitano Simón Bolívar, donde la música y el baile reunirán a los amantes de este género durante dos días de festival.\n\nSi va a asistir, tenga en cuenta estas recomendaciones para disfrutar de la programación y vivir al máximo esta fiesta salsera.\n\n🎟️ Entrada libre | 🔞 Evento para mayores de edad. \n\n#BogotáMiCiudadMiCasa #LaRevoluciónQueNuncaDejaDeSonar",
+        "preview": null,
+        "slides": 6
+      },
+      {
+        "post_id": "17910928803597082",
+        "permalink": "https://www.instagram.com/p/DgP6rRpx_ni/",
+        "media_type": "IMAGE",
+        "published": "2026-11-27T14:40:41+0000",
+        "flyer": "flyers/17910928803597082-0.webp",
+        "caption": "🎙️ ¡Herman Olivera, \"el Sonero del Siglo XXI\", estará en #SalsaAlParque2026!\n\nSu estilo reúne la tradición del son cubano, la salsa neoyorquina y el jazz vocal, manteniendo viva la esencia de la salsa dura y conectando la vieja escuela con nuevas generaciones.\n\nEn el festival, el público podrá disfrutar de clásicos como ‘Que humanidad’, ‘Otra oportunidad’, ‘Pa' Bravo yo’ y ‘Palo pa' rumba’, en un encuentro con una de las voces de referencia del género.\n\n📅 29 de noviembre a las 7 p.m. \n📍 Parque Metropolitano Simón Bolívar\n🎟️ Entrada libre | 🔞 Evento para mayores de edad.\n\n#LaRevoluciónQueNuncaDejaDeSonar #BogotáMiCiudadMiCasa",
+        "preview": null,
+        "slides": null
+      },
+      {
         "post_id": "18012580545004641",
         "permalink": "https://www.instagram.com/p/DgOA52gSnaQ/",
         "media_type": "IMAGE",
@@ -25532,7 +25575,9 @@
     ],
     "contact": "appdanza.com",
     "confidence": "high",
-    "doubts": [],
+    "doubts": [
+      "hora y lugar no especificados en la publicación"
+    ],
     "id": "bachatamania-social-28-nov",
     "account": "bachatamania_bogota",
     "media": [
@@ -25574,6 +25619,16 @@
         "flyer": "flyers/18118338497022267-0.webp",
         "caption": "Bachatamania Noviembre ✨\n\nPenúltimo Bachatamania del 2026 y venimos con toda 🥳🥳🥳\n\nNo te pierdas la clase de Jean y Gaby a las 8 PM seguido de un social 100% Bachata a manos de DJ Duane para que disfrutes y bailes hasta que el cuerpo aguante 🤩🤩🤩\n\n🗓️ 28 de Noviembre\n📍 Distrito Social - CRA 29 68 - 18\n🕢 8:00 PM\n\nNo dejes que te lo cuenten, ven a bailar en el mejor social bachatero de Bogotá 🔥\n\nReserva tus boletas en nuestra web: \n\nappdanza.com",
         "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "17968817121230352",
+        "permalink": "https://www.instagram.com/reel/DgQlJ6GBKCP/",
+        "media_type": "VIDEO",
+        "published": "2026-11-27T20:55:05+0000",
+        "flyer": "flyers/17968817121230352-0.webp",
+        "caption": "Nuestro increíble taller de nuestro Bachatamania este 28 de Noviembre lo realizarán los profes Jean y Gaby🔥\n\nNo te lo puedes perder!! \nRecuerda el código de descuento: PROFE \n\nReservas en:\nappdanza.com",
+        "preview": "previews/17968817121230352-0.mp4",
         "slides": null
       }
     ],
@@ -26452,6 +26507,16 @@
         "caption": "Unámonos a conspirar nuevos posibles cuerpos, más sensibles, más libres, más humanos~ \n\nLlega Conspiraciones 👋🏼 Un encuentro que reúne a más de 8 colectivos, bajo la misma premisa “¿cómo soltar y transformar aquello que he callado y heredado en mí?” \n\nPrográmate para el fin de semana del 3 al 6 de diciembre✨con: \n• 3 jams abiertas con aporte voluntario 🔥 a cargo de cuerpofonico chonta.56 anfibia_danza & entramadacreadora \n• 3 laboratorios a cargo de julianadetalparacual maga.sarmiento29 march.rgz & maju_aerea_ 🌀\n• 2 talleres a cargo de caracolalunar & power_wine 💪🏼\n• Finalizando con ceramica.nubebebe en escritura creativa ✍️\n\nEspacios aliados: lacasadelasflores_cultural la_telamarilla7 \n\nEscribe YO para más info. e inscripciones 🌞!!! \n\nUn proyecto de fogal_arte ❤️‍🔥",
         "preview": null,
         "slides": 6
+      },
+      {
+        "post_id": "18086134160551560",
+        "permalink": "https://www.instagram.com/reel/DgQ7T71RHXP/",
+        "media_type": "VIDEO",
+        "published": "2026-11-28T00:43:12+0000",
+        "flyer": "flyers/18086134160551560-0.webp",
+        "caption": "Ya casi empezamos! 👋🏼 🔥🫀 … \nEste Jueves 3 de Diciembre nace CONSPIRACIONES~ Encuentro de Cuerpo y Memoria. Una experiencia inmersiva entre música, movimiento y escritura que cuestiona la relación con nuestras cuerpas, lo que calla y lo que somos capaces de crear y conjurar colectivamente.\n\nCon una programación de 10 actividades ❤️ entre Jams, Talleres & Laboratorios. Vive el recorrido de principio a fin con un desc. en el FULL PASS hasta el lunes 30 de noviembre 🔥🔥🔥 \n\nPara más info. escribe a fogal_arte o al número 3014407419 ✨\n\nTe esperamos!\n\nAliadas conspiradoras: julianadetalparacual maga.sarmiento29 yonnalizzouli cuerpofonico chonta.56 raizsaaa_ _juanita.garzon march.rgz anfibia_danza wiwa_akua power_wine gabiromero_arte_ _arte_ entramadacreadora maju_aerea_ sayrimagie caracolalunar ceramica.nubebebe \n\nMúsicos ✨🔥 el_rustico_bass elwi_cho astropico.music dracuila \n\nEspacios aliados: lacasadelasflores_cultural la_telamarilla7 🫂\n\nAmigos conspiradores: tropicointenso tropicointenso_asociacion ladysofcypher conectad4s \n\nPREPÁRATE PARA LA EDICIÓN ESPECIAL DE songbook_magazine 📝 del Encuentro ✨☺️",
+        "preview": null,
+        "slides": null
       },
       {
         "post_id": "18104274791436821",
@@ -27666,7 +27731,10 @@
     "title": "Clausura 2026 Studio Latin Dance",
     "event_type": "social",
     "is_recurring": false,
-    "styles": [],
+    "styles": [
+      "salsa",
+      "bachata"
+    ],
     "organizer": "Studio Latin Dance",
     "venue": "Centro de Eventos y Convenciones Las Américas",
     "address": "Av Américas #50-15",
@@ -27679,22 +27747,24 @@
     "end_time": null,
     "prices": [
       {
-        "label": "Pareja (Preventa)",
+        "label": "Pareja Preventa",
         "amount_cop": 80000,
         "condition": "hasta el 10 de diciembre"
       },
       {
-        "label": "Individual (Preventa)",
+        "label": "Individual Preventa",
         "amount_cop": 45000,
         "condition": "hasta el 10 de diciembre"
       },
       {
         "label": "Taquilla",
         "amount_cop": 60000,
-        "condition": null
+        "condition": "por persona"
       }
     ],
-    "artists": [],
+    "artists": [
+      "Dj Camilo Barreto"
+    ],
     "activities": [
       "celebración",
       "baile"
@@ -27713,6 +27783,16 @@
         "flyer": "flyers/17915963133515649-0.webp",
         "caption": "¡Cerramos el 2026 con una noche llena de ritmo, elegancia y celebración! ✨🥂🖤\n\nPrepárate para vivir una noche inolvidable junto a toda la familia STUDIO LATIN DANCE. 💃🕺\n\nUna celebración para brindar por los logros, los aprendizajes, las experiencias y, sobre todo, por la pasión que nos une: ¡EL BAILE! 🔥\n\n🎉 CLAUSURA 2026\n📅 Viernes 18 de diciembre\n🕖 Hora: 7:00 p. m.\n📍 Centro de Eventos y Convenciones Las Américas – Salón Bolívar, piso 1.\n🎟️ ¡PRECIOS DE PREVENTA HASTA EL 10 DE DICIEMBRE!\n❤️ Pareja: $80.000\n🖤 Individual: $45.000\n🎫 En taquilla: $60.000 por persona.\n📲 Reserva tu lugar:\n317 447 9689 – 302 720 3206\n\n¡No te quedes por fuera de esta gran celebración! Nos espera una noche para bailar, compartir y crear recuerdos inolvidables. 🥂✨\nSTUDIO LATIN DANCE – ¡Donde la pasión por el baile nos une! ❤",
         "preview": null,
+        "slides": null
+      },
+      {
+        "post_id": "18364032694247359",
+        "permalink": "https://www.instagram.com/reel/DgQayKLSGOr/",
+        "media_type": "VIDEO",
+        "published": "2026-11-27T19:23:04+0000",
+        "flyer": "flyers/18364032694247359-0.webp",
+        "caption": "Quedan pocos días para terminar nuestra PREVENTA! \n\nDj Camilo Barreto, estará ambientando nuestra celebración y despedida de fin de años, no te lo puedes perder 💃🕺\n\nUna celebración para brindar por los logros, los aprendizajes, las experiencias y, sobre todo, por la pasión que nos une: ¡EL BAILE! 🔥\n\n🎉 CLAUSURA 2026\n📅 Viernes 18 de diciembre\n🕖 Hora: 7:00 p. m.\n📍 Centro de Eventos y Convenciones Las Américas – Salón Bolívar, piso 1.\n🎟️ ¡PRECIOS DE PREVENTA HASTA EL 10 DE DICIEMBRE!\n❤️ Pareja: $80.000\n🖤 Individual: $45.000\n🎫 En taquilla: $60.000 por persona.\n📲 Reserva tu lugar:\n317 447 9689 – 302 720 3206\n\n¡No te quedes por fuera de esta gran celebración! Nos espera una noche para bailar, compartir y crear recuerdos inolvidables. 🥂✨\nSTUDIO LATIN DANCE – ¡Donde la pasión por el baile nos une! ❤",
+        "preview": "previews/18364032694247359-0.mp4",
         "slides": null
       },
       {
